@@ -12,7 +12,7 @@ require (
 	github.com/pulumi/pulumi/pkg/v3 v3.147.0
 )
 
-// replace github.com/duplocloud/terraform-provider-duplocloud v0.10.55 => github.com/duplocloud/terraform-provider-duplocloud v0.10.56-0.20250130160445-b365ac30c13b
+replace github.com/duplocloud/terraform-provider-duplocloud v0.10.55 => github.com/duplocloud/terraform-provider-duplocloud v0.10.56-0.20250130160445-b365ac30c13b
 
 require (
 	cloud.google.com/go v0.112.1 // indirect
