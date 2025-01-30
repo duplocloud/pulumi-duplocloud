@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-xyz/examples
+module github.com/duplocloud/pulumi-duplocloud/examples
 
 go 1.22
 
