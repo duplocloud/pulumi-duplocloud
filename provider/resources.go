@@ -20,11 +20,11 @@ import (
 	// Allow embedding bridge-metadata.json in the provider.
 	_ "embed"
 
+	duplocloud "github.com/duplocloud/terraform-provider-duplocloud/duplocloud" // Import the upstream provider
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/pkg/v3/codegen/schema"
-	duplocloud "github.com/duplocloud/terraform-provider-duplocloud/provider" // Import the upstream provider
 
 	"github.com/duplocloud/pulumi-duplocloud/provider/pkg/version"
 )
@@ -105,7 +105,7 @@ func Provider() tfbridge.ProviderInfo {
 		// - "github.com/hashicorp/terraform-plugin-framework/provider".Provider (for plugin-framework)
 		//
 		//nolint:lll
-		P: shimv2.NewProvider(duplocloud.New(version.Version)()),
+		P: shimv2.NewProvider(duplocloud.Provider()),
 
 		Name:    "duplocloud",
 		Version: version.Version,
