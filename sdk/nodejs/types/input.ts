@@ -6,3 +6,9698 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as enums from "../types/enums";
 
+export interface AsgProfileMetadata {
+    key: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
+export interface AsgProfileMinionTag {
+    key: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
+export interface AsgProfileNetworkInterface {
+    /**
+     * Whether or not to associate a public IP with the newly created ENI.  Cannot be specified if `networkInterfaceId` is specified.
+     */
+    associatePublicIp?: pulumi.Input<boolean>;
+    /**
+     * The device index to pass to AWS for attaching the ENI.  Starts at zero.
+     */
+    deviceIndex?: pulumi.Input<number>;
+    groups?: pulumi.Input<pulumi.Input<string>[]>;
+    metadatas?: pulumi.Input<pulumi.Input<inputs.AsgProfileNetworkInterfaceMetadata>[]>;
+    /**
+     * The ID of an ENI to attach to this host.  Cannot be specified if `subnetId` or `associatePublicIp` is specified.
+     */
+    networkInterfaceId?: pulumi.Input<string>;
+    /**
+     * The ID of a subnet in which to create a new ENI.  Cannot be specified if `networkInterfaceId` is specified.
+     */
+    subnetId?: pulumi.Input<string>;
+}
+
+export interface AsgProfileNetworkInterfaceMetadata {
+    key: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
+export interface AsgProfileTag {
+    key: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
+export interface AsgProfileTaint {
+    /**
+     * Update strategy of the node. Effect types <br>      - NoSchedule<br>     - PreferNoSchedule<br>     - NoExecute
+     */
+    effect: pulumi.Input<string>;
+    key: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
+}
+
+export interface AsgProfileVolume {
+    iops?: pulumi.Input<number>;
+    name?: pulumi.Input<string>;
+    size?: pulumi.Input<number>;
+    volumeId?: pulumi.Input<string>;
+    volumeType?: pulumi.Input<string>;
+}
+
+export interface AwsApigatewayEventIntegration {
+    /**
+     * Custom timeout between 50 and 300,000 milliseconds.
+     */
+    timeout?: pulumi.Input<number>;
+    /**
+     * Integration input's type. Valid values are `HTTP` (for HTTP backends), `MOCK` (not calling any real backend), `AWS` (for AWS services), `AWS_PROXY` (for Lambda proxy integration) and `HTTP_PROXY` (for HTTP proxy integration).
+     */
+    type: pulumi.Input<string>;
+    /**
+     * Input's URI. Required if type is `AWS`, `AWS_PROXY`, `HTTP` or `HTTP_PROXY`. For AWS integrations, the URI should be of the form `arn:aws:apigateway:{region}:{subdomain.service|service}:{path|action}/{service_api}`. `region`, `subdomain` and `service` are used to determine the right endpoint.
+     */
+    uri: pulumi.Input<string>;
+}
+
+export interface AwsAppautoscalingPolicyStepScalingPolicyConfiguration {
+    /**
+     * Specifies whether the adjustment is an absolute number or a percentage of the current capacity. Valid values are `ChangeInCapacity`, `ExactCapacity`, and `PercentChangeInCapacity`.
+     */
+    adjustmentType?: pulumi.Input<string>;
+    /**
+     * The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
+     */
+    cooldown?: pulumi.Input<number>;
+    /**
+     * The aggregation type for the policy's metrics. Valid values are "Minimum", "Maximum", and "Average". Without a value, AWS will treat the aggregation type as "Average".
+     */
+    metricAggregationType?: pulumi.Input<string>;
+    /**
+     * The minimum number to adjust your scalable dimension as a result of a scaling activity. If the adjustment type is PercentChangeInCapacity, the scaling policy changes the scalable dimension of the scalable target by this amount.
+     */
+    minAdjustmentMagnitude?: pulumi.Input<number>;
+    /**
+     * A set of adjustments that manage scaling.
+     */
+    stepAdjustments?: pulumi.Input<pulumi.Input<inputs.AwsAppautoscalingPolicyStepScalingPolicyConfigurationStepAdjustment>[]>;
+}
+
+export interface AwsAppautoscalingPolicyStepScalingPolicyConfigurationStepAdjustment {
+    /**
+     * The lower bound for the difference between the alarm threshold and the CloudWatch metric.
+     */
+    metricIntervalLowerBound?: pulumi.Input<string>;
+    /**
+     * The upper bound for the difference between the alarm threshold and the CloudWatch metric.
+     */
+    metricIntervalUpperBound?: pulumi.Input<string>;
+    /**
+     * The number of members by which to scale, when the adjustment bounds are breached.
+     */
+    scalingAdjustment: pulumi.Input<number>;
+}
+
+export interface AwsAppautoscalingPolicyTargetTrackingScalingPolicyConfiguration {
+    customizedMetricSpecification?: pulumi.Input<inputs.AwsAppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecification>;
+    /**
+     * Indicates whether scale in by the target tracking policy is disabled. Defaults to `false`.
+     */
+    disableScaleIn?: pulumi.Input<boolean>;
+    predefinedMetricSpecification?: pulumi.Input<inputs.AwsAppautoscalingPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecification>;
+    /**
+     * The amount of time, in seconds, after a scale in activity completes before another scale in activity can start.
+     */
+    scaleInCooldown?: pulumi.Input<number>;
+    /**
+     * The amount of time, in seconds, after a scale out activity completes before another scale out activity can start.
+     */
+    scaleOutCooldown?: pulumi.Input<number>;
+    /**
+     * The target value for the metric.
+     */
+    targetValue: pulumi.Input<number>;
+}
+
+export interface AwsAppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecification {
+    dimensions?: pulumi.Input<pulumi.Input<inputs.AwsAppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimension>[]>;
+    /**
+     * The name of the metric.
+     */
+    metricName: pulumi.Input<string>;
+    /**
+     * The namespace of the metric.
+     */
+    namespace: pulumi.Input<string>;
+    /**
+     * The statistic of the metric. Valid values: `Average`, `Minimum`, `Maximum`, `SampleCount`, and `Sum`.
+     */
+    statistic: pulumi.Input<string>;
+    /**
+     * The unit of the metric.
+     */
+    unit?: pulumi.Input<string>;
+}
+
+export interface AwsAppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimension {
+    /**
+     * Name of the dimension.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Value of the dimension.
+     */
+    value: pulumi.Input<string>;
+}
+
+export interface AwsAppautoscalingPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecification {
+    /**
+     * The metric type.
+     */
+    predefinedMetricType: pulumi.Input<string>;
+    /**
+     * Reserved for future use. Must be less than or equal to 1023 characters in length.
+     */
+    resourceLabel?: pulumi.Input<string>;
+}
+
+export interface AwsBatchComputeEnvironmentComputeResources {
+    /**
+     * The allocation strategy to use for the compute resource in case not enough instances of the best fitting instance type can be allocated. Available allocationStrategy - `BEST_FIT_PROGRESSIVE`, `SPOT_CAPACITY_OPTIMIZED`, `BEST_FIT`, `SPOT_PRICE_CAPACITY_OPTIMIZED`
+     */
+    allocationStrategy?: pulumi.Input<string>;
+    /**
+     * Integer of maximum percentage that a Spot Instance price can be when compared with the On-Demand price for that instance type before instances are launched.
+     */
+    bidPercentage?: pulumi.Input<number>;
+    /**
+     * The desired number of EC2 vCPUS in the compute environment. This parameter isn't applicable to jobs running on Fargate resources, and shouldn't be specified.
+     */
+    desiredVcpus?: pulumi.Input<number>;
+    /**
+     * Provides information used to select Amazon Machine Images (AMIs) for EC2 instances in the compute environment.
+     */
+    ec2Configuration?: pulumi.Input<inputs.AwsBatchComputeEnvironmentComputeResourcesEc2Configuration>;
+    /**
+     * The EC2 key pair that is used for instances launched in the compute environment. This parameter isn't applicable to jobs running on Fargate resources, and shouldn't be specified.
+     */
+    ec2KeyPair?: pulumi.Input<string>;
+    /**
+     * The Amazon Machine Image (AMI) ID used for instances launched in the compute environment. This parameter isn't applicable to jobs running on Fargate resources, and shouldn't be specified. (Deprecated, use ec2Configuration `imageIdOverride` instead)
+     */
+    imageId?: pulumi.Input<string>;
+    /**
+     * The Amazon ECS instance role applied to Amazon EC2 instances in a compute environment. This parameter isn't applicable to jobs running on Fargate resources, and shouldn't be specified.
+     */
+    instanceRole?: pulumi.Input<string>;
+    /**
+     * A list of instance types that may be launched. This parameter isn't applicable to jobs running on Fargate resources, and shouldn't be specified.
+     */
+    instanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The launch template to use for your compute resources. See details below. This parameter isn't applicable to jobs running on Fargate resources, and shouldn't be specified.
+     */
+    launchTemplate?: pulumi.Input<inputs.AwsBatchComputeEnvironmentComputeResourcesLaunchTemplate>;
+    /**
+     * The maximum number of EC2 vCPUs that an environment can reach.
+     */
+    maxVcpus: pulumi.Input<number>;
+    /**
+     * The minimum number of EC2 vCPUs that an environment should maintain. For `EC2` or `SPOT` compute environments, if the parameter is not explicitly defined, a `0` default value will be set. This parameter isn't applicable to jobs running on Fargate resources, and shouldn't be specified.
+     */
+    minVcpus?: pulumi.Input<number>;
+    /**
+     * A list of EC2 security group that are associated with instances launched in the compute environment. This parameter is required for Fargate compute environments.
+     */
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The Amazon Resource Name (ARN) of the Amazon EC2 Spot Fleet IAM role applied to a SPOT compute environment. This parameter is required for SPOT compute environments. This parameter isn't applicable to jobs running on Fargate resources, and shouldn't be specified.
+     */
+    spotIamFleetRole?: pulumi.Input<string>;
+    /**
+     * A list of VPC subnets into which the compute resources are launched.
+     */
+    subnets?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Key-value map of resource tags.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The type of compute environment. Valid items are `EC2`, `SPOT`, `FARGATE` or `FARGATE_SPOT`.
+     */
+    type: pulumi.Input<string>;
+}
+
+export interface AwsBatchComputeEnvironmentComputeResourcesEc2Configuration {
+    /**
+     * The AMI ID used for instances launched in the compute environment that match the image type. This setting overrides the `imageId` argument in the `computeResources` block.
+     */
+    imageIdOverride?: pulumi.Input<string>;
+    /**
+     * The image type to match with the instance type to select an AMI.
+     */
+    imageType?: pulumi.Input<string>;
+}
+
+export interface AwsBatchComputeEnvironmentComputeResourcesLaunchTemplate {
+    /**
+     * ID of the launch template. You must specify either the launch template ID or launch template name in the request, but not both.
+     */
+    launchTemplateId?: pulumi.Input<string>;
+    /**
+     * Name of the launch template.
+     */
+    launchTemplateName?: pulumi.Input<string>;
+    /**
+     * The version number of the launch template. Default: The default version of the launch template.
+     */
+    version?: pulumi.Input<string>;
+}
+
+export interface AwsBatchJobDefinitionRetryStrategy {
+    /**
+     * The number of times to move a job to the RUNNABLE status. You may specify between `1` and `10` attempts.
+     */
+    attempts?: pulumi.Input<number>;
+    /**
+     * The evaluate on exit conditions under which the job should be retried or failed. If this parameter is specified, then the attempts parameter must also be specified. You may specify up to 5 configuration blocks.
+     */
+    evaluateOnExits?: pulumi.Input<pulumi.Input<inputs.AwsBatchJobDefinitionRetryStrategyEvaluateOnExit>[]>;
+}
+
+export interface AwsBatchJobDefinitionRetryStrategyEvaluateOnExit {
+    /**
+     * Specifies the action to take if all of the specified conditions are met. The values are not case sensitive. Valid values: `RETRY`, `EXIT`.
+     */
+    action: pulumi.Input<string>;
+    /**
+     * A glob pattern to match against the decimal representation of the exit code returned for a job.
+     */
+    onExitCode?: pulumi.Input<string>;
+    /**
+     * A glob pattern to match against the reason returned for a job.
+     */
+    onReason?: pulumi.Input<string>;
+    /**
+     * A glob pattern to match against the status reason returned for a job.
+     */
+    onStatusReason?: pulumi.Input<string>;
+}
+
+export interface AwsBatchJobDefinitionTimeout {
+    /**
+     * The time duration in seconds after which AWS Batch terminates your jobs if they have not finished. The minimum value for the timeout is `60`seconds.
+     */
+    attemptDurationSeconds?: pulumi.Input<number>;
+}
+
+export interface AwsBatchSchedulingPolicyFairSharePolicy {
+    /**
+     * A value used to reserve some of the available maximum vCPU for fair share identifiers that have not yet been used.
+     */
+    computeReservation?: pulumi.Input<number>;
+    /**
+     * The time period to use to calculate a fair share percentage for each fair share identifier in use, in seconds.
+     */
+    shareDecaySeconds?: pulumi.Input<number>;
+    /**
+     * One or more share distribution blocks which define the weights for the fair share identifiers for the fair share policy.
+     */
+    shareDistributions?: pulumi.Input<pulumi.Input<inputs.AwsBatchSchedulingPolicyFairSharePolicyShareDistribution>[]>;
+}
+
+export interface AwsBatchSchedulingPolicyFairSharePolicyShareDistribution {
+    /**
+     * A fair share identifier or fair share identifier prefix.
+     */
+    shareIdentifier: pulumi.Input<string>;
+    /**
+     * The weight factor for the fair share identifier.
+     */
+    weightFactor?: pulumi.Input<number>;
+}
+
+export interface AwsCloudfrontDistributionCustomErrorResponse {
+    errorCachingMinTtl?: pulumi.Input<number>;
+    errorCode: pulumi.Input<number>;
+    responseCode?: pulumi.Input<number>;
+    responsePagePath?: pulumi.Input<string>;
+}
+
+export interface AwsCloudfrontDistributionDefaultCacheBehavior {
+    allowedMethods: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * \n\n						
+     * | Policy name                                                                                                                                                                                  | Policy Id                            |
+     * |----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------|
+     * | Amplify                                                | 2e54312d-136d-493c-8eb9-b001f22f67d2 |
+     * | CachingDisabled                               | 4135ea2d-6df8-44a3-9df3-4b5a84be39ad |
+     * | CachingOptimized                                    | 658327ea-f89d-4fab-a63d-7e88639e58f6 |
+     * | CachingOptimizedForUncompressedObjects | b2884449-e4de-46a7-ac36-70bc7f1ddd6d |
+     * | Elemental-MediaPackage                            | 08627262-05a9-4f76-9ded-b50ca2e3a84f |
+     * \n\n
+     */
+    cachePolicyId?: pulumi.Input<string>;
+    cachedMethods: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Defaults to `false`.
+     */
+    compress?: pulumi.Input<boolean>;
+    /**
+     * default time to live: Not required when cache*policy*id is set
+     */
+    defaultTtl?: pulumi.Input<number>;
+    fieldLevelEncryptionId?: pulumi.Input<string>;
+    forwardedValues?: pulumi.Input<inputs.AwsCloudfrontDistributionDefaultCacheBehaviorForwardedValues>;
+    functionAssociations?: pulumi.Input<pulumi.Input<inputs.AwsCloudfrontDistributionDefaultCacheBehaviorFunctionAssociation>[]>;
+    lambdaFunctionAssociations?: pulumi.Input<pulumi.Input<inputs.AwsCloudfrontDistributionDefaultCacheBehaviorLambdaFunctionAssociation>[]>;
+    /**
+     * Maximum time to live: Not required when cache*policy*id is set
+     */
+    maxTtl?: pulumi.Input<number>;
+    /**
+     * Minimum time to live: Not required when cache*policy*id is set Defaults to `0`.
+     */
+    minTtl?: pulumi.Input<number>;
+    originRequestPolicyId?: pulumi.Input<string>;
+    realtimeLogConfigArn?: pulumi.Input<string>;
+    responseHeadersPolicyId?: pulumi.Input<string>;
+    smoothStreaming?: pulumi.Input<boolean>;
+    targetOriginId: pulumi.Input<string>;
+    trustedKeyGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    trustedSigners?: pulumi.Input<pulumi.Input<string>[]>;
+    viewerProtocolPolicy: pulumi.Input<string>;
+}
+
+export interface AwsCloudfrontDistributionDefaultCacheBehaviorForwardedValues {
+    cookies: pulumi.Input<inputs.AwsCloudfrontDistributionDefaultCacheBehaviorForwardedValuesCookies>;
+    /**
+     * headers: Not required when cache*policy*id is set
+     */
+    headers?: pulumi.Input<pulumi.Input<string>[]>;
+    queryString: pulumi.Input<boolean>;
+    /**
+     * query*string*cache*keys: Not required when cache*policy_id is set
+     */
+    queryStringCacheKeys?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AwsCloudfrontDistributionDefaultCacheBehaviorForwardedValuesCookies {
+    forward: pulumi.Input<string>;
+    whitelistedNames?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AwsCloudfrontDistributionDefaultCacheBehaviorFunctionAssociation {
+    eventType: pulumi.Input<string>;
+    functionArn: pulumi.Input<string>;
+}
+
+export interface AwsCloudfrontDistributionDefaultCacheBehaviorLambdaFunctionAssociation {
+    eventType: pulumi.Input<string>;
+    /**
+     * Defaults to `false`.
+     */
+    includeBody?: pulumi.Input<boolean>;
+    lambdaArn: pulumi.Input<string>;
+}
+
+export interface AwsCloudfrontDistributionLoggingConfig {
+    bucket: pulumi.Input<string>;
+    /**
+     * Defaults to `false`.
+     */
+    includeCookies?: pulumi.Input<boolean>;
+    /**
+     * Defaults to ``.
+     */
+    prefix?: pulumi.Input<string>;
+}
+
+export interface AwsCloudfrontDistributionOrderedCacheBehavior {
+    allowedMethods: pulumi.Input<pulumi.Input<string>[]>;
+    cachePolicyId?: pulumi.Input<string>;
+    cachedMethods: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Defaults to `false`.
+     */
+    compress?: pulumi.Input<boolean>;
+    defaultTtl?: pulumi.Input<number>;
+    fieldLevelEncryptionId?: pulumi.Input<string>;
+    forwardedValues?: pulumi.Input<inputs.AwsCloudfrontDistributionOrderedCacheBehaviorForwardedValues>;
+    functionAssociations?: pulumi.Input<pulumi.Input<inputs.AwsCloudfrontDistributionOrderedCacheBehaviorFunctionAssociation>[]>;
+    lambdaFunctionAssociations?: pulumi.Input<pulumi.Input<inputs.AwsCloudfrontDistributionOrderedCacheBehaviorLambdaFunctionAssociation>[]>;
+    maxTtl?: pulumi.Input<number>;
+    /**
+     * Defaults to `0`.
+     */
+    minTtl?: pulumi.Input<number>;
+    originRequestPolicyId?: pulumi.Input<string>;
+    pathPattern: pulumi.Input<string>;
+    realtimeLogConfigArn?: pulumi.Input<string>;
+    responseHeadersPolicyId?: pulumi.Input<string>;
+    smoothStreaming?: pulumi.Input<boolean>;
+    targetOriginId: pulumi.Input<string>;
+    trustedKeyGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    trustedSigners?: pulumi.Input<pulumi.Input<string>[]>;
+    viewerProtocolPolicy: pulumi.Input<string>;
+}
+
+export interface AwsCloudfrontDistributionOrderedCacheBehaviorForwardedValues {
+    cookies: pulumi.Input<inputs.AwsCloudfrontDistributionOrderedCacheBehaviorForwardedValuesCookies>;
+    headers?: pulumi.Input<pulumi.Input<string>[]>;
+    queryString: pulumi.Input<boolean>;
+    queryStringCacheKeys?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AwsCloudfrontDistributionOrderedCacheBehaviorForwardedValuesCookies {
+    forward: pulumi.Input<string>;
+    whitelistedNames?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AwsCloudfrontDistributionOrderedCacheBehaviorFunctionAssociation {
+    eventType: pulumi.Input<string>;
+    functionArn: pulumi.Input<string>;
+}
+
+export interface AwsCloudfrontDistributionOrderedCacheBehaviorLambdaFunctionAssociation {
+    eventType: pulumi.Input<string>;
+    /**
+     * Defaults to `false`.
+     */
+    includeBody?: pulumi.Input<boolean>;
+    lambdaArn: pulumi.Input<string>;
+}
+
+export interface AwsCloudfrontDistributionOrigin {
+    /**
+     * Defaults to `3`.
+     */
+    connectionAttempts?: pulumi.Input<number>;
+    /**
+     * Defaults to `10`.
+     */
+    connectionTimeout?: pulumi.Input<number>;
+    customHeaders?: pulumi.Input<pulumi.Input<inputs.AwsCloudfrontDistributionOriginCustomHeader>[]>;
+    customOriginConfig?: pulumi.Input<inputs.AwsCloudfrontDistributionOriginCustomOriginConfig>;
+    domainName: pulumi.Input<string>;
+    originId: pulumi.Input<string>;
+    /**
+     * Defaults to ``.
+     */
+    originPath?: pulumi.Input<string>;
+    originShield?: pulumi.Input<inputs.AwsCloudfrontDistributionOriginOriginShield>;
+    s3OriginConfig?: pulumi.Input<inputs.AwsCloudfrontDistributionOriginS3OriginConfig>;
+}
+
+export interface AwsCloudfrontDistributionOriginCustomHeader {
+    name: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
+export interface AwsCloudfrontDistributionOriginCustomOriginConfig {
+    /**
+     * Defaults to `80`.
+     */
+    httpPort?: pulumi.Input<number>;
+    /**
+     * Defaults to `443`.
+     */
+    httpsPort?: pulumi.Input<number>;
+    /**
+     * Defaults to `5`.
+     */
+    originKeepaliveTimeout?: pulumi.Input<number>;
+    originProtocolPolicy: pulumi.Input<string>;
+    /**
+     * Defaults to `30`.
+     */
+    originReadTimeout?: pulumi.Input<number>;
+    originSslProtocols: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AwsCloudfrontDistributionOriginGroup {
+    failoverCriteria: pulumi.Input<inputs.AwsCloudfrontDistributionOriginGroupFailoverCriteria>;
+    members: pulumi.Input<pulumi.Input<inputs.AwsCloudfrontDistributionOriginGroupMember>[]>;
+    originId: pulumi.Input<string>;
+}
+
+export interface AwsCloudfrontDistributionOriginGroupFailoverCriteria {
+    statusCodes: pulumi.Input<pulumi.Input<number>[]>;
+}
+
+export interface AwsCloudfrontDistributionOriginGroupMember {
+    originId: pulumi.Input<string>;
+}
+
+export interface AwsCloudfrontDistributionOriginOriginShield {
+    enabled: pulumi.Input<boolean>;
+    originShieldRegion: pulumi.Input<string>;
+}
+
+export interface AwsCloudfrontDistributionOriginS3OriginConfig {
+    originAccessIdentity?: pulumi.Input<string>;
+}
+
+export interface AwsCloudfrontDistributionRestrictions {
+    geoRestriction: pulumi.Input<inputs.AwsCloudfrontDistributionRestrictionsGeoRestriction>;
+}
+
+export interface AwsCloudfrontDistributionRestrictionsGeoRestriction {
+    locations?: pulumi.Input<pulumi.Input<string>[]>;
+    restrictionType: pulumi.Input<string>;
+}
+
+export interface AwsCloudfrontDistributionViewerCertificate {
+    acmCertificateArn?: pulumi.Input<string>;
+    cloudfrontDefaultCertificate?: pulumi.Input<boolean>;
+    iamCertificateId?: pulumi.Input<string>;
+    /**
+     * Defaults to `TLSv1.2_2021`.
+     */
+    minimumProtocolVersion?: pulumi.Input<string>;
+    /**
+     * Defaults to `sni-only`.
+     */
+    sslSupportMethod?: pulumi.Input<string>;
+}
+
+export interface AwsCloudwatchEventRuleTag {
+    key: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
+export interface AwsCloudwatchMetricAlarmDimension {
+    key: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
+export interface AwsDynamodbTableV2Attribute {
+    /**
+     * The name of the attribute
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Attribute type, which must be a scalar type: `S`, `N`, or `B` for (S)tring, (N)umber or (B)inary data
+     */
+    type: pulumi.Input<string>;
+}
+
+export interface AwsDynamodbTableV2GlobalSecondaryIndex {
+    /**
+     * The name of the hash key in the index; must be defined as an attribute in the resource.
+     */
+    hashKey: pulumi.Input<string>;
+    /**
+     * The name of the index.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Only required with `INCLUDE` as a projection type; a list of attributes to project into the index. These do not need to be defined as attributes on the table.
+     */
+    nonKeyAttributes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * One of `ALL`, `INCLUDE` or `KEYS_ONLY` where `ALL` projects every attribute into the index, `KEYS_ONLY` projects just the hash and range key into the index, and `INCLUDE` projects only the keys specified in the `nonKeyAttributes` parameter.
+     */
+    projectionType: pulumi.Input<string>;
+    /**
+     * The name of the range key; must be defined.
+     */
+    rangeKey?: pulumi.Input<string>;
+    /**
+     * The number of read units for this index. Must be set if `billingMode` is set to `PROVISIONED`.
+     */
+    readCapacity?: pulumi.Input<number>;
+    /**
+     * The number of write units for this index. Must be set if `billingMode` is set to `PROVISIONED`.
+     */
+    writeCapacity?: pulumi.Input<number>;
+}
+
+export interface AwsDynamodbTableV2KeySchema {
+    /**
+     * The name of the attribute
+     */
+    attributeName: pulumi.Input<string>;
+    /**
+     * Applicable key types are `HASH` or `RANGE`.
+     */
+    keyType: pulumi.Input<string>;
+}
+
+export interface AwsDynamodbTableV2LocalSecondaryIndex {
+    /**
+     * The name of the hash key in the index; must be defined as an attribute in the resource.
+     */
+    hashKey: pulumi.Input<string>;
+    /**
+     * The name of the index.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Only required with `INCLUDE` as a projection type; a list of attributes to project into the index. These do not need to be defined as attributes on the table.
+     */
+    nonKeyAttributes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * One of `ALL`, `INCLUDE` or `KEYS_ONLY` where `ALL` projects every attribute into the index, `KEYS_ONLY` projects just the hash and range key into the index, and `INCLUDE` projects only the keys specified in the `nonKeyAttributes` parameter.
+     */
+    projectionType: pulumi.Input<string>;
+    /**
+     * The name of the range key; must be defined.
+     */
+    rangeKey: pulumi.Input<string>;
+}
+
+export interface AwsDynamodbTableV2ServerSideEncryption {
+    /**
+     * Whether or not to enable encryption at rest using an AWS managed KMS customer master key (CMK).
+     */
+    enabled: pulumi.Input<boolean>;
+    /**
+     * The ARN of the CMK that should be used for the AWS KMS encryption.
+     */
+    kmsKeyArn?: pulumi.Input<string>;
+}
+
+export interface AwsDynamodbTableV2Tag {
+    key: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
+export interface AwsDynamodbTableV2Ttl {
+    /**
+     * The name of the attribute that will be stored in the ttl timestamp
+     */
+    attributeName: pulumi.Input<string>;
+    /**
+     * Status of the ttl
+     */
+    enabled: pulumi.Input<boolean>;
+}
+
+export interface AwsEfsFileSystemLifecyclePolicy {
+    /**
+     * Indicates how long it takes to transition files to the archive storage class. Requires transition*to*ia, Elastic Throughput and General Purpose performance mode. Valid values: `AFTER_1_DAY`, `AFTER_7_DAYS`, `AFTER_14_DAYS`, `AFTER_30_DAYS`, `AFTER_60_DAYS`, or `AFTER_90_DAYS`
+     */
+    transitionToArchive?: pulumi.Input<string>;
+    /**
+     * Indicates how long it takes to transition files to the IA storage class. Valid values: `AFTER_1_DAY`, `AFTER_7_DAYS`, `AFTER_14_DAYS`, `AFTER_30_DAYS`, `AFTER_60_DAYS`, or `AFTER_90_DAYS`
+     */
+    transitionToIa?: pulumi.Input<string>;
+    /**
+     * Describes the policy used to transition a file from infequent access storage to primary storage. Valid values: `AFTER_1_ACCESS`
+     */
+    transitionToPrimaryStorageClass?: pulumi.Input<string>;
+}
+
+export interface AwsEfsFileSystemMountTarget {
+    availabilityZone?: pulumi.Input<string>;
+    ipAddress?: pulumi.Input<string>;
+    lifecycleState?: pulumi.Input<string>;
+    mountTargetId?: pulumi.Input<string>;
+    subnetId?: pulumi.Input<string>;
+}
+
+export interface AwsEfsFileSystemTag {
+    key: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
+export interface AwsEfsLifecyclePolicyLifecyclePolicy {
+    /**
+     * Indicates how long it takes to transition files to the archive storage class. Requires transition*to*ia, Elastic Throughput and General Purpose performance mode. Valid values: `AFTER_1_DAY`, `AFTER_7_DAYS`, `AFTER_14_DAYS`, `AFTER_30_DAYS`, `AFTER_60_DAYS`, or `AFTER_90_DAYS`
+     */
+    transitionToArchive?: pulumi.Input<string>;
+    /**
+     * Indicates how long it takes to transition files to the IA storage class. Valid values: `AFTER_1_DAY`, `AFTER_7_DAYS`, `AFTER_14_DAYS`, `AFTER_30_DAYS`, `AFTER_60_DAYS`, or `AFTER_90_DAYS`
+     */
+    transitionToIa?: pulumi.Input<string>;
+    /**
+     * Describes the policy used to transition a file from infequent access storage to primary storage. Valid values: `AFTER_1_ACCESS`
+     */
+    transitionToPrimaryStorageClass?: pulumi.Input<string>;
+}
+
+export interface AwsElasticsearchClusterConfig {
+    coldStorageOptions?: pulumi.Input<inputs.AwsElasticsearchClusterConfigColdStorageOptions>;
+    /**
+     * Defaults to `0`.
+     */
+    dedicatedMasterCount?: pulumi.Input<number>;
+    /**
+     * Defaults to `false`.
+     */
+    dedicatedMasterEnabled?: pulumi.Input<boolean>;
+    /**
+     * Defaults to `t2.small.elasticsearch`.
+     */
+    dedicatedMasterType?: pulumi.Input<string>;
+    /**
+     * Defaults to `1`.
+     */
+    instanceCount?: pulumi.Input<number>;
+    /**
+     * Defaults to `t2.small.elasticsearch`.
+     */
+    instanceType?: pulumi.Input<string>;
+    multiAzWithStandbyEnabled?: pulumi.Input<boolean>;
+    warmCount?: pulumi.Input<number>;
+    warmEnabled?: pulumi.Input<boolean>;
+    warmType?: pulumi.Input<string>;
+}
+
+export interface AwsElasticsearchClusterConfigColdStorageOptions {
+    enabled?: pulumi.Input<boolean>;
+}
+
+export interface AwsElasticsearchEbsOption {
+    ebsEnabled?: pulumi.Input<boolean>;
+    iops?: pulumi.Input<number>;
+    volumeSize?: pulumi.Input<number>;
+    volumeType?: pulumi.Input<string>;
+}
+
+export interface AwsElasticsearchEncryptAtRest {
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * The ID of a KMS key to use with the ElasticSearch instance.
+     */
+    kmsKeyId?: pulumi.Input<string>;
+    /**
+     * The name of a KMS key to use with the ElasticSearch instance.
+     */
+    kmsKeyName?: pulumi.Input<string>;
+}
+
+export interface AwsElasticsearchSnapshotOption {
+    automatedSnapshotStartHour: pulumi.Input<number>;
+}
+
+export interface AwsElasticsearchVpcOption {
+    availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
+    vpcId?: pulumi.Input<string>;
+}
+
+export interface AwsHostMetadata {
+    key: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
+export interface AwsHostMinionTag {
+    key: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
+export interface AwsHostNetworkInterface {
+    /**
+     * Whether or not to associate a public IP with the newly created ENI.  Cannot be specified if `networkInterfaceId` is specified.
+     */
+    associatePublicIp?: pulumi.Input<boolean>;
+    /**
+     * The device index to pass to AWS for attaching the ENI.  Starts at zero.
+     */
+    deviceIndex?: pulumi.Input<number>;
+    groups?: pulumi.Input<pulumi.Input<string>[]>;
+    metadatas?: pulumi.Input<pulumi.Input<inputs.AwsHostNetworkInterfaceMetadata>[]>;
+    /**
+     * The ID of an ENI to attach to this host.  Cannot be specified if `subnetId` or `associatePublicIp` is specified.
+     */
+    networkInterfaceId?: pulumi.Input<string>;
+    /**
+     * The ID of a subnet in which to create a new ENI.  Cannot be specified if `networkInterfaceId` is specified.
+     */
+    subnetId?: pulumi.Input<string>;
+}
+
+export interface AwsHostNetworkInterfaceMetadata {
+    key: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
+export interface AwsHostTag {
+    key: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
+export interface AwsHostTaint {
+    /**
+     * Update strategy of the node. Effect types <br>      - NoSchedule<br>     - PreferNoSchedule<br>     - NoExecute
+     */
+    effect: pulumi.Input<string>;
+    key: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
+}
+
+export interface AwsHostVolume {
+    iops?: pulumi.Input<number>;
+    name?: pulumi.Input<string>;
+    size?: pulumi.Input<number>;
+    volumeId?: pulumi.Input<string>;
+    volumeType?: pulumi.Input<string>;
+}
+
+export interface AwsLambdaFunctionDeadLetterConfig {
+    /**
+     * ARN of an SNS topic or SQS queue to notify when an invocation fails.
+     */
+    targetArn?: pulumi.Input<string>;
+}
+
+export interface AwsLambdaFunctionEnvironment {
+    /**
+     * Map of environment variables that are accessible from the function code during execution.
+     */
+    variables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface AwsLambdaFunctionEventConfigDestinationConfig {
+    /**
+     * Configured destination for failed asynchronous invocations
+     */
+    onFailure?: pulumi.Input<inputs.AwsLambdaFunctionEventConfigDestinationConfigOnFailure>;
+    /**
+     * Configured destination for successful asynchronous invocations
+     */
+    onSuccess?: pulumi.Input<inputs.AwsLambdaFunctionEventConfigDestinationConfigOnSuccess>;
+}
+
+export interface AwsLambdaFunctionEventConfigDestinationConfigOnFailure {
+    /**
+     * The AWS ARN of the destination resource
+     */
+    destination: pulumi.Input<string>;
+}
+
+export interface AwsLambdaFunctionEventConfigDestinationConfigOnSuccess {
+    /**
+     * The AWS ARN of the destination resource
+     */
+    destination: pulumi.Input<string>;
+}
+
+export interface AwsLambdaFunctionImageConfig {
+    /**
+     * The command that is passed to the container.
+     */
+    commands?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The entry point that is passed to the container.
+     */
+    entryPoints?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The working directory that is passed to the container.
+     */
+    workingDirectory?: pulumi.Input<string>;
+}
+
+export interface AwsLambdaFunctionTracingConfig {
+    /**
+     * Whether to sample and trace a subset of incoming requests with AWS X-Ray. Valid values are `PassThrough` and `Active`.
+     */
+    mode: pulumi.Input<string>;
+}
+
+export interface AwsLbListenerRuleAction {
+    /**
+     * Information for creating an authenticate action using Cognito. Required if `type` is `authenticate-cognito`.
+     */
+    authenticateCognito?: pulumi.Input<inputs.AwsLbListenerRuleActionAuthenticateCognito>;
+    /**
+     * Information for creating an authenticate action using OIDC. Required if `type` is `authenticate-oidc`.
+     */
+    authenticateOidc?: pulumi.Input<inputs.AwsLbListenerRuleActionAuthenticateOidc>;
+    /**
+     * Information for creating an action that returns a custom HTTP response. Required if `type` is `fixed-response`.
+     */
+    fixedResponse?: pulumi.Input<inputs.AwsLbListenerRuleActionFixedResponse>;
+    /**
+     * Information for creating an action that distributes requests among one or more target groups. Specify only if `type` is `forward`. If you specify both `forward` block and `targetGroupArn` attribute, you can specify only one target group.
+     */
+    forward?: pulumi.Input<inputs.AwsLbListenerRuleActionForward>;
+    order?: pulumi.Input<number>;
+    /**
+     * Information for creating a redirect action. Required if `type` is `redirect`.
+     */
+    redirect?: pulumi.Input<inputs.AwsLbListenerRuleActionRedirect>;
+    /**
+     * The ARN of the Target Group to which to route traffic. Specify only if `type` is `forward` and you want to route to a single target group. To route to one or more target groups, use a `forward` block instead.
+     */
+    targetGroupArn?: pulumi.Input<string>;
+    /**
+     * The type of routing action. Valid values are `redirect`, `forward`, `fixed-response`, `authenticate-cognito` and `authenticate-oidc`
+     */
+    type: pulumi.Input<string>;
+}
+
+export interface AwsLbListenerRuleActionAuthenticateCognito {
+    /**
+     * The query parameters to include in the redirect request to the authorization endpoint.
+     */
+    authenticationRequestExtraParams?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The behavior if the user is not authenticated. Valid values: `deny`, `allow` and `authenticate`.
+     */
+    onUnauthenticatedRequest?: pulumi.Input<string>;
+    /**
+     * The set of user claims to be requested from the IdP. Defaults to `openid`.
+     */
+    scope?: pulumi.Input<string>;
+    /**
+     * The name of the cookie used to maintain session information. Defaults to `AWSELBAuthSessionCookie`.
+     */
+    sessionCookieName?: pulumi.Input<string>;
+    /**
+     * The maximum duration of the authentication session, in seconds. Defaults to `604800`.
+     */
+    sessionTimeout?: pulumi.Input<number>;
+    /**
+     * The ARN of the Cognito user pool.
+     */
+    userPoolArn: pulumi.Input<string>;
+    /**
+     * The ID of the Cognito user pool client.
+     */
+    userPoolClientId: pulumi.Input<string>;
+    /**
+     * The domain prefix or fully-qualified domain name of the Cognito user pool.
+     */
+    userPoolDomain: pulumi.Input<string>;
+}
+
+export interface AwsLbListenerRuleActionAuthenticateOidc {
+    /**
+     * The query parameters to include in the redirect request to the authorization endpoint. Max: 10
+     */
+    authenticationRequestExtraParams?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The authorization endpoint of the IdP.
+     */
+    authorizationEndpoint: pulumi.Input<string>;
+    /**
+     * The OAuth 2.0 client identifier.
+     */
+    clientId: pulumi.Input<string>;
+    /**
+     * The OAuth 2.0 client secret.
+     */
+    clientSecret: pulumi.Input<string>;
+    /**
+     * The OIDC issuer identifier of the IdP.
+     */
+    issuer: pulumi.Input<string>;
+    /**
+     * The behavior if the user is not authenticated. Valid values: `deny`, `allow` and `authenticate`.
+     */
+    onUnauthenticatedRequest?: pulumi.Input<string>;
+    /**
+     * The set of user claims to be requested from the IdP. Defaults to `openid`.
+     */
+    scope?: pulumi.Input<string>;
+    /**
+     * The name of the cookie used to maintain session information. Defaults to `AWSELBAuthSessionCookie`.
+     */
+    sessionCookieName?: pulumi.Input<string>;
+    /**
+     * The maximum duration of the authentication session, in seconds. Defaults to `604800`.
+     */
+    sessionTimeout?: pulumi.Input<number>;
+    /**
+     * The token endpoint of the IdP.
+     */
+    tokenEndpoint: pulumi.Input<string>;
+    /**
+     * The user info endpoint of the IdP.
+     */
+    userInfoEndpoint: pulumi.Input<string>;
+}
+
+export interface AwsLbListenerRuleActionFixedResponse {
+    /**
+     * The content type. Valid values are `text/plain`, `text/css`, `text/html`, `application/javascript` and `application/json`
+     */
+    contentType: pulumi.Input<string>;
+    /**
+     * The message body.
+     */
+    messageBody?: pulumi.Input<string>;
+    /**
+     * The HTTP response code. Valid values are `2XX`, `4XX`, or `5XX`.
+     */
+    statusCode?: pulumi.Input<string>;
+}
+
+export interface AwsLbListenerRuleActionForward {
+    stickiness?: pulumi.Input<inputs.AwsLbListenerRuleActionForwardStickiness>;
+    targetGroups: pulumi.Input<pulumi.Input<inputs.AwsLbListenerRuleActionForwardTargetGroup>[]>;
+}
+
+export interface AwsLbListenerRuleActionForwardStickiness {
+    /**
+     * The time period, in seconds, during which requests from a client should be routed to the same target group.
+     */
+    duration: pulumi.Input<number>;
+    /**
+     * Indicates whether target group stickiness is enabled. Defaults to `false`.
+     */
+    enabled?: pulumi.Input<boolean>;
+}
+
+export interface AwsLbListenerRuleActionForwardTargetGroup {
+    /**
+     * The Amazon Resource Name (ARN) of the target group.
+     */
+    arn: pulumi.Input<string>;
+    /**
+     * The weight. The range is 0 to 999. Defaults to `1`.
+     */
+    weight?: pulumi.Input<number>;
+}
+
+export interface AwsLbListenerRuleActionRedirect {
+    /**
+     * The hostname. This component is not percent-encoded. The hostname can contain `#{host}`. Defaults to `#{host}`.
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * The absolute path, starting with the leading "/". Defaults to `/#{path}`.
+     */
+    path?: pulumi.Input<string>;
+    /**
+     * The port. Specify a value from `1` to `65535`. Defaults to `#{port}`.
+     */
+    port?: pulumi.Input<string>;
+    /**
+     * The protocol. Valid values are `HTTP`, `HTTPS`, or `#{protocol}`. Defaults to `#{protocol}`.
+     */
+    protocol?: pulumi.Input<string>;
+    /**
+     * The query parameters, URL-encoded when necessary. Defaults to `#{query}`.
+     */
+    query?: pulumi.Input<string>;
+    /**
+     * The HTTP redirect code. The redirect is either permanent or temporary
+     */
+    statusCode: pulumi.Input<string>;
+}
+
+export interface AwsLbListenerRuleCondition {
+    hostHeader?: pulumi.Input<inputs.AwsLbListenerRuleConditionHostHeader>;
+    /**
+     * HTTP headers to match.
+     */
+    httpHeader?: pulumi.Input<inputs.AwsLbListenerRuleConditionHttpHeader>;
+    /**
+     * Contains a single `values` item which is a list of HTTP request methods or verbs to match. Maximum size is 40 characters.
+     */
+    httpRequestMethod?: pulumi.Input<inputs.AwsLbListenerRuleConditionHttpRequestMethod>;
+    /**
+     * Contains a single `values` item which is a list of path patterns to match against the request URL. Maximum size of each pattern is 128 characters.
+     */
+    pathPattern?: pulumi.Input<inputs.AwsLbListenerRuleConditionPathPattern>;
+    /**
+     * Query strings to match.
+     */
+    queryStrings?: pulumi.Input<pulumi.Input<inputs.AwsLbListenerRuleConditionQueryString>[]>;
+    /**
+     * Contains a single `values` item which is a list of source IP CIDR notations to match.
+     */
+    sourceIp?: pulumi.Input<inputs.AwsLbListenerRuleConditionSourceIp>;
+}
+
+export interface AwsLbListenerRuleConditionHostHeader {
+    /**
+     * Contains a single `values` item which is a list of host header patterns to match. The maximum size of each pattern is 128 characters.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AwsLbListenerRuleConditionHttpHeader {
+    /**
+     * Name of HTTP header to search. The maximum size is 40 characters.
+     */
+    httpHeaderName: pulumi.Input<string>;
+    /**
+     * List of header value patterns to match. Maximum size of each pattern is 128 characters.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AwsLbListenerRuleConditionHttpRequestMethod {
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AwsLbListenerRuleConditionPathPattern {
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AwsLbListenerRuleConditionQueryString {
+    /**
+     * Query string key pattern to match.
+     */
+    key?: pulumi.Input<string>;
+    /**
+     * Query string value pattern to match.
+     */
+    value: pulumi.Input<string>;
+}
+
+export interface AwsLbListenerRuleConditionSourceIp {
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AwsLbListenerRuleTag {
+    key: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
+export interface AwsLbTargetGroupHealthCheck {
+    /**
+     * Whether health checks are enabled. Defaults to `true`.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * Number of consecutive health checks successes required before considering an unhealthy target healthy. Defaults to `3`.
+     */
+    healthyThreshold?: pulumi.Input<number>;
+    /**
+     * Approximate amount of time, in seconds, between health checks of an individual target. Minimum value 5 seconds, Maximum value 300 seconds. For lambda target groups, it needs to be greater as the `timeout` of the underlying `lambda`. Defaults to `30`.
+     */
+    interval?: pulumi.Input<number>;
+    /**
+     * Response codes to use when checking for a healthy responses from a target. You can specify multiple values (for example, "200,202" for HTTP(s) or "0,12" for GRPC) or a range of values (for example, "200-299" or "0-99"). Required for HTTP/HTTPS/GRPC ALB. Only applies to Application Load Balancers (i.e., HTTP/HTTPS/GRPC) not Network Load Balancers (i.e., TCP).
+     */
+    matcher?: pulumi.Input<string>;
+    /**
+     * Destination for the health check request. Required for HTTP/HTTPS ALB and HTTP NLB. Only applies to HTTP/HTTPS.
+     */
+    path?: pulumi.Input<string>;
+    /**
+     * Port to use to connect with the target. Valid values are either ports 1-65535, or traffic-port. Defaults to `traffic-port`.
+     */
+    port?: pulumi.Input<string>;
+    /**
+     * Protocol to use to connect with the target. Defaults to HTTP. Not applicable when targetType is lambda Defaults to `HTTP`.
+     */
+    protocol?: pulumi.Input<string>;
+    /**
+     * Amount of time, in seconds, during which no response means a failed health check.
+     */
+    timeout?: pulumi.Input<number>;
+    /**
+     * Number of consecutive health check failures required before considering the target unhealthy. Defaults to `3`.
+     */
+    unhealthyThreshold?: pulumi.Input<number>;
+}
+
+export interface AwsLoadBalancerListenerCertificate {
+    arn?: pulumi.Input<string>;
+    isDefault?: pulumi.Input<boolean>;
+}
+
+export interface AwsLoadBalancerListenerDefaultAction {
+    order?: pulumi.Input<number>;
+    targetGroupArn?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
+}
+
+export interface AwsLoadBalancerTag {
+    key: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
+export interface AwsMwaaEnvironmentLastUpdated {
+    createdAt?: pulumi.Input<string>;
+    errors?: pulumi.Input<pulumi.Input<inputs.AwsMwaaEnvironmentLastUpdatedError>[]>;
+    status?: pulumi.Input<string>;
+}
+
+export interface AwsMwaaEnvironmentLastUpdatedError {
+    errorCode?: pulumi.Input<string>;
+    errorMessage?: pulumi.Input<string>;
+}
+
+export interface AwsMwaaEnvironmentLoggingConfiguration {
+    dagProcessingLogs?: pulumi.Input<inputs.AwsMwaaEnvironmentLoggingConfigurationDagProcessingLogs>;
+    schedulerLogs?: pulumi.Input<inputs.AwsMwaaEnvironmentLoggingConfigurationSchedulerLogs>;
+    taskLogs?: pulumi.Input<inputs.AwsMwaaEnvironmentLoggingConfigurationTaskLogs>;
+    webserverLogs?: pulumi.Input<inputs.AwsMwaaEnvironmentLoggingConfigurationWebserverLogs>;
+    workerLogs?: pulumi.Input<inputs.AwsMwaaEnvironmentLoggingConfigurationWorkerLogs>;
+}
+
+export interface AwsMwaaEnvironmentLoggingConfigurationDagProcessingLogs {
+    enabled?: pulumi.Input<boolean>;
+    logLevel?: pulumi.Input<string>;
+}
+
+export interface AwsMwaaEnvironmentLoggingConfigurationSchedulerLogs {
+    enabled?: pulumi.Input<boolean>;
+    logLevel?: pulumi.Input<string>;
+}
+
+export interface AwsMwaaEnvironmentLoggingConfigurationTaskLogs {
+    enabled?: pulumi.Input<boolean>;
+    logLevel?: pulumi.Input<string>;
+}
+
+export interface AwsMwaaEnvironmentLoggingConfigurationWebserverLogs {
+    enabled?: pulumi.Input<boolean>;
+    logLevel?: pulumi.Input<string>;
+}
+
+export interface AwsMwaaEnvironmentLoggingConfigurationWorkerLogs {
+    enabled?: pulumi.Input<boolean>;
+    logLevel?: pulumi.Input<string>;
+}
+
+export interface AwsSqsQueueDeadLetterQueueConfiguration {
+    /**
+     * Maximum number of processing attempts for a given message before it is moved to the dead letter queue
+     */
+    maxMessageReceiveAttempts: pulumi.Input<number>;
+    /**
+     * Name of the SQS queue meant to be the target dead letter queue for this SQS resource (queues must belong to same tenant)
+     */
+    targetSqsDlqName: pulumi.Input<string>;
+}
+
+export interface AwsTargetGroupAttributesAttribute {
+    key?: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
+}
+
+export interface AwsTimestreamwriteDatabaseAllTag {
+    key: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
+export interface AwsTimestreamwriteDatabaseTag {
+    key: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
+export interface AwsTimestreamwriteTableAllTag {
+    key: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
+export interface AwsTimestreamwriteTableMagneticStoreWriteProperties {
+    /**
+     * A flag to enable magnetic store writes. Defaults to `false`.
+     */
+    enableMagneticStoreWrites?: pulumi.Input<boolean>;
+    /**
+     * The location to write error reports for records rejected asynchronously during magnetic store writes.
+     */
+    magneticStoreRejectedDataLocation?: pulumi.Input<inputs.AwsTimestreamwriteTableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocation>;
+}
+
+export interface AwsTimestreamwriteTableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocation {
+    /**
+     * Configuration of an S3 location to write error reports for records rejected, asynchronously, during magnetic store writes.
+     */
+    s3Configuration?: pulumi.Input<inputs.AwsTimestreamwriteTableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3Configuration>;
+}
+
+export interface AwsTimestreamwriteTableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3Configuration {
+    /**
+     * Bucket name of the customer S3 bucket.
+     */
+    bucketName?: pulumi.Input<string>;
+    /**
+     * Encryption option for the customer s3 location. Options are S3 server side encryption with an S3-managed key or KMS managed key. Valid values are `SSE_KMS` and `SSE_S3`.
+     */
+    encryptionOption?: pulumi.Input<string>;
+    /**
+     * KMS key arn for the customer s3 location when encrypting with a KMS managed key.
+     */
+    kmsKeyId?: pulumi.Input<string>;
+    /**
+     * Object key prefix for the customer S3 location.
+     */
+    objectKeyPrefix?: pulumi.Input<string>;
+}
+
+export interface AwsTimestreamwriteTableRetentionProperties {
+    /**
+     * The duration for which data must be stored in the magnetic store. Minimum value of 1. Maximum value of 73000.
+     */
+    magneticStoreRetentionPeriodInDays: pulumi.Input<number>;
+    /**
+     * The duration for which data must be stored in the memory store. Minimum value of 1. Maximum value of 8766.
+     */
+    memoryStoreRetentionPeriodInHours: pulumi.Input<number>;
+}
+
+export interface AwsTimestreamwriteTableTag {
+    key: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
+export interface AzureAvailabilitySetVirtualMachine {
+    id?: pulumi.Input<string>;
+}
+
+export interface AzureK8NodePoolNodeLabel {
+    key: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
+export interface AzureK8NodePoolScalePriority {
+    /**
+     * eviction policies Delete/Deallocate. Default value is Delete
+     */
+    evictionPolicy?: pulumi.Input<string>;
+    /**
+     * priority levels Regular/Spot
+     */
+    priority?: pulumi.Input<string>;
+    /**
+     * for spot VMs sets the maximum price you're willing to pay, controlling costs, while priority.spot determines the scaling order of spot VM pools.
+     */
+    spotMaxPrice?: pulumi.Input<number>;
+}
+
+export interface AzureMssqlDatabaseSku {
+    capacity: pulumi.Input<number>;
+    name: pulumi.Input<string>;
+    tier?: pulumi.Input<string>;
+}
+
+export interface AzureMssqlElasticpoolSku {
+    capacity: pulumi.Input<number>;
+    name: pulumi.Input<string>;
+    tier?: pulumi.Input<string>;
+}
+
+export interface AzurePrivateEndpointPrivateLinkServiceConnection {
+    groupIds: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Specifies the Name of the Private Service Connection.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The ID of the Private Link Enabled Remote Resource which this Private Endpoint should be connected to.
+     */
+    privateConnectionResourceId: pulumi.Input<string>;
+}
+
+export interface AzureVaultBackupPolicyBackup {
+    frequency: pulumi.Input<string>;
+    hourDuration?: pulumi.Input<number>;
+    hourInterval?: pulumi.Input<number>;
+    time: pulumi.Input<string>;
+    weekdays?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AzureVaultBackupPolicyRetentionDaily {
+    count: pulumi.Input<number>;
+}
+
+export interface AzureVaultBackupPolicyRetentionMonthly {
+    count: pulumi.Input<number>;
+    weekdays: pulumi.Input<pulumi.Input<string>[]>;
+    weeks: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AzureVaultBackupPolicyRetentionWeekly {
+    count: pulumi.Input<number>;
+    weekdays: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AzureVaultBackupPolicyRetentionYearly {
+    count: pulumi.Input<number>;
+    months: pulumi.Input<pulumi.Input<string>[]>;
+    weekdays: pulumi.Input<pulumi.Input<string>[]>;
+    weeks: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AzureVirtualMachineMinionTag {
+    key: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
+export interface AzureVirtualMachineScaleSetBootDiagnostics {
+    /**
+     * Whether to enable boot diagnostics for the virtual machine. Defaults to `true`.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * Blob endpoint for the storage account to hold the virtual machine's diagnostic files.
+     */
+    storageUri: pulumi.Input<string>;
+}
+
+export interface AzureVirtualMachineScaleSetExtension {
+    /**
+     * Specifies whether or not to use the latest minor version available.
+     */
+    autoUpgradeMinorVersion?: pulumi.Input<boolean>;
+    /**
+     * Specifies the name of the extension.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The protectedSettings passed to the extension, like settings, these are specified as a JSON object in a string.
+     */
+    protectedSettings?: pulumi.Input<string>;
+    /**
+     * Specifies a dependency array of extensions required to be executed before, the array stores the name of each extension.
+     */
+    provisionAfterExtensions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The publisher of the extension, available publishers can be found by using the Azure CLI..
+     */
+    publisher: pulumi.Input<string>;
+    /**
+     * The settings passed to the extension, these are specified as a JSON object in a string.
+     */
+    settings?: pulumi.Input<string>;
+    /**
+     * The type of extension, available types for a publisher can be found using the Azure CLI.
+     */
+    type: pulumi.Input<string>;
+    /**
+     * Specifies the version of the extension to use, available versions can be found using the Azure CLI.
+     */
+    typeHandlerVersion: pulumi.Input<string>;
+}
+
+export interface AzureVirtualMachineScaleSetIdentity {
+    /**
+     * Specifies a list of user managed identity ids to be assigned to the VMSS. Required if `type` is `UserAssigned`.
+     */
+    identityIds?: pulumi.Input<pulumi.Input<string>[]>;
+    principalId?: pulumi.Input<string>;
+    /**
+     * Specifies the identity type to be assigned to the scale set. Allowable values are `SystemAssigned` and `UserAssigned`.
+     */
+    type: pulumi.Input<string>;
+}
+
+export interface AzureVirtualMachineScaleSetNetworkProfile {
+    /**
+     * Specifies whether to enable accelerated networking or not. Defaults to `false`.
+     */
+    acceleratedNetworking?: pulumi.Input<boolean>;
+    dnsSettings?: pulumi.Input<inputs.AzureVirtualMachineScaleSetNetworkProfileDnsSettings>;
+    ipConfigurations: pulumi.Input<pulumi.Input<inputs.AzureVirtualMachineScaleSetNetworkProfileIpConfiguration>[]>;
+    /**
+     * Whether IP forwarding is enabled on this NIC. Defaults to `false`.
+     */
+    ipForwarding?: pulumi.Input<boolean>;
+    /**
+     * Specifies the name of the network interface configuration.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Specifies the identifier for the network security group.
+     */
+    networkSecurityGroupId?: pulumi.Input<string>;
+    /**
+     * Indicates whether network interfaces created from the network interface configuration will be the primary NIC of the VM.
+     */
+    primary: pulumi.Input<boolean>;
+}
+
+export interface AzureVirtualMachineScaleSetNetworkProfileDnsSettings {
+    /**
+     * Specifies an array of dns servers.
+     */
+    dnsServers: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AzureVirtualMachineScaleSetNetworkProfileIpConfiguration {
+    /**
+     * Specifies an array of references to backend address pools of application gateways.
+     */
+    applicationGatewayBackendAddressPoolIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Specifies up to 20 application security group IDs.
+     */
+    applicationSecurityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Specifies an array of references to backend address pools of load balancers.
+     */
+    loadBalancerBackendAddressPoolIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Specifies an array of references to inbound NAT pools for load balancers.
+     */
+    loadBalancerInboundNatRulesIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Specifies name of the IP configuration.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Specifies if this ipConfiguration is the primary one.
+     */
+    primary?: pulumi.Input<boolean>;
+    /**
+     * Describes a virtual machines scale set IP Configuration's PublicIPAddress configuration.
+     */
+    publicIpAddressConfiguration?: pulumi.Input<inputs.AzureVirtualMachineScaleSetNetworkProfileIpConfigurationPublicIpAddressConfiguration>;
+    /**
+     * Specifies the identifier of the subnet.
+     */
+    subnetId: pulumi.Input<string>;
+}
+
+export interface AzureVirtualMachineScaleSetNetworkProfileIpConfigurationPublicIpAddressConfiguration {
+    /**
+     * The domain name label for the dns settings.
+     */
+    domainNameLabel: pulumi.Input<string>;
+    /**
+     * The idle timeout in minutes. This value must be between 4 and 30.
+     */
+    idleTimeout: pulumi.Input<number>;
+    /**
+     * The name of the public ip address configuration.
+     */
+    name: pulumi.Input<string>;
+}
+
+export interface AzureVirtualMachineScaleSetOsProfile {
+    /**
+     * Specifies the administrator password to use for all the instances of virtual machines in a scale set.
+     */
+    adminPassword?: pulumi.Input<string>;
+    /**
+     * Specifies the administrator account name to use for all the instances of virtual machines in the scale set.
+     */
+    adminUsername: pulumi.Input<string>;
+    /**
+     * Specifies the computer name prefix for all of the virtual machines in the scale set.
+     */
+    computerNamePrefix: pulumi.Input<string>;
+    /**
+     * Specifies custom data to supply to the machine. On linux-based systems, this can be used as a cloud-init script. On other systems, this will be copied as a file on disk.
+     */
+    customData?: pulumi.Input<string>;
+}
+
+export interface AzureVirtualMachineScaleSetOsProfileLinuxConfig {
+    /**
+     * Specifies whether password authentication should be disabled. Defaults to `false`.
+     */
+    disablePasswordAuthentication?: pulumi.Input<boolean>;
+    /**
+     * Specifies a collection of `path` and `keyData` to be placed on the virtual machine.
+     */
+    sshKeys?: pulumi.Input<pulumi.Input<inputs.AzureVirtualMachineScaleSetOsProfileLinuxConfigSshKey>[]>;
+}
+
+export interface AzureVirtualMachineScaleSetOsProfileLinuxConfigSshKey {
+    keyData?: pulumi.Input<string>;
+    path: pulumi.Input<string>;
+}
+
+export interface AzureVirtualMachineScaleSetOsProfileSecret {
+    /**
+     * Specifies the key vault to use.
+     */
+    sourceVaultId: pulumi.Input<string>;
+    /**
+     * A collection of Vault Certificates as documented below.
+     */
+    vaultCertificates?: pulumi.Input<pulumi.Input<inputs.AzureVirtualMachineScaleSetOsProfileSecretVaultCertificate>[]>;
+}
+
+export interface AzureVirtualMachineScaleSetOsProfileSecretVaultCertificate {
+    /**
+     * Specifies the certificate store on the Virtual Machine where the certificate should be added to.
+     */
+    certificateStore?: pulumi.Input<string>;
+    /**
+     * It is the Base64 encoding of a JSON Object that which is encoded in UTF-8 of which the contents need to be `data`, `dataType` and `password`.
+     */
+    certificateUrl: pulumi.Input<string>;
+}
+
+export interface AzureVirtualMachineScaleSetOsProfileWindowsConfig {
+    additionalUnattendConfigs?: pulumi.Input<pulumi.Input<inputs.AzureVirtualMachineScaleSetOsProfileWindowsConfigAdditionalUnattendConfig>[]>;
+    /**
+     * Indicates whether virtual machines in the scale set are enabled for automatic updates.
+     */
+    enableAutomaticUpgrades?: pulumi.Input<boolean>;
+    /**
+     * Indicates whether virtual machine agent should be provisioned on the virtual machines in the scale set.
+     */
+    provisionVmAgent?: pulumi.Input<boolean>;
+    winrms?: pulumi.Input<pulumi.Input<inputs.AzureVirtualMachineScaleSetOsProfileWindowsConfigWinrm>[]>;
+}
+
+export interface AzureVirtualMachineScaleSetOsProfileWindowsConfigAdditionalUnattendConfig {
+    /**
+     * Specifies the name of the component to configure with the added content. The only allowable value is `Microsoft-Windows-Shell-Setup`.
+     */
+    component: pulumi.Input<string>;
+    /**
+     * Specifies the base-64 encoded XML formatted content that is added to the unattend.xml file for the specified path and component.
+     */
+    content: pulumi.Input<string>;
+    /**
+     * Specifies the name of the pass that the content applies to. The only allowable value is `oobeSystem`.
+     */
+    pass: pulumi.Input<string>;
+    /**
+     * Specifies the name of the setting to which the content applies. Possible values are: `FirstLogonCommands` and `AutoLogon`.
+     */
+    settingName: pulumi.Input<string>;
+}
+
+export interface AzureVirtualMachineScaleSetOsProfileWindowsConfigWinrm {
+    /**
+     * Specifies URL of the certificate with which new Virtual Machines is provisioned.
+     */
+    certificateUrl?: pulumi.Input<string>;
+    /**
+     * Specifies the protocol of listener.
+     */
+    protocol: pulumi.Input<string>;
+}
+
+export interface AzureVirtualMachineScaleSetPlan {
+    /**
+     * Specifies the name of the image from the marketplace.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Specifies the product of the image from the marketplace.
+     */
+    product: pulumi.Input<string>;
+    /**
+     * Specifies the publisher of the image.
+     */
+    publisher: pulumi.Input<string>;
+}
+
+export interface AzureVirtualMachineScaleSetRollingUpgradePolicy {
+    /**
+     * The maximum percent of total virtual machine instances that will be upgraded simultaneously by the rolling upgrade. Defaults to `20`.
+     */
+    maxBatchInstancePercent?: pulumi.Input<number>;
+    /**
+     * The maximum percentage of the total virtual machine instances in the scale set that can be simultaneously unhealthy. Defaults to `20`.
+     */
+    maxUnhealthyInstancePercent?: pulumi.Input<number>;
+    /**
+     * The maximum percentage of upgraded virtual machine instances that can be found to be in an unhealthy state. Defaults to `20`.
+     */
+    maxUnhealthyUpgradedInstancePercent?: pulumi.Input<number>;
+    /**
+     * The wait time between completing the update for all virtual machines in one batch and starting the next batch. Defaults to `PT0S`.
+     */
+    pauseTimeBetweenBatches?: pulumi.Input<string>;
+}
+
+export interface AzureVirtualMachineScaleSetSku {
+    /**
+     * Specifies the number of virtual machines in the scale set.
+     */
+    capacity: pulumi.Input<number>;
+    /**
+     * Specifies the size of virtual machines in a scale set.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Specifies the tier of virtual machines in a scale set. Possible values, `standard` or `basic`.
+     */
+    tier?: pulumi.Input<string>;
+}
+
+export interface AzureVirtualMachineScaleSetStorageProfileDataDisk {
+    /**
+     * Specifies the caching requirements. Possible values include: `None` (default), `ReadOnly`, `ReadWrite`.
+     */
+    caching?: pulumi.Input<string>;
+    /**
+     * Specifies how the data disk should be created. The only possible options are `FromImage` and `Empty`.
+     */
+    createOption: pulumi.Input<string>;
+    /**
+     * Specifies the size of the disk in GB. This element is required when creating an empty disk. Defaults to `128`.
+     */
+    diskSizeGb?: pulumi.Input<number>;
+    /**
+     * Specifies the Logical Unit Number of the disk in each virtual machine in the scale set.
+     */
+    lun: pulumi.Input<number>;
+    /**
+     * Specifies the type of managed disk to create. Value must be either `Standard_LRS`, `StandardSSD_LRS` or `Premium_LRS`.
+     */
+    managedDiskType?: pulumi.Input<string>;
+}
+
+export interface AzureVirtualMachineScaleSetStorageProfileImageReference {
+    /**
+     * Specifies the ID of the (custom) image to use to create the virtual machine scale set.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * Specifies the offer of the image used to create the virtual machines.
+     */
+    offer?: pulumi.Input<string>;
+    /**
+     * Specifies the publisher of the image used to create the virtual machines.
+     */
+    publisher?: pulumi.Input<string>;
+    /**
+     * Specifies the SKU of the image used to create the virtual machines.
+     */
+    sku?: pulumi.Input<string>;
+    /**
+     * Specifies the version of the image used to create the virtual machines.
+     */
+    version?: pulumi.Input<string>;
+}
+
+export interface AzureVirtualMachineScaleSetStorageProfileOsDisk {
+    /**
+     * Specifies the caching requirements. Possible values include: `None` (default), `ReadOnly`, `ReadWrite`.
+     */
+    caching?: pulumi.Input<string>;
+    /**
+     * Specifies how the virtual machine should be created. The only possible option is `FromImage`.
+     */
+    createOption?: pulumi.Input<string>;
+    /**
+     * Specifies the blob uri for user image. A virtual machine scale set creates an os disk in the same container as the user image.
+     */
+    image?: pulumi.Input<string>;
+    /**
+     * Specifies the type of managed disk to create. Value you must be either `Standard_LRS`, `StandardSSD_LRS` or `Premium_LRS`. Cannot be used when `vhdContainers` or `image` is specified.
+     */
+    managedDiskType?: pulumi.Input<string>;
+    /**
+     * Specifies the disk name. Must be specified when using unmanaged disk ('managed*disk*type' property not set).
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Specifies the operating system Type, valid values are `windows`, `linux`.
+     */
+    osType?: pulumi.Input<string>;
+    /**
+     * Specifies the vhd uri. Cannot be used when `image` or `managedDiskType` is specified.
+     */
+    vhdContainers?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AzureVirtualMachineTag {
+    key: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
+export interface AzureVirtualMachineVolume {
+    iops?: pulumi.Input<number>;
+    name?: pulumi.Input<string>;
+    size?: pulumi.Input<number>;
+    volumeId?: pulumi.Input<string>;
+    volumeType?: pulumi.Input<string>;
+}
+
+export interface AzureVmMaintenanceConfigurationWindow {
+    /**
+     * The duration of the maintenance window in HH:mm format.
+     */
+    duration?: pulumi.Input<string>;
+    /**
+     * Effective expiration date of the maintenance window in YYYY-MM-DD hh:mm format.
+     */
+    expirationTime?: pulumi.Input<string>;
+    /**
+     * he rate at which a maintenance window is expected to recur. The rate can be expressed as daily, weekly, or monthly schedules.
+     */
+    recurEvery?: pulumi.Input<string>;
+    /**
+     * Effective start date of the maintenance window in YYYY-MM-DD HH:MM format.
+     */
+    startTime: pulumi.Input<string>;
+    /**
+     * The timezone on which maintenance should be scheduled.
+     */
+    timeZone: pulumi.Input<string>;
+}
+
+export interface ByohTag {
+    key: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
+export interface DuploServiceLbconfigsLbconfig {
+    /**
+     * Applicable for internal lb.
+     */
+    allowGlobalAccess?: pulumi.Input<boolean>;
+    backendProtocolVersion?: pulumi.Input<string>;
+    /**
+     * The ARN of an ACM certificate to associate with this load balancer.  Only applicable for HTTPS.
+     */
+    certificateArn?: pulumi.Input<string>;
+    /**
+     * The name of the cloud load balancer (if applicable).
+     */
+    cloudName?: pulumi.Input<string>;
+    /**
+     * Specify CIDR Values. This is applicable only for Network Load Balancer if `lbType` is `6`.
+     */
+    customCidrs?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The DNS name of the cloud load balancer (if applicable).
+     */
+    dnsName?: pulumi.Input<string>;
+    /**
+     * The frontend port associated with this load balancer configuration. Required if `lbType` is not `7`.
+     */
+    externalPort?: pulumi.Input<number>;
+    /**
+     * Only for K8S Node Port (`lbType = 4`) or load balancers in Kubernetes.  Set the kubernetes service `externalTrafficPolicy` attribute.
+     */
+    externalTrafficPolicy?: pulumi.Input<string>;
+    /**
+     * Only for K8S services or load balancers in Kubernetes.  Sets an additional selector label to narrow which pods can receive traffic.
+     */
+    extraSelectorLabels?: pulumi.Input<pulumi.Input<inputs.DuploServiceLbconfigsLbconfigExtraSelectorLabel>[]>;
+    frontendIp?: pulumi.Input<string>;
+    /**
+     * Health Check configuration block.
+     */
+    healthCheck?: pulumi.Input<inputs.DuploServiceLbconfigsLbconfigHealthCheck>;
+    /**
+     * The health check URL to associate with this load balancer configuration.
+     */
+    healthCheckUrl?: pulumi.Input<string>;
+    /**
+     * (Azure Only) Set only if Azure Shared Application Gateway is used (`lbType = 5`).
+     */
+    hostName?: pulumi.Input<string>;
+    /**
+     * The automatically assigned host port.
+     */
+    hostPort?: pulumi.Input<number>;
+    /**
+     * The load balancer Index.
+     */
+    index?: pulumi.Input<number>;
+    isInfraDeployment?: pulumi.Input<boolean>;
+    /**
+     * Whether or not to create an internal load balancer.
+     */
+    isInternal?: pulumi.Input<boolean>;
+    /**
+     * Set to true if the service for which the load balancer is being created is hosted on a docker native host, which is managed directly by DuploCloud, or false if the service is hosted on a cloud-provided platform like EKS, AKS, GKE, ECS, etc. The `duplocloud.getNativeHosts` data source lists the native hosts in a DuploCloud Tenant
+     */
+    isNative?: pulumi.Input<boolean>;
+    /**
+     * The numerical index of the type of load balancer configuration to create.
+     * Should be one of:
+     *
+     *    - `0` : ELB (Classic Load Balancer)
+     *    - `1` : ALB (Application Load Balancer)
+     *    - `2` : Health-check Only (No Load Balancer)
+     *    - `3` : K8S Service w/ Cluster IP (No Load Balancer)
+     *    - `4` : K8S Service w/ Node Port (No Load Balancer)
+     *    - `5` : Azure Shared Application Gateway
+     *    - `6` : NLB (Network Load Balancer)
+     *    - `7` : Target Group Only
+     */
+    lbType: pulumi.Input<number>;
+    /**
+     * The name of the duplo service.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The backend port associated with this load balancer configuration.
+     */
+    port: pulumi.Input<string>;
+    /**
+     * The backend protocol associated with this load balancer configuration.
+     */
+    protocol: pulumi.Input<string>;
+    /**
+     * The name of the duplo service.
+     */
+    replicationControllerName?: pulumi.Input<string>;
+    /**
+     * Only for K8S services or load balancers in Kubernetes.  Set to `true` to set health check annotations for ingress.
+     */
+    setIngressHealthCheck?: pulumi.Input<boolean>;
+    /**
+     * Skip http to https.
+     */
+    skipHttpToHttps?: pulumi.Input<boolean>;
+    /**
+     * The ARN of the Target Group to which to route traffic.
+     */
+    targetGroupArn?: pulumi.Input<string>;
+}
+
+export interface DuploServiceLbconfigsLbconfigExtraSelectorLabel {
+    key: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
+export interface DuploServiceLbconfigsLbconfigHealthCheck {
+    /**
+     * Response codes to use when checking for a healthy responses from a target. You can specify multiple values (for example, "0,12" for GRPC) or a range of values (for example, "0-99"). Required for GRPC ALB. Only applies to Application Load Balancers (i.e., GRPC) not Network Load Balancers (i.e., TCP).
+     */
+    grpcSuccessCodes?: pulumi.Input<string>;
+    /**
+     * Number of consecutive health checks successes required before considering an unhealthy target healthy.
+     */
+    healthyThreshold?: pulumi.Input<number>;
+    /**
+     * Response codes to use when checking for a healthy responses from a target. You can specify multiple values (for example, "200,202" for HTTP(s)) or a range of values (for example, "200-299"). Required for HTTP/HTTPS ALB. Only applies to Application Load Balancers (i.e., HTTP/HTTPS) not Network Load Balancers (i.e., TCP).
+     */
+    httpSuccessCodes?: pulumi.Input<string>;
+    /**
+     * Approximate amount of time, in seconds, between health checks of an individual target. Minimum value 5 seconds, Maximum value 300 seconds.
+     */
+    interval?: pulumi.Input<number>;
+    /**
+     * Amount of time, in seconds, during which no response means a failed health check.
+     */
+    timeout?: pulumi.Input<number>;
+    /**
+     * Number of consecutive health check failures required before considering the target unhealthy.
+     */
+    unhealthyThreshold?: pulumi.Input<number>;
+}
+
+export interface DuploServiceTag {
+    key: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
+export interface EcacheInstanceLogDeliveryConfiguration {
+    /**
+     * destination type : must be cloudwatch-logs.
+     */
+    destinationType: pulumi.Input<string>;
+    /**
+     * log_format: Value must be one of the ['json', 'text']
+     */
+    logFormat: pulumi.Input<string>;
+    /**
+     * cloudwatch log_group
+     */
+    logGroup?: pulumi.Input<string>;
+    /**
+     * log_type: Value must be one of the ['slow-log', 'engine-log']
+     */
+    logType: pulumi.Input<string>;
+}
+
+export interface EcsServiceCapacityProviderStrategy {
+    /**
+     * The number of tasks, at a minimum, to run on the specified capacity provider.
+     */
+    base?: pulumi.Input<number>;
+    /**
+     * Name of the capacity provider.
+     */
+    capacityProvider: pulumi.Input<string>;
+    /**
+     * The relative percentage of the total number of launched tasks that should use the specified capacity provider.
+     */
+    weight?: pulumi.Input<number>;
+}
+
+export interface EcsServiceLoadBalancer {
+    /**
+     * The backend protocol associated with this load balancer configuration.
+     *
+     * @deprecated Use 'backend_protocol_version' instead.
+     */
+    backendProtocol?: pulumi.Input<string>;
+    /**
+     * The backend protocol version associated with this load balancer configuration.
+     */
+    backendProtocolVersion?: pulumi.Input<string>;
+    /**
+     * The ARN of an ACM certificate to associate with this load balancer.  Only applicable for HTTPS.
+     */
+    certificateArn?: pulumi.Input<string>;
+    /**
+     * Whether or not to drop invalid HTTP headers received by the load balancer.
+     */
+    dropInvalidHeaders?: pulumi.Input<boolean>;
+    /**
+     * Whether or not to enable access logs.  When enabled, Duplo will send access logs to a centralized S3 bucket per plan
+     */
+    enableAccessLogs?: pulumi.Input<boolean>;
+    /**
+     * The frontend port associated with this load balancer configuration.
+     */
+    externalPort: pulumi.Input<number>;
+    /**
+     * Health check configuration for this load balancer.
+     */
+    healthCheckConfig?: pulumi.Input<inputs.EcsServiceLoadBalancerHealthCheckConfig>;
+    /**
+     * The health check URL to associate with this load balancer configuration.
+     */
+    healthCheckUrl?: pulumi.Input<string>;
+    /**
+     * Whether or not the load balancer should redirect HTTP to HTTPS.
+     */
+    httpToHttpsRedirect?: pulumi.Input<boolean>;
+    /**
+     * The time in seconds that the connection is allowed to be idle. Only valid for Load Balancers of type `application`.
+     */
+    idleTimeout?: pulumi.Input<number>;
+    /**
+     * The load balancer Index.
+     */
+    index?: pulumi.Input<number>;
+    /**
+     * Whether or not to create an internal load balancer.
+     */
+    isInternal?: pulumi.Input<boolean>;
+    /**
+     * The numerical index of the type of load balancer configuration to create.
+     * Should be one of:
+     *
+     *    - `0` : ELB (Classic Load Balancer)
+     *    - `1` : ALB (Application Load Balancer)
+     *    - `2` : Health-check Only (No Load Balancer)
+     */
+    lbType: pulumi.Input<number>;
+    /**
+     * The load balancer ARN.
+     */
+    loadBalancerArn?: pulumi.Input<string>;
+    /**
+     * The load balancer name.
+     */
+    loadBalancerName?: pulumi.Input<string>;
+    /**
+     * The backend port associated with this load balancer configuration.
+     */
+    port: pulumi.Input<string>;
+    /**
+     * The frontend protocol associated with this load balancer configuration.
+     */
+    protocol: pulumi.Input<string>;
+    replicationControllerName?: pulumi.Input<string>;
+    /**
+     * Number of Load Balancer target group to associate with the service.
+     */
+    targetGroupCount: pulumi.Input<number>;
+    /**
+     * The ARN of a web application firewall to associate this load balancer.
+     */
+    webaclid?: pulumi.Input<string>;
+}
+
+export interface EcsServiceLoadBalancerHealthCheckConfig {
+    grpcSuccessCode?: pulumi.Input<string>;
+    healthCheckIntervalSeconds?: pulumi.Input<number>;
+    healthCheckTimeoutSeconds?: pulumi.Input<number>;
+    healthyThresholdCount?: pulumi.Input<number>;
+    httpSuccessCode?: pulumi.Input<string>;
+    unhealthyThresholdCount?: pulumi.Input<number>;
+}
+
+export interface EcsTaskDefinitionInferenceAccelerator {
+    deviceName: pulumi.Input<string>;
+    deviceType: pulumi.Input<string>;
+}
+
+export interface EcsTaskDefinitionPlacementConstraint {
+    expression?: pulumi.Input<string>;
+    type: pulumi.Input<string>;
+}
+
+export interface EcsTaskDefinitionProxyConfiguration {
+    containerName: pulumi.Input<string>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Defaults to `APPMESH`.
+     */
+    type?: pulumi.Input<string>;
+}
+
+export interface EcsTaskDefinitionRequiresAttribute {
+    name: pulumi.Input<string>;
+}
+
+export interface EcsTaskDefinitionRuntimePlatform {
+    /**
+     * Valid values are 'X86_64','ARM64'
+     */
+    cpuArchitecture?: pulumi.Input<string>;
+    /**
+     * Valid values are \n\nFor FARGATE: 'LINUX','WINDOWS*SERVER*2019*FULL','WINDOWS*SERVER*2019*CORE','WINDOWS*SERVER*2022*FULL','WINDOWS*SERVER*2022*CORE'
+     */
+    operatingSystemFamily?: pulumi.Input<string>;
+}
+
+export interface EcsTaskDefinitionTag {
+    key: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
+export interface GcpCloudFunctionEventTrigger {
+    /**
+     * The type of event that will trigger the function
+     */
+    eventType: pulumi.Input<string>;
+    /**
+     * The resource that will trigger the function
+     */
+    resource?: pulumi.Input<string>;
+    /**
+     * The service that will trigger the function
+     */
+    service?: pulumi.Input<string>;
+}
+
+export interface GcpCloudFunctionHttpsTrigger {
+    /**
+     * Must be set to `true`.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * The security level of the HTTPS trigger
+     */
+    securityLevel?: pulumi.Input<string>;
+    /**
+     * The URL of the HTTPS trigger
+     */
+    url?: pulumi.Input<string>;
+}
+
+export interface GcpInfraMaintenanceWindowExclusion {
+    endTime: pulumi.Input<string>;
+    /**
+     * The scope of automatic upgrades to restrict in the exclusion window. One of: NO*UPGRADES | NO*MINOR*UPGRADES | NO*MINOR*OR*NODE_UPGRADES Defaults to `NO_UPGRADES`.
+     */
+    scope?: pulumi.Input<string>;
+    startTime: pulumi.Input<string>;
+}
+
+export interface GcpInfraMaintenanceWindowRecurringWindow {
+    endTime: pulumi.Input<string>;
+    /**
+     * Specify recurrence in RFC5545 RRULE format, to specify when this recurs.
+     */
+    recurrence: pulumi.Input<string>;
+    startTime: pulumi.Input<string>;
+}
+
+export interface GcpInfraSecurityRulePortsAndProtocol {
+    /**
+     * The list of ports to which this rule applies. This field is only applicable for UDP, TCP and SCTP protocol.
+     */
+    ports?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, sctp, ipip, all), or the IP protocol number.
+     */
+    serviceProtocol: pulumi.Input<string>;
+}
+
+export interface GcpNodePoolAccelerator {
+    /**
+     * The number of the accelerator cards exposed to an instance.
+     */
+    acceleratorCount?: pulumi.Input<string>;
+    /**
+     * The accelerator type resource name.
+     */
+    acceleratorType?: pulumi.Input<string>;
+    gpuDriverInstallationConfigs?: pulumi.Input<pulumi.Input<inputs.GcpNodePoolAcceleratorGpuDriverInstallationConfig>[]>;
+    /**
+     * Size of partitions to create on the GPU
+     */
+    gpuPartitionSize?: pulumi.Input<string>;
+    gpuSharingConfigs?: pulumi.Input<pulumi.Input<inputs.GcpNodePoolAcceleratorGpuSharingConfig>[]>;
+    /**
+     * The number of time-shared GPU resources to expose for each physical GPU.
+     */
+    maxTimeSharedClientsPerGpu?: pulumi.Input<string>;
+}
+
+export interface GcpNodePoolAcceleratorGpuDriverInstallationConfig {
+    gpuDriverVersion?: pulumi.Input<string>;
+}
+
+export interface GcpNodePoolAcceleratorGpuSharingConfig {
+    /**
+     * The configuration for GPU sharing options.
+     */
+    gpuSharingStrategy?: pulumi.Input<string>;
+    /**
+     * The max number of containers that can share a physical GPU.
+     */
+    maxSharedClientsPerGpu?: pulumi.Input<string>;
+}
+
+export interface GcpNodePoolLinuxNodeConfig {
+    /**
+     * cgroupMode specifies the cgroup mode to be used on the node.
+     */
+    cgroupMode?: pulumi.Input<string>;
+    /**
+     * The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
+     */
+    sysctls?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface GcpNodePoolNodePoolLoggingConfig {
+    variantConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface GcpNodePoolTaint {
+    /**
+     * Update strategy of the node pool. Supported effect's are : 
+     * 	- EFFECT_UNSPECIFIED 
+     * 	- NO_SCHEDULE 
+     * 	- PREFER_NO_SCHEDULE
+     * 	- NO_EXECUTE
+     */
+    effect?: pulumi.Input<string>;
+    key?: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
+}
+
+export interface GcpNodePoolUpgradeSetting {
+    blueGreenSettings?: pulumi.Input<pulumi.Input<inputs.GcpNodePoolUpgradeSettingBlueGreenSetting>[]>;
+    /**
+     * The maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process.
+     */
+    maxSurge?: pulumi.Input<number>;
+    /**
+     * The maximum number of nodes that can be simultaneously unavailable during the upgrade process. A node is considered available if its status is Ready
+     */
+    maxUnavailable?: pulumi.Input<number>;
+    /**
+     * Update strategy of the node pool.
+     */
+    strategy?: pulumi.Input<string>;
+}
+
+export interface GcpNodePoolUpgradeSettingBlueGreenSetting {
+    /**
+     * Note: The nodePoolSoakDuration should not be used along with standard_rollout_policy
+     */
+    nodePoolSoakDuration?: pulumi.Input<string>;
+    /**
+     * Note: The standardRolloutPolicy should not be used along with node_pool_soak_duration
+     */
+    standardRolloutPolicies?: pulumi.Input<pulumi.Input<inputs.GcpNodePoolUpgradeSettingBlueGreenSettingStandardRolloutPolicy>[]>;
+}
+
+export interface GcpNodePoolUpgradeSettingBlueGreenSettingStandardRolloutPolicy {
+    /**
+     * Note: The batchNodeCount should not be used along with batch_percentage
+     */
+    batchNodeCount?: pulumi.Input<number>;
+    /**
+     * Note: The batchPercentage should not be used along with batch_node_count
+     */
+    batchPercentage?: pulumi.Input<number>;
+    batchSoakDuration?: pulumi.Input<string>;
+}
+
+export interface GcpSchedulerJobAppEngineTarget {
+    /**
+     * The HTTP request body to send.
+     */
+    body?: pulumi.Input<string>;
+    /**
+     * The HTTP headers to send.
+     */
+    headers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The HTTP method to use.
+     */
+    method: pulumi.Input<string>;
+    /**
+     * The relative URI.
+     */
+    relativeUri: pulumi.Input<string>;
+    /**
+     * Specifies App Engine routing.
+     */
+    routing?: pulumi.Input<inputs.GcpSchedulerJobAppEngineTargetRouting>;
+}
+
+export interface GcpSchedulerJobAppEngineTargetRouting {
+    /**
+     * The App Engine host.
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * The App Engine instance.
+     */
+    instance?: pulumi.Input<string>;
+    /**
+     * The App Engine service.
+     */
+    service?: pulumi.Input<string>;
+    /**
+     * The App Engine service version.
+     */
+    version?: pulumi.Input<string>;
+}
+
+export interface GcpSchedulerJobHttpTarget {
+    /**
+     * The HTTP request body to send.
+     */
+    body?: pulumi.Input<string>;
+    /**
+     * The HTTP headers to send.
+     */
+    headers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The HTTP method to use.
+     */
+    method: pulumi.Input<string>;
+    /**
+     * Specifies OAuth authentication.
+     */
+    oauthToken?: pulumi.Input<inputs.GcpSchedulerJobHttpTargetOauthToken>;
+    /**
+     * Specifies OIDC authentication.
+     */
+    oidcToken?: pulumi.Input<inputs.GcpSchedulerJobHttpTargetOidcToken>;
+    /**
+     * The request URI.
+     */
+    uri: pulumi.Input<string>;
+}
+
+export interface GcpSchedulerJobHttpTargetOauthToken {
+    /**
+     * Must be set to `true`. Defaults to `true`.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * The OAuth token scope.
+     */
+    scope?: pulumi.Input<string>;
+    /**
+     * The OAuth token service account email.
+     */
+    serviceAccountEmail?: pulumi.Input<string>;
+}
+
+export interface GcpSchedulerJobHttpTargetOidcToken {
+    /**
+     * The OIDC token audience.
+     */
+    audience?: pulumi.Input<string>;
+    /**
+     * Must be set to `true`. Defaults to `true`.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * The OIDC token service account email.
+     */
+    serviceAccountEmail?: pulumi.Input<string>;
+}
+
+export interface GcpSchedulerJobPubsubTarget {
+    /**
+     * The attributes to send to the pubsub target.
+     */
+    attributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The data to send to the pubsub topic.
+     */
+    data?: pulumi.Input<string>;
+    /**
+     * The name of the topic to target
+     */
+    topicName: pulumi.Input<string>;
+}
+
+export interface GcpStorageBucketV2DefaultEncryption {
+    /**
+     * Default encryption method.  Must be one of: `None`, `Sse`, `AwsKms`, `TenantKms`. Defaults to `Sse`.
+     */
+    method?: pulumi.Input<string>;
+}
+
+export interface GcpTenantSecurityRulePortsAndProtocol {
+    /**
+     * The list of ports to which this rule applies. This field is only applicable for UDP, TCP and SCTP protocol.
+     */
+    ports?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, sctp, ipip, all), or the IP protocol number.
+     */
+    serviceProtocol: pulumi.Input<string>;
+}
+
+export interface GetGcpNodePoolAccelerator {
+    /**
+     * The number of the accelerator cards exposed to an instance.
+     */
+    acceleratorCount?: string;
+    /**
+     * The accelerator type resource name.
+     */
+    acceleratorType?: string;
+    gpuDriverInstallationConfigs?: inputs.GetGcpNodePoolAcceleratorGpuDriverInstallationConfig[];
+    /**
+     * Size of partitions to create on the GPU
+     */
+    gpuPartitionSize?: string;
+    gpuSharingConfigs?: inputs.GetGcpNodePoolAcceleratorGpuSharingConfig[];
+    /**
+     * The number of time-shared GPU resources to expose for each physical GPU.
+     */
+    maxTimeSharedClientsPerGpu?: string;
+}
+
+export interface GetGcpNodePoolAcceleratorArgs {
+    /**
+     * The number of the accelerator cards exposed to an instance.
+     */
+    acceleratorCount?: pulumi.Input<string>;
+    /**
+     * The accelerator type resource name.
+     */
+    acceleratorType?: pulumi.Input<string>;
+    gpuDriverInstallationConfigs?: pulumi.Input<pulumi.Input<inputs.GetGcpNodePoolAcceleratorGpuDriverInstallationConfigArgs>[]>;
+    /**
+     * Size of partitions to create on the GPU
+     */
+    gpuPartitionSize?: pulumi.Input<string>;
+    gpuSharingConfigs?: pulumi.Input<pulumi.Input<inputs.GetGcpNodePoolAcceleratorGpuSharingConfigArgs>[]>;
+    /**
+     * The number of time-shared GPU resources to expose for each physical GPU.
+     */
+    maxTimeSharedClientsPerGpu?: pulumi.Input<string>;
+}
+
+export interface GetGcpNodePoolAcceleratorGpuDriverInstallationConfig {
+    gpuDriverVersion?: string;
+}
+
+export interface GetGcpNodePoolAcceleratorGpuDriverInstallationConfigArgs {
+    gpuDriverVersion?: pulumi.Input<string>;
+}
+
+export interface GetGcpNodePoolAcceleratorGpuSharingConfig {
+    /**
+     * The configuration for GPU sharing options.
+     */
+    gpuSharingStrategy?: string;
+    /**
+     * The max number of containers that can share a physical GPU.
+     */
+    maxSharedClientsPerGpu?: string;
+}
+
+export interface GetGcpNodePoolAcceleratorGpuSharingConfigArgs {
+    /**
+     * The configuration for GPU sharing options.
+     */
+    gpuSharingStrategy?: pulumi.Input<string>;
+    /**
+     * The max number of containers that can share a physical GPU.
+     */
+    maxSharedClientsPerGpu?: pulumi.Input<string>;
+}
+
+export interface GetGcpNodePoolTaint {
+    /**
+     * Update strategy of the node pool.
+     */
+    effect?: string;
+    key?: string;
+    value?: string;
+}
+
+export interface GetGcpNodePoolTaintArgs {
+    /**
+     * Update strategy of the node pool.
+     */
+    effect?: pulumi.Input<string>;
+    key?: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
+}
+
+export interface GetK8sCronJobMetadata {
+    /**
+     * An unstructured key value map stored with the cronjob that may be used to store arbitrary metadata. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+     */
+    annotations?: {[key: string]: string};
+    /**
+     * Prefix, used by the server, to generate a unique name ONLY IF the `name` field has not been provided. This value will also be combined with a unique suffix. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#idempotency
+     */
+    generateName?: string;
+    /**
+     * A sequence number representing a specific generation of the desired state.
+     */
+    generation?: number;
+    /**
+     * Map of string keys and values that can be used to organize and categorize (scope and select) the cronjob. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+     */
+    labels?: {[key: string]: string};
+    /**
+     * Name of the cronjob, must be unique. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: string;
+    /**
+     * Namespace defines the space within which name of the cronjob must be unique.
+     */
+    namespace?: string;
+    /**
+     * An opaque value that represents the internal version of this cronjob that can be used by clients to determine when cronjob has changed. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+     */
+    resourceVersion?: string;
+    /**
+     * The unique in time and space value for this cronjob. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
+     */
+    uid?: string;
+}
+
+export interface GetK8sCronJobMetadataArgs {
+    /**
+     * An unstructured key value map stored with the cronjob that may be used to store arbitrary metadata. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+     */
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Prefix, used by the server, to generate a unique name ONLY IF the `name` field has not been provided. This value will also be combined with a unique suffix. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#idempotency
+     */
+    generateName?: pulumi.Input<string>;
+    /**
+     * A sequence number representing a specific generation of the desired state.
+     */
+    generation?: pulumi.Input<number>;
+    /**
+     * Map of string keys and values that can be used to organize and categorize (scope and select) the cronjob. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Name of the cronjob, must be unique. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Namespace defines the space within which name of the cronjob must be unique.
+     */
+    namespace?: pulumi.Input<string>;
+    /**
+     * An opaque value that represents the internal version of this cronjob that can be used by clients to determine when cronjob has changed. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+     */
+    resourceVersion?: pulumi.Input<string>;
+    /**
+     * The unique in time and space value for this cronjob. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
+     */
+    uid?: pulumi.Input<string>;
+}
+
+export interface GetK8sJobMetadata {
+    /**
+     * An unstructured key value map stored with the job that may be used to store arbitrary metadata. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+     */
+    annotations?: {[key: string]: string};
+    /**
+     * Prefix, used by the server, to generate a unique name ONLY IF the `name` field has not been provided. This value will also be combined with a unique suffix. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#idempotency
+     */
+    generateName?: string;
+    /**
+     * A sequence number representing a specific generation of the desired state.
+     */
+    generation?: number;
+    /**
+     * Map of string keys and values that can be used to organize and categorize (scope and select) the job. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+     */
+    labels?: {[key: string]: string};
+    /**
+     * Name of the job, must be unique. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: string;
+    /**
+     * Namespace defines the space within which name of the job must be unique.
+     */
+    namespace?: string;
+    /**
+     * An opaque value that represents the internal version of this job that can be used by clients to determine when job has changed. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+     */
+    resourceVersion?: string;
+    /**
+     * The unique in time and space value for this job. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
+     */
+    uid?: string;
+}
+
+export interface GetK8sJobMetadataArgs {
+    /**
+     * An unstructured key value map stored with the job that may be used to store arbitrary metadata. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+     */
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Prefix, used by the server, to generate a unique name ONLY IF the `name` field has not been provided. This value will also be combined with a unique suffix. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#idempotency
+     */
+    generateName?: pulumi.Input<string>;
+    /**
+     * A sequence number representing a specific generation of the desired state.
+     */
+    generation?: pulumi.Input<number>;
+    /**
+     * Map of string keys and values that can be used to organize and categorize (scope and select) the job. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Name of the job, must be unique. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Namespace defines the space within which name of the job must be unique.
+     */
+    namespace?: pulumi.Input<string>;
+    /**
+     * An opaque value that represents the internal version of this job that can be used by clients to determine when job has changed. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+     */
+    resourceVersion?: pulumi.Input<string>;
+    /**
+     * The unique in time and space value for this job. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
+     */
+    uid?: pulumi.Input<string>;
+}
+
+export interface InfrastructureAllSetting {
+    key: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
+export interface InfrastructureCustomData {
+    key: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
+export interface InfrastructureOnpremCustomData {
+    key: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
+export interface InfrastructureOnpremEksConfig {
+    /**
+     * The security group IDs
+     */
+    ingressSecurityGroupIds: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The private subnets for the VPC.
+     */
+    privateSubnets: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The public subnets for the VPC.
+     */
+    publicSubnets: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The the ID of a Virtual Private Cloud
+     */
+    vpcId: pulumi.Input<string>;
+}
+
+export interface InfrastructurePrivateSubnet {
+    /**
+     * The subnet CIDR block.
+     */
+    cidrBlock?: pulumi.Input<string>;
+    /**
+     * The subnet ID.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * The subnet name.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The subnet's tags.
+     */
+    tags?: pulumi.Input<pulumi.Input<inputs.InfrastructurePrivateSubnetTag>[]>;
+    /**
+     * The type of subnet.  Will be one of: `"public"` or `"private"`.
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * The Duplo zone that the subnet resides in.  Will be one of:  `"A"`, `"B"`, `"C"`, or `"D"`
+     */
+    zone?: pulumi.Input<string>;
+}
+
+export interface InfrastructurePrivateSubnetTag {
+    key: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
+export interface InfrastructurePublicSubnet {
+    /**
+     * The subnet CIDR block.
+     */
+    cidrBlock?: pulumi.Input<string>;
+    /**
+     * The subnet ID.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * The subnet name.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The subnet's tags.
+     */
+    tags?: pulumi.Input<pulumi.Input<inputs.InfrastructurePublicSubnetTag>[]>;
+    /**
+     * The type of subnet.  Will be one of: `"public"` or `"private"`.
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * The Duplo zone that the subnet resides in.  Will be one of:  `"A"`, `"B"`, `"C"`, or `"D"`
+     */
+    zone?: pulumi.Input<string>;
+}
+
+export interface InfrastructurePublicSubnetTag {
+    key: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
+export interface InfrastructureSecurityGroup {
+    /**
+     * The security group ID.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * The security group name.
+     */
+    name?: pulumi.Input<string>;
+    readOnly?: pulumi.Input<boolean>;
+    /**
+     * Security group rules
+     */
+    rules?: pulumi.Input<pulumi.Input<inputs.InfrastructureSecurityGroupRule>[]>;
+    /**
+     * The type of security group.  Will be one of: `"host"` or `"lb"`.
+     */
+    type?: pulumi.Input<string>;
+}
+
+export interface InfrastructureSecurityGroupRule {
+    action?: pulumi.Input<string>;
+    destinationRuleType?: pulumi.Input<number>;
+    direction?: pulumi.Input<string>;
+    priority?: pulumi.Input<number>;
+    protocol?: pulumi.Input<string>;
+    sourceAddressPrefix?: pulumi.Input<string>;
+    sourcePortRange?: pulumi.Input<string>;
+    sourceRuleType?: pulumi.Input<number>;
+}
+
+export interface InfrastructureSetting {
+    key: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
+export interface InfrastructureSettingCustomData {
+    key: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
+export interface InfrastructureSettingSetting {
+    key: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
+export interface K8HelmReleaseChart {
+    /**
+     * The interval associated to helm chart Defaults to `5m0s`.
+     */
+    interval?: pulumi.Input<string>;
+    /**
+     * Provide unique name for the helm chart.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The reconcile strategy should be chosen from ChartVersion or Revision. No new chart artifact is produced on updates to the source unless the version is changed in HelmRepository. Use `Revision` to produce new chart artifact on change in source revision. Defaults to `ChartVersion`.
+     */
+    reconcileStrategy?: pulumi.Input<string>;
+    /**
+     * The name of the source, referred from helm repository resource.
+     */
+    sourceName: pulumi.Input<string>;
+    /**
+     * The helm chart source, currently only HelmRepository as source is supported Defaults to `HelmRepository`.
+     */
+    sourceType?: pulumi.Input<string>;
+    /**
+     * The helm chart version
+     */
+    version: pulumi.Input<string>;
+}
+
+export interface K8IngressLbconfig {
+    /**
+     * The ARN of an ACM certificate to associate with this load balancer.  Only applicable for HTTPS.
+     */
+    certificateArn?: pulumi.Input<string>;
+    /**
+     * The DNS prefix to expose services using Route53 domain.
+     */
+    dnsPrefix: pulumi.Input<string>;
+    /**
+     * HTTP Listener Port.
+     */
+    httpPort?: pulumi.Input<number>;
+    /**
+     * HTTPS Listener Port.
+     */
+    httpsPort?: pulumi.Input<number>;
+    /**
+     * Whether or not to create an internal load balancer.
+     */
+    isInternal: pulumi.Input<boolean>;
+}
+
+export interface K8IngressRule {
+    /**
+     * If a host is provided (for e.g. example, foo.bar.com), the rules apply to that host.
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * Specify the path (for e.g. /api /v1/api/) to do a path base routing. If host is specified then both path and host should be match for the incoming request.
+     */
+    path: pulumi.Input<string>;
+    /**
+     * Type of the path to be used.
+     */
+    pathType: pulumi.Input<string>;
+    /**
+     * Port from the kubernetes service that ingress will use as backend port to serve the requests.
+     */
+    port?: pulumi.Input<number>;
+    /**
+     * Port name from the kubernetes service that ingress will use as backend port to serve the requests.
+     */
+    portName?: pulumi.Input<string>;
+    /**
+     * Name of the kubernetes service which Ingress will use as backend to serve the request.
+     */
+    serviceName: pulumi.Input<string>;
+}
+
+export interface K8IngressTl {
+    /**
+     * The list of hosts included in the TLS certificate. Each value in this list must match the name(s) specified in the TLS secret. If not specified, it defaults to the wildcard host setting for the load balancer controller managing this Ingress.
+     */
+    hosts: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The name of the secret used to terminate TLS traffic on port 443. This field is optional, enabling TLS routing based solely on the SNI hostname. If the SNI host in a listener conflicts with the 'Host' header in an IngressRule, the SNI host is used for termination, while the 'Host' header value is used for routing.
+     */
+    secretName: pulumi.Input<string>;
+}
+
+export interface K8PersistentVolumeClaimSpec {
+    /**
+     * A set of the desired access modes the volume should have. More info: http://kubernetes.io/docs/user-guide/persistent-volumes#access-modes-1
+     */
+    accessModes: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of the minimum resources the volume should have. More info: http://kubernetes.io/docs/user-guide/persistent-volumes#resources
+     */
+    resources: pulumi.Input<inputs.K8PersistentVolumeClaimSpecResources>;
+    /**
+     * Name of the storage class requested by the claim
+     */
+    storageClassName?: pulumi.Input<string>;
+    /**
+     * Kubernetes supports two volumeModes of PersistentVolumes: `Filesystem` and `Block`.
+     */
+    volumeMode?: pulumi.Input<string>;
+    /**
+     * The binding reference to the PersistentVolume backing this claim.
+     */
+    volumeName?: pulumi.Input<string>;
+}
+
+export interface K8PersistentVolumeClaimSpecResources {
+    /**
+     * Map describing the maximum amount of compute resources allowed. More info: http://kubernetes.io/docs/user-guide/compute-resources/
+     */
+    limits?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Map describing the minimum amount of compute resources required. If this is omitted for a container, it defaults to `limits` if that is explicitly specified, otherwise to an implementation-defined value. More info: http://kubernetes.io/docs/user-guide/compute-resources/
+     */
+    requests?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface K8SecretProviderClassSecretObject {
+    /**
+     * An unstructured key value map stored with the secret object that may be used to store arbitrary metadata.
+     */
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    datas?: pulumi.Input<pulumi.Input<inputs.K8SecretProviderClassSecretObjectData>[]>;
+    /**
+     * Map of string keys and values that can be used to organize and categorize (scope and select) the service.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Name of the secret object.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Type of the secret object.
+     */
+    type: pulumi.Input<string>;
+}
+
+export interface K8SecretProviderClassSecretObjectData {
+    key: pulumi.Input<string>;
+    objectName: pulumi.Input<string>;
+}
+
+export interface K8StorageClassAllowedTopologies {
+    /**
+     * A list of topology selector requirements by labels.
+     */
+    matchLabelExpressions?: pulumi.Input<pulumi.Input<inputs.K8StorageClassAllowedTopologiesMatchLabelExpression>[]>;
+}
+
+export interface K8StorageClassAllowedTopologiesMatchLabelExpression {
+    /**
+     * The label key that the selector applies to.
+     */
+    key?: pulumi.Input<string>;
+    /**
+     * An array of string values. One value must match the label to be selected.
+     */
+    values?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface K8sCronJobMetadata {
+    /**
+     * An unstructured key value map stored with the cronjob that may be used to store arbitrary metadata. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+     */
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Prefix, used by the server, to generate a unique name ONLY IF the `name` field has not been provided. This value will also be combined with a unique suffix. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#idempotency
+     */
+    generateName?: pulumi.Input<string>;
+    /**
+     * A sequence number representing a specific generation of the desired state.
+     */
+    generation?: pulumi.Input<number>;
+    /**
+     * Map of string keys and values that can be used to organize and categorize (scope and select) the cronjob. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Name of the cronjob, must be unique. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Namespace defines the space within which name of the cronjob must be unique.
+     */
+    namespace?: pulumi.Input<string>;
+    /**
+     * An opaque value that represents the internal version of this cronjob that can be used by clients to determine when cronjob has changed. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+     */
+    resourceVersion?: pulumi.Input<string>;
+    /**
+     * The unique in time and space value for this cronjob. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
+     */
+    uid?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpec {
+    /**
+     * Specifies how to treat concurrent executions of a Job. Defaults to Allow. Defaults to `Allow`.
+     */
+    concurrencyPolicy?: pulumi.Input<string>;
+    /**
+     * The number of failed finished jobs to retain. This is a pointer to distinguish between explicit zero and not specified. Defaults to 1. Defaults to `1`.
+     */
+    failedJobsHistoryLimit?: pulumi.Input<number>;
+    /**
+     * Describes the pod that will be created when executing a cron job. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+     */
+    jobTemplate: pulumi.Input<inputs.K8sCronJobSpecJobTemplate>;
+    /**
+     * Cron format string, e.g. 0 * * * * or @hourly, as schedule time of its jobs to be created and executed.
+     */
+    schedule: pulumi.Input<string>;
+    /**
+     * Optional deadline in seconds for starting the job if it misses scheduled time for any reason. Missed jobs executions will be counted as failed ones. Defaults to `0`.
+     */
+    startingDeadlineSeconds?: pulumi.Input<number>;
+    /**
+     * The number of successful finished jobs to retain. Defaults to 3. Defaults to `3`.
+     */
+    successfulJobsHistoryLimit?: pulumi.Input<number>;
+    /**
+     * This flag tells the controller to suspend subsequent executions, it does not apply to already started executions. Defaults to false. Defaults to `false`.
+     */
+    suspend?: pulumi.Input<boolean>;
+}
+
+export interface K8sCronJobSpecJobTemplate {
+    /**
+     * Standard jobTemplateSpec's metadata. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
+     */
+    metadata?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateMetadata>;
+    /**
+     * Specification of the desired behavior of the job
+     */
+    spec: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpec>;
+}
+
+export interface K8sCronJobSpecJobTemplateMetadata {
+    /**
+     * An unstructured key value map stored with the jobTemplateSpec that may be used to store arbitrary metadata. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+     */
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Prefix, used by the server, to generate a unique name ONLY IF the `name` field has not been provided. This value will also be combined with a unique suffix. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#idempotency
+     */
+    generateName?: pulumi.Input<string>;
+    /**
+     * A sequence number representing a specific generation of the desired state.
+     */
+    generation?: pulumi.Input<number>;
+    /**
+     * Map of string keys and values that can be used to organize and categorize (scope and select) the jobTemplateSpec. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Name of the jobTemplateSpec, must be unique. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * An opaque value that represents the internal version of this jobTemplateSpec that can be used by clients to determine when jobTemplateSpec has changed. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+     */
+    resourceVersion?: pulumi.Input<string>;
+    /**
+     * The unique in time and space value for this jobTemplateSpec. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
+     */
+    uid?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpec {
+    /**
+     * Optional duration in seconds the pod may be active on the node relative to StartTime before the system will actively try to mark it failed and kill associated containers. Value must be a positive integer.
+     */
+    activeDeadlineSeconds?: pulumi.Input<number>;
+    /**
+     * Specifies the number of retries before marking this job failed. Defaults to 6 Defaults to `6`.
+     */
+    backoffLimit?: pulumi.Input<number>;
+    /**
+     * Specifies how Pod completions are tracked. It can be `NonIndexed` (default) or `Indexed`. More info: https://kubernetes.io/docs/concepts/workloads/controllers/job/#completion-mode
+     */
+    completionMode?: pulumi.Input<string>;
+    /**
+     * Specifies the desired number of successfully finished pods the job should be run with. Setting to nil means that the success of any pod signals the success of all pods, and allows parallelism to have any positive value. Setting to 1 means that parallelism is limited to 1 and the success of that pod signals the success of the job. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/ Defaults to `1`.
+     */
+    completions?: pulumi.Input<number>;
+    /**
+     * Controls generation of pod labels and pod selectors. Leave unset unless you are certain what you are doing. When false or unset, the system pick labels unique to this job and appends those labels to the pod template. When true, the user is responsible for picking unique labels and specifying the selector. Failure to pick a unique label may cause this and other jobs to not function correctly. More info: https://git.k8s.io/community/contributors/design-proposals/selector-generation.md
+     */
+    manualSelector?: pulumi.Input<boolean>;
+    /**
+     * Specifies the maximum desired number of pods the job should run at any given time. The actual number of pods running in steady state will be less than this number when ((.spec.completions - .status.successful) < .spec.parallelism), i.e. when the work left to do is less than max parallelism. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/ Defaults to `1`.
+     */
+    parallelism?: pulumi.Input<number>;
+    /**
+     * A label query over volumes to consider for binding.
+     */
+    selector?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecSelector>;
+    /**
+     * Describes the pod that will be created when executing a job. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+     */
+    template: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplate>;
+    /**
+     * ttlSecondsAfterFinished limits the lifetime of a Job that has finished execution (either Complete or Failed). If this field is set, ttlSecondsAfterFinished after the Job finishes, it is eligible to be automatically deleted. When the Job is being deleted, its lifecycle guarantees (e.g. finalizers) will be honored. If this field is unset, the Job won't be automatically deleted. If this field is set to zero, the Job becomes eligible to be deleted immediately after it finishes.
+     */
+    ttlSecondsAfterFinished?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecSelector {
+    /**
+     * A list of label selector requirements. The requirements are ANDed.
+     */
+    matchExpressions?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecSelectorMatchExpression>[]>;
+    /**
+     * A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+     */
+    matchLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecSelectorMatchExpression {
+    /**
+     * The label key that the selector applies to.
+     */
+    key?: pulumi.Input<string>;
+    /**
+     * A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
+     */
+    operator?: pulumi.Input<string>;
+    /**
+     * An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
+     */
+    values?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplate {
+    /**
+     * Standard job's metadata. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
+     */
+    metadata?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateMetadata>;
+    /**
+     * Spec of the pods owned by the job
+     */
+    spec?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpec>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateMetadata {
+    /**
+     * An unstructured key value map stored with the job that may be used to store arbitrary metadata. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+     */
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Prefix, used by the server, to generate a unique name ONLY IF the `name` field has not been provided. This value will also be combined with a unique suffix. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#idempotency
+     */
+    generateName?: pulumi.Input<string>;
+    /**
+     * A sequence number representing a specific generation of the desired state.
+     */
+    generation?: pulumi.Input<number>;
+    /**
+     * Map of string keys and values that can be used to organize and categorize (scope and select) the job. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Name of the job, must be unique. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * An opaque value that represents the internal version of this job that can be used by clients to determine when job has changed. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+     */
+    resourceVersion?: pulumi.Input<string>;
+    /**
+     * The unique in time and space value for this job. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
+     */
+    uid?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpec {
+    /**
+     * Optional duration in seconds the pod may be active on the node relative to StartTime before the system will actively try to mark it failed and kill associated containers. Value must be a positive integer.
+     */
+    activeDeadlineSeconds?: pulumi.Input<number>;
+    /**
+     * Optional pod scheduling constraints.
+     */
+    affinity?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecAffinity>;
+    /**
+     * AutomountServiceAccountToken indicates whether a service account token should be automatically mounted. Defaults to `true`.
+     */
+    automountServiceAccountToken?: pulumi.Input<boolean>;
+    /**
+     * List of containers belonging to the pod. Containers cannot currently be added or removed. There must be at least one container in a Pod. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/
+     */
+    containers?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainer>[]>;
+    /**
+     * Specifies the DNS parameters of a pod. Parameters specified here will be merged to the generated DNS configuration based on DNSPolicy. Optional: Defaults to empty
+     */
+    dnsConfig?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecDnsConfig>;
+    /**
+     * Set DNS policy for containers within the pod. Valid values are 'ClusterFirstWithHostNet', 'ClusterFirst', 'Default' or 'None'. DNS parameters given in DNSConfig will be merged with the policy selected with DNSPolicy. To have DNS options set along with hostNetwork, you have to specify DNS policy explicitly to 'ClusterFirstWithHostNet'. Defaults to 'ClusterFirst'. More info: https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy
+     */
+    dnsPolicy?: pulumi.Input<string>;
+    /**
+     * Enables generating environment variables for service discovery. Defaults to true. Defaults to `true`.
+     */
+    enableServiceLinks?: pulumi.Input<boolean>;
+    /**
+     * List of hosts and IPs that will be injected into the pod's hosts file if specified. Optional: Defaults to empty.
+     */
+    hostAliases?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecHostAlias>[]>;
+    /**
+     * Use the host's ipc namespace. Optional: Defaults to false.
+     */
+    hostIpc?: pulumi.Input<boolean>;
+    /**
+     * Host networking requested for this pod. Use the host's network namespace. If this option is set, the ports that will be used must be specified.
+     */
+    hostNetwork?: pulumi.Input<boolean>;
+    /**
+     * Use the host's pid namespace.
+     */
+    hostPid?: pulumi.Input<boolean>;
+    /**
+     * Specifies the hostname of the Pod If not specified, the pod's hostname will be set to a system-defined value.
+     */
+    hostname?: pulumi.Input<string>;
+    /**
+     * ImagePullSecrets is an optional list of references to secrets in the same namespace to use for pulling any of the images used by this PodSpec. If specified, these secrets will be passed to individual puller implementations for them to use. For example, in the case of docker, only DockerConfig type secrets are honored. More info: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
+     */
+    imagePullSecrets?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecImagePullSecret>[]>;
+    /**
+     * List of init containers belonging to the pod. Init containers always run to completion and each must complete successfully before the next is started. More info: https://kubernetes.io/docs/concepts/workloads/pods/init-containers/
+     */
+    initContainers?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainer>[]>;
+    /**
+     * NodeName is a request to schedule this pod onto a specific node. If it is non-empty, the scheduler simply schedules this pod onto that node, assuming that it fits resource requirements.
+     */
+    nodeName?: pulumi.Input<string>;
+    /**
+     * NodeSelector is a selector which must be true for the pod to fit on a node. Selector which must match a node's labels for the pod to be scheduled on that node. More info: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/.
+     */
+    nodeSelector?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * If specified, indicates the pod's priority. "system-node-critical" and "system-cluster-critical" are two special keywords which indicate the highest priorities with the former being the highest priority. Any other name must be defined by creating a PriorityClass object with that name. If not specified, the pod priority will be default or zero if there is no default.
+     */
+    priorityClassName?: pulumi.Input<string>;
+    /**
+     * If specified, all readiness gates will be evaluated for pod readiness. A pod is ready when all its containers are ready AND all conditions specified in the readiness gates have status equal to "True" More info: https://git.k8s.io/enhancements/keps/sig-network/0007-pod-ready%2B%2B.md
+     */
+    readinessGates?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecReadinessGate>[]>;
+    /**
+     * Restart policy for all containers within the pod. One of OnFailure, Never. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#restart-policy. Defaults to `Never`.
+     */
+    restartPolicy?: pulumi.Input<string>;
+    /**
+     * RuntimeClassName is a feature for selecting the container runtime configuration. The container runtime configuration is used to run a Pod's containers. More info: https://kubernetes.io/docs/concepts/containers/runtime-class
+     */
+    runtimeClassName?: pulumi.Input<string>;
+    /**
+     * If specified, the pod will be dispatched by specified scheduler. If not specified, the pod will be dispatched by default scheduler.
+     */
+    schedulerName?: pulumi.Input<string>;
+    /**
+     * SecurityContext holds pod-level security attributes and common container settings. Optional: Defaults to empty
+     */
+    securityContext?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecSecurityContext>;
+    /**
+     * ServiceAccountName is the name of the ServiceAccount to use to run this pod. More info: http://releases.k8s.io/HEAD/docs/design/service_accounts.md.
+     */
+    serviceAccountName?: pulumi.Input<string>;
+    /**
+     * Share a single process namespace between all of the containers in a pod. When this is set containers will be able to view and signal processes from other containers in the same pod, and the first process in each container will not be assigned PID 1. HostPID and ShareProcessNamespace cannot both be set. Optional: Defaults to false. Defaults to `false`.
+     */
+    shareProcessNamespace?: pulumi.Input<boolean>;
+    /**
+     * If specified, the fully qualified Pod hostname will be "...svc.". If not specified, the pod will not have a domainname at all..
+     */
+    subdomain?: pulumi.Input<string>;
+    /**
+     * Optional duration in seconds the pod needs to terminate gracefully. May be decreased in delete request. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period will be used instead. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process.
+     */
+    terminationGracePeriodSeconds?: pulumi.Input<number>;
+    /**
+     * If specified, the pod's toleration. Optional: Defaults to empty
+     */
+    tolerations?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecToleration>[]>;
+    /**
+     * describes how a group of pods ought to spread across topology domains. Scheduler will schedule pods in a way which abides by the constraints.
+     */
+    topologySpreadConstraints?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecTopologySpreadConstraint>[]>;
+    /**
+     * List of volumes that can be mounted by containers belonging to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes
+     */
+    volumes?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolume>[]>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecAffinity {
+    /**
+     * Node affinity scheduling rules for the pod.
+     */
+    nodeAffinity?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityNodeAffinity>;
+    /**
+     * Inter-pod topological affinity. rules that specify that certain pods should be placed in the same topological domain (e.g. same node, same rack, same zone, same power domain, etc.)
+     */
+    podAffinity?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAffinity>;
+    /**
+     * Inter-pod topological affinity. rules that specify that certain pods should be placed in the same topological domain (e.g. same node, same rack, same zone, same power domain, etc.)
+     */
+    podAntiAffinity?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAntiAffinity>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityNodeAffinity {
+    /**
+     * The scheduler will prefer to schedule pods to nodes that satisfy the affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions. The node that is most preferred is the one with the greatest sum of weights, i.e. for each node that meets all of the scheduling requirements (resource request, RequiredDuringScheduling affinity expressions, etc.), compute a sum by iterating through the elements of this field and adding 'weight' to the sum if the node matches the corresponding MatchExpressions; the node(s) with the highest sum are the most preferred.
+     */
+    preferredDuringSchedulingIgnoredDuringExecutions?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecution>[]>;
+    /**
+     * If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a node label update), the system may or may not try to eventually evict the pod from its node.
+     */
+    requiredDuringSchedulingIgnoredDuringExecution?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecution {
+    /**
+     * A node selector term, associated with the corresponding weight.
+     */
+    preference: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreference>;
+    /**
+     * weight is in the range 1-100
+     */
+    weight?: pulumi.Input<number>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreference {
+    /**
+     * List of node selector requirements. The requirements are ANDed.
+     */
+    matchExpressions?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpression>[]>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpression {
+    /**
+     * The label key that the selector applies to.
+     */
+    key?: pulumi.Input<string>;
+    /**
+     * Operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists, DoesNotExist. Gt, and Lt.
+     */
+    operator?: pulumi.Input<string>;
+    /**
+     * Values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch.
+     */
+    values?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution {
+    /**
+     * List of node selector terms. The terms are ORed.
+     */
+    nodeSelectorTerms?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTerm>[]>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTerm {
+    /**
+     * List of node selector requirements. The requirements are ANDed.
+     */
+    matchExpressions?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpression>[]>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpression {
+    /**
+     * The label key that the selector applies to.
+     */
+    key?: pulumi.Input<string>;
+    /**
+     * Operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists, DoesNotExist. Gt, and Lt.
+     */
+    operator?: pulumi.Input<string>;
+    /**
+     * Values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch.
+     */
+    values?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAffinity {
+    /**
+     * The scheduler will prefer to schedule pods to nodes that satisfy the anti-affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions. The node that is most preferred is the one with the greatest sum of weights, i.e. for each node that meets all of the scheduling requirements (resource request, RequiredDuringScheduling anti-affinity expressions, etc.), compute a sum by iterating through the elements of this field and adding 'weight' to the sum if the node matches the corresponding MatchExpressions; the node(s) with the highest sum are the most preferred.
+     */
+    preferredDuringSchedulingIgnoredDuringExecutions?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecution>[]>;
+    /**
+     * If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system may or may not try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each PodAffinityTerm are intersected, i.e. all terms must be satisfied.
+     */
+    requiredDuringSchedulingIgnoredDuringExecutions?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecution>[]>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecution {
+    /**
+     * A pod affinity term, associated with the corresponding weight
+     */
+    podAffinityTerm: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTerm>;
+    /**
+     * weight associated with matching the corresponding podAffinityTerm, in the range 1-100
+     */
+    weight: pulumi.Input<number>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTerm {
+    /**
+     * A label query over a set of resources, in this case pods.
+     */
+    labelSelectors?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector>[]>;
+    /**
+     * namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means 'this pod's namespace'
+     */
+    namespaces?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * empty topology key is interpreted by the scheduler as 'all topologies'
+     */
+    topologyKey?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector {
+    /**
+     * A list of label selector requirements. The requirements are ANDed.
+     */
+    matchExpressions?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression>[]>;
+    /**
+     * A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+     */
+    matchLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression {
+    /**
+     * The label key that the selector applies to.
+     */
+    key?: pulumi.Input<string>;
+    /**
+     * A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
+     */
+    operator?: pulumi.Input<string>;
+    /**
+     * An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
+     */
+    values?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecution {
+    /**
+     * A label query over a set of resources, in this case pods.
+     */
+    labelSelectors?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector>[]>;
+    /**
+     * namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means 'this pod's namespace'
+     */
+    namespaces?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * empty topology key is interpreted by the scheduler as 'all topologies'
+     */
+    topologyKey?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector {
+    /**
+     * A list of label selector requirements. The requirements are ANDed.
+     */
+    matchExpressions?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression>[]>;
+    /**
+     * A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+     */
+    matchLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression {
+    /**
+     * The label key that the selector applies to.
+     */
+    key?: pulumi.Input<string>;
+    /**
+     * A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
+     */
+    operator?: pulumi.Input<string>;
+    /**
+     * An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
+     */
+    values?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAntiAffinity {
+    /**
+     * The scheduler will prefer to schedule pods to nodes that satisfy the anti-affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions. The node that is most preferred is the one with the greatest sum of weights, i.e. for each node that meets all of the scheduling requirements (resource request, RequiredDuringScheduling anti-affinity expressions, etc.), compute a sum by iterating through the elements of this field and adding 'weight' to the sum if the node matches the corresponding MatchExpressions; the node(s) with the highest sum are the most preferred.
+     */
+    preferredDuringSchedulingIgnoredDuringExecutions?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecution>[]>;
+    /**
+     * If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system may or may not try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each PodAffinityTerm are intersected, i.e. all terms must be satisfied.
+     */
+    requiredDuringSchedulingIgnoredDuringExecutions?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecution>[]>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecution {
+    /**
+     * A pod affinity term, associated with the corresponding weight
+     */
+    podAffinityTerm: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTerm>;
+    /**
+     * weight associated with matching the corresponding podAffinityTerm, in the range 1-100
+     */
+    weight: pulumi.Input<number>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTerm {
+    /**
+     * A label query over a set of resources, in this case pods.
+     */
+    labelSelectors?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector>[]>;
+    /**
+     * namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means 'this pod's namespace'
+     */
+    namespaces?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * empty topology key is interpreted by the scheduler as 'all topologies'
+     */
+    topologyKey?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector {
+    /**
+     * A list of label selector requirements. The requirements are ANDed.
+     */
+    matchExpressions?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression>[]>;
+    /**
+     * A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+     */
+    matchLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression {
+    /**
+     * The label key that the selector applies to.
+     */
+    key?: pulumi.Input<string>;
+    /**
+     * A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
+     */
+    operator?: pulumi.Input<string>;
+    /**
+     * An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
+     */
+    values?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecution {
+    /**
+     * A label query over a set of resources, in this case pods.
+     */
+    labelSelectors?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector>[]>;
+    /**
+     * namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means 'this pod's namespace'
+     */
+    namespaces?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * empty topology key is interpreted by the scheduler as 'all topologies'
+     */
+    topologyKey?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector {
+    /**
+     * A list of label selector requirements. The requirements are ANDed.
+     */
+    matchExpressions?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression>[]>;
+    /**
+     * A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+     */
+    matchLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression {
+    /**
+     * The label key that the selector applies to.
+     */
+    key?: pulumi.Input<string>;
+    /**
+     * A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
+     */
+    operator?: pulumi.Input<string>;
+    /**
+     * An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
+     */
+    values?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainer {
+    /**
+     * Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR*NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR*NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+     */
+    args?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR*NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR*NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+     */
+    commands?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of sources to populate environment variables in the container. The keys defined within a source must be a C*IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated.
+     */
+    envFroms?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerEnvFrom>[]>;
+    /**
+     * List of environment variables to set in the container. Cannot be updated.
+     */
+    envs?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerEnv>[]>;
+    /**
+     * Docker image name. More info: https://kubernetes.io/docs/concepts/containers/images/
+     */
+    image?: pulumi.Input<string>;
+    /**
+     * Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/images/#updating-images
+     */
+    imagePullPolicy?: pulumi.Input<string>;
+    /**
+     * Actions that the management system should take in response to container lifecycle events
+     */
+    lifecycle?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecycle>;
+    /**
+     * Periodic probe of container liveness. Container will be restarted if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    livenessProbe?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLivenessProbe>;
+    /**
+     * Name of the container specified as a DNS*LABEL. Each container in a pod must have a unique name (DNS*LABEL). Cannot be updated.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * List of ports to expose from the container. Exposing a port here gives the system additional information about the network connections a container uses, but is primarily informational. Not specifying a port here DOES NOT prevent that port from being exposed. Any port which is listening on the default "0.0.0.0" address inside a container will be accessible from the network. Cannot be updated.
+     */
+    ports?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerPort>[]>;
+    /**
+     * Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    readinessProbe?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerReadinessProbe>;
+    /**
+     * Compute Resources required by this container. Cannot be updated. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+     */
+    resources?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerResources>;
+    /**
+     * Security options the pod should run with. More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+     */
+    securityContext?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerSecurityContext>;
+    /**
+     * StartupProbe indicates that the Pod has successfully initialized. If specified, no other probes are executed until this completes successfully. If this probe fails, the Pod will be restarted, just as if the livenessProbe failed. This can be used to provide different probe parameters at the beginning of a Pod's lifecycle, when it might take a long time to load data or warm a cache, than during steady-state operation. This cannot be updated. This is an alpha feature enabled by the StartupProbe feature flag. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+     */
+    startupProbe?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerStartupProbe>;
+    /**
+     * Whether this container should allocate a buffer for stdin in the container runtime. If this is not set, reads from stdin in the container will always result in EOF.  Defaults to `false`.
+     */
+    stdin?: pulumi.Input<boolean>;
+    /**
+     * Whether the container runtime should close the stdin channel after it has been opened by a single attach. When stdin is true the stdin stream will remain open across multiple attach sessions. If stdinOnce is set to true, stdin is opened on container start, is empty until the first client attaches to stdin, and then remains open and accepts data until the client disconnects, at which time stdin is closed and remains closed until the container is restarted. If this flag is false, a container processes that reads from stdin will never receive an EOF. Defaults to `false`.
+     */
+    stdinOnce?: pulumi.Input<boolean>;
+    /**
+     * Optional: Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Defaults to /dev/termination-log. Cannot be updated. Defaults to `/dev/termination-log`.
+     */
+    terminationMessagePath?: pulumi.Input<string>;
+    /**
+     * Optional: Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
+     */
+    terminationMessagePolicy?: pulumi.Input<string>;
+    /**
+     * Whether this container should allocate a TTY for itself Defaults to `false`.
+     */
+    tty?: pulumi.Input<boolean>;
+    /**
+     * Pod volumes to mount into the container's filesystem. Cannot be updated.
+     */
+    volumeMounts?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerVolumeMount>[]>;
+    /**
+     * Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image. Cannot be updated.
+     */
+    workingDir?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerEnv {
+    /**
+     * Name of the environment variable. Must be a C_IDENTIFIER
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Variable references $(VAR*NAME) are expanded using the previous defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR*NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
+     */
+    value?: pulumi.Input<string>;
+    /**
+     * Source for the environment variable's value
+     */
+    valueFrom?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerEnvValueFrom>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerEnvFrom {
+    /**
+     * The ConfigMap to select from
+     */
+    configMapRef?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerEnvFromConfigMapRef>;
+    /**
+     * An optional identifer to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
+     */
+    prefix?: pulumi.Input<string>;
+    /**
+     * The Secret to select from
+     */
+    secretRef?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerEnvFromSecretRef>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerEnvFromConfigMapRef {
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Specify whether the ConfigMap must be defined
+     */
+    optional?: pulumi.Input<boolean>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerEnvFromSecretRef {
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Specify whether the Secret must be defined
+     */
+    optional?: pulumi.Input<boolean>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerEnvValueFrom {
+    /**
+     * Selects a key of a ConfigMap.
+     */
+    configMapKeyRef?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerEnvValueFromConfigMapKeyRef>;
+    /**
+     * Selects a field of the pod: supports metadata.name, metadata.namespace, metadata.labels, metadata.annotations, spec.nodeName, spec.serviceAccountName, status.podIP.
+     */
+    fieldRef?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerEnvValueFromFieldRef>;
+    /**
+     * Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.
+     */
+    resourceFieldRef?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerEnvValueFromResourceFieldRef>;
+    /**
+     * Selects a key of a secret in the pod's namespace.
+     */
+    secretKeyRef?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerEnvValueFromSecretKeyRef>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerEnvValueFromConfigMapKeyRef {
+    /**
+     * The key to select.
+     */
+    key?: pulumi.Input<string>;
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Specify whether the ConfigMap or its key must be defined.
+     */
+    optional?: pulumi.Input<boolean>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerEnvValueFromFieldRef {
+    /**
+     * Version of the schema the FieldPath is written in terms of, defaults to "v1". Defaults to `v1`.
+     */
+    apiVersion?: pulumi.Input<string>;
+    /**
+     * Path of the field to select in the specified API version
+     */
+    fieldPath?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerEnvValueFromResourceFieldRef {
+    containerName?: pulumi.Input<string>;
+    /**
+     * Defaults to `1`.
+     */
+    divisor?: pulumi.Input<string>;
+    /**
+     * Resource to select
+     */
+    resource: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerEnvValueFromSecretKeyRef {
+    /**
+     * The key of the secret to select from. Must be a valid secret key.
+     */
+    key?: pulumi.Input<string>;
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Specify whether the Secret or its key must be defined.
+     */
+    optional?: pulumi.Input<boolean>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecycle {
+    /**
+     * post*start is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+     */
+    postStarts?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePostStart>[]>;
+    /**
+     * pre*stop is called immediately before a container is terminated. The container is terminated after the handler completes. The reason for termination is passed to the handler. Regardless of the outcome of the handler, the container is eventually terminated. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+     */
+    preStops?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePreStop>[]>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePostStart {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePostStartExec>;
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePostStartHttpGet>;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePostStartTcpSocket>[]>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePostStartExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePostStartHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeader>[]>;
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: pulumi.Input<string>;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port?: pulumi.Input<string>;
+    /**
+     * Scheme to use for connecting to the host. Defaults to `HTTP`.
+     */
+    scheme?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The header field value
+     */
+    value?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePostStartTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePreStop {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePreStopExec>;
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePreStopHttpGet>;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePreStopTcpSocket>[]>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePreStopExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePreStopHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeader>[]>;
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: pulumi.Input<string>;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port?: pulumi.Input<string>;
+    /**
+     * Scheme to use for connecting to the host. Defaults to `HTTP`.
+     */
+    scheme?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The header field value
+     */
+    value?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePreStopTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLivenessProbe {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLivenessProbeExec>;
+    /**
+     * Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to `3`.
+     */
+    failureThreshold?: pulumi.Input<number>;
+    /**
+     * GRPC specifies an action involving a GRPC port.
+     */
+    grpcs?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLivenessProbeGrpc>[]>;
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLivenessProbeHttpGet>;
+    /**
+     * Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    initialDelaySeconds?: pulumi.Input<number>;
+    /**
+     * How often (in seconds) to perform the probe Defaults to `10`.
+     */
+    periodSeconds?: pulumi.Input<number>;
+    /**
+     * Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to `1`.
+     */
+    successThreshold?: pulumi.Input<number>;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLivenessProbeTcpSocket>[]>;
+    /**
+     * Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes Defaults to `1`.
+     */
+    timeoutSeconds?: pulumi.Input<number>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLivenessProbeExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLivenessProbeGrpc {
+    /**
+     * Number of the port to access on the container. Number must be in the range 1 to 65535.
+     */
+    port: pulumi.Input<number>;
+    /**
+     * Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+     */
+    service?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLivenessProbeHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeader>[]>;
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: pulumi.Input<string>;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port?: pulumi.Input<string>;
+    /**
+     * Scheme to use for connecting to the host. Defaults to `HTTP`.
+     */
+    scheme?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The header field value
+     */
+    value?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLivenessProbeTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerPort {
+    /**
+     * Number of port to expose on the pod's IP address. This must be a valid port number, 0 < x < 65536.
+     */
+    containerPort: pulumi.Input<number>;
+    /**
+     * What host IP to bind the external port to.
+     */
+    hostIp?: pulumi.Input<string>;
+    /**
+     * Number of port to expose on the host. If specified, this must be a valid port number, 0 < x < 65536. If HostNetwork is specified, this must match ContainerPort. Most containers do not need this.
+     */
+    hostPort?: pulumi.Input<number>;
+    /**
+     * If specified, this must be an IANA*SVC*NAME and unique within the pod. Each named port in a pod must have a unique name. Name for the port that can be referred to by services
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Protocol for port. Must be UDP or TCP. Defaults to "TCP". Defaults to `TCP`.
+     */
+    protocol?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerReadinessProbe {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerReadinessProbeExec>;
+    /**
+     * Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to `3`.
+     */
+    failureThreshold?: pulumi.Input<number>;
+    /**
+     * GRPC specifies an action involving a GRPC port.
+     */
+    grpcs?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerReadinessProbeGrpc>[]>;
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerReadinessProbeHttpGet>;
+    /**
+     * Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    initialDelaySeconds?: pulumi.Input<number>;
+    /**
+     * How often (in seconds) to perform the probe Defaults to `10`.
+     */
+    periodSeconds?: pulumi.Input<number>;
+    /**
+     * Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to `1`.
+     */
+    successThreshold?: pulumi.Input<number>;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerReadinessProbeTcpSocket>[]>;
+    /**
+     * Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes Defaults to `1`.
+     */
+    timeoutSeconds?: pulumi.Input<number>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerReadinessProbeExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerReadinessProbeGrpc {
+    /**
+     * Number of the port to access on the container. Number must be in the range 1 to 65535.
+     */
+    port: pulumi.Input<number>;
+    /**
+     * Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+     */
+    service?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerReadinessProbeHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeader>[]>;
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: pulumi.Input<string>;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port?: pulumi.Input<string>;
+    /**
+     * Scheme to use for connecting to the host. Defaults to `HTTP`.
+     */
+    scheme?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The header field value
+     */
+    value?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerReadinessProbeTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerResources {
+    /**
+     * Describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+     */
+    limits?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
+     */
+    requests?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerSecurityContext {
+    /**
+     * AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the no*new*privs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP*SYS*ADMIN Defaults to `true`.
+     */
+    allowPrivilegeEscalation?: pulumi.Input<boolean>;
+    /**
+     * The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime.
+     */
+    capabilities?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerSecurityContextCapabilities>;
+    /**
+     * Run container in privileged mode. Processes in privileged containers are essentially equivalent to root on the host. Defaults to false. Defaults to `false`.
+     */
+    privileged?: pulumi.Input<boolean>;
+    /**
+     * Whether this container has a read-only root filesystem. Default is false. Defaults to `false`.
+     */
+    readOnlyRootFilesystem?: pulumi.Input<boolean>;
+    /**
+     * The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+     */
+    runAsGroup?: pulumi.Input<string>;
+    /**
+     * Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+     */
+    runAsNonRoot?: pulumi.Input<boolean>;
+    /**
+     * The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+     */
+    runAsUser?: pulumi.Input<string>;
+    /**
+     * The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+     */
+    seLinuxOptions?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerSecurityContextSeLinuxOptions>;
+    /**
+     * The seccomp options to use by the containers in this pod. Note that this field cannot be set when spec.os.name is windows.
+     */
+    seccompProfile?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerSecurityContextSeccompProfile>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerSecurityContextCapabilities {
+    /**
+     * Added capabilities
+     */
+    adds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Removed capabilities
+     */
+    drops?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerSecurityContextSeLinuxOptions {
+    /**
+     * Level is SELinux level label that applies to the container.
+     */
+    level?: pulumi.Input<string>;
+    /**
+     * Role is a SELinux role label that applies to the container.
+     */
+    role?: pulumi.Input<string>;
+    /**
+     * Type is a SELinux type label that applies to the container.
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * User is a SELinux user label that applies to the container.
+     */
+    user?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerSecurityContextSeccompProfile {
+    /**
+     * Localhost Profile indicates a profile defined in a file on the node should be used. The profile must be preconfigured on the node to work. Defaults to ``.
+     */
+    localhostProfile?: pulumi.Input<string>;
+    /**
+     * Type indicates which kind of seccomp profile will be applied. Valid options are: Localhost, RuntimeDefault, Unconfined. Defaults to `Unconfined`.
+     */
+    type?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerStartupProbe {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerStartupProbeExec>;
+    /**
+     * Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to `3`.
+     */
+    failureThreshold?: pulumi.Input<number>;
+    /**
+     * GRPC specifies an action involving a GRPC port.
+     */
+    grpcs?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerStartupProbeGrpc>[]>;
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerStartupProbeHttpGet>;
+    /**
+     * Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    initialDelaySeconds?: pulumi.Input<number>;
+    /**
+     * How often (in seconds) to perform the probe Defaults to `10`.
+     */
+    periodSeconds?: pulumi.Input<number>;
+    /**
+     * Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to `1`.
+     */
+    successThreshold?: pulumi.Input<number>;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerStartupProbeTcpSocket>[]>;
+    /**
+     * Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes Defaults to `1`.
+     */
+    timeoutSeconds?: pulumi.Input<number>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerStartupProbeExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerStartupProbeGrpc {
+    /**
+     * Number of the port to access on the container. Number must be in the range 1 to 65535.
+     */
+    port: pulumi.Input<number>;
+    /**
+     * Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+     */
+    service?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerStartupProbeHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerStartupProbeHttpGetHttpHeader>[]>;
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: pulumi.Input<string>;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port?: pulumi.Input<string>;
+    /**
+     * Scheme to use for connecting to the host. Defaults to `HTTP`.
+     */
+    scheme?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerStartupProbeHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The header field value
+     */
+    value?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerStartupProbeTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerVolumeMount {
+    /**
+     * Path within the container at which the volume should be mounted. Must not contain ':'.
+     */
+    mountPath: pulumi.Input<string>;
+    /**
+     * Mount propagation mode. mountPropagation determines how mounts are propagated from the host to container and the other way around. Valid values are None (default), HostToContainer and Bidirectional. Defaults to `None`.
+     */
+    mountPropagation?: pulumi.Input<string>;
+    /**
+     * This must match the Name of a Volume.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false. Defaults to `false`.
+     */
+    readOnly?: pulumi.Input<boolean>;
+    /**
+     * Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
+     */
+    subPath?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecDnsConfig {
+    /**
+     * A list of DNS name server IP addresses. This will be appended to the base nameservers generated from DNSPolicy. Duplicated nameservers will be removed.
+     */
+    nameservers?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of DNS resolver options. This will be merged with the base options generated from DNSPolicy. Duplicated entries will be removed. Resolution options given in Options will override those that appear in the base DNSPolicy.
+     */
+    options?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecDnsConfigOption>[]>;
+    /**
+     * A list of DNS search domains for host-name lookup. This will be appended to the base search paths generated from DNSPolicy. Duplicated search paths will be removed.
+     */
+    searches?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecDnsConfigOption {
+    /**
+     * Name of the option.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Value of the option. Optional: Defaults to empty.
+     */
+    value?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecHostAlias {
+    /**
+     * Hostnames for the IP address.
+     */
+    hostnames: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * IP address of the host file entry.
+     */
+    ip: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecImagePullSecret {
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainer {
+    /**
+     * Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR*NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR*NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+     */
+    args?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR*NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR*NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+     */
+    commands?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of sources to populate environment variables in the container. The keys defined within a source must be a C*IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated.
+     */
+    envFroms?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerEnvFrom>[]>;
+    /**
+     * List of environment variables to set in the container. Cannot be updated.
+     */
+    envs?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerEnv>[]>;
+    /**
+     * Docker image name. More info: https://kubernetes.io/docs/concepts/containers/images/
+     */
+    image?: pulumi.Input<string>;
+    /**
+     * Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/images/#updating-images
+     */
+    imagePullPolicy?: pulumi.Input<string>;
+    /**
+     * Actions that the management system should take in response to container lifecycle events
+     */
+    lifecycle?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecycle>;
+    /**
+     * Periodic probe of container liveness. Container will be restarted if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    livenessProbe?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLivenessProbe>;
+    /**
+     * Name of the container specified as a DNS*LABEL. Each container in a pod must have a unique name (DNS*LABEL). Cannot be updated.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * List of ports to expose from the container. Exposing a port here gives the system additional information about the network connections a container uses, but is primarily informational. Not specifying a port here DOES NOT prevent that port from being exposed. Any port which is listening on the default "0.0.0.0" address inside a container will be accessible from the network. Cannot be updated.
+     */
+    ports?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerPort>[]>;
+    /**
+     * Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    readinessProbe?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerReadinessProbe>;
+    /**
+     * Compute Resources required by this container. Cannot be updated. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+     */
+    resources?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerResources>;
+    /**
+     * Security options the pod should run with. More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+     */
+    securityContext?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerSecurityContext>;
+    /**
+     * StartupProbe indicates that the Pod has successfully initialized. If specified, no other probes are executed until this completes successfully. If this probe fails, the Pod will be restarted, just as if the livenessProbe failed. This can be used to provide different probe parameters at the beginning of a Pod's lifecycle, when it might take a long time to load data or warm a cache, than during steady-state operation. This cannot be updated. This is an alpha feature enabled by the StartupProbe feature flag. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+     */
+    startupProbe?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerStartupProbe>;
+    /**
+     * Whether this container should allocate a buffer for stdin in the container runtime. If this is not set, reads from stdin in the container will always result in EOF.  Defaults to `false`.
+     */
+    stdin?: pulumi.Input<boolean>;
+    /**
+     * Whether the container runtime should close the stdin channel after it has been opened by a single attach. When stdin is true the stdin stream will remain open across multiple attach sessions. If stdinOnce is set to true, stdin is opened on container start, is empty until the first client attaches to stdin, and then remains open and accepts data until the client disconnects, at which time stdin is closed and remains closed until the container is restarted. If this flag is false, a container processes that reads from stdin will never receive an EOF. Defaults to `false`.
+     */
+    stdinOnce?: pulumi.Input<boolean>;
+    /**
+     * Optional: Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Defaults to /dev/termination-log. Cannot be updated. Defaults to `/dev/termination-log`.
+     */
+    terminationMessagePath?: pulumi.Input<string>;
+    /**
+     * Optional: Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
+     */
+    terminationMessagePolicy?: pulumi.Input<string>;
+    /**
+     * Whether this container should allocate a TTY for itself Defaults to `false`.
+     */
+    tty?: pulumi.Input<boolean>;
+    /**
+     * Pod volumes to mount into the container's filesystem. Cannot be updated.
+     */
+    volumeMounts?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerVolumeMount>[]>;
+    /**
+     * Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image. Cannot be updated.
+     */
+    workingDir?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerEnv {
+    /**
+     * Name of the environment variable. Must be a C_IDENTIFIER
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Variable references $(VAR*NAME) are expanded using the previous defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR*NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
+     */
+    value?: pulumi.Input<string>;
+    /**
+     * Source for the environment variable's value
+     */
+    valueFrom?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerEnvValueFrom>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerEnvFrom {
+    /**
+     * The ConfigMap to select from
+     */
+    configMapRef?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerEnvFromConfigMapRef>;
+    /**
+     * An optional identifer to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
+     */
+    prefix?: pulumi.Input<string>;
+    /**
+     * The Secret to select from
+     */
+    secretRef?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerEnvFromSecretRef>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerEnvFromConfigMapRef {
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Specify whether the ConfigMap must be defined
+     */
+    optional?: pulumi.Input<boolean>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerEnvFromSecretRef {
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Specify whether the Secret must be defined
+     */
+    optional?: pulumi.Input<boolean>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerEnvValueFrom {
+    /**
+     * Selects a key of a ConfigMap.
+     */
+    configMapKeyRef?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRef>;
+    /**
+     * Selects a field of the pod: supports metadata.name, metadata.namespace, metadata.labels, metadata.annotations, spec.nodeName, spec.serviceAccountName, status.podIP.
+     */
+    fieldRef?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerEnvValueFromFieldRef>;
+    /**
+     * Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.
+     */
+    resourceFieldRef?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerEnvValueFromResourceFieldRef>;
+    /**
+     * Selects a key of a secret in the pod's namespace.
+     */
+    secretKeyRef?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerEnvValueFromSecretKeyRef>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRef {
+    /**
+     * The key to select.
+     */
+    key?: pulumi.Input<string>;
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Specify whether the ConfigMap or its key must be defined.
+     */
+    optional?: pulumi.Input<boolean>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerEnvValueFromFieldRef {
+    /**
+     * Version of the schema the FieldPath is written in terms of, defaults to "v1". Defaults to `v1`.
+     */
+    apiVersion?: pulumi.Input<string>;
+    /**
+     * Path of the field to select in the specified API version
+     */
+    fieldPath?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerEnvValueFromResourceFieldRef {
+    containerName?: pulumi.Input<string>;
+    /**
+     * Defaults to `1`.
+     */
+    divisor?: pulumi.Input<string>;
+    /**
+     * Resource to select
+     */
+    resource: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerEnvValueFromSecretKeyRef {
+    /**
+     * The key of the secret to select from. Must be a valid secret key.
+     */
+    key?: pulumi.Input<string>;
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Specify whether the Secret or its key must be defined.
+     */
+    optional?: pulumi.Input<boolean>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecycle {
+    /**
+     * post*start is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+     */
+    postStarts?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePostStart>[]>;
+    /**
+     * pre*stop is called immediately before a container is terminated. The container is terminated after the handler completes. The reason for termination is passed to the handler. Regardless of the outcome of the handler, the container is eventually terminated. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+     */
+    preStops?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePreStop>[]>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePostStart {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePostStartExec>;
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePostStartHttpGet>;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePostStartTcpSocket>[]>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePostStartExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePostStartHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePostStartHttpGetHttpHeader>[]>;
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: pulumi.Input<string>;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port?: pulumi.Input<string>;
+    /**
+     * Scheme to use for connecting to the host. Defaults to `HTTP`.
+     */
+    scheme?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePostStartHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The header field value
+     */
+    value?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePostStartTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePreStop {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePreStopExec>;
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePreStopHttpGet>;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePreStopTcpSocket>[]>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePreStopExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePreStopHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePreStopHttpGetHttpHeader>[]>;
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: pulumi.Input<string>;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port?: pulumi.Input<string>;
+    /**
+     * Scheme to use for connecting to the host. Defaults to `HTTP`.
+     */
+    scheme?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePreStopHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The header field value
+     */
+    value?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePreStopTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLivenessProbe {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLivenessProbeExec>;
+    /**
+     * Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to `3`.
+     */
+    failureThreshold?: pulumi.Input<number>;
+    /**
+     * GRPC specifies an action involving a GRPC port.
+     */
+    grpcs?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLivenessProbeGrpc>[]>;
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLivenessProbeHttpGet>;
+    /**
+     * Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    initialDelaySeconds?: pulumi.Input<number>;
+    /**
+     * How often (in seconds) to perform the probe Defaults to `10`.
+     */
+    periodSeconds?: pulumi.Input<number>;
+    /**
+     * Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to `1`.
+     */
+    successThreshold?: pulumi.Input<number>;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLivenessProbeTcpSocket>[]>;
+    /**
+     * Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes Defaults to `1`.
+     */
+    timeoutSeconds?: pulumi.Input<number>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLivenessProbeExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLivenessProbeGrpc {
+    /**
+     * Number of the port to access on the container. Number must be in the range 1 to 65535.
+     */
+    port: pulumi.Input<number>;
+    /**
+     * Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+     */
+    service?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLivenessProbeHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLivenessProbeHttpGetHttpHeader>[]>;
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: pulumi.Input<string>;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port?: pulumi.Input<string>;
+    /**
+     * Scheme to use for connecting to the host. Defaults to `HTTP`.
+     */
+    scheme?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLivenessProbeHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The header field value
+     */
+    value?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLivenessProbeTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerPort {
+    /**
+     * Number of port to expose on the pod's IP address. This must be a valid port number, 0 < x < 65536.
+     */
+    containerPort: pulumi.Input<number>;
+    /**
+     * What host IP to bind the external port to.
+     */
+    hostIp?: pulumi.Input<string>;
+    /**
+     * Number of port to expose on the host. If specified, this must be a valid port number, 0 < x < 65536. If HostNetwork is specified, this must match ContainerPort. Most containers do not need this.
+     */
+    hostPort?: pulumi.Input<number>;
+    /**
+     * If specified, this must be an IANA*SVC*NAME and unique within the pod. Each named port in a pod must have a unique name. Name for the port that can be referred to by services
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Protocol for port. Must be UDP or TCP. Defaults to "TCP". Defaults to `TCP`.
+     */
+    protocol?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerReadinessProbe {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerReadinessProbeExec>;
+    /**
+     * Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to `3`.
+     */
+    failureThreshold?: pulumi.Input<number>;
+    /**
+     * GRPC specifies an action involving a GRPC port.
+     */
+    grpcs?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerReadinessProbeGrpc>[]>;
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerReadinessProbeHttpGet>;
+    /**
+     * Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    initialDelaySeconds?: pulumi.Input<number>;
+    /**
+     * How often (in seconds) to perform the probe Defaults to `10`.
+     */
+    periodSeconds?: pulumi.Input<number>;
+    /**
+     * Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to `1`.
+     */
+    successThreshold?: pulumi.Input<number>;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerReadinessProbeTcpSocket>[]>;
+    /**
+     * Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes Defaults to `1`.
+     */
+    timeoutSeconds?: pulumi.Input<number>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerReadinessProbeExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerReadinessProbeGrpc {
+    /**
+     * Number of the port to access on the container. Number must be in the range 1 to 65535.
+     */
+    port: pulumi.Input<number>;
+    /**
+     * Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+     */
+    service?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerReadinessProbeHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerReadinessProbeHttpGetHttpHeader>[]>;
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: pulumi.Input<string>;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port?: pulumi.Input<string>;
+    /**
+     * Scheme to use for connecting to the host. Defaults to `HTTP`.
+     */
+    scheme?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerReadinessProbeHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The header field value
+     */
+    value?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerReadinessProbeTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerResources {
+    /**
+     * Describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+     */
+    limits?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
+     */
+    requests?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerSecurityContext {
+    /**
+     * AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the no*new*privs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP*SYS*ADMIN Defaults to `true`.
+     */
+    allowPrivilegeEscalation?: pulumi.Input<boolean>;
+    /**
+     * The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime.
+     */
+    capabilities?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerSecurityContextCapabilities>;
+    /**
+     * Run container in privileged mode. Processes in privileged containers are essentially equivalent to root on the host. Defaults to false. Defaults to `false`.
+     */
+    privileged?: pulumi.Input<boolean>;
+    /**
+     * Whether this container has a read-only root filesystem. Default is false. Defaults to `false`.
+     */
+    readOnlyRootFilesystem?: pulumi.Input<boolean>;
+    /**
+     * The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+     */
+    runAsGroup?: pulumi.Input<string>;
+    /**
+     * Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+     */
+    runAsNonRoot?: pulumi.Input<boolean>;
+    /**
+     * The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+     */
+    runAsUser?: pulumi.Input<string>;
+    /**
+     * The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+     */
+    seLinuxOptions?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerSecurityContextSeLinuxOptions>;
+    /**
+     * The seccomp options to use by the containers in this pod. Note that this field cannot be set when spec.os.name is windows.
+     */
+    seccompProfile?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerSecurityContextSeccompProfile>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerSecurityContextCapabilities {
+    /**
+     * Added capabilities
+     */
+    adds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Removed capabilities
+     */
+    drops?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerSecurityContextSeLinuxOptions {
+    /**
+     * Level is SELinux level label that applies to the container.
+     */
+    level?: pulumi.Input<string>;
+    /**
+     * Role is a SELinux role label that applies to the container.
+     */
+    role?: pulumi.Input<string>;
+    /**
+     * Type is a SELinux type label that applies to the container.
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * User is a SELinux user label that applies to the container.
+     */
+    user?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerSecurityContextSeccompProfile {
+    /**
+     * Localhost Profile indicates a profile defined in a file on the node should be used. The profile must be preconfigured on the node to work. Defaults to ``.
+     */
+    localhostProfile?: pulumi.Input<string>;
+    /**
+     * Type indicates which kind of seccomp profile will be applied. Valid options are: Localhost, RuntimeDefault, Unconfined. Defaults to `Unconfined`.
+     */
+    type?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerStartupProbe {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerStartupProbeExec>;
+    /**
+     * Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to `3`.
+     */
+    failureThreshold?: pulumi.Input<number>;
+    /**
+     * GRPC specifies an action involving a GRPC port.
+     */
+    grpcs?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerStartupProbeGrpc>[]>;
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerStartupProbeHttpGet>;
+    /**
+     * Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    initialDelaySeconds?: pulumi.Input<number>;
+    /**
+     * How often (in seconds) to perform the probe Defaults to `10`.
+     */
+    periodSeconds?: pulumi.Input<number>;
+    /**
+     * Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to `1`.
+     */
+    successThreshold?: pulumi.Input<number>;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerStartupProbeTcpSocket>[]>;
+    /**
+     * Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes Defaults to `1`.
+     */
+    timeoutSeconds?: pulumi.Input<number>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerStartupProbeExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerStartupProbeGrpc {
+    /**
+     * Number of the port to access on the container. Number must be in the range 1 to 65535.
+     */
+    port: pulumi.Input<number>;
+    /**
+     * Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+     */
+    service?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerStartupProbeHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerStartupProbeHttpGetHttpHeader>[]>;
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: pulumi.Input<string>;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port?: pulumi.Input<string>;
+    /**
+     * Scheme to use for connecting to the host. Defaults to `HTTP`.
+     */
+    scheme?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerStartupProbeHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The header field value
+     */
+    value?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerStartupProbeTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerVolumeMount {
+    /**
+     * Path within the container at which the volume should be mounted. Must not contain ':'.
+     */
+    mountPath: pulumi.Input<string>;
+    /**
+     * Mount propagation mode. mountPropagation determines how mounts are propagated from the host to container and the other way around. Valid values are None (default), HostToContainer and Bidirectional. Defaults to `None`.
+     */
+    mountPropagation?: pulumi.Input<string>;
+    /**
+     * This must match the Name of a Volume.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false. Defaults to `false`.
+     */
+    readOnly?: pulumi.Input<boolean>;
+    /**
+     * Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
+     */
+    subPath?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecReadinessGate {
+    /**
+     * refers to a condition in the pod's condition list with matching type.
+     */
+    conditionType: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecSecurityContext {
+    /**
+     * A special supplemental group that applies to all containers in a pod. Some volume types allow the Kubelet to change the ownership of that volume to be owned by the pod: 1. The owning GID will be the FSGroup 2. The setgid bit is set (new files created in the volume will be owned by FSGroup) 3. The permission bits are OR'd with rw-rw---- If unset, the Kubelet will not modify the ownership and permissions of any volume.
+     */
+    fsGroup?: pulumi.Input<string>;
+    /**
+     * fsGroupChangePolicy defines behavior of changing ownership and permission of the volume before being exposed inside Pod. This field will only apply to volume types which support fsGroup based ownership(and permissions). It will have no effect on ephemeral volume types such as: secret, configmaps and emptydir.
+     */
+    fsGroupChangePolicy?: pulumi.Input<string>;
+    /**
+     * The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in SecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container.
+     */
+    runAsGroup?: pulumi.Input<string>;
+    /**
+     * Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in SecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+     */
+    runAsNonRoot?: pulumi.Input<boolean>;
+    /**
+     * The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in SecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container.
+     */
+    runAsUser?: pulumi.Input<string>;
+    /**
+     * The SELinux context to be applied to all containers. If unspecified, the container runtime will allocate a random SELinux context for each container. May also be set in SecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container.
+     */
+    seLinuxOptions?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecSecurityContextSeLinuxOptions>;
+    /**
+     * The seccomp options to use by the containers in this pod. Note that this field cannot be set when spec.os.name is windows.
+     */
+    seccompProfile?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecSecurityContextSeccompProfile>;
+    /**
+     * A list of groups applied to the first process run in each container, in addition to the container's primary GID. If unspecified, no groups will be added to any container.
+     */
+    supplementalGroups?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * holds a list of namespaced sysctls used for the pod.
+     */
+    sysctls?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecSecurityContextSysctl>[]>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecSecurityContextSeLinuxOptions {
+    /**
+     * Level is SELinux level label that applies to the container.
+     */
+    level?: pulumi.Input<string>;
+    /**
+     * Role is a SELinux role label that applies to the container.
+     */
+    role?: pulumi.Input<string>;
+    /**
+     * Type is a SELinux type label that applies to the container.
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * User is a SELinux user label that applies to the container.
+     */
+    user?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecSecurityContextSeccompProfile {
+    /**
+     * Localhost Profile indicates a profile defined in a file on the node should be used. The profile must be preconfigured on the node to work. Defaults to ``.
+     */
+    localhostProfile?: pulumi.Input<string>;
+    /**
+     * Type indicates which kind of seccomp profile will be applied. Valid options are: Localhost, RuntimeDefault, Unconfined. Defaults to `Unconfined`.
+     */
+    type?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecSecurityContextSysctl {
+    /**
+     * Name of a property to set.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Value of a property to set.
+     */
+    value: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecToleration {
+    /**
+     * Effect indicates the taint effect to match. Empty means match all taint effects. When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.
+     */
+    effect?: pulumi.Input<string>;
+    /**
+     * Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key is empty, operator must be Exists; this combination means to match all values and all keys.
+     */
+    key?: pulumi.Input<string>;
+    /**
+     * Operator represents a key's relationship to the value. Valid operators are Exists and Equal. Defaults to Equal. Exists is equivalent to wildcard for value, so that a pod can tolerate all taints of a particular category. Defaults to `Equal`.
+     */
+    operator?: pulumi.Input<string>;
+    /**
+     * TolerationSeconds represents the period of time the toleration (which must be of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default, it is not set, which means tolerate the taint forever (do not evict). Zero and negative values will be treated as 0 (evict immediately) by the system.
+     */
+    tolerationSeconds?: pulumi.Input<string>;
+    /**
+     * Value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string.
+     */
+    value?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecTopologySpreadConstraint {
+    /**
+     * A label query over a set of resources, in this case pods.
+     */
+    labelSelectors?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecTopologySpreadConstraintLabelSelector>[]>;
+    /**
+     * describes the degree to which pods may be unevenly distributed. Defaults to `1`.
+     */
+    maxSkew?: pulumi.Input<number>;
+    /**
+     * the key of node labels. Nodes that have a label with this key and identical values are considered to be in the same topology.
+     */
+    topologyKey?: pulumi.Input<string>;
+    /**
+     * indicates how to deal with a pod if it doesn't satisfy the spread constraint. Defaults to `DoNotSchedule`.
+     */
+    whenUnsatisfiable?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecTopologySpreadConstraintLabelSelector {
+    /**
+     * A list of label selector requirements. The requirements are ANDed.
+     */
+    matchExpressions?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecTopologySpreadConstraintLabelSelectorMatchExpression>[]>;
+    /**
+     * A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+     */
+    matchLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecTopologySpreadConstraintLabelSelectorMatchExpression {
+    /**
+     * The label key that the selector applies to.
+     */
+    key?: pulumi.Input<string>;
+    /**
+     * A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
+     */
+    operator?: pulumi.Input<string>;
+    /**
+     * An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
+     */
+    values?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolume {
+    /**
+     * Represents an AWS Disk resource that is attached to a kubelet's host machine and then exposed to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+     */
+    awsElasticBlockStore?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeAwsElasticBlockStore>;
+    /**
+     * Represents an Azure Data Disk mount on the host and bind mount to the pod.
+     */
+    azureDisk?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeAzureDisk>;
+    /**
+     * Represents an Azure File Service mount on the host and bind mount to the pod.
+     */
+    azureFile?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeAzureFile>;
+    /**
+     * Represents a Ceph FS mount on the host that shares a pod's lifetime
+     */
+    cephFs?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeCephFs>;
+    /**
+     * Represents a cinder volume attached and mounted on kubelets host machine. More info: https://examples.k8s.io/mysql-cinder-pd/README.md
+     */
+    cinder?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeCinder>;
+    /**
+     * ConfigMap represents a configMap that should populate this volume
+     */
+    configMap?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeConfigMap>;
+    /**
+     * Represents a CSI Volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#csi
+     */
+    csi?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeCsi>;
+    /**
+     * DownwardAPI represents downward API about the pod that should populate this volume
+     */
+    downwardApi?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeDownwardApi>;
+    /**
+     * EmptyDir represents a temporary directory that shares a pod's lifetime. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir
+     */
+    emptyDir?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeEmptyDir>;
+    /**
+     * Represents an ephemeral volume that is handled by a normal storage driver. More info: https://kubernetes.io/docs/concepts/storage/ephemeral-volumes/#generic-ephemeral-volumes
+     */
+    ephemeral?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeEphemeral>;
+    /**
+     * Represents a Fibre Channel resource that is attached to a kubelet's host machine and then exposed to the pod.
+     */
+    fc?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeFc>;
+    /**
+     * Represents a generic volume resource that is provisioned/attached using an exec based plugin. This is an alpha feature and may change in future.
+     */
+    flexVolume?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeFlexVolume>;
+    /**
+     * Represents a Flocker volume attached to a kubelet's host machine and exposed to the pod for its usage. This depends on the Flocker control service being running
+     */
+    flocker?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeFlocker>;
+    /**
+     * Represents a GCE Disk resource that is attached to a kubelet's host machine and then exposed to the pod. Provisioned by an admin. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+     */
+    gcePersistentDisk?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeGcePersistentDisk>;
+    /**
+     * GitRepo represents a git repository at a particular revision.
+     */
+    gitRepo?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeGitRepo>;
+    /**
+     * Represents a Glusterfs volume that is attached to a host and exposed to the pod. Provisioned by an admin. More info: https://examples.k8s.io/volumes/glusterfs/README.md
+     */
+    glusterfs?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeGlusterfs>;
+    /**
+     * Represents a directory on the host. Provisioned by a developer or tester. This is useful for single-node development and testing only! On-host storage is not supported in any way and WILL NOT WORK in a multi-node cluster. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath
+     */
+    hostPath?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeHostPath>;
+    /**
+     * Represents an ISCSI Disk resource that is attached to a kubelet's host machine and then exposed to the pod. Provisioned by an admin.
+     */
+    iscsi?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeIscsi>;
+    /**
+     * Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local
+     */
+    local?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeLocal>;
+    /**
+     * Volume's name. Must be a DNS_LABEL and unique within the pod. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Represents an NFS mount on the host. Provisioned by an admin. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+     */
+    nfs?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeNfs>;
+    /**
+     * The specification of a persistent volume.
+     */
+    persistentVolumeClaim?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumePersistentVolumeClaim>;
+    /**
+     * Represents a PhotonController persistent disk attached and mounted on kubelets host machine
+     */
+    photonPersistentDisk?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumePhotonPersistentDisk>;
+    /**
+     * Projected represents a single volume that projects several volume sources into the same directory. More info: https://kubernetes.io/docs/concepts/storage/volumes/#projected
+     */
+    projected?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjected>;
+    /**
+     * Quobyte represents a Quobyte mount on the host that shares a pod's lifetime
+     */
+    quobyte?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeQuobyte>;
+    /**
+     * Represents a Rados Block Device mount on the host that shares a pod's lifetime. More info: https://examples.k8s.io/volumes/rbd/README.md
+     */
+    rbd?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeRbd>;
+    /**
+     * Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secrets
+     */
+    secret?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeSecret>;
+    /**
+     * Represents a vSphere volume attached and mounted on kubelets host machine
+     */
+    vsphereVolume?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeVsphereVolume>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeAwsElasticBlockStore {
+    /**
+     * Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+     */
+    fsType?: pulumi.Input<string>;
+    /**
+     * The partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as "1". Similarly, the volume partition for /dev/sda is "0" (or you can leave the property empty).
+     */
+    partition?: pulumi.Input<number>;
+    /**
+     * Whether to set the read-only property in VolumeMounts to "true". If omitted, the default is "false". More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+     */
+    readOnly?: pulumi.Input<boolean>;
+    /**
+     * Unique ID of the persistent disk resource in AWS (Amazon EBS volume). More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+     */
+    volumeId: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeAzureDisk {
+    /**
+     * Host Caching mode: None, Read Only, Read Write.
+     */
+    cachingMode: pulumi.Input<string>;
+    /**
+     * The URI the data disk in the blob storage
+     */
+    dataDiskUri: pulumi.Input<string>;
+    /**
+     * The Name of the data disk in the blob storage
+     */
+    diskName: pulumi.Input<string>;
+    /**
+     * Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+     */
+    fsType?: pulumi.Input<string>;
+    /**
+     * The type for the data disk. Expected values: Shared, Dedicated, Managed. Defaults to Shared
+     */
+    kind?: pulumi.Input<string>;
+    /**
+     * Whether to force the read-only setting in VolumeMounts. Defaults to false (read/write). Defaults to `false`.
+     */
+    readOnly?: pulumi.Input<boolean>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeAzureFile {
+    /**
+     * Whether to force the read-only setting in VolumeMounts. Defaults to false (read/write).
+     */
+    readOnly?: pulumi.Input<boolean>;
+    /**
+     * The name of secret that contains Azure Storage Account Name and Key
+     */
+    secretName: pulumi.Input<string>;
+    /**
+     * The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is "default" namespace.
+     */
+    secretNamespace?: pulumi.Input<string>;
+    /**
+     * Share Name
+     */
+    shareName: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeCephFs {
+    /**
+     * Monitors is a collection of Ceph monitors. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+     */
+    monitors: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Used as the mounted root, rather than the full Ceph tree, default is /
+     */
+    path?: pulumi.Input<string>;
+    /**
+     * Whether to force the read-only setting in VolumeMounts. Defaults to `false` (read/write). More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+     */
+    readOnly?: pulumi.Input<boolean>;
+    /**
+     * The path to key ring for User, default is `/etc/ceph/user.secret`. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+     */
+    secretFile?: pulumi.Input<string>;
+    /**
+     * Reference to the authentication secret for User, default is empty. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+     */
+    secretRef?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeCephFsSecretRef>;
+    /**
+     * User is the rados user name, default is admin. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+     */
+    user?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeCephFsSecretRef {
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    namespace?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeCinder {
+    /**
+     * Filesystem type to mount. Must be a filesystem type supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://examples.k8s.io/mysql-cinder-pd/README.md
+     */
+    fsType?: pulumi.Input<string>;
+    /**
+     * Whether to force the read-only setting in VolumeMounts. Defaults to false (read/write). More info: https://examples.k8s.io/mysql-cinder-pd/README.md
+     */
+    readOnly?: pulumi.Input<boolean>;
+    /**
+     * Volume ID used to identify the volume in Cinder. More info: https://examples.k8s.io/mysql-cinder-pd/README.md
+     */
+    volumeId: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeConfigMap {
+    /**
+     * Optional: mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. Defaults to `0644`.
+     */
+    defaultMode?: pulumi.Input<string>;
+    /**
+     * If unspecified, each key-value pair in the Data field of the referenced ConfigMap will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the ConfigMap, the volume setup will error unless it is marked optional. Paths must be relative and may not contain the '..' path or start with '..'.
+     */
+    items?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeConfigMapItem>[]>;
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Optional: Specify whether the ConfigMap or its keys must be defined.
+     */
+    optional?: pulumi.Input<boolean>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeConfigMapItem {
+    /**
+     * The key to project.
+     */
+    key?: pulumi.Input<string>;
+    /**
+     * Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+     */
+    mode?: pulumi.Input<string>;
+    /**
+     * The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+     */
+    path?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeCsi {
+    /**
+     * the name of the volume driver to use. More info: https://kubernetes.io/docs/concepts/storage/volumes/#csi
+     */
+    driver: pulumi.Input<string>;
+    /**
+     * Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+     */
+    fsType?: pulumi.Input<string>;
+    /**
+     * A reference to the secret object containing sensitive information to pass to the CSI driver to complete the CSI NodePublishVolume and NodeUnpublishVolume calls.
+     */
+    nodePublishSecretRef?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeCsiNodePublishSecretRef>;
+    /**
+     * Whether to set the read-only property in VolumeMounts to "true". If omitted, the default is "false". More info: https://kubernetes.io/docs/concepts/storage/volumes#csi
+     */
+    readOnly?: pulumi.Input<boolean>;
+    /**
+     * Attributes of the volume to publish.
+     */
+    volumeAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeCsiNodePublishSecretRef {
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeDownwardApi {
+    /**
+     * Optional: mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. Defaults to `0644`.
+     */
+    defaultMode?: pulumi.Input<string>;
+    /**
+     * If unspecified, each key-value pair in the Data field of the referenced ConfigMap will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the ConfigMap, the volume setup will error. Paths must be relative and may not contain the '..' path or start with '..'.
+     */
+    items?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeDownwardApiItem>[]>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeDownwardApiItem {
+    /**
+     * Required: Selects a field of the pod: only annotations, labels, name and namespace are supported.
+     */
+    fieldRef: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeDownwardApiItemFieldRef>;
+    /**
+     * Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+     */
+    mode?: pulumi.Input<string>;
+    /**
+     * Path is the relative path name of the file to be created. Must not be absolute or contain the '..' path. Must be utf-8 encoded. The first item of the relative path must not start with '..'
+     */
+    path: pulumi.Input<string>;
+    /**
+     * Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, requests.cpu and requests.memory) are currently supported.
+     */
+    resourceFieldRef?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeDownwardApiItemResourceFieldRef>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeDownwardApiItemFieldRef {
+    /**
+     * Version of the schema the FieldPath is written in terms of, defaults to "v1". Defaults to `v1`.
+     */
+    apiVersion?: pulumi.Input<string>;
+    /**
+     * Path of the field to select in the specified API version
+     */
+    fieldPath?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeDownwardApiItemResourceFieldRef {
+    containerName: pulumi.Input<string>;
+    /**
+     * Defaults to `1`.
+     */
+    divisor?: pulumi.Input<string>;
+    /**
+     * Resource to select
+     */
+    resource: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeEmptyDir {
+    /**
+     * What type of storage medium should back this directory. The default is "" which means to use the node's default medium. Must be an empty string (default) or Memory. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir Defaults to ``.
+     */
+    medium?: pulumi.Input<string>;
+    /**
+     * Total amount of local storage required for this EmptyDir volume.
+     */
+    sizeLimit?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeEphemeral {
+    /**
+     * Will be used to create a stand-alone PVC to provision the volume. The pod in which this EphemeralVolumeSource is embedded will be the owner of the PVC.
+     */
+    volumeClaimTemplate: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeEphemeralVolumeClaimTemplate>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeEphemeralVolumeClaimTemplate {
+    /**
+     * May contain labels and annotations that will be copied into the PVC when creating it. No other fields are allowed and will be rejected during validation.
+     */
+    metadata?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateMetadata>;
+    /**
+     * The specification for the PersistentVolumeClaim. The entire content is copied unchanged into the PVC that gets created from this template. The same fields as in a PersistentVolumeClaim are also valid here.
+     */
+    spec: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateSpec>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateMetadata {
+    /**
+     * An unstructured key value map stored with the persistent volume claim that may be used to store arbitrary metadata. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+     */
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Map of string keys and values that can be used to organize and categorize (scope and select) the persistent volume claim. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateSpec {
+    /**
+     * A set of the desired access modes the volume should have. More info: http://kubernetes.io/docs/user-guide/persistent-volumes#access-modes-1
+     */
+    accessModes: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of the minimum resources the volume should have. More info: http://kubernetes.io/docs/user-guide/persistent-volumes#resources
+     */
+    resources: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateSpecResources>;
+    /**
+     * Name of the storage class requested by the claim
+     */
+    storageClassName?: pulumi.Input<string>;
+    /**
+     * Kubernetes supports two volumeModes of PersistentVolumes: `Filesystem` and `Block`.
+     */
+    volumeMode?: pulumi.Input<string>;
+    /**
+     * The binding reference to the PersistentVolume backing this claim.
+     */
+    volumeName?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateSpecResources {
+    /**
+     * Map describing the maximum amount of compute resources allowed. More info: http://kubernetes.io/docs/user-guide/compute-resources/
+     */
+    limits?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Map describing the minimum amount of compute resources required. If this is omitted for a container, it defaults to `limits` if that is explicitly specified, otherwise to an implementation-defined value. More info: http://kubernetes.io/docs/user-guide/compute-resources/
+     */
+    requests?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeFc {
+    /**
+     * Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+     */
+    fsType?: pulumi.Input<string>;
+    /**
+     * FC target lun number
+     */
+    lun: pulumi.Input<number>;
+    /**
+     * Whether to force the read-only setting in VolumeMounts. Defaults to false (read/write).
+     */
+    readOnly?: pulumi.Input<boolean>;
+    /**
+     * FC target worldwide names (WWNs)
+     */
+    targetWwNs: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeFlexVolume {
+    /**
+     * Driver is the name of the driver to use for this volume.
+     */
+    driver: pulumi.Input<string>;
+    /**
+     * Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". The default filesystem depends on FlexVolume script.
+     */
+    fsType?: pulumi.Input<string>;
+    /**
+     * Extra command options if any.
+     */
+    options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Whether to force the ReadOnly setting in VolumeMounts. Defaults to false (read/write).
+     */
+    readOnly?: pulumi.Input<boolean>;
+    /**
+     * Reference to the secret object containing sensitive information to pass to the plugin scripts. This may be empty if no secret object is specified. If the secret object contains more than one secret, all secrets are passed to the plugin scripts.
+     */
+    secretRef?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeFlexVolumeSecretRef>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeFlexVolumeSecretRef {
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    namespace?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeFlocker {
+    /**
+     * Name of the dataset stored as metadata > name on the dataset for Flocker should be considered as deprecated
+     */
+    datasetName?: pulumi.Input<string>;
+    /**
+     * UUID of the dataset. This is unique identifier of a Flocker dataset
+     */
+    datasetUuid?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeGcePersistentDisk {
+    /**
+     * Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+     */
+    fsType?: pulumi.Input<string>;
+    /**
+     * The partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as "1". Similarly, the volume partition for /dev/sda is "0" (or you can leave the property empty). More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+     */
+    partition?: pulumi.Input<number>;
+    /**
+     * Unique name of the PD resource in GCE. Used to identify the disk in GCE. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+     */
+    pdName: pulumi.Input<string>;
+    /**
+     * Whether to force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+     */
+    readOnly?: pulumi.Input<boolean>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeGitRepo {
+    /**
+     * Target directory name. Must not contain or start with '..'. If '.' is supplied, the volume directory will be the git repository. Otherwise, if specified, the volume will contain the git repository in the subdirectory with the given name.
+     */
+    directory?: pulumi.Input<string>;
+    /**
+     * Repository URL
+     */
+    repository?: pulumi.Input<string>;
+    /**
+     * Commit hash for the specified revision.
+     */
+    revision?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeGlusterfs {
+    /**
+     * The endpoint name that details Glusterfs topology. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
+     */
+    endpointsName: pulumi.Input<string>;
+    /**
+     * The Glusterfs volume path. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
+     */
+    path: pulumi.Input<string>;
+    /**
+     * Whether to force the Glusterfs volume to be mounted with read-only permissions. Defaults to false. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
+     */
+    readOnly?: pulumi.Input<boolean>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeHostPath {
+    /**
+     * Path of the directory on the host. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath
+     */
+    path?: pulumi.Input<string>;
+    /**
+     * Type for HostPath volume. Allowed values are "" (default), DirectoryOrCreate, Directory, FileOrCreate, File, Socket, CharDevice and BlockDevice
+     */
+    type?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeIscsi {
+    /**
+     * Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#iscsi
+     */
+    fsType?: pulumi.Input<string>;
+    /**
+     * Target iSCSI Qualified Name.
+     */
+    iqn: pulumi.Input<string>;
+    /**
+     * iSCSI interface name that uses an iSCSI transport. Defaults to 'default' (tcp). Defaults to `default`.
+     */
+    iscsiInterface?: pulumi.Input<string>;
+    /**
+     * iSCSI target lun number.
+     */
+    lun?: pulumi.Input<number>;
+    /**
+     * Whether to force the read-only setting in VolumeMounts. Defaults to false.
+     */
+    readOnly?: pulumi.Input<boolean>;
+    /**
+     * iSCSI target portal. The portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260).
+     */
+    targetPortal: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeLocal {
+    /**
+     * Path of the directory on the host. More info: https://kubernetes.io/docs/concepts/storage/volumes#local
+     */
+    path?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeNfs {
+    /**
+     * Path that is exported by the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+     */
+    path: pulumi.Input<string>;
+    /**
+     * Whether to force the NFS export to be mounted with read-only permissions. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+     */
+    readOnly?: pulumi.Input<boolean>;
+    /**
+     * Server is the hostname or IP address of the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+     */
+    server: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumePersistentVolumeClaim {
+    /**
+     * ClaimName is the name of a PersistentVolumeClaim in the same
+     */
+    claimName?: pulumi.Input<string>;
+    /**
+     * Will force the ReadOnly setting in VolumeMounts. Defaults to `false`.
+     */
+    readOnly?: pulumi.Input<boolean>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumePhotonPersistentDisk {
+    /**
+     * Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+     */
+    fsType?: pulumi.Input<string>;
+    /**
+     * ID that identifies Photon Controller persistent disk
+     */
+    pdId: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjected {
+    /**
+     * Optional: mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. Defaults to `0644`.
+     */
+    defaultMode?: pulumi.Input<string>;
+    /**
+     * Source of the volume to project in the directory.
+     */
+    sources: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSource>[]>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSource {
+    /**
+     * ConfigMap represents a configMap that should populate this volume
+     */
+    configMaps?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSourceConfigMap>[]>;
+    /**
+     * DownwardAPI represents downward API about the pod that should populate this volume
+     */
+    downwardApi?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSourceDownwardApi>;
+    /**
+     * Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secrets
+     */
+    secrets?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSourceSecret>[]>;
+    /**
+     * A projected service account token volume
+     */
+    serviceAccountToken?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSourceServiceAccountToken>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSourceConfigMap {
+    /**
+     * If unspecified, each key-value pair in the Data field of the referenced ConfigMap will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the ConfigMap, the volume setup will error. Paths must be relative and may not contain the '..' path or start with '..'.
+     */
+    items?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSourceConfigMapItem>[]>;
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Optional: Specify whether the ConfigMap or it's keys must be defined.
+     */
+    optional?: pulumi.Input<boolean>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSourceConfigMapItem {
+    /**
+     * The key to project.
+     */
+    key?: pulumi.Input<string>;
+    /**
+     * Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+     */
+    mode?: pulumi.Input<string>;
+    /**
+     * The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+     */
+    path?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSourceDownwardApi {
+    /**
+     * Represents a volume containing downward API info. Downward API volumes support ownership management and SELinux relabeling.
+     */
+    items?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSourceDownwardApiItem>[]>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSourceDownwardApiItem {
+    /**
+     * Selects a field of the pod: only annotations, labels, name and namespace are supported.
+     */
+    fieldRef?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSourceDownwardApiItemFieldRef>;
+    /**
+     * Mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+     */
+    mode?: pulumi.Input<string>;
+    /**
+     * Path is the relative path name of the file to be created. Must not be absolute or contain the '..' path. Must be utf-8 encoded. The first item of the relative path must not start with '..'
+     */
+    path: pulumi.Input<string>;
+    /**
+     * Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, requests.cpu and requests.memory) are currently supported.
+     */
+    resourceFieldRef?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSourceDownwardApiItemResourceFieldRef>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSourceDownwardApiItemFieldRef {
+    /**
+     * Version of the schema the FieldPath is written in terms of, defaults to 'v1'. Defaults to `v1`.
+     */
+    apiVersion?: pulumi.Input<string>;
+    /**
+     * Path of the field to select in the specified API version
+     */
+    fieldPath?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSourceDownwardApiItemResourceFieldRef {
+    containerName: pulumi.Input<string>;
+    /**
+     * Defaults to `1`.
+     */
+    divisor?: pulumi.Input<string>;
+    /**
+     * Resource to select
+     */
+    resource: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSourceSecret {
+    /**
+     * If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional. Paths must be relative and may not contain the '..' path or start with '..'.
+     */
+    items?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSourceSecretItem>[]>;
+    /**
+     * Name of the secret in the pod's namespace to use. More info: https://kubernetes.io/docs/concepts/storage/volumes#secrets
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Optional: Specify whether the Secret or it's keys must be defined.
+     */
+    optional?: pulumi.Input<boolean>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSourceSecretItem {
+    /**
+     * The key to project.
+     */
+    key?: pulumi.Input<string>;
+    /**
+     * Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+     */
+    mode?: pulumi.Input<string>;
+    /**
+     * The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+     */
+    path?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSourceServiceAccountToken {
+    /**
+     * Audience is the intended audience of the token
+     */
+    audience?: pulumi.Input<string>;
+    /**
+     * ExpirationSeconds is the expected duration of validity of the service account token. It defaults to 1 hour and must be at least 10 minutes (600 seconds). Defaults to `3600`.
+     */
+    expirationSeconds?: pulumi.Input<number>;
+    /**
+     * Path specifies a relative path to the mount point of the projected volume.
+     */
+    path: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeQuobyte {
+    /**
+     * Group to map volume access to Default is no group
+     */
+    group?: pulumi.Input<string>;
+    /**
+     * Whether to force the Quobyte volume to be mounted with read-only permissions. Defaults to false.
+     */
+    readOnly?: pulumi.Input<boolean>;
+    /**
+     * Registry represents a single or multiple Quobyte Registry services specified as a string as host:port pair (multiple entries are separated with commas) which acts as the central registry for volumes
+     */
+    registry: pulumi.Input<string>;
+    /**
+     * User to map volume access to Defaults to serivceaccount user
+     */
+    user?: pulumi.Input<string>;
+    /**
+     * Volume is a string that references an already created Quobyte volume by name.
+     */
+    volume: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeRbd {
+    /**
+     * A collection of Ceph monitors. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+     */
+    cephMonitors: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#rbd
+     */
+    fsType?: pulumi.Input<string>;
+    /**
+     * Keyring is the path to key ring for RBDUser. Default is /etc/ceph/keyring. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+     */
+    keyring?: pulumi.Input<string>;
+    /**
+     * The rados user name. Default is admin. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it Defaults to `admin`.
+     */
+    radosUser?: pulumi.Input<string>;
+    /**
+     * The rados image name. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+     */
+    rbdImage: pulumi.Input<string>;
+    /**
+     * The rados pool name. Default is rbd. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it. Defaults to `rbd`.
+     */
+    rbdPool?: pulumi.Input<string>;
+    /**
+     * Whether to force the read-only setting in VolumeMounts. Defaults to false. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it Defaults to `false`.
+     */
+    readOnly?: pulumi.Input<boolean>;
+    /**
+     * Name of the authentication secret for RBDUser. If provided overrides keyring. Default is nil. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+     */
+    secretRef?: pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeRbdSecretRef>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeRbdSecretRef {
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    namespace?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeSecret {
+    /**
+     * Optional: mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. Defaults to `0644`.
+     */
+    defaultMode?: pulumi.Input<string>;
+    /**
+     * If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional. Paths must be relative and may not contain the '..' path or start with '..'.
+     */
+    items?: pulumi.Input<pulumi.Input<inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeSecretItem>[]>;
+    /**
+     * Optional: Specify whether the Secret or its keys must be defined.
+     */
+    optional?: pulumi.Input<boolean>;
+    /**
+     * Name of the secret in the pod's namespace to use. More info: https://kubernetes.io/docs/concepts/storage/volumes#secrets
+     */
+    secretName?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeSecretItem {
+    /**
+     * The key to project.
+     */
+    key?: pulumi.Input<string>;
+    /**
+     * Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+     */
+    mode?: pulumi.Input<string>;
+    /**
+     * The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+     */
+    path?: pulumi.Input<string>;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeVsphereVolume {
+    /**
+     * Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+     */
+    fsType?: pulumi.Input<string>;
+    /**
+     * Path that identifies vSphere volume vmdk
+     */
+    volumePath: pulumi.Input<string>;
+}
+
+export interface K8sJobMetadata {
+    /**
+     * An unstructured key value map stored with the job that may be used to store arbitrary metadata. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+     */
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Prefix, used by the server, to generate a unique name ONLY IF the `name` field has not been provided. This value will also be combined with a unique suffix. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#idempotency
+     */
+    generateName?: pulumi.Input<string>;
+    /**
+     * A sequence number representing a specific generation of the desired state.
+     */
+    generation?: pulumi.Input<number>;
+    /**
+     * Map of string keys and values that can be used to organize and categorize (scope and select) the job. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Name of the job, must be unique. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Namespace defines the space within which name of the job must be unique.
+     */
+    namespace?: pulumi.Input<string>;
+    /**
+     * An opaque value that represents the internal version of this job that can be used by clients to determine when job has changed. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+     */
+    resourceVersion?: pulumi.Input<string>;
+    /**
+     * The unique in time and space value for this job. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
+     */
+    uid?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpec {
+    /**
+     * Optional duration in seconds the pod may be active on the node relative to StartTime before the system will actively try to mark it failed and kill associated containers. Value must be a positive integer.
+     */
+    activeDeadlineSeconds?: pulumi.Input<number>;
+    /**
+     * Specifies the number of retries before marking this job failed. Defaults to 6 Defaults to `6`.
+     */
+    backoffLimit?: pulumi.Input<number>;
+    /**
+     * Specifies how Pod completions are tracked. It can be `NonIndexed` (default) or `Indexed`. More info: https://kubernetes.io/docs/concepts/workloads/controllers/job/#completion-mode
+     */
+    completionMode?: pulumi.Input<string>;
+    /**
+     * Specifies the desired number of successfully finished pods the job should be run with. Setting to nil means that the success of any pod signals the success of all pods, and allows parallelism to have any positive value. Setting to 1 means that parallelism is limited to 1 and the success of that pod signals the success of the job. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/ Defaults to `1`.
+     */
+    completions?: pulumi.Input<number>;
+    /**
+     * Controls generation of pod labels and pod selectors. Leave unset unless you are certain what you are doing. When false or unset, the system pick labels unique to this job and appends those labels to the pod template. When true, the user is responsible for picking unique labels and specifying the selector. Failure to pick a unique label may cause this and other jobs to not function correctly. More info: https://git.k8s.io/community/contributors/design-proposals/selector-generation.md
+     */
+    manualSelector?: pulumi.Input<boolean>;
+    /**
+     * Specifies the maximum desired number of pods the job should run at any given time. The actual number of pods running in steady state will be less than this number when ((.spec.completions - .status.successful) < .spec.parallelism), i.e. when the work left to do is less than max parallelism. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/ Defaults to `1`.
+     */
+    parallelism?: pulumi.Input<number>;
+    /**
+     * A label query over volumes to consider for binding.
+     */
+    selector?: pulumi.Input<inputs.K8sJobSpecSelector>;
+    /**
+     * Describes the pod that will be created when executing a job. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+     */
+    template: pulumi.Input<inputs.K8sJobSpecTemplate>;
+    /**
+     * ttlSecondsAfterFinished limits the lifetime of a Job that has finished execution (either Complete or Failed). If this field is set, ttlSecondsAfterFinished after the Job finishes, it is eligible to be automatically deleted. When the Job is being deleted, its lifecycle guarantees (e.g. finalizers) will be honored. If this field is unset, the Job won't be automatically deleted. If this field is set to zero, the Job becomes eligible to be deleted immediately after it finishes.
+     */
+    ttlSecondsAfterFinished?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecSelector {
+    /**
+     * A list of label selector requirements. The requirements are ANDed.
+     */
+    matchExpressions?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecSelectorMatchExpression>[]>;
+    /**
+     * A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+     */
+    matchLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface K8sJobSpecSelectorMatchExpression {
+    /**
+     * The label key that the selector applies to.
+     */
+    key?: pulumi.Input<string>;
+    /**
+     * A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
+     */
+    operator?: pulumi.Input<string>;
+    /**
+     * An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
+     */
+    values?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface K8sJobSpecTemplate {
+    /**
+     * Standard job's metadata. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
+     */
+    metadata?: pulumi.Input<inputs.K8sJobSpecTemplateMetadata>;
+    /**
+     * Spec of the pods owned by the job
+     */
+    spec?: pulumi.Input<inputs.K8sJobSpecTemplateSpec>;
+}
+
+export interface K8sJobSpecTemplateMetadata {
+    /**
+     * An unstructured key value map stored with the job that may be used to store arbitrary metadata. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+     */
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Prefix, used by the server, to generate a unique name ONLY IF the `name` field has not been provided. This value will also be combined with a unique suffix. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#idempotency
+     */
+    generateName?: pulumi.Input<string>;
+    /**
+     * A sequence number representing a specific generation of the desired state.
+     */
+    generation?: pulumi.Input<number>;
+    /**
+     * Map of string keys and values that can be used to organize and categorize (scope and select) the job. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Name of the job, must be unique. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * An opaque value that represents the internal version of this job that can be used by clients to determine when job has changed. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+     */
+    resourceVersion?: pulumi.Input<string>;
+    /**
+     * The unique in time and space value for this job. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
+     */
+    uid?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpec {
+    /**
+     * Optional duration in seconds the pod may be active on the node relative to StartTime before the system will actively try to mark it failed and kill associated containers. Value must be a positive integer.
+     */
+    activeDeadlineSeconds?: pulumi.Input<number>;
+    /**
+     * Optional pod scheduling constraints.
+     */
+    affinity?: pulumi.Input<inputs.K8sJobSpecTemplateSpecAffinity>;
+    /**
+     * AutomountServiceAccountToken indicates whether a service account token should be automatically mounted. Defaults to `true`.
+     */
+    automountServiceAccountToken?: pulumi.Input<boolean>;
+    /**
+     * List of containers belonging to the pod. Containers cannot currently be added or removed. There must be at least one container in a Pod. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/
+     */
+    containers?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecContainer>[]>;
+    /**
+     * Specifies the DNS parameters of a pod. Parameters specified here will be merged to the generated DNS configuration based on DNSPolicy. Optional: Defaults to empty
+     */
+    dnsConfig?: pulumi.Input<inputs.K8sJobSpecTemplateSpecDnsConfig>;
+    /**
+     * Set DNS policy for containers within the pod. Valid values are 'ClusterFirstWithHostNet', 'ClusterFirst', 'Default' or 'None'. DNS parameters given in DNSConfig will be merged with the policy selected with DNSPolicy. To have DNS options set along with hostNetwork, you have to specify DNS policy explicitly to 'ClusterFirstWithHostNet'. Defaults to 'ClusterFirst'. More info: https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy
+     */
+    dnsPolicy?: pulumi.Input<string>;
+    /**
+     * Enables generating environment variables for service discovery. Defaults to true. Defaults to `true`.
+     */
+    enableServiceLinks?: pulumi.Input<boolean>;
+    /**
+     * List of hosts and IPs that will be injected into the pod's hosts file if specified. Optional: Defaults to empty.
+     */
+    hostAliases?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecHostAlias>[]>;
+    /**
+     * Use the host's ipc namespace. Optional: Defaults to false.
+     */
+    hostIpc?: pulumi.Input<boolean>;
+    /**
+     * Host networking requested for this pod. Use the host's network namespace. If this option is set, the ports that will be used must be specified.
+     */
+    hostNetwork?: pulumi.Input<boolean>;
+    /**
+     * Use the host's pid namespace.
+     */
+    hostPid?: pulumi.Input<boolean>;
+    /**
+     * Specifies the hostname of the Pod If not specified, the pod's hostname will be set to a system-defined value.
+     */
+    hostname?: pulumi.Input<string>;
+    /**
+     * ImagePullSecrets is an optional list of references to secrets in the same namespace to use for pulling any of the images used by this PodSpec. If specified, these secrets will be passed to individual puller implementations for them to use. For example, in the case of docker, only DockerConfig type secrets are honored. More info: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
+     */
+    imagePullSecrets?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecImagePullSecret>[]>;
+    /**
+     * List of init containers belonging to the pod. Init containers always run to completion and each must complete successfully before the next is started. More info: https://kubernetes.io/docs/concepts/workloads/pods/init-containers/
+     */
+    initContainers?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecInitContainer>[]>;
+    /**
+     * NodeName is a request to schedule this pod onto a specific node. If it is non-empty, the scheduler simply schedules this pod onto that node, assuming that it fits resource requirements.
+     */
+    nodeName?: pulumi.Input<string>;
+    /**
+     * NodeSelector is a selector which must be true for the pod to fit on a node. Selector which must match a node's labels for the pod to be scheduled on that node. More info: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/.
+     */
+    nodeSelector?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * If specified, indicates the pod's priority. "system-node-critical" and "system-cluster-critical" are two special keywords which indicate the highest priorities with the former being the highest priority. Any other name must be defined by creating a PriorityClass object with that name. If not specified, the pod priority will be default or zero if there is no default.
+     */
+    priorityClassName?: pulumi.Input<string>;
+    /**
+     * If specified, all readiness gates will be evaluated for pod readiness. A pod is ready when all its containers are ready AND all conditions specified in the readiness gates have status equal to "True" More info: https://git.k8s.io/enhancements/keps/sig-network/0007-pod-ready%2B%2B.md
+     */
+    readinessGates?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecReadinessGate>[]>;
+    /**
+     * Restart policy for all containers within the pod. One of OnFailure, Never. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#restart-policy. Defaults to `Never`.
+     */
+    restartPolicy?: pulumi.Input<string>;
+    /**
+     * RuntimeClassName is a feature for selecting the container runtime configuration. The container runtime configuration is used to run a Pod's containers. More info: https://kubernetes.io/docs/concepts/containers/runtime-class
+     */
+    runtimeClassName?: pulumi.Input<string>;
+    /**
+     * If specified, the pod will be dispatched by specified scheduler. If not specified, the pod will be dispatched by default scheduler.
+     */
+    schedulerName?: pulumi.Input<string>;
+    /**
+     * SecurityContext holds pod-level security attributes and common container settings. Optional: Defaults to empty
+     */
+    securityContext?: pulumi.Input<inputs.K8sJobSpecTemplateSpecSecurityContext>;
+    /**
+     * ServiceAccountName is the name of the ServiceAccount to use to run this pod. More info: http://releases.k8s.io/HEAD/docs/design/service_accounts.md.
+     */
+    serviceAccountName?: pulumi.Input<string>;
+    /**
+     * Share a single process namespace between all of the containers in a pod. When this is set containers will be able to view and signal processes from other containers in the same pod, and the first process in each container will not be assigned PID 1. HostPID and ShareProcessNamespace cannot both be set. Optional: Defaults to false. Defaults to `false`.
+     */
+    shareProcessNamespace?: pulumi.Input<boolean>;
+    /**
+     * If specified, the fully qualified Pod hostname will be "...svc.". If not specified, the pod will not have a domainname at all..
+     */
+    subdomain?: pulumi.Input<string>;
+    /**
+     * Optional duration in seconds the pod needs to terminate gracefully. May be decreased in delete request. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period will be used instead. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process.
+     */
+    terminationGracePeriodSeconds?: pulumi.Input<number>;
+    /**
+     * If specified, the pod's toleration. Optional: Defaults to empty
+     */
+    tolerations?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecToleration>[]>;
+    /**
+     * describes how a group of pods ought to spread across topology domains. Scheduler will schedule pods in a way which abides by the constraints.
+     */
+    topologySpreadConstraints?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecTopologySpreadConstraint>[]>;
+    /**
+     * List of volumes that can be mounted by containers belonging to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes
+     */
+    volumes?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecVolume>[]>;
+}
+
+export interface K8sJobSpecTemplateSpecAffinity {
+    /**
+     * Node affinity scheduling rules for the pod.
+     */
+    nodeAffinity?: pulumi.Input<inputs.K8sJobSpecTemplateSpecAffinityNodeAffinity>;
+    /**
+     * Inter-pod topological affinity. rules that specify that certain pods should be placed in the same topological domain (e.g. same node, same rack, same zone, same power domain, etc.)
+     */
+    podAffinity?: pulumi.Input<inputs.K8sJobSpecTemplateSpecAffinityPodAffinity>;
+    /**
+     * Inter-pod topological affinity. rules that specify that certain pods should be placed in the same topological domain (e.g. same node, same rack, same zone, same power domain, etc.)
+     */
+    podAntiAffinity?: pulumi.Input<inputs.K8sJobSpecTemplateSpecAffinityPodAntiAffinity>;
+}
+
+export interface K8sJobSpecTemplateSpecAffinityNodeAffinity {
+    /**
+     * The scheduler will prefer to schedule pods to nodes that satisfy the affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions. The node that is most preferred is the one with the greatest sum of weights, i.e. for each node that meets all of the scheduling requirements (resource request, RequiredDuringScheduling affinity expressions, etc.), compute a sum by iterating through the elements of this field and adding 'weight' to the sum if the node matches the corresponding MatchExpressions; the node(s) with the highest sum are the most preferred.
+     */
+    preferredDuringSchedulingIgnoredDuringExecutions?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecution>[]>;
+    /**
+     * If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a node label update), the system may or may not try to eventually evict the pod from its node.
+     */
+    requiredDuringSchedulingIgnoredDuringExecution?: pulumi.Input<inputs.K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution>;
+}
+
+export interface K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecution {
+    /**
+     * A node selector term, associated with the corresponding weight.
+     */
+    preference: pulumi.Input<inputs.K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreference>;
+    /**
+     * weight is in the range 1-100
+     */
+    weight?: pulumi.Input<number>;
+}
+
+export interface K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreference {
+    /**
+     * List of node selector requirements. The requirements are ANDed.
+     */
+    matchExpressions?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpression>[]>;
+}
+
+export interface K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpression {
+    /**
+     * The label key that the selector applies to.
+     */
+    key?: pulumi.Input<string>;
+    /**
+     * Operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists, DoesNotExist. Gt, and Lt.
+     */
+    operator?: pulumi.Input<string>;
+    /**
+     * Values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch.
+     */
+    values?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution {
+    /**
+     * List of node selector terms. The terms are ORed.
+     */
+    nodeSelectorTerms?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTerm>[]>;
+}
+
+export interface K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTerm {
+    /**
+     * List of node selector requirements. The requirements are ANDed.
+     */
+    matchExpressions?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpression>[]>;
+}
+
+export interface K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpression {
+    /**
+     * The label key that the selector applies to.
+     */
+    key?: pulumi.Input<string>;
+    /**
+     * Operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists, DoesNotExist. Gt, and Lt.
+     */
+    operator?: pulumi.Input<string>;
+    /**
+     * Values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch.
+     */
+    values?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface K8sJobSpecTemplateSpecAffinityPodAffinity {
+    /**
+     * The scheduler will prefer to schedule pods to nodes that satisfy the anti-affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions. The node that is most preferred is the one with the greatest sum of weights, i.e. for each node that meets all of the scheduling requirements (resource request, RequiredDuringScheduling anti-affinity expressions, etc.), compute a sum by iterating through the elements of this field and adding 'weight' to the sum if the node matches the corresponding MatchExpressions; the node(s) with the highest sum are the most preferred.
+     */
+    preferredDuringSchedulingIgnoredDuringExecutions?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecution>[]>;
+    /**
+     * If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system may or may not try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each PodAffinityTerm are intersected, i.e. all terms must be satisfied.
+     */
+    requiredDuringSchedulingIgnoredDuringExecutions?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecution>[]>;
+}
+
+export interface K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecution {
+    /**
+     * A pod affinity term, associated with the corresponding weight
+     */
+    podAffinityTerm: pulumi.Input<inputs.K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTerm>;
+    /**
+     * weight associated with matching the corresponding podAffinityTerm, in the range 1-100
+     */
+    weight: pulumi.Input<number>;
+}
+
+export interface K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTerm {
+    /**
+     * A label query over a set of resources, in this case pods.
+     */
+    labelSelectors?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector>[]>;
+    /**
+     * namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means 'this pod's namespace'
+     */
+    namespaces?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * empty topology key is interpreted by the scheduler as 'all topologies'
+     */
+    topologyKey?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector {
+    /**
+     * A list of label selector requirements. The requirements are ANDed.
+     */
+    matchExpressions?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression>[]>;
+    /**
+     * A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+     */
+    matchLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression {
+    /**
+     * The label key that the selector applies to.
+     */
+    key?: pulumi.Input<string>;
+    /**
+     * A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
+     */
+    operator?: pulumi.Input<string>;
+    /**
+     * An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
+     */
+    values?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecution {
+    /**
+     * A label query over a set of resources, in this case pods.
+     */
+    labelSelectors?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector>[]>;
+    /**
+     * namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means 'this pod's namespace'
+     */
+    namespaces?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * empty topology key is interpreted by the scheduler as 'all topologies'
+     */
+    topologyKey?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector {
+    /**
+     * A list of label selector requirements. The requirements are ANDed.
+     */
+    matchExpressions?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression>[]>;
+    /**
+     * A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+     */
+    matchLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression {
+    /**
+     * The label key that the selector applies to.
+     */
+    key?: pulumi.Input<string>;
+    /**
+     * A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
+     */
+    operator?: pulumi.Input<string>;
+    /**
+     * An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
+     */
+    values?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface K8sJobSpecTemplateSpecAffinityPodAntiAffinity {
+    /**
+     * The scheduler will prefer to schedule pods to nodes that satisfy the anti-affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions. The node that is most preferred is the one with the greatest sum of weights, i.e. for each node that meets all of the scheduling requirements (resource request, RequiredDuringScheduling anti-affinity expressions, etc.), compute a sum by iterating through the elements of this field and adding 'weight' to the sum if the node matches the corresponding MatchExpressions; the node(s) with the highest sum are the most preferred.
+     */
+    preferredDuringSchedulingIgnoredDuringExecutions?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecution>[]>;
+    /**
+     * If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system may or may not try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each PodAffinityTerm are intersected, i.e. all terms must be satisfied.
+     */
+    requiredDuringSchedulingIgnoredDuringExecutions?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecution>[]>;
+}
+
+export interface K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecution {
+    /**
+     * A pod affinity term, associated with the corresponding weight
+     */
+    podAffinityTerm: pulumi.Input<inputs.K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTerm>;
+    /**
+     * weight associated with matching the corresponding podAffinityTerm, in the range 1-100
+     */
+    weight: pulumi.Input<number>;
+}
+
+export interface K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTerm {
+    /**
+     * A label query over a set of resources, in this case pods.
+     */
+    labelSelectors?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector>[]>;
+    /**
+     * namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means 'this pod's namespace'
+     */
+    namespaces?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * empty topology key is interpreted by the scheduler as 'all topologies'
+     */
+    topologyKey?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector {
+    /**
+     * A list of label selector requirements. The requirements are ANDed.
+     */
+    matchExpressions?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression>[]>;
+    /**
+     * A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+     */
+    matchLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression {
+    /**
+     * The label key that the selector applies to.
+     */
+    key?: pulumi.Input<string>;
+    /**
+     * A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
+     */
+    operator?: pulumi.Input<string>;
+    /**
+     * An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
+     */
+    values?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecution {
+    /**
+     * A label query over a set of resources, in this case pods.
+     */
+    labelSelectors?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector>[]>;
+    /**
+     * namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means 'this pod's namespace'
+     */
+    namespaces?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * empty topology key is interpreted by the scheduler as 'all topologies'
+     */
+    topologyKey?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector {
+    /**
+     * A list of label selector requirements. The requirements are ANDed.
+     */
+    matchExpressions?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression>[]>;
+    /**
+     * A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+     */
+    matchLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression {
+    /**
+     * The label key that the selector applies to.
+     */
+    key?: pulumi.Input<string>;
+    /**
+     * A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
+     */
+    operator?: pulumi.Input<string>;
+    /**
+     * An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
+     */
+    values?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface K8sJobSpecTemplateSpecContainer {
+    /**
+     * Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR*NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR*NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+     */
+    args?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR*NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR*NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+     */
+    commands?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of sources to populate environment variables in the container. The keys defined within a source must be a C*IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated.
+     */
+    envFroms?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecContainerEnvFrom>[]>;
+    /**
+     * List of environment variables to set in the container. Cannot be updated.
+     */
+    envs?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecContainerEnv>[]>;
+    /**
+     * Docker image name. More info: https://kubernetes.io/docs/concepts/containers/images/
+     */
+    image?: pulumi.Input<string>;
+    /**
+     * Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/images/#updating-images
+     */
+    imagePullPolicy?: pulumi.Input<string>;
+    /**
+     * Actions that the management system should take in response to container lifecycle events
+     */
+    lifecycle?: pulumi.Input<inputs.K8sJobSpecTemplateSpecContainerLifecycle>;
+    /**
+     * Periodic probe of container liveness. Container will be restarted if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    livenessProbe?: pulumi.Input<inputs.K8sJobSpecTemplateSpecContainerLivenessProbe>;
+    /**
+     * Name of the container specified as a DNS*LABEL. Each container in a pod must have a unique name (DNS*LABEL). Cannot be updated.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * List of ports to expose from the container. Exposing a port here gives the system additional information about the network connections a container uses, but is primarily informational. Not specifying a port here DOES NOT prevent that port from being exposed. Any port which is listening on the default "0.0.0.0" address inside a container will be accessible from the network. Cannot be updated.
+     */
+    ports?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecContainerPort>[]>;
+    /**
+     * Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    readinessProbe?: pulumi.Input<inputs.K8sJobSpecTemplateSpecContainerReadinessProbe>;
+    /**
+     * Compute Resources required by this container. Cannot be updated. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+     */
+    resources?: pulumi.Input<inputs.K8sJobSpecTemplateSpecContainerResources>;
+    /**
+     * Security options the pod should run with. More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+     */
+    securityContext?: pulumi.Input<inputs.K8sJobSpecTemplateSpecContainerSecurityContext>;
+    /**
+     * StartupProbe indicates that the Pod has successfully initialized. If specified, no other probes are executed until this completes successfully. If this probe fails, the Pod will be restarted, just as if the livenessProbe failed. This can be used to provide different probe parameters at the beginning of a Pod's lifecycle, when it might take a long time to load data or warm a cache, than during steady-state operation. This cannot be updated. This is an alpha feature enabled by the StartupProbe feature flag. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+     */
+    startupProbe?: pulumi.Input<inputs.K8sJobSpecTemplateSpecContainerStartupProbe>;
+    /**
+     * Whether this container should allocate a buffer for stdin in the container runtime. If this is not set, reads from stdin in the container will always result in EOF.  Defaults to `false`.
+     */
+    stdin?: pulumi.Input<boolean>;
+    /**
+     * Whether the container runtime should close the stdin channel after it has been opened by a single attach. When stdin is true the stdin stream will remain open across multiple attach sessions. If stdinOnce is set to true, stdin is opened on container start, is empty until the first client attaches to stdin, and then remains open and accepts data until the client disconnects, at which time stdin is closed and remains closed until the container is restarted. If this flag is false, a container processes that reads from stdin will never receive an EOF. Defaults to `false`.
+     */
+    stdinOnce?: pulumi.Input<boolean>;
+    /**
+     * Optional: Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Defaults to /dev/termination-log. Cannot be updated. Defaults to `/dev/termination-log`.
+     */
+    terminationMessagePath?: pulumi.Input<string>;
+    /**
+     * Optional: Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
+     */
+    terminationMessagePolicy?: pulumi.Input<string>;
+    /**
+     * Whether this container should allocate a TTY for itself Defaults to `false`.
+     */
+    tty?: pulumi.Input<boolean>;
+    /**
+     * Pod volumes to mount into the container's filesystem. Cannot be updated.
+     */
+    volumeMounts?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecContainerVolumeMount>[]>;
+    /**
+     * Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image. Cannot be updated.
+     */
+    workingDir?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecContainerEnv {
+    /**
+     * Name of the environment variable. Must be a C_IDENTIFIER
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Variable references $(VAR*NAME) are expanded using the previous defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR*NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
+     */
+    value?: pulumi.Input<string>;
+    /**
+     * Source for the environment variable's value
+     */
+    valueFrom?: pulumi.Input<inputs.K8sJobSpecTemplateSpecContainerEnvValueFrom>;
+}
+
+export interface K8sJobSpecTemplateSpecContainerEnvFrom {
+    /**
+     * The ConfigMap to select from
+     */
+    configMapRef?: pulumi.Input<inputs.K8sJobSpecTemplateSpecContainerEnvFromConfigMapRef>;
+    /**
+     * An optional identifer to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
+     */
+    prefix?: pulumi.Input<string>;
+    /**
+     * The Secret to select from
+     */
+    secretRef?: pulumi.Input<inputs.K8sJobSpecTemplateSpecContainerEnvFromSecretRef>;
+}
+
+export interface K8sJobSpecTemplateSpecContainerEnvFromConfigMapRef {
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Specify whether the ConfigMap must be defined
+     */
+    optional?: pulumi.Input<boolean>;
+}
+
+export interface K8sJobSpecTemplateSpecContainerEnvFromSecretRef {
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Specify whether the Secret must be defined
+     */
+    optional?: pulumi.Input<boolean>;
+}
+
+export interface K8sJobSpecTemplateSpecContainerEnvValueFrom {
+    /**
+     * Selects a key of a ConfigMap.
+     */
+    configMapKeyRef?: pulumi.Input<inputs.K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRef>;
+    /**
+     * Selects a field of the pod: supports metadata.name, metadata.namespace, metadata.labels, metadata.annotations, spec.nodeName, spec.serviceAccountName, status.podIP.
+     */
+    fieldRef?: pulumi.Input<inputs.K8sJobSpecTemplateSpecContainerEnvValueFromFieldRef>;
+    /**
+     * Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.
+     */
+    resourceFieldRef?: pulumi.Input<inputs.K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRef>;
+    /**
+     * Selects a key of a secret in the pod's namespace.
+     */
+    secretKeyRef?: pulumi.Input<inputs.K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRef>;
+}
+
+export interface K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRef {
+    /**
+     * The key to select.
+     */
+    key?: pulumi.Input<string>;
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Specify whether the ConfigMap or its key must be defined.
+     */
+    optional?: pulumi.Input<boolean>;
+}
+
+export interface K8sJobSpecTemplateSpecContainerEnvValueFromFieldRef {
+    /**
+     * Version of the schema the FieldPath is written in terms of, defaults to "v1". Defaults to `v1`.
+     */
+    apiVersion?: pulumi.Input<string>;
+    /**
+     * Path of the field to select in the specified API version
+     */
+    fieldPath?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRef {
+    containerName?: pulumi.Input<string>;
+    /**
+     * Defaults to `1`.
+     */
+    divisor?: pulumi.Input<string>;
+    /**
+     * Resource to select
+     */
+    resource: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRef {
+    /**
+     * The key of the secret to select from. Must be a valid secret key.
+     */
+    key?: pulumi.Input<string>;
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Specify whether the Secret or its key must be defined.
+     */
+    optional?: pulumi.Input<boolean>;
+}
+
+export interface K8sJobSpecTemplateSpecContainerLifecycle {
+    /**
+     * post*start is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+     */
+    postStarts?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecContainerLifecyclePostStart>[]>;
+    /**
+     * pre*stop is called immediately before a container is terminated. The container is terminated after the handler completes. The reason for termination is passed to the handler. Regardless of the outcome of the handler, the container is eventually terminated. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+     */
+    preStops?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecContainerLifecyclePreStop>[]>;
+}
+
+export interface K8sJobSpecTemplateSpecContainerLifecyclePostStart {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: pulumi.Input<inputs.K8sJobSpecTemplateSpecContainerLifecyclePostStartExec>;
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: pulumi.Input<inputs.K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGet>;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocket>[]>;
+}
+
+export interface K8sJobSpecTemplateSpecContainerLifecyclePostStartExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeader>[]>;
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: pulumi.Input<string>;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port?: pulumi.Input<string>;
+    /**
+     * Scheme to use for connecting to the host. Defaults to `HTTP`.
+     */
+    scheme?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The header field value
+     */
+    value?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecContainerLifecyclePreStop {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: pulumi.Input<inputs.K8sJobSpecTemplateSpecContainerLifecyclePreStopExec>;
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: pulumi.Input<inputs.K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGet>;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocket>[]>;
+}
+
+export interface K8sJobSpecTemplateSpecContainerLifecyclePreStopExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeader>[]>;
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: pulumi.Input<string>;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port?: pulumi.Input<string>;
+    /**
+     * Scheme to use for connecting to the host. Defaults to `HTTP`.
+     */
+    scheme?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The header field value
+     */
+    value?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecContainerLivenessProbe {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: pulumi.Input<inputs.K8sJobSpecTemplateSpecContainerLivenessProbeExec>;
+    /**
+     * Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to `3`.
+     */
+    failureThreshold?: pulumi.Input<number>;
+    /**
+     * GRPC specifies an action involving a GRPC port.
+     */
+    grpcs?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecContainerLivenessProbeGrpc>[]>;
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: pulumi.Input<inputs.K8sJobSpecTemplateSpecContainerLivenessProbeHttpGet>;
+    /**
+     * Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    initialDelaySeconds?: pulumi.Input<number>;
+    /**
+     * How often (in seconds) to perform the probe Defaults to `10`.
+     */
+    periodSeconds?: pulumi.Input<number>;
+    /**
+     * Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to `1`.
+     */
+    successThreshold?: pulumi.Input<number>;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocket>[]>;
+    /**
+     * Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes Defaults to `1`.
+     */
+    timeoutSeconds?: pulumi.Input<number>;
+}
+
+export interface K8sJobSpecTemplateSpecContainerLivenessProbeExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface K8sJobSpecTemplateSpecContainerLivenessProbeGrpc {
+    /**
+     * Number of the port to access on the container. Number must be in the range 1 to 65535.
+     */
+    port: pulumi.Input<number>;
+    /**
+     * Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+     */
+    service?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecContainerLivenessProbeHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeader>[]>;
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: pulumi.Input<string>;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port?: pulumi.Input<string>;
+    /**
+     * Scheme to use for connecting to the host. Defaults to `HTTP`.
+     */
+    scheme?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The header field value
+     */
+    value?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecContainerPort {
+    /**
+     * Number of port to expose on the pod's IP address. This must be a valid port number, 0 < x < 65536.
+     */
+    containerPort: pulumi.Input<number>;
+    /**
+     * What host IP to bind the external port to.
+     */
+    hostIp?: pulumi.Input<string>;
+    /**
+     * Number of port to expose on the host. If specified, this must be a valid port number, 0 < x < 65536. If HostNetwork is specified, this must match ContainerPort. Most containers do not need this.
+     */
+    hostPort?: pulumi.Input<number>;
+    /**
+     * If specified, this must be an IANA*SVC*NAME and unique within the pod. Each named port in a pod must have a unique name. Name for the port that can be referred to by services
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Protocol for port. Must be UDP or TCP. Defaults to "TCP". Defaults to `TCP`.
+     */
+    protocol?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecContainerReadinessProbe {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: pulumi.Input<inputs.K8sJobSpecTemplateSpecContainerReadinessProbeExec>;
+    /**
+     * Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to `3`.
+     */
+    failureThreshold?: pulumi.Input<number>;
+    /**
+     * GRPC specifies an action involving a GRPC port.
+     */
+    grpcs?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecContainerReadinessProbeGrpc>[]>;
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: pulumi.Input<inputs.K8sJobSpecTemplateSpecContainerReadinessProbeHttpGet>;
+    /**
+     * Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    initialDelaySeconds?: pulumi.Input<number>;
+    /**
+     * How often (in seconds) to perform the probe Defaults to `10`.
+     */
+    periodSeconds?: pulumi.Input<number>;
+    /**
+     * Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to `1`.
+     */
+    successThreshold?: pulumi.Input<number>;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocket>[]>;
+    /**
+     * Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes Defaults to `1`.
+     */
+    timeoutSeconds?: pulumi.Input<number>;
+}
+
+export interface K8sJobSpecTemplateSpecContainerReadinessProbeExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface K8sJobSpecTemplateSpecContainerReadinessProbeGrpc {
+    /**
+     * Number of the port to access on the container. Number must be in the range 1 to 65535.
+     */
+    port: pulumi.Input<number>;
+    /**
+     * Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+     */
+    service?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecContainerReadinessProbeHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeader>[]>;
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: pulumi.Input<string>;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port?: pulumi.Input<string>;
+    /**
+     * Scheme to use for connecting to the host. Defaults to `HTTP`.
+     */
+    scheme?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The header field value
+     */
+    value?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecContainerResources {
+    /**
+     * Describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+     */
+    limits?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
+     */
+    requests?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface K8sJobSpecTemplateSpecContainerSecurityContext {
+    /**
+     * AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the no*new*privs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP*SYS*ADMIN Defaults to `true`.
+     */
+    allowPrivilegeEscalation?: pulumi.Input<boolean>;
+    /**
+     * The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime.
+     */
+    capabilities?: pulumi.Input<inputs.K8sJobSpecTemplateSpecContainerSecurityContextCapabilities>;
+    /**
+     * Run container in privileged mode. Processes in privileged containers are essentially equivalent to root on the host. Defaults to false. Defaults to `false`.
+     */
+    privileged?: pulumi.Input<boolean>;
+    /**
+     * Whether this container has a read-only root filesystem. Default is false. Defaults to `false`.
+     */
+    readOnlyRootFilesystem?: pulumi.Input<boolean>;
+    /**
+     * The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+     */
+    runAsGroup?: pulumi.Input<string>;
+    /**
+     * Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+     */
+    runAsNonRoot?: pulumi.Input<boolean>;
+    /**
+     * The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+     */
+    runAsUser?: pulumi.Input<string>;
+    /**
+     * The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+     */
+    seLinuxOptions?: pulumi.Input<inputs.K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptions>;
+    /**
+     * The seccomp options to use by the containers in this pod. Note that this field cannot be set when spec.os.name is windows.
+     */
+    seccompProfile?: pulumi.Input<inputs.K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfile>;
+}
+
+export interface K8sJobSpecTemplateSpecContainerSecurityContextCapabilities {
+    /**
+     * Added capabilities
+     */
+    adds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Removed capabilities
+     */
+    drops?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptions {
+    /**
+     * Level is SELinux level label that applies to the container.
+     */
+    level?: pulumi.Input<string>;
+    /**
+     * Role is a SELinux role label that applies to the container.
+     */
+    role?: pulumi.Input<string>;
+    /**
+     * Type is a SELinux type label that applies to the container.
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * User is a SELinux user label that applies to the container.
+     */
+    user?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfile {
+    /**
+     * Localhost Profile indicates a profile defined in a file on the node should be used. The profile must be preconfigured on the node to work. Defaults to ``.
+     */
+    localhostProfile?: pulumi.Input<string>;
+    /**
+     * Type indicates which kind of seccomp profile will be applied. Valid options are: Localhost, RuntimeDefault, Unconfined. Defaults to `Unconfined`.
+     */
+    type?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecContainerStartupProbe {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: pulumi.Input<inputs.K8sJobSpecTemplateSpecContainerStartupProbeExec>;
+    /**
+     * Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to `3`.
+     */
+    failureThreshold?: pulumi.Input<number>;
+    /**
+     * GRPC specifies an action involving a GRPC port.
+     */
+    grpcs?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecContainerStartupProbeGrpc>[]>;
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: pulumi.Input<inputs.K8sJobSpecTemplateSpecContainerStartupProbeHttpGet>;
+    /**
+     * Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    initialDelaySeconds?: pulumi.Input<number>;
+    /**
+     * How often (in seconds) to perform the probe Defaults to `10`.
+     */
+    periodSeconds?: pulumi.Input<number>;
+    /**
+     * Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to `1`.
+     */
+    successThreshold?: pulumi.Input<number>;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecContainerStartupProbeTcpSocket>[]>;
+    /**
+     * Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes Defaults to `1`.
+     */
+    timeoutSeconds?: pulumi.Input<number>;
+}
+
+export interface K8sJobSpecTemplateSpecContainerStartupProbeExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface K8sJobSpecTemplateSpecContainerStartupProbeGrpc {
+    /**
+     * Number of the port to access on the container. Number must be in the range 1 to 65535.
+     */
+    port: pulumi.Input<number>;
+    /**
+     * Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+     */
+    service?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecContainerStartupProbeHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeader>[]>;
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: pulumi.Input<string>;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port?: pulumi.Input<string>;
+    /**
+     * Scheme to use for connecting to the host. Defaults to `HTTP`.
+     */
+    scheme?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The header field value
+     */
+    value?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecContainerStartupProbeTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecContainerVolumeMount {
+    /**
+     * Path within the container at which the volume should be mounted. Must not contain ':'.
+     */
+    mountPath: pulumi.Input<string>;
+    /**
+     * Mount propagation mode. mountPropagation determines how mounts are propagated from the host to container and the other way around. Valid values are None (default), HostToContainer and Bidirectional. Defaults to `None`.
+     */
+    mountPropagation?: pulumi.Input<string>;
+    /**
+     * This must match the Name of a Volume.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false. Defaults to `false`.
+     */
+    readOnly?: pulumi.Input<boolean>;
+    /**
+     * Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
+     */
+    subPath?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecDnsConfig {
+    /**
+     * A list of DNS name server IP addresses. This will be appended to the base nameservers generated from DNSPolicy. Duplicated nameservers will be removed.
+     */
+    nameservers?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of DNS resolver options. This will be merged with the base options generated from DNSPolicy. Duplicated entries will be removed. Resolution options given in Options will override those that appear in the base DNSPolicy.
+     */
+    options?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecDnsConfigOption>[]>;
+    /**
+     * A list of DNS search domains for host-name lookup. This will be appended to the base search paths generated from DNSPolicy. Duplicated search paths will be removed.
+     */
+    searches?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface K8sJobSpecTemplateSpecDnsConfigOption {
+    /**
+     * Name of the option.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Value of the option. Optional: Defaults to empty.
+     */
+    value?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecHostAlias {
+    /**
+     * Hostnames for the IP address.
+     */
+    hostnames: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * IP address of the host file entry.
+     */
+    ip: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecImagePullSecret {
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainer {
+    /**
+     * Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR*NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR*NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+     */
+    args?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR*NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR*NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+     */
+    commands?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of sources to populate environment variables in the container. The keys defined within a source must be a C*IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated.
+     */
+    envFroms?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecInitContainerEnvFrom>[]>;
+    /**
+     * List of environment variables to set in the container. Cannot be updated.
+     */
+    envs?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecInitContainerEnv>[]>;
+    /**
+     * Docker image name. More info: https://kubernetes.io/docs/concepts/containers/images/
+     */
+    image?: pulumi.Input<string>;
+    /**
+     * Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/images/#updating-images
+     */
+    imagePullPolicy?: pulumi.Input<string>;
+    /**
+     * Actions that the management system should take in response to container lifecycle events
+     */
+    lifecycle?: pulumi.Input<inputs.K8sJobSpecTemplateSpecInitContainerLifecycle>;
+    /**
+     * Periodic probe of container liveness. Container will be restarted if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    livenessProbe?: pulumi.Input<inputs.K8sJobSpecTemplateSpecInitContainerLivenessProbe>;
+    /**
+     * Name of the container specified as a DNS*LABEL. Each container in a pod must have a unique name (DNS*LABEL). Cannot be updated.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * List of ports to expose from the container. Exposing a port here gives the system additional information about the network connections a container uses, but is primarily informational. Not specifying a port here DOES NOT prevent that port from being exposed. Any port which is listening on the default "0.0.0.0" address inside a container will be accessible from the network. Cannot be updated.
+     */
+    ports?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecInitContainerPort>[]>;
+    /**
+     * Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    readinessProbe?: pulumi.Input<inputs.K8sJobSpecTemplateSpecInitContainerReadinessProbe>;
+    /**
+     * Compute Resources required by this container. Cannot be updated. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+     */
+    resources?: pulumi.Input<inputs.K8sJobSpecTemplateSpecInitContainerResources>;
+    /**
+     * Security options the pod should run with. More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+     */
+    securityContext?: pulumi.Input<inputs.K8sJobSpecTemplateSpecInitContainerSecurityContext>;
+    /**
+     * StartupProbe indicates that the Pod has successfully initialized. If specified, no other probes are executed until this completes successfully. If this probe fails, the Pod will be restarted, just as if the livenessProbe failed. This can be used to provide different probe parameters at the beginning of a Pod's lifecycle, when it might take a long time to load data or warm a cache, than during steady-state operation. This cannot be updated. This is an alpha feature enabled by the StartupProbe feature flag. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+     */
+    startupProbe?: pulumi.Input<inputs.K8sJobSpecTemplateSpecInitContainerStartupProbe>;
+    /**
+     * Whether this container should allocate a buffer for stdin in the container runtime. If this is not set, reads from stdin in the container will always result in EOF.  Defaults to `false`.
+     */
+    stdin?: pulumi.Input<boolean>;
+    /**
+     * Whether the container runtime should close the stdin channel after it has been opened by a single attach. When stdin is true the stdin stream will remain open across multiple attach sessions. If stdinOnce is set to true, stdin is opened on container start, is empty until the first client attaches to stdin, and then remains open and accepts data until the client disconnects, at which time stdin is closed and remains closed until the container is restarted. If this flag is false, a container processes that reads from stdin will never receive an EOF. Defaults to `false`.
+     */
+    stdinOnce?: pulumi.Input<boolean>;
+    /**
+     * Optional: Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Defaults to /dev/termination-log. Cannot be updated. Defaults to `/dev/termination-log`.
+     */
+    terminationMessagePath?: pulumi.Input<string>;
+    /**
+     * Optional: Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
+     */
+    terminationMessagePolicy?: pulumi.Input<string>;
+    /**
+     * Whether this container should allocate a TTY for itself Defaults to `false`.
+     */
+    tty?: pulumi.Input<boolean>;
+    /**
+     * Pod volumes to mount into the container's filesystem. Cannot be updated.
+     */
+    volumeMounts?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecInitContainerVolumeMount>[]>;
+    /**
+     * Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image. Cannot be updated.
+     */
+    workingDir?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerEnv {
+    /**
+     * Name of the environment variable. Must be a C_IDENTIFIER
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Variable references $(VAR*NAME) are expanded using the previous defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR*NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
+     */
+    value?: pulumi.Input<string>;
+    /**
+     * Source for the environment variable's value
+     */
+    valueFrom?: pulumi.Input<inputs.K8sJobSpecTemplateSpecInitContainerEnvValueFrom>;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerEnvFrom {
+    /**
+     * The ConfigMap to select from
+     */
+    configMapRef?: pulumi.Input<inputs.K8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRef>;
+    /**
+     * An optional identifer to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
+     */
+    prefix?: pulumi.Input<string>;
+    /**
+     * The Secret to select from
+     */
+    secretRef?: pulumi.Input<inputs.K8sJobSpecTemplateSpecInitContainerEnvFromSecretRef>;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRef {
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Specify whether the ConfigMap must be defined
+     */
+    optional?: pulumi.Input<boolean>;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerEnvFromSecretRef {
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Specify whether the Secret must be defined
+     */
+    optional?: pulumi.Input<boolean>;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerEnvValueFrom {
+    /**
+     * Selects a key of a ConfigMap.
+     */
+    configMapKeyRef?: pulumi.Input<inputs.K8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRef>;
+    /**
+     * Selects a field of the pod: supports metadata.name, metadata.namespace, metadata.labels, metadata.annotations, spec.nodeName, spec.serviceAccountName, status.podIP.
+     */
+    fieldRef?: pulumi.Input<inputs.K8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRef>;
+    /**
+     * Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.
+     */
+    resourceFieldRef?: pulumi.Input<inputs.K8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRef>;
+    /**
+     * Selects a key of a secret in the pod's namespace.
+     */
+    secretKeyRef?: pulumi.Input<inputs.K8sJobSpecTemplateSpecInitContainerEnvValueFromSecretKeyRef>;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRef {
+    /**
+     * The key to select.
+     */
+    key?: pulumi.Input<string>;
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Specify whether the ConfigMap or its key must be defined.
+     */
+    optional?: pulumi.Input<boolean>;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRef {
+    /**
+     * Version of the schema the FieldPath is written in terms of, defaults to "v1". Defaults to `v1`.
+     */
+    apiVersion?: pulumi.Input<string>;
+    /**
+     * Path of the field to select in the specified API version
+     */
+    fieldPath?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRef {
+    containerName?: pulumi.Input<string>;
+    /**
+     * Defaults to `1`.
+     */
+    divisor?: pulumi.Input<string>;
+    /**
+     * Resource to select
+     */
+    resource: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerEnvValueFromSecretKeyRef {
+    /**
+     * The key of the secret to select from. Must be a valid secret key.
+     */
+    key?: pulumi.Input<string>;
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Specify whether the Secret or its key must be defined.
+     */
+    optional?: pulumi.Input<boolean>;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerLifecycle {
+    /**
+     * post*start is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+     */
+    postStarts?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecInitContainerLifecyclePostStart>[]>;
+    /**
+     * pre*stop is called immediately before a container is terminated. The container is terminated after the handler completes. The reason for termination is passed to the handler. Regardless of the outcome of the handler, the container is eventually terminated. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+     */
+    preStops?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecInitContainerLifecyclePreStop>[]>;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerLifecyclePostStart {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: pulumi.Input<inputs.K8sJobSpecTemplateSpecInitContainerLifecyclePostStartExec>;
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: pulumi.Input<inputs.K8sJobSpecTemplateSpecInitContainerLifecyclePostStartHttpGet>;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecInitContainerLifecyclePostStartTcpSocket>[]>;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerLifecyclePostStartExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerLifecyclePostStartHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecInitContainerLifecyclePostStartHttpGetHttpHeader>[]>;
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: pulumi.Input<string>;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port?: pulumi.Input<string>;
+    /**
+     * Scheme to use for connecting to the host. Defaults to `HTTP`.
+     */
+    scheme?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerLifecyclePostStartHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The header field value
+     */
+    value?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerLifecyclePostStartTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerLifecyclePreStop {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: pulumi.Input<inputs.K8sJobSpecTemplateSpecInitContainerLifecyclePreStopExec>;
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: pulumi.Input<inputs.K8sJobSpecTemplateSpecInitContainerLifecyclePreStopHttpGet>;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecInitContainerLifecyclePreStopTcpSocket>[]>;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerLifecyclePreStopExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerLifecyclePreStopHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecInitContainerLifecyclePreStopHttpGetHttpHeader>[]>;
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: pulumi.Input<string>;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port?: pulumi.Input<string>;
+    /**
+     * Scheme to use for connecting to the host. Defaults to `HTTP`.
+     */
+    scheme?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerLifecyclePreStopHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The header field value
+     */
+    value?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerLifecyclePreStopTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerLivenessProbe {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: pulumi.Input<inputs.K8sJobSpecTemplateSpecInitContainerLivenessProbeExec>;
+    /**
+     * Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to `3`.
+     */
+    failureThreshold?: pulumi.Input<number>;
+    /**
+     * GRPC specifies an action involving a GRPC port.
+     */
+    grpcs?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecInitContainerLivenessProbeGrpc>[]>;
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: pulumi.Input<inputs.K8sJobSpecTemplateSpecInitContainerLivenessProbeHttpGet>;
+    /**
+     * Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    initialDelaySeconds?: pulumi.Input<number>;
+    /**
+     * How often (in seconds) to perform the probe Defaults to `10`.
+     */
+    periodSeconds?: pulumi.Input<number>;
+    /**
+     * Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to `1`.
+     */
+    successThreshold?: pulumi.Input<number>;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecInitContainerLivenessProbeTcpSocket>[]>;
+    /**
+     * Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes Defaults to `1`.
+     */
+    timeoutSeconds?: pulumi.Input<number>;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerLivenessProbeExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerLivenessProbeGrpc {
+    /**
+     * Number of the port to access on the container. Number must be in the range 1 to 65535.
+     */
+    port: pulumi.Input<number>;
+    /**
+     * Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+     */
+    service?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerLivenessProbeHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecInitContainerLivenessProbeHttpGetHttpHeader>[]>;
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: pulumi.Input<string>;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port?: pulumi.Input<string>;
+    /**
+     * Scheme to use for connecting to the host. Defaults to `HTTP`.
+     */
+    scheme?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerLivenessProbeHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The header field value
+     */
+    value?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerLivenessProbeTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerPort {
+    /**
+     * Number of port to expose on the pod's IP address. This must be a valid port number, 0 < x < 65536.
+     */
+    containerPort: pulumi.Input<number>;
+    /**
+     * What host IP to bind the external port to.
+     */
+    hostIp?: pulumi.Input<string>;
+    /**
+     * Number of port to expose on the host. If specified, this must be a valid port number, 0 < x < 65536. If HostNetwork is specified, this must match ContainerPort. Most containers do not need this.
+     */
+    hostPort?: pulumi.Input<number>;
+    /**
+     * If specified, this must be an IANA*SVC*NAME and unique within the pod. Each named port in a pod must have a unique name. Name for the port that can be referred to by services
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Protocol for port. Must be UDP or TCP. Defaults to "TCP". Defaults to `TCP`.
+     */
+    protocol?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerReadinessProbe {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: pulumi.Input<inputs.K8sJobSpecTemplateSpecInitContainerReadinessProbeExec>;
+    /**
+     * Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to `3`.
+     */
+    failureThreshold?: pulumi.Input<number>;
+    /**
+     * GRPC specifies an action involving a GRPC port.
+     */
+    grpcs?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecInitContainerReadinessProbeGrpc>[]>;
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: pulumi.Input<inputs.K8sJobSpecTemplateSpecInitContainerReadinessProbeHttpGet>;
+    /**
+     * Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    initialDelaySeconds?: pulumi.Input<number>;
+    /**
+     * How often (in seconds) to perform the probe Defaults to `10`.
+     */
+    periodSeconds?: pulumi.Input<number>;
+    /**
+     * Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to `1`.
+     */
+    successThreshold?: pulumi.Input<number>;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecInitContainerReadinessProbeTcpSocket>[]>;
+    /**
+     * Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes Defaults to `1`.
+     */
+    timeoutSeconds?: pulumi.Input<number>;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerReadinessProbeExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerReadinessProbeGrpc {
+    /**
+     * Number of the port to access on the container. Number must be in the range 1 to 65535.
+     */
+    port: pulumi.Input<number>;
+    /**
+     * Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+     */
+    service?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerReadinessProbeHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecInitContainerReadinessProbeHttpGetHttpHeader>[]>;
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: pulumi.Input<string>;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port?: pulumi.Input<string>;
+    /**
+     * Scheme to use for connecting to the host. Defaults to `HTTP`.
+     */
+    scheme?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerReadinessProbeHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The header field value
+     */
+    value?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerReadinessProbeTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerResources {
+    /**
+     * Describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+     */
+    limits?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
+     */
+    requests?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerSecurityContext {
+    /**
+     * AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the no*new*privs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP*SYS*ADMIN Defaults to `true`.
+     */
+    allowPrivilegeEscalation?: pulumi.Input<boolean>;
+    /**
+     * The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime.
+     */
+    capabilities?: pulumi.Input<inputs.K8sJobSpecTemplateSpecInitContainerSecurityContextCapabilities>;
+    /**
+     * Run container in privileged mode. Processes in privileged containers are essentially equivalent to root on the host. Defaults to false. Defaults to `false`.
+     */
+    privileged?: pulumi.Input<boolean>;
+    /**
+     * Whether this container has a read-only root filesystem. Default is false. Defaults to `false`.
+     */
+    readOnlyRootFilesystem?: pulumi.Input<boolean>;
+    /**
+     * The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+     */
+    runAsGroup?: pulumi.Input<string>;
+    /**
+     * Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+     */
+    runAsNonRoot?: pulumi.Input<boolean>;
+    /**
+     * The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+     */
+    runAsUser?: pulumi.Input<string>;
+    /**
+     * The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+     */
+    seLinuxOptions?: pulumi.Input<inputs.K8sJobSpecTemplateSpecInitContainerSecurityContextSeLinuxOptions>;
+    /**
+     * The seccomp options to use by the containers in this pod. Note that this field cannot be set when spec.os.name is windows.
+     */
+    seccompProfile?: pulumi.Input<inputs.K8sJobSpecTemplateSpecInitContainerSecurityContextSeccompProfile>;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerSecurityContextCapabilities {
+    /**
+     * Added capabilities
+     */
+    adds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Removed capabilities
+     */
+    drops?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerSecurityContextSeLinuxOptions {
+    /**
+     * Level is SELinux level label that applies to the container.
+     */
+    level?: pulumi.Input<string>;
+    /**
+     * Role is a SELinux role label that applies to the container.
+     */
+    role?: pulumi.Input<string>;
+    /**
+     * Type is a SELinux type label that applies to the container.
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * User is a SELinux user label that applies to the container.
+     */
+    user?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerSecurityContextSeccompProfile {
+    /**
+     * Localhost Profile indicates a profile defined in a file on the node should be used. The profile must be preconfigured on the node to work. Defaults to ``.
+     */
+    localhostProfile?: pulumi.Input<string>;
+    /**
+     * Type indicates which kind of seccomp profile will be applied. Valid options are: Localhost, RuntimeDefault, Unconfined. Defaults to `Unconfined`.
+     */
+    type?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerStartupProbe {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: pulumi.Input<inputs.K8sJobSpecTemplateSpecInitContainerStartupProbeExec>;
+    /**
+     * Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to `3`.
+     */
+    failureThreshold?: pulumi.Input<number>;
+    /**
+     * GRPC specifies an action involving a GRPC port.
+     */
+    grpcs?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecInitContainerStartupProbeGrpc>[]>;
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: pulumi.Input<inputs.K8sJobSpecTemplateSpecInitContainerStartupProbeHttpGet>;
+    /**
+     * Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    initialDelaySeconds?: pulumi.Input<number>;
+    /**
+     * How often (in seconds) to perform the probe Defaults to `10`.
+     */
+    periodSeconds?: pulumi.Input<number>;
+    /**
+     * Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to `1`.
+     */
+    successThreshold?: pulumi.Input<number>;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecInitContainerStartupProbeTcpSocket>[]>;
+    /**
+     * Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes Defaults to `1`.
+     */
+    timeoutSeconds?: pulumi.Input<number>;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerStartupProbeExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerStartupProbeGrpc {
+    /**
+     * Number of the port to access on the container. Number must be in the range 1 to 65535.
+     */
+    port: pulumi.Input<number>;
+    /**
+     * Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+     */
+    service?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerStartupProbeHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetHttpHeader>[]>;
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: pulumi.Input<string>;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port?: pulumi.Input<string>;
+    /**
+     * Scheme to use for connecting to the host. Defaults to `HTTP`.
+     */
+    scheme?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The header field value
+     */
+    value?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerStartupProbeTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerVolumeMount {
+    /**
+     * Path within the container at which the volume should be mounted. Must not contain ':'.
+     */
+    mountPath: pulumi.Input<string>;
+    /**
+     * Mount propagation mode. mountPropagation determines how mounts are propagated from the host to container and the other way around. Valid values are None (default), HostToContainer and Bidirectional. Defaults to `None`.
+     */
+    mountPropagation?: pulumi.Input<string>;
+    /**
+     * This must match the Name of a Volume.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false. Defaults to `false`.
+     */
+    readOnly?: pulumi.Input<boolean>;
+    /**
+     * Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
+     */
+    subPath?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecReadinessGate {
+    /**
+     * refers to a condition in the pod's condition list with matching type.
+     */
+    conditionType: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecSecurityContext {
+    /**
+     * A special supplemental group that applies to all containers in a pod. Some volume types allow the Kubelet to change the ownership of that volume to be owned by the pod: 1. The owning GID will be the FSGroup 2. The setgid bit is set (new files created in the volume will be owned by FSGroup) 3. The permission bits are OR'd with rw-rw---- If unset, the Kubelet will not modify the ownership and permissions of any volume.
+     */
+    fsGroup?: pulumi.Input<string>;
+    /**
+     * fsGroupChangePolicy defines behavior of changing ownership and permission of the volume before being exposed inside Pod. This field will only apply to volume types which support fsGroup based ownership(and permissions). It will have no effect on ephemeral volume types such as: secret, configmaps and emptydir.
+     */
+    fsGroupChangePolicy?: pulumi.Input<string>;
+    /**
+     * The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in SecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container.
+     */
+    runAsGroup?: pulumi.Input<string>;
+    /**
+     * Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in SecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+     */
+    runAsNonRoot?: pulumi.Input<boolean>;
+    /**
+     * The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in SecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container.
+     */
+    runAsUser?: pulumi.Input<string>;
+    /**
+     * The SELinux context to be applied to all containers. If unspecified, the container runtime will allocate a random SELinux context for each container. May also be set in SecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container.
+     */
+    seLinuxOptions?: pulumi.Input<inputs.K8sJobSpecTemplateSpecSecurityContextSeLinuxOptions>;
+    /**
+     * The seccomp options to use by the containers in this pod. Note that this field cannot be set when spec.os.name is windows.
+     */
+    seccompProfile?: pulumi.Input<inputs.K8sJobSpecTemplateSpecSecurityContextSeccompProfile>;
+    /**
+     * A list of groups applied to the first process run in each container, in addition to the container's primary GID. If unspecified, no groups will be added to any container.
+     */
+    supplementalGroups?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * holds a list of namespaced sysctls used for the pod.
+     */
+    sysctls?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecSecurityContextSysctl>[]>;
+}
+
+export interface K8sJobSpecTemplateSpecSecurityContextSeLinuxOptions {
+    /**
+     * Level is SELinux level label that applies to the container.
+     */
+    level?: pulumi.Input<string>;
+    /**
+     * Role is a SELinux role label that applies to the container.
+     */
+    role?: pulumi.Input<string>;
+    /**
+     * Type is a SELinux type label that applies to the container.
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * User is a SELinux user label that applies to the container.
+     */
+    user?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecSecurityContextSeccompProfile {
+    /**
+     * Localhost Profile indicates a profile defined in a file on the node should be used. The profile must be preconfigured on the node to work. Defaults to ``.
+     */
+    localhostProfile?: pulumi.Input<string>;
+    /**
+     * Type indicates which kind of seccomp profile will be applied. Valid options are: Localhost, RuntimeDefault, Unconfined. Defaults to `Unconfined`.
+     */
+    type?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecSecurityContextSysctl {
+    /**
+     * Name of a property to set.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Value of a property to set.
+     */
+    value: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecToleration {
+    /**
+     * Effect indicates the taint effect to match. Empty means match all taint effects. When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.
+     */
+    effect?: pulumi.Input<string>;
+    /**
+     * Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key is empty, operator must be Exists; this combination means to match all values and all keys.
+     */
+    key?: pulumi.Input<string>;
+    /**
+     * Operator represents a key's relationship to the value. Valid operators are Exists and Equal. Defaults to Equal. Exists is equivalent to wildcard for value, so that a pod can tolerate all taints of a particular category. Defaults to `Equal`.
+     */
+    operator?: pulumi.Input<string>;
+    /**
+     * TolerationSeconds represents the period of time the toleration (which must be of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default, it is not set, which means tolerate the taint forever (do not evict). Zero and negative values will be treated as 0 (evict immediately) by the system.
+     */
+    tolerationSeconds?: pulumi.Input<string>;
+    /**
+     * Value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string.
+     */
+    value?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecTopologySpreadConstraint {
+    /**
+     * A label query over a set of resources, in this case pods.
+     */
+    labelSelectors?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecTopologySpreadConstraintLabelSelector>[]>;
+    /**
+     * describes the degree to which pods may be unevenly distributed. Defaults to `1`.
+     */
+    maxSkew?: pulumi.Input<number>;
+    /**
+     * the key of node labels. Nodes that have a label with this key and identical values are considered to be in the same topology.
+     */
+    topologyKey?: pulumi.Input<string>;
+    /**
+     * indicates how to deal with a pod if it doesn't satisfy the spread constraint. Defaults to `DoNotSchedule`.
+     */
+    whenUnsatisfiable?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecTopologySpreadConstraintLabelSelector {
+    /**
+     * A list of label selector requirements. The requirements are ANDed.
+     */
+    matchExpressions?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecTopologySpreadConstraintLabelSelectorMatchExpression>[]>;
+    /**
+     * A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+     */
+    matchLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface K8sJobSpecTemplateSpecTopologySpreadConstraintLabelSelectorMatchExpression {
+    /**
+     * The label key that the selector applies to.
+     */
+    key?: pulumi.Input<string>;
+    /**
+     * A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
+     */
+    operator?: pulumi.Input<string>;
+    /**
+     * An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
+     */
+    values?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface K8sJobSpecTemplateSpecVolume {
+    /**
+     * Represents an AWS Disk resource that is attached to a kubelet's host machine and then exposed to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+     */
+    awsElasticBlockStore?: pulumi.Input<inputs.K8sJobSpecTemplateSpecVolumeAwsElasticBlockStore>;
+    /**
+     * Represents an Azure Data Disk mount on the host and bind mount to the pod.
+     */
+    azureDisk?: pulumi.Input<inputs.K8sJobSpecTemplateSpecVolumeAzureDisk>;
+    /**
+     * Represents an Azure File Service mount on the host and bind mount to the pod.
+     */
+    azureFile?: pulumi.Input<inputs.K8sJobSpecTemplateSpecVolumeAzureFile>;
+    /**
+     * Represents a Ceph FS mount on the host that shares a pod's lifetime
+     */
+    cephFs?: pulumi.Input<inputs.K8sJobSpecTemplateSpecVolumeCephFs>;
+    /**
+     * Represents a cinder volume attached and mounted on kubelets host machine. More info: https://examples.k8s.io/mysql-cinder-pd/README.md
+     */
+    cinder?: pulumi.Input<inputs.K8sJobSpecTemplateSpecVolumeCinder>;
+    /**
+     * ConfigMap represents a configMap that should populate this volume
+     */
+    configMap?: pulumi.Input<inputs.K8sJobSpecTemplateSpecVolumeConfigMap>;
+    /**
+     * Represents a CSI Volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#csi
+     */
+    csi?: pulumi.Input<inputs.K8sJobSpecTemplateSpecVolumeCsi>;
+    /**
+     * DownwardAPI represents downward API about the pod that should populate this volume
+     */
+    downwardApi?: pulumi.Input<inputs.K8sJobSpecTemplateSpecVolumeDownwardApi>;
+    /**
+     * EmptyDir represents a temporary directory that shares a pod's lifetime. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir
+     */
+    emptyDir?: pulumi.Input<inputs.K8sJobSpecTemplateSpecVolumeEmptyDir>;
+    /**
+     * Represents an ephemeral volume that is handled by a normal storage driver. More info: https://kubernetes.io/docs/concepts/storage/ephemeral-volumes/#generic-ephemeral-volumes
+     */
+    ephemeral?: pulumi.Input<inputs.K8sJobSpecTemplateSpecVolumeEphemeral>;
+    /**
+     * Represents a Fibre Channel resource that is attached to a kubelet's host machine and then exposed to the pod.
+     */
+    fc?: pulumi.Input<inputs.K8sJobSpecTemplateSpecVolumeFc>;
+    /**
+     * Represents a generic volume resource that is provisioned/attached using an exec based plugin. This is an alpha feature and may change in future.
+     */
+    flexVolume?: pulumi.Input<inputs.K8sJobSpecTemplateSpecVolumeFlexVolume>;
+    /**
+     * Represents a Flocker volume attached to a kubelet's host machine and exposed to the pod for its usage. This depends on the Flocker control service being running
+     */
+    flocker?: pulumi.Input<inputs.K8sJobSpecTemplateSpecVolumeFlocker>;
+    /**
+     * Represents a GCE Disk resource that is attached to a kubelet's host machine and then exposed to the pod. Provisioned by an admin. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+     */
+    gcePersistentDisk?: pulumi.Input<inputs.K8sJobSpecTemplateSpecVolumeGcePersistentDisk>;
+    /**
+     * GitRepo represents a git repository at a particular revision.
+     */
+    gitRepo?: pulumi.Input<inputs.K8sJobSpecTemplateSpecVolumeGitRepo>;
+    /**
+     * Represents a Glusterfs volume that is attached to a host and exposed to the pod. Provisioned by an admin. More info: https://examples.k8s.io/volumes/glusterfs/README.md
+     */
+    glusterfs?: pulumi.Input<inputs.K8sJobSpecTemplateSpecVolumeGlusterfs>;
+    /**
+     * Represents a directory on the host. Provisioned by a developer or tester. This is useful for single-node development and testing only! On-host storage is not supported in any way and WILL NOT WORK in a multi-node cluster. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath
+     */
+    hostPath?: pulumi.Input<inputs.K8sJobSpecTemplateSpecVolumeHostPath>;
+    /**
+     * Represents an ISCSI Disk resource that is attached to a kubelet's host machine and then exposed to the pod. Provisioned by an admin.
+     */
+    iscsi?: pulumi.Input<inputs.K8sJobSpecTemplateSpecVolumeIscsi>;
+    /**
+     * Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local
+     */
+    local?: pulumi.Input<inputs.K8sJobSpecTemplateSpecVolumeLocal>;
+    /**
+     * Volume's name. Must be a DNS_LABEL and unique within the pod. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Represents an NFS mount on the host. Provisioned by an admin. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+     */
+    nfs?: pulumi.Input<inputs.K8sJobSpecTemplateSpecVolumeNfs>;
+    /**
+     * The specification of a persistent volume.
+     */
+    persistentVolumeClaim?: pulumi.Input<inputs.K8sJobSpecTemplateSpecVolumePersistentVolumeClaim>;
+    /**
+     * Represents a PhotonController persistent disk attached and mounted on kubelets host machine
+     */
+    photonPersistentDisk?: pulumi.Input<inputs.K8sJobSpecTemplateSpecVolumePhotonPersistentDisk>;
+    /**
+     * Projected represents a single volume that projects several volume sources into the same directory. More info: https://kubernetes.io/docs/concepts/storage/volumes/#projected
+     */
+    projected?: pulumi.Input<inputs.K8sJobSpecTemplateSpecVolumeProjected>;
+    /**
+     * Quobyte represents a Quobyte mount on the host that shares a pod's lifetime
+     */
+    quobyte?: pulumi.Input<inputs.K8sJobSpecTemplateSpecVolumeQuobyte>;
+    /**
+     * Represents a Rados Block Device mount on the host that shares a pod's lifetime. More info: https://examples.k8s.io/volumes/rbd/README.md
+     */
+    rbd?: pulumi.Input<inputs.K8sJobSpecTemplateSpecVolumeRbd>;
+    /**
+     * Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secrets
+     */
+    secret?: pulumi.Input<inputs.K8sJobSpecTemplateSpecVolumeSecret>;
+    /**
+     * Represents a vSphere volume attached and mounted on kubelets host machine
+     */
+    vsphereVolume?: pulumi.Input<inputs.K8sJobSpecTemplateSpecVolumeVsphereVolume>;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeAwsElasticBlockStore {
+    /**
+     * Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+     */
+    fsType?: pulumi.Input<string>;
+    /**
+     * The partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as "1". Similarly, the volume partition for /dev/sda is "0" (or you can leave the property empty).
+     */
+    partition?: pulumi.Input<number>;
+    /**
+     * Whether to set the read-only property in VolumeMounts to "true". If omitted, the default is "false". More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+     */
+    readOnly?: pulumi.Input<boolean>;
+    /**
+     * Unique ID of the persistent disk resource in AWS (Amazon EBS volume). More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+     */
+    volumeId: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeAzureDisk {
+    /**
+     * Host Caching mode: None, Read Only, Read Write.
+     */
+    cachingMode: pulumi.Input<string>;
+    /**
+     * The URI the data disk in the blob storage
+     */
+    dataDiskUri: pulumi.Input<string>;
+    /**
+     * The Name of the data disk in the blob storage
+     */
+    diskName: pulumi.Input<string>;
+    /**
+     * Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+     */
+    fsType?: pulumi.Input<string>;
+    /**
+     * The type for the data disk. Expected values: Shared, Dedicated, Managed. Defaults to Shared
+     */
+    kind?: pulumi.Input<string>;
+    /**
+     * Whether to force the read-only setting in VolumeMounts. Defaults to false (read/write). Defaults to `false`.
+     */
+    readOnly?: pulumi.Input<boolean>;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeAzureFile {
+    /**
+     * Whether to force the read-only setting in VolumeMounts. Defaults to false (read/write).
+     */
+    readOnly?: pulumi.Input<boolean>;
+    /**
+     * The name of secret that contains Azure Storage Account Name and Key
+     */
+    secretName: pulumi.Input<string>;
+    /**
+     * The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is "default" namespace.
+     */
+    secretNamespace?: pulumi.Input<string>;
+    /**
+     * Share Name
+     */
+    shareName: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeCephFs {
+    /**
+     * Monitors is a collection of Ceph monitors. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+     */
+    monitors: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Used as the mounted root, rather than the full Ceph tree, default is /
+     */
+    path?: pulumi.Input<string>;
+    /**
+     * Whether to force the read-only setting in VolumeMounts. Defaults to `false` (read/write). More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+     */
+    readOnly?: pulumi.Input<boolean>;
+    /**
+     * The path to key ring for User, default is `/etc/ceph/user.secret`. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+     */
+    secretFile?: pulumi.Input<string>;
+    /**
+     * Reference to the authentication secret for User, default is empty. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+     */
+    secretRef?: pulumi.Input<inputs.K8sJobSpecTemplateSpecVolumeCephFsSecretRef>;
+    /**
+     * User is the rados user name, default is admin. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+     */
+    user?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeCephFsSecretRef {
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    namespace?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeCinder {
+    /**
+     * Filesystem type to mount. Must be a filesystem type supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://examples.k8s.io/mysql-cinder-pd/README.md
+     */
+    fsType?: pulumi.Input<string>;
+    /**
+     * Whether to force the read-only setting in VolumeMounts. Defaults to false (read/write). More info: https://examples.k8s.io/mysql-cinder-pd/README.md
+     */
+    readOnly?: pulumi.Input<boolean>;
+    /**
+     * Volume ID used to identify the volume in Cinder. More info: https://examples.k8s.io/mysql-cinder-pd/README.md
+     */
+    volumeId: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeConfigMap {
+    /**
+     * Optional: mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. Defaults to `0644`.
+     */
+    defaultMode?: pulumi.Input<string>;
+    /**
+     * If unspecified, each key-value pair in the Data field of the referenced ConfigMap will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the ConfigMap, the volume setup will error unless it is marked optional. Paths must be relative and may not contain the '..' path or start with '..'.
+     */
+    items?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecVolumeConfigMapItem>[]>;
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Optional: Specify whether the ConfigMap or its keys must be defined.
+     */
+    optional?: pulumi.Input<boolean>;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeConfigMapItem {
+    /**
+     * The key to project.
+     */
+    key?: pulumi.Input<string>;
+    /**
+     * Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+     */
+    mode?: pulumi.Input<string>;
+    /**
+     * The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+     */
+    path?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeCsi {
+    /**
+     * the name of the volume driver to use. More info: https://kubernetes.io/docs/concepts/storage/volumes/#csi
+     */
+    driver: pulumi.Input<string>;
+    /**
+     * Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+     */
+    fsType?: pulumi.Input<string>;
+    /**
+     * A reference to the secret object containing sensitive information to pass to the CSI driver to complete the CSI NodePublishVolume and NodeUnpublishVolume calls.
+     */
+    nodePublishSecretRef?: pulumi.Input<inputs.K8sJobSpecTemplateSpecVolumeCsiNodePublishSecretRef>;
+    /**
+     * Whether to set the read-only property in VolumeMounts to "true". If omitted, the default is "false". More info: https://kubernetes.io/docs/concepts/storage/volumes#csi
+     */
+    readOnly?: pulumi.Input<boolean>;
+    /**
+     * Attributes of the volume to publish.
+     */
+    volumeAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeCsiNodePublishSecretRef {
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeDownwardApi {
+    /**
+     * Optional: mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. Defaults to `0644`.
+     */
+    defaultMode?: pulumi.Input<string>;
+    /**
+     * If unspecified, each key-value pair in the Data field of the referenced ConfigMap will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the ConfigMap, the volume setup will error. Paths must be relative and may not contain the '..' path or start with '..'.
+     */
+    items?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecVolumeDownwardApiItem>[]>;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeDownwardApiItem {
+    /**
+     * Required: Selects a field of the pod: only annotations, labels, name and namespace are supported.
+     */
+    fieldRef: pulumi.Input<inputs.K8sJobSpecTemplateSpecVolumeDownwardApiItemFieldRef>;
+    /**
+     * Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+     */
+    mode?: pulumi.Input<string>;
+    /**
+     * Path is the relative path name of the file to be created. Must not be absolute or contain the '..' path. Must be utf-8 encoded. The first item of the relative path must not start with '..'
+     */
+    path: pulumi.Input<string>;
+    /**
+     * Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, requests.cpu and requests.memory) are currently supported.
+     */
+    resourceFieldRef?: pulumi.Input<inputs.K8sJobSpecTemplateSpecVolumeDownwardApiItemResourceFieldRef>;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeDownwardApiItemFieldRef {
+    /**
+     * Version of the schema the FieldPath is written in terms of, defaults to "v1". Defaults to `v1`.
+     */
+    apiVersion?: pulumi.Input<string>;
+    /**
+     * Path of the field to select in the specified API version
+     */
+    fieldPath?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeDownwardApiItemResourceFieldRef {
+    containerName: pulumi.Input<string>;
+    /**
+     * Defaults to `1`.
+     */
+    divisor?: pulumi.Input<string>;
+    /**
+     * Resource to select
+     */
+    resource: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeEmptyDir {
+    /**
+     * What type of storage medium should back this directory. The default is "" which means to use the node's default medium. Must be an empty string (default) or Memory. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir Defaults to ``.
+     */
+    medium?: pulumi.Input<string>;
+    /**
+     * Total amount of local storage required for this EmptyDir volume.
+     */
+    sizeLimit?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeEphemeral {
+    /**
+     * Will be used to create a stand-alone PVC to provision the volume. The pod in which this EphemeralVolumeSource is embedded will be the owner of the PVC.
+     */
+    volumeClaimTemplate: pulumi.Input<inputs.K8sJobSpecTemplateSpecVolumeEphemeralVolumeClaimTemplate>;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeEphemeralVolumeClaimTemplate {
+    /**
+     * May contain labels and annotations that will be copied into the PVC when creating it. No other fields are allowed and will be rejected during validation.
+     */
+    metadata?: pulumi.Input<inputs.K8sJobSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateMetadata>;
+    /**
+     * The specification for the PersistentVolumeClaim. The entire content is copied unchanged into the PVC that gets created from this template. The same fields as in a PersistentVolumeClaim are also valid here.
+     */
+    spec: pulumi.Input<inputs.K8sJobSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateSpec>;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateMetadata {
+    /**
+     * An unstructured key value map stored with the persistent volume claim that may be used to store arbitrary metadata. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+     */
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Map of string keys and values that can be used to organize and categorize (scope and select) the persistent volume claim. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateSpec {
+    /**
+     * A set of the desired access modes the volume should have. More info: http://kubernetes.io/docs/user-guide/persistent-volumes#access-modes-1
+     */
+    accessModes: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of the minimum resources the volume should have. More info: http://kubernetes.io/docs/user-guide/persistent-volumes#resources
+     */
+    resources: pulumi.Input<inputs.K8sJobSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateSpecResources>;
+    /**
+     * Name of the storage class requested by the claim
+     */
+    storageClassName?: pulumi.Input<string>;
+    /**
+     * Kubernetes supports two volumeModes of PersistentVolumes: `Filesystem` and `Block`.
+     */
+    volumeMode?: pulumi.Input<string>;
+    /**
+     * The binding reference to the PersistentVolume backing this claim.
+     */
+    volumeName?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateSpecResources {
+    /**
+     * Map describing the maximum amount of compute resources allowed. More info: http://kubernetes.io/docs/user-guide/compute-resources/
+     */
+    limits?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Map describing the minimum amount of compute resources required. If this is omitted for a container, it defaults to `limits` if that is explicitly specified, otherwise to an implementation-defined value. More info: http://kubernetes.io/docs/user-guide/compute-resources/
+     */
+    requests?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeFc {
+    /**
+     * Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+     */
+    fsType?: pulumi.Input<string>;
+    /**
+     * FC target lun number
+     */
+    lun: pulumi.Input<number>;
+    /**
+     * Whether to force the read-only setting in VolumeMounts. Defaults to false (read/write).
+     */
+    readOnly?: pulumi.Input<boolean>;
+    /**
+     * FC target worldwide names (WWNs)
+     */
+    targetWwNs: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeFlexVolume {
+    /**
+     * Driver is the name of the driver to use for this volume.
+     */
+    driver: pulumi.Input<string>;
+    /**
+     * Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". The default filesystem depends on FlexVolume script.
+     */
+    fsType?: pulumi.Input<string>;
+    /**
+     * Extra command options if any.
+     */
+    options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Whether to force the ReadOnly setting in VolumeMounts. Defaults to false (read/write).
+     */
+    readOnly?: pulumi.Input<boolean>;
+    /**
+     * Reference to the secret object containing sensitive information to pass to the plugin scripts. This may be empty if no secret object is specified. If the secret object contains more than one secret, all secrets are passed to the plugin scripts.
+     */
+    secretRef?: pulumi.Input<inputs.K8sJobSpecTemplateSpecVolumeFlexVolumeSecretRef>;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeFlexVolumeSecretRef {
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    namespace?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeFlocker {
+    /**
+     * Name of the dataset stored as metadata > name on the dataset for Flocker should be considered as deprecated
+     */
+    datasetName?: pulumi.Input<string>;
+    /**
+     * UUID of the dataset. This is unique identifier of a Flocker dataset
+     */
+    datasetUuid?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeGcePersistentDisk {
+    /**
+     * Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+     */
+    fsType?: pulumi.Input<string>;
+    /**
+     * The partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as "1". Similarly, the volume partition for /dev/sda is "0" (or you can leave the property empty). More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+     */
+    partition?: pulumi.Input<number>;
+    /**
+     * Unique name of the PD resource in GCE. Used to identify the disk in GCE. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+     */
+    pdName: pulumi.Input<string>;
+    /**
+     * Whether to force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+     */
+    readOnly?: pulumi.Input<boolean>;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeGitRepo {
+    /**
+     * Target directory name. Must not contain or start with '..'. If '.' is supplied, the volume directory will be the git repository. Otherwise, if specified, the volume will contain the git repository in the subdirectory with the given name.
+     */
+    directory?: pulumi.Input<string>;
+    /**
+     * Repository URL
+     */
+    repository?: pulumi.Input<string>;
+    /**
+     * Commit hash for the specified revision.
+     */
+    revision?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeGlusterfs {
+    /**
+     * The endpoint name that details Glusterfs topology. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
+     */
+    endpointsName: pulumi.Input<string>;
+    /**
+     * The Glusterfs volume path. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
+     */
+    path: pulumi.Input<string>;
+    /**
+     * Whether to force the Glusterfs volume to be mounted with read-only permissions. Defaults to false. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
+     */
+    readOnly?: pulumi.Input<boolean>;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeHostPath {
+    /**
+     * Path of the directory on the host. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath
+     */
+    path?: pulumi.Input<string>;
+    /**
+     * Type for HostPath volume. Allowed values are "" (default), DirectoryOrCreate, Directory, FileOrCreate, File, Socket, CharDevice and BlockDevice
+     */
+    type?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeIscsi {
+    /**
+     * Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#iscsi
+     */
+    fsType?: pulumi.Input<string>;
+    /**
+     * Target iSCSI Qualified Name.
+     */
+    iqn: pulumi.Input<string>;
+    /**
+     * iSCSI interface name that uses an iSCSI transport. Defaults to 'default' (tcp). Defaults to `default`.
+     */
+    iscsiInterface?: pulumi.Input<string>;
+    /**
+     * iSCSI target lun number.
+     */
+    lun?: pulumi.Input<number>;
+    /**
+     * Whether to force the read-only setting in VolumeMounts. Defaults to false.
+     */
+    readOnly?: pulumi.Input<boolean>;
+    /**
+     * iSCSI target portal. The portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260).
+     */
+    targetPortal: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeLocal {
+    /**
+     * Path of the directory on the host. More info: https://kubernetes.io/docs/concepts/storage/volumes#local
+     */
+    path?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeNfs {
+    /**
+     * Path that is exported by the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+     */
+    path: pulumi.Input<string>;
+    /**
+     * Whether to force the NFS export to be mounted with read-only permissions. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+     */
+    readOnly?: pulumi.Input<boolean>;
+    /**
+     * Server is the hostname or IP address of the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+     */
+    server: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecVolumePersistentVolumeClaim {
+    /**
+     * ClaimName is the name of a PersistentVolumeClaim in the same
+     */
+    claimName?: pulumi.Input<string>;
+    /**
+     * Will force the ReadOnly setting in VolumeMounts. Defaults to `false`.
+     */
+    readOnly?: pulumi.Input<boolean>;
+}
+
+export interface K8sJobSpecTemplateSpecVolumePhotonPersistentDisk {
+    /**
+     * Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+     */
+    fsType?: pulumi.Input<string>;
+    /**
+     * ID that identifies Photon Controller persistent disk
+     */
+    pdId: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeProjected {
+    /**
+     * Optional: mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. Defaults to `0644`.
+     */
+    defaultMode?: pulumi.Input<string>;
+    /**
+     * Source of the volume to project in the directory.
+     */
+    sources: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecVolumeProjectedSource>[]>;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeProjectedSource {
+    /**
+     * ConfigMap represents a configMap that should populate this volume
+     */
+    configMaps?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecVolumeProjectedSourceConfigMap>[]>;
+    /**
+     * DownwardAPI represents downward API about the pod that should populate this volume
+     */
+    downwardApi?: pulumi.Input<inputs.K8sJobSpecTemplateSpecVolumeProjectedSourceDownwardApi>;
+    /**
+     * Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secrets
+     */
+    secrets?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecVolumeProjectedSourceSecret>[]>;
+    /**
+     * A projected service account token volume
+     */
+    serviceAccountToken?: pulumi.Input<inputs.K8sJobSpecTemplateSpecVolumeProjectedSourceServiceAccountToken>;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeProjectedSourceConfigMap {
+    /**
+     * If unspecified, each key-value pair in the Data field of the referenced ConfigMap will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the ConfigMap, the volume setup will error. Paths must be relative and may not contain the '..' path or start with '..'.
+     */
+    items?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecVolumeProjectedSourceConfigMapItem>[]>;
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Optional: Specify whether the ConfigMap or it's keys must be defined.
+     */
+    optional?: pulumi.Input<boolean>;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeProjectedSourceConfigMapItem {
+    /**
+     * The key to project.
+     */
+    key?: pulumi.Input<string>;
+    /**
+     * Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+     */
+    mode?: pulumi.Input<string>;
+    /**
+     * The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+     */
+    path?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeProjectedSourceDownwardApi {
+    /**
+     * Represents a volume containing downward API info. Downward API volumes support ownership management and SELinux relabeling.
+     */
+    items?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecVolumeProjectedSourceDownwardApiItem>[]>;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeProjectedSourceDownwardApiItem {
+    /**
+     * Selects a field of the pod: only annotations, labels, name and namespace are supported.
+     */
+    fieldRef?: pulumi.Input<inputs.K8sJobSpecTemplateSpecVolumeProjectedSourceDownwardApiItemFieldRef>;
+    /**
+     * Mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+     */
+    mode?: pulumi.Input<string>;
+    /**
+     * Path is the relative path name of the file to be created. Must not be absolute or contain the '..' path. Must be utf-8 encoded. The first item of the relative path must not start with '..'
+     */
+    path: pulumi.Input<string>;
+    /**
+     * Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, requests.cpu and requests.memory) are currently supported.
+     */
+    resourceFieldRef?: pulumi.Input<inputs.K8sJobSpecTemplateSpecVolumeProjectedSourceDownwardApiItemResourceFieldRef>;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeProjectedSourceDownwardApiItemFieldRef {
+    /**
+     * Version of the schema the FieldPath is written in terms of, defaults to 'v1'. Defaults to `v1`.
+     */
+    apiVersion?: pulumi.Input<string>;
+    /**
+     * Path of the field to select in the specified API version
+     */
+    fieldPath?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeProjectedSourceDownwardApiItemResourceFieldRef {
+    containerName: pulumi.Input<string>;
+    /**
+     * Defaults to `1`.
+     */
+    divisor?: pulumi.Input<string>;
+    /**
+     * Resource to select
+     */
+    resource: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeProjectedSourceSecret {
+    /**
+     * If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional. Paths must be relative and may not contain the '..' path or start with '..'.
+     */
+    items?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecVolumeProjectedSourceSecretItem>[]>;
+    /**
+     * Name of the secret in the pod's namespace to use. More info: https://kubernetes.io/docs/concepts/storage/volumes#secrets
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Optional: Specify whether the Secret or it's keys must be defined.
+     */
+    optional?: pulumi.Input<boolean>;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeProjectedSourceSecretItem {
+    /**
+     * The key to project.
+     */
+    key?: pulumi.Input<string>;
+    /**
+     * Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+     */
+    mode?: pulumi.Input<string>;
+    /**
+     * The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+     */
+    path?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeProjectedSourceServiceAccountToken {
+    /**
+     * Audience is the intended audience of the token
+     */
+    audience?: pulumi.Input<string>;
+    /**
+     * ExpirationSeconds is the expected duration of validity of the service account token. It defaults to 1 hour and must be at least 10 minutes (600 seconds). Defaults to `3600`.
+     */
+    expirationSeconds?: pulumi.Input<number>;
+    /**
+     * Path specifies a relative path to the mount point of the projected volume.
+     */
+    path: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeQuobyte {
+    /**
+     * Group to map volume access to Default is no group
+     */
+    group?: pulumi.Input<string>;
+    /**
+     * Whether to force the Quobyte volume to be mounted with read-only permissions. Defaults to false.
+     */
+    readOnly?: pulumi.Input<boolean>;
+    /**
+     * Registry represents a single or multiple Quobyte Registry services specified as a string as host:port pair (multiple entries are separated with commas) which acts as the central registry for volumes
+     */
+    registry: pulumi.Input<string>;
+    /**
+     * User to map volume access to Defaults to serivceaccount user
+     */
+    user?: pulumi.Input<string>;
+    /**
+     * Volume is a string that references an already created Quobyte volume by name.
+     */
+    volume: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeRbd {
+    /**
+     * A collection of Ceph monitors. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+     */
+    cephMonitors: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#rbd
+     */
+    fsType?: pulumi.Input<string>;
+    /**
+     * Keyring is the path to key ring for RBDUser. Default is /etc/ceph/keyring. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+     */
+    keyring?: pulumi.Input<string>;
+    /**
+     * The rados user name. Default is admin. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it Defaults to `admin`.
+     */
+    radosUser?: pulumi.Input<string>;
+    /**
+     * The rados image name. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+     */
+    rbdImage: pulumi.Input<string>;
+    /**
+     * The rados pool name. Default is rbd. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it. Defaults to `rbd`.
+     */
+    rbdPool?: pulumi.Input<string>;
+    /**
+     * Whether to force the read-only setting in VolumeMounts. Defaults to false. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it Defaults to `false`.
+     */
+    readOnly?: pulumi.Input<boolean>;
+    /**
+     * Name of the authentication secret for RBDUser. If provided overrides keyring. Default is nil. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+     */
+    secretRef?: pulumi.Input<inputs.K8sJobSpecTemplateSpecVolumeRbdSecretRef>;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeRbdSecretRef {
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    namespace?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeSecret {
+    /**
+     * Optional: mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. Defaults to `0644`.
+     */
+    defaultMode?: pulumi.Input<string>;
+    /**
+     * If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional. Paths must be relative and may not contain the '..' path or start with '..'.
+     */
+    items?: pulumi.Input<pulumi.Input<inputs.K8sJobSpecTemplateSpecVolumeSecretItem>[]>;
+    /**
+     * Optional: Specify whether the Secret or its keys must be defined.
+     */
+    optional?: pulumi.Input<boolean>;
+    /**
+     * Name of the secret in the pod's namespace to use. More info: https://kubernetes.io/docs/concepts/storage/volumes#secrets
+     */
+    secretName?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeSecretItem {
+    /**
+     * The key to project.
+     */
+    key?: pulumi.Input<string>;
+    /**
+     * Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+     */
+    mode?: pulumi.Input<string>;
+    /**
+     * The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+     */
+    path?: pulumi.Input<string>;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeVsphereVolume {
+    /**
+     * Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+     */
+    fsType?: pulumi.Input<string>;
+    /**
+     * Path that identifies vSphere volume vmdk
+     */
+    volumePath: pulumi.Input<string>;
+}
+
+export interface OciContainerengineNodePoolInitialNodeLabel {
+    key?: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
+}
+
+export interface OciContainerengineNodePoolNode {
+    availabilityDomain?: pulumi.Input<string>;
+    definedTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    faultDomain?: pulumi.Input<string>;
+    freeformTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The ID of this resource.
+     */
+    id?: pulumi.Input<string>;
+    kubernetesVersion?: pulumi.Input<string>;
+    lifecycleDetails?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    nodePoolId?: pulumi.Input<string>;
+    privateIp?: pulumi.Input<string>;
+    publicIp?: pulumi.Input<string>;
+    state?: pulumi.Input<string>;
+    subnetId?: pulumi.Input<string>;
+    systemTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface OciContainerengineNodePoolNodeConfigDetails {
+    definedTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    freeformTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    isPvEncryptionInTransitEnabled?: pulumi.Input<boolean>;
+    kmsKeyId?: pulumi.Input<string>;
+    nsgIds?: pulumi.Input<pulumi.Input<string>[]>;
+    placementConfigs: pulumi.Input<pulumi.Input<inputs.OciContainerengineNodePoolNodeConfigDetailsPlacementConfig>[]>;
+    size: pulumi.Input<number>;
+}
+
+export interface OciContainerengineNodePoolNodeConfigDetailsPlacementConfig {
+    availabilityDomain: pulumi.Input<string>;
+    capacityReservationId?: pulumi.Input<string>;
+    subnetId: pulumi.Input<string>;
+}
+
+export interface OciContainerengineNodePoolNodeShapeConfig {
+    memoryInGbs?: pulumi.Input<number>;
+    ocpus?: pulumi.Input<number>;
+}
+
+export interface OciContainerengineNodePoolNodeSourceDetails {
+    bootVolumeSizeInGbs?: pulumi.Input<string>;
+    imageId: pulumi.Input<string>;
+    sourceType: pulumi.Input<string>;
+}
+
+export interface OtherAgentsAgent {
+    agentLinuxPackagePath?: pulumi.Input<string>;
+    agentName: pulumi.Input<string>;
+    agentWindowsPackagePath?: pulumi.Input<string>;
+    executionCount?: pulumi.Input<number>;
+    linuxAgentInstallStatusCmd?: pulumi.Input<string>;
+    linuxAgentServiceName?: pulumi.Input<string>;
+    linuxAgentUninstallStatusCmd?: pulumi.Input<string>;
+    linuxInstallCmd?: pulumi.Input<string>;
+    userRequestResetIsPending?: pulumi.Input<boolean>;
+    windowsAgentServiceName?: pulumi.Input<string>;
+}
+
+export interface PlanCertificatesCertificate {
+    arn?: pulumi.Input<string>;
+    id: pulumi.Input<string>;
+    name: pulumi.Input<string>;
+}
+
+export interface PlanConfigsConfig {
+    key: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
+export interface PlanImagesImage {
+    imageId: pulumi.Input<string>;
+    name: pulumi.Input<string>;
+    os: pulumi.Input<string>;
+    tags?: pulumi.Input<pulumi.Input<inputs.PlanImagesImageTag>[]>;
+    username: pulumi.Input<string>;
+}
+
+export interface PlanImagesImageTag {
+    key: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
+export interface PlanKmsV2Km {
+    arn: pulumi.Input<string>;
+    /**
+     * The ID of this resource.
+     */
+    id: pulumi.Input<string>;
+    name: pulumi.Input<string>;
+}
+
+export interface PlanKmsV2KmsKey {
+    arn: pulumi.Input<string>;
+    id: pulumi.Input<string>;
+    name: pulumi.Input<string>;
+}
+
+export interface PlanSettingsAllMetadata {
+    key: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
+export interface PlanSettingsDnsSetting {
+    domainId?: pulumi.Input<string>;
+    externalDnsSuffix?: pulumi.Input<string>;
+    ignoreGlobalDns?: pulumi.Input<boolean>;
+    internalDnsSuffix?: pulumi.Input<string>;
+}
+
+export interface PlanSettingsMetadata {
+    key: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
+export interface PlanWafV2Waf {
+    arn: pulumi.Input<string>;
+    dashboardUrl?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
+}
+
+export interface RdsInstancePerformanceInsights {
+    /**
+     * Turn on or off Performance Insights
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * Specify ARN for the KMS key to encrypt Performance Insights data.
+     */
+    kmsKeyId?: pulumi.Input<string>;
+    /**
+     * Specify retention period in Days. Valid values are 7, 731 (2 years) or a multiple of 31. For Document DB retention period is 7
+     */
+    retentionPeriod?: pulumi.Input<number>;
+}
+
+export interface RdsInstanceV2ScalingConfiguration {
+    /**
+     * Specifies max scalling capacity.
+     */
+    maxCapacity: pulumi.Input<number>;
+    /**
+     * Specifies min scalling capacity.
+     */
+    minCapacity: pulumi.Input<number>;
+}
+
+export interface RdsReadReplicaPerformanceInsights {
+    /**
+     * Turn on or off Performance Insights Defaults to `false`.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * Specify ARN for the KMS key to encrypt Performance Insights data.
+     */
+    kmsKeyId?: pulumi.Input<string>;
+    /**
+     * Specify retention period in Days. Valid values are 7, 731 (2 years) or a multiple of 31. For Document DB retention period is 7 Defaults to `7`.
+     */
+    retentionPeriod?: pulumi.Input<number>;
+}
+
+export interface S3BucketDefaultEncryption {
+    /**
+     * Default encryption method.  Must be one of: `None`, `Sse`, `AwsKms`, `TenantKms`.
+     */
+    method?: pulumi.Input<string>;
+}
+
+export interface S3BucketReplicationRule {
+    /**
+     * Whether or not to enable delete marker on replication. Defaults to `false`.
+     */
+    deleteMarkerReplication?: pulumi.Input<boolean>;
+    /**
+     * destination bucket arn
+     */
+    destinationArn?: pulumi.Input<string>;
+    /**
+     * fullname of the destination bucket.
+     */
+    destinationBucket: pulumi.Input<string>;
+    /**
+     * replication rule fullname for s3 source bucket
+     */
+    fullname?: pulumi.Input<string>;
+    /**
+     * replication rule name for s3 source bucket
+     */
+    name: pulumi.Input<string>;
+    /**
+     * replication priority. Priority must be unique between multiple rules.
+     */
+    priority: pulumi.Input<number>;
+    /**
+     * storage*class type: STANDARD, INTELLIGENT*TIERING, STANDARD*IA, ONEZONE*IA, GLACIER*IR, GLACIER, DEEP*ARCHIVE, REDUCED_REDUNDANCY.
+     */
+    storageClass?: pulumi.Input<string>;
+}
+
+export interface S3BucketTag {
+    key: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
+export interface TenantConfigMetadata {
+    key: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
+export interface TenantConfigSetting {
+    key: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
+export interface TenantPolicy {
+    allowVolumeMapping?: pulumi.Input<boolean>;
+    blockExternalEp?: pulumi.Input<boolean>;
+}
+
+export interface TenantSecretTag {
+    key: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
+export interface TenantTag {
+    key: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
