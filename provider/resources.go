@@ -111,7 +111,7 @@ func Provider() tfbridge.ProviderInfo {
 		Version: version.Version,
 		// DisplayName is a way to be able to change the casing of the provider name when being
 		// displayed on the Pulumi registry
-		DisplayName: "",
+		DisplayName: "duplocloud",
 		// Change this to your personal name (or a company name) that you would like to be shown in
 		// the Pulumi Registry if this package is published there.
 		Publisher: "Pulumi",
@@ -135,7 +135,7 @@ func Provider() tfbridge.ProviderInfo {
 		Repository: "https://github.com/duplocloud/pulumi-duplocloud",
 		// The GitHub Org for the provider - defaults to `terraform-providers`. Note that this should
 		// match the TF provider module's require directive, not any replace directives.
-		GitHubOrg:    "",
+		GitHubOrg:    "duplocloud",
 		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
 		Config: map[string]*tfbridge.SchemaInfo{
 			// Add any required configuration here, or remove the example below if

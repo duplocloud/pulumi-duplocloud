@@ -2,21 +2,53 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
-import * as enums from "../types/enums";
 import * as utilities from "../utilities";
 
 declare var exports: any;
-const __config = new pulumi.Config("xyz");
+const __config = new pulumi.Config("duplocloud");
 
 /**
- * A region which should be used.
+ * This is the base URL to the Duplo REST API. It must be provided, but it can also be sourced from the `duploHost`
+ * environment variable.
  */
-export declare const region: enums.region.Region | undefined;
-Object.defineProperty(exports, "region", {
+export declare const duploHost: string | undefined;
+Object.defineProperty(exports, "duploHost", {
     get() {
-        return __config.getObject<enums.region.Region>("region");
+        return __config.get("duploHost");
+    },
+    enumerable: true,
+});
+
+/**
+ * This is a bearer token used to authenticate to the Duplo REST API. It must be provided, but it can also be sourced from
+ * the `duploToken` environment variable.
+ */
+export declare const duploToken: string | undefined;
+Object.defineProperty(exports, "duploToken", {
+    get() {
+        return __config.get("duploToken");
+    },
+    enumerable: true,
+});
+
+/**
+ * Timeout for HTTP requests in seconds.
+ */
+export declare const httpTimeout: number | undefined;
+Object.defineProperty(exports, "httpTimeout", {
+    get() {
+        return __config.getObject<number>("httpTimeout");
+    },
+    enumerable: true,
+});
+
+/**
+ * Disable SSL certificate verification.
+ */
+export declare const sslNoVerify: boolean | undefined;
+Object.defineProperty(exports, "sslNoVerify", {
+    get() {
+        return __config.getObject<boolean>("sslNoVerify");
     },
     enumerable: true,
 });

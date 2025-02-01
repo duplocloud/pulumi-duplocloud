@@ -6,3 +6,17758 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as enums from "../types/enums";
 
+export interface AsgProfileMetadata {
+    key: string;
+    value: string;
+}
+
+export interface AsgProfileMinionTag {
+    key: string;
+    value: string;
+}
+
+export interface AsgProfileNetworkInterface {
+    /**
+     * Whether or not to associate a public IP with the newly created ENI.  Cannot be specified if `networkInterfaceId` is specified.
+     */
+    associatePublicIp: boolean;
+    /**
+     * The device index to pass to AWS for attaching the ENI.  Starts at zero.
+     */
+    deviceIndex: number;
+    groups: string[];
+    metadatas: outputs.AsgProfileNetworkInterfaceMetadata[];
+    /**
+     * The ID of an ENI to attach to this host.  Cannot be specified if `subnetId` or `associatePublicIp` is specified.
+     */
+    networkInterfaceId: string;
+    /**
+     * The ID of a subnet in which to create a new ENI.  Cannot be specified if `networkInterfaceId` is specified.
+     */
+    subnetId: string;
+}
+
+export interface AsgProfileNetworkInterfaceMetadata {
+    key: string;
+    value: string;
+}
+
+export interface AsgProfileTag {
+    key: string;
+    value: string;
+}
+
+export interface AsgProfileTaint {
+    /**
+     * Update strategy of the node. Effect types <br>      - NoSchedule<br>     - PreferNoSchedule<br>     - NoExecute
+     */
+    effect: string;
+    key: string;
+    value?: string;
+}
+
+export interface AsgProfileVolume {
+    iops: number;
+    name: string;
+    size: number;
+    volumeId: string;
+    volumeType: string;
+}
+
+export interface AwsApigatewayEventIntegration {
+    /**
+     * Custom timeout between 50 and 300,000 milliseconds.
+     */
+    timeout?: number;
+    /**
+     * Integration input's type. Valid values are `HTTP` (for HTTP backends), `MOCK` (not calling any real backend), `AWS` (for AWS services), `AWS_PROXY` (for Lambda proxy integration) and `HTTP_PROXY` (for HTTP proxy integration).
+     */
+    type: string;
+    /**
+     * Input's URI. Required if type is `AWS`, `AWS_PROXY`, `HTTP` or `HTTP_PROXY`. For AWS integrations, the URI should be of the form `arn:aws:apigateway:{region}:{subdomain.service|service}:{path|action}/{service_api}`. `region`, `subdomain` and `service` are used to determine the right endpoint.
+     */
+    uri: string;
+}
+
+export interface AwsAppautoscalingPolicyStepScalingPolicyConfiguration {
+    /**
+     * Specifies whether the adjustment is an absolute number or a percentage of the current capacity. Valid values are `ChangeInCapacity`, `ExactCapacity`, and `PercentChangeInCapacity`.
+     */
+    adjustmentType?: string;
+    /**
+     * The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
+     */
+    cooldown?: number;
+    /**
+     * The aggregation type for the policy's metrics. Valid values are "Minimum", "Maximum", and "Average". Without a value, AWS will treat the aggregation type as "Average".
+     */
+    metricAggregationType?: string;
+    /**
+     * The minimum number to adjust your scalable dimension as a result of a scaling activity. If the adjustment type is PercentChangeInCapacity, the scaling policy changes the scalable dimension of the scalable target by this amount.
+     */
+    minAdjustmentMagnitude?: number;
+    /**
+     * A set of adjustments that manage scaling.
+     */
+    stepAdjustments?: outputs.AwsAppautoscalingPolicyStepScalingPolicyConfigurationStepAdjustment[];
+}
+
+export interface AwsAppautoscalingPolicyStepScalingPolicyConfigurationStepAdjustment {
+    /**
+     * The lower bound for the difference between the alarm threshold and the CloudWatch metric.
+     */
+    metricIntervalLowerBound?: string;
+    /**
+     * The upper bound for the difference between the alarm threshold and the CloudWatch metric.
+     */
+    metricIntervalUpperBound?: string;
+    /**
+     * The number of members by which to scale, when the adjustment bounds are breached.
+     */
+    scalingAdjustment: number;
+}
+
+export interface AwsAppautoscalingPolicyTargetTrackingScalingPolicyConfiguration {
+    customizedMetricSpecification?: outputs.AwsAppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecification;
+    /**
+     * Indicates whether scale in by the target tracking policy is disabled. Defaults to `false`.
+     */
+    disableScaleIn?: boolean;
+    predefinedMetricSpecification?: outputs.AwsAppautoscalingPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecification;
+    /**
+     * The amount of time, in seconds, after a scale in activity completes before another scale in activity can start.
+     */
+    scaleInCooldown?: number;
+    /**
+     * The amount of time, in seconds, after a scale out activity completes before another scale out activity can start.
+     */
+    scaleOutCooldown?: number;
+    /**
+     * The target value for the metric.
+     */
+    targetValue: number;
+}
+
+export interface AwsAppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecification {
+    dimensions?: outputs.AwsAppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimension[];
+    /**
+     * The name of the metric.
+     */
+    metricName: string;
+    /**
+     * The namespace of the metric.
+     */
+    namespace: string;
+    /**
+     * The statistic of the metric. Valid values: `Average`, `Minimum`, `Maximum`, `SampleCount`, and `Sum`.
+     */
+    statistic: string;
+    /**
+     * The unit of the metric.
+     */
+    unit?: string;
+}
+
+export interface AwsAppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimension {
+    /**
+     * Name of the dimension.
+     */
+    name: string;
+    /**
+     * Value of the dimension.
+     */
+    value: string;
+}
+
+export interface AwsAppautoscalingPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecification {
+    /**
+     * The metric type.
+     */
+    predefinedMetricType: string;
+    /**
+     * Reserved for future use. Must be less than or equal to 1023 characters in length.
+     */
+    resourceLabel?: string;
+}
+
+export interface AwsBatchComputeEnvironmentComputeResources {
+    /**
+     * The allocation strategy to use for the compute resource in case not enough instances of the best fitting instance type can be allocated. Available allocationStrategy - `BEST_FIT_PROGRESSIVE`, `SPOT_CAPACITY_OPTIMIZED`, `BEST_FIT`, `SPOT_PRICE_CAPACITY_OPTIMIZED`
+     */
+    allocationStrategy?: string;
+    /**
+     * Integer of maximum percentage that a Spot Instance price can be when compared with the On-Demand price for that instance type before instances are launched.
+     */
+    bidPercentage?: number;
+    /**
+     * The desired number of EC2 vCPUS in the compute environment. This parameter isn't applicable to jobs running on Fargate resources, and shouldn't be specified.
+     */
+    desiredVcpus: number;
+    /**
+     * Provides information used to select Amazon Machine Images (AMIs) for EC2 instances in the compute environment.
+     */
+    ec2Configuration: outputs.AwsBatchComputeEnvironmentComputeResourcesEc2Configuration;
+    /**
+     * The EC2 key pair that is used for instances launched in the compute environment. This parameter isn't applicable to jobs running on Fargate resources, and shouldn't be specified.
+     */
+    ec2KeyPair: string;
+    /**
+     * The Amazon Machine Image (AMI) ID used for instances launched in the compute environment. This parameter isn't applicable to jobs running on Fargate resources, and shouldn't be specified. (Deprecated, use ec2Configuration `imageIdOverride` instead)
+     */
+    imageId?: string;
+    /**
+     * The Amazon ECS instance role applied to Amazon EC2 instances in a compute environment. This parameter isn't applicable to jobs running on Fargate resources, and shouldn't be specified.
+     */
+    instanceRole: string;
+    /**
+     * A list of instance types that may be launched. This parameter isn't applicable to jobs running on Fargate resources, and shouldn't be specified.
+     */
+    instanceTypes?: string[];
+    /**
+     * The launch template to use for your compute resources. See details below. This parameter isn't applicable to jobs running on Fargate resources, and shouldn't be specified.
+     */
+    launchTemplate?: outputs.AwsBatchComputeEnvironmentComputeResourcesLaunchTemplate;
+    /**
+     * The maximum number of EC2 vCPUs that an environment can reach.
+     */
+    maxVcpus: number;
+    /**
+     * The minimum number of EC2 vCPUs that an environment should maintain. For `EC2` or `SPOT` compute environments, if the parameter is not explicitly defined, a `0` default value will be set. This parameter isn't applicable to jobs running on Fargate resources, and shouldn't be specified.
+     */
+    minVcpus?: number;
+    /**
+     * A list of EC2 security group that are associated with instances launched in the compute environment. This parameter is required for Fargate compute environments.
+     */
+    securityGroupIds: string[];
+    /**
+     * The Amazon Resource Name (ARN) of the Amazon EC2 Spot Fleet IAM role applied to a SPOT compute environment. This parameter is required for SPOT compute environments. This parameter isn't applicable to jobs running on Fargate resources, and shouldn't be specified.
+     */
+    spotIamFleetRole?: string;
+    /**
+     * A list of VPC subnets into which the compute resources are launched.
+     */
+    subnets: string[];
+    /**
+     * Key-value map of resource tags.
+     */
+    tags: {[key: string]: string};
+    /**
+     * The type of compute environment. Valid items are `EC2`, `SPOT`, `FARGATE` or `FARGATE_SPOT`.
+     */
+    type: string;
+}
+
+export interface AwsBatchComputeEnvironmentComputeResourcesEc2Configuration {
+    /**
+     * The AMI ID used for instances launched in the compute environment that match the image type. This setting overrides the `imageId` argument in the `computeResources` block.
+     */
+    imageIdOverride: string;
+    /**
+     * The image type to match with the instance type to select an AMI.
+     */
+    imageType: string;
+}
+
+export interface AwsBatchComputeEnvironmentComputeResourcesLaunchTemplate {
+    /**
+     * ID of the launch template. You must specify either the launch template ID or launch template name in the request, but not both.
+     */
+    launchTemplateId?: string;
+    /**
+     * Name of the launch template.
+     */
+    launchTemplateName?: string;
+    /**
+     * The version number of the launch template. Default: The default version of the launch template.
+     */
+    version?: string;
+}
+
+export interface AwsBatchJobDefinitionRetryStrategy {
+    /**
+     * The number of times to move a job to the RUNNABLE status. You may specify between `1` and `10` attempts.
+     */
+    attempts?: number;
+    /**
+     * The evaluate on exit conditions under which the job should be retried or failed. If this parameter is specified, then the attempts parameter must also be specified. You may specify up to 5 configuration blocks.
+     */
+    evaluateOnExits?: outputs.AwsBatchJobDefinitionRetryStrategyEvaluateOnExit[];
+}
+
+export interface AwsBatchJobDefinitionRetryStrategyEvaluateOnExit {
+    /**
+     * Specifies the action to take if all of the specified conditions are met. The values are not case sensitive. Valid values: `RETRY`, `EXIT`.
+     */
+    action: string;
+    /**
+     * A glob pattern to match against the decimal representation of the exit code returned for a job.
+     */
+    onExitCode?: string;
+    /**
+     * A glob pattern to match against the reason returned for a job.
+     */
+    onReason?: string;
+    /**
+     * A glob pattern to match against the status reason returned for a job.
+     */
+    onStatusReason?: string;
+}
+
+export interface AwsBatchJobDefinitionTimeout {
+    /**
+     * The time duration in seconds after which AWS Batch terminates your jobs if they have not finished. The minimum value for the timeout is `60`seconds.
+     */
+    attemptDurationSeconds?: number;
+}
+
+export interface AwsBatchSchedulingPolicyFairSharePolicy {
+    /**
+     * A value used to reserve some of the available maximum vCPU for fair share identifiers that have not yet been used.
+     */
+    computeReservation: number;
+    /**
+     * The time period to use to calculate a fair share percentage for each fair share identifier in use, in seconds.
+     */
+    shareDecaySeconds: number;
+    /**
+     * One or more share distribution blocks which define the weights for the fair share identifiers for the fair share policy.
+     */
+    shareDistributions?: outputs.AwsBatchSchedulingPolicyFairSharePolicyShareDistribution[];
+}
+
+export interface AwsBatchSchedulingPolicyFairSharePolicyShareDistribution {
+    /**
+     * A fair share identifier or fair share identifier prefix.
+     */
+    shareIdentifier: string;
+    /**
+     * The weight factor for the fair share identifier.
+     */
+    weightFactor?: number;
+}
+
+export interface AwsCloudfrontDistributionCustomErrorResponse {
+    errorCachingMinTtl: number;
+    errorCode: number;
+    responseCode: number;
+    responsePagePath: string;
+}
+
+export interface AwsCloudfrontDistributionDefaultCacheBehavior {
+    allowedMethods: string[];
+    /**
+     * \n\n						
+     * | Policy name                                                                                                                                                                                  | Policy Id                            |
+     * |----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------|
+     * | Amplify                                                | 2e54312d-136d-493c-8eb9-b001f22f67d2 |
+     * | CachingDisabled                               | 4135ea2d-6df8-44a3-9df3-4b5a84be39ad |
+     * | CachingOptimized                                    | 658327ea-f89d-4fab-a63d-7e88639e58f6 |
+     * | CachingOptimizedForUncompressedObjects | b2884449-e4de-46a7-ac36-70bc7f1ddd6d |
+     * | Elemental-MediaPackage                            | 08627262-05a9-4f76-9ded-b50ca2e3a84f |
+     * \n\n
+     */
+    cachePolicyId: string;
+    cachedMethods: string[];
+    /**
+     * Defaults to `false`.
+     */
+    compress?: boolean;
+    /**
+     * default time to live: Not required when cache*policy*id is set
+     */
+    defaultTtl: number;
+    fieldLevelEncryptionId: string;
+    forwardedValues?: outputs.AwsCloudfrontDistributionDefaultCacheBehaviorForwardedValues;
+    functionAssociations?: outputs.AwsCloudfrontDistributionDefaultCacheBehaviorFunctionAssociation[];
+    lambdaFunctionAssociations?: outputs.AwsCloudfrontDistributionDefaultCacheBehaviorLambdaFunctionAssociation[];
+    /**
+     * Maximum time to live: Not required when cache*policy*id is set
+     */
+    maxTtl: number;
+    /**
+     * Minimum time to live: Not required when cache*policy*id is set Defaults to `0`.
+     */
+    minTtl?: number;
+    originRequestPolicyId: string;
+    realtimeLogConfigArn: string;
+    responseHeadersPolicyId: string;
+    smoothStreaming: boolean;
+    targetOriginId: string;
+    trustedKeyGroups: string[];
+    trustedSigners: string[];
+    viewerProtocolPolicy: string;
+}
+
+export interface AwsCloudfrontDistributionDefaultCacheBehaviorForwardedValues {
+    cookies: outputs.AwsCloudfrontDistributionDefaultCacheBehaviorForwardedValuesCookies;
+    /**
+     * headers: Not required when cache*policy*id is set
+     */
+    headers: string[];
+    queryString: boolean;
+    /**
+     * query*string*cache*keys: Not required when cache*policy_id is set
+     */
+    queryStringCacheKeys: string[];
+}
+
+export interface AwsCloudfrontDistributionDefaultCacheBehaviorForwardedValuesCookies {
+    forward: string;
+    whitelistedNames: string[];
+}
+
+export interface AwsCloudfrontDistributionDefaultCacheBehaviorFunctionAssociation {
+    eventType: string;
+    functionArn: string;
+}
+
+export interface AwsCloudfrontDistributionDefaultCacheBehaviorLambdaFunctionAssociation {
+    eventType: string;
+    /**
+     * Defaults to `false`.
+     */
+    includeBody?: boolean;
+    lambdaArn: string;
+}
+
+export interface AwsCloudfrontDistributionLoggingConfig {
+    bucket: string;
+    /**
+     * Defaults to `false`.
+     */
+    includeCookies?: boolean;
+    /**
+     * Defaults to ``.
+     */
+    prefix?: string;
+}
+
+export interface AwsCloudfrontDistributionOrderedCacheBehavior {
+    allowedMethods: string[];
+    cachePolicyId: string;
+    cachedMethods: string[];
+    /**
+     * Defaults to `false`.
+     */
+    compress?: boolean;
+    defaultTtl: number;
+    fieldLevelEncryptionId: string;
+    forwardedValues?: outputs.AwsCloudfrontDistributionOrderedCacheBehaviorForwardedValues;
+    functionAssociations?: outputs.AwsCloudfrontDistributionOrderedCacheBehaviorFunctionAssociation[];
+    lambdaFunctionAssociations?: outputs.AwsCloudfrontDistributionOrderedCacheBehaviorLambdaFunctionAssociation[];
+    maxTtl: number;
+    /**
+     * Defaults to `0`.
+     */
+    minTtl?: number;
+    originRequestPolicyId: string;
+    pathPattern: string;
+    realtimeLogConfigArn: string;
+    responseHeadersPolicyId: string;
+    smoothStreaming: boolean;
+    targetOriginId: string;
+    trustedKeyGroups: string[];
+    trustedSigners: string[];
+    viewerProtocolPolicy: string;
+}
+
+export interface AwsCloudfrontDistributionOrderedCacheBehaviorForwardedValues {
+    cookies: outputs.AwsCloudfrontDistributionOrderedCacheBehaviorForwardedValuesCookies;
+    headers: string[];
+    queryString: boolean;
+    queryStringCacheKeys: string[];
+}
+
+export interface AwsCloudfrontDistributionOrderedCacheBehaviorForwardedValuesCookies {
+    forward: string;
+    whitelistedNames: string[];
+}
+
+export interface AwsCloudfrontDistributionOrderedCacheBehaviorFunctionAssociation {
+    eventType: string;
+    functionArn: string;
+}
+
+export interface AwsCloudfrontDistributionOrderedCacheBehaviorLambdaFunctionAssociation {
+    eventType: string;
+    /**
+     * Defaults to `false`.
+     */
+    includeBody?: boolean;
+    lambdaArn: string;
+}
+
+export interface AwsCloudfrontDistributionOrigin {
+    /**
+     * Defaults to `3`.
+     */
+    connectionAttempts?: number;
+    /**
+     * Defaults to `10`.
+     */
+    connectionTimeout?: number;
+    customHeaders?: outputs.AwsCloudfrontDistributionOriginCustomHeader[];
+    customOriginConfig?: outputs.AwsCloudfrontDistributionOriginCustomOriginConfig;
+    domainName: string;
+    originId: string;
+    /**
+     * Defaults to ``.
+     */
+    originPath?: string;
+    originShield?: outputs.AwsCloudfrontDistributionOriginOriginShield;
+    s3OriginConfig: outputs.AwsCloudfrontDistributionOriginS3OriginConfig;
+}
+
+export interface AwsCloudfrontDistributionOriginCustomHeader {
+    name: string;
+    value: string;
+}
+
+export interface AwsCloudfrontDistributionOriginCustomOriginConfig {
+    /**
+     * Defaults to `80`.
+     */
+    httpPort?: number;
+    /**
+     * Defaults to `443`.
+     */
+    httpsPort?: number;
+    /**
+     * Defaults to `5`.
+     */
+    originKeepaliveTimeout?: number;
+    originProtocolPolicy: string;
+    /**
+     * Defaults to `30`.
+     */
+    originReadTimeout?: number;
+    originSslProtocols: string[];
+}
+
+export interface AwsCloudfrontDistributionOriginGroup {
+    failoverCriteria: outputs.AwsCloudfrontDistributionOriginGroupFailoverCriteria;
+    members: outputs.AwsCloudfrontDistributionOriginGroupMember[];
+    originId: string;
+}
+
+export interface AwsCloudfrontDistributionOriginGroupFailoverCriteria {
+    statusCodes: number[];
+}
+
+export interface AwsCloudfrontDistributionOriginGroupMember {
+    originId: string;
+}
+
+export interface AwsCloudfrontDistributionOriginOriginShield {
+    enabled: boolean;
+    originShieldRegion: string;
+}
+
+export interface AwsCloudfrontDistributionOriginS3OriginConfig {
+    originAccessIdentity: string;
+}
+
+export interface AwsCloudfrontDistributionRestrictions {
+    geoRestriction: outputs.AwsCloudfrontDistributionRestrictionsGeoRestriction;
+}
+
+export interface AwsCloudfrontDistributionRestrictionsGeoRestriction {
+    locations: string[];
+    restrictionType: string;
+}
+
+export interface AwsCloudfrontDistributionViewerCertificate {
+    acmCertificateArn: string;
+    cloudfrontDefaultCertificate: boolean;
+    iamCertificateId: string;
+    /**
+     * Defaults to `TLSv1.2_2021`.
+     */
+    minimumProtocolVersion?: string;
+    /**
+     * Defaults to `sni-only`.
+     */
+    sslSupportMethod?: string;
+}
+
+export interface AwsCloudwatchEventRuleTag {
+    key: string;
+    value: string;
+}
+
+export interface AwsCloudwatchMetricAlarmDimension {
+    key: string;
+    value: string;
+}
+
+export interface AwsDynamodbTableV2Attribute {
+    /**
+     * The name of the attribute
+     */
+    name: string;
+    /**
+     * Attribute type, which must be a scalar type: `S`, `N`, or `B` for (S)tring, (N)umber or (B)inary data
+     */
+    type: string;
+}
+
+export interface AwsDynamodbTableV2GlobalSecondaryIndex {
+    /**
+     * The name of the hash key in the index; must be defined as an attribute in the resource.
+     */
+    hashKey: string;
+    /**
+     * The name of the index.
+     */
+    name: string;
+    /**
+     * Only required with `INCLUDE` as a projection type; a list of attributes to project into the index. These do not need to be defined as attributes on the table.
+     */
+    nonKeyAttributes?: string[];
+    /**
+     * One of `ALL`, `INCLUDE` or `KEYS_ONLY` where `ALL` projects every attribute into the index, `KEYS_ONLY` projects just the hash and range key into the index, and `INCLUDE` projects only the keys specified in the `nonKeyAttributes` parameter.
+     */
+    projectionType: string;
+    /**
+     * The name of the range key; must be defined.
+     */
+    rangeKey?: string;
+    /**
+     * The number of read units for this index. Must be set if `billingMode` is set to `PROVISIONED`.
+     */
+    readCapacity?: number;
+    /**
+     * The number of write units for this index. Must be set if `billingMode` is set to `PROVISIONED`.
+     */
+    writeCapacity?: number;
+}
+
+export interface AwsDynamodbTableV2KeySchema {
+    /**
+     * The name of the attribute
+     */
+    attributeName: string;
+    /**
+     * Applicable key types are `HASH` or `RANGE`.
+     */
+    keyType: string;
+}
+
+export interface AwsDynamodbTableV2LocalSecondaryIndex {
+    /**
+     * The name of the hash key in the index; must be defined as an attribute in the resource.
+     */
+    hashKey: string;
+    /**
+     * The name of the index.
+     */
+    name: string;
+    /**
+     * Only required with `INCLUDE` as a projection type; a list of attributes to project into the index. These do not need to be defined as attributes on the table.
+     */
+    nonKeyAttributes?: string[];
+    /**
+     * One of `ALL`, `INCLUDE` or `KEYS_ONLY` where `ALL` projects every attribute into the index, `KEYS_ONLY` projects just the hash and range key into the index, and `INCLUDE` projects only the keys specified in the `nonKeyAttributes` parameter.
+     */
+    projectionType: string;
+    /**
+     * The name of the range key; must be defined.
+     */
+    rangeKey: string;
+}
+
+export interface AwsDynamodbTableV2ServerSideEncryption {
+    /**
+     * Whether or not to enable encryption at rest using an AWS managed KMS customer master key (CMK).
+     */
+    enabled: boolean;
+    /**
+     * The ARN of the CMK that should be used for the AWS KMS encryption.
+     */
+    kmsKeyArn: string;
+}
+
+export interface AwsDynamodbTableV2Tag {
+    key: string;
+    value: string;
+}
+
+export interface AwsDynamodbTableV2Ttl {
+    /**
+     * The name of the attribute that will be stored in the ttl timestamp
+     */
+    attributeName: string;
+    /**
+     * Status of the ttl
+     */
+    enabled: boolean;
+}
+
+export interface AwsEfsFileSystemLifecyclePolicy {
+    /**
+     * Indicates how long it takes to transition files to the archive storage class. Requires transition*to*ia, Elastic Throughput and General Purpose performance mode. Valid values: `AFTER_1_DAY`, `AFTER_7_DAYS`, `AFTER_14_DAYS`, `AFTER_30_DAYS`, `AFTER_60_DAYS`, or `AFTER_90_DAYS`
+     */
+    transitionToArchive?: string;
+    /**
+     * Indicates how long it takes to transition files to the IA storage class. Valid values: `AFTER_1_DAY`, `AFTER_7_DAYS`, `AFTER_14_DAYS`, `AFTER_30_DAYS`, `AFTER_60_DAYS`, or `AFTER_90_DAYS`
+     */
+    transitionToIa?: string;
+    /**
+     * Describes the policy used to transition a file from infequent access storage to primary storage. Valid values: `AFTER_1_ACCESS`
+     */
+    transitionToPrimaryStorageClass?: string;
+}
+
+export interface AwsEfsFileSystemMountTarget {
+    availabilityZone: string;
+    ipAddress: string;
+    lifecycleState: string;
+    mountTargetId: string;
+    subnetId: string;
+}
+
+export interface AwsEfsFileSystemTag {
+    key: string;
+    value: string;
+}
+
+export interface AwsEfsLifecyclePolicyLifecyclePolicy {
+    /**
+     * Indicates how long it takes to transition files to the archive storage class. Requires transition*to*ia, Elastic Throughput and General Purpose performance mode. Valid values: `AFTER_1_DAY`, `AFTER_7_DAYS`, `AFTER_14_DAYS`, `AFTER_30_DAYS`, `AFTER_60_DAYS`, or `AFTER_90_DAYS`
+     */
+    transitionToArchive?: string;
+    /**
+     * Indicates how long it takes to transition files to the IA storage class. Valid values: `AFTER_1_DAY`, `AFTER_7_DAYS`, `AFTER_14_DAYS`, `AFTER_30_DAYS`, `AFTER_60_DAYS`, or `AFTER_90_DAYS`
+     */
+    transitionToIa?: string;
+    /**
+     * Describes the policy used to transition a file from infequent access storage to primary storage. Valid values: `AFTER_1_ACCESS`
+     */
+    transitionToPrimaryStorageClass?: string;
+}
+
+export interface AwsElasticsearchClusterConfig {
+    coldStorageOptions: outputs.AwsElasticsearchClusterConfigColdStorageOptions;
+    /**
+     * Defaults to `0`.
+     */
+    dedicatedMasterCount?: number;
+    /**
+     * Defaults to `false`.
+     */
+    dedicatedMasterEnabled?: boolean;
+    /**
+     * Defaults to `t2.small.elasticsearch`.
+     */
+    dedicatedMasterType?: string;
+    /**
+     * Defaults to `1`.
+     */
+    instanceCount?: number;
+    /**
+     * Defaults to `t2.small.elasticsearch`.
+     */
+    instanceType?: string;
+    multiAzWithStandbyEnabled?: boolean;
+    warmCount?: number;
+    warmEnabled?: boolean;
+    warmType?: string;
+}
+
+export interface AwsElasticsearchClusterConfigColdStorageOptions {
+    enabled: boolean;
+}
+
+export interface AwsElasticsearchEbsOption {
+    ebsEnabled: boolean;
+    iops: number;
+    volumeSize: number;
+    volumeType: string;
+}
+
+export interface AwsElasticsearchEncryptAtRest {
+    enabled: boolean;
+    /**
+     * The ID of a KMS key to use with the ElasticSearch instance.
+     */
+    kmsKeyId: string;
+    /**
+     * The name of a KMS key to use with the ElasticSearch instance.
+     */
+    kmsKeyName: string;
+}
+
+export interface AwsElasticsearchSnapshotOption {
+    automatedSnapshotStartHour: number;
+}
+
+export interface AwsElasticsearchVpcOption {
+    availabilityZones: string[];
+    securityGroupIds: string[];
+    subnetIds: string[];
+    vpcId: string;
+}
+
+export interface AwsHostMetadata {
+    key: string;
+    value: string;
+}
+
+export interface AwsHostMinionTag {
+    key: string;
+    value: string;
+}
+
+export interface AwsHostNetworkInterface {
+    /**
+     * Whether or not to associate a public IP with the newly created ENI.  Cannot be specified if `networkInterfaceId` is specified.
+     */
+    associatePublicIp: boolean;
+    /**
+     * The device index to pass to AWS for attaching the ENI.  Starts at zero.
+     */
+    deviceIndex: number;
+    groups: string[];
+    metadatas: outputs.AwsHostNetworkInterfaceMetadata[];
+    /**
+     * The ID of an ENI to attach to this host.  Cannot be specified if `subnetId` or `associatePublicIp` is specified.
+     */
+    networkInterfaceId: string;
+    /**
+     * The ID of a subnet in which to create a new ENI.  Cannot be specified if `networkInterfaceId` is specified.
+     */
+    subnetId: string;
+}
+
+export interface AwsHostNetworkInterfaceMetadata {
+    key: string;
+    value: string;
+}
+
+export interface AwsHostTag {
+    key: string;
+    value: string;
+}
+
+export interface AwsHostTaint {
+    /**
+     * Update strategy of the node. Effect types <br>      - NoSchedule<br>     - PreferNoSchedule<br>     - NoExecute
+     */
+    effect: string;
+    key: string;
+    value?: string;
+}
+
+export interface AwsHostVolume {
+    iops: number;
+    name: string;
+    size: number;
+    volumeId: string;
+    volumeType: string;
+}
+
+export interface AwsLambdaFunctionDeadLetterConfig {
+    /**
+     * ARN of an SNS topic or SQS queue to notify when an invocation fails.
+     */
+    targetArn?: string;
+}
+
+export interface AwsLambdaFunctionEnvironment {
+    /**
+     * Map of environment variables that are accessible from the function code during execution.
+     */
+    variables?: {[key: string]: string};
+}
+
+export interface AwsLambdaFunctionEventConfigDestinationConfig {
+    /**
+     * Configured destination for failed asynchronous invocations
+     */
+    onFailure?: outputs.AwsLambdaFunctionEventConfigDestinationConfigOnFailure;
+    /**
+     * Configured destination for successful asynchronous invocations
+     */
+    onSuccess?: outputs.AwsLambdaFunctionEventConfigDestinationConfigOnSuccess;
+}
+
+export interface AwsLambdaFunctionEventConfigDestinationConfigOnFailure {
+    /**
+     * The AWS ARN of the destination resource
+     */
+    destination: string;
+}
+
+export interface AwsLambdaFunctionEventConfigDestinationConfigOnSuccess {
+    /**
+     * The AWS ARN of the destination resource
+     */
+    destination: string;
+}
+
+export interface AwsLambdaFunctionImageConfig {
+    /**
+     * The command that is passed to the container.
+     */
+    commands?: string[];
+    /**
+     * The entry point that is passed to the container.
+     */
+    entryPoints?: string[];
+    /**
+     * The working directory that is passed to the container.
+     */
+    workingDirectory?: string;
+}
+
+export interface AwsLambdaFunctionTracingConfig {
+    /**
+     * Whether to sample and trace a subset of incoming requests with AWS X-Ray. Valid values are `PassThrough` and `Active`.
+     */
+    mode: string;
+}
+
+export interface AwsLbListenerRuleAction {
+    /**
+     * Information for creating an authenticate action using Cognito. Required if `type` is `authenticate-cognito`.
+     */
+    authenticateCognito: outputs.AwsLbListenerRuleActionAuthenticateCognito;
+    /**
+     * Information for creating an authenticate action using OIDC. Required if `type` is `authenticate-oidc`.
+     */
+    authenticateOidc: outputs.AwsLbListenerRuleActionAuthenticateOidc;
+    /**
+     * Information for creating an action that returns a custom HTTP response. Required if `type` is `fixed-response`.
+     */
+    fixedResponse: outputs.AwsLbListenerRuleActionFixedResponse;
+    /**
+     * Information for creating an action that distributes requests among one or more target groups. Specify only if `type` is `forward`. If you specify both `forward` block and `targetGroupArn` attribute, you can specify only one target group.
+     */
+    forward: outputs.AwsLbListenerRuleActionForward;
+    order: number;
+    /**
+     * Information for creating a redirect action. Required if `type` is `redirect`.
+     */
+    redirect: outputs.AwsLbListenerRuleActionRedirect;
+    /**
+     * The ARN of the Target Group to which to route traffic. Specify only if `type` is `forward` and you want to route to a single target group. To route to one or more target groups, use a `forward` block instead.
+     */
+    targetGroupArn: string;
+    /**
+     * The type of routing action. Valid values are `redirect`, `forward`, `fixed-response`, `authenticate-cognito` and `authenticate-oidc`
+     */
+    type: string;
+}
+
+export interface AwsLbListenerRuleActionAuthenticateCognito {
+    /**
+     * The query parameters to include in the redirect request to the authorization endpoint.
+     */
+    authenticationRequestExtraParams: {[key: string]: string};
+    /**
+     * The behavior if the user is not authenticated. Valid values: `deny`, `allow` and `authenticate`.
+     */
+    onUnauthenticatedRequest: string;
+    /**
+     * The set of user claims to be requested from the IdP. Defaults to `openid`.
+     */
+    scope?: string;
+    /**
+     * The name of the cookie used to maintain session information. Defaults to `AWSELBAuthSessionCookie`.
+     */
+    sessionCookieName?: string;
+    /**
+     * The maximum duration of the authentication session, in seconds. Defaults to `604800`.
+     */
+    sessionTimeout?: number;
+    /**
+     * The ARN of the Cognito user pool.
+     */
+    userPoolArn: string;
+    /**
+     * The ID of the Cognito user pool client.
+     */
+    userPoolClientId: string;
+    /**
+     * The domain prefix or fully-qualified domain name of the Cognito user pool.
+     */
+    userPoolDomain: string;
+}
+
+export interface AwsLbListenerRuleActionAuthenticateOidc {
+    /**
+     * The query parameters to include in the redirect request to the authorization endpoint. Max: 10
+     */
+    authenticationRequestExtraParams: {[key: string]: string};
+    /**
+     * The authorization endpoint of the IdP.
+     */
+    authorizationEndpoint: string;
+    /**
+     * The OAuth 2.0 client identifier.
+     */
+    clientId: string;
+    /**
+     * The OAuth 2.0 client secret.
+     */
+    clientSecret: string;
+    /**
+     * The OIDC issuer identifier of the IdP.
+     */
+    issuer: string;
+    /**
+     * The behavior if the user is not authenticated. Valid values: `deny`, `allow` and `authenticate`.
+     */
+    onUnauthenticatedRequest: string;
+    /**
+     * The set of user claims to be requested from the IdP. Defaults to `openid`.
+     */
+    scope?: string;
+    /**
+     * The name of the cookie used to maintain session information. Defaults to `AWSELBAuthSessionCookie`.
+     */
+    sessionCookieName?: string;
+    /**
+     * The maximum duration of the authentication session, in seconds. Defaults to `604800`.
+     */
+    sessionTimeout?: number;
+    /**
+     * The token endpoint of the IdP.
+     */
+    tokenEndpoint: string;
+    /**
+     * The user info endpoint of the IdP.
+     */
+    userInfoEndpoint: string;
+}
+
+export interface AwsLbListenerRuleActionFixedResponse {
+    /**
+     * The content type. Valid values are `text/plain`, `text/css`, `text/html`, `application/javascript` and `application/json`
+     */
+    contentType: string;
+    /**
+     * The message body.
+     */
+    messageBody: string;
+    /**
+     * The HTTP response code. Valid values are `2XX`, `4XX`, or `5XX`.
+     */
+    statusCode: string;
+}
+
+export interface AwsLbListenerRuleActionForward {
+    stickiness: outputs.AwsLbListenerRuleActionForwardStickiness;
+    targetGroups: outputs.AwsLbListenerRuleActionForwardTargetGroup[];
+}
+
+export interface AwsLbListenerRuleActionForwardStickiness {
+    /**
+     * The time period, in seconds, during which requests from a client should be routed to the same target group.
+     */
+    duration: number;
+    /**
+     * Indicates whether target group stickiness is enabled. Defaults to `false`.
+     */
+    enabled?: boolean;
+}
+
+export interface AwsLbListenerRuleActionForwardTargetGroup {
+    /**
+     * The Amazon Resource Name (ARN) of the target group.
+     */
+    arn: string;
+    /**
+     * The weight. The range is 0 to 999. Defaults to `1`.
+     */
+    weight?: number;
+}
+
+export interface AwsLbListenerRuleActionRedirect {
+    /**
+     * The hostname. This component is not percent-encoded. The hostname can contain `#{host}`. Defaults to `#{host}`.
+     */
+    host?: string;
+    /**
+     * The absolute path, starting with the leading "/". Defaults to `/#{path}`.
+     */
+    path?: string;
+    /**
+     * The port. Specify a value from `1` to `65535`. Defaults to `#{port}`.
+     */
+    port?: string;
+    /**
+     * The protocol. Valid values are `HTTP`, `HTTPS`, or `#{protocol}`. Defaults to `#{protocol}`.
+     */
+    protocol?: string;
+    /**
+     * The query parameters, URL-encoded when necessary. Defaults to `#{query}`.
+     */
+    query?: string;
+    /**
+     * The HTTP redirect code. The redirect is either permanent or temporary
+     */
+    statusCode: string;
+}
+
+export interface AwsLbListenerRuleCondition {
+    hostHeader: outputs.AwsLbListenerRuleConditionHostHeader;
+    /**
+     * HTTP headers to match.
+     */
+    httpHeader: outputs.AwsLbListenerRuleConditionHttpHeader;
+    /**
+     * Contains a single `values` item which is a list of HTTP request methods or verbs to match. Maximum size is 40 characters.
+     */
+    httpRequestMethod: outputs.AwsLbListenerRuleConditionHttpRequestMethod;
+    /**
+     * Contains a single `values` item which is a list of path patterns to match against the request URL. Maximum size of each pattern is 128 characters.
+     */
+    pathPattern: outputs.AwsLbListenerRuleConditionPathPattern;
+    /**
+     * Query strings to match.
+     */
+    queryStrings: outputs.AwsLbListenerRuleConditionQueryString[];
+    /**
+     * Contains a single `values` item which is a list of source IP CIDR notations to match.
+     */
+    sourceIp: outputs.AwsLbListenerRuleConditionSourceIp;
+}
+
+export interface AwsLbListenerRuleConditionHostHeader {
+    /**
+     * Contains a single `values` item which is a list of host header patterns to match. The maximum size of each pattern is 128 characters.
+     */
+    values: string[];
+}
+
+export interface AwsLbListenerRuleConditionHttpHeader {
+    /**
+     * Name of HTTP header to search. The maximum size is 40 characters.
+     */
+    httpHeaderName: string;
+    /**
+     * List of header value patterns to match. Maximum size of each pattern is 128 characters.
+     */
+    values: string[];
+}
+
+export interface AwsLbListenerRuleConditionHttpRequestMethod {
+    values: string[];
+}
+
+export interface AwsLbListenerRuleConditionPathPattern {
+    values: string[];
+}
+
+export interface AwsLbListenerRuleConditionQueryString {
+    /**
+     * Query string key pattern to match.
+     */
+    key: string;
+    /**
+     * Query string value pattern to match.
+     */
+    value: string;
+}
+
+export interface AwsLbListenerRuleConditionSourceIp {
+    values: string[];
+}
+
+export interface AwsLbListenerRuleTag {
+    key: string;
+    value: string;
+}
+
+export interface AwsLbTargetGroupHealthCheck {
+    /**
+     * Whether health checks are enabled. Defaults to `true`.
+     */
+    enabled?: boolean;
+    /**
+     * Number of consecutive health checks successes required before considering an unhealthy target healthy. Defaults to `3`.
+     */
+    healthyThreshold?: number;
+    /**
+     * Approximate amount of time, in seconds, between health checks of an individual target. Minimum value 5 seconds, Maximum value 300 seconds. For lambda target groups, it needs to be greater as the `timeout` of the underlying `lambda`. Defaults to `30`.
+     */
+    interval?: number;
+    /**
+     * Response codes to use when checking for a healthy responses from a target. You can specify multiple values (for example, "200,202" for HTTP(s) or "0,12" for GRPC) or a range of values (for example, "200-299" or "0-99"). Required for HTTP/HTTPS/GRPC ALB. Only applies to Application Load Balancers (i.e., HTTP/HTTPS/GRPC) not Network Load Balancers (i.e., TCP).
+     */
+    matcher: string;
+    /**
+     * Destination for the health check request. Required for HTTP/HTTPS ALB and HTTP NLB. Only applies to HTTP/HTTPS.
+     */
+    path: string;
+    /**
+     * Port to use to connect with the target. Valid values are either ports 1-65535, or traffic-port. Defaults to `traffic-port`.
+     */
+    port?: string;
+    /**
+     * Protocol to use to connect with the target. Defaults to HTTP. Not applicable when targetType is lambda Defaults to `HTTP`.
+     */
+    protocol?: string;
+    /**
+     * Amount of time, in seconds, during which no response means a failed health check.
+     */
+    timeout: number;
+    /**
+     * Number of consecutive health check failures required before considering the target unhealthy. Defaults to `3`.
+     */
+    unhealthyThreshold?: number;
+}
+
+export interface AwsLoadBalancerListenerCertificate {
+    arn: string;
+    isDefault: boolean;
+}
+
+export interface AwsLoadBalancerListenerDefaultAction {
+    order: number;
+    targetGroupArn: string;
+    type: string;
+}
+
+export interface AwsLoadBalancerTag {
+    key: string;
+    value: string;
+}
+
+export interface AwsMwaaEnvironmentLastUpdated {
+    createdAt: string;
+    errors: outputs.AwsMwaaEnvironmentLastUpdatedError[];
+    status: string;
+}
+
+export interface AwsMwaaEnvironmentLastUpdatedError {
+    errorCode: string;
+    errorMessage: string;
+}
+
+export interface AwsMwaaEnvironmentLoggingConfiguration {
+    dagProcessingLogs: outputs.AwsMwaaEnvironmentLoggingConfigurationDagProcessingLogs;
+    schedulerLogs: outputs.AwsMwaaEnvironmentLoggingConfigurationSchedulerLogs;
+    taskLogs: outputs.AwsMwaaEnvironmentLoggingConfigurationTaskLogs;
+    webserverLogs: outputs.AwsMwaaEnvironmentLoggingConfigurationWebserverLogs;
+    workerLogs: outputs.AwsMwaaEnvironmentLoggingConfigurationWorkerLogs;
+}
+
+export interface AwsMwaaEnvironmentLoggingConfigurationDagProcessingLogs {
+    enabled: boolean;
+    logLevel: string;
+}
+
+export interface AwsMwaaEnvironmentLoggingConfigurationSchedulerLogs {
+    enabled: boolean;
+    logLevel: string;
+}
+
+export interface AwsMwaaEnvironmentLoggingConfigurationTaskLogs {
+    enabled: boolean;
+    logLevel: string;
+}
+
+export interface AwsMwaaEnvironmentLoggingConfigurationWebserverLogs {
+    enabled: boolean;
+    logLevel: string;
+}
+
+export interface AwsMwaaEnvironmentLoggingConfigurationWorkerLogs {
+    enabled: boolean;
+    logLevel: string;
+}
+
+export interface AwsSqsQueueDeadLetterQueueConfiguration {
+    /**
+     * Maximum number of processing attempts for a given message before it is moved to the dead letter queue
+     */
+    maxMessageReceiveAttempts: number;
+    /**
+     * Name of the SQS queue meant to be the target dead letter queue for this SQS resource (queues must belong to same tenant)
+     */
+    targetSqsDlqName: string;
+}
+
+export interface AwsTargetGroupAttributesAttribute {
+    key: string;
+    value: string;
+}
+
+export interface AwsTimestreamwriteDatabaseAllTag {
+    key: string;
+    value: string;
+}
+
+export interface AwsTimestreamwriteDatabaseTag {
+    key: string;
+    value: string;
+}
+
+export interface AwsTimestreamwriteTableAllTag {
+    key: string;
+    value: string;
+}
+
+export interface AwsTimestreamwriteTableMagneticStoreWriteProperties {
+    /**
+     * A flag to enable magnetic store writes. Defaults to `false`.
+     */
+    enableMagneticStoreWrites?: boolean;
+    /**
+     * The location to write error reports for records rejected asynchronously during magnetic store writes.
+     */
+    magneticStoreRejectedDataLocation: outputs.AwsTimestreamwriteTableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocation;
+}
+
+export interface AwsTimestreamwriteTableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocation {
+    /**
+     * Configuration of an S3 location to write error reports for records rejected, asynchronously, during magnetic store writes.
+     */
+    s3Configuration: outputs.AwsTimestreamwriteTableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3Configuration;
+}
+
+export interface AwsTimestreamwriteTableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3Configuration {
+    /**
+     * Bucket name of the customer S3 bucket.
+     */
+    bucketName: string;
+    /**
+     * Encryption option for the customer s3 location. Options are S3 server side encryption with an S3-managed key or KMS managed key. Valid values are `SSE_KMS` and `SSE_S3`.
+     */
+    encryptionOption: string;
+    /**
+     * KMS key arn for the customer s3 location when encrypting with a KMS managed key.
+     */
+    kmsKeyId: string;
+    /**
+     * Object key prefix for the customer S3 location.
+     */
+    objectKeyPrefix: string;
+}
+
+export interface AwsTimestreamwriteTableRetentionProperties {
+    /**
+     * The duration for which data must be stored in the magnetic store. Minimum value of 1. Maximum value of 73000.
+     */
+    magneticStoreRetentionPeriodInDays: number;
+    /**
+     * The duration for which data must be stored in the memory store. Minimum value of 1. Maximum value of 8766.
+     */
+    memoryStoreRetentionPeriodInHours: number;
+}
+
+export interface AwsTimestreamwriteTableTag {
+    key: string;
+    value: string;
+}
+
+export interface AzureAvailabilitySetVirtualMachine {
+    id: string;
+}
+
+export interface AzureK8NodePoolNodeLabel {
+    key: string;
+    value: string;
+}
+
+export interface AzureK8NodePoolScalePriority {
+    /**
+     * eviction policies Delete/Deallocate. Default value is Delete
+     */
+    evictionPolicy: string;
+    /**
+     * priority levels Regular/Spot
+     */
+    priority: string;
+    /**
+     * for spot VMs sets the maximum price you're willing to pay, controlling costs, while priority.spot determines the scaling order of spot VM pools.
+     */
+    spotMaxPrice: number;
+}
+
+export interface AzureMssqlDatabaseSku {
+    capacity: number;
+    name: string;
+    tier: string;
+}
+
+export interface AzureMssqlElasticpoolSku {
+    capacity: number;
+    name: string;
+    tier: string;
+}
+
+export interface AzurePrivateEndpointPrivateLinkServiceConnection {
+    groupIds: string[];
+    /**
+     * Specifies the Name of the Private Service Connection.
+     */
+    name: string;
+    /**
+     * The ID of the Private Link Enabled Remote Resource which this Private Endpoint should be connected to.
+     */
+    privateConnectionResourceId: string;
+}
+
+export interface AzureVaultBackupPolicyBackup {
+    frequency: string;
+    hourDuration?: number;
+    hourInterval?: number;
+    time: string;
+    weekdays?: string[];
+}
+
+export interface AzureVaultBackupPolicyRetentionDaily {
+    count: number;
+}
+
+export interface AzureVaultBackupPolicyRetentionMonthly {
+    count: number;
+    weekdays: string[];
+    weeks: string[];
+}
+
+export interface AzureVaultBackupPolicyRetentionWeekly {
+    count: number;
+    weekdays: string[];
+}
+
+export interface AzureVaultBackupPolicyRetentionYearly {
+    count: number;
+    months: string[];
+    weekdays: string[];
+    weeks: string[];
+}
+
+export interface AzureVirtualMachineMinionTag {
+    key: string;
+    value: string;
+}
+
+export interface AzureVirtualMachineScaleSetBootDiagnostics {
+    /**
+     * Whether to enable boot diagnostics for the virtual machine. Defaults to `true`.
+     */
+    enabled?: boolean;
+    /**
+     * Blob endpoint for the storage account to hold the virtual machine's diagnostic files.
+     */
+    storageUri: string;
+}
+
+export interface AzureVirtualMachineScaleSetExtension {
+    /**
+     * Specifies whether or not to use the latest minor version available.
+     */
+    autoUpgradeMinorVersion?: boolean;
+    /**
+     * Specifies the name of the extension.
+     */
+    name: string;
+    /**
+     * The protectedSettings passed to the extension, like settings, these are specified as a JSON object in a string.
+     */
+    protectedSettings?: string;
+    /**
+     * Specifies a dependency array of extensions required to be executed before, the array stores the name of each extension.
+     */
+    provisionAfterExtensions?: string[];
+    /**
+     * The publisher of the extension, available publishers can be found by using the Azure CLI..
+     */
+    publisher: string;
+    /**
+     * The settings passed to the extension, these are specified as a JSON object in a string.
+     */
+    settings?: string;
+    /**
+     * The type of extension, available types for a publisher can be found using the Azure CLI.
+     */
+    type: string;
+    /**
+     * Specifies the version of the extension to use, available versions can be found using the Azure CLI.
+     */
+    typeHandlerVersion: string;
+}
+
+export interface AzureVirtualMachineScaleSetIdentity {
+    /**
+     * Specifies a list of user managed identity ids to be assigned to the VMSS. Required if `type` is `UserAssigned`.
+     */
+    identityIds?: string[];
+    principalId: string;
+    /**
+     * Specifies the identity type to be assigned to the scale set. Allowable values are `SystemAssigned` and `UserAssigned`.
+     */
+    type: string;
+}
+
+export interface AzureVirtualMachineScaleSetNetworkProfile {
+    /**
+     * Specifies whether to enable accelerated networking or not. Defaults to `false`.
+     */
+    acceleratedNetworking?: boolean;
+    dnsSettings?: outputs.AzureVirtualMachineScaleSetNetworkProfileDnsSettings;
+    ipConfigurations: outputs.AzureVirtualMachineScaleSetNetworkProfileIpConfiguration[];
+    /**
+     * Whether IP forwarding is enabled on this NIC. Defaults to `false`.
+     */
+    ipForwarding?: boolean;
+    /**
+     * Specifies the name of the network interface configuration.
+     */
+    name: string;
+    /**
+     * Specifies the identifier for the network security group.
+     */
+    networkSecurityGroupId?: string;
+    /**
+     * Indicates whether network interfaces created from the network interface configuration will be the primary NIC of the VM.
+     */
+    primary: boolean;
+}
+
+export interface AzureVirtualMachineScaleSetNetworkProfileDnsSettings {
+    /**
+     * Specifies an array of dns servers.
+     */
+    dnsServers: string[];
+}
+
+export interface AzureVirtualMachineScaleSetNetworkProfileIpConfiguration {
+    /**
+     * Specifies an array of references to backend address pools of application gateways.
+     */
+    applicationGatewayBackendAddressPoolIds?: string[];
+    /**
+     * Specifies up to 20 application security group IDs.
+     */
+    applicationSecurityGroupIds?: string[];
+    /**
+     * Specifies an array of references to backend address pools of load balancers.
+     */
+    loadBalancerBackendAddressPoolIds?: string[];
+    /**
+     * Specifies an array of references to inbound NAT pools for load balancers.
+     */
+    loadBalancerInboundNatRulesIds: string[];
+    /**
+     * Specifies name of the IP configuration.
+     */
+    name: string;
+    /**
+     * Specifies if this ipConfiguration is the primary one.
+     */
+    primary?: boolean;
+    /**
+     * Describes a virtual machines scale set IP Configuration's PublicIPAddress configuration.
+     */
+    publicIpAddressConfiguration?: outputs.AzureVirtualMachineScaleSetNetworkProfileIpConfigurationPublicIpAddressConfiguration;
+    /**
+     * Specifies the identifier of the subnet.
+     */
+    subnetId: string;
+}
+
+export interface AzureVirtualMachineScaleSetNetworkProfileIpConfigurationPublicIpAddressConfiguration {
+    /**
+     * The domain name label for the dns settings.
+     */
+    domainNameLabel: string;
+    /**
+     * The idle timeout in minutes. This value must be between 4 and 30.
+     */
+    idleTimeout: number;
+    /**
+     * The name of the public ip address configuration.
+     */
+    name: string;
+}
+
+export interface AzureVirtualMachineScaleSetOsProfile {
+    /**
+     * Specifies the administrator password to use for all the instances of virtual machines in a scale set.
+     */
+    adminPassword?: string;
+    /**
+     * Specifies the administrator account name to use for all the instances of virtual machines in the scale set.
+     */
+    adminUsername: string;
+    /**
+     * Specifies the computer name prefix for all of the virtual machines in the scale set.
+     */
+    computerNamePrefix: string;
+    /**
+     * Specifies custom data to supply to the machine. On linux-based systems, this can be used as a cloud-init script. On other systems, this will be copied as a file on disk.
+     */
+    customData?: string;
+}
+
+export interface AzureVirtualMachineScaleSetOsProfileLinuxConfig {
+    /**
+     * Specifies whether password authentication should be disabled. Defaults to `false`.
+     */
+    disablePasswordAuthentication?: boolean;
+    /**
+     * Specifies a collection of `path` and `keyData` to be placed on the virtual machine.
+     */
+    sshKeys?: outputs.AzureVirtualMachineScaleSetOsProfileLinuxConfigSshKey[];
+}
+
+export interface AzureVirtualMachineScaleSetOsProfileLinuxConfigSshKey {
+    keyData?: string;
+    path: string;
+}
+
+export interface AzureVirtualMachineScaleSetOsProfileSecret {
+    /**
+     * Specifies the key vault to use.
+     */
+    sourceVaultId: string;
+    /**
+     * A collection of Vault Certificates as documented below.
+     */
+    vaultCertificates?: outputs.AzureVirtualMachineScaleSetOsProfileSecretVaultCertificate[];
+}
+
+export interface AzureVirtualMachineScaleSetOsProfileSecretVaultCertificate {
+    /**
+     * Specifies the certificate store on the Virtual Machine where the certificate should be added to.
+     */
+    certificateStore?: string;
+    /**
+     * It is the Base64 encoding of a JSON Object that which is encoded in UTF-8 of which the contents need to be `data`, `dataType` and `password`.
+     */
+    certificateUrl: string;
+}
+
+export interface AzureVirtualMachineScaleSetOsProfileWindowsConfig {
+    additionalUnattendConfigs?: outputs.AzureVirtualMachineScaleSetOsProfileWindowsConfigAdditionalUnattendConfig[];
+    /**
+     * Indicates whether virtual machines in the scale set are enabled for automatic updates.
+     */
+    enableAutomaticUpgrades: boolean;
+    /**
+     * Indicates whether virtual machine agent should be provisioned on the virtual machines in the scale set.
+     */
+    provisionVmAgent: boolean;
+    winrms?: outputs.AzureVirtualMachineScaleSetOsProfileWindowsConfigWinrm[];
+}
+
+export interface AzureVirtualMachineScaleSetOsProfileWindowsConfigAdditionalUnattendConfig {
+    /**
+     * Specifies the name of the component to configure with the added content. The only allowable value is `Microsoft-Windows-Shell-Setup`.
+     */
+    component: string;
+    /**
+     * Specifies the base-64 encoded XML formatted content that is added to the unattend.xml file for the specified path and component.
+     */
+    content: string;
+    /**
+     * Specifies the name of the pass that the content applies to. The only allowable value is `oobeSystem`.
+     */
+    pass: string;
+    /**
+     * Specifies the name of the setting to which the content applies. Possible values are: `FirstLogonCommands` and `AutoLogon`.
+     */
+    settingName: string;
+}
+
+export interface AzureVirtualMachineScaleSetOsProfileWindowsConfigWinrm {
+    /**
+     * Specifies URL of the certificate with which new Virtual Machines is provisioned.
+     */
+    certificateUrl?: string;
+    /**
+     * Specifies the protocol of listener.
+     */
+    protocol: string;
+}
+
+export interface AzureVirtualMachineScaleSetPlan {
+    /**
+     * Specifies the name of the image from the marketplace.
+     */
+    name: string;
+    /**
+     * Specifies the product of the image from the marketplace.
+     */
+    product: string;
+    /**
+     * Specifies the publisher of the image.
+     */
+    publisher: string;
+}
+
+export interface AzureVirtualMachineScaleSetRollingUpgradePolicy {
+    /**
+     * The maximum percent of total virtual machine instances that will be upgraded simultaneously by the rolling upgrade. Defaults to `20`.
+     */
+    maxBatchInstancePercent?: number;
+    /**
+     * The maximum percentage of the total virtual machine instances in the scale set that can be simultaneously unhealthy. Defaults to `20`.
+     */
+    maxUnhealthyInstancePercent?: number;
+    /**
+     * The maximum percentage of upgraded virtual machine instances that can be found to be in an unhealthy state. Defaults to `20`.
+     */
+    maxUnhealthyUpgradedInstancePercent?: number;
+    /**
+     * The wait time between completing the update for all virtual machines in one batch and starting the next batch. Defaults to `PT0S`.
+     */
+    pauseTimeBetweenBatches?: string;
+}
+
+export interface AzureVirtualMachineScaleSetSku {
+    /**
+     * Specifies the number of virtual machines in the scale set.
+     */
+    capacity: number;
+    /**
+     * Specifies the size of virtual machines in a scale set.
+     */
+    name: string;
+    /**
+     * Specifies the tier of virtual machines in a scale set. Possible values, `standard` or `basic`.
+     */
+    tier: string;
+}
+
+export interface AzureVirtualMachineScaleSetStorageProfileDataDisk {
+    /**
+     * Specifies the caching requirements. Possible values include: `None` (default), `ReadOnly`, `ReadWrite`.
+     */
+    caching: string;
+    /**
+     * Specifies how the data disk should be created. The only possible options are `FromImage` and `Empty`.
+     */
+    createOption: string;
+    /**
+     * Specifies the size of the disk in GB. This element is required when creating an empty disk. Defaults to `128`.
+     */
+    diskSizeGb?: number;
+    /**
+     * Specifies the Logical Unit Number of the disk in each virtual machine in the scale set.
+     */
+    lun: number;
+    /**
+     * Specifies the type of managed disk to create. Value must be either `Standard_LRS`, `StandardSSD_LRS` or `Premium_LRS`.
+     */
+    managedDiskType: string;
+}
+
+export interface AzureVirtualMachineScaleSetStorageProfileImageReference {
+    /**
+     * Specifies the ID of the (custom) image to use to create the virtual machine scale set.
+     */
+    id?: string;
+    /**
+     * Specifies the offer of the image used to create the virtual machines.
+     */
+    offer?: string;
+    /**
+     * Specifies the publisher of the image used to create the virtual machines.
+     */
+    publisher?: string;
+    /**
+     * Specifies the SKU of the image used to create the virtual machines.
+     */
+    sku?: string;
+    /**
+     * Specifies the version of the image used to create the virtual machines.
+     */
+    version?: string;
+}
+
+export interface AzureVirtualMachineScaleSetStorageProfileOsDisk {
+    /**
+     * Specifies the caching requirements. Possible values include: `None` (default), `ReadOnly`, `ReadWrite`.
+     */
+    caching: string;
+    /**
+     * Specifies how the virtual machine should be created. The only possible option is `FromImage`.
+     */
+    createOption: string;
+    /**
+     * Specifies the blob uri for user image. A virtual machine scale set creates an os disk in the same container as the user image.
+     */
+    image: string;
+    /**
+     * Specifies the type of managed disk to create. Value you must be either `Standard_LRS`, `StandardSSD_LRS` or `Premium_LRS`. Cannot be used when `vhdContainers` or `image` is specified.
+     */
+    managedDiskType: string;
+    /**
+     * Specifies the disk name. Must be specified when using unmanaged disk ('managed*disk*type' property not set).
+     */
+    name: string;
+    /**
+     * Specifies the operating system Type, valid values are `windows`, `linux`.
+     */
+    osType: string;
+    /**
+     * Specifies the vhd uri. Cannot be used when `image` or `managedDiskType` is specified.
+     */
+    vhdContainers: string[];
+}
+
+export interface AzureVirtualMachineTag {
+    key: string;
+    value: string;
+}
+
+export interface AzureVirtualMachineVolume {
+    iops: number;
+    name: string;
+    size: number;
+    volumeId: string;
+    volumeType: string;
+}
+
+export interface AzureVmMaintenanceConfigurationWindow {
+    /**
+     * The duration of the maintenance window in HH:mm format.
+     */
+    duration: string;
+    /**
+     * Effective expiration date of the maintenance window in YYYY-MM-DD hh:mm format.
+     */
+    expirationTime: string;
+    /**
+     * he rate at which a maintenance window is expected to recur. The rate can be expressed as daily, weekly, or monthly schedules.
+     */
+    recurEvery: string;
+    /**
+     * Effective start date of the maintenance window in YYYY-MM-DD HH:MM format.
+     */
+    startTime: string;
+    /**
+     * The timezone on which maintenance should be scheduled.
+     */
+    timeZone: string;
+}
+
+export interface ByohTag {
+    key: string;
+    value: string;
+}
+
+export interface DuploServiceLbconfigsLbconfig {
+    /**
+     * Applicable for internal lb.
+     */
+    allowGlobalAccess: boolean;
+    backendProtocolVersion: string;
+    /**
+     * The ARN of an ACM certificate to associate with this load balancer.  Only applicable for HTTPS.
+     */
+    certificateArn: string;
+    /**
+     * The name of the cloud load balancer (if applicable).
+     */
+    cloudName: string;
+    /**
+     * Specify CIDR Values. This is applicable only for Network Load Balancer if `lbType` is `6`.
+     */
+    customCidrs: string[];
+    /**
+     * The DNS name of the cloud load balancer (if applicable).
+     */
+    dnsName: string;
+    /**
+     * The frontend port associated with this load balancer configuration. Required if `lbType` is not `7`.
+     */
+    externalPort: number;
+    /**
+     * Only for K8S Node Port (`lbType = 4`) or load balancers in Kubernetes.  Set the kubernetes service `externalTrafficPolicy` attribute.
+     */
+    externalTrafficPolicy: string;
+    /**
+     * Only for K8S services or load balancers in Kubernetes.  Sets an additional selector label to narrow which pods can receive traffic.
+     */
+    extraSelectorLabels: outputs.DuploServiceLbconfigsLbconfigExtraSelectorLabel[];
+    frontendIp: string;
+    /**
+     * Health Check configuration block.
+     */
+    healthCheck: outputs.DuploServiceLbconfigsLbconfigHealthCheck;
+    /**
+     * The health check URL to associate with this load balancer configuration.
+     */
+    healthCheckUrl: string;
+    /**
+     * (Azure Only) Set only if Azure Shared Application Gateway is used (`lbType = 5`).
+     */
+    hostName: string;
+    /**
+     * The automatically assigned host port.
+     */
+    hostPort: number;
+    /**
+     * The load balancer Index.
+     */
+    index: number;
+    isInfraDeployment: boolean;
+    /**
+     * Whether or not to create an internal load balancer.
+     */
+    isInternal: boolean;
+    /**
+     * Set to true if the service for which the load balancer is being created is hosted on a docker native host, which is managed directly by DuploCloud, or false if the service is hosted on a cloud-provided platform like EKS, AKS, GKE, ECS, etc. The `duplocloud.getNativeHosts` data source lists the native hosts in a DuploCloud Tenant
+     */
+    isNative: boolean;
+    /**
+     * The numerical index of the type of load balancer configuration to create.
+     * Should be one of:
+     *
+     *    - `0` : ELB (Classic Load Balancer)
+     *    - `1` : ALB (Application Load Balancer)
+     *    - `2` : Health-check Only (No Load Balancer)
+     *    - `3` : K8S Service w/ Cluster IP (No Load Balancer)
+     *    - `4` : K8S Service w/ Node Port (No Load Balancer)
+     *    - `5` : Azure Shared Application Gateway
+     *    - `6` : NLB (Network Load Balancer)
+     *    - `7` : Target Group Only
+     */
+    lbType: number;
+    /**
+     * The name of the duplo service.
+     */
+    name: string;
+    /**
+     * The backend port associated with this load balancer configuration.
+     */
+    port: string;
+    /**
+     * The backend protocol associated with this load balancer configuration.
+     */
+    protocol: string;
+    /**
+     * The name of the duplo service.
+     */
+    replicationControllerName: string;
+    /**
+     * Only for K8S services or load balancers in Kubernetes.  Set to `true` to set health check annotations for ingress.
+     */
+    setIngressHealthCheck: boolean;
+    /**
+     * Skip http to https.
+     */
+    skipHttpToHttps: boolean;
+    /**
+     * The ARN of the Target Group to which to route traffic.
+     */
+    targetGroupArn: string;
+}
+
+export interface DuploServiceLbconfigsLbconfigExtraSelectorLabel {
+    key: string;
+    value: string;
+}
+
+export interface DuploServiceLbconfigsLbconfigHealthCheck {
+    /**
+     * Response codes to use when checking for a healthy responses from a target. You can specify multiple values (for example, "0,12" for GRPC) or a range of values (for example, "0-99"). Required for GRPC ALB. Only applies to Application Load Balancers (i.e., GRPC) not Network Load Balancers (i.e., TCP).
+     */
+    grpcSuccessCodes: string;
+    /**
+     * Number of consecutive health checks successes required before considering an unhealthy target healthy.
+     */
+    healthyThreshold?: number;
+    /**
+     * Response codes to use when checking for a healthy responses from a target. You can specify multiple values (for example, "200,202" for HTTP(s)) or a range of values (for example, "200-299"). Required for HTTP/HTTPS ALB. Only applies to Application Load Balancers (i.e., HTTP/HTTPS) not Network Load Balancers (i.e., TCP).
+     */
+    httpSuccessCodes: string;
+    /**
+     * Approximate amount of time, in seconds, between health checks of an individual target. Minimum value 5 seconds, Maximum value 300 seconds.
+     */
+    interval?: number;
+    /**
+     * Amount of time, in seconds, during which no response means a failed health check.
+     */
+    timeout: number;
+    /**
+     * Number of consecutive health check failures required before considering the target unhealthy.
+     */
+    unhealthyThreshold?: number;
+}
+
+export interface DuploServiceTag {
+    key: string;
+    value: string;
+}
+
+export interface EcacheInstanceLogDeliveryConfiguration {
+    /**
+     * destination type : must be cloudwatch-logs.
+     */
+    destinationType: string;
+    /**
+     * log_format: Value must be one of the ['json', 'text']
+     */
+    logFormat: string;
+    /**
+     * cloudwatch log_group
+     */
+    logGroup?: string;
+    /**
+     * log_type: Value must be one of the ['slow-log', 'engine-log']
+     */
+    logType: string;
+}
+
+export interface EcsServiceCapacityProviderStrategy {
+    /**
+     * The number of tasks, at a minimum, to run on the specified capacity provider.
+     */
+    base: number;
+    /**
+     * Name of the capacity provider.
+     */
+    capacityProvider: string;
+    /**
+     * The relative percentage of the total number of launched tasks that should use the specified capacity provider.
+     */
+    weight: number;
+}
+
+export interface EcsServiceLoadBalancer {
+    /**
+     * The backend protocol associated with this load balancer configuration.
+     *
+     * @deprecated Use 'backend_protocol_version' instead.
+     */
+    backendProtocol: string;
+    /**
+     * The backend protocol version associated with this load balancer configuration.
+     */
+    backendProtocolVersion: string;
+    /**
+     * The ARN of an ACM certificate to associate with this load balancer.  Only applicable for HTTPS.
+     */
+    certificateArn?: string;
+    /**
+     * Whether or not to drop invalid HTTP headers received by the load balancer.
+     */
+    dropInvalidHeaders: boolean;
+    /**
+     * Whether or not to enable access logs.  When enabled, Duplo will send access logs to a centralized S3 bucket per plan
+     */
+    enableAccessLogs: boolean;
+    /**
+     * The frontend port associated with this load balancer configuration.
+     */
+    externalPort: number;
+    /**
+     * Health check configuration for this load balancer.
+     */
+    healthCheckConfig?: outputs.EcsServiceLoadBalancerHealthCheckConfig;
+    /**
+     * The health check URL to associate with this load balancer configuration.
+     */
+    healthCheckUrl?: string;
+    /**
+     * Whether or not the load balancer should redirect HTTP to HTTPS.
+     */
+    httpToHttpsRedirect: boolean;
+    /**
+     * The time in seconds that the connection is allowed to be idle. Only valid for Load Balancers of type `application`.
+     */
+    idleTimeout: number;
+    /**
+     * The load balancer Index.
+     */
+    index: number;
+    /**
+     * Whether or not to create an internal load balancer.
+     */
+    isInternal?: boolean;
+    /**
+     * The numerical index of the type of load balancer configuration to create.
+     * Should be one of:
+     *
+     *    - `0` : ELB (Classic Load Balancer)
+     *    - `1` : ALB (Application Load Balancer)
+     *    - `2` : Health-check Only (No Load Balancer)
+     */
+    lbType: number;
+    /**
+     * The load balancer ARN.
+     */
+    loadBalancerArn: string;
+    /**
+     * The load balancer name.
+     */
+    loadBalancerName: string;
+    /**
+     * The backend port associated with this load balancer configuration.
+     */
+    port: string;
+    /**
+     * The frontend protocol associated with this load balancer configuration.
+     */
+    protocol: string;
+    replicationControllerName: string;
+    /**
+     * Number of Load Balancer target group to associate with the service.
+     */
+    targetGroupCount: number;
+    /**
+     * The ARN of a web application firewall to associate this load balancer.
+     */
+    webaclid: string;
+}
+
+export interface EcsServiceLoadBalancerHealthCheckConfig {
+    grpcSuccessCode: string;
+    healthCheckIntervalSeconds: number;
+    healthCheckTimeoutSeconds: number;
+    healthyThresholdCount: number;
+    httpSuccessCode: string;
+    unhealthyThresholdCount: number;
+}
+
+export interface EcsTaskDefinitionInferenceAccelerator {
+    deviceName: string;
+    deviceType: string;
+}
+
+export interface EcsTaskDefinitionPlacementConstraint {
+    expression?: string;
+    type: string;
+}
+
+export interface EcsTaskDefinitionProxyConfiguration {
+    containerName: string;
+    properties?: {[key: string]: string};
+    /**
+     * Defaults to `APPMESH`.
+     */
+    type?: string;
+}
+
+export interface EcsTaskDefinitionRequiresAttribute {
+    name: string;
+}
+
+export interface EcsTaskDefinitionRuntimePlatform {
+    /**
+     * Valid values are 'X86_64','ARM64'
+     */
+    cpuArchitecture?: string;
+    /**
+     * Valid values are \n\nFor FARGATE: 'LINUX','WINDOWS*SERVER*2019*FULL','WINDOWS*SERVER*2019*CORE','WINDOWS*SERVER*2022*FULL','WINDOWS*SERVER*2022*CORE'
+     */
+    operatingSystemFamily?: string;
+}
+
+export interface EcsTaskDefinitionTag {
+    key: string;
+    value: string;
+}
+
+export interface GcpCloudFunctionEventTrigger {
+    /**
+     * The type of event that will trigger the function
+     */
+    eventType: string;
+    /**
+     * The resource that will trigger the function
+     */
+    resource: string;
+    /**
+     * The service that will trigger the function
+     */
+    service: string;
+}
+
+export interface GcpCloudFunctionHttpsTrigger {
+    /**
+     * Must be set to `true`.
+     */
+    enabled?: boolean;
+    /**
+     * The security level of the HTTPS trigger
+     */
+    securityLevel: string;
+    /**
+     * The URL of the HTTPS trigger
+     */
+    url: string;
+}
+
+export interface GcpInfraMaintenanceWindowExclusion {
+    endTime: string;
+    /**
+     * The scope of automatic upgrades to restrict in the exclusion window. One of: NO*UPGRADES | NO*MINOR*UPGRADES | NO*MINOR*OR*NODE_UPGRADES Defaults to `NO_UPGRADES`.
+     */
+    scope?: string;
+    startTime: string;
+}
+
+export interface GcpInfraMaintenanceWindowRecurringWindow {
+    endTime: string;
+    /**
+     * Specify recurrence in RFC5545 RRULE format, to specify when this recurs.
+     */
+    recurrence: string;
+    startTime: string;
+}
+
+export interface GcpInfraSecurityRulePortsAndProtocol {
+    /**
+     * The list of ports to which this rule applies. This field is only applicable for UDP, TCP and SCTP protocol.
+     */
+    ports?: string[];
+    /**
+     * The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, sctp, ipip, all), or the IP protocol number.
+     */
+    serviceProtocol: string;
+}
+
+export interface GcpNodePoolAccelerator {
+    /**
+     * The number of the accelerator cards exposed to an instance.
+     */
+    acceleratorCount: string;
+    /**
+     * The accelerator type resource name.
+     */
+    acceleratorType?: string;
+    gpuDriverInstallationConfigs: outputs.GcpNodePoolAcceleratorGpuDriverInstallationConfig[];
+    /**
+     * Size of partitions to create on the GPU
+     */
+    gpuPartitionSize: string;
+    gpuSharingConfigs: outputs.GcpNodePoolAcceleratorGpuSharingConfig[];
+    /**
+     * The number of time-shared GPU resources to expose for each physical GPU.
+     */
+    maxTimeSharedClientsPerGpu: string;
+}
+
+export interface GcpNodePoolAcceleratorGpuDriverInstallationConfig {
+    gpuDriverVersion: string;
+}
+
+export interface GcpNodePoolAcceleratorGpuSharingConfig {
+    /**
+     * The configuration for GPU sharing options.
+     */
+    gpuSharingStrategy: string;
+    /**
+     * The max number of containers that can share a physical GPU.
+     */
+    maxSharedClientsPerGpu: string;
+}
+
+export interface GcpNodePoolLinuxNodeConfig {
+    /**
+     * cgroupMode specifies the cgroup mode to be used on the node.
+     */
+    cgroupMode: string;
+    /**
+     * The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
+     */
+    sysctls: {[key: string]: string};
+}
+
+export interface GcpNodePoolNodePoolLoggingConfig {
+    variantConfig: {[key: string]: string};
+}
+
+export interface GcpNodePoolTaint {
+    /**
+     * Update strategy of the node pool. Supported effect's are : 
+     * 	- EFFECT_UNSPECIFIED 
+     * 	- NO_SCHEDULE 
+     * 	- PREFER_NO_SCHEDULE
+     * 	- NO_EXECUTE
+     */
+    effect?: string;
+    key?: string;
+    value?: string;
+}
+
+export interface GcpNodePoolUpgradeSetting {
+    blueGreenSettings: outputs.GcpNodePoolUpgradeSettingBlueGreenSetting[];
+    /**
+     * The maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process.
+     */
+    maxSurge: number;
+    /**
+     * The maximum number of nodes that can be simultaneously unavailable during the upgrade process. A node is considered available if its status is Ready
+     */
+    maxUnavailable: number;
+    /**
+     * Update strategy of the node pool.
+     */
+    strategy: string;
+}
+
+export interface GcpNodePoolUpgradeSettingBlueGreenSetting {
+    /**
+     * Note: The nodePoolSoakDuration should not be used along with standard_rollout_policy
+     */
+    nodePoolSoakDuration: string;
+    /**
+     * Note: The standardRolloutPolicy should not be used along with node_pool_soak_duration
+     */
+    standardRolloutPolicies?: outputs.GcpNodePoolUpgradeSettingBlueGreenSettingStandardRolloutPolicy[];
+}
+
+export interface GcpNodePoolUpgradeSettingBlueGreenSettingStandardRolloutPolicy {
+    /**
+     * Note: The batchNodeCount should not be used along with batch_percentage
+     */
+    batchNodeCount: number;
+    /**
+     * Note: The batchPercentage should not be used along with batch_node_count
+     */
+    batchPercentage: number;
+    batchSoakDuration: string;
+}
+
+export interface GcpSchedulerJobAppEngineTarget {
+    /**
+     * The HTTP request body to send.
+     */
+    body: string;
+    /**
+     * The HTTP headers to send.
+     */
+    headers: {[key: string]: string};
+    /**
+     * The HTTP method to use.
+     */
+    method: string;
+    /**
+     * The relative URI.
+     */
+    relativeUri: string;
+    /**
+     * Specifies App Engine routing.
+     */
+    routing?: outputs.GcpSchedulerJobAppEngineTargetRouting;
+}
+
+export interface GcpSchedulerJobAppEngineTargetRouting {
+    /**
+     * The App Engine host.
+     */
+    host: string;
+    /**
+     * The App Engine instance.
+     */
+    instance: string;
+    /**
+     * The App Engine service.
+     */
+    service: string;
+    /**
+     * The App Engine service version.
+     */
+    version: string;
+}
+
+export interface GcpSchedulerJobHttpTarget {
+    /**
+     * The HTTP request body to send.
+     */
+    body: string;
+    /**
+     * The HTTP headers to send.
+     */
+    headers: {[key: string]: string};
+    /**
+     * The HTTP method to use.
+     */
+    method: string;
+    /**
+     * Specifies OAuth authentication.
+     */
+    oauthToken?: outputs.GcpSchedulerJobHttpTargetOauthToken;
+    /**
+     * Specifies OIDC authentication.
+     */
+    oidcToken?: outputs.GcpSchedulerJobHttpTargetOidcToken;
+    /**
+     * The request URI.
+     */
+    uri: string;
+}
+
+export interface GcpSchedulerJobHttpTargetOauthToken {
+    /**
+     * Must be set to `true`. Defaults to `true`.
+     */
+    enabled?: boolean;
+    /**
+     * The OAuth token scope.
+     */
+    scope: string;
+    /**
+     * The OAuth token service account email.
+     */
+    serviceAccountEmail: string;
+}
+
+export interface GcpSchedulerJobHttpTargetOidcToken {
+    /**
+     * The OIDC token audience.
+     */
+    audience: string;
+    /**
+     * Must be set to `true`. Defaults to `true`.
+     */
+    enabled?: boolean;
+    /**
+     * The OIDC token service account email.
+     */
+    serviceAccountEmail: string;
+}
+
+export interface GcpSchedulerJobPubsubTarget {
+    /**
+     * The attributes to send to the pubsub target.
+     */
+    attributes?: {[key: string]: string};
+    /**
+     * The data to send to the pubsub topic.
+     */
+    data: string;
+    /**
+     * The name of the topic to target
+     */
+    topicName: string;
+}
+
+export interface GcpStorageBucketV2DefaultEncryption {
+    /**
+     * Default encryption method.  Must be one of: `None`, `Sse`, `AwsKms`, `TenantKms`. Defaults to `Sse`.
+     */
+    method?: string;
+}
+
+export interface GcpTenantSecurityRulePortsAndProtocol {
+    /**
+     * The list of ports to which this rule applies. This field is only applicable for UDP, TCP and SCTP protocol.
+     */
+    ports?: string[];
+    /**
+     * The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, sctp, ipip, all), or the IP protocol number.
+     */
+    serviceProtocol: string;
+}
+
+export interface GetAsgProfilesAsgProfile {
+    /**
+     * The numeric ID of the container agent pool that this host is added to.
+     */
+    agentPlatform?: number;
+    /**
+     * Whether or not to allocate a public IP.
+     */
+    allocatedPublicIp?: boolean;
+    /**
+     * Base64 encoded EC2 user data to associated with the host.
+     */
+    base64UserData: string;
+    /**
+     * Whether or not ASG should leverage duplocloud's scale from 0 feature
+     */
+    canScaleFromZero: boolean;
+    /**
+     * The AWS EC2 instance type.
+     */
+    capacity: string;
+    /**
+     * The numeric ID of the cloud provider to launch the host in.
+     */
+    cloud?: number;
+    /**
+     * Specify the labels to attach to the nodes.
+     */
+    customNodeLabels?: {[key: string]: string};
+    /**
+     * List of metrics to collect for the ASG Specify one or more of the following metrics.`GroupMinSize`,`GroupMaxSize`,`GroupDesiredCapacity`,`GroupInServiceInstances`,`GroupPendingInstances`,`GroupStandbyInstances`,`GroupTerminatingInstances`,`GroupTotalInstances`,`GroupInServiceCapacity`,`GroupPendingCapacity`,`GroupStandbyCapacity`,`GroupTerminatingCapacity`,`GroupTotalCapacity`,`WarmPoolDesiredCapacity`,`WarmPoolWarmedCapacity`,`WarmPoolPendingCapacity`,`WarmPoolTerminatingCapacity`,`WarmPoolTotalCapacity`,`GroupAndWarmPoolDesiredCapacity`,`GroupAndWarmPoolTotalCapacity`.
+     */
+    enabledMetrics?: string[];
+    encryptDisk?: boolean;
+    /**
+     * The short name of the host.
+     */
+    friendlyName: string;
+    /**
+     * The full name of the ASG profile.
+     */
+    fullname: string;
+    /**
+     * The AMI ID to use.
+     */
+    imageId: string;
+    initialBase64UserData: string;
+    /**
+     * The number of instances that should be running in the group.
+     */
+    instanceCount: number;
+    /**
+     * Whether or not to enable cluster autoscaler.
+     */
+    isClusterAutoscaled: boolean;
+    isEbsOptimized?: boolean;
+    isMinion?: boolean;
+    /**
+     * The numeric ID of the keypair type being used.Should be one of:
+     *
+     *    - `0` : Default
+     *    - `1` : ED25519
+     *    - `2` : RSA (deprecated - some operating systems no longer support it)
+     */
+    keypairType: number;
+    /**
+     * The maximum size of the Auto Scaling Group.
+     */
+    maxInstanceCount: number;
+    /**
+     * Maximum price to pay for a spot instance in dollars per unit hour.
+     */
+    maxSpotPrice?: string;
+    /**
+     * Configuration metadata used when creating the host.<br>*Note: To configure OS disk size OsDiskSize can be specified as Key and its size as value, size value should be atleast 10*
+     */
+    metadatas: outputs.GetAsgProfilesAsgProfileMetadata[];
+    /**
+     * The minimum size of the Auto Scaling Group.
+     */
+    minInstanceCount: number;
+    /**
+     * A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value.
+     */
+    minionTags: outputs.GetAsgProfilesAsgProfileMinionTag[];
+    /**
+     * An optional list of custom network interface configurations to use when creating the host.
+     */
+    networkInterfaces: outputs.GetAsgProfilesAsgProfileNetworkInterface[];
+    /**
+     * Bootstrap an EKS host with Duplo's user data, prepending it to custom user data if also provided.
+     */
+    prependUserData?: boolean;
+    /**
+     * The primary public IP address assigned to the host.
+     */
+    publicIpAddress: string;
+    tags: outputs.GetAsgProfilesAsgProfileTag[];
+    /**
+     * Specify taints to attach to the nodes, to repel other nodes with different toleration
+     */
+    taints?: outputs.GetAsgProfilesAsgProfileTaint[];
+    /**
+     * The GUID of the tenant that the host will be created in.
+     */
+    tenantId: string;
+    /**
+     * Whether or not to use spot instances.
+     */
+    useSpotInstances?: boolean;
+    /**
+     * The name of the tenant that the host will be created in.
+     */
+    userAccount: string;
+    /**
+     * Block to specify additional or secondary volume beyond the root device
+     */
+    volumes: outputs.GetAsgProfilesAsgProfileVolume[];
+    /**
+     * Whether or not to wait until ASG instances to be healthy, after creation.
+     */
+    waitForCapacity?: boolean;
+    /**
+     * The multi availability zone to launch the asg in, expressed as a number and starting at 0
+     */
+    zones: number[];
+}
+
+export interface GetAsgProfilesAsgProfileMetadata {
+    key: string;
+    value: string;
+}
+
+export interface GetAsgProfilesAsgProfileMinionTag {
+    key: string;
+    value: string;
+}
+
+export interface GetAsgProfilesAsgProfileNetworkInterface {
+    /**
+     * Whether or not to associate a public IP with the newly created ENI.  Cannot be specified if `networkInterfaceId` is specified.
+     */
+    associatePublicIp: boolean;
+    /**
+     * The device index to pass to AWS for attaching the ENI.  Starts at zero.
+     */
+    deviceIndex: number;
+    groups: string[];
+    metadatas: outputs.GetAsgProfilesAsgProfileNetworkInterfaceMetadata[];
+    /**
+     * The ID of an ENI to attach to this host.  Cannot be specified if `subnetId` or `associatePublicIp` is specified.
+     */
+    networkInterfaceId: string;
+    /**
+     * The ID of a subnet in which to create a new ENI.  Cannot be specified if `networkInterfaceId` is specified.
+     */
+    subnetId: string;
+}
+
+export interface GetAsgProfilesAsgProfileNetworkInterfaceMetadata {
+    key: string;
+    value: string;
+}
+
+export interface GetAsgProfilesAsgProfileTag {
+    key: string;
+    value: string;
+}
+
+export interface GetAsgProfilesAsgProfileTaint {
+    /**
+     * Update strategy of the node. Effect types <br>      - NoSchedule<br>     - PreferNoSchedule<br>     - NoExecute
+     */
+    effect: string;
+    key: string;
+    value?: string;
+}
+
+export interface GetAsgProfilesAsgProfileVolume {
+    iops: number;
+    name: string;
+    size: number;
+    volumeId: string;
+    volumeType: string;
+}
+
+export interface GetAwsLbListenersListener {
+    arn: string;
+    certificates: outputs.GetAwsLbListenersListenerCertificate[];
+    defaultActions: outputs.GetAwsLbListenersListenerDefaultAction[];
+    loadBalancerArn: string;
+    loadBalancerName: string;
+    port: number;
+    protocol: string;
+    sslPolicy: string;
+    tenantId: string;
+}
+
+export interface GetAwsLbListenersListenerCertificate {
+    arn: string;
+    isDefault: boolean;
+}
+
+export interface GetAwsLbListenersListenerDefaultAction {
+    order: number;
+    targetGroupArn: string;
+    type: string;
+}
+
+export interface GetAwsLbTargetGroupsTargetGroup {
+    arn: string;
+    healthChecks: outputs.GetAwsLbTargetGroupsTargetGroupHealthCheck[];
+    loadBalancerArns: string[];
+    name: string;
+    protocol: string;
+    protocolVersion: string;
+    targetType: string;
+    tenantId: string;
+    vpcId: string;
+}
+
+export interface GetAwsLbTargetGroupsTargetGroupHealthCheck {
+    enabled: boolean;
+    healthyThreshold: number;
+    interval: number;
+    matchers: outputs.GetAwsLbTargetGroupsTargetGroupHealthCheckMatcher[];
+    path: string;
+    port: string;
+    protocol: string;
+    timeout: number;
+    unhealthyThreshold: number;
+}
+
+export interface GetAwsLbTargetGroupsTargetGroupHealthCheckMatcher {
+    grpcCode: string;
+    httpCode: string;
+}
+
+export interface GetAwsSsmParametersParameter {
+    allowedPattern: string;
+    description: string;
+    keyId: string;
+    lastModifiedDate: string;
+    lastModifiedUser: string;
+    name: string;
+    tenantId: string;
+    type: string;
+}
+
+export interface GetAzureAvailabilitySetVirtualMachine {
+    id: string;
+}
+
+export interface GetDuploServiceLbconfigsService {
+    /**
+     * The ARN (or ID) of the cloud load balancer (if applicable).
+     */
+    arn: string;
+    lbconfigs: outputs.GetDuploServiceLbconfigsServiceLbconfig[];
+    /**
+     * The name of the duplo service.
+     */
+    name: string;
+    /**
+     * The name of the duplo service.
+     */
+    replicationControllerName: string;
+    /**
+     * The status of the cloud load balancer (if applicable).
+     */
+    status: string;
+}
+
+export interface GetDuploServiceLbconfigsServiceLbconfig {
+    /**
+     * Applicable for internal lb.
+     */
+    allowGlobalAccess: boolean;
+    backendProtocolVersion: string;
+    /**
+     * The ARN of an ACM certificate to associate with this load balancer.  Only applicable for HTTPS.
+     */
+    certificateArn: string;
+    /**
+     * The name of the cloud load balancer (if applicable).
+     */
+    cloudName: string;
+    /**
+     * Specify CIDR Values. This is applicable only for Network Load Balancer if `lbType` is `6`.
+     */
+    customCidrs: string[];
+    /**
+     * The DNS name of the cloud load balancer (if applicable).
+     */
+    dnsName: string;
+    /**
+     * The frontend port associated with this load balancer configuration. Required if `lbType` is not `7`.
+     */
+    externalPort: number;
+    /**
+     * Only for K8S Node Port (`lbType = 4`) or load balancers in Kubernetes.  Set the kubernetes service `externalTrafficPolicy` attribute.
+     */
+    externalTrafficPolicy: string;
+    /**
+     * Only for K8S services or load balancers in Kubernetes.  Sets an additional selector label to narrow which pods can receive traffic.
+     */
+    extraSelectorLabels: outputs.GetDuploServiceLbconfigsServiceLbconfigExtraSelectorLabel[];
+    frontendIp: string;
+    /**
+     * Health Check configuration block.
+     */
+    healthCheck: outputs.GetDuploServiceLbconfigsServiceLbconfigHealthCheck;
+    /**
+     * The health check URL to associate with this load balancer configuration.
+     */
+    healthCheckUrl: string;
+    /**
+     * (Azure Only) Set only if Azure Shared Application Gateway is used (`lbType = 5`).
+     */
+    hostName: string;
+    /**
+     * The automatically assigned host port.
+     */
+    hostPort: number;
+    /**
+     * The load balancer Index.
+     */
+    index: number;
+    isInfraDeployment: boolean;
+    /**
+     * Whether or not to create an internal load balancer.
+     */
+    isInternal: boolean;
+    /**
+     * Set to true if the service for which the load balancer is being created is hosted on a docker native host, which is managed directly by DuploCloud, or false if the service is hosted on a cloud-provided platform like EKS, AKS, GKE, ECS, etc. The `duplocloud.getNativeHosts` data source lists the native hosts in a DuploCloud Tenant
+     */
+    isNative: boolean;
+    /**
+     * The numerical index of the type of load balancer configuration to create.
+     * Should be one of:
+     *
+     *    - `0` : ELB (Classic Load Balancer)
+     *    - `1` : ALB (Application Load Balancer)
+     *    - `2` : Health-check Only (No Load Balancer)
+     *    - `3` : K8S Service w/ Cluster IP (No Load Balancer)
+     *    - `4` : K8S Service w/ Node Port (No Load Balancer)
+     *    - `5` : Azure Shared Application Gateway
+     *    - `6` : NLB (Network Load Balancer)
+     *    - `7` : Target Group Only
+     */
+    lbType: number;
+    /**
+     * The name of the duplo service.
+     */
+    name: string;
+    /**
+     * The backend port associated with this load balancer configuration.
+     */
+    port: string;
+    /**
+     * The backend protocol associated with this load balancer configuration.
+     */
+    protocol: string;
+    /**
+     * The name of the duplo service.
+     */
+    replicationControllerName: string;
+    /**
+     * Only for K8S services or load balancers in Kubernetes.  Set to `true` to set health check annotations for ingress.
+     */
+    setIngressHealthCheck: boolean;
+    /**
+     * Skip http to https.
+     */
+    skipHttpToHttps: boolean;
+    /**
+     * The ARN of the Target Group to which to route traffic.
+     */
+    targetGroupArn: string;
+}
+
+export interface GetDuploServiceLbconfigsServiceLbconfigExtraSelectorLabel {
+    key: string;
+    value: string;
+}
+
+export interface GetDuploServiceLbconfigsServiceLbconfigHealthCheck {
+    /**
+     * Response codes to use when checking for a healthy responses from a target. You can specify multiple values (for example, "0,12" for GRPC) or a range of values (for example, "0-99"). Required for GRPC ALB. Only applies to Application Load Balancers (i.e., GRPC) not Network Load Balancers (i.e., TCP).
+     */
+    grpcSuccessCodes: string;
+    /**
+     * Number of consecutive health checks successes required before considering an unhealthy target healthy.
+     */
+    healthyThreshold?: number;
+    /**
+     * Response codes to use when checking for a healthy responses from a target. You can specify multiple values (for example, "200,202" for HTTP(s)) or a range of values (for example, "200-299"). Required for HTTP/HTTPS ALB. Only applies to Application Load Balancers (i.e., HTTP/HTTPS) not Network Load Balancers (i.e., TCP).
+     */
+    httpSuccessCodes: string;
+    /**
+     * Approximate amount of time, in seconds, between health checks of an individual target. Minimum value 5 seconds, Maximum value 300 seconds.
+     */
+    interval?: number;
+    /**
+     * Amount of time, in seconds, during which no response means a failed health check.
+     */
+    timeout: number;
+    /**
+     * Number of consecutive health check failures required before considering the target unhealthy.
+     */
+    unhealthyThreshold?: number;
+}
+
+export interface GetDuploServiceParamsResult {
+    dnsPrfx: string;
+    replicationControllerName: string;
+    tenantId: string;
+    webaclid: string;
+}
+
+export interface GetDuploServiceTag {
+    key: string;
+    value: string;
+}
+
+export interface GetDuploServicesService {
+    agentPlatform: number;
+    allocationTags: string;
+    anyHostAllowed: boolean;
+    cloud: number;
+    cloudCredsFromK8sServiceAccount: boolean;
+    commands: string[];
+    dockerImage: string;
+    /**
+     * The service domain (whichever fqdnEx or fqdn which is non empty)
+     */
+    domain: string;
+    extraConfig: string;
+    forceStatefulSet: boolean;
+    /**
+     * The fully qualified domain associated with the service
+     */
+    fqdn: string;
+    /**
+     * External fully qualified domain associated with the service
+     */
+    fqdnEx: string;
+    hpaSpecs: string;
+    isDaemonset: boolean;
+    /**
+     * Whether or not the replicas must be scheduled on separate Kubernetes nodes.  Only supported on Kubernetes.
+     */
+    isUniqueK8sNodeRequired: boolean;
+    lbSyncedDeployment: boolean;
+    name: string;
+    otherDockerConfig: string;
+    otherDockerHostConfig: string;
+    /**
+     * The service's parent domain
+     */
+    parentDomain: string;
+    replicaCollocationAllowed: boolean;
+    replicas: number;
+    replicasMatchingAsgName: string;
+    /**
+     * Whether or not the replicas must be spread across availability zones.  Only supported on Kubernetes.
+     */
+    shouldSpreadAcrossZones: boolean;
+    tags: outputs.GetDuploServicesServiceTag[];
+    tenantId: string;
+    volumes: string;
+}
+
+export interface GetDuploServicesServiceTag {
+    key: string;
+    value: string;
+}
+
+export interface GetEcsServiceCapacityProviderStrategy {
+    /**
+     * The number of tasks, at a minimum, to run on the specified capacity provider.
+     */
+    base: number;
+    /**
+     * Name of the capacity provider.
+     */
+    capacityProvider: string;
+    /**
+     * The relative percentage of the total number of launched tasks that should use the specified capacity provider.
+     */
+    weight: number;
+}
+
+export interface GetEcsServiceLoadBalancer {
+    /**
+     * The backend protocol associated with this load balancer configuration.
+     *
+     * @deprecated Use 'backend_protocol_version' instead.
+     */
+    backendProtocol: string;
+    /**
+     * The backend protocol version associated with this load balancer configuration.
+     */
+    backendProtocolVersion: string;
+    /**
+     * The ARN of an ACM certificate to associate with this load balancer.  Only applicable for HTTPS.
+     */
+    certificateArn: string;
+    /**
+     * Whether or not to drop invalid HTTP headers received by the load balancer.
+     */
+    dropInvalidHeaders: boolean;
+    /**
+     * Whether or not to enable access logs.  When enabled, Duplo will send access logs to a centralized S3 bucket per plan
+     */
+    enableAccessLogs: boolean;
+    /**
+     * The frontend port associated with this load balancer configuration.
+     */
+    externalPort: number;
+    /**
+     * Health check configuration for this load balancer.
+     */
+    healthCheckConfigs: outputs.GetEcsServiceLoadBalancerHealthCheckConfig[];
+    /**
+     * The health check URL to associate with this load balancer configuration.
+     */
+    healthCheckUrl: string;
+    /**
+     * Whether or not the load balancer should redirect HTTP to HTTPS.
+     */
+    httpToHttpsRedirect: boolean;
+    /**
+     * The time in seconds that the connection is allowed to be idle. Only valid for Load Balancers of type `application`.
+     */
+    idleTimeout: number;
+    /**
+     * The load balancer Index.
+     */
+    index: number;
+    /**
+     * Whether or not to create an internal load balancer.
+     */
+    isInternal: boolean;
+    /**
+     * The numerical index of the type of load balancer configuration to create.
+     * Should be one of:
+     *
+     *    - `0` : ELB (Classic Load Balancer)
+     *    - `1` : ALB (Application Load Balancer)
+     *    - `2` : Health-check Only (No Load Balancer)
+     */
+    lbType: number;
+    /**
+     * The load balancer ARN.
+     */
+    loadBalancerArn: string;
+    /**
+     * The load balancer name.
+     */
+    loadBalancerName: string;
+    /**
+     * The backend port associated with this load balancer configuration.
+     */
+    port: string;
+    /**
+     * The frontend protocol associated with this load balancer configuration.
+     */
+    protocol: string;
+    replicationControllerName: string;
+    /**
+     * Number of Load Balancer target group to associate with the service.
+     */
+    targetGroupCount: number;
+    /**
+     * The ARN of a web application firewall to associate this load balancer.
+     */
+    webaclid: string;
+}
+
+export interface GetEcsServiceLoadBalancerHealthCheckConfig {
+    grpcSuccessCode: string;
+    healthCheckIntervalSeconds: number;
+    healthCheckTimeoutSeconds: number;
+    healthyThresholdCount: number;
+    httpSuccessCode: string;
+    unhealthyThresholdCount: number;
+}
+
+export interface GetEcsServicesService {
+    capacityProviderStrategies: outputs.GetEcsServicesServiceCapacityProviderStrategy[];
+    /**
+     * The DNS prefix to assign to this service's load balancer.
+     */
+    dnsPrfx: string;
+    healthCheckGracePeriodSeconds: number;
+    /**
+     * The index of the ecs service.
+     */
+    index: number;
+    isTargetGroupOnly: boolean;
+    /**
+     * Zero or more load balancer configurations to associate with this service.
+     */
+    loadBalancers: outputs.GetEcsServicesServiceLoadBalancer[];
+    /**
+     * The name of the service to create.
+     */
+    name: string;
+    /**
+     * The number of older task definitions to retain in AWS.
+     */
+    oldTaskDefinitionBufferSize: number;
+    /**
+     * The number of container replicas to create.
+     */
+    replicas: number;
+    targetGroupArns: string[];
+    /**
+     * The ARN of the task definition to use.
+     */
+    taskDefinition: string;
+    /**
+     * The GUID of the tenant that the service will be created in.
+     */
+    tenantId: string;
+}
+
+export interface GetEcsServicesServiceCapacityProviderStrategy {
+    /**
+     * The number of tasks, at a minimum, to run on the specified capacity provider.
+     */
+    base: number;
+    /**
+     * Name of the capacity provider.
+     */
+    capacityProvider: string;
+    /**
+     * The relative percentage of the total number of launched tasks that should use the specified capacity provider.
+     */
+    weight: number;
+}
+
+export interface GetEcsServicesServiceLoadBalancer {
+    /**
+     * The backend protocol associated with this load balancer configuration.
+     *
+     * @deprecated Use 'backend_protocol_version' instead.
+     */
+    backendProtocol: string;
+    /**
+     * The backend protocol version associated with this load balancer configuration.
+     */
+    backendProtocolVersion: string;
+    /**
+     * The ARN of an ACM certificate to associate with this load balancer.  Only applicable for HTTPS.
+     */
+    certificateArn: string;
+    /**
+     * Whether or not to drop invalid HTTP headers received by the load balancer.
+     */
+    dropInvalidHeaders: boolean;
+    /**
+     * Whether or not to enable access logs.  When enabled, Duplo will send access logs to a centralized S3 bucket per plan
+     */
+    enableAccessLogs: boolean;
+    /**
+     * The frontend port associated with this load balancer configuration.
+     */
+    externalPort: number;
+    /**
+     * Health check configuration for this load balancer.
+     */
+    healthCheckConfigs: outputs.GetEcsServicesServiceLoadBalancerHealthCheckConfig[];
+    /**
+     * The health check URL to associate with this load balancer configuration.
+     */
+    healthCheckUrl: string;
+    /**
+     * Whether or not the load balancer should redirect HTTP to HTTPS.
+     */
+    httpToHttpsRedirect: boolean;
+    /**
+     * The time in seconds that the connection is allowed to be idle. Only valid for Load Balancers of type `application`.
+     */
+    idleTimeout: number;
+    /**
+     * The load balancer Index.
+     */
+    index: number;
+    /**
+     * Whether or not to create an internal load balancer.
+     */
+    isInternal: boolean;
+    /**
+     * The numerical index of the type of load balancer configuration to create.
+     * Should be one of:
+     *
+     *    - `0` : ELB (Classic Load Balancer)
+     *    - `1` : ALB (Application Load Balancer)
+     *    - `2` : Health-check Only (No Load Balancer)
+     */
+    lbType: number;
+    /**
+     * The load balancer ARN.
+     */
+    loadBalancerArn: string;
+    /**
+     * The load balancer name.
+     */
+    loadBalancerName: string;
+    /**
+     * The backend port associated with this load balancer configuration.
+     */
+    port: string;
+    /**
+     * The frontend protocol associated with this load balancer configuration.
+     */
+    protocol: string;
+    replicationControllerName: string;
+    /**
+     * Number of Load Balancer target group to associate with the service.
+     */
+    targetGroupCount: number;
+    /**
+     * The ARN of a web application firewall to associate this load balancer.
+     */
+    webaclid: string;
+}
+
+export interface GetEcsServicesServiceLoadBalancerHealthCheckConfig {
+    grpcSuccessCode: string;
+    healthCheckIntervalSeconds: number;
+    healthCheckTimeoutSeconds: number;
+    healthyThresholdCount: number;
+    httpSuccessCode: string;
+    unhealthyThresholdCount: number;
+}
+
+export interface GetEcsTaskDefinitionInferenceAccelerator {
+    deviceName: string;
+    deviceType: string;
+}
+
+export interface GetEcsTaskDefinitionPlacementConstraint {
+    expression: string;
+    type: string;
+}
+
+export interface GetEcsTaskDefinitionProxyConfiguration {
+    containerName: string;
+    properties: {[key: string]: string};
+    type: string;
+}
+
+export interface GetEcsTaskDefinitionRequiresAttribute {
+    name: string;
+}
+
+export interface GetEcsTaskDefinitionRuntimePlatform {
+    /**
+     * Valid values are 'X86_64','ARM64'
+     */
+    cpuArchitecture: string;
+    /**
+     * Valid values are <br>For FARGATE: 'LINUX','WINDOWS_SERVER_2019_FULL','WINDOWS_SERVER_2019_CORE','WINDOWS_SERVER_2022_FULL','WINDOWS_SERVER_2022_CORE'
+     */
+    operatingSystemFamily: string;
+}
+
+export interface GetEcsTaskDefinitionTag {
+    key: string;
+    value: string;
+}
+
+export interface GetEcsTaskDefinitionsTaskDefinition {
+    /**
+     * The ARN of the task definition.
+     */
+    arn: string;
+    /**
+     * The family the task definition.
+     */
+    family: string;
+    /**
+     * The current revision of the task definition.
+     */
+    latest: boolean;
+    /**
+     * The short name of the task definition.
+     */
+    name: string;
+    /**
+     * The current revision of the task definition.
+     */
+    revision: number;
+}
+
+export interface GetEmrClusterData {
+    /**
+     * The ARN of the emrCluster.
+     */
+    arn: string;
+    /**
+     * The job flow id of the emrCluster.
+     */
+    jobFlowId: string;
+    /**
+     * The  name of the emrCluster.
+     */
+    name: string;
+    /**
+     * The status of the emrCluster.
+     */
+    status: string;
+    /**
+     * The GUID of the tenant that the emrCluster will be created in.
+     */
+    tenantId: string;
+}
+
+export interface GetGcpFirestoresFirestore {
+    appEngineIntegrationMode: string;
+    concurrencyMode: string;
+    earliestVersionTime: string;
+    /**
+     * Delete protection prevents accidental deletion of firestore.
+     */
+    enableDeleteProtection: boolean;
+    /**
+     * Restores data to a specific moment in time, enhancing data protection and recovery capabilities.
+     */
+    enablePointInTimeRecovery: boolean;
+    etag: string;
+    /**
+     * The full name of the firestore.
+     */
+    fullname: string;
+    /**
+     * Location for firestore
+     */
+    locationId: string;
+    /**
+     * The short name of the firestore.  Duplo will add a prefix to the name.  You can retrieve the full name from the `fullname` attribute.
+     */
+    name: string;
+    /**
+     * Firestore type
+     */
+    type: string;
+    uid: string;
+    versionRetentionPeriod: string;
+}
+
+export interface GetGcpNodePoolAccelerator {
+    /**
+     * The number of the accelerator cards exposed to an instance.
+     */
+    acceleratorCount: string;
+    /**
+     * The accelerator type resource name.
+     */
+    acceleratorType: string;
+    gpuDriverInstallationConfigs: outputs.GetGcpNodePoolAcceleratorGpuDriverInstallationConfig[];
+    /**
+     * Size of partitions to create on the GPU
+     */
+    gpuPartitionSize: string;
+    gpuSharingConfigs: outputs.GetGcpNodePoolAcceleratorGpuSharingConfig[];
+    /**
+     * The number of time-shared GPU resources to expose for each physical GPU.
+     */
+    maxTimeSharedClientsPerGpu: string;
+}
+
+export interface GetGcpNodePoolAcceleratorGpuDriverInstallationConfig {
+    gpuDriverVersion: string;
+}
+
+export interface GetGcpNodePoolAcceleratorGpuSharingConfig {
+    /**
+     * The configuration for GPU sharing options.
+     */
+    gpuSharingStrategy: string;
+    /**
+     * The max number of containers that can share a physical GPU.
+     */
+    maxSharedClientsPerGpu: string;
+}
+
+export interface GetGcpNodePoolLinuxNodeConfig {
+    /**
+     * cgroupMode specifies the cgroup mode to be used on the node.
+     */
+    cgroupMode: string;
+    /**
+     * The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
+     */
+    sysctls: {[key: string]: string};
+}
+
+export interface GetGcpNodePoolNodePoolLoggingConfig {
+    variantConfig: {[key: string]: string};
+}
+
+export interface GetGcpNodePoolTaint {
+    /**
+     * Update strategy of the node pool.
+     */
+    effect: string;
+    key: string;
+    value: string;
+}
+
+export interface GetGcpNodePoolUpgradeSetting {
+    blueGreenSettings: outputs.GetGcpNodePoolUpgradeSettingBlueGreenSetting[];
+    maxSurge: number;
+    maxUnavailable: number;
+    /**
+     * Update strategy of the node pool.
+     */
+    strategy: string;
+}
+
+export interface GetGcpNodePoolUpgradeSettingBlueGreenSetting {
+    nodePoolSoakDuration: string;
+    standardRolloutPolicies?: outputs.GetGcpNodePoolUpgradeSettingBlueGreenSettingStandardRolloutPolicy[];
+}
+
+export interface GetGcpNodePoolUpgradeSettingBlueGreenSettingStandardRolloutPolicy {
+    batchNodeCount: number;
+    batchPercentage: number;
+    batchSoakDuration: string;
+}
+
+export interface GetGcpNodePoolsNodePool {
+    accelerators?: outputs.GetGcpNodePoolsNodePoolAccelerator[];
+    /**
+     * Whether the nodes will be automatically repaired.
+     */
+    autoRepair: boolean;
+    /**
+     * Whether the nodes will be automatically upgraded.
+     */
+    autoUpgrade: boolean;
+    /**
+     * Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
+     * 				If unspecified, the default disk size is 100GB.
+     */
+    discSizeGb: number;
+    /**
+     * Type of the disk attached to each node
+     * 				If unspecified, the default disk type is 'pd-standard'
+     */
+    discType: string;
+    /**
+     * The full name of the node pool.
+     */
+    fullname: string;
+    /**
+     * The image type to use for this node. Note that for a given image type, the latest version of it will be used
+     */
+    imageType: string;
+    /**
+     * The initial node count for the pool
+     */
+    initialNodeCount: number;
+    /**
+     * Is autoscaling enabled for this node pool.
+     */
+    isAutoscalingEnabled: boolean;
+    /**
+     * The map of Kubernetes labels (key/value pairs) to be applied to each node.
+     */
+    labels: {[key: string]: string};
+    /**
+     * Parameters that can be configured on Linux nodes
+     */
+    linuxNodeConfigs: outputs.GetGcpNodePoolsNodePoolLinuxNodeConfig[];
+    /**
+     * Update strategy of the node pool.
+     */
+    locationPolicy: string;
+    /**
+     * The name of a Google Compute Engine machine type.
+     * 				If unspecified, the default machine type is e2-medium.
+     */
+    machineType: string;
+    /**
+     * Maximum number of nodes for one location in the NodePool. Must be >= minNodeCount.
+     */
+    maxNodeCount: number;
+    /**
+     * The metadata key/value pairs assigned to instances in the cluster.
+     */
+    metadata: {[key: string]: string};
+    /**
+     * Minimum number of nodes for one location in the NodePool. Must be >= 1 and <= maxNodeCount.
+     */
+    minNodeCount: number;
+    /**
+     * The short name of the node pool.
+     */
+    name: string;
+    /**
+     * Logging configuration.
+     */
+    nodePoolLoggingConfigs: outputs.GetGcpNodePoolsNodePoolNodePoolLoggingConfig[];
+    /**
+     * The set of Google API scopes to be made available on all of the node VMs under the default service account.
+     */
+    oauthScopes: string[];
+    /**
+     * Resource labels associated to node pool.
+     */
+    resourceLabels: {[key: string]: string};
+    /**
+     * Spot flag for enabling Spot VM
+     */
+    spot: boolean;
+    /**
+     * The list of instance tags applied to all nodes.
+     * 				Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster or node pool creation.
+     * 				Each tag within the list must comply with RFC1035.
+     */
+    tags: string[];
+    taints?: outputs.GetGcpNodePoolsNodePoolTaint[];
+    /**
+     * Maximum number of nodes for one location in the NodePool. Must be >= minNodeCount.
+     */
+    totalMaxNodeCount: number;
+    /**
+     * Minimum number of nodes for one location in the NodePool. Must be >= 1 and <= maxNodeCount.
+     */
+    totalMinNodeCount: number;
+    /**
+     * Upgrade settings control disruption and speed of the upgrade.
+     */
+    upgradeSettings: outputs.GetGcpNodePoolsNodePoolUpgradeSetting[];
+    /**
+     * The list of Google Compute Engine zones in which the NodePool's nodes should be located.
+     */
+    zones: string[];
+}
+
+export interface GetGcpNodePoolsNodePoolAccelerator {
+    /**
+     * The number of the accelerator cards exposed to an instance.
+     */
+    acceleratorCount: string;
+    /**
+     * The accelerator type resource name.
+     */
+    acceleratorType: string;
+    gpuDriverInstallationConfigs: outputs.GetGcpNodePoolsNodePoolAcceleratorGpuDriverInstallationConfig[];
+    /**
+     * Size of partitions to create on the GPU
+     */
+    gpuPartitionSize: string;
+    gpuSharingConfigs: outputs.GetGcpNodePoolsNodePoolAcceleratorGpuSharingConfig[];
+    /**
+     * The number of time-shared GPU resources to expose for each physical GPU.
+     */
+    maxTimeSharedClientsPerGpu: string;
+}
+
+export interface GetGcpNodePoolsNodePoolAcceleratorGpuDriverInstallationConfig {
+    gpuDriverVersion: string;
+}
+
+export interface GetGcpNodePoolsNodePoolAcceleratorGpuSharingConfig {
+    /**
+     * The configuration for GPU sharing options.
+     */
+    gpuSharingStrategy: string;
+    /**
+     * The max number of containers that can share a physical GPU.
+     */
+    maxSharedClientsPerGpu: string;
+}
+
+export interface GetGcpNodePoolsNodePoolLinuxNodeConfig {
+    /**
+     * cgroupMode specifies the cgroup mode to be used on the node.
+     */
+    cgroupModes: string[];
+    /**
+     * The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
+     */
+    sysctls: {[key: string]: string};
+}
+
+export interface GetGcpNodePoolsNodePoolNodePoolLoggingConfig {
+    variantConfig: {[key: string]: string};
+}
+
+export interface GetGcpNodePoolsNodePoolTaint {
+    /**
+     * Update strategy of the node pool.
+     */
+    effect: string;
+    key: string;
+    value: string;
+}
+
+export interface GetGcpNodePoolsNodePoolUpgradeSetting {
+    blueGreenSettings: outputs.GetGcpNodePoolsNodePoolUpgradeSettingBlueGreenSetting[];
+    maxSurge: number;
+    maxUnavailable: number;
+    /**
+     * Update strategy of the node pool.
+     */
+    strategy: string;
+}
+
+export interface GetGcpNodePoolsNodePoolUpgradeSettingBlueGreenSetting {
+    nodePoolSoakDuration: string;
+    standardRolloutPolicies?: outputs.GetGcpNodePoolsNodePoolUpgradeSettingBlueGreenSettingStandardRolloutPolicy[];
+}
+
+export interface GetGcpNodePoolsNodePoolUpgradeSettingBlueGreenSettingStandardRolloutPolicy {
+    batchNodeCount: number;
+    batchPercentage: number;
+    batchSoakDuration: string;
+}
+
+export interface GetGcpSqlDatabaseInstancesDatabase {
+    /**
+     * Connection name  of the database.
+     */
+    connectionName: string;
+    /**
+     * The MySQL, PostgreSQL orSQL Server version to use.Supported values include `MYSQL_5_6`,`MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`,`POSTGRES_10`,`POSTGRES_11`,`POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`, `POSTGRES_15`, `SQLSERVER_2017_STANDARD`,`SQLSERVER_2017_ENTERPRISE`,`SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.`SQLSERVER_2019_STANDARD`, `SQLSERVER_2019_ENTERPRISE`, `SQLSERVER_2019_EXPRESS`,`SQLSERVER_2019_WEB`.[Database Version Policies](https://cloud.google.com/sql/docs/db-versions)includes an up-to-date reference of supported versions.
+     */
+    databaseVersion: string;
+    /**
+     * The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
+     */
+    diskSize: number;
+    /**
+     * IP address of the database.
+     */
+    ipAddresses: string[];
+    /**
+     * Map of string keys and values that can be used to organize and categorize this resource.
+     */
+    labels: {[key: string]: string};
+    /**
+     * The name of the sql database.
+     */
+    name: string;
+    /**
+     * The SelfLink of the sql database.
+     */
+    selfLink: string;
+    /**
+     * The machine type to use. See tiers for more details and supported versions. Postgres supports only shared-core machine types, and custom machine types such as `db-custom-2-13312`.See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
+     */
+    tier: string;
+}
+
+export interface GetInfrastructurePrivateSubnet {
+    /**
+     * The subnet CIDR block.
+     */
+    cidrBlock: string;
+    /**
+     * The subnet ID.
+     */
+    id: string;
+    /**
+     * The subnet name.
+     */
+    name: string;
+    /**
+     * The subnet's tags.
+     */
+    tags: outputs.GetInfrastructurePrivateSubnetTag[];
+    /**
+     * The type of subnet.  Will be one of: `"public"` or `"private"`.
+     */
+    type: string;
+    /**
+     * The Duplo zone that the subnet resides in.  Will be one of:  `"A"`, `"B"`, `"C"`, or `"D"`
+     */
+    zone: string;
+}
+
+export interface GetInfrastructurePrivateSubnetTag {
+    key: string;
+    value: string;
+}
+
+export interface GetInfrastructurePublicSubnet {
+    /**
+     * The subnet CIDR block.
+     */
+    cidrBlock: string;
+    /**
+     * The subnet ID.
+     */
+    id: string;
+    /**
+     * The subnet name.
+     */
+    name: string;
+    /**
+     * The subnet's tags.
+     */
+    tags: outputs.GetInfrastructurePublicSubnetTag[];
+    /**
+     * The type of subnet.  Will be one of: `"public"` or `"private"`.
+     */
+    type: string;
+    /**
+     * The Duplo zone that the subnet resides in.  Will be one of:  `"A"`, `"B"`, `"C"`, or `"D"`
+     */
+    zone: string;
+}
+
+export interface GetInfrastructurePublicSubnetTag {
+    key: string;
+    value: string;
+}
+
+export interface GetInfrastructureSecurityGroup {
+    /**
+     * The security group ID.
+     */
+    id: string;
+    /**
+     * The security group name.
+     */
+    name: string;
+    readOnly: boolean;
+    /**
+     * Security group rules
+     */
+    rules: outputs.GetInfrastructureSecurityGroupRule[];
+    /**
+     * The type of security group.  Will be one of: `"host"` or `"lb"`.
+     */
+    type: string;
+}
+
+export interface GetInfrastructureSecurityGroupRule {
+    action: string;
+    destinationRuleType: number;
+    direction: string;
+    priority: number;
+    protocol: string;
+    sourceAddressPrefix: string;
+    sourcePortRange: string;
+    sourceRuleType: number;
+}
+
+export interface GetInfrastructuresData {
+    /**
+     * The cloud account ID.
+     */
+    accountId: string;
+    /**
+     * The CIDR for the VPC or VNet.
+     */
+    addressPrefix: string;
+    /**
+     * The number of availability zones.  Will be one of: `2`, `3`, or `4`.
+     */
+    azcount: number;
+    /**
+     * The numerical index of cloud provider to use for the infrastructure.
+     * Will be one of:
+     *
+     *    - `0` : AWS
+     *    - `2` : Azure
+     */
+    cloud: number;
+    /**
+     * Whether or not a kubernetes cluster is provisioned.
+     */
+    enableK8Cluster: boolean;
+    /**
+     * The name of the infrastructure.
+     */
+    infraName: string;
+    /**
+     * The cloud provider region.  The Duplo portal must have already been configured to support this region.
+     */
+    region: string;
+    /**
+     * The status of the infrastructure.
+     */
+    status: string;
+    /**
+     * The CIDR subnet size (in bits) of the automatically created subnets.
+     */
+    subnetCidr: number;
+}
+
+export interface GetK8ConfigMapsConfigMap {
+    /**
+     * A JSON encoded string representing the configmap data. You can use the `jsondecode()` function to parse this, if needed.
+     */
+    data: string;
+    /**
+     * A JSON encoded string representing the configmap metadata. You can use the `jsondecode()` function to parse this, if needed.
+     */
+    metadata: string;
+    /**
+     * The name of the configmap.
+     */
+    name: string;
+    /**
+     * The GUID of the tenant that the configmap will be created in.
+     */
+    tenantId: string;
+}
+
+export interface GetK8SecretsSecret {
+    clientSecretVersion: string;
+    secretAnnotations: {[key: string]: string};
+    secretData: string;
+    secretLabels: {[key: string]: string};
+    secretName: string;
+    secretType: string;
+    secretVersion: string;
+}
+
+export interface GetK8sCronJobMetadata {
+    /**
+     * An unstructured key value map stored with the cronjob that may be used to store arbitrary metadata. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+     */
+    annotations: {[key: string]: string};
+    /**
+     * Prefix, used by the server, to generate a unique name ONLY IF the `name` field has not been provided. This value will also be combined with a unique suffix. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#idempotency
+     */
+    generateName?: string;
+    /**
+     * A sequence number representing a specific generation of the desired state.
+     */
+    generation: number;
+    /**
+     * Map of string keys and values that can be used to organize and categorize (scope and select) the cronjob. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+     */
+    labels: {[key: string]: string};
+    /**
+     * Name of the cronjob, must be unique. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name: string;
+    /**
+     * Namespace defines the space within which name of the cronjob must be unique.
+     */
+    namespace: string;
+    /**
+     * An opaque value that represents the internal version of this cronjob that can be used by clients to determine when cronjob has changed. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+     */
+    resourceVersion: string;
+    /**
+     * The unique in time and space value for this cronjob. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
+     */
+    uid: string;
+}
+
+export interface GetK8sCronJobSpec {
+    /**
+     * Specifies how to treat concurrent executions of a Job. Defaults to Allow.
+     */
+    concurrencyPolicy?: string;
+    /**
+     * The number of failed finished jobs to retain. This is a pointer to distinguish between explicit zero and not specified. Defaults to 1.
+     */
+    failedJobsHistoryLimit?: number;
+    /**
+     * Describes the pod that will be created when executing a cron job. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+     */
+    jobTemplate: outputs.GetK8sCronJobSpecJobTemplate;
+    /**
+     * Cron format string, e.g. 0 * * * * or @hourly, as schedule time of its jobs to be created and executed.
+     */
+    schedule: string;
+    /**
+     * Optional deadline in seconds for starting the job if it misses scheduled time for any reason. Missed jobs executions will be counted as failed ones.
+     */
+    startingDeadlineSeconds?: number;
+    /**
+     * The number of successful finished jobs to retain. Defaults to 3.
+     */
+    successfulJobsHistoryLimit?: number;
+    /**
+     * This flag tells the controller to suspend subsequent executions, it does not apply to already started executions. Defaults to false.
+     */
+    suspend?: boolean;
+}
+
+export interface GetK8sCronJobSpecJobTemplate {
+    /**
+     * Standard jobTemplateSpec's metadata. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
+     */
+    metadata: outputs.GetK8sCronJobSpecJobTemplateMetadata;
+    /**
+     * Specification of the desired behavior of the job
+     */
+    spec: outputs.GetK8sCronJobSpecJobTemplateSpec;
+}
+
+export interface GetK8sCronJobSpecJobTemplateMetadata {
+    /**
+     * An unstructured key value map stored with the jobTemplateSpec that may be used to store arbitrary metadata. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+     */
+    annotations: {[key: string]: string};
+    /**
+     * Prefix, used by the server, to generate a unique name ONLY IF the `name` field has not been provided. This value will also be combined with a unique suffix. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#idempotency
+     */
+    generateName?: string;
+    /**
+     * A sequence number representing a specific generation of the desired state.
+     */
+    generation: number;
+    /**
+     * Map of string keys and values that can be used to organize and categorize (scope and select) the jobTemplateSpec. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+     */
+    labels: {[key: string]: string};
+    /**
+     * Name of the jobTemplateSpec, must be unique. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name: string;
+    /**
+     * An opaque value that represents the internal version of this jobTemplateSpec that can be used by clients to determine when jobTemplateSpec has changed. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+     */
+    resourceVersion: string;
+    /**
+     * The unique in time and space value for this jobTemplateSpec. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
+     */
+    uid: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpec {
+    /**
+     * Optional duration in seconds the pod may be active on the node relative to StartTime before the system will actively try to mark it failed and kill associated containers. Value must be a positive integer.
+     */
+    activeDeadlineSeconds: number;
+    /**
+     * Specifies the number of retries before marking this job failed. Defaults to 6
+     */
+    backoffLimit?: number;
+    /**
+     * Specifies how Pod completions are tracked. It can be `NonIndexed` (default) or `Indexed`. More info: https://kubernetes.io/docs/concepts/workloads/controllers/job/#completion-mode
+     */
+    completionMode: string;
+    /**
+     * Specifies the desired number of successfully finished pods the job should be run with. Setting to nil means that the success of any pod signals the success of all pods, and allows parallelism to have any positive value. Setting to 1 means that parallelism is limited to 1 and the success of that pod signals the success of the job. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+     */
+    completions?: number;
+    /**
+     * Controls generation of pod labels and pod selectors. Leave unset unless you are certain what you are doing. When false or unset, the system pick labels unique to this job and appends those labels to the pod template. When true, the user is responsible for picking unique labels and specifying the selector. Failure to pick a unique label may cause this and other jobs to not function correctly. More info: https://git.k8s.io/community/contributors/design-proposals/selector-generation.md
+     */
+    manualSelector: boolean;
+    /**
+     * Specifies the maximum desired number of pods the job should run at any given time. The actual number of pods running in steady state will be less than this number when ((.spec.completions - .status.successful) < .spec.parallelism), i.e. when the work left to do is less than max parallelism. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+     */
+    parallelism?: number;
+    /**
+     * A label query over volumes to consider for binding.
+     */
+    selector: outputs.GetK8sCronJobSpecJobTemplateSpecSelector;
+    /**
+     * Describes the pod that will be created when executing a job. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+     */
+    template: outputs.GetK8sCronJobSpecJobTemplateSpecTemplate;
+    /**
+     * ttlSecondsAfterFinished limits the lifetime of a Job that has finished execution (either Complete or Failed). If this field is set, ttlSecondsAfterFinished after the Job finishes, it is eligible to be automatically deleted. When the Job is being deleted, its lifecycle guarantees (e.g. finalizers) will be honored. If this field is unset, the Job won't be automatically deleted. If this field is set to zero, the Job becomes eligible to be deleted immediately after it finishes.
+     */
+    ttlSecondsAfterFinished?: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecSelector {
+    /**
+     * A list of label selector requirements. The requirements are ANDed.
+     */
+    matchExpressions?: outputs.GetK8sCronJobSpecJobTemplateSpecSelectorMatchExpression[];
+    /**
+     * A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+     */
+    matchLabels: {[key: string]: string};
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecSelectorMatchExpression {
+    /**
+     * The label key that the selector applies to.
+     */
+    key?: string;
+    /**
+     * A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
+     */
+    operator?: string;
+    /**
+     * An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
+     */
+    values?: string[];
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplate {
+    /**
+     * Standard cronjob's metadata. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
+     */
+    metadata: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateMetadata;
+    /**
+     * Spec of the cron job owned by the cluster
+     */
+    spec?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpec;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateMetadata {
+    /**
+     * An unstructured key value map stored with the cronjob that may be used to store arbitrary metadata. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+     */
+    annotations: {[key: string]: string};
+    /**
+     * Prefix, used by the server, to generate a unique name ONLY IF the `name` field has not been provided. This value will also be combined with a unique suffix. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#idempotency
+     */
+    generateName?: string;
+    /**
+     * A sequence number representing a specific generation of the desired state.
+     */
+    generation: number;
+    /**
+     * Map of string keys and values that can be used to organize and categorize (scope and select) the cronjob. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+     */
+    labels: {[key: string]: string};
+    /**
+     * Name of the cronjob, must be unique. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name: string;
+    /**
+     * An opaque value that represents the internal version of this cronjob that can be used by clients to determine when cronjob has changed. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+     */
+    resourceVersion: string;
+    /**
+     * The unique in time and space value for this cronjob. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
+     */
+    uid: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpec {
+    /**
+     * Optional duration in seconds the pod may be active on the node relative to StartTime before the system will actively try to mark it failed and kill associated containers. Value must be a positive integer.
+     */
+    activeDeadlineSeconds: number;
+    /**
+     * Optional pod scheduling constraints.
+     */
+    affinity?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecAffinity;
+    /**
+     * AutomountServiceAccountToken indicates whether a service account token should be automatically mounted.
+     */
+    automountServiceAccountToken?: boolean;
+    /**
+     * List of containers belonging to the pod. Containers cannot currently be added or removed. There must be at least one container in a Pod. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/
+     */
+    containers?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainer[];
+    /**
+     * Specifies the DNS parameters of a pod. Parameters specified here will be merged to the generated DNS configuration based on DNSPolicy. Optional: Defaults to empty
+     */
+    dnsConfig?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecDnsConfig;
+    /**
+     * Set DNS policy for containers within the pod. Valid values are 'ClusterFirstWithHostNet', 'ClusterFirst', 'Default' or 'None'. DNS parameters given in DNSConfig will be merged with the policy selected with DNSPolicy. To have DNS options set along with hostNetwork, you have to specify DNS policy explicitly to 'ClusterFirstWithHostNet'. Defaults to 'ClusterFirst'. More info: https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy
+     */
+    dnsPolicy: string;
+    /**
+     * Enables generating environment variables for service discovery. Defaults to true.
+     */
+    enableServiceLinks?: boolean;
+    /**
+     * List of hosts and IPs that will be injected into the pod's hosts file if specified. Optional: Defaults to empty.
+     */
+    hostAliases: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecHostAlias[];
+    /**
+     * Use the host's ipc namespace. Optional: Defaults to false.
+     */
+    hostIpc: boolean;
+    /**
+     * Host networking requested for this pod. Use the host's network namespace. If this option is set, the ports that will be used must be specified.
+     */
+    hostNetwork: boolean;
+    /**
+     * Use the host's pid namespace.
+     */
+    hostPid: boolean;
+    /**
+     * Specifies the hostname of the Pod If not specified, the pod's hostname will be set to a system-defined value.
+     */
+    hostname: string;
+    /**
+     * ImagePullSecrets is an optional list of references to secrets in the same namespace to use for pulling any of the images used by this PodSpec. If specified, these secrets will be passed to individual puller implementations for them to use. For example, in the case of docker, only DockerConfig type secrets are honored. More info: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
+     */
+    imagePullSecrets: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecImagePullSecret[];
+    /**
+     * List of init containers belonging to the pod. Init containers always run to completion and each must complete successfully before the next is started. More info: https://kubernetes.io/docs/concepts/workloads/pods/init-containers/
+     */
+    initContainers?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainer[];
+    /**
+     * NodeName is a request to schedule this pod onto a specific node. If it is non-empty, the scheduler simply schedules this pod onto that node, assuming that it fits resource requirements.
+     */
+    nodeName: string;
+    /**
+     * NodeSelector is a selector which must be true for the pod to fit on a node. Selector which must match a node's labels for the pod to be scheduled on that node. More info: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/.
+     */
+    nodeSelector: {[key: string]: string};
+    /**
+     * If specified, indicates the pod's priority. "system-node-critical" and "system-cluster-critical" are two special keywords which indicate the highest priorities with the former being the highest priority. Any other name must be defined by creating a PriorityClass object with that name. If not specified, the pod priority will be default or zero if there is no default.
+     */
+    priorityClassName: string;
+    /**
+     * If specified, all readiness gates will be evaluated for pod readiness. A pod is ready when all its containers are ready AND all conditions specified in the readiness gates have status equal to "True" More info: https://git.k8s.io/enhancements/keps/sig-network/0007-pod-ready%2B%2B.md
+     */
+    readinessGates: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecReadinessGate[];
+    /**
+     * Restart policy for all containers within the pod. One of OnFailure, Never. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#restart-policy.
+     */
+    restartPolicy?: string;
+    /**
+     * RuntimeClassName is a feature for selecting the container runtime configuration. The container runtime configuration is used to run a Pod's containers. More info: https://kubernetes.io/docs/concepts/containers/runtime-class
+     */
+    runtimeClassName: string;
+    /**
+     * If specified, the pod will be dispatched by specified scheduler. If not specified, the pod will be dispatched by default scheduler.
+     */
+    schedulerName: string;
+    /**
+     * SecurityContext holds pod-level security attributes and common container settings. Optional: Defaults to empty
+     */
+    securityContext: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecSecurityContext;
+    /**
+     * ServiceAccountName is the name of the ServiceAccount to use to run this pod. More info: http://releases.k8s.io/HEAD/docs/design/service_accounts.md.
+     */
+    serviceAccountName: string;
+    /**
+     * Share a single process namespace between all of the containers in a pod. When this is set containers will be able to view and signal processes from other containers in the same pod, and the first process in each container will not be assigned PID 1. HostPID and ShareProcessNamespace cannot both be set. Optional: Defaults to false.
+     */
+    shareProcessNamespace?: boolean;
+    /**
+     * If specified, the fully qualified Pod hostname will be "...svc.". If not specified, the pod will not have a domainname at all..
+     */
+    subdomain: string;
+    /**
+     * Optional duration in seconds the pod needs to terminate gracefully. May be decreased in delete request. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period will be used instead. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process.
+     */
+    terminationGracePeriodSeconds: number;
+    /**
+     * If specified, the pod's toleration. Optional: Defaults to empty
+     */
+    tolerations?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecToleration[];
+    /**
+     * describes how a group of pods ought to spread across topology domains. Scheduler will schedule pods in a way which abides by the constraints.
+     */
+    topologySpreadConstraints?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecTopologySpreadConstraint[];
+    /**
+     * List of volumes that can be mounted by containers belonging to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes
+     */
+    volumes?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolume[];
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecAffinity {
+    /**
+     * Node affinity scheduling rules for the pod.
+     */
+    nodeAffinity?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecAffinityNodeAffinity;
+    /**
+     * Inter-pod topological affinity. rules that specify that certain pods should be placed in the same topological domain (e.g. same node, same rack, same zone, same power domain, etc.)
+     */
+    podAffinity?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAffinity;
+    /**
+     * Inter-pod topological affinity. rules that specify that certain pods should be placed in the same topological domain (e.g. same node, same rack, same zone, same power domain, etc.)
+     */
+    podAntiAffinity?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAntiAffinity;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecAffinityNodeAffinity {
+    /**
+     * The scheduler will prefer to schedule pods to nodes that satisfy the affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions. The node that is most preferred is the one with the greatest sum of weights, i.e. for each node that meets all of the scheduling requirements (resource request, RequiredDuringScheduling affinity expressions, etc.), compute a sum by iterating through the elements of this field and adding 'weight' to the sum if the node matches the corresponding MatchExpressions; the node(s) with the highest sum are the most preferred.
+     */
+    preferredDuringSchedulingIgnoredDuringExecutions: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecution[];
+    /**
+     * If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a node label update), the system may or may not try to eventually evict the pod from its node.
+     */
+    requiredDuringSchedulingIgnoredDuringExecution?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecution {
+    /**
+     * A node selector term, associated with the corresponding weight.
+     */
+    preference: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreference;
+    /**
+     * weight is in the range 1-100
+     */
+    weight: number;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreference {
+    /**
+     * List of node selector requirements. The requirements are ANDed.
+     */
+    matchExpressions?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpression[];
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpression {
+    /**
+     * The label key that the selector applies to.
+     */
+    key?: string;
+    /**
+     * Operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists, DoesNotExist. Gt, and Lt.
+     */
+    operator?: string;
+    /**
+     * Values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch.
+     */
+    values?: string[];
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution {
+    /**
+     * List of node selector terms. The terms are ORed.
+     */
+    nodeSelectorTerms?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTerm[];
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTerm {
+    /**
+     * List of node selector requirements. The requirements are ANDed.
+     */
+    matchExpressions?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpression[];
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpression {
+    /**
+     * The label key that the selector applies to.
+     */
+    key?: string;
+    /**
+     * Operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists, DoesNotExist. Gt, and Lt.
+     */
+    operator?: string;
+    /**
+     * Values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch.
+     */
+    values?: string[];
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAffinity {
+    /**
+     * The scheduler will prefer to schedule pods to nodes that satisfy the anti-affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions. The node that is most preferred is the one with the greatest sum of weights, i.e. for each node that meets all of the scheduling requirements (resource request, RequiredDuringScheduling anti-affinity expressions, etc.), compute a sum by iterating through the elements of this field and adding 'weight' to the sum if the node matches the corresponding MatchExpressions; the node(s) with the highest sum are the most preferred.
+     */
+    preferredDuringSchedulingIgnoredDuringExecutions: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecution[];
+    /**
+     * If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system may or may not try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each PodAffinityTerm are intersected, i.e. all terms must be satisfied.
+     */
+    requiredDuringSchedulingIgnoredDuringExecutions?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecution[];
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecution {
+    /**
+     * A pod affinity term, associated with the corresponding weight
+     */
+    podAffinityTerm: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTerm;
+    /**
+     * weight associated with matching the corresponding podAffinityTerm, in the range 1-100
+     */
+    weight: number;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTerm {
+    /**
+     * A label query over a set of resources, in this case pods.
+     */
+    labelSelectors: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector[];
+    /**
+     * namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means 'this pod's namespace'
+     */
+    namespaces: string[];
+    /**
+     * empty topology key is interpreted by the scheduler as 'all topologies'
+     */
+    topologyKey: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector {
+    /**
+     * A list of label selector requirements. The requirements are ANDed.
+     */
+    matchExpressions?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression[];
+    /**
+     * A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+     */
+    matchLabels?: {[key: string]: string};
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression {
+    /**
+     * The label key that the selector applies to.
+     */
+    key?: string;
+    /**
+     * A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
+     */
+    operator?: string;
+    /**
+     * An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
+     */
+    values?: string[];
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecution {
+    /**
+     * A label query over a set of resources, in this case pods.
+     */
+    labelSelectors: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector[];
+    /**
+     * namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means 'this pod's namespace'
+     */
+    namespaces: string[];
+    /**
+     * empty topology key is interpreted by the scheduler as 'all topologies'
+     */
+    topologyKey: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector {
+    /**
+     * A list of label selector requirements. The requirements are ANDed.
+     */
+    matchExpressions?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression[];
+    /**
+     * A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+     */
+    matchLabels?: {[key: string]: string};
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression {
+    /**
+     * The label key that the selector applies to.
+     */
+    key?: string;
+    /**
+     * A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
+     */
+    operator?: string;
+    /**
+     * An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
+     */
+    values?: string[];
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAntiAffinity {
+    /**
+     * The scheduler will prefer to schedule pods to nodes that satisfy the anti-affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions. The node that is most preferred is the one with the greatest sum of weights, i.e. for each node that meets all of the scheduling requirements (resource request, RequiredDuringScheduling anti-affinity expressions, etc.), compute a sum by iterating through the elements of this field and adding 'weight' to the sum if the node matches the corresponding MatchExpressions; the node(s) with the highest sum are the most preferred.
+     */
+    preferredDuringSchedulingIgnoredDuringExecutions: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecution[];
+    /**
+     * If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system may or may not try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each PodAffinityTerm are intersected, i.e. all terms must be satisfied.
+     */
+    requiredDuringSchedulingIgnoredDuringExecutions?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecution[];
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecution {
+    /**
+     * A pod affinity term, associated with the corresponding weight
+     */
+    podAffinityTerm: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTerm;
+    /**
+     * weight associated with matching the corresponding podAffinityTerm, in the range 1-100
+     */
+    weight: number;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTerm {
+    /**
+     * A label query over a set of resources, in this case pods.
+     */
+    labelSelectors: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector[];
+    /**
+     * namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means 'this pod's namespace'
+     */
+    namespaces: string[];
+    /**
+     * empty topology key is interpreted by the scheduler as 'all topologies'
+     */
+    topologyKey: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector {
+    /**
+     * A list of label selector requirements. The requirements are ANDed.
+     */
+    matchExpressions?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression[];
+    /**
+     * A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+     */
+    matchLabels?: {[key: string]: string};
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression {
+    /**
+     * The label key that the selector applies to.
+     */
+    key?: string;
+    /**
+     * A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
+     */
+    operator?: string;
+    /**
+     * An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
+     */
+    values?: string[];
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecution {
+    /**
+     * A label query over a set of resources, in this case pods.
+     */
+    labelSelectors: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector[];
+    /**
+     * namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means 'this pod's namespace'
+     */
+    namespaces: string[];
+    /**
+     * empty topology key is interpreted by the scheduler as 'all topologies'
+     */
+    topologyKey: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector {
+    /**
+     * A list of label selector requirements. The requirements are ANDed.
+     */
+    matchExpressions?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression[];
+    /**
+     * A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+     */
+    matchLabels?: {[key: string]: string};
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression {
+    /**
+     * The label key that the selector applies to.
+     */
+    key?: string;
+    /**
+     * A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
+     */
+    operator?: string;
+    /**
+     * An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
+     */
+    values?: string[];
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainer {
+    /**
+     * Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+     */
+    args?: string[];
+    /**
+     * Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+     */
+    commands?: string[];
+    /**
+     * List of sources to populate environment variables in the container. The keys defined within a source must be a C_IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated.
+     */
+    envFroms?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerEnvFrom[];
+    /**
+     * List of environment variables to set in the container. Cannot be updated.
+     */
+    envs?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerEnv[];
+    /**
+     * Docker image name. More info: https://kubernetes.io/docs/concepts/containers/images/
+     */
+    image?: string;
+    /**
+     * Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/images/#updating-images
+     */
+    imagePullPolicy: string;
+    /**
+     * Actions that the management system should take in response to container lifecycle events
+     */
+    lifecycle?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecycle;
+    /**
+     * Periodic probe of container liveness. Container will be restarted if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    livenessProbe?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerLivenessProbe;
+    /**
+     * Name of the container specified as a DNS_LABEL. Each container in a pod must have a unique name (DNS_LABEL). Cannot be updated.
+     */
+    name: string;
+    /**
+     * List of ports to expose from the container. Exposing a port here gives the system additional information about the network connections a container uses, but is primarily informational. Not specifying a port here DOES NOT prevent that port from being exposed. Any port which is listening on the default "0.0.0.0" address inside a container will be accessible from the network. Cannot be updated.
+     */
+    ports?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerPort[];
+    /**
+     * Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    readinessProbe?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerReadinessProbe;
+    /**
+     * Compute Resources required by this container. Cannot be updated. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+     */
+    resources: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerResources;
+    /**
+     * Security options the pod should run with. More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+     */
+    securityContext?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerSecurityContext;
+    /**
+     * StartupProbe indicates that the Pod has successfully initialized. If specified, no other probes are executed until this completes successfully. If this probe fails, the Pod will be restarted, just as if the livenessProbe failed. This can be used to provide different probe parameters at the beginning of a Pod's lifecycle, when it might take a long time to load data or warm a cache, than during steady-state operation. This cannot be updated. This is an alpha feature enabled by the StartupProbe feature flag. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+     */
+    startupProbe?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerStartupProbe;
+    /**
+     * Whether this container should allocate a buffer for stdin in the container runtime. If this is not set, reads from stdin in the container will always result in EOF.
+     */
+    stdin?: boolean;
+    /**
+     * Whether the container runtime should close the stdin channel after it has been opened by a single attach. When stdin is true the stdin stream will remain open across multiple attach sessions. If stdinOnce is set to true, stdin is opened on container start, is empty until the first client attaches to stdin, and then remains open and accepts data until the client disconnects, at which time stdin is closed and remains closed until the container is restarted. If this flag is false, a container processes that reads from stdin will never receive an EOF.
+     */
+    stdinOnce?: boolean;
+    /**
+     * Optional: Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Defaults to /dev/termination-log. Cannot be updated.
+     */
+    terminationMessagePath?: string;
+    /**
+     * Optional: Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
+     */
+    terminationMessagePolicy: string;
+    /**
+     * Whether this container should allocate a TTY for itself
+     */
+    tty?: boolean;
+    /**
+     * Pod volumes to mount into the container's filesystem. Cannot be updated.
+     */
+    volumeMounts?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerVolumeMount[];
+    /**
+     * Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image. Cannot be updated.
+     */
+    workingDir?: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerEnv {
+    /**
+     * Name of the environment variable. Must be a C_IDENTIFIER
+     */
+    name: string;
+    /**
+     * Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
+     */
+    value?: string;
+    /**
+     * Source for the environment variable's value
+     */
+    valueFrom?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerEnvValueFrom;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerEnvFrom {
+    /**
+     * The ConfigMap to select from
+     */
+    configMapRef?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerEnvFromConfigMapRef;
+    /**
+     * An optional identifer to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
+     */
+    prefix?: string;
+    /**
+     * The Secret to select from
+     */
+    secretRef?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerEnvFromSecretRef;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerEnvFromConfigMapRef {
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name: string;
+    /**
+     * Specify whether the ConfigMap must be defined
+     */
+    optional?: boolean;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerEnvFromSecretRef {
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name: string;
+    /**
+     * Specify whether the Secret must be defined
+     */
+    optional?: boolean;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerEnvValueFrom {
+    /**
+     * Selects a key of a ConfigMap.
+     */
+    configMapKeyRef?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerEnvValueFromConfigMapKeyRef;
+    /**
+     * Selects a field of the pod: supports metadata.name, metadata.namespace, metadata.labels, metadata.annotations, spec.nodeName, spec.serviceAccountName, status.podIP.
+     */
+    fieldRef?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerEnvValueFromFieldRef;
+    /**
+     * Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.
+     */
+    resourceFieldRef?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerEnvValueFromResourceFieldRef;
+    /**
+     * Selects a key of a secret in the pod's namespace.
+     */
+    secretKeyRef?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerEnvValueFromSecretKeyRef;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerEnvValueFromConfigMapKeyRef {
+    /**
+     * The key to select.
+     */
+    key?: string;
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: string;
+    /**
+     * Specify whether the ConfigMap or its key must be defined.
+     */
+    optional?: boolean;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerEnvValueFromFieldRef {
+    /**
+     * Version of the schema the FieldPath is written in terms of, defaults to "v1".
+     */
+    apiVersion?: string;
+    /**
+     * Path of the field to select in the specified API version
+     */
+    fieldPath?: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerEnvValueFromResourceFieldRef {
+    containerName?: string;
+    divisor?: string;
+    /**
+     * Resource to select
+     */
+    resource: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerEnvValueFromSecretKeyRef {
+    /**
+     * The key of the secret to select from. Must be a valid secret key.
+     */
+    key?: string;
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: string;
+    /**
+     * Specify whether the Secret or its key must be defined.
+     */
+    optional?: boolean;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecycle {
+    /**
+     * post_start is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+     */
+    postStarts?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePostStart[];
+    /**
+     * pre_stop is called immediately before a container is terminated. The container is terminated after the handler completes. The reason for termination is passed to the handler. Regardless of the outcome of the handler, the container is eventually terminated. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+     */
+    preStops?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePreStop[];
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePostStart {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePostStartExec;
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePostStartHttpGet;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePostStartTcpSocket[];
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePostStartExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: string[];
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePostStartHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeader[];
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: string;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+     */
+    port?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    scheme?: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: string;
+    /**
+     * The header field value
+     */
+    value?: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePostStartTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+     */
+    port: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePreStop {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePreStopExec;
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePreStopHttpGet;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePreStopTcpSocket[];
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePreStopExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: string[];
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePreStopHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeader[];
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: string;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+     */
+    port?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    scheme?: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: string;
+    /**
+     * The header field value
+     */
+    value?: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePreStopTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+     */
+    port: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerLivenessProbe {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerLivenessProbeExec;
+    /**
+     * Minimum consecutive failures for the probe to be considered failed after having succeeded.
+     */
+    failureThreshold?: number;
+    /**
+     * GRPC specifies an action involving a GRPC port.
+     */
+    grpcs?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerLivenessProbeGrpc[];
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerLivenessProbeHttpGet;
+    /**
+     * Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    initialDelaySeconds?: number;
+    /**
+     * How often (in seconds) to perform the probe
+     */
+    periodSeconds?: number;
+    /**
+     * Minimum consecutive successes for the probe to be considered successful after having failed.
+     */
+    successThreshold?: number;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerLivenessProbeTcpSocket[];
+    /**
+     * Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    timeoutSeconds?: number;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerLivenessProbeExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: string[];
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerLivenessProbeGrpc {
+    /**
+     * Number of the port to access on the container. Number must be in the range 1 to 65535.
+     */
+    port: number;
+    /**
+     * Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+     */
+    service?: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerLivenessProbeHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeader[];
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: string;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+     */
+    port?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    scheme?: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: string;
+    /**
+     * The header field value
+     */
+    value?: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerLivenessProbeTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+     */
+    port: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerPort {
+    /**
+     * Number of port to expose on the pod's IP address. This must be a valid port number, 0 < x < 65536.
+     */
+    containerPort: number;
+    /**
+     * What host IP to bind the external port to.
+     */
+    hostIp?: string;
+    /**
+     * Number of port to expose on the host. If specified, this must be a valid port number, 0 < x < 65536. If HostNetwork is specified, this must match ContainerPort. Most containers do not need this.
+     */
+    hostPort?: number;
+    /**
+     * If specified, this must be an IANA_SVC_NAME and unique within the pod. Each named port in a pod must have a unique name. Name for the port that can be referred to by services
+     */
+    name?: string;
+    /**
+     * Protocol for port. Must be UDP or TCP. Defaults to "TCP".
+     */
+    protocol?: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerReadinessProbe {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerReadinessProbeExec;
+    /**
+     * Minimum consecutive failures for the probe to be considered failed after having succeeded.
+     */
+    failureThreshold?: number;
+    /**
+     * GRPC specifies an action involving a GRPC port.
+     */
+    grpcs?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerReadinessProbeGrpc[];
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerReadinessProbeHttpGet;
+    /**
+     * Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    initialDelaySeconds?: number;
+    /**
+     * How often (in seconds) to perform the probe
+     */
+    periodSeconds?: number;
+    /**
+     * Minimum consecutive successes for the probe to be considered successful after having failed.
+     */
+    successThreshold?: number;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerReadinessProbeTcpSocket[];
+    /**
+     * Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    timeoutSeconds?: number;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerReadinessProbeExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: string[];
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerReadinessProbeGrpc {
+    /**
+     * Number of the port to access on the container. Number must be in the range 1 to 65535.
+     */
+    port: number;
+    /**
+     * Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+     */
+    service?: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerReadinessProbeHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeader[];
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: string;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+     */
+    port?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    scheme?: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: string;
+    /**
+     * The header field value
+     */
+    value?: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerReadinessProbeTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+     */
+    port: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerResources {
+    /**
+     * Describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+     */
+    limits: {[key: string]: string};
+    /**
+     * Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
+     */
+    requests: {[key: string]: string};
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerSecurityContext {
+    /**
+     * AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the noNewPrivs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP_SYS_ADMIN
+     */
+    allowPrivilegeEscalation?: boolean;
+    /**
+     * The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime.
+     */
+    capabilities?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerSecurityContextCapabilities;
+    /**
+     * Run container in privileged mode. Processes in privileged containers are essentially equivalent to root on the host. Defaults to false.
+     */
+    privileged?: boolean;
+    /**
+     * Whether this container has a read-only root filesystem. Default is false.
+     */
+    readOnlyRootFilesystem?: boolean;
+    /**
+     * The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+     */
+    runAsGroup?: string;
+    /**
+     * Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+     */
+    runAsNonRoot?: boolean;
+    /**
+     * The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+     */
+    runAsUser?: string;
+    /**
+     * The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+     */
+    seLinuxOptions?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerSecurityContextSeLinuxOptions;
+    /**
+     * The seccomp options to use by the containers in this pod. Note that this field cannot be set when spec.os.name is windows.
+     */
+    seccompProfile?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerSecurityContextSeccompProfile;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerSecurityContextCapabilities {
+    /**
+     * Added capabilities
+     */
+    adds?: string[];
+    /**
+     * Removed capabilities
+     */
+    drops?: string[];
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerSecurityContextSeLinuxOptions {
+    /**
+     * Level is SELinux level label that applies to the container.
+     */
+    level?: string;
+    /**
+     * Role is a SELinux role label that applies to the container.
+     */
+    role?: string;
+    /**
+     * Type is a SELinux type label that applies to the container.
+     */
+    type?: string;
+    /**
+     * User is a SELinux user label that applies to the container.
+     */
+    user?: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerSecurityContextSeccompProfile {
+    /**
+     * Localhost Profile indicates a profile defined in a file on the node should be used. The profile must be preconfigured on the node to work.
+     */
+    localhostProfile?: string;
+    /**
+     * Type indicates which kind of seccomp profile will be applied. Valid options are: Localhost, RuntimeDefault, Unconfined.
+     */
+    type?: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerStartupProbe {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerStartupProbeExec;
+    /**
+     * Minimum consecutive failures for the probe to be considered failed after having succeeded.
+     */
+    failureThreshold?: number;
+    /**
+     * GRPC specifies an action involving a GRPC port.
+     */
+    grpcs?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerStartupProbeGrpc[];
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerStartupProbeHttpGet;
+    /**
+     * Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    initialDelaySeconds?: number;
+    /**
+     * How often (in seconds) to perform the probe
+     */
+    periodSeconds?: number;
+    /**
+     * Minimum consecutive successes for the probe to be considered successful after having failed.
+     */
+    successThreshold?: number;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerStartupProbeTcpSocket[];
+    /**
+     * Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    timeoutSeconds?: number;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerStartupProbeExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: string[];
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerStartupProbeGrpc {
+    /**
+     * Number of the port to access on the container. Number must be in the range 1 to 65535.
+     */
+    port: number;
+    /**
+     * Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+     */
+    service?: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerStartupProbeHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerStartupProbeHttpGetHttpHeader[];
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: string;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+     */
+    port?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    scheme?: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerStartupProbeHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: string;
+    /**
+     * The header field value
+     */
+    value?: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerStartupProbeTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+     */
+    port: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerVolumeMount {
+    /**
+     * Path within the container at which the volume should be mounted. Must not contain ':'.
+     */
+    mountPath: string;
+    /**
+     * Mount propagation mode. mountPropagation determines how mounts are propagated from the host to container and the other way around. Valid values are None (default), HostToContainer and Bidirectional.
+     */
+    mountPropagation?: string;
+    /**
+     * This must match the Name of a Volume.
+     */
+    name: string;
+    /**
+     * Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false.
+     */
+    readOnly?: boolean;
+    /**
+     * Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
+     */
+    subPath?: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecDnsConfig {
+    /**
+     * A list of DNS name server IP addresses. This will be appended to the base nameservers generated from DNSPolicy. Duplicated nameservers will be removed.
+     */
+    nameservers?: string[];
+    /**
+     * A list of DNS resolver options. This will be merged with the base options generated from DNSPolicy. Duplicated entries will be removed. Resolution options given in Options will override those that appear in the base DNSPolicy.
+     */
+    options?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecDnsConfigOption[];
+    /**
+     * A list of DNS search domains for host-name lookup. This will be appended to the base search paths generated from DNSPolicy. Duplicated search paths will be removed.
+     */
+    searches?: string[];
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecDnsConfigOption {
+    /**
+     * Name of the option.
+     */
+    name: string;
+    /**
+     * Value of the option. Optional: Defaults to empty.
+     */
+    value?: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecHostAlias {
+    /**
+     * Hostnames for the IP address.
+     */
+    hostnames: string[];
+    /**
+     * IP address of the host file entry.
+     */
+    ip: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecImagePullSecret {
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainer {
+    /**
+     * Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+     */
+    args?: string[];
+    /**
+     * Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+     */
+    commands?: string[];
+    /**
+     * List of sources to populate environment variables in the container. The keys defined within a source must be a C_IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated.
+     */
+    envFroms?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerEnvFrom[];
+    /**
+     * List of environment variables to set in the container. Cannot be updated.
+     */
+    envs?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerEnv[];
+    /**
+     * Docker image name. More info: https://kubernetes.io/docs/concepts/containers/images/
+     */
+    image?: string;
+    /**
+     * Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/images/#updating-images
+     */
+    imagePullPolicy: string;
+    /**
+     * Actions that the management system should take in response to container lifecycle events
+     */
+    lifecycle?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecycle;
+    /**
+     * Periodic probe of container liveness. Container will be restarted if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    livenessProbe?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLivenessProbe;
+    /**
+     * Name of the container specified as a DNS_LABEL. Each container in a pod must have a unique name (DNS_LABEL). Cannot be updated.
+     */
+    name: string;
+    /**
+     * List of ports to expose from the container. Exposing a port here gives the system additional information about the network connections a container uses, but is primarily informational. Not specifying a port here DOES NOT prevent that port from being exposed. Any port which is listening on the default "0.0.0.0" address inside a container will be accessible from the network. Cannot be updated.
+     */
+    ports?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerPort[];
+    /**
+     * Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    readinessProbe?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerReadinessProbe;
+    /**
+     * Compute Resources required by this container. Cannot be updated. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+     */
+    resources: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerResources;
+    /**
+     * Security options the pod should run with. More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+     */
+    securityContext?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerSecurityContext;
+    /**
+     * StartupProbe indicates that the Pod has successfully initialized. If specified, no other probes are executed until this completes successfully. If this probe fails, the Pod will be restarted, just as if the livenessProbe failed. This can be used to provide different probe parameters at the beginning of a Pod's lifecycle, when it might take a long time to load data or warm a cache, than during steady-state operation. This cannot be updated. This is an alpha feature enabled by the StartupProbe feature flag. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+     */
+    startupProbe?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerStartupProbe;
+    /**
+     * Whether this container should allocate a buffer for stdin in the container runtime. If this is not set, reads from stdin in the container will always result in EOF.
+     */
+    stdin?: boolean;
+    /**
+     * Whether the container runtime should close the stdin channel after it has been opened by a single attach. When stdin is true the stdin stream will remain open across multiple attach sessions. If stdinOnce is set to true, stdin is opened on container start, is empty until the first client attaches to stdin, and then remains open and accepts data until the client disconnects, at which time stdin is closed and remains closed until the container is restarted. If this flag is false, a container processes that reads from stdin will never receive an EOF.
+     */
+    stdinOnce?: boolean;
+    /**
+     * Optional: Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Defaults to /dev/termination-log. Cannot be updated.
+     */
+    terminationMessagePath?: string;
+    /**
+     * Optional: Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
+     */
+    terminationMessagePolicy: string;
+    /**
+     * Whether this container should allocate a TTY for itself
+     */
+    tty?: boolean;
+    /**
+     * Pod volumes to mount into the container's filesystem. Cannot be updated.
+     */
+    volumeMounts?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerVolumeMount[];
+    /**
+     * Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image. Cannot be updated.
+     */
+    workingDir?: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerEnv {
+    /**
+     * Name of the environment variable. Must be a C_IDENTIFIER
+     */
+    name: string;
+    /**
+     * Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
+     */
+    value?: string;
+    /**
+     * Source for the environment variable's value
+     */
+    valueFrom?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerEnvValueFrom;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerEnvFrom {
+    /**
+     * The ConfigMap to select from
+     */
+    configMapRef?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerEnvFromConfigMapRef;
+    /**
+     * An optional identifer to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
+     */
+    prefix?: string;
+    /**
+     * The Secret to select from
+     */
+    secretRef?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerEnvFromSecretRef;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerEnvFromConfigMapRef {
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name: string;
+    /**
+     * Specify whether the ConfigMap must be defined
+     */
+    optional?: boolean;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerEnvFromSecretRef {
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name: string;
+    /**
+     * Specify whether the Secret must be defined
+     */
+    optional?: boolean;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerEnvValueFrom {
+    /**
+     * Selects a key of a ConfigMap.
+     */
+    configMapKeyRef?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRef;
+    /**
+     * Selects a field of the pod: supports metadata.name, metadata.namespace, metadata.labels, metadata.annotations, spec.nodeName, spec.serviceAccountName, status.podIP.
+     */
+    fieldRef?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerEnvValueFromFieldRef;
+    /**
+     * Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.
+     */
+    resourceFieldRef?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerEnvValueFromResourceFieldRef;
+    /**
+     * Selects a key of a secret in the pod's namespace.
+     */
+    secretKeyRef?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerEnvValueFromSecretKeyRef;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRef {
+    /**
+     * The key to select.
+     */
+    key?: string;
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: string;
+    /**
+     * Specify whether the ConfigMap or its key must be defined.
+     */
+    optional?: boolean;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerEnvValueFromFieldRef {
+    /**
+     * Version of the schema the FieldPath is written in terms of, defaults to "v1".
+     */
+    apiVersion?: string;
+    /**
+     * Path of the field to select in the specified API version
+     */
+    fieldPath?: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerEnvValueFromResourceFieldRef {
+    containerName?: string;
+    divisor?: string;
+    /**
+     * Resource to select
+     */
+    resource: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerEnvValueFromSecretKeyRef {
+    /**
+     * The key of the secret to select from. Must be a valid secret key.
+     */
+    key?: string;
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: string;
+    /**
+     * Specify whether the Secret or its key must be defined.
+     */
+    optional?: boolean;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecycle {
+    /**
+     * post_start is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+     */
+    postStarts?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePostStart[];
+    /**
+     * pre_stop is called immediately before a container is terminated. The container is terminated after the handler completes. The reason for termination is passed to the handler. Regardless of the outcome of the handler, the container is eventually terminated. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+     */
+    preStops?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePreStop[];
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePostStart {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePostStartExec;
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePostStartHttpGet;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePostStartTcpSocket[];
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePostStartExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: string[];
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePostStartHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePostStartHttpGetHttpHeader[];
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: string;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+     */
+    port?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    scheme?: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePostStartHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: string;
+    /**
+     * The header field value
+     */
+    value?: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePostStartTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+     */
+    port: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePreStop {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePreStopExec;
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePreStopHttpGet;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePreStopTcpSocket[];
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePreStopExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: string[];
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePreStopHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePreStopHttpGetHttpHeader[];
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: string;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+     */
+    port?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    scheme?: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePreStopHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: string;
+    /**
+     * The header field value
+     */
+    value?: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePreStopTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+     */
+    port: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLivenessProbe {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLivenessProbeExec;
+    /**
+     * Minimum consecutive failures for the probe to be considered failed after having succeeded.
+     */
+    failureThreshold?: number;
+    /**
+     * GRPC specifies an action involving a GRPC port.
+     */
+    grpcs?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLivenessProbeGrpc[];
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLivenessProbeHttpGet;
+    /**
+     * Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    initialDelaySeconds?: number;
+    /**
+     * How often (in seconds) to perform the probe
+     */
+    periodSeconds?: number;
+    /**
+     * Minimum consecutive successes for the probe to be considered successful after having failed.
+     */
+    successThreshold?: number;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLivenessProbeTcpSocket[];
+    /**
+     * Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    timeoutSeconds?: number;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLivenessProbeExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: string[];
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLivenessProbeGrpc {
+    /**
+     * Number of the port to access on the container. Number must be in the range 1 to 65535.
+     */
+    port: number;
+    /**
+     * Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+     */
+    service?: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLivenessProbeHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLivenessProbeHttpGetHttpHeader[];
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: string;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+     */
+    port?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    scheme?: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLivenessProbeHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: string;
+    /**
+     * The header field value
+     */
+    value?: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLivenessProbeTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+     */
+    port: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerPort {
+    /**
+     * Number of port to expose on the pod's IP address. This must be a valid port number, 0 < x < 65536.
+     */
+    containerPort: number;
+    /**
+     * What host IP to bind the external port to.
+     */
+    hostIp?: string;
+    /**
+     * Number of port to expose on the host. If specified, this must be a valid port number, 0 < x < 65536. If HostNetwork is specified, this must match ContainerPort. Most containers do not need this.
+     */
+    hostPort?: number;
+    /**
+     * If specified, this must be an IANA_SVC_NAME and unique within the pod. Each named port in a pod must have a unique name. Name for the port that can be referred to by services
+     */
+    name?: string;
+    /**
+     * Protocol for port. Must be UDP or TCP. Defaults to "TCP".
+     */
+    protocol?: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerReadinessProbe {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerReadinessProbeExec;
+    /**
+     * Minimum consecutive failures for the probe to be considered failed after having succeeded.
+     */
+    failureThreshold?: number;
+    /**
+     * GRPC specifies an action involving a GRPC port.
+     */
+    grpcs?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerReadinessProbeGrpc[];
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerReadinessProbeHttpGet;
+    /**
+     * Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    initialDelaySeconds?: number;
+    /**
+     * How often (in seconds) to perform the probe
+     */
+    periodSeconds?: number;
+    /**
+     * Minimum consecutive successes for the probe to be considered successful after having failed.
+     */
+    successThreshold?: number;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerReadinessProbeTcpSocket[];
+    /**
+     * Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    timeoutSeconds?: number;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerReadinessProbeExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: string[];
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerReadinessProbeGrpc {
+    /**
+     * Number of the port to access on the container. Number must be in the range 1 to 65535.
+     */
+    port: number;
+    /**
+     * Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+     */
+    service?: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerReadinessProbeHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerReadinessProbeHttpGetHttpHeader[];
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: string;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+     */
+    port?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    scheme?: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerReadinessProbeHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: string;
+    /**
+     * The header field value
+     */
+    value?: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerReadinessProbeTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+     */
+    port: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerResources {
+    /**
+     * Describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+     */
+    limits: {[key: string]: string};
+    /**
+     * Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
+     */
+    requests: {[key: string]: string};
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerSecurityContext {
+    /**
+     * AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the noNewPrivs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP_SYS_ADMIN
+     */
+    allowPrivilegeEscalation?: boolean;
+    /**
+     * The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime.
+     */
+    capabilities?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerSecurityContextCapabilities;
+    /**
+     * Run container in privileged mode. Processes in privileged containers are essentially equivalent to root on the host. Defaults to false.
+     */
+    privileged?: boolean;
+    /**
+     * Whether this container has a read-only root filesystem. Default is false.
+     */
+    readOnlyRootFilesystem?: boolean;
+    /**
+     * The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+     */
+    runAsGroup?: string;
+    /**
+     * Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+     */
+    runAsNonRoot?: boolean;
+    /**
+     * The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+     */
+    runAsUser?: string;
+    /**
+     * The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+     */
+    seLinuxOptions?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerSecurityContextSeLinuxOptions;
+    /**
+     * The seccomp options to use by the containers in this pod. Note that this field cannot be set when spec.os.name is windows.
+     */
+    seccompProfile?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerSecurityContextSeccompProfile;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerSecurityContextCapabilities {
+    /**
+     * Added capabilities
+     */
+    adds?: string[];
+    /**
+     * Removed capabilities
+     */
+    drops?: string[];
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerSecurityContextSeLinuxOptions {
+    /**
+     * Level is SELinux level label that applies to the container.
+     */
+    level?: string;
+    /**
+     * Role is a SELinux role label that applies to the container.
+     */
+    role?: string;
+    /**
+     * Type is a SELinux type label that applies to the container.
+     */
+    type?: string;
+    /**
+     * User is a SELinux user label that applies to the container.
+     */
+    user?: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerSecurityContextSeccompProfile {
+    /**
+     * Localhost Profile indicates a profile defined in a file on the node should be used. The profile must be preconfigured on the node to work.
+     */
+    localhostProfile?: string;
+    /**
+     * Type indicates which kind of seccomp profile will be applied. Valid options are: Localhost, RuntimeDefault, Unconfined.
+     */
+    type?: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerStartupProbe {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerStartupProbeExec;
+    /**
+     * Minimum consecutive failures for the probe to be considered failed after having succeeded.
+     */
+    failureThreshold?: number;
+    /**
+     * GRPC specifies an action involving a GRPC port.
+     */
+    grpcs?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerStartupProbeGrpc[];
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerStartupProbeHttpGet;
+    /**
+     * Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    initialDelaySeconds?: number;
+    /**
+     * How often (in seconds) to perform the probe
+     */
+    periodSeconds?: number;
+    /**
+     * Minimum consecutive successes for the probe to be considered successful after having failed.
+     */
+    successThreshold?: number;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerStartupProbeTcpSocket[];
+    /**
+     * Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    timeoutSeconds?: number;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerStartupProbeExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: string[];
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerStartupProbeGrpc {
+    /**
+     * Number of the port to access on the container. Number must be in the range 1 to 65535.
+     */
+    port: number;
+    /**
+     * Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+     */
+    service?: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerStartupProbeHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerStartupProbeHttpGetHttpHeader[];
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: string;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+     */
+    port?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    scheme?: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerStartupProbeHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: string;
+    /**
+     * The header field value
+     */
+    value?: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerStartupProbeTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+     */
+    port: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerVolumeMount {
+    /**
+     * Path within the container at which the volume should be mounted. Must not contain ':'.
+     */
+    mountPath: string;
+    /**
+     * Mount propagation mode. mountPropagation determines how mounts are propagated from the host to container and the other way around. Valid values are None (default), HostToContainer and Bidirectional.
+     */
+    mountPropagation?: string;
+    /**
+     * This must match the Name of a Volume.
+     */
+    name: string;
+    /**
+     * Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false.
+     */
+    readOnly?: boolean;
+    /**
+     * Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
+     */
+    subPath?: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecReadinessGate {
+    /**
+     * refers to a condition in the pod's condition list with matching type.
+     */
+    conditionType: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecSecurityContext {
+    /**
+     * A special supplemental group that applies to all containers in a pod. Some volume types allow the Kubelet to change the ownership of that volume to be owned by the pod: 1. The owning GID will be the FSGroup 2. The setgid bit is set (new files created in the volume will be owned by FSGroup) 3. The permission bits are OR'd with rw-rw---- If unset, the Kubelet will not modify the ownership and permissions of any volume.
+     */
+    fsGroup?: string;
+    /**
+     * fsGroupChangePolicy defines behavior of changing ownership and permission of the volume before being exposed inside Pod. This field will only apply to volume types which support fsGroup based ownership(and permissions). It will have no effect on ephemeral volume types such as: secret, configmaps and emptydir.
+     */
+    fsGroupChangePolicy?: string;
+    /**
+     * The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in SecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container.
+     */
+    runAsGroup?: string;
+    /**
+     * Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in SecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+     */
+    runAsNonRoot?: boolean;
+    /**
+     * The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in SecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container.
+     */
+    runAsUser?: string;
+    /**
+     * The SELinux context to be applied to all containers. If unspecified, the container runtime will allocate a random SELinux context for each container. May also be set in SecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container.
+     */
+    seLinuxOptions?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecSecurityContextSeLinuxOptions;
+    /**
+     * The seccomp options to use by the containers in this pod. Note that this field cannot be set when spec.os.name is windows.
+     */
+    seccompProfile?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecSecurityContextSeccompProfile;
+    /**
+     * A list of groups applied to the first process run in each container, in addition to the container's primary GID. If unspecified, no groups will be added to any container.
+     */
+    supplementalGroups?: number[];
+    /**
+     * holds a list of namespaced sysctls used for the pod.
+     */
+    sysctls?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecSecurityContextSysctl[];
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecSecurityContextSeLinuxOptions {
+    /**
+     * Level is SELinux level label that applies to the container.
+     */
+    level?: string;
+    /**
+     * Role is a SELinux role label that applies to the container.
+     */
+    role?: string;
+    /**
+     * Type is a SELinux type label that applies to the container.
+     */
+    type?: string;
+    /**
+     * User is a SELinux user label that applies to the container.
+     */
+    user?: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecSecurityContextSeccompProfile {
+    /**
+     * Localhost Profile indicates a profile defined in a file on the node should be used. The profile must be preconfigured on the node to work.
+     */
+    localhostProfile?: string;
+    /**
+     * Type indicates which kind of seccomp profile will be applied. Valid options are: Localhost, RuntimeDefault, Unconfined.
+     */
+    type?: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecSecurityContextSysctl {
+    /**
+     * Name of a property to set.
+     */
+    name: string;
+    /**
+     * Value of a property to set.
+     */
+    value: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecToleration {
+    /**
+     * Effect indicates the taint effect to match. Empty means match all taint effects. When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.
+     */
+    effect?: string;
+    /**
+     * Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key is empty, operator must be Exists; this combination means to match all values and all keys.
+     */
+    key?: string;
+    /**
+     * Operator represents a key's relationship to the value. Valid operators are Exists and Equal. Defaults to Equal. Exists is equivalent to wildcard for value, so that a pod can tolerate all taints of a particular category.
+     */
+    operator?: string;
+    /**
+     * TolerationSeconds represents the period of time the toleration (which must be of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default, it is not set, which means tolerate the taint forever (do not evict). Zero and negative values will be treated as 0 (evict immediately) by the system.
+     */
+    tolerationSeconds?: string;
+    /**
+     * Value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string.
+     */
+    value?: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecTopologySpreadConstraint {
+    /**
+     * A label query over a set of resources, in this case pods.
+     */
+    labelSelectors: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecTopologySpreadConstraintLabelSelector[];
+    /**
+     * describes the degree to which pods may be unevenly distributed.
+     */
+    maxSkew?: number;
+    /**
+     * the key of node labels. Nodes that have a label with this key and identical values are considered to be in the same topology.
+     */
+    topologyKey?: string;
+    /**
+     * indicates how to deal with a pod if it doesn't satisfy the spread constraint.
+     */
+    whenUnsatisfiable?: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecTopologySpreadConstraintLabelSelector {
+    /**
+     * A list of label selector requirements. The requirements are ANDed.
+     */
+    matchExpressions?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecTopologySpreadConstraintLabelSelectorMatchExpression[];
+    /**
+     * A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+     */
+    matchLabels?: {[key: string]: string};
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecTopologySpreadConstraintLabelSelectorMatchExpression {
+    /**
+     * The label key that the selector applies to.
+     */
+    key?: string;
+    /**
+     * A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
+     */
+    operator?: string;
+    /**
+     * An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
+     */
+    values?: string[];
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolume {
+    /**
+     * Represents an AWS Disk resource that is attached to a kubelet's host machine and then exposed to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+     */
+    awsElasticBlockStore?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeAwsElasticBlockStore;
+    /**
+     * Represents an Azure Data Disk mount on the host and bind mount to the pod.
+     */
+    azureDisk?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeAzureDisk;
+    /**
+     * Represents an Azure File Service mount on the host and bind mount to the pod.
+     */
+    azureFile?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeAzureFile;
+    /**
+     * Represents a Ceph FS mount on the host that shares a pod's lifetime
+     */
+    cephFs?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeCephFs;
+    /**
+     * Represents a cinder volume attached and mounted on kubelets host machine. More info: https://examples.k8s.io/mysql-cinder-pd/README.md
+     */
+    cinder?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeCinder;
+    /**
+     * ConfigMap represents a configMap that should populate this volume
+     */
+    configMap?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeConfigMap;
+    /**
+     * Represents a CSI Volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#csi
+     */
+    csi?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeCsi;
+    /**
+     * DownwardAPI represents downward API about the pod that should populate this volume
+     */
+    downwardApi?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeDownwardApi;
+    /**
+     * EmptyDir represents a temporary directory that shares a pod's lifetime. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir
+     */
+    emptyDir?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeEmptyDir;
+    /**
+     * Represents an ephemeral volume that is handled by a normal storage driver. More info: https://kubernetes.io/docs/concepts/storage/ephemeral-volumes/#generic-ephemeral-volumes
+     */
+    ephemeral?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeEphemeral;
+    /**
+     * Represents a Fibre Channel resource that is attached to a kubelet's host machine and then exposed to the pod.
+     */
+    fc?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeFc;
+    /**
+     * Represents a generic volume resource that is provisioned/attached using an exec based plugin. This is an alpha feature and may change in future.
+     */
+    flexVolume?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeFlexVolume;
+    /**
+     * Represents a Flocker volume attached to a kubelet's host machine and exposed to the pod for its usage. This depends on the Flocker control service being running
+     */
+    flocker?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeFlocker;
+    /**
+     * Represents a GCE Disk resource that is attached to a kubelet's host machine and then exposed to the pod. Provisioned by an admin. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+     */
+    gcePersistentDisk?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeGcePersistentDisk;
+    /**
+     * GitRepo represents a git repository at a particular revision.
+     */
+    gitRepo?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeGitRepo;
+    /**
+     * Represents a Glusterfs volume that is attached to a host and exposed to the pod. Provisioned by an admin. More info: https://examples.k8s.io/volumes/glusterfs/README.md
+     */
+    glusterfs?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeGlusterfs;
+    /**
+     * Represents a directory on the host. Provisioned by a developer or tester. This is useful for single-node development and testing only! On-host storage is not supported in any way and WILL NOT WORK in a multi-node cluster. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath
+     */
+    hostPath?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeHostPath;
+    /**
+     * Represents an ISCSI Disk resource that is attached to a kubelet's host machine and then exposed to the pod. Provisioned by an admin.
+     */
+    iscsi?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeIscsi;
+    /**
+     * Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local
+     */
+    local?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeLocal;
+    /**
+     * Volume's name. Must be a DNS_LABEL and unique within the pod. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: string;
+    /**
+     * Represents an NFS mount on the host. Provisioned by an admin. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+     */
+    nfs?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeNfs;
+    /**
+     * The specification of a persistent volume.
+     */
+    persistentVolumeClaim?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumePersistentVolumeClaim;
+    /**
+     * Represents a PhotonController persistent disk attached and mounted on kubelets host machine
+     */
+    photonPersistentDisk?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumePhotonPersistentDisk;
+    /**
+     * Projected represents a single volume that projects several volume sources into the same directory. More info: https://kubernetes.io/docs/concepts/storage/volumes/#projected
+     */
+    projected?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjected;
+    /**
+     * Quobyte represents a Quobyte mount on the host that shares a pod's lifetime
+     */
+    quobyte?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeQuobyte;
+    /**
+     * Represents a Rados Block Device mount on the host that shares a pod's lifetime. More info: https://examples.k8s.io/volumes/rbd/README.md
+     */
+    rbd?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeRbd;
+    /**
+     * Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secrets
+     */
+    secret?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeSecret;
+    /**
+     * Represents a vSphere volume attached and mounted on kubelets host machine
+     */
+    vsphereVolume?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeVsphereVolume;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeAwsElasticBlockStore {
+    /**
+     * Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+     */
+    fsType?: string;
+    /**
+     * The partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as "1". Similarly, the volume partition for /dev/sda is "0" (or you can leave the property empty).
+     */
+    partition?: number;
+    /**
+     * Whether to set the read-only property in VolumeMounts to "true". If omitted, the default is "false". More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+     */
+    readOnly?: boolean;
+    /**
+     * Unique ID of the persistent disk resource in AWS (Amazon EBS volume). More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+     */
+    volumeId: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeAzureDisk {
+    /**
+     * Host Caching mode: None, Read Only, Read Write.
+     */
+    cachingMode: string;
+    /**
+     * The URI the data disk in the blob storage
+     */
+    dataDiskUri: string;
+    /**
+     * The Name of the data disk in the blob storage
+     */
+    diskName: string;
+    /**
+     * Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+     */
+    fsType?: string;
+    /**
+     * The type for the data disk. Expected values: Shared, Dedicated, Managed. Defaults to Shared
+     */
+    kind: string;
+    /**
+     * Whether to force the read-only setting in VolumeMounts. Defaults to false (read/write).
+     */
+    readOnly?: boolean;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeAzureFile {
+    /**
+     * Whether to force the read-only setting in VolumeMounts. Defaults to false (read/write).
+     */
+    readOnly?: boolean;
+    /**
+     * The name of secret that contains Azure Storage Account Name and Key
+     */
+    secretName: string;
+    /**
+     * The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is "default" namespace.
+     */
+    secretNamespace?: string;
+    /**
+     * Share Name
+     */
+    shareName: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeCephFs {
+    /**
+     * Monitors is a collection of Ceph monitors. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+     */
+    monitors: string[];
+    /**
+     * Used as the mounted root, rather than the full Ceph tree, default is /
+     */
+    path?: string;
+    /**
+     * Whether to force the read-only setting in VolumeMounts. Defaults to `false` (read/write). More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+     */
+    readOnly?: boolean;
+    /**
+     * The path to key ring for User, default is `/etc/ceph/user.secret`. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+     */
+    secretFile?: string;
+    /**
+     * Reference to the authentication secret for User, default is empty. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+     */
+    secretRef?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeCephFsSecretRef;
+    /**
+     * User is the rados user name, default is admin. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+     */
+    user?: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeCephFsSecretRef {
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: string;
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    namespace: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeCinder {
+    /**
+     * Filesystem type to mount. Must be a filesystem type supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://examples.k8s.io/mysql-cinder-pd/README.md
+     */
+    fsType?: string;
+    /**
+     * Whether to force the read-only setting in VolumeMounts. Defaults to false (read/write). More info: https://examples.k8s.io/mysql-cinder-pd/README.md
+     */
+    readOnly?: boolean;
+    /**
+     * Volume ID used to identify the volume in Cinder. More info: https://examples.k8s.io/mysql-cinder-pd/README.md
+     */
+    volumeId: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeConfigMap {
+    /**
+     * Optional: mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+     */
+    defaultMode?: string;
+    /**
+     * If unspecified, each key-value pair in the Data field of the referenced ConfigMap will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the ConfigMap, the volume setup will error unless it is marked optional. Paths must be relative and may not contain the '..' path or start with '..'.
+     */
+    items?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeConfigMapItem[];
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: string;
+    /**
+     * Optional: Specify whether the ConfigMap or its keys must be defined.
+     */
+    optional?: boolean;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeConfigMapItem {
+    /**
+     * The key to project.
+     */
+    key?: string;
+    /**
+     * Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+     */
+    mode?: string;
+    /**
+     * The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+     */
+    path?: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeCsi {
+    /**
+     * the name of the volume driver to use. More info: https://kubernetes.io/docs/concepts/storage/volumes/#csi
+     */
+    driver: string;
+    /**
+     * Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+     */
+    fsType?: string;
+    /**
+     * A reference to the secret object containing sensitive information to pass to the CSI driver to complete the CSI NodePublishVolume and NodeUnpublishVolume calls.
+     */
+    nodePublishSecretRef?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeCsiNodePublishSecretRef;
+    /**
+     * Whether to set the read-only property in VolumeMounts to "true". If omitted, the default is "false". More info: https://kubernetes.io/docs/concepts/storage/volumes#csi
+     */
+    readOnly?: boolean;
+    /**
+     * Attributes of the volume to publish.
+     */
+    volumeAttributes?: {[key: string]: string};
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeCsiNodePublishSecretRef {
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeDownwardApi {
+    /**
+     * Optional: mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+     */
+    defaultMode?: string;
+    /**
+     * If unspecified, each key-value pair in the Data field of the referenced ConfigMap will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the ConfigMap, the volume setup will error. Paths must be relative and may not contain the '..' path or start with '..'.
+     */
+    items?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeDownwardApiItem[];
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeDownwardApiItem {
+    /**
+     * Required: Selects a field of the pod: only annotations, labels, name and namespace are supported.
+     */
+    fieldRef: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeDownwardApiItemFieldRef;
+    /**
+     * Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+     */
+    mode?: string;
+    /**
+     * Path is the relative path name of the file to be created. Must not be absolute or contain the '..' path. Must be utf-8 encoded. The first item of the relative path must not start with '..'
+     */
+    path: string;
+    /**
+     * Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, requests.cpu and requests.memory) are currently supported.
+     */
+    resourceFieldRef?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeDownwardApiItemResourceFieldRef;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeDownwardApiItemFieldRef {
+    /**
+     * Version of the schema the FieldPath is written in terms of, defaults to "v1".
+     */
+    apiVersion?: string;
+    /**
+     * Path of the field to select in the specified API version
+     */
+    fieldPath?: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeDownwardApiItemResourceFieldRef {
+    containerName: string;
+    divisor?: string;
+    /**
+     * Resource to select
+     */
+    resource: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeEmptyDir {
+    /**
+     * What type of storage medium should back this directory. The default is "" which means to use the node's default medium. Must be an empty string (default) or Memory. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir
+     */
+    medium?: string;
+    /**
+     * Total amount of local storage required for this EmptyDir volume.
+     */
+    sizeLimit?: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeEphemeral {
+    /**
+     * Will be used to create a stand-alone PVC to provision the volume. The pod in which this EphemeralVolumeSource is embedded will be the owner of the PVC.
+     */
+    volumeClaimTemplate: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeEphemeralVolumeClaimTemplate;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeEphemeralVolumeClaimTemplate {
+    /**
+     * Standard cronjob's metadata. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
+     */
+    metadata?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateMetadata;
+    /**
+     * Spec of the cron job owned by the cluster
+     */
+    spec: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateSpec;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateMetadata {
+    /**
+     * An unstructured key value map stored with the cronjob that may be used to store arbitrary metadata. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+     */
+    annotations?: {[key: string]: string};
+    /**
+     * Map of string keys and values that can be used to organize and categorize (scope and select) the cronjob. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+     */
+    labels: {[key: string]: string};
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateSpec {
+    /**
+     * A set of the desired access modes the volume should have. More info: http://kubernetes.io/docs/user-guide/persistent-volumes#access-modes-1
+     */
+    accessModes: string[];
+    /**
+     * A list of the minimum resources the volume should have. More info: http://kubernetes.io/docs/user-guide/persistent-volumes#resources
+     */
+    resources: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateSpecResources;
+    /**
+     * Name of the storage class requested by the claim
+     */
+    storageClassName: string;
+    /**
+     * Kubernetes supports two volumeModes of PersistentVolumes: `Filesystem` and `Block`.
+     */
+    volumeMode: string;
+    /**
+     * The binding reference to the PersistentVolume backing this claim.
+     */
+    volumeName: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateSpecResources {
+    /**
+     * Map describing the maximum amount of compute resources allowed. More info: http://kubernetes.io/docs/user-guide/compute-resources/
+     */
+    limits?: {[key: string]: string};
+    /**
+     * Map describing the minimum amount of compute resources required. If this is omitted for a container, it defaults to `limits` if that is explicitly specified, otherwise to an implementation-defined value. More info: http://kubernetes.io/docs/user-guide/compute-resources/
+     */
+    requests: {[key: string]: string};
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeFc {
+    /**
+     * Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+     */
+    fsType?: string;
+    /**
+     * FC target lun number
+     */
+    lun: number;
+    /**
+     * Whether to force the read-only setting in VolumeMounts. Defaults to false (read/write).
+     */
+    readOnly?: boolean;
+    /**
+     * FC target worldwide names (WWNs)
+     */
+    targetWwNs: string[];
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeFlexVolume {
+    /**
+     * Driver is the name of the driver to use for this volume.
+     */
+    driver: string;
+    /**
+     * Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". The default filesystem depends on FlexVolume script.
+     */
+    fsType?: string;
+    /**
+     * Extra command options if any.
+     */
+    options?: {[key: string]: string};
+    /**
+     * Whether to force the ReadOnly setting in VolumeMounts. Defaults to false (read/write).
+     */
+    readOnly?: boolean;
+    /**
+     * Reference to the secret object containing sensitive information to pass to the plugin scripts. This may be empty if no secret object is specified. If the secret object contains more than one secret, all secrets are passed to the plugin scripts.
+     */
+    secretRef?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeFlexVolumeSecretRef;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeFlexVolumeSecretRef {
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: string;
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    namespace: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeFlocker {
+    /**
+     * Name of the dataset stored as metadata > name on the dataset for Flocker should be considered as deprecated
+     */
+    datasetName?: string;
+    /**
+     * UUID of the dataset. This is unique identifier of a Flocker dataset
+     */
+    datasetUuid?: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeGcePersistentDisk {
+    /**
+     * Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+     */
+    fsType?: string;
+    /**
+     * The partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as "1". Similarly, the volume partition for /dev/sda is "0" (or you can leave the property empty). More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+     */
+    partition?: number;
+    /**
+     * Unique name of the PD resource in GCE. Used to identify the disk in GCE. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+     */
+    pdName: string;
+    /**
+     * Whether to force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+     */
+    readOnly?: boolean;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeGitRepo {
+    /**
+     * Target directory name. Must not contain or start with '..'. If '.' is supplied, the volume directory will be the git repository. Otherwise, if specified, the volume will contain the git repository in the subdirectory with the given name.
+     */
+    directory?: string;
+    /**
+     * Repository URL
+     */
+    repository?: string;
+    /**
+     * Commit hash for the specified revision.
+     */
+    revision?: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeGlusterfs {
+    /**
+     * The endpoint name that details Glusterfs topology. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
+     */
+    endpointsName: string;
+    /**
+     * The Glusterfs volume path. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
+     */
+    path: string;
+    /**
+     * Whether to force the Glusterfs volume to be mounted with read-only permissions. Defaults to false. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
+     */
+    readOnly?: boolean;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeHostPath {
+    /**
+     * Path of the directory on the host. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath
+     */
+    path?: string;
+    /**
+     * Type for HostPath volume. Allowed values are "" (default), DirectoryOrCreate, Directory, FileOrCreate, File, Socket, CharDevice and BlockDevice
+     */
+    type?: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeIscsi {
+    /**
+     * Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#iscsi
+     */
+    fsType?: string;
+    /**
+     * Target iSCSI Qualified Name.
+     */
+    iqn: string;
+    /**
+     * iSCSI interface name that uses an iSCSI transport. Defaults to 'default' (tcp).
+     */
+    iscsiInterface?: string;
+    /**
+     * iSCSI target lun number.
+     */
+    lun?: number;
+    /**
+     * Whether to force the read-only setting in VolumeMounts. Defaults to false.
+     */
+    readOnly?: boolean;
+    /**
+     * iSCSI target portal. The portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260).
+     */
+    targetPortal: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeLocal {
+    /**
+     * Path of the directory on the host. More info: https://kubernetes.io/docs/concepts/storage/volumes#local
+     */
+    path?: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeNfs {
+    /**
+     * Path that is exported by the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+     */
+    path: string;
+    /**
+     * Whether to force the NFS export to be mounted with read-only permissions. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+     */
+    readOnly?: boolean;
+    /**
+     * Server is the hostname or IP address of the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+     */
+    server: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumePersistentVolumeClaim {
+    /**
+     * ClaimName is the name of a PersistentVolumeClaim in the same
+     */
+    claimName?: string;
+    /**
+     * Will force the ReadOnly setting in VolumeMounts.
+     */
+    readOnly?: boolean;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumePhotonPersistentDisk {
+    /**
+     * Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+     */
+    fsType?: string;
+    /**
+     * ID that identifies Photon Controller persistent disk
+     */
+    pdId: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjected {
+    /**
+     * Optional: mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+     */
+    defaultMode?: string;
+    /**
+     * Source of the volume to project in the directory.
+     */
+    sources: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSource[];
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSource {
+    /**
+     * ConfigMap represents a configMap that should populate this volume
+     */
+    configMaps?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSourceConfigMap[];
+    /**
+     * DownwardAPI represents downward API about the pod that should populate this volume
+     */
+    downwardApi?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSourceDownwardApi;
+    /**
+     * Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secrets
+     */
+    secrets?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSourceSecret[];
+    /**
+     * A projected service account token volume
+     */
+    serviceAccountToken?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSourceServiceAccountToken;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSourceConfigMap {
+    /**
+     * If unspecified, each key-value pair in the Data field of the referenced ConfigMap will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the ConfigMap, the volume setup will error. Paths must be relative and may not contain the '..' path or start with '..'.
+     */
+    items?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSourceConfigMapItem[];
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: string;
+    /**
+     * Optional: Specify whether the ConfigMap or it's keys must be defined.
+     */
+    optional?: boolean;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSourceConfigMapItem {
+    /**
+     * The key to project.
+     */
+    key?: string;
+    /**
+     * Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+     */
+    mode?: string;
+    /**
+     * The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+     */
+    path?: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSourceDownwardApi {
+    /**
+     * Represents a volume containing downward API info. Downward API volumes support ownership management and SELinux relabeling.
+     */
+    items?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSourceDownwardApiItem[];
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSourceDownwardApiItem {
+    /**
+     * Selects a field of the pod: only annotations, labels, name and namespace are supported.
+     */
+    fieldRef?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSourceDownwardApiItemFieldRef;
+    /**
+     * Mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+     */
+    mode?: string;
+    /**
+     * Path is the relative path name of the file to be created. Must not be absolute or contain the '..' path. Must be utf-8 encoded. The first item of the relative path must not start with '..'
+     */
+    path: string;
+    /**
+     * Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, requests.cpu and requests.memory) are currently supported.
+     */
+    resourceFieldRef?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSourceDownwardApiItemResourceFieldRef;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSourceDownwardApiItemFieldRef {
+    /**
+     * Version of the schema the FieldPath is written in terms of, defaults to 'v1'.
+     */
+    apiVersion?: string;
+    /**
+     * Path of the field to select in the specified API version
+     */
+    fieldPath?: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSourceDownwardApiItemResourceFieldRef {
+    containerName: string;
+    divisor?: string;
+    /**
+     * Resource to select
+     */
+    resource: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSourceSecret {
+    /**
+     * If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional. Paths must be relative and may not contain the '..' path or start with '..'.
+     */
+    items?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSourceSecretItem[];
+    /**
+     * Name of the secret in the pod's namespace to use. More info: https://kubernetes.io/docs/concepts/storage/volumes#secrets
+     */
+    name?: string;
+    /**
+     * Optional: Specify whether the Secret or it's keys must be defined.
+     */
+    optional?: boolean;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSourceSecretItem {
+    /**
+     * The key to project.
+     */
+    key?: string;
+    /**
+     * Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+     */
+    mode?: string;
+    /**
+     * The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+     */
+    path?: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSourceServiceAccountToken {
+    /**
+     * Audience is the intended audience of the token
+     */
+    audience?: string;
+    /**
+     * ExpirationSeconds is the expected duration of validity of the service account token. It defaults to 1 hour and must be at least 10 minutes (600 seconds).
+     */
+    expirationSeconds?: number;
+    /**
+     * Path specifies a relative path to the mount point of the projected volume.
+     */
+    path: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeQuobyte {
+    /**
+     * Group to map volume access to Default is no group
+     */
+    group?: string;
+    /**
+     * Whether to force the Quobyte volume to be mounted with read-only permissions. Defaults to false.
+     */
+    readOnly?: boolean;
+    /**
+     * Registry represents a single or multiple Quobyte Registry services specified as a string as host:port pair (multiple entries are separated with commas) which acts as the central registry for volumes
+     */
+    registry: string;
+    /**
+     * User to map volume access to Defaults to serivceaccount user
+     */
+    user?: string;
+    /**
+     * Volume is a string that references an already created Quobyte volume by name.
+     */
+    volume: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeRbd {
+    /**
+     * A collection of Ceph monitors. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+     */
+    cephMonitors: string[];
+    /**
+     * Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#rbd
+     */
+    fsType?: string;
+    /**
+     * Keyring is the path to key ring for RBDUser. Default is /etc/ceph/keyring. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+     */
+    keyring: string;
+    /**
+     * The rados user name. Default is admin. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+     */
+    radosUser?: string;
+    /**
+     * The rados image name. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+     */
+    rbdImage: string;
+    /**
+     * The rados pool name. Default is rbd. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it.
+     */
+    rbdPool?: string;
+    /**
+     * Whether to force the read-only setting in VolumeMounts. Defaults to false. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+     */
+    readOnly?: boolean;
+    /**
+     * Name of the authentication secret for RBDUser. If provided overrides keyring. Default is nil. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+     */
+    secretRef?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeRbdSecretRef;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeRbdSecretRef {
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: string;
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    namespace: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeSecret {
+    /**
+     * Optional: mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+     */
+    defaultMode?: string;
+    /**
+     * If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional. Paths must be relative and may not contain the '..' path or start with '..'.
+     */
+    items?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeSecretItem[];
+    /**
+     * Optional: Specify whether the Secret or its keys must be defined.
+     */
+    optional?: boolean;
+    /**
+     * Name of the secret in the pod's namespace to use. More info: https://kubernetes.io/docs/concepts/storage/volumes#secrets
+     */
+    secretName?: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeSecretItem {
+    /**
+     * The key to project.
+     */
+    key?: string;
+    /**
+     * Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+     */
+    mode?: string;
+    /**
+     * The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+     */
+    path?: string;
+}
+
+export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeVsphereVolume {
+    /**
+     * Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+     */
+    fsType?: string;
+    /**
+     * Path that identifies vSphere volume vmdk
+     */
+    volumePath: string;
+}
+
+export interface GetK8sJobMetadata {
+    /**
+     * An unstructured key value map stored with the job that may be used to store arbitrary metadata. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+     */
+    annotations: {[key: string]: string};
+    /**
+     * Prefix, used by the server, to generate a unique name ONLY IF the `name` field has not been provided. This value will also be combined with a unique suffix. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#idempotency
+     */
+    generateName?: string;
+    /**
+     * A sequence number representing a specific generation of the desired state.
+     */
+    generation: number;
+    /**
+     * Map of string keys and values that can be used to organize and categorize (scope and select) the job. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+     */
+    labels: {[key: string]: string};
+    /**
+     * Name of the job, must be unique. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name: string;
+    /**
+     * Namespace defines the space within which name of the job must be unique.
+     */
+    namespace: string;
+    /**
+     * An opaque value that represents the internal version of this job that can be used by clients to determine when job has changed. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+     */
+    resourceVersion: string;
+    /**
+     * The unique in time and space value for this job. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
+     */
+    uid: string;
+}
+
+export interface GetK8sJobSpec {
+    /**
+     * Optional duration in seconds the pod may be active on the node relative to StartTime before the system will actively try to mark it failed and kill associated containers. Value must be a positive integer.
+     */
+    activeDeadlineSeconds: number;
+    /**
+     * Specifies the number of retries before marking this job failed. Defaults to 6
+     */
+    backoffLimit?: number;
+    /**
+     * Specifies how Pod completions are tracked. It can be `NonIndexed` (default) or `Indexed`. More info: https://kubernetes.io/docs/concepts/workloads/controllers/job/#completion-mode
+     */
+    completionMode: string;
+    /**
+     * Specifies the desired number of successfully finished pods the job should be run with. Setting to nil means that the success of any pod signals the success of all pods, and allows parallelism to have any positive value. Setting to 1 means that parallelism is limited to 1 and the success of that pod signals the success of the job. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+     */
+    completions?: number;
+    /**
+     * Controls generation of pod labels and pod selectors. Leave unset unless you are certain what you are doing. When false or unset, the system pick labels unique to this job and appends those labels to the pod template. When true, the user is responsible for picking unique labels and specifying the selector. Failure to pick a unique label may cause this and other jobs to not function correctly. More info: https://git.k8s.io/community/contributors/design-proposals/selector-generation.md
+     */
+    manualSelector: boolean;
+    /**
+     * Specifies the maximum desired number of pods the job should run at any given time. The actual number of pods running in steady state will be less than this number when ((.spec.completions - .status.successful) < .spec.parallelism), i.e. when the work left to do is less than max parallelism. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+     */
+    parallelism?: number;
+    /**
+     * A label query over volumes to consider for binding.
+     */
+    selector: outputs.GetK8sJobSpecSelector;
+    /**
+     * Describes the pod that will be created when executing a job. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+     */
+    template: outputs.GetK8sJobSpecTemplate;
+    /**
+     * ttlSecondsAfterFinished limits the lifetime of a Job that has finished execution (either Complete or Failed). If this field is set, ttlSecondsAfterFinished after the Job finishes, it is eligible to be automatically deleted. When the Job is being deleted, its lifecycle guarantees (e.g. finalizers) will be honored. If this field is unset, the Job won't be automatically deleted. If this field is set to zero, the Job becomes eligible to be deleted immediately after it finishes.
+     */
+    ttlSecondsAfterFinished?: string;
+}
+
+export interface GetK8sJobSpecSelector {
+    /**
+     * A list of label selector requirements. The requirements are ANDed.
+     */
+    matchExpressions?: outputs.GetK8sJobSpecSelectorMatchExpression[];
+    /**
+     * A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+     */
+    matchLabels: {[key: string]: string};
+}
+
+export interface GetK8sJobSpecSelectorMatchExpression {
+    /**
+     * The label key that the selector applies to.
+     */
+    key?: string;
+    /**
+     * A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
+     */
+    operator?: string;
+    /**
+     * An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
+     */
+    values?: string[];
+}
+
+export interface GetK8sJobSpecTemplate {
+    /**
+     * Standard job's metadata. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
+     */
+    metadata: outputs.GetK8sJobSpecTemplateMetadata;
+    /**
+     * Spec of the pods owned by the job
+     */
+    spec?: outputs.GetK8sJobSpecTemplateSpec;
+}
+
+export interface GetK8sJobSpecTemplateMetadata {
+    /**
+     * An unstructured key value map stored with the job that may be used to store arbitrary metadata. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+     */
+    annotations: {[key: string]: string};
+    /**
+     * Prefix, used by the server, to generate a unique name ONLY IF the `name` field has not been provided. This value will also be combined with a unique suffix. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#idempotency
+     */
+    generateName?: string;
+    /**
+     * A sequence number representing a specific generation of the desired state.
+     */
+    generation: number;
+    /**
+     * Map of string keys and values that can be used to organize and categorize (scope and select) the job. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+     */
+    labels: {[key: string]: string};
+    /**
+     * Name of the job, must be unique. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name: string;
+    /**
+     * An opaque value that represents the internal version of this job that can be used by clients to determine when job has changed. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+     */
+    resourceVersion: string;
+    /**
+     * The unique in time and space value for this job. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
+     */
+    uid: string;
+}
+
+export interface GetK8sJobSpecTemplateSpec {
+    /**
+     * Optional duration in seconds the pod may be active on the node relative to StartTime before the system will actively try to mark it failed and kill associated containers. Value must be a positive integer.
+     */
+    activeDeadlineSeconds: number;
+    /**
+     * Optional pod scheduling constraints.
+     */
+    affinity?: outputs.GetK8sJobSpecTemplateSpecAffinity;
+    /**
+     * AutomountServiceAccountToken indicates whether a service account token should be automatically mounted.
+     */
+    automountServiceAccountToken?: boolean;
+    /**
+     * List of containers belonging to the pod. Containers cannot currently be added or removed. There must be at least one container in a Pod. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/
+     */
+    containers?: outputs.GetK8sJobSpecTemplateSpecContainer[];
+    /**
+     * Specifies the DNS parameters of a pod. Parameters specified here will be merged to the generated DNS configuration based on DNSPolicy. Optional: Defaults to empty
+     */
+    dnsConfig?: outputs.GetK8sJobSpecTemplateSpecDnsConfig;
+    /**
+     * Set DNS policy for containers within the pod. Valid values are 'ClusterFirstWithHostNet', 'ClusterFirst', 'Default' or 'None'. DNS parameters given in DNSConfig will be merged with the policy selected with DNSPolicy. To have DNS options set along with hostNetwork, you have to specify DNS policy explicitly to 'ClusterFirstWithHostNet'. Defaults to 'ClusterFirst'. More info: https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy
+     */
+    dnsPolicy: string;
+    /**
+     * Enables generating environment variables for service discovery. Defaults to true.
+     */
+    enableServiceLinks?: boolean;
+    /**
+     * List of hosts and IPs that will be injected into the pod's hosts file if specified. Optional: Defaults to empty.
+     */
+    hostAliases: outputs.GetK8sJobSpecTemplateSpecHostAlias[];
+    /**
+     * Use the host's ipc namespace. Optional: Defaults to false.
+     */
+    hostIpc: boolean;
+    /**
+     * Host networking requested for this pod. Use the host's network namespace. If this option is set, the ports that will be used must be specified.
+     */
+    hostNetwork: boolean;
+    /**
+     * Use the host's pid namespace.
+     */
+    hostPid: boolean;
+    /**
+     * Specifies the hostname of the Pod If not specified, the pod's hostname will be set to a system-defined value.
+     */
+    hostname: string;
+    /**
+     * ImagePullSecrets is an optional list of references to secrets in the same namespace to use for pulling any of the images used by this PodSpec. If specified, these secrets will be passed to individual puller implementations for them to use. For example, in the case of docker, only DockerConfig type secrets are honored. More info: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
+     */
+    imagePullSecrets: outputs.GetK8sJobSpecTemplateSpecImagePullSecret[];
+    /**
+     * List of init containers belonging to the pod. Init containers always run to completion and each must complete successfully before the next is started. More info: https://kubernetes.io/docs/concepts/workloads/pods/init-containers/
+     */
+    initContainers?: outputs.GetK8sJobSpecTemplateSpecInitContainer[];
+    /**
+     * NodeName is a request to schedule this pod onto a specific node. If it is non-empty, the scheduler simply schedules this pod onto that node, assuming that it fits resource requirements.
+     */
+    nodeName: string;
+    /**
+     * NodeSelector is a selector which must be true for the pod to fit on a node. Selector which must match a node's labels for the pod to be scheduled on that node. More info: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/.
+     */
+    nodeSelector: {[key: string]: string};
+    /**
+     * If specified, indicates the pod's priority. "system-node-critical" and "system-cluster-critical" are two special keywords which indicate the highest priorities with the former being the highest priority. Any other name must be defined by creating a PriorityClass object with that name. If not specified, the pod priority will be default or zero if there is no default.
+     */
+    priorityClassName: string;
+    /**
+     * If specified, all readiness gates will be evaluated for pod readiness. A pod is ready when all its containers are ready AND all conditions specified in the readiness gates have status equal to "True" More info: https://git.k8s.io/enhancements/keps/sig-network/0007-pod-ready%2B%2B.md
+     */
+    readinessGates: outputs.GetK8sJobSpecTemplateSpecReadinessGate[];
+    /**
+     * Restart policy for all containers within the pod. One of OnFailure, Never. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#restart-policy.
+     */
+    restartPolicy?: string;
+    /**
+     * RuntimeClassName is a feature for selecting the container runtime configuration. The container runtime configuration is used to run a Pod's containers. More info: https://kubernetes.io/docs/concepts/containers/runtime-class
+     */
+    runtimeClassName: string;
+    /**
+     * If specified, the pod will be dispatched by specified scheduler. If not specified, the pod will be dispatched by default scheduler.
+     */
+    schedulerName: string;
+    /**
+     * SecurityContext holds pod-level security attributes and common container settings. Optional: Defaults to empty
+     */
+    securityContext: outputs.GetK8sJobSpecTemplateSpecSecurityContext;
+    /**
+     * ServiceAccountName is the name of the ServiceAccount to use to run this pod. More info: http://releases.k8s.io/HEAD/docs/design/service_accounts.md.
+     */
+    serviceAccountName: string;
+    /**
+     * Share a single process namespace between all of the containers in a pod. When this is set containers will be able to view and signal processes from other containers in the same pod, and the first process in each container will not be assigned PID 1. HostPID and ShareProcessNamespace cannot both be set. Optional: Defaults to false.
+     */
+    shareProcessNamespace?: boolean;
+    /**
+     * If specified, the fully qualified Pod hostname will be "...svc.". If not specified, the pod will not have a domainname at all..
+     */
+    subdomain: string;
+    /**
+     * Optional duration in seconds the pod needs to terminate gracefully. May be decreased in delete request. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period will be used instead. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process.
+     */
+    terminationGracePeriodSeconds: number;
+    /**
+     * If specified, the pod's toleration. Optional: Defaults to empty
+     */
+    tolerations?: outputs.GetK8sJobSpecTemplateSpecToleration[];
+    /**
+     * describes how a group of pods ought to spread across topology domains. Scheduler will schedule pods in a way which abides by the constraints.
+     */
+    topologySpreadConstraints?: outputs.GetK8sJobSpecTemplateSpecTopologySpreadConstraint[];
+    /**
+     * List of volumes that can be mounted by containers belonging to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes
+     */
+    volumes?: outputs.GetK8sJobSpecTemplateSpecVolume[];
+}
+
+export interface GetK8sJobSpecTemplateSpecAffinity {
+    /**
+     * Node affinity scheduling rules for the pod.
+     */
+    nodeAffinity?: outputs.GetK8sJobSpecTemplateSpecAffinityNodeAffinity;
+    /**
+     * Inter-pod topological affinity. rules that specify that certain pods should be placed in the same topological domain (e.g. same node, same rack, same zone, same power domain, etc.)
+     */
+    podAffinity?: outputs.GetK8sJobSpecTemplateSpecAffinityPodAffinity;
+    /**
+     * Inter-pod topological affinity. rules that specify that certain pods should be placed in the same topological domain (e.g. same node, same rack, same zone, same power domain, etc.)
+     */
+    podAntiAffinity?: outputs.GetK8sJobSpecTemplateSpecAffinityPodAntiAffinity;
+}
+
+export interface GetK8sJobSpecTemplateSpecAffinityNodeAffinity {
+    /**
+     * The scheduler will prefer to schedule pods to nodes that satisfy the affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions. The node that is most preferred is the one with the greatest sum of weights, i.e. for each node that meets all of the scheduling requirements (resource request, RequiredDuringScheduling affinity expressions, etc.), compute a sum by iterating through the elements of this field and adding 'weight' to the sum if the node matches the corresponding MatchExpressions; the node(s) with the highest sum are the most preferred.
+     */
+    preferredDuringSchedulingIgnoredDuringExecutions: outputs.GetK8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecution[];
+    /**
+     * If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a node label update), the system may or may not try to eventually evict the pod from its node.
+     */
+    requiredDuringSchedulingIgnoredDuringExecution?: outputs.GetK8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution;
+}
+
+export interface GetK8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecution {
+    /**
+     * A node selector term, associated with the corresponding weight.
+     */
+    preference: outputs.GetK8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreference;
+    /**
+     * weight is in the range 1-100
+     */
+    weight: number;
+}
+
+export interface GetK8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreference {
+    /**
+     * List of node selector requirements. The requirements are ANDed.
+     */
+    matchExpressions?: outputs.GetK8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpression[];
+}
+
+export interface GetK8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpression {
+    /**
+     * The label key that the selector applies to.
+     */
+    key?: string;
+    /**
+     * Operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists, DoesNotExist. Gt, and Lt.
+     */
+    operator?: string;
+    /**
+     * Values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch.
+     */
+    values?: string[];
+}
+
+export interface GetK8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution {
+    /**
+     * List of node selector terms. The terms are ORed.
+     */
+    nodeSelectorTerms?: outputs.GetK8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTerm[];
+}
+
+export interface GetK8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTerm {
+    /**
+     * List of node selector requirements. The requirements are ANDed.
+     */
+    matchExpressions?: outputs.GetK8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpression[];
+}
+
+export interface GetK8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpression {
+    /**
+     * The label key that the selector applies to.
+     */
+    key?: string;
+    /**
+     * Operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists, DoesNotExist. Gt, and Lt.
+     */
+    operator?: string;
+    /**
+     * Values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch.
+     */
+    values?: string[];
+}
+
+export interface GetK8sJobSpecTemplateSpecAffinityPodAffinity {
+    /**
+     * The scheduler will prefer to schedule pods to nodes that satisfy the anti-affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions. The node that is most preferred is the one with the greatest sum of weights, i.e. for each node that meets all of the scheduling requirements (resource request, RequiredDuringScheduling anti-affinity expressions, etc.), compute a sum by iterating through the elements of this field and adding 'weight' to the sum if the node matches the corresponding MatchExpressions; the node(s) with the highest sum are the most preferred.
+     */
+    preferredDuringSchedulingIgnoredDuringExecutions: outputs.GetK8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecution[];
+    /**
+     * If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system may or may not try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each PodAffinityTerm are intersected, i.e. all terms must be satisfied.
+     */
+    requiredDuringSchedulingIgnoredDuringExecutions?: outputs.GetK8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecution[];
+}
+
+export interface GetK8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecution {
+    /**
+     * A pod affinity term, associated with the corresponding weight
+     */
+    podAffinityTerm: outputs.GetK8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTerm;
+    /**
+     * weight associated with matching the corresponding podAffinityTerm, in the range 1-100
+     */
+    weight: number;
+}
+
+export interface GetK8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTerm {
+    /**
+     * A label query over a set of resources, in this case pods.
+     */
+    labelSelectors: outputs.GetK8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector[];
+    /**
+     * namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means 'this pod's namespace'
+     */
+    namespaces: string[];
+    /**
+     * empty topology key is interpreted by the scheduler as 'all topologies'
+     */
+    topologyKey: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector {
+    /**
+     * A list of label selector requirements. The requirements are ANDed.
+     */
+    matchExpressions?: outputs.GetK8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression[];
+    /**
+     * A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+     */
+    matchLabels?: {[key: string]: string};
+}
+
+export interface GetK8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression {
+    /**
+     * The label key that the selector applies to.
+     */
+    key?: string;
+    /**
+     * A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
+     */
+    operator?: string;
+    /**
+     * An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
+     */
+    values?: string[];
+}
+
+export interface GetK8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecution {
+    /**
+     * A label query over a set of resources, in this case pods.
+     */
+    labelSelectors: outputs.GetK8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector[];
+    /**
+     * namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means 'this pod's namespace'
+     */
+    namespaces: string[];
+    /**
+     * empty topology key is interpreted by the scheduler as 'all topologies'
+     */
+    topologyKey: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector {
+    /**
+     * A list of label selector requirements. The requirements are ANDed.
+     */
+    matchExpressions?: outputs.GetK8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression[];
+    /**
+     * A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+     */
+    matchLabels?: {[key: string]: string};
+}
+
+export interface GetK8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression {
+    /**
+     * The label key that the selector applies to.
+     */
+    key?: string;
+    /**
+     * A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
+     */
+    operator?: string;
+    /**
+     * An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
+     */
+    values?: string[];
+}
+
+export interface GetK8sJobSpecTemplateSpecAffinityPodAntiAffinity {
+    /**
+     * The scheduler will prefer to schedule pods to nodes that satisfy the anti-affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions. The node that is most preferred is the one with the greatest sum of weights, i.e. for each node that meets all of the scheduling requirements (resource request, RequiredDuringScheduling anti-affinity expressions, etc.), compute a sum by iterating through the elements of this field and adding 'weight' to the sum if the node matches the corresponding MatchExpressions; the node(s) with the highest sum are the most preferred.
+     */
+    preferredDuringSchedulingIgnoredDuringExecutions: outputs.GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecution[];
+    /**
+     * If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system may or may not try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each PodAffinityTerm are intersected, i.e. all terms must be satisfied.
+     */
+    requiredDuringSchedulingIgnoredDuringExecutions?: outputs.GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecution[];
+}
+
+export interface GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecution {
+    /**
+     * A pod affinity term, associated with the corresponding weight
+     */
+    podAffinityTerm: outputs.GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTerm;
+    /**
+     * weight associated with matching the corresponding podAffinityTerm, in the range 1-100
+     */
+    weight: number;
+}
+
+export interface GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTerm {
+    /**
+     * A label query over a set of resources, in this case pods.
+     */
+    labelSelectors: outputs.GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector[];
+    /**
+     * namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means 'this pod's namespace'
+     */
+    namespaces: string[];
+    /**
+     * empty topology key is interpreted by the scheduler as 'all topologies'
+     */
+    topologyKey: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector {
+    /**
+     * A list of label selector requirements. The requirements are ANDed.
+     */
+    matchExpressions?: outputs.GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression[];
+    /**
+     * A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+     */
+    matchLabels?: {[key: string]: string};
+}
+
+export interface GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression {
+    /**
+     * The label key that the selector applies to.
+     */
+    key?: string;
+    /**
+     * A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
+     */
+    operator?: string;
+    /**
+     * An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
+     */
+    values?: string[];
+}
+
+export interface GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecution {
+    /**
+     * A label query over a set of resources, in this case pods.
+     */
+    labelSelectors: outputs.GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector[];
+    /**
+     * namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means 'this pod's namespace'
+     */
+    namespaces: string[];
+    /**
+     * empty topology key is interpreted by the scheduler as 'all topologies'
+     */
+    topologyKey: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector {
+    /**
+     * A list of label selector requirements. The requirements are ANDed.
+     */
+    matchExpressions?: outputs.GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression[];
+    /**
+     * A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+     */
+    matchLabels?: {[key: string]: string};
+}
+
+export interface GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression {
+    /**
+     * The label key that the selector applies to.
+     */
+    key?: string;
+    /**
+     * A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
+     */
+    operator?: string;
+    /**
+     * An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
+     */
+    values?: string[];
+}
+
+export interface GetK8sJobSpecTemplateSpecContainer {
+    /**
+     * Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+     */
+    args?: string[];
+    /**
+     * Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+     */
+    commands?: string[];
+    /**
+     * List of sources to populate environment variables in the container. The keys defined within a source must be a C_IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated.
+     */
+    envFroms?: outputs.GetK8sJobSpecTemplateSpecContainerEnvFrom[];
+    /**
+     * List of environment variables to set in the container. Cannot be updated.
+     */
+    envs?: outputs.GetK8sJobSpecTemplateSpecContainerEnv[];
+    /**
+     * Docker image name. More info: https://kubernetes.io/docs/concepts/containers/images/
+     */
+    image?: string;
+    /**
+     * Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/images/#updating-images
+     */
+    imagePullPolicy: string;
+    /**
+     * Actions that the management system should take in response to container lifecycle events
+     */
+    lifecycle?: outputs.GetK8sJobSpecTemplateSpecContainerLifecycle;
+    /**
+     * Periodic probe of container liveness. Container will be restarted if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    livenessProbe?: outputs.GetK8sJobSpecTemplateSpecContainerLivenessProbe;
+    /**
+     * Name of the container specified as a DNS_LABEL. Each container in a pod must have a unique name (DNS_LABEL). Cannot be updated.
+     */
+    name: string;
+    /**
+     * List of ports to expose from the container. Exposing a port here gives the system additional information about the network connections a container uses, but is primarily informational. Not specifying a port here DOES NOT prevent that port from being exposed. Any port which is listening on the default "0.0.0.0" address inside a container will be accessible from the network. Cannot be updated.
+     */
+    ports?: outputs.GetK8sJobSpecTemplateSpecContainerPort[];
+    /**
+     * Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    readinessProbe?: outputs.GetK8sJobSpecTemplateSpecContainerReadinessProbe;
+    /**
+     * Compute Resources required by this container. Cannot be updated. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+     */
+    resources: outputs.GetK8sJobSpecTemplateSpecContainerResources;
+    /**
+     * Security options the pod should run with. More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+     */
+    securityContext?: outputs.GetK8sJobSpecTemplateSpecContainerSecurityContext;
+    /**
+     * StartupProbe indicates that the Pod has successfully initialized. If specified, no other probes are executed until this completes successfully. If this probe fails, the Pod will be restarted, just as if the livenessProbe failed. This can be used to provide different probe parameters at the beginning of a Pod's lifecycle, when it might take a long time to load data or warm a cache, than during steady-state operation. This cannot be updated. This is an alpha feature enabled by the StartupProbe feature flag. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+     */
+    startupProbe?: outputs.GetK8sJobSpecTemplateSpecContainerStartupProbe;
+    /**
+     * Whether this container should allocate a buffer for stdin in the container runtime. If this is not set, reads from stdin in the container will always result in EOF.
+     */
+    stdin?: boolean;
+    /**
+     * Whether the container runtime should close the stdin channel after it has been opened by a single attach. When stdin is true the stdin stream will remain open across multiple attach sessions. If stdinOnce is set to true, stdin is opened on container start, is empty until the first client attaches to stdin, and then remains open and accepts data until the client disconnects, at which time stdin is closed and remains closed until the container is restarted. If this flag is false, a container processes that reads from stdin will never receive an EOF.
+     */
+    stdinOnce?: boolean;
+    /**
+     * Optional: Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Defaults to /dev/termination-log. Cannot be updated.
+     */
+    terminationMessagePath?: string;
+    /**
+     * Optional: Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
+     */
+    terminationMessagePolicy: string;
+    /**
+     * Whether this container should allocate a TTY for itself
+     */
+    tty?: boolean;
+    /**
+     * Pod volumes to mount into the container's filesystem. Cannot be updated.
+     */
+    volumeMounts?: outputs.GetK8sJobSpecTemplateSpecContainerVolumeMount[];
+    /**
+     * Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image. Cannot be updated.
+     */
+    workingDir?: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecContainerEnv {
+    /**
+     * Name of the environment variable. Must be a C_IDENTIFIER
+     */
+    name: string;
+    /**
+     * Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
+     */
+    value?: string;
+    /**
+     * Source for the environment variable's value
+     */
+    valueFrom?: outputs.GetK8sJobSpecTemplateSpecContainerEnvValueFrom;
+}
+
+export interface GetK8sJobSpecTemplateSpecContainerEnvFrom {
+    /**
+     * The ConfigMap to select from
+     */
+    configMapRef?: outputs.GetK8sJobSpecTemplateSpecContainerEnvFromConfigMapRef;
+    /**
+     * An optional identifer to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
+     */
+    prefix?: string;
+    /**
+     * The Secret to select from
+     */
+    secretRef?: outputs.GetK8sJobSpecTemplateSpecContainerEnvFromSecretRef;
+}
+
+export interface GetK8sJobSpecTemplateSpecContainerEnvFromConfigMapRef {
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name: string;
+    /**
+     * Specify whether the ConfigMap must be defined
+     */
+    optional?: boolean;
+}
+
+export interface GetK8sJobSpecTemplateSpecContainerEnvFromSecretRef {
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name: string;
+    /**
+     * Specify whether the Secret must be defined
+     */
+    optional?: boolean;
+}
+
+export interface GetK8sJobSpecTemplateSpecContainerEnvValueFrom {
+    /**
+     * Selects a key of a ConfigMap.
+     */
+    configMapKeyRef?: outputs.GetK8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRef;
+    /**
+     * Selects a field of the pod: supports metadata.name, metadata.namespace, metadata.labels, metadata.annotations, spec.nodeName, spec.serviceAccountName, status.podIP.
+     */
+    fieldRef?: outputs.GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRef;
+    /**
+     * Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.
+     */
+    resourceFieldRef?: outputs.GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRef;
+    /**
+     * Selects a key of a secret in the pod's namespace.
+     */
+    secretKeyRef?: outputs.GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRef;
+}
+
+export interface GetK8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRef {
+    /**
+     * The key to select.
+     */
+    key?: string;
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: string;
+    /**
+     * Specify whether the ConfigMap or its key must be defined.
+     */
+    optional?: boolean;
+}
+
+export interface GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRef {
+    /**
+     * Version of the schema the FieldPath is written in terms of, defaults to "v1".
+     */
+    apiVersion?: string;
+    /**
+     * Path of the field to select in the specified API version
+     */
+    fieldPath?: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRef {
+    containerName?: string;
+    divisor?: string;
+    /**
+     * Resource to select
+     */
+    resource: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRef {
+    /**
+     * The key of the secret to select from. Must be a valid secret key.
+     */
+    key?: string;
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: string;
+    /**
+     * Specify whether the Secret or its key must be defined.
+     */
+    optional?: boolean;
+}
+
+export interface GetK8sJobSpecTemplateSpecContainerLifecycle {
+    /**
+     * post_start is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+     */
+    postStarts?: outputs.GetK8sJobSpecTemplateSpecContainerLifecyclePostStart[];
+    /**
+     * pre_stop is called immediately before a container is terminated. The container is terminated after the handler completes. The reason for termination is passed to the handler. Regardless of the outcome of the handler, the container is eventually terminated. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+     */
+    preStops?: outputs.GetK8sJobSpecTemplateSpecContainerLifecyclePreStop[];
+}
+
+export interface GetK8sJobSpecTemplateSpecContainerLifecyclePostStart {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: outputs.GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExec;
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: outputs.GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGet;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: outputs.GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocket[];
+}
+
+export interface GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: string[];
+}
+
+export interface GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: outputs.GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeader[];
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: string;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+     */
+    port?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    scheme?: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: string;
+    /**
+     * The header field value
+     */
+    value?: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+     */
+    port: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecContainerLifecyclePreStop {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: outputs.GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExec;
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: outputs.GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGet;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: outputs.GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocket[];
+}
+
+export interface GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: string[];
+}
+
+export interface GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: outputs.GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeader[];
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: string;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+     */
+    port?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    scheme?: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: string;
+    /**
+     * The header field value
+     */
+    value?: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+     */
+    port: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecContainerLivenessProbe {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: outputs.GetK8sJobSpecTemplateSpecContainerLivenessProbeExec;
+    /**
+     * Minimum consecutive failures for the probe to be considered failed after having succeeded.
+     */
+    failureThreshold?: number;
+    /**
+     * GRPC specifies an action involving a GRPC port.
+     */
+    grpcs?: outputs.GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpc[];
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: outputs.GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGet;
+    /**
+     * Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    initialDelaySeconds?: number;
+    /**
+     * How often (in seconds) to perform the probe
+     */
+    periodSeconds?: number;
+    /**
+     * Minimum consecutive successes for the probe to be considered successful after having failed.
+     */
+    successThreshold?: number;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: outputs.GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocket[];
+    /**
+     * Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    timeoutSeconds?: number;
+}
+
+export interface GetK8sJobSpecTemplateSpecContainerLivenessProbeExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: string[];
+}
+
+export interface GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpc {
+    /**
+     * Number of the port to access on the container. Number must be in the range 1 to 65535.
+     */
+    port: number;
+    /**
+     * Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+     */
+    service?: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: outputs.GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeader[];
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: string;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+     */
+    port?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    scheme?: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: string;
+    /**
+     * The header field value
+     */
+    value?: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+     */
+    port: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecContainerPort {
+    /**
+     * Number of port to expose on the pod's IP address. This must be a valid port number, 0 < x < 65536.
+     */
+    containerPort: number;
+    /**
+     * What host IP to bind the external port to.
+     */
+    hostIp?: string;
+    /**
+     * Number of port to expose on the host. If specified, this must be a valid port number, 0 < x < 65536. If HostNetwork is specified, this must match ContainerPort. Most containers do not need this.
+     */
+    hostPort?: number;
+    /**
+     * If specified, this must be an IANA_SVC_NAME and unique within the pod. Each named port in a pod must have a unique name. Name for the port that can be referred to by services
+     */
+    name?: string;
+    /**
+     * Protocol for port. Must be UDP or TCP. Defaults to "TCP".
+     */
+    protocol?: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecContainerReadinessProbe {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: outputs.GetK8sJobSpecTemplateSpecContainerReadinessProbeExec;
+    /**
+     * Minimum consecutive failures for the probe to be considered failed after having succeeded.
+     */
+    failureThreshold?: number;
+    /**
+     * GRPC specifies an action involving a GRPC port.
+     */
+    grpcs?: outputs.GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpc[];
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: outputs.GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGet;
+    /**
+     * Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    initialDelaySeconds?: number;
+    /**
+     * How often (in seconds) to perform the probe
+     */
+    periodSeconds?: number;
+    /**
+     * Minimum consecutive successes for the probe to be considered successful after having failed.
+     */
+    successThreshold?: number;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: outputs.GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocket[];
+    /**
+     * Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    timeoutSeconds?: number;
+}
+
+export interface GetK8sJobSpecTemplateSpecContainerReadinessProbeExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: string[];
+}
+
+export interface GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpc {
+    /**
+     * Number of the port to access on the container. Number must be in the range 1 to 65535.
+     */
+    port: number;
+    /**
+     * Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+     */
+    service?: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: outputs.GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeader[];
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: string;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+     */
+    port?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    scheme?: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: string;
+    /**
+     * The header field value
+     */
+    value?: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+     */
+    port: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecContainerResources {
+    /**
+     * Describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+     */
+    limits: {[key: string]: string};
+    /**
+     * Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
+     */
+    requests: {[key: string]: string};
+}
+
+export interface GetK8sJobSpecTemplateSpecContainerSecurityContext {
+    /**
+     * AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the noNewPrivs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP_SYS_ADMIN
+     */
+    allowPrivilegeEscalation?: boolean;
+    /**
+     * The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime.
+     */
+    capabilities?: outputs.GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilities;
+    /**
+     * Run container in privileged mode. Processes in privileged containers are essentially equivalent to root on the host. Defaults to false.
+     */
+    privileged?: boolean;
+    /**
+     * Whether this container has a read-only root filesystem. Default is false.
+     */
+    readOnlyRootFilesystem?: boolean;
+    /**
+     * The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+     */
+    runAsGroup?: string;
+    /**
+     * Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+     */
+    runAsNonRoot?: boolean;
+    /**
+     * The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+     */
+    runAsUser?: string;
+    /**
+     * The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+     */
+    seLinuxOptions?: outputs.GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptions;
+    /**
+     * The seccomp options to use by the containers in this pod. Note that this field cannot be set when spec.os.name is windows.
+     */
+    seccompProfile?: outputs.GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfile;
+}
+
+export interface GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilities {
+    /**
+     * Added capabilities
+     */
+    adds?: string[];
+    /**
+     * Removed capabilities
+     */
+    drops?: string[];
+}
+
+export interface GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptions {
+    /**
+     * Level is SELinux level label that applies to the container.
+     */
+    level?: string;
+    /**
+     * Role is a SELinux role label that applies to the container.
+     */
+    role?: string;
+    /**
+     * Type is a SELinux type label that applies to the container.
+     */
+    type?: string;
+    /**
+     * User is a SELinux user label that applies to the container.
+     */
+    user?: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfile {
+    /**
+     * Localhost Profile indicates a profile defined in a file on the node should be used. The profile must be preconfigured on the node to work.
+     */
+    localhostProfile?: string;
+    /**
+     * Type indicates which kind of seccomp profile will be applied. Valid options are: Localhost, RuntimeDefault, Unconfined.
+     */
+    type?: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecContainerStartupProbe {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: outputs.GetK8sJobSpecTemplateSpecContainerStartupProbeExec;
+    /**
+     * Minimum consecutive failures for the probe to be considered failed after having succeeded.
+     */
+    failureThreshold?: number;
+    /**
+     * GRPC specifies an action involving a GRPC port.
+     */
+    grpcs?: outputs.GetK8sJobSpecTemplateSpecContainerStartupProbeGrpc[];
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: outputs.GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGet;
+    /**
+     * Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    initialDelaySeconds?: number;
+    /**
+     * How often (in seconds) to perform the probe
+     */
+    periodSeconds?: number;
+    /**
+     * Minimum consecutive successes for the probe to be considered successful after having failed.
+     */
+    successThreshold?: number;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: outputs.GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocket[];
+    /**
+     * Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    timeoutSeconds?: number;
+}
+
+export interface GetK8sJobSpecTemplateSpecContainerStartupProbeExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: string[];
+}
+
+export interface GetK8sJobSpecTemplateSpecContainerStartupProbeGrpc {
+    /**
+     * Number of the port to access on the container. Number must be in the range 1 to 65535.
+     */
+    port: number;
+    /**
+     * Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+     */
+    service?: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: outputs.GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeader[];
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: string;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+     */
+    port?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    scheme?: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: string;
+    /**
+     * The header field value
+     */
+    value?: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+     */
+    port: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecContainerVolumeMount {
+    /**
+     * Path within the container at which the volume should be mounted. Must not contain ':'.
+     */
+    mountPath: string;
+    /**
+     * Mount propagation mode. mountPropagation determines how mounts are propagated from the host to container and the other way around. Valid values are None (default), HostToContainer and Bidirectional.
+     */
+    mountPropagation?: string;
+    /**
+     * This must match the Name of a Volume.
+     */
+    name: string;
+    /**
+     * Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false.
+     */
+    readOnly?: boolean;
+    /**
+     * Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
+     */
+    subPath?: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecDnsConfig {
+    /**
+     * A list of DNS name server IP addresses. This will be appended to the base nameservers generated from DNSPolicy. Duplicated nameservers will be removed.
+     */
+    nameservers?: string[];
+    /**
+     * A list of DNS resolver options. This will be merged with the base options generated from DNSPolicy. Duplicated entries will be removed. Resolution options given in Options will override those that appear in the base DNSPolicy.
+     */
+    options?: outputs.GetK8sJobSpecTemplateSpecDnsConfigOption[];
+    /**
+     * A list of DNS search domains for host-name lookup. This will be appended to the base search paths generated from DNSPolicy. Duplicated search paths will be removed.
+     */
+    searches?: string[];
+}
+
+export interface GetK8sJobSpecTemplateSpecDnsConfigOption {
+    /**
+     * Name of the option.
+     */
+    name: string;
+    /**
+     * Value of the option. Optional: Defaults to empty.
+     */
+    value?: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecHostAlias {
+    /**
+     * Hostnames for the IP address.
+     */
+    hostnames: string[];
+    /**
+     * IP address of the host file entry.
+     */
+    ip: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecImagePullSecret {
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecInitContainer {
+    /**
+     * Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+     */
+    args?: string[];
+    /**
+     * Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+     */
+    commands?: string[];
+    /**
+     * List of sources to populate environment variables in the container. The keys defined within a source must be a C_IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated.
+     */
+    envFroms?: outputs.GetK8sJobSpecTemplateSpecInitContainerEnvFrom[];
+    /**
+     * List of environment variables to set in the container. Cannot be updated.
+     */
+    envs?: outputs.GetK8sJobSpecTemplateSpecInitContainerEnv[];
+    /**
+     * Docker image name. More info: https://kubernetes.io/docs/concepts/containers/images/
+     */
+    image?: string;
+    /**
+     * Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/images/#updating-images
+     */
+    imagePullPolicy: string;
+    /**
+     * Actions that the management system should take in response to container lifecycle events
+     */
+    lifecycle?: outputs.GetK8sJobSpecTemplateSpecInitContainerLifecycle;
+    /**
+     * Periodic probe of container liveness. Container will be restarted if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    livenessProbe?: outputs.GetK8sJobSpecTemplateSpecInitContainerLivenessProbe;
+    /**
+     * Name of the container specified as a DNS_LABEL. Each container in a pod must have a unique name (DNS_LABEL). Cannot be updated.
+     */
+    name: string;
+    /**
+     * List of ports to expose from the container. Exposing a port here gives the system additional information about the network connections a container uses, but is primarily informational. Not specifying a port here DOES NOT prevent that port from being exposed. Any port which is listening on the default "0.0.0.0" address inside a container will be accessible from the network. Cannot be updated.
+     */
+    ports?: outputs.GetK8sJobSpecTemplateSpecInitContainerPort[];
+    /**
+     * Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    readinessProbe?: outputs.GetK8sJobSpecTemplateSpecInitContainerReadinessProbe;
+    /**
+     * Compute Resources required by this container. Cannot be updated. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+     */
+    resources: outputs.GetK8sJobSpecTemplateSpecInitContainerResources;
+    /**
+     * Security options the pod should run with. More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+     */
+    securityContext?: outputs.GetK8sJobSpecTemplateSpecInitContainerSecurityContext;
+    /**
+     * StartupProbe indicates that the Pod has successfully initialized. If specified, no other probes are executed until this completes successfully. If this probe fails, the Pod will be restarted, just as if the livenessProbe failed. This can be used to provide different probe parameters at the beginning of a Pod's lifecycle, when it might take a long time to load data or warm a cache, than during steady-state operation. This cannot be updated. This is an alpha feature enabled by the StartupProbe feature flag. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+     */
+    startupProbe?: outputs.GetK8sJobSpecTemplateSpecInitContainerStartupProbe;
+    /**
+     * Whether this container should allocate a buffer for stdin in the container runtime. If this is not set, reads from stdin in the container will always result in EOF.
+     */
+    stdin?: boolean;
+    /**
+     * Whether the container runtime should close the stdin channel after it has been opened by a single attach. When stdin is true the stdin stream will remain open across multiple attach sessions. If stdinOnce is set to true, stdin is opened on container start, is empty until the first client attaches to stdin, and then remains open and accepts data until the client disconnects, at which time stdin is closed and remains closed until the container is restarted. If this flag is false, a container processes that reads from stdin will never receive an EOF.
+     */
+    stdinOnce?: boolean;
+    /**
+     * Optional: Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Defaults to /dev/termination-log. Cannot be updated.
+     */
+    terminationMessagePath?: string;
+    /**
+     * Optional: Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
+     */
+    terminationMessagePolicy: string;
+    /**
+     * Whether this container should allocate a TTY for itself
+     */
+    tty?: boolean;
+    /**
+     * Pod volumes to mount into the container's filesystem. Cannot be updated.
+     */
+    volumeMounts?: outputs.GetK8sJobSpecTemplateSpecInitContainerVolumeMount[];
+    /**
+     * Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image. Cannot be updated.
+     */
+    workingDir?: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecInitContainerEnv {
+    /**
+     * Name of the environment variable. Must be a C_IDENTIFIER
+     */
+    name: string;
+    /**
+     * Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
+     */
+    value?: string;
+    /**
+     * Source for the environment variable's value
+     */
+    valueFrom?: outputs.GetK8sJobSpecTemplateSpecInitContainerEnvValueFrom;
+}
+
+export interface GetK8sJobSpecTemplateSpecInitContainerEnvFrom {
+    /**
+     * The ConfigMap to select from
+     */
+    configMapRef?: outputs.GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRef;
+    /**
+     * An optional identifer to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
+     */
+    prefix?: string;
+    /**
+     * The Secret to select from
+     */
+    secretRef?: outputs.GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRef;
+}
+
+export interface GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRef {
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name: string;
+    /**
+     * Specify whether the ConfigMap must be defined
+     */
+    optional?: boolean;
+}
+
+export interface GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRef {
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name: string;
+    /**
+     * Specify whether the Secret must be defined
+     */
+    optional?: boolean;
+}
+
+export interface GetK8sJobSpecTemplateSpecInitContainerEnvValueFrom {
+    /**
+     * Selects a key of a ConfigMap.
+     */
+    configMapKeyRef?: outputs.GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRef;
+    /**
+     * Selects a field of the pod: supports metadata.name, metadata.namespace, metadata.labels, metadata.annotations, spec.nodeName, spec.serviceAccountName, status.podIP.
+     */
+    fieldRef?: outputs.GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRef;
+    /**
+     * Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.
+     */
+    resourceFieldRef?: outputs.GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRef;
+    /**
+     * Selects a key of a secret in the pod's namespace.
+     */
+    secretKeyRef?: outputs.GetK8sJobSpecTemplateSpecInitContainerEnvValueFromSecretKeyRef;
+}
+
+export interface GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRef {
+    /**
+     * The key to select.
+     */
+    key?: string;
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: string;
+    /**
+     * Specify whether the ConfigMap or its key must be defined.
+     */
+    optional?: boolean;
+}
+
+export interface GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRef {
+    /**
+     * Version of the schema the FieldPath is written in terms of, defaults to "v1".
+     */
+    apiVersion?: string;
+    /**
+     * Path of the field to select in the specified API version
+     */
+    fieldPath?: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRef {
+    containerName?: string;
+    divisor?: string;
+    /**
+     * Resource to select
+     */
+    resource: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecInitContainerEnvValueFromSecretKeyRef {
+    /**
+     * The key of the secret to select from. Must be a valid secret key.
+     */
+    key?: string;
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: string;
+    /**
+     * Specify whether the Secret or its key must be defined.
+     */
+    optional?: boolean;
+}
+
+export interface GetK8sJobSpecTemplateSpecInitContainerLifecycle {
+    /**
+     * post_start is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+     */
+    postStarts?: outputs.GetK8sJobSpecTemplateSpecInitContainerLifecyclePostStart[];
+    /**
+     * pre_stop is called immediately before a container is terminated. The container is terminated after the handler completes. The reason for termination is passed to the handler. Regardless of the outcome of the handler, the container is eventually terminated. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+     */
+    preStops?: outputs.GetK8sJobSpecTemplateSpecInitContainerLifecyclePreStop[];
+}
+
+export interface GetK8sJobSpecTemplateSpecInitContainerLifecyclePostStart {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: outputs.GetK8sJobSpecTemplateSpecInitContainerLifecyclePostStartExec;
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: outputs.GetK8sJobSpecTemplateSpecInitContainerLifecyclePostStartHttpGet;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: outputs.GetK8sJobSpecTemplateSpecInitContainerLifecyclePostStartTcpSocket[];
+}
+
+export interface GetK8sJobSpecTemplateSpecInitContainerLifecyclePostStartExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: string[];
+}
+
+export interface GetK8sJobSpecTemplateSpecInitContainerLifecyclePostStartHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: outputs.GetK8sJobSpecTemplateSpecInitContainerLifecyclePostStartHttpGetHttpHeader[];
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: string;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+     */
+    port?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    scheme?: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecInitContainerLifecyclePostStartHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: string;
+    /**
+     * The header field value
+     */
+    value?: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecInitContainerLifecyclePostStartTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+     */
+    port: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecInitContainerLifecyclePreStop {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: outputs.GetK8sJobSpecTemplateSpecInitContainerLifecyclePreStopExec;
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: outputs.GetK8sJobSpecTemplateSpecInitContainerLifecyclePreStopHttpGet;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: outputs.GetK8sJobSpecTemplateSpecInitContainerLifecyclePreStopTcpSocket[];
+}
+
+export interface GetK8sJobSpecTemplateSpecInitContainerLifecyclePreStopExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: string[];
+}
+
+export interface GetK8sJobSpecTemplateSpecInitContainerLifecyclePreStopHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: outputs.GetK8sJobSpecTemplateSpecInitContainerLifecyclePreStopHttpGetHttpHeader[];
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: string;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+     */
+    port?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    scheme?: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecInitContainerLifecyclePreStopHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: string;
+    /**
+     * The header field value
+     */
+    value?: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecInitContainerLifecyclePreStopTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+     */
+    port: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecInitContainerLivenessProbe {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: outputs.GetK8sJobSpecTemplateSpecInitContainerLivenessProbeExec;
+    /**
+     * Minimum consecutive failures for the probe to be considered failed after having succeeded.
+     */
+    failureThreshold?: number;
+    /**
+     * GRPC specifies an action involving a GRPC port.
+     */
+    grpcs?: outputs.GetK8sJobSpecTemplateSpecInitContainerLivenessProbeGrpc[];
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: outputs.GetK8sJobSpecTemplateSpecInitContainerLivenessProbeHttpGet;
+    /**
+     * Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    initialDelaySeconds?: number;
+    /**
+     * How often (in seconds) to perform the probe
+     */
+    periodSeconds?: number;
+    /**
+     * Minimum consecutive successes for the probe to be considered successful after having failed.
+     */
+    successThreshold?: number;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: outputs.GetK8sJobSpecTemplateSpecInitContainerLivenessProbeTcpSocket[];
+    /**
+     * Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    timeoutSeconds?: number;
+}
+
+export interface GetK8sJobSpecTemplateSpecInitContainerLivenessProbeExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: string[];
+}
+
+export interface GetK8sJobSpecTemplateSpecInitContainerLivenessProbeGrpc {
+    /**
+     * Number of the port to access on the container. Number must be in the range 1 to 65535.
+     */
+    port: number;
+    /**
+     * Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+     */
+    service?: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecInitContainerLivenessProbeHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: outputs.GetK8sJobSpecTemplateSpecInitContainerLivenessProbeHttpGetHttpHeader[];
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: string;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+     */
+    port?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    scheme?: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecInitContainerLivenessProbeHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: string;
+    /**
+     * The header field value
+     */
+    value?: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecInitContainerLivenessProbeTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+     */
+    port: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecInitContainerPort {
+    /**
+     * Number of port to expose on the pod's IP address. This must be a valid port number, 0 < x < 65536.
+     */
+    containerPort: number;
+    /**
+     * What host IP to bind the external port to.
+     */
+    hostIp?: string;
+    /**
+     * Number of port to expose on the host. If specified, this must be a valid port number, 0 < x < 65536. If HostNetwork is specified, this must match ContainerPort. Most containers do not need this.
+     */
+    hostPort?: number;
+    /**
+     * If specified, this must be an IANA_SVC_NAME and unique within the pod. Each named port in a pod must have a unique name. Name for the port that can be referred to by services
+     */
+    name?: string;
+    /**
+     * Protocol for port. Must be UDP or TCP. Defaults to "TCP".
+     */
+    protocol?: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecInitContainerReadinessProbe {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: outputs.GetK8sJobSpecTemplateSpecInitContainerReadinessProbeExec;
+    /**
+     * Minimum consecutive failures for the probe to be considered failed after having succeeded.
+     */
+    failureThreshold?: number;
+    /**
+     * GRPC specifies an action involving a GRPC port.
+     */
+    grpcs?: outputs.GetK8sJobSpecTemplateSpecInitContainerReadinessProbeGrpc[];
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: outputs.GetK8sJobSpecTemplateSpecInitContainerReadinessProbeHttpGet;
+    /**
+     * Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    initialDelaySeconds?: number;
+    /**
+     * How often (in seconds) to perform the probe
+     */
+    periodSeconds?: number;
+    /**
+     * Minimum consecutive successes for the probe to be considered successful after having failed.
+     */
+    successThreshold?: number;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: outputs.GetK8sJobSpecTemplateSpecInitContainerReadinessProbeTcpSocket[];
+    /**
+     * Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    timeoutSeconds?: number;
+}
+
+export interface GetK8sJobSpecTemplateSpecInitContainerReadinessProbeExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: string[];
+}
+
+export interface GetK8sJobSpecTemplateSpecInitContainerReadinessProbeGrpc {
+    /**
+     * Number of the port to access on the container. Number must be in the range 1 to 65535.
+     */
+    port: number;
+    /**
+     * Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+     */
+    service?: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecInitContainerReadinessProbeHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: outputs.GetK8sJobSpecTemplateSpecInitContainerReadinessProbeHttpGetHttpHeader[];
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: string;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+     */
+    port?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    scheme?: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecInitContainerReadinessProbeHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: string;
+    /**
+     * The header field value
+     */
+    value?: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecInitContainerReadinessProbeTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+     */
+    port: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecInitContainerResources {
+    /**
+     * Describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+     */
+    limits: {[key: string]: string};
+    /**
+     * Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
+     */
+    requests: {[key: string]: string};
+}
+
+export interface GetK8sJobSpecTemplateSpecInitContainerSecurityContext {
+    /**
+     * AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the noNewPrivs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP_SYS_ADMIN
+     */
+    allowPrivilegeEscalation?: boolean;
+    /**
+     * The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime.
+     */
+    capabilities?: outputs.GetK8sJobSpecTemplateSpecInitContainerSecurityContextCapabilities;
+    /**
+     * Run container in privileged mode. Processes in privileged containers are essentially equivalent to root on the host. Defaults to false.
+     */
+    privileged?: boolean;
+    /**
+     * Whether this container has a read-only root filesystem. Default is false.
+     */
+    readOnlyRootFilesystem?: boolean;
+    /**
+     * The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+     */
+    runAsGroup?: string;
+    /**
+     * Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+     */
+    runAsNonRoot?: boolean;
+    /**
+     * The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+     */
+    runAsUser?: string;
+    /**
+     * The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+     */
+    seLinuxOptions?: outputs.GetK8sJobSpecTemplateSpecInitContainerSecurityContextSeLinuxOptions;
+    /**
+     * The seccomp options to use by the containers in this pod. Note that this field cannot be set when spec.os.name is windows.
+     */
+    seccompProfile?: outputs.GetK8sJobSpecTemplateSpecInitContainerSecurityContextSeccompProfile;
+}
+
+export interface GetK8sJobSpecTemplateSpecInitContainerSecurityContextCapabilities {
+    /**
+     * Added capabilities
+     */
+    adds?: string[];
+    /**
+     * Removed capabilities
+     */
+    drops?: string[];
+}
+
+export interface GetK8sJobSpecTemplateSpecInitContainerSecurityContextSeLinuxOptions {
+    /**
+     * Level is SELinux level label that applies to the container.
+     */
+    level?: string;
+    /**
+     * Role is a SELinux role label that applies to the container.
+     */
+    role?: string;
+    /**
+     * Type is a SELinux type label that applies to the container.
+     */
+    type?: string;
+    /**
+     * User is a SELinux user label that applies to the container.
+     */
+    user?: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecInitContainerSecurityContextSeccompProfile {
+    /**
+     * Localhost Profile indicates a profile defined in a file on the node should be used. The profile must be preconfigured on the node to work.
+     */
+    localhostProfile?: string;
+    /**
+     * Type indicates which kind of seccomp profile will be applied. Valid options are: Localhost, RuntimeDefault, Unconfined.
+     */
+    type?: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecInitContainerStartupProbe {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: outputs.GetK8sJobSpecTemplateSpecInitContainerStartupProbeExec;
+    /**
+     * Minimum consecutive failures for the probe to be considered failed after having succeeded.
+     */
+    failureThreshold?: number;
+    /**
+     * GRPC specifies an action involving a GRPC port.
+     */
+    grpcs?: outputs.GetK8sJobSpecTemplateSpecInitContainerStartupProbeGrpc[];
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: outputs.GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGet;
+    /**
+     * Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    initialDelaySeconds?: number;
+    /**
+     * How often (in seconds) to perform the probe
+     */
+    periodSeconds?: number;
+    /**
+     * Minimum consecutive successes for the probe to be considered successful after having failed.
+     */
+    successThreshold?: number;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: outputs.GetK8sJobSpecTemplateSpecInitContainerStartupProbeTcpSocket[];
+    /**
+     * Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    timeoutSeconds?: number;
+}
+
+export interface GetK8sJobSpecTemplateSpecInitContainerStartupProbeExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: string[];
+}
+
+export interface GetK8sJobSpecTemplateSpecInitContainerStartupProbeGrpc {
+    /**
+     * Number of the port to access on the container. Number must be in the range 1 to 65535.
+     */
+    port: number;
+    /**
+     * Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+     */
+    service?: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: outputs.GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetHttpHeader[];
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: string;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+     */
+    port?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    scheme?: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: string;
+    /**
+     * The header field value
+     */
+    value?: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecInitContainerStartupProbeTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+     */
+    port: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecInitContainerVolumeMount {
+    /**
+     * Path within the container at which the volume should be mounted. Must not contain ':'.
+     */
+    mountPath: string;
+    /**
+     * Mount propagation mode. mountPropagation determines how mounts are propagated from the host to container and the other way around. Valid values are None (default), HostToContainer and Bidirectional.
+     */
+    mountPropagation?: string;
+    /**
+     * This must match the Name of a Volume.
+     */
+    name: string;
+    /**
+     * Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false.
+     */
+    readOnly?: boolean;
+    /**
+     * Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
+     */
+    subPath?: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecReadinessGate {
+    /**
+     * refers to a condition in the pod's condition list with matching type.
+     */
+    conditionType: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecSecurityContext {
+    /**
+     * A special supplemental group that applies to all containers in a pod. Some volume types allow the Kubelet to change the ownership of that volume to be owned by the pod: 1. The owning GID will be the FSGroup 2. The setgid bit is set (new files created in the volume will be owned by FSGroup) 3. The permission bits are OR'd with rw-rw---- If unset, the Kubelet will not modify the ownership and permissions of any volume.
+     */
+    fsGroup?: string;
+    /**
+     * fsGroupChangePolicy defines behavior of changing ownership and permission of the volume before being exposed inside Pod. This field will only apply to volume types which support fsGroup based ownership(and permissions). It will have no effect on ephemeral volume types such as: secret, configmaps and emptydir.
+     */
+    fsGroupChangePolicy?: string;
+    /**
+     * The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in SecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container.
+     */
+    runAsGroup?: string;
+    /**
+     * Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in SecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+     */
+    runAsNonRoot?: boolean;
+    /**
+     * The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in SecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container.
+     */
+    runAsUser?: string;
+    /**
+     * The SELinux context to be applied to all containers. If unspecified, the container runtime will allocate a random SELinux context for each container. May also be set in SecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container.
+     */
+    seLinuxOptions?: outputs.GetK8sJobSpecTemplateSpecSecurityContextSeLinuxOptions;
+    /**
+     * The seccomp options to use by the containers in this pod. Note that this field cannot be set when spec.os.name is windows.
+     */
+    seccompProfile?: outputs.GetK8sJobSpecTemplateSpecSecurityContextSeccompProfile;
+    /**
+     * A list of groups applied to the first process run in each container, in addition to the container's primary GID. If unspecified, no groups will be added to any container.
+     */
+    supplementalGroups?: number[];
+    /**
+     * holds a list of namespaced sysctls used for the pod.
+     */
+    sysctls?: outputs.GetK8sJobSpecTemplateSpecSecurityContextSysctl[];
+}
+
+export interface GetK8sJobSpecTemplateSpecSecurityContextSeLinuxOptions {
+    /**
+     * Level is SELinux level label that applies to the container.
+     */
+    level?: string;
+    /**
+     * Role is a SELinux role label that applies to the container.
+     */
+    role?: string;
+    /**
+     * Type is a SELinux type label that applies to the container.
+     */
+    type?: string;
+    /**
+     * User is a SELinux user label that applies to the container.
+     */
+    user?: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecSecurityContextSeccompProfile {
+    /**
+     * Localhost Profile indicates a profile defined in a file on the node should be used. The profile must be preconfigured on the node to work.
+     */
+    localhostProfile?: string;
+    /**
+     * Type indicates which kind of seccomp profile will be applied. Valid options are: Localhost, RuntimeDefault, Unconfined.
+     */
+    type?: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecSecurityContextSysctl {
+    /**
+     * Name of a property to set.
+     */
+    name: string;
+    /**
+     * Value of a property to set.
+     */
+    value: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecToleration {
+    /**
+     * Effect indicates the taint effect to match. Empty means match all taint effects. When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.
+     */
+    effect?: string;
+    /**
+     * Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key is empty, operator must be Exists; this combination means to match all values and all keys.
+     */
+    key?: string;
+    /**
+     * Operator represents a key's relationship to the value. Valid operators are Exists and Equal. Defaults to Equal. Exists is equivalent to wildcard for value, so that a pod can tolerate all taints of a particular category.
+     */
+    operator?: string;
+    /**
+     * TolerationSeconds represents the period of time the toleration (which must be of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default, it is not set, which means tolerate the taint forever (do not evict). Zero and negative values will be treated as 0 (evict immediately) by the system.
+     */
+    tolerationSeconds?: string;
+    /**
+     * Value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string.
+     */
+    value?: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecTopologySpreadConstraint {
+    /**
+     * A label query over a set of resources, in this case pods.
+     */
+    labelSelectors: outputs.GetK8sJobSpecTemplateSpecTopologySpreadConstraintLabelSelector[];
+    /**
+     * describes the degree to which pods may be unevenly distributed.
+     */
+    maxSkew?: number;
+    /**
+     * the key of node labels. Nodes that have a label with this key and identical values are considered to be in the same topology.
+     */
+    topologyKey?: string;
+    /**
+     * indicates how to deal with a pod if it doesn't satisfy the spread constraint.
+     */
+    whenUnsatisfiable?: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecTopologySpreadConstraintLabelSelector {
+    /**
+     * A list of label selector requirements. The requirements are ANDed.
+     */
+    matchExpressions?: outputs.GetK8sJobSpecTemplateSpecTopologySpreadConstraintLabelSelectorMatchExpression[];
+    /**
+     * A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+     */
+    matchLabels?: {[key: string]: string};
+}
+
+export interface GetK8sJobSpecTemplateSpecTopologySpreadConstraintLabelSelectorMatchExpression {
+    /**
+     * The label key that the selector applies to.
+     */
+    key?: string;
+    /**
+     * A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
+     */
+    operator?: string;
+    /**
+     * An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
+     */
+    values?: string[];
+}
+
+export interface GetK8sJobSpecTemplateSpecVolume {
+    /**
+     * Represents an AWS Disk resource that is attached to a kubelet's host machine and then exposed to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+     */
+    awsElasticBlockStore?: outputs.GetK8sJobSpecTemplateSpecVolumeAwsElasticBlockStore;
+    /**
+     * Represents an Azure Data Disk mount on the host and bind mount to the pod.
+     */
+    azureDisk?: outputs.GetK8sJobSpecTemplateSpecVolumeAzureDisk;
+    /**
+     * Represents an Azure File Service mount on the host and bind mount to the pod.
+     */
+    azureFile?: outputs.GetK8sJobSpecTemplateSpecVolumeAzureFile;
+    /**
+     * Represents a Ceph FS mount on the host that shares a pod's lifetime
+     */
+    cephFs?: outputs.GetK8sJobSpecTemplateSpecVolumeCephFs;
+    /**
+     * Represents a cinder volume attached and mounted on kubelets host machine. More info: https://examples.k8s.io/mysql-cinder-pd/README.md
+     */
+    cinder?: outputs.GetK8sJobSpecTemplateSpecVolumeCinder;
+    /**
+     * ConfigMap represents a configMap that should populate this volume
+     */
+    configMap?: outputs.GetK8sJobSpecTemplateSpecVolumeConfigMap;
+    /**
+     * Represents a CSI Volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#csi
+     */
+    csi?: outputs.GetK8sJobSpecTemplateSpecVolumeCsi;
+    /**
+     * DownwardAPI represents downward API about the pod that should populate this volume
+     */
+    downwardApi?: outputs.GetK8sJobSpecTemplateSpecVolumeDownwardApi;
+    /**
+     * EmptyDir represents a temporary directory that shares a pod's lifetime. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir
+     */
+    emptyDir?: outputs.GetK8sJobSpecTemplateSpecVolumeEmptyDir;
+    /**
+     * Represents an ephemeral volume that is handled by a normal storage driver. More info: https://kubernetes.io/docs/concepts/storage/ephemeral-volumes/#generic-ephemeral-volumes
+     */
+    ephemeral?: outputs.GetK8sJobSpecTemplateSpecVolumeEphemeral;
+    /**
+     * Represents a Fibre Channel resource that is attached to a kubelet's host machine and then exposed to the pod.
+     */
+    fc?: outputs.GetK8sJobSpecTemplateSpecVolumeFc;
+    /**
+     * Represents a generic volume resource that is provisioned/attached using an exec based plugin. This is an alpha feature and may change in future.
+     */
+    flexVolume?: outputs.GetK8sJobSpecTemplateSpecVolumeFlexVolume;
+    /**
+     * Represents a Flocker volume attached to a kubelet's host machine and exposed to the pod for its usage. This depends on the Flocker control service being running
+     */
+    flocker?: outputs.GetK8sJobSpecTemplateSpecVolumeFlocker;
+    /**
+     * Represents a GCE Disk resource that is attached to a kubelet's host machine and then exposed to the pod. Provisioned by an admin. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+     */
+    gcePersistentDisk?: outputs.GetK8sJobSpecTemplateSpecVolumeGcePersistentDisk;
+    /**
+     * GitRepo represents a git repository at a particular revision.
+     */
+    gitRepo?: outputs.GetK8sJobSpecTemplateSpecVolumeGitRepo;
+    /**
+     * Represents a Glusterfs volume that is attached to a host and exposed to the pod. Provisioned by an admin. More info: https://examples.k8s.io/volumes/glusterfs/README.md
+     */
+    glusterfs?: outputs.GetK8sJobSpecTemplateSpecVolumeGlusterfs;
+    /**
+     * Represents a directory on the host. Provisioned by a developer or tester. This is useful for single-node development and testing only! On-host storage is not supported in any way and WILL NOT WORK in a multi-node cluster. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath
+     */
+    hostPath?: outputs.GetK8sJobSpecTemplateSpecVolumeHostPath;
+    /**
+     * Represents an ISCSI Disk resource that is attached to a kubelet's host machine and then exposed to the pod. Provisioned by an admin.
+     */
+    iscsi?: outputs.GetK8sJobSpecTemplateSpecVolumeIscsi;
+    /**
+     * Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local
+     */
+    local?: outputs.GetK8sJobSpecTemplateSpecVolumeLocal;
+    /**
+     * Volume's name. Must be a DNS_LABEL and unique within the pod. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: string;
+    /**
+     * Represents an NFS mount on the host. Provisioned by an admin. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+     */
+    nfs?: outputs.GetK8sJobSpecTemplateSpecVolumeNfs;
+    /**
+     * The specification of a persistent volume.
+     */
+    persistentVolumeClaim?: outputs.GetK8sJobSpecTemplateSpecVolumePersistentVolumeClaim;
+    /**
+     * Represents a PhotonController persistent disk attached and mounted on kubelets host machine
+     */
+    photonPersistentDisk?: outputs.GetK8sJobSpecTemplateSpecVolumePhotonPersistentDisk;
+    /**
+     * Projected represents a single volume that projects several volume sources into the same directory. More info: https://kubernetes.io/docs/concepts/storage/volumes/#projected
+     */
+    projected?: outputs.GetK8sJobSpecTemplateSpecVolumeProjected;
+    /**
+     * Quobyte represents a Quobyte mount on the host that shares a pod's lifetime
+     */
+    quobyte?: outputs.GetK8sJobSpecTemplateSpecVolumeQuobyte;
+    /**
+     * Represents a Rados Block Device mount on the host that shares a pod's lifetime. More info: https://examples.k8s.io/volumes/rbd/README.md
+     */
+    rbd?: outputs.GetK8sJobSpecTemplateSpecVolumeRbd;
+    /**
+     * Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secrets
+     */
+    secret?: outputs.GetK8sJobSpecTemplateSpecVolumeSecret;
+    /**
+     * Represents a vSphere volume attached and mounted on kubelets host machine
+     */
+    vsphereVolume?: outputs.GetK8sJobSpecTemplateSpecVolumeVsphereVolume;
+}
+
+export interface GetK8sJobSpecTemplateSpecVolumeAwsElasticBlockStore {
+    /**
+     * Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+     */
+    fsType?: string;
+    /**
+     * The partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as "1". Similarly, the volume partition for /dev/sda is "0" (or you can leave the property empty).
+     */
+    partition?: number;
+    /**
+     * Whether to set the read-only property in VolumeMounts to "true". If omitted, the default is "false". More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+     */
+    readOnly?: boolean;
+    /**
+     * Unique ID of the persistent disk resource in AWS (Amazon EBS volume). More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+     */
+    volumeId: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecVolumeAzureDisk {
+    /**
+     * Host Caching mode: None, Read Only, Read Write.
+     */
+    cachingMode: string;
+    /**
+     * The URI the data disk in the blob storage
+     */
+    dataDiskUri: string;
+    /**
+     * The Name of the data disk in the blob storage
+     */
+    diskName: string;
+    /**
+     * Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+     */
+    fsType?: string;
+    /**
+     * The type for the data disk. Expected values: Shared, Dedicated, Managed. Defaults to Shared
+     */
+    kind: string;
+    /**
+     * Whether to force the read-only setting in VolumeMounts. Defaults to false (read/write).
+     */
+    readOnly?: boolean;
+}
+
+export interface GetK8sJobSpecTemplateSpecVolumeAzureFile {
+    /**
+     * Whether to force the read-only setting in VolumeMounts. Defaults to false (read/write).
+     */
+    readOnly?: boolean;
+    /**
+     * The name of secret that contains Azure Storage Account Name and Key
+     */
+    secretName: string;
+    /**
+     * The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is "default" namespace.
+     */
+    secretNamespace?: string;
+    /**
+     * Share Name
+     */
+    shareName: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecVolumeCephFs {
+    /**
+     * Monitors is a collection of Ceph monitors. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+     */
+    monitors: string[];
+    /**
+     * Used as the mounted root, rather than the full Ceph tree, default is /
+     */
+    path?: string;
+    /**
+     * Whether to force the read-only setting in VolumeMounts. Defaults to `false` (read/write). More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+     */
+    readOnly?: boolean;
+    /**
+     * The path to key ring for User, default is `/etc/ceph/user.secret`. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+     */
+    secretFile?: string;
+    /**
+     * Reference to the authentication secret for User, default is empty. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+     */
+    secretRef?: outputs.GetK8sJobSpecTemplateSpecVolumeCephFsSecretRef;
+    /**
+     * User is the rados user name, default is admin. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+     */
+    user?: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecVolumeCephFsSecretRef {
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: string;
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    namespace: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecVolumeCinder {
+    /**
+     * Filesystem type to mount. Must be a filesystem type supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://examples.k8s.io/mysql-cinder-pd/README.md
+     */
+    fsType?: string;
+    /**
+     * Whether to force the read-only setting in VolumeMounts. Defaults to false (read/write). More info: https://examples.k8s.io/mysql-cinder-pd/README.md
+     */
+    readOnly?: boolean;
+    /**
+     * Volume ID used to identify the volume in Cinder. More info: https://examples.k8s.io/mysql-cinder-pd/README.md
+     */
+    volumeId: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecVolumeConfigMap {
+    /**
+     * Optional: mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+     */
+    defaultMode?: string;
+    /**
+     * If unspecified, each key-value pair in the Data field of the referenced ConfigMap will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the ConfigMap, the volume setup will error unless it is marked optional. Paths must be relative and may not contain the '..' path or start with '..'.
+     */
+    items?: outputs.GetK8sJobSpecTemplateSpecVolumeConfigMapItem[];
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: string;
+    /**
+     * Optional: Specify whether the ConfigMap or its keys must be defined.
+     */
+    optional?: boolean;
+}
+
+export interface GetK8sJobSpecTemplateSpecVolumeConfigMapItem {
+    /**
+     * The key to project.
+     */
+    key?: string;
+    /**
+     * Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+     */
+    mode?: string;
+    /**
+     * The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+     */
+    path?: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecVolumeCsi {
+    /**
+     * the name of the volume driver to use. More info: https://kubernetes.io/docs/concepts/storage/volumes/#csi
+     */
+    driver: string;
+    /**
+     * Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+     */
+    fsType?: string;
+    /**
+     * A reference to the secret object containing sensitive information to pass to the CSI driver to complete the CSI NodePublishVolume and NodeUnpublishVolume calls.
+     */
+    nodePublishSecretRef?: outputs.GetK8sJobSpecTemplateSpecVolumeCsiNodePublishSecretRef;
+    /**
+     * Whether to set the read-only property in VolumeMounts to "true". If omitted, the default is "false". More info: https://kubernetes.io/docs/concepts/storage/volumes#csi
+     */
+    readOnly?: boolean;
+    /**
+     * Attributes of the volume to publish.
+     */
+    volumeAttributes?: {[key: string]: string};
+}
+
+export interface GetK8sJobSpecTemplateSpecVolumeCsiNodePublishSecretRef {
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecVolumeDownwardApi {
+    /**
+     * Optional: mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+     */
+    defaultMode?: string;
+    /**
+     * If unspecified, each key-value pair in the Data field of the referenced ConfigMap will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the ConfigMap, the volume setup will error. Paths must be relative and may not contain the '..' path or start with '..'.
+     */
+    items?: outputs.GetK8sJobSpecTemplateSpecVolumeDownwardApiItem[];
+}
+
+export interface GetK8sJobSpecTemplateSpecVolumeDownwardApiItem {
+    /**
+     * Required: Selects a field of the pod: only annotations, labels, name and namespace are supported.
+     */
+    fieldRef: outputs.GetK8sJobSpecTemplateSpecVolumeDownwardApiItemFieldRef;
+    /**
+     * Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+     */
+    mode?: string;
+    /**
+     * Path is the relative path name of the file to be created. Must not be absolute or contain the '..' path. Must be utf-8 encoded. The first item of the relative path must not start with '..'
+     */
+    path: string;
+    /**
+     * Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, requests.cpu and requests.memory) are currently supported.
+     */
+    resourceFieldRef?: outputs.GetK8sJobSpecTemplateSpecVolumeDownwardApiItemResourceFieldRef;
+}
+
+export interface GetK8sJobSpecTemplateSpecVolumeDownwardApiItemFieldRef {
+    /**
+     * Version of the schema the FieldPath is written in terms of, defaults to "v1".
+     */
+    apiVersion?: string;
+    /**
+     * Path of the field to select in the specified API version
+     */
+    fieldPath?: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecVolumeDownwardApiItemResourceFieldRef {
+    containerName: string;
+    divisor?: string;
+    /**
+     * Resource to select
+     */
+    resource: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecVolumeEmptyDir {
+    /**
+     * What type of storage medium should back this directory. The default is "" which means to use the node's default medium. Must be an empty string (default) or Memory. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir
+     */
+    medium?: string;
+    /**
+     * Total amount of local storage required for this EmptyDir volume.
+     */
+    sizeLimit?: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecVolumeEphemeral {
+    /**
+     * Will be used to create a stand-alone PVC to provision the volume. The pod in which this EphemeralVolumeSource is embedded will be the owner of the PVC.
+     */
+    volumeClaimTemplate: outputs.GetK8sJobSpecTemplateSpecVolumeEphemeralVolumeClaimTemplate;
+}
+
+export interface GetK8sJobSpecTemplateSpecVolumeEphemeralVolumeClaimTemplate {
+    /**
+     * May contain labels and annotations that will be copied into the PVC when creating it. No other fields are allowed and will be rejected during validation.
+     */
+    metadata?: outputs.GetK8sJobSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateMetadata;
+    /**
+     * The specification for the PersistentVolumeClaim. The entire content is copied unchanged into the PVC that gets created from this template. The same fields as in a PersistentVolumeClaim are also valid here.
+     */
+    spec: outputs.GetK8sJobSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateSpec;
+}
+
+export interface GetK8sJobSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateMetadata {
+    /**
+     * An unstructured key value map stored with the job that may be used to store arbitrary metadata. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+     */
+    annotations?: {[key: string]: string};
+    /**
+     * Map of string keys and values that can be used to organize and categorize (scope and select) the job. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+     */
+    labels: {[key: string]: string};
+}
+
+export interface GetK8sJobSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateSpec {
+    /**
+     * A set of the desired access modes the volume should have. More info: http://kubernetes.io/docs/user-guide/persistent-volumes#access-modes-1
+     */
+    accessModes: string[];
+    /**
+     * A list of the minimum resources the volume should have. More info: http://kubernetes.io/docs/user-guide/persistent-volumes#resources
+     */
+    resources: outputs.GetK8sJobSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateSpecResources;
+    /**
+     * Name of the storage class requested by the claim
+     */
+    storageClassName: string;
+    /**
+     * Kubernetes supports two volumeModes of PersistentVolumes: `Filesystem` and `Block`.
+     */
+    volumeMode: string;
+    /**
+     * The binding reference to the PersistentVolume backing this claim.
+     */
+    volumeName: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateSpecResources {
+    /**
+     * Map describing the maximum amount of compute resources allowed. More info: http://kubernetes.io/docs/user-guide/compute-resources/
+     */
+    limits?: {[key: string]: string};
+    /**
+     * Map describing the minimum amount of compute resources required. If this is omitted for a container, it defaults to `limits` if that is explicitly specified, otherwise to an implementation-defined value. More info: http://kubernetes.io/docs/user-guide/compute-resources/
+     */
+    requests: {[key: string]: string};
+}
+
+export interface GetK8sJobSpecTemplateSpecVolumeFc {
+    /**
+     * Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+     */
+    fsType?: string;
+    /**
+     * FC target lun number
+     */
+    lun: number;
+    /**
+     * Whether to force the read-only setting in VolumeMounts. Defaults to false (read/write).
+     */
+    readOnly?: boolean;
+    /**
+     * FC target worldwide names (WWNs)
+     */
+    targetWwNs: string[];
+}
+
+export interface GetK8sJobSpecTemplateSpecVolumeFlexVolume {
+    /**
+     * Driver is the name of the driver to use for this volume.
+     */
+    driver: string;
+    /**
+     * Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". The default filesystem depends on FlexVolume script.
+     */
+    fsType?: string;
+    /**
+     * Extra command options if any.
+     */
+    options?: {[key: string]: string};
+    /**
+     * Whether to force the ReadOnly setting in VolumeMounts. Defaults to false (read/write).
+     */
+    readOnly?: boolean;
+    /**
+     * Reference to the secret object containing sensitive information to pass to the plugin scripts. This may be empty if no secret object is specified. If the secret object contains more than one secret, all secrets are passed to the plugin scripts.
+     */
+    secretRef?: outputs.GetK8sJobSpecTemplateSpecVolumeFlexVolumeSecretRef;
+}
+
+export interface GetK8sJobSpecTemplateSpecVolumeFlexVolumeSecretRef {
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: string;
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    namespace: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecVolumeFlocker {
+    /**
+     * Name of the dataset stored as metadata > name on the dataset for Flocker should be considered as deprecated
+     */
+    datasetName?: string;
+    /**
+     * UUID of the dataset. This is unique identifier of a Flocker dataset
+     */
+    datasetUuid?: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecVolumeGcePersistentDisk {
+    /**
+     * Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+     */
+    fsType?: string;
+    /**
+     * The partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as "1". Similarly, the volume partition for /dev/sda is "0" (or you can leave the property empty). More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+     */
+    partition?: number;
+    /**
+     * Unique name of the PD resource in GCE. Used to identify the disk in GCE. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+     */
+    pdName: string;
+    /**
+     * Whether to force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+     */
+    readOnly?: boolean;
+}
+
+export interface GetK8sJobSpecTemplateSpecVolumeGitRepo {
+    /**
+     * Target directory name. Must not contain or start with '..'. If '.' is supplied, the volume directory will be the git repository. Otherwise, if specified, the volume will contain the git repository in the subdirectory with the given name.
+     */
+    directory?: string;
+    /**
+     * Repository URL
+     */
+    repository?: string;
+    /**
+     * Commit hash for the specified revision.
+     */
+    revision?: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecVolumeGlusterfs {
+    /**
+     * The endpoint name that details Glusterfs topology. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
+     */
+    endpointsName: string;
+    /**
+     * The Glusterfs volume path. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
+     */
+    path: string;
+    /**
+     * Whether to force the Glusterfs volume to be mounted with read-only permissions. Defaults to false. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
+     */
+    readOnly?: boolean;
+}
+
+export interface GetK8sJobSpecTemplateSpecVolumeHostPath {
+    /**
+     * Path of the directory on the host. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath
+     */
+    path?: string;
+    /**
+     * Type for HostPath volume. Allowed values are "" (default), DirectoryOrCreate, Directory, FileOrCreate, File, Socket, CharDevice and BlockDevice
+     */
+    type?: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecVolumeIscsi {
+    /**
+     * Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#iscsi
+     */
+    fsType?: string;
+    /**
+     * Target iSCSI Qualified Name.
+     */
+    iqn: string;
+    /**
+     * iSCSI interface name that uses an iSCSI transport. Defaults to 'default' (tcp).
+     */
+    iscsiInterface?: string;
+    /**
+     * iSCSI target lun number.
+     */
+    lun?: number;
+    /**
+     * Whether to force the read-only setting in VolumeMounts. Defaults to false.
+     */
+    readOnly?: boolean;
+    /**
+     * iSCSI target portal. The portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260).
+     */
+    targetPortal: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecVolumeLocal {
+    /**
+     * Path of the directory on the host. More info: https://kubernetes.io/docs/concepts/storage/volumes#local
+     */
+    path?: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecVolumeNfs {
+    /**
+     * Path that is exported by the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+     */
+    path: string;
+    /**
+     * Whether to force the NFS export to be mounted with read-only permissions. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+     */
+    readOnly?: boolean;
+    /**
+     * Server is the hostname or IP address of the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+     */
+    server: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecVolumePersistentVolumeClaim {
+    /**
+     * ClaimName is the name of a PersistentVolumeClaim in the same
+     */
+    claimName?: string;
+    /**
+     * Will force the ReadOnly setting in VolumeMounts.
+     */
+    readOnly?: boolean;
+}
+
+export interface GetK8sJobSpecTemplateSpecVolumePhotonPersistentDisk {
+    /**
+     * Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+     */
+    fsType?: string;
+    /**
+     * ID that identifies Photon Controller persistent disk
+     */
+    pdId: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecVolumeProjected {
+    /**
+     * Optional: mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+     */
+    defaultMode?: string;
+    /**
+     * Source of the volume to project in the directory.
+     */
+    sources: outputs.GetK8sJobSpecTemplateSpecVolumeProjectedSource[];
+}
+
+export interface GetK8sJobSpecTemplateSpecVolumeProjectedSource {
+    /**
+     * ConfigMap represents a configMap that should populate this volume
+     */
+    configMaps?: outputs.GetK8sJobSpecTemplateSpecVolumeProjectedSourceConfigMap[];
+    /**
+     * DownwardAPI represents downward API about the pod that should populate this volume
+     */
+    downwardApi?: outputs.GetK8sJobSpecTemplateSpecVolumeProjectedSourceDownwardApi;
+    /**
+     * Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secrets
+     */
+    secrets?: outputs.GetK8sJobSpecTemplateSpecVolumeProjectedSourceSecret[];
+    /**
+     * A projected service account token volume
+     */
+    serviceAccountToken?: outputs.GetK8sJobSpecTemplateSpecVolumeProjectedSourceServiceAccountToken;
+}
+
+export interface GetK8sJobSpecTemplateSpecVolumeProjectedSourceConfigMap {
+    /**
+     * If unspecified, each key-value pair in the Data field of the referenced ConfigMap will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the ConfigMap, the volume setup will error. Paths must be relative and may not contain the '..' path or start with '..'.
+     */
+    items?: outputs.GetK8sJobSpecTemplateSpecVolumeProjectedSourceConfigMapItem[];
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: string;
+    /**
+     * Optional: Specify whether the ConfigMap or it's keys must be defined.
+     */
+    optional?: boolean;
+}
+
+export interface GetK8sJobSpecTemplateSpecVolumeProjectedSourceConfigMapItem {
+    /**
+     * The key to project.
+     */
+    key?: string;
+    /**
+     * Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+     */
+    mode?: string;
+    /**
+     * The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+     */
+    path?: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecVolumeProjectedSourceDownwardApi {
+    /**
+     * Represents a volume containing downward API info. Downward API volumes support ownership management and SELinux relabeling.
+     */
+    items?: outputs.GetK8sJobSpecTemplateSpecVolumeProjectedSourceDownwardApiItem[];
+}
+
+export interface GetK8sJobSpecTemplateSpecVolumeProjectedSourceDownwardApiItem {
+    /**
+     * Selects a field of the pod: only annotations, labels, name and namespace are supported.
+     */
+    fieldRef?: outputs.GetK8sJobSpecTemplateSpecVolumeProjectedSourceDownwardApiItemFieldRef;
+    /**
+     * Mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+     */
+    mode?: string;
+    /**
+     * Path is the relative path name of the file to be created. Must not be absolute or contain the '..' path. Must be utf-8 encoded. The first item of the relative path must not start with '..'
+     */
+    path: string;
+    /**
+     * Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, requests.cpu and requests.memory) are currently supported.
+     */
+    resourceFieldRef?: outputs.GetK8sJobSpecTemplateSpecVolumeProjectedSourceDownwardApiItemResourceFieldRef;
+}
+
+export interface GetK8sJobSpecTemplateSpecVolumeProjectedSourceDownwardApiItemFieldRef {
+    /**
+     * Version of the schema the FieldPath is written in terms of, defaults to 'v1'.
+     */
+    apiVersion?: string;
+    /**
+     * Path of the field to select in the specified API version
+     */
+    fieldPath?: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecVolumeProjectedSourceDownwardApiItemResourceFieldRef {
+    containerName: string;
+    divisor?: string;
+    /**
+     * Resource to select
+     */
+    resource: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecVolumeProjectedSourceSecret {
+    /**
+     * If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional. Paths must be relative and may not contain the '..' path or start with '..'.
+     */
+    items?: outputs.GetK8sJobSpecTemplateSpecVolumeProjectedSourceSecretItem[];
+    /**
+     * Name of the secret in the pod's namespace to use. More info: https://kubernetes.io/docs/concepts/storage/volumes#secrets
+     */
+    name?: string;
+    /**
+     * Optional: Specify whether the Secret or it's keys must be defined.
+     */
+    optional?: boolean;
+}
+
+export interface GetK8sJobSpecTemplateSpecVolumeProjectedSourceSecretItem {
+    /**
+     * The key to project.
+     */
+    key?: string;
+    /**
+     * Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+     */
+    mode?: string;
+    /**
+     * The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+     */
+    path?: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecVolumeProjectedSourceServiceAccountToken {
+    /**
+     * Audience is the intended audience of the token
+     */
+    audience?: string;
+    /**
+     * ExpirationSeconds is the expected duration of validity of the service account token. It defaults to 1 hour and must be at least 10 minutes (600 seconds).
+     */
+    expirationSeconds?: number;
+    /**
+     * Path specifies a relative path to the mount point of the projected volume.
+     */
+    path: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecVolumeQuobyte {
+    /**
+     * Group to map volume access to Default is no group
+     */
+    group?: string;
+    /**
+     * Whether to force the Quobyte volume to be mounted with read-only permissions. Defaults to false.
+     */
+    readOnly?: boolean;
+    /**
+     * Registry represents a single or multiple Quobyte Registry services specified as a string as host:port pair (multiple entries are separated with commas) which acts as the central registry for volumes
+     */
+    registry: string;
+    /**
+     * User to map volume access to Defaults to serivceaccount user
+     */
+    user?: string;
+    /**
+     * Volume is a string that references an already created Quobyte volume by name.
+     */
+    volume: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecVolumeRbd {
+    /**
+     * A collection of Ceph monitors. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+     */
+    cephMonitors: string[];
+    /**
+     * Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#rbd
+     */
+    fsType?: string;
+    /**
+     * Keyring is the path to key ring for RBDUser. Default is /etc/ceph/keyring. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+     */
+    keyring: string;
+    /**
+     * The rados user name. Default is admin. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+     */
+    radosUser?: string;
+    /**
+     * The rados image name. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+     */
+    rbdImage: string;
+    /**
+     * The rados pool name. Default is rbd. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it.
+     */
+    rbdPool?: string;
+    /**
+     * Whether to force the read-only setting in VolumeMounts. Defaults to false. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+     */
+    readOnly?: boolean;
+    /**
+     * Name of the authentication secret for RBDUser. If provided overrides keyring. Default is nil. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+     */
+    secretRef?: outputs.GetK8sJobSpecTemplateSpecVolumeRbdSecretRef;
+}
+
+export interface GetK8sJobSpecTemplateSpecVolumeRbdSecretRef {
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: string;
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    namespace: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecVolumeSecret {
+    /**
+     * Optional: mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+     */
+    defaultMode?: string;
+    /**
+     * If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional. Paths must be relative and may not contain the '..' path or start with '..'.
+     */
+    items?: outputs.GetK8sJobSpecTemplateSpecVolumeSecretItem[];
+    /**
+     * Optional: Specify whether the Secret or its keys must be defined.
+     */
+    optional?: boolean;
+    /**
+     * Name of the secret in the pod's namespace to use. More info: https://kubernetes.io/docs/concepts/storage/volumes#secrets
+     */
+    secretName?: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecVolumeSecretItem {
+    /**
+     * The key to project.
+     */
+    key?: string;
+    /**
+     * Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+     */
+    mode?: string;
+    /**
+     * The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+     */
+    path?: string;
+}
+
+export interface GetK8sJobSpecTemplateSpecVolumeVsphereVolume {
+    /**
+     * Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+     */
+    fsType?: string;
+    /**
+     * Path that identifies vSphere volume vmdk
+     */
+    volumePath: string;
+}
+
+export interface GetNativeHostImageTag {
+    key: string;
+    value: string;
+}
+
+export interface GetNativeHostImagesImage {
+    arch: string;
+    imageId: string;
+    isKubernetes: boolean;
+    k8sVersion: string;
+    name: string;
+    os: string;
+    region: string;
+    tags: outputs.GetNativeHostImagesImageTag[];
+    username: string;
+}
+
+export interface GetNativeHostImagesImageTag {
+    key: string;
+    value: string;
+}
+
+export interface GetNativeHostsHost {
+    /**
+     * The numeric ID of the container agent pool that this host is added to.
+     */
+    agentPlatform?: number;
+    /**
+     * Whether or not to allocate a public IP.
+     */
+    allocatedPublicIp?: boolean;
+    /**
+     * Base64 encoded EC2 user data to associated with the host.
+     */
+    base64UserData: string;
+    /**
+     * The AWS EC2 instance type.
+     */
+    capacity: string;
+    /**
+     * The numeric ID of the cloud provider to launch the host in.
+     */
+    cloud?: number;
+    /**
+     * Specify the labels to attach to the nodes.
+     */
+    customNodeLabels?: {[key: string]: string};
+    encryptDisk?: boolean;
+    /**
+     * The short name of the host.
+     */
+    friendlyName: string;
+    /**
+     * The name of the IAM role associated with this host.
+     */
+    identityRole: string;
+    /**
+     * The AMI ID to use.
+     */
+    imageId: string;
+    initialBase64UserData: string;
+    /**
+     * The AWS EC2 instance ID of the host.
+     */
+    instanceId: string;
+    isEbsOptimized?: boolean;
+    isMinion?: boolean;
+    /**
+     * The numeric ID of the keypair type being used.Should be one of:
+     *
+     *    - `0` : Default
+     *    - `1` : ED25519
+     *    - `2` : RSA (deprecated - some operating systems no longer support it)
+     */
+    keypairType: number;
+    /**
+     * Configuration metadata used when creating the host.<br>*Note: To configure OS disk size OsDiskSize can be specified as Key and its size as value, size value should be atleast 10*
+     */
+    metadatas: outputs.GetNativeHostsHostMetadata[];
+    /**
+     * A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value.
+     */
+    minionTags: outputs.GetNativeHostsHostMinionTag[];
+    /**
+     * An optional list of custom network interface configurations to use when creating the host.
+     */
+    networkInterfaces: outputs.GetNativeHostsHostNetworkInterface[];
+    /**
+     * Bootstrap an EKS host with Duplo's user data, prepending it to custom user data if also provided.
+     */
+    prependUserData?: boolean;
+    /**
+     * The primary private IP address assigned to the host.
+     */
+    privateIpAddress: string;
+    /**
+     * The primary public IP address assigned to the host.
+     */
+    publicIpAddress: string;
+    /**
+     * The current status of the host.
+     */
+    status: string;
+    tags: outputs.GetNativeHostsHostTag[];
+    /**
+     * Specify taints to attach to the nodes, to repel other nodes with different toleration
+     */
+    taints?: outputs.GetNativeHostsHostTaint[];
+    /**
+     * The GUID of the tenant that the host will be created in.
+     */
+    tenantId: string;
+    /**
+     * The name of the tenant that the host will be created in.
+     */
+    userAccount: string;
+    /**
+     * Block to specify additional or secondary volume beyond the root device
+     */
+    volumes: outputs.GetNativeHostsHostVolume[];
+    /**
+     * The availability zone to launch the host in, expressed as a number and starting at 0.
+     */
+    zone?: number;
+}
+
+export interface GetNativeHostsHostMetadata {
+    key: string;
+    value: string;
+}
+
+export interface GetNativeHostsHostMinionTag {
+    key: string;
+    value: string;
+}
+
+export interface GetNativeHostsHostNetworkInterface {
+    /**
+     * Whether or not to associate a public IP with the newly created ENI.  Cannot be specified if `networkInterfaceId` is specified.
+     */
+    associatePublicIp: boolean;
+    /**
+     * The device index to pass to AWS for attaching the ENI.  Starts at zero.
+     */
+    deviceIndex: number;
+    groups: string[];
+    metadatas: outputs.GetNativeHostsHostNetworkInterfaceMetadata[];
+    /**
+     * The ID of an ENI to attach to this host.  Cannot be specified if `subnetId` or `associatePublicIp` is specified.
+     */
+    networkInterfaceId: string;
+    /**
+     * The ID of a subnet in which to create a new ENI.  Cannot be specified if `networkInterfaceId` is specified.
+     */
+    subnetId: string;
+}
+
+export interface GetNativeHostsHostNetworkInterfaceMetadata {
+    key: string;
+    value: string;
+}
+
+export interface GetNativeHostsHostTag {
+    key: string;
+    value: string;
+}
+
+export interface GetNativeHostsHostTaint {
+    /**
+     * Update strategy of the node. Effect types <br>      - NoSchedule<br>     - PreferNoSchedule<br>     - NoExecute
+     */
+    effect: string;
+    key: string;
+    value?: string;
+}
+
+export interface GetNativeHostsHostVolume {
+    iops: number;
+    name: string;
+    size: number;
+    volumeId: string;
+    volumeType: string;
+}
+
+export interface GetPlanCertificate {
+    arn: string;
+    id: string;
+    name: string;
+}
+
+export interface GetPlanCertificatesCertificate {
+    /**
+     * The ARN of the certificate
+     */
+    arn: string;
+    /**
+     * A domain name for which the certificate should be issued
+     */
+    name: string;
+}
+
+export interface GetPlanConfig {
+    key: string;
+    type?: string;
+    value: string;
+}
+
+export interface GetPlanImage {
+    imageId: string;
+    name: string;
+    os: string;
+    tags: outputs.GetPlanImageTag[];
+    username: string;
+}
+
+export interface GetPlanImageTag {
+    key: string;
+    value: string;
+}
+
+export interface GetPlanImagesImage {
+    imageId: string;
+    name: string;
+    os: string;
+    tags: outputs.GetPlanImagesImageTag[];
+    username: string;
+}
+
+export interface GetPlanImagesImageTag {
+    key: string;
+    value: string;
+}
+
+export interface GetPlanKmsKey {
+    arn: string;
+    id: string;
+    name: string;
+}
+
+export interface GetPlanKmsKeyData {
+    kmsArn: string;
+    kmsId: string;
+    kmsName: string;
+}
+
+export interface GetPlanKmsKeyV2KmsKey {
+    arn: string;
+    id: string;
+    name: string;
+}
+
+export interface GetPlanKubernetesConfig {
+    apiServer: string;
+    certificateAuthorityData: string;
+    name: string;
+    provider: number;
+    region: string;
+    token: string;
+    version: string;
+}
+
+export interface GetPlanMetadata {
+    key: string;
+    value: string;
+}
+
+export interface GetPlanNatGatewaysNatGateway {
+    addresses: outputs.GetPlanNatGatewaysNatGatewayAddress[];
+    id: string;
+    state: string;
+    subnetId: string;
+    tags: outputs.GetPlanNatGatewaysNatGatewayTag[];
+    vpcId: string;
+}
+
+export interface GetPlanNatGatewaysNatGatewayAddress {
+    allocationId: string;
+    networkInterfaceId: string;
+    privateIp: string;
+    publicIp: string;
+}
+
+export interface GetPlanNatGatewaysNatGatewayTag {
+    key: string;
+    value: string;
+}
+
+export interface GetPlanSettingsDnsSetting {
+    domainId: string;
+    externalDnsSuffix: string;
+    ignoreGlobalDns: boolean;
+    internalDnsSuffix: string;
+}
+
+export interface GetPlanSettingsMetadata {
+    key: string;
+    value: string;
+}
+
+export interface GetPlanWafInfo {
+    id: string;
+    name: string;
+}
+
+export interface GetPlanWafsData {
+    dashboardUrl: string;
+    wafArn: string;
+    wafName: string;
+}
+
+export interface GetPlanWafsV2Waf {
+    /**
+     * The ARN of the waf
+     */
+    arn: string;
+    /**
+     * The dashboard url associated to waf
+     */
+    dashboardUrl: string;
+    /**
+     * Name of the waf  issued
+     */
+    name: string;
+}
+
+export interface GetPlansData {
+    /**
+     * The cloud account ID.
+     */
+    accountId: string;
+    /**
+     * A list of the Availability Zones available to the plan.
+     */
+    availabilityZones: string[];
+    /**
+     * Map of capability flags
+     */
+    capabilities: {[key: string]: boolean};
+    /**
+     * Plan certificates that can be attached to load balancers
+     */
+    certificates: outputs.GetPlansDataCertificate[];
+    /**
+     * The numerical index of the cloud provider for this planWill be one of:
+     *
+     *    - `0` : AWS
+     *    - `2` : Azure
+     *    - `3` : GCP
+     */
+    cloud: number;
+    /**
+     * Cloud-specific plan configuration data
+     */
+    cloudConfig: {[key: string]: string};
+    /**
+     * Plan configuration data
+     */
+    configs: outputs.GetPlansDataConfig[];
+    /**
+     * Plan images that can be used to launch native hosts
+     */
+    images: outputs.GetPlansDataImage[];
+    /**
+     * Plan KMS keys that can be used for cloud-based encryption
+     */
+    kmsKeys: outputs.GetPlansDataKmsKey[];
+    /**
+     * Kubernetes-specific plan configuration data
+     */
+    kubernetesConfigs: outputs.GetPlansDataKubernetesConfig[];
+    /**
+     * Plan metadata
+     */
+    metadatas: outputs.GetPlansDataMetadata[];
+    /**
+     * The plan ID
+     */
+    planId: string;
+    /**
+     * The private subnets for the VPC or VNet.
+     */
+    privateSubnetIds: string[];
+    /**
+     * The public subnets for the VPC or VNet.
+     */
+    publicSubnetIds: string[];
+    /**
+     * The cloud provider region.
+     */
+    region: string;
+    /**
+     * The VPC or VNet ID.
+     */
+    vpcId: string;
+    /**
+     * Plan web application firewalls that can be attached to load balancers
+     */
+    wafInfos: outputs.GetPlansDataWafInfo[];
+}
+
+export interface GetPlansDataCertificate {
+    arn: string;
+    id: string;
+    name: string;
+}
+
+export interface GetPlansDataConfig {
+    key: string;
+    type?: string;
+    value: string;
+}
+
+export interface GetPlansDataImage {
+    imageId: string;
+    name: string;
+    os: string;
+    tags: outputs.GetPlansDataImageTag[];
+    username: string;
+}
+
+export interface GetPlansDataImageTag {
+    key: string;
+    value: string;
+}
+
+export interface GetPlansDataKmsKey {
+    arn: string;
+    id: string;
+    name: string;
+}
+
+export interface GetPlansDataKubernetesConfig {
+    apiServer: string;
+    certificateAuthorityData: string;
+    name: string;
+    provider: number;
+    region: string;
+    token: string;
+    version: string;
+}
+
+export interface GetPlansDataMetadata {
+    key: string;
+    value: string;
+}
+
+export interface GetPlansDataWafInfo {
+    id: string;
+    name: string;
+}
+
+export interface GetTenantAwsKmsKeysKey {
+    keyArn: string;
+    keyId: string;
+    keyName: string;
+}
+
+export interface GetTenantConfigMetadata {
+    key: string;
+    value: string;
+}
+
+export interface GetTenantPolicy {
+    allowVolumeMapping: boolean;
+    blockExternalEp: boolean;
+}
+
+export interface GetTenantSecretTag {
+    key: string;
+    value: string;
+}
+
+export interface GetTenantSecretsSecret {
+    arn: string;
+    name: string;
+    nameSuffix: string;
+    rotationEnabled: boolean;
+    tags: outputs.GetTenantSecretsSecretTag[];
+    tenantId: string;
+}
+
+export interface GetTenantSecretsSecretTag {
+    key: string;
+    value: string;
+}
+
+export interface GetTenantTag {
+    key: string;
+    value: string;
+}
+
+export interface GetTenantsTenant {
+    id: string;
+    infraOwner: string;
+    name: string;
+    planId: string;
+    policies: outputs.GetTenantsTenantPolicy[];
+    tags: outputs.GetTenantsTenantTag[];
+}
+
+export interface GetTenantsTenantPolicy {
+    allowVolumeMapping: boolean;
+    blockExternalEp: boolean;
+}
+
+export interface GetTenantsTenantTag {
+    key: string;
+    value: string;
+}
+
+export interface InfrastructureAllSetting {
+    key: string;
+    value: string;
+}
+
+export interface InfrastructureCustomData {
+    key: string;
+    value: string;
+}
+
+export interface InfrastructureOnpremCustomData {
+    key: string;
+    value: string;
+}
+
+export interface InfrastructureOnpremEksConfig {
+    /**
+     * The security group IDs
+     */
+    ingressSecurityGroupIds: string[];
+    /**
+     * The private subnets for the VPC.
+     */
+    privateSubnets: string[];
+    /**
+     * The public subnets for the VPC.
+     */
+    publicSubnets: string[];
+    /**
+     * The the ID of a Virtual Private Cloud
+     */
+    vpcId: string;
+}
+
+export interface InfrastructurePrivateSubnet {
+    /**
+     * The subnet CIDR block.
+     */
+    cidrBlock: string;
+    /**
+     * The subnet ID.
+     */
+    id: string;
+    /**
+     * The subnet name.
+     */
+    name: string;
+    /**
+     * The subnet's tags.
+     */
+    tags: outputs.InfrastructurePrivateSubnetTag[];
+    /**
+     * The type of subnet.  Will be one of: `"public"` or `"private"`.
+     */
+    type: string;
+    /**
+     * The Duplo zone that the subnet resides in.  Will be one of:  `"A"`, `"B"`, `"C"`, or `"D"`
+     */
+    zone: string;
+}
+
+export interface InfrastructurePrivateSubnetTag {
+    key: string;
+    value: string;
+}
+
+export interface InfrastructurePublicSubnet {
+    /**
+     * The subnet CIDR block.
+     */
+    cidrBlock: string;
+    /**
+     * The subnet ID.
+     */
+    id: string;
+    /**
+     * The subnet name.
+     */
+    name: string;
+    /**
+     * The subnet's tags.
+     */
+    tags: outputs.InfrastructurePublicSubnetTag[];
+    /**
+     * The type of subnet.  Will be one of: `"public"` or `"private"`.
+     */
+    type: string;
+    /**
+     * The Duplo zone that the subnet resides in.  Will be one of:  `"A"`, `"B"`, `"C"`, or `"D"`
+     */
+    zone: string;
+}
+
+export interface InfrastructurePublicSubnetTag {
+    key: string;
+    value: string;
+}
+
+export interface InfrastructureSecurityGroup {
+    /**
+     * The security group ID.
+     */
+    id: string;
+    /**
+     * The security group name.
+     */
+    name: string;
+    readOnly: boolean;
+    /**
+     * Security group rules
+     */
+    rules: outputs.InfrastructureSecurityGroupRule[];
+    /**
+     * The type of security group.  Will be one of: `"host"` or `"lb"`.
+     */
+    type: string;
+}
+
+export interface InfrastructureSecurityGroupRule {
+    action: string;
+    destinationRuleType: number;
+    direction: string;
+    priority: number;
+    protocol: string;
+    sourceAddressPrefix: string;
+    sourcePortRange: string;
+    sourceRuleType: number;
+}
+
+export interface InfrastructureSetting {
+    key: string;
+    value: string;
+}
+
+export interface InfrastructureSettingCustomData {
+    key: string;
+    value: string;
+}
+
+export interface InfrastructureSettingSetting {
+    key: string;
+    value: string;
+}
+
+export interface K8HelmReleaseChart {
+    /**
+     * The interval associated to helm chart Defaults to `5m0s`.
+     */
+    interval?: string;
+    /**
+     * Provide unique name for the helm chart.
+     */
+    name: string;
+    /**
+     * The reconcile strategy should be chosen from ChartVersion or Revision. No new chart artifact is produced on updates to the source unless the version is changed in HelmRepository. Use `Revision` to produce new chart artifact on change in source revision. Defaults to `ChartVersion`.
+     */
+    reconcileStrategy?: string;
+    /**
+     * The name of the source, referred from helm repository resource.
+     */
+    sourceName: string;
+    /**
+     * The helm chart source, currently only HelmRepository as source is supported Defaults to `HelmRepository`.
+     */
+    sourceType?: string;
+    /**
+     * The helm chart version
+     */
+    version: string;
+}
+
+export interface K8IngressLbconfig {
+    /**
+     * The ARN of an ACM certificate to associate with this load balancer.  Only applicable for HTTPS.
+     */
+    certificateArn: string;
+    /**
+     * The DNS prefix to expose services using Route53 domain.
+     */
+    dnsPrefix: string;
+    /**
+     * HTTP Listener Port.
+     */
+    httpPort?: number;
+    /**
+     * HTTPS Listener Port.
+     */
+    httpsPort?: number;
+    /**
+     * Whether or not to create an internal load balancer.
+     */
+    isInternal: boolean;
+}
+
+export interface K8IngressRule {
+    /**
+     * If a host is provided (for e.g. example, foo.bar.com), the rules apply to that host.
+     */
+    host?: string;
+    /**
+     * Specify the path (for e.g. /api /v1/api/) to do a path base routing. If host is specified then both path and host should be match for the incoming request.
+     */
+    path: string;
+    /**
+     * Type of the path to be used.
+     */
+    pathType: string;
+    /**
+     * Port from the kubernetes service that ingress will use as backend port to serve the requests.
+     */
+    port?: number;
+    /**
+     * Port name from the kubernetes service that ingress will use as backend port to serve the requests.
+     */
+    portName?: string;
+    /**
+     * Name of the kubernetes service which Ingress will use as backend to serve the request.
+     */
+    serviceName: string;
+}
+
+export interface K8IngressTl {
+    /**
+     * The list of hosts included in the TLS certificate. Each value in this list must match the name(s) specified in the TLS secret. If not specified, it defaults to the wildcard host setting for the load balancer controller managing this Ingress.
+     */
+    hosts: string[];
+    /**
+     * The name of the secret used to terminate TLS traffic on port 443. This field is optional, enabling TLS routing based solely on the SNI hostname. If the SNI host in a listener conflicts with the 'Host' header in an IngressRule, the SNI host is used for termination, while the 'Host' header value is used for routing.
+     */
+    secretName: string;
+}
+
+export interface K8PersistentVolumeClaimSpec {
+    /**
+     * A set of the desired access modes the volume should have. More info: http://kubernetes.io/docs/user-guide/persistent-volumes#access-modes-1
+     */
+    accessModes: string[];
+    /**
+     * A list of the minimum resources the volume should have. More info: http://kubernetes.io/docs/user-guide/persistent-volumes#resources
+     */
+    resources: outputs.K8PersistentVolumeClaimSpecResources;
+    /**
+     * Name of the storage class requested by the claim
+     */
+    storageClassName: string;
+    /**
+     * Kubernetes supports two volumeModes of PersistentVolumes: `Filesystem` and `Block`.
+     */
+    volumeMode: string;
+    /**
+     * The binding reference to the PersistentVolume backing this claim.
+     */
+    volumeName: string;
+}
+
+export interface K8PersistentVolumeClaimSpecResources {
+    /**
+     * Map describing the maximum amount of compute resources allowed. More info: http://kubernetes.io/docs/user-guide/compute-resources/
+     */
+    limits?: {[key: string]: string};
+    /**
+     * Map describing the minimum amount of compute resources required. If this is omitted for a container, it defaults to `limits` if that is explicitly specified, otherwise to an implementation-defined value. More info: http://kubernetes.io/docs/user-guide/compute-resources/
+     */
+    requests: {[key: string]: string};
+}
+
+export interface K8SecretProviderClassSecretObject {
+    /**
+     * An unstructured key value map stored with the secret object that may be used to store arbitrary metadata.
+     */
+    annotations: {[key: string]: string};
+    datas: outputs.K8SecretProviderClassSecretObjectData[];
+    /**
+     * Map of string keys and values that can be used to organize and categorize (scope and select) the service.
+     */
+    labels: {[key: string]: string};
+    /**
+     * Name of the secret object.
+     */
+    name: string;
+    /**
+     * Type of the secret object.
+     */
+    type: string;
+}
+
+export interface K8SecretProviderClassSecretObjectData {
+    key: string;
+    objectName: string;
+}
+
+export interface K8StorageClassAllowedTopologies {
+    /**
+     * A list of topology selector requirements by labels.
+     */
+    matchLabelExpressions?: outputs.K8StorageClassAllowedTopologiesMatchLabelExpression[];
+}
+
+export interface K8StorageClassAllowedTopologiesMatchLabelExpression {
+    /**
+     * The label key that the selector applies to.
+     */
+    key?: string;
+    /**
+     * An array of string values. One value must match the label to be selected.
+     */
+    values?: string[];
+}
+
+export interface K8sCronJobMetadata {
+    /**
+     * An unstructured key value map stored with the cronjob that may be used to store arbitrary metadata. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+     */
+    annotations: {[key: string]: string};
+    /**
+     * Prefix, used by the server, to generate a unique name ONLY IF the `name` field has not been provided. This value will also be combined with a unique suffix. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#idempotency
+     */
+    generateName?: string;
+    /**
+     * A sequence number representing a specific generation of the desired state.
+     */
+    generation: number;
+    /**
+     * Map of string keys and values that can be used to organize and categorize (scope and select) the cronjob. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+     */
+    labels: {[key: string]: string};
+    /**
+     * Name of the cronjob, must be unique. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name: string;
+    /**
+     * Namespace defines the space within which name of the cronjob must be unique.
+     */
+    namespace: string;
+    /**
+     * An opaque value that represents the internal version of this cronjob that can be used by clients to determine when cronjob has changed. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+     */
+    resourceVersion: string;
+    /**
+     * The unique in time and space value for this cronjob. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
+     */
+    uid: string;
+}
+
+export interface K8sCronJobSpec {
+    /**
+     * Specifies how to treat concurrent executions of a Job. Defaults to Allow. Defaults to `Allow`.
+     */
+    concurrencyPolicy?: string;
+    /**
+     * The number of failed finished jobs to retain. This is a pointer to distinguish between explicit zero and not specified. Defaults to 1. Defaults to `1`.
+     */
+    failedJobsHistoryLimit?: number;
+    /**
+     * Describes the pod that will be created when executing a cron job. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+     */
+    jobTemplate: outputs.K8sCronJobSpecJobTemplate;
+    /**
+     * Cron format string, e.g. 0 * * * * or @hourly, as schedule time of its jobs to be created and executed.
+     */
+    schedule: string;
+    /**
+     * Optional deadline in seconds for starting the job if it misses scheduled time for any reason. Missed jobs executions will be counted as failed ones. Defaults to `0`.
+     */
+    startingDeadlineSeconds?: number;
+    /**
+     * The number of successful finished jobs to retain. Defaults to 3. Defaults to `3`.
+     */
+    successfulJobsHistoryLimit?: number;
+    /**
+     * This flag tells the controller to suspend subsequent executions, it does not apply to already started executions. Defaults to false. Defaults to `false`.
+     */
+    suspend?: boolean;
+}
+
+export interface K8sCronJobSpecJobTemplate {
+    /**
+     * Standard jobTemplateSpec's metadata. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
+     */
+    metadata: outputs.K8sCronJobSpecJobTemplateMetadata;
+    /**
+     * Specification of the desired behavior of the job
+     */
+    spec: outputs.K8sCronJobSpecJobTemplateSpec;
+}
+
+export interface K8sCronJobSpecJobTemplateMetadata {
+    /**
+     * An unstructured key value map stored with the jobTemplateSpec that may be used to store arbitrary metadata. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+     */
+    annotations: {[key: string]: string};
+    /**
+     * Prefix, used by the server, to generate a unique name ONLY IF the `name` field has not been provided. This value will also be combined with a unique suffix. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#idempotency
+     */
+    generateName?: string;
+    /**
+     * A sequence number representing a specific generation of the desired state.
+     */
+    generation: number;
+    /**
+     * Map of string keys and values that can be used to organize and categorize (scope and select) the jobTemplateSpec. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+     */
+    labels: {[key: string]: string};
+    /**
+     * Name of the jobTemplateSpec, must be unique. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name: string;
+    /**
+     * An opaque value that represents the internal version of this jobTemplateSpec that can be used by clients to determine when jobTemplateSpec has changed. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+     */
+    resourceVersion: string;
+    /**
+     * The unique in time and space value for this jobTemplateSpec. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
+     */
+    uid: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpec {
+    /**
+     * Optional duration in seconds the pod may be active on the node relative to StartTime before the system will actively try to mark it failed and kill associated containers. Value must be a positive integer.
+     */
+    activeDeadlineSeconds: number;
+    /**
+     * Specifies the number of retries before marking this job failed. Defaults to 6 Defaults to `6`.
+     */
+    backoffLimit?: number;
+    /**
+     * Specifies how Pod completions are tracked. It can be `NonIndexed` (default) or `Indexed`. More info: https://kubernetes.io/docs/concepts/workloads/controllers/job/#completion-mode
+     */
+    completionMode: string;
+    /**
+     * Specifies the desired number of successfully finished pods the job should be run with. Setting to nil means that the success of any pod signals the success of all pods, and allows parallelism to have any positive value. Setting to 1 means that parallelism is limited to 1 and the success of that pod signals the success of the job. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/ Defaults to `1`.
+     */
+    completions?: number;
+    /**
+     * Controls generation of pod labels and pod selectors. Leave unset unless you are certain what you are doing. When false or unset, the system pick labels unique to this job and appends those labels to the pod template. When true, the user is responsible for picking unique labels and specifying the selector. Failure to pick a unique label may cause this and other jobs to not function correctly. More info: https://git.k8s.io/community/contributors/design-proposals/selector-generation.md
+     */
+    manualSelector: boolean;
+    /**
+     * Specifies the maximum desired number of pods the job should run at any given time. The actual number of pods running in steady state will be less than this number when ((.spec.completions - .status.successful) < .spec.parallelism), i.e. when the work left to do is less than max parallelism. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/ Defaults to `1`.
+     */
+    parallelism?: number;
+    /**
+     * A label query over volumes to consider for binding.
+     */
+    selector: outputs.K8sCronJobSpecJobTemplateSpecSelector;
+    /**
+     * Describes the pod that will be created when executing a job. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+     */
+    template: outputs.K8sCronJobSpecJobTemplateSpecTemplate;
+    /**
+     * ttlSecondsAfterFinished limits the lifetime of a Job that has finished execution (either Complete or Failed). If this field is set, ttlSecondsAfterFinished after the Job finishes, it is eligible to be automatically deleted. When the Job is being deleted, its lifecycle guarantees (e.g. finalizers) will be honored. If this field is unset, the Job won't be automatically deleted. If this field is set to zero, the Job becomes eligible to be deleted immediately after it finishes.
+     */
+    ttlSecondsAfterFinished?: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecSelector {
+    /**
+     * A list of label selector requirements. The requirements are ANDed.
+     */
+    matchExpressions?: outputs.K8sCronJobSpecJobTemplateSpecSelectorMatchExpression[];
+    /**
+     * A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+     */
+    matchLabels: {[key: string]: string};
+}
+
+export interface K8sCronJobSpecJobTemplateSpecSelectorMatchExpression {
+    /**
+     * The label key that the selector applies to.
+     */
+    key?: string;
+    /**
+     * A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
+     */
+    operator?: string;
+    /**
+     * An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
+     */
+    values?: string[];
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplate {
+    /**
+     * Standard job's metadata. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
+     */
+    metadata: outputs.K8sCronJobSpecJobTemplateSpecTemplateMetadata;
+    /**
+     * Spec of the pods owned by the job
+     */
+    spec?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpec;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateMetadata {
+    /**
+     * An unstructured key value map stored with the job that may be used to store arbitrary metadata. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+     */
+    annotations: {[key: string]: string};
+    /**
+     * Prefix, used by the server, to generate a unique name ONLY IF the `name` field has not been provided. This value will also be combined with a unique suffix. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#idempotency
+     */
+    generateName?: string;
+    /**
+     * A sequence number representing a specific generation of the desired state.
+     */
+    generation: number;
+    /**
+     * Map of string keys and values that can be used to organize and categorize (scope and select) the job. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+     */
+    labels: {[key: string]: string};
+    /**
+     * Name of the job, must be unique. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name: string;
+    /**
+     * An opaque value that represents the internal version of this job that can be used by clients to determine when job has changed. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+     */
+    resourceVersion: string;
+    /**
+     * The unique in time and space value for this job. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
+     */
+    uid: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpec {
+    /**
+     * Optional duration in seconds the pod may be active on the node relative to StartTime before the system will actively try to mark it failed and kill associated containers. Value must be a positive integer.
+     */
+    activeDeadlineSeconds: number;
+    /**
+     * Optional pod scheduling constraints.
+     */
+    affinity?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecAffinity;
+    /**
+     * AutomountServiceAccountToken indicates whether a service account token should be automatically mounted. Defaults to `true`.
+     */
+    automountServiceAccountToken?: boolean;
+    /**
+     * List of containers belonging to the pod. Containers cannot currently be added or removed. There must be at least one container in a Pod. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/
+     */
+    containers?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainer[];
+    /**
+     * Specifies the DNS parameters of a pod. Parameters specified here will be merged to the generated DNS configuration based on DNSPolicy. Optional: Defaults to empty
+     */
+    dnsConfig?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecDnsConfig;
+    /**
+     * Set DNS policy for containers within the pod. Valid values are 'ClusterFirstWithHostNet', 'ClusterFirst', 'Default' or 'None'. DNS parameters given in DNSConfig will be merged with the policy selected with DNSPolicy. To have DNS options set along with hostNetwork, you have to specify DNS policy explicitly to 'ClusterFirstWithHostNet'. Defaults to 'ClusterFirst'. More info: https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy
+     */
+    dnsPolicy: string;
+    /**
+     * Enables generating environment variables for service discovery. Defaults to true. Defaults to `true`.
+     */
+    enableServiceLinks?: boolean;
+    /**
+     * List of hosts and IPs that will be injected into the pod's hosts file if specified. Optional: Defaults to empty.
+     */
+    hostAliases: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecHostAlias[];
+    /**
+     * Use the host's ipc namespace. Optional: Defaults to false.
+     */
+    hostIpc: boolean;
+    /**
+     * Host networking requested for this pod. Use the host's network namespace. If this option is set, the ports that will be used must be specified.
+     */
+    hostNetwork: boolean;
+    /**
+     * Use the host's pid namespace.
+     */
+    hostPid: boolean;
+    /**
+     * Specifies the hostname of the Pod If not specified, the pod's hostname will be set to a system-defined value.
+     */
+    hostname: string;
+    /**
+     * ImagePullSecrets is an optional list of references to secrets in the same namespace to use for pulling any of the images used by this PodSpec. If specified, these secrets will be passed to individual puller implementations for them to use. For example, in the case of docker, only DockerConfig type secrets are honored. More info: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
+     */
+    imagePullSecrets: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecImagePullSecret[];
+    /**
+     * List of init containers belonging to the pod. Init containers always run to completion and each must complete successfully before the next is started. More info: https://kubernetes.io/docs/concepts/workloads/pods/init-containers/
+     */
+    initContainers?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainer[];
+    /**
+     * NodeName is a request to schedule this pod onto a specific node. If it is non-empty, the scheduler simply schedules this pod onto that node, assuming that it fits resource requirements.
+     */
+    nodeName: string;
+    /**
+     * NodeSelector is a selector which must be true for the pod to fit on a node. Selector which must match a node's labels for the pod to be scheduled on that node. More info: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/.
+     */
+    nodeSelector: {[key: string]: string};
+    /**
+     * If specified, indicates the pod's priority. "system-node-critical" and "system-cluster-critical" are two special keywords which indicate the highest priorities with the former being the highest priority. Any other name must be defined by creating a PriorityClass object with that name. If not specified, the pod priority will be default or zero if there is no default.
+     */
+    priorityClassName: string;
+    /**
+     * If specified, all readiness gates will be evaluated for pod readiness. A pod is ready when all its containers are ready AND all conditions specified in the readiness gates have status equal to "True" More info: https://git.k8s.io/enhancements/keps/sig-network/0007-pod-ready%2B%2B.md
+     */
+    readinessGates: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecReadinessGate[];
+    /**
+     * Restart policy for all containers within the pod. One of OnFailure, Never. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#restart-policy. Defaults to `Never`.
+     */
+    restartPolicy?: string;
+    /**
+     * RuntimeClassName is a feature for selecting the container runtime configuration. The container runtime configuration is used to run a Pod's containers. More info: https://kubernetes.io/docs/concepts/containers/runtime-class
+     */
+    runtimeClassName: string;
+    /**
+     * If specified, the pod will be dispatched by specified scheduler. If not specified, the pod will be dispatched by default scheduler.
+     */
+    schedulerName: string;
+    /**
+     * SecurityContext holds pod-level security attributes and common container settings. Optional: Defaults to empty
+     */
+    securityContext: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecSecurityContext;
+    /**
+     * ServiceAccountName is the name of the ServiceAccount to use to run this pod. More info: http://releases.k8s.io/HEAD/docs/design/service_accounts.md.
+     */
+    serviceAccountName: string;
+    /**
+     * Share a single process namespace between all of the containers in a pod. When this is set containers will be able to view and signal processes from other containers in the same pod, and the first process in each container will not be assigned PID 1. HostPID and ShareProcessNamespace cannot both be set. Optional: Defaults to false. Defaults to `false`.
+     */
+    shareProcessNamespace?: boolean;
+    /**
+     * If specified, the fully qualified Pod hostname will be "...svc.". If not specified, the pod will not have a domainname at all..
+     */
+    subdomain: string;
+    /**
+     * Optional duration in seconds the pod needs to terminate gracefully. May be decreased in delete request. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period will be used instead. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process.
+     */
+    terminationGracePeriodSeconds: number;
+    /**
+     * If specified, the pod's toleration. Optional: Defaults to empty
+     */
+    tolerations?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecToleration[];
+    /**
+     * describes how a group of pods ought to spread across topology domains. Scheduler will schedule pods in a way which abides by the constraints.
+     */
+    topologySpreadConstraints?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecTopologySpreadConstraint[];
+    /**
+     * List of volumes that can be mounted by containers belonging to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes
+     */
+    volumes?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolume[];
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecAffinity {
+    /**
+     * Node affinity scheduling rules for the pod.
+     */
+    nodeAffinity?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityNodeAffinity;
+    /**
+     * Inter-pod topological affinity. rules that specify that certain pods should be placed in the same topological domain (e.g. same node, same rack, same zone, same power domain, etc.)
+     */
+    podAffinity?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAffinity;
+    /**
+     * Inter-pod topological affinity. rules that specify that certain pods should be placed in the same topological domain (e.g. same node, same rack, same zone, same power domain, etc.)
+     */
+    podAntiAffinity?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAntiAffinity;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityNodeAffinity {
+    /**
+     * The scheduler will prefer to schedule pods to nodes that satisfy the affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions. The node that is most preferred is the one with the greatest sum of weights, i.e. for each node that meets all of the scheduling requirements (resource request, RequiredDuringScheduling affinity expressions, etc.), compute a sum by iterating through the elements of this field and adding 'weight' to the sum if the node matches the corresponding MatchExpressions; the node(s) with the highest sum are the most preferred.
+     */
+    preferredDuringSchedulingIgnoredDuringExecutions: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecution[];
+    /**
+     * If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a node label update), the system may or may not try to eventually evict the pod from its node.
+     */
+    requiredDuringSchedulingIgnoredDuringExecution?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecution {
+    /**
+     * A node selector term, associated with the corresponding weight.
+     */
+    preference: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreference;
+    /**
+     * weight is in the range 1-100
+     */
+    weight: number;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreference {
+    /**
+     * List of node selector requirements. The requirements are ANDed.
+     */
+    matchExpressions?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpression[];
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpression {
+    /**
+     * The label key that the selector applies to.
+     */
+    key?: string;
+    /**
+     * Operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists, DoesNotExist. Gt, and Lt.
+     */
+    operator?: string;
+    /**
+     * Values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch.
+     */
+    values?: string[];
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution {
+    /**
+     * List of node selector terms. The terms are ORed.
+     */
+    nodeSelectorTerms?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTerm[];
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTerm {
+    /**
+     * List of node selector requirements. The requirements are ANDed.
+     */
+    matchExpressions?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpression[];
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpression {
+    /**
+     * The label key that the selector applies to.
+     */
+    key?: string;
+    /**
+     * Operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists, DoesNotExist. Gt, and Lt.
+     */
+    operator?: string;
+    /**
+     * Values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch.
+     */
+    values?: string[];
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAffinity {
+    /**
+     * The scheduler will prefer to schedule pods to nodes that satisfy the anti-affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions. The node that is most preferred is the one with the greatest sum of weights, i.e. for each node that meets all of the scheduling requirements (resource request, RequiredDuringScheduling anti-affinity expressions, etc.), compute a sum by iterating through the elements of this field and adding 'weight' to the sum if the node matches the corresponding MatchExpressions; the node(s) with the highest sum are the most preferred.
+     */
+    preferredDuringSchedulingIgnoredDuringExecutions: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecution[];
+    /**
+     * If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system may or may not try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each PodAffinityTerm are intersected, i.e. all terms must be satisfied.
+     */
+    requiredDuringSchedulingIgnoredDuringExecutions?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecution[];
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecution {
+    /**
+     * A pod affinity term, associated with the corresponding weight
+     */
+    podAffinityTerm: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTerm;
+    /**
+     * weight associated with matching the corresponding podAffinityTerm, in the range 1-100
+     */
+    weight: number;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTerm {
+    /**
+     * A label query over a set of resources, in this case pods.
+     */
+    labelSelectors: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector[];
+    /**
+     * namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means 'this pod's namespace'
+     */
+    namespaces: string[];
+    /**
+     * empty topology key is interpreted by the scheduler as 'all topologies'
+     */
+    topologyKey: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector {
+    /**
+     * A list of label selector requirements. The requirements are ANDed.
+     */
+    matchExpressions?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression[];
+    /**
+     * A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+     */
+    matchLabels?: {[key: string]: string};
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression {
+    /**
+     * The label key that the selector applies to.
+     */
+    key?: string;
+    /**
+     * A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
+     */
+    operator?: string;
+    /**
+     * An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
+     */
+    values?: string[];
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecution {
+    /**
+     * A label query over a set of resources, in this case pods.
+     */
+    labelSelectors: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector[];
+    /**
+     * namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means 'this pod's namespace'
+     */
+    namespaces: string[];
+    /**
+     * empty topology key is interpreted by the scheduler as 'all topologies'
+     */
+    topologyKey: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector {
+    /**
+     * A list of label selector requirements. The requirements are ANDed.
+     */
+    matchExpressions?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression[];
+    /**
+     * A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+     */
+    matchLabels?: {[key: string]: string};
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression {
+    /**
+     * The label key that the selector applies to.
+     */
+    key?: string;
+    /**
+     * A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
+     */
+    operator?: string;
+    /**
+     * An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
+     */
+    values?: string[];
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAntiAffinity {
+    /**
+     * The scheduler will prefer to schedule pods to nodes that satisfy the anti-affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions. The node that is most preferred is the one with the greatest sum of weights, i.e. for each node that meets all of the scheduling requirements (resource request, RequiredDuringScheduling anti-affinity expressions, etc.), compute a sum by iterating through the elements of this field and adding 'weight' to the sum if the node matches the corresponding MatchExpressions; the node(s) with the highest sum are the most preferred.
+     */
+    preferredDuringSchedulingIgnoredDuringExecutions: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecution[];
+    /**
+     * If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system may or may not try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each PodAffinityTerm are intersected, i.e. all terms must be satisfied.
+     */
+    requiredDuringSchedulingIgnoredDuringExecutions?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecution[];
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecution {
+    /**
+     * A pod affinity term, associated with the corresponding weight
+     */
+    podAffinityTerm: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTerm;
+    /**
+     * weight associated with matching the corresponding podAffinityTerm, in the range 1-100
+     */
+    weight: number;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTerm {
+    /**
+     * A label query over a set of resources, in this case pods.
+     */
+    labelSelectors: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector[];
+    /**
+     * namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means 'this pod's namespace'
+     */
+    namespaces: string[];
+    /**
+     * empty topology key is interpreted by the scheduler as 'all topologies'
+     */
+    topologyKey: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector {
+    /**
+     * A list of label selector requirements. The requirements are ANDed.
+     */
+    matchExpressions?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression[];
+    /**
+     * A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+     */
+    matchLabels?: {[key: string]: string};
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression {
+    /**
+     * The label key that the selector applies to.
+     */
+    key?: string;
+    /**
+     * A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
+     */
+    operator?: string;
+    /**
+     * An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
+     */
+    values?: string[];
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecution {
+    /**
+     * A label query over a set of resources, in this case pods.
+     */
+    labelSelectors: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector[];
+    /**
+     * namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means 'this pod's namespace'
+     */
+    namespaces: string[];
+    /**
+     * empty topology key is interpreted by the scheduler as 'all topologies'
+     */
+    topologyKey: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector {
+    /**
+     * A list of label selector requirements. The requirements are ANDed.
+     */
+    matchExpressions?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression[];
+    /**
+     * A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+     */
+    matchLabels?: {[key: string]: string};
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression {
+    /**
+     * The label key that the selector applies to.
+     */
+    key?: string;
+    /**
+     * A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
+     */
+    operator?: string;
+    /**
+     * An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
+     */
+    values?: string[];
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainer {
+    /**
+     * Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR*NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR*NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+     */
+    args?: string[];
+    /**
+     * Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR*NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR*NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+     */
+    commands?: string[];
+    /**
+     * List of sources to populate environment variables in the container. The keys defined within a source must be a C*IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated.
+     */
+    envFroms?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerEnvFrom[];
+    /**
+     * List of environment variables to set in the container. Cannot be updated.
+     */
+    envs?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerEnv[];
+    /**
+     * Docker image name. More info: https://kubernetes.io/docs/concepts/containers/images/
+     */
+    image?: string;
+    /**
+     * Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/images/#updating-images
+     */
+    imagePullPolicy: string;
+    /**
+     * Actions that the management system should take in response to container lifecycle events
+     */
+    lifecycle?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecycle;
+    /**
+     * Periodic probe of container liveness. Container will be restarted if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    livenessProbe?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLivenessProbe;
+    /**
+     * Name of the container specified as a DNS*LABEL. Each container in a pod must have a unique name (DNS*LABEL). Cannot be updated.
+     */
+    name: string;
+    /**
+     * List of ports to expose from the container. Exposing a port here gives the system additional information about the network connections a container uses, but is primarily informational. Not specifying a port here DOES NOT prevent that port from being exposed. Any port which is listening on the default "0.0.0.0" address inside a container will be accessible from the network. Cannot be updated.
+     */
+    ports?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerPort[];
+    /**
+     * Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    readinessProbe?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerReadinessProbe;
+    /**
+     * Compute Resources required by this container. Cannot be updated. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+     */
+    resources: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerResources;
+    /**
+     * Security options the pod should run with. More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+     */
+    securityContext?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerSecurityContext;
+    /**
+     * StartupProbe indicates that the Pod has successfully initialized. If specified, no other probes are executed until this completes successfully. If this probe fails, the Pod will be restarted, just as if the livenessProbe failed. This can be used to provide different probe parameters at the beginning of a Pod's lifecycle, when it might take a long time to load data or warm a cache, than during steady-state operation. This cannot be updated. This is an alpha feature enabled by the StartupProbe feature flag. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+     */
+    startupProbe?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerStartupProbe;
+    /**
+     * Whether this container should allocate a buffer for stdin in the container runtime. If this is not set, reads from stdin in the container will always result in EOF.  Defaults to `false`.
+     */
+    stdin?: boolean;
+    /**
+     * Whether the container runtime should close the stdin channel after it has been opened by a single attach. When stdin is true the stdin stream will remain open across multiple attach sessions. If stdinOnce is set to true, stdin is opened on container start, is empty until the first client attaches to stdin, and then remains open and accepts data until the client disconnects, at which time stdin is closed and remains closed until the container is restarted. If this flag is false, a container processes that reads from stdin will never receive an EOF. Defaults to `false`.
+     */
+    stdinOnce?: boolean;
+    /**
+     * Optional: Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Defaults to /dev/termination-log. Cannot be updated. Defaults to `/dev/termination-log`.
+     */
+    terminationMessagePath?: string;
+    /**
+     * Optional: Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
+     */
+    terminationMessagePolicy: string;
+    /**
+     * Whether this container should allocate a TTY for itself Defaults to `false`.
+     */
+    tty?: boolean;
+    /**
+     * Pod volumes to mount into the container's filesystem. Cannot be updated.
+     */
+    volumeMounts?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerVolumeMount[];
+    /**
+     * Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image. Cannot be updated.
+     */
+    workingDir?: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerEnv {
+    /**
+     * Name of the environment variable. Must be a C_IDENTIFIER
+     */
+    name: string;
+    /**
+     * Variable references $(VAR*NAME) are expanded using the previous defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR*NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
+     */
+    value?: string;
+    /**
+     * Source for the environment variable's value
+     */
+    valueFrom?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerEnvValueFrom;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerEnvFrom {
+    /**
+     * The ConfigMap to select from
+     */
+    configMapRef?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerEnvFromConfigMapRef;
+    /**
+     * An optional identifer to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
+     */
+    prefix?: string;
+    /**
+     * The Secret to select from
+     */
+    secretRef?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerEnvFromSecretRef;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerEnvFromConfigMapRef {
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name: string;
+    /**
+     * Specify whether the ConfigMap must be defined
+     */
+    optional?: boolean;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerEnvFromSecretRef {
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name: string;
+    /**
+     * Specify whether the Secret must be defined
+     */
+    optional?: boolean;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerEnvValueFrom {
+    /**
+     * Selects a key of a ConfigMap.
+     */
+    configMapKeyRef?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerEnvValueFromConfigMapKeyRef;
+    /**
+     * Selects a field of the pod: supports metadata.name, metadata.namespace, metadata.labels, metadata.annotations, spec.nodeName, spec.serviceAccountName, status.podIP.
+     */
+    fieldRef?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerEnvValueFromFieldRef;
+    /**
+     * Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.
+     */
+    resourceFieldRef?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerEnvValueFromResourceFieldRef;
+    /**
+     * Selects a key of a secret in the pod's namespace.
+     */
+    secretKeyRef?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerEnvValueFromSecretKeyRef;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerEnvValueFromConfigMapKeyRef {
+    /**
+     * The key to select.
+     */
+    key?: string;
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: string;
+    /**
+     * Specify whether the ConfigMap or its key must be defined.
+     */
+    optional?: boolean;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerEnvValueFromFieldRef {
+    /**
+     * Version of the schema the FieldPath is written in terms of, defaults to "v1". Defaults to `v1`.
+     */
+    apiVersion?: string;
+    /**
+     * Path of the field to select in the specified API version
+     */
+    fieldPath?: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerEnvValueFromResourceFieldRef {
+    containerName?: string;
+    /**
+     * Defaults to `1`.
+     */
+    divisor?: string;
+    /**
+     * Resource to select
+     */
+    resource: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerEnvValueFromSecretKeyRef {
+    /**
+     * The key of the secret to select from. Must be a valid secret key.
+     */
+    key?: string;
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: string;
+    /**
+     * Specify whether the Secret or its key must be defined.
+     */
+    optional?: boolean;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecycle {
+    /**
+     * post*start is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+     */
+    postStarts?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePostStart[];
+    /**
+     * pre*stop is called immediately before a container is terminated. The container is terminated after the handler completes. The reason for termination is passed to the handler. Regardless of the outcome of the handler, the container is eventually terminated. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+     */
+    preStops?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePreStop[];
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePostStart {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePostStartExec;
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePostStartHttpGet;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePostStartTcpSocket[];
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePostStartExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: string[];
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePostStartHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeader[];
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: string;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port?: string;
+    /**
+     * Scheme to use for connecting to the host. Defaults to `HTTP`.
+     */
+    scheme?: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: string;
+    /**
+     * The header field value
+     */
+    value?: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePostStartTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePreStop {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePreStopExec;
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePreStopHttpGet;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePreStopTcpSocket[];
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePreStopExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: string[];
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePreStopHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeader[];
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: string;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port?: string;
+    /**
+     * Scheme to use for connecting to the host. Defaults to `HTTP`.
+     */
+    scheme?: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: string;
+    /**
+     * The header field value
+     */
+    value?: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLifecyclePreStopTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLivenessProbe {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLivenessProbeExec;
+    /**
+     * Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to `3`.
+     */
+    failureThreshold?: number;
+    /**
+     * GRPC specifies an action involving a GRPC port.
+     */
+    grpcs?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLivenessProbeGrpc[];
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLivenessProbeHttpGet;
+    /**
+     * Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    initialDelaySeconds?: number;
+    /**
+     * How often (in seconds) to perform the probe Defaults to `10`.
+     */
+    periodSeconds?: number;
+    /**
+     * Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to `1`.
+     */
+    successThreshold?: number;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLivenessProbeTcpSocket[];
+    /**
+     * Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes Defaults to `1`.
+     */
+    timeoutSeconds?: number;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLivenessProbeExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: string[];
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLivenessProbeGrpc {
+    /**
+     * Number of the port to access on the container. Number must be in the range 1 to 65535.
+     */
+    port: number;
+    /**
+     * Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+     */
+    service?: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLivenessProbeHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeader[];
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: string;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port?: string;
+    /**
+     * Scheme to use for connecting to the host. Defaults to `HTTP`.
+     */
+    scheme?: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: string;
+    /**
+     * The header field value
+     */
+    value?: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerLivenessProbeTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerPort {
+    /**
+     * Number of port to expose on the pod's IP address. This must be a valid port number, 0 < x < 65536.
+     */
+    containerPort: number;
+    /**
+     * What host IP to bind the external port to.
+     */
+    hostIp?: string;
+    /**
+     * Number of port to expose on the host. If specified, this must be a valid port number, 0 < x < 65536. If HostNetwork is specified, this must match ContainerPort. Most containers do not need this.
+     */
+    hostPort?: number;
+    /**
+     * If specified, this must be an IANA*SVC*NAME and unique within the pod. Each named port in a pod must have a unique name. Name for the port that can be referred to by services
+     */
+    name?: string;
+    /**
+     * Protocol for port. Must be UDP or TCP. Defaults to "TCP". Defaults to `TCP`.
+     */
+    protocol?: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerReadinessProbe {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerReadinessProbeExec;
+    /**
+     * Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to `3`.
+     */
+    failureThreshold?: number;
+    /**
+     * GRPC specifies an action involving a GRPC port.
+     */
+    grpcs?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerReadinessProbeGrpc[];
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerReadinessProbeHttpGet;
+    /**
+     * Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    initialDelaySeconds?: number;
+    /**
+     * How often (in seconds) to perform the probe Defaults to `10`.
+     */
+    periodSeconds?: number;
+    /**
+     * Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to `1`.
+     */
+    successThreshold?: number;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerReadinessProbeTcpSocket[];
+    /**
+     * Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes Defaults to `1`.
+     */
+    timeoutSeconds?: number;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerReadinessProbeExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: string[];
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerReadinessProbeGrpc {
+    /**
+     * Number of the port to access on the container. Number must be in the range 1 to 65535.
+     */
+    port: number;
+    /**
+     * Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+     */
+    service?: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerReadinessProbeHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeader[];
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: string;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port?: string;
+    /**
+     * Scheme to use for connecting to the host. Defaults to `HTTP`.
+     */
+    scheme?: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: string;
+    /**
+     * The header field value
+     */
+    value?: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerReadinessProbeTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerResources {
+    /**
+     * Describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+     */
+    limits: {[key: string]: string};
+    /**
+     * Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
+     */
+    requests: {[key: string]: string};
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerSecurityContext {
+    /**
+     * AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the no*new*privs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP*SYS*ADMIN Defaults to `true`.
+     */
+    allowPrivilegeEscalation?: boolean;
+    /**
+     * The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime.
+     */
+    capabilities?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerSecurityContextCapabilities;
+    /**
+     * Run container in privileged mode. Processes in privileged containers are essentially equivalent to root on the host. Defaults to false. Defaults to `false`.
+     */
+    privileged?: boolean;
+    /**
+     * Whether this container has a read-only root filesystem. Default is false. Defaults to `false`.
+     */
+    readOnlyRootFilesystem?: boolean;
+    /**
+     * The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+     */
+    runAsGroup?: string;
+    /**
+     * Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+     */
+    runAsNonRoot?: boolean;
+    /**
+     * The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+     */
+    runAsUser?: string;
+    /**
+     * The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+     */
+    seLinuxOptions?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerSecurityContextSeLinuxOptions;
+    /**
+     * The seccomp options to use by the containers in this pod. Note that this field cannot be set when spec.os.name is windows.
+     */
+    seccompProfile?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerSecurityContextSeccompProfile;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerSecurityContextCapabilities {
+    /**
+     * Added capabilities
+     */
+    adds?: string[];
+    /**
+     * Removed capabilities
+     */
+    drops?: string[];
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerSecurityContextSeLinuxOptions {
+    /**
+     * Level is SELinux level label that applies to the container.
+     */
+    level?: string;
+    /**
+     * Role is a SELinux role label that applies to the container.
+     */
+    role?: string;
+    /**
+     * Type is a SELinux type label that applies to the container.
+     */
+    type?: string;
+    /**
+     * User is a SELinux user label that applies to the container.
+     */
+    user?: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerSecurityContextSeccompProfile {
+    /**
+     * Localhost Profile indicates a profile defined in a file on the node should be used. The profile must be preconfigured on the node to work. Defaults to ``.
+     */
+    localhostProfile?: string;
+    /**
+     * Type indicates which kind of seccomp profile will be applied. Valid options are: Localhost, RuntimeDefault, Unconfined. Defaults to `Unconfined`.
+     */
+    type?: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerStartupProbe {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerStartupProbeExec;
+    /**
+     * Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to `3`.
+     */
+    failureThreshold?: number;
+    /**
+     * GRPC specifies an action involving a GRPC port.
+     */
+    grpcs?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerStartupProbeGrpc[];
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerStartupProbeHttpGet;
+    /**
+     * Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    initialDelaySeconds?: number;
+    /**
+     * How often (in seconds) to perform the probe Defaults to `10`.
+     */
+    periodSeconds?: number;
+    /**
+     * Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to `1`.
+     */
+    successThreshold?: number;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerStartupProbeTcpSocket[];
+    /**
+     * Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes Defaults to `1`.
+     */
+    timeoutSeconds?: number;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerStartupProbeExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: string[];
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerStartupProbeGrpc {
+    /**
+     * Number of the port to access on the container. Number must be in the range 1 to 65535.
+     */
+    port: number;
+    /**
+     * Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+     */
+    service?: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerStartupProbeHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerStartupProbeHttpGetHttpHeader[];
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: string;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port?: string;
+    /**
+     * Scheme to use for connecting to the host. Defaults to `HTTP`.
+     */
+    scheme?: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerStartupProbeHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: string;
+    /**
+     * The header field value
+     */
+    value?: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerStartupProbeTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecContainerVolumeMount {
+    /**
+     * Path within the container at which the volume should be mounted. Must not contain ':'.
+     */
+    mountPath: string;
+    /**
+     * Mount propagation mode. mountPropagation determines how mounts are propagated from the host to container and the other way around. Valid values are None (default), HostToContainer and Bidirectional. Defaults to `None`.
+     */
+    mountPropagation?: string;
+    /**
+     * This must match the Name of a Volume.
+     */
+    name: string;
+    /**
+     * Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false. Defaults to `false`.
+     */
+    readOnly?: boolean;
+    /**
+     * Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
+     */
+    subPath?: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecDnsConfig {
+    /**
+     * A list of DNS name server IP addresses. This will be appended to the base nameservers generated from DNSPolicy. Duplicated nameservers will be removed.
+     */
+    nameservers?: string[];
+    /**
+     * A list of DNS resolver options. This will be merged with the base options generated from DNSPolicy. Duplicated entries will be removed. Resolution options given in Options will override those that appear in the base DNSPolicy.
+     */
+    options?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecDnsConfigOption[];
+    /**
+     * A list of DNS search domains for host-name lookup. This will be appended to the base search paths generated from DNSPolicy. Duplicated search paths will be removed.
+     */
+    searches?: string[];
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecDnsConfigOption {
+    /**
+     * Name of the option.
+     */
+    name: string;
+    /**
+     * Value of the option. Optional: Defaults to empty.
+     */
+    value?: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecHostAlias {
+    /**
+     * Hostnames for the IP address.
+     */
+    hostnames: string[];
+    /**
+     * IP address of the host file entry.
+     */
+    ip: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecImagePullSecret {
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainer {
+    /**
+     * Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR*NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR*NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+     */
+    args?: string[];
+    /**
+     * Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR*NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR*NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+     */
+    commands?: string[];
+    /**
+     * List of sources to populate environment variables in the container. The keys defined within a source must be a C*IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated.
+     */
+    envFroms?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerEnvFrom[];
+    /**
+     * List of environment variables to set in the container. Cannot be updated.
+     */
+    envs?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerEnv[];
+    /**
+     * Docker image name. More info: https://kubernetes.io/docs/concepts/containers/images/
+     */
+    image?: string;
+    /**
+     * Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/images/#updating-images
+     */
+    imagePullPolicy: string;
+    /**
+     * Actions that the management system should take in response to container lifecycle events
+     */
+    lifecycle?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecycle;
+    /**
+     * Periodic probe of container liveness. Container will be restarted if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    livenessProbe?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLivenessProbe;
+    /**
+     * Name of the container specified as a DNS*LABEL. Each container in a pod must have a unique name (DNS*LABEL). Cannot be updated.
+     */
+    name: string;
+    /**
+     * List of ports to expose from the container. Exposing a port here gives the system additional information about the network connections a container uses, but is primarily informational. Not specifying a port here DOES NOT prevent that port from being exposed. Any port which is listening on the default "0.0.0.0" address inside a container will be accessible from the network. Cannot be updated.
+     */
+    ports?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerPort[];
+    /**
+     * Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    readinessProbe?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerReadinessProbe;
+    /**
+     * Compute Resources required by this container. Cannot be updated. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+     */
+    resources: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerResources;
+    /**
+     * Security options the pod should run with. More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+     */
+    securityContext?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerSecurityContext;
+    /**
+     * StartupProbe indicates that the Pod has successfully initialized. If specified, no other probes are executed until this completes successfully. If this probe fails, the Pod will be restarted, just as if the livenessProbe failed. This can be used to provide different probe parameters at the beginning of a Pod's lifecycle, when it might take a long time to load data or warm a cache, than during steady-state operation. This cannot be updated. This is an alpha feature enabled by the StartupProbe feature flag. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+     */
+    startupProbe?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerStartupProbe;
+    /**
+     * Whether this container should allocate a buffer for stdin in the container runtime. If this is not set, reads from stdin in the container will always result in EOF.  Defaults to `false`.
+     */
+    stdin?: boolean;
+    /**
+     * Whether the container runtime should close the stdin channel after it has been opened by a single attach. When stdin is true the stdin stream will remain open across multiple attach sessions. If stdinOnce is set to true, stdin is opened on container start, is empty until the first client attaches to stdin, and then remains open and accepts data until the client disconnects, at which time stdin is closed and remains closed until the container is restarted. If this flag is false, a container processes that reads from stdin will never receive an EOF. Defaults to `false`.
+     */
+    stdinOnce?: boolean;
+    /**
+     * Optional: Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Defaults to /dev/termination-log. Cannot be updated. Defaults to `/dev/termination-log`.
+     */
+    terminationMessagePath?: string;
+    /**
+     * Optional: Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
+     */
+    terminationMessagePolicy: string;
+    /**
+     * Whether this container should allocate a TTY for itself Defaults to `false`.
+     */
+    tty?: boolean;
+    /**
+     * Pod volumes to mount into the container's filesystem. Cannot be updated.
+     */
+    volumeMounts?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerVolumeMount[];
+    /**
+     * Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image. Cannot be updated.
+     */
+    workingDir?: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerEnv {
+    /**
+     * Name of the environment variable. Must be a C_IDENTIFIER
+     */
+    name: string;
+    /**
+     * Variable references $(VAR*NAME) are expanded using the previous defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR*NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
+     */
+    value?: string;
+    /**
+     * Source for the environment variable's value
+     */
+    valueFrom?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerEnvValueFrom;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerEnvFrom {
+    /**
+     * The ConfigMap to select from
+     */
+    configMapRef?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerEnvFromConfigMapRef;
+    /**
+     * An optional identifer to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
+     */
+    prefix?: string;
+    /**
+     * The Secret to select from
+     */
+    secretRef?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerEnvFromSecretRef;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerEnvFromConfigMapRef {
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name: string;
+    /**
+     * Specify whether the ConfigMap must be defined
+     */
+    optional?: boolean;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerEnvFromSecretRef {
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name: string;
+    /**
+     * Specify whether the Secret must be defined
+     */
+    optional?: boolean;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerEnvValueFrom {
+    /**
+     * Selects a key of a ConfigMap.
+     */
+    configMapKeyRef?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRef;
+    /**
+     * Selects a field of the pod: supports metadata.name, metadata.namespace, metadata.labels, metadata.annotations, spec.nodeName, spec.serviceAccountName, status.podIP.
+     */
+    fieldRef?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerEnvValueFromFieldRef;
+    /**
+     * Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.
+     */
+    resourceFieldRef?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerEnvValueFromResourceFieldRef;
+    /**
+     * Selects a key of a secret in the pod's namespace.
+     */
+    secretKeyRef?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerEnvValueFromSecretKeyRef;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRef {
+    /**
+     * The key to select.
+     */
+    key?: string;
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: string;
+    /**
+     * Specify whether the ConfigMap or its key must be defined.
+     */
+    optional?: boolean;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerEnvValueFromFieldRef {
+    /**
+     * Version of the schema the FieldPath is written in terms of, defaults to "v1". Defaults to `v1`.
+     */
+    apiVersion?: string;
+    /**
+     * Path of the field to select in the specified API version
+     */
+    fieldPath?: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerEnvValueFromResourceFieldRef {
+    containerName?: string;
+    /**
+     * Defaults to `1`.
+     */
+    divisor?: string;
+    /**
+     * Resource to select
+     */
+    resource: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerEnvValueFromSecretKeyRef {
+    /**
+     * The key of the secret to select from. Must be a valid secret key.
+     */
+    key?: string;
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: string;
+    /**
+     * Specify whether the Secret or its key must be defined.
+     */
+    optional?: boolean;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecycle {
+    /**
+     * post*start is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+     */
+    postStarts?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePostStart[];
+    /**
+     * pre*stop is called immediately before a container is terminated. The container is terminated after the handler completes. The reason for termination is passed to the handler. Regardless of the outcome of the handler, the container is eventually terminated. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+     */
+    preStops?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePreStop[];
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePostStart {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePostStartExec;
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePostStartHttpGet;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePostStartTcpSocket[];
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePostStartExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: string[];
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePostStartHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePostStartHttpGetHttpHeader[];
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: string;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port?: string;
+    /**
+     * Scheme to use for connecting to the host. Defaults to `HTTP`.
+     */
+    scheme?: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePostStartHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: string;
+    /**
+     * The header field value
+     */
+    value?: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePostStartTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePreStop {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePreStopExec;
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePreStopHttpGet;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePreStopTcpSocket[];
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePreStopExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: string[];
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePreStopHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePreStopHttpGetHttpHeader[];
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: string;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port?: string;
+    /**
+     * Scheme to use for connecting to the host. Defaults to `HTTP`.
+     */
+    scheme?: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePreStopHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: string;
+    /**
+     * The header field value
+     */
+    value?: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLifecyclePreStopTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLivenessProbe {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLivenessProbeExec;
+    /**
+     * Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to `3`.
+     */
+    failureThreshold?: number;
+    /**
+     * GRPC specifies an action involving a GRPC port.
+     */
+    grpcs?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLivenessProbeGrpc[];
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLivenessProbeHttpGet;
+    /**
+     * Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    initialDelaySeconds?: number;
+    /**
+     * How often (in seconds) to perform the probe Defaults to `10`.
+     */
+    periodSeconds?: number;
+    /**
+     * Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to `1`.
+     */
+    successThreshold?: number;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLivenessProbeTcpSocket[];
+    /**
+     * Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes Defaults to `1`.
+     */
+    timeoutSeconds?: number;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLivenessProbeExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: string[];
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLivenessProbeGrpc {
+    /**
+     * Number of the port to access on the container. Number must be in the range 1 to 65535.
+     */
+    port: number;
+    /**
+     * Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+     */
+    service?: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLivenessProbeHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLivenessProbeHttpGetHttpHeader[];
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: string;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port?: string;
+    /**
+     * Scheme to use for connecting to the host. Defaults to `HTTP`.
+     */
+    scheme?: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLivenessProbeHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: string;
+    /**
+     * The header field value
+     */
+    value?: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerLivenessProbeTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerPort {
+    /**
+     * Number of port to expose on the pod's IP address. This must be a valid port number, 0 < x < 65536.
+     */
+    containerPort: number;
+    /**
+     * What host IP to bind the external port to.
+     */
+    hostIp?: string;
+    /**
+     * Number of port to expose on the host. If specified, this must be a valid port number, 0 < x < 65536. If HostNetwork is specified, this must match ContainerPort. Most containers do not need this.
+     */
+    hostPort?: number;
+    /**
+     * If specified, this must be an IANA*SVC*NAME and unique within the pod. Each named port in a pod must have a unique name. Name for the port that can be referred to by services
+     */
+    name?: string;
+    /**
+     * Protocol for port. Must be UDP or TCP. Defaults to "TCP". Defaults to `TCP`.
+     */
+    protocol?: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerReadinessProbe {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerReadinessProbeExec;
+    /**
+     * Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to `3`.
+     */
+    failureThreshold?: number;
+    /**
+     * GRPC specifies an action involving a GRPC port.
+     */
+    grpcs?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerReadinessProbeGrpc[];
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerReadinessProbeHttpGet;
+    /**
+     * Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    initialDelaySeconds?: number;
+    /**
+     * How often (in seconds) to perform the probe Defaults to `10`.
+     */
+    periodSeconds?: number;
+    /**
+     * Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to `1`.
+     */
+    successThreshold?: number;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerReadinessProbeTcpSocket[];
+    /**
+     * Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes Defaults to `1`.
+     */
+    timeoutSeconds?: number;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerReadinessProbeExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: string[];
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerReadinessProbeGrpc {
+    /**
+     * Number of the port to access on the container. Number must be in the range 1 to 65535.
+     */
+    port: number;
+    /**
+     * Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+     */
+    service?: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerReadinessProbeHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerReadinessProbeHttpGetHttpHeader[];
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: string;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port?: string;
+    /**
+     * Scheme to use for connecting to the host. Defaults to `HTTP`.
+     */
+    scheme?: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerReadinessProbeHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: string;
+    /**
+     * The header field value
+     */
+    value?: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerReadinessProbeTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerResources {
+    /**
+     * Describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+     */
+    limits: {[key: string]: string};
+    /**
+     * Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
+     */
+    requests: {[key: string]: string};
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerSecurityContext {
+    /**
+     * AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the no*new*privs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP*SYS*ADMIN Defaults to `true`.
+     */
+    allowPrivilegeEscalation?: boolean;
+    /**
+     * The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime.
+     */
+    capabilities?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerSecurityContextCapabilities;
+    /**
+     * Run container in privileged mode. Processes in privileged containers are essentially equivalent to root on the host. Defaults to false. Defaults to `false`.
+     */
+    privileged?: boolean;
+    /**
+     * Whether this container has a read-only root filesystem. Default is false. Defaults to `false`.
+     */
+    readOnlyRootFilesystem?: boolean;
+    /**
+     * The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+     */
+    runAsGroup?: string;
+    /**
+     * Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+     */
+    runAsNonRoot?: boolean;
+    /**
+     * The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+     */
+    runAsUser?: string;
+    /**
+     * The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+     */
+    seLinuxOptions?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerSecurityContextSeLinuxOptions;
+    /**
+     * The seccomp options to use by the containers in this pod. Note that this field cannot be set when spec.os.name is windows.
+     */
+    seccompProfile?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerSecurityContextSeccompProfile;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerSecurityContextCapabilities {
+    /**
+     * Added capabilities
+     */
+    adds?: string[];
+    /**
+     * Removed capabilities
+     */
+    drops?: string[];
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerSecurityContextSeLinuxOptions {
+    /**
+     * Level is SELinux level label that applies to the container.
+     */
+    level?: string;
+    /**
+     * Role is a SELinux role label that applies to the container.
+     */
+    role?: string;
+    /**
+     * Type is a SELinux type label that applies to the container.
+     */
+    type?: string;
+    /**
+     * User is a SELinux user label that applies to the container.
+     */
+    user?: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerSecurityContextSeccompProfile {
+    /**
+     * Localhost Profile indicates a profile defined in a file on the node should be used. The profile must be preconfigured on the node to work. Defaults to ``.
+     */
+    localhostProfile?: string;
+    /**
+     * Type indicates which kind of seccomp profile will be applied. Valid options are: Localhost, RuntimeDefault, Unconfined. Defaults to `Unconfined`.
+     */
+    type?: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerStartupProbe {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerStartupProbeExec;
+    /**
+     * Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to `3`.
+     */
+    failureThreshold?: number;
+    /**
+     * GRPC specifies an action involving a GRPC port.
+     */
+    grpcs?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerStartupProbeGrpc[];
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerStartupProbeHttpGet;
+    /**
+     * Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    initialDelaySeconds?: number;
+    /**
+     * How often (in seconds) to perform the probe Defaults to `10`.
+     */
+    periodSeconds?: number;
+    /**
+     * Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to `1`.
+     */
+    successThreshold?: number;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerStartupProbeTcpSocket[];
+    /**
+     * Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes Defaults to `1`.
+     */
+    timeoutSeconds?: number;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerStartupProbeExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: string[];
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerStartupProbeGrpc {
+    /**
+     * Number of the port to access on the container. Number must be in the range 1 to 65535.
+     */
+    port: number;
+    /**
+     * Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+     */
+    service?: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerStartupProbeHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerStartupProbeHttpGetHttpHeader[];
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: string;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port?: string;
+    /**
+     * Scheme to use for connecting to the host. Defaults to `HTTP`.
+     */
+    scheme?: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerStartupProbeHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: string;
+    /**
+     * The header field value
+     */
+    value?: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerStartupProbeTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerVolumeMount {
+    /**
+     * Path within the container at which the volume should be mounted. Must not contain ':'.
+     */
+    mountPath: string;
+    /**
+     * Mount propagation mode. mountPropagation determines how mounts are propagated from the host to container and the other way around. Valid values are None (default), HostToContainer and Bidirectional. Defaults to `None`.
+     */
+    mountPropagation?: string;
+    /**
+     * This must match the Name of a Volume.
+     */
+    name: string;
+    /**
+     * Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false. Defaults to `false`.
+     */
+    readOnly?: boolean;
+    /**
+     * Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
+     */
+    subPath?: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecReadinessGate {
+    /**
+     * refers to a condition in the pod's condition list with matching type.
+     */
+    conditionType: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecSecurityContext {
+    /**
+     * A special supplemental group that applies to all containers in a pod. Some volume types allow the Kubelet to change the ownership of that volume to be owned by the pod: 1. The owning GID will be the FSGroup 2. The setgid bit is set (new files created in the volume will be owned by FSGroup) 3. The permission bits are OR'd with rw-rw---- If unset, the Kubelet will not modify the ownership and permissions of any volume.
+     */
+    fsGroup?: string;
+    /**
+     * fsGroupChangePolicy defines behavior of changing ownership and permission of the volume before being exposed inside Pod. This field will only apply to volume types which support fsGroup based ownership(and permissions). It will have no effect on ephemeral volume types such as: secret, configmaps and emptydir.
+     */
+    fsGroupChangePolicy?: string;
+    /**
+     * The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in SecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container.
+     */
+    runAsGroup?: string;
+    /**
+     * Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in SecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+     */
+    runAsNonRoot?: boolean;
+    /**
+     * The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in SecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container.
+     */
+    runAsUser?: string;
+    /**
+     * The SELinux context to be applied to all containers. If unspecified, the container runtime will allocate a random SELinux context for each container. May also be set in SecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container.
+     */
+    seLinuxOptions?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecSecurityContextSeLinuxOptions;
+    /**
+     * The seccomp options to use by the containers in this pod. Note that this field cannot be set when spec.os.name is windows.
+     */
+    seccompProfile?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecSecurityContextSeccompProfile;
+    /**
+     * A list of groups applied to the first process run in each container, in addition to the container's primary GID. If unspecified, no groups will be added to any container.
+     */
+    supplementalGroups?: number[];
+    /**
+     * holds a list of namespaced sysctls used for the pod.
+     */
+    sysctls?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecSecurityContextSysctl[];
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecSecurityContextSeLinuxOptions {
+    /**
+     * Level is SELinux level label that applies to the container.
+     */
+    level?: string;
+    /**
+     * Role is a SELinux role label that applies to the container.
+     */
+    role?: string;
+    /**
+     * Type is a SELinux type label that applies to the container.
+     */
+    type?: string;
+    /**
+     * User is a SELinux user label that applies to the container.
+     */
+    user?: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecSecurityContextSeccompProfile {
+    /**
+     * Localhost Profile indicates a profile defined in a file on the node should be used. The profile must be preconfigured on the node to work. Defaults to ``.
+     */
+    localhostProfile?: string;
+    /**
+     * Type indicates which kind of seccomp profile will be applied. Valid options are: Localhost, RuntimeDefault, Unconfined. Defaults to `Unconfined`.
+     */
+    type?: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecSecurityContextSysctl {
+    /**
+     * Name of a property to set.
+     */
+    name: string;
+    /**
+     * Value of a property to set.
+     */
+    value: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecToleration {
+    /**
+     * Effect indicates the taint effect to match. Empty means match all taint effects. When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.
+     */
+    effect?: string;
+    /**
+     * Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key is empty, operator must be Exists; this combination means to match all values and all keys.
+     */
+    key?: string;
+    /**
+     * Operator represents a key's relationship to the value. Valid operators are Exists and Equal. Defaults to Equal. Exists is equivalent to wildcard for value, so that a pod can tolerate all taints of a particular category. Defaults to `Equal`.
+     */
+    operator?: string;
+    /**
+     * TolerationSeconds represents the period of time the toleration (which must be of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default, it is not set, which means tolerate the taint forever (do not evict). Zero and negative values will be treated as 0 (evict immediately) by the system.
+     */
+    tolerationSeconds?: string;
+    /**
+     * Value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string.
+     */
+    value?: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecTopologySpreadConstraint {
+    /**
+     * A label query over a set of resources, in this case pods.
+     */
+    labelSelectors: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecTopologySpreadConstraintLabelSelector[];
+    /**
+     * describes the degree to which pods may be unevenly distributed. Defaults to `1`.
+     */
+    maxSkew?: number;
+    /**
+     * the key of node labels. Nodes that have a label with this key and identical values are considered to be in the same topology.
+     */
+    topologyKey?: string;
+    /**
+     * indicates how to deal with a pod if it doesn't satisfy the spread constraint. Defaults to `DoNotSchedule`.
+     */
+    whenUnsatisfiable?: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecTopologySpreadConstraintLabelSelector {
+    /**
+     * A list of label selector requirements. The requirements are ANDed.
+     */
+    matchExpressions?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecTopologySpreadConstraintLabelSelectorMatchExpression[];
+    /**
+     * A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+     */
+    matchLabels?: {[key: string]: string};
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecTopologySpreadConstraintLabelSelectorMatchExpression {
+    /**
+     * The label key that the selector applies to.
+     */
+    key?: string;
+    /**
+     * A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
+     */
+    operator?: string;
+    /**
+     * An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
+     */
+    values?: string[];
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolume {
+    /**
+     * Represents an AWS Disk resource that is attached to a kubelet's host machine and then exposed to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+     */
+    awsElasticBlockStore?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeAwsElasticBlockStore;
+    /**
+     * Represents an Azure Data Disk mount on the host and bind mount to the pod.
+     */
+    azureDisk?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeAzureDisk;
+    /**
+     * Represents an Azure File Service mount on the host and bind mount to the pod.
+     */
+    azureFile?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeAzureFile;
+    /**
+     * Represents a Ceph FS mount on the host that shares a pod's lifetime
+     */
+    cephFs?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeCephFs;
+    /**
+     * Represents a cinder volume attached and mounted on kubelets host machine. More info: https://examples.k8s.io/mysql-cinder-pd/README.md
+     */
+    cinder?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeCinder;
+    /**
+     * ConfigMap represents a configMap that should populate this volume
+     */
+    configMap?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeConfigMap;
+    /**
+     * Represents a CSI Volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#csi
+     */
+    csi?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeCsi;
+    /**
+     * DownwardAPI represents downward API about the pod that should populate this volume
+     */
+    downwardApi?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeDownwardApi;
+    /**
+     * EmptyDir represents a temporary directory that shares a pod's lifetime. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir
+     */
+    emptyDir?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeEmptyDir;
+    /**
+     * Represents an ephemeral volume that is handled by a normal storage driver. More info: https://kubernetes.io/docs/concepts/storage/ephemeral-volumes/#generic-ephemeral-volumes
+     */
+    ephemeral?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeEphemeral;
+    /**
+     * Represents a Fibre Channel resource that is attached to a kubelet's host machine and then exposed to the pod.
+     */
+    fc?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeFc;
+    /**
+     * Represents a generic volume resource that is provisioned/attached using an exec based plugin. This is an alpha feature and may change in future.
+     */
+    flexVolume?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeFlexVolume;
+    /**
+     * Represents a Flocker volume attached to a kubelet's host machine and exposed to the pod for its usage. This depends on the Flocker control service being running
+     */
+    flocker?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeFlocker;
+    /**
+     * Represents a GCE Disk resource that is attached to a kubelet's host machine and then exposed to the pod. Provisioned by an admin. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+     */
+    gcePersistentDisk?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeGcePersistentDisk;
+    /**
+     * GitRepo represents a git repository at a particular revision.
+     */
+    gitRepo?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeGitRepo;
+    /**
+     * Represents a Glusterfs volume that is attached to a host and exposed to the pod. Provisioned by an admin. More info: https://examples.k8s.io/volumes/glusterfs/README.md
+     */
+    glusterfs?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeGlusterfs;
+    /**
+     * Represents a directory on the host. Provisioned by a developer or tester. This is useful for single-node development and testing only! On-host storage is not supported in any way and WILL NOT WORK in a multi-node cluster. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath
+     */
+    hostPath?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeHostPath;
+    /**
+     * Represents an ISCSI Disk resource that is attached to a kubelet's host machine and then exposed to the pod. Provisioned by an admin.
+     */
+    iscsi?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeIscsi;
+    /**
+     * Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local
+     */
+    local?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeLocal;
+    /**
+     * Volume's name. Must be a DNS_LABEL and unique within the pod. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: string;
+    /**
+     * Represents an NFS mount on the host. Provisioned by an admin. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+     */
+    nfs?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeNfs;
+    /**
+     * The specification of a persistent volume.
+     */
+    persistentVolumeClaim?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumePersistentVolumeClaim;
+    /**
+     * Represents a PhotonController persistent disk attached and mounted on kubelets host machine
+     */
+    photonPersistentDisk?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumePhotonPersistentDisk;
+    /**
+     * Projected represents a single volume that projects several volume sources into the same directory. More info: https://kubernetes.io/docs/concepts/storage/volumes/#projected
+     */
+    projected?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjected;
+    /**
+     * Quobyte represents a Quobyte mount on the host that shares a pod's lifetime
+     */
+    quobyte?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeQuobyte;
+    /**
+     * Represents a Rados Block Device mount on the host that shares a pod's lifetime. More info: https://examples.k8s.io/volumes/rbd/README.md
+     */
+    rbd?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeRbd;
+    /**
+     * Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secrets
+     */
+    secret?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeSecret;
+    /**
+     * Represents a vSphere volume attached and mounted on kubelets host machine
+     */
+    vsphereVolume?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeVsphereVolume;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeAwsElasticBlockStore {
+    /**
+     * Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+     */
+    fsType?: string;
+    /**
+     * The partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as "1". Similarly, the volume partition for /dev/sda is "0" (or you can leave the property empty).
+     */
+    partition?: number;
+    /**
+     * Whether to set the read-only property in VolumeMounts to "true". If omitted, the default is "false". More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+     */
+    readOnly?: boolean;
+    /**
+     * Unique ID of the persistent disk resource in AWS (Amazon EBS volume). More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+     */
+    volumeId: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeAzureDisk {
+    /**
+     * Host Caching mode: None, Read Only, Read Write.
+     */
+    cachingMode: string;
+    /**
+     * The URI the data disk in the blob storage
+     */
+    dataDiskUri: string;
+    /**
+     * The Name of the data disk in the blob storage
+     */
+    diskName: string;
+    /**
+     * Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+     */
+    fsType?: string;
+    /**
+     * The type for the data disk. Expected values: Shared, Dedicated, Managed. Defaults to Shared
+     */
+    kind: string;
+    /**
+     * Whether to force the read-only setting in VolumeMounts. Defaults to false (read/write). Defaults to `false`.
+     */
+    readOnly?: boolean;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeAzureFile {
+    /**
+     * Whether to force the read-only setting in VolumeMounts. Defaults to false (read/write).
+     */
+    readOnly?: boolean;
+    /**
+     * The name of secret that contains Azure Storage Account Name and Key
+     */
+    secretName: string;
+    /**
+     * The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is "default" namespace.
+     */
+    secretNamespace?: string;
+    /**
+     * Share Name
+     */
+    shareName: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeCephFs {
+    /**
+     * Monitors is a collection of Ceph monitors. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+     */
+    monitors: string[];
+    /**
+     * Used as the mounted root, rather than the full Ceph tree, default is /
+     */
+    path?: string;
+    /**
+     * Whether to force the read-only setting in VolumeMounts. Defaults to `false` (read/write). More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+     */
+    readOnly?: boolean;
+    /**
+     * The path to key ring for User, default is `/etc/ceph/user.secret`. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+     */
+    secretFile?: string;
+    /**
+     * Reference to the authentication secret for User, default is empty. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+     */
+    secretRef?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeCephFsSecretRef;
+    /**
+     * User is the rados user name, default is admin. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+     */
+    user?: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeCephFsSecretRef {
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: string;
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    namespace: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeCinder {
+    /**
+     * Filesystem type to mount. Must be a filesystem type supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://examples.k8s.io/mysql-cinder-pd/README.md
+     */
+    fsType?: string;
+    /**
+     * Whether to force the read-only setting in VolumeMounts. Defaults to false (read/write). More info: https://examples.k8s.io/mysql-cinder-pd/README.md
+     */
+    readOnly?: boolean;
+    /**
+     * Volume ID used to identify the volume in Cinder. More info: https://examples.k8s.io/mysql-cinder-pd/README.md
+     */
+    volumeId: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeConfigMap {
+    /**
+     * Optional: mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. Defaults to `0644`.
+     */
+    defaultMode?: string;
+    /**
+     * If unspecified, each key-value pair in the Data field of the referenced ConfigMap will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the ConfigMap, the volume setup will error unless it is marked optional. Paths must be relative and may not contain the '..' path or start with '..'.
+     */
+    items?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeConfigMapItem[];
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: string;
+    /**
+     * Optional: Specify whether the ConfigMap or its keys must be defined.
+     */
+    optional?: boolean;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeConfigMapItem {
+    /**
+     * The key to project.
+     */
+    key?: string;
+    /**
+     * Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+     */
+    mode?: string;
+    /**
+     * The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+     */
+    path?: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeCsi {
+    /**
+     * the name of the volume driver to use. More info: https://kubernetes.io/docs/concepts/storage/volumes/#csi
+     */
+    driver: string;
+    /**
+     * Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+     */
+    fsType?: string;
+    /**
+     * A reference to the secret object containing sensitive information to pass to the CSI driver to complete the CSI NodePublishVolume and NodeUnpublishVolume calls.
+     */
+    nodePublishSecretRef?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeCsiNodePublishSecretRef;
+    /**
+     * Whether to set the read-only property in VolumeMounts to "true". If omitted, the default is "false". More info: https://kubernetes.io/docs/concepts/storage/volumes#csi
+     */
+    readOnly?: boolean;
+    /**
+     * Attributes of the volume to publish.
+     */
+    volumeAttributes?: {[key: string]: string};
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeCsiNodePublishSecretRef {
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeDownwardApi {
+    /**
+     * Optional: mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. Defaults to `0644`.
+     */
+    defaultMode?: string;
+    /**
+     * If unspecified, each key-value pair in the Data field of the referenced ConfigMap will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the ConfigMap, the volume setup will error. Paths must be relative and may not contain the '..' path or start with '..'.
+     */
+    items?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeDownwardApiItem[];
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeDownwardApiItem {
+    /**
+     * Required: Selects a field of the pod: only annotations, labels, name and namespace are supported.
+     */
+    fieldRef: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeDownwardApiItemFieldRef;
+    /**
+     * Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+     */
+    mode?: string;
+    /**
+     * Path is the relative path name of the file to be created. Must not be absolute or contain the '..' path. Must be utf-8 encoded. The first item of the relative path must not start with '..'
+     */
+    path: string;
+    /**
+     * Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, requests.cpu and requests.memory) are currently supported.
+     */
+    resourceFieldRef?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeDownwardApiItemResourceFieldRef;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeDownwardApiItemFieldRef {
+    /**
+     * Version of the schema the FieldPath is written in terms of, defaults to "v1". Defaults to `v1`.
+     */
+    apiVersion?: string;
+    /**
+     * Path of the field to select in the specified API version
+     */
+    fieldPath?: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeDownwardApiItemResourceFieldRef {
+    containerName: string;
+    /**
+     * Defaults to `1`.
+     */
+    divisor?: string;
+    /**
+     * Resource to select
+     */
+    resource: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeEmptyDir {
+    /**
+     * What type of storage medium should back this directory. The default is "" which means to use the node's default medium. Must be an empty string (default) or Memory. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir Defaults to ``.
+     */
+    medium?: string;
+    /**
+     * Total amount of local storage required for this EmptyDir volume.
+     */
+    sizeLimit?: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeEphemeral {
+    /**
+     * Will be used to create a stand-alone PVC to provision the volume. The pod in which this EphemeralVolumeSource is embedded will be the owner of the PVC.
+     */
+    volumeClaimTemplate: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeEphemeralVolumeClaimTemplate;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeEphemeralVolumeClaimTemplate {
+    /**
+     * May contain labels and annotations that will be copied into the PVC when creating it. No other fields are allowed and will be rejected during validation.
+     */
+    metadata?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateMetadata;
+    /**
+     * The specification for the PersistentVolumeClaim. The entire content is copied unchanged into the PVC that gets created from this template. The same fields as in a PersistentVolumeClaim are also valid here.
+     */
+    spec: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateSpec;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateMetadata {
+    /**
+     * An unstructured key value map stored with the persistent volume claim that may be used to store arbitrary metadata. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+     */
+    annotations?: {[key: string]: string};
+    /**
+     * Map of string keys and values that can be used to organize and categorize (scope and select) the persistent volume claim. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+     */
+    labels: {[key: string]: string};
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateSpec {
+    /**
+     * A set of the desired access modes the volume should have. More info: http://kubernetes.io/docs/user-guide/persistent-volumes#access-modes-1
+     */
+    accessModes: string[];
+    /**
+     * A list of the minimum resources the volume should have. More info: http://kubernetes.io/docs/user-guide/persistent-volumes#resources
+     */
+    resources: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateSpecResources;
+    /**
+     * Name of the storage class requested by the claim
+     */
+    storageClassName: string;
+    /**
+     * Kubernetes supports two volumeModes of PersistentVolumes: `Filesystem` and `Block`.
+     */
+    volumeMode: string;
+    /**
+     * The binding reference to the PersistentVolume backing this claim.
+     */
+    volumeName: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateSpecResources {
+    /**
+     * Map describing the maximum amount of compute resources allowed. More info: http://kubernetes.io/docs/user-guide/compute-resources/
+     */
+    limits?: {[key: string]: string};
+    /**
+     * Map describing the minimum amount of compute resources required. If this is omitted for a container, it defaults to `limits` if that is explicitly specified, otherwise to an implementation-defined value. More info: http://kubernetes.io/docs/user-guide/compute-resources/
+     */
+    requests: {[key: string]: string};
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeFc {
+    /**
+     * Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+     */
+    fsType?: string;
+    /**
+     * FC target lun number
+     */
+    lun: number;
+    /**
+     * Whether to force the read-only setting in VolumeMounts. Defaults to false (read/write).
+     */
+    readOnly?: boolean;
+    /**
+     * FC target worldwide names (WWNs)
+     */
+    targetWwNs: string[];
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeFlexVolume {
+    /**
+     * Driver is the name of the driver to use for this volume.
+     */
+    driver: string;
+    /**
+     * Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". The default filesystem depends on FlexVolume script.
+     */
+    fsType?: string;
+    /**
+     * Extra command options if any.
+     */
+    options?: {[key: string]: string};
+    /**
+     * Whether to force the ReadOnly setting in VolumeMounts. Defaults to false (read/write).
+     */
+    readOnly?: boolean;
+    /**
+     * Reference to the secret object containing sensitive information to pass to the plugin scripts. This may be empty if no secret object is specified. If the secret object contains more than one secret, all secrets are passed to the plugin scripts.
+     */
+    secretRef?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeFlexVolumeSecretRef;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeFlexVolumeSecretRef {
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: string;
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    namespace: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeFlocker {
+    /**
+     * Name of the dataset stored as metadata > name on the dataset for Flocker should be considered as deprecated
+     */
+    datasetName?: string;
+    /**
+     * UUID of the dataset. This is unique identifier of a Flocker dataset
+     */
+    datasetUuid?: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeGcePersistentDisk {
+    /**
+     * Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+     */
+    fsType?: string;
+    /**
+     * The partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as "1". Similarly, the volume partition for /dev/sda is "0" (or you can leave the property empty). More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+     */
+    partition?: number;
+    /**
+     * Unique name of the PD resource in GCE. Used to identify the disk in GCE. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+     */
+    pdName: string;
+    /**
+     * Whether to force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+     */
+    readOnly?: boolean;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeGitRepo {
+    /**
+     * Target directory name. Must not contain or start with '..'. If '.' is supplied, the volume directory will be the git repository. Otherwise, if specified, the volume will contain the git repository in the subdirectory with the given name.
+     */
+    directory?: string;
+    /**
+     * Repository URL
+     */
+    repository?: string;
+    /**
+     * Commit hash for the specified revision.
+     */
+    revision?: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeGlusterfs {
+    /**
+     * The endpoint name that details Glusterfs topology. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
+     */
+    endpointsName: string;
+    /**
+     * The Glusterfs volume path. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
+     */
+    path: string;
+    /**
+     * Whether to force the Glusterfs volume to be mounted with read-only permissions. Defaults to false. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
+     */
+    readOnly?: boolean;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeHostPath {
+    /**
+     * Path of the directory on the host. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath
+     */
+    path?: string;
+    /**
+     * Type for HostPath volume. Allowed values are "" (default), DirectoryOrCreate, Directory, FileOrCreate, File, Socket, CharDevice and BlockDevice
+     */
+    type?: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeIscsi {
+    /**
+     * Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#iscsi
+     */
+    fsType?: string;
+    /**
+     * Target iSCSI Qualified Name.
+     */
+    iqn: string;
+    /**
+     * iSCSI interface name that uses an iSCSI transport. Defaults to 'default' (tcp). Defaults to `default`.
+     */
+    iscsiInterface?: string;
+    /**
+     * iSCSI target lun number.
+     */
+    lun?: number;
+    /**
+     * Whether to force the read-only setting in VolumeMounts. Defaults to false.
+     */
+    readOnly?: boolean;
+    /**
+     * iSCSI target portal. The portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260).
+     */
+    targetPortal: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeLocal {
+    /**
+     * Path of the directory on the host. More info: https://kubernetes.io/docs/concepts/storage/volumes#local
+     */
+    path?: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeNfs {
+    /**
+     * Path that is exported by the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+     */
+    path: string;
+    /**
+     * Whether to force the NFS export to be mounted with read-only permissions. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+     */
+    readOnly?: boolean;
+    /**
+     * Server is the hostname or IP address of the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+     */
+    server: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumePersistentVolumeClaim {
+    /**
+     * ClaimName is the name of a PersistentVolumeClaim in the same
+     */
+    claimName?: string;
+    /**
+     * Will force the ReadOnly setting in VolumeMounts. Defaults to `false`.
+     */
+    readOnly?: boolean;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumePhotonPersistentDisk {
+    /**
+     * Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+     */
+    fsType?: string;
+    /**
+     * ID that identifies Photon Controller persistent disk
+     */
+    pdId: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjected {
+    /**
+     * Optional: mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. Defaults to `0644`.
+     */
+    defaultMode?: string;
+    /**
+     * Source of the volume to project in the directory.
+     */
+    sources: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSource[];
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSource {
+    /**
+     * ConfigMap represents a configMap that should populate this volume
+     */
+    configMaps?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSourceConfigMap[];
+    /**
+     * DownwardAPI represents downward API about the pod that should populate this volume
+     */
+    downwardApi?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSourceDownwardApi;
+    /**
+     * Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secrets
+     */
+    secrets?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSourceSecret[];
+    /**
+     * A projected service account token volume
+     */
+    serviceAccountToken?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSourceServiceAccountToken;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSourceConfigMap {
+    /**
+     * If unspecified, each key-value pair in the Data field of the referenced ConfigMap will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the ConfigMap, the volume setup will error. Paths must be relative and may not contain the '..' path or start with '..'.
+     */
+    items?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSourceConfigMapItem[];
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: string;
+    /**
+     * Optional: Specify whether the ConfigMap or it's keys must be defined.
+     */
+    optional?: boolean;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSourceConfigMapItem {
+    /**
+     * The key to project.
+     */
+    key?: string;
+    /**
+     * Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+     */
+    mode?: string;
+    /**
+     * The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+     */
+    path?: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSourceDownwardApi {
+    /**
+     * Represents a volume containing downward API info. Downward API volumes support ownership management and SELinux relabeling.
+     */
+    items?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSourceDownwardApiItem[];
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSourceDownwardApiItem {
+    /**
+     * Selects a field of the pod: only annotations, labels, name and namespace are supported.
+     */
+    fieldRef?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSourceDownwardApiItemFieldRef;
+    /**
+     * Mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+     */
+    mode?: string;
+    /**
+     * Path is the relative path name of the file to be created. Must not be absolute or contain the '..' path. Must be utf-8 encoded. The first item of the relative path must not start with '..'
+     */
+    path: string;
+    /**
+     * Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, requests.cpu and requests.memory) are currently supported.
+     */
+    resourceFieldRef?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSourceDownwardApiItemResourceFieldRef;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSourceDownwardApiItemFieldRef {
+    /**
+     * Version of the schema the FieldPath is written in terms of, defaults to 'v1'. Defaults to `v1`.
+     */
+    apiVersion?: string;
+    /**
+     * Path of the field to select in the specified API version
+     */
+    fieldPath?: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSourceDownwardApiItemResourceFieldRef {
+    containerName: string;
+    /**
+     * Defaults to `1`.
+     */
+    divisor?: string;
+    /**
+     * Resource to select
+     */
+    resource: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSourceSecret {
+    /**
+     * If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional. Paths must be relative and may not contain the '..' path or start with '..'.
+     */
+    items?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSourceSecretItem[];
+    /**
+     * Name of the secret in the pod's namespace to use. More info: https://kubernetes.io/docs/concepts/storage/volumes#secrets
+     */
+    name?: string;
+    /**
+     * Optional: Specify whether the Secret or it's keys must be defined.
+     */
+    optional?: boolean;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSourceSecretItem {
+    /**
+     * The key to project.
+     */
+    key?: string;
+    /**
+     * Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+     */
+    mode?: string;
+    /**
+     * The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+     */
+    path?: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeProjectedSourceServiceAccountToken {
+    /**
+     * Audience is the intended audience of the token
+     */
+    audience?: string;
+    /**
+     * ExpirationSeconds is the expected duration of validity of the service account token. It defaults to 1 hour and must be at least 10 minutes (600 seconds). Defaults to `3600`.
+     */
+    expirationSeconds?: number;
+    /**
+     * Path specifies a relative path to the mount point of the projected volume.
+     */
+    path: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeQuobyte {
+    /**
+     * Group to map volume access to Default is no group
+     */
+    group?: string;
+    /**
+     * Whether to force the Quobyte volume to be mounted with read-only permissions. Defaults to false.
+     */
+    readOnly?: boolean;
+    /**
+     * Registry represents a single or multiple Quobyte Registry services specified as a string as host:port pair (multiple entries are separated with commas) which acts as the central registry for volumes
+     */
+    registry: string;
+    /**
+     * User to map volume access to Defaults to serivceaccount user
+     */
+    user?: string;
+    /**
+     * Volume is a string that references an already created Quobyte volume by name.
+     */
+    volume: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeRbd {
+    /**
+     * A collection of Ceph monitors. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+     */
+    cephMonitors: string[];
+    /**
+     * Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#rbd
+     */
+    fsType?: string;
+    /**
+     * Keyring is the path to key ring for RBDUser. Default is /etc/ceph/keyring. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+     */
+    keyring: string;
+    /**
+     * The rados user name. Default is admin. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it Defaults to `admin`.
+     */
+    radosUser?: string;
+    /**
+     * The rados image name. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+     */
+    rbdImage: string;
+    /**
+     * The rados pool name. Default is rbd. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it. Defaults to `rbd`.
+     */
+    rbdPool?: string;
+    /**
+     * Whether to force the read-only setting in VolumeMounts. Defaults to false. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it Defaults to `false`.
+     */
+    readOnly?: boolean;
+    /**
+     * Name of the authentication secret for RBDUser. If provided overrides keyring. Default is nil. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+     */
+    secretRef?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeRbdSecretRef;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeRbdSecretRef {
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: string;
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    namespace: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeSecret {
+    /**
+     * Optional: mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. Defaults to `0644`.
+     */
+    defaultMode?: string;
+    /**
+     * If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional. Paths must be relative and may not contain the '..' path or start with '..'.
+     */
+    items?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeSecretItem[];
+    /**
+     * Optional: Specify whether the Secret or its keys must be defined.
+     */
+    optional?: boolean;
+    /**
+     * Name of the secret in the pod's namespace to use. More info: https://kubernetes.io/docs/concepts/storage/volumes#secrets
+     */
+    secretName?: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeSecretItem {
+    /**
+     * The key to project.
+     */
+    key?: string;
+    /**
+     * Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+     */
+    mode?: string;
+    /**
+     * The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+     */
+    path?: string;
+}
+
+export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeVsphereVolume {
+    /**
+     * Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+     */
+    fsType?: string;
+    /**
+     * Path that identifies vSphere volume vmdk
+     */
+    volumePath: string;
+}
+
+export interface K8sJobMetadata {
+    /**
+     * An unstructured key value map stored with the job that may be used to store arbitrary metadata. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+     */
+    annotations: {[key: string]: string};
+    /**
+     * Prefix, used by the server, to generate a unique name ONLY IF the `name` field has not been provided. This value will also be combined with a unique suffix. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#idempotency
+     */
+    generateName?: string;
+    /**
+     * A sequence number representing a specific generation of the desired state.
+     */
+    generation: number;
+    /**
+     * Map of string keys and values that can be used to organize and categorize (scope and select) the job. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+     */
+    labels: {[key: string]: string};
+    /**
+     * Name of the job, must be unique. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name: string;
+    /**
+     * Namespace defines the space within which name of the job must be unique.
+     */
+    namespace: string;
+    /**
+     * An opaque value that represents the internal version of this job that can be used by clients to determine when job has changed. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+     */
+    resourceVersion: string;
+    /**
+     * The unique in time and space value for this job. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
+     */
+    uid: string;
+}
+
+export interface K8sJobSpec {
+    /**
+     * Optional duration in seconds the pod may be active on the node relative to StartTime before the system will actively try to mark it failed and kill associated containers. Value must be a positive integer.
+     */
+    activeDeadlineSeconds: number;
+    /**
+     * Specifies the number of retries before marking this job failed. Defaults to 6 Defaults to `6`.
+     */
+    backoffLimit?: number;
+    /**
+     * Specifies how Pod completions are tracked. It can be `NonIndexed` (default) or `Indexed`. More info: https://kubernetes.io/docs/concepts/workloads/controllers/job/#completion-mode
+     */
+    completionMode: string;
+    /**
+     * Specifies the desired number of successfully finished pods the job should be run with. Setting to nil means that the success of any pod signals the success of all pods, and allows parallelism to have any positive value. Setting to 1 means that parallelism is limited to 1 and the success of that pod signals the success of the job. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/ Defaults to `1`.
+     */
+    completions?: number;
+    /**
+     * Controls generation of pod labels and pod selectors. Leave unset unless you are certain what you are doing. When false or unset, the system pick labels unique to this job and appends those labels to the pod template. When true, the user is responsible for picking unique labels and specifying the selector. Failure to pick a unique label may cause this and other jobs to not function correctly. More info: https://git.k8s.io/community/contributors/design-proposals/selector-generation.md
+     */
+    manualSelector: boolean;
+    /**
+     * Specifies the maximum desired number of pods the job should run at any given time. The actual number of pods running in steady state will be less than this number when ((.spec.completions - .status.successful) < .spec.parallelism), i.e. when the work left to do is less than max parallelism. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/ Defaults to `1`.
+     */
+    parallelism?: number;
+    /**
+     * A label query over volumes to consider for binding.
+     */
+    selector: outputs.K8sJobSpecSelector;
+    /**
+     * Describes the pod that will be created when executing a job. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+     */
+    template: outputs.K8sJobSpecTemplate;
+    /**
+     * ttlSecondsAfterFinished limits the lifetime of a Job that has finished execution (either Complete or Failed). If this field is set, ttlSecondsAfterFinished after the Job finishes, it is eligible to be automatically deleted. When the Job is being deleted, its lifecycle guarantees (e.g. finalizers) will be honored. If this field is unset, the Job won't be automatically deleted. If this field is set to zero, the Job becomes eligible to be deleted immediately after it finishes.
+     */
+    ttlSecondsAfterFinished?: string;
+}
+
+export interface K8sJobSpecSelector {
+    /**
+     * A list of label selector requirements. The requirements are ANDed.
+     */
+    matchExpressions?: outputs.K8sJobSpecSelectorMatchExpression[];
+    /**
+     * A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+     */
+    matchLabels: {[key: string]: string};
+}
+
+export interface K8sJobSpecSelectorMatchExpression {
+    /**
+     * The label key that the selector applies to.
+     */
+    key?: string;
+    /**
+     * A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
+     */
+    operator?: string;
+    /**
+     * An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
+     */
+    values?: string[];
+}
+
+export interface K8sJobSpecTemplate {
+    /**
+     * Standard job's metadata. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
+     */
+    metadata: outputs.K8sJobSpecTemplateMetadata;
+    /**
+     * Spec of the pods owned by the job
+     */
+    spec?: outputs.K8sJobSpecTemplateSpec;
+}
+
+export interface K8sJobSpecTemplateMetadata {
+    /**
+     * An unstructured key value map stored with the job that may be used to store arbitrary metadata. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+     */
+    annotations: {[key: string]: string};
+    /**
+     * Prefix, used by the server, to generate a unique name ONLY IF the `name` field has not been provided. This value will also be combined with a unique suffix. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#idempotency
+     */
+    generateName?: string;
+    /**
+     * A sequence number representing a specific generation of the desired state.
+     */
+    generation: number;
+    /**
+     * Map of string keys and values that can be used to organize and categorize (scope and select) the job. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+     */
+    labels: {[key: string]: string};
+    /**
+     * Name of the job, must be unique. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name: string;
+    /**
+     * An opaque value that represents the internal version of this job that can be used by clients to determine when job has changed. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+     */
+    resourceVersion: string;
+    /**
+     * The unique in time and space value for this job. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
+     */
+    uid: string;
+}
+
+export interface K8sJobSpecTemplateSpec {
+    /**
+     * Optional duration in seconds the pod may be active on the node relative to StartTime before the system will actively try to mark it failed and kill associated containers. Value must be a positive integer.
+     */
+    activeDeadlineSeconds: number;
+    /**
+     * Optional pod scheduling constraints.
+     */
+    affinity?: outputs.K8sJobSpecTemplateSpecAffinity;
+    /**
+     * AutomountServiceAccountToken indicates whether a service account token should be automatically mounted. Defaults to `true`.
+     */
+    automountServiceAccountToken?: boolean;
+    /**
+     * List of containers belonging to the pod. Containers cannot currently be added or removed. There must be at least one container in a Pod. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/
+     */
+    containers?: outputs.K8sJobSpecTemplateSpecContainer[];
+    /**
+     * Specifies the DNS parameters of a pod. Parameters specified here will be merged to the generated DNS configuration based on DNSPolicy. Optional: Defaults to empty
+     */
+    dnsConfig?: outputs.K8sJobSpecTemplateSpecDnsConfig;
+    /**
+     * Set DNS policy for containers within the pod. Valid values are 'ClusterFirstWithHostNet', 'ClusterFirst', 'Default' or 'None'. DNS parameters given in DNSConfig will be merged with the policy selected with DNSPolicy. To have DNS options set along with hostNetwork, you have to specify DNS policy explicitly to 'ClusterFirstWithHostNet'. Defaults to 'ClusterFirst'. More info: https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy
+     */
+    dnsPolicy: string;
+    /**
+     * Enables generating environment variables for service discovery. Defaults to true. Defaults to `true`.
+     */
+    enableServiceLinks?: boolean;
+    /**
+     * List of hosts and IPs that will be injected into the pod's hosts file if specified. Optional: Defaults to empty.
+     */
+    hostAliases: outputs.K8sJobSpecTemplateSpecHostAlias[];
+    /**
+     * Use the host's ipc namespace. Optional: Defaults to false.
+     */
+    hostIpc: boolean;
+    /**
+     * Host networking requested for this pod. Use the host's network namespace. If this option is set, the ports that will be used must be specified.
+     */
+    hostNetwork: boolean;
+    /**
+     * Use the host's pid namespace.
+     */
+    hostPid: boolean;
+    /**
+     * Specifies the hostname of the Pod If not specified, the pod's hostname will be set to a system-defined value.
+     */
+    hostname: string;
+    /**
+     * ImagePullSecrets is an optional list of references to secrets in the same namespace to use for pulling any of the images used by this PodSpec. If specified, these secrets will be passed to individual puller implementations for them to use. For example, in the case of docker, only DockerConfig type secrets are honored. More info: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
+     */
+    imagePullSecrets: outputs.K8sJobSpecTemplateSpecImagePullSecret[];
+    /**
+     * List of init containers belonging to the pod. Init containers always run to completion and each must complete successfully before the next is started. More info: https://kubernetes.io/docs/concepts/workloads/pods/init-containers/
+     */
+    initContainers?: outputs.K8sJobSpecTemplateSpecInitContainer[];
+    /**
+     * NodeName is a request to schedule this pod onto a specific node. If it is non-empty, the scheduler simply schedules this pod onto that node, assuming that it fits resource requirements.
+     */
+    nodeName: string;
+    /**
+     * NodeSelector is a selector which must be true for the pod to fit on a node. Selector which must match a node's labels for the pod to be scheduled on that node. More info: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/.
+     */
+    nodeSelector: {[key: string]: string};
+    /**
+     * If specified, indicates the pod's priority. "system-node-critical" and "system-cluster-critical" are two special keywords which indicate the highest priorities with the former being the highest priority. Any other name must be defined by creating a PriorityClass object with that name. If not specified, the pod priority will be default or zero if there is no default.
+     */
+    priorityClassName: string;
+    /**
+     * If specified, all readiness gates will be evaluated for pod readiness. A pod is ready when all its containers are ready AND all conditions specified in the readiness gates have status equal to "True" More info: https://git.k8s.io/enhancements/keps/sig-network/0007-pod-ready%2B%2B.md
+     */
+    readinessGates: outputs.K8sJobSpecTemplateSpecReadinessGate[];
+    /**
+     * Restart policy for all containers within the pod. One of OnFailure, Never. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#restart-policy. Defaults to `Never`.
+     */
+    restartPolicy?: string;
+    /**
+     * RuntimeClassName is a feature for selecting the container runtime configuration. The container runtime configuration is used to run a Pod's containers. More info: https://kubernetes.io/docs/concepts/containers/runtime-class
+     */
+    runtimeClassName: string;
+    /**
+     * If specified, the pod will be dispatched by specified scheduler. If not specified, the pod will be dispatched by default scheduler.
+     */
+    schedulerName: string;
+    /**
+     * SecurityContext holds pod-level security attributes and common container settings. Optional: Defaults to empty
+     */
+    securityContext: outputs.K8sJobSpecTemplateSpecSecurityContext;
+    /**
+     * ServiceAccountName is the name of the ServiceAccount to use to run this pod. More info: http://releases.k8s.io/HEAD/docs/design/service_accounts.md.
+     */
+    serviceAccountName: string;
+    /**
+     * Share a single process namespace between all of the containers in a pod. When this is set containers will be able to view and signal processes from other containers in the same pod, and the first process in each container will not be assigned PID 1. HostPID and ShareProcessNamespace cannot both be set. Optional: Defaults to false. Defaults to `false`.
+     */
+    shareProcessNamespace?: boolean;
+    /**
+     * If specified, the fully qualified Pod hostname will be "...svc.". If not specified, the pod will not have a domainname at all..
+     */
+    subdomain: string;
+    /**
+     * Optional duration in seconds the pod needs to terminate gracefully. May be decreased in delete request. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period will be used instead. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process.
+     */
+    terminationGracePeriodSeconds: number;
+    /**
+     * If specified, the pod's toleration. Optional: Defaults to empty
+     */
+    tolerations?: outputs.K8sJobSpecTemplateSpecToleration[];
+    /**
+     * describes how a group of pods ought to spread across topology domains. Scheduler will schedule pods in a way which abides by the constraints.
+     */
+    topologySpreadConstraints?: outputs.K8sJobSpecTemplateSpecTopologySpreadConstraint[];
+    /**
+     * List of volumes that can be mounted by containers belonging to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes
+     */
+    volumes?: outputs.K8sJobSpecTemplateSpecVolume[];
+}
+
+export interface K8sJobSpecTemplateSpecAffinity {
+    /**
+     * Node affinity scheduling rules for the pod.
+     */
+    nodeAffinity?: outputs.K8sJobSpecTemplateSpecAffinityNodeAffinity;
+    /**
+     * Inter-pod topological affinity. rules that specify that certain pods should be placed in the same topological domain (e.g. same node, same rack, same zone, same power domain, etc.)
+     */
+    podAffinity?: outputs.K8sJobSpecTemplateSpecAffinityPodAffinity;
+    /**
+     * Inter-pod topological affinity. rules that specify that certain pods should be placed in the same topological domain (e.g. same node, same rack, same zone, same power domain, etc.)
+     */
+    podAntiAffinity?: outputs.K8sJobSpecTemplateSpecAffinityPodAntiAffinity;
+}
+
+export interface K8sJobSpecTemplateSpecAffinityNodeAffinity {
+    /**
+     * The scheduler will prefer to schedule pods to nodes that satisfy the affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions. The node that is most preferred is the one with the greatest sum of weights, i.e. for each node that meets all of the scheduling requirements (resource request, RequiredDuringScheduling affinity expressions, etc.), compute a sum by iterating through the elements of this field and adding 'weight' to the sum if the node matches the corresponding MatchExpressions; the node(s) with the highest sum are the most preferred.
+     */
+    preferredDuringSchedulingIgnoredDuringExecutions: outputs.K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecution[];
+    /**
+     * If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a node label update), the system may or may not try to eventually evict the pod from its node.
+     */
+    requiredDuringSchedulingIgnoredDuringExecution?: outputs.K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution;
+}
+
+export interface K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecution {
+    /**
+     * A node selector term, associated with the corresponding weight.
+     */
+    preference: outputs.K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreference;
+    /**
+     * weight is in the range 1-100
+     */
+    weight: number;
+}
+
+export interface K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreference {
+    /**
+     * List of node selector requirements. The requirements are ANDed.
+     */
+    matchExpressions?: outputs.K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpression[];
+}
+
+export interface K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpression {
+    /**
+     * The label key that the selector applies to.
+     */
+    key?: string;
+    /**
+     * Operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists, DoesNotExist. Gt, and Lt.
+     */
+    operator?: string;
+    /**
+     * Values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch.
+     */
+    values?: string[];
+}
+
+export interface K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution {
+    /**
+     * List of node selector terms. The terms are ORed.
+     */
+    nodeSelectorTerms?: outputs.K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTerm[];
+}
+
+export interface K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTerm {
+    /**
+     * List of node selector requirements. The requirements are ANDed.
+     */
+    matchExpressions?: outputs.K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpression[];
+}
+
+export interface K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpression {
+    /**
+     * The label key that the selector applies to.
+     */
+    key?: string;
+    /**
+     * Operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists, DoesNotExist. Gt, and Lt.
+     */
+    operator?: string;
+    /**
+     * Values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch.
+     */
+    values?: string[];
+}
+
+export interface K8sJobSpecTemplateSpecAffinityPodAffinity {
+    /**
+     * The scheduler will prefer to schedule pods to nodes that satisfy the anti-affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions. The node that is most preferred is the one with the greatest sum of weights, i.e. for each node that meets all of the scheduling requirements (resource request, RequiredDuringScheduling anti-affinity expressions, etc.), compute a sum by iterating through the elements of this field and adding 'weight' to the sum if the node matches the corresponding MatchExpressions; the node(s) with the highest sum are the most preferred.
+     */
+    preferredDuringSchedulingIgnoredDuringExecutions: outputs.K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecution[];
+    /**
+     * If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system may or may not try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each PodAffinityTerm are intersected, i.e. all terms must be satisfied.
+     */
+    requiredDuringSchedulingIgnoredDuringExecutions?: outputs.K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecution[];
+}
+
+export interface K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecution {
+    /**
+     * A pod affinity term, associated with the corresponding weight
+     */
+    podAffinityTerm: outputs.K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTerm;
+    /**
+     * weight associated with matching the corresponding podAffinityTerm, in the range 1-100
+     */
+    weight: number;
+}
+
+export interface K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTerm {
+    /**
+     * A label query over a set of resources, in this case pods.
+     */
+    labelSelectors: outputs.K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector[];
+    /**
+     * namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means 'this pod's namespace'
+     */
+    namespaces: string[];
+    /**
+     * empty topology key is interpreted by the scheduler as 'all topologies'
+     */
+    topologyKey: string;
+}
+
+export interface K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector {
+    /**
+     * A list of label selector requirements. The requirements are ANDed.
+     */
+    matchExpressions?: outputs.K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression[];
+    /**
+     * A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+     */
+    matchLabels?: {[key: string]: string};
+}
+
+export interface K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression {
+    /**
+     * The label key that the selector applies to.
+     */
+    key?: string;
+    /**
+     * A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
+     */
+    operator?: string;
+    /**
+     * An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
+     */
+    values?: string[];
+}
+
+export interface K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecution {
+    /**
+     * A label query over a set of resources, in this case pods.
+     */
+    labelSelectors: outputs.K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector[];
+    /**
+     * namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means 'this pod's namespace'
+     */
+    namespaces: string[];
+    /**
+     * empty topology key is interpreted by the scheduler as 'all topologies'
+     */
+    topologyKey: string;
+}
+
+export interface K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector {
+    /**
+     * A list of label selector requirements. The requirements are ANDed.
+     */
+    matchExpressions?: outputs.K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression[];
+    /**
+     * A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+     */
+    matchLabels?: {[key: string]: string};
+}
+
+export interface K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression {
+    /**
+     * The label key that the selector applies to.
+     */
+    key?: string;
+    /**
+     * A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
+     */
+    operator?: string;
+    /**
+     * An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
+     */
+    values?: string[];
+}
+
+export interface K8sJobSpecTemplateSpecAffinityPodAntiAffinity {
+    /**
+     * The scheduler will prefer to schedule pods to nodes that satisfy the anti-affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions. The node that is most preferred is the one with the greatest sum of weights, i.e. for each node that meets all of the scheduling requirements (resource request, RequiredDuringScheduling anti-affinity expressions, etc.), compute a sum by iterating through the elements of this field and adding 'weight' to the sum if the node matches the corresponding MatchExpressions; the node(s) with the highest sum are the most preferred.
+     */
+    preferredDuringSchedulingIgnoredDuringExecutions: outputs.K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecution[];
+    /**
+     * If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system may or may not try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each PodAffinityTerm are intersected, i.e. all terms must be satisfied.
+     */
+    requiredDuringSchedulingIgnoredDuringExecutions?: outputs.K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecution[];
+}
+
+export interface K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecution {
+    /**
+     * A pod affinity term, associated with the corresponding weight
+     */
+    podAffinityTerm: outputs.K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTerm;
+    /**
+     * weight associated with matching the corresponding podAffinityTerm, in the range 1-100
+     */
+    weight: number;
+}
+
+export interface K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTerm {
+    /**
+     * A label query over a set of resources, in this case pods.
+     */
+    labelSelectors: outputs.K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector[];
+    /**
+     * namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means 'this pod's namespace'
+     */
+    namespaces: string[];
+    /**
+     * empty topology key is interpreted by the scheduler as 'all topologies'
+     */
+    topologyKey: string;
+}
+
+export interface K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector {
+    /**
+     * A list of label selector requirements. The requirements are ANDed.
+     */
+    matchExpressions?: outputs.K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression[];
+    /**
+     * A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+     */
+    matchLabels?: {[key: string]: string};
+}
+
+export interface K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression {
+    /**
+     * The label key that the selector applies to.
+     */
+    key?: string;
+    /**
+     * A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
+     */
+    operator?: string;
+    /**
+     * An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
+     */
+    values?: string[];
+}
+
+export interface K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecution {
+    /**
+     * A label query over a set of resources, in this case pods.
+     */
+    labelSelectors: outputs.K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector[];
+    /**
+     * namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means 'this pod's namespace'
+     */
+    namespaces: string[];
+    /**
+     * empty topology key is interpreted by the scheduler as 'all topologies'
+     */
+    topologyKey: string;
+}
+
+export interface K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector {
+    /**
+     * A list of label selector requirements. The requirements are ANDed.
+     */
+    matchExpressions?: outputs.K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression[];
+    /**
+     * A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+     */
+    matchLabels?: {[key: string]: string};
+}
+
+export interface K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression {
+    /**
+     * The label key that the selector applies to.
+     */
+    key?: string;
+    /**
+     * A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
+     */
+    operator?: string;
+    /**
+     * An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
+     */
+    values?: string[];
+}
+
+export interface K8sJobSpecTemplateSpecContainer {
+    /**
+     * Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR*NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR*NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+     */
+    args?: string[];
+    /**
+     * Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR*NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR*NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+     */
+    commands?: string[];
+    /**
+     * List of sources to populate environment variables in the container. The keys defined within a source must be a C*IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated.
+     */
+    envFroms?: outputs.K8sJobSpecTemplateSpecContainerEnvFrom[];
+    /**
+     * List of environment variables to set in the container. Cannot be updated.
+     */
+    envs?: outputs.K8sJobSpecTemplateSpecContainerEnv[];
+    /**
+     * Docker image name. More info: https://kubernetes.io/docs/concepts/containers/images/
+     */
+    image?: string;
+    /**
+     * Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/images/#updating-images
+     */
+    imagePullPolicy: string;
+    /**
+     * Actions that the management system should take in response to container lifecycle events
+     */
+    lifecycle?: outputs.K8sJobSpecTemplateSpecContainerLifecycle;
+    /**
+     * Periodic probe of container liveness. Container will be restarted if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    livenessProbe?: outputs.K8sJobSpecTemplateSpecContainerLivenessProbe;
+    /**
+     * Name of the container specified as a DNS*LABEL. Each container in a pod must have a unique name (DNS*LABEL). Cannot be updated.
+     */
+    name: string;
+    /**
+     * List of ports to expose from the container. Exposing a port here gives the system additional information about the network connections a container uses, but is primarily informational. Not specifying a port here DOES NOT prevent that port from being exposed. Any port which is listening on the default "0.0.0.0" address inside a container will be accessible from the network. Cannot be updated.
+     */
+    ports?: outputs.K8sJobSpecTemplateSpecContainerPort[];
+    /**
+     * Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    readinessProbe?: outputs.K8sJobSpecTemplateSpecContainerReadinessProbe;
+    /**
+     * Compute Resources required by this container. Cannot be updated. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+     */
+    resources: outputs.K8sJobSpecTemplateSpecContainerResources;
+    /**
+     * Security options the pod should run with. More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+     */
+    securityContext?: outputs.K8sJobSpecTemplateSpecContainerSecurityContext;
+    /**
+     * StartupProbe indicates that the Pod has successfully initialized. If specified, no other probes are executed until this completes successfully. If this probe fails, the Pod will be restarted, just as if the livenessProbe failed. This can be used to provide different probe parameters at the beginning of a Pod's lifecycle, when it might take a long time to load data or warm a cache, than during steady-state operation. This cannot be updated. This is an alpha feature enabled by the StartupProbe feature flag. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+     */
+    startupProbe?: outputs.K8sJobSpecTemplateSpecContainerStartupProbe;
+    /**
+     * Whether this container should allocate a buffer for stdin in the container runtime. If this is not set, reads from stdin in the container will always result in EOF.  Defaults to `false`.
+     */
+    stdin?: boolean;
+    /**
+     * Whether the container runtime should close the stdin channel after it has been opened by a single attach. When stdin is true the stdin stream will remain open across multiple attach sessions. If stdinOnce is set to true, stdin is opened on container start, is empty until the first client attaches to stdin, and then remains open and accepts data until the client disconnects, at which time stdin is closed and remains closed until the container is restarted. If this flag is false, a container processes that reads from stdin will never receive an EOF. Defaults to `false`.
+     */
+    stdinOnce?: boolean;
+    /**
+     * Optional: Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Defaults to /dev/termination-log. Cannot be updated. Defaults to `/dev/termination-log`.
+     */
+    terminationMessagePath?: string;
+    /**
+     * Optional: Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
+     */
+    terminationMessagePolicy: string;
+    /**
+     * Whether this container should allocate a TTY for itself Defaults to `false`.
+     */
+    tty?: boolean;
+    /**
+     * Pod volumes to mount into the container's filesystem. Cannot be updated.
+     */
+    volumeMounts?: outputs.K8sJobSpecTemplateSpecContainerVolumeMount[];
+    /**
+     * Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image. Cannot be updated.
+     */
+    workingDir?: string;
+}
+
+export interface K8sJobSpecTemplateSpecContainerEnv {
+    /**
+     * Name of the environment variable. Must be a C_IDENTIFIER
+     */
+    name: string;
+    /**
+     * Variable references $(VAR*NAME) are expanded using the previous defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR*NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
+     */
+    value?: string;
+    /**
+     * Source for the environment variable's value
+     */
+    valueFrom?: outputs.K8sJobSpecTemplateSpecContainerEnvValueFrom;
+}
+
+export interface K8sJobSpecTemplateSpecContainerEnvFrom {
+    /**
+     * The ConfigMap to select from
+     */
+    configMapRef?: outputs.K8sJobSpecTemplateSpecContainerEnvFromConfigMapRef;
+    /**
+     * An optional identifer to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
+     */
+    prefix?: string;
+    /**
+     * The Secret to select from
+     */
+    secretRef?: outputs.K8sJobSpecTemplateSpecContainerEnvFromSecretRef;
+}
+
+export interface K8sJobSpecTemplateSpecContainerEnvFromConfigMapRef {
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name: string;
+    /**
+     * Specify whether the ConfigMap must be defined
+     */
+    optional?: boolean;
+}
+
+export interface K8sJobSpecTemplateSpecContainerEnvFromSecretRef {
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name: string;
+    /**
+     * Specify whether the Secret must be defined
+     */
+    optional?: boolean;
+}
+
+export interface K8sJobSpecTemplateSpecContainerEnvValueFrom {
+    /**
+     * Selects a key of a ConfigMap.
+     */
+    configMapKeyRef?: outputs.K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRef;
+    /**
+     * Selects a field of the pod: supports metadata.name, metadata.namespace, metadata.labels, metadata.annotations, spec.nodeName, spec.serviceAccountName, status.podIP.
+     */
+    fieldRef?: outputs.K8sJobSpecTemplateSpecContainerEnvValueFromFieldRef;
+    /**
+     * Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.
+     */
+    resourceFieldRef?: outputs.K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRef;
+    /**
+     * Selects a key of a secret in the pod's namespace.
+     */
+    secretKeyRef?: outputs.K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRef;
+}
+
+export interface K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRef {
+    /**
+     * The key to select.
+     */
+    key?: string;
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: string;
+    /**
+     * Specify whether the ConfigMap or its key must be defined.
+     */
+    optional?: boolean;
+}
+
+export interface K8sJobSpecTemplateSpecContainerEnvValueFromFieldRef {
+    /**
+     * Version of the schema the FieldPath is written in terms of, defaults to "v1". Defaults to `v1`.
+     */
+    apiVersion?: string;
+    /**
+     * Path of the field to select in the specified API version
+     */
+    fieldPath?: string;
+}
+
+export interface K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRef {
+    containerName?: string;
+    /**
+     * Defaults to `1`.
+     */
+    divisor?: string;
+    /**
+     * Resource to select
+     */
+    resource: string;
+}
+
+export interface K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRef {
+    /**
+     * The key of the secret to select from. Must be a valid secret key.
+     */
+    key?: string;
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: string;
+    /**
+     * Specify whether the Secret or its key must be defined.
+     */
+    optional?: boolean;
+}
+
+export interface K8sJobSpecTemplateSpecContainerLifecycle {
+    /**
+     * post*start is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+     */
+    postStarts?: outputs.K8sJobSpecTemplateSpecContainerLifecyclePostStart[];
+    /**
+     * pre*stop is called immediately before a container is terminated. The container is terminated after the handler completes. The reason for termination is passed to the handler. Regardless of the outcome of the handler, the container is eventually terminated. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+     */
+    preStops?: outputs.K8sJobSpecTemplateSpecContainerLifecyclePreStop[];
+}
+
+export interface K8sJobSpecTemplateSpecContainerLifecyclePostStart {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: outputs.K8sJobSpecTemplateSpecContainerLifecyclePostStartExec;
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: outputs.K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGet;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: outputs.K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocket[];
+}
+
+export interface K8sJobSpecTemplateSpecContainerLifecyclePostStartExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: string[];
+}
+
+export interface K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: outputs.K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeader[];
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: string;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port?: string;
+    /**
+     * Scheme to use for connecting to the host. Defaults to `HTTP`.
+     */
+    scheme?: string;
+}
+
+export interface K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: string;
+    /**
+     * The header field value
+     */
+    value?: string;
+}
+
+export interface K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port: string;
+}
+
+export interface K8sJobSpecTemplateSpecContainerLifecyclePreStop {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: outputs.K8sJobSpecTemplateSpecContainerLifecyclePreStopExec;
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: outputs.K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGet;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: outputs.K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocket[];
+}
+
+export interface K8sJobSpecTemplateSpecContainerLifecyclePreStopExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: string[];
+}
+
+export interface K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: outputs.K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeader[];
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: string;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port?: string;
+    /**
+     * Scheme to use for connecting to the host. Defaults to `HTTP`.
+     */
+    scheme?: string;
+}
+
+export interface K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: string;
+    /**
+     * The header field value
+     */
+    value?: string;
+}
+
+export interface K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port: string;
+}
+
+export interface K8sJobSpecTemplateSpecContainerLivenessProbe {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: outputs.K8sJobSpecTemplateSpecContainerLivenessProbeExec;
+    /**
+     * Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to `3`.
+     */
+    failureThreshold?: number;
+    /**
+     * GRPC specifies an action involving a GRPC port.
+     */
+    grpcs?: outputs.K8sJobSpecTemplateSpecContainerLivenessProbeGrpc[];
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: outputs.K8sJobSpecTemplateSpecContainerLivenessProbeHttpGet;
+    /**
+     * Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    initialDelaySeconds?: number;
+    /**
+     * How often (in seconds) to perform the probe Defaults to `10`.
+     */
+    periodSeconds?: number;
+    /**
+     * Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to `1`.
+     */
+    successThreshold?: number;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: outputs.K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocket[];
+    /**
+     * Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes Defaults to `1`.
+     */
+    timeoutSeconds?: number;
+}
+
+export interface K8sJobSpecTemplateSpecContainerLivenessProbeExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: string[];
+}
+
+export interface K8sJobSpecTemplateSpecContainerLivenessProbeGrpc {
+    /**
+     * Number of the port to access on the container. Number must be in the range 1 to 65535.
+     */
+    port: number;
+    /**
+     * Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+     */
+    service?: string;
+}
+
+export interface K8sJobSpecTemplateSpecContainerLivenessProbeHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: outputs.K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeader[];
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: string;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port?: string;
+    /**
+     * Scheme to use for connecting to the host. Defaults to `HTTP`.
+     */
+    scheme?: string;
+}
+
+export interface K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: string;
+    /**
+     * The header field value
+     */
+    value?: string;
+}
+
+export interface K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port: string;
+}
+
+export interface K8sJobSpecTemplateSpecContainerPort {
+    /**
+     * Number of port to expose on the pod's IP address. This must be a valid port number, 0 < x < 65536.
+     */
+    containerPort: number;
+    /**
+     * What host IP to bind the external port to.
+     */
+    hostIp?: string;
+    /**
+     * Number of port to expose on the host. If specified, this must be a valid port number, 0 < x < 65536. If HostNetwork is specified, this must match ContainerPort. Most containers do not need this.
+     */
+    hostPort?: number;
+    /**
+     * If specified, this must be an IANA*SVC*NAME and unique within the pod. Each named port in a pod must have a unique name. Name for the port that can be referred to by services
+     */
+    name?: string;
+    /**
+     * Protocol for port. Must be UDP or TCP. Defaults to "TCP". Defaults to `TCP`.
+     */
+    protocol?: string;
+}
+
+export interface K8sJobSpecTemplateSpecContainerReadinessProbe {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: outputs.K8sJobSpecTemplateSpecContainerReadinessProbeExec;
+    /**
+     * Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to `3`.
+     */
+    failureThreshold?: number;
+    /**
+     * GRPC specifies an action involving a GRPC port.
+     */
+    grpcs?: outputs.K8sJobSpecTemplateSpecContainerReadinessProbeGrpc[];
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: outputs.K8sJobSpecTemplateSpecContainerReadinessProbeHttpGet;
+    /**
+     * Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    initialDelaySeconds?: number;
+    /**
+     * How often (in seconds) to perform the probe Defaults to `10`.
+     */
+    periodSeconds?: number;
+    /**
+     * Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to `1`.
+     */
+    successThreshold?: number;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: outputs.K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocket[];
+    /**
+     * Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes Defaults to `1`.
+     */
+    timeoutSeconds?: number;
+}
+
+export interface K8sJobSpecTemplateSpecContainerReadinessProbeExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: string[];
+}
+
+export interface K8sJobSpecTemplateSpecContainerReadinessProbeGrpc {
+    /**
+     * Number of the port to access on the container. Number must be in the range 1 to 65535.
+     */
+    port: number;
+    /**
+     * Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+     */
+    service?: string;
+}
+
+export interface K8sJobSpecTemplateSpecContainerReadinessProbeHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: outputs.K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeader[];
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: string;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port?: string;
+    /**
+     * Scheme to use for connecting to the host. Defaults to `HTTP`.
+     */
+    scheme?: string;
+}
+
+export interface K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: string;
+    /**
+     * The header field value
+     */
+    value?: string;
+}
+
+export interface K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port: string;
+}
+
+export interface K8sJobSpecTemplateSpecContainerResources {
+    /**
+     * Describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+     */
+    limits: {[key: string]: string};
+    /**
+     * Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
+     */
+    requests: {[key: string]: string};
+}
+
+export interface K8sJobSpecTemplateSpecContainerSecurityContext {
+    /**
+     * AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the no*new*privs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP*SYS*ADMIN Defaults to `true`.
+     */
+    allowPrivilegeEscalation?: boolean;
+    /**
+     * The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime.
+     */
+    capabilities?: outputs.K8sJobSpecTemplateSpecContainerSecurityContextCapabilities;
+    /**
+     * Run container in privileged mode. Processes in privileged containers are essentially equivalent to root on the host. Defaults to false. Defaults to `false`.
+     */
+    privileged?: boolean;
+    /**
+     * Whether this container has a read-only root filesystem. Default is false. Defaults to `false`.
+     */
+    readOnlyRootFilesystem?: boolean;
+    /**
+     * The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+     */
+    runAsGroup?: string;
+    /**
+     * Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+     */
+    runAsNonRoot?: boolean;
+    /**
+     * The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+     */
+    runAsUser?: string;
+    /**
+     * The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+     */
+    seLinuxOptions?: outputs.K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptions;
+    /**
+     * The seccomp options to use by the containers in this pod. Note that this field cannot be set when spec.os.name is windows.
+     */
+    seccompProfile?: outputs.K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfile;
+}
+
+export interface K8sJobSpecTemplateSpecContainerSecurityContextCapabilities {
+    /**
+     * Added capabilities
+     */
+    adds?: string[];
+    /**
+     * Removed capabilities
+     */
+    drops?: string[];
+}
+
+export interface K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptions {
+    /**
+     * Level is SELinux level label that applies to the container.
+     */
+    level?: string;
+    /**
+     * Role is a SELinux role label that applies to the container.
+     */
+    role?: string;
+    /**
+     * Type is a SELinux type label that applies to the container.
+     */
+    type?: string;
+    /**
+     * User is a SELinux user label that applies to the container.
+     */
+    user?: string;
+}
+
+export interface K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfile {
+    /**
+     * Localhost Profile indicates a profile defined in a file on the node should be used. The profile must be preconfigured on the node to work. Defaults to ``.
+     */
+    localhostProfile?: string;
+    /**
+     * Type indicates which kind of seccomp profile will be applied. Valid options are: Localhost, RuntimeDefault, Unconfined. Defaults to `Unconfined`.
+     */
+    type?: string;
+}
+
+export interface K8sJobSpecTemplateSpecContainerStartupProbe {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: outputs.K8sJobSpecTemplateSpecContainerStartupProbeExec;
+    /**
+     * Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to `3`.
+     */
+    failureThreshold?: number;
+    /**
+     * GRPC specifies an action involving a GRPC port.
+     */
+    grpcs?: outputs.K8sJobSpecTemplateSpecContainerStartupProbeGrpc[];
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: outputs.K8sJobSpecTemplateSpecContainerStartupProbeHttpGet;
+    /**
+     * Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    initialDelaySeconds?: number;
+    /**
+     * How often (in seconds) to perform the probe Defaults to `10`.
+     */
+    periodSeconds?: number;
+    /**
+     * Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to `1`.
+     */
+    successThreshold?: number;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: outputs.K8sJobSpecTemplateSpecContainerStartupProbeTcpSocket[];
+    /**
+     * Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes Defaults to `1`.
+     */
+    timeoutSeconds?: number;
+}
+
+export interface K8sJobSpecTemplateSpecContainerStartupProbeExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: string[];
+}
+
+export interface K8sJobSpecTemplateSpecContainerStartupProbeGrpc {
+    /**
+     * Number of the port to access on the container. Number must be in the range 1 to 65535.
+     */
+    port: number;
+    /**
+     * Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+     */
+    service?: string;
+}
+
+export interface K8sJobSpecTemplateSpecContainerStartupProbeHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: outputs.K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeader[];
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: string;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port?: string;
+    /**
+     * Scheme to use for connecting to the host. Defaults to `HTTP`.
+     */
+    scheme?: string;
+}
+
+export interface K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: string;
+    /**
+     * The header field value
+     */
+    value?: string;
+}
+
+export interface K8sJobSpecTemplateSpecContainerStartupProbeTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port: string;
+}
+
+export interface K8sJobSpecTemplateSpecContainerVolumeMount {
+    /**
+     * Path within the container at which the volume should be mounted. Must not contain ':'.
+     */
+    mountPath: string;
+    /**
+     * Mount propagation mode. mountPropagation determines how mounts are propagated from the host to container and the other way around. Valid values are None (default), HostToContainer and Bidirectional. Defaults to `None`.
+     */
+    mountPropagation?: string;
+    /**
+     * This must match the Name of a Volume.
+     */
+    name: string;
+    /**
+     * Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false. Defaults to `false`.
+     */
+    readOnly?: boolean;
+    /**
+     * Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
+     */
+    subPath?: string;
+}
+
+export interface K8sJobSpecTemplateSpecDnsConfig {
+    /**
+     * A list of DNS name server IP addresses. This will be appended to the base nameservers generated from DNSPolicy. Duplicated nameservers will be removed.
+     */
+    nameservers?: string[];
+    /**
+     * A list of DNS resolver options. This will be merged with the base options generated from DNSPolicy. Duplicated entries will be removed. Resolution options given in Options will override those that appear in the base DNSPolicy.
+     */
+    options?: outputs.K8sJobSpecTemplateSpecDnsConfigOption[];
+    /**
+     * A list of DNS search domains for host-name lookup. This will be appended to the base search paths generated from DNSPolicy. Duplicated search paths will be removed.
+     */
+    searches?: string[];
+}
+
+export interface K8sJobSpecTemplateSpecDnsConfigOption {
+    /**
+     * Name of the option.
+     */
+    name: string;
+    /**
+     * Value of the option. Optional: Defaults to empty.
+     */
+    value?: string;
+}
+
+export interface K8sJobSpecTemplateSpecHostAlias {
+    /**
+     * Hostnames for the IP address.
+     */
+    hostnames: string[];
+    /**
+     * IP address of the host file entry.
+     */
+    ip: string;
+}
+
+export interface K8sJobSpecTemplateSpecImagePullSecret {
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name: string;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainer {
+    /**
+     * Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR*NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR*NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+     */
+    args?: string[];
+    /**
+     * Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR*NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR*NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+     */
+    commands?: string[];
+    /**
+     * List of sources to populate environment variables in the container. The keys defined within a source must be a C*IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated.
+     */
+    envFroms?: outputs.K8sJobSpecTemplateSpecInitContainerEnvFrom[];
+    /**
+     * List of environment variables to set in the container. Cannot be updated.
+     */
+    envs?: outputs.K8sJobSpecTemplateSpecInitContainerEnv[];
+    /**
+     * Docker image name. More info: https://kubernetes.io/docs/concepts/containers/images/
+     */
+    image?: string;
+    /**
+     * Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/images/#updating-images
+     */
+    imagePullPolicy: string;
+    /**
+     * Actions that the management system should take in response to container lifecycle events
+     */
+    lifecycle?: outputs.K8sJobSpecTemplateSpecInitContainerLifecycle;
+    /**
+     * Periodic probe of container liveness. Container will be restarted if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    livenessProbe?: outputs.K8sJobSpecTemplateSpecInitContainerLivenessProbe;
+    /**
+     * Name of the container specified as a DNS*LABEL. Each container in a pod must have a unique name (DNS*LABEL). Cannot be updated.
+     */
+    name: string;
+    /**
+     * List of ports to expose from the container. Exposing a port here gives the system additional information about the network connections a container uses, but is primarily informational. Not specifying a port here DOES NOT prevent that port from being exposed. Any port which is listening on the default "0.0.0.0" address inside a container will be accessible from the network. Cannot be updated.
+     */
+    ports?: outputs.K8sJobSpecTemplateSpecInitContainerPort[];
+    /**
+     * Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    readinessProbe?: outputs.K8sJobSpecTemplateSpecInitContainerReadinessProbe;
+    /**
+     * Compute Resources required by this container. Cannot be updated. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+     */
+    resources: outputs.K8sJobSpecTemplateSpecInitContainerResources;
+    /**
+     * Security options the pod should run with. More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+     */
+    securityContext?: outputs.K8sJobSpecTemplateSpecInitContainerSecurityContext;
+    /**
+     * StartupProbe indicates that the Pod has successfully initialized. If specified, no other probes are executed until this completes successfully. If this probe fails, the Pod will be restarted, just as if the livenessProbe failed. This can be used to provide different probe parameters at the beginning of a Pod's lifecycle, when it might take a long time to load data or warm a cache, than during steady-state operation. This cannot be updated. This is an alpha feature enabled by the StartupProbe feature flag. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+     */
+    startupProbe?: outputs.K8sJobSpecTemplateSpecInitContainerStartupProbe;
+    /**
+     * Whether this container should allocate a buffer for stdin in the container runtime. If this is not set, reads from stdin in the container will always result in EOF.  Defaults to `false`.
+     */
+    stdin?: boolean;
+    /**
+     * Whether the container runtime should close the stdin channel after it has been opened by a single attach. When stdin is true the stdin stream will remain open across multiple attach sessions. If stdinOnce is set to true, stdin is opened on container start, is empty until the first client attaches to stdin, and then remains open and accepts data until the client disconnects, at which time stdin is closed and remains closed until the container is restarted. If this flag is false, a container processes that reads from stdin will never receive an EOF. Defaults to `false`.
+     */
+    stdinOnce?: boolean;
+    /**
+     * Optional: Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Defaults to /dev/termination-log. Cannot be updated. Defaults to `/dev/termination-log`.
+     */
+    terminationMessagePath?: string;
+    /**
+     * Optional: Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
+     */
+    terminationMessagePolicy: string;
+    /**
+     * Whether this container should allocate a TTY for itself Defaults to `false`.
+     */
+    tty?: boolean;
+    /**
+     * Pod volumes to mount into the container's filesystem. Cannot be updated.
+     */
+    volumeMounts?: outputs.K8sJobSpecTemplateSpecInitContainerVolumeMount[];
+    /**
+     * Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image. Cannot be updated.
+     */
+    workingDir?: string;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerEnv {
+    /**
+     * Name of the environment variable. Must be a C_IDENTIFIER
+     */
+    name: string;
+    /**
+     * Variable references $(VAR*NAME) are expanded using the previous defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR*NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
+     */
+    value?: string;
+    /**
+     * Source for the environment variable's value
+     */
+    valueFrom?: outputs.K8sJobSpecTemplateSpecInitContainerEnvValueFrom;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerEnvFrom {
+    /**
+     * The ConfigMap to select from
+     */
+    configMapRef?: outputs.K8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRef;
+    /**
+     * An optional identifer to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
+     */
+    prefix?: string;
+    /**
+     * The Secret to select from
+     */
+    secretRef?: outputs.K8sJobSpecTemplateSpecInitContainerEnvFromSecretRef;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRef {
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name: string;
+    /**
+     * Specify whether the ConfigMap must be defined
+     */
+    optional?: boolean;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerEnvFromSecretRef {
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name: string;
+    /**
+     * Specify whether the Secret must be defined
+     */
+    optional?: boolean;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerEnvValueFrom {
+    /**
+     * Selects a key of a ConfigMap.
+     */
+    configMapKeyRef?: outputs.K8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRef;
+    /**
+     * Selects a field of the pod: supports metadata.name, metadata.namespace, metadata.labels, metadata.annotations, spec.nodeName, spec.serviceAccountName, status.podIP.
+     */
+    fieldRef?: outputs.K8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRef;
+    /**
+     * Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.
+     */
+    resourceFieldRef?: outputs.K8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRef;
+    /**
+     * Selects a key of a secret in the pod's namespace.
+     */
+    secretKeyRef?: outputs.K8sJobSpecTemplateSpecInitContainerEnvValueFromSecretKeyRef;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRef {
+    /**
+     * The key to select.
+     */
+    key?: string;
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: string;
+    /**
+     * Specify whether the ConfigMap or its key must be defined.
+     */
+    optional?: boolean;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRef {
+    /**
+     * Version of the schema the FieldPath is written in terms of, defaults to "v1". Defaults to `v1`.
+     */
+    apiVersion?: string;
+    /**
+     * Path of the field to select in the specified API version
+     */
+    fieldPath?: string;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRef {
+    containerName?: string;
+    /**
+     * Defaults to `1`.
+     */
+    divisor?: string;
+    /**
+     * Resource to select
+     */
+    resource: string;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerEnvValueFromSecretKeyRef {
+    /**
+     * The key of the secret to select from. Must be a valid secret key.
+     */
+    key?: string;
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: string;
+    /**
+     * Specify whether the Secret or its key must be defined.
+     */
+    optional?: boolean;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerLifecycle {
+    /**
+     * post*start is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+     */
+    postStarts?: outputs.K8sJobSpecTemplateSpecInitContainerLifecyclePostStart[];
+    /**
+     * pre*stop is called immediately before a container is terminated. The container is terminated after the handler completes. The reason for termination is passed to the handler. Regardless of the outcome of the handler, the container is eventually terminated. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+     */
+    preStops?: outputs.K8sJobSpecTemplateSpecInitContainerLifecyclePreStop[];
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerLifecyclePostStart {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: outputs.K8sJobSpecTemplateSpecInitContainerLifecyclePostStartExec;
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: outputs.K8sJobSpecTemplateSpecInitContainerLifecyclePostStartHttpGet;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: outputs.K8sJobSpecTemplateSpecInitContainerLifecyclePostStartTcpSocket[];
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerLifecyclePostStartExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: string[];
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerLifecyclePostStartHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: outputs.K8sJobSpecTemplateSpecInitContainerLifecyclePostStartHttpGetHttpHeader[];
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: string;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port?: string;
+    /**
+     * Scheme to use for connecting to the host. Defaults to `HTTP`.
+     */
+    scheme?: string;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerLifecyclePostStartHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: string;
+    /**
+     * The header field value
+     */
+    value?: string;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerLifecyclePostStartTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port: string;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerLifecyclePreStop {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: outputs.K8sJobSpecTemplateSpecInitContainerLifecyclePreStopExec;
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: outputs.K8sJobSpecTemplateSpecInitContainerLifecyclePreStopHttpGet;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: outputs.K8sJobSpecTemplateSpecInitContainerLifecyclePreStopTcpSocket[];
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerLifecyclePreStopExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: string[];
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerLifecyclePreStopHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: outputs.K8sJobSpecTemplateSpecInitContainerLifecyclePreStopHttpGetHttpHeader[];
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: string;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port?: string;
+    /**
+     * Scheme to use for connecting to the host. Defaults to `HTTP`.
+     */
+    scheme?: string;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerLifecyclePreStopHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: string;
+    /**
+     * The header field value
+     */
+    value?: string;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerLifecyclePreStopTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port: string;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerLivenessProbe {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: outputs.K8sJobSpecTemplateSpecInitContainerLivenessProbeExec;
+    /**
+     * Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to `3`.
+     */
+    failureThreshold?: number;
+    /**
+     * GRPC specifies an action involving a GRPC port.
+     */
+    grpcs?: outputs.K8sJobSpecTemplateSpecInitContainerLivenessProbeGrpc[];
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: outputs.K8sJobSpecTemplateSpecInitContainerLivenessProbeHttpGet;
+    /**
+     * Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    initialDelaySeconds?: number;
+    /**
+     * How often (in seconds) to perform the probe Defaults to `10`.
+     */
+    periodSeconds?: number;
+    /**
+     * Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to `1`.
+     */
+    successThreshold?: number;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: outputs.K8sJobSpecTemplateSpecInitContainerLivenessProbeTcpSocket[];
+    /**
+     * Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes Defaults to `1`.
+     */
+    timeoutSeconds?: number;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerLivenessProbeExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: string[];
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerLivenessProbeGrpc {
+    /**
+     * Number of the port to access on the container. Number must be in the range 1 to 65535.
+     */
+    port: number;
+    /**
+     * Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+     */
+    service?: string;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerLivenessProbeHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: outputs.K8sJobSpecTemplateSpecInitContainerLivenessProbeHttpGetHttpHeader[];
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: string;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port?: string;
+    /**
+     * Scheme to use for connecting to the host. Defaults to `HTTP`.
+     */
+    scheme?: string;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerLivenessProbeHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: string;
+    /**
+     * The header field value
+     */
+    value?: string;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerLivenessProbeTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port: string;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerPort {
+    /**
+     * Number of port to expose on the pod's IP address. This must be a valid port number, 0 < x < 65536.
+     */
+    containerPort: number;
+    /**
+     * What host IP to bind the external port to.
+     */
+    hostIp?: string;
+    /**
+     * Number of port to expose on the host. If specified, this must be a valid port number, 0 < x < 65536. If HostNetwork is specified, this must match ContainerPort. Most containers do not need this.
+     */
+    hostPort?: number;
+    /**
+     * If specified, this must be an IANA*SVC*NAME and unique within the pod. Each named port in a pod must have a unique name. Name for the port that can be referred to by services
+     */
+    name?: string;
+    /**
+     * Protocol for port. Must be UDP or TCP. Defaults to "TCP". Defaults to `TCP`.
+     */
+    protocol?: string;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerReadinessProbe {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: outputs.K8sJobSpecTemplateSpecInitContainerReadinessProbeExec;
+    /**
+     * Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to `3`.
+     */
+    failureThreshold?: number;
+    /**
+     * GRPC specifies an action involving a GRPC port.
+     */
+    grpcs?: outputs.K8sJobSpecTemplateSpecInitContainerReadinessProbeGrpc[];
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: outputs.K8sJobSpecTemplateSpecInitContainerReadinessProbeHttpGet;
+    /**
+     * Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    initialDelaySeconds?: number;
+    /**
+     * How often (in seconds) to perform the probe Defaults to `10`.
+     */
+    periodSeconds?: number;
+    /**
+     * Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to `1`.
+     */
+    successThreshold?: number;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: outputs.K8sJobSpecTemplateSpecInitContainerReadinessProbeTcpSocket[];
+    /**
+     * Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes Defaults to `1`.
+     */
+    timeoutSeconds?: number;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerReadinessProbeExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: string[];
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerReadinessProbeGrpc {
+    /**
+     * Number of the port to access on the container. Number must be in the range 1 to 65535.
+     */
+    port: number;
+    /**
+     * Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+     */
+    service?: string;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerReadinessProbeHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: outputs.K8sJobSpecTemplateSpecInitContainerReadinessProbeHttpGetHttpHeader[];
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: string;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port?: string;
+    /**
+     * Scheme to use for connecting to the host. Defaults to `HTTP`.
+     */
+    scheme?: string;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerReadinessProbeHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: string;
+    /**
+     * The header field value
+     */
+    value?: string;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerReadinessProbeTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port: string;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerResources {
+    /**
+     * Describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+     */
+    limits: {[key: string]: string};
+    /**
+     * Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
+     */
+    requests: {[key: string]: string};
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerSecurityContext {
+    /**
+     * AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the no*new*privs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP*SYS*ADMIN Defaults to `true`.
+     */
+    allowPrivilegeEscalation?: boolean;
+    /**
+     * The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime.
+     */
+    capabilities?: outputs.K8sJobSpecTemplateSpecInitContainerSecurityContextCapabilities;
+    /**
+     * Run container in privileged mode. Processes in privileged containers are essentially equivalent to root on the host. Defaults to false. Defaults to `false`.
+     */
+    privileged?: boolean;
+    /**
+     * Whether this container has a read-only root filesystem. Default is false. Defaults to `false`.
+     */
+    readOnlyRootFilesystem?: boolean;
+    /**
+     * The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+     */
+    runAsGroup?: string;
+    /**
+     * Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+     */
+    runAsNonRoot?: boolean;
+    /**
+     * The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+     */
+    runAsUser?: string;
+    /**
+     * The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+     */
+    seLinuxOptions?: outputs.K8sJobSpecTemplateSpecInitContainerSecurityContextSeLinuxOptions;
+    /**
+     * The seccomp options to use by the containers in this pod. Note that this field cannot be set when spec.os.name is windows.
+     */
+    seccompProfile?: outputs.K8sJobSpecTemplateSpecInitContainerSecurityContextSeccompProfile;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerSecurityContextCapabilities {
+    /**
+     * Added capabilities
+     */
+    adds?: string[];
+    /**
+     * Removed capabilities
+     */
+    drops?: string[];
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerSecurityContextSeLinuxOptions {
+    /**
+     * Level is SELinux level label that applies to the container.
+     */
+    level?: string;
+    /**
+     * Role is a SELinux role label that applies to the container.
+     */
+    role?: string;
+    /**
+     * Type is a SELinux type label that applies to the container.
+     */
+    type?: string;
+    /**
+     * User is a SELinux user label that applies to the container.
+     */
+    user?: string;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerSecurityContextSeccompProfile {
+    /**
+     * Localhost Profile indicates a profile defined in a file on the node should be used. The profile must be preconfigured on the node to work. Defaults to ``.
+     */
+    localhostProfile?: string;
+    /**
+     * Type indicates which kind of seccomp profile will be applied. Valid options are: Localhost, RuntimeDefault, Unconfined. Defaults to `Unconfined`.
+     */
+    type?: string;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerStartupProbe {
+    /**
+     * exec specifies the action to take.
+     */
+    exec?: outputs.K8sJobSpecTemplateSpecInitContainerStartupProbeExec;
+    /**
+     * Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to `3`.
+     */
+    failureThreshold?: number;
+    /**
+     * GRPC specifies an action involving a GRPC port.
+     */
+    grpcs?: outputs.K8sJobSpecTemplateSpecInitContainerStartupProbeGrpc[];
+    /**
+     * Specifies the http request to perform.
+     */
+    httpGet?: outputs.K8sJobSpecTemplateSpecInitContainerStartupProbeHttpGet;
+    /**
+     * Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+     */
+    initialDelaySeconds?: number;
+    /**
+     * How often (in seconds) to perform the probe Defaults to `10`.
+     */
+    periodSeconds?: number;
+    /**
+     * Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to `1`.
+     */
+    successThreshold?: number;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+     */
+    tcpSockets?: outputs.K8sJobSpecTemplateSpecInitContainerStartupProbeTcpSocket[];
+    /**
+     * Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes Defaults to `1`.
+     */
+    timeoutSeconds?: number;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerStartupProbeExec {
+    /**
+     * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+     */
+    commands?: string[];
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerStartupProbeGrpc {
+    /**
+     * Number of the port to access on the container. Number must be in the range 1 to 65535.
+     */
+    port: number;
+    /**
+     * Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+     */
+    service?: string;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerStartupProbeHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: string;
+    /**
+     * Scheme to use for connecting to the host.
+     */
+    httpHeaders?: outputs.K8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetHttpHeader[];
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: string;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port?: string;
+    /**
+     * Scheme to use for connecting to the host. Defaults to `HTTP`.
+     */
+    scheme?: string;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetHttpHeader {
+    /**
+     * The header field name
+     */
+    name?: string;
+    /**
+     * The header field value
+     */
+    value?: string;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerStartupProbeTcpSocket {
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+     */
+    port: string;
+}
+
+export interface K8sJobSpecTemplateSpecInitContainerVolumeMount {
+    /**
+     * Path within the container at which the volume should be mounted. Must not contain ':'.
+     */
+    mountPath: string;
+    /**
+     * Mount propagation mode. mountPropagation determines how mounts are propagated from the host to container and the other way around. Valid values are None (default), HostToContainer and Bidirectional. Defaults to `None`.
+     */
+    mountPropagation?: string;
+    /**
+     * This must match the Name of a Volume.
+     */
+    name: string;
+    /**
+     * Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false. Defaults to `false`.
+     */
+    readOnly?: boolean;
+    /**
+     * Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
+     */
+    subPath?: string;
+}
+
+export interface K8sJobSpecTemplateSpecReadinessGate {
+    /**
+     * refers to a condition in the pod's condition list with matching type.
+     */
+    conditionType: string;
+}
+
+export interface K8sJobSpecTemplateSpecSecurityContext {
+    /**
+     * A special supplemental group that applies to all containers in a pod. Some volume types allow the Kubelet to change the ownership of that volume to be owned by the pod: 1. The owning GID will be the FSGroup 2. The setgid bit is set (new files created in the volume will be owned by FSGroup) 3. The permission bits are OR'd with rw-rw---- If unset, the Kubelet will not modify the ownership and permissions of any volume.
+     */
+    fsGroup?: string;
+    /**
+     * fsGroupChangePolicy defines behavior of changing ownership and permission of the volume before being exposed inside Pod. This field will only apply to volume types which support fsGroup based ownership(and permissions). It will have no effect on ephemeral volume types such as: secret, configmaps and emptydir.
+     */
+    fsGroupChangePolicy?: string;
+    /**
+     * The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in SecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container.
+     */
+    runAsGroup?: string;
+    /**
+     * Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in SecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+     */
+    runAsNonRoot?: boolean;
+    /**
+     * The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in SecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container.
+     */
+    runAsUser?: string;
+    /**
+     * The SELinux context to be applied to all containers. If unspecified, the container runtime will allocate a random SELinux context for each container. May also be set in SecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container.
+     */
+    seLinuxOptions?: outputs.K8sJobSpecTemplateSpecSecurityContextSeLinuxOptions;
+    /**
+     * The seccomp options to use by the containers in this pod. Note that this field cannot be set when spec.os.name is windows.
+     */
+    seccompProfile?: outputs.K8sJobSpecTemplateSpecSecurityContextSeccompProfile;
+    /**
+     * A list of groups applied to the first process run in each container, in addition to the container's primary GID. If unspecified, no groups will be added to any container.
+     */
+    supplementalGroups?: number[];
+    /**
+     * holds a list of namespaced sysctls used for the pod.
+     */
+    sysctls?: outputs.K8sJobSpecTemplateSpecSecurityContextSysctl[];
+}
+
+export interface K8sJobSpecTemplateSpecSecurityContextSeLinuxOptions {
+    /**
+     * Level is SELinux level label that applies to the container.
+     */
+    level?: string;
+    /**
+     * Role is a SELinux role label that applies to the container.
+     */
+    role?: string;
+    /**
+     * Type is a SELinux type label that applies to the container.
+     */
+    type?: string;
+    /**
+     * User is a SELinux user label that applies to the container.
+     */
+    user?: string;
+}
+
+export interface K8sJobSpecTemplateSpecSecurityContextSeccompProfile {
+    /**
+     * Localhost Profile indicates a profile defined in a file on the node should be used. The profile must be preconfigured on the node to work. Defaults to ``.
+     */
+    localhostProfile?: string;
+    /**
+     * Type indicates which kind of seccomp profile will be applied. Valid options are: Localhost, RuntimeDefault, Unconfined. Defaults to `Unconfined`.
+     */
+    type?: string;
+}
+
+export interface K8sJobSpecTemplateSpecSecurityContextSysctl {
+    /**
+     * Name of a property to set.
+     */
+    name: string;
+    /**
+     * Value of a property to set.
+     */
+    value: string;
+}
+
+export interface K8sJobSpecTemplateSpecToleration {
+    /**
+     * Effect indicates the taint effect to match. Empty means match all taint effects. When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.
+     */
+    effect?: string;
+    /**
+     * Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key is empty, operator must be Exists; this combination means to match all values and all keys.
+     */
+    key?: string;
+    /**
+     * Operator represents a key's relationship to the value. Valid operators are Exists and Equal. Defaults to Equal. Exists is equivalent to wildcard for value, so that a pod can tolerate all taints of a particular category. Defaults to `Equal`.
+     */
+    operator?: string;
+    /**
+     * TolerationSeconds represents the period of time the toleration (which must be of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default, it is not set, which means tolerate the taint forever (do not evict). Zero and negative values will be treated as 0 (evict immediately) by the system.
+     */
+    tolerationSeconds?: string;
+    /**
+     * Value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string.
+     */
+    value?: string;
+}
+
+export interface K8sJobSpecTemplateSpecTopologySpreadConstraint {
+    /**
+     * A label query over a set of resources, in this case pods.
+     */
+    labelSelectors: outputs.K8sJobSpecTemplateSpecTopologySpreadConstraintLabelSelector[];
+    /**
+     * describes the degree to which pods may be unevenly distributed. Defaults to `1`.
+     */
+    maxSkew?: number;
+    /**
+     * the key of node labels. Nodes that have a label with this key and identical values are considered to be in the same topology.
+     */
+    topologyKey?: string;
+    /**
+     * indicates how to deal with a pod if it doesn't satisfy the spread constraint. Defaults to `DoNotSchedule`.
+     */
+    whenUnsatisfiable?: string;
+}
+
+export interface K8sJobSpecTemplateSpecTopologySpreadConstraintLabelSelector {
+    /**
+     * A list of label selector requirements. The requirements are ANDed.
+     */
+    matchExpressions?: outputs.K8sJobSpecTemplateSpecTopologySpreadConstraintLabelSelectorMatchExpression[];
+    /**
+     * A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+     */
+    matchLabels?: {[key: string]: string};
+}
+
+export interface K8sJobSpecTemplateSpecTopologySpreadConstraintLabelSelectorMatchExpression {
+    /**
+     * The label key that the selector applies to.
+     */
+    key?: string;
+    /**
+     * A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
+     */
+    operator?: string;
+    /**
+     * An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
+     */
+    values?: string[];
+}
+
+export interface K8sJobSpecTemplateSpecVolume {
+    /**
+     * Represents an AWS Disk resource that is attached to a kubelet's host machine and then exposed to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+     */
+    awsElasticBlockStore?: outputs.K8sJobSpecTemplateSpecVolumeAwsElasticBlockStore;
+    /**
+     * Represents an Azure Data Disk mount on the host and bind mount to the pod.
+     */
+    azureDisk?: outputs.K8sJobSpecTemplateSpecVolumeAzureDisk;
+    /**
+     * Represents an Azure File Service mount on the host and bind mount to the pod.
+     */
+    azureFile?: outputs.K8sJobSpecTemplateSpecVolumeAzureFile;
+    /**
+     * Represents a Ceph FS mount on the host that shares a pod's lifetime
+     */
+    cephFs?: outputs.K8sJobSpecTemplateSpecVolumeCephFs;
+    /**
+     * Represents a cinder volume attached and mounted on kubelets host machine. More info: https://examples.k8s.io/mysql-cinder-pd/README.md
+     */
+    cinder?: outputs.K8sJobSpecTemplateSpecVolumeCinder;
+    /**
+     * ConfigMap represents a configMap that should populate this volume
+     */
+    configMap?: outputs.K8sJobSpecTemplateSpecVolumeConfigMap;
+    /**
+     * Represents a CSI Volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#csi
+     */
+    csi?: outputs.K8sJobSpecTemplateSpecVolumeCsi;
+    /**
+     * DownwardAPI represents downward API about the pod that should populate this volume
+     */
+    downwardApi?: outputs.K8sJobSpecTemplateSpecVolumeDownwardApi;
+    /**
+     * EmptyDir represents a temporary directory that shares a pod's lifetime. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir
+     */
+    emptyDir?: outputs.K8sJobSpecTemplateSpecVolumeEmptyDir;
+    /**
+     * Represents an ephemeral volume that is handled by a normal storage driver. More info: https://kubernetes.io/docs/concepts/storage/ephemeral-volumes/#generic-ephemeral-volumes
+     */
+    ephemeral?: outputs.K8sJobSpecTemplateSpecVolumeEphemeral;
+    /**
+     * Represents a Fibre Channel resource that is attached to a kubelet's host machine and then exposed to the pod.
+     */
+    fc?: outputs.K8sJobSpecTemplateSpecVolumeFc;
+    /**
+     * Represents a generic volume resource that is provisioned/attached using an exec based plugin. This is an alpha feature and may change in future.
+     */
+    flexVolume?: outputs.K8sJobSpecTemplateSpecVolumeFlexVolume;
+    /**
+     * Represents a Flocker volume attached to a kubelet's host machine and exposed to the pod for its usage. This depends on the Flocker control service being running
+     */
+    flocker?: outputs.K8sJobSpecTemplateSpecVolumeFlocker;
+    /**
+     * Represents a GCE Disk resource that is attached to a kubelet's host machine and then exposed to the pod. Provisioned by an admin. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+     */
+    gcePersistentDisk?: outputs.K8sJobSpecTemplateSpecVolumeGcePersistentDisk;
+    /**
+     * GitRepo represents a git repository at a particular revision.
+     */
+    gitRepo?: outputs.K8sJobSpecTemplateSpecVolumeGitRepo;
+    /**
+     * Represents a Glusterfs volume that is attached to a host and exposed to the pod. Provisioned by an admin. More info: https://examples.k8s.io/volumes/glusterfs/README.md
+     */
+    glusterfs?: outputs.K8sJobSpecTemplateSpecVolumeGlusterfs;
+    /**
+     * Represents a directory on the host. Provisioned by a developer or tester. This is useful for single-node development and testing only! On-host storage is not supported in any way and WILL NOT WORK in a multi-node cluster. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath
+     */
+    hostPath?: outputs.K8sJobSpecTemplateSpecVolumeHostPath;
+    /**
+     * Represents an ISCSI Disk resource that is attached to a kubelet's host machine and then exposed to the pod. Provisioned by an admin.
+     */
+    iscsi?: outputs.K8sJobSpecTemplateSpecVolumeIscsi;
+    /**
+     * Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local
+     */
+    local?: outputs.K8sJobSpecTemplateSpecVolumeLocal;
+    /**
+     * Volume's name. Must be a DNS_LABEL and unique within the pod. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: string;
+    /**
+     * Represents an NFS mount on the host. Provisioned by an admin. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+     */
+    nfs?: outputs.K8sJobSpecTemplateSpecVolumeNfs;
+    /**
+     * The specification of a persistent volume.
+     */
+    persistentVolumeClaim?: outputs.K8sJobSpecTemplateSpecVolumePersistentVolumeClaim;
+    /**
+     * Represents a PhotonController persistent disk attached and mounted on kubelets host machine
+     */
+    photonPersistentDisk?: outputs.K8sJobSpecTemplateSpecVolumePhotonPersistentDisk;
+    /**
+     * Projected represents a single volume that projects several volume sources into the same directory. More info: https://kubernetes.io/docs/concepts/storage/volumes/#projected
+     */
+    projected?: outputs.K8sJobSpecTemplateSpecVolumeProjected;
+    /**
+     * Quobyte represents a Quobyte mount on the host that shares a pod's lifetime
+     */
+    quobyte?: outputs.K8sJobSpecTemplateSpecVolumeQuobyte;
+    /**
+     * Represents a Rados Block Device mount on the host that shares a pod's lifetime. More info: https://examples.k8s.io/volumes/rbd/README.md
+     */
+    rbd?: outputs.K8sJobSpecTemplateSpecVolumeRbd;
+    /**
+     * Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secrets
+     */
+    secret?: outputs.K8sJobSpecTemplateSpecVolumeSecret;
+    /**
+     * Represents a vSphere volume attached and mounted on kubelets host machine
+     */
+    vsphereVolume?: outputs.K8sJobSpecTemplateSpecVolumeVsphereVolume;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeAwsElasticBlockStore {
+    /**
+     * Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+     */
+    fsType?: string;
+    /**
+     * The partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as "1". Similarly, the volume partition for /dev/sda is "0" (or you can leave the property empty).
+     */
+    partition?: number;
+    /**
+     * Whether to set the read-only property in VolumeMounts to "true". If omitted, the default is "false". More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+     */
+    readOnly?: boolean;
+    /**
+     * Unique ID of the persistent disk resource in AWS (Amazon EBS volume). More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+     */
+    volumeId: string;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeAzureDisk {
+    /**
+     * Host Caching mode: None, Read Only, Read Write.
+     */
+    cachingMode: string;
+    /**
+     * The URI the data disk in the blob storage
+     */
+    dataDiskUri: string;
+    /**
+     * The Name of the data disk in the blob storage
+     */
+    diskName: string;
+    /**
+     * Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+     */
+    fsType?: string;
+    /**
+     * The type for the data disk. Expected values: Shared, Dedicated, Managed. Defaults to Shared
+     */
+    kind: string;
+    /**
+     * Whether to force the read-only setting in VolumeMounts. Defaults to false (read/write). Defaults to `false`.
+     */
+    readOnly?: boolean;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeAzureFile {
+    /**
+     * Whether to force the read-only setting in VolumeMounts. Defaults to false (read/write).
+     */
+    readOnly?: boolean;
+    /**
+     * The name of secret that contains Azure Storage Account Name and Key
+     */
+    secretName: string;
+    /**
+     * The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is "default" namespace.
+     */
+    secretNamespace?: string;
+    /**
+     * Share Name
+     */
+    shareName: string;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeCephFs {
+    /**
+     * Monitors is a collection of Ceph monitors. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+     */
+    monitors: string[];
+    /**
+     * Used as the mounted root, rather than the full Ceph tree, default is /
+     */
+    path?: string;
+    /**
+     * Whether to force the read-only setting in VolumeMounts. Defaults to `false` (read/write). More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+     */
+    readOnly?: boolean;
+    /**
+     * The path to key ring for User, default is `/etc/ceph/user.secret`. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+     */
+    secretFile?: string;
+    /**
+     * Reference to the authentication secret for User, default is empty. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+     */
+    secretRef?: outputs.K8sJobSpecTemplateSpecVolumeCephFsSecretRef;
+    /**
+     * User is the rados user name, default is admin. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+     */
+    user?: string;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeCephFsSecretRef {
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: string;
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    namespace: string;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeCinder {
+    /**
+     * Filesystem type to mount. Must be a filesystem type supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://examples.k8s.io/mysql-cinder-pd/README.md
+     */
+    fsType?: string;
+    /**
+     * Whether to force the read-only setting in VolumeMounts. Defaults to false (read/write). More info: https://examples.k8s.io/mysql-cinder-pd/README.md
+     */
+    readOnly?: boolean;
+    /**
+     * Volume ID used to identify the volume in Cinder. More info: https://examples.k8s.io/mysql-cinder-pd/README.md
+     */
+    volumeId: string;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeConfigMap {
+    /**
+     * Optional: mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. Defaults to `0644`.
+     */
+    defaultMode?: string;
+    /**
+     * If unspecified, each key-value pair in the Data field of the referenced ConfigMap will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the ConfigMap, the volume setup will error unless it is marked optional. Paths must be relative and may not contain the '..' path or start with '..'.
+     */
+    items?: outputs.K8sJobSpecTemplateSpecVolumeConfigMapItem[];
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: string;
+    /**
+     * Optional: Specify whether the ConfigMap or its keys must be defined.
+     */
+    optional?: boolean;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeConfigMapItem {
+    /**
+     * The key to project.
+     */
+    key?: string;
+    /**
+     * Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+     */
+    mode?: string;
+    /**
+     * The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+     */
+    path?: string;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeCsi {
+    /**
+     * the name of the volume driver to use. More info: https://kubernetes.io/docs/concepts/storage/volumes/#csi
+     */
+    driver: string;
+    /**
+     * Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+     */
+    fsType?: string;
+    /**
+     * A reference to the secret object containing sensitive information to pass to the CSI driver to complete the CSI NodePublishVolume and NodeUnpublishVolume calls.
+     */
+    nodePublishSecretRef?: outputs.K8sJobSpecTemplateSpecVolumeCsiNodePublishSecretRef;
+    /**
+     * Whether to set the read-only property in VolumeMounts to "true". If omitted, the default is "false". More info: https://kubernetes.io/docs/concepts/storage/volumes#csi
+     */
+    readOnly?: boolean;
+    /**
+     * Attributes of the volume to publish.
+     */
+    volumeAttributes?: {[key: string]: string};
+}
+
+export interface K8sJobSpecTemplateSpecVolumeCsiNodePublishSecretRef {
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: string;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeDownwardApi {
+    /**
+     * Optional: mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. Defaults to `0644`.
+     */
+    defaultMode?: string;
+    /**
+     * If unspecified, each key-value pair in the Data field of the referenced ConfigMap will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the ConfigMap, the volume setup will error. Paths must be relative and may not contain the '..' path or start with '..'.
+     */
+    items?: outputs.K8sJobSpecTemplateSpecVolumeDownwardApiItem[];
+}
+
+export interface K8sJobSpecTemplateSpecVolumeDownwardApiItem {
+    /**
+     * Required: Selects a field of the pod: only annotations, labels, name and namespace are supported.
+     */
+    fieldRef: outputs.K8sJobSpecTemplateSpecVolumeDownwardApiItemFieldRef;
+    /**
+     * Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+     */
+    mode?: string;
+    /**
+     * Path is the relative path name of the file to be created. Must not be absolute or contain the '..' path. Must be utf-8 encoded. The first item of the relative path must not start with '..'
+     */
+    path: string;
+    /**
+     * Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, requests.cpu and requests.memory) are currently supported.
+     */
+    resourceFieldRef?: outputs.K8sJobSpecTemplateSpecVolumeDownwardApiItemResourceFieldRef;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeDownwardApiItemFieldRef {
+    /**
+     * Version of the schema the FieldPath is written in terms of, defaults to "v1". Defaults to `v1`.
+     */
+    apiVersion?: string;
+    /**
+     * Path of the field to select in the specified API version
+     */
+    fieldPath?: string;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeDownwardApiItemResourceFieldRef {
+    containerName: string;
+    /**
+     * Defaults to `1`.
+     */
+    divisor?: string;
+    /**
+     * Resource to select
+     */
+    resource: string;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeEmptyDir {
+    /**
+     * What type of storage medium should back this directory. The default is "" which means to use the node's default medium. Must be an empty string (default) or Memory. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir Defaults to ``.
+     */
+    medium?: string;
+    /**
+     * Total amount of local storage required for this EmptyDir volume.
+     */
+    sizeLimit?: string;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeEphemeral {
+    /**
+     * Will be used to create a stand-alone PVC to provision the volume. The pod in which this EphemeralVolumeSource is embedded will be the owner of the PVC.
+     */
+    volumeClaimTemplate: outputs.K8sJobSpecTemplateSpecVolumeEphemeralVolumeClaimTemplate;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeEphemeralVolumeClaimTemplate {
+    /**
+     * May contain labels and annotations that will be copied into the PVC when creating it. No other fields are allowed and will be rejected during validation.
+     */
+    metadata?: outputs.K8sJobSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateMetadata;
+    /**
+     * The specification for the PersistentVolumeClaim. The entire content is copied unchanged into the PVC that gets created from this template. The same fields as in a PersistentVolumeClaim are also valid here.
+     */
+    spec: outputs.K8sJobSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateSpec;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateMetadata {
+    /**
+     * An unstructured key value map stored with the persistent volume claim that may be used to store arbitrary metadata. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+     */
+    annotations?: {[key: string]: string};
+    /**
+     * Map of string keys and values that can be used to organize and categorize (scope and select) the persistent volume claim. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+     */
+    labels: {[key: string]: string};
+}
+
+export interface K8sJobSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateSpec {
+    /**
+     * A set of the desired access modes the volume should have. More info: http://kubernetes.io/docs/user-guide/persistent-volumes#access-modes-1
+     */
+    accessModes: string[];
+    /**
+     * A list of the minimum resources the volume should have. More info: http://kubernetes.io/docs/user-guide/persistent-volumes#resources
+     */
+    resources: outputs.K8sJobSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateSpecResources;
+    /**
+     * Name of the storage class requested by the claim
+     */
+    storageClassName: string;
+    /**
+     * Kubernetes supports two volumeModes of PersistentVolumes: `Filesystem` and `Block`.
+     */
+    volumeMode: string;
+    /**
+     * The binding reference to the PersistentVolume backing this claim.
+     */
+    volumeName: string;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateSpecResources {
+    /**
+     * Map describing the maximum amount of compute resources allowed. More info: http://kubernetes.io/docs/user-guide/compute-resources/
+     */
+    limits?: {[key: string]: string};
+    /**
+     * Map describing the minimum amount of compute resources required. If this is omitted for a container, it defaults to `limits` if that is explicitly specified, otherwise to an implementation-defined value. More info: http://kubernetes.io/docs/user-guide/compute-resources/
+     */
+    requests: {[key: string]: string};
+}
+
+export interface K8sJobSpecTemplateSpecVolumeFc {
+    /**
+     * Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+     */
+    fsType?: string;
+    /**
+     * FC target lun number
+     */
+    lun: number;
+    /**
+     * Whether to force the read-only setting in VolumeMounts. Defaults to false (read/write).
+     */
+    readOnly?: boolean;
+    /**
+     * FC target worldwide names (WWNs)
+     */
+    targetWwNs: string[];
+}
+
+export interface K8sJobSpecTemplateSpecVolumeFlexVolume {
+    /**
+     * Driver is the name of the driver to use for this volume.
+     */
+    driver: string;
+    /**
+     * Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". The default filesystem depends on FlexVolume script.
+     */
+    fsType?: string;
+    /**
+     * Extra command options if any.
+     */
+    options?: {[key: string]: string};
+    /**
+     * Whether to force the ReadOnly setting in VolumeMounts. Defaults to false (read/write).
+     */
+    readOnly?: boolean;
+    /**
+     * Reference to the secret object containing sensitive information to pass to the plugin scripts. This may be empty if no secret object is specified. If the secret object contains more than one secret, all secrets are passed to the plugin scripts.
+     */
+    secretRef?: outputs.K8sJobSpecTemplateSpecVolumeFlexVolumeSecretRef;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeFlexVolumeSecretRef {
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: string;
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    namespace: string;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeFlocker {
+    /**
+     * Name of the dataset stored as metadata > name on the dataset for Flocker should be considered as deprecated
+     */
+    datasetName?: string;
+    /**
+     * UUID of the dataset. This is unique identifier of a Flocker dataset
+     */
+    datasetUuid?: string;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeGcePersistentDisk {
+    /**
+     * Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+     */
+    fsType?: string;
+    /**
+     * The partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as "1". Similarly, the volume partition for /dev/sda is "0" (or you can leave the property empty). More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+     */
+    partition?: number;
+    /**
+     * Unique name of the PD resource in GCE. Used to identify the disk in GCE. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+     */
+    pdName: string;
+    /**
+     * Whether to force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+     */
+    readOnly?: boolean;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeGitRepo {
+    /**
+     * Target directory name. Must not contain or start with '..'. If '.' is supplied, the volume directory will be the git repository. Otherwise, if specified, the volume will contain the git repository in the subdirectory with the given name.
+     */
+    directory?: string;
+    /**
+     * Repository URL
+     */
+    repository?: string;
+    /**
+     * Commit hash for the specified revision.
+     */
+    revision?: string;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeGlusterfs {
+    /**
+     * The endpoint name that details Glusterfs topology. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
+     */
+    endpointsName: string;
+    /**
+     * The Glusterfs volume path. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
+     */
+    path: string;
+    /**
+     * Whether to force the Glusterfs volume to be mounted with read-only permissions. Defaults to false. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
+     */
+    readOnly?: boolean;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeHostPath {
+    /**
+     * Path of the directory on the host. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath
+     */
+    path?: string;
+    /**
+     * Type for HostPath volume. Allowed values are "" (default), DirectoryOrCreate, Directory, FileOrCreate, File, Socket, CharDevice and BlockDevice
+     */
+    type?: string;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeIscsi {
+    /**
+     * Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#iscsi
+     */
+    fsType?: string;
+    /**
+     * Target iSCSI Qualified Name.
+     */
+    iqn: string;
+    /**
+     * iSCSI interface name that uses an iSCSI transport. Defaults to 'default' (tcp). Defaults to `default`.
+     */
+    iscsiInterface?: string;
+    /**
+     * iSCSI target lun number.
+     */
+    lun?: number;
+    /**
+     * Whether to force the read-only setting in VolumeMounts. Defaults to false.
+     */
+    readOnly?: boolean;
+    /**
+     * iSCSI target portal. The portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260).
+     */
+    targetPortal: string;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeLocal {
+    /**
+     * Path of the directory on the host. More info: https://kubernetes.io/docs/concepts/storage/volumes#local
+     */
+    path?: string;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeNfs {
+    /**
+     * Path that is exported by the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+     */
+    path: string;
+    /**
+     * Whether to force the NFS export to be mounted with read-only permissions. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+     */
+    readOnly?: boolean;
+    /**
+     * Server is the hostname or IP address of the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+     */
+    server: string;
+}
+
+export interface K8sJobSpecTemplateSpecVolumePersistentVolumeClaim {
+    /**
+     * ClaimName is the name of a PersistentVolumeClaim in the same
+     */
+    claimName?: string;
+    /**
+     * Will force the ReadOnly setting in VolumeMounts. Defaults to `false`.
+     */
+    readOnly?: boolean;
+}
+
+export interface K8sJobSpecTemplateSpecVolumePhotonPersistentDisk {
+    /**
+     * Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+     */
+    fsType?: string;
+    /**
+     * ID that identifies Photon Controller persistent disk
+     */
+    pdId: string;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeProjected {
+    /**
+     * Optional: mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. Defaults to `0644`.
+     */
+    defaultMode?: string;
+    /**
+     * Source of the volume to project in the directory.
+     */
+    sources: outputs.K8sJobSpecTemplateSpecVolumeProjectedSource[];
+}
+
+export interface K8sJobSpecTemplateSpecVolumeProjectedSource {
+    /**
+     * ConfigMap represents a configMap that should populate this volume
+     */
+    configMaps?: outputs.K8sJobSpecTemplateSpecVolumeProjectedSourceConfigMap[];
+    /**
+     * DownwardAPI represents downward API about the pod that should populate this volume
+     */
+    downwardApi?: outputs.K8sJobSpecTemplateSpecVolumeProjectedSourceDownwardApi;
+    /**
+     * Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secrets
+     */
+    secrets?: outputs.K8sJobSpecTemplateSpecVolumeProjectedSourceSecret[];
+    /**
+     * A projected service account token volume
+     */
+    serviceAccountToken?: outputs.K8sJobSpecTemplateSpecVolumeProjectedSourceServiceAccountToken;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeProjectedSourceConfigMap {
+    /**
+     * If unspecified, each key-value pair in the Data field of the referenced ConfigMap will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the ConfigMap, the volume setup will error. Paths must be relative and may not contain the '..' path or start with '..'.
+     */
+    items?: outputs.K8sJobSpecTemplateSpecVolumeProjectedSourceConfigMapItem[];
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: string;
+    /**
+     * Optional: Specify whether the ConfigMap or it's keys must be defined.
+     */
+    optional?: boolean;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeProjectedSourceConfigMapItem {
+    /**
+     * The key to project.
+     */
+    key?: string;
+    /**
+     * Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+     */
+    mode?: string;
+    /**
+     * The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+     */
+    path?: string;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeProjectedSourceDownwardApi {
+    /**
+     * Represents a volume containing downward API info. Downward API volumes support ownership management and SELinux relabeling.
+     */
+    items?: outputs.K8sJobSpecTemplateSpecVolumeProjectedSourceDownwardApiItem[];
+}
+
+export interface K8sJobSpecTemplateSpecVolumeProjectedSourceDownwardApiItem {
+    /**
+     * Selects a field of the pod: only annotations, labels, name and namespace are supported.
+     */
+    fieldRef?: outputs.K8sJobSpecTemplateSpecVolumeProjectedSourceDownwardApiItemFieldRef;
+    /**
+     * Mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+     */
+    mode?: string;
+    /**
+     * Path is the relative path name of the file to be created. Must not be absolute or contain the '..' path. Must be utf-8 encoded. The first item of the relative path must not start with '..'
+     */
+    path: string;
+    /**
+     * Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, requests.cpu and requests.memory) are currently supported.
+     */
+    resourceFieldRef?: outputs.K8sJobSpecTemplateSpecVolumeProjectedSourceDownwardApiItemResourceFieldRef;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeProjectedSourceDownwardApiItemFieldRef {
+    /**
+     * Version of the schema the FieldPath is written in terms of, defaults to 'v1'. Defaults to `v1`.
+     */
+    apiVersion?: string;
+    /**
+     * Path of the field to select in the specified API version
+     */
+    fieldPath?: string;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeProjectedSourceDownwardApiItemResourceFieldRef {
+    containerName: string;
+    /**
+     * Defaults to `1`.
+     */
+    divisor?: string;
+    /**
+     * Resource to select
+     */
+    resource: string;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeProjectedSourceSecret {
+    /**
+     * If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional. Paths must be relative and may not contain the '..' path or start with '..'.
+     */
+    items?: outputs.K8sJobSpecTemplateSpecVolumeProjectedSourceSecretItem[];
+    /**
+     * Name of the secret in the pod's namespace to use. More info: https://kubernetes.io/docs/concepts/storage/volumes#secrets
+     */
+    name?: string;
+    /**
+     * Optional: Specify whether the Secret or it's keys must be defined.
+     */
+    optional?: boolean;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeProjectedSourceSecretItem {
+    /**
+     * The key to project.
+     */
+    key?: string;
+    /**
+     * Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+     */
+    mode?: string;
+    /**
+     * The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+     */
+    path?: string;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeProjectedSourceServiceAccountToken {
+    /**
+     * Audience is the intended audience of the token
+     */
+    audience?: string;
+    /**
+     * ExpirationSeconds is the expected duration of validity of the service account token. It defaults to 1 hour and must be at least 10 minutes (600 seconds). Defaults to `3600`.
+     */
+    expirationSeconds?: number;
+    /**
+     * Path specifies a relative path to the mount point of the projected volume.
+     */
+    path: string;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeQuobyte {
+    /**
+     * Group to map volume access to Default is no group
+     */
+    group?: string;
+    /**
+     * Whether to force the Quobyte volume to be mounted with read-only permissions. Defaults to false.
+     */
+    readOnly?: boolean;
+    /**
+     * Registry represents a single or multiple Quobyte Registry services specified as a string as host:port pair (multiple entries are separated with commas) which acts as the central registry for volumes
+     */
+    registry: string;
+    /**
+     * User to map volume access to Defaults to serivceaccount user
+     */
+    user?: string;
+    /**
+     * Volume is a string that references an already created Quobyte volume by name.
+     */
+    volume: string;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeRbd {
+    /**
+     * A collection of Ceph monitors. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+     */
+    cephMonitors: string[];
+    /**
+     * Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#rbd
+     */
+    fsType?: string;
+    /**
+     * Keyring is the path to key ring for RBDUser. Default is /etc/ceph/keyring. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+     */
+    keyring: string;
+    /**
+     * The rados user name. Default is admin. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it Defaults to `admin`.
+     */
+    radosUser?: string;
+    /**
+     * The rados image name. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+     */
+    rbdImage: string;
+    /**
+     * The rados pool name. Default is rbd. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it. Defaults to `rbd`.
+     */
+    rbdPool?: string;
+    /**
+     * Whether to force the read-only setting in VolumeMounts. Defaults to false. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it Defaults to `false`.
+     */
+    readOnly?: boolean;
+    /**
+     * Name of the authentication secret for RBDUser. If provided overrides keyring. Default is nil. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+     */
+    secretRef?: outputs.K8sJobSpecTemplateSpecVolumeRbdSecretRef;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeRbdSecretRef {
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: string;
+    /**
+     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    namespace: string;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeSecret {
+    /**
+     * Optional: mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. Defaults to `0644`.
+     */
+    defaultMode?: string;
+    /**
+     * If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional. Paths must be relative and may not contain the '..' path or start with '..'.
+     */
+    items?: outputs.K8sJobSpecTemplateSpecVolumeSecretItem[];
+    /**
+     * Optional: Specify whether the Secret or its keys must be defined.
+     */
+    optional?: boolean;
+    /**
+     * Name of the secret in the pod's namespace to use. More info: https://kubernetes.io/docs/concepts/storage/volumes#secrets
+     */
+    secretName?: string;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeSecretItem {
+    /**
+     * The key to project.
+     */
+    key?: string;
+    /**
+     * Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+     */
+    mode?: string;
+    /**
+     * The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+     */
+    path?: string;
+}
+
+export interface K8sJobSpecTemplateSpecVolumeVsphereVolume {
+    /**
+     * Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+     */
+    fsType?: string;
+    /**
+     * Path that identifies vSphere volume vmdk
+     */
+    volumePath: string;
+}
+
+export interface OciContainerengineNodePoolInitialNodeLabel {
+    key: string;
+    value: string;
+}
+
+export interface OciContainerengineNodePoolNode {
+    availabilityDomain: string;
+    definedTags: {[key: string]: string};
+    faultDomain: string;
+    freeformTags: {[key: string]: string};
+    /**
+     * The ID of this resource.
+     */
+    id: string;
+    kubernetesVersion: string;
+    lifecycleDetails: string;
+    name: string;
+    nodePoolId: string;
+    privateIp: string;
+    publicIp: string;
+    state: string;
+    subnetId: string;
+    systemTags: {[key: string]: string};
+}
+
+export interface OciContainerengineNodePoolNodeConfigDetails {
+    definedTags?: {[key: string]: string};
+    freeformTags?: {[key: string]: string};
+    isPvEncryptionInTransitEnabled: boolean;
+    kmsKeyId: string;
+    nsgIds?: string[];
+    placementConfigs: outputs.OciContainerengineNodePoolNodeConfigDetailsPlacementConfig[];
+    size: number;
+}
+
+export interface OciContainerengineNodePoolNodeConfigDetailsPlacementConfig {
+    availabilityDomain: string;
+    capacityReservationId: string;
+    subnetId: string;
+}
+
+export interface OciContainerengineNodePoolNodeShapeConfig {
+    memoryInGbs?: number;
+    ocpus?: number;
+}
+
+export interface OciContainerengineNodePoolNodeSourceDetails {
+    bootVolumeSizeInGbs: string;
+    imageId: string;
+    sourceType: string;
+}
+
+export interface OtherAgentsAgent {
+    agentLinuxPackagePath: string;
+    agentName: string;
+    agentWindowsPackagePath: string;
+    executionCount: number;
+    linuxAgentInstallStatusCmd: string;
+    linuxAgentServiceName: string;
+    linuxAgentUninstallStatusCmd: string;
+    linuxInstallCmd: string;
+    userRequestResetIsPending: boolean;
+    windowsAgentServiceName: string;
+}
+
+export interface PlanCertificatesCertificate {
+    arn: string;
+    id: string;
+    name: string;
+}
+
+export interface PlanConfigsConfig {
+    key: string;
+    type?: string;
+    value: string;
+}
+
+export interface PlanImagesImage {
+    imageId: string;
+    name: string;
+    os: string;
+    tags: outputs.PlanImagesImageTag[];
+    username: string;
+}
+
+export interface PlanImagesImageTag {
+    key: string;
+    value: string;
+}
+
+export interface PlanKmsV2Km {
+    arn: string;
+    /**
+     * The ID of this resource.
+     */
+    id: string;
+    name: string;
+}
+
+export interface PlanKmsV2KmsKey {
+    arn: string;
+    id: string;
+    name: string;
+}
+
+export interface PlanSettingsAllMetadata {
+    key: string;
+    value: string;
+}
+
+export interface PlanSettingsDnsSetting {
+    domainId: string;
+    externalDnsSuffix: string;
+    ignoreGlobalDns: boolean;
+    internalDnsSuffix: string;
+}
+
+export interface PlanSettingsMetadata {
+    key: string;
+    value: string;
+}
+
+export interface PlanWafV2Waf {
+    arn: string;
+    dashboardUrl: string;
+    name: string;
+}
+
+export interface RdsInstancePerformanceInsights {
+    /**
+     * Turn on or off Performance Insights
+     */
+    enabled?: boolean;
+    /**
+     * Specify ARN for the KMS key to encrypt Performance Insights data.
+     */
+    kmsKeyId: string;
+    /**
+     * Specify retention period in Days. Valid values are 7, 731 (2 years) or a multiple of 31. For Document DB retention period is 7
+     */
+    retentionPeriod?: number;
+}
+
+export interface RdsInstanceV2ScalingConfiguration {
+    /**
+     * Specifies max scalling capacity.
+     */
+    maxCapacity: number;
+    /**
+     * Specifies min scalling capacity.
+     */
+    minCapacity: number;
+}
+
+export interface RdsReadReplicaPerformanceInsights {
+    /**
+     * Turn on or off Performance Insights Defaults to `false`.
+     */
+    enabled?: boolean;
+    /**
+     * Specify ARN for the KMS key to encrypt Performance Insights data.
+     */
+    kmsKeyId: string;
+    /**
+     * Specify retention period in Days. Valid values are 7, 731 (2 years) or a multiple of 31. For Document DB retention period is 7 Defaults to `7`.
+     */
+    retentionPeriod?: number;
+}
+
+export interface S3BucketDefaultEncryption {
+    /**
+     * Default encryption method.  Must be one of: `None`, `Sse`, `AwsKms`, `TenantKms`.
+     */
+    method?: string;
+}
+
+export interface S3BucketReplicationRule {
+    /**
+     * Whether or not to enable delete marker on replication. Defaults to `false`.
+     */
+    deleteMarkerReplication?: boolean;
+    /**
+     * destination bucket arn
+     */
+    destinationArn: string;
+    /**
+     * fullname of the destination bucket.
+     */
+    destinationBucket: string;
+    /**
+     * replication rule fullname for s3 source bucket
+     */
+    fullname: string;
+    /**
+     * replication rule name for s3 source bucket
+     */
+    name: string;
+    /**
+     * replication priority. Priority must be unique between multiple rules.
+     */
+    priority: number;
+    /**
+     * storage*class type: STANDARD, INTELLIGENT*TIERING, STANDARD*IA, ONEZONE*IA, GLACIER*IR, GLACIER, DEEP*ARCHIVE, REDUCED_REDUNDANCY.
+     */
+    storageClass: string;
+}
+
+export interface S3BucketTag {
+    key: string;
+    value: string;
+}
+
+export interface TenantConfigMetadata {
+    key: string;
+    value: string;
+}
+
+export interface TenantConfigSetting {
+    key: string;
+    value: string;
+}
+
+export interface TenantPolicy {
+    allowVolumeMapping: boolean;
+    blockExternalEp: boolean;
+}
+
+export interface TenantSecretTag {
+    key: string;
+    value: string;
+}
+
+export interface TenantTag {
+    key: string;
+    value: string;
+}
+
