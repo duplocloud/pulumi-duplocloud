@@ -21,6 +21,7 @@ import (
 	_ "embed"
 
 	duplocloud "github.com/duplocloud/terraform-provider-duplocloud/duplocloud" // Import the upstream provider
+
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
