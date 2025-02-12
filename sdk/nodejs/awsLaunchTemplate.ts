@@ -72,7 +72,7 @@ export class AwsLaunchTemplate extends pulumi.CustomResource {
     /**
      * Asg ami to be used to update the version from the current version
      */
-    public readonly ami!: pulumi.Output<string | undefined>;
+    public readonly ami!: pulumi.Output<string>;
     /**
      * The current default version of the launch template.
      */
@@ -80,7 +80,7 @@ export class AwsLaunchTemplate extends pulumi.CustomResource {
     /**
      * Asg instance type to be used to update the version from the current version
      */
-    public readonly instanceType!: pulumi.Output<string | undefined>;
+    public readonly instanceType!: pulumi.Output<string>;
     /**
      * The latest launch template version
      */
@@ -127,14 +127,14 @@ export class AwsLaunchTemplate extends pulumi.CustomResource {
             resourceInputs["versionMetadata"] = state ? state.versionMetadata : undefined;
         } else {
             const args = argsOrState as AwsLaunchTemplateArgs | undefined;
+            if ((!args || args.instanceType === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'instanceType'");
+            }
             if ((!args || args.tenantId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tenantId'");
             }
             if ((!args || args.version === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'version'");
-            }
-            if ((!args || args.versionDescription === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'versionDescription'");
             }
             resourceInputs["ami"] = args ? args.ami : undefined;
             resourceInputs["instanceType"] = args ? args.instanceType : undefined;
@@ -201,7 +201,7 @@ export interface AwsLaunchTemplateArgs {
     /**
      * Asg instance type to be used to update the version from the current version
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType: pulumi.Input<string>;
     /**
      * The fullname of the asg group
      */
@@ -217,5 +217,5 @@ export interface AwsLaunchTemplateArgs {
     /**
      * The version of the launch template
      */
-    versionDescription: pulumi.Input<string>;
+    versionDescription?: pulumi.Input<string>;
 }

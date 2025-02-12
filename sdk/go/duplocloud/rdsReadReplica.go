@@ -59,7 +59,7 @@ type RdsReadReplica struct {
 	// The globally unique identifier for the key.
 	KmsKeyId pulumi.StringOutput `pulumi:"kmsKeyId"`
 	// Specifies if the RDS instance is multi-AZ.
-	MultiAz pulumi.BoolOutput `pulumi:"multiAz"`
+	MultiAz pulumi.BoolPtrOutput `pulumi:"multiAz"`
 	// The short name of the RDS read replica.  Duplo will add a prefix to the name.  You can retrieve the full name from the `identifier` attribute.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A RDS parameter group name to apply to the RDS instance.
@@ -71,10 +71,12 @@ type RdsReadReplica struct {
 	// The current status of the RDS read replica.
 	ReplicaStatus pulumi.StringOutput `pulumi:"replicaStatus"`
 	// The type of the RDS read replica.
-	// See AWS documentation for the [available instance types](https://aws.amazon.com/rds/instance-types/).
+	// See AWS documentation for the [available instance types](https://aws.amazon.com/rds/instance-types/).Size should be set as db.serverless if read replica instamce is created as serverless
 	Size pulumi.StringOutput `pulumi:"size"`
 	// The GUID of the tenant that the RDS read replica will be created in.
 	TenantId pulumi.StringOutput `pulumi:"tenantId"`
+	// Serverless v2*scaling*configuration min and max scalling capacity. Required during creating a servless read replica.
+	V2ScalingConfiguration RdsReadReplicaV2ScalingConfigurationPtrOutput `pulumi:"v2ScalingConfiguration"`
 }
 
 // NewRdsReadReplica registers a new resource with the given unique name, arguments, and options.
@@ -157,10 +159,12 @@ type rdsReadReplicaState struct {
 	// The current status of the RDS read replica.
 	ReplicaStatus *string `pulumi:"replicaStatus"`
 	// The type of the RDS read replica.
-	// See AWS documentation for the [available instance types](https://aws.amazon.com/rds/instance-types/).
+	// See AWS documentation for the [available instance types](https://aws.amazon.com/rds/instance-types/).Size should be set as db.serverless if read replica instamce is created as serverless
 	Size *string `pulumi:"size"`
 	// The GUID of the tenant that the RDS read replica will be created in.
 	TenantId *string `pulumi:"tenantId"`
+	// Serverless v2*scaling*configuration min and max scalling capacity. Required during creating a servless read replica.
+	V2ScalingConfiguration *RdsReadReplicaV2ScalingConfiguration `pulumi:"v2ScalingConfiguration"`
 }
 
 type RdsReadReplicaState struct {
@@ -205,10 +209,12 @@ type RdsReadReplicaState struct {
 	// The current status of the RDS read replica.
 	ReplicaStatus pulumi.StringPtrInput
 	// The type of the RDS read replica.
-	// See AWS documentation for the [available instance types](https://aws.amazon.com/rds/instance-types/).
+	// See AWS documentation for the [available instance types](https://aws.amazon.com/rds/instance-types/).Size should be set as db.serverless if read replica instamce is created as serverless
 	Size pulumi.StringPtrInput
 	// The GUID of the tenant that the RDS read replica will be created in.
 	TenantId pulumi.StringPtrInput
+	// Serverless v2*scaling*configuration min and max scalling capacity. Required during creating a servless read replica.
+	V2ScalingConfiguration RdsReadReplicaV2ScalingConfigurationPtrInput
 }
 
 func (RdsReadReplicaState) ElementType() reflect.Type {
@@ -224,6 +230,8 @@ type rdsReadReplicaArgs struct {
 	EngineType *int `pulumi:"engineType"`
 	// Interval to capture metrics in real time for the operating system (OS) that your Amazon RDS DB instance runs on.
 	EnhancedMonitoring *int `pulumi:"enhancedMonitoring"`
+	// Specifies if the RDS instance is multi-AZ.
+	MultiAz *bool `pulumi:"multiAz"`
 	// The short name of the RDS read replica.  Duplo will add a prefix to the name.  You can retrieve the full name from the `identifier` attribute.
 	Name *string `pulumi:"name"`
 	// A RDS parameter group name to apply to the RDS instance.
@@ -231,10 +239,12 @@ type rdsReadReplicaArgs struct {
 	// Amazon RDS Performance Insights is a database performance tuning and monitoring feature that helps you quickly assess the load on your database, and determine when and where to take action. Perfomance Insights get apply when enable is set to true.
 	PerformanceInsights *RdsReadReplicaPerformanceInsights `pulumi:"performanceInsights"`
 	// The type of the RDS read replica.
-	// See AWS documentation for the [available instance types](https://aws.amazon.com/rds/instance-types/).
+	// See AWS documentation for the [available instance types](https://aws.amazon.com/rds/instance-types/).Size should be set as db.serverless if read replica instamce is created as serverless
 	Size string `pulumi:"size"`
 	// The GUID of the tenant that the RDS read replica will be created in.
 	TenantId string `pulumi:"tenantId"`
+	// Serverless v2*scaling*configuration min and max scalling capacity. Required during creating a servless read replica.
+	V2ScalingConfiguration *RdsReadReplicaV2ScalingConfiguration `pulumi:"v2ScalingConfiguration"`
 }
 
 // The set of arguments for constructing a RdsReadReplica resource.
@@ -247,6 +257,8 @@ type RdsReadReplicaArgs struct {
 	EngineType pulumi.IntPtrInput
 	// Interval to capture metrics in real time for the operating system (OS) that your Amazon RDS DB instance runs on.
 	EnhancedMonitoring pulumi.IntPtrInput
+	// Specifies if the RDS instance is multi-AZ.
+	MultiAz pulumi.BoolPtrInput
 	// The short name of the RDS read replica.  Duplo will add a prefix to the name.  You can retrieve the full name from the `identifier` attribute.
 	Name pulumi.StringPtrInput
 	// A RDS parameter group name to apply to the RDS instance.
@@ -254,10 +266,12 @@ type RdsReadReplicaArgs struct {
 	// Amazon RDS Performance Insights is a database performance tuning and monitoring feature that helps you quickly assess the load on your database, and determine when and where to take action. Perfomance Insights get apply when enable is set to true.
 	PerformanceInsights RdsReadReplicaPerformanceInsightsPtrInput
 	// The type of the RDS read replica.
-	// See AWS documentation for the [available instance types](https://aws.amazon.com/rds/instance-types/).
+	// See AWS documentation for the [available instance types](https://aws.amazon.com/rds/instance-types/).Size should be set as db.serverless if read replica instamce is created as serverless
 	Size pulumi.StringInput
 	// The GUID of the tenant that the RDS read replica will be created in.
 	TenantId pulumi.StringInput
+	// Serverless v2*scaling*configuration min and max scalling capacity. Required during creating a servless read replica.
+	V2ScalingConfiguration RdsReadReplicaV2ScalingConfigurationPtrInput
 }
 
 func (RdsReadReplicaArgs) ElementType() reflect.Type {
@@ -418,8 +432,8 @@ func (o RdsReadReplicaOutput) KmsKeyId() pulumi.StringOutput {
 }
 
 // Specifies if the RDS instance is multi-AZ.
-func (o RdsReadReplicaOutput) MultiAz() pulumi.BoolOutput {
-	return o.ApplyT(func(v *RdsReadReplica) pulumi.BoolOutput { return v.MultiAz }).(pulumi.BoolOutput)
+func (o RdsReadReplicaOutput) MultiAz() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RdsReadReplica) pulumi.BoolPtrOutput { return v.MultiAz }).(pulumi.BoolPtrOutput)
 }
 
 // The short name of the RDS read replica.  Duplo will add a prefix to the name.  You can retrieve the full name from the `identifier` attribute.
@@ -448,7 +462,7 @@ func (o RdsReadReplicaOutput) ReplicaStatus() pulumi.StringOutput {
 }
 
 // The type of the RDS read replica.
-// See AWS documentation for the [available instance types](https://aws.amazon.com/rds/instance-types/).
+// See AWS documentation for the [available instance types](https://aws.amazon.com/rds/instance-types/).Size should be set as db.serverless if read replica instamce is created as serverless
 func (o RdsReadReplicaOutput) Size() pulumi.StringOutput {
 	return o.ApplyT(func(v *RdsReadReplica) pulumi.StringOutput { return v.Size }).(pulumi.StringOutput)
 }
@@ -456,6 +470,11 @@ func (o RdsReadReplicaOutput) Size() pulumi.StringOutput {
 // The GUID of the tenant that the RDS read replica will be created in.
 func (o RdsReadReplicaOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RdsReadReplica) pulumi.StringOutput { return v.TenantId }).(pulumi.StringOutput)
+}
+
+// Serverless v2*scaling*configuration min and max scalling capacity. Required during creating a servless read replica.
+func (o RdsReadReplicaOutput) V2ScalingConfiguration() RdsReadReplicaV2ScalingConfigurationPtrOutput {
+	return o.ApplyT(func(v *RdsReadReplica) RdsReadReplicaV2ScalingConfigurationPtrOutput { return v.V2ScalingConfiguration }).(RdsReadReplicaV2ScalingConfigurationPtrOutput)
 }
 
 type RdsReadReplicaArrayOutput struct{ *pulumi.OutputState }

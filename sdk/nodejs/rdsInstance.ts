@@ -624,7 +624,8 @@ export class RdsInstance extends pulumi.CustomResource {
     public /*out*/ readonly port!: pulumi.Output<number>;
     /**
      * The instance type of the RDS instance. See AWS documentation for the [available instance
-     * types](https://aws.amazon.com/rds/instance-types/).
+     * types](https://aws.amazon.com/rds/instance-types/).Size should be set as db.serverless if rds instamce is created as
+     * serverless
      */
     public readonly size!: pulumi.Output<string>;
     /**
@@ -663,7 +664,8 @@ export class RdsInstance extends pulumi.CustomResource {
      */
     public readonly tenantId!: pulumi.Output<string>;
     /**
-     * Serverless v2ScalingConfiguration min and max scalling capacity.
+     * Serverless v2ScalingConfiguration min and max scaling capacity. This configuration is only applicable for serverless
+     * instances
      */
     public readonly v2ScalingConfiguration!: pulumi.Output<outputs.RdsInstanceV2ScalingConfiguration | undefined>;
 
@@ -896,7 +898,8 @@ export interface RdsInstanceState {
     port?: pulumi.Input<number>;
     /**
      * The instance type of the RDS instance. See AWS documentation for the [available instance
-     * types](https://aws.amazon.com/rds/instance-types/).
+     * types](https://aws.amazon.com/rds/instance-types/).Size should be set as db.serverless if rds instamce is created as
+     * serverless
      */
     size?: pulumi.Input<string>;
     /**
@@ -935,7 +938,8 @@ export interface RdsInstanceState {
      */
     tenantId?: pulumi.Input<string>;
     /**
-     * Serverless v2ScalingConfiguration min and max scalling capacity.
+     * Serverless v2ScalingConfiguration min and max scaling capacity. This configuration is only applicable for serverless
+     * instances
      */
     v2ScalingConfiguration?: pulumi.Input<inputs.RdsInstanceV2ScalingConfiguration>;
 }
@@ -1039,7 +1043,8 @@ export interface RdsInstanceArgs {
     performanceInsights?: pulumi.Input<inputs.RdsInstancePerformanceInsights>;
     /**
      * The instance type of the RDS instance. See AWS documentation for the [available instance
-     * types](https://aws.amazon.com/rds/instance-types/).
+     * types](https://aws.amazon.com/rds/instance-types/).Size should be set as db.serverless if rds instamce is created as
+     * serverless
      */
     size: pulumi.Input<string>;
     /**
@@ -1078,7 +1083,8 @@ export interface RdsInstanceArgs {
      */
     tenantId: pulumi.Input<string>;
     /**
-     * Serverless v2ScalingConfiguration min and max scalling capacity.
+     * Serverless v2ScalingConfiguration min and max scaling capacity. This configuration is only applicable for serverless
+     * instances
      */
     v2ScalingConfiguration?: pulumi.Input<inputs.RdsInstanceV2ScalingConfiguration>;
 }

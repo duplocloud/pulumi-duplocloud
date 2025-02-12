@@ -111,7 +111,7 @@ export class RdsReadReplica extends pulumi.CustomResource {
     /**
      * Specifies if the RDS instance is multi-AZ.
      */
-    public /*out*/ readonly multiAz!: pulumi.Output<boolean>;
+    public readonly multiAz!: pulumi.Output<boolean | undefined>;
     /**
      * The short name of the RDS read replica.  Duplo will add a prefix to the name.  You can retrieve the full name from the `identifier` attribute.
      */
@@ -134,13 +134,17 @@ export class RdsReadReplica extends pulumi.CustomResource {
     public /*out*/ readonly replicaStatus!: pulumi.Output<string>;
     /**
      * The type of the RDS read replica.
-     * See AWS documentation for the [available instance types](https://aws.amazon.com/rds/instance-types/).
+     * See AWS documentation for the [available instance types](https://aws.amazon.com/rds/instance-types/).Size should be set as db.serverless if read replica instamce is created as serverless
      */
     public readonly size!: pulumi.Output<string>;
     /**
      * The GUID of the tenant that the RDS read replica will be created in.
      */
     public readonly tenantId!: pulumi.Output<string>;
+    /**
+     * Serverless v2*scaling*configuration min and max scalling capacity. Required during creating a servless read replica.
+     */
+    public readonly v2ScalingConfiguration!: pulumi.Output<outputs.RdsReadReplicaV2ScalingConfiguration | undefined>;
 
     /**
      * Create a RdsReadReplica resource with the given unique name, arguments, and options.
@@ -177,6 +181,7 @@ export class RdsReadReplica extends pulumi.CustomResource {
             resourceInputs["replicaStatus"] = state ? state.replicaStatus : undefined;
             resourceInputs["size"] = state ? state.size : undefined;
             resourceInputs["tenantId"] = state ? state.tenantId : undefined;
+            resourceInputs["v2ScalingConfiguration"] = state ? state.v2ScalingConfiguration : undefined;
         } else {
             const args = argsOrState as RdsReadReplicaArgs | undefined;
             if ((!args || args.clusterIdentifier === undefined) && !opts.urn) {
@@ -192,11 +197,13 @@ export class RdsReadReplica extends pulumi.CustomResource {
             resourceInputs["clusterIdentifier"] = args ? args.clusterIdentifier : undefined;
             resourceInputs["engineType"] = args ? args.engineType : undefined;
             resourceInputs["enhancedMonitoring"] = args ? args.enhancedMonitoring : undefined;
+            resourceInputs["multiAz"] = args ? args.multiAz : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["parameterGroupName"] = args ? args.parameterGroupName : undefined;
             resourceInputs["performanceInsights"] = args ? args.performanceInsights : undefined;
             resourceInputs["size"] = args ? args.size : undefined;
             resourceInputs["tenantId"] = args ? args.tenantId : undefined;
+            resourceInputs["v2ScalingConfiguration"] = args ? args.v2ScalingConfiguration : undefined;
             resourceInputs["arn"] = undefined /*out*/;
             resourceInputs["clusterParameterGroupName"] = undefined /*out*/;
             resourceInputs["enableLogging"] = undefined /*out*/;
@@ -207,7 +214,6 @@ export class RdsReadReplica extends pulumi.CustomResource {
             resourceInputs["host"] = undefined /*out*/;
             resourceInputs["identifier"] = undefined /*out*/;
             resourceInputs["kmsKeyId"] = undefined /*out*/;
-            resourceInputs["multiAz"] = undefined /*out*/;
             resourceInputs["port"] = undefined /*out*/;
             resourceInputs["replicaStatus"] = undefined /*out*/;
         }
@@ -302,13 +308,17 @@ export interface RdsReadReplicaState {
     replicaStatus?: pulumi.Input<string>;
     /**
      * The type of the RDS read replica.
-     * See AWS documentation for the [available instance types](https://aws.amazon.com/rds/instance-types/).
+     * See AWS documentation for the [available instance types](https://aws.amazon.com/rds/instance-types/).Size should be set as db.serverless if read replica instamce is created as serverless
      */
     size?: pulumi.Input<string>;
     /**
      * The GUID of the tenant that the RDS read replica will be created in.
      */
     tenantId?: pulumi.Input<string>;
+    /**
+     * Serverless v2*scaling*configuration min and max scalling capacity. Required during creating a servless read replica.
+     */
+    v2ScalingConfiguration?: pulumi.Input<inputs.RdsReadReplicaV2ScalingConfiguration>;
 }
 
 /**
@@ -332,6 +342,10 @@ export interface RdsReadReplicaArgs {
      */
     enhancedMonitoring?: pulumi.Input<number>;
     /**
+     * Specifies if the RDS instance is multi-AZ.
+     */
+    multiAz?: pulumi.Input<boolean>;
+    /**
      * The short name of the RDS read replica.  Duplo will add a prefix to the name.  You can retrieve the full name from the `identifier` attribute.
      */
     name?: pulumi.Input<string>;
@@ -345,11 +359,15 @@ export interface RdsReadReplicaArgs {
     performanceInsights?: pulumi.Input<inputs.RdsReadReplicaPerformanceInsights>;
     /**
      * The type of the RDS read replica.
-     * See AWS documentation for the [available instance types](https://aws.amazon.com/rds/instance-types/).
+     * See AWS documentation for the [available instance types](https://aws.amazon.com/rds/instance-types/).Size should be set as db.serverless if read replica instamce is created as serverless
      */
     size: pulumi.Input<string>;
     /**
      * The GUID of the tenant that the RDS read replica will be created in.
      */
     tenantId: pulumi.Input<string>;
+    /**
+     * Serverless v2*scaling*configuration min and max scalling capacity. Required during creating a servless read replica.
+     */
+    v2ScalingConfiguration?: pulumi.Input<inputs.RdsReadReplicaV2ScalingConfiguration>;
 }

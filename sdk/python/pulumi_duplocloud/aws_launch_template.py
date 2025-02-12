@@ -19,30 +19,42 @@ __all__ = ['AwsLaunchTemplateArgs', 'AwsLaunchTemplate']
 @pulumi.input_type
 class AwsLaunchTemplateArgs:
     def __init__(__self__, *,
+                 instance_type: pulumi.Input[str],
                  tenant_id: pulumi.Input[str],
                  version: pulumi.Input[str],
-                 version_description: pulumi.Input[str],
                  ami: Optional[pulumi.Input[str]] = None,
-                 instance_type: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 version_description: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AwsLaunchTemplate resource.
+        :param pulumi.Input[str] instance_type: Asg instance type to be used to update the version from the current version
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the launch template will be created in.
         :param pulumi.Input[str] version: Any of the existing version of the launch template
-        :param pulumi.Input[str] version_description: The version of the launch template
         :param pulumi.Input[str] ami: Asg ami to be used to update the version from the current version
-        :param pulumi.Input[str] instance_type: Asg instance type to be used to update the version from the current version
         :param pulumi.Input[str] name: The fullname of the asg group
+        :param pulumi.Input[str] version_description: The version of the launch template
         """
+        pulumi.set(__self__, "instance_type", instance_type)
         pulumi.set(__self__, "tenant_id", tenant_id)
         pulumi.set(__self__, "version", version)
-        pulumi.set(__self__, "version_description", version_description)
         if ami is not None:
             pulumi.set(__self__, "ami", ami)
-        if instance_type is not None:
-            pulumi.set(__self__, "instance_type", instance_type)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if version_description is not None:
+            pulumi.set(__self__, "version_description", version_description)
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> pulumi.Input[str]:
+        """
+        Asg instance type to be used to update the version from the current version
+        """
+        return pulumi.get(self, "instance_type")
+
+    @instance_type.setter
+    def instance_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "instance_type", value)
 
     @property
     @pulumi.getter(name="tenantId")
@@ -69,18 +81,6 @@ class AwsLaunchTemplateArgs:
         pulumi.set(self, "version", value)
 
     @property
-    @pulumi.getter(name="versionDescription")
-    def version_description(self) -> pulumi.Input[str]:
-        """
-        The version of the launch template
-        """
-        return pulumi.get(self, "version_description")
-
-    @version_description.setter
-    def version_description(self, value: pulumi.Input[str]):
-        pulumi.set(self, "version_description", value)
-
-    @property
     @pulumi.getter
     def ami(self) -> Optional[pulumi.Input[str]]:
         """
@@ -93,18 +93,6 @@ class AwsLaunchTemplateArgs:
         pulumi.set(self, "ami", value)
 
     @property
-    @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        Asg instance type to be used to update the version from the current version
-        """
-        return pulumi.get(self, "instance_type")
-
-    @instance_type.setter
-    def instance_type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "instance_type", value)
-
-    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -115,6 +103,18 @@ class AwsLaunchTemplateArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="versionDescription")
+    def version_description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version of the launch template
+        """
+        return pulumi.get(self, "version_description")
+
+    @version_description.setter
+    def version_description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version_description", value)
 
 
 @pulumi.input_type
@@ -393,6 +393,8 @@ class AwsLaunchTemplate(pulumi.CustomResource):
             __props__ = AwsLaunchTemplateArgs.__new__(AwsLaunchTemplateArgs)
 
             __props__.__dict__["ami"] = ami
+            if instance_type is None and not opts.urn:
+                raise TypeError("Missing required property 'instance_type'")
             __props__.__dict__["instance_type"] = instance_type
             __props__.__dict__["name"] = name
             if tenant_id is None and not opts.urn:
@@ -401,8 +403,6 @@ class AwsLaunchTemplate(pulumi.CustomResource):
             if version is None and not opts.urn:
                 raise TypeError("Missing required property 'version'")
             __props__.__dict__["version"] = version
-            if version_description is None and not opts.urn:
-                raise TypeError("Missing required property 'version_description'")
             __props__.__dict__["version_description"] = version_description
             __props__.__dict__["default_version"] = None
             __props__.__dict__["latest_version"] = None
@@ -459,7 +459,7 @@ class AwsLaunchTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def ami(self) -> pulumi.Output[Optional[str]]:
+    def ami(self) -> pulumi.Output[str]:
         """
         Asg ami to be used to update the version from the current version
         """
@@ -475,7 +475,7 @@ class AwsLaunchTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> pulumi.Output[Optional[str]]:
+    def instance_type(self) -> pulumi.Output[str]:
         """
         Asg instance type to be used to update the version from the current version
         """

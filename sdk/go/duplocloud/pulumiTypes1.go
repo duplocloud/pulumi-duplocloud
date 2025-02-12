@@ -16999,9 +16999,9 @@ func (o RdsInstancePerformanceInsightsPtrOutput) RetentionPeriod() pulumi.IntPtr
 }
 
 type RdsInstanceV2ScalingConfiguration struct {
-	// Specifies max scalling capacity.
+	// Specifies max scaling capacity.
 	MaxCapacity float64 `pulumi:"maxCapacity"`
-	// Specifies min scalling capacity.
+	// Specifies min scaling capacity.
 	MinCapacity float64 `pulumi:"minCapacity"`
 }
 
@@ -17017,9 +17017,9 @@ type RdsInstanceV2ScalingConfigurationInput interface {
 }
 
 type RdsInstanceV2ScalingConfigurationArgs struct {
-	// Specifies max scalling capacity.
+	// Specifies max scaling capacity.
 	MaxCapacity pulumi.Float64Input `pulumi:"maxCapacity"`
-	// Specifies min scalling capacity.
+	// Specifies min scaling capacity.
 	MinCapacity pulumi.Float64Input `pulumi:"minCapacity"`
 }
 
@@ -17100,12 +17100,12 @@ func (o RdsInstanceV2ScalingConfigurationOutput) ToRdsInstanceV2ScalingConfigura
 	}).(RdsInstanceV2ScalingConfigurationPtrOutput)
 }
 
-// Specifies max scalling capacity.
+// Specifies max scaling capacity.
 func (o RdsInstanceV2ScalingConfigurationOutput) MaxCapacity() pulumi.Float64Output {
 	return o.ApplyT(func(v RdsInstanceV2ScalingConfiguration) float64 { return v.MaxCapacity }).(pulumi.Float64Output)
 }
 
-// Specifies min scalling capacity.
+// Specifies min scaling capacity.
 func (o RdsInstanceV2ScalingConfigurationOutput) MinCapacity() pulumi.Float64Output {
 	return o.ApplyT(func(v RdsInstanceV2ScalingConfiguration) float64 { return v.MinCapacity }).(pulumi.Float64Output)
 }
@@ -17134,7 +17134,7 @@ func (o RdsInstanceV2ScalingConfigurationPtrOutput) Elem() RdsInstanceV2ScalingC
 	}).(RdsInstanceV2ScalingConfigurationOutput)
 }
 
-// Specifies max scalling capacity.
+// Specifies max scaling capacity.
 func (o RdsInstanceV2ScalingConfigurationPtrOutput) MaxCapacity() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *RdsInstanceV2ScalingConfiguration) *float64 {
 		if v == nil {
@@ -17144,7 +17144,7 @@ func (o RdsInstanceV2ScalingConfigurationPtrOutput) MaxCapacity() pulumi.Float64
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Specifies min scalling capacity.
+// Specifies min scaling capacity.
 func (o RdsInstanceV2ScalingConfigurationPtrOutput) MinCapacity() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *RdsInstanceV2ScalingConfiguration) *float64 {
 		if v == nil {
@@ -17327,6 +17327,162 @@ func (o RdsReadReplicaPerformanceInsightsPtrOutput) RetentionPeriod() pulumi.Int
 		}
 		return v.RetentionPeriod
 	}).(pulumi.IntPtrOutput)
+}
+
+type RdsReadReplicaV2ScalingConfiguration struct {
+	// Specifies max scalling capacity.
+	MaxCapacity float64 `pulumi:"maxCapacity"`
+	// Specifies min scalling capacity.
+	MinCapacity float64 `pulumi:"minCapacity"`
+}
+
+// RdsReadReplicaV2ScalingConfigurationInput is an input type that accepts RdsReadReplicaV2ScalingConfigurationArgs and RdsReadReplicaV2ScalingConfigurationOutput values.
+// You can construct a concrete instance of `RdsReadReplicaV2ScalingConfigurationInput` via:
+//
+//	RdsReadReplicaV2ScalingConfigurationArgs{...}
+type RdsReadReplicaV2ScalingConfigurationInput interface {
+	pulumi.Input
+
+	ToRdsReadReplicaV2ScalingConfigurationOutput() RdsReadReplicaV2ScalingConfigurationOutput
+	ToRdsReadReplicaV2ScalingConfigurationOutputWithContext(context.Context) RdsReadReplicaV2ScalingConfigurationOutput
+}
+
+type RdsReadReplicaV2ScalingConfigurationArgs struct {
+	// Specifies max scalling capacity.
+	MaxCapacity pulumi.Float64Input `pulumi:"maxCapacity"`
+	// Specifies min scalling capacity.
+	MinCapacity pulumi.Float64Input `pulumi:"minCapacity"`
+}
+
+func (RdsReadReplicaV2ScalingConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RdsReadReplicaV2ScalingConfiguration)(nil)).Elem()
+}
+
+func (i RdsReadReplicaV2ScalingConfigurationArgs) ToRdsReadReplicaV2ScalingConfigurationOutput() RdsReadReplicaV2ScalingConfigurationOutput {
+	return i.ToRdsReadReplicaV2ScalingConfigurationOutputWithContext(context.Background())
+}
+
+func (i RdsReadReplicaV2ScalingConfigurationArgs) ToRdsReadReplicaV2ScalingConfigurationOutputWithContext(ctx context.Context) RdsReadReplicaV2ScalingConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RdsReadReplicaV2ScalingConfigurationOutput)
+}
+
+func (i RdsReadReplicaV2ScalingConfigurationArgs) ToRdsReadReplicaV2ScalingConfigurationPtrOutput() RdsReadReplicaV2ScalingConfigurationPtrOutput {
+	return i.ToRdsReadReplicaV2ScalingConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i RdsReadReplicaV2ScalingConfigurationArgs) ToRdsReadReplicaV2ScalingConfigurationPtrOutputWithContext(ctx context.Context) RdsReadReplicaV2ScalingConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RdsReadReplicaV2ScalingConfigurationOutput).ToRdsReadReplicaV2ScalingConfigurationPtrOutputWithContext(ctx)
+}
+
+// RdsReadReplicaV2ScalingConfigurationPtrInput is an input type that accepts RdsReadReplicaV2ScalingConfigurationArgs, RdsReadReplicaV2ScalingConfigurationPtr and RdsReadReplicaV2ScalingConfigurationPtrOutput values.
+// You can construct a concrete instance of `RdsReadReplicaV2ScalingConfigurationPtrInput` via:
+//
+//	        RdsReadReplicaV2ScalingConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type RdsReadReplicaV2ScalingConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToRdsReadReplicaV2ScalingConfigurationPtrOutput() RdsReadReplicaV2ScalingConfigurationPtrOutput
+	ToRdsReadReplicaV2ScalingConfigurationPtrOutputWithContext(context.Context) RdsReadReplicaV2ScalingConfigurationPtrOutput
+}
+
+type rdsReadReplicaV2ScalingConfigurationPtrType RdsReadReplicaV2ScalingConfigurationArgs
+
+func RdsReadReplicaV2ScalingConfigurationPtr(v *RdsReadReplicaV2ScalingConfigurationArgs) RdsReadReplicaV2ScalingConfigurationPtrInput {
+	return (*rdsReadReplicaV2ScalingConfigurationPtrType)(v)
+}
+
+func (*rdsReadReplicaV2ScalingConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RdsReadReplicaV2ScalingConfiguration)(nil)).Elem()
+}
+
+func (i *rdsReadReplicaV2ScalingConfigurationPtrType) ToRdsReadReplicaV2ScalingConfigurationPtrOutput() RdsReadReplicaV2ScalingConfigurationPtrOutput {
+	return i.ToRdsReadReplicaV2ScalingConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *rdsReadReplicaV2ScalingConfigurationPtrType) ToRdsReadReplicaV2ScalingConfigurationPtrOutputWithContext(ctx context.Context) RdsReadReplicaV2ScalingConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RdsReadReplicaV2ScalingConfigurationPtrOutput)
+}
+
+type RdsReadReplicaV2ScalingConfigurationOutput struct{ *pulumi.OutputState }
+
+func (RdsReadReplicaV2ScalingConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RdsReadReplicaV2ScalingConfiguration)(nil)).Elem()
+}
+
+func (o RdsReadReplicaV2ScalingConfigurationOutput) ToRdsReadReplicaV2ScalingConfigurationOutput() RdsReadReplicaV2ScalingConfigurationOutput {
+	return o
+}
+
+func (o RdsReadReplicaV2ScalingConfigurationOutput) ToRdsReadReplicaV2ScalingConfigurationOutputWithContext(ctx context.Context) RdsReadReplicaV2ScalingConfigurationOutput {
+	return o
+}
+
+func (o RdsReadReplicaV2ScalingConfigurationOutput) ToRdsReadReplicaV2ScalingConfigurationPtrOutput() RdsReadReplicaV2ScalingConfigurationPtrOutput {
+	return o.ToRdsReadReplicaV2ScalingConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o RdsReadReplicaV2ScalingConfigurationOutput) ToRdsReadReplicaV2ScalingConfigurationPtrOutputWithContext(ctx context.Context) RdsReadReplicaV2ScalingConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RdsReadReplicaV2ScalingConfiguration) *RdsReadReplicaV2ScalingConfiguration {
+		return &v
+	}).(RdsReadReplicaV2ScalingConfigurationPtrOutput)
+}
+
+// Specifies max scalling capacity.
+func (o RdsReadReplicaV2ScalingConfigurationOutput) MaxCapacity() pulumi.Float64Output {
+	return o.ApplyT(func(v RdsReadReplicaV2ScalingConfiguration) float64 { return v.MaxCapacity }).(pulumi.Float64Output)
+}
+
+// Specifies min scalling capacity.
+func (o RdsReadReplicaV2ScalingConfigurationOutput) MinCapacity() pulumi.Float64Output {
+	return o.ApplyT(func(v RdsReadReplicaV2ScalingConfiguration) float64 { return v.MinCapacity }).(pulumi.Float64Output)
+}
+
+type RdsReadReplicaV2ScalingConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (RdsReadReplicaV2ScalingConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RdsReadReplicaV2ScalingConfiguration)(nil)).Elem()
+}
+
+func (o RdsReadReplicaV2ScalingConfigurationPtrOutput) ToRdsReadReplicaV2ScalingConfigurationPtrOutput() RdsReadReplicaV2ScalingConfigurationPtrOutput {
+	return o
+}
+
+func (o RdsReadReplicaV2ScalingConfigurationPtrOutput) ToRdsReadReplicaV2ScalingConfigurationPtrOutputWithContext(ctx context.Context) RdsReadReplicaV2ScalingConfigurationPtrOutput {
+	return o
+}
+
+func (o RdsReadReplicaV2ScalingConfigurationPtrOutput) Elem() RdsReadReplicaV2ScalingConfigurationOutput {
+	return o.ApplyT(func(v *RdsReadReplicaV2ScalingConfiguration) RdsReadReplicaV2ScalingConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret RdsReadReplicaV2ScalingConfiguration
+		return ret
+	}).(RdsReadReplicaV2ScalingConfigurationOutput)
+}
+
+// Specifies max scalling capacity.
+func (o RdsReadReplicaV2ScalingConfigurationPtrOutput) MaxCapacity() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *RdsReadReplicaV2ScalingConfiguration) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.MaxCapacity
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Specifies min scalling capacity.
+func (o RdsReadReplicaV2ScalingConfigurationPtrOutput) MinCapacity() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *RdsReadReplicaV2ScalingConfiguration) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.MinCapacity
+	}).(pulumi.Float64PtrOutput)
 }
 
 type S3BucketDefaultEncryption struct {
@@ -75928,221 +76084,6 @@ func (o GetK8sJobSpecTemplateSpecInitContainerStartupProbeGrpcArrayOutput) Index
 	}).(GetK8sJobSpecTemplateSpecInitContainerStartupProbeGrpcOutput)
 }
 
-type GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGet struct {
-	// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
-	Host *string `pulumi:"host"`
-	// Scheme to use for connecting to the host.
-	HttpHeaders []GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetHttpHeader `pulumi:"httpHeaders"`
-	// Path to access on the HTTP server.
-	Path *string `pulumi:"path"`
-	// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
-	Port *string `pulumi:"port"`
-	// Scheme to use for connecting to the host.
-	Scheme *string `pulumi:"scheme"`
-}
-
-// GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetInput is an input type that accepts GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetArgs and GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutput values.
-// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetInput` via:
-//
-//	GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetArgs{...}
-type GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetInput interface {
-	pulumi.Input
-
-	ToGetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutput() GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutput
-	ToGetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutput
-}
-
-type GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetArgs struct {
-	// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
-	Host pulumi.StringPtrInput `pulumi:"host"`
-	// Scheme to use for connecting to the host.
-	HttpHeaders GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetHttpHeaderArrayInput `pulumi:"httpHeaders"`
-	// Path to access on the HTTP server.
-	Path pulumi.StringPtrInput `pulumi:"path"`
-	// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
-	Port pulumi.StringPtrInput `pulumi:"port"`
-	// Scheme to use for connecting to the host.
-	Scheme pulumi.StringPtrInput `pulumi:"scheme"`
-}
-
-func (GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGet)(nil)).Elem()
-}
-
-func (i GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetArgs) ToGetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutput() GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutput {
-	return i.ToGetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutputWithContext(context.Background())
-}
-
-func (i GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetArgs) ToGetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutput)
-}
-
-func (i GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetArgs) ToGetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutput() GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutput {
-	return i.ToGetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutputWithContext(context.Background())
-}
-
-func (i GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetArgs) ToGetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutput).ToGetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutputWithContext(ctx)
-}
-
-// GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrInput is an input type that accepts GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetArgs, GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtr and GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutput values.
-// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrInput` via:
-//
-//	        GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrInput interface {
-	pulumi.Input
-
-	ToGetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutput() GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutput
-	ToGetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutput
-}
-
-type getK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrType GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetArgs
-
-func GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtr(v *GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetArgs) GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrInput {
-	return (*getK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrType)(v)
-}
-
-func (*getK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGet)(nil)).Elem()
-}
-
-func (i *getK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrType) ToGetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutput() GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutput {
-	return i.ToGetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutputWithContext(context.Background())
-}
-
-func (i *getK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrType) ToGetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutput)
-}
-
-type GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutput struct{ *pulumi.OutputState }
-
-func (GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGet)(nil)).Elem()
-}
-
-func (o GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutput) ToGetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutput() GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutput {
-	return o
-}
-
-func (o GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutput) ToGetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutput {
-	return o
-}
-
-func (o GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutput) ToGetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutput() GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutput {
-	return o.ToGetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutputWithContext(context.Background())
-}
-
-func (o GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutput) ToGetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGet) *GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGet {
-		return &v
-	}).(GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutput)
-}
-
-// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
-func (o GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGet) *string { return v.Host }).(pulumi.StringPtrOutput)
-}
-
-// Scheme to use for connecting to the host.
-func (o GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutput) HttpHeaders() GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetHttpHeaderArrayOutput {
-	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGet) []GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetHttpHeader {
-		return v.HttpHeaders
-	}).(GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetHttpHeaderArrayOutput)
-}
-
-// Path to access on the HTTP server.
-func (o GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGet) *string { return v.Path }).(pulumi.StringPtrOutput)
-}
-
-// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
-func (o GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutput) Port() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGet) *string { return v.Port }).(pulumi.StringPtrOutput)
-}
-
-// Scheme to use for connecting to the host.
-func (o GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutput) Scheme() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGet) *string { return v.Scheme }).(pulumi.StringPtrOutput)
-}
-
-type GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutput struct{ *pulumi.OutputState }
-
-func (GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGet)(nil)).Elem()
-}
-
-func (o GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutput) ToGetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutput() GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutput {
-	return o
-}
-
-func (o GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutput) ToGetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutput {
-	return o
-}
-
-func (o GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutput) Elem() GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutput {
-	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGet) GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGet {
-		if v != nil {
-			return *v
-		}
-		var ret GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGet
-		return ret
-	}).(GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutput)
-}
-
-// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
-func (o GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGet) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Host
-	}).(pulumi.StringPtrOutput)
-}
-
-// Scheme to use for connecting to the host.
-func (o GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutput) HttpHeaders() GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetHttpHeaderArrayOutput {
-	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGet) []GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetHttpHeader {
-		if v == nil {
-			return nil
-		}
-		return v.HttpHeaders
-	}).(GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetHttpHeaderArrayOutput)
-}
-
-// Path to access on the HTTP server.
-func (o GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGet) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Path
-	}).(pulumi.StringPtrOutput)
-}
-
-// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
-func (o GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutput) Port() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGet) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Port
-	}).(pulumi.StringPtrOutput)
-}
-
-// Scheme to use for connecting to the host.
-func (o GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutput) Scheme() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGet) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Scheme
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecInitContainerLifecyclePreStopExecInput)(nil)).Elem(), K8sJobSpecTemplateSpecInitContainerLifecyclePreStopExecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecInitContainerLifecyclePreStopExecPtrInput)(nil)).Elem(), K8sJobSpecTemplateSpecInitContainerLifecyclePreStopExecArgs{})
@@ -76361,6 +76302,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RdsInstanceV2ScalingConfigurationPtrInput)(nil)).Elem(), RdsInstanceV2ScalingConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RdsReadReplicaPerformanceInsightsInput)(nil)).Elem(), RdsReadReplicaPerformanceInsightsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RdsReadReplicaPerformanceInsightsPtrInput)(nil)).Elem(), RdsReadReplicaPerformanceInsightsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RdsReadReplicaV2ScalingConfigurationInput)(nil)).Elem(), RdsReadReplicaV2ScalingConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RdsReadReplicaV2ScalingConfigurationPtrInput)(nil)).Elem(), RdsReadReplicaV2ScalingConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*S3BucketDefaultEncryptionInput)(nil)).Elem(), S3BucketDefaultEncryptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*S3BucketDefaultEncryptionPtrInput)(nil)).Elem(), S3BucketDefaultEncryptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*S3BucketReplicationRuleInput)(nil)).Elem(), S3BucketReplicationRuleArgs{})
@@ -77118,8 +77061,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecInitContainerStartupProbeExecPtrInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecInitContainerStartupProbeExecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecInitContainerStartupProbeGrpcInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecInitContainerStartupProbeGrpcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecInitContainerStartupProbeGrpcArrayInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecInitContainerStartupProbeGrpcArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetArgs{})
 	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecInitContainerLifecyclePreStopExecOutput{})
 	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecInitContainerLifecyclePreStopExecPtrOutput{})
 	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecInitContainerLifecyclePreStopHttpGetOutput{})
@@ -77337,6 +77278,8 @@ func init() {
 	pulumi.RegisterOutputType(RdsInstanceV2ScalingConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(RdsReadReplicaPerformanceInsightsOutput{})
 	pulumi.RegisterOutputType(RdsReadReplicaPerformanceInsightsPtrOutput{})
+	pulumi.RegisterOutputType(RdsReadReplicaV2ScalingConfigurationOutput{})
+	pulumi.RegisterOutputType(RdsReadReplicaV2ScalingConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(S3BucketDefaultEncryptionOutput{})
 	pulumi.RegisterOutputType(S3BucketDefaultEncryptionPtrOutput{})
 	pulumi.RegisterOutputType(S3BucketReplicationRuleOutput{})
@@ -78094,6 +78037,4 @@ func init() {
 	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecInitContainerStartupProbeExecPtrOutput{})
 	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecInitContainerStartupProbeGrpcOutput{})
 	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecInitContainerStartupProbeGrpcArrayOutput{})
-	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutput{})
-	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutput{})
 }

@@ -4065,6 +4065,9 @@
                 "fields": {
                     "performance_insights": {
                         "maxItemsOne": true
+                    },
+                    "v2_scaling_configuration": {
+                        "maxItemsOne": true
                     }
                 }
             },

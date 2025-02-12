@@ -10,41 +10,6 @@ import * as utilities from "./utilities";
 /**
  * `duplocloud.EcsTaskDefinition` manages a Amazon ECS task definition in Duplo.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@pulumi/duplocloud";
- *
- * const myapp = new duplocloud.Tenant("myapp", {
- *     accountName: "myapp",
- *     planId: "default",
- * });
- * // Create a task definition for NGINX using ECS
- * const myservice = new duplocloud.EcsTaskDefinition("myservice", {
- *     tenantId: myapp.tenantId,
- *     family: "duploservices-default-myservice",
- *     containerDefinitions: JSON.stringify([{
- *         Name: "default",
- *         Image: "nginx:latest",
- *         Environment: [{
- *             Name: "NGINX_HOST",
- *             Value: "foo",
- *         }],
- *         PortMappings: [{
- *             ContainerPort: "80",
- *             HostPort: "80",
- *             Protocol: {
- *                 Value: "tcp",
- *             },
- *         }],
- *     }]),
- *     cpu: "256",
- *     memory: "1024",
- *     requiresCompatibilities: ["FARGATE"],
- * });
- * ```
- *
  * ## Import
  *
  * Example: Importing an existing ECS task definition

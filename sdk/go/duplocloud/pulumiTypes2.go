@@ -13,6 +13,221 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGet struct {
+	// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+	Host *string `pulumi:"host"`
+	// Scheme to use for connecting to the host.
+	HttpHeaders []GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetHttpHeader `pulumi:"httpHeaders"`
+	// Path to access on the HTTP server.
+	Path *string `pulumi:"path"`
+	// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+	Port *string `pulumi:"port"`
+	// Scheme to use for connecting to the host.
+	Scheme *string `pulumi:"scheme"`
+}
+
+// GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetInput is an input type that accepts GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetArgs and GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetInput` via:
+//
+//	GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetArgs{...}
+type GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutput() GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutput
+	ToGetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutput
+}
+
+type GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetArgs struct {
+	// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// Scheme to use for connecting to the host.
+	HttpHeaders GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetHttpHeaderArrayInput `pulumi:"httpHeaders"`
+	// Path to access on the HTTP server.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+	Port pulumi.StringPtrInput `pulumi:"port"`
+	// Scheme to use for connecting to the host.
+	Scheme pulumi.StringPtrInput `pulumi:"scheme"`
+}
+
+func (GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGet)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetArgs) ToGetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutput() GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutput {
+	return i.ToGetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetArgs) ToGetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutput)
+}
+
+func (i GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetArgs) ToGetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutput() GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetArgs) ToGetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutput).ToGetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutputWithContext(ctx)
+}
+
+// GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrInput is an input type that accepts GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetArgs, GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtr and GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrInput` via:
+//
+//	        GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutput() GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutput
+	ToGetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutput
+}
+
+type getK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrType GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetArgs
+
+func GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtr(v *GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetArgs) GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrInput {
+	return (*getK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrType)(v)
+}
+
+func (*getK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGet)(nil)).Elem()
+}
+
+func (i *getK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrType) ToGetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutput() GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutputWithContext(context.Background())
+}
+
+func (i *getK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrType) ToGetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGet)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutput) ToGetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutput() GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutput) ToGetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutput) ToGetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutput() GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutput {
+	return o.ToGetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutputWithContext(context.Background())
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutput) ToGetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGet) *GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGet {
+		return &v
+	}).(GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutput)
+}
+
+// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+func (o GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGet) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+// Scheme to use for connecting to the host.
+func (o GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutput) HttpHeaders() GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetHttpHeaderArrayOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGet) []GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetHttpHeader {
+		return v.HttpHeaders
+	}).(GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetHttpHeaderArrayOutput)
+}
+
+// Path to access on the HTTP server.
+func (o GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGet) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+func (o GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGet) *string { return v.Port }).(pulumi.StringPtrOutput)
+}
+
+// Scheme to use for connecting to the host.
+func (o GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutput) Scheme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGet) *string { return v.Scheme }).(pulumi.StringPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGet)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutput) ToGetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutput() GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutput) ToGetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutput) Elem() GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGet) GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGet {
+		if v != nil {
+			return *v
+		}
+		var ret GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGet
+		return ret
+	}).(GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutput)
+}
+
+// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+func (o GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// Scheme to use for connecting to the host.
+func (o GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutput) HttpHeaders() GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetHttpHeaderArrayOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGet) []GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetHttpHeader {
+		if v == nil {
+			return nil
+		}
+		return v.HttpHeaders
+	}).(GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetHttpHeaderArrayOutput)
+}
+
+// Path to access on the HTTP server.
+func (o GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+func (o GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.StringPtrOutput)
+}
+
+// Scheme to use for connecting to the host.
+func (o GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutput) Scheme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Scheme
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetHttpHeader struct {
 	// The header field name
 	Name *string `pulumi:"name"`
@@ -16100,6 +16315,8 @@ func (o GetTenantsTenantTagArrayOutput) Index(i pulumi.IntInput) GetTenantsTenan
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetHttpHeaderInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetHttpHeaderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetHttpHeaderArrayInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetHttpHeaderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecInitContainerStartupProbeTcpSocketInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecInitContainerStartupProbeTcpSocketArgs{})
@@ -16325,6 +16542,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantsTenantPolicyArrayInput)(nil)).Elem(), GetTenantsTenantPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantsTenantTagInput)(nil)).Elem(), GetTenantsTenantTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantsTenantTagArrayInput)(nil)).Elem(), GetTenantsTenantTagArray{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetPtrOutput{})
 	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetHttpHeaderOutput{})
 	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecInitContainerStartupProbeHttpGetHttpHeaderArrayOutput{})
 	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecInitContainerStartupProbeTcpSocketOutput{})

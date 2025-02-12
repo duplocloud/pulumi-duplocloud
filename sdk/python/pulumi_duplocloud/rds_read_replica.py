@@ -27,21 +27,25 @@ class RdsReadReplicaArgs:
                  availability_zone: Optional[pulumi.Input[str]] = None,
                  engine_type: Optional[pulumi.Input[int]] = None,
                  enhanced_monitoring: Optional[pulumi.Input[int]] = None,
+                 multi_az: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parameter_group_name: Optional[pulumi.Input[str]] = None,
-                 performance_insights: Optional[pulumi.Input['RdsReadReplicaPerformanceInsightsArgs']] = None):
+                 performance_insights: Optional[pulumi.Input['RdsReadReplicaPerformanceInsightsArgs']] = None,
+                 v2_scaling_configuration: Optional[pulumi.Input['RdsReadReplicaV2ScalingConfigurationArgs']] = None):
         """
         The set of arguments for constructing a RdsReadReplica resource.
         :param pulumi.Input[str] cluster_identifier: The full name of the RDS Cluster.
         :param pulumi.Input[str] size: The type of the RDS read replica.
-               See AWS documentation for the [available instance types](https://aws.amazon.com/rds/instance-types/).
+               See AWS documentation for the [available instance types](https://aws.amazon.com/rds/instance-types/).Size should be set as db.serverless if read replica instamce is created as serverless
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the RDS read replica will be created in.
         :param pulumi.Input[str] availability_zone: The AZ for the RDS instance.
         :param pulumi.Input[int] engine_type: Engine type required to validate applicable parameter group setting for different instance. Should be referred from writer
         :param pulumi.Input[int] enhanced_monitoring: Interval to capture metrics in real time for the operating system (OS) that your Amazon RDS DB instance runs on.
+        :param pulumi.Input[bool] multi_az: Specifies if the RDS instance is multi-AZ.
         :param pulumi.Input[str] name: The short name of the RDS read replica.  Duplo will add a prefix to the name.  You can retrieve the full name from the `identifier` attribute.
         :param pulumi.Input[str] parameter_group_name: A RDS parameter group name to apply to the RDS instance.
         :param pulumi.Input['RdsReadReplicaPerformanceInsightsArgs'] performance_insights: Amazon RDS Performance Insights is a database performance tuning and monitoring feature that helps you quickly assess the load on your database, and determine when and where to take action. Perfomance Insights get apply when enable is set to true.
+        :param pulumi.Input['RdsReadReplicaV2ScalingConfigurationArgs'] v2_scaling_configuration: Serverless v2*scaling*configuration min and max scalling capacity. Required during creating a servless read replica.
         """
         pulumi.set(__self__, "cluster_identifier", cluster_identifier)
         pulumi.set(__self__, "size", size)
@@ -52,12 +56,16 @@ class RdsReadReplicaArgs:
             pulumi.set(__self__, "engine_type", engine_type)
         if enhanced_monitoring is not None:
             pulumi.set(__self__, "enhanced_monitoring", enhanced_monitoring)
+        if multi_az is not None:
+            pulumi.set(__self__, "multi_az", multi_az)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if parameter_group_name is not None:
             pulumi.set(__self__, "parameter_group_name", parameter_group_name)
         if performance_insights is not None:
             pulumi.set(__self__, "performance_insights", performance_insights)
+        if v2_scaling_configuration is not None:
+            pulumi.set(__self__, "v2_scaling_configuration", v2_scaling_configuration)
 
     @property
     @pulumi.getter(name="clusterIdentifier")
@@ -76,7 +84,7 @@ class RdsReadReplicaArgs:
     def size(self) -> pulumi.Input[str]:
         """
         The type of the RDS read replica.
-        See AWS documentation for the [available instance types](https://aws.amazon.com/rds/instance-types/).
+        See AWS documentation for the [available instance types](https://aws.amazon.com/rds/instance-types/).Size should be set as db.serverless if read replica instamce is created as serverless
         """
         return pulumi.get(self, "size")
 
@@ -133,6 +141,18 @@ class RdsReadReplicaArgs:
         pulumi.set(self, "enhanced_monitoring", value)
 
     @property
+    @pulumi.getter(name="multiAz")
+    def multi_az(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies if the RDS instance is multi-AZ.
+        """
+        return pulumi.get(self, "multi_az")
+
+    @multi_az.setter
+    def multi_az(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "multi_az", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -168,6 +188,18 @@ class RdsReadReplicaArgs:
     def performance_insights(self, value: Optional[pulumi.Input['RdsReadReplicaPerformanceInsightsArgs']]):
         pulumi.set(self, "performance_insights", value)
 
+    @property
+    @pulumi.getter(name="v2ScalingConfiguration")
+    def v2_scaling_configuration(self) -> Optional[pulumi.Input['RdsReadReplicaV2ScalingConfigurationArgs']]:
+        """
+        Serverless v2*scaling*configuration min and max scalling capacity. Required during creating a servless read replica.
+        """
+        return pulumi.get(self, "v2_scaling_configuration")
+
+    @v2_scaling_configuration.setter
+    def v2_scaling_configuration(self, value: Optional[pulumi.Input['RdsReadReplicaV2ScalingConfigurationArgs']]):
+        pulumi.set(self, "v2_scaling_configuration", value)
+
 
 @pulumi.input_type
 class _RdsReadReplicaState:
@@ -193,7 +225,8 @@ class _RdsReadReplicaState:
                  port: Optional[pulumi.Input[int]] = None,
                  replica_status: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[str]] = None,
-                 tenant_id: Optional[pulumi.Input[str]] = None):
+                 tenant_id: Optional[pulumi.Input[str]] = None,
+                 v2_scaling_configuration: Optional[pulumi.Input['RdsReadReplicaV2ScalingConfigurationArgs']] = None):
         """
         Input properties used for looking up and filtering RdsReadReplica resources.
         :param pulumi.Input[str] arn: The ARN of the RDS read replica.
@@ -217,8 +250,9 @@ class _RdsReadReplicaState:
         :param pulumi.Input[int] port: The listening port of the RDS read replica.
         :param pulumi.Input[str] replica_status: The current status of the RDS read replica.
         :param pulumi.Input[str] size: The type of the RDS read replica.
-               See AWS documentation for the [available instance types](https://aws.amazon.com/rds/instance-types/).
+               See AWS documentation for the [available instance types](https://aws.amazon.com/rds/instance-types/).Size should be set as db.serverless if read replica instamce is created as serverless
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the RDS read replica will be created in.
+        :param pulumi.Input['RdsReadReplicaV2ScalingConfigurationArgs'] v2_scaling_configuration: Serverless v2*scaling*configuration min and max scalling capacity. Required during creating a servless read replica.
         """
         if arn is not None:
             pulumi.set(__self__, "arn", arn)
@@ -264,6 +298,8 @@ class _RdsReadReplicaState:
             pulumi.set(__self__, "size", size)
         if tenant_id is not None:
             pulumi.set(__self__, "tenant_id", tenant_id)
+        if v2_scaling_configuration is not None:
+            pulumi.set(__self__, "v2_scaling_configuration", v2_scaling_configuration)
 
     @property
     @pulumi.getter
@@ -510,7 +546,7 @@ class _RdsReadReplicaState:
     def size(self) -> Optional[pulumi.Input[str]]:
         """
         The type of the RDS read replica.
-        See AWS documentation for the [available instance types](https://aws.amazon.com/rds/instance-types/).
+        See AWS documentation for the [available instance types](https://aws.amazon.com/rds/instance-types/).Size should be set as db.serverless if read replica instamce is created as serverless
         """
         return pulumi.get(self, "size")
 
@@ -530,6 +566,18 @@ class _RdsReadReplicaState:
     def tenant_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "tenant_id", value)
 
+    @property
+    @pulumi.getter(name="v2ScalingConfiguration")
+    def v2_scaling_configuration(self) -> Optional[pulumi.Input['RdsReadReplicaV2ScalingConfigurationArgs']]:
+        """
+        Serverless v2*scaling*configuration min and max scalling capacity. Required during creating a servless read replica.
+        """
+        return pulumi.get(self, "v2_scaling_configuration")
+
+    @v2_scaling_configuration.setter
+    def v2_scaling_configuration(self, value: Optional[pulumi.Input['RdsReadReplicaV2ScalingConfigurationArgs']]):
+        pulumi.set(self, "v2_scaling_configuration", value)
+
 
 class RdsReadReplica(pulumi.CustomResource):
     @overload
@@ -540,11 +588,13 @@ class RdsReadReplica(pulumi.CustomResource):
                  cluster_identifier: Optional[pulumi.Input[str]] = None,
                  engine_type: Optional[pulumi.Input[int]] = None,
                  enhanced_monitoring: Optional[pulumi.Input[int]] = None,
+                 multi_az: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parameter_group_name: Optional[pulumi.Input[str]] = None,
                  performance_insights: Optional[pulumi.Input[Union['RdsReadReplicaPerformanceInsightsArgs', 'RdsReadReplicaPerformanceInsightsArgsDict']]] = None,
                  size: Optional[pulumi.Input[str]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
+                 v2_scaling_configuration: Optional[pulumi.Input[Union['RdsReadReplicaV2ScalingConfigurationArgs', 'RdsReadReplicaV2ScalingConfigurationArgsDict']]] = None,
                  __props__=None):
         """
         `RdsReadReplica` manages an AWS RDS read replica in Duplo.
@@ -569,12 +619,14 @@ class RdsReadReplica(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_identifier: The full name of the RDS Cluster.
         :param pulumi.Input[int] engine_type: Engine type required to validate applicable parameter group setting for different instance. Should be referred from writer
         :param pulumi.Input[int] enhanced_monitoring: Interval to capture metrics in real time for the operating system (OS) that your Amazon RDS DB instance runs on.
+        :param pulumi.Input[bool] multi_az: Specifies if the RDS instance is multi-AZ.
         :param pulumi.Input[str] name: The short name of the RDS read replica.  Duplo will add a prefix to the name.  You can retrieve the full name from the `identifier` attribute.
         :param pulumi.Input[str] parameter_group_name: A RDS parameter group name to apply to the RDS instance.
         :param pulumi.Input[Union['RdsReadReplicaPerformanceInsightsArgs', 'RdsReadReplicaPerformanceInsightsArgsDict']] performance_insights: Amazon RDS Performance Insights is a database performance tuning and monitoring feature that helps you quickly assess the load on your database, and determine when and where to take action. Perfomance Insights get apply when enable is set to true.
         :param pulumi.Input[str] size: The type of the RDS read replica.
-               See AWS documentation for the [available instance types](https://aws.amazon.com/rds/instance-types/).
+               See AWS documentation for the [available instance types](https://aws.amazon.com/rds/instance-types/).Size should be set as db.serverless if read replica instamce is created as serverless
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the RDS read replica will be created in.
+        :param pulumi.Input[Union['RdsReadReplicaV2ScalingConfigurationArgs', 'RdsReadReplicaV2ScalingConfigurationArgsDict']] v2_scaling_configuration: Serverless v2*scaling*configuration min and max scalling capacity. Required during creating a servless read replica.
         """
         ...
     @overload
@@ -618,11 +670,13 @@ class RdsReadReplica(pulumi.CustomResource):
                  cluster_identifier: Optional[pulumi.Input[str]] = None,
                  engine_type: Optional[pulumi.Input[int]] = None,
                  enhanced_monitoring: Optional[pulumi.Input[int]] = None,
+                 multi_az: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parameter_group_name: Optional[pulumi.Input[str]] = None,
                  performance_insights: Optional[pulumi.Input[Union['RdsReadReplicaPerformanceInsightsArgs', 'RdsReadReplicaPerformanceInsightsArgsDict']]] = None,
                  size: Optional[pulumi.Input[str]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
+                 v2_scaling_configuration: Optional[pulumi.Input[Union['RdsReadReplicaV2ScalingConfigurationArgs', 'RdsReadReplicaV2ScalingConfigurationArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -638,6 +692,7 @@ class RdsReadReplica(pulumi.CustomResource):
             __props__.__dict__["cluster_identifier"] = cluster_identifier
             __props__.__dict__["engine_type"] = engine_type
             __props__.__dict__["enhanced_monitoring"] = enhanced_monitoring
+            __props__.__dict__["multi_az"] = multi_az
             __props__.__dict__["name"] = name
             __props__.__dict__["parameter_group_name"] = parameter_group_name
             __props__.__dict__["performance_insights"] = performance_insights
@@ -647,6 +702,7 @@ class RdsReadReplica(pulumi.CustomResource):
             if tenant_id is None and not opts.urn:
                 raise TypeError("Missing required property 'tenant_id'")
             __props__.__dict__["tenant_id"] = tenant_id
+            __props__.__dict__["v2_scaling_configuration"] = v2_scaling_configuration
             __props__.__dict__["arn"] = None
             __props__.__dict__["cluster_parameter_group_name"] = None
             __props__.__dict__["enable_logging"] = None
@@ -657,7 +713,6 @@ class RdsReadReplica(pulumi.CustomResource):
             __props__.__dict__["host"] = None
             __props__.__dict__["identifier"] = None
             __props__.__dict__["kms_key_id"] = None
-            __props__.__dict__["multi_az"] = None
             __props__.__dict__["port"] = None
             __props__.__dict__["replica_status"] = None
         super(RdsReadReplica, __self__).__init__(
@@ -691,7 +746,8 @@ class RdsReadReplica(pulumi.CustomResource):
             port: Optional[pulumi.Input[int]] = None,
             replica_status: Optional[pulumi.Input[str]] = None,
             size: Optional[pulumi.Input[str]] = None,
-            tenant_id: Optional[pulumi.Input[str]] = None) -> 'RdsReadReplica':
+            tenant_id: Optional[pulumi.Input[str]] = None,
+            v2_scaling_configuration: Optional[pulumi.Input[Union['RdsReadReplicaV2ScalingConfigurationArgs', 'RdsReadReplicaV2ScalingConfigurationArgsDict']]] = None) -> 'RdsReadReplica':
         """
         Get an existing RdsReadReplica resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -720,8 +776,9 @@ class RdsReadReplica(pulumi.CustomResource):
         :param pulumi.Input[int] port: The listening port of the RDS read replica.
         :param pulumi.Input[str] replica_status: The current status of the RDS read replica.
         :param pulumi.Input[str] size: The type of the RDS read replica.
-               See AWS documentation for the [available instance types](https://aws.amazon.com/rds/instance-types/).
+               See AWS documentation for the [available instance types](https://aws.amazon.com/rds/instance-types/).Size should be set as db.serverless if read replica instamce is created as serverless
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the RDS read replica will be created in.
+        :param pulumi.Input[Union['RdsReadReplicaV2ScalingConfigurationArgs', 'RdsReadReplicaV2ScalingConfigurationArgsDict']] v2_scaling_configuration: Serverless v2*scaling*configuration min and max scalling capacity. Required during creating a servless read replica.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -749,6 +806,7 @@ class RdsReadReplica(pulumi.CustomResource):
         __props__.__dict__["replica_status"] = replica_status
         __props__.__dict__["size"] = size
         __props__.__dict__["tenant_id"] = tenant_id
+        __props__.__dict__["v2_scaling_configuration"] = v2_scaling_configuration
         return RdsReadReplica(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -865,7 +923,7 @@ class RdsReadReplica(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="multiAz")
-    def multi_az(self) -> pulumi.Output[bool]:
+    def multi_az(self) -> pulumi.Output[Optional[bool]]:
         """
         Specifies if the RDS instance is multi-AZ.
         """
@@ -916,7 +974,7 @@ class RdsReadReplica(pulumi.CustomResource):
     def size(self) -> pulumi.Output[str]:
         """
         The type of the RDS read replica.
-        See AWS documentation for the [available instance types](https://aws.amazon.com/rds/instance-types/).
+        See AWS documentation for the [available instance types](https://aws.amazon.com/rds/instance-types/).Size should be set as db.serverless if read replica instamce is created as serverless
         """
         return pulumi.get(self, "size")
 
@@ -927,4 +985,12 @@ class RdsReadReplica(pulumi.CustomResource):
         The GUID of the tenant that the RDS read replica will be created in.
         """
         return pulumi.get(self, "tenant_id")
+
+    @property
+    @pulumi.getter(name="v2ScalingConfiguration")
+    def v2_scaling_configuration(self) -> pulumi.Output[Optional['outputs.RdsReadReplicaV2ScalingConfiguration']]:
+        """
+        Serverless v2*scaling*configuration min and max scalling capacity. Required during creating a servless read replica.
+        """
+        return pulumi.get(self, "v2_scaling_configuration")
 

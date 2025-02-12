@@ -54,6 +54,11 @@ export class GcpNodePool extends pulumi.CustomResource {
 
     public readonly accelerators!: pulumi.Output<outputs.GcpNodePoolAccelerator[] | undefined>;
     /**
+     * Allocation tag to give to the nodes if specified it would be added as a label and that can be used while creating
+     * services
+     */
+    public readonly allocationTags!: pulumi.Output<string | undefined>;
+    /**
      * Whether the nodes will be automatically repaired.
      */
     public readonly autoRepair!: pulumi.Output<boolean>;
@@ -177,6 +182,7 @@ export class GcpNodePool extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as GcpNodePoolState | undefined;
             resourceInputs["accelerators"] = state ? state.accelerators : undefined;
+            resourceInputs["allocationTags"] = state ? state.allocationTags : undefined;
             resourceInputs["autoRepair"] = state ? state.autoRepair : undefined;
             resourceInputs["autoUpgrade"] = state ? state.autoUpgrade : undefined;
             resourceInputs["discSizeGb"] = state ? state.discSizeGb : undefined;
@@ -219,6 +225,7 @@ export class GcpNodePool extends pulumi.CustomResource {
                 throw new Error("Missing required property 'zones'");
             }
             resourceInputs["accelerators"] = args ? args.accelerators : undefined;
+            resourceInputs["allocationTags"] = args ? args.allocationTags : undefined;
             resourceInputs["autoRepair"] = args ? args.autoRepair : undefined;
             resourceInputs["autoUpgrade"] = args ? args.autoUpgrade : undefined;
             resourceInputs["discSizeGb"] = args ? args.discSizeGb : undefined;
@@ -257,6 +264,11 @@ export class GcpNodePool extends pulumi.CustomResource {
  */
 export interface GcpNodePoolState {
     accelerators?: pulumi.Input<pulumi.Input<inputs.GcpNodePoolAccelerator>[]>;
+    /**
+     * Allocation tag to give to the nodes if specified it would be added as a label and that can be used while creating
+     * services
+     */
+    allocationTags?: pulumi.Input<string>;
     /**
      * Whether the nodes will be automatically repaired.
      */
@@ -373,6 +385,11 @@ export interface GcpNodePoolState {
  */
 export interface GcpNodePoolArgs {
     accelerators?: pulumi.Input<pulumi.Input<inputs.GcpNodePoolAccelerator>[]>;
+    /**
+     * Allocation tag to give to the nodes if specified it would be added as a label and that can be used while creating
+     * services
+     */
+    allocationTags?: pulumi.Input<string>;
     /**
      * Whether the nodes will be automatically repaired.
      */

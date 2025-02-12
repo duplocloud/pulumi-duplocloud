@@ -26,6 +26,7 @@ class GcpNodePoolArgs:
                  tenant_id: pulumi.Input[str],
                  zones: pulumi.Input[Sequence[pulumi.Input[str]]],
                  accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['GcpNodePoolAcceleratorArgs']]]] = None,
+                 allocation_tags: Optional[pulumi.Input[str]] = None,
                  auto_repair: Optional[pulumi.Input[bool]] = None,
                  auto_upgrade: Optional[pulumi.Input[bool]] = None,
                  disc_size_gb: Optional[pulumi.Input[int]] = None,
@@ -54,6 +55,8 @@ class GcpNodePoolArgs:
         :param pulumi.Input[str] machine_type: The name of a Google Compute Engine machine type. If unspecified, the default machine type is e2-medium.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the node pool will be created in.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] zones: The list of Google Compute Engine zones in which the NodePool's nodes should be located.
+        :param pulumi.Input[str] allocation_tags: Allocation tag to give to the nodes if specified it would be added as a label and that can be used while creating
+               services
         :param pulumi.Input[bool] auto_repair: Whether the nodes will be automatically repaired.
         :param pulumi.Input[bool] auto_upgrade: Whether the nodes will be automatically upgraded.
         :param pulumi.Input[int] disc_size_gb: Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. If unspecified, the
@@ -85,6 +88,8 @@ class GcpNodePoolArgs:
         pulumi.set(__self__, "zones", zones)
         if accelerators is not None:
             pulumi.set(__self__, "accelerators", accelerators)
+        if allocation_tags is not None:
+            pulumi.set(__self__, "allocation_tags", allocation_tags)
         if auto_repair is not None:
             pulumi.set(__self__, "auto_repair", auto_repair)
         if auto_upgrade is not None:
@@ -186,6 +191,19 @@ class GcpNodePoolArgs:
     @accelerators.setter
     def accelerators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GcpNodePoolAcceleratorArgs']]]]):
         pulumi.set(self, "accelerators", value)
+
+    @property
+    @pulumi.getter(name="allocationTags")
+    def allocation_tags(self) -> Optional[pulumi.Input[str]]:
+        """
+        Allocation tag to give to the nodes if specified it would be added as a label and that can be used while creating
+        services
+        """
+        return pulumi.get(self, "allocation_tags")
+
+    @allocation_tags.setter
+    def allocation_tags(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "allocation_tags", value)
 
     @property
     @pulumi.getter(name="autoRepair")
@@ -456,6 +474,7 @@ class GcpNodePoolArgs:
 class _GcpNodePoolState:
     def __init__(__self__, *,
                  accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['GcpNodePoolAcceleratorArgs']]]] = None,
+                 allocation_tags: Optional[pulumi.Input[str]] = None,
                  auto_repair: Optional[pulumi.Input[bool]] = None,
                  auto_upgrade: Optional[pulumi.Input[bool]] = None,
                  disc_size_gb: Optional[pulumi.Input[int]] = None,
@@ -485,6 +504,8 @@ class _GcpNodePoolState:
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering GcpNodePool resources.
+        :param pulumi.Input[str] allocation_tags: Allocation tag to give to the nodes if specified it would be added as a label and that can be used while creating
+               services
         :param pulumi.Input[bool] auto_repair: Whether the nodes will be automatically repaired.
         :param pulumi.Input[bool] auto_upgrade: Whether the nodes will be automatically upgraded.
         :param pulumi.Input[int] disc_size_gb: Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. If unspecified, the
@@ -518,6 +539,8 @@ class _GcpNodePoolState:
         """
         if accelerators is not None:
             pulumi.set(__self__, "accelerators", accelerators)
+        if allocation_tags is not None:
+            pulumi.set(__self__, "allocation_tags", allocation_tags)
         if auto_repair is not None:
             pulumi.set(__self__, "auto_repair", auto_repair)
         if auto_upgrade is not None:
@@ -581,6 +604,19 @@ class _GcpNodePoolState:
     @accelerators.setter
     def accelerators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GcpNodePoolAcceleratorArgs']]]]):
         pulumi.set(self, "accelerators", value)
+
+    @property
+    @pulumi.getter(name="allocationTags")
+    def allocation_tags(self) -> Optional[pulumi.Input[str]]:
+        """
+        Allocation tag to give to the nodes if specified it would be added as a label and that can be used while creating
+        services
+        """
+        return pulumi.get(self, "allocation_tags")
+
+    @allocation_tags.setter
+    def allocation_tags(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "allocation_tags", value)
 
     @property
     @pulumi.getter(name="autoRepair")
@@ -914,6 +950,7 @@ class GcpNodePool(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GcpNodePoolAcceleratorArgs', 'GcpNodePoolAcceleratorArgsDict']]]]] = None,
+                 allocation_tags: Optional[pulumi.Input[str]] = None,
                  auto_repair: Optional[pulumi.Input[bool]] = None,
                  auto_upgrade: Optional[pulumi.Input[bool]] = None,
                  disc_size_gb: Optional[pulumi.Input[int]] = None,
@@ -960,6 +997,8 @@ class GcpNodePool(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] allocation_tags: Allocation tag to give to the nodes if specified it would be added as a label and that can be used while creating
+               services
         :param pulumi.Input[bool] auto_repair: Whether the nodes will be automatically repaired.
         :param pulumi.Input[bool] auto_upgrade: Whether the nodes will be automatically upgraded.
         :param pulumi.Input[int] disc_size_gb: Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. If unspecified, the
@@ -1028,6 +1067,7 @@ class GcpNodePool(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GcpNodePoolAcceleratorArgs', 'GcpNodePoolAcceleratorArgsDict']]]]] = None,
+                 allocation_tags: Optional[pulumi.Input[str]] = None,
                  auto_repair: Optional[pulumi.Input[bool]] = None,
                  auto_upgrade: Optional[pulumi.Input[bool]] = None,
                  disc_size_gb: Optional[pulumi.Input[int]] = None,
@@ -1064,6 +1104,7 @@ class GcpNodePool(pulumi.CustomResource):
             __props__ = GcpNodePoolArgs.__new__(GcpNodePoolArgs)
 
             __props__.__dict__["accelerators"] = accelerators
+            __props__.__dict__["allocation_tags"] = allocation_tags
             __props__.__dict__["auto_repair"] = auto_repair
             __props__.__dict__["auto_upgrade"] = auto_upgrade
             __props__.__dict__["disc_size_gb"] = disc_size_gb
@@ -1110,6 +1151,7 @@ class GcpNodePool(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GcpNodePoolAcceleratorArgs', 'GcpNodePoolAcceleratorArgsDict']]]]] = None,
+            allocation_tags: Optional[pulumi.Input[str]] = None,
             auto_repair: Optional[pulumi.Input[bool]] = None,
             auto_upgrade: Optional[pulumi.Input[bool]] = None,
             disc_size_gb: Optional[pulumi.Input[int]] = None,
@@ -1144,6 +1186,8 @@ class GcpNodePool(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] allocation_tags: Allocation tag to give to the nodes if specified it would be added as a label and that can be used while creating
+               services
         :param pulumi.Input[bool] auto_repair: Whether the nodes will be automatically repaired.
         :param pulumi.Input[bool] auto_upgrade: Whether the nodes will be automatically upgraded.
         :param pulumi.Input[int] disc_size_gb: Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. If unspecified, the
@@ -1180,6 +1224,7 @@ class GcpNodePool(pulumi.CustomResource):
         __props__ = _GcpNodePoolState.__new__(_GcpNodePoolState)
 
         __props__.__dict__["accelerators"] = accelerators
+        __props__.__dict__["allocation_tags"] = allocation_tags
         __props__.__dict__["auto_repair"] = auto_repair
         __props__.__dict__["auto_upgrade"] = auto_upgrade
         __props__.__dict__["disc_size_gb"] = disc_size_gb
@@ -1213,6 +1258,15 @@ class GcpNodePool(pulumi.CustomResource):
     @pulumi.getter
     def accelerators(self) -> pulumi.Output[Optional[Sequence['outputs.GcpNodePoolAccelerator']]]:
         return pulumi.get(self, "accelerators")
+
+    @property
+    @pulumi.getter(name="allocationTags")
+    def allocation_tags(self) -> pulumi.Output[Optional[str]]:
+        """
+        Allocation tag to give to the nodes if specified it would be added as a label and that can be used while creating
+        services
+        """
+        return pulumi.get(self, "allocation_tags")
 
     @property
     @pulumi.getter(name="autoRepair")

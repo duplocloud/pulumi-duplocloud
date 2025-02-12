@@ -4415,7 +4415,11 @@
                     "description": "Valid values are \\n\\nFor FARGATE: 'LINUX','WINDOWS*SERVER*2019*FULL','WINDOWS*SERVER*2019*CORE','WINDOWS*SERVER*2022*FULL','WINDOWS*SERVER*2022*CORE'\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "cpuArchitecture",
+                "operatingSystemFamily"
+            ]
         },
         "duplocloud:index/EcsTaskDefinitionTag:EcsTaskDefinitionTag": {
             "properties": {
@@ -6124,7 +6128,6 @@
                         "hostNetwork",
                         "hostPid",
                         "hostname",
-                        "imagePullSecrets",
                         "nodeName",
                         "nodeSelector",
                         "priorityClassName",
@@ -10610,7 +10613,6 @@
                         "hostNetwork",
                         "hostPid",
                         "hostname",
-                        "imagePullSecrets",
                         "nodeName",
                         "nodeSelector",
                         "priorityClassName",
@@ -15340,11 +15342,11 @@
             "properties": {
                 "maxCapacity": {
                     "type": "number",
-                    "description": "Specifies max scalling capacity.\n"
+                    "description": "Specifies max scaling capacity.\n"
                 },
                 "minCapacity": {
                     "type": "number",
-                    "description": "Specifies min scalling capacity.\n"
+                    "description": "Specifies min scaling capacity.\n"
                 }
             },
             "type": "object",
@@ -15376,6 +15378,23 @@
                     ]
                 }
             }
+        },
+        "duplocloud:index/RdsReadReplicaV2ScalingConfiguration:RdsReadReplicaV2ScalingConfiguration": {
+            "properties": {
+                "maxCapacity": {
+                    "type": "number",
+                    "description": "Specifies max scalling capacity.\n"
+                },
+                "minCapacity": {
+                    "type": "number",
+                    "description": "Specifies min scalling capacity.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "maxCapacity",
+                "minCapacity"
+            ]
         },
         "duplocloud:index/S3BucketDefaultEncryption:S3BucketDefaultEncryption": {
             "properties": {
@@ -18877,7 +18896,6 @@
                 "hostNetwork",
                 "hostPid",
                 "hostname",
-                "imagePullSecrets",
                 "nodeName",
                 "nodeSelector",
                 "priorityClassName",
@@ -23606,7 +23624,6 @@
                 "hostNetwork",
                 "hostPid",
                 "hostname",
-                "imagePullSecrets",
                 "nodeName",
                 "nodeSelector",
                 "priorityClassName",
@@ -34600,7 +34617,9 @@
                 }
             },
             "required": [
+                "ami",
                 "defaultVersion",
+                "instanceType",
                 "latestVersion",
                 "name",
                 "tenantId",
@@ -34641,9 +34660,9 @@
                 }
             },
             "requiredInputs": [
+                "instanceType",
                 "tenantId",
-                "version",
-                "versionDescription"
+                "version"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering AwsLaunchTemplate resources.\n",
@@ -42647,7 +42666,7 @@
             }
         },
         "duplocloud:index/ecsTaskDefinition:EcsTaskDefinition": {
-            "description": "`duplocloud.EcsTaskDefinition` manages a Amazon ECS task definition in Duplo.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as duplocloud from \"@pulumi/duplocloud\";\n\nconst myapp = new duplocloud.Tenant(\"myapp\", {\n    accountName: \"myapp\",\n    planId: \"default\",\n});\n// Create a task definition for NGINX using ECS\nconst myservice = new duplocloud.EcsTaskDefinition(\"myservice\", {\n    tenantId: myapp.tenantId,\n    family: \"duploservices-default-myservice\",\n    containerDefinitions: JSON.stringify([{\n        Name: \"default\",\n        Image: \"nginx:latest\",\n        Environment: [{\n            Name: \"NGINX_HOST\",\n            Value: \"foo\",\n        }],\n        PortMappings: [{\n            ContainerPort: \"80\",\n            HostPort: \"80\",\n            Protocol: {\n                Value: \"tcp\",\n            },\n        }],\n    }]),\n    cpu: \"256\",\n    memory: \"1024\",\n    requiresCompatibilities: [\"FARGATE\"],\n});\n```\n```python\nimport pulumi\nimport json\nimport pulumi_duplocloud as duplocloud\n\nmyapp = duplocloud.Tenant(\"myapp\",\n    account_name=\"myapp\",\n    plan_id=\"default\")\n# Create a task definition for NGINX using ECS\nmyservice = duplocloud.EcsTaskDefinition(\"myservice\",\n    tenant_id=myapp.tenant_id,\n    family=\"duploservices-default-myservice\",\n    container_definitions=json.dumps([{\n        \"Name\": \"default\",\n        \"Image\": \"nginx:latest\",\n        \"Environment\": [{\n            \"Name\": \"NGINX_HOST\",\n            \"Value\": \"foo\",\n        }],\n        \"PortMappings\": [{\n            \"ContainerPort\": \"80\",\n            \"HostPort\": \"80\",\n            \"Protocol\": {\n                \"Value\": \"tcp\",\n            },\n        }],\n    }]),\n    cpu=\"256\",\n    memory=\"1024\",\n    requires_compatibilities=[\"FARGATE\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing System.Text.Json;\nusing Pulumi;\nusing Duplocloud = Pulumi.Duplocloud;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myapp = new Duplocloud.Tenant(\"myapp\", new()\n    {\n        AccountName = \"myapp\",\n        PlanId = \"default\",\n    });\n\n    // Create a task definition for NGINX using ECS\n    var myservice = new Duplocloud.EcsTaskDefinition(\"myservice\", new()\n    {\n        TenantId = myapp.TenantId,\n        Family = \"duploservices-default-myservice\",\n        ContainerDefinitions = JsonSerializer.Serialize(new[]\n        {\n            new Dictionary\u003cstring, object?\u003e\n            {\n                [\"Name\"] = \"default\",\n                [\"Image\"] = \"nginx:latest\",\n                [\"Environment\"] = new[]\n                {\n                    new Dictionary\u003cstring, object?\u003e\n                    {\n                        [\"Name\"] = \"NGINX_HOST\",\n                        [\"Value\"] = \"foo\",\n                    },\n                },\n                [\"PortMappings\"] = new[]\n                {\n                    new Dictionary\u003cstring, object?\u003e\n                    {\n                        [\"ContainerPort\"] = \"80\",\n                        [\"HostPort\"] = \"80\",\n                        [\"Protocol\"] = new Dictionary\u003cstring, object?\u003e\n                        {\n                            [\"Value\"] = \"tcp\",\n                        },\n                    },\n                },\n            },\n        }),\n        Cpu = \"256\",\n        Memory = \"1024\",\n        RequiresCompatibilities = new[]\n        {\n            \"FARGATE\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\n\t\"github.com/duplocloud/pulumi-duplocloud/sdk/go/duplocloud\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmyapp, err := duplocloud.NewTenant(ctx, \"myapp\", \u0026duplocloud.TenantArgs{\n\t\t\tAccountName: pulumi.String(\"myapp\"),\n\t\t\tPlanId:      pulumi.String(\"default\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttmpJSON0, err := json.Marshal([]map[string]interface{}{\n\t\t\tmap[string]interface{}{\n\t\t\t\t\"Name\":  \"default\",\n\t\t\t\t\"Image\": \"nginx:latest\",\n\t\t\t\t\"Environment\": []map[string]interface{}{\n\t\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\t\"Name\":  \"NGINX_HOST\",\n\t\t\t\t\t\t\"Value\": \"foo\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\t\"PortMappings\": []map[string]interface{}{\n\t\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\t\"ContainerPort\": \"80\",\n\t\t\t\t\t\t\"HostPort\":      \"80\",\n\t\t\t\t\t\t\"Protocol\": map[string]interface{}{\n\t\t\t\t\t\t\t\"Value\": \"tcp\",\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson0 := string(tmpJSON0)\n\t\t// Create a task definition for NGINX using ECS\n\t\t_, err = duplocloud.NewEcsTaskDefinition(ctx, \"myservice\", \u0026duplocloud.EcsTaskDefinitionArgs{\n\t\t\tTenantId:             myapp.TenantId,\n\t\t\tFamily:               pulumi.String(\"duploservices-default-myservice\"),\n\t\t\tContainerDefinitions: pulumi.String(json0),\n\t\t\tCpu:                  pulumi.String(\"256\"),\n\t\t\tMemory:               pulumi.String(\"1024\"),\n\t\t\tRequiresCompatibilities: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"FARGATE\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.duplocloud.Tenant;\nimport com.pulumi.duplocloud.TenantArgs;\nimport com.pulumi.duplocloud.EcsTaskDefinition;\nimport com.pulumi.duplocloud.EcsTaskDefinitionArgs;\nimport static com.pulumi.codegen.internal.Serialization.*;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myapp = new Tenant(\"myapp\", TenantArgs.builder()\n            .accountName(\"myapp\")\n            .planId(\"default\")\n            .build());\n\n        // Create a task definition for NGINX using ECS\n        var myservice = new EcsTaskDefinition(\"myservice\", EcsTaskDefinitionArgs.builder()\n            .tenantId(myapp.tenantId())\n            .family(\"duploservices-default-myservice\")\n            .containerDefinitions(serializeJson(\n                jsonArray(jsonObject(\n                    jsonProperty(\"Name\", \"default\"),\n                    jsonProperty(\"Image\", \"nginx:latest\"),\n                    jsonProperty(\"Environment\", jsonArray(jsonObject(\n                        jsonProperty(\"Name\", \"NGINX_HOST\"),\n                        jsonProperty(\"Value\", \"foo\")\n                    ))),\n                    jsonProperty(\"PortMappings\", jsonArray(jsonObject(\n                        jsonProperty(\"ContainerPort\", \"80\"),\n                        jsonProperty(\"HostPort\", \"80\"),\n                        jsonProperty(\"Protocol\", jsonObject(\n                            jsonProperty(\"Value\", \"tcp\")\n                        ))\n                    )))\n                ))))\n            .cpu(\"256\")\n            .memory(\"1024\")\n            .requiresCompatibilities(\"FARGATE\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myapp:\n    type: duplocloud:Tenant\n    properties:\n      accountName: myapp\n      planId: default\n  # Create a task definition for NGINX using ECS\n  myservice:\n    type: duplocloud:EcsTaskDefinition\n    properties:\n      tenantId: ${myapp.tenantId}\n      family: duploservices-default-myservice\n      containerDefinitions:\n        fn::toJSON:\n          - Name: default\n            Image: nginx:latest\n            Environment:\n              - Name: NGINX_HOST\n                Value: foo\n            PortMappings:\n              - ContainerPort: '80'\n                HostPort: '80'\n                Protocol:\n                  Value: tcp\n      cpu: '256'\n      memory: '1024'\n      requiresCompatibilities:\n        - FARGATE\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nExample: Importing an existing ECS task definition\n\n - *TENANT_ID* is the tenant GUID\n\n - *ARN* is the full ARN of the task definition\n\n#\n\n```sh\n$ pulumi import duplocloud:index/ecsTaskDefinition:EcsTaskDefinition myservice subscriptions/*TENANT_ID*/EcsTaskDefinition/*ARN*\n```\n\n",
+            "description": "`duplocloud.EcsTaskDefinition` manages a Amazon ECS task definition in Duplo.\n\n## Import\n\nExample: Importing an existing ECS task definition\n\n - *TENANT_ID* is the tenant GUID\n\n - *ARN* is the full ARN of the task definition\n\n#\n\n```sh\n$ pulumi import duplocloud:index/ecsTaskDefinition:EcsTaskDefinition myservice subscriptions/*TENANT_ID*/EcsTaskDefinition/*ARN*\n```\n\n",
             "properties": {
                 "arn": {
                     "type": "string",
@@ -44425,6 +44444,10 @@
                         "$ref": "#/types/duplocloud:index/GcpNodePoolAccelerator:GcpNodePoolAccelerator"
                     }
                 },
+                "allocationTags": {
+                    "type": "string",
+                    "description": "Allocation tag to give to the nodes if specified it would be added as a label and that can be used while creating\nservices\n"
+                },
                 "autoRepair": {
                     "type": "boolean",
                     "description": "Whether the nodes will be automatically repaired.\n"
@@ -44585,6 +44608,10 @@
                         "$ref": "#/types/duplocloud:index/GcpNodePoolAccelerator:GcpNodePoolAccelerator"
                     }
                 },
+                "allocationTags": {
+                    "type": "string",
+                    "description": "Allocation tag to give to the nodes if specified it would be added as a label and that can be used while creating\nservices\n"
+                },
                 "autoRepair": {
                     "type": "boolean",
                     "description": "Whether the nodes will be automatically repaired.\n"
@@ -44729,6 +44756,10 @@
                         "items": {
                             "$ref": "#/types/duplocloud:index/GcpNodePoolAccelerator:GcpNodePoolAccelerator"
                         }
+                    },
+                    "allocationTags": {
+                        "type": "string",
+                        "description": "Allocation tag to give to the nodes if specified it would be added as a label and that can be used while creating\nservices\n"
                     },
                     "autoRepair": {
                         "type": "boolean",
@@ -49290,7 +49321,7 @@
                 },
                 "size": {
                     "type": "string",
-                    "description": "The instance type of the RDS instance. See AWS documentation for the [available instance\ntypes](https://aws.amazon.com/rds/instance-types/).\n"
+                    "description": "The instance type of the RDS instance. See AWS documentation for the [available instance\ntypes](https://aws.amazon.com/rds/instance-types/).Size should be set as db.serverless if rds instamce is created as\nserverless\n"
                 },
                 "skipFinalSnapshot": {
                     "type": "boolean",
@@ -49314,7 +49345,7 @@
                 },
                 "v2ScalingConfiguration": {
                     "$ref": "#/types/duplocloud:index/RdsInstanceV2ScalingConfiguration:RdsInstanceV2ScalingConfiguration",
-                    "description": "Serverless v2_scaling_configuration min and max scalling capacity.\n"
+                    "description": "Serverless v2_scaling_configuration min and max scaling capacity. This configuration is only applicable for serverless\ninstances\n"
                 }
             },
             "required": [
@@ -49438,7 +49469,7 @@
                 },
                 "size": {
                     "type": "string",
-                    "description": "The instance type of the RDS instance. See AWS documentation for the [available instance\ntypes](https://aws.amazon.com/rds/instance-types/).\n"
+                    "description": "The instance type of the RDS instance. See AWS documentation for the [available instance\ntypes](https://aws.amazon.com/rds/instance-types/).Size should be set as db.serverless if rds instamce is created as\nserverless\n"
                 },
                 "skipFinalSnapshot": {
                     "type": "boolean",
@@ -49465,7 +49496,7 @@
                 },
                 "v2ScalingConfiguration": {
                     "$ref": "#/types/duplocloud:index/RdsInstanceV2ScalingConfiguration:RdsInstanceV2ScalingConfiguration",
-                    "description": "Serverless v2_scaling_configuration min and max scalling capacity.\n"
+                    "description": "Serverless v2_scaling_configuration min and max scaling capacity. This configuration is only applicable for serverless\ninstances\n"
                 }
             },
             "requiredInputs": [
@@ -49597,7 +49628,7 @@
                     },
                     "size": {
                         "type": "string",
-                        "description": "The instance type of the RDS instance. See AWS documentation for the [available instance\ntypes](https://aws.amazon.com/rds/instance-types/).\n"
+                        "description": "The instance type of the RDS instance. See AWS documentation for the [available instance\ntypes](https://aws.amazon.com/rds/instance-types/).Size should be set as db.serverless if rds instamce is created as\nserverless\n"
                     },
                     "skipFinalSnapshot": {
                         "type": "boolean",
@@ -49624,7 +49655,7 @@
                     },
                     "v2ScalingConfiguration": {
                         "$ref": "#/types/duplocloud:index/RdsInstanceV2ScalingConfiguration:RdsInstanceV2ScalingConfiguration",
-                        "description": "Serverless v2_scaling_configuration min and max scalling capacity.\n"
+                        "description": "Serverless v2_scaling_configuration min and max scaling capacity. This configuration is only applicable for serverless\ninstances\n"
                     }
                 },
                 "type": "object"
@@ -49715,11 +49746,15 @@
                 },
                 "size": {
                     "type": "string",
-                    "description": "The type of the RDS read replica.\nSee AWS documentation for the [available instance types](https://aws.amazon.com/rds/instance-types/).\n"
+                    "description": "The type of the RDS read replica.\nSee AWS documentation for the [available instance types](https://aws.amazon.com/rds/instance-types/).Size should be set as db.serverless if read replica instamce is created as serverless\n"
                 },
                 "tenantId": {
                     "type": "string",
                     "description": "The GUID of the tenant that the RDS read replica will be created in.\n"
+                },
+                "v2ScalingConfiguration": {
+                    "$ref": "#/types/duplocloud:index/RdsReadReplicaV2ScalingConfiguration:RdsReadReplicaV2ScalingConfiguration",
+                    "description": "Serverless v2*scaling*configuration min and max scalling capacity. Required during creating a servless read replica.\n"
                 }
             },
             "required": [
@@ -49737,7 +49772,6 @@
                 "host",
                 "identifier",
                 "kmsKeyId",
-                "multiAz",
                 "name",
                 "performanceInsights",
                 "port",
@@ -49748,7 +49782,8 @@
             "inputProperties": {
                 "availabilityZone": {
                     "type": "string",
-                    "description": "The AZ for the RDS instance.\n"
+                    "description": "The AZ for the RDS instance.\n",
+                    "willReplaceOnChanges": true
                 },
                 "clusterIdentifier": {
                     "type": "string",
@@ -49761,6 +49796,10 @@
                 "enhancedMonitoring": {
                     "type": "integer",
                     "description": "Interval to capture metrics in real time for the operating system (OS) that your Amazon RDS DB instance runs on.\n"
+                },
+                "multiAz": {
+                    "type": "boolean",
+                    "description": "Specifies if the RDS instance is multi-AZ.\n"
                 },
                 "name": {
                     "type": "string",
@@ -49777,13 +49816,17 @@
                 },
                 "size": {
                     "type": "string",
-                    "description": "The type of the RDS read replica.\nSee AWS documentation for the [available instance types](https://aws.amazon.com/rds/instance-types/).\n",
+                    "description": "The type of the RDS read replica.\nSee AWS documentation for the [available instance types](https://aws.amazon.com/rds/instance-types/).Size should be set as db.serverless if read replica instamce is created as serverless\n",
                     "willReplaceOnChanges": true
                 },
                 "tenantId": {
                     "type": "string",
                     "description": "The GUID of the tenant that the RDS read replica will be created in.\n",
                     "willReplaceOnChanges": true
+                },
+                "v2ScalingConfiguration": {
+                    "$ref": "#/types/duplocloud:index/RdsReadReplicaV2ScalingConfiguration:RdsReadReplicaV2ScalingConfiguration",
+                    "description": "Serverless v2*scaling*configuration min and max scalling capacity. Required during creating a servless read replica.\n"
                 }
             },
             "requiredInputs": [
@@ -49800,7 +49843,8 @@
                     },
                     "availabilityZone": {
                         "type": "string",
-                        "description": "The AZ for the RDS instance.\n"
+                        "description": "The AZ for the RDS instance.\n",
+                        "willReplaceOnChanges": true
                     },
                     "clusterIdentifier": {
                         "type": "string",
@@ -49877,13 +49921,17 @@
                     },
                     "size": {
                         "type": "string",
-                        "description": "The type of the RDS read replica.\nSee AWS documentation for the [available instance types](https://aws.amazon.com/rds/instance-types/).\n",
+                        "description": "The type of the RDS read replica.\nSee AWS documentation for the [available instance types](https://aws.amazon.com/rds/instance-types/).Size should be set as db.serverless if read replica instamce is created as serverless\n",
                         "willReplaceOnChanges": true
                     },
                     "tenantId": {
                         "type": "string",
                         "description": "The GUID of the tenant that the RDS read replica will be created in.\n",
                         "willReplaceOnChanges": true
+                    },
+                    "v2ScalingConfiguration": {
+                        "$ref": "#/types/duplocloud:index/RdsReadReplicaV2ScalingConfiguration:RdsReadReplicaV2ScalingConfiguration",
+                        "description": "Serverless v2*scaling*configuration min and max scalling capacity. Required during creating a servless read replica.\n"
                     }
                 },
                 "type": "object"

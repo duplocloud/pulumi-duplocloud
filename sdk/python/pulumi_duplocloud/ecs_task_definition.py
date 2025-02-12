@@ -604,40 +604,6 @@ class EcsTaskDefinition(pulumi.CustomResource):
         """
         `EcsTaskDefinition` manages a Amazon ECS task definition in Duplo.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import json
-        import pulumi_duplocloud as duplocloud
-
-        myapp = duplocloud.Tenant("myapp",
-            account_name="myapp",
-            plan_id="default")
-        # Create a task definition for NGINX using ECS
-        myservice = duplocloud.EcsTaskDefinition("myservice",
-            tenant_id=myapp.tenant_id,
-            family="duploservices-default-myservice",
-            container_definitions=json.dumps([{
-                "Name": "default",
-                "Image": "nginx:latest",
-                "Environment": [{
-                    "Name": "NGINX_HOST",
-                    "Value": "foo",
-                }],
-                "PortMappings": [{
-                    "ContainerPort": "80",
-                    "HostPort": "80",
-                    "Protocol": {
-                        "Value": "tcp",
-                    },
-                }],
-            }]),
-            cpu="256",
-            memory="1024",
-            requires_compatibilities=["FARGATE"])
-        ```
-
         ## Import
 
         Example: Importing an existing ECS task definition
@@ -669,40 +635,6 @@ class EcsTaskDefinition(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         `EcsTaskDefinition` manages a Amazon ECS task definition in Duplo.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import json
-        import pulumi_duplocloud as duplocloud
-
-        myapp = duplocloud.Tenant("myapp",
-            account_name="myapp",
-            plan_id="default")
-        # Create a task definition for NGINX using ECS
-        myservice = duplocloud.EcsTaskDefinition("myservice",
-            tenant_id=myapp.tenant_id,
-            family="duploservices-default-myservice",
-            container_definitions=json.dumps([{
-                "Name": "default",
-                "Image": "nginx:latest",
-                "Environment": [{
-                    "Name": "NGINX_HOST",
-                    "Value": "foo",
-                }],
-                "PortMappings": [{
-                    "ContainerPort": "80",
-                    "HostPort": "80",
-                    "Protocol": {
-                        "Value": "tcp",
-                    },
-                }],
-            }]),
-            cpu="256",
-            memory="1024",
-            requires_compatibilities=["FARGATE"])
-        ```
 
         ## Import
 

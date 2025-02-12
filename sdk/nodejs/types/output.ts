@@ -2145,11 +2145,11 @@ export interface EcsTaskDefinitionRuntimePlatform {
     /**
      * Valid values are 'X86_64','ARM64'
      */
-    cpuArchitecture?: string;
+    cpuArchitecture: string;
     /**
      * Valid values are \n\nFor FARGATE: 'LINUX','WINDOWS*SERVER*2019*FULL','WINDOWS*SERVER*2019*CORE','WINDOWS*SERVER*2022*FULL','WINDOWS*SERVER*2022*CORE'
      */
-    operatingSystemFamily?: string;
+    operatingSystemFamily: string;
 }
 
 export interface EcsTaskDefinitionTag {
@@ -4046,7 +4046,7 @@ export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpec {
     /**
      * ImagePullSecrets is an optional list of references to secrets in the same namespace to use for pulling any of the images used by this PodSpec. If specified, these secrets will be passed to individual puller implementations for them to use. For example, in the case of docker, only DockerConfig type secrets are honored. More info: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
      */
-    imagePullSecrets: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecImagePullSecret[];
+    imagePullSecrets?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecImagePullSecret[];
     /**
      * List of init containers belonging to the pod. Init containers always run to completion and each must complete successfully before the next is started. More info: https://kubernetes.io/docs/concepts/workloads/pods/init-containers/
      */
@@ -7235,7 +7235,7 @@ export interface GetK8sJobSpecTemplateSpec {
     /**
      * ImagePullSecrets is an optional list of references to secrets in the same namespace to use for pulling any of the images used by this PodSpec. If specified, these secrets will be passed to individual puller implementations for them to use. For example, in the case of docker, only DockerConfig type secrets are honored. More info: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
      */
-    imagePullSecrets: outputs.GetK8sJobSpecTemplateSpecImagePullSecret[];
+    imagePullSecrets?: outputs.GetK8sJobSpecTemplateSpecImagePullSecret[];
     /**
      * List of init containers belonging to the pod. Init containers always run to completion and each must complete successfully before the next is started. More info: https://kubernetes.io/docs/concepts/workloads/pods/init-containers/
      */
@@ -11316,7 +11316,7 @@ export interface K8sCronJobSpecJobTemplateSpecTemplateSpec {
     /**
      * ImagePullSecrets is an optional list of references to secrets in the same namespace to use for pulling any of the images used by this PodSpec. If specified, these secrets will be passed to individual puller implementations for them to use. For example, in the case of docker, only DockerConfig type secrets are honored. More info: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
      */
-    imagePullSecrets: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecImagePullSecret[];
+    imagePullSecrets?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecImagePullSecret[];
     /**
      * List of init containers belonging to the pod. Init containers always run to completion and each must complete successfully before the next is started. More info: https://kubernetes.io/docs/concepts/workloads/pods/init-containers/
      */
@@ -14517,7 +14517,7 @@ export interface K8sJobSpecTemplateSpec {
     /**
      * ImagePullSecrets is an optional list of references to secrets in the same namespace to use for pulling any of the images used by this PodSpec. If specified, these secrets will be passed to individual puller implementations for them to use. For example, in the case of docker, only DockerConfig type secrets are honored. More info: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
      */
-    imagePullSecrets: outputs.K8sJobSpecTemplateSpecImagePullSecret[];
+    imagePullSecrets?: outputs.K8sJobSpecTemplateSpecImagePullSecret[];
     /**
      * List of init containers belonging to the pod. Init containers always run to completion and each must complete successfully before the next is started. More info: https://kubernetes.io/docs/concepts/workloads/pods/init-containers/
      */
@@ -17669,11 +17669,11 @@ export interface RdsInstancePerformanceInsights {
 
 export interface RdsInstanceV2ScalingConfiguration {
     /**
-     * Specifies max scalling capacity.
+     * Specifies max scaling capacity.
      */
     maxCapacity: number;
     /**
-     * Specifies min scalling capacity.
+     * Specifies min scaling capacity.
      */
     minCapacity: number;
 }
@@ -17691,6 +17691,17 @@ export interface RdsReadReplicaPerformanceInsights {
      * Specify retention period in Days. Valid values are 7, 731 (2 years) or a multiple of 31. For Document DB retention period is 7 Defaults to `7`.
      */
     retentionPeriod?: number;
+}
+
+export interface RdsReadReplicaV2ScalingConfiguration {
+    /**
+     * Specifies max scalling capacity.
+     */
+    maxCapacity: number;
+    /**
+     * Specifies min scalling capacity.
+     */
+    minCapacity: number;
 }
 
 export interface S3BucketDefaultEncryption {

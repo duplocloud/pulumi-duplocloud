@@ -2145,11 +2145,11 @@ export interface EcsTaskDefinitionRuntimePlatform {
     /**
      * Valid values are 'X86_64','ARM64'
      */
-    cpuArchitecture?: pulumi.Input<string>;
+    cpuArchitecture: pulumi.Input<string>;
     /**
      * Valid values are \n\nFor FARGATE: 'LINUX','WINDOWS*SERVER*2019*FULL','WINDOWS*SERVER*2019*CORE','WINDOWS*SERVER*2022*FULL','WINDOWS*SERVER*2022*CORE'
      */
-    operatingSystemFamily?: pulumi.Input<string>;
+    operatingSystemFamily: pulumi.Input<string>;
 }
 
 export interface EcsTaskDefinitionTag {
@@ -9610,11 +9610,11 @@ export interface RdsInstancePerformanceInsights {
 
 export interface RdsInstanceV2ScalingConfiguration {
     /**
-     * Specifies max scalling capacity.
+     * Specifies max scaling capacity.
      */
     maxCapacity: pulumi.Input<number>;
     /**
-     * Specifies min scalling capacity.
+     * Specifies min scaling capacity.
      */
     minCapacity: pulumi.Input<number>;
 }
@@ -9632,6 +9632,17 @@ export interface RdsReadReplicaPerformanceInsights {
      * Specify retention period in Days. Valid values are 7, 731 (2 years) or a multiple of 31. For Document DB retention period is 7 Defaults to `7`.
      */
     retentionPeriod?: pulumi.Input<number>;
+}
+
+export interface RdsReadReplicaV2ScalingConfiguration {
+    /**
+     * Specifies max scalling capacity.
+     */
+    maxCapacity: pulumi.Input<number>;
+    /**
+     * Specifies min scalling capacity.
+     */
+    minCapacity: pulumi.Input<number>;
 }
 
 export interface S3BucketDefaultEncryption {

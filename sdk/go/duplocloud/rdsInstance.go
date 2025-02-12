@@ -758,7 +758,8 @@ type RdsInstance struct {
 	// The listening port of the RDS instance.
 	Port pulumi.IntOutput `pulumi:"port"`
 	// The instance type of the RDS instance. See AWS documentation for the [available instance
-	// types](https://aws.amazon.com/rds/instance-types/).
+	// types](https://aws.amazon.com/rds/instance-types/).Size should be set as db.serverless if rds instamce is created as
+	// serverless
 	Size pulumi.StringOutput `pulumi:"size"`
 	// If the final snapshot should be taken. When set to true, the final snapshot will not be taken when the resource is
 	// deleted.
@@ -785,7 +786,8 @@ type RdsInstance struct {
 	StoreDetailsInSecretManager pulumi.BoolPtrOutput `pulumi:"storeDetailsInSecretManager"`
 	// The GUID of the tenant that the RDS instance will be created in.
 	TenantId pulumi.StringOutput `pulumi:"tenantId"`
-	// Serverless v2ScalingConfiguration min and max scalling capacity.
+	// Serverless v2ScalingConfiguration min and max scaling capacity. This configuration is only applicable for serverless
+	// instances
 	V2ScalingConfiguration RdsInstanceV2ScalingConfigurationPtrOutput `pulumi:"v2ScalingConfiguration"`
 }
 
@@ -901,7 +903,8 @@ type rdsInstanceState struct {
 	// The listening port of the RDS instance.
 	Port *int `pulumi:"port"`
 	// The instance type of the RDS instance. See AWS documentation for the [available instance
-	// types](https://aws.amazon.com/rds/instance-types/).
+	// types](https://aws.amazon.com/rds/instance-types/).Size should be set as db.serverless if rds instamce is created as
+	// serverless
 	Size *string `pulumi:"size"`
 	// If the final snapshot should be taken. When set to true, the final snapshot will not be taken when the resource is
 	// deleted.
@@ -928,7 +931,8 @@ type rdsInstanceState struct {
 	StoreDetailsInSecretManager *bool `pulumi:"storeDetailsInSecretManager"`
 	// The GUID of the tenant that the RDS instance will be created in.
 	TenantId *string `pulumi:"tenantId"`
-	// Serverless v2ScalingConfiguration min and max scalling capacity.
+	// Serverless v2ScalingConfiguration min and max scaling capacity. This configuration is only applicable for serverless
+	// instances
 	V2ScalingConfiguration *RdsInstanceV2ScalingConfiguration `pulumi:"v2ScalingConfiguration"`
 }
 
@@ -999,7 +1003,8 @@ type RdsInstanceState struct {
 	// The listening port of the RDS instance.
 	Port pulumi.IntPtrInput
 	// The instance type of the RDS instance. See AWS documentation for the [available instance
-	// types](https://aws.amazon.com/rds/instance-types/).
+	// types](https://aws.amazon.com/rds/instance-types/).Size should be set as db.serverless if rds instamce is created as
+	// serverless
 	Size pulumi.StringPtrInput
 	// If the final snapshot should be taken. When set to true, the final snapshot will not be taken when the resource is
 	// deleted.
@@ -1026,7 +1031,8 @@ type RdsInstanceState struct {
 	StoreDetailsInSecretManager pulumi.BoolPtrInput
 	// The GUID of the tenant that the RDS instance will be created in.
 	TenantId pulumi.StringPtrInput
-	// Serverless v2ScalingConfiguration min and max scalling capacity.
+	// Serverless v2ScalingConfiguration min and max scaling capacity. This configuration is only applicable for serverless
+	// instances
 	V2ScalingConfiguration RdsInstanceV2ScalingConfigurationPtrInput
 }
 
@@ -1087,7 +1093,8 @@ type rdsInstanceArgs struct {
 	// to true.
 	PerformanceInsights *RdsInstancePerformanceInsights `pulumi:"performanceInsights"`
 	// The instance type of the RDS instance. See AWS documentation for the [available instance
-	// types](https://aws.amazon.com/rds/instance-types/).
+	// types](https://aws.amazon.com/rds/instance-types/).Size should be set as db.serverless if rds instamce is created as
+	// serverless
 	Size string `pulumi:"size"`
 	// If the final snapshot should be taken. When set to true, the final snapshot will not be taken when the resource is
 	// deleted.
@@ -1114,7 +1121,8 @@ type rdsInstanceArgs struct {
 	StoreDetailsInSecretManager *bool `pulumi:"storeDetailsInSecretManager"`
 	// The GUID of the tenant that the RDS instance will be created in.
 	TenantId string `pulumi:"tenantId"`
-	// Serverless v2ScalingConfiguration min and max scalling capacity.
+	// Serverless v2ScalingConfiguration min and max scaling capacity. This configuration is only applicable for serverless
+	// instances
 	V2ScalingConfiguration *RdsInstanceV2ScalingConfiguration `pulumi:"v2ScalingConfiguration"`
 }
 
@@ -1172,7 +1180,8 @@ type RdsInstanceArgs struct {
 	// to true.
 	PerformanceInsights RdsInstancePerformanceInsightsPtrInput
 	// The instance type of the RDS instance. See AWS documentation for the [available instance
-	// types](https://aws.amazon.com/rds/instance-types/).
+	// types](https://aws.amazon.com/rds/instance-types/).Size should be set as db.serverless if rds instamce is created as
+	// serverless
 	Size pulumi.StringInput
 	// If the final snapshot should be taken. When set to true, the final snapshot will not be taken when the resource is
 	// deleted.
@@ -1199,7 +1208,8 @@ type RdsInstanceArgs struct {
 	StoreDetailsInSecretManager pulumi.BoolPtrInput
 	// The GUID of the tenant that the RDS instance will be created in.
 	TenantId pulumi.StringInput
-	// Serverless v2ScalingConfiguration min and max scalling capacity.
+	// Serverless v2ScalingConfiguration min and max scaling capacity. This configuration is only applicable for serverless
+	// instances
 	V2ScalingConfiguration RdsInstanceV2ScalingConfigurationPtrInput
 }
 
@@ -1440,7 +1450,8 @@ func (o RdsInstanceOutput) Port() pulumi.IntOutput {
 }
 
 // The instance type of the RDS instance. See AWS documentation for the [available instance
-// types](https://aws.amazon.com/rds/instance-types/).
+// types](https://aws.amazon.com/rds/instance-types/).Size should be set as db.serverless if rds instamce is created as
+// serverless
 func (o RdsInstanceOutput) Size() pulumi.StringOutput {
 	return o.ApplyT(func(v *RdsInstance) pulumi.StringOutput { return v.Size }).(pulumi.StringOutput)
 }
@@ -1485,7 +1496,8 @@ func (o RdsInstanceOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RdsInstance) pulumi.StringOutput { return v.TenantId }).(pulumi.StringOutput)
 }
 
-// Serverless v2ScalingConfiguration min and max scalling capacity.
+// Serverless v2ScalingConfiguration min and max scaling capacity. This configuration is only applicable for serverless
+// instances
 func (o RdsInstanceOutput) V2ScalingConfiguration() RdsInstanceV2ScalingConfigurationPtrOutput {
 	return o.ApplyT(func(v *RdsInstance) RdsInstanceV2ScalingConfigurationPtrOutput { return v.V2ScalingConfiguration }).(RdsInstanceV2ScalingConfigurationPtrOutput)
 }

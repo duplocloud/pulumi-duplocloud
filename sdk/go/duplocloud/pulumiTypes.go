@@ -24503,9 +24503,9 @@ func (o EcsTaskDefinitionRequiresAttributeArrayOutput) Index(i pulumi.IntInput) 
 
 type EcsTaskDefinitionRuntimePlatform struct {
 	// Valid values are 'X86_64','ARM64'
-	CpuArchitecture *string `pulumi:"cpuArchitecture"`
+	CpuArchitecture string `pulumi:"cpuArchitecture"`
 	// Valid values are \n\nFor FARGATE: 'LINUX','WINDOWS*SERVER*2019*FULL','WINDOWS*SERVER*2019*CORE','WINDOWS*SERVER*2022*FULL','WINDOWS*SERVER*2022*CORE'
-	OperatingSystemFamily *string `pulumi:"operatingSystemFamily"`
+	OperatingSystemFamily string `pulumi:"operatingSystemFamily"`
 }
 
 // EcsTaskDefinitionRuntimePlatformInput is an input type that accepts EcsTaskDefinitionRuntimePlatformArgs and EcsTaskDefinitionRuntimePlatformOutput values.
@@ -24521,9 +24521,9 @@ type EcsTaskDefinitionRuntimePlatformInput interface {
 
 type EcsTaskDefinitionRuntimePlatformArgs struct {
 	// Valid values are 'X86_64','ARM64'
-	CpuArchitecture pulumi.StringPtrInput `pulumi:"cpuArchitecture"`
+	CpuArchitecture pulumi.StringInput `pulumi:"cpuArchitecture"`
 	// Valid values are \n\nFor FARGATE: 'LINUX','WINDOWS*SERVER*2019*FULL','WINDOWS*SERVER*2019*CORE','WINDOWS*SERVER*2022*FULL','WINDOWS*SERVER*2022*CORE'
-	OperatingSystemFamily pulumi.StringPtrInput `pulumi:"operatingSystemFamily"`
+	OperatingSystemFamily pulumi.StringInput `pulumi:"operatingSystemFamily"`
 }
 
 func (EcsTaskDefinitionRuntimePlatformArgs) ElementType() reflect.Type {
@@ -24604,13 +24604,13 @@ func (o EcsTaskDefinitionRuntimePlatformOutput) ToEcsTaskDefinitionRuntimePlatfo
 }
 
 // Valid values are 'X86_64','ARM64'
-func (o EcsTaskDefinitionRuntimePlatformOutput) CpuArchitecture() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EcsTaskDefinitionRuntimePlatform) *string { return v.CpuArchitecture }).(pulumi.StringPtrOutput)
+func (o EcsTaskDefinitionRuntimePlatformOutput) CpuArchitecture() pulumi.StringOutput {
+	return o.ApplyT(func(v EcsTaskDefinitionRuntimePlatform) string { return v.CpuArchitecture }).(pulumi.StringOutput)
 }
 
 // Valid values are \n\nFor FARGATE: 'LINUX','WINDOWS*SERVER*2019*FULL','WINDOWS*SERVER*2019*CORE','WINDOWS*SERVER*2022*FULL','WINDOWS*SERVER*2022*CORE'
-func (o EcsTaskDefinitionRuntimePlatformOutput) OperatingSystemFamily() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EcsTaskDefinitionRuntimePlatform) *string { return v.OperatingSystemFamily }).(pulumi.StringPtrOutput)
+func (o EcsTaskDefinitionRuntimePlatformOutput) OperatingSystemFamily() pulumi.StringOutput {
+	return o.ApplyT(func(v EcsTaskDefinitionRuntimePlatform) string { return v.OperatingSystemFamily }).(pulumi.StringOutput)
 }
 
 type EcsTaskDefinitionRuntimePlatformPtrOutput struct{ *pulumi.OutputState }
@@ -24643,7 +24643,7 @@ func (o EcsTaskDefinitionRuntimePlatformPtrOutput) CpuArchitecture() pulumi.Stri
 		if v == nil {
 			return nil
 		}
-		return v.CpuArchitecture
+		return &v.CpuArchitecture
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -24653,7 +24653,7 @@ func (o EcsTaskDefinitionRuntimePlatformPtrOutput) OperatingSystemFamily() pulum
 		if v == nil {
 			return nil
 		}
-		return v.OperatingSystemFamily
+		return &v.OperatingSystemFamily
 	}).(pulumi.StringPtrOutput)
 }
 

@@ -625,6 +625,7 @@ __all__ = [
     'RdsInstancePerformanceInsights',
     'RdsInstanceV2ScalingConfiguration',
     'RdsReadReplicaPerformanceInsights',
+    'RdsReadReplicaV2ScalingConfiguration',
     'S3BucketDefaultEncryption',
     'S3BucketReplicationRule',
     'S3BucketTag',
@@ -10493,20 +10494,18 @@ class EcsTaskDefinitionRuntimePlatform(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 cpu_architecture: Optional[str] = None,
-                 operating_system_family: Optional[str] = None):
+                 cpu_architecture: str,
+                 operating_system_family: str):
         """
         :param str cpu_architecture: Valid values are 'X86_64','ARM64'
         :param str operating_system_family: Valid values are \\n\\nFor FARGATE: 'LINUX','WINDOWS*SERVER*2019*FULL','WINDOWS*SERVER*2019*CORE','WINDOWS*SERVER*2022*FULL','WINDOWS*SERVER*2022*CORE'
         """
-        if cpu_architecture is not None:
-            pulumi.set(__self__, "cpu_architecture", cpu_architecture)
-        if operating_system_family is not None:
-            pulumi.set(__self__, "operating_system_family", operating_system_family)
+        pulumi.set(__self__, "cpu_architecture", cpu_architecture)
+        pulumi.set(__self__, "operating_system_family", operating_system_family)
 
     @property
     @pulumi.getter(name="cpuArchitecture")
-    def cpu_architecture(self) -> Optional[str]:
+    def cpu_architecture(self) -> str:
         """
         Valid values are 'X86_64','ARM64'
         """
@@ -10514,7 +10513,7 @@ class EcsTaskDefinitionRuntimePlatform(dict):
 
     @property
     @pulumi.getter(name="operatingSystemFamily")
-    def operating_system_family(self) -> Optional[str]:
+    def operating_system_family(self) -> str:
         """
         Valid values are \\n\\nFor FARGATE: 'LINUX','WINDOWS*SERVER*2019*FULL','WINDOWS*SERVER*2019*CORE','WINDOWS*SERVER*2022*FULL','WINDOWS*SERVER*2022*CORE'
         """
@@ -36895,8 +36894,8 @@ class RdsInstanceV2ScalingConfiguration(dict):
                  max_capacity: float,
                  min_capacity: float):
         """
-        :param float max_capacity: Specifies max scalling capacity.
-        :param float min_capacity: Specifies min scalling capacity.
+        :param float max_capacity: Specifies max scaling capacity.
+        :param float min_capacity: Specifies min scaling capacity.
         """
         pulumi.set(__self__, "max_capacity", max_capacity)
         pulumi.set(__self__, "min_capacity", min_capacity)
@@ -36905,7 +36904,7 @@ class RdsInstanceV2ScalingConfiguration(dict):
     @pulumi.getter(name="maxCapacity")
     def max_capacity(self) -> float:
         """
-        Specifies max scalling capacity.
+        Specifies max scaling capacity.
         """
         return pulumi.get(self, "max_capacity")
 
@@ -36913,7 +36912,7 @@ class RdsInstanceV2ScalingConfiguration(dict):
     @pulumi.getter(name="minCapacity")
     def min_capacity(self) -> float:
         """
-        Specifies min scalling capacity.
+        Specifies min scaling capacity.
         """
         return pulumi.get(self, "min_capacity")
 
@@ -36978,6 +36977,54 @@ class RdsReadReplicaPerformanceInsights(dict):
         Specify retention period in Days. Valid values are 7, 731 (2 years) or a multiple of 31. For Document DB retention period is 7 Defaults to `7`.
         """
         return pulumi.get(self, "retention_period")
+
+
+@pulumi.output_type
+class RdsReadReplicaV2ScalingConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxCapacity":
+            suggest = "max_capacity"
+        elif key == "minCapacity":
+            suggest = "min_capacity"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RdsReadReplicaV2ScalingConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RdsReadReplicaV2ScalingConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RdsReadReplicaV2ScalingConfiguration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 max_capacity: float,
+                 min_capacity: float):
+        """
+        :param float max_capacity: Specifies max scalling capacity.
+        :param float min_capacity: Specifies min scalling capacity.
+        """
+        pulumi.set(__self__, "max_capacity", max_capacity)
+        pulumi.set(__self__, "min_capacity", min_capacity)
+
+    @property
+    @pulumi.getter(name="maxCapacity")
+    def max_capacity(self) -> float:
+        """
+        Specifies max scalling capacity.
+        """
+        return pulumi.get(self, "max_capacity")
+
+    @property
+    @pulumi.getter(name="minCapacity")
+    def min_capacity(self) -> float:
+        """
+        Specifies min scalling capacity.
+        """
+        return pulumi.get(self, "min_capacity")
 
 
 @pulumi.output_type
@@ -42115,7 +42162,6 @@ class GetK8sCronJobSpecJobTemplateSpecTemplateSpecResult(dict):
                  host_network: bool,
                  host_pid: bool,
                  hostname: str,
-                 image_pull_secrets: Sequence['outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecImagePullSecretResult'],
                  node_name: str,
                  node_selector: Mapping[str, str],
                  priority_class_name: str,
@@ -42131,6 +42177,7 @@ class GetK8sCronJobSpecJobTemplateSpecTemplateSpecResult(dict):
                  containers: Optional[Sequence['outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerResult']] = None,
                  dns_config: Optional['outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecDnsConfigResult'] = None,
                  enable_service_links: Optional[bool] = None,
+                 image_pull_secrets: Optional[Sequence['outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecImagePullSecretResult']] = None,
                  init_containers: Optional[Sequence['outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerResult']] = None,
                  restart_policy: Optional[str] = None,
                  share_process_namespace: Optional[bool] = None,
@@ -42145,7 +42192,6 @@ class GetK8sCronJobSpecJobTemplateSpecTemplateSpecResult(dict):
         :param bool host_network: Host networking requested for this pod. Use the host's network namespace. If this option is set, the ports that will be used must be specified.
         :param bool host_pid: Use the host's pid namespace.
         :param str hostname: Specifies the hostname of the Pod If not specified, the pod's hostname will be set to a system-defined value.
-        :param Sequence['GetK8sCronJobSpecJobTemplateSpecTemplateSpecImagePullSecretArgs'] image_pull_secrets: ImagePullSecrets is an optional list of references to secrets in the same namespace to use for pulling any of the images used by this PodSpec. If specified, these secrets will be passed to individual puller implementations for them to use. For example, in the case of docker, only DockerConfig type secrets are honored. More info: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
         :param str node_name: NodeName is a request to schedule this pod onto a specific node. If it is non-empty, the scheduler simply schedules this pod onto that node, assuming that it fits resource requirements.
         :param Mapping[str, str] node_selector: NodeSelector is a selector which must be true for the pod to fit on a node. Selector which must match a node's labels for the pod to be scheduled on that node. More info: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/.
         :param str priority_class_name: If specified, indicates the pod's priority. "system-node-critical" and "system-cluster-critical" are two special keywords which indicate the highest priorities with the former being the highest priority. Any other name must be defined by creating a PriorityClass object with that name. If not specified, the pod priority will be default or zero if there is no default.
@@ -42161,6 +42207,7 @@ class GetK8sCronJobSpecJobTemplateSpecTemplateSpecResult(dict):
         :param Sequence['GetK8sCronJobSpecJobTemplateSpecTemplateSpecContainerArgs'] containers: List of containers belonging to the pod. Containers cannot currently be added or removed. There must be at least one container in a Pod. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/
         :param 'GetK8sCronJobSpecJobTemplateSpecTemplateSpecDnsConfigArgs' dns_config: Specifies the DNS parameters of a pod. Parameters specified here will be merged to the generated DNS configuration based on DNSPolicy. Optional: Defaults to empty
         :param bool enable_service_links: Enables generating environment variables for service discovery. Defaults to true.
+        :param Sequence['GetK8sCronJobSpecJobTemplateSpecTemplateSpecImagePullSecretArgs'] image_pull_secrets: ImagePullSecrets is an optional list of references to secrets in the same namespace to use for pulling any of the images used by this PodSpec. If specified, these secrets will be passed to individual puller implementations for them to use. For example, in the case of docker, only DockerConfig type secrets are honored. More info: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
         :param Sequence['GetK8sCronJobSpecJobTemplateSpecTemplateSpecInitContainerArgs'] init_containers: List of init containers belonging to the pod. Init containers always run to completion and each must complete successfully before the next is started. More info: https://kubernetes.io/docs/concepts/workloads/pods/init-containers/
         :param str restart_policy: Restart policy for all containers within the pod. One of OnFailure, Never. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#restart-policy.
         :param bool share_process_namespace: Share a single process namespace between all of the containers in a pod. When this is set containers will be able to view and signal processes from other containers in the same pod, and the first process in each container will not be assigned PID 1. HostPID and ShareProcessNamespace cannot both be set. Optional: Defaults to false.
@@ -42175,7 +42222,6 @@ class GetK8sCronJobSpecJobTemplateSpecTemplateSpecResult(dict):
         pulumi.set(__self__, "host_network", host_network)
         pulumi.set(__self__, "host_pid", host_pid)
         pulumi.set(__self__, "hostname", hostname)
-        pulumi.set(__self__, "image_pull_secrets", image_pull_secrets)
         pulumi.set(__self__, "node_name", node_name)
         pulumi.set(__self__, "node_selector", node_selector)
         pulumi.set(__self__, "priority_class_name", priority_class_name)
@@ -42196,6 +42242,8 @@ class GetK8sCronJobSpecJobTemplateSpecTemplateSpecResult(dict):
             pulumi.set(__self__, "dns_config", dns_config)
         if enable_service_links is not None:
             pulumi.set(__self__, "enable_service_links", enable_service_links)
+        if image_pull_secrets is not None:
+            pulumi.set(__self__, "image_pull_secrets", image_pull_secrets)
         if init_containers is not None:
             pulumi.set(__self__, "init_containers", init_containers)
         if restart_policy is not None:
@@ -42264,14 +42312,6 @@ class GetK8sCronJobSpecJobTemplateSpecTemplateSpecResult(dict):
         Specifies the hostname of the Pod If not specified, the pod's hostname will be set to a system-defined value.
         """
         return pulumi.get(self, "hostname")
-
-    @property
-    @pulumi.getter(name="imagePullSecrets")
-    def image_pull_secrets(self) -> Sequence['outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecImagePullSecretResult']:
-        """
-        ImagePullSecrets is an optional list of references to secrets in the same namespace to use for pulling any of the images used by this PodSpec. If specified, these secrets will be passed to individual puller implementations for them to use. For example, in the case of docker, only DockerConfig type secrets are honored. More info: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
-        """
-        return pulumi.get(self, "image_pull_secrets")
 
     @property
     @pulumi.getter(name="nodeName")
@@ -42392,6 +42432,14 @@ class GetK8sCronJobSpecJobTemplateSpecTemplateSpecResult(dict):
         Enables generating environment variables for service discovery. Defaults to true.
         """
         return pulumi.get(self, "enable_service_links")
+
+    @property
+    @pulumi.getter(name="imagePullSecrets")
+    def image_pull_secrets(self) -> Optional[Sequence['outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecImagePullSecretResult']]:
+        """
+        ImagePullSecrets is an optional list of references to secrets in the same namespace to use for pulling any of the images used by this PodSpec. If specified, these secrets will be passed to individual puller implementations for them to use. For example, in the case of docker, only DockerConfig type secrets are honored. More info: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
+        """
+        return pulumi.get(self, "image_pull_secrets")
 
     @property
     @pulumi.getter(name="initContainers")
@@ -51191,7 +51239,6 @@ class GetK8sJobSpecTemplateSpecResult(dict):
                  host_network: bool,
                  host_pid: bool,
                  hostname: str,
-                 image_pull_secrets: Sequence['outputs.GetK8sJobSpecTemplateSpecImagePullSecretResult'],
                  node_name: str,
                  node_selector: Mapping[str, str],
                  priority_class_name: str,
@@ -51207,6 +51254,7 @@ class GetK8sJobSpecTemplateSpecResult(dict):
                  containers: Optional[Sequence['outputs.GetK8sJobSpecTemplateSpecContainerResult']] = None,
                  dns_config: Optional['outputs.GetK8sJobSpecTemplateSpecDnsConfigResult'] = None,
                  enable_service_links: Optional[bool] = None,
+                 image_pull_secrets: Optional[Sequence['outputs.GetK8sJobSpecTemplateSpecImagePullSecretResult']] = None,
                  init_containers: Optional[Sequence['outputs.GetK8sJobSpecTemplateSpecInitContainerResult']] = None,
                  restart_policy: Optional[str] = None,
                  share_process_namespace: Optional[bool] = None,
@@ -51221,7 +51269,6 @@ class GetK8sJobSpecTemplateSpecResult(dict):
         :param bool host_network: Host networking requested for this pod. Use the host's network namespace. If this option is set, the ports that will be used must be specified.
         :param bool host_pid: Use the host's pid namespace.
         :param str hostname: Specifies the hostname of the Pod If not specified, the pod's hostname will be set to a system-defined value.
-        :param Sequence['GetK8sJobSpecTemplateSpecImagePullSecretArgs'] image_pull_secrets: ImagePullSecrets is an optional list of references to secrets in the same namespace to use for pulling any of the images used by this PodSpec. If specified, these secrets will be passed to individual puller implementations for them to use. For example, in the case of docker, only DockerConfig type secrets are honored. More info: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
         :param str node_name: NodeName is a request to schedule this pod onto a specific node. If it is non-empty, the scheduler simply schedules this pod onto that node, assuming that it fits resource requirements.
         :param Mapping[str, str] node_selector: NodeSelector is a selector which must be true for the pod to fit on a node. Selector which must match a node's labels for the pod to be scheduled on that node. More info: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/.
         :param str priority_class_name: If specified, indicates the pod's priority. "system-node-critical" and "system-cluster-critical" are two special keywords which indicate the highest priorities with the former being the highest priority. Any other name must be defined by creating a PriorityClass object with that name. If not specified, the pod priority will be default or zero if there is no default.
@@ -51237,6 +51284,7 @@ class GetK8sJobSpecTemplateSpecResult(dict):
         :param Sequence['GetK8sJobSpecTemplateSpecContainerArgs'] containers: List of containers belonging to the pod. Containers cannot currently be added or removed. There must be at least one container in a Pod. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/
         :param 'GetK8sJobSpecTemplateSpecDnsConfigArgs' dns_config: Specifies the DNS parameters of a pod. Parameters specified here will be merged to the generated DNS configuration based on DNSPolicy. Optional: Defaults to empty
         :param bool enable_service_links: Enables generating environment variables for service discovery. Defaults to true.
+        :param Sequence['GetK8sJobSpecTemplateSpecImagePullSecretArgs'] image_pull_secrets: ImagePullSecrets is an optional list of references to secrets in the same namespace to use for pulling any of the images used by this PodSpec. If specified, these secrets will be passed to individual puller implementations for them to use. For example, in the case of docker, only DockerConfig type secrets are honored. More info: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
         :param Sequence['GetK8sJobSpecTemplateSpecInitContainerArgs'] init_containers: List of init containers belonging to the pod. Init containers always run to completion and each must complete successfully before the next is started. More info: https://kubernetes.io/docs/concepts/workloads/pods/init-containers/
         :param str restart_policy: Restart policy for all containers within the pod. One of OnFailure, Never. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#restart-policy.
         :param bool share_process_namespace: Share a single process namespace between all of the containers in a pod. When this is set containers will be able to view and signal processes from other containers in the same pod, and the first process in each container will not be assigned PID 1. HostPID and ShareProcessNamespace cannot both be set. Optional: Defaults to false.
@@ -51251,7 +51299,6 @@ class GetK8sJobSpecTemplateSpecResult(dict):
         pulumi.set(__self__, "host_network", host_network)
         pulumi.set(__self__, "host_pid", host_pid)
         pulumi.set(__self__, "hostname", hostname)
-        pulumi.set(__self__, "image_pull_secrets", image_pull_secrets)
         pulumi.set(__self__, "node_name", node_name)
         pulumi.set(__self__, "node_selector", node_selector)
         pulumi.set(__self__, "priority_class_name", priority_class_name)
@@ -51272,6 +51319,8 @@ class GetK8sJobSpecTemplateSpecResult(dict):
             pulumi.set(__self__, "dns_config", dns_config)
         if enable_service_links is not None:
             pulumi.set(__self__, "enable_service_links", enable_service_links)
+        if image_pull_secrets is not None:
+            pulumi.set(__self__, "image_pull_secrets", image_pull_secrets)
         if init_containers is not None:
             pulumi.set(__self__, "init_containers", init_containers)
         if restart_policy is not None:
@@ -51340,14 +51389,6 @@ class GetK8sJobSpecTemplateSpecResult(dict):
         Specifies the hostname of the Pod If not specified, the pod's hostname will be set to a system-defined value.
         """
         return pulumi.get(self, "hostname")
-
-    @property
-    @pulumi.getter(name="imagePullSecrets")
-    def image_pull_secrets(self) -> Sequence['outputs.GetK8sJobSpecTemplateSpecImagePullSecretResult']:
-        """
-        ImagePullSecrets is an optional list of references to secrets in the same namespace to use for pulling any of the images used by this PodSpec. If specified, these secrets will be passed to individual puller implementations for them to use. For example, in the case of docker, only DockerConfig type secrets are honored. More info: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
-        """
-        return pulumi.get(self, "image_pull_secrets")
 
     @property
     @pulumi.getter(name="nodeName")
@@ -51468,6 +51509,14 @@ class GetK8sJobSpecTemplateSpecResult(dict):
         Enables generating environment variables for service discovery. Defaults to true.
         """
         return pulumi.get(self, "enable_service_links")
+
+    @property
+    @pulumi.getter(name="imagePullSecrets")
+    def image_pull_secrets(self) -> Optional[Sequence['outputs.GetK8sJobSpecTemplateSpecImagePullSecretResult']]:
+        """
+        ImagePullSecrets is an optional list of references to secrets in the same namespace to use for pulling any of the images used by this PodSpec. If specified, these secrets will be passed to individual puller implementations for them to use. For example, in the case of docker, only DockerConfig type secrets are honored. More info: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
+        """
+        return pulumi.get(self, "image_pull_secrets")
 
     @property
     @pulumi.getter(name="initContainers")

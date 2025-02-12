@@ -69,11 +69,11 @@ type AwsLaunchTemplate struct {
 	pulumi.CustomResourceState
 
 	// Asg ami to be used to update the version from the current version
-	Ami pulumi.StringPtrOutput `pulumi:"ami"`
+	Ami pulumi.StringOutput `pulumi:"ami"`
 	// The current default version of the launch template.
 	DefaultVersion pulumi.StringOutput `pulumi:"defaultVersion"`
 	// Asg instance type to be used to update the version from the current version
-	InstanceType pulumi.StringPtrOutput `pulumi:"instanceType"`
+	InstanceType pulumi.StringOutput `pulumi:"instanceType"`
 	// The latest launch template version
 	LatestVersion pulumi.StringOutput `pulumi:"latestVersion"`
 	// The fullname of the asg group
@@ -94,14 +94,14 @@ func NewAwsLaunchTemplate(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.InstanceType == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceType'")
+	}
 	if args.TenantId == nil {
 		return nil, errors.New("invalid value for required argument 'TenantId'")
 	}
 	if args.Version == nil {
 		return nil, errors.New("invalid value for required argument 'Version'")
-	}
-	if args.VersionDescription == nil {
-		return nil, errors.New("invalid value for required argument 'VersionDescription'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AwsLaunchTemplate
@@ -173,7 +173,7 @@ type awsLaunchTemplateArgs struct {
 	// Asg ami to be used to update the version from the current version
 	Ami *string `pulumi:"ami"`
 	// Asg instance type to be used to update the version from the current version
-	InstanceType *string `pulumi:"instanceType"`
+	InstanceType string `pulumi:"instanceType"`
 	// The fullname of the asg group
 	Name *string `pulumi:"name"`
 	// The GUID of the tenant that the launch template will be created in.
@@ -181,7 +181,7 @@ type awsLaunchTemplateArgs struct {
 	// Any of the existing version of the launch template
 	Version string `pulumi:"version"`
 	// The version of the launch template
-	VersionDescription string `pulumi:"versionDescription"`
+	VersionDescription *string `pulumi:"versionDescription"`
 }
 
 // The set of arguments for constructing a AwsLaunchTemplate resource.
@@ -189,7 +189,7 @@ type AwsLaunchTemplateArgs struct {
 	// Asg ami to be used to update the version from the current version
 	Ami pulumi.StringPtrInput
 	// Asg instance type to be used to update the version from the current version
-	InstanceType pulumi.StringPtrInput
+	InstanceType pulumi.StringInput
 	// The fullname of the asg group
 	Name pulumi.StringPtrInput
 	// The GUID of the tenant that the launch template will be created in.
@@ -197,7 +197,7 @@ type AwsLaunchTemplateArgs struct {
 	// Any of the existing version of the launch template
 	Version pulumi.StringInput
 	// The version of the launch template
-	VersionDescription pulumi.StringInput
+	VersionDescription pulumi.StringPtrInput
 }
 
 func (AwsLaunchTemplateArgs) ElementType() reflect.Type {
@@ -288,8 +288,8 @@ func (o AwsLaunchTemplateOutput) ToAwsLaunchTemplateOutputWithContext(ctx contex
 }
 
 // Asg ami to be used to update the version from the current version
-func (o AwsLaunchTemplateOutput) Ami() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AwsLaunchTemplate) pulumi.StringPtrOutput { return v.Ami }).(pulumi.StringPtrOutput)
+func (o AwsLaunchTemplateOutput) Ami() pulumi.StringOutput {
+	return o.ApplyT(func(v *AwsLaunchTemplate) pulumi.StringOutput { return v.Ami }).(pulumi.StringOutput)
 }
 
 // The current default version of the launch template.
@@ -298,8 +298,8 @@ func (o AwsLaunchTemplateOutput) DefaultVersion() pulumi.StringOutput {
 }
 
 // Asg instance type to be used to update the version from the current version
-func (o AwsLaunchTemplateOutput) InstanceType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AwsLaunchTemplate) pulumi.StringPtrOutput { return v.InstanceType }).(pulumi.StringPtrOutput)
+func (o AwsLaunchTemplateOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *AwsLaunchTemplate) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)
 }
 
 // The latest launch template version

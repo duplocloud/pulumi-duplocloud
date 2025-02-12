@@ -1233,6 +1233,8 @@ __all__ = [
     'RdsInstanceV2ScalingConfigurationArgsDict',
     'RdsReadReplicaPerformanceInsightsArgs',
     'RdsReadReplicaPerformanceInsightsArgsDict',
+    'RdsReadReplicaV2ScalingConfigurationArgs',
+    'RdsReadReplicaV2ScalingConfigurationArgsDict',
     'S3BucketDefaultEncryptionArgs',
     'S3BucketDefaultEncryptionArgsDict',
     'S3BucketReplicationRuleArgs',
@@ -13067,11 +13069,11 @@ class EcsTaskDefinitionRequiresAttributeArgs:
 
 if not MYPY:
     class EcsTaskDefinitionRuntimePlatformArgsDict(TypedDict):
-        cpu_architecture: NotRequired[pulumi.Input[str]]
+        cpu_architecture: pulumi.Input[str]
         """
         Valid values are 'X86_64','ARM64'
         """
-        operating_system_family: NotRequired[pulumi.Input[str]]
+        operating_system_family: pulumi.Input[str]
         """
         Valid values are \\n\\nFor FARGATE: 'LINUX','WINDOWS*SERVER*2019*FULL','WINDOWS*SERVER*2019*CORE','WINDOWS*SERVER*2022*FULL','WINDOWS*SERVER*2022*CORE'
         """
@@ -13081,39 +13083,37 @@ elif False:
 @pulumi.input_type
 class EcsTaskDefinitionRuntimePlatformArgs:
     def __init__(__self__, *,
-                 cpu_architecture: Optional[pulumi.Input[str]] = None,
-                 operating_system_family: Optional[pulumi.Input[str]] = None):
+                 cpu_architecture: pulumi.Input[str],
+                 operating_system_family: pulumi.Input[str]):
         """
         :param pulumi.Input[str] cpu_architecture: Valid values are 'X86_64','ARM64'
         :param pulumi.Input[str] operating_system_family: Valid values are \\n\\nFor FARGATE: 'LINUX','WINDOWS*SERVER*2019*FULL','WINDOWS*SERVER*2019*CORE','WINDOWS*SERVER*2022*FULL','WINDOWS*SERVER*2022*CORE'
         """
-        if cpu_architecture is not None:
-            pulumi.set(__self__, "cpu_architecture", cpu_architecture)
-        if operating_system_family is not None:
-            pulumi.set(__self__, "operating_system_family", operating_system_family)
+        pulumi.set(__self__, "cpu_architecture", cpu_architecture)
+        pulumi.set(__self__, "operating_system_family", operating_system_family)
 
     @property
     @pulumi.getter(name="cpuArchitecture")
-    def cpu_architecture(self) -> Optional[pulumi.Input[str]]:
+    def cpu_architecture(self) -> pulumi.Input[str]:
         """
         Valid values are 'X86_64','ARM64'
         """
         return pulumi.get(self, "cpu_architecture")
 
     @cpu_architecture.setter
-    def cpu_architecture(self, value: Optional[pulumi.Input[str]]):
+    def cpu_architecture(self, value: pulumi.Input[str]):
         pulumi.set(self, "cpu_architecture", value)
 
     @property
     @pulumi.getter(name="operatingSystemFamily")
-    def operating_system_family(self) -> Optional[pulumi.Input[str]]:
+    def operating_system_family(self) -> pulumi.Input[str]:
         """
         Valid values are \\n\\nFor FARGATE: 'LINUX','WINDOWS*SERVER*2019*FULL','WINDOWS*SERVER*2019*CORE','WINDOWS*SERVER*2022*FULL','WINDOWS*SERVER*2022*CORE'
         """
         return pulumi.get(self, "operating_system_family")
 
     @operating_system_family.setter
-    def operating_system_family(self, value: Optional[pulumi.Input[str]]):
+    def operating_system_family(self, value: pulumi.Input[str]):
         pulumi.set(self, "operating_system_family", value)
 
 
@@ -48567,11 +48567,11 @@ if not MYPY:
     class RdsInstanceV2ScalingConfigurationArgsDict(TypedDict):
         max_capacity: pulumi.Input[float]
         """
-        Specifies max scalling capacity.
+        Specifies max scaling capacity.
         """
         min_capacity: pulumi.Input[float]
         """
-        Specifies min scalling capacity.
+        Specifies min scaling capacity.
         """
 elif False:
     RdsInstanceV2ScalingConfigurationArgsDict: TypeAlias = Mapping[str, Any]
@@ -48582,8 +48582,8 @@ class RdsInstanceV2ScalingConfigurationArgs:
                  max_capacity: pulumi.Input[float],
                  min_capacity: pulumi.Input[float]):
         """
-        :param pulumi.Input[float] max_capacity: Specifies max scalling capacity.
-        :param pulumi.Input[float] min_capacity: Specifies min scalling capacity.
+        :param pulumi.Input[float] max_capacity: Specifies max scaling capacity.
+        :param pulumi.Input[float] min_capacity: Specifies min scaling capacity.
         """
         pulumi.set(__self__, "max_capacity", max_capacity)
         pulumi.set(__self__, "min_capacity", min_capacity)
@@ -48592,7 +48592,7 @@ class RdsInstanceV2ScalingConfigurationArgs:
     @pulumi.getter(name="maxCapacity")
     def max_capacity(self) -> pulumi.Input[float]:
         """
-        Specifies max scalling capacity.
+        Specifies max scaling capacity.
         """
         return pulumi.get(self, "max_capacity")
 
@@ -48604,7 +48604,7 @@ class RdsInstanceV2ScalingConfigurationArgs:
     @pulumi.getter(name="minCapacity")
     def min_capacity(self) -> pulumi.Input[float]:
         """
-        Specifies min scalling capacity.
+        Specifies min scaling capacity.
         """
         return pulumi.get(self, "min_capacity")
 
@@ -48683,6 +48683,56 @@ class RdsReadReplicaPerformanceInsightsArgs:
     @retention_period.setter
     def retention_period(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "retention_period", value)
+
+
+if not MYPY:
+    class RdsReadReplicaV2ScalingConfigurationArgsDict(TypedDict):
+        max_capacity: pulumi.Input[float]
+        """
+        Specifies max scalling capacity.
+        """
+        min_capacity: pulumi.Input[float]
+        """
+        Specifies min scalling capacity.
+        """
+elif False:
+    RdsReadReplicaV2ScalingConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RdsReadReplicaV2ScalingConfigurationArgs:
+    def __init__(__self__, *,
+                 max_capacity: pulumi.Input[float],
+                 min_capacity: pulumi.Input[float]):
+        """
+        :param pulumi.Input[float] max_capacity: Specifies max scalling capacity.
+        :param pulumi.Input[float] min_capacity: Specifies min scalling capacity.
+        """
+        pulumi.set(__self__, "max_capacity", max_capacity)
+        pulumi.set(__self__, "min_capacity", min_capacity)
+
+    @property
+    @pulumi.getter(name="maxCapacity")
+    def max_capacity(self) -> pulumi.Input[float]:
+        """
+        Specifies max scalling capacity.
+        """
+        return pulumi.get(self, "max_capacity")
+
+    @max_capacity.setter
+    def max_capacity(self, value: pulumi.Input[float]):
+        pulumi.set(self, "max_capacity", value)
+
+    @property
+    @pulumi.getter(name="minCapacity")
+    def min_capacity(self) -> pulumi.Input[float]:
+        """
+        Specifies min scalling capacity.
+        """
+        return pulumi.get(self, "min_capacity")
+
+    @min_capacity.setter
+    def min_capacity(self, value: pulumi.Input[float]):
+        pulumi.set(self, "min_capacity", value)
 
 
 if not MYPY:

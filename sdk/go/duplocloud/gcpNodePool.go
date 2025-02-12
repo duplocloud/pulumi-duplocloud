@@ -31,6 +31,9 @@ type GcpNodePool struct {
 	pulumi.CustomResourceState
 
 	Accelerators GcpNodePoolAcceleratorArrayOutput `pulumi:"accelerators"`
+	// Allocation tag to give to the nodes if specified it would be added as a label and that can be used while creating
+	// services
+	AllocationTags pulumi.StringPtrOutput `pulumi:"allocationTags"`
 	// Whether the nodes will be automatically repaired.
 	AutoRepair pulumi.BoolOutput `pulumi:"autoRepair"`
 	// Whether the nodes will be automatically upgraded.
@@ -133,6 +136,9 @@ func GetGcpNodePool(ctx *pulumi.Context,
 // Input properties used for looking up and filtering GcpNodePool resources.
 type gcpNodePoolState struct {
 	Accelerators []GcpNodePoolAccelerator `pulumi:"accelerators"`
+	// Allocation tag to give to the nodes if specified it would be added as a label and that can be used while creating
+	// services
+	AllocationTags *string `pulumi:"allocationTags"`
 	// Whether the nodes will be automatically repaired.
 	AutoRepair *bool `pulumi:"autoRepair"`
 	// Whether the nodes will be automatically upgraded.
@@ -194,6 +200,9 @@ type gcpNodePoolState struct {
 
 type GcpNodePoolState struct {
 	Accelerators GcpNodePoolAcceleratorArrayInput
+	// Allocation tag to give to the nodes if specified it would be added as a label and that can be used while creating
+	// services
+	AllocationTags pulumi.StringPtrInput
 	// Whether the nodes will be automatically repaired.
 	AutoRepair pulumi.BoolPtrInput
 	// Whether the nodes will be automatically upgraded.
@@ -259,6 +268,9 @@ func (GcpNodePoolState) ElementType() reflect.Type {
 
 type gcpNodePoolArgs struct {
 	Accelerators []GcpNodePoolAccelerator `pulumi:"accelerators"`
+	// Allocation tag to give to the nodes if specified it would be added as a label and that can be used while creating
+	// services
+	AllocationTags *string `pulumi:"allocationTags"`
 	// Whether the nodes will be automatically repaired.
 	AutoRepair *bool `pulumi:"autoRepair"`
 	// Whether the nodes will be automatically upgraded.
@@ -318,6 +330,9 @@ type gcpNodePoolArgs struct {
 // The set of arguments for constructing a GcpNodePool resource.
 type GcpNodePoolArgs struct {
 	Accelerators GcpNodePoolAcceleratorArrayInput
+	// Allocation tag to give to the nodes if specified it would be added as a label and that can be used while creating
+	// services
+	AllocationTags pulumi.StringPtrInput
 	// Whether the nodes will be automatically repaired.
 	AutoRepair pulumi.BoolPtrInput
 	// Whether the nodes will be automatically upgraded.
@@ -463,6 +478,12 @@ func (o GcpNodePoolOutput) ToGcpNodePoolOutputWithContext(ctx context.Context) G
 
 func (o GcpNodePoolOutput) Accelerators() GcpNodePoolAcceleratorArrayOutput {
 	return o.ApplyT(func(v *GcpNodePool) GcpNodePoolAcceleratorArrayOutput { return v.Accelerators }).(GcpNodePoolAcceleratorArrayOutput)
+}
+
+// Allocation tag to give to the nodes if specified it would be added as a label and that can be used while creating
+// services
+func (o GcpNodePoolOutput) AllocationTags() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpNodePool) pulumi.StringPtrOutput { return v.AllocationTags }).(pulumi.StringPtrOutput)
 }
 
 // Whether the nodes will be automatically repaired.
