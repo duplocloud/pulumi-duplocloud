@@ -7,12 +7,12 @@ toolchain go1.23.0
 replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20250124205414-92ccb3765401
 
 require (
-	github.com/duplocloud/terraform-provider-duplocloud v0.10.55
+	github.com/duplocloud/terraform-provider-duplocloud v0.11.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.102.0
 	github.com/pulumi/pulumi/pkg/v3 v3.147.0
 )
 
-replace github.com/duplocloud/terraform-provider-duplocloud v0.10.55 => github.com/duplocloud/terraform-provider-duplocloud v0.10.56-0.20250130160445-b365ac30c13b
+// replace github.com/duplocloud/terraform-provider-duplocloud v0.10.55 => github.com/duplocloud/terraform-provider-duplocloud v0.10.56-0.20250130160445-b365ac30c13b
 
 require (
 	cloud.google.com/go v0.112.1 // indirect
