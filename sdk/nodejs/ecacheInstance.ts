@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@pulumi/duplocloud";
+ * import * as duplocloud from "@duplocloud/pulumi";
  *
  * // Before creating a ElastiCache cluster, you must first set up the infrastructure and tenant. Below is the resource for creating the infrastructure.
  * const infra = new duplocloud.Infrastructure("infra", {
@@ -45,7 +45,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@pulumi/duplocloud";
+ * import * as duplocloud from "@duplocloud/pulumi";
  *
  * // Assuming the 'dev' tenant is already created, use a data source to fetch the tenant ID.
  * const tenant = duplocloud.getTenant({
@@ -67,7 +67,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@pulumi/duplocloud";
+ * import * as duplocloud from "@duplocloud/pulumi";
  *
  * // Assuming the 'dev' tenant is already created, use a data source to fetch the tenant ID.
  * const tenant = duplocloud.getTenant({
@@ -102,7 +102,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@pulumi/duplocloud";
+ * import * as duplocloud from "@duplocloud/pulumi";
  *
  * // Assuming the 'dev' tenant is already created, use a data source to fetch the tenant ID.
  * const tenant = duplocloud.getTenant({
@@ -124,7 +124,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@pulumi/duplocloud";
+ * import * as duplocloud from "@duplocloud/pulumi";
  *
  * // Assuming the 'dev' tenant is already created, use a data source to fetch the tenant ID.
  * const tenant = duplocloud.getTenant({
@@ -143,7 +143,7 @@ import * as utilities from "./utilities";
  * ### Create an Amazon ElastiCache with snapshot window
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@pulumi/duplocloud";
+ * import * as duplocloud from "@duplocloud/pulumi";
  *
  * const mycaches = new duplocloud.EcacheInstance("mycaches", {
  *     tenantId: tenant.id,

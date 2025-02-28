@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@pulumi/duplocloud";
+ * import * as duplocloud from "@duplocloud/pulumi";
  *
  * const tenantId = "053a2efa-d03f-4e1d-b3b5-33c04cbed87e";
  * const vpcId = "vpc-0ba0667cfc200f060";

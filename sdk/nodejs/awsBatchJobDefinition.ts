@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@pulumi/duplocloud";
+ * import * as duplocloud from "@duplocloud/pulumi";
  *
  * const tenantId = "d186700c-ad18-4525-9593-aad467c843ff";
  * const jd = new duplocloud.AwsBatchJobDefinition("jd", {

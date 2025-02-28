@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@pulumi/duplocloud";
+ * import * as duplocloud from "@duplocloud/pulumi";
  *
  * const infra = new duplocloud.Infrastructure("infra", {
  *     infraName: "nonprod",
@@ -29,7 +29,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@pulumi/duplocloud";
+ * import * as duplocloud from "@duplocloud/pulumi";
  *
  * const infra = new duplocloud.Infrastructure("infra", {
  *     infraName: "nonprod",
@@ -44,7 +44,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@pulumi/duplocloud";
+ * import * as duplocloud from "@duplocloud/pulumi";
  *
  * const infra = new duplocloud.Infrastructure("infra", {
  *     infraName: "nonprod",
@@ -60,7 +60,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@pulumi/duplocloud";
+ * import * as duplocloud from "@duplocloud/pulumi";
  *
  * const infra = new duplocloud.Infrastructure("infra", {
  *     infraName: "prod",
@@ -77,7 +77,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@pulumi/duplocloud";
+ * import * as duplocloud from "@duplocloud/pulumi";
  *
  * const prodInfra = new duplocloud.Infrastructure("prod_infra", {
  *     infraName: "prod",
@@ -101,7 +101,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@pulumi/duplocloud";
+ * import * as duplocloud from "@duplocloud/pulumi";
  *
  * const nonprodInfra = new duplocloud.Infrastructure("nonprod_infra", {
  *     infraName: "nonprod",
@@ -125,7 +125,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@pulumi/duplocloud";
+ * import * as duplocloud from "@duplocloud/pulumi";
  *
  * const nonprodInfra = new duplocloud.Infrastructure("nonprod_infra", {
  *     infraName: "nonprod",
@@ -159,7 +159,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@pulumi/duplocloud";
+ * import * as duplocloud from "@duplocloud/pulumi";
  *
  * const infra = new duplocloud.Infrastructure("infra", {
  *     infraName: "prod",
@@ -176,7 +176,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@pulumi/duplocloud";
+ * import * as duplocloud from "@duplocloud/pulumi";
  *
  * const infra = new duplocloud.Infrastructure("infra", {
  *     infraName: "prod",
@@ -194,7 +194,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@pulumi/duplocloud";
+ * import * as duplocloud from "@duplocloud/pulumi";
  *
  * const config = new pulumi.Config();
  * const infraSettings = config.getObject<Array<{key?: string, value?: string}>>("infraSettings") || [

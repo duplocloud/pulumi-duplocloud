@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@pulumi/duplocloud";
+ * import * as duplocloud from "@duplocloud/pulumi";
  *
  * const pool = duplocloud.getGcpNodePool({
  *     tenantId: "tenantid",
@@ -183,7 +183,7 @@ export interface GetGcpNodePoolResult {
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@pulumi/duplocloud";
+ * import * as duplocloud from "@duplocloud/pulumi";
  *
  * const pool = duplocloud.getGcpNodePool({
  *     tenantId: "tenantid",

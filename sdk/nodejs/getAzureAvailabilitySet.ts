@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@pulumi/duplocloud";
+ * import * as duplocloud from "@duplocloud/pulumi";
  *
  * const st = duplocloud.getAzureAvailabilitySet({
  *     tenantId: "tenant id",
@@ -67,7 +67,7 @@ export interface GetAzureAvailabilitySetResult {
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@pulumi/duplocloud";
+ * import * as duplocloud from "@duplocloud/pulumi";
  *
  * const st = duplocloud.getAzureAvailabilitySet({
  *     tenantId: "tenant id",

@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@pulumi/duplocloud";
+ * import * as duplocloud from "@duplocloud/pulumi";
  * import * as random from "@pulumi/random";
  *
  * // Before creating an RDS instance, you must first set up the infrastructure and tenant. Below is the resource for creating the infrastructure.
@@ -53,7 +53,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@pulumi/duplocloud";
+ * import * as duplocloud from "@duplocloud/pulumi";
  * import * as random from "@pulumi/random";
  *
  * // Ensure the 'dev' tenant is already created before creating the RDS instance.
@@ -84,7 +84,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@pulumi/duplocloud";
+ * import * as duplocloud from "@duplocloud/pulumi";
  * import * as random from "@pulumi/random";
  *
  * // Ensure the 'dev' tenant is already created before creating the RDS instance.
@@ -113,7 +113,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@pulumi/duplocloud";
+ * import * as duplocloud from "@duplocloud/pulumi";
  * import * as random from "@pulumi/random";
  *
  * // Ensure the 'dev' tenant is already created before creating the RDS instance.
@@ -156,7 +156,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@pulumi/duplocloud";
+ * import * as duplocloud from "@duplocloud/pulumi";
  * import * as random from "@pulumi/random";
  *
  * // Ensure the 'dev' tenant is already created before creating the RDS instance.
@@ -186,7 +186,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@pulumi/duplocloud";
+ * import * as duplocloud from "@duplocloud/pulumi";
  * import * as random from "@pulumi/random";
  *
  * // Ensure the 'dev' tenant is already created before creating the RDS instance.
@@ -219,7 +219,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@pulumi/duplocloud";
+ * import * as duplocloud from "@duplocloud/pulumi";
  * import * as random from "@pulumi/random";
  *
  * // Ensure the 'dev' tenant is already created before creating the RDS instance.
@@ -254,7 +254,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@pulumi/duplocloud";
+ * import * as duplocloud from "@duplocloud/pulumi";
  *
  * const mydb = new duplocloud.RdsInstance("mydb", {
  *     tenantId: tenant.id,
@@ -279,7 +279,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@pulumi/duplocloud";
+ * import * as duplocloud from "@duplocloud/pulumi";
  *
  * const mydb = new duplocloud.RdsInstance("mydb", {
  *     tenantId: tenant.id,
@@ -302,7 +302,7 @@ import * as utilities from "./utilities";
  * # Example for enabling performance insights in a Document DB
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@pulumi/duplocloud";
+ * import * as duplocloud from "@duplocloud/pulumi";
  *
  * const mydb = new duplocloud.RdsInstance("mydb", {
  *     tenantId: tenant.id,
@@ -324,7 +324,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@pulumi/duplocloud";
+ * import * as duplocloud from "@duplocloud/pulumi";
  *
  * // Example for creating db using snapshot
  * const mydb = new duplocloud.RdsInstance("mydb", {

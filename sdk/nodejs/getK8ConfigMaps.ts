@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@pulumi/duplocloud";
+ * import * as duplocloud from "@duplocloud/pulumi";
  *
  * const test = duplocloud.getK8ConfigMaps({
  *     tenantId: tenantId,
@@ -54,7 +54,7 @@ export interface GetK8ConfigMapsResult {
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@pulumi/duplocloud";
+ * import * as duplocloud from "@duplocloud/pulumi";
  *
  * const test = duplocloud.getK8ConfigMaps({
  *     tenantId: tenantId,

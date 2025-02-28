@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@pulumi/duplocloud";
+ * import * as duplocloud from "@duplocloud/pulumi";
  *
  * const tenantId = "3a0b2ea5-7403-4765-ad6e-8771ca8fa0fd";
  * const pvc = new duplocloud.K8PersistentVolumeClaim("pvc", {

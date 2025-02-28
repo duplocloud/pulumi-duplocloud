@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@pulumi/duplocloud";
+ * import * as duplocloud from "@duplocloud/pulumi";
  *
  * const tenantId = "2a80c75d-9f58-4572-83b7-157b05bce259";
  * const kmsKey = duplocloud.getTenantAwsKmsKey({

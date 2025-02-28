@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@pulumi/duplocloud";
+ * import * as duplocloud from "@duplocloud/pulumi";
  *
  * // Example 1 - look up an infrastructure by tenant ID.
  * const myinfra1 = duplocloud.getInfrastructure({
@@ -83,7 +83,7 @@ export interface GetInfrastructureResult {
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@pulumi/duplocloud";
+ * import * as duplocloud from "@duplocloud/pulumi";
  *
  * // Example 1 - look up an infrastructure by tenant ID.
  * const myinfra1 = duplocloud.getInfrastructure({
