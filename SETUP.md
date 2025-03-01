@@ -145,7 +145,7 @@ In this section, we will create a Pulumi program in TypeScript that utilizes the
     pulumi new typescript
     # (Go through the prompts with the default values)
     npm install
-    yarn link @pulumi/xyz
+    yarn link @duplocloud/pulumi
     ```
 
 1. Create a minimal program for the provider, i.e. one that creates the smallest-footprint resource.  Place this code in `index.ts`.
