@@ -1,6 +1,6 @@
 # Duplocloud Resource Provider
 
-The Duplocloud Resource Provider lets you manage [Duplocloud](http://example.com) resources.
+The Duplocloud Resource Provider lets you manage [Duplocloud](https://duplocloud.com) resources.
 
 ## Installing
 
@@ -11,13 +11,13 @@ This package is available for several languages/platforms:
 To use from JavaScript or TypeScript in Node.js, install using either `npm`:
 
 ```bash
-npm install @pulumi/duplocloud
+npm install @duplocloud/pulumi
 ```
 
 or `yarn`:
 
 ```bash
-yarn add @pulumi/duplocloud
+yarn add @duplocloud/pulumi
 ```
 
 ### Python
