@@ -1,6 +1,6 @@
 # Duplocloud Resource Provider
 
-The Duplocloud Resource Provider lets you manage [Duplocloud](http://example.com) resources.
+The Duplocloud Resource Provider lets you manage [Duplocloud](https://duplocloud.com) resources.
 
 ## Installing
 
