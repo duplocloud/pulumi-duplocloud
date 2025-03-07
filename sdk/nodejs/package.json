@@ -1,6 +1,6 @@
 {
     "name": "@duplocloud/pulumi",
-    "version": "1.0.0-alpha.0+dev",
+    "version": "1.0.0",
     "description": "A Pulumi package for creating and managing duplocloud cloud resources.",
     "keywords": [
         "duplocloud",
