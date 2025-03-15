@@ -3,13 +3,16 @@
     "displayName": "duplocloud",
     "description": "A Pulumi package for creating and managing duplocloud cloud resources.",
     "keywords": [
+        "pulumi",
         "duplocloud",
         "category/cloud"
     ],
-    "homepage": "https://www.pulumi.com",
+    "homepage": "https://duplocloud.com",
     "license": "Apache-2.0",
     "attribution": "This Pulumi package is based on the [`duplocloud` Terraform Provider](https://github.com/duplocloud/terraform-provider-duplocloud).",
     "repository": "https://github.com/duplocloud/pulumi-duplocloud",
+    "logoUrl": "https://raw.githubusercontent.com/duplocloud/pulumi-duplocloud/refs/heads/main/provider/duplo-logo.png",
+    "pluginDownloadURL": "github://api.github.com/duplocloud/pulumi-duplocloud",
     "publisher": "Pulumi",
     "meta": {
         "moduleFormat": "(.*)(?:/[^/]*)"
