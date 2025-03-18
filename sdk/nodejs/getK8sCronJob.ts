@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@pulumi/duplocloud";
+ * import * as duplocloud from "@duplocloud/pulumi";
  *
  * const job = duplocloud.getK8sCronJob({
  *     tenantId: tenantId,
@@ -79,7 +79,7 @@ export interface GetK8sCronJobResult {
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@pulumi/duplocloud";
+ * import * as duplocloud from "@duplocloud/pulumi";
  *
  * const job = duplocloud.getK8sCronJob({
  *     tenantId: tenantId,

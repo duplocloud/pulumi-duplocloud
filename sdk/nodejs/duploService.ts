@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as duplocloud from "@duplocloud/pulumi";
- * import * as duplocloud from "@pulumi/duplocloud";
+ * import * as duplocloud from "@duplocloud/pulumi";
  *
  * // Before creating an NGINX service, you must first set up the infrastructure and tenant. Below is the resource for creating the infrastructure.
  * const infra = new duplocloud.Infrastructure("infra", {
@@ -58,7 +58,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as duplocloud from "@duplocloud/pulumi";
- * import * as duplocloud from "@pulumi/duplocloud";
+ * import * as duplocloud from "@duplocloud/pulumi";
  *
  * // Ensure the 'nonprod' tenant is already created before deploying the Nginx duplo service.
  * const tenant = duplocloud.getTenant({
@@ -102,7 +102,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as duplocloud from "@duplocloud/pulumi";
- * import * as duplocloud from "@pulumi/duplocloud";
+ * import * as duplocloud from "@duplocloud/pulumi";
  *
  * // Ensure the 'dev' tenant is already created before deploying the Nginx duplo service.
  * const tenant = duplocloud.getTenant({
@@ -135,7 +135,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as duplocloud from "@duplocloud/pulumi";
- * import * as duplocloud from "@pulumi/duplocloud";
+ * import * as duplocloud from "@duplocloud/pulumi";
  *
  * // Ensure the 'prod' tenant is already created before deploying the Nginx duplo service.
  * const tenant = duplocloud.getTenant({
@@ -173,7 +173,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as duplocloud from "@duplocloud/pulumi";
- * import * as duplocloud from "@pulumi/duplocloud";
+ * import * as duplocloud from "@duplocloud/pulumi";
  *
  * // Ensure the 'dev' tenant is already created before deploying the Nginx duplo service.
  * const tenant = duplocloud.getTenant({
@@ -210,7 +210,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as duplocloud from "@duplocloud/pulumi";
- * import * as duplocloud from "@pulumi/duplocloud";
+ * import * as duplocloud from "@duplocloud/pulumi";
  *
  * // Ensure the 'dev' tenant is already created before deploying the Nginx duplo service.
  * const tenant = duplocloud.getTenant({
@@ -231,7 +231,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as duplocloud from "@duplocloud/pulumi";
- * import * as duplocloud from "@pulumi/duplocloud";
+ * import * as duplocloud from "@duplocloud/pulumi";
  *
  * // Ensure the 'dev' tenant is already created before deploying the Nginx duplo service.
  * const tenant = duplocloud.getTenant({

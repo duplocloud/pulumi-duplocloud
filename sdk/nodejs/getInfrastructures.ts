@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@pulumi/duplocloud";
+ * import * as duplocloud from "@duplocloud/pulumi";
  *
  * // Retrieve a list of all infrastructures
  * const all = duplocloud.getInfrastructures({});
@@ -42,7 +42,7 @@ export interface GetInfrastructuresResult {
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@pulumi/duplocloud";
+ * import * as duplocloud from "@duplocloud/pulumi";
  *
  * // Retrieve a list of all infrastructures
  * const all = duplocloud.getInfrastructures({});

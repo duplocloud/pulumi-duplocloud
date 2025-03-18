@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@pulumi/duplocloud";
+ * import * as duplocloud from "@duplocloud/pulumi";
  *
  * const app = duplocloud.getGcpFirestores({
  *     tenantId: "tenant_id",
@@ -57,7 +57,7 @@ export interface GetGcpFirestoresResult {
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@pulumi/duplocloud";
+ * import * as duplocloud from "@duplocloud/pulumi";
  *
  * const app = duplocloud.getGcpFirestores({
  *     tenantId: "tenant_id",
