@@ -4,7 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "./types/input";
 import * as outputs from "./types/output";
-import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
 /**
@@ -48,6 +47,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  *
  * // Ensure the 'dev' tenant is already created before setting up the s3 bucket.
  * const tenant = duplocloud.getTenant({
@@ -71,6 +71,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  *
  * // Ensure the 'dev' tenant is already created before setting up the s3 bucket.
  * const tenant = duplocloud.getTenant({
@@ -94,6 +95,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  *
  * const tenant = duplocloud.getTenant({
  *     name: "dev",
@@ -116,6 +118,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  *
  * const tenant = duplocloud.getTenant({
  *     name: "qa",
@@ -138,6 +141,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  *
  * const tenant = duplocloud.getTenant({
  *     name: "qa",
@@ -160,6 +164,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  *
  * const tenant = duplocloud.getTenant({
  *     name: "preprod",
@@ -182,6 +187,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  *
  * const tenant = duplocloud.getTenant({
  *     name: "test",
@@ -204,6 +210,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  *
  * const tenant = duplocloud.getTenant({
  *     name: "test",
@@ -226,6 +233,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  *
  * // Ensure the 'test' tenant is already created before creating the s3 bucket.
  * const tenant = duplocloud.getTenant({

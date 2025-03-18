@@ -1003,12 +1003,10 @@ utilities.lazyLoad(exports, ["UserTenantAccess"], () => require("./userTenantAcc
 
 // Export sub-modules:
 import * as config from "./config";
-import * as region from "./region";
 import * as types from "./types";
 
 export {
     config,
-    region,
     types,
 };
 

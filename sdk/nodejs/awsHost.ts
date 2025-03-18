@@ -4,7 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "./types/input";
 import * as outputs from "./types/output";
-import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
 /**
@@ -15,6 +14,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  *
  * // Before creating a host, you must first set up the infrastructure without an eks cluster. Then, you must create a tenant inside the infra. Below is the resource for creating the infrastructure.
  * const infra = new duplocloud.Infrastructure("infra", {
@@ -54,6 +54,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  *
  * // Before creating the EKS worker node, you must first set up the infrastructure with EKS cluster enabled and a tenant. Below is the resource for creating the infrastructure.
  * const infra = new duplocloud.Infrastructure("infra", {
@@ -90,6 +91,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  *
  * // Ensure the 'dev' tenant is already created before setting up the EKS worker node.
  * const tenant = duplocloud.getTenant({

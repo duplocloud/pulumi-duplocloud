@@ -4,7 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "./types/input";
 import * as outputs from "./types/output";
-import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
 /**
@@ -62,6 +61,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  *
  * // Ensure the 'nonprod' infrastructure is already created before setting up the tenant.
  * const infra = duplocloud.getInfrastructure({
@@ -78,6 +78,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  *
  * const config = new pulumi.Config();
  * const infraName = config.get("infraName") || "nonprod";
@@ -98,6 +99,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  *
  * // A prerequisite for creating a tenant is having an existing infrastructure. Here’s how you can reference an existing infrastructure.
  * const infra = duplocloud.getInfrastructure({
@@ -121,6 +123,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  *
  * // A prerequisite for creating a tenant is having an existing infrastructure. Here’s how you can reference an existing infrastructure.
  * const infra = duplocloud.getInfrastructure({
@@ -143,6 +146,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  *
  * const infra = duplocloud.getInfrastructure({
  *     infraName: "nonprod",
@@ -167,6 +171,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  *
  * const infra = duplocloud.getInfrastructure({
  *     infraName: "nonprod",
@@ -191,6 +196,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  *
  * const infra = duplocloud.getInfrastructure({
  *     infraName: "myinfra",
@@ -215,6 +221,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  *
  * const infra = duplocloud.getInfrastructure({
  *     infraName: "myinfra",

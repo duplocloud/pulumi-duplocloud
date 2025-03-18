@@ -1,12 +1,13 @@
 {
     "name": "@duplocloud/pulumi",
-    "version": "1.0.0",
+    "version": "1.0.0-alpha.0+dev",
     "description": "A Pulumi package for creating and managing duplocloud cloud resources.",
     "keywords": [
+        "pulumi",
         "duplocloud",
         "category/cloud"
     ],
-    "homepage": "https://www.pulumi.com",
+    "homepage": "https://duplocloud.com",
     "repository": "https://github.com/duplocloud/pulumi-duplocloud",
     "license": "Apache-2.0",
     "scripts": {
@@ -22,9 +23,7 @@
     "pulumi": {
         "resource": true,
         "name": "duplocloud",
-        "version": "1.0.0-alpha.0+dev"
-    },
-    "publishConfig": {
-        "access": "public"
+        "version": "1.0.0-alpha.0+dev",
+        "server": "github://api.github.com/duplocloud/pulumi-duplocloud"
     }
 }

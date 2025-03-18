@@ -4,7 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "./types/input";
 import * as outputs from "./types/output";
-import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
 /**
@@ -46,6 +45,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  *
  * // Assuming the 'dev' tenant is already created, use a data source to fetch the tenant ID.
  * const tenant = duplocloud.getTenant({
@@ -68,6 +68,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  *
  * // Assuming the 'dev' tenant is already created, use a data source to fetch the tenant ID.
  * const tenant = duplocloud.getTenant({
@@ -103,6 +104,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  *
  * // Assuming the 'dev' tenant is already created, use a data source to fetch the tenant ID.
  * const tenant = duplocloud.getTenant({
@@ -125,6 +127,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  *
  * // Assuming the 'dev' tenant is already created, use a data source to fetch the tenant ID.
  * const tenant = duplocloud.getTenant({

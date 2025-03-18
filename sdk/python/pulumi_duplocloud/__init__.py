@@ -211,11 +211,8 @@ from . import outputs
 if typing.TYPE_CHECKING:
     import pulumi_duplocloud.config as __config
     config = __config
-    import pulumi_duplocloud.region as __region
-    region = __region
 else:
     config = _utilities.lazy_import('pulumi_duplocloud.config')
-    region = _utilities.lazy_import('pulumi_duplocloud.region')
 
 _utilities.register(
     resource_modules="""

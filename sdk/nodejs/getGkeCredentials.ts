@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  *
  * const credential = duplocloud.getGkeCredentials({
  *     planId: "non-prod",
@@ -59,7 +59,7 @@ export interface GetGkeCredentialsResult {
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  *
  * const credential = duplocloud.getGkeCredentials({
  *     planId: "non-prod",

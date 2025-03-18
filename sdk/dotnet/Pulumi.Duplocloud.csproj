@@ -2,11 +2,11 @@
 
   <PropertyGroup>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Authors>Pulumi</Authors>
-    <Company>Pulumi</Company>
+    <Authors>DuploCloud</Authors>
+    <Company>DuploCloud</Company>
     <Description>A Pulumi package for creating and managing duplocloud cloud resources.</Description>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-    <PackageProjectUrl>https://www.pulumi.com</PackageProjectUrl>
+    <PackageProjectUrl>https://duplocloud.com</PackageProjectUrl>
     <RepositoryUrl>https://github.com/duplocloud/pulumi-duplocloud</RepositoryUrl>
     <PackageIcon>logo.png</PackageIcon>
     <Version>1.0.0-alpha.0+dev</Version>

@@ -138,6 +138,7 @@ namespace Pulumi.Duplocloud
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                PluginDownloadURL = "github://api.github.com/duplocloud/pulumi-duplocloud",
                 AdditionalSecretOutputs =
                 {
                     "administratorLoginPassword",
