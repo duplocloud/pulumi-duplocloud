@@ -25,7 +25,6 @@ import (
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
-	"github.com/pulumi/pulumi/pkg/v3/codegen/schema"
 
 	"github.com/duplocloud/pulumi-duplocloud/provider/pkg/version"
 )
@@ -115,48 +114,48 @@ func Provider() tfbridge.ProviderInfo {
 		DisplayName: "duplocloud",
 		// Change this to your personal name (or a company name) that you would like to be shown in
 		// the Pulumi Registry if this package is published there.
-		Publisher: "Pulumi",
+		Publisher: "DuploCloud",
 		// LogoURL is optional but useful to help identify your package in the Pulumi Registry
 		// if this package is published there.
 		//
 		// You may host a logo on a domain you control or add an PNG logo (100x100) for your package
 		// in your repository and use the raw content URL for that file as your logo URL.
-		LogoURL: "",
+		LogoURL: "https://raw.githubusercontent.com/duplocloud/pulumi-duplocloud/refs/heads/main/provider/duplo-logo.png",
 		// PluginDownloadURL is an optional URL used to download the Provider
 		// for use in Pulumi programs
 		// e.g. https://github.com/org/pulumi-provider-name/releases/download/v${VERSION}/
-		PluginDownloadURL: "",
+		PluginDownloadURL: "github://api.github.com/duplocloud/pulumi-duplocloud",
 		Description:       "A Pulumi package for creating and managing duplocloud cloud resources.",
 		// category/cloud tag helps with categorizing the package in the Pulumi Registry.
 		// For all available categories, see `Keywords` in
 		// https://www.pulumi.com/docs/guides/pulumi-packages/schema/#package.
-		Keywords:   []string{"duplocloud", "category/cloud"},
+		Keywords:   []string{"pulumi", "duplocloud", "category/cloud"},
 		License:    "Apache-2.0",
-		Homepage:   "https://www.pulumi.com",
+		Homepage:   "https://duplocloud.com",
 		Repository: "https://github.com/duplocloud/pulumi-duplocloud",
 		// The GitHub Org for the provider - defaults to `terraform-providers`. Note that this should
 		// match the TF provider module's require directive, not any replace directives.
 		GitHubOrg:    "duplocloud",
 		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
-		Config: map[string]*tfbridge.SchemaInfo{
+		Config:       map[string]*tfbridge.SchemaInfo{
 			// Add any required configuration here, or remove the example below if
 			// no additional points are required.
-			"region": {
-				Type: "duplocloud:region/region:Region",
-			},
+			// "region": {
+			// 	Type: "duplocloud:region/region:Region",
+			// },
 		},
 		// If extra types are needed for configuration, they can be added here.
-		ExtraTypes: map[string]schema.ComplexTypeSpec{
-			"duplocloud:region/region:Region": {
-				ObjectTypeSpec: schema.ObjectTypeSpec{
-					Type: "string",
-				},
-				Enum: []schema.EnumValueSpec{
-					{Name: "here", Value: "HERE"},
-					{Name: "overThere", Value: "OVER_THERE"},
-				},
-			},
-		},
+		// ExtraTypes: map[string]schema.ComplexTypeSpec{
+		// 	"duplocloud:region/region:Region": {
+		// 		ObjectTypeSpec: schema.ObjectTypeSpec{
+		// 			Type: "string",
+		// 		},
+		// 		Enum: []schema.EnumValueSpec{
+		// 			{Name: "here", Value: "HERE"},
+		// 			{Name: "overThere", Value: "OVER_THERE"},
+		// 		},
+		// 	},
+		// },
 		JavaScript: &tfbridge.JavaScriptInfo{
 			// RespectSchemaVersion ensures the SDK is generated linking to the correct version of the provider.
 			RespectSchemaVersion: true,
@@ -178,7 +177,7 @@ func Provider() tfbridge.ProviderInfo {
 			),
 			// Opt in to all available code generation features.
 			GenerateResourceContainerTypes: true,
-			GenerateExtraInputTypes:        true,
+			// GenerateExtraInputTypes:        true,
 			// RespectSchemaVersion ensures the SDK is generated linking to the correct version of the provider.
 			RespectSchemaVersion: true,
 		},
