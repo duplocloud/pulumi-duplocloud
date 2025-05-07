@@ -39,3 +39,5 @@ go.work.sum
 # Ignore local build tracking directory
 .make
 pkg
+examples/**/venv
+examples/**/__pycache__
