@@ -5,18 +5,18 @@
 package examples
 
 import (
-	"path/filepath"
 	"testing"
 
 	"github.com/pulumi/pulumi/pkg/v3/testing/integration"
 )
 
-func TestBasicTs(t *testing.T) {
-	t.Skip("Skipping until the provider has been implemented")
-
-	opts := getJSBaseOptions(t).With(integration.ProgramTestOptions{
-		Dir: filepath.Join(getCwd(t), "basic-ts"),
+func getJSBaseOptions(t *testing.T) integration.ProgramTestOptions {
+	base := getBaseOptions(t)
+	baseJS := base.With(integration.ProgramTestOptions{
+		Dependencies: []string{
+			"@duplocloud/pulumi",
+		},
 	})
 
-	integration.ProgramTest(t, &opts)
+	return baseJS
 }

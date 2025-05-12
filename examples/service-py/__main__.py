@@ -8,7 +8,7 @@ import pulumi_duplocloud as duplo
 
 tenant_name = "pulumi01"
 plan_id = "argocd01"
-cert_arn="arn:aws:acm:us-east-1:884446924812:certificate/d6c4138f-583e-4c75-a314-851142670b64"
+cert_arn="arn:aws:acm:us-east-1:1234567890:certificate/d6c4138f-583e-4c75-a314-851142670b64"
 tenant = duplo.tenant.Tenant(resource_name="dev",
     account_name=tenant_name,
     plan_id=plan_id,

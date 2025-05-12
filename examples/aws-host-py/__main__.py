@@ -3,7 +3,6 @@ DuploCloud Host Example
 This example demonstrates how to use the pulumi_duplocloud SDK to create DuploCloud host.
 """
 
-import pulumi
 import pulumi_duplocloud as duplo
 
 tenant_name="pulumi01"

@@ -11,13 +11,13 @@ import (
 	"github.com/pulumi/pulumi/pkg/v3/testing/integration"
 )
 
-func TestBasicPy(t *testing.T) {
-	t.Skip("Skipping until the provider has been implemented")
+func getPythonBaseOptions(t *testing.T) integration.ProgramTestOptions {
+	base := getBaseOptions()
+	basePython := base.With(integration.ProgramTestOptions{
+		Dependencies: []string{
+			filepath.Join("..", "sdk", "python", "bin"),
+		},
+	})
 
-	test := getPythonBaseOptions(t).
-		With(integration.ProgramTestOptions{
-			Dir: filepath.Join(getCwd(t), "basic-py"),
-		})
-
-	integration.ProgramTest(t, &test)
+	return basePython
 }

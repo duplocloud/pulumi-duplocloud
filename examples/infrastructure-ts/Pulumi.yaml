@@ -1,0 +1,3 @@
+name: infrastructure-ts
+runtime: nodejs
+description: A TypeScript-based example for managing infrastructure resources with DuploCloud.

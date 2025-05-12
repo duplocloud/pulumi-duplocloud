@@ -1,0 +1,3 @@
+name: aws-host-ts
+runtime: nodejs
+description: A TypeScript-based example for managing AWS host resource with DuploCloud.
