@@ -55,8 +55,8 @@ pulumi plugin install resource duplocloud v0.0.1 --server github://api.github.co
 
 The DuploCloud provider requires the following configuration parameters:
 
-- duplocloud:duploHost - Base URL to the DuploCloud REST API
-- duplocloud:duploToken - Bearer token for authentication
+- `duplocloud:duploHost` - Base URL to the DuploCloud REST API
+- `duplocloud:duploToken` - Bearer token for authentication
 
 You can set these using environment variables:
 
