@@ -1,0 +1,12 @@
+{
+    "name": "eks-deployment-ts",
+    "main": "index.ts",
+    "devDependencies": {
+        "@types/node": "^18",
+        "typescript": "^5.8.3"
+    },
+    "dependencies": {
+        "@duplocloud/pulumi": "^0.0.1",
+        "@pulumi/pulumi": "^3.0.0"
+    }
+}

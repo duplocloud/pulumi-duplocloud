@@ -1,11 +1,18 @@
 {
     "name": "duplocloud",
-    "displayName": "duplocloud",
-    "description": "A Pulumi package for creating and managing duplocloud cloud resources.",
+    "displayName": "DuploCloud",
+    "description": "A Pulumi provider for creating and managing DuploCloud infrastructure, container services, storage, databases, and networking resources.",
     "keywords": [
         "pulumi",
         "duplocloud",
-        "category/cloud"
+        "category/cloud",
+        "infrastructure",
+        "containers",
+        "kubernetes",
+        "aws",
+        "azure",
+        "gcp",
+        "devops"
     ],
     "homepage": "https://duplocloud.com",
     "license": "Apache-2.0",
@@ -29514,11 +29521,11 @@
         "properties": {
             "duploHost": {
                 "type": "string",
-                "description": "This is the base URL to the Duplo REST API. It must be provided, but it can also be sourced from the `duplo_host`\nenvironment variable.\n"
+                "description": "Base URL to the DuploCloud REST API (e.g., https://your-duplocloud-instance.com). Can also be set using the `duplo_host` environment variable."
             },
             "duploToken": {
                 "type": "string",
-                "description": "This is a bearer token used to authenticate to the Duplo REST API. It must be provided, but it can also be sourced from\nthe `duplo_token` environment variable.\n",
+                "description": "This is a bearer token used to authenticate to the Duplo REST API. It must be provided, but it can also be sourced from the `duplo_token` environment variable.\n",
                 "secret": true
             },
             "httpTimeout": {

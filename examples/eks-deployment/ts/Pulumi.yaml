@@ -1,0 +1,3 @@
+name: eks-deployment-ts
+runtime: nodejs
+description: A TypeScript-based example for managing EKS deployment in DuploCloud.

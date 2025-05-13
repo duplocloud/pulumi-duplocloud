@@ -4,6 +4,8 @@ const infra = new duplocloud.Infrastructure("infra", {
     infraName: "nonprod",
     cloud: 0,
     region: "us-west-2",
+    azcount: 2,
+    subnetCidr: 24,
     enableK8Cluster: true,
     addressPrefix: "10.11.0.0/16",
 });
