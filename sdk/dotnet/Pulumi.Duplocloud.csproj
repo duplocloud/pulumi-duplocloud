@@ -9,7 +9,7 @@
     <PackageProjectUrl>https://duplocloud.com</PackageProjectUrl>
     <RepositoryUrl>https://github.com/duplocloud/pulumi-duplocloud</RepositoryUrl>
     <PackageIcon>logo.png</PackageIcon>
-    <Version>1.0.0-alpha.0+dev</Version>
+    <Version>0.0.1</Version>
 
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
