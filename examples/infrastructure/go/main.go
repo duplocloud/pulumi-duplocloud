@@ -12,6 +12,8 @@ func main() {
 			InfraName:       pulumi.String("pulumi"),
 			Cloud:           pulumi.Int(0),
 			Region:          pulumi.String("us-east-2"),
+			Azcount:         pulumi.Int(2),
+			SubnetCidr:      pulumi.Int(24),
 			EnableK8Cluster: pulumi.Bool(true),
 			AddressPrefix:   pulumi.String("10.5.0.0/16"),
 		})
