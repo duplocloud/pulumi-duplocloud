@@ -16,7 +16,7 @@ func main() {
 		if err != nil {
 			return err
 		}
-		ctx.Export("tenantId", tenant.ID())
+		ctx.Export("tenantId", tenant.TenantId)
 		return nil
 	})
 
