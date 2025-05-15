@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.InfrastructureSetting` manages a infrastructure's configuration in Duplo.
@@ -73,7 +74,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/infrastructureSetting:InfrastructureSetting settings *NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/infrastructureSetting:InfrastructureSetting")]
+    [PulumiResourceType("duplocloud:index/infrastructureSetting:InfrastructureSetting")]
     public partial class InfrastructureSetting : global::Pulumi.CustomResource
     {
         /// <summary>

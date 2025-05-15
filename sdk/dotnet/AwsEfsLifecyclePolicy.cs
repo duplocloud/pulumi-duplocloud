@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.AwsEfsLifecyclePolicy` Provides an Elastic File System (EFS) File System Lifecycle Policy resource in DuploCloud.
@@ -76,7 +77,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/awsEfsLifecyclePolicy:AwsEfsLifecyclePolicy efslifecycle *TENANT_ID*/*FILE_SYSTEM_ID*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/awsEfsLifecyclePolicy:AwsEfsLifecyclePolicy")]
+    [PulumiResourceType("duplocloud:index/awsEfsLifecyclePolicy:AwsEfsLifecyclePolicy")]
     public partial class AwsEfsLifecyclePolicy : global::Pulumi.CustomResource
     {
         [Output("fileSystemId")]

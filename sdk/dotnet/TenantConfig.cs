@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.TenantConfig` manages a tenant's configuration in Duplo.
@@ -57,7 +58,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/tenantConfig:TenantConfig myapp TENANT_ID
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/tenantConfig:TenantConfig")]
+    [PulumiResourceType("duplocloud:index/tenantConfig:TenantConfig")]
     public partial class TenantConfig : global::Pulumi.CustomResource
     {
         /// <summary>

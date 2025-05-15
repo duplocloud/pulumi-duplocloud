@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.AwsApigatewayEvent` manages an AWS API Gateway events with integration in Duplo.
@@ -64,7 +65,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/awsApigatewayEvent:AwsApigatewayEvent ssm_param *TENANT_ID*/*API_GATEWAY_ID*/*METHOD*/*PATH*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/awsApigatewayEvent:AwsApigatewayEvent")]
+    [PulumiResourceType("duplocloud:index/awsApigatewayEvent:AwsApigatewayEvent")]
     public partial class AwsApigatewayEvent : global::Pulumi.CustomResource
     {
         /// <summary>

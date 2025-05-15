@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// The duplocloud.GcpHost used to manage or configure virtual machine at gcp
@@ -71,7 +72,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/gcpHost:GcpHost myhost v2/subscriptions/*TENANT_ID*/gcpHost/*INSTANCE_ID*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/gcpHost:GcpHost")]
+    [PulumiResourceType("duplocloud:index/gcpHost:GcpHost")]
     public partial class GcpHost : global::Pulumi.CustomResource
     {
         /// <summary>

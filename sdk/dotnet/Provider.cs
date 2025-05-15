@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// The provider type for the duplocloud package. By default, resources use package-wide configuration
@@ -15,7 +16,7 @@ namespace Pulumi.Duplocloud
     /// construction to achieve fine-grained programmatic control over provider settings. See the
     /// [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
     /// </summary>
-    [DuplocloudResourceType("pulumi:providers:duplocloud")]
+    [PulumiResourceType("pulumi:providers:duplocloud")]
     public partial class Provider : global::Pulumi.ProviderResource
     {
         /// <summary>

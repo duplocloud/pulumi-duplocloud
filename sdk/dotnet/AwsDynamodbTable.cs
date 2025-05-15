@@ -6,13 +6,14 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.AwsDynamodbTable` manages an AWS dynamodb table in Duplo.
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/awsDynamodbTable:AwsDynamodbTable")]
+    [PulumiResourceType("duplocloud:index/awsDynamodbTable:AwsDynamodbTable")]
     public partial class AwsDynamodbTable : global::Pulumi.CustomResource
     {
         /// <summary>

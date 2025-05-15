@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.AzureK8NodePool` manages a Node Pool of Kubernetes Cluster in Duplo.
@@ -26,7 +27,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/azureK8NodePool:AzureK8NodePool node_pool *TENANT_ID*/*FRIENDLY_NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/azureK8NodePool:AzureK8NodePool")]
+    [PulumiResourceType("duplocloud:index/azureK8NodePool:AzureK8NodePool")]
     public partial class AzureK8NodePool : global::Pulumi.CustomResource
     {
         /// <summary>

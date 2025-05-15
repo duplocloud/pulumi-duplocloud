@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// ## Example Usage
@@ -72,7 +73,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/k8sJob:K8sJob myapp v3/subscriptions/*TENANT_ID*/k8s/job/*NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/k8sJob:K8sJob")]
+    [PulumiResourceType("duplocloud:index/k8sJob:K8sJob")]
     public partial class K8sJob : global::Pulumi.CustomResource
     {
         /// <summary>

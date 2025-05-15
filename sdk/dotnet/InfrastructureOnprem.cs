@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.InfrastructureOnprem` adds support to integrate on premise infra into duplocloud
@@ -79,7 +80,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/infrastructureOnprem:InfrastructureOnprem myinfra v2/admin/Infrastructure/OnPremises/*NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/infrastructureOnprem:InfrastructureOnprem")]
+    [PulumiResourceType("duplocloud:index/infrastructureOnprem:InfrastructureOnprem")]
     public partial class InfrastructureOnprem : global::Pulumi.CustomResource
     {
         /// <summary>

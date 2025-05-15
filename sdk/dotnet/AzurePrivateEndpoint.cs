@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.AzurePrivateEndpoint` manages an azure private endpoint in Duplo.
@@ -83,7 +84,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/azurePrivateEndpoint:AzurePrivateEndpoint private_endpoint *TENANT_ID*/*NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/azurePrivateEndpoint:AzurePrivateEndpoint")]
+    [PulumiResourceType("duplocloud:index/azurePrivateEndpoint:AzurePrivateEndpoint")]
     public partial class AzurePrivateEndpoint : global::Pulumi.CustomResource
     {
         /// <summary>

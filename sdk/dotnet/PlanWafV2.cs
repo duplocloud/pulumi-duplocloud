@@ -6,15 +6,16 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.PlanWafV2` manages the list of waf's avaialble to a plan in Duplo.
     /// 
     /// This resource allows you take control of individual waf's for a specific plan.
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/planWafV2:PlanWafV2")]
+    [PulumiResourceType("duplocloud:index/planWafV2:PlanWafV2")]
     public partial class PlanWafV2 : global::Pulumi.CustomResource
     {
         /// <summary>

@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.AzureNetworkSecurityRule` manages an Azure security group rule in Duplo.
@@ -58,7 +59,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/azureNetworkSecurityRule:AzureNetworkSecurityRule security_rule *INFRA_NAME*/*SG_FULL_NAME*/*RULE_FULL_NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/azureNetworkSecurityRule:AzureNetworkSecurityRule")]
+    [PulumiResourceType("duplocloud:index/azureNetworkSecurityRule:AzureNetworkSecurityRule")]
     public partial class AzureNetworkSecurityRule : global::Pulumi.CustomResource
     {
         /// <summary>

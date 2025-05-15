@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.GcpInfraSecurityRule` applies gcp security rule to  infra
@@ -71,7 +72,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/gcpInfraSecurityRule:GcpInfraSecurityRule irule *INFRA_NAME/security-rule/*RULE_NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/gcpInfraSecurityRule:GcpInfraSecurityRule")]
+    [PulumiResourceType("duplocloud:index/gcpInfraSecurityRule:GcpInfraSecurityRule")]
     public partial class GcpInfraSecurityRule : global::Pulumi.CustomResource
     {
         /// <summary>

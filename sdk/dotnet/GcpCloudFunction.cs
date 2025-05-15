@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.GcpCloudFunction` manages a GCP cloud function in Duplo.
@@ -63,7 +64,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/gcpCloudFunction:GcpCloudFunction myfunc *TENANT_ID*/*SHORT_NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/gcpCloudFunction:GcpCloudFunction")]
+    [PulumiResourceType("duplocloud:index/gcpCloudFunction:GcpCloudFunction")]
     public partial class GcpCloudFunction : global::Pulumi.CustomResource
     {
         /// <summary>

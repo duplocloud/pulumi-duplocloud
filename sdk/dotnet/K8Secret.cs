@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.K8Secret` manages a kubernetes secret in a Duplo tenant.
@@ -26,7 +27,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/k8Secret:K8Secret myapp v2/subscriptions/*TENANT_ID*/K8SecretApiV2/*NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/k8Secret:K8Secret")]
+    [PulumiResourceType("duplocloud:index/k8Secret:K8Secret")]
     public partial class K8Secret : global::Pulumi.CustomResource
     {
         [Output("clientSecretVersion")]

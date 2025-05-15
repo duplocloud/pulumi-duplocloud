@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.AwsBatchSchedulingPolicy` manages an aws batch scheduling policy in Duplo.
@@ -73,7 +74,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/awsBatchSchedulingPolicy:AwsBatchSchedulingPolicy bsp *TENANT_ID*/*NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/awsBatchSchedulingPolicy:AwsBatchSchedulingPolicy")]
+    [PulumiResourceType("duplocloud:index/awsBatchSchedulingPolicy:AwsBatchSchedulingPolicy")]
     public partial class AwsBatchSchedulingPolicy : global::Pulumi.CustomResource
     {
         /// <summary>

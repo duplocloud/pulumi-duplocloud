@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.AzureMssqlElasticpool` manages an azure mssql elastic pool in Duplo.
@@ -57,7 +58,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/azureMssqlElasticpool:AzureMssqlElasticpool myMsSqlEP *TENANT_ID*/*SERVER_NAME*/*EP_NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/azureMssqlElasticpool:AzureMssqlElasticpool")]
+    [PulumiResourceType("duplocloud:index/azureMssqlElasticpool:AzureMssqlElasticpool")]
     public partial class AzureMssqlElasticpool : global::Pulumi.CustomResource
     {
         /// <summary>

@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// ## Example Usage
@@ -393,7 +394,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/s3Bucket:S3Bucket mybucket *TENANT_ID*/*SHORTNAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/s3Bucket:S3Bucket")]
+    [PulumiResourceType("duplocloud:index/s3Bucket:S3Bucket")]
     public partial class S3Bucket : global::Pulumi.CustomResource
     {
         /// <summary>

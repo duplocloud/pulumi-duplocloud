@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// ## Example Usage
@@ -79,7 +80,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/k8sCronJob:K8sCronJob myapp v3/subscriptions/*TENANT_ID*/k8s/cronjob/*NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/k8sCronJob:K8sCronJob")]
+    [PulumiResourceType("duplocloud:index/k8sCronJob:K8sCronJob")]
     public partial class K8sCronJob : global::Pulumi.CustomResource
     {
         /// <summary>

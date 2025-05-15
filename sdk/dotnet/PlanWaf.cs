@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.PlanWaf` manages the list of waf's avaialble to a plan in Duplo.
@@ -49,7 +50,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/planWaf:PlanWaf myplan *PLAN_ID*/*WAF_NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/planWaf:PlanWaf")]
+    [PulumiResourceType("duplocloud:index/planWaf:PlanWaf")]
     public partial class PlanWaf : global::Pulumi.CustomResource
     {
         [Output("dashboardUrl")]

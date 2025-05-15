@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.OciContainerengineNodePool` manages an OCI container node pool in Duplo.
@@ -77,7 +78,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/ociContainerengineNodePool:OciContainerengineNodePool myOciNodePool *TENANT_ID*/*SHORTNAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/ociContainerengineNodePool:OciContainerengineNodePool")]
+    [PulumiResourceType("duplocloud:index/ociContainerengineNodePool:OciContainerengineNodePool")]
     public partial class OciContainerengineNodePool : global::Pulumi.CustomResource
     {
         /// <summary>

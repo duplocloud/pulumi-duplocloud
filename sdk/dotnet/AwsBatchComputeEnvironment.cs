@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.AwsBatchComputeEnvironment` manages an aws batch compute environment in Duplo.
@@ -69,7 +70,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/awsBatchComputeEnvironment:AwsBatchComputeEnvironment bce *TENANT_ID*/*NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/awsBatchComputeEnvironment:AwsBatchComputeEnvironment")]
+    [PulumiResourceType("duplocloud:index/awsBatchComputeEnvironment:AwsBatchComputeEnvironment")]
     public partial class AwsBatchComputeEnvironment : global::Pulumi.CustomResource
     {
         /// <summary>

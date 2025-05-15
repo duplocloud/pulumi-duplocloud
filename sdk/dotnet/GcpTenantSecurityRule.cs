@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.GcpTenantSecurityRule` applies gcp security rule to  target tenantId
@@ -78,7 +79,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/gcpTenantSecurityRule:GcpTenantSecurityRule trule *TENANT_ID*/security-rule/*RULE_NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/gcpTenantSecurityRule:GcpTenantSecurityRule")]
+    [PulumiResourceType("duplocloud:index/gcpTenantSecurityRule:GcpTenantSecurityRule")]
     public partial class GcpTenantSecurityRule : global::Pulumi.CustomResource
     {
         /// <summary>

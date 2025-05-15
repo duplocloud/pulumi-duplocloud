@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.AwsLambdaFunction` manages an AWS lambda function in Duplo.
@@ -121,7 +122,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/awsLambdaFunction:AwsLambdaFunction myfunction *TENANT_ID*/*SHORT_NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/awsLambdaFunction:AwsLambdaFunction")]
+    [PulumiResourceType("duplocloud:index/awsLambdaFunction:AwsLambdaFunction")]
     public partial class AwsLambdaFunction : global::Pulumi.CustomResource
     {
         /// <summary>

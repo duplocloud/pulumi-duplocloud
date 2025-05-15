@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.AwsLbTargetGroup` manages a target group in a Duplo tenant.
@@ -63,7 +64,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/awsLbTargetGroup:AwsLbTargetGroup tg *TENANT_ID*/*NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/awsLbTargetGroup:AwsLbTargetGroup")]
+    [PulumiResourceType("duplocloud:index/awsLbTargetGroup:AwsLbTargetGroup")]
     public partial class AwsLbTargetGroup : global::Pulumi.CustomResource
     {
         /// <summary>

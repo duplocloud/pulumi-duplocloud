@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.DuploServiceLbconfigs` manages additional configuration for a container-based service in Duplo.
@@ -84,7 +85,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/duploServiceParams:DuploServiceParams myservice v2/subscriptions/*TENANT_ID*/ReplicationControllerParamsV2/*NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/duploServiceParams:DuploServiceParams")]
+    [PulumiResourceType("duplocloud:index/duploServiceParams:DuploServiceParams")]
     public partial class DuploServiceParams : global::Pulumi.CustomResource
     {
         /// <summary>

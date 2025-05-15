@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.OtherAgents` manages an other agents in Duplo.
@@ -55,7 +56,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/otherAgents:OtherAgents agents *SHORTNAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/otherAgents:OtherAgents")]
+    [PulumiResourceType("duplocloud:index/otherAgents:OtherAgents")]
     public partial class OtherAgents : global::Pulumi.CustomResource
     {
         [Output("agents")]

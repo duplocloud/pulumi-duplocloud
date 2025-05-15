@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.User` manages a user in Duplo.
@@ -52,7 +53,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/user:User myuser *USERNAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/user:User")]
+    [PulumiResourceType("duplocloud:index/user:User")]
     public partial class User : global::Pulumi.CustomResource
     {
         [Output("currentSessionToken")]

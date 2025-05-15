@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.AzureSqlVirtualNetworkRule` allows you to add, update, or remove an Azure SQL server to a subnet of a virtual network.
@@ -54,7 +55,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/azureSqlVirtualNetworkRule:AzureSqlVirtualNetworkRule sql_vnet_rule *TENANT_ID*/*SERVER_NAME*/*RULE_NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/azureSqlVirtualNetworkRule:AzureSqlVirtualNetworkRule")]
+    [PulumiResourceType("duplocloud:index/azureSqlVirtualNetworkRule:AzureSqlVirtualNetworkRule")]
     public partial class AzureSqlVirtualNetworkRule : global::Pulumi.CustomResource
     {
         /// <summary>

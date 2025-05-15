@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.GcpStorageBucket` manages a GCP storage bucket in Duplo.
@@ -52,7 +53,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/gcpStorageBucket:GcpStorageBucket mybucket *TENANT_ID*/*SHORT_NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/gcpStorageBucket:GcpStorageBucket")]
+    [PulumiResourceType("duplocloud:index/gcpStorageBucket:GcpStorageBucket")]
     public partial class GcpStorageBucket : global::Pulumi.CustomResource
     {
         /// <summary>

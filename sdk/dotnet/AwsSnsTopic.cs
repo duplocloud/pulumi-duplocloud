@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.AwsSnsTopic` manages a SNS topic in Duplo.
@@ -26,7 +27,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/awsSnsTopic:AwsSnsTopic sns_topic *TENANT_ID*/*ARN*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/awsSnsTopic:AwsSnsTopic")]
+    [PulumiResourceType("duplocloud:index/awsSnsTopic:AwsSnsTopic")]
     public partial class AwsSnsTopic : global::Pulumi.CustomResource
     {
         /// <summary>

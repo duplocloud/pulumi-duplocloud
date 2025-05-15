@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.AwsAppautoscalingTarget` manages an aws autoscaling target in Duplo.
@@ -60,7 +61,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/awsAppautoscalingTarget:AwsAppautoscalingTarget asgTarget *TENANT_ID*/*SERVICE_NAMESPACE*/*SCALABLE_DIMENSION*/*RESOURCE_ID*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/awsAppautoscalingTarget:AwsAppautoscalingTarget")]
+    [PulumiResourceType("duplocloud:index/awsAppautoscalingTarget:AwsAppautoscalingTarget")]
     public partial class AwsAppautoscalingTarget : global::Pulumi.CustomResource
     {
         /// <summary>

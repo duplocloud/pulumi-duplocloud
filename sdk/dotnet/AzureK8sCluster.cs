@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.AzureK8sCluster` manages an azure kubernetes cluster in Duplo.
@@ -56,7 +57,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/azureK8sCluster:AzureK8sCluster cluster v2/admin/InfrastructureV2/*INFRA_NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/azureK8sCluster:AzureK8sCluster")]
+    [PulumiResourceType("duplocloud:index/azureK8sCluster:AzureK8sCluster")]
     public partial class AzureK8sCluster : global::Pulumi.CustomResource
     {
         /// <summary>

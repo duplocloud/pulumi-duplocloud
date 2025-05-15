@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.K8ConfigMap` manages a kubernetes configmap in a Duplo tenant.
@@ -56,7 +57,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/k8ConfigMap:K8ConfigMap myapp v2/subscriptions/*TENANT_ID*/K8ConfigMapApiV2/*NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/k8ConfigMap:K8ConfigMap")]
+    [PulumiResourceType("duplocloud:index/k8ConfigMap:K8ConfigMap")]
     public partial class K8ConfigMap : global::Pulumi.CustomResource
     {
         /// <summary>

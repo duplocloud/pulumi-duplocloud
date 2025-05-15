@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// ## Example Usage
@@ -347,7 +348,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/infrastructure:Infrastructure myinfra v2/admin/InfrastructureV2/*NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/infrastructure:Infrastructure")]
+    [PulumiResourceType("duplocloud:index/infrastructure:Infrastructure")]
     public partial class Infrastructure : global::Pulumi.CustomResource
     {
         /// <summary>

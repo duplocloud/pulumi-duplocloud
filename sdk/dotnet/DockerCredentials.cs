@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.DockerCredentials` manages the docker credentials for the tenant in Duplo.
@@ -54,7 +55,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/dockerCredentials:DockerCredentials myDockerCreds *TENANT_ID*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/dockerCredentials:DockerCredentials")]
+    [PulumiResourceType("duplocloud:index/dockerCredentials:DockerCredentials")]
     public partial class DockerCredentials : global::Pulumi.CustomResource
     {
         [Output("email")]

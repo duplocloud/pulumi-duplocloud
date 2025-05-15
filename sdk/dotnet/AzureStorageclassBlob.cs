@@ -6,13 +6,14 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.AzureStorageclassBlob` manages an Azure storage class blob in Duplo.
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/azureStorageclassBlob:AzureStorageclassBlob")]
+    [PulumiResourceType("duplocloud:index/azureStorageclassBlob:AzureStorageclassBlob")]
     public partial class AzureStorageclassBlob : global::Pulumi.CustomResource
     {
         /// <summary>

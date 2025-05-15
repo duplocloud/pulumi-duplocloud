@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.AzurePostgresqlFlexibleDatabase` manages an azure postgresql flexible  database in Duplo.
@@ -61,7 +62,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/azurePostgresqlFlexibleDatabase:AzurePostgresqlFlexibleDatabase myPostgreSQLDatabase *TENANT_ID*/*SHORT_NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/azurePostgresqlFlexibleDatabase:AzurePostgresqlFlexibleDatabase")]
+    [PulumiResourceType("duplocloud:index/azurePostgresqlFlexibleDatabase:AzurePostgresqlFlexibleDatabase")]
     public partial class AzurePostgresqlFlexibleDatabase : global::Pulumi.CustomResource
     {
         /// <summary>

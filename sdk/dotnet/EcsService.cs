@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.EcsService` manages a Amazon ECS service in Duplo.
@@ -68,7 +69,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/ecsService:EcsService myservice v2/subscriptions/*TENANT_ID*/EcsServiceApiV2/*NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/ecsService:EcsService")]
+    [PulumiResourceType("duplocloud:index/ecsService:EcsService")]
     public partial class EcsService : global::Pulumi.CustomResource
     {
         [Output("capacityProviderStrategies")]

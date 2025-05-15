@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.PlanSettings` manages an plan settings in Duplo.
@@ -43,7 +44,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/planSettings:PlanSettings myplanSettings PLAN_ID
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/planSettings:PlanSettings")]
+    [PulumiResourceType("duplocloud:index/planSettings:PlanSettings")]
     public partial class PlanSettings : global::Pulumi.CustomResource
     {
         /// <summary>

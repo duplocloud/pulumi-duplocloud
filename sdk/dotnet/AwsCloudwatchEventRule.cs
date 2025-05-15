@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.AwsCloudwatchEventRule` manages an AWS cloudwatch event rule in Duplo.
@@ -84,7 +85,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/awsCloudwatchEventRule:AwsCloudwatchEventRule myEventRule *TENANT_ID*/*FRIENDLY_NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/awsCloudwatchEventRule:AwsCloudwatchEventRule")]
+    [PulumiResourceType("duplocloud:index/awsCloudwatchEventRule:AwsCloudwatchEventRule")]
     public partial class AwsCloudwatchEventRule : global::Pulumi.CustomResource
     {
         /// <summary>

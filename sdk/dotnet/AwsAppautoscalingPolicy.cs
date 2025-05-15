@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.AwsAppautoscalingPolicy` manages an aws autoscaling policy in Duplo.
@@ -78,7 +79,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/awsAppautoscalingPolicy:AwsAppautoscalingPolicy asgAppPolicy *TENANT_ID*/*SERVICE_NAMESPACE*/*SCALABLE_DIMENSION*/*RESOURCE_ID*/*POLICY_NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/awsAppautoscalingPolicy:AwsAppautoscalingPolicy")]
+    [PulumiResourceType("duplocloud:index/awsAppautoscalingPolicy:AwsAppautoscalingPolicy")]
     public partial class AwsAppautoscalingPolicy : global::Pulumi.CustomResource
     {
         [Output("arn")]

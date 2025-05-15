@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.GcpRedisInstance` manages a GCP redis instance in Duplo.
@@ -55,7 +56,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/gcpRedisInstance:GcpRedisInstance memory-cache *TENANT_ID*/*NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/gcpRedisInstance:GcpRedisInstance")]
+    [PulumiResourceType("duplocloud:index/gcpRedisInstance:GcpRedisInstance")]
     public partial class GcpRedisInstance : global::Pulumi.CustomResource
     {
         /// <summary>

@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.GcpPubsubTopic` manages a GCP pubsub topic in Duplo.
@@ -51,7 +52,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/gcpPubsubTopic:GcpPubsubTopic mytopic *TENANT_ID*/*SHORT_NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/gcpPubsubTopic:GcpPubsubTopic")]
+    [PulumiResourceType("duplocloud:index/gcpPubsubTopic:GcpPubsubTopic")]
     public partial class GcpPubsubTopic : global::Pulumi.CustomResource
     {
         /// <summary>

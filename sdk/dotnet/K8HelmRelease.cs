@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud_helm_release` manages helm release at duplocloud
@@ -73,7 +74,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/k8HelmRelease:K8HelmRelease release *TENANT_ID*/helm-release/*NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/k8HelmRelease:K8HelmRelease")]
+    [PulumiResourceType("duplocloud:index/k8HelmRelease:K8HelmRelease")]
     public partial class K8HelmRelease : global::Pulumi.CustomResource
     {
         /// <summary>

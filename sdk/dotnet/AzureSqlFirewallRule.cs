@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.AzureSqlFirewallRule` allows you to manage an Azure SQL Firewall Rule.
@@ -54,7 +55,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/azureSqlFirewallRule:AzureSqlFirewallRule sql_firewall_rule *TENANT_ID*/*SERVER_NAME*/*RULE_NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/azureSqlFirewallRule:AzureSqlFirewallRule")]
+    [PulumiResourceType("duplocloud:index/azureSqlFirewallRule:AzureSqlFirewallRule")]
     public partial class AzureSqlFirewallRule : global::Pulumi.CustomResource
     {
         /// <summary>

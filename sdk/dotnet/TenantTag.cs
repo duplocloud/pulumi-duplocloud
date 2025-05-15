@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.TenantTag` manages a tenant tag in Duplo.
@@ -26,7 +27,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/tenantTag:TenantTag tag TENANT_ID/TAG_KEY
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/tenantTag:TenantTag")]
+    [PulumiResourceType("duplocloud:index/tenantTag:TenantTag")]
     public partial class TenantTag : global::Pulumi.CustomResource
     {
         /// <summary>

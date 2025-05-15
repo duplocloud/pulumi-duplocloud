@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.AwsCloudwatchMetricAlarm` manages an AWS cloudwatch metric alarm in Duplo.
@@ -63,7 +64,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/awsCloudwatchMetricAlarm:AwsCloudwatchMetricAlarm myMetricAlarm *TENANT_ID*/*FRIENDLY_NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/awsCloudwatchMetricAlarm:AwsCloudwatchMetricAlarm")]
+    [PulumiResourceType("duplocloud:index/awsCloudwatchMetricAlarm:AwsCloudwatchMetricAlarm")]
     public partial class AwsCloudwatchMetricAlarm : global::Pulumi.CustomResource
     {
         /// <summary>

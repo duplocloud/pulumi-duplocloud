@@ -111,7 +111,7 @@ func Provider() tfbridge.ProviderInfo {
 		Version: version.Version,
 		// DisplayName is a way to be able to change the casing of the provider name when being
 		// displayed on the Pulumi registry
-		DisplayName: "duplocloud",
+		DisplayName: "DuploCloud",
 		// Change this to your personal name (or a company name) that you would like to be shown in
 		// the Pulumi Registry if this package is published there.
 		Publisher: "DuploCloud",
@@ -125,11 +125,11 @@ func Provider() tfbridge.ProviderInfo {
 		// for use in Pulumi programs
 		// e.g. https://github.com/org/pulumi-provider-name/releases/download/v${VERSION}/
 		PluginDownloadURL: "github://api.github.com/duplocloud/pulumi-duplocloud",
-		Description:       "A Pulumi package for creating and managing duplocloud cloud resources.",
+		Description:       "A Pulumi provider for creating and managing DuploCloud infrastructure.",
 		// category/cloud tag helps with categorizing the package in the Pulumi Registry.
 		// For all available categories, see `Keywords` in
 		// https://www.pulumi.com/docs/guides/pulumi-packages/schema/#package.
-		Keywords:   []string{"pulumi", "duplocloud", "category/cloud"},
+		Keywords:   []string{"pulumi", "duplocloud", "category/cloud", "infrastructure", "kubernetes", "containers", "devops", "aws", "azure", "gcp"},
 		License:    "Apache-2.0",
 		Homepage:   "https://duplocloud.com",
 		Repository: "https://github.com/duplocloud/pulumi-duplocloud",
@@ -187,6 +187,10 @@ func Provider() tfbridge.ProviderInfo {
 			// Use a wildcard import so NuGet will prefer the latest possible version.
 			PackageReferences: map[string]string{
 				"Pulumi": "3.*",
+			},
+			RootNamespace: "DuploCloud",
+			Namespaces: map[string]string{
+				"duplocloud": "Pulumi",
 			},
 		},
 	}

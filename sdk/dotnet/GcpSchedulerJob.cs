@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.GcpSchedulerJob` manages a GCP scheduler job in Duplo.
@@ -59,7 +60,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/gcpSchedulerJob:GcpSchedulerJob myjob *TENANT_ID*/*SHORT_NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/gcpSchedulerJob:GcpSchedulerJob")]
+    [PulumiResourceType("duplocloud:index/gcpSchedulerJob:GcpSchedulerJob")]
     public partial class GcpSchedulerJob : global::Pulumi.CustomResource
     {
         /// <summary>

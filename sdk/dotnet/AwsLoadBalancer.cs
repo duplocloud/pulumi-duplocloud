@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.AwsLoadBalancer` manages an AWS application load balancer in Duplo.
@@ -54,7 +55,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/awsLoadBalancer:AwsLoadBalancer myalb *TENANT_ID*/*SHORT_NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/awsLoadBalancer:AwsLoadBalancer")]
+    [PulumiResourceType("duplocloud:index/awsLoadBalancer:AwsLoadBalancer")]
     public partial class AwsLoadBalancer : global::Pulumi.CustomResource
     {
         /// <summary>

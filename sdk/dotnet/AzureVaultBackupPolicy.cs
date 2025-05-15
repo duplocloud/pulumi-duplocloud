@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.AzureVaultBackupPolicy` manages a Vault Backup Policy in Duplo.
@@ -94,7 +95,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/azureVaultBackupPolicy:AzureVaultBackupPolicy backup_policy *INFRA_NAME*/*NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/azureVaultBackupPolicy:AzureVaultBackupPolicy")]
+    [PulumiResourceType("duplocloud:index/azureVaultBackupPolicy:AzureVaultBackupPolicy")]
     public partial class AzureVaultBackupPolicy : global::Pulumi.CustomResource
     {
         /// <summary>

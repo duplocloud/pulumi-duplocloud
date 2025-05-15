@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// ## Example Usage
@@ -62,7 +63,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/infrastructureSubnet:InfrastructureSubnet subnet *INFRA_NAME*/*NAME*/*ADDRESS_PREFIX*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/infrastructureSubnet:InfrastructureSubnet")]
+    [PulumiResourceType("duplocloud:index/infrastructureSubnet:InfrastructureSubnet")]
     public partial class InfrastructureSubnet : global::Pulumi.CustomResource
     {
         [Output("cidrBlock")]

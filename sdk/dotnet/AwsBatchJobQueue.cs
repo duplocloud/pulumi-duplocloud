@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.AwsBatchJobQueue` manages an aws batch Job queue in Duplo.
@@ -106,7 +107,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/awsBatchJobQueue:AwsBatchJobQueue jq *TENANT_ID*/*NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/awsBatchJobQueue:AwsBatchJobQueue")]
+    [PulumiResourceType("duplocloud:index/awsBatchJobQueue:AwsBatchJobQueue")]
     public partial class AwsBatchJobQueue : global::Pulumi.CustomResource
     {
         /// <summary>

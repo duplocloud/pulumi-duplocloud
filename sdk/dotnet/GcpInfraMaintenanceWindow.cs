@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.GcpInfraMaintenanceWindow` applies maintenance window to an gcp infrastructure
@@ -24,7 +25,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/gcpInfraMaintenanceWindow:GcpInfraMaintenanceWindow infra maintenance-window/*INFRANAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/gcpInfraMaintenanceWindow:GcpInfraMaintenanceWindow")]
+    [PulumiResourceType("duplocloud:index/gcpInfraMaintenanceWindow:GcpInfraMaintenanceWindow")]
     public partial class GcpInfraMaintenanceWindow : global::Pulumi.CustomResource
     {
         /// <summary>

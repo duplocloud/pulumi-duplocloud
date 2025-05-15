@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.AdminSystemSetting` manages an admin system setting in Duplo.
@@ -46,7 +47,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/adminSystemSetting:AdminSystemSetting mySetting *KEY_TYPE*/*KEY*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/adminSystemSetting:AdminSystemSetting")]
+    [PulumiResourceType("duplocloud:index/adminSystemSetting:AdminSystemSetting")]
     public partial class AdminSystemSetting : global::Pulumi.CustomResource
     {
         /// <summary>

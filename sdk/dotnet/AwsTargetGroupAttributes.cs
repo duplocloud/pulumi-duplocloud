@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.AwsTargetGroupAttributes` manages an aws target group attributes in Duplo.
@@ -26,7 +27,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/awsTargetGroupAttributes:AwsTargetGroupAttributes tgAttrs *TENANT_ID*/*TARGET_GROUP_ARN*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/awsTargetGroupAttributes:AwsTargetGroupAttributes")]
+    [PulumiResourceType("duplocloud:index/awsTargetGroupAttributes:AwsTargetGroupAttributes")]
     public partial class AwsTargetGroupAttributes : global::Pulumi.CustomResource
     {
         [Output("attributes")]

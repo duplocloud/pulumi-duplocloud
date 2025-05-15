@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.AwsLambdaFunctionEventConfig` manages an AWS lambda function in Duplo.
@@ -106,7 +107,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/awsLambdaFunctionEventConfig:AwsLambdaFunctionEventConfig event-invoke-config *TENANT_ID*/*SHORT_NAME*/eventInvokeConfig
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/awsLambdaFunctionEventConfig:AwsLambdaFunctionEventConfig")]
+    [PulumiResourceType("duplocloud:index/awsLambdaFunctionEventConfig:AwsLambdaFunctionEventConfig")]
     public partial class AwsLambdaFunctionEventConfig : global::Pulumi.CustomResource
     {
         /// <summary>

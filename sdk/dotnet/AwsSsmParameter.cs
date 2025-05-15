@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.AwsSsmParameter` manages an AWS SSM parameter in Duplo.
@@ -53,7 +54,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/awsSsmParameter:AwsSsmParameter ssm_param *TENANT_ID*/*NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/awsSsmParameter:AwsSsmParameter")]
+    [PulumiResourceType("duplocloud:index/awsSsmParameter:AwsSsmParameter")]
     public partial class AwsSsmParameter : global::Pulumi.CustomResource
     {
         [Output("allowedPattern")]

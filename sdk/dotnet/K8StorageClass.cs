@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.K8StorageClass` manages a kubernetes storage class in a Duplo tenant.
@@ -70,7 +71,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/k8StorageClass:K8StorageClass sc v3/subscriptions/*TENANT_ID*/k8s/storageclass/*FULL_NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/k8StorageClass:K8StorageClass")]
+    [PulumiResourceType("duplocloud:index/k8StorageClass:K8StorageClass")]
     public partial class K8StorageClass : global::Pulumi.CustomResource
     {
         /// <summary>

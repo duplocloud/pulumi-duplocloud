@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.TenantNetworkSecurityRule` manages a single network single rule for a Duplo tenant.
@@ -56,7 +57,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/tenantNetworkSecurityRule:TenantNetworkSecurityRule myrule TENANT_ID/0/SOURCE_TENANT/PROTOCOL/FROM_PORT/TO_PORT
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/tenantNetworkSecurityRule:TenantNetworkSecurityRule")]
+    [PulumiResourceType("duplocloud:index/tenantNetworkSecurityRule:TenantNetworkSecurityRule")]
     public partial class TenantNetworkSecurityRule : global::Pulumi.CustomResource
     {
         /// <summary>

@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.AwsEcrRepository` manages an aws ecr repository in Duplo.
@@ -54,7 +55,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/awsEcrRepository:AwsEcrRepository myecr *TENANT_ID*/*SHORT_NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/awsEcrRepository:AwsEcrRepository")]
+    [PulumiResourceType("duplocloud:index/awsEcrRepository:AwsEcrRepository")]
     public partial class AwsEcrRepository : global::Pulumi.CustomResource
     {
         /// <summary>

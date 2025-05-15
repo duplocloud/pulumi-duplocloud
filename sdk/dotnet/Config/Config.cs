@@ -4,7 +4,7 @@
 using System;
 using System.Collections.Immutable;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     public static class Config
     {

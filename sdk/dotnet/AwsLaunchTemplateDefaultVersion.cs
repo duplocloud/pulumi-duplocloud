@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// duplocloud_aws_launch_template_default_version helps to set or update default version of launch template
@@ -56,7 +57,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/awsLaunchTemplateDefaultVersion:AwsLaunchTemplateDefaultVersion dlt *TENANT_ID*/launch-template/*NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/awsLaunchTemplateDefaultVersion:AwsLaunchTemplateDefaultVersion")]
+    [PulumiResourceType("duplocloud:index/awsLaunchTemplateDefaultVersion:AwsLaunchTemplateDefaultVersion")]
     public partial class AwsLaunchTemplateDefaultVersion : global::Pulumi.CustomResource
     {
         /// <summary>

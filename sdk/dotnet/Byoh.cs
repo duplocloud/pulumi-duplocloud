@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.Byoh` manages BYOH in Duplo.
@@ -26,7 +27,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/byoh:Byoh byoh *TENANT_ID*/*NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/byoh:Byoh")]
+    [PulumiResourceType("duplocloud:index/byoh:Byoh")]
     public partial class Byoh : global::Pulumi.CustomResource
     {
         /// <summary>

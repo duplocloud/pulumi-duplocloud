@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.GcpSqlDatabaseInstance` manages a GCP SQL Database Instance in Duplo.
@@ -71,7 +72,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/gcpSqlDatabaseInstance:GcpSqlDatabaseInstance sql_instance *TENANT_ID*/*SHORT_NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/gcpSqlDatabaseInstance:GcpSqlDatabaseInstance")]
+    [PulumiResourceType("duplocloud:index/gcpSqlDatabaseInstance:GcpSqlDatabaseInstance")]
     public partial class GcpSqlDatabaseInstance : global::Pulumi.CustomResource
     {
         /// <summary>

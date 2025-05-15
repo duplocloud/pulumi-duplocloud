@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.AzureMysqlDatabase` manages an Azure mysql database in Duplo.
@@ -56,7 +57,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/azureMysqlDatabase:AzureMysqlDatabase mysqlDatabase *TENANT_ID*/*SHORT_NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/azureMysqlDatabase:AzureMysqlDatabase")]
+    [PulumiResourceType("duplocloud:index/azureMysqlDatabase:AzureMysqlDatabase")]
     public partial class AzureMysqlDatabase : global::Pulumi.CustomResource
     {
         /// <summary>

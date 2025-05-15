@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.K8SecretProviderClass` manages a kubernetes Secret Provider Class in a Duplo tenant.
@@ -26,7 +27,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/k8SecretProviderClass:K8SecretProviderClass spc v3/subscriptions/*TENANT_ID*/k8s/secretproviderclass/*NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/k8SecretProviderClass:K8SecretProviderClass")]
+    [PulumiResourceType("duplocloud:index/k8SecretProviderClass:K8SecretProviderClass")]
     public partial class K8SecretProviderClass : global::Pulumi.CustomResource
     {
         /// <summary>

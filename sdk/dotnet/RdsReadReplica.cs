@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.RdsReadReplica` manages an AWS RDS read replica in Duplo.
@@ -26,7 +27,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/rdsReadReplica:RdsReadReplica read_replica v2/subscriptions/*TENANT_ID*/RDSDBInstance/*SHORTNAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/rdsReadReplica:RdsReadReplica")]
+    [PulumiResourceType("duplocloud:index/rdsReadReplica:RdsReadReplica")]
     public partial class RdsReadReplica : global::Pulumi.CustomResource
     {
         /// <summary>

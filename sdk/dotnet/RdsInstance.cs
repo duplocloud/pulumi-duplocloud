@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// ## Example Usage
@@ -592,7 +593,7 @@ namespace Pulumi.Duplocloud
     /// 
     /// }
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/rdsInstance:RdsInstance")]
+    [PulumiResourceType("duplocloud:index/rdsInstance:RdsInstance")]
     public partial class RdsInstance : global::Pulumi.CustomResource
     {
         /// <summary>

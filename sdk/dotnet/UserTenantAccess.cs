@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.UserTenantAccess` manages a user tenant access in Duplo.
@@ -53,7 +54,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/userTenantAccess:UserTenantAccess access *USERNAME*/*TENANT_ID*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/userTenantAccess:UserTenantAccess")]
+    [PulumiResourceType("duplocloud:index/userTenantAccess:UserTenantAccess")]
     public partial class UserTenantAccess : global::Pulumi.CustomResource
     {
         /// <summary>

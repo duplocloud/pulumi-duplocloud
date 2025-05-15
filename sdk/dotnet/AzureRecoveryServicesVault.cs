@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.AzureRecoveryServicesVault` manages an Azure Recovery Services Vault in Duplo.
@@ -46,7 +47,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/azureRecoveryServicesVault:AzureRecoveryServicesVault recovery_services_vault *INFRA_NAME*/*NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/azureRecoveryServicesVault:AzureRecoveryServicesVault")]
+    [PulumiResourceType("duplocloud:index/azureRecoveryServicesVault:AzureRecoveryServicesVault")]
     public partial class AzureRecoveryServicesVault : global::Pulumi.CustomResource
     {
         [Output("azureId")]

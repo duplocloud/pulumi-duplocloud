@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.EmrCluster` manages an AWS emrCluster in Duplo.
@@ -123,7 +124,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/emrCluster:EmrCluster mycluster *TENANT_ID*/*JOB_FLOW_ID*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/emrCluster:EmrCluster")]
+    [PulumiResourceType("duplocloud:index/emrCluster:EmrCluster")]
     public partial class EmrCluster : global::Pulumi.CustomResource
     {
         /// <summary>

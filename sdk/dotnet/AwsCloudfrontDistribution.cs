@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.AwsCloudfrontDistribution` manages an aws cloudfront distribution in Duplo.
@@ -145,7 +146,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/awsCloudfrontDistribution:AwsCloudfrontDistribution myCFD *TENANT_ID*/*CLOUDFRONT_ID*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/awsCloudfrontDistribution:AwsCloudfrontDistribution")]
+    [PulumiResourceType("duplocloud:index/awsCloudfrontDistribution:AwsCloudfrontDistribution")]
     public partial class AwsCloudfrontDistribution : global::Pulumi.CustomResource
     {
         /// <summary>

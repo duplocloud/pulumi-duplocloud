@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.AzureVirtualMachine` manages an Azure virtual machine in Duplo.
@@ -79,7 +80,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/azureVirtualMachine:AzureVirtualMachine myvm *TENANT_ID*/*SHORT_NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/azureVirtualMachine:AzureVirtualMachine")]
+    [PulumiResourceType("duplocloud:index/azureVirtualMachine:AzureVirtualMachine")]
     public partial class AzureVirtualMachine : global::Pulumi.CustomResource
     {
         /// <summary>

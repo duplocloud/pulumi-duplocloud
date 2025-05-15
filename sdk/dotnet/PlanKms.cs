@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.PlanKms` manages the list of kms avaialble to a plan in Duplo.
@@ -47,7 +48,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/planKms:PlanKms myplan *PLAN_ID*/kms/*KMS_NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/planKms:PlanKms")]
+    [PulumiResourceType("duplocloud:index/planKms:PlanKms")]
     public partial class PlanKms : global::Pulumi.CustomResource
     {
         [Output("kmsArn")]

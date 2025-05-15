@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.DuploServiceLbconfigs` manages load balancer configuration(s) for a container-based service in Duplo.
@@ -83,7 +84,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/duploServiceLbconfigs:DuploServiceLbconfigs myservice v2/subscriptions/*TENANT_ID*/ServiceLBConfigsV2/*NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/duploServiceLbconfigs:DuploServiceLbconfigs")]
+    [PulumiResourceType("duplocloud:index/duploServiceLbconfigs:DuploServiceLbconfigs")]
     public partial class DuploServiceLbconfigs : global::Pulumi.CustomResource
     {
         /// <summary>

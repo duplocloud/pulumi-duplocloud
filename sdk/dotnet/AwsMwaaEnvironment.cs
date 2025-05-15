@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.AwsMwaaEnvironment` manages an AWS MWAA Environment resource in Duplo.
@@ -100,7 +101,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/awsMwaaEnvironment:AwsMwaaEnvironment my-mwaa *TENANT_ID*/*FULL_NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/awsMwaaEnvironment:AwsMwaaEnvironment")]
+    [PulumiResourceType("duplocloud:index/awsMwaaEnvironment:AwsMwaaEnvironment")]
     public partial class AwsMwaaEnvironment : global::Pulumi.CustomResource
     {
         /// <summary>

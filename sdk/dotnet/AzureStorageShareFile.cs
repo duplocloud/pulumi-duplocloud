@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.AzureStorageShareFile` manages an Azure storage share file in Duplo.
@@ -52,7 +53,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/azureStorageShareFile:AzureStorageShareFile share_file *TENANT_ID*/*STORAGE_ACCOUNT_NAME*/*NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/azureStorageShareFile:AzureStorageShareFile")]
+    [PulumiResourceType("duplocloud:index/azureStorageShareFile:AzureStorageShareFile")]
     public partial class AzureStorageShareFile : global::Pulumi.CustomResource
     {
         /// <summary>

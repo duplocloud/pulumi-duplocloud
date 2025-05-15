@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.PlanCertificates` manages the list of certificates avaialble to a plan in Duplo.
@@ -20,7 +21,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/planCertificates:PlanCertificates myplan PLAN_ID
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/planCertificates:PlanCertificates")]
+    [PulumiResourceType("duplocloud:index/planCertificates:PlanCertificates")]
     public partial class PlanCertificates : global::Pulumi.CustomResource
     {
         /// <summary>

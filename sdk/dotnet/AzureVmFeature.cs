@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.AzureVmFeature` manages an Azure VM Feature in Duplo.
@@ -56,7 +57,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/azureVmFeature:AzureVmFeature vm_feature *TENANT_ID*/*VM_NAME*/*FEATURE_NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/azureVmFeature:AzureVmFeature")]
+    [PulumiResourceType("duplocloud:index/azureVmFeature:AzureVmFeature")]
     public partial class AzureVmFeature : global::Pulumi.CustomResource
     {
         /// <summary>

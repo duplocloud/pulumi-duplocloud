@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// Manage tenant expiry in DuploCloud
@@ -18,7 +19,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/tenantCleanupTimers:TenantCleanupTimers mytimers *TENANT_ID*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/tenantCleanupTimers:TenantCleanupTimers")]
+    [PulumiResourceType("duplocloud:index/tenantCleanupTimers:TenantCleanupTimers")]
     public partial class TenantCleanupTimers : global::Pulumi.CustomResource
     {
         /// <summary>

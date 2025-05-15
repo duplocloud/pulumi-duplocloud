@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.K8Ingress` manages a kubernetes Ingress in a Duplo tenant.
@@ -26,7 +27,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/k8Ingress:K8Ingress ingress v3/subscriptions/*TENANT_ID*/k8s/ingress/*NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/k8Ingress:K8Ingress")]
+    [PulumiResourceType("duplocloud:index/k8Ingress:K8Ingress")]
     public partial class K8Ingress : global::Pulumi.CustomResource
     {
         /// <summary>

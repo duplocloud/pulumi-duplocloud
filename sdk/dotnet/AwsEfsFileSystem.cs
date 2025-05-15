@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.AwsEfsFileSystem` Provides an Elastic File System (EFS) File System resource in DuploCloud.
@@ -55,7 +56,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/awsEfsFileSystem:AwsEfsFileSystem efs *TENANT_ID*/*EFS_ID*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/awsEfsFileSystem:AwsEfsFileSystem")]
+    [PulumiResourceType("duplocloud:index/awsEfsFileSystem:AwsEfsFileSystem")]
     public partial class AwsEfsFileSystem : global::Pulumi.CustomResource
     {
         /// <summary>

@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// Resource duplocloud.S3BucketReplication is dependent on duplocloud_s3_bucket. This resource sets replication rules for source bucket
@@ -26,7 +27,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/s3BucketReplication:S3BucketReplication mybucket *TENANT_ID*/*SOURCEBUCKETNAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/s3BucketReplication:S3BucketReplication")]
+    [PulumiResourceType("duplocloud:index/s3BucketReplication:S3BucketReplication")]
     public partial class S3BucketReplication : global::Pulumi.CustomResource
     {
         /// <summary>

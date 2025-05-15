@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.AzureTenantKeyVaultSecret` manages a azure Key Vault secret in DuploCloud.
@@ -62,7 +63,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/azureTenantKeyVaultSecret:AzureTenantKeyVaultSecret kv_secret *TENANT_ID*/*VAULT_NAME*/*SECRET_NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/azureTenantKeyVaultSecret:AzureTenantKeyVaultSecret")]
+    [PulumiResourceType("duplocloud:index/azureTenantKeyVaultSecret:AzureTenantKeyVaultSecret")]
     public partial class AzureTenantKeyVaultSecret : global::Pulumi.CustomResource
     {
         /// <summary>

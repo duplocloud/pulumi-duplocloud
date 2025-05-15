@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.AzureLogAnalyticsWorkspace` manages an Azure Log Analytics Workspace in Duplo.
@@ -46,7 +47,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/azureLogAnalyticsWorkspace:AzureLogAnalyticsWorkspace log_analytics_workspace *INFRA_NAME*/*NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/azureLogAnalyticsWorkspace:AzureLogAnalyticsWorkspace")]
+    [PulumiResourceType("duplocloud:index/azureLogAnalyticsWorkspace:AzureLogAnalyticsWorkspace")]
     public partial class AzureLogAnalyticsWorkspace : global::Pulumi.CustomResource
     {
         [Output("azureId")]

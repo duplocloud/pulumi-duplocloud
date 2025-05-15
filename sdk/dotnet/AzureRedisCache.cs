@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.AzureRedisCache` manages an Azure redis cache in Duplo.
@@ -57,7 +58,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/azureRedisCache:AzureRedisCache myRedisCache *TENANT_ID*/*SHORT_NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/azureRedisCache:AzureRedisCache")]
+    [PulumiResourceType("duplocloud:index/azureRedisCache:AzureRedisCache")]
     public partial class AzureRedisCache : global::Pulumi.CustomResource
     {
         /// <summary>

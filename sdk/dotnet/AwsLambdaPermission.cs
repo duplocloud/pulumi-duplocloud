@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.AwsLambdaPermission` manages an AWS lambda permissions in Duplo.
@@ -71,7 +72,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/awsLambdaPermission:AwsLambdaPermission permission *TENANT_ID*/*SHORT_NAME*/*STATEMENT_ID*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/awsLambdaPermission:AwsLambdaPermission")]
+    [PulumiResourceType("duplocloud:index/awsLambdaPermission:AwsLambdaPermission")]
     public partial class AwsLambdaPermission : global::Pulumi.CustomResource
     {
         /// <summary>

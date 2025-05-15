@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.AzureAvailabilitySet` manages logical groupings of VMs that enhance reliability by placing VMs in different fault domains to minimize correlated failures, offering improved VM-to-VM latency and high availability, with no extra cost beyond the VM instances themselves, though they may still be affected by shared infrastructure failures.
@@ -54,7 +55,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/azureAvailabilitySet:AzureAvailabilitySet this *TENANT_ID*/availability-set/*NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/azureAvailabilitySet:AzureAvailabilitySet")]
+    [PulumiResourceType("duplocloud:index/azureAvailabilitySet:AzureAvailabilitySet")]
     public partial class AzureAvailabilitySet : global::Pulumi.CustomResource
     {
         [Output("availabilitySetId")]

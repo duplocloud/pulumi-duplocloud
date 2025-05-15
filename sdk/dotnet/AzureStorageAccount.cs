@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.AzureStorageAccount` manages an Azure storage account in Duplo.
@@ -51,7 +52,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/azureStorageAccount:AzureStorageAccount mystorageaccount *TENANT_ID*/*SHORT_NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/azureStorageAccount:AzureStorageAccount")]
+    [PulumiResourceType("duplocloud:index/azureStorageAccount:AzureStorageAccount")]
     public partial class AzureStorageAccount : global::Pulumi.CustomResource
     {
         /// <summary>

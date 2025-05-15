@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.AzureVmMaintenanceConfiguration` manages maintenance window to an azure vm
@@ -57,7 +58,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/azureVmMaintenanceConfiguration:AzureVmMaintenanceConfiguration maintenance *TENANT_ID*/*VM_NAME*/maintenance-configuration
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/azureVmMaintenanceConfiguration:AzureVmMaintenanceConfiguration")]
+    [PulumiResourceType("duplocloud:index/azureVmMaintenanceConfiguration:AzureVmMaintenanceConfiguration")]
     public partial class AzureVmMaintenanceConfiguration : global::Pulumi.CustomResource
     {
         /// <summary>

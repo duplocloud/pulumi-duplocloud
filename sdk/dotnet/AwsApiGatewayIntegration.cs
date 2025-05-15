@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.AwsApiGatewayIntegration` manages an aws api gateway integration in Duplo.
@@ -52,7 +53,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/awsApiGatewayIntegration:AwsApiGatewayIntegration myApiGateway *TENANT_ID*/*FRIENDLY_NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/awsApiGatewayIntegration:AwsApiGatewayIntegration")]
+    [PulumiResourceType("duplocloud:index/awsApiGatewayIntegration:AwsApiGatewayIntegration")]
     public partial class AwsApiGatewayIntegration : global::Pulumi.CustomResource
     {
         /// <summary>

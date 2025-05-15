@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// ## Example Usage
@@ -229,7 +230,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/ecacheInstance:EcacheInstance mycluster v2/subscriptions/*TENANT_ID*/ECacheDBInstance/*SHORT_NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/ecacheInstance:EcacheInstance")]
+    [PulumiResourceType("duplocloud:index/ecacheInstance:EcacheInstance")]
     public partial class EcacheInstance : global::Pulumi.CustomResource
     {
         /// <summary>

@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.EcsTaskDefinition` manages a Amazon ECS task definition in Duplo.
@@ -26,7 +27,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/ecsTaskDefinition:EcsTaskDefinition myservice subscriptions/*TENANT_ID*/EcsTaskDefinition/*ARN*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/ecsTaskDefinition:EcsTaskDefinition")]
+    [PulumiResourceType("duplocloud:index/ecsTaskDefinition:EcsTaskDefinition")]
     public partial class EcsTaskDefinition : global::Pulumi.CustomResource
     {
         /// <summary>

@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.AzureSqlManagedDatabase` manages an azure sql managed database in Duplo.
@@ -58,7 +59,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/azureSqlManagedDatabase:AzureSqlManagedDatabase myManagedSQLDatabase *TENANT_ID*/*SHORT_NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/azureSqlManagedDatabase:AzureSqlManagedDatabase")]
+    [PulumiResourceType("duplocloud:index/azureSqlManagedDatabase:AzureSqlManagedDatabase")]
     public partial class AzureSqlManagedDatabase : global::Pulumi.CustomResource
     {
         /// <summary>

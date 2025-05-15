@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.AwsSqsQueue` manages a SQS queue in Duplo.
@@ -73,7 +74,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/awsSqsQueue:AwsSqsQueue sqs_queue *TENANT_ID*/*URL*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/awsSqsQueue:AwsSqsQueue")]
+    [PulumiResourceType("duplocloud:index/awsSqsQueue:AwsSqsQueue")]
     public partial class AwsSqsQueue : global::Pulumi.CustomResource
     {
         /// <summary>

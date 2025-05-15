@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.TenantSecret` manages a tenant secret in Duplo.
@@ -57,7 +58,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/tenantSecret:TenantSecret myapp TENANT_ID/SECRET_NAME
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/tenantSecret:TenantSecret")]
+    [PulumiResourceType("duplocloud:index/tenantSecret:TenantSecret")]
     public partial class TenantSecret : global::Pulumi.CustomResource
     {
         /// <summary>

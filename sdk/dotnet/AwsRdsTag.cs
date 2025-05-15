@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.AwsRdsTag` manages an AWS RDS tag in Duplo.
@@ -80,7 +81,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/awsRdsTag:AwsRdsTag tag1 *TENANT_ID*/*RESOURCE_TYPE*/*RESOURCE_ID*/*TAG_KEY*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/awsRdsTag:AwsRdsTag")]
+    [PulumiResourceType("duplocloud:index/awsRdsTag:AwsRdsTag")]
     public partial class AwsRdsTag : global::Pulumi.CustomResource
     {
         /// <summary>

@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.AwsLoadBalancerListener` manages an AWS application load balancer listener in Duplo.
@@ -65,7 +66,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/awsLoadBalancerListener:AwsLoadBalancerListener myalb-listener *TENANT_ID*/*LB_NAME*/*LISTENER_ARN*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/awsLoadBalancerListener:AwsLoadBalancerListener")]
+    [PulumiResourceType("duplocloud:index/awsLoadBalancerListener:AwsLoadBalancerListener")]
     public partial class AwsLoadBalancerListener : global::Pulumi.CustomResource
     {
         /// <summary>

@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud_gcp_k8_node_pools` manages a GCP Node Pool in Duplo.
@@ -26,7 +27,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/gcpNodePool:GcpNodePool node_pool *TENANT_ID*/*FULLNAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/gcpNodePool:GcpNodePool")]
+    [PulumiResourceType("duplocloud:index/gcpNodePool:GcpNodePool")]
     public partial class GcpNodePool : global::Pulumi.CustomResource
     {
         [Output("accelerators")]

@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.TenantAccessGrant` manages a tenant access grant in Duplo.
@@ -48,7 +49,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/tenantAccessGrant:TenantAccessGrant dynamodbGrant *GRANEE_TENANT_ID*/*GRANTOR_TENANT_ID*/*GRANTED_AREA*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/tenantAccessGrant:TenantAccessGrant")]
+    [PulumiResourceType("duplocloud:index/tenantAccessGrant:TenantAccessGrant")]
     public partial class TenantAccessGrant : global::Pulumi.CustomResource
     {
         /// <summary>

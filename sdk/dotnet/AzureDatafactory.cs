@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.AzureDatafactory` manages datafactory in Duplo.
@@ -50,7 +51,7 @@ namespace Pulumi.Duplocloud
     /// 
     /// import duplocloud_azure_datafactory.df *TENANT_ID*/datafactory/*NAME*
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/azureDatafactory:AzureDatafactory")]
+    [PulumiResourceType("duplocloud:index/azureDatafactory:AzureDatafactory")]
     public partial class AzureDatafactory : global::Pulumi.CustomResource
     {
         [Output("etag")]

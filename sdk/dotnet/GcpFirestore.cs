@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.GcpFirestore` manages a GCP firestore in Duplo.
@@ -57,7 +58,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/gcpFirestore:GcpFirestore firestore-app *TENANT_ID*/*NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/gcpFirestore:GcpFirestore")]
+    [PulumiResourceType("duplocloud:index/gcpFirestore:GcpFirestore")]
     public partial class GcpFirestore : global::Pulumi.CustomResource
     {
         [Output("appEngineIntegrationMode")]

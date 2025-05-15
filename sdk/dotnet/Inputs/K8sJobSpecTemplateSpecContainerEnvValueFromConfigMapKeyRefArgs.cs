@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud.Inputs
+namespace DuploCloud.Pulumi.Inputs
 {
 
     public sealed class K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefArgs : global::Pulumi.ResourceArgs

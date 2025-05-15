@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// ## Example Usage
@@ -181,7 +182,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/awsHost:AwsHost myhost v2/subscriptions/*TENANT_ID*/NativeHostV2/*INSTANCE_ID*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/awsHost:AwsHost")]
+    [PulumiResourceType("duplocloud:index/awsHost:AwsHost")]
     public partial class AwsHost : global::Pulumi.CustomResource
     {
         /// <summary>

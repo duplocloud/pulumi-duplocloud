@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.K8PersistentVolumeClaim` manages a kubernetes persistent volume claim in a Duplo tenant.
@@ -77,7 +78,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/k8PersistentVolumeClaim:K8PersistentVolumeClaim pvc v3/subscriptions/*TENANT_ID*/k8s/pvc/*NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/k8PersistentVolumeClaim:K8PersistentVolumeClaim")]
+    [PulumiResourceType("duplocloud:index/k8PersistentVolumeClaim:K8PersistentVolumeClaim")]
     public partial class K8PersistentVolumeClaim : global::Pulumi.CustomResource
     {
         /// <summary>

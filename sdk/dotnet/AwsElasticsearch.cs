@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.AwsElasticsearch` manages an AWS ElasticSearch instance in Duplo.
@@ -62,7 +63,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/awsElasticsearch:AwsElasticsearch mycluster *TENANT_ID*/*SHORT_NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/awsElasticsearch:AwsElasticsearch")]
+    [PulumiResourceType("duplocloud:index/awsElasticsearch:AwsElasticsearch")]
     public partial class AwsElasticsearch : global::Pulumi.CustomResource
     {
         [Output("accessPolicies")]

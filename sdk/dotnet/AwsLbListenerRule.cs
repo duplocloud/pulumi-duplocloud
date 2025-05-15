@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.AwsLbListenerRule` manages an AWS Listener Rule in Duplo.
@@ -216,7 +217,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/awsLbListenerRule:AwsLbListenerRule listener_rule *TENANT_ID*/*RULE_ARN*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/awsLbListenerRule:AwsLbListenerRule")]
+    [PulumiResourceType("duplocloud:index/awsLbListenerRule:AwsLbListenerRule")]
     public partial class AwsLbListenerRule : global::Pulumi.CustomResource
     {
         [Output("actions")]

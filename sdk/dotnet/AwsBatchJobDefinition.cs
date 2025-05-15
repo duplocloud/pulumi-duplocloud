@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.AwsBatchJobDefinition` manages an aws batch Job Definition in Duplo.
@@ -92,7 +93,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/awsBatchJobDefinition:AwsBatchJobDefinition jd *TENANT_ID*/*NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/awsBatchJobDefinition:AwsBatchJobDefinition")]
+    [PulumiResourceType("duplocloud:index/awsBatchJobDefinition:AwsBatchJobDefinition")]
     public partial class AwsBatchJobDefinition : global::Pulumi.CustomResource
     {
         /// <summary>

@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.AwsDynamodbTableV2` manages an AWS dynamodb table in Duplo.
@@ -26,7 +27,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/awsDynamodbTableV2:AwsDynamodbTableV2 myDynamodbTable *TENANT_ID*/*NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/awsDynamodbTableV2:AwsDynamodbTableV2")]
+    [PulumiResourceType("duplocloud:index/awsDynamodbTableV2:AwsDynamodbTableV2")]
     public partial class AwsDynamodbTableV2 : global::Pulumi.CustomResource
     {
         /// <summary>

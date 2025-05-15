@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.PlanImages` manages the list of images avaialble to a plan in Duplo.
@@ -20,7 +21,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/planImages:PlanImages myplan PLAN_ID/WAF_NAME
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/planImages:PlanImages")]
+    [PulumiResourceType("duplocloud:index/planImages:PlanImages")]
     public partial class PlanImages : global::Pulumi.CustomResource
     {
         /// <summary>

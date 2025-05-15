@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.PlanConfigs` manages the list of configs avaialble to a plan in Duplo.
@@ -20,7 +21,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/planConfigs:PlanConfigs myplan PLAN_ID
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/planConfigs:PlanConfigs")]
+    [PulumiResourceType("duplocloud:index/planConfigs:PlanConfigs")]
     public partial class PlanConfigs : global::Pulumi.CustomResource
     {
         /// <summary>

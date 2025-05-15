@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.AwsTimestreamwriteDatabase` manages an aws Timestream database resource in Duplo.
@@ -53,7 +54,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/awsTimestreamwriteDatabase:AwsTimestreamwriteDatabase timestreamwrite_database *TENANT_ID*/*NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/awsTimestreamwriteDatabase:AwsTimestreamwriteDatabase")]
+    [PulumiResourceType("duplocloud:index/awsTimestreamwriteDatabase:AwsTimestreamwriteDatabase")]
     public partial class AwsTimestreamwriteDatabase : global::Pulumi.CustomResource
     {
         /// <summary>

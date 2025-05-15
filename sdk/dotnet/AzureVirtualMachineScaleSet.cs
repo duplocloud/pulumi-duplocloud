@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.AzureVirtualMachineScaleSet` manages an azure virtual machine scale set in Duplo.
@@ -90,7 +91,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/azureVirtualMachineScaleSet:AzureVirtualMachineScaleSet myvmss *TENANT_ID*/*SHORT_NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/azureVirtualMachineScaleSet:AzureVirtualMachineScaleSet")]
+    [PulumiResourceType("duplocloud:index/azureVirtualMachineScaleSet:AzureVirtualMachineScaleSet")]
     public partial class AzureVirtualMachineScaleSet : global::Pulumi.CustomResource
     {
         /// <summary>

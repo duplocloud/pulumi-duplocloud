@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Duplocloud
+namespace DuploCloud.Pulumi
 {
     /// <summary>
     /// `duplocloud.AsgProfile` manages a ASG Profile in Duplo.
@@ -26,7 +27,7 @@ namespace Pulumi.Duplocloud
     /// $ pulumi import duplocloud:index/asgProfile:AsgProfile myAsgProfile *TENANT_ID*/*FRIENDLY_NAME*
     /// ```
     /// </summary>
-    [DuplocloudResourceType("duplocloud:index/asgProfile:AsgProfile")]
+    [PulumiResourceType("duplocloud:index/asgProfile:AsgProfile")]
     public partial class AsgProfile : global::Pulumi.CustomResource
     {
         /// <summary>
