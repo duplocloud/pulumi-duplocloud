@@ -129,7 +129,18 @@ func Provider() tfbridge.ProviderInfo {
 		// category/cloud tag helps with categorizing the package in the Pulumi Registry.
 		// For all available categories, see `Keywords` in
 		// https://www.pulumi.com/docs/guides/pulumi-packages/schema/#package.
-		Keywords:   []string{"pulumi", "duplocloud", "category/cloud", "infrastructure", "kubernetes", "containers", "devops", "aws", "azure", "gcp"},
+		Keywords: []string{
+			"pulumi",
+			"duplocloud",
+			"category/cloud",
+			"infrastructure",
+			"kubernetes",
+			"containers",
+			"devops",
+			"aws",
+			"azure",
+			"gcp",
+		},
 		License:    "Apache-2.0",
 		Homepage:   "https://duplocloud.com",
 		Repository: "https://github.com/duplocloud/pulumi-duplocloud",
