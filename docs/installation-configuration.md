@@ -15,10 +15,12 @@ The DuploCloud provider is available as a package in all Pulumi languages:
 * JavaScript/TypeScript: [`@duplocloud/pulumi`](https://www.npmjs.com/package/@duplocloud/pulumi)
 * Python: [`pulumi-duplocloud`](https://pypi.org/project/pulumi-duplocloud/)
 * Go: [`github.com/duplocloud/pulumi-duplocloud/sdk/go/duplocloud`](https://github.com/duplocloud/pulumi-duplocloud)
+* .NET: [`DuploCloud.Pulumi`](https://www.nuget.org/packages/DuploCloud.Pulumi/)
 
 ### Language-specific Installation
 
-{{< chooser language "javascript,python,go" >}}
+{{< chooser language "javascript,python,go,csharp" >}}
+
 {{% choosable language javascript %}}
 ```bash
 npm install @duplocloud/pulumi
@@ -36,6 +38,14 @@ pip install pulumi-duplocloud
 go get github.com/duplocloud/pulumi-duplocloud/sdk/go/duplocloud
 ```
 {{% /choosable %}}
+
+{{% choosable language csharp %}}
+```bash
+dotnet add package DuploCloud.Pulumi
+```
+{{% /choosable %}}
+
+{{< /chooser >}}
 
 ### Provider Binary
 
