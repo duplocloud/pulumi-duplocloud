@@ -1,2 +1,2 @@
-// A Pulumi package for creating and managing duplocloud cloud resources.
+// A Pulumi provider for creating and managing DuploCloud infrastructure.
 package duplocloud
