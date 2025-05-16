@@ -4,7 +4,12 @@ The DuploCloud Resource Provider lets you manage [DuploCloud](https://duplocloud
 
 ## Installing
 
-This package is available for several languages/platforms:
+The DuploCloud provider is available as a package in all Pulumi languages:
+
+* JavaScript/TypeScript: [`@duplocloud/pulumi`](https://www.npmjs.com/package/@duplocloud/pulumi)
+* Python: [`pulumi-duplocloud`](https://pypi.org/project/pulumi-duplocloud/)
+* Go: [`github.com/duplocloud/pulumi-duplocloud/sdk/go/duplocloud`](https://github.com/duplocloud/pulumi-duplocloud)
+* .NET: [`DuploCloud.Pulumi`](https://www.nuget.org/packages/DuploCloud.Pulumi/)
 
 ### Node.js (JavaScript/TypeScript)
 
