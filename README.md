@@ -36,6 +36,27 @@ To use from Go, use `go get` to grab the latest version of the library:
 go get github.com/duplocloud/pulumi-duplocloud/sdk/go/...
 ```
 
+### C#
+
+To use from .NET, install using `dotnet add package`:
+
+```bash
+dotnet add package DuploCloud.Pulumi
+```
+
+### Provider Binary
+
+For local development or specific version requirements, you can install the provider plugin directly:
+
+```bash
+pulumi plugin install resource duplocloud --server github://api.github.com/duplocloud/pulumi-duplocloud
+```
+
+To install a specific version:
+
+```bash
+pulumi plugin install resource duplocloud v0.0.1 --server github://api.github.com/duplocloud/pulumi-duplocloud
+```
 
 ## Configuration
 
