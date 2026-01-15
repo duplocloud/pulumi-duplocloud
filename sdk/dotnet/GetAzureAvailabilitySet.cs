@@ -21,11 +21,11 @@ namespace DuploCloud.Pulumi
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Duplocloud = DuploCloud.Pulumi;
+        /// using Pulumi = Pulumi.Pulumi;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var st = Duplocloud.GetAzureAvailabilitySet.Invoke(new()
+        ///     var st = Pulumi.GetAzureAvailabilitySet.Invoke(new()
         ///     {
         ///         TenantId = "tenant id",
         ///         Name = "availability-set name",
@@ -53,11 +53,11 @@ namespace DuploCloud.Pulumi
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Duplocloud = DuploCloud.Pulumi;
+        /// using Pulumi = Pulumi.Pulumi;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var st = Duplocloud.GetAzureAvailabilitySet.Invoke(new()
+        ///     var st = Pulumi.GetAzureAvailabilitySet.Invoke(new()
         ///     {
         ///         TenantId = "tenant id",
         ///         Name = "availability-set name",
@@ -85,11 +85,11 @@ namespace DuploCloud.Pulumi
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Duplocloud = DuploCloud.Pulumi;
+        /// using Pulumi = Pulumi.Pulumi;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var st = Duplocloud.GetAzureAvailabilitySet.Invoke(new()
+        ///     var st = Pulumi.GetAzureAvailabilitySet.Invoke(new()
         ///     {
         ///         TenantId = "tenant id",
         ///         Name = "availability-set name",

@@ -66,6 +66,9 @@ namespace DuploCloud.Pulumi
         [Output("inferenceAccelerators")]
         public Output<ImmutableArray<Outputs.EcsTaskDefinitionInferenceAccelerator>> InferenceAccelerators { get; private set; } = null!;
 
+        /// <summary>
+        /// valid values are `host`, `none`, `task`
+        /// </summary>
         [Output("ipcMode")]
         public Output<string?> IpcMode { get; private set; } = null!;
 
@@ -73,11 +76,14 @@ namespace DuploCloud.Pulumi
         public Output<string?> Memory { get; private set; } = null!;
 
         /// <summary>
-        /// Defaults to `awsvpc`.
+        /// Valid values are `bridge`,`host`,`awsvpc`,`none` Defaults to `awsvpc`.
         /// </summary>
         [Output("networkMode")]
         public Output<string?> NetworkMode { get; private set; } = null!;
 
+        /// <summary>
+        /// Valida values are `host`, `task`
+        /// </summary>
         [Output("pidMode")]
         public Output<string?> PidMode { get; private set; } = null!;
 
@@ -85,7 +91,7 @@ namespace DuploCloud.Pulumi
         public Output<ImmutableArray<Outputs.EcsTaskDefinitionPlacementConstraint>> PlacementConstraints { get; private set; } = null!;
 
         [Output("preventTfDestroy")]
-        public Output<bool?> PreventTfDestroy { get; private set; } = null!;
+        public Output<string?> PreventTfDestroy { get; private set; } = null!;
 
         [Output("proxyConfiguration")]
         public Output<Outputs.EcsTaskDefinitionProxyConfiguration?> ProxyConfiguration { get; private set; } = null!;
@@ -94,7 +100,7 @@ namespace DuploCloud.Pulumi
         public Output<ImmutableArray<Outputs.EcsTaskDefinitionRequiresAttribute>> RequiresAttributes { get; private set; } = null!;
 
         /// <summary>
-        /// Requires compatibilities for running jobs. Valid values are [FARGATE]
+        /// Requires compatibilities for running jobs. Such as EC2, FARGATE, EXTERNAL. It varies based on network mode and how AWS maps it. `FARGATE` should be used if network mode is set to `awsvpc`.
         /// </summary>
         [Output("requiresCompatibilities")]
         public Output<ImmutableArray<string>> RequiresCompatibilities { get; private set; } = null!;
@@ -130,7 +136,7 @@ namespace DuploCloud.Pulumi
         public Output<string> TenantId { get; private set; } = null!;
 
         /// <summary>
-        /// Defaults to `[]`.
+        /// A JSON-encoded string containing a list of volumes that are used by the ECS task definition. Defaults to `[]`.
         /// </summary>
         [Output("volumes")]
         public Output<string?> Volumes { get; private set; } = null!;
@@ -202,6 +208,9 @@ namespace DuploCloud.Pulumi
             set => _inferenceAccelerators = value;
         }
 
+        /// <summary>
+        /// valid values are `host`, `none`, `task`
+        /// </summary>
         [Input("ipcMode")]
         public Input<string>? IpcMode { get; set; }
 
@@ -209,11 +218,14 @@ namespace DuploCloud.Pulumi
         public Input<string>? Memory { get; set; }
 
         /// <summary>
-        /// Defaults to `awsvpc`.
+        /// Valid values are `bridge`,`host`,`awsvpc`,`none` Defaults to `awsvpc`.
         /// </summary>
         [Input("networkMode")]
         public Input<string>? NetworkMode { get; set; }
 
+        /// <summary>
+        /// Valida values are `host`, `task`
+        /// </summary>
         [Input("pidMode")]
         public Input<string>? PidMode { get; set; }
 
@@ -226,7 +238,7 @@ namespace DuploCloud.Pulumi
         }
 
         [Input("preventTfDestroy")]
-        public Input<bool>? PreventTfDestroy { get; set; }
+        public Input<string>? PreventTfDestroy { get; set; }
 
         [Input("proxyConfiguration")]
         public Input<Inputs.EcsTaskDefinitionProxyConfigurationArgs>? ProxyConfiguration { get; set; }
@@ -243,7 +255,7 @@ namespace DuploCloud.Pulumi
         private InputList<string>? _requiresCompatibilities;
 
         /// <summary>
-        /// Requires compatibilities for running jobs. Valid values are [FARGATE]
+        /// Requires compatibilities for running jobs. Such as EC2, FARGATE, EXTERNAL. It varies based on network mode and how AWS maps it. `FARGATE` should be used if network mode is set to `awsvpc`.
         /// </summary>
         public InputList<string> RequiresCompatibilities
         {
@@ -264,7 +276,7 @@ namespace DuploCloud.Pulumi
         public Input<string> TenantId { get; set; } = null!;
 
         /// <summary>
-        /// Defaults to `[]`.
+        /// A JSON-encoded string containing a list of volumes that are used by the ECS task definition. Defaults to `[]`.
         /// </summary>
         [Input("volumes")]
         public Input<string>? Volumes { get; set; }
@@ -318,6 +330,9 @@ namespace DuploCloud.Pulumi
             set => _inferenceAccelerators = value;
         }
 
+        /// <summary>
+        /// valid values are `host`, `none`, `task`
+        /// </summary>
         [Input("ipcMode")]
         public Input<string>? IpcMode { get; set; }
 
@@ -325,11 +340,14 @@ namespace DuploCloud.Pulumi
         public Input<string>? Memory { get; set; }
 
         /// <summary>
-        /// Defaults to `awsvpc`.
+        /// Valid values are `bridge`,`host`,`awsvpc`,`none` Defaults to `awsvpc`.
         /// </summary>
         [Input("networkMode")]
         public Input<string>? NetworkMode { get; set; }
 
+        /// <summary>
+        /// Valida values are `host`, `task`
+        /// </summary>
         [Input("pidMode")]
         public Input<string>? PidMode { get; set; }
 
@@ -342,7 +360,7 @@ namespace DuploCloud.Pulumi
         }
 
         [Input("preventTfDestroy")]
-        public Input<bool>? PreventTfDestroy { get; set; }
+        public Input<string>? PreventTfDestroy { get; set; }
 
         [Input("proxyConfiguration")]
         public Input<Inputs.EcsTaskDefinitionProxyConfigurationGetArgs>? ProxyConfiguration { get; set; }
@@ -359,7 +377,7 @@ namespace DuploCloud.Pulumi
         private InputList<string>? _requiresCompatibilities;
 
         /// <summary>
-        /// Requires compatibilities for running jobs. Valid values are [FARGATE]
+        /// Requires compatibilities for running jobs. Such as EC2, FARGATE, EXTERNAL. It varies based on network mode and how AWS maps it. `FARGATE` should be used if network mode is set to `awsvpc`.
         /// </summary>
         public InputList<string> RequiresCompatibilities
         {
@@ -403,7 +421,7 @@ namespace DuploCloud.Pulumi
         public Input<string>? TenantId { get; set; }
 
         /// <summary>
-        /// Defaults to `[]`.
+        /// A JSON-encoded string containing a list of volumes that are used by the ECS task definition. Defaults to `[]`.
         /// </summary>
         [Input("volumes")]
         public Input<string>? Volumes { get; set; }

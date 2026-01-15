@@ -31,6 +31,12 @@ namespace DuploCloud.Pulumi
         [Input("tenantId", required: true)]
         public string TenantId { get; set; } = null!;
 
+        /// <summary>
+        /// Any of the existing version of the launch template
+        /// </summary>
+        [Input("version")]
+        public string? Version { get; set; }
+
         public GetAwsLaunchTemplateArgs()
         {
         }
@@ -44,6 +50,12 @@ namespace DuploCloud.Pulumi
 
         [Input("tenantId", required: true)]
         public Input<string> TenantId { get; set; } = null!;
+
+        /// <summary>
+        /// Any of the existing version of the launch template
+        /// </summary>
+        [Input("version")]
+        public Input<string>? Version { get; set; }
 
         public GetAwsLaunchTemplateInvokeArgs()
         {

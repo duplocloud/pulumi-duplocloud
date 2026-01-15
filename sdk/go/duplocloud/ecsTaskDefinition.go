@@ -42,16 +42,18 @@ type EcsTaskDefinition struct {
 	// The name of the task definition to create.
 	FullFamilyName        pulumi.StringOutput                              `pulumi:"fullFamilyName"`
 	InferenceAccelerators EcsTaskDefinitionInferenceAcceleratorArrayOutput `pulumi:"inferenceAccelerators"`
-	IpcMode               pulumi.StringPtrOutput                           `pulumi:"ipcMode"`
-	Memory                pulumi.StringPtrOutput                           `pulumi:"memory"`
-	// Defaults to `awsvpc`.
-	NetworkMode          pulumi.StringPtrOutput                          `pulumi:"networkMode"`
+	// valid values are `host`, `none`, `task`
+	IpcMode pulumi.StringPtrOutput `pulumi:"ipcMode"`
+	Memory  pulumi.StringPtrOutput `pulumi:"memory"`
+	// Valid values are `bridge`,`host`,`awsvpc`,`none` Defaults to `awsvpc`.
+	NetworkMode pulumi.StringPtrOutput `pulumi:"networkMode"`
+	// Valida values are `host`, `task`
 	PidMode              pulumi.StringPtrOutput                          `pulumi:"pidMode"`
 	PlacementConstraints EcsTaskDefinitionPlacementConstraintArrayOutput `pulumi:"placementConstraints"`
-	PreventTfDestroy     pulumi.BoolPtrOutput                            `pulumi:"preventTfDestroy"`
+	PreventTfDestroy     pulumi.StringPtrOutput                          `pulumi:"preventTfDestroy"`
 	ProxyConfiguration   EcsTaskDefinitionProxyConfigurationPtrOutput    `pulumi:"proxyConfiguration"`
 	RequiresAttributes   EcsTaskDefinitionRequiresAttributeArrayOutput   `pulumi:"requiresAttributes"`
-	// Requires compatibilities for running jobs. Valid values are [FARGATE]
+	// Requires compatibilities for running jobs. Such as EC2, FARGATE, EXTERNAL. It varies based on network mode and how AWS maps it. `FARGATE` should be used if network mode is set to `awsvpc`.
 	RequiresCompatibilities pulumi.StringArrayOutput `pulumi:"requiresCompatibilities"`
 	// The current revision of the task definition.
 	Revision pulumi.IntOutput `pulumi:"revision"`
@@ -63,7 +65,7 @@ type EcsTaskDefinition struct {
 	TaskRoleArn pulumi.StringOutput             `pulumi:"taskRoleArn"`
 	// The GUID of the tenant that the task definition will be created in.
 	TenantId pulumi.StringOutput `pulumi:"tenantId"`
-	// Defaults to `[]`.
+	// A JSON-encoded string containing a list of volumes that are used by the ECS task definition. Defaults to `[]`.
 	Volumes pulumi.StringPtrOutput `pulumi:"volumes"`
 }
 
@@ -118,16 +120,18 @@ type ecsTaskDefinitionState struct {
 	// The name of the task definition to create.
 	FullFamilyName        *string                                 `pulumi:"fullFamilyName"`
 	InferenceAccelerators []EcsTaskDefinitionInferenceAccelerator `pulumi:"inferenceAccelerators"`
-	IpcMode               *string                                 `pulumi:"ipcMode"`
-	Memory                *string                                 `pulumi:"memory"`
-	// Defaults to `awsvpc`.
-	NetworkMode          *string                                `pulumi:"networkMode"`
+	// valid values are `host`, `none`, `task`
+	IpcMode *string `pulumi:"ipcMode"`
+	Memory  *string `pulumi:"memory"`
+	// Valid values are `bridge`,`host`,`awsvpc`,`none` Defaults to `awsvpc`.
+	NetworkMode *string `pulumi:"networkMode"`
+	// Valida values are `host`, `task`
 	PidMode              *string                                `pulumi:"pidMode"`
 	PlacementConstraints []EcsTaskDefinitionPlacementConstraint `pulumi:"placementConstraints"`
-	PreventTfDestroy     *bool                                  `pulumi:"preventTfDestroy"`
+	PreventTfDestroy     *string                                `pulumi:"preventTfDestroy"`
 	ProxyConfiguration   *EcsTaskDefinitionProxyConfiguration   `pulumi:"proxyConfiguration"`
 	RequiresAttributes   []EcsTaskDefinitionRequiresAttribute   `pulumi:"requiresAttributes"`
-	// Requires compatibilities for running jobs. Valid values are [FARGATE]
+	// Requires compatibilities for running jobs. Such as EC2, FARGATE, EXTERNAL. It varies based on network mode and how AWS maps it. `FARGATE` should be used if network mode is set to `awsvpc`.
 	RequiresCompatibilities []string `pulumi:"requiresCompatibilities"`
 	// The current revision of the task definition.
 	Revision *int `pulumi:"revision"`
@@ -139,7 +143,7 @@ type ecsTaskDefinitionState struct {
 	TaskRoleArn *string                `pulumi:"taskRoleArn"`
 	// The GUID of the tenant that the task definition will be created in.
 	TenantId *string `pulumi:"tenantId"`
-	// Defaults to `[]`.
+	// A JSON-encoded string containing a list of volumes that are used by the ECS task definition. Defaults to `[]`.
 	Volumes *string `pulumi:"volumes"`
 }
 
@@ -156,16 +160,18 @@ type EcsTaskDefinitionState struct {
 	// The name of the task definition to create.
 	FullFamilyName        pulumi.StringPtrInput
 	InferenceAccelerators EcsTaskDefinitionInferenceAcceleratorArrayInput
-	IpcMode               pulumi.StringPtrInput
-	Memory                pulumi.StringPtrInput
-	// Defaults to `awsvpc`.
-	NetworkMode          pulumi.StringPtrInput
+	// valid values are `host`, `none`, `task`
+	IpcMode pulumi.StringPtrInput
+	Memory  pulumi.StringPtrInput
+	// Valid values are `bridge`,`host`,`awsvpc`,`none` Defaults to `awsvpc`.
+	NetworkMode pulumi.StringPtrInput
+	// Valida values are `host`, `task`
 	PidMode              pulumi.StringPtrInput
 	PlacementConstraints EcsTaskDefinitionPlacementConstraintArrayInput
-	PreventTfDestroy     pulumi.BoolPtrInput
+	PreventTfDestroy     pulumi.StringPtrInput
 	ProxyConfiguration   EcsTaskDefinitionProxyConfigurationPtrInput
 	RequiresAttributes   EcsTaskDefinitionRequiresAttributeArrayInput
-	// Requires compatibilities for running jobs. Valid values are [FARGATE]
+	// Requires compatibilities for running jobs. Such as EC2, FARGATE, EXTERNAL. It varies based on network mode and how AWS maps it. `FARGATE` should be used if network mode is set to `awsvpc`.
 	RequiresCompatibilities pulumi.StringArrayInput
 	// The current revision of the task definition.
 	Revision pulumi.IntPtrInput
@@ -177,7 +183,7 @@ type EcsTaskDefinitionState struct {
 	TaskRoleArn pulumi.StringPtrInput
 	// The GUID of the tenant that the task definition will be created in.
 	TenantId pulumi.StringPtrInput
-	// Defaults to `[]`.
+	// A JSON-encoded string containing a list of volumes that are used by the ECS task definition. Defaults to `[]`.
 	Volumes pulumi.StringPtrInput
 }
 
@@ -191,22 +197,24 @@ type ecsTaskDefinitionArgs struct {
 	// The name of the task definition to create.
 	Family                string                                  `pulumi:"family"`
 	InferenceAccelerators []EcsTaskDefinitionInferenceAccelerator `pulumi:"inferenceAccelerators"`
-	IpcMode               *string                                 `pulumi:"ipcMode"`
-	Memory                *string                                 `pulumi:"memory"`
-	// Defaults to `awsvpc`.
-	NetworkMode          *string                                `pulumi:"networkMode"`
+	// valid values are `host`, `none`, `task`
+	IpcMode *string `pulumi:"ipcMode"`
+	Memory  *string `pulumi:"memory"`
+	// Valid values are `bridge`,`host`,`awsvpc`,`none` Defaults to `awsvpc`.
+	NetworkMode *string `pulumi:"networkMode"`
+	// Valida values are `host`, `task`
 	PidMode              *string                                `pulumi:"pidMode"`
 	PlacementConstraints []EcsTaskDefinitionPlacementConstraint `pulumi:"placementConstraints"`
-	PreventTfDestroy     *bool                                  `pulumi:"preventTfDestroy"`
+	PreventTfDestroy     *string                                `pulumi:"preventTfDestroy"`
 	ProxyConfiguration   *EcsTaskDefinitionProxyConfiguration   `pulumi:"proxyConfiguration"`
 	RequiresAttributes   []EcsTaskDefinitionRequiresAttribute   `pulumi:"requiresAttributes"`
-	// Requires compatibilities for running jobs. Valid values are [FARGATE]
+	// Requires compatibilities for running jobs. Such as EC2, FARGATE, EXTERNAL. It varies based on network mode and how AWS maps it. `FARGATE` should be used if network mode is set to `awsvpc`.
 	RequiresCompatibilities []string `pulumi:"requiresCompatibilities"`
 	// Configuration block for runtime*platform that containers in your task may use. Required on ecs tasks that are hosted on Fargate.
 	RuntimePlatform *EcsTaskDefinitionRuntimePlatform `pulumi:"runtimePlatform"`
 	// The GUID of the tenant that the task definition will be created in.
 	TenantId string `pulumi:"tenantId"`
-	// Defaults to `[]`.
+	// A JSON-encoded string containing a list of volumes that are used by the ECS task definition. Defaults to `[]`.
 	Volumes *string `pulumi:"volumes"`
 }
 
@@ -217,22 +225,24 @@ type EcsTaskDefinitionArgs struct {
 	// The name of the task definition to create.
 	Family                pulumi.StringInput
 	InferenceAccelerators EcsTaskDefinitionInferenceAcceleratorArrayInput
-	IpcMode               pulumi.StringPtrInput
-	Memory                pulumi.StringPtrInput
-	// Defaults to `awsvpc`.
-	NetworkMode          pulumi.StringPtrInput
+	// valid values are `host`, `none`, `task`
+	IpcMode pulumi.StringPtrInput
+	Memory  pulumi.StringPtrInput
+	// Valid values are `bridge`,`host`,`awsvpc`,`none` Defaults to `awsvpc`.
+	NetworkMode pulumi.StringPtrInput
+	// Valida values are `host`, `task`
 	PidMode              pulumi.StringPtrInput
 	PlacementConstraints EcsTaskDefinitionPlacementConstraintArrayInput
-	PreventTfDestroy     pulumi.BoolPtrInput
+	PreventTfDestroy     pulumi.StringPtrInput
 	ProxyConfiguration   EcsTaskDefinitionProxyConfigurationPtrInput
 	RequiresAttributes   EcsTaskDefinitionRequiresAttributeArrayInput
-	// Requires compatibilities for running jobs. Valid values are [FARGATE]
+	// Requires compatibilities for running jobs. Such as EC2, FARGATE, EXTERNAL. It varies based on network mode and how AWS maps it. `FARGATE` should be used if network mode is set to `awsvpc`.
 	RequiresCompatibilities pulumi.StringArrayInput
 	// Configuration block for runtime*platform that containers in your task may use. Required on ecs tasks that are hosted on Fargate.
 	RuntimePlatform EcsTaskDefinitionRuntimePlatformPtrInput
 	// The GUID of the tenant that the task definition will be created in.
 	TenantId pulumi.StringInput
-	// Defaults to `[]`.
+	// A JSON-encoded string containing a list of volumes that are used by the ECS task definition. Defaults to `[]`.
 	Volumes pulumi.StringPtrInput
 }
 
@@ -361,6 +371,7 @@ func (o EcsTaskDefinitionOutput) InferenceAccelerators() EcsTaskDefinitionInfere
 	}).(EcsTaskDefinitionInferenceAcceleratorArrayOutput)
 }
 
+// valid values are `host`, `none`, `task`
 func (o EcsTaskDefinitionOutput) IpcMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsTaskDefinition) pulumi.StringPtrOutput { return v.IpcMode }).(pulumi.StringPtrOutput)
 }
@@ -369,11 +380,12 @@ func (o EcsTaskDefinitionOutput) Memory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsTaskDefinition) pulumi.StringPtrOutput { return v.Memory }).(pulumi.StringPtrOutput)
 }
 
-// Defaults to `awsvpc`.
+// Valid values are `bridge`,`host`,`awsvpc`,`none` Defaults to `awsvpc`.
 func (o EcsTaskDefinitionOutput) NetworkMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsTaskDefinition) pulumi.StringPtrOutput { return v.NetworkMode }).(pulumi.StringPtrOutput)
 }
 
+// Valida values are `host`, `task`
 func (o EcsTaskDefinitionOutput) PidMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsTaskDefinition) pulumi.StringPtrOutput { return v.PidMode }).(pulumi.StringPtrOutput)
 }
@@ -384,8 +396,8 @@ func (o EcsTaskDefinitionOutput) PlacementConstraints() EcsTaskDefinitionPlaceme
 	}).(EcsTaskDefinitionPlacementConstraintArrayOutput)
 }
 
-func (o EcsTaskDefinitionOutput) PreventTfDestroy() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *EcsTaskDefinition) pulumi.BoolPtrOutput { return v.PreventTfDestroy }).(pulumi.BoolPtrOutput)
+func (o EcsTaskDefinitionOutput) PreventTfDestroy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsTaskDefinition) pulumi.StringPtrOutput { return v.PreventTfDestroy }).(pulumi.StringPtrOutput)
 }
 
 func (o EcsTaskDefinitionOutput) ProxyConfiguration() EcsTaskDefinitionProxyConfigurationPtrOutput {
@@ -396,7 +408,7 @@ func (o EcsTaskDefinitionOutput) RequiresAttributes() EcsTaskDefinitionRequiresA
 	return o.ApplyT(func(v *EcsTaskDefinition) EcsTaskDefinitionRequiresAttributeArrayOutput { return v.RequiresAttributes }).(EcsTaskDefinitionRequiresAttributeArrayOutput)
 }
 
-// Requires compatibilities for running jobs. Valid values are [FARGATE]
+// Requires compatibilities for running jobs. Such as EC2, FARGATE, EXTERNAL. It varies based on network mode and how AWS maps it. `FARGATE` should be used if network mode is set to `awsvpc`.
 func (o EcsTaskDefinitionOutput) RequiresCompatibilities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *EcsTaskDefinition) pulumi.StringArrayOutput { return v.RequiresCompatibilities }).(pulumi.StringArrayOutput)
 }
@@ -429,7 +441,7 @@ func (o EcsTaskDefinitionOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsTaskDefinition) pulumi.StringOutput { return v.TenantId }).(pulumi.StringOutput)
 }
 
-// Defaults to `[]`.
+// A JSON-encoded string containing a list of volumes that are used by the ECS task definition. Defaults to `[]`.
 func (o EcsTaskDefinitionOutput) Volumes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsTaskDefinition) pulumi.StringPtrOutput { return v.Volumes }).(pulumi.StringPtrOutput)
 }

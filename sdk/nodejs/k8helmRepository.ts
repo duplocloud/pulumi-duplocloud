@@ -7,25 +7,6 @@ import * as utilities from "./utilities";
 /**
  * `duplocloudHelmRepository` manages helm repository in duplocloud
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@duplocloud/pulumi";
- * import * as duplocloud from "@duplocloud/pulumi";
- *
- * const myapp = new duplocloud.Tenant("myapp", {
- *     accountName: "myapp",
- *     planId: "default",
- * });
- * const repo = new duplocloud.index.HelmRepository("repo", {
- *     tenantId: myapp.tenantId,
- *     name: "repo-name",
- *     interval: "06m00s",
- *     url: "https://helm.github.com",
- * });
- * ```
- *
  * ## Import
  *
  * Example: Importing an existing helm repository
@@ -69,6 +50,14 @@ export class K8HelmRepository extends pulumi.CustomResource {
     }
 
     /**
+     * The provider attribute in the spec block of a HelmRepository specifies the cloud  example: generic, aws, gcp, azure
+     */
+    public readonly helmProvider!: pulumi.Output<string>;
+    /**
+     * Set to skip TLS certificate verification when accessing the repository.
+     */
+    public readonly insecure!: pulumi.Output<boolean>;
+    /**
      * The interval associated to helm repository Defaults to `5m0s`.
      */
     public readonly interval!: pulumi.Output<string | undefined>;
@@ -77,9 +66,21 @@ export class K8HelmRepository extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * Pass credentials even to a different host than the one used in url
+     */
+    public readonly passCredentials!: pulumi.Output<boolean>;
+    /**
+     * Used to pause the reconciliation of the repository by the controller.
+     */
+    public readonly suspend!: pulumi.Output<boolean>;
+    /**
      * The GUID of the tenant that the storage bucket will be created in.
      */
     public readonly tenantId!: pulumi.Output<string>;
+    /**
+     * The Helm repository type. Possible values are default for a Helm HTTP/S repository, or oci for an OCI Helm repository.
+     */
+    public readonly type!: pulumi.Output<string>;
     /**
      * The url of helm repository to be attached
      */
@@ -98,9 +99,14 @@ export class K8HelmRepository extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as K8HelmRepositoryState | undefined;
+            resourceInputs["helmProvider"] = state ? state.helmProvider : undefined;
+            resourceInputs["insecure"] = state ? state.insecure : undefined;
             resourceInputs["interval"] = state ? state.interval : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["passCredentials"] = state ? state.passCredentials : undefined;
+            resourceInputs["suspend"] = state ? state.suspend : undefined;
             resourceInputs["tenantId"] = state ? state.tenantId : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["url"] = state ? state.url : undefined;
         } else {
             const args = argsOrState as K8HelmRepositoryArgs | undefined;
@@ -110,9 +116,14 @@ export class K8HelmRepository extends pulumi.CustomResource {
             if ((!args || args.url === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'url'");
             }
+            resourceInputs["helmProvider"] = args ? args.helmProvider : undefined;
+            resourceInputs["insecure"] = args ? args.insecure : undefined;
             resourceInputs["interval"] = args ? args.interval : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["passCredentials"] = args ? args.passCredentials : undefined;
+            resourceInputs["suspend"] = args ? args.suspend : undefined;
             resourceInputs["tenantId"] = args ? args.tenantId : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["url"] = args ? args.url : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -125,6 +136,14 @@ export class K8HelmRepository extends pulumi.CustomResource {
  */
 export interface K8HelmRepositoryState {
     /**
+     * The provider attribute in the spec block of a HelmRepository specifies the cloud  example: generic, aws, gcp, azure
+     */
+    helmProvider?: pulumi.Input<string>;
+    /**
+     * Set to skip TLS certificate verification when accessing the repository.
+     */
+    insecure?: pulumi.Input<boolean>;
+    /**
      * The interval associated to helm repository Defaults to `5m0s`.
      */
     interval?: pulumi.Input<string>;
@@ -133,9 +152,21 @@ export interface K8HelmRepositoryState {
      */
     name?: pulumi.Input<string>;
     /**
+     * Pass credentials even to a different host than the one used in url
+     */
+    passCredentials?: pulumi.Input<boolean>;
+    /**
+     * Used to pause the reconciliation of the repository by the controller.
+     */
+    suspend?: pulumi.Input<boolean>;
+    /**
      * The GUID of the tenant that the storage bucket will be created in.
      */
     tenantId?: pulumi.Input<string>;
+    /**
+     * The Helm repository type. Possible values are default for a Helm HTTP/S repository, or oci for an OCI Helm repository.
+     */
+    type?: pulumi.Input<string>;
     /**
      * The url of helm repository to be attached
      */
@@ -147,6 +178,14 @@ export interface K8HelmRepositoryState {
  */
 export interface K8HelmRepositoryArgs {
     /**
+     * The provider attribute in the spec block of a HelmRepository specifies the cloud  example: generic, aws, gcp, azure
+     */
+    helmProvider?: pulumi.Input<string>;
+    /**
+     * Set to skip TLS certificate verification when accessing the repository.
+     */
+    insecure?: pulumi.Input<boolean>;
+    /**
      * The interval associated to helm repository Defaults to `5m0s`.
      */
     interval?: pulumi.Input<string>;
@@ -155,9 +194,21 @@ export interface K8HelmRepositoryArgs {
      */
     name?: pulumi.Input<string>;
     /**
+     * Pass credentials even to a different host than the one used in url
+     */
+    passCredentials?: pulumi.Input<boolean>;
+    /**
+     * Used to pause the reconciliation of the repository by the controller.
+     */
+    suspend?: pulumi.Input<boolean>;
+    /**
      * The GUID of the tenant that the storage bucket will be created in.
      */
     tenantId: pulumi.Input<string>;
+    /**
+     * The Helm repository type. Possible values are default for a Helm HTTP/S repository, or oci for an OCI Helm repository.
+     */
+    type?: pulumi.Input<string>;
     /**
      * The url of helm repository to be attached
      */

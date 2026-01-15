@@ -13,48 +13,6 @@ namespace DuploCloud.Pulumi
     /// <summary>
     /// `duplocloud.EcsService` manages a Amazon ECS service in Duplo.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var myapp = new Duplocloud.Tenant("myapp", new()
-    ///     {
-    ///         AccountName = "myapp",
-    ///         PlanId = "default",
-    ///     });
-    /// 
-    ///     var myservice = new Duplocloud.EcsTaskDefinition("myservice");
-    /// 
-    ///     // Deploy NGINX using ECS
-    ///     var myserviceEcsService = new Duplocloud.EcsService("myservice", new()
-    ///     {
-    ///         TenantId = myapp.TenantId,
-    ///         TaskDefinition = myservice.Arn,
-    ///         Replicas = 2,
-    ///         LoadBalancers = new[]
-    ///         {
-    ///             new Duplocloud.Inputs.EcsServiceLoadBalancerArgs
-    ///             {
-    ///                 LbType = 1,
-    ///                 Port = "8080",
-    ///                 ExternalPort = 80,
-    ///                 Protocol = "HTTP",
-    ///                 EnableAccessLogs = false,
-    ///                 DropInvalidHeaders = true,
-    ///                 HealthCheckUrl = "https://example.healthcheckurl.com/healthcheck",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Example: Importing an existing service
@@ -74,6 +32,9 @@ namespace DuploCloud.Pulumi
     {
         [Output("capacityProviderStrategies")]
         public Output<ImmutableArray<Outputs.EcsServiceCapacityProviderStrategy>> CapacityProviderStrategies { get; private set; } = null!;
+
+        [Output("deploymentConfiguration")]
+        public Output<Outputs.EcsServiceDeploymentConfiguration?> DeploymentConfiguration { get; private set; } = null!;
 
         /// <summary>
         /// The DNS prefix to assign to this service's load balancer.
@@ -110,6 +71,19 @@ namespace DuploCloud.Pulumi
         /// </summary>
         [Output("oldTaskDefinitionBufferSize")]
         public Output<int?> OldTaskDefinitionBufferSize { get; private set; } = null!;
+
+        /// <summary>
+        /// Rules that are taken into consideration during task placement. Maximum number of `placement_constraints` is `10`
+        /// </summary>
+        [Output("placementConstraints")]
+        public Output<ImmutableArray<Outputs.EcsServicePlacementConstraint>> PlacementConstraints { get; private set; } = null!;
+
+        /// <summary>
+        /// Service level strategy rules that are taken into consideration during task placement. List from top to bottom in order
+        /// of precedence. The maximum number of `placement_strategy` blocks is `5`
+        /// </summary>
+        [Output("placementStrategies")]
+        public Output<ImmutableArray<Outputs.EcsServicePlacementStrategy>> PlacementStrategies { get; private set; } = null!;
 
         /// <summary>
         /// The number of container replicas to create.
@@ -193,6 +167,9 @@ namespace DuploCloud.Pulumi
             set => _capacityProviderStrategies = value;
         }
 
+        [Input("deploymentConfiguration")]
+        public Input<Inputs.EcsServiceDeploymentConfigurationArgs>? DeploymentConfiguration { get; set; }
+
         /// <summary>
         /// The DNS prefix to assign to this service's load balancer.
         /// </summary>
@@ -228,6 +205,31 @@ namespace DuploCloud.Pulumi
         /// </summary>
         [Input("oldTaskDefinitionBufferSize")]
         public Input<int>? OldTaskDefinitionBufferSize { get; set; }
+
+        [Input("placementConstraints")]
+        private InputList<Inputs.EcsServicePlacementConstraintArgs>? _placementConstraints;
+
+        /// <summary>
+        /// Rules that are taken into consideration during task placement. Maximum number of `placement_constraints` is `10`
+        /// </summary>
+        public InputList<Inputs.EcsServicePlacementConstraintArgs> PlacementConstraints
+        {
+            get => _placementConstraints ?? (_placementConstraints = new InputList<Inputs.EcsServicePlacementConstraintArgs>());
+            set => _placementConstraints = value;
+        }
+
+        [Input("placementStrategies")]
+        private InputList<Inputs.EcsServicePlacementStrategyArgs>? _placementStrategies;
+
+        /// <summary>
+        /// Service level strategy rules that are taken into consideration during task placement. List from top to bottom in order
+        /// of precedence. The maximum number of `placement_strategy` blocks is `5`
+        /// </summary>
+        public InputList<Inputs.EcsServicePlacementStrategyArgs> PlacementStrategies
+        {
+            get => _placementStrategies ?? (_placementStrategies = new InputList<Inputs.EcsServicePlacementStrategyArgs>());
+            set => _placementStrategies = value;
+        }
 
         /// <summary>
         /// The number of container replicas to create.
@@ -268,6 +270,9 @@ namespace DuploCloud.Pulumi
             get => _capacityProviderStrategies ?? (_capacityProviderStrategies = new InputList<Inputs.EcsServiceCapacityProviderStrategyGetArgs>());
             set => _capacityProviderStrategies = value;
         }
+
+        [Input("deploymentConfiguration")]
+        public Input<Inputs.EcsServiceDeploymentConfigurationGetArgs>? DeploymentConfiguration { get; set; }
 
         /// <summary>
         /// The DNS prefix to assign to this service's load balancer.
@@ -310,6 +315,31 @@ namespace DuploCloud.Pulumi
         /// </summary>
         [Input("oldTaskDefinitionBufferSize")]
         public Input<int>? OldTaskDefinitionBufferSize { get; set; }
+
+        [Input("placementConstraints")]
+        private InputList<Inputs.EcsServicePlacementConstraintGetArgs>? _placementConstraints;
+
+        /// <summary>
+        /// Rules that are taken into consideration during task placement. Maximum number of `placement_constraints` is `10`
+        /// </summary>
+        public InputList<Inputs.EcsServicePlacementConstraintGetArgs> PlacementConstraints
+        {
+            get => _placementConstraints ?? (_placementConstraints = new InputList<Inputs.EcsServicePlacementConstraintGetArgs>());
+            set => _placementConstraints = value;
+        }
+
+        [Input("placementStrategies")]
+        private InputList<Inputs.EcsServicePlacementStrategyGetArgs>? _placementStrategies;
+
+        /// <summary>
+        /// Service level strategy rules that are taken into consideration during task placement. List from top to bottom in order
+        /// of precedence. The maximum number of `placement_strategy` blocks is `5`
+        /// </summary>
+        public InputList<Inputs.EcsServicePlacementStrategyGetArgs> PlacementStrategies
+        {
+            get => _placementStrategies ?? (_placementStrategies = new InputList<Inputs.EcsServicePlacementStrategyGetArgs>());
+            set => _placementStrategies = value;
+        }
 
         /// <summary>
         /// The number of container replicas to create.

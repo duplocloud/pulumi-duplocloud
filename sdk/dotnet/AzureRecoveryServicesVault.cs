@@ -19,11 +19,11 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var recoveryServicesVault = new Duplocloud.AzureRecoveryServicesVault("recovery_services_vault", new()
+    ///     var recoveryServicesVault = new Pulumi.AzureRecoveryServicesVault("recovery_services_vault", new()
     ///     {
     ///         InfraName = "demo",
     ///         ResourceGroupName = "duploinfra-demo",

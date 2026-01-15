@@ -979,7 +979,7 @@ class GcpNodePool(pulumi.CustomResource):
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        `duplocloud_gcp_k8_node_pools` manages a GCP Node Pool in Duplo.
+        `GcpNodePool` manages a GCP Node Pool in Duplo.
 
         ## Import
 
@@ -1035,7 +1035,7 @@ class GcpNodePool(pulumi.CustomResource):
                  args: GcpNodePoolArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        `duplocloud_gcp_k8_node_pools` manages a GCP Node Pool in Duplo.
+        `GcpNodePool` manages a GCP Node Pool in Duplo.
 
         ## Import
 
@@ -1442,7 +1442,7 @@ class GcpNodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def taints(self) -> pulumi.Output[Optional[Sequence['outputs.GcpNodePoolTaint']]]:
+    def taints(self) -> pulumi.Output[Sequence['outputs.GcpNodePoolTaint']]:
         return pulumi.get(self, "taints")
 
     @property

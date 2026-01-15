@@ -21,11 +21,11 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myinfra = new Duplocloud.Infrastructure("myinfra", new()
+    ///     var myinfra = new Pulumi.Infrastructure("myinfra", new()
     ///     {
     ///         InfraName = "myinfra",
     ///         Cloud = 0,
@@ -36,22 +36,22 @@ namespace DuploCloud.Pulumi
     ///         SubnetCidr = 24,
     ///     });
     /// 
-    ///     var settings = new Duplocloud.InfrastructureSetting("settings", new()
+    ///     var settings = new Pulumi.InfrastructureSetting("settings", new()
     ///     {
     ///         InfraName = myinfra.Name,
     ///         Settings = new[]
     ///         {
-    ///             new Duplocloud.Inputs.InfrastructureSettingSettingArgs
+    ///             new Pulumi.Inputs.InfrastructureSettingSettingArgs
     ///             {
     ///                 Key = "EnableSecretCsiDriver",
     ///                 Value = "true",
     ///             },
-    ///             new Duplocloud.Inputs.InfrastructureSettingSettingArgs
+    ///             new Pulumi.Inputs.InfrastructureSettingSettingArgs
     ///             {
     ///                 Key = "EnableAWSEfsVolumes",
     ///                 Value = "true",
     ///             },
-    ///             new Duplocloud.Inputs.InfrastructureSettingSettingArgs
+    ///             new Pulumi.Inputs.InfrastructureSettingSettingArgs
     ///             {
     ///                 Key = "EnableAwsAlbIngress",
     ///                 Value = "true",

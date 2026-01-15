@@ -19,39 +19,39 @@ import * as utilities from "./utilities";
  *     accountName: "duplo-app",
  *     planId: "default",
  * });
- * const cfd = new duplocloud.AwsCloudfrontDistribution("cfd", {
+ * const region = "us-west2";
+ * const tenantName = "nonprod";
+ * const forcloudfront = new duplocloud.S3Bucket("forcloudfront", {
  *     tenantId: duplo_app.tenantId,
- *     comment: "duploservices-dev01-app",
- *     defaultRootObject: "index.html",
- *     enabled: true,
+ *     name: "cloudfrontbucket",
+ *     allowPublicAccess: true,
+ *     enableAccessLogs: false,
+ *     enableVersioning: true,
+ *     managedPolicies: ["ssl"],
+ *     defaultEncryption: {
+ *         method: "Sse",
+ *     },
+ * });
+ * const cloudfront = new duplocloud.AwsCloudfrontDistribution("cloudfront", {
+ *     tenantId: duplo_app.tenantId,
+ *     comment: `duploservices-${tenantName}-communities-dev4-fe`,
+ *     enabled: false,
  *     httpVersion: "http2",
- *     isIpv6Enabled: true,
- *     aliases: ["app-dev.abc.xyz"],
  *     priceClass: "PriceClass_All",
- *     waitForDeployment: true,
- *     origins: [
- *         {
- *             domainName: "pa-api-dev01.abc.xyz",
- *             originId: "pa-api-dev01.abc.xyz",
- *             connectionAttempts: 3,
- *             connectionTimeout: 10,
- *             customOriginConfig: {
- *                 httpPort: 80,
- *                 httpsPort: 443,
- *                 originKeepaliveTimeout: 30,
- *                 originReadTimeout: 30,
- *                 originProtocolPolicy: "https-only",
- *                 originSslProtocols: ["TLSv1.2"],
- *             },
- *         },
- *         {
- *             domainName: "duploservices-dev01-abc-app-1234567890.s3.us-west-2.amazonaws.com",
- *             originId: "duploservices-dev01-abc-app-1234567890.s3.us-west-2.amazonaws.com",
- *             connectionAttempts: 3,
- *             connectionTimeout: 10,
- *         },
- *     ],
+ *     isIpv6Enabled: true,
+ *     viewerCertificate: {
+ *         acmCertificateArn: "arn:aws:acm:us-east-1:182680712604:certificate/75e94c99-b916-459c-b9a1-ed9dec0ae550",
+ *         minimumProtocolVersion: "TLSv1.2_2021",
+ *         sslSupportMethod: "sni-only",
+ *     },
+ *     origins: [{
+ *         connectionAttempts: 3,
+ *         connectionTimeout: 10,
+ *         domainName: pulumi.interpolate`${forcloudfront.fullname}.s3.${region}.amazonaws.com`,
+ *         originId: pulumi.interpolate`${forcloudfront.fullname}.s3.${region}.amazonaws.com`,
+ *     }],
  *     defaultCacheBehavior: {
+ *         targetOriginId: pulumi.interpolate`${forcloudfront.fullname}.s3.${region}.amazonaws.com`,
  *         allowedMethods: [
  *             "GET",
  *             "HEAD",
@@ -60,12 +60,9 @@ import * as utilities from "./utilities";
  *             "GET",
  *             "HEAD",
  *         ],
- *         targetOriginId: "duploservices-dev01-abc-app-1234567890.s3.us-west-2.amazonaws.com",
- *         compress: false,
+ *         cachePolicyId: "658327ea-f89d-4fab-a63d-7e88639e58f6",
+ *         compress: true,
  *         viewerProtocolPolicy: "redirect-to-https",
- *         minTtl: 0,
- *         defaultTtl: 0,
- *         maxTtl: 0,
  *     },
  *     orderedCacheBehaviors: [{
  *         allowedMethods: [
@@ -76,19 +73,20 @@ import * as utilities from "./utilities";
  *             "GET",
  *             "HEAD",
  *         ],
- *         targetOriginId: "pa-api-dev01.abc.xyz",
+ *         targetOriginId: pulumi.interpolate`${forcloudfront.fullname}.s3.${region}.amazonaws.com`,
  *         compress: false,
  *         viewerProtocolPolicy: "redirect-to-https",
- *         minTtl: 0,
+ *         minTtl: 2,
  *         defaultTtl: 0,
  *         maxTtl: 0,
  *         pathPattern: "/api/*",
+ *         forwardedValues: {
+ *             cookies: {
+ *                 forward: "all",
+ *             },
+ *             queryString: false,
+ *         },
  *     }],
- *     viewerCertificate: {
- *         acmCertificateArn: "arn:aws:acm:us-east-1:1234567890:certificate/49c7a151-14b1-486e-801f-cf6bc9a43804",
- *         minimumProtocolVersion: "TLSv1.2_2019",
- *         sslSupportMethod: "sni-only",
- *     },
  *     restrictions: {
  *         geoRestriction: {
  *             restrictionType: "none",
@@ -159,9 +157,9 @@ export class AwsCloudfrontDistribution extends pulumi.CustomResource {
     public readonly defaultRootObject!: pulumi.Output<string>;
     public /*out*/ readonly domainName!: pulumi.Output<string>;
     /**
-     * Whether the distribution is enabled to accept end user requests for content.
+     * Whether the distribution is enabled to accept end user requests for content. Defaults to `true`.
      */
-    public readonly enabled!: pulumi.Output<boolean>;
+    public readonly enabled!: pulumi.Output<boolean | undefined>;
     public /*out*/ readonly etag!: pulumi.Output<string>;
     public /*out*/ readonly hostedZoneId!: pulumi.Output<string>;
     /**
@@ -251,9 +249,6 @@ export class AwsCloudfrontDistribution extends pulumi.CustomResource {
             if ((!args || args.defaultCacheBehavior === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'defaultCacheBehavior'");
             }
-            if ((!args || args.enabled === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'enabled'");
-            }
             if ((!args || args.origins === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'origins'");
             }
@@ -319,7 +314,7 @@ export interface AwsCloudfrontDistributionState {
     defaultRootObject?: pulumi.Input<string>;
     domainName?: pulumi.Input<string>;
     /**
-     * Whether the distribution is enabled to accept end user requests for content.
+     * Whether the distribution is enabled to accept end user requests for content. Defaults to `true`.
      */
     enabled?: pulumi.Input<boolean>;
     etag?: pulumi.Input<string>;
@@ -390,9 +385,9 @@ export interface AwsCloudfrontDistributionArgs {
      */
     defaultRootObject?: pulumi.Input<string>;
     /**
-     * Whether the distribution is enabled to accept end user requests for content.
+     * Whether the distribution is enabled to accept end user requests for content. Defaults to `true`.
      */
-    enabled: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * The maximum HTTP version to support on the distribution. Allowed values are `http1.1` and `http2` Defaults to `http2`.
      */

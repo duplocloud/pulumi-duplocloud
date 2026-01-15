@@ -20,17 +20,17 @@ namespace DuploCloud.Pulumi
     /// using System.Linq;
     /// using System.Text.Json;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myapp = new Duplocloud.Tenant("myapp", new()
+    ///     var myapp = new Pulumi.Tenant("myapp", new()
     ///     {
     ///         AccountName = "myapp",
     ///         PlanId = "default",
     ///     });
     /// 
-    ///     var myappK8ConfigMap = new Duplocloud.K8ConfigMap("myapp", new()
+    ///     var myappK8ConfigMap = new Pulumi.K8ConfigMap("myapp", new()
     ///     {
     ///         TenantId = myapp.TenantId,
     ///         Name = "myconfigmap",
@@ -38,6 +38,12 @@ namespace DuploCloud.Pulumi
     ///         {
     ///             ["foo"] = "bar2",
     ///         }),
+    ///         Labels = 
+    ///         {
+    ///             { "ke1", "val1" },
+    ///             { "ke2", "val3" },
+    ///             { "app.duplocloud.net/app-name", "&lt;appname&gt;" },
+    ///         },
     ///     });
     /// 
     /// });
@@ -65,6 +71,9 @@ namespace DuploCloud.Pulumi
         /// </summary>
         [Output("data")]
         public Output<string> Data { get; private set; } = null!;
+
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
         /// A JSON encoded string representing the configmap metadata. You can use the `jsondecode()` function to parse this, if needed.
@@ -137,6 +146,14 @@ namespace DuploCloud.Pulumi
         [Input("data", required: true)]
         public Input<string> Data { get; set; } = null!;
 
+        [Input("labels")]
+        private InputMap<string>? _labels;
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
+
         /// <summary>
         /// The name of the configmap.
         /// </summary>
@@ -162,6 +179,14 @@ namespace DuploCloud.Pulumi
         /// </summary>
         [Input("data")]
         public Input<string>? Data { get; set; }
+
+        [Input("labels")]
+        private InputMap<string>? _labels;
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
 
         /// <summary>
         /// A JSON encoded string representing the configmap metadata. You can use the `jsondecode()` function to parse this, if needed.

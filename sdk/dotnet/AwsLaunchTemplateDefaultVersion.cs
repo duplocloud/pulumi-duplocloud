@@ -19,23 +19,24 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
+    /// using Pulumi = Pulumi.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myapp = new Duplocloud.Tenant("myapp", new()
+    ///     var myapp = new Pulumi.Tenant("myapp", new()
     ///     {
     ///         AccountName = "myapp",
     ///         PlanId = "default",
     ///     });
     /// 
-    ///     var op = Duplocloud.GetAwsLaunchTemplate.Invoke(new()
+    ///     var op = Pulumi.GetAwsLaunchTemplate.Invoke(new()
     ///     {
     ///         TenantId = myapp.TenantId,
     ///         Name = "launch_template_name",
     ///     });
     /// 
-    ///     var name = new Duplocloud.AwsLaunchTemplateDefaultVersion("name", new()
+    ///     var name = new Pulumi.AwsLaunchTemplateDefaultVersion("name", new()
     ///     {
     ///         TenantId = op.Apply(getAwsLaunchTemplateResult =&gt; getAwsLaunchTemplateResult.TenantId),
     ///         Name = op.Apply(getAwsLaunchTemplateResult =&gt; getAwsLaunchTemplateResult.Name),

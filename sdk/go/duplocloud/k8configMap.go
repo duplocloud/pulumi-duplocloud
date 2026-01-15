@@ -48,6 +48,11 @@ import (
 //				TenantId: myapp.TenantId,
 //				Name:     pulumi.String("myconfigmap"),
 //				Data:     pulumi.String(json0),
+//				Labels: pulumi.StringMap{
+//					"ke1":                         pulumi.String("val1"),
+//					"ke2":                         pulumi.String("val3"),
+//					"app.duplocloud.net/app-name": pulumi.String("<appname>"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -75,7 +80,8 @@ type K8ConfigMap struct {
 	pulumi.CustomResourceState
 
 	// A JSON encoded string representing the configmap data. You can use the `jsonencode()` function to build this from JSON.
-	Data pulumi.StringOutput `pulumi:"data"`
+	Data   pulumi.StringOutput    `pulumi:"data"`
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// A JSON encoded string representing the configmap metadata. You can use the `jsondecode()` function to parse this, if needed.
 	Metadata pulumi.StringOutput `pulumi:"metadata"`
 	// The name of the configmap.
@@ -121,7 +127,8 @@ func GetK8ConfigMap(ctx *pulumi.Context,
 // Input properties used for looking up and filtering K8ConfigMap resources.
 type k8configMapState struct {
 	// A JSON encoded string representing the configmap data. You can use the `jsonencode()` function to build this from JSON.
-	Data *string `pulumi:"data"`
+	Data   *string           `pulumi:"data"`
+	Labels map[string]string `pulumi:"labels"`
 	// A JSON encoded string representing the configmap metadata. You can use the `jsondecode()` function to parse this, if needed.
 	Metadata *string `pulumi:"metadata"`
 	// The name of the configmap.
@@ -132,7 +139,8 @@ type k8configMapState struct {
 
 type K8ConfigMapState struct {
 	// A JSON encoded string representing the configmap data. You can use the `jsonencode()` function to build this from JSON.
-	Data pulumi.StringPtrInput
+	Data   pulumi.StringPtrInput
+	Labels pulumi.StringMapInput
 	// A JSON encoded string representing the configmap metadata. You can use the `jsondecode()` function to parse this, if needed.
 	Metadata pulumi.StringPtrInput
 	// The name of the configmap.
@@ -147,7 +155,8 @@ func (K8ConfigMapState) ElementType() reflect.Type {
 
 type k8configMapArgs struct {
 	// A JSON encoded string representing the configmap data. You can use the `jsonencode()` function to build this from JSON.
-	Data string `pulumi:"data"`
+	Data   string            `pulumi:"data"`
+	Labels map[string]string `pulumi:"labels"`
 	// The name of the configmap.
 	Name *string `pulumi:"name"`
 	// The GUID of the tenant that the configmap will be created in.
@@ -157,7 +166,8 @@ type k8configMapArgs struct {
 // The set of arguments for constructing a K8ConfigMap resource.
 type K8ConfigMapArgs struct {
 	// A JSON encoded string representing the configmap data. You can use the `jsonencode()` function to build this from JSON.
-	Data pulumi.StringInput
+	Data   pulumi.StringInput
+	Labels pulumi.StringMapInput
 	// The name of the configmap.
 	Name pulumi.StringPtrInput
 	// The GUID of the tenant that the configmap will be created in.
@@ -254,6 +264,10 @@ func (o K8ConfigMapOutput) ToK8ConfigMapOutputWithContext(ctx context.Context) K
 // A JSON encoded string representing the configmap data. You can use the `jsonencode()` function to build this from JSON.
 func (o K8ConfigMapOutput) Data() pulumi.StringOutput {
 	return o.ApplyT(func(v *K8ConfigMap) pulumi.StringOutput { return v.Data }).(pulumi.StringOutput)
+}
+
+func (o K8ConfigMapOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *K8ConfigMap) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // A JSON encoded string representing the configmap metadata. You can use the `jsondecode()` function to parse this, if needed.

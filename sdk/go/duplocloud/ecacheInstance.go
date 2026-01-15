@@ -268,6 +268,72 @@ import (
 //
 // ```
 //
+// ### Creating an Amazon Valkey with snapshot window
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/duplocloud/pulumi-duplocloud/sdk/go/duplocloud"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := duplocloud.NewEcacheInstance(ctx, "mycaches", &duplocloud.EcacheInstanceArgs{
+//				TenantId:               pulumi.Any(tenant.Id),
+//				Name:                   pulumi.String("myvalkey"),
+//				CacheType:              pulumi.Int(2),
+//				Size:                   pulumi.String("cache.t3.medium"),
+//				EngineVersion:          pulumi.String("7.2"),
+//				SnapshotWindow:         pulumi.String("19:50-20:51"),
+//				SnapshotRetentionLimit: pulumi.Int(12),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Creating an Amazon Valkey with cluster mode enabled
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/duplocloud/pulumi-duplocloud/sdk/go/duplocloud"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := duplocloud.NewEcacheInstance(ctx, "mycaches", &duplocloud.EcacheInstanceArgs{
+//				TenantId:                 pulumi.Any(tenant.Id),
+//				Name:                     pulumi.String("tf-clust1"),
+//				CacheType:                pulumi.Int(2),
+//				Size:                     pulumi.String("cache.t3.medium"),
+//				EngineVersion:            pulumi.String("7.2"),
+//				SnapshotWindow:           pulumi.String("19:50-20:51"),
+//				SnapshotRetentionLimit:   pulumi.Int(12),
+//				EnableClusterMode:        pulumi.Bool(true),
+//				NumberOfShards:           pulumi.Int(3),
+//				AutomaticFailoverEnabled: pulumi.Bool(true),
+//				Replicas:                 pulumi.Int(2),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Example: Importing an existing AWS ElastiCache cluster
@@ -284,33 +350,36 @@ import (
 type EcacheInstance struct {
 	pulumi.CustomResourceState
 
+	ActualEngineVersion pulumi.StringOutput `pulumi:"actualEngineVersion"`
 	// The ARN of the elasticache instance.
 	Arn pulumi.StringOutput `pulumi:"arn"`
 	// Set a password for authenticating to the ElastiCache instance.  Only supported if `encryptionInTransit` is to to `true`.
 	AuthToken pulumi.StringPtrOutput `pulumi:"authToken"`
 	// Enables automatic failover.
 	AutomaticFailoverEnabled pulumi.BoolPtrOutput `pulumi:"automaticFailoverEnabled"`
-	// The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache
+	// The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache - `2` : Valkey
 	CacheType pulumi.IntPtrOutput `pulumi:"cacheType"`
-	// Flag to enable/disable redis cluster mode.
-	EnableClusterMode pulumi.BoolOutput `pulumi:"enableClusterMode"`
+	// Flag to enable/disable redis/valkey cluster mode.
+	EnableClusterMode pulumi.BoolPtrOutput `pulumi:"enableClusterMode"`
 	// Enables encryption-at-rest.
 	EncryptionAtRest pulumi.BoolPtrOutput `pulumi:"encryptionAtRest"`
 	// Enables encryption-in-transit.
 	EncryptionInTransit pulumi.BoolPtrOutput `pulumi:"encryptionInTransit"`
 	// The endpoint of the elasticache instance.
 	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
-	// The engine version of the elastic instance. See AWS documentation for the [available Redis instance
+	// The engine version of the elastic instance. See AWS documentation for the [available Redis and Valkey instance
 	// types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/supported-engine-versions.html) or the [available
 	// Memcached instance
 	// types](https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/supported-engine-versions-mc.html).
-	EngineVersion pulumi.StringPtrOutput `pulumi:"engineVersion"`
+	EngineVersion pulumi.StringOutput `pulumi:"engineVersion"`
 	// The DNS hostname of the elasticache instance.
 	Host pulumi.StringOutput `pulumi:"host"`
 	// The full name of the elasticache instance.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// The status of the elasticache instance.
 	InstanceStatus pulumi.StringOutput `pulumi:"instanceStatus"`
+	// Flag to indicate if this is primary replication group
+	IsPrimary pulumi.BoolOutput `pulumi:"isPrimary"`
 	// The globally unique identifier for the key.
 	KmsKeyId                  pulumi.StringOutput                               `pulumi:"kmsKeyId"`
 	LogDeliveryConfigurations EcacheInstanceLogDeliveryConfigurationArrayOutput `pulumi:"logDeliveryConfigurations"`
@@ -318,7 +387,7 @@ type EcacheInstance struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The number of shards to create. Applicable only if enableClusterMode is set to true
 	NumberOfShards pulumi.IntOutput `pulumi:"numberOfShards"`
-	// The REDIS parameter group to supply.
+	// The REDIS/Valkey parameter group to supply.
 	ParameterGroupName pulumi.StringOutput `pulumi:"parameterGroupName"`
 	// The listening port of the elasticache instance.
 	Port pulumi.IntOutput `pulumi:"port"`
@@ -327,11 +396,11 @@ type EcacheInstance struct {
 	// The instance type of the elasticache instance.
 	// See AWS documentation for the [available instance types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html).
 	Size pulumi.StringOutput `pulumi:"size"`
-	// Specify the ARN of a Redis RDB snapshot file stored in Amazon S3. User should have the access to export snapshot to s3
-	// bucket. One can find steps to provide access to export snapshot to s3 on following link
+	// Specify the ARN of a Redis/Valkey RDB snapshot file stored in Amazon S3. User should have the access to export snapshot
+	// to s3 bucket. One can find steps to provide access to export snapshot to s3 on following link
 	// https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html
 	SnapshotArns pulumi.StringArrayOutput `pulumi:"snapshotArns"`
-	// Select the snapshot/backup you want to use for creating redis.
+	// Select the snapshot/backup you want to use for creating redis/valkey.
 	SnapshotName pulumi.StringOutput `pulumi:"snapshotName"`
 	// Specify retention limit in days. Accepted values - 1-35.
 	SnapshotRetentionLimit pulumi.IntOutput `pulumi:"snapshotRetentionLimit"`
@@ -379,15 +448,16 @@ func GetEcacheInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EcacheInstance resources.
 type ecacheInstanceState struct {
+	ActualEngineVersion *string `pulumi:"actualEngineVersion"`
 	// The ARN of the elasticache instance.
 	Arn *string `pulumi:"arn"`
 	// Set a password for authenticating to the ElastiCache instance.  Only supported if `encryptionInTransit` is to to `true`.
 	AuthToken *string `pulumi:"authToken"`
 	// Enables automatic failover.
 	AutomaticFailoverEnabled *bool `pulumi:"automaticFailoverEnabled"`
-	// The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache
+	// The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache - `2` : Valkey
 	CacheType *int `pulumi:"cacheType"`
-	// Flag to enable/disable redis cluster mode.
+	// Flag to enable/disable redis/valkey cluster mode.
 	EnableClusterMode *bool `pulumi:"enableClusterMode"`
 	// Enables encryption-at-rest.
 	EncryptionAtRest *bool `pulumi:"encryptionAtRest"`
@@ -395,7 +465,7 @@ type ecacheInstanceState struct {
 	EncryptionInTransit *bool `pulumi:"encryptionInTransit"`
 	// The endpoint of the elasticache instance.
 	Endpoint *string `pulumi:"endpoint"`
-	// The engine version of the elastic instance. See AWS documentation for the [available Redis instance
+	// The engine version of the elastic instance. See AWS documentation for the [available Redis and Valkey instance
 	// types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/supported-engine-versions.html) or the [available
 	// Memcached instance
 	// types](https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/supported-engine-versions-mc.html).
@@ -406,6 +476,8 @@ type ecacheInstanceState struct {
 	Identifier *string `pulumi:"identifier"`
 	// The status of the elasticache instance.
 	InstanceStatus *string `pulumi:"instanceStatus"`
+	// Flag to indicate if this is primary replication group
+	IsPrimary *bool `pulumi:"isPrimary"`
 	// The globally unique identifier for the key.
 	KmsKeyId                  *string                                  `pulumi:"kmsKeyId"`
 	LogDeliveryConfigurations []EcacheInstanceLogDeliveryConfiguration `pulumi:"logDeliveryConfigurations"`
@@ -413,7 +485,7 @@ type ecacheInstanceState struct {
 	Name *string `pulumi:"name"`
 	// The number of shards to create. Applicable only if enableClusterMode is set to true
 	NumberOfShards *int `pulumi:"numberOfShards"`
-	// The REDIS parameter group to supply.
+	// The REDIS/Valkey parameter group to supply.
 	ParameterGroupName *string `pulumi:"parameterGroupName"`
 	// The listening port of the elasticache instance.
 	Port *int `pulumi:"port"`
@@ -422,11 +494,11 @@ type ecacheInstanceState struct {
 	// The instance type of the elasticache instance.
 	// See AWS documentation for the [available instance types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html).
 	Size *string `pulumi:"size"`
-	// Specify the ARN of a Redis RDB snapshot file stored in Amazon S3. User should have the access to export snapshot to s3
-	// bucket. One can find steps to provide access to export snapshot to s3 on following link
+	// Specify the ARN of a Redis/Valkey RDB snapshot file stored in Amazon S3. User should have the access to export snapshot
+	// to s3 bucket. One can find steps to provide access to export snapshot to s3 on following link
 	// https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html
 	SnapshotArns []string `pulumi:"snapshotArns"`
-	// Select the snapshot/backup you want to use for creating redis.
+	// Select the snapshot/backup you want to use for creating redis/valkey.
 	SnapshotName *string `pulumi:"snapshotName"`
 	// Specify retention limit in days. Accepted values - 1-35.
 	SnapshotRetentionLimit *int `pulumi:"snapshotRetentionLimit"`
@@ -439,15 +511,16 @@ type ecacheInstanceState struct {
 }
 
 type EcacheInstanceState struct {
+	ActualEngineVersion pulumi.StringPtrInput
 	// The ARN of the elasticache instance.
 	Arn pulumi.StringPtrInput
 	// Set a password for authenticating to the ElastiCache instance.  Only supported if `encryptionInTransit` is to to `true`.
 	AuthToken pulumi.StringPtrInput
 	// Enables automatic failover.
 	AutomaticFailoverEnabled pulumi.BoolPtrInput
-	// The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache
+	// The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache - `2` : Valkey
 	CacheType pulumi.IntPtrInput
-	// Flag to enable/disable redis cluster mode.
+	// Flag to enable/disable redis/valkey cluster mode.
 	EnableClusterMode pulumi.BoolPtrInput
 	// Enables encryption-at-rest.
 	EncryptionAtRest pulumi.BoolPtrInput
@@ -455,7 +528,7 @@ type EcacheInstanceState struct {
 	EncryptionInTransit pulumi.BoolPtrInput
 	// The endpoint of the elasticache instance.
 	Endpoint pulumi.StringPtrInput
-	// The engine version of the elastic instance. See AWS documentation for the [available Redis instance
+	// The engine version of the elastic instance. See AWS documentation for the [available Redis and Valkey instance
 	// types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/supported-engine-versions.html) or the [available
 	// Memcached instance
 	// types](https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/supported-engine-versions-mc.html).
@@ -466,6 +539,8 @@ type EcacheInstanceState struct {
 	Identifier pulumi.StringPtrInput
 	// The status of the elasticache instance.
 	InstanceStatus pulumi.StringPtrInput
+	// Flag to indicate if this is primary replication group
+	IsPrimary pulumi.BoolPtrInput
 	// The globally unique identifier for the key.
 	KmsKeyId                  pulumi.StringPtrInput
 	LogDeliveryConfigurations EcacheInstanceLogDeliveryConfigurationArrayInput
@@ -473,7 +548,7 @@ type EcacheInstanceState struct {
 	Name pulumi.StringPtrInput
 	// The number of shards to create. Applicable only if enableClusterMode is set to true
 	NumberOfShards pulumi.IntPtrInput
-	// The REDIS parameter group to supply.
+	// The REDIS/Valkey parameter group to supply.
 	ParameterGroupName pulumi.StringPtrInput
 	// The listening port of the elasticache instance.
 	Port pulumi.IntPtrInput
@@ -482,11 +557,11 @@ type EcacheInstanceState struct {
 	// The instance type of the elasticache instance.
 	// See AWS documentation for the [available instance types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html).
 	Size pulumi.StringPtrInput
-	// Specify the ARN of a Redis RDB snapshot file stored in Amazon S3. User should have the access to export snapshot to s3
-	// bucket. One can find steps to provide access to export snapshot to s3 on following link
+	// Specify the ARN of a Redis/Valkey RDB snapshot file stored in Amazon S3. User should have the access to export snapshot
+	// to s3 bucket. One can find steps to provide access to export snapshot to s3 on following link
 	// https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html
 	SnapshotArns pulumi.StringArrayInput
-	// Select the snapshot/backup you want to use for creating redis.
+	// Select the snapshot/backup you want to use for creating redis/valkey.
 	SnapshotName pulumi.StringPtrInput
 	// Specify retention limit in days. Accepted values - 1-35.
 	SnapshotRetentionLimit pulumi.IntPtrInput
@@ -507,15 +582,15 @@ type ecacheInstanceArgs struct {
 	AuthToken *string `pulumi:"authToken"`
 	// Enables automatic failover.
 	AutomaticFailoverEnabled *bool `pulumi:"automaticFailoverEnabled"`
-	// The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache
+	// The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache - `2` : Valkey
 	CacheType *int `pulumi:"cacheType"`
-	// Flag to enable/disable redis cluster mode.
+	// Flag to enable/disable redis/valkey cluster mode.
 	EnableClusterMode *bool `pulumi:"enableClusterMode"`
 	// Enables encryption-at-rest.
 	EncryptionAtRest *bool `pulumi:"encryptionAtRest"`
 	// Enables encryption-in-transit.
 	EncryptionInTransit *bool `pulumi:"encryptionInTransit"`
-	// The engine version of the elastic instance. See AWS documentation for the [available Redis instance
+	// The engine version of the elastic instance. See AWS documentation for the [available Redis and Valkey instance
 	// types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/supported-engine-versions.html) or the [available
 	// Memcached instance
 	// types](https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/supported-engine-versions-mc.html).
@@ -527,18 +602,18 @@ type ecacheInstanceArgs struct {
 	Name *string `pulumi:"name"`
 	// The number of shards to create. Applicable only if enableClusterMode is set to true
 	NumberOfShards *int `pulumi:"numberOfShards"`
-	// The REDIS parameter group to supply.
+	// The REDIS/Valkey parameter group to supply.
 	ParameterGroupName *string `pulumi:"parameterGroupName"`
 	// The number of replicas to create. Supported number of replicas is 1 to 6
 	Replicas *int `pulumi:"replicas"`
 	// The instance type of the elasticache instance.
 	// See AWS documentation for the [available instance types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html).
 	Size string `pulumi:"size"`
-	// Specify the ARN of a Redis RDB snapshot file stored in Amazon S3. User should have the access to export snapshot to s3
-	// bucket. One can find steps to provide access to export snapshot to s3 on following link
+	// Specify the ARN of a Redis/Valkey RDB snapshot file stored in Amazon S3. User should have the access to export snapshot
+	// to s3 bucket. One can find steps to provide access to export snapshot to s3 on following link
 	// https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html
 	SnapshotArns []string `pulumi:"snapshotArns"`
-	// Select the snapshot/backup you want to use for creating redis.
+	// Select the snapshot/backup you want to use for creating redis/valkey.
 	SnapshotName *string `pulumi:"snapshotName"`
 	// Specify retention limit in days. Accepted values - 1-35.
 	SnapshotRetentionLimit *int `pulumi:"snapshotRetentionLimit"`
@@ -556,15 +631,15 @@ type EcacheInstanceArgs struct {
 	AuthToken pulumi.StringPtrInput
 	// Enables automatic failover.
 	AutomaticFailoverEnabled pulumi.BoolPtrInput
-	// The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache
+	// The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache - `2` : Valkey
 	CacheType pulumi.IntPtrInput
-	// Flag to enable/disable redis cluster mode.
+	// Flag to enable/disable redis/valkey cluster mode.
 	EnableClusterMode pulumi.BoolPtrInput
 	// Enables encryption-at-rest.
 	EncryptionAtRest pulumi.BoolPtrInput
 	// Enables encryption-in-transit.
 	EncryptionInTransit pulumi.BoolPtrInput
-	// The engine version of the elastic instance. See AWS documentation for the [available Redis instance
+	// The engine version of the elastic instance. See AWS documentation for the [available Redis and Valkey instance
 	// types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/supported-engine-versions.html) or the [available
 	// Memcached instance
 	// types](https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/supported-engine-versions-mc.html).
@@ -576,18 +651,18 @@ type EcacheInstanceArgs struct {
 	Name pulumi.StringPtrInput
 	// The number of shards to create. Applicable only if enableClusterMode is set to true
 	NumberOfShards pulumi.IntPtrInput
-	// The REDIS parameter group to supply.
+	// The REDIS/Valkey parameter group to supply.
 	ParameterGroupName pulumi.StringPtrInput
 	// The number of replicas to create. Supported number of replicas is 1 to 6
 	Replicas pulumi.IntPtrInput
 	// The instance type of the elasticache instance.
 	// See AWS documentation for the [available instance types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html).
 	Size pulumi.StringInput
-	// Specify the ARN of a Redis RDB snapshot file stored in Amazon S3. User should have the access to export snapshot to s3
-	// bucket. One can find steps to provide access to export snapshot to s3 on following link
+	// Specify the ARN of a Redis/Valkey RDB snapshot file stored in Amazon S3. User should have the access to export snapshot
+	// to s3 bucket. One can find steps to provide access to export snapshot to s3 on following link
 	// https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html
 	SnapshotArns pulumi.StringArrayInput
-	// Select the snapshot/backup you want to use for creating redis.
+	// Select the snapshot/backup you want to use for creating redis/valkey.
 	SnapshotName pulumi.StringPtrInput
 	// Specify retention limit in days. Accepted values - 1-35.
 	SnapshotRetentionLimit pulumi.IntPtrInput
@@ -686,6 +761,10 @@ func (o EcacheInstanceOutput) ToEcacheInstanceOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o EcacheInstanceOutput) ActualEngineVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcacheInstance) pulumi.StringOutput { return v.ActualEngineVersion }).(pulumi.StringOutput)
+}
+
 // The ARN of the elasticache instance.
 func (o EcacheInstanceOutput) Arn() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcacheInstance) pulumi.StringOutput { return v.Arn }).(pulumi.StringOutput)
@@ -701,14 +780,14 @@ func (o EcacheInstanceOutput) AutomaticFailoverEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EcacheInstance) pulumi.BoolPtrOutput { return v.AutomaticFailoverEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache
+// The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache - `2` : Valkey
 func (o EcacheInstanceOutput) CacheType() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *EcacheInstance) pulumi.IntPtrOutput { return v.CacheType }).(pulumi.IntPtrOutput)
 }
 
-// Flag to enable/disable redis cluster mode.
-func (o EcacheInstanceOutput) EnableClusterMode() pulumi.BoolOutput {
-	return o.ApplyT(func(v *EcacheInstance) pulumi.BoolOutput { return v.EnableClusterMode }).(pulumi.BoolOutput)
+// Flag to enable/disable redis/valkey cluster mode.
+func (o EcacheInstanceOutput) EnableClusterMode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EcacheInstance) pulumi.BoolPtrOutput { return v.EnableClusterMode }).(pulumi.BoolPtrOutput)
 }
 
 // Enables encryption-at-rest.
@@ -726,12 +805,12 @@ func (o EcacheInstanceOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcacheInstance) pulumi.StringOutput { return v.Endpoint }).(pulumi.StringOutput)
 }
 
-// The engine version of the elastic instance. See AWS documentation for the [available Redis instance
+// The engine version of the elastic instance. See AWS documentation for the [available Redis and Valkey instance
 // types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/supported-engine-versions.html) or the [available
 // Memcached instance
 // types](https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/supported-engine-versions-mc.html).
-func (o EcacheInstanceOutput) EngineVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EcacheInstance) pulumi.StringPtrOutput { return v.EngineVersion }).(pulumi.StringPtrOutput)
+func (o EcacheInstanceOutput) EngineVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcacheInstance) pulumi.StringOutput { return v.EngineVersion }).(pulumi.StringOutput)
 }
 
 // The DNS hostname of the elasticache instance.
@@ -747,6 +826,11 @@ func (o EcacheInstanceOutput) Identifier() pulumi.StringOutput {
 // The status of the elasticache instance.
 func (o EcacheInstanceOutput) InstanceStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcacheInstance) pulumi.StringOutput { return v.InstanceStatus }).(pulumi.StringOutput)
+}
+
+// Flag to indicate if this is primary replication group
+func (o EcacheInstanceOutput) IsPrimary() pulumi.BoolOutput {
+	return o.ApplyT(func(v *EcacheInstance) pulumi.BoolOutput { return v.IsPrimary }).(pulumi.BoolOutput)
 }
 
 // The globally unique identifier for the key.
@@ -770,7 +854,7 @@ func (o EcacheInstanceOutput) NumberOfShards() pulumi.IntOutput {
 	return o.ApplyT(func(v *EcacheInstance) pulumi.IntOutput { return v.NumberOfShards }).(pulumi.IntOutput)
 }
 
-// The REDIS parameter group to supply.
+// The REDIS/Valkey parameter group to supply.
 func (o EcacheInstanceOutput) ParameterGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcacheInstance) pulumi.StringOutput { return v.ParameterGroupName }).(pulumi.StringOutput)
 }
@@ -791,14 +875,14 @@ func (o EcacheInstanceOutput) Size() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcacheInstance) pulumi.StringOutput { return v.Size }).(pulumi.StringOutput)
 }
 
-// Specify the ARN of a Redis RDB snapshot file stored in Amazon S3. User should have the access to export snapshot to s3
-// bucket. One can find steps to provide access to export snapshot to s3 on following link
+// Specify the ARN of a Redis/Valkey RDB snapshot file stored in Amazon S3. User should have the access to export snapshot
+// to s3 bucket. One can find steps to provide access to export snapshot to s3 on following link
 // https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html
 func (o EcacheInstanceOutput) SnapshotArns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *EcacheInstance) pulumi.StringArrayOutput { return v.SnapshotArns }).(pulumi.StringArrayOutput)
 }
 
-// Select the snapshot/backup you want to use for creating redis.
+// Select the snapshot/backup you want to use for creating redis/valkey.
 func (o EcacheInstanceOutput) SnapshotName() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcacheInstance) pulumi.StringOutput { return v.SnapshotName }).(pulumi.StringOutput)
 }

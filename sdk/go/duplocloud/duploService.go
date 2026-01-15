@@ -464,6 +464,78 @@ import (
 //
 // ```
 //
+// ### Deploy an Nginx service named nginx with liveliness probe and init container. Create it inside the dev tenant which already exists.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//
+//	"github.com/duplocloud/pulumi-duplocloud/sdk/go/duplocloud"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Ensure the 'dev' tenant is already created before deploying the Nginx duplo service.
+//			tenant, err := duplocloud.LookupTenant(ctx, &duplocloud.LookupTenantArgs{
+//				Name: pulumi.StringRef("dev"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"initContainers": []map[string]interface{}{
+//					map[string]interface{}{
+//						"name": "nginx-init",
+//						"command": []string{
+//							"/bin/sh",
+//							"-c",
+//							"echo 'Initializing Nginx container...'; sleep 5",
+//						},
+//					},
+//				},
+//				"LivenessProbe": map[string]interface{}{
+//					"initialDelaySeconds": 10,
+//					"periodSeconds":       30,
+//					"successThreshold":    1,
+//					"httpGet": map[string]interface{}{
+//						"path": "/health",
+//						"port": 80,
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			// Assuming a host already exists in the tenant, create the duplo service
+//			_, err = duplocloud.NewDuploService(ctx, "nginx", &duplocloud.DuploServiceArgs{
+//				TenantId:          pulumi.String(tenant.Id),
+//				Name:              pulumi.String("nginx"),
+//				AgentPlatform:     pulumi.Int(7),
+//				DockerImage:       pulumi.String("nginx:latest"),
+//				Replicas:          pulumi.Int(1),
+//				OtherDockerConfig: pulumi.String(json0),
+//				InitContainerDockerImages: duplocloud.DuploServiceInitContainerDockerImageArray{
+//					&duplocloud.DuploServiceInitContainerDockerImageArgs{
+//						Name:  pulumi.String("nginx-init"),
+//						Image: pulumi.String("busybox:latest"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Example: Importing an existing service
@@ -486,6 +558,8 @@ type DuploService struct {
 	AllocationTags pulumi.StringPtrOutput `pulumi:"allocationTags"`
 	// Whether or not the service can run on hosts in other tenants (within the the same plan as the current tenant).
 	AnyHostAllowed pulumi.BoolPtrOutput `pulumi:"anyHostAllowed"`
+	// The name of the app where service will be a part
+	AppName pulumi.StringOutput `pulumi:"appName"`
 	// The numeric ID of the cloud provider to launch the service in. Should be one of: - `0` : AWS (Default) - `1` : Oracle -
 	// `2` : Azure - `3` : Google - `4` : Byoh - `5` : Unknown - `6` : DigitalOcean - `10` : OnPrem
 	Cloud pulumi.IntPtrOutput `pulumi:"cloud"`
@@ -509,11 +583,15 @@ type DuploService struct {
 	HpaSpecs pulumi.StringOutput `pulumi:"hpaSpecs"`
 	// The index of the service.
 	Index pulumi.IntOutput `pulumi:"index"`
+	// The docker images to use for the launched init container(s).
+	InitContainerDockerImages DuploServiceInitContainerDockerImageArrayOutput `pulumi:"initContainerDockerImages"`
 	// Whether or not to enable DaemonSet.
 	IsDaemonset pulumi.BoolPtrOutput `pulumi:"isDaemonset"`
 	// Whether or not the replicas must be scheduled on separate Kubernetes nodes. Only supported on Kubernetes.
 	IsUniqueK8sNodeRequired pulumi.BoolPtrOutput `pulumi:"isUniqueK8sNodeRequired"`
-	LbSyncedDeployment      pulumi.BoolPtrOutput `pulumi:"lbSyncedDeployment"`
+	// OS type for k8s worker, this field is associated to azure cloud. Valid values: `Linux`, `Windows`
+	K8sWorkerOs        pulumi.StringPtrOutput `pulumi:"k8sWorkerOs"`
+	LbSyncedDeployment pulumi.BoolPtrOutput   `pulumi:"lbSyncedDeployment"`
 	// The name of the service to create.
 	Name                  pulumi.StringOutput    `pulumi:"name"`
 	OtherDockerConfig     pulumi.StringOutput    `pulumi:"otherDockerConfig"`
@@ -576,6 +654,8 @@ type duploServiceState struct {
 	AllocationTags *string `pulumi:"allocationTags"`
 	// Whether or not the service can run on hosts in other tenants (within the the same plan as the current tenant).
 	AnyHostAllowed *bool `pulumi:"anyHostAllowed"`
+	// The name of the app where service will be a part
+	AppName *string `pulumi:"appName"`
 	// The numeric ID of the cloud provider to launch the service in. Should be one of: - `0` : AWS (Default) - `1` : Oracle -
 	// `2` : Azure - `3` : Google - `4` : Byoh - `5` : Unknown - `6` : DigitalOcean - `10` : OnPrem
 	Cloud *int `pulumi:"cloud"`
@@ -599,11 +679,15 @@ type duploServiceState struct {
 	HpaSpecs *string `pulumi:"hpaSpecs"`
 	// The index of the service.
 	Index *int `pulumi:"index"`
+	// The docker images to use for the launched init container(s).
+	InitContainerDockerImages []DuploServiceInitContainerDockerImage `pulumi:"initContainerDockerImages"`
 	// Whether or not to enable DaemonSet.
 	IsDaemonset *bool `pulumi:"isDaemonset"`
 	// Whether or not the replicas must be scheduled on separate Kubernetes nodes. Only supported on Kubernetes.
 	IsUniqueK8sNodeRequired *bool `pulumi:"isUniqueK8sNodeRequired"`
-	LbSyncedDeployment      *bool `pulumi:"lbSyncedDeployment"`
+	// OS type for k8s worker, this field is associated to azure cloud. Valid values: `Linux`, `Windows`
+	K8sWorkerOs        *string `pulumi:"k8sWorkerOs"`
+	LbSyncedDeployment *bool   `pulumi:"lbSyncedDeployment"`
 	// The name of the service to create.
 	Name                  *string `pulumi:"name"`
 	OtherDockerConfig     *string `pulumi:"otherDockerConfig"`
@@ -631,6 +715,8 @@ type DuploServiceState struct {
 	AllocationTags pulumi.StringPtrInput
 	// Whether or not the service can run on hosts in other tenants (within the the same plan as the current tenant).
 	AnyHostAllowed pulumi.BoolPtrInput
+	// The name of the app where service will be a part
+	AppName pulumi.StringPtrInput
 	// The numeric ID of the cloud provider to launch the service in. Should be one of: - `0` : AWS (Default) - `1` : Oracle -
 	// `2` : Azure - `3` : Google - `4` : Byoh - `5` : Unknown - `6` : DigitalOcean - `10` : OnPrem
 	Cloud pulumi.IntPtrInput
@@ -654,11 +740,15 @@ type DuploServiceState struct {
 	HpaSpecs pulumi.StringPtrInput
 	// The index of the service.
 	Index pulumi.IntPtrInput
+	// The docker images to use for the launched init container(s).
+	InitContainerDockerImages DuploServiceInitContainerDockerImageArrayInput
 	// Whether or not to enable DaemonSet.
 	IsDaemonset pulumi.BoolPtrInput
 	// Whether or not the replicas must be scheduled on separate Kubernetes nodes. Only supported on Kubernetes.
 	IsUniqueK8sNodeRequired pulumi.BoolPtrInput
-	LbSyncedDeployment      pulumi.BoolPtrInput
+	// OS type for k8s worker, this field is associated to azure cloud. Valid values: `Linux`, `Windows`
+	K8sWorkerOs        pulumi.StringPtrInput
+	LbSyncedDeployment pulumi.BoolPtrInput
 	// The name of the service to create.
 	Name                  pulumi.StringPtrInput
 	OtherDockerConfig     pulumi.StringPtrInput
@@ -690,6 +780,8 @@ type duploServiceArgs struct {
 	AllocationTags *string `pulumi:"allocationTags"`
 	// Whether or not the service can run on hosts in other tenants (within the the same plan as the current tenant).
 	AnyHostAllowed *bool `pulumi:"anyHostAllowed"`
+	// The name of the app where service will be a part
+	AppName *string `pulumi:"appName"`
 	// The numeric ID of the cloud provider to launch the service in. Should be one of: - `0` : AWS (Default) - `1` : Oracle -
 	// `2` : Azure - `3` : Google - `4` : Byoh - `5` : Unknown - `6` : DigitalOcean - `10` : OnPrem
 	Cloud *int `pulumi:"cloud"`
@@ -705,11 +797,15 @@ type duploServiceArgs struct {
 	// Whether or not to force a StatefulSet to be created.
 	ForceStatefulSet *bool   `pulumi:"forceStatefulSet"`
 	HpaSpecs         *string `pulumi:"hpaSpecs"`
+	// The docker images to use for the launched init container(s).
+	InitContainerDockerImages []DuploServiceInitContainerDockerImage `pulumi:"initContainerDockerImages"`
 	// Whether or not to enable DaemonSet.
 	IsDaemonset *bool `pulumi:"isDaemonset"`
 	// Whether or not the replicas must be scheduled on separate Kubernetes nodes. Only supported on Kubernetes.
 	IsUniqueK8sNodeRequired *bool `pulumi:"isUniqueK8sNodeRequired"`
-	LbSyncedDeployment      *bool `pulumi:"lbSyncedDeployment"`
+	// OS type for k8s worker, this field is associated to azure cloud. Valid values: `Linux`, `Windows`
+	K8sWorkerOs        *string `pulumi:"k8sWorkerOs"`
+	LbSyncedDeployment *bool   `pulumi:"lbSyncedDeployment"`
 	// The name of the service to create.
 	Name                  *string `pulumi:"name"`
 	OtherDockerConfig     *string `pulumi:"otherDockerConfig"`
@@ -735,6 +831,8 @@ type DuploServiceArgs struct {
 	AllocationTags pulumi.StringPtrInput
 	// Whether or not the service can run on hosts in other tenants (within the the same plan as the current tenant).
 	AnyHostAllowed pulumi.BoolPtrInput
+	// The name of the app where service will be a part
+	AppName pulumi.StringPtrInput
 	// The numeric ID of the cloud provider to launch the service in. Should be one of: - `0` : AWS (Default) - `1` : Oracle -
 	// `2` : Azure - `3` : Google - `4` : Byoh - `5` : Unknown - `6` : DigitalOcean - `10` : OnPrem
 	Cloud pulumi.IntPtrInput
@@ -750,11 +848,15 @@ type DuploServiceArgs struct {
 	// Whether or not to force a StatefulSet to be created.
 	ForceStatefulSet pulumi.BoolPtrInput
 	HpaSpecs         pulumi.StringPtrInput
+	// The docker images to use for the launched init container(s).
+	InitContainerDockerImages DuploServiceInitContainerDockerImageArrayInput
 	// Whether or not to enable DaemonSet.
 	IsDaemonset pulumi.BoolPtrInput
 	// Whether or not the replicas must be scheduled on separate Kubernetes nodes. Only supported on Kubernetes.
 	IsUniqueK8sNodeRequired pulumi.BoolPtrInput
-	LbSyncedDeployment      pulumi.BoolPtrInput
+	// OS type for k8s worker, this field is associated to azure cloud. Valid values: `Linux`, `Windows`
+	K8sWorkerOs        pulumi.StringPtrInput
+	LbSyncedDeployment pulumi.BoolPtrInput
 	// The name of the service to create.
 	Name                  pulumi.StringPtrInput
 	OtherDockerConfig     pulumi.StringPtrInput
@@ -874,6 +976,11 @@ func (o DuploServiceOutput) AnyHostAllowed() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DuploService) pulumi.BoolPtrOutput { return v.AnyHostAllowed }).(pulumi.BoolPtrOutput)
 }
 
+// The name of the app where service will be a part
+func (o DuploServiceOutput) AppName() pulumi.StringOutput {
+	return o.ApplyT(func(v *DuploService) pulumi.StringOutput { return v.AppName }).(pulumi.StringOutput)
+}
+
 // The numeric ID of the cloud provider to launch the service in. Should be one of: - `0` : AWS (Default) - `1` : Oracle -
 // `2` : Azure - `3` : Google - `4` : Byoh - `5` : Unknown - `6` : DigitalOcean - `10` : OnPrem
 func (o DuploServiceOutput) Cloud() pulumi.IntPtrOutput {
@@ -933,6 +1040,13 @@ func (o DuploServiceOutput) Index() pulumi.IntOutput {
 	return o.ApplyT(func(v *DuploService) pulumi.IntOutput { return v.Index }).(pulumi.IntOutput)
 }
 
+// The docker images to use for the launched init container(s).
+func (o DuploServiceOutput) InitContainerDockerImages() DuploServiceInitContainerDockerImageArrayOutput {
+	return o.ApplyT(func(v *DuploService) DuploServiceInitContainerDockerImageArrayOutput {
+		return v.InitContainerDockerImages
+	}).(DuploServiceInitContainerDockerImageArrayOutput)
+}
+
 // Whether or not to enable DaemonSet.
 func (o DuploServiceOutput) IsDaemonset() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DuploService) pulumi.BoolPtrOutput { return v.IsDaemonset }).(pulumi.BoolPtrOutput)
@@ -941,6 +1055,11 @@ func (o DuploServiceOutput) IsDaemonset() pulumi.BoolPtrOutput {
 // Whether or not the replicas must be scheduled on separate Kubernetes nodes. Only supported on Kubernetes.
 func (o DuploServiceOutput) IsUniqueK8sNodeRequired() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DuploService) pulumi.BoolPtrOutput { return v.IsUniqueK8sNodeRequired }).(pulumi.BoolPtrOutput)
+}
+
+// OS type for k8s worker, this field is associated to azure cloud. Valid values: `Linux`, `Windows`
+func (o DuploServiceOutput) K8sWorkerOs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DuploService) pulumi.StringPtrOutput { return v.K8sWorkerOs }).(pulumi.StringPtrOutput)
 }
 
 func (o DuploServiceOutput) LbSyncedDeployment() pulumi.BoolPtrOutput {

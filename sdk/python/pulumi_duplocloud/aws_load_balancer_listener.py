@@ -24,25 +24,32 @@ class AwsLoadBalancerListenerArgs:
                  load_balancer_name: pulumi.Input[str],
                  port: pulumi.Input[int],
                  protocol: pulumi.Input[str],
-                 target_group_arn: pulumi.Input[str],
                  tenant_id: pulumi.Input[str],
-                 certificate_arn: Optional[pulumi.Input[str]] = None):
+                 certificate_arn: Optional[pulumi.Input[str]] = None,
+                 default_actions: Optional[pulumi.Input[Sequence[pulumi.Input['AwsLoadBalancerListenerDefaultActionArgs']]]] = None,
+                 target_group_arn: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AwsLoadBalancerListener resource.
         :param pulumi.Input[str] load_balancer_name: The short name of the load balancer.  Duplo will add a prefix to the name.  You can retrieve the full name from the `fullname` attribute.
         :param pulumi.Input[int] port: Port on which the load balancer is listening.
         :param pulumi.Input[str] protocol: Protocol for connections from clients to the load balancer.
-        :param pulumi.Input[str] target_group_arn: ARN of the Target Group to which to route traffic.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the load balancer will be created in.
         :param pulumi.Input[str] certificate_arn: The ARN of the certificate to attach to the listener.
+        :param pulumi.Input[str] target_group_arn: ARN of the Target Group to which to route traffic. target*group*arn has moved to default*actions.forward.target*group*arn. This field is available for backward compatibility. We recommend to use default*actions block
         """
         pulumi.set(__self__, "load_balancer_name", load_balancer_name)
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "protocol", protocol)
-        pulumi.set(__self__, "target_group_arn", target_group_arn)
         pulumi.set(__self__, "tenant_id", tenant_id)
         if certificate_arn is not None:
             pulumi.set(__self__, "certificate_arn", certificate_arn)
+        if default_actions is not None:
+            pulumi.set(__self__, "default_actions", default_actions)
+        if target_group_arn is not None:
+            warnings.warn("""target_group_arn has moved to default_actions.forward.target_group_arn. This field is available for backward compatibility. We recommend to use default_actions block""", DeprecationWarning)
+            pulumi.log.warn("""target_group_arn is deprecated: target_group_arn has moved to default_actions.forward.target_group_arn. This field is available for backward compatibility. We recommend to use default_actions block""")
+        if target_group_arn is not None:
+            pulumi.set(__self__, "target_group_arn", target_group_arn)
 
     @property
     @pulumi.getter(name="loadBalancerName")
@@ -81,18 +88,6 @@ class AwsLoadBalancerListenerArgs:
         pulumi.set(self, "protocol", value)
 
     @property
-    @pulumi.getter(name="targetGroupArn")
-    def target_group_arn(self) -> pulumi.Input[str]:
-        """
-        ARN of the Target Group to which to route traffic.
-        """
-        return pulumi.get(self, "target_group_arn")
-
-    @target_group_arn.setter
-    def target_group_arn(self, value: pulumi.Input[str]):
-        pulumi.set(self, "target_group_arn", value)
-
-    @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> pulumi.Input[str]:
         """
@@ -115,6 +110,28 @@ class AwsLoadBalancerListenerArgs:
     @certificate_arn.setter
     def certificate_arn(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "certificate_arn", value)
+
+    @property
+    @pulumi.getter(name="defaultActions")
+    def default_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AwsLoadBalancerListenerDefaultActionArgs']]]]:
+        return pulumi.get(self, "default_actions")
+
+    @default_actions.setter
+    def default_actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AwsLoadBalancerListenerDefaultActionArgs']]]]):
+        pulumi.set(self, "default_actions", value)
+
+    @property
+    @pulumi.getter(name="targetGroupArn")
+    @_utilities.deprecated("""target_group_arn has moved to default_actions.forward.target_group_arn. This field is available for backward compatibility. We recommend to use default_actions block""")
+    def target_group_arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        ARN of the Target Group to which to route traffic. target*group*arn has moved to default*actions.forward.target*group*arn. This field is available for backward compatibility. We recommend to use default*actions block
+        """
+        return pulumi.get(self, "target_group_arn")
+
+    @target_group_arn.setter
+    def target_group_arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target_group_arn", value)
 
 
 @pulumi.input_type
@@ -140,7 +157,7 @@ class _AwsLoadBalancerListenerState:
         :param pulumi.Input[str] load_balancer_name: The short name of the load balancer.  Duplo will add a prefix to the name.  You can retrieve the full name from the `fullname` attribute.
         :param pulumi.Input[int] port: Port on which the load balancer is listening.
         :param pulumi.Input[str] protocol: Protocol for connections from clients to the load balancer.
-        :param pulumi.Input[str] target_group_arn: ARN of the Target Group to which to route traffic.
+        :param pulumi.Input[str] target_group_arn: ARN of the Target Group to which to route traffic. target*group*arn has moved to default*actions.forward.target*group*arn. This field is available for backward compatibility. We recommend to use default*actions block
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the load balancer will be created in.
         """
         if arn is not None:
@@ -163,6 +180,9 @@ class _AwsLoadBalancerListenerState:
             pulumi.set(__self__, "protocol", protocol)
         if ssl_policy is not None:
             pulumi.set(__self__, "ssl_policy", ssl_policy)
+        if target_group_arn is not None:
+            warnings.warn("""target_group_arn has moved to default_actions.forward.target_group_arn. This field is available for backward compatibility. We recommend to use default_actions block""", DeprecationWarning)
+            pulumi.log.warn("""target_group_arn is deprecated: target_group_arn has moved to default_actions.forward.target_group_arn. This field is available for backward compatibility. We recommend to use default_actions block""")
         if target_group_arn is not None:
             pulumi.set(__self__, "target_group_arn", target_group_arn)
         if tenant_id is not None:
@@ -278,9 +298,10 @@ class _AwsLoadBalancerListenerState:
 
     @property
     @pulumi.getter(name="targetGroupArn")
+    @_utilities.deprecated("""target_group_arn has moved to default_actions.forward.target_group_arn. This field is available for backward compatibility. We recommend to use default_actions block""")
     def target_group_arn(self) -> Optional[pulumi.Input[str]]:
         """
-        ARN of the Target Group to which to route traffic.
+        ARN of the Target Group to which to route traffic. target*group*arn has moved to default*actions.forward.target*group*arn. This field is available for backward compatibility. We recommend to use default*actions block
         """
         return pulumi.get(self, "target_group_arn")
 
@@ -307,6 +328,7 @@ class AwsLoadBalancerListener(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate_arn: Optional[pulumi.Input[str]] = None,
+                 default_actions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AwsLoadBalancerListenerDefaultActionArgs', 'AwsLoadBalancerListenerDefaultActionArgsDict']]]]] = None,
                  load_balancer_name: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
@@ -315,29 +337,6 @@ class AwsLoadBalancerListener(pulumi.CustomResource):
                  __props__=None):
         """
         `AwsLoadBalancerListener` manages an AWS application load balancer listener in Duplo.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_duplocloud as duplocloud
-
-        myapp = duplocloud.Tenant("myapp",
-            account_name="myapp",
-            plan_id="default")
-        myapp_aws_load_balancer = duplocloud.AwsLoadBalancer("myapp",
-            tenant_id=myapp.tenant_id,
-            name="myapp",
-            is_internal=True,
-            enable_access_logs=True,
-            drop_invalid_headers=True)
-        myapp_listener = duplocloud.AwsLoadBalancerListener("myapp-listener",
-            tenant_id=myapp.tenant_id,
-            load_balancer_name=myapp_aws_load_balancer.name,
-            port=8443,
-            protocol="https",
-            target_group_arn="arn:aws:elasticloadbalancing:us-west-2:1234567890:targetgroup/duplo2-stage-antcmw-http4000/fc6f818e85fa737a")
-        ```
 
         ## Import
 
@@ -361,7 +360,7 @@ class AwsLoadBalancerListener(pulumi.CustomResource):
         :param pulumi.Input[str] load_balancer_name: The short name of the load balancer.  Duplo will add a prefix to the name.  You can retrieve the full name from the `fullname` attribute.
         :param pulumi.Input[int] port: Port on which the load balancer is listening.
         :param pulumi.Input[str] protocol: Protocol for connections from clients to the load balancer.
-        :param pulumi.Input[str] target_group_arn: ARN of the Target Group to which to route traffic.
+        :param pulumi.Input[str] target_group_arn: ARN of the Target Group to which to route traffic. target*group*arn has moved to default*actions.forward.target*group*arn. This field is available for backward compatibility. We recommend to use default*actions block
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the load balancer will be created in.
         """
         ...
@@ -372,29 +371,6 @@ class AwsLoadBalancerListener(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         `AwsLoadBalancerListener` manages an AWS application load balancer listener in Duplo.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_duplocloud as duplocloud
-
-        myapp = duplocloud.Tenant("myapp",
-            account_name="myapp",
-            plan_id="default")
-        myapp_aws_load_balancer = duplocloud.AwsLoadBalancer("myapp",
-            tenant_id=myapp.tenant_id,
-            name="myapp",
-            is_internal=True,
-            enable_access_logs=True,
-            drop_invalid_headers=True)
-        myapp_listener = duplocloud.AwsLoadBalancerListener("myapp-listener",
-            tenant_id=myapp.tenant_id,
-            load_balancer_name=myapp_aws_load_balancer.name,
-            port=8443,
-            protocol="https",
-            target_group_arn="arn:aws:elasticloadbalancing:us-west-2:1234567890:targetgroup/duplo2-stage-antcmw-http4000/fc6f818e85fa737a")
-        ```
 
         ## Import
 
@@ -428,6 +404,7 @@ class AwsLoadBalancerListener(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate_arn: Optional[pulumi.Input[str]] = None,
+                 default_actions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AwsLoadBalancerListenerDefaultActionArgs', 'AwsLoadBalancerListenerDefaultActionArgsDict']]]]] = None,
                  load_balancer_name: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
@@ -443,6 +420,7 @@ class AwsLoadBalancerListener(pulumi.CustomResource):
             __props__ = AwsLoadBalancerListenerArgs.__new__(AwsLoadBalancerListenerArgs)
 
             __props__.__dict__["certificate_arn"] = certificate_arn
+            __props__.__dict__["default_actions"] = default_actions
             if load_balancer_name is None and not opts.urn:
                 raise TypeError("Missing required property 'load_balancer_name'")
             __props__.__dict__["load_balancer_name"] = load_balancer_name
@@ -452,15 +430,12 @@ class AwsLoadBalancerListener(pulumi.CustomResource):
             if protocol is None and not opts.urn:
                 raise TypeError("Missing required property 'protocol'")
             __props__.__dict__["protocol"] = protocol
-            if target_group_arn is None and not opts.urn:
-                raise TypeError("Missing required property 'target_group_arn'")
             __props__.__dict__["target_group_arn"] = target_group_arn
             if tenant_id is None and not opts.urn:
                 raise TypeError("Missing required property 'tenant_id'")
             __props__.__dict__["tenant_id"] = tenant_id
             __props__.__dict__["arn"] = None
             __props__.__dict__["certificates"] = None
-            __props__.__dict__["default_actions"] = None
             __props__.__dict__["load_balancer_arn"] = None
             __props__.__dict__["load_balancer_fullname"] = None
             __props__.__dict__["ssl_policy"] = None
@@ -499,7 +474,7 @@ class AwsLoadBalancerListener(pulumi.CustomResource):
         :param pulumi.Input[str] load_balancer_name: The short name of the load balancer.  Duplo will add a prefix to the name.  You can retrieve the full name from the `fullname` attribute.
         :param pulumi.Input[int] port: Port on which the load balancer is listening.
         :param pulumi.Input[str] protocol: Protocol for connections from clients to the load balancer.
-        :param pulumi.Input[str] target_group_arn: ARN of the Target Group to which to route traffic.
+        :param pulumi.Input[str] target_group_arn: ARN of the Target Group to which to route traffic. target*group*arn has moved to default*actions.forward.target*group*arn. This field is available for backward compatibility. We recommend to use default*actions block
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the load balancer will be created in.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -543,7 +518,7 @@ class AwsLoadBalancerListener(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultActions")
-    def default_actions(self) -> pulumi.Output[Sequence['outputs.AwsLoadBalancerListenerDefaultAction']]:
+    def default_actions(self) -> pulumi.Output[Optional[Sequence['outputs.AwsLoadBalancerListenerDefaultAction']]]:
         return pulumi.get(self, "default_actions")
 
     @property
@@ -590,9 +565,10 @@ class AwsLoadBalancerListener(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="targetGroupArn")
-    def target_group_arn(self) -> pulumi.Output[str]:
+    @_utilities.deprecated("""target_group_arn has moved to default_actions.forward.target_group_arn. This field is available for backward compatibility. We recommend to use default_actions block""")
+    def target_group_arn(self) -> pulumi.Output[Optional[str]]:
         """
-        ARN of the Target Group to which to route traffic.
+        ARN of the Target Group to which to route traffic. target*group*arn has moved to default*actions.forward.target*group*arn. This field is available for backward compatibility. We recommend to use default*actions block
         """
         return pulumi.get(self, "target_group_arn")
 

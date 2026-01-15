@@ -20,18 +20,18 @@ namespace DuploCloud.Pulumi
     /// using System.Linq;
     /// using System.Text.Json;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myapp = new Duplocloud.Tenant("myapp", new()
+    ///     var myapp = new Pulumi.Tenant("myapp", new()
     ///     {
     ///         AccountName = "myapp",
     ///         PlanId = "default",
     ///     });
     /// 
     ///     // Example with plaintext data.
-    ///     var mysecret1 = new Duplocloud.TenantSecret("mysecret1", new()
+    ///     var mysecret1 = new Pulumi.TenantSecret("mysecret1", new()
     ///     {
     ///         TenantId = myapp.TenantId,
     ///         NameSuffix = "mytext",
@@ -39,7 +39,7 @@ namespace DuploCloud.Pulumi
     ///     });
     /// 
     ///     // Example with JSON data.
-    ///     var mysecret2 = new Duplocloud.TenantSecret("mysecret2", new()
+    ///     var mysecret2 = new Pulumi.TenantSecret("mysecret2", new()
     ///     {
     ///         TenantId = myapp.TenantId,
     ///         NameSuffix = "myjson",

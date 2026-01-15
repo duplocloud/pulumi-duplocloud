@@ -19,7 +19,7 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -29,7 +29,7 @@ namespace DuploCloud.Pulumi
     /// 
     ///     var certArn = "arn:aws:acm:us-west-2:957282632678:certificate/2e882320-5aa5-4b8d-881f-998050178205";
     /// 
-    ///     var alb = new Duplocloud.AwsLoadBalancer("alb", new()
+    ///     var alb = new Pulumi.AwsLoadBalancer("alb", new()
     ///     {
     ///         TenantId = tenantId,
     ///         Name = "tst-alb",
@@ -38,7 +38,7 @@ namespace DuploCloud.Pulumi
     ///         DropInvalidHeaders = true,
     ///     });
     /// 
-    ///     var tg = new Duplocloud.AwsLbTargetGroup("tg", new()
+    ///     var tg = new Pulumi.AwsLbTargetGroup("tg", new()
     ///     {
     ///         TenantId = tenantId,
     ///         Name = "tg1",
@@ -48,7 +48,7 @@ namespace DuploCloud.Pulumi
     ///         TargetType = "instance",
     ///     });
     /// 
-    ///     var alb_listener = new Duplocloud.AwsLoadBalancerListener("alb-listener", new()
+    ///     var alb_listener = new Pulumi.AwsLoadBalancerListener("alb-listener", new()
     ///     {
     ///         TenantId = tenantId,
     ///         LoadBalancerName = alb.Name,
@@ -58,14 +58,14 @@ namespace DuploCloud.Pulumi
     ///         CertificateArn = certArn,
     ///     });
     /// 
-    ///     var @static = new Duplocloud.AwsLbListenerRule("static", new()
+    ///     var @static = new Pulumi.AwsLbListenerRule("static", new()
     ///     {
     ///         TenantId = tenantId,
     ///         ListenerArn = alb_listener.Arn,
     ///         Priority = 100,
     ///         Actions = new[]
     ///         {
-    ///             new Duplocloud.Inputs.AwsLbListenerRuleActionArgs
+    ///             new Pulumi.Inputs.AwsLbListenerRuleActionArgs
     ///             {
     ///                 Type = "forward",
     ///                 TargetGroupArn = tg.Arn,
@@ -73,9 +73,9 @@ namespace DuploCloud.Pulumi
     ///         },
     ///         Conditions = new[]
     ///         {
-    ///             new Duplocloud.Inputs.AwsLbListenerRuleConditionArgs
+    ///             new Pulumi.Inputs.AwsLbListenerRuleConditionArgs
     ///             {
-    ///                 PathPattern = new Duplocloud.Inputs.AwsLbListenerRuleConditionPathPatternArgs
+    ///                 PathPattern = new Pulumi.Inputs.AwsLbListenerRuleConditionPathPatternArgs
     ///                 {
     ///                     Values = new[]
     ///                     {
@@ -83,9 +83,9 @@ namespace DuploCloud.Pulumi
     ///                     },
     ///                 },
     ///             },
-    ///             new Duplocloud.Inputs.AwsLbListenerRuleConditionArgs
+    ///             new Pulumi.Inputs.AwsLbListenerRuleConditionArgs
     ///             {
-    ///                 HostHeader = new Duplocloud.Inputs.AwsLbListenerRuleConditionHostHeaderArgs
+    ///                 HostHeader = new Pulumi.Inputs.AwsLbListenerRuleConditionHostHeaderArgs
     ///                 {
     ///                     Values = new[]
     ///                     {
@@ -97,14 +97,14 @@ namespace DuploCloud.Pulumi
     ///     });
     /// 
     ///     // Forward action
-    ///     var hostBasedWeightedRouting = new Duplocloud.AwsLbListenerRule("host_based_weighted_routing", new()
+    ///     var hostBasedWeightedRouting = new Pulumi.AwsLbListenerRule("host_based_weighted_routing", new()
     ///     {
     ///         TenantId = tenantId,
     ///         ListenerArn = alb_listener.Arn,
     ///         Priority = 99,
     ///         Actions = new[]
     ///         {
-    ///             new Duplocloud.Inputs.AwsLbListenerRuleActionArgs
+    ///             new Pulumi.Inputs.AwsLbListenerRuleActionArgs
     ///             {
     ///                 Type = "forward",
     ///                 TargetGroupArn = tg.Arn,
@@ -112,9 +112,9 @@ namespace DuploCloud.Pulumi
     ///         },
     ///         Conditions = new[]
     ///         {
-    ///             new Duplocloud.Inputs.AwsLbListenerRuleConditionArgs
+    ///             new Pulumi.Inputs.AwsLbListenerRuleConditionArgs
     ///             {
-    ///                 HostHeader = new Duplocloud.Inputs.AwsLbListenerRuleConditionHostHeaderArgs
+    ///                 HostHeader = new Pulumi.Inputs.AwsLbListenerRuleConditionHostHeaderArgs
     ///                 {
     ///                     Values = new[]
     ///                     {
@@ -126,17 +126,17 @@ namespace DuploCloud.Pulumi
     ///     });
     /// 
     ///     // Redirect action
-    ///     var redirectHttpToHttps = new Duplocloud.AwsLbListenerRule("redirect_http_to_https", new()
+    ///     var redirectHttpToHttps = new Pulumi.AwsLbListenerRule("redirect_http_to_https", new()
     ///     {
     ///         TenantId = tenantId,
     ///         ListenerArn = alb_listener.Arn,
     ///         Priority = 98,
     ///         Actions = new[]
     ///         {
-    ///             new Duplocloud.Inputs.AwsLbListenerRuleActionArgs
+    ///             new Pulumi.Inputs.AwsLbListenerRuleActionArgs
     ///             {
     ///                 Type = "redirect",
-    ///                 Redirect = new Duplocloud.Inputs.AwsLbListenerRuleActionRedirectArgs
+    ///                 Redirect = new Pulumi.Inputs.AwsLbListenerRuleActionRedirectArgs
     ///                 {
     ///                     Port = "443",
     ///                     Protocol = "HTTPS",
@@ -146,9 +146,9 @@ namespace DuploCloud.Pulumi
     ///         },
     ///         Conditions = new[]
     ///         {
-    ///             new Duplocloud.Inputs.AwsLbListenerRuleConditionArgs
+    ///             new Pulumi.Inputs.AwsLbListenerRuleConditionArgs
     ///             {
-    ///                 HttpHeader = new Duplocloud.Inputs.AwsLbListenerRuleConditionHttpHeaderArgs
+    ///                 HttpHeader = new Pulumi.Inputs.AwsLbListenerRuleConditionHttpHeaderArgs
     ///                 {
     ///                     HttpHeaderName = "X-Forwarded-For",
     ///                     Values = new[]
@@ -161,17 +161,17 @@ namespace DuploCloud.Pulumi
     ///     });
     /// 
     ///     // Fixed-response action
-    ///     var healthCheck = new Duplocloud.AwsLbListenerRule("health_check", new()
+    ///     var healthCheck = new Pulumi.AwsLbListenerRule("health_check", new()
     ///     {
     ///         TenantId = tenantId,
     ///         ListenerArn = alb_listener.Arn,
     ///         Priority = 97,
     ///         Actions = new[]
     ///         {
-    ///             new Duplocloud.Inputs.AwsLbListenerRuleActionArgs
+    ///             new Pulumi.Inputs.AwsLbListenerRuleActionArgs
     ///             {
     ///                 Type = "fixed-response",
-    ///                 FixedResponse = new Duplocloud.Inputs.AwsLbListenerRuleActionFixedResponseArgs
+    ///                 FixedResponse = new Pulumi.Inputs.AwsLbListenerRuleActionFixedResponseArgs
     ///                 {
     ///                     ContentType = "text/plain",
     ///                     MessageBody = "HEALTHY",
@@ -181,16 +181,16 @@ namespace DuploCloud.Pulumi
     ///         },
     ///         Conditions = new[]
     ///         {
-    ///             new Duplocloud.Inputs.AwsLbListenerRuleConditionArgs
+    ///             new Pulumi.Inputs.AwsLbListenerRuleConditionArgs
     ///             {
     ///                 QueryStrings = new[]
     ///                 {
-    ///                     new Duplocloud.Inputs.AwsLbListenerRuleConditionQueryStringArgs
+    ///                     new Pulumi.Inputs.AwsLbListenerRuleConditionQueryStringArgs
     ///                     {
     ///                         Key = "health",
     ///                         Value = "check",
     ///                     },
-    ///                     new Duplocloud.Inputs.AwsLbListenerRuleConditionQueryStringArgs
+    ///                     new Pulumi.Inputs.AwsLbListenerRuleConditionQueryStringArgs
     ///                     {
     ///                         Key = "foo",
     ///                         Value = "bar",

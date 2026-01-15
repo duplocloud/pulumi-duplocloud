@@ -10,6 +10,11 @@ export type AdminSystemSetting = import("./adminSystemSetting").AdminSystemSetti
 export const AdminSystemSetting: typeof import("./adminSystemSetting").AdminSystemSetting = null as any;
 utilities.lazyLoad(exports, ["AdminSystemSetting"], () => require("./adminSystemSetting"));
 
+export { AsgInstanceRefreshArgs, AsgInstanceRefreshState } from "./asgInstanceRefresh";
+export type AsgInstanceRefresh = import("./asgInstanceRefresh").AsgInstanceRefresh;
+export const AsgInstanceRefresh: typeof import("./asgInstanceRefresh").AsgInstanceRefresh = null as any;
+utilities.lazyLoad(exports, ["AsgInstanceRefresh"], () => require("./asgInstanceRefresh"));
+
 export { AsgProfileArgs, AsgProfileState } from "./asgProfile";
 export type AsgProfile = import("./asgProfile").AsgProfile;
 export const AsgProfile: typeof import("./asgProfile").AsgProfile = null as any;
@@ -165,6 +170,11 @@ export type AwsMwaaEnvironment = import("./awsMwaaEnvironment").AwsMwaaEnvironme
 export const AwsMwaaEnvironment: typeof import("./awsMwaaEnvironment").AwsMwaaEnvironment = null as any;
 utilities.lazyLoad(exports, ["AwsMwaaEnvironment"], () => require("./awsMwaaEnvironment"));
 
+export { AwsRdsGlobalSecondaryArgs, AwsRdsGlobalSecondaryState } from "./awsRdsGlobalSecondary";
+export type AwsRdsGlobalSecondary = import("./awsRdsGlobalSecondary").AwsRdsGlobalSecondary;
+export const AwsRdsGlobalSecondary: typeof import("./awsRdsGlobalSecondary").AwsRdsGlobalSecondary = null as any;
+utilities.lazyLoad(exports, ["AwsRdsGlobalSecondary"], () => require("./awsRdsGlobalSecondary"));
+
 export { AwsRdsTagArgs, AwsRdsTagState } from "./awsRdsTag";
 export type AwsRdsTag = import("./awsRdsTag").AwsRdsTag;
 export const AwsRdsTag: typeof import("./awsRdsTag").AwsRdsTag = null as any;
@@ -185,6 +195,11 @@ export type AwsSsmParameter = import("./awsSsmParameter").AwsSsmParameter;
 export const AwsSsmParameter: typeof import("./awsSsmParameter").AwsSsmParameter = null as any;
 utilities.lazyLoad(exports, ["AwsSsmParameter"], () => require("./awsSsmParameter"));
 
+export { AwsTagArgs, AwsTagState } from "./awsTag";
+export type AwsTag = import("./awsTag").AwsTag;
+export const AwsTag: typeof import("./awsTag").AwsTag = null as any;
+utilities.lazyLoad(exports, ["AwsTag"], () => require("./awsTag"));
+
 export { AwsTargetGroupAttributesArgs, AwsTargetGroupAttributesState } from "./awsTargetGroupAttributes";
 export type AwsTargetGroupAttributes = import("./awsTargetGroupAttributes").AwsTargetGroupAttributes;
 export const AwsTargetGroupAttributes: typeof import("./awsTargetGroupAttributes").AwsTargetGroupAttributes = null as any;
@@ -204,6 +219,21 @@ export { AzureAvailabilitySetArgs, AzureAvailabilitySetState } from "./azureAvai
 export type AzureAvailabilitySet = import("./azureAvailabilitySet").AzureAvailabilitySet;
 export const AzureAvailabilitySet: typeof import("./azureAvailabilitySet").AzureAvailabilitySet = null as any;
 utilities.lazyLoad(exports, ["AzureAvailabilitySet"], () => require("./azureAvailabilitySet"));
+
+export { AzureCosmosDbAccountArgs, AzureCosmosDbAccountState } from "./azureCosmosDbAccount";
+export type AzureCosmosDbAccount = import("./azureCosmosDbAccount").AzureCosmosDbAccount;
+export const AzureCosmosDbAccount: typeof import("./azureCosmosDbAccount").AzureCosmosDbAccount = null as any;
+utilities.lazyLoad(exports, ["AzureCosmosDbAccount"], () => require("./azureCosmosDbAccount"));
+
+export { AzureCosmosDbContainerArgs, AzureCosmosDbContainerState } from "./azureCosmosDbContainer";
+export type AzureCosmosDbContainer = import("./azureCosmosDbContainer").AzureCosmosDbContainer;
+export const AzureCosmosDbContainer: typeof import("./azureCosmosDbContainer").AzureCosmosDbContainer = null as any;
+utilities.lazyLoad(exports, ["AzureCosmosDbContainer"], () => require("./azureCosmosDbContainer"));
+
+export { AzureCosmosDbDatabaseArgs, AzureCosmosDbDatabaseState } from "./azureCosmosDbDatabase";
+export type AzureCosmosDbDatabase = import("./azureCosmosDbDatabase").AzureCosmosDbDatabase;
+export const AzureCosmosDbDatabase: typeof import("./azureCosmosDbDatabase").AzureCosmosDbDatabase = null as any;
+utilities.lazyLoad(exports, ["AzureCosmosDbDatabase"], () => require("./azureCosmosDbDatabase"));
 
 export { AzureDatafactoryArgs, AzureDatafactoryState } from "./azureDatafactory";
 export type AzureDatafactory = import("./azureDatafactory").AzureDatafactory;
@@ -245,6 +275,11 @@ export type AzureMssqlServer = import("./azureMssqlServer").AzureMssqlServer;
 export const AzureMssqlServer: typeof import("./azureMssqlServer").AzureMssqlServer = null as any;
 utilities.lazyLoad(exports, ["AzureMssqlServer"], () => require("./azureMssqlServer"));
 
+export { AzureMssqldbRetentionBackupArgs, AzureMssqldbRetentionBackupState } from "./azureMssqldbRetentionBackup";
+export type AzureMssqldbRetentionBackup = import("./azureMssqldbRetentionBackup").AzureMssqldbRetentionBackup;
+export const AzureMssqldbRetentionBackup: typeof import("./azureMssqldbRetentionBackup").AzureMssqldbRetentionBackup = null as any;
+utilities.lazyLoad(exports, ["AzureMssqldbRetentionBackup"], () => require("./azureMssqldbRetentionBackup"));
+
 export { AzureMysqlDatabaseArgs, AzureMysqlDatabaseState } from "./azureMysqlDatabase";
 export type AzureMysqlDatabase = import("./azureMysqlDatabase").AzureMysqlDatabase;
 export const AzureMysqlDatabase: typeof import("./azureMysqlDatabase").AzureMysqlDatabase = null as any;
@@ -264,6 +299,16 @@ export { AzurePostgresqlFlexibleDatabaseArgs, AzurePostgresqlFlexibleDatabaseSta
 export type AzurePostgresqlFlexibleDatabase = import("./azurePostgresqlFlexibleDatabase").AzurePostgresqlFlexibleDatabase;
 export const AzurePostgresqlFlexibleDatabase: typeof import("./azurePostgresqlFlexibleDatabase").AzurePostgresqlFlexibleDatabase = null as any;
 utilities.lazyLoad(exports, ["AzurePostgresqlFlexibleDatabase"], () => require("./azurePostgresqlFlexibleDatabase"));
+
+export { AzurePostgresqlFlexibleDatabaseV2Args, AzurePostgresqlFlexibleDatabaseV2State } from "./azurePostgresqlFlexibleDatabaseV2";
+export type AzurePostgresqlFlexibleDatabaseV2 = import("./azurePostgresqlFlexibleDatabaseV2").AzurePostgresqlFlexibleDatabaseV2;
+export const AzurePostgresqlFlexibleDatabaseV2: typeof import("./azurePostgresqlFlexibleDatabaseV2").AzurePostgresqlFlexibleDatabaseV2 = null as any;
+utilities.lazyLoad(exports, ["AzurePostgresqlFlexibleDatabaseV2"], () => require("./azurePostgresqlFlexibleDatabaseV2"));
+
+export { AzurePostgresqlFlexibleDbAdAdministratorArgs, AzurePostgresqlFlexibleDbAdAdministratorState } from "./azurePostgresqlFlexibleDbAdAdministrator";
+export type AzurePostgresqlFlexibleDbAdAdministrator = import("./azurePostgresqlFlexibleDbAdAdministrator").AzurePostgresqlFlexibleDbAdAdministrator;
+export const AzurePostgresqlFlexibleDbAdAdministrator: typeof import("./azurePostgresqlFlexibleDbAdAdministrator").AzurePostgresqlFlexibleDbAdAdministrator = null as any;
+utilities.lazyLoad(exports, ["AzurePostgresqlFlexibleDbAdAdministrator"], () => require("./azurePostgresqlFlexibleDbAdAdministrator"));
 
 export { AzurePrivateEndpointArgs, AzurePrivateEndpointState } from "./azurePrivateEndpoint";
 export type AzurePrivateEndpoint = import("./azurePrivateEndpoint").AzurePrivateEndpoint;
@@ -379,6 +424,16 @@ export { DuploServiceParamsArgs, DuploServiceParamsState } from "./duploServiceP
 export type DuploServiceParams = import("./duploServiceParams").DuploServiceParams;
 export const DuploServiceParams: typeof import("./duploServiceParams").DuploServiceParams = null as any;
 utilities.lazyLoad(exports, ["DuploServiceParams"], () => require("./duploServiceParams"));
+
+export { EcacheAssociateGlobalSecondaryClusterArgs, EcacheAssociateGlobalSecondaryClusterState } from "./ecacheAssociateGlobalSecondaryCluster";
+export type EcacheAssociateGlobalSecondaryCluster = import("./ecacheAssociateGlobalSecondaryCluster").EcacheAssociateGlobalSecondaryCluster;
+export const EcacheAssociateGlobalSecondaryCluster: typeof import("./ecacheAssociateGlobalSecondaryCluster").EcacheAssociateGlobalSecondaryCluster = null as any;
+utilities.lazyLoad(exports, ["EcacheAssociateGlobalSecondaryCluster"], () => require("./ecacheAssociateGlobalSecondaryCluster"));
+
+export { EcacheGlobalDatastoreArgs, EcacheGlobalDatastoreState } from "./ecacheGlobalDatastore";
+export type EcacheGlobalDatastore = import("./ecacheGlobalDatastore").EcacheGlobalDatastore;
+export const EcacheGlobalDatastore: typeof import("./ecacheGlobalDatastore").EcacheGlobalDatastore = null as any;
+utilities.lazyLoad(exports, ["EcacheGlobalDatastore"], () => require("./ecacheGlobalDatastore"));
 
 export { EcacheInstanceArgs, EcacheInstanceState } from "./ecacheInstance";
 export type EcacheInstance = import("./ecacheInstance").EcacheInstance;
@@ -509,6 +564,16 @@ export { GetAzureAvailabilitySetArgs, GetAzureAvailabilitySetResult, GetAzureAva
 export const getAzureAvailabilitySet: typeof import("./getAzureAvailabilitySet").getAzureAvailabilitySet = null as any;
 export const getAzureAvailabilitySetOutput: typeof import("./getAzureAvailabilitySet").getAzureAvailabilitySetOutput = null as any;
 utilities.lazyLoad(exports, ["getAzureAvailabilitySet","getAzureAvailabilitySetOutput"], () => require("./getAzureAvailabilitySet"));
+
+export { GetAzureCosmosDbAccountArgs, GetAzureCosmosDbAccountResult, GetAzureCosmosDbAccountOutputArgs } from "./getAzureCosmosDbAccount";
+export const getAzureCosmosDbAccount: typeof import("./getAzureCosmosDbAccount").getAzureCosmosDbAccount = null as any;
+export const getAzureCosmosDbAccountOutput: typeof import("./getAzureCosmosDbAccount").getAzureCosmosDbAccountOutput = null as any;
+utilities.lazyLoad(exports, ["getAzureCosmosDbAccount","getAzureCosmosDbAccountOutput"], () => require("./getAzureCosmosDbAccount"));
+
+export { GetAzureCosmosDbDatabaseArgs, GetAzureCosmosDbDatabaseResult, GetAzureCosmosDbDatabaseOutputArgs } from "./getAzureCosmosDbDatabase";
+export const getAzureCosmosDbDatabase: typeof import("./getAzureCosmosDbDatabase").getAzureCosmosDbDatabase = null as any;
+export const getAzureCosmosDbDatabaseOutput: typeof import("./getAzureCosmosDbDatabase").getAzureCosmosDbDatabaseOutput = null as any;
+utilities.lazyLoad(exports, ["getAzureCosmosDbDatabase","getAzureCosmosDbDatabaseOutput"], () => require("./getAzureCosmosDbDatabase"));
 
 export { GetAzureStorageAccountKeyArgs, GetAzureStorageAccountKeyResult, GetAzureStorageAccountKeyOutputArgs } from "./getAzureStorageAccountKey";
 export const getAzureStorageAccountKey: typeof import("./getAzureStorageAccountKey").getAzureStorageAccountKey = null as any;
@@ -745,6 +810,11 @@ export const getPlans: typeof import("./getPlans").getPlans = null as any;
 export const getPlansOutput: typeof import("./getPlans").getPlansOutput = null as any;
 utilities.lazyLoad(exports, ["getPlans","getPlansOutput"], () => require("./getPlans"));
 
+export { GetSystemFeaturesResult } from "./getSystemFeatures";
+export const getSystemFeatures: typeof import("./getSystemFeatures").getSystemFeatures = null as any;
+export const getSystemFeaturesOutput: typeof import("./getSystemFeatures").getSystemFeaturesOutput = null as any;
+utilities.lazyLoad(exports, ["getSystemFeatures","getSystemFeaturesOutput"], () => require("./getSystemFeatures"));
+
 export { GetTenantArgs, GetTenantResult, GetTenantOutputArgs } from "./getTenant";
 export const getTenant: typeof import("./getTenant").getTenant = null as any;
 export const getTenantOutput: typeof import("./getTenant").getTenantOutput = null as any;
@@ -975,6 +1045,21 @@ export type TenantConfig = import("./tenantConfig").TenantConfig;
 export const TenantConfig: typeof import("./tenantConfig").TenantConfig = null as any;
 utilities.lazyLoad(exports, ["TenantConfig"], () => require("./tenantConfig"));
 
+export { TenantK8sResourceQuotaArgs, TenantK8sResourceQuotaState } from "./tenantK8sResourceQuota";
+export type TenantK8sResourceQuota = import("./tenantK8sResourceQuota").TenantK8sResourceQuota;
+export const TenantK8sResourceQuota: typeof import("./tenantK8sResourceQuota").TenantK8sResourceQuota = null as any;
+utilities.lazyLoad(exports, ["TenantK8sResourceQuota"], () => require("./tenantK8sResourceQuota"));
+
+export { TenantKmsArgs, TenantKmsState } from "./tenantKms";
+export type TenantKms = import("./tenantKms").TenantKms;
+export const TenantKms: typeof import("./tenantKms").TenantKms = null as any;
+utilities.lazyLoad(exports, ["TenantKms"], () => require("./tenantKms"));
+
+export { TenantMetadataArgs, TenantMetadataState } from "./tenantMetadata";
+export type TenantMetadata = import("./tenantMetadata").TenantMetadata;
+export const TenantMetadata: typeof import("./tenantMetadata").TenantMetadata = null as any;
+utilities.lazyLoad(exports, ["TenantMetadata"], () => require("./tenantMetadata"));
+
 export { TenantNetworkSecurityRuleArgs, TenantNetworkSecurityRuleState } from "./tenantNetworkSecurityRule";
 export type TenantNetworkSecurityRule = import("./tenantNetworkSecurityRule").TenantNetworkSecurityRule;
 export const TenantNetworkSecurityRule: typeof import("./tenantNetworkSecurityRule").TenantNetworkSecurityRule = null as any;
@@ -1016,6 +1101,8 @@ const _module = {
         switch (type) {
             case "duplocloud:index/adminSystemSetting:AdminSystemSetting":
                 return new AdminSystemSetting(name, <any>undefined, { urn })
+            case "duplocloud:index/asgInstanceRefresh:AsgInstanceRefresh":
+                return new AsgInstanceRefresh(name, <any>undefined, { urn })
             case "duplocloud:index/asgProfile:AsgProfile":
                 return new AsgProfile(name, <any>undefined, { urn })
             case "duplocloud:index/awsApiGatewayIntegration:AwsApiGatewayIntegration":
@@ -1078,6 +1165,8 @@ const _module = {
                 return new AwsLoadBalancerListener(name, <any>undefined, { urn })
             case "duplocloud:index/awsMwaaEnvironment:AwsMwaaEnvironment":
                 return new AwsMwaaEnvironment(name, <any>undefined, { urn })
+            case "duplocloud:index/awsRdsGlobalSecondary:AwsRdsGlobalSecondary":
+                return new AwsRdsGlobalSecondary(name, <any>undefined, { urn })
             case "duplocloud:index/awsRdsTag:AwsRdsTag":
                 return new AwsRdsTag(name, <any>undefined, { urn })
             case "duplocloud:index/awsSnsTopic:AwsSnsTopic":
@@ -1086,6 +1175,8 @@ const _module = {
                 return new AwsSqsQueue(name, <any>undefined, { urn })
             case "duplocloud:index/awsSsmParameter:AwsSsmParameter":
                 return new AwsSsmParameter(name, <any>undefined, { urn })
+            case "duplocloud:index/awsTag:AwsTag":
+                return new AwsTag(name, <any>undefined, { urn })
             case "duplocloud:index/awsTargetGroupAttributes:AwsTargetGroupAttributes":
                 return new AwsTargetGroupAttributes(name, <any>undefined, { urn })
             case "duplocloud:index/awsTimestreamwriteDatabase:AwsTimestreamwriteDatabase":
@@ -1094,6 +1185,12 @@ const _module = {
                 return new AwsTimestreamwriteTable(name, <any>undefined, { urn })
             case "duplocloud:index/azureAvailabilitySet:AzureAvailabilitySet":
                 return new AzureAvailabilitySet(name, <any>undefined, { urn })
+            case "duplocloud:index/azureCosmosDbAccount:AzureCosmosDbAccount":
+                return new AzureCosmosDbAccount(name, <any>undefined, { urn })
+            case "duplocloud:index/azureCosmosDbContainer:AzureCosmosDbContainer":
+                return new AzureCosmosDbContainer(name, <any>undefined, { urn })
+            case "duplocloud:index/azureCosmosDbDatabase:AzureCosmosDbDatabase":
+                return new AzureCosmosDbDatabase(name, <any>undefined, { urn })
             case "duplocloud:index/azureDatafactory:AzureDatafactory":
                 return new AzureDatafactory(name, <any>undefined, { urn })
             case "duplocloud:index/azureK8NodePool:AzureK8NodePool":
@@ -1110,6 +1207,8 @@ const _module = {
                 return new AzureMssqlElasticpool(name, <any>undefined, { urn })
             case "duplocloud:index/azureMssqlServer:AzureMssqlServer":
                 return new AzureMssqlServer(name, <any>undefined, { urn })
+            case "duplocloud:index/azureMssqldbRetentionBackup:AzureMssqldbRetentionBackup":
+                return new AzureMssqldbRetentionBackup(name, <any>undefined, { urn })
             case "duplocloud:index/azureMysqlDatabase:AzureMysqlDatabase":
                 return new AzureMysqlDatabase(name, <any>undefined, { urn })
             case "duplocloud:index/azureNetworkSecurityRule:AzureNetworkSecurityRule":
@@ -1118,6 +1217,10 @@ const _module = {
                 return new AzurePostgresqlDatabase(name, <any>undefined, { urn })
             case "duplocloud:index/azurePostgresqlFlexibleDatabase:AzurePostgresqlFlexibleDatabase":
                 return new AzurePostgresqlFlexibleDatabase(name, <any>undefined, { urn })
+            case "duplocloud:index/azurePostgresqlFlexibleDatabaseV2:AzurePostgresqlFlexibleDatabaseV2":
+                return new AzurePostgresqlFlexibleDatabaseV2(name, <any>undefined, { urn })
+            case "duplocloud:index/azurePostgresqlFlexibleDbAdAdministrator:AzurePostgresqlFlexibleDbAdAdministrator":
+                return new AzurePostgresqlFlexibleDbAdAdministrator(name, <any>undefined, { urn })
             case "duplocloud:index/azurePrivateEndpoint:AzurePrivateEndpoint":
                 return new AzurePrivateEndpoint(name, <any>undefined, { urn })
             case "duplocloud:index/azureRecoveryServicesVault:AzureRecoveryServicesVault":
@@ -1164,6 +1267,10 @@ const _module = {
                 return new DuploServiceLbconfigs(name, <any>undefined, { urn })
             case "duplocloud:index/duploServiceParams:DuploServiceParams":
                 return new DuploServiceParams(name, <any>undefined, { urn })
+            case "duplocloud:index/ecacheAssociateGlobalSecondaryCluster:EcacheAssociateGlobalSecondaryCluster":
+                return new EcacheAssociateGlobalSecondaryCluster(name, <any>undefined, { urn })
+            case "duplocloud:index/ecacheGlobalDatastore:EcacheGlobalDatastore":
+                return new EcacheGlobalDatastore(name, <any>undefined, { urn })
             case "duplocloud:index/ecacheInstance:EcacheInstance":
                 return new EcacheInstance(name, <any>undefined, { urn })
             case "duplocloud:index/ecsService:EcsService":
@@ -1262,6 +1369,12 @@ const _module = {
                 return new TenantCleanupTimers(name, <any>undefined, { urn })
             case "duplocloud:index/tenantConfig:TenantConfig":
                 return new TenantConfig(name, <any>undefined, { urn })
+            case "duplocloud:index/tenantK8sResourceQuota:TenantK8sResourceQuota":
+                return new TenantK8sResourceQuota(name, <any>undefined, { urn })
+            case "duplocloud:index/tenantKms:TenantKms":
+                return new TenantKms(name, <any>undefined, { urn })
+            case "duplocloud:index/tenantMetadata:TenantMetadata":
+                return new TenantMetadata(name, <any>undefined, { urn })
             case "duplocloud:index/tenantNetworkSecurityRule:TenantNetworkSecurityRule":
                 return new TenantNetworkSecurityRule(name, <any>undefined, { urn })
             case "duplocloud:index/tenantSecret:TenantSecret":
@@ -1278,6 +1391,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("duplocloud", "index/adminSystemSetting", _module)
+pulumi.runtime.registerResourceModule("duplocloud", "index/asgInstanceRefresh", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/asgProfile", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/awsApiGatewayIntegration", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/awsApigatewayEvent", _module)
@@ -1309,14 +1423,19 @@ pulumi.runtime.registerResourceModule("duplocloud", "index/awsLbTargetGroup", _m
 pulumi.runtime.registerResourceModule("duplocloud", "index/awsLoadBalancer", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/awsLoadBalancerListener", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/awsMwaaEnvironment", _module)
+pulumi.runtime.registerResourceModule("duplocloud", "index/awsRdsGlobalSecondary", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/awsRdsTag", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/awsSnsTopic", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/awsSqsQueue", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/awsSsmParameter", _module)
+pulumi.runtime.registerResourceModule("duplocloud", "index/awsTag", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/awsTargetGroupAttributes", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/awsTimestreamwriteDatabase", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/awsTimestreamwriteTable", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/azureAvailabilitySet", _module)
+pulumi.runtime.registerResourceModule("duplocloud", "index/azureCosmosDbAccount", _module)
+pulumi.runtime.registerResourceModule("duplocloud", "index/azureCosmosDbContainer", _module)
+pulumi.runtime.registerResourceModule("duplocloud", "index/azureCosmosDbDatabase", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/azureDatafactory", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/azureK8NodePool", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/azureK8sCluster", _module)
@@ -1325,10 +1444,13 @@ pulumi.runtime.registerResourceModule("duplocloud", "index/azureLogAnalyticsWork
 pulumi.runtime.registerResourceModule("duplocloud", "index/azureMssqlDatabase", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/azureMssqlElasticpool", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/azureMssqlServer", _module)
+pulumi.runtime.registerResourceModule("duplocloud", "index/azureMssqldbRetentionBackup", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/azureMysqlDatabase", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/azureNetworkSecurityRule", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/azurePostgresqlDatabase", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/azurePostgresqlFlexibleDatabase", _module)
+pulumi.runtime.registerResourceModule("duplocloud", "index/azurePostgresqlFlexibleDatabaseV2", _module)
+pulumi.runtime.registerResourceModule("duplocloud", "index/azurePostgresqlFlexibleDbAdAdministrator", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/azurePrivateEndpoint", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/azureRecoveryServicesVault", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/azureRedisCache", _module)
@@ -1352,6 +1474,8 @@ pulumi.runtime.registerResourceModule("duplocloud", "index/dockerCredentials", _
 pulumi.runtime.registerResourceModule("duplocloud", "index/duploService", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/duploServiceLbconfigs", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/duploServiceParams", _module)
+pulumi.runtime.registerResourceModule("duplocloud", "index/ecacheAssociateGlobalSecondaryCluster", _module)
+pulumi.runtime.registerResourceModule("duplocloud", "index/ecacheGlobalDatastore", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/ecacheInstance", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/ecsService", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/ecsTaskDefinition", _module)
@@ -1401,6 +1525,9 @@ pulumi.runtime.registerResourceModule("duplocloud", "index/tenant", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/tenantAccessGrant", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/tenantCleanupTimers", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/tenantConfig", _module)
+pulumi.runtime.registerResourceModule("duplocloud", "index/tenantK8sResourceQuota", _module)
+pulumi.runtime.registerResourceModule("duplocloud", "index/tenantKms", _module)
+pulumi.runtime.registerResourceModule("duplocloud", "index/tenantMetadata", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/tenantNetworkSecurityRule", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/tenantSecret", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/tenantTag", _module)

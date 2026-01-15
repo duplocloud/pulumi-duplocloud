@@ -28,7 +28,10 @@ class GetK8sCronJobResult:
     """
     A collection of values returned by getK8sCronJob.
     """
-    def __init__(__self__, id=None, is_any_host_allowed=None, metadata=None, specs=None, tenant_id=None):
+    def __init__(__self__, allocation_tags=None, id=None, is_any_host_allowed=None, metadata=None, specs=None, tenant_id=None):
+        if allocation_tags and not isinstance(allocation_tags, str):
+            raise TypeError("Expected argument 'allocation_tags' to be a str")
+        pulumi.set(__self__, "allocation_tags", allocation_tags)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -44,6 +47,14 @@ class GetK8sCronJobResult:
         if tenant_id and not isinstance(tenant_id, str):
             raise TypeError("Expected argument 'tenant_id' to be a str")
         pulumi.set(__self__, "tenant_id", tenant_id)
+
+    @property
+    @pulumi.getter(name="allocationTags")
+    def allocation_tags(self) -> Optional[str]:
+        """
+        Allocation tags is the simplest way to constraint containers/pods with hosts/nodes. DuploCloud/Kubernetes Orchestrator will make sure containers will run on the hosts having same allocation tags.
+        """
+        return pulumi.get(self, "allocation_tags")
 
     @property
     @pulumi.getter
@@ -92,6 +103,7 @@ class AwaitableGetK8sCronJobResult(GetK8sCronJobResult):
         if False:
             yield self
         return GetK8sCronJobResult(
+            allocation_tags=self.allocation_tags,
             id=self.id,
             is_any_host_allowed=self.is_any_host_allowed,
             metadata=self.metadata,
@@ -99,7 +111,8 @@ class AwaitableGetK8sCronJobResult(GetK8sCronJobResult):
             tenant_id=self.tenant_id)
 
 
-def get_k8s_cron_job(is_any_host_allowed: Optional[bool] = None,
+def get_k8s_cron_job(allocation_tags: Optional[str] = None,
+                     is_any_host_allowed: Optional[bool] = None,
                      metadata: Optional[Union['GetK8sCronJobMetadataArgs', 'GetK8sCronJobMetadataArgsDict']] = None,
                      tenant_id: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetK8sCronJobResult:
@@ -118,11 +131,13 @@ def get_k8s_cron_job(is_any_host_allowed: Optional[bool] = None,
     ```
 
 
+    :param str allocation_tags: Allocation tags is the simplest way to constraint containers/pods with hosts/nodes. DuploCloud/Kubernetes Orchestrator will make sure containers will run on the hosts having same allocation tags.
     :param bool is_any_host_allowed: Defaults to `false`.
     :param Union['GetK8sCronJobMetadataArgs', 'GetK8sCronJobMetadataArgsDict'] metadata: Standard cronjob's metadata. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
     :param str tenant_id: The GUID of the tenant that the job will be created in.
     """
     __args__ = dict()
+    __args__['allocationTags'] = allocation_tags
     __args__['isAnyHostAllowed'] = is_any_host_allowed
     __args__['metadata'] = metadata
     __args__['tenantId'] = tenant_id
@@ -130,12 +145,14 @@ def get_k8s_cron_job(is_any_host_allowed: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('duplocloud:index/getK8sCronJob:getK8sCronJob', __args__, opts=opts, typ=GetK8sCronJobResult).value
 
     return AwaitableGetK8sCronJobResult(
+        allocation_tags=pulumi.get(__ret__, 'allocation_tags'),
         id=pulumi.get(__ret__, 'id'),
         is_any_host_allowed=pulumi.get(__ret__, 'is_any_host_allowed'),
         metadata=pulumi.get(__ret__, 'metadata'),
         specs=pulumi.get(__ret__, 'specs'),
         tenant_id=pulumi.get(__ret__, 'tenant_id'))
-def get_k8s_cron_job_output(is_any_host_allowed: Optional[pulumi.Input[Optional[bool]]] = None,
+def get_k8s_cron_job_output(allocation_tags: Optional[pulumi.Input[Optional[str]]] = None,
+                            is_any_host_allowed: Optional[pulumi.Input[Optional[bool]]] = None,
                             metadata: Optional[pulumi.Input[Union['GetK8sCronJobMetadataArgs', 'GetK8sCronJobMetadataArgsDict']]] = None,
                             tenant_id: Optional[pulumi.Input[str]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetK8sCronJobResult]:
@@ -154,17 +171,20 @@ def get_k8s_cron_job_output(is_any_host_allowed: Optional[pulumi.Input[Optional[
     ```
 
 
+    :param str allocation_tags: Allocation tags is the simplest way to constraint containers/pods with hosts/nodes. DuploCloud/Kubernetes Orchestrator will make sure containers will run on the hosts having same allocation tags.
     :param bool is_any_host_allowed: Defaults to `false`.
     :param Union['GetK8sCronJobMetadataArgs', 'GetK8sCronJobMetadataArgsDict'] metadata: Standard cronjob's metadata. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
     :param str tenant_id: The GUID of the tenant that the job will be created in.
     """
     __args__ = dict()
+    __args__['allocationTags'] = allocation_tags
     __args__['isAnyHostAllowed'] = is_any_host_allowed
     __args__['metadata'] = metadata
     __args__['tenantId'] = tenant_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('duplocloud:index/getK8sCronJob:getK8sCronJob', __args__, opts=opts, typ=GetK8sCronJobResult)
     return __ret__.apply(lambda __response__: GetK8sCronJobResult(
+        allocation_tags=pulumi.get(__response__, 'allocation_tags'),
         id=pulumi.get(__response__, 'id'),
         is_any_host_allowed=pulumi.get(__response__, 'is_any_host_allowed'),
         metadata=pulumi.get(__response__, 'metadata'),

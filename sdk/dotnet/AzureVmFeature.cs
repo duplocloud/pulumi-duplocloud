@@ -19,18 +19,18 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myapp = new Duplocloud.Tenant("myapp", new()
+    ///     var myapp = new Pulumi.Tenant("myapp", new()
     ///     {
     ///         AccountName = "myapp",
     ///         PlanId = "default",
     ///     });
     /// 
     ///     // supported feature names are "loganalytics", "publicip", "addsjoin", and "aadjoin"
-    ///     var vmFeature = new Duplocloud.AzureVmFeature("vm_feature", new()
+    ///     var vmFeature = new Pulumi.AzureVmFeature("vm_feature", new()
     ///     {
     ///         TenantId = myapp.TenantId,
     ///         ComponentId = "p01-host01",

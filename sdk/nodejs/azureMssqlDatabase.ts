@@ -60,6 +60,10 @@ export class AzureMssqlDatabase extends pulumi.CustomResource {
      */
     public readonly elasticPoolId!: pulumi.Output<string | undefined>;
     /**
+     * Maximum allowed database size in GB for more information please refer following link https://learn.microsoft.com/en-us/azure/azure-sql/database/resource-limits-vcore-single-databases?view=azuresql Defaults to `32`.
+     */
+    public readonly maxSizeGb!: pulumi.Output<number | undefined>;
+    /**
      * The name of the MS SQL Database.
      */
     public readonly name!: pulumi.Output<string>;
@@ -88,6 +92,7 @@ export class AzureMssqlDatabase extends pulumi.CustomResource {
             const state = argsOrState as AzureMssqlDatabaseState | undefined;
             resourceInputs["collation"] = state ? state.collation : undefined;
             resourceInputs["elasticPoolId"] = state ? state.elasticPoolId : undefined;
+            resourceInputs["maxSizeGb"] = state ? state.maxSizeGb : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["serverName"] = state ? state.serverName : undefined;
             resourceInputs["sku"] = state ? state.sku : undefined;
@@ -102,6 +107,7 @@ export class AzureMssqlDatabase extends pulumi.CustomResource {
             }
             resourceInputs["collation"] = args ? args.collation : undefined;
             resourceInputs["elasticPoolId"] = args ? args.elasticPoolId : undefined;
+            resourceInputs["maxSizeGb"] = args ? args.maxSizeGb : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["serverName"] = args ? args.serverName : undefined;
             resourceInputs["sku"] = args ? args.sku : undefined;
@@ -124,6 +130,10 @@ export interface AzureMssqlDatabaseState {
      * Specifies the id of the elastic pool containing this database.
      */
     elasticPoolId?: pulumi.Input<string>;
+    /**
+     * Maximum allowed database size in GB for more information please refer following link https://learn.microsoft.com/en-us/azure/azure-sql/database/resource-limits-vcore-single-databases?view=azuresql Defaults to `32`.
+     */
+    maxSizeGb?: pulumi.Input<number>;
     /**
      * The name of the MS SQL Database.
      */
@@ -151,6 +161,10 @@ export interface AzureMssqlDatabaseArgs {
      * Specifies the id of the elastic pool containing this database.
      */
     elasticPoolId?: pulumi.Input<string>;
+    /**
+     * Maximum allowed database size in GB for more information please refer following link https://learn.microsoft.com/en-us/azure/azure-sql/database/resource-limits-vcore-single-databases?view=azuresql Defaults to `32`.
+     */
+    maxSizeGb?: pulumi.Input<number>;
     /**
      * The name of the MS SQL Database.
      */

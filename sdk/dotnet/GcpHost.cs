@@ -19,17 +19,17 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myapp = new Duplocloud.Tenant("myapp", new()
+    ///     var myapp = new Pulumi.Tenant("myapp", new()
     ///     {
     ///         AccountName = "myapp",
     ///         PlanId = "default",
     ///     });
     /// 
-    ///     var host = new Duplocloud.GcpHost("host", new()
+    ///     var host = new Pulumi.GcpHost("host", new()
     ///     {
     ///         TenantId = myapp.TenantId,
     ///         FriendlyName = "tfnewhost",
@@ -76,7 +76,7 @@ namespace DuploCloud.Pulumi
     public partial class GcpHost : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The number of the guest accelerator cards exposed to this instance. Defaults to `0`.
+        /// The number of the guest accelerator cards exposed to this instance.
         /// </summary>
         [Output("acceleratorCount")]
         public Output<int?> AcceleratorCount { get; private set; } = null!;
@@ -88,13 +88,14 @@ namespace DuploCloud.Pulumi
         public Output<string> AcceleratorType { get; private set; } = null!;
 
         /// <summary>
-        /// The numeric ID of the container agent pool that this host is added to. Defaults to `0`.
+        /// The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
+        /// Windows
         /// </summary>
         [Output("agentPlatform")]
         public Output<int?> AgentPlatform { get; private set; } = null!;
 
         /// <summary>
-        /// Whether or not to allocate a public IP. Defaults to `false`.
+        /// Whether or not to allocate a public IP.
         /// </summary>
         [Output("allocatedPublicIp")]
         public Output<bool?> AllocatedPublicIp { get; private set; } = null!;
@@ -139,7 +140,9 @@ namespace DuploCloud.Pulumi
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration, metadata used when creating the host.\n\n*Note: To configure OS disk size OsDiskSize can be specified as Key and its size as value, size value should be atleast 10, Similarly to added start up script one can pass the key as startup_script and startup command as its value*
+        /// Configuration, metadata used when creating the host.&lt;br&gt;*Note: To configure OS disk size OsDiskSize can be specified as
+        /// Key and its size as value, size value should be atleast 10, Similarly to added start up script one can pass the key as
+        /// startup_script and startup command as its value*
         /// </summary>
         [Output("metadata")]
         public Output<ImmutableDictionary<string, string>> Metadata { get; private set; } = null!;
@@ -174,9 +177,6 @@ namespace DuploCloud.Pulumi
         [Output("userAccount")]
         public Output<string> UserAccount { get; private set; } = null!;
 
-        /// <summary>
-        /// Defaults to `true`.
-        /// </summary>
         [Output("waitUntilReady")]
         public Output<bool?> WaitUntilReady { get; private set; } = null!;
 
@@ -234,7 +234,7 @@ namespace DuploCloud.Pulumi
     public sealed class GcpHostArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The number of the guest accelerator cards exposed to this instance. Defaults to `0`.
+        /// The number of the guest accelerator cards exposed to this instance.
         /// </summary>
         [Input("acceleratorCount")]
         public Input<int>? AcceleratorCount { get; set; }
@@ -246,13 +246,14 @@ namespace DuploCloud.Pulumi
         public Input<string>? AcceleratorType { get; set; }
 
         /// <summary>
-        /// The numeric ID of the container agent pool that this host is added to. Defaults to `0`.
+        /// The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
+        /// Windows
         /// </summary>
         [Input("agentPlatform")]
         public Input<int>? AgentPlatform { get; set; }
 
         /// <summary>
-        /// Whether or not to allocate a public IP. Defaults to `false`.
+        /// Whether or not to allocate a public IP.
         /// </summary>
         [Input("allocatedPublicIp")]
         public Input<bool>? AllocatedPublicIp { get; set; }
@@ -291,7 +292,9 @@ namespace DuploCloud.Pulumi
         private InputMap<string>? _metadata;
 
         /// <summary>
-        /// Configuration, metadata used when creating the host.\n\n*Note: To configure OS disk size OsDiskSize can be specified as Key and its size as value, size value should be atleast 10, Similarly to added start up script one can pass the key as startup_script and startup command as its value*
+        /// Configuration, metadata used when creating the host.&lt;br&gt;*Note: To configure OS disk size OsDiskSize can be specified as
+        /// Key and its size as value, size value should be atleast 10, Similarly to added start up script one can pass the key as
+        /// startup_script and startup command as its value*
         /// </summary>
         public InputMap<string> Metadata
         {
@@ -323,9 +326,6 @@ namespace DuploCloud.Pulumi
         [Input("userAccount", required: true)]
         public Input<string> UserAccount { get; set; } = null!;
 
-        /// <summary>
-        /// Defaults to `true`.
-        /// </summary>
         [Input("waitUntilReady")]
         public Input<bool>? WaitUntilReady { get; set; }
 
@@ -344,7 +344,7 @@ namespace DuploCloud.Pulumi
     public sealed class GcpHostState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The number of the guest accelerator cards exposed to this instance. Defaults to `0`.
+        /// The number of the guest accelerator cards exposed to this instance.
         /// </summary>
         [Input("acceleratorCount")]
         public Input<int>? AcceleratorCount { get; set; }
@@ -356,13 +356,14 @@ namespace DuploCloud.Pulumi
         public Input<string>? AcceleratorType { get; set; }
 
         /// <summary>
-        /// The numeric ID of the container agent pool that this host is added to. Defaults to `0`.
+        /// The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
+        /// Windows
         /// </summary>
         [Input("agentPlatform")]
         public Input<int>? AgentPlatform { get; set; }
 
         /// <summary>
-        /// Whether or not to allocate a public IP. Defaults to `false`.
+        /// Whether or not to allocate a public IP.
         /// </summary>
         [Input("allocatedPublicIp")]
         public Input<bool>? AllocatedPublicIp { get; set; }
@@ -416,7 +417,9 @@ namespace DuploCloud.Pulumi
         private InputMap<string>? _metadata;
 
         /// <summary>
-        /// Configuration, metadata used when creating the host.\n\n*Note: To configure OS disk size OsDiskSize can be specified as Key and its size as value, size value should be atleast 10, Similarly to added start up script one can pass the key as startup_script and startup command as its value*
+        /// Configuration, metadata used when creating the host.&lt;br&gt;*Note: To configure OS disk size OsDiskSize can be specified as
+        /// Key and its size as value, size value should be atleast 10, Similarly to added start up script one can pass the key as
+        /// startup_script and startup command as its value*
         /// </summary>
         public InputMap<string> Metadata
         {
@@ -460,9 +463,6 @@ namespace DuploCloud.Pulumi
         [Input("userAccount")]
         public Input<string>? UserAccount { get; set; }
 
-        /// <summary>
-        /// Defaults to `true`.
-        /// </summary>
         [Input("waitUntilReady")]
         public Input<bool>? WaitUntilReady { get; set; }
 

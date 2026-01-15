@@ -7,39 +7,38 @@ import * as utilities from "./utilities";
 /**
  * `duplocloud.TenantNetworkSecurityRule` manages a single network single rule for a Duplo tenant.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@duplocloud/pulumi";
- *
- * const myapp = new duplocloud.Tenant("myapp", {
- *     accountName: "myapp",
- *     planId: "default",
- * });
- * // Allow the "default" tenant to send HTTPS requests to "myapp"
- * const myrule = new duplocloud.TenantNetworkSecurityRule("myrule", {
- *     tenantId: myapp.tenantId,
- *     sourceTenant: "default",
- *     protocol: "tcp",
- *     fromPort: 443,
- *     toPort: 443,
- *     description: "Allow the default tenant to send HTTPS traffic",
- * });
- * ```
- *
  * ## Import
  *
  * Example 1: Importing a "source_tenant" rule:
  *
  *  - TENANT_ID is the target tenant GUID
  *
- *  - 0 is the rule type
+ *  - TYPE (0/1) : If the source in the Duplo portal is a tenant name, represent the TYPE as 0. If the source is an IP address, represent the TYPE as 1.
  *
- *  - SOURCE_TENANT is the source tenant NAME
+ *  - SOURCE_TENANT : Name of security group's source tenant
+ *
+ *  - SOURCE_ADDRESS IP address or CIDR block, format 10.220.32.192-32.
+ *
+ *  - PROTOCOL is the protocol (tcp, udp, icmp)
+ *
+ *  - FROM_PORT is the starting port (0-65535)
+ *
+ *  - TO_PORT is the ending port (0-65535)
  *
  * ```sh
- * $ pulumi import duplocloud:index/tenantNetworkSecurityRule:TenantNetworkSecurityRule myrule TENANT_ID/0/SOURCE_TENANT/PROTOCOL/FROM_PORT/TO_PORT
+ * $ pulumi import duplocloud:index/tenantNetworkSecurityRule:TenantNetworkSecurityRule myrule *TENANT_ID*&#47;*TYPE*&#47;*SOURCE_TENANT*&#47;*PROTOCOL*&#47;*FROM_PORT*&#47;*TO_PORT*
+ * ```
+ *
+ * ```sh
+ * $ pulumi import duplocloud:index/tenantNetworkSecurityRule:TenantNetworkSecurityRule #Example : duplocloud_tenant_network_security_rule.myrule {GUID}/0/abc/tcp/443/443
+ * ```
+ *
+ * ```sh
+ * $ pulumi import duplocloud:index/tenantNetworkSecurityRule:TenantNetworkSecurityRule myrule *TENANT_ID*&#47;*TYPE*&#47;*SOURCE_ADDRESS*&#47;*PROTOCOL*&#47;*FROM_PORT*&#47;*TO_PORT*
+ * ```
+ *
+ * ```sh
+ * $ pulumi import duplocloud:index/tenantNetworkSecurityRule:TenantNetworkSecurityRule #Example : duplocloud_tenant_network_security_rule.myrule {GUID}/1/10.34.0.1-32/tcp/443/443
  * ```
  */
 export class TenantNetworkSecurityRule extends pulumi.CustomResource {

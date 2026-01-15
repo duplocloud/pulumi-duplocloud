@@ -17,34 +17,34 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myapp = new Duplocloud.Tenant("myapp", new()
+    ///     var myapp = new Pulumi.Tenant("myapp", new()
     ///     {
     ///         AccountName = "myapp",
     ///         PlanId = "default",
     ///     });
     /// 
-    ///     var myappK8sJob = new Duplocloud.K8sJob("myapp", new()
+    ///     var myappK8sJob = new Pulumi.K8sJob("myapp", new()
     ///     {
     ///         TenantId = myapp.TenantId,
-    ///         Metadata = new Duplocloud.Inputs.K8sJobMetadataArgs
+    ///         Metadata = new Pulumi.Inputs.K8sJobMetadataArgs
     ///         {
     ///             Name = "jobname",
     ///         },
     ///         Specs = new[]
     ///         {
-    ///             new Duplocloud.Inputs.K8sJobSpecArgs
+    ///             new Pulumi.Inputs.K8sJobSpecArgs
     ///             {
-    ///                 Template = new Duplocloud.Inputs.K8sJobSpecTemplateArgs
+    ///                 Template = new Pulumi.Inputs.K8sJobSpecTemplateArgs
     ///                 {
-    ///                     Spec = new Duplocloud.Inputs.K8sJobSpecTemplateSpecArgs
+    ///                     Spec = new Pulumi.Inputs.K8sJobSpecTemplateSpecArgs
     ///                     {
     ///                         Containers = new[]
     ///                         {
-    ///                             new Duplocloud.Inputs.K8sJobSpecTemplateSpecContainerArgs
+    ///                             new Pulumi.Inputs.K8sJobSpecTemplateSpecContainerArgs
     ///                             {
     ///                                 Name = "containername",
     ///                                 Image = "nginx:latest",
@@ -76,6 +76,12 @@ namespace DuploCloud.Pulumi
     [PulumiResourceType("duplocloud:index/k8sJob:K8sJob")]
     public partial class K8sJob : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Allocation tags is the simplest way to constraint containers/pods with hosts/nodes. DuploCloud/Kubernetes Orchestrator will make sure containers will run on the hosts having same allocation tags.
+        /// </summary>
+        [Output("allocationTags")]
+        public Output<string?> AllocationTags { get; private set; } = null!;
+
         /// <summary>
         /// Defaults to `false`.
         /// </summary>
@@ -151,6 +157,12 @@ namespace DuploCloud.Pulumi
     public sealed class K8sJobArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Allocation tags is the simplest way to constraint containers/pods with hosts/nodes. DuploCloud/Kubernetes Orchestrator will make sure containers will run on the hosts having same allocation tags.
+        /// </summary>
+        [Input("allocationTags")]
+        public Input<string>? AllocationTags { get; set; }
+
+        /// <summary>
         /// Defaults to `false`.
         /// </summary>
         [Input("isAnyHostAllowed")]
@@ -191,6 +203,12 @@ namespace DuploCloud.Pulumi
 
     public sealed class K8sJobState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Allocation tags is the simplest way to constraint containers/pods with hosts/nodes. DuploCloud/Kubernetes Orchestrator will make sure containers will run on the hosts having same allocation tags.
+        /// </summary>
+        [Input("allocationTags")]
+        public Input<string>? AllocationTags { get; set; }
+
         /// <summary>
         /// Defaults to `false`.
         /// </summary>

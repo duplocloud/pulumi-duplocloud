@@ -4,6 +4,9 @@
             "duplocloud_admin_system_setting": {
                 "current": "duplocloud:index/adminSystemSetting:AdminSystemSetting"
             },
+            "duplocloud_asg_instance_refresh": {
+                "current": "duplocloud:index/asgInstanceRefresh:AsgInstanceRefresh"
+            },
             "duplocloud_asg_profile": {
                 "current": "duplocloud:index/asgProfile:AsgProfile",
                 "fields": {
@@ -568,7 +571,19 @@
                 "current": "duplocloud:index/awsLambdaPermission:AwsLambdaPermission"
             },
             "duplocloud_aws_launch_template": {
-                "current": "duplocloud:index/awsLaunchTemplate:AwsLaunchTemplate"
+                "current": "duplocloud:index/awsLaunchTemplate:AwsLaunchTemplate",
+                "fields": {
+                    "block_device_mapping": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "ebs": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "duplocloud_aws_launch_template_default_version": {
                 "current": "duplocloud:index/awsLaunchTemplateDefaultVersion:AwsLaunchTemplateDefaultVersion"
@@ -696,7 +711,20 @@
                         "maxItemsOne": false
                     },
                     "default_actions": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "fixed_response": {
+                                    "maxItemsOne": true
+                                },
+                                "forward": {
+                                    "maxItemsOne": true
+                                },
+                                "redirect": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -737,6 +765,9 @@
                     }
                 }
             },
+            "duplocloud_aws_rds_global_secondary": {
+                "current": "duplocloud:index/awsRdsGlobalSecondary:AwsRdsGlobalSecondary"
+            },
             "duplocloud_aws_rds_tag": {
                 "current": "duplocloud:index/awsRdsTag:AwsRdsTag"
             },
@@ -753,6 +784,9 @@
             },
             "duplocloud_aws_ssm_parameter": {
                 "current": "duplocloud:index/awsSsmParameter:AwsSsmParameter"
+            },
+            "duplocloud_aws_tag": {
+                "current": "duplocloud:index/awsTag:AwsTag"
             },
             "duplocloud_aws_target_group_attributes": {
                 "current": "duplocloud:index/awsTargetGroupAttributes:AwsTargetGroupAttributes",
@@ -818,6 +852,38 @@
                     }
                 }
             },
+            "duplocloud_azure_cosmos_db_account": {
+                "current": "duplocloud:index/azureCosmosDbAccount:AzureCosmosDbAccount",
+                "fields": {
+                    "backup_policy": {
+                        "maxItemsOne": true
+                    },
+                    "capabilities": {
+                        "maxItemsOne": false
+                    },
+                    "consistency_policy": {
+                        "maxItemsOne": true
+                    },
+                    "geo_location": {
+                        "maxItemsOne": false
+                    },
+                    "read_endpoints": {
+                        "maxItemsOne": false
+                    },
+                    "virtual_network_rule": {
+                        "maxItemsOne": false
+                    },
+                    "write_endpoints": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "duplocloud_azure_cosmos_db_container": {
+                "current": "duplocloud:index/azureCosmosDbContainer:AzureCosmosDbContainer"
+            },
+            "duplocloud_azure_cosmos_db_database": {
+                "current": "duplocloud:index/azureCosmosDbDatabase:AzureCosmosDbDatabase"
+            },
             "duplocloud_azure_datafactory": {
                 "current": "duplocloud:index/azureDatafactory:AzureDatafactory"
             },
@@ -839,7 +905,19 @@
                 }
             },
             "duplocloud_azure_k8s_cluster": {
-                "current": "duplocloud:index/azureK8sCluster:AzureK8sCluster"
+                "current": "duplocloud:index/azureK8sCluster:AzureK8sCluster",
+                "fields": {
+                    "active_directory_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "admin_group_object_ids": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "duplocloud_azure_key_vault_secret": {
                 "current": "duplocloud:index/azureKeyVaultSecret:AzureKeyVaultSecret"
@@ -864,7 +942,15 @@
                 }
             },
             "duplocloud_azure_mssql_server": {
-                "current": "duplocloud:index/azureMssqlServer:AzureMssqlServer"
+                "current": "duplocloud:index/azureMssqlServer:AzureMssqlServer",
+                "fields": {
+                    "active_directory_administrator": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "duplocloud_azure_mssqldb_retention_backup": {
+                "current": "duplocloud:index/azureMssqldbRetentionBackup:AzureMssqldbRetentionBackup"
             },
             "duplocloud_azure_mysql_database": {
                 "current": "duplocloud:index/azureMysqlDatabase:AzureMysqlDatabase"
@@ -877,6 +963,17 @@
             },
             "duplocloud_azure_postgresql_flexible_database": {
                 "current": "duplocloud:index/azurePostgresqlFlexibleDatabase:AzurePostgresqlFlexibleDatabase"
+            },
+            "duplocloud_azure_postgresql_flexible_database_v2": {
+                "current": "duplocloud:index/azurePostgresqlFlexibleDatabaseV2:AzurePostgresqlFlexibleDatabaseV2",
+                "fields": {
+                    "private_connection_endpoints": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "duplocloud_azure_postgresql_flexible_db_ad_administrator": {
+                "current": "duplocloud:index/azurePostgresqlFlexibleDbAdAdministrator:AzurePostgresqlFlexibleDbAdAdministrator"
             },
             "duplocloud_azure_private_endpoint": {
                 "current": "duplocloud:index/azurePrivateEndpoint:AzurePrivateEndpoint",
@@ -1156,6 +1253,9 @@
             "duplocloud_duplo_service": {
                 "current": "duplocloud:index/duploService:DuploService",
                 "fields": {
+                    "init_container_docker_image": {
+                        "maxItemsOne": false
+                    },
                     "tags": {
                         "maxItemsOne": false
                     }
@@ -1185,6 +1285,12 @@
             "duplocloud_duplo_service_params": {
                 "current": "duplocloud:index/duploServiceParams:DuploServiceParams"
             },
+            "duplocloud_ecache_associate_global_secondary_cluster": {
+                "current": "duplocloud:index/ecacheAssociateGlobalSecondaryCluster:EcacheAssociateGlobalSecondaryCluster"
+            },
+            "duplocloud_ecache_global_datastore": {
+                "current": "duplocloud:index/ecacheGlobalDatastore:EcacheGlobalDatastore"
+            },
             "duplocloud_ecache_instance": {
                 "current": "duplocloud:index/ecacheInstance:EcacheInstance",
                 "fields": {
@@ -1202,6 +1308,23 @@
                     "capacity_provider_strategy": {
                         "maxItemsOne": false
                     },
+                    "deployment_configuration": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "alarms": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "names": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "load_balancer": {
                         "maxItemsOne": false,
                         "elem": {
@@ -1211,6 +1334,12 @@
                                 }
                             }
                         }
+                    },
+                    "placement_constraint": {
+                        "maxItemsOne": false
+                    },
+                    "placement_strategy": {
+                        "maxItemsOne": false
                     },
                     "target_group_arns": {
                         "maxItemsOne": false
@@ -1393,6 +1522,9 @@
             "duplocloud_gcp_sql_database_instance": {
                 "current": "duplocloud:index/gcpSqlDatabaseInstance:GcpSqlDatabaseInstance",
                 "fields": {
+                    "database_flag": {
+                        "maxItemsOne": false
+                    },
                     "ip_address": {
                         "maxItemsOne": false
                     }
@@ -1443,6 +1575,9 @@
                         "maxItemsOne": false
                     },
                     "custom_data": {
+                        "maxItemsOne": false
+                    },
+                    "nat_ips": {
                         "maxItemsOne": false
                     },
                     "private_subnets": {
@@ -1547,7 +1682,14 @@
                 "current": "duplocloud:index/k8Ingress:K8Ingress",
                 "fields": {
                     "lbconfig": {
-                        "maxItemsOne": true
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "certificate_arns": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "rule": {
                         "maxItemsOne": false
@@ -4006,6 +4148,23 @@
                     }
                 }
             },
+            "duplocloud_tenant_k8s_resource_quota": {
+                "current": "duplocloud:index/tenantK8sResourceQuota:TenantK8sResourceQuota"
+            },
+            "duplocloud_tenant_kms": {
+                "current": "duplocloud:index/tenantKms:TenantKms",
+                "fields": {
+                    "kms": {
+                        "maxItemsOne": false
+                    },
+                    "unspecified_kms_keys": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "duplocloud_tenant_metadata": {
+                "current": "duplocloud:index/tenantMetadata:TenantMetadata"
+            },
             "duplocloud_tenant_network_security_rule": {
                 "current": "duplocloud:index/tenantNetworkSecurityRule:TenantNetworkSecurityRule"
             },
@@ -4023,6 +4182,9 @@
             "duplocloud_user": {
                 "current": "duplocloud:index/user:User",
                 "fields": {
+                    "permissions": {
+                        "maxItemsOne": false
+                    },
                     "roles": {
                         "maxItemsOne": false
                     }
@@ -4150,6 +4312,35 @@
                     }
                 }
             },
+            "duplocloud_azure_cosmos_db_account": {
+                "current": "duplocloud:index/getAzureCosmosDbAccount:getAzureCosmosDbAccount",
+                "fields": {
+                    "backup_policy": {
+                        "maxItemsOne": false
+                    },
+                    "capabilities": {
+                        "maxItemsOne": false
+                    },
+                    "consistency_policy": {
+                        "maxItemsOne": false
+                    },
+                    "geo_location": {
+                        "maxItemsOne": false
+                    },
+                    "read_endpoints": {
+                        "maxItemsOne": false
+                    },
+                    "virtual_network_rule": {
+                        "maxItemsOne": false
+                    },
+                    "write_endpoints": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "duplocloud_azure_cosmos_db_database": {
+                "current": "duplocloud:index/getAzureCosmosDbDatabase:getAzureCosmosDbDatabase"
+            },
             "duplocloud_azure_storage_account_key": {
                 "current": "duplocloud:index/getAzureStorageAccountKey:getAzureStorageAccountKey"
             },
@@ -4227,6 +4418,23 @@
                     "capacity_provider_strategy": {
                         "maxItemsOne": false
                     },
+                    "deployment_configuration": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "alarms": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "names": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "load_balancer": {
                         "maxItemsOne": false,
                         "elem": {
@@ -4236,6 +4444,12 @@
                                 }
                             }
                         }
+                    },
+                    "placement_constraint": {
+                        "maxItemsOne": false
+                    },
+                    "placement_strategy": {
+                        "maxItemsOne": false
                     },
                     "target_group_arns": {
                         "maxItemsOne": false
@@ -4252,6 +4466,23 @@
                                 "capacity_provider_strategy": {
                                     "maxItemsOne": false
                                 },
+                                "deployment_configuration": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "alarms": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "names": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
                                 "load_balancer": {
                                     "maxItemsOne": false,
                                     "elem": {
@@ -4261,6 +4492,12 @@
                                             }
                                         }
                                     }
+                                },
+                                "placement_constraint": {
+                                    "maxItemsOne": false
+                                },
+                                "placement_strategy": {
+                                    "maxItemsOne": false
                                 },
                                 "target_group_arns": {
                                     "maxItemsOne": false
@@ -4478,6 +4715,9 @@
             "duplocloud_infrastructure": {
                 "current": "duplocloud:index/getInfrastructure:getInfrastructure",
                 "fields": {
+                    "nat_ips": {
+                        "maxItemsOne": false
+                    },
                     "private_subnets": {
                         "maxItemsOne": false,
                         "elem": {
@@ -4514,7 +4754,14 @@
                 "current": "duplocloud:index/getInfrastructures:getInfrastructures",
                 "fields": {
                     "data": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "nat_ips": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -6962,6 +7209,33 @@
                     }
                 }
             },
+            "duplocloud_system_features": {
+                "current": "duplocloud:index/getSystemFeatures:getSystemFeatures",
+                "fields": {
+                    "app_configs": {
+                        "maxItemsOne": false
+                    },
+                    "aws_regions": {
+                        "maxItemsOne": false
+                    },
+                    "eks_versions": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "supported_versions": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "enabled_flags": {
+                        "maxItemsOne": false
+                    },
+                    "tags_based_managed_resources": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "duplocloud_tenant": {
                 "current": "duplocloud:index/getTenant:getTenant",
                 "fields": {
@@ -7063,5 +7337,18 @@
             }
         }
     },
-    "auto-settings": {}
+    "auto-settings": {
+        "resources": {
+            "duplocloud_aws_load_balancer_listener": {
+                "maxItemsOneOverrides": {
+                    "default_actions": false
+                }
+            },
+            "duplocloud_gcp_node_pool": {
+                "maxItemsOneOverrides": {
+                    "upgrade_settings": false
+                }
+            }
+        }
+    }
 }

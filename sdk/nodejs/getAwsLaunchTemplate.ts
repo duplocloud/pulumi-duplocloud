@@ -9,6 +9,7 @@ export function getAwsLaunchTemplate(args: GetAwsLaunchTemplateArgs, opts?: pulu
     return pulumi.runtime.invoke("duplocloud:index/getAwsLaunchTemplate:getAwsLaunchTemplate", {
         "name": args.name,
         "tenantId": args.tenantId,
+        "version": args.version,
     }, opts);
 }
 
@@ -18,6 +19,10 @@ export function getAwsLaunchTemplate(args: GetAwsLaunchTemplateArgs, opts?: pulu
 export interface GetAwsLaunchTemplateArgs {
     name: string;
     tenantId: string;
+    /**
+     * Any of the existing version of the launch template
+     */
+    version?: string;
 }
 
 /**
@@ -45,6 +50,7 @@ export function getAwsLaunchTemplateOutput(args: GetAwsLaunchTemplateOutputArgs,
     return pulumi.runtime.invokeOutput("duplocloud:index/getAwsLaunchTemplate:getAwsLaunchTemplate", {
         "name": args.name,
         "tenantId": args.tenantId,
+        "version": args.version,
     }, opts);
 }
 
@@ -54,4 +60,8 @@ export function getAwsLaunchTemplateOutput(args: GetAwsLaunchTemplateOutputArgs,
 export interface GetAwsLaunchTemplateOutputArgs {
     name: pulumi.Input<string>;
     tenantId: pulumi.Input<string>;
+    /**
+     * Any of the existing version of the launch template
+     */
+    version?: pulumi.Input<string>;
 }

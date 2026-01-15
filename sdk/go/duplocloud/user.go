@@ -68,6 +68,8 @@ type User struct {
 	// Defaults to `false`.
 	IsReadonly         pulumi.BoolPtrOutput `pulumi:"isReadonly"`
 	IsVpnConfigCreated pulumi.BoolOutput    `pulumi:"isVpnConfigCreated"`
+	// The list of permissions assigned to the user.
+	Permissions pulumi.StringArrayOutput `pulumi:"permissions"`
 	// Defaults to `false`.
 	ReallocateVpnAddress pulumi.BoolPtrOutput `pulumi:"reallocateVpnAddress"`
 	// Defaults to `false`.
@@ -120,6 +122,8 @@ type userState struct {
 	// Defaults to `false`.
 	IsReadonly         *bool `pulumi:"isReadonly"`
 	IsVpnConfigCreated *bool `pulumi:"isVpnConfigCreated"`
+	// The list of permissions assigned to the user.
+	Permissions []string `pulumi:"permissions"`
 	// Defaults to `false`.
 	ReallocateVpnAddress *bool `pulumi:"reallocateVpnAddress"`
 	// Defaults to `false`.
@@ -137,6 +141,8 @@ type UserState struct {
 	// Defaults to `false`.
 	IsReadonly         pulumi.BoolPtrInput
 	IsVpnConfigCreated pulumi.BoolPtrInput
+	// The list of permissions assigned to the user.
+	Permissions pulumi.StringArrayInput
 	// Defaults to `false`.
 	ReallocateVpnAddress pulumi.BoolPtrInput
 	// Defaults to `false`.
@@ -155,6 +161,8 @@ func (UserState) ElementType() reflect.Type {
 type userArgs struct {
 	// Defaults to `false`.
 	IsReadonly *bool `pulumi:"isReadonly"`
+	// The list of permissions assigned to the user.
+	Permissions []string `pulumi:"permissions"`
 	// Defaults to `false`.
 	ReallocateVpnAddress *bool `pulumi:"reallocateVpnAddress"`
 	// Defaults to `false`.
@@ -169,6 +177,8 @@ type userArgs struct {
 type UserArgs struct {
 	// Defaults to `false`.
 	IsReadonly pulumi.BoolPtrInput
+	// The list of permissions assigned to the user.
+	Permissions pulumi.StringArrayInput
 	// Defaults to `false`.
 	ReallocateVpnAddress pulumi.BoolPtrInput
 	// Defaults to `false`.
@@ -281,6 +291,11 @@ func (o UserOutput) IsReadonly() pulumi.BoolPtrOutput {
 
 func (o UserOutput) IsVpnConfigCreated() pulumi.BoolOutput {
 	return o.ApplyT(func(v *User) pulumi.BoolOutput { return v.IsVpnConfigCreated }).(pulumi.BoolOutput)
+}
+
+// The list of permissions assigned to the user.
+func (o UserOutput) Permissions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *User) pulumi.StringArrayOutput { return v.Permissions }).(pulumi.StringArrayOutput)
 }
 
 // Defaults to `false`.

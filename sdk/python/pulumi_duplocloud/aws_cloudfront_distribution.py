@@ -22,7 +22,6 @@ __all__ = ['AwsCloudfrontDistributionArgs', 'AwsCloudfrontDistribution']
 class AwsCloudfrontDistributionArgs:
     def __init__(__self__, *,
                  default_cache_behavior: pulumi.Input['AwsCloudfrontDistributionDefaultCacheBehaviorArgs'],
-                 enabled: pulumi.Input[bool],
                  origins: pulumi.Input[Sequence[pulumi.Input['AwsCloudfrontDistributionOriginArgs']]],
                  tenant_id: pulumi.Input[str],
                  viewer_certificate: pulumi.Input['AwsCloudfrontDistributionViewerCertificateArgs'],
@@ -31,6 +30,7 @@ class AwsCloudfrontDistributionArgs:
                  cors_allowed_host_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  custom_error_responses: Optional[pulumi.Input[Sequence[pulumi.Input['AwsCloudfrontDistributionCustomErrorResponseArgs']]]] = None,
                  default_root_object: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
                  http_version: Optional[pulumi.Input[str]] = None,
                  is_ipv6_enabled: Optional[pulumi.Input[bool]] = None,
                  logging_config: Optional[pulumi.Input['AwsCloudfrontDistributionLoggingConfigArgs']] = None,
@@ -44,11 +44,11 @@ class AwsCloudfrontDistributionArgs:
                  web_acl_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AwsCloudfrontDistribution resource.
-        :param pulumi.Input[bool] enabled: Whether the distribution is enabled to accept end user requests for content.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the aws cloudfront distribution will be created in.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] aliases: Extra CNAMEs (alternate domain names), if any, for this distribution.
         :param pulumi.Input[str] comment: Any comments you want to include about the distribution. comment has been deprecated instead use name
         :param pulumi.Input[str] default_root_object: The object that you want CloudFront to return (for example, index.html) when an end user requests the root URL.
+        :param pulumi.Input[bool] enabled: Whether the distribution is enabled to accept end user requests for content. Defaults to `true`.
         :param pulumi.Input[str] http_version: The maximum HTTP version to support on the distribution. Allowed values are `http1.1` and `http2` Defaults to `http2`.
         :param pulumi.Input[bool] is_ipv6_enabled: Defaults to `false`.
         :param pulumi.Input[str] name: Name of the distribution
@@ -58,7 +58,6 @@ class AwsCloudfrontDistributionArgs:
         :param pulumi.Input[str] web_acl_id: A unique identifier that specifies the AWS WAF web ACL, if any, to associate with this distribution.
         """
         pulumi.set(__self__, "default_cache_behavior", default_cache_behavior)
-        pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "origins", origins)
         pulumi.set(__self__, "tenant_id", tenant_id)
         pulumi.set(__self__, "viewer_certificate", viewer_certificate)
@@ -75,6 +74,8 @@ class AwsCloudfrontDistributionArgs:
             pulumi.set(__self__, "custom_error_responses", custom_error_responses)
         if default_root_object is not None:
             pulumi.set(__self__, "default_root_object", default_root_object)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
         if http_version is not None:
             pulumi.set(__self__, "http_version", http_version)
         if is_ipv6_enabled is not None:
@@ -106,18 +107,6 @@ class AwsCloudfrontDistributionArgs:
     @default_cache_behavior.setter
     def default_cache_behavior(self, value: pulumi.Input['AwsCloudfrontDistributionDefaultCacheBehaviorArgs']):
         pulumi.set(self, "default_cache_behavior", value)
-
-    @property
-    @pulumi.getter
-    def enabled(self) -> pulumi.Input[bool]:
-        """
-        Whether the distribution is enabled to accept end user requests for content.
-        """
-        return pulumi.get(self, "enabled")
-
-    @enabled.setter
-    def enabled(self, value: pulumi.Input[bool]):
-        pulumi.set(self, "enabled", value)
 
     @property
     @pulumi.getter
@@ -203,6 +192,18 @@ class AwsCloudfrontDistributionArgs:
     @default_root_object.setter
     def default_root_object(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "default_root_object", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the distribution is enabled to accept end user requests for content. Defaults to `true`.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
 
     @property
     @pulumi.getter(name="httpVersion")
@@ -359,7 +360,7 @@ class _AwsCloudfrontDistributionState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] aliases: Extra CNAMEs (alternate domain names), if any, for this distribution.
         :param pulumi.Input[str] comment: Any comments you want to include about the distribution. comment has been deprecated instead use name
         :param pulumi.Input[str] default_root_object: The object that you want CloudFront to return (for example, index.html) when an end user requests the root URL.
-        :param pulumi.Input[bool] enabled: Whether the distribution is enabled to accept end user requests for content.
+        :param pulumi.Input[bool] enabled: Whether the distribution is enabled to accept end user requests for content. Defaults to `true`.
         :param pulumi.Input[str] http_version: The maximum HTTP version to support on the distribution. Allowed values are `http1.1` and `http2` Defaults to `http2`.
         :param pulumi.Input[bool] is_ipv6_enabled: Defaults to `false`.
         :param pulumi.Input[str] name: Name of the distribution
@@ -512,7 +513,7 @@ class _AwsCloudfrontDistributionState:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether the distribution is enabled to accept end user requests for content.
+        Whether the distribution is enabled to accept end user requests for content. Defaults to `true`.
         """
         return pulumi.get(self, "enabled")
 
@@ -740,39 +741,38 @@ class AwsCloudfrontDistribution(pulumi.CustomResource):
         duplo_app = duplocloud.Tenant("duplo-app",
             account_name="duplo-app",
             plan_id="default")
-        cfd = duplocloud.AwsCloudfrontDistribution("cfd",
+        region = "us-west2"
+        tenant_name = "nonprod"
+        forcloudfront = duplocloud.S3Bucket("forcloudfront",
             tenant_id=duplo_app.tenant_id,
-            comment="duploservices-dev01-app",
-            default_root_object="index.html",
-            enabled=True,
+            name="cloudfrontbucket",
+            allow_public_access=True,
+            enable_access_logs=False,
+            enable_versioning=True,
+            managed_policies=["ssl"],
+            default_encryption={
+                "method": "Sse",
+            })
+        cloudfront = duplocloud.AwsCloudfrontDistribution("cloudfront",
+            tenant_id=duplo_app.tenant_id,
+            comment=f"duploservices-{tenant_name}-communities-dev4-fe",
+            enabled=False,
             http_version="http2",
-            is_ipv6_enabled=True,
-            aliases=["app-dev.abc.xyz"],
             price_class="PriceClass_All",
-            wait_for_deployment=True,
-            origins=[
-                {
-                    "domain_name": "pa-api-dev01.abc.xyz",
-                    "origin_id": "pa-api-dev01.abc.xyz",
-                    "connection_attempts": 3,
-                    "connection_timeout": 10,
-                    "custom_origin_config": {
-                        "http_port": 80,
-                        "https_port": 443,
-                        "origin_keepalive_timeout": 30,
-                        "origin_read_timeout": 30,
-                        "origin_protocol_policy": "https-only",
-                        "origin_ssl_protocols": ["TLSv1.2"],
-                    },
-                },
-                {
-                    "domain_name": "duploservices-dev01-abc-app-1234567890.s3.us-west-2.amazonaws.com",
-                    "origin_id": "duploservices-dev01-abc-app-1234567890.s3.us-west-2.amazonaws.com",
-                    "connection_attempts": 3,
-                    "connection_timeout": 10,
-                },
-            ],
+            is_ipv6_enabled=True,
+            viewer_certificate={
+                "acm_certificate_arn": "arn:aws:acm:us-east-1:182680712604:certificate/75e94c99-b916-459c-b9a1-ed9dec0ae550",
+                "minimum_protocol_version": "TLSv1.2_2021",
+                "ssl_support_method": "sni-only",
+            },
+            origins=[{
+                "connection_attempts": 3,
+                "connection_timeout": 10,
+                "domain_name": forcloudfront.fullname.apply(lambda fullname: f"{fullname}.s3.{region}.amazonaws.com"),
+                "origin_id": forcloudfront.fullname.apply(lambda fullname: f"{fullname}.s3.{region}.amazonaws.com"),
+            }],
             default_cache_behavior={
+                "target_origin_id": forcloudfront.fullname.apply(lambda fullname: f"{fullname}.s3.{region}.amazonaws.com"),
                 "allowed_methods": [
                     "GET",
                     "HEAD",
@@ -781,12 +781,9 @@ class AwsCloudfrontDistribution(pulumi.CustomResource):
                     "GET",
                     "HEAD",
                 ],
-                "target_origin_id": "duploservices-dev01-abc-app-1234567890.s3.us-west-2.amazonaws.com",
-                "compress": False,
+                "cache_policy_id": "658327ea-f89d-4fab-a63d-7e88639e58f6",
+                "compress": True,
                 "viewer_protocol_policy": "redirect-to-https",
-                "min_ttl": 0,
-                "default_ttl": 0,
-                "max_ttl": 0,
             },
             ordered_cache_behaviors=[{
                 "allowed_methods": [
@@ -797,19 +794,20 @@ class AwsCloudfrontDistribution(pulumi.CustomResource):
                     "GET",
                     "HEAD",
                 ],
-                "target_origin_id": "pa-api-dev01.abc.xyz",
+                "target_origin_id": forcloudfront.fullname.apply(lambda fullname: f"{fullname}.s3.{region}.amazonaws.com"),
                 "compress": False,
                 "viewer_protocol_policy": "redirect-to-https",
-                "min_ttl": 0,
+                "min_ttl": 2,
                 "default_ttl": 0,
                 "max_ttl": 0,
                 "path_pattern": "/api/*",
+                "forwarded_values": {
+                    "cookies": {
+                        "forward": "all",
+                    },
+                    "query_string": False,
+                },
             }],
-            viewer_certificate={
-                "acm_certificate_arn": "arn:aws:acm:us-east-1:1234567890:certificate/49c7a151-14b1-486e-801f-cf6bc9a43804",
-                "minimum_protocol_version": "TLSv1.2_2019",
-                "ssl_support_method": "sni-only",
-            },
             restrictions={
                 "geo_restriction": {
                     "restriction_type": "none",
@@ -836,7 +834,7 @@ class AwsCloudfrontDistribution(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] aliases: Extra CNAMEs (alternate domain names), if any, for this distribution.
         :param pulumi.Input[str] comment: Any comments you want to include about the distribution. comment has been deprecated instead use name
         :param pulumi.Input[str] default_root_object: The object that you want CloudFront to return (for example, index.html) when an end user requests the root URL.
-        :param pulumi.Input[bool] enabled: Whether the distribution is enabled to accept end user requests for content.
+        :param pulumi.Input[bool] enabled: Whether the distribution is enabled to accept end user requests for content. Defaults to `true`.
         :param pulumi.Input[str] http_version: The maximum HTTP version to support on the distribution. Allowed values are `http1.1` and `http2` Defaults to `http2`.
         :param pulumi.Input[bool] is_ipv6_enabled: Defaults to `false`.
         :param pulumi.Input[str] name: Name of the distribution
@@ -864,39 +862,38 @@ class AwsCloudfrontDistribution(pulumi.CustomResource):
         duplo_app = duplocloud.Tenant("duplo-app",
             account_name="duplo-app",
             plan_id="default")
-        cfd = duplocloud.AwsCloudfrontDistribution("cfd",
+        region = "us-west2"
+        tenant_name = "nonprod"
+        forcloudfront = duplocloud.S3Bucket("forcloudfront",
             tenant_id=duplo_app.tenant_id,
-            comment="duploservices-dev01-app",
-            default_root_object="index.html",
-            enabled=True,
+            name="cloudfrontbucket",
+            allow_public_access=True,
+            enable_access_logs=False,
+            enable_versioning=True,
+            managed_policies=["ssl"],
+            default_encryption={
+                "method": "Sse",
+            })
+        cloudfront = duplocloud.AwsCloudfrontDistribution("cloudfront",
+            tenant_id=duplo_app.tenant_id,
+            comment=f"duploservices-{tenant_name}-communities-dev4-fe",
+            enabled=False,
             http_version="http2",
-            is_ipv6_enabled=True,
-            aliases=["app-dev.abc.xyz"],
             price_class="PriceClass_All",
-            wait_for_deployment=True,
-            origins=[
-                {
-                    "domain_name": "pa-api-dev01.abc.xyz",
-                    "origin_id": "pa-api-dev01.abc.xyz",
-                    "connection_attempts": 3,
-                    "connection_timeout": 10,
-                    "custom_origin_config": {
-                        "http_port": 80,
-                        "https_port": 443,
-                        "origin_keepalive_timeout": 30,
-                        "origin_read_timeout": 30,
-                        "origin_protocol_policy": "https-only",
-                        "origin_ssl_protocols": ["TLSv1.2"],
-                    },
-                },
-                {
-                    "domain_name": "duploservices-dev01-abc-app-1234567890.s3.us-west-2.amazonaws.com",
-                    "origin_id": "duploservices-dev01-abc-app-1234567890.s3.us-west-2.amazonaws.com",
-                    "connection_attempts": 3,
-                    "connection_timeout": 10,
-                },
-            ],
+            is_ipv6_enabled=True,
+            viewer_certificate={
+                "acm_certificate_arn": "arn:aws:acm:us-east-1:182680712604:certificate/75e94c99-b916-459c-b9a1-ed9dec0ae550",
+                "minimum_protocol_version": "TLSv1.2_2021",
+                "ssl_support_method": "sni-only",
+            },
+            origins=[{
+                "connection_attempts": 3,
+                "connection_timeout": 10,
+                "domain_name": forcloudfront.fullname.apply(lambda fullname: f"{fullname}.s3.{region}.amazonaws.com"),
+                "origin_id": forcloudfront.fullname.apply(lambda fullname: f"{fullname}.s3.{region}.amazonaws.com"),
+            }],
             default_cache_behavior={
+                "target_origin_id": forcloudfront.fullname.apply(lambda fullname: f"{fullname}.s3.{region}.amazonaws.com"),
                 "allowed_methods": [
                     "GET",
                     "HEAD",
@@ -905,12 +902,9 @@ class AwsCloudfrontDistribution(pulumi.CustomResource):
                     "GET",
                     "HEAD",
                 ],
-                "target_origin_id": "duploservices-dev01-abc-app-1234567890.s3.us-west-2.amazonaws.com",
-                "compress": False,
+                "cache_policy_id": "658327ea-f89d-4fab-a63d-7e88639e58f6",
+                "compress": True,
                 "viewer_protocol_policy": "redirect-to-https",
-                "min_ttl": 0,
-                "default_ttl": 0,
-                "max_ttl": 0,
             },
             ordered_cache_behaviors=[{
                 "allowed_methods": [
@@ -921,19 +915,20 @@ class AwsCloudfrontDistribution(pulumi.CustomResource):
                     "GET",
                     "HEAD",
                 ],
-                "target_origin_id": "pa-api-dev01.abc.xyz",
+                "target_origin_id": forcloudfront.fullname.apply(lambda fullname: f"{fullname}.s3.{region}.amazonaws.com"),
                 "compress": False,
                 "viewer_protocol_policy": "redirect-to-https",
-                "min_ttl": 0,
+                "min_ttl": 2,
                 "default_ttl": 0,
                 "max_ttl": 0,
                 "path_pattern": "/api/*",
+                "forwarded_values": {
+                    "cookies": {
+                        "forward": "all",
+                    },
+                    "query_string": False,
+                },
             }],
-            viewer_certificate={
-                "acm_certificate_arn": "arn:aws:acm:us-east-1:1234567890:certificate/49c7a151-14b1-486e-801f-cf6bc9a43804",
-                "minimum_protocol_version": "TLSv1.2_2019",
-                "ssl_support_method": "sni-only",
-            },
             restrictions={
                 "geo_restriction": {
                     "restriction_type": "none",
@@ -1008,8 +1003,6 @@ class AwsCloudfrontDistribution(pulumi.CustomResource):
                 raise TypeError("Missing required property 'default_cache_behavior'")
             __props__.__dict__["default_cache_behavior"] = default_cache_behavior
             __props__.__dict__["default_root_object"] = default_root_object
-            if enabled is None and not opts.urn:
-                raise TypeError("Missing required property 'enabled'")
             __props__.__dict__["enabled"] = enabled
             __props__.__dict__["http_version"] = http_version
             __props__.__dict__["is_ipv6_enabled"] = is_ipv6_enabled
@@ -1082,7 +1075,7 @@ class AwsCloudfrontDistribution(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] aliases: Extra CNAMEs (alternate domain names), if any, for this distribution.
         :param pulumi.Input[str] comment: Any comments you want to include about the distribution. comment has been deprecated instead use name
         :param pulumi.Input[str] default_root_object: The object that you want CloudFront to return (for example, index.html) when an end user requests the root URL.
-        :param pulumi.Input[bool] enabled: Whether the distribution is enabled to accept end user requests for content.
+        :param pulumi.Input[bool] enabled: Whether the distribution is enabled to accept end user requests for content. Defaults to `true`.
         :param pulumi.Input[str] http_version: The maximum HTTP version to support on the distribution. Allowed values are `http1.1` and `http2` Defaults to `http2`.
         :param pulumi.Input[bool] is_ipv6_enabled: Defaults to `false`.
         :param pulumi.Input[str] name: Name of the distribution
@@ -1177,9 +1170,9 @@ class AwsCloudfrontDistribution(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def enabled(self) -> pulumi.Output[bool]:
+    def enabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether the distribution is enabled to accept end user requests for content.
+        Whether the distribution is enabled to accept end user requests for content. Defaults to `true`.
         """
         return pulumi.get(self, "enabled")
 

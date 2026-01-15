@@ -43,6 +43,10 @@ namespace DuploCloud.Pulumi.Outputs
         /// </summary>
         public readonly string InfraName;
         /// <summary>
+        /// The NAT IPs for the subnet.
+        /// </summary>
+        public readonly ImmutableArray<string> NatIps;
+        /// <summary>
         /// The cloud provider region.  The Duplo portal must have already been configured to support this region.
         /// </summary>
         public readonly string Region;
@@ -69,6 +73,8 @@ namespace DuploCloud.Pulumi.Outputs
 
             string infraName,
 
+            ImmutableArray<string> natIps,
+
             string region,
 
             string status,
@@ -81,6 +87,7 @@ namespace DuploCloud.Pulumi.Outputs
             Cloud = cloud;
             EnableK8Cluster = enableK8Cluster;
             InfraName = infraName;
+            NatIps = natIps;
             Region = region;
             Status = status;
             SubnetCidr = subnetCidr;

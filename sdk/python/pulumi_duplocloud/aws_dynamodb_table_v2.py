@@ -50,6 +50,7 @@ class AwsDynamodbTableV2Args:
         :param pulumi.Input['AwsDynamodbTableV2ServerSideEncryptionArgs'] server_side_encryption: Encryption at rest options. AWS DynamoDB tables are automatically encrypted at rest with an AWS owned Customer Master Key if this argument isn't specified.
         :param pulumi.Input[bool] stream_enabled: Indicates whether Streams are to be enabled (true) or disabled (false).
         :param pulumi.Input[str] stream_view_type: When an item in the table is modified, StreamViewType determines what information is written to the table's stream. Valid values are `KEYS_ONLY`, `NEW_IMAGE`, `OLD_IMAGE`, `NEW_AND_OLD_IMAGES`.
+        :param pulumi.Input[Sequence[pulumi.Input['AwsDynamodbTableV2TagArgs']]] tags: Tag support has been removed from this resource to manage tage use the `AwsTag` resource.
         :param pulumi.Input['AwsDynamodbTableV2TtlArgs'] ttl: Setup ttl for dynamodb table. Defaults to `false or empty`, To disable ttl, enabled field should be set to false
         :param pulumi.Input[bool] wait_until_ready: Whether or not to wait until dynamodb instance to be ready, after creation. Defaults to `true`.
         :param pulumi.Input[int] write_capacity: The number of write units for this table. If the `billing_mode` is `PROVISIONED`, this field is required.
@@ -77,6 +78,9 @@ class AwsDynamodbTableV2Args:
             pulumi.set(__self__, "stream_enabled", stream_enabled)
         if stream_view_type is not None:
             pulumi.set(__self__, "stream_view_type", stream_view_type)
+        if tags is not None:
+            warnings.warn("""Tag support has been removed from this resource to manage tage use the `AwsTag` resource.""", DeprecationWarning)
+            pulumi.log.warn("""tags is deprecated: Tag support has been removed from this resource to manage tage use the `AwsTag` resource.""")
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if ttl is not None:
@@ -235,7 +239,11 @@ class AwsDynamodbTableV2Args:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Tag support has been removed from this resource to manage tage use the `AwsTag` resource.""")
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AwsDynamodbTableV2TagArgs']]]]:
+        """
+        Tag support has been removed from this resource to manage tage use the `AwsTag` resource.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -318,6 +326,7 @@ class _AwsDynamodbTableV2State:
         :param pulumi.Input[str] status: The status of the dynamodb table.
         :param pulumi.Input[bool] stream_enabled: Indicates whether Streams are to be enabled (true) or disabled (false).
         :param pulumi.Input[str] stream_view_type: When an item in the table is modified, StreamViewType determines what information is written to the table's stream. Valid values are `KEYS_ONLY`, `NEW_IMAGE`, `OLD_IMAGE`, `NEW_AND_OLD_IMAGES`.
+        :param pulumi.Input[Sequence[pulumi.Input['AwsDynamodbTableV2TagArgs']]] tags: Tag support has been removed from this resource to manage tage use the `AwsTag` resource.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the dynamodb table will be created in.
         :param pulumi.Input['AwsDynamodbTableV2TtlArgs'] ttl: Setup ttl for dynamodb table. Defaults to `false or empty`, To disable ttl, enabled field should be set to false
         :param pulumi.Input[bool] wait_until_ready: Whether or not to wait until dynamodb instance to be ready, after creation. Defaults to `true`.
@@ -357,6 +366,9 @@ class _AwsDynamodbTableV2State:
             pulumi.set(__self__, "stream_label", stream_label)
         if stream_view_type is not None:
             pulumi.set(__self__, "stream_view_type", stream_view_type)
+        if tags is not None:
+            warnings.warn("""Tag support has been removed from this resource to manage tage use the `AwsTag` resource.""", DeprecationWarning)
+            pulumi.log.warn("""tags is deprecated: Tag support has been removed from this resource to manage tage use the `AwsTag` resource.""")
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if tenant_id is not None:
@@ -559,7 +571,11 @@ class _AwsDynamodbTableV2State:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Tag support has been removed from this resource to manage tage use the `AwsTag` resource.""")
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AwsDynamodbTableV2TagArgs']]]]:
+        """
+        Tag support has been removed from this resource to manage tage use the `AwsTag` resource.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -666,6 +682,7 @@ class AwsDynamodbTableV2(pulumi.CustomResource):
         :param pulumi.Input[Union['AwsDynamodbTableV2ServerSideEncryptionArgs', 'AwsDynamodbTableV2ServerSideEncryptionArgsDict']] server_side_encryption: Encryption at rest options. AWS DynamoDB tables are automatically encrypted at rest with an AWS owned Customer Master Key if this argument isn't specified.
         :param pulumi.Input[bool] stream_enabled: Indicates whether Streams are to be enabled (true) or disabled (false).
         :param pulumi.Input[str] stream_view_type: When an item in the table is modified, StreamViewType determines what information is written to the table's stream. Valid values are `KEYS_ONLY`, `NEW_IMAGE`, `OLD_IMAGE`, `NEW_AND_OLD_IMAGES`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AwsDynamodbTableV2TagArgs', 'AwsDynamodbTableV2TagArgsDict']]]] tags: Tag support has been removed from this resource to manage tage use the `AwsTag` resource.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the dynamodb table will be created in.
         :param pulumi.Input[Union['AwsDynamodbTableV2TtlArgs', 'AwsDynamodbTableV2TtlArgsDict']] ttl: Setup ttl for dynamodb table. Defaults to `false or empty`, To disable ttl, enabled field should be set to false
         :param pulumi.Input[bool] wait_until_ready: Whether or not to wait until dynamodb instance to be ready, after creation. Defaults to `true`.
@@ -814,6 +831,7 @@ class AwsDynamodbTableV2(pulumi.CustomResource):
         :param pulumi.Input[str] status: The status of the dynamodb table.
         :param pulumi.Input[bool] stream_enabled: Indicates whether Streams are to be enabled (true) or disabled (false).
         :param pulumi.Input[str] stream_view_type: When an item in the table is modified, StreamViewType determines what information is written to the table's stream. Valid values are `KEYS_ONLY`, `NEW_IMAGE`, `OLD_IMAGE`, `NEW_AND_OLD_IMAGES`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AwsDynamodbTableV2TagArgs', 'AwsDynamodbTableV2TagArgsDict']]]] tags: Tag support has been removed from this resource to manage tage use the `AwsTag` resource.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the dynamodb table will be created in.
         :param pulumi.Input[Union['AwsDynamodbTableV2TtlArgs', 'AwsDynamodbTableV2TtlArgsDict']] ttl: Setup ttl for dynamodb table. Defaults to `false or empty`, To disable ttl, enabled field should be set to false
         :param pulumi.Input[bool] wait_until_ready: Whether or not to wait until dynamodb instance to be ready, after creation. Defaults to `true`.
@@ -970,7 +988,11 @@ class AwsDynamodbTableV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Sequence['outputs.AwsDynamodbTableV2Tag']]:
+    @_utilities.deprecated("""Tag support has been removed from this resource to manage tage use the `AwsTag` resource.""")
+    def tags(self) -> pulumi.Output[Optional[Sequence['outputs.AwsDynamodbTableV2Tag']]]:
+        """
+        Tag support has been removed from this resource to manage tage use the `AwsTag` resource.
+        """
         return pulumi.get(self, "tags")
 
     @property

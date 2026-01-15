@@ -19,21 +19,22 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
+    /// using Pulumi = Pulumi.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var grantor = Duplocloud.GetTenant.Invoke(new()
+    ///     var grantor = Pulumi.GetTenant.Invoke(new()
     ///     {
     ///         Name = "tenant1",
     ///     });
     /// 
-    ///     var grantee = Duplocloud.GetTenant.Invoke(new()
+    ///     var grantee = Pulumi.GetTenant.Invoke(new()
     ///     {
     ///         Name = "tenant2",
     ///     });
     /// 
-    ///     var dynamodbGrant = new Duplocloud.TenantAccessGrant("dynamodbGrant", new()
+    ///     var dynamodbGrant = new Pulumi.TenantAccessGrant("dynamodbGrant", new()
     ///     {
     ///         GranteeTenantId = grantee.Apply(getTenantResult =&gt; getTenantResult.Id),
     ///         GrantorTenantId = grantor.Apply(getTenantResult =&gt; getTenantResult.Id),

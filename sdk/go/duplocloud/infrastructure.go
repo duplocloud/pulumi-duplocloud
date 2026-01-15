@@ -356,7 +356,7 @@ import (
 type Infrastructure struct {
 	pulumi.CustomResourceState
 
-	// The cloud account ID.
+	// The cloud account ID — use this for Azure (Subscription ID) and Google Cloud (Project ID). Not applicable for AWS.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The CIDR to use for the VPC or VNet.
 	AddressPrefix pulumi.StringOutput `pulumi:"addressPrefix"`
@@ -386,6 +386,8 @@ type Infrastructure struct {
 	InfraName pulumi.StringOutput `pulumi:"infraName"`
 	// Whether or not to make GKE with autopilot.
 	IsServerlessKubernetes pulumi.BoolOutput `pulumi:"isServerlessKubernetes"`
+	// The NAT IPs for the subnet.
+	NatIps pulumi.StringArrayOutput `pulumi:"natIps"`
 	// The private subnets for the VPC or VNet.
 	PrivateSubnets InfrastructurePrivateSubnetArrayOutput `pulumi:"privateSubnets"`
 	// The public subnets for the VPC or VNet.
@@ -402,7 +404,7 @@ type Infrastructure struct {
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The address prefixe to use for the subnet. This is applicable only for Azure
 	SubnetAddressPrefix pulumi.StringOutput `pulumi:"subnetAddressPrefix"`
-	// The CIDR subnet size (in bits) for the automatically created subnets. This is applicable only for AWS.
+	// The CIDR subnet size (in bits) for the automatically created subnets.
 	SubnetCidr pulumi.IntPtrOutput `pulumi:"subnetCidr"`
 	// The full name of the subnet. This is applicable only for Azure.
 	SubnetFullname pulumi.StringOutput `pulumi:"subnetFullname"`
@@ -458,7 +460,7 @@ func GetInfrastructure(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Infrastructure resources.
 type infrastructureState struct {
-	// The cloud account ID.
+	// The cloud account ID — use this for Azure (Subscription ID) and Google Cloud (Project ID). Not applicable for AWS.
 	AccountId *string `pulumi:"accountId"`
 	// The CIDR to use for the VPC or VNet.
 	AddressPrefix *string `pulumi:"addressPrefix"`
@@ -488,6 +490,8 @@ type infrastructureState struct {
 	InfraName *string `pulumi:"infraName"`
 	// Whether or not to make GKE with autopilot.
 	IsServerlessKubernetes *bool `pulumi:"isServerlessKubernetes"`
+	// The NAT IPs for the subnet.
+	NatIps []string `pulumi:"natIps"`
 	// The private subnets for the VPC or VNet.
 	PrivateSubnets []InfrastructurePrivateSubnet `pulumi:"privateSubnets"`
 	// The public subnets for the VPC or VNet.
@@ -504,7 +508,7 @@ type infrastructureState struct {
 	Status *string `pulumi:"status"`
 	// The address prefixe to use for the subnet. This is applicable only for Azure
 	SubnetAddressPrefix *string `pulumi:"subnetAddressPrefix"`
-	// The CIDR subnet size (in bits) for the automatically created subnets. This is applicable only for AWS.
+	// The CIDR subnet size (in bits) for the automatically created subnets.
 	SubnetCidr *int `pulumi:"subnetCidr"`
 	// The full name of the subnet. This is applicable only for Azure.
 	SubnetFullname *string `pulumi:"subnetFullname"`
@@ -519,7 +523,7 @@ type infrastructureState struct {
 }
 
 type InfrastructureState struct {
-	// The cloud account ID.
+	// The cloud account ID — use this for Azure (Subscription ID) and Google Cloud (Project ID). Not applicable for AWS.
 	AccountId pulumi.StringPtrInput
 	// The CIDR to use for the VPC or VNet.
 	AddressPrefix pulumi.StringPtrInput
@@ -549,6 +553,8 @@ type InfrastructureState struct {
 	InfraName pulumi.StringPtrInput
 	// Whether or not to make GKE with autopilot.
 	IsServerlessKubernetes pulumi.BoolPtrInput
+	// The NAT IPs for the subnet.
+	NatIps pulumi.StringArrayInput
 	// The private subnets for the VPC or VNet.
 	PrivateSubnets InfrastructurePrivateSubnetArrayInput
 	// The public subnets for the VPC or VNet.
@@ -565,7 +571,7 @@ type InfrastructureState struct {
 	Status pulumi.StringPtrInput
 	// The address prefixe to use for the subnet. This is applicable only for Azure
 	SubnetAddressPrefix pulumi.StringPtrInput
-	// The CIDR subnet size (in bits) for the automatically created subnets. This is applicable only for AWS.
+	// The CIDR subnet size (in bits) for the automatically created subnets.
 	SubnetCidr pulumi.IntPtrInput
 	// The full name of the subnet. This is applicable only for Azure.
 	SubnetFullname pulumi.StringPtrInput
@@ -584,7 +590,7 @@ func (InfrastructureState) ElementType() reflect.Type {
 }
 
 type infrastructureArgs struct {
-	// The cloud account ID.
+	// The cloud account ID — use this for Azure (Subscription ID) and Google Cloud (Project ID). Not applicable for AWS.
 	AccountId *string `pulumi:"accountId"`
 	// The CIDR to use for the VPC or VNet.
 	AddressPrefix string `pulumi:"addressPrefix"`
@@ -618,7 +624,7 @@ type infrastructureArgs struct {
 	Settings []InfrastructureSettingType `pulumi:"settings"`
 	// The address prefixe to use for the subnet. This is applicable only for Azure
 	SubnetAddressPrefix *string `pulumi:"subnetAddressPrefix"`
-	// The CIDR subnet size (in bits) for the automatically created subnets. This is applicable only for AWS.
+	// The CIDR subnet size (in bits) for the automatically created subnets.
 	SubnetCidr *int `pulumi:"subnetCidr"`
 	// The name of the subnet. This is applicable only for Azure.
 	SubnetName *string `pulumi:"subnetName"`
@@ -628,7 +634,7 @@ type infrastructureArgs struct {
 
 // The set of arguments for constructing a Infrastructure resource.
 type InfrastructureArgs struct {
-	// The cloud account ID.
+	// The cloud account ID — use this for Azure (Subscription ID) and Google Cloud (Project ID). Not applicable for AWS.
 	AccountId pulumi.StringPtrInput
 	// The CIDR to use for the VPC or VNet.
 	AddressPrefix pulumi.StringInput
@@ -662,7 +668,7 @@ type InfrastructureArgs struct {
 	Settings InfrastructureSettingTypeArrayInput
 	// The address prefixe to use for the subnet. This is applicable only for Azure
 	SubnetAddressPrefix pulumi.StringPtrInput
-	// The CIDR subnet size (in bits) for the automatically created subnets. This is applicable only for AWS.
+	// The CIDR subnet size (in bits) for the automatically created subnets.
 	SubnetCidr pulumi.IntPtrInput
 	// The name of the subnet. This is applicable only for Azure.
 	SubnetName pulumi.StringPtrInput
@@ -757,7 +763,7 @@ func (o InfrastructureOutput) ToInfrastructureOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The cloud account ID.
+// The cloud account ID — use this for Azure (Subscription ID) and Google Cloud (Project ID). Not applicable for AWS.
 func (o InfrastructureOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Infrastructure) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -826,6 +832,11 @@ func (o InfrastructureOutput) IsServerlessKubernetes() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Infrastructure) pulumi.BoolOutput { return v.IsServerlessKubernetes }).(pulumi.BoolOutput)
 }
 
+// The NAT IPs for the subnet.
+func (o InfrastructureOutput) NatIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Infrastructure) pulumi.StringArrayOutput { return v.NatIps }).(pulumi.StringArrayOutput)
+}
+
 // The private subnets for the VPC or VNet.
 func (o InfrastructureOutput) PrivateSubnets() InfrastructurePrivateSubnetArrayOutput {
 	return o.ApplyT(func(v *Infrastructure) InfrastructurePrivateSubnetArrayOutput { return v.PrivateSubnets }).(InfrastructurePrivateSubnetArrayOutput)
@@ -866,7 +877,7 @@ func (o InfrastructureOutput) SubnetAddressPrefix() pulumi.StringOutput {
 	return o.ApplyT(func(v *Infrastructure) pulumi.StringOutput { return v.SubnetAddressPrefix }).(pulumi.StringOutput)
 }
 
-// The CIDR subnet size (in bits) for the automatically created subnets. This is applicable only for AWS.
+// The CIDR subnet size (in bits) for the automatically created subnets.
 func (o InfrastructureOutput) SubnetCidr() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Infrastructure) pulumi.IntPtrOutput { return v.SubnetCidr }).(pulumi.IntPtrOutput)
 }

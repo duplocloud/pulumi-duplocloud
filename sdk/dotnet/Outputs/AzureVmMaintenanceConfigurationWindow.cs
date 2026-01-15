@@ -15,7 +15,7 @@ namespace DuploCloud.Pulumi.Outputs
     public sealed class AzureVmMaintenanceConfigurationWindow
     {
         /// <summary>
-        /// The duration of the maintenance window in HH:mm format.
+        /// The duration of the maintenance window in HH:mm format. Should be less than or equal to 3 Hrs
         /// </summary>
         public readonly string? Duration;
         /// <summary>

@@ -19,13 +19,13 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var tenantId = "d186700c-ad18-4525-9593-aad467c843ff";
     /// 
-    ///     var jd = new Duplocloud.AwsBatchJobDefinition("jd", new()
+    ///     var jd = new Pulumi.AwsBatchJobDefinition("jd", new()
     ///     {
     ///         TenantId = tenantId,
     ///         Name = "tf_test_batch_job_definition",
@@ -34,12 +34,12 @@ namespace DuploCloud.Pulumi
     ///         {
     ///             "EC2",
     ///         },
-    ///         RetryStrategy = new Duplocloud.Inputs.AwsBatchJobDefinitionRetryStrategyArgs
+    ///         RetryStrategy = new Pulumi.Inputs.AwsBatchJobDefinitionRetryStrategyArgs
     ///         {
     ///             Attempts = 2,
     ///             EvaluateOnExits = new[]
     ///             {
-    ///                 new Duplocloud.Inputs.AwsBatchJobDefinitionRetryStrategyEvaluateOnExitArgs
+    ///                 new Pulumi.Inputs.AwsBatchJobDefinitionRetryStrategyEvaluateOnExitArgs
     ///                 {
     ///                     Action = "EXIT",
     ///                     OnExitCode = "1*",
@@ -48,7 +48,7 @@ namespace DuploCloud.Pulumi
     ///                 },
     ///             },
     ///         },
-    ///         Timeout = new Duplocloud.Inputs.AwsBatchJobDefinitionTimeoutArgs
+    ///         Timeout = new Pulumi.Inputs.AwsBatchJobDefinitionTimeoutArgs
     ///         {
     ///             AttemptDurationSeconds = 60,
     ///         },

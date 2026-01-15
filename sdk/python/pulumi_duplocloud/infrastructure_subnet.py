@@ -29,9 +29,9 @@ class InfrastructureSubnetArgs:
                  zone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a InfrastructureSubnet resource.
-        :param pulumi.Input[str] type: Specify subnet type. `private` and `public` is used for AWS subnet. Will be one of `none`, `appgwsubnet`, `appgw-internal-subnet`, `azurebastionsubnet`, `managedinstance`, `databrick-workspace`, `mysql-flexiserver`, `postgres-flexiserver` is used for azure.
+        :param pulumi.Input[str] type: Specify subnet type. `private` and `public` is used for AWS subnet. Will be one of `none`, `appgwsubnet`, `appgw-internal-subnet`, `azurebastionsubnet`, `managedinstance`, `databrick-workspace`, `mysql-flexiserver`, `postgres-flexiserver` ,`app-service-plan`,`sql-server`,`cosmos-db` is used for azure. \\n\\n`NOTE` :In Azure Delegation subnet configuration will be handled by Duplo based on Azure specific subnet type)
         :param pulumi.Input[bool] isolated_network: Determines whether the isolated network is enabled. This is applicable only for Azure subnets. Defaults to `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] service_endpoints: The list of Service endpoints to associate with the azure subnet. Possible values include: `Microsoft.AzureActiveDirectory`, `Microsoft.AzureCosmosDB`, `Microsoft.ContainerRegistry`, `Microsoft.EventHub`, `Microsoft.KeyVault`, `Microsoft.ServiceBus`,`Microsoft.Sql`, `Microsoft.Storage` and `Microsoft.Web`. This is applicable only for Azure subnets.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] service_endpoints: The list of Service endpoints to associate with the azure subnet. Possible values include: `Microsoft.Storage`, `Microsoft.Sql`, `Microsoft.AzureActiveDirectory`, `Microsoft.AzureCosmosDB`, `Microsoft.Web`, `Microsoft.NetworkServiceEndpointTest`, `Microsoft.KeyVault`, `Microsoft.EventHub`, `Microsoft.ServiceBus`, `Microsoft.ContainerRegistry`, `Microsoft.CognitiveServices`, `Microsoft.Storage.Global`. This is applicable only for Azure subnets.
         :param pulumi.Input[str] zone: The Duplo zone that the subnet resides in.  Will be one of:  `"A"`, `"B"`, `"C"`, or `"D"`. This is applicable only for AWS subnets.
         """
         pulumi.set(__self__, "cidr_block", cidr_block)
@@ -70,7 +70,7 @@ class InfrastructureSubnetArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        Specify subnet type. `private` and `public` is used for AWS subnet. Will be one of `none`, `appgwsubnet`, `appgw-internal-subnet`, `azurebastionsubnet`, `managedinstance`, `databrick-workspace`, `mysql-flexiserver`, `postgres-flexiserver` is used for azure.
+        Specify subnet type. `private` and `public` is used for AWS subnet. Will be one of `none`, `appgwsubnet`, `appgw-internal-subnet`, `azurebastionsubnet`, `managedinstance`, `databrick-workspace`, `mysql-flexiserver`, `postgres-flexiserver` ,`app-service-plan`,`sql-server`,`cosmos-db` is used for azure. \\n\\n`NOTE` :In Azure Delegation subnet configuration will be handled by Duplo based on Azure specific subnet type)
         """
         return pulumi.get(self, "type")
 
@@ -103,7 +103,7 @@ class InfrastructureSubnetArgs:
     @pulumi.getter(name="serviceEndpoints")
     def service_endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The list of Service endpoints to associate with the azure subnet. Possible values include: `Microsoft.AzureActiveDirectory`, `Microsoft.AzureCosmosDB`, `Microsoft.ContainerRegistry`, `Microsoft.EventHub`, `Microsoft.KeyVault`, `Microsoft.ServiceBus`,`Microsoft.Sql`, `Microsoft.Storage` and `Microsoft.Web`. This is applicable only for Azure subnets.
+        The list of Service endpoints to associate with the azure subnet. Possible values include: `Microsoft.Storage`, `Microsoft.Sql`, `Microsoft.AzureActiveDirectory`, `Microsoft.AzureCosmosDB`, `Microsoft.Web`, `Microsoft.NetworkServiceEndpointTest`, `Microsoft.KeyVault`, `Microsoft.EventHub`, `Microsoft.ServiceBus`, `Microsoft.ContainerRegistry`, `Microsoft.CognitiveServices`, `Microsoft.Storage.Global`. This is applicable only for Azure subnets.
         """
         return pulumi.get(self, "service_endpoints")
 
@@ -150,8 +150,8 @@ class _InfrastructureSubnetState:
         """
         Input properties used for looking up and filtering InfrastructureSubnet resources.
         :param pulumi.Input[bool] isolated_network: Determines whether the isolated network is enabled. This is applicable only for Azure subnets. Defaults to `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] service_endpoints: The list of Service endpoints to associate with the azure subnet. Possible values include: `Microsoft.AzureActiveDirectory`, `Microsoft.AzureCosmosDB`, `Microsoft.ContainerRegistry`, `Microsoft.EventHub`, `Microsoft.KeyVault`, `Microsoft.ServiceBus`,`Microsoft.Sql`, `Microsoft.Storage` and `Microsoft.Web`. This is applicable only for Azure subnets.
-        :param pulumi.Input[str] type: Specify subnet type. `private` and `public` is used for AWS subnet. Will be one of `none`, `appgwsubnet`, `appgw-internal-subnet`, `azurebastionsubnet`, `managedinstance`, `databrick-workspace`, `mysql-flexiserver`, `postgres-flexiserver` is used for azure.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] service_endpoints: The list of Service endpoints to associate with the azure subnet. Possible values include: `Microsoft.Storage`, `Microsoft.Sql`, `Microsoft.AzureActiveDirectory`, `Microsoft.AzureCosmosDB`, `Microsoft.Web`, `Microsoft.NetworkServiceEndpointTest`, `Microsoft.KeyVault`, `Microsoft.EventHub`, `Microsoft.ServiceBus`, `Microsoft.ContainerRegistry`, `Microsoft.CognitiveServices`, `Microsoft.Storage.Global`. This is applicable only for Azure subnets.
+        :param pulumi.Input[str] type: Specify subnet type. `private` and `public` is used for AWS subnet. Will be one of `none`, `appgwsubnet`, `appgw-internal-subnet`, `azurebastionsubnet`, `managedinstance`, `databrick-workspace`, `mysql-flexiserver`, `postgres-flexiserver` ,`app-service-plan`,`sql-server`,`cosmos-db` is used for azure. \\n\\n`NOTE` :In Azure Delegation subnet configuration will be handled by Duplo based on Azure specific subnet type)
         :param pulumi.Input[str] zone: The Duplo zone that the subnet resides in.  Will be one of:  `"A"`, `"B"`, `"C"`, or `"D"`. This is applicable only for AWS subnets.
         """
         if cidr_block is not None:
@@ -220,7 +220,7 @@ class _InfrastructureSubnetState:
     @pulumi.getter(name="serviceEndpoints")
     def service_endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The list of Service endpoints to associate with the azure subnet. Possible values include: `Microsoft.AzureActiveDirectory`, `Microsoft.AzureCosmosDB`, `Microsoft.ContainerRegistry`, `Microsoft.EventHub`, `Microsoft.KeyVault`, `Microsoft.ServiceBus`,`Microsoft.Sql`, `Microsoft.Storage` and `Microsoft.Web`. This is applicable only for Azure subnets.
+        The list of Service endpoints to associate with the azure subnet. Possible values include: `Microsoft.Storage`, `Microsoft.Sql`, `Microsoft.AzureActiveDirectory`, `Microsoft.AzureCosmosDB`, `Microsoft.Web`, `Microsoft.NetworkServiceEndpointTest`, `Microsoft.KeyVault`, `Microsoft.EventHub`, `Microsoft.ServiceBus`, `Microsoft.ContainerRegistry`, `Microsoft.CognitiveServices`, `Microsoft.Storage.Global`. This is applicable only for Azure subnets.
         """
         return pulumi.get(self, "service_endpoints")
 
@@ -268,7 +268,7 @@ class _InfrastructureSubnetState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        Specify subnet type. `private` and `public` is used for AWS subnet. Will be one of `none`, `appgwsubnet`, `appgw-internal-subnet`, `azurebastionsubnet`, `managedinstance`, `databrick-workspace`, `mysql-flexiserver`, `postgres-flexiserver` is used for azure.
+        Specify subnet type. `private` and `public` is used for AWS subnet. Will be one of `none`, `appgwsubnet`, `appgw-internal-subnet`, `azurebastionsubnet`, `managedinstance`, `databrick-workspace`, `mysql-flexiserver`, `postgres-flexiserver` ,`app-service-plan`,`sql-server`,`cosmos-db` is used for azure. \\n\\n`NOTE` :In Azure Delegation subnet configuration will be handled by Duplo based on Azure specific subnet type)
         """
         return pulumi.get(self, "type")
 
@@ -306,26 +306,6 @@ class InfrastructureSubnet(pulumi.CustomResource):
         """
         ## Example Usage
 
-        ```python
-        import pulumi
-        import pulumi_duplocloud as duplocloud
-
-        # For AWS
-        aws_subnet = duplocloud.InfrastructureSubnet("aws-subnet",
-            name="mySubnet",
-            infra_name="myinfra",
-            cidr_block="10.34.1.0/24",
-            type="private",
-            zone="A")
-        # For Azure
-        az_subnet = duplocloud.InfrastructureSubnet("az-subnet",
-            name="mySubnet",
-            infra_name="myinfra",
-            cidr_block="10.34.1.0/24",
-            type="appgwsubnet",
-            service_endpoints=["Microsoft.Storage"])
-        ```
-
         ## Import
 
         Example: Importing an existing infrastructure subnet
@@ -345,8 +325,8 @@ class InfrastructureSubnet(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] isolated_network: Determines whether the isolated network is enabled. This is applicable only for Azure subnets. Defaults to `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] service_endpoints: The list of Service endpoints to associate with the azure subnet. Possible values include: `Microsoft.AzureActiveDirectory`, `Microsoft.AzureCosmosDB`, `Microsoft.ContainerRegistry`, `Microsoft.EventHub`, `Microsoft.KeyVault`, `Microsoft.ServiceBus`,`Microsoft.Sql`, `Microsoft.Storage` and `Microsoft.Web`. This is applicable only for Azure subnets.
-        :param pulumi.Input[str] type: Specify subnet type. `private` and `public` is used for AWS subnet. Will be one of `none`, `appgwsubnet`, `appgw-internal-subnet`, `azurebastionsubnet`, `managedinstance`, `databrick-workspace`, `mysql-flexiserver`, `postgres-flexiserver` is used for azure.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] service_endpoints: The list of Service endpoints to associate with the azure subnet. Possible values include: `Microsoft.Storage`, `Microsoft.Sql`, `Microsoft.AzureActiveDirectory`, `Microsoft.AzureCosmosDB`, `Microsoft.Web`, `Microsoft.NetworkServiceEndpointTest`, `Microsoft.KeyVault`, `Microsoft.EventHub`, `Microsoft.ServiceBus`, `Microsoft.ContainerRegistry`, `Microsoft.CognitiveServices`, `Microsoft.Storage.Global`. This is applicable only for Azure subnets.
+        :param pulumi.Input[str] type: Specify subnet type. `private` and `public` is used for AWS subnet. Will be one of `none`, `appgwsubnet`, `appgw-internal-subnet`, `azurebastionsubnet`, `managedinstance`, `databrick-workspace`, `mysql-flexiserver`, `postgres-flexiserver` ,`app-service-plan`,`sql-server`,`cosmos-db` is used for azure. \\n\\n`NOTE` :In Azure Delegation subnet configuration will be handled by Duplo based on Azure specific subnet type)
         :param pulumi.Input[str] zone: The Duplo zone that the subnet resides in.  Will be one of:  `"A"`, `"B"`, `"C"`, or `"D"`. This is applicable only for AWS subnets.
         """
         ...
@@ -357,26 +337,6 @@ class InfrastructureSubnet(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_duplocloud as duplocloud
-
-        # For AWS
-        aws_subnet = duplocloud.InfrastructureSubnet("aws-subnet",
-            name="mySubnet",
-            infra_name="myinfra",
-            cidr_block="10.34.1.0/24",
-            type="private",
-            zone="A")
-        # For Azure
-        az_subnet = duplocloud.InfrastructureSubnet("az-subnet",
-            name="mySubnet",
-            infra_name="myinfra",
-            cidr_block="10.34.1.0/24",
-            type="appgwsubnet",
-            service_endpoints=["Microsoft.Storage"])
-        ```
 
         ## Import
 
@@ -472,8 +432,8 @@ class InfrastructureSubnet(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] isolated_network: Determines whether the isolated network is enabled. This is applicable only for Azure subnets. Defaults to `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] service_endpoints: The list of Service endpoints to associate with the azure subnet. Possible values include: `Microsoft.AzureActiveDirectory`, `Microsoft.AzureCosmosDB`, `Microsoft.ContainerRegistry`, `Microsoft.EventHub`, `Microsoft.KeyVault`, `Microsoft.ServiceBus`,`Microsoft.Sql`, `Microsoft.Storage` and `Microsoft.Web`. This is applicable only for Azure subnets.
-        :param pulumi.Input[str] type: Specify subnet type. `private` and `public` is used for AWS subnet. Will be one of `none`, `appgwsubnet`, `appgw-internal-subnet`, `azurebastionsubnet`, `managedinstance`, `databrick-workspace`, `mysql-flexiserver`, `postgres-flexiserver` is used for azure.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] service_endpoints: The list of Service endpoints to associate with the azure subnet. Possible values include: `Microsoft.Storage`, `Microsoft.Sql`, `Microsoft.AzureActiveDirectory`, `Microsoft.AzureCosmosDB`, `Microsoft.Web`, `Microsoft.NetworkServiceEndpointTest`, `Microsoft.KeyVault`, `Microsoft.EventHub`, `Microsoft.ServiceBus`, `Microsoft.ContainerRegistry`, `Microsoft.CognitiveServices`, `Microsoft.Storage.Global`. This is applicable only for Azure subnets.
+        :param pulumi.Input[str] type: Specify subnet type. `private` and `public` is used for AWS subnet. Will be one of `none`, `appgwsubnet`, `appgw-internal-subnet`, `azurebastionsubnet`, `managedinstance`, `databrick-workspace`, `mysql-flexiserver`, `postgres-flexiserver` ,`app-service-plan`,`sql-server`,`cosmos-db` is used for azure. \\n\\n`NOTE` :In Azure Delegation subnet configuration will be handled by Duplo based on Azure specific subnet type)
         :param pulumi.Input[str] zone: The Duplo zone that the subnet resides in.  Will be one of:  `"A"`, `"B"`, `"C"`, or `"D"`. This is applicable only for AWS subnets.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -520,7 +480,7 @@ class InfrastructureSubnet(pulumi.CustomResource):
     @pulumi.getter(name="serviceEndpoints")
     def service_endpoints(self) -> pulumi.Output[Sequence[str]]:
         """
-        The list of Service endpoints to associate with the azure subnet. Possible values include: `Microsoft.AzureActiveDirectory`, `Microsoft.AzureCosmosDB`, `Microsoft.ContainerRegistry`, `Microsoft.EventHub`, `Microsoft.KeyVault`, `Microsoft.ServiceBus`,`Microsoft.Sql`, `Microsoft.Storage` and `Microsoft.Web`. This is applicable only for Azure subnets.
+        The list of Service endpoints to associate with the azure subnet. Possible values include: `Microsoft.Storage`, `Microsoft.Sql`, `Microsoft.AzureActiveDirectory`, `Microsoft.AzureCosmosDB`, `Microsoft.Web`, `Microsoft.NetworkServiceEndpointTest`, `Microsoft.KeyVault`, `Microsoft.EventHub`, `Microsoft.ServiceBus`, `Microsoft.ContainerRegistry`, `Microsoft.CognitiveServices`, `Microsoft.Storage.Global`. This is applicable only for Azure subnets.
         """
         return pulumi.get(self, "service_endpoints")
 
@@ -548,7 +508,7 @@ class InfrastructureSubnet(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        Specify subnet type. `private` and `public` is used for AWS subnet. Will be one of `none`, `appgwsubnet`, `appgw-internal-subnet`, `azurebastionsubnet`, `managedinstance`, `databrick-workspace`, `mysql-flexiserver`, `postgres-flexiserver` is used for azure.
+        Specify subnet type. `private` and `public` is used for AWS subnet. Will be one of `none`, `appgwsubnet`, `appgw-internal-subnet`, `azurebastionsubnet`, `managedinstance`, `databrick-workspace`, `mysql-flexiserver`, `postgres-flexiserver` ,`app-service-plan`,`sql-server`,`cosmos-db` is used for azure. \\n\\n`NOTE` :In Azure Delegation subnet configuration will be handled by Duplo based on Azure specific subnet type)
         """
         return pulumi.get(self, "type")
 

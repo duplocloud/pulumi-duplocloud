@@ -34,6 +34,25 @@ import * as utilities from "./utilities";
  *     },
  *     httpsTrigger: {},
  * });
+ * //Example of a cloud function with an event trigger
+ * // This example shows how to create a cloud function that is triggered by a Pub/Sub event
+ * // The function will be triggered when a message is published to the specified Pub/Sub topic
+ * const examplePubsubFunction = new duplocloud.GcpCloudFunction("example_pubsub_function", {
+ *     tenantId: myapp.tenantId,
+ *     name: "example-pubsub-fn",
+ *     runtime: "python39",
+ *     entrypoint: "hello_pubsub",
+ *     eventTrigger: {
+ *         eventType: "google.pubsub.topic.publish",
+ *         resource: "projects/projectid/topics/topicname",
+ *     },
+ *     environmentVariables: {
+ *         EXAMPLE_ENV: "value",
+ *     },
+ *     availableMemoryMb: 128,
+ *     timeout: 60,
+ *     sourceArchiveUrl: "gs://bucketname/code.ext",
+ * });
  * ```
  *
  * ## Import

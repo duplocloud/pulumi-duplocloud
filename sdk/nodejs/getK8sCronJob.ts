@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  *
  * const job = duplocloud.getK8sCronJob({
  *     tenantId: tenantId,
@@ -25,6 +25,7 @@ import * as utilities from "./utilities";
 export function getK8sCronJob(args: GetK8sCronJobArgs, opts?: pulumi.InvokeOptions): Promise<GetK8sCronJobResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("duplocloud:index/getK8sCronJob:getK8sCronJob", {
+        "allocationTags": args.allocationTags,
         "isAnyHostAllowed": args.isAnyHostAllowed,
         "metadata": args.metadata,
         "tenantId": args.tenantId,
@@ -35,6 +36,10 @@ export function getK8sCronJob(args: GetK8sCronJobArgs, opts?: pulumi.InvokeOptio
  * A collection of arguments for invoking getK8sCronJob.
  */
 export interface GetK8sCronJobArgs {
+    /**
+     * Allocation tags is the simplest way to constraint containers/pods with hosts/nodes. DuploCloud/Kubernetes Orchestrator will make sure containers will run on the hosts having same allocation tags.
+     */
+    allocationTags?: string;
     /**
      * Defaults to `false`.
      */
@@ -53,6 +58,10 @@ export interface GetK8sCronJobArgs {
  * A collection of values returned by getK8sCronJob.
  */
 export interface GetK8sCronJobResult {
+    /**
+     * Allocation tags is the simplest way to constraint containers/pods with hosts/nodes. DuploCloud/Kubernetes Orchestrator will make sure containers will run on the hosts having same allocation tags.
+     */
+    readonly allocationTags?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -79,7 +88,7 @@ export interface GetK8sCronJobResult {
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  *
  * const job = duplocloud.getK8sCronJob({
  *     tenantId: tenantId,
@@ -93,6 +102,7 @@ export interface GetK8sCronJobResult {
 export function getK8sCronJobOutput(args: GetK8sCronJobOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetK8sCronJobResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("duplocloud:index/getK8sCronJob:getK8sCronJob", {
+        "allocationTags": args.allocationTags,
         "isAnyHostAllowed": args.isAnyHostAllowed,
         "metadata": args.metadata,
         "tenantId": args.tenantId,
@@ -103,6 +113,10 @@ export function getK8sCronJobOutput(args: GetK8sCronJobOutputArgs, opts?: pulumi
  * A collection of arguments for invoking getK8sCronJob.
  */
 export interface GetK8sCronJobOutputArgs {
+    /**
+     * Allocation tags is the simplest way to constraint containers/pods with hosts/nodes. DuploCloud/Kubernetes Orchestrator will make sure containers will run on the hosts having same allocation tags.
+     */
+    allocationTags?: pulumi.Input<string>;
     /**
      * Defaults to `false`.
      */

@@ -21,21 +21,41 @@ class K8HelmRepositoryArgs:
     def __init__(__self__, *,
                  tenant_id: pulumi.Input[str],
                  url: pulumi.Input[str],
+                 helm_provider: Optional[pulumi.Input[str]] = None,
+                 insecure: Optional[pulumi.Input[bool]] = None,
                  interval: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 pass_credentials: Optional[pulumi.Input[bool]] = None,
+                 suspend: Optional[pulumi.Input[bool]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a K8HelmRepository resource.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the storage bucket will be created in.
         :param pulumi.Input[str] url: The url of helm repository to be attached
+        :param pulumi.Input[str] helm_provider: The provider attribute in the spec block of a HelmRepository specifies the cloud  example: generic, aws, gcp, azure
+        :param pulumi.Input[bool] insecure: Set to skip TLS certificate verification when accessing the repository.
         :param pulumi.Input[str] interval: The interval associated to helm repository Defaults to `5m0s`.
         :param pulumi.Input[str] name: The identifier name for the helm repository in duplocloud
+        :param pulumi.Input[bool] pass_credentials: Pass credentials even to a different host than the one used in url
+        :param pulumi.Input[bool] suspend: Used to pause the reconciliation of the repository by the controller.
+        :param pulumi.Input[str] type: The Helm repository type. Possible values are default for a Helm HTTP/S repository, or oci for an OCI Helm repository.
         """
         pulumi.set(__self__, "tenant_id", tenant_id)
         pulumi.set(__self__, "url", url)
+        if helm_provider is not None:
+            pulumi.set(__self__, "helm_provider", helm_provider)
+        if insecure is not None:
+            pulumi.set(__self__, "insecure", insecure)
         if interval is not None:
             pulumi.set(__self__, "interval", interval)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if pass_credentials is not None:
+            pulumi.set(__self__, "pass_credentials", pass_credentials)
+        if suspend is not None:
+            pulumi.set(__self__, "suspend", suspend)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="tenantId")
@@ -62,6 +82,30 @@ class K8HelmRepositoryArgs:
         pulumi.set(self, "url", value)
 
     @property
+    @pulumi.getter(name="helmProvider")
+    def helm_provider(self) -> Optional[pulumi.Input[str]]:
+        """
+        The provider attribute in the spec block of a HelmRepository specifies the cloud  example: generic, aws, gcp, azure
+        """
+        return pulumi.get(self, "helm_provider")
+
+    @helm_provider.setter
+    def helm_provider(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "helm_provider", value)
+
+    @property
+    @pulumi.getter
+    def insecure(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set to skip TLS certificate verification when accessing the repository.
+        """
+        return pulumi.get(self, "insecure")
+
+    @insecure.setter
+    def insecure(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "insecure", value)
+
+    @property
     @pulumi.getter
     def interval(self) -> Optional[pulumi.Input[str]]:
         """
@@ -84,30 +128,110 @@ class K8HelmRepositoryArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="passCredentials")
+    def pass_credentials(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Pass credentials even to a different host than the one used in url
+        """
+        return pulumi.get(self, "pass_credentials")
+
+    @pass_credentials.setter
+    def pass_credentials(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "pass_credentials", value)
+
+    @property
+    @pulumi.getter
+    def suspend(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Used to pause the reconciliation of the repository by the controller.
+        """
+        return pulumi.get(self, "suspend")
+
+    @suspend.setter
+    def suspend(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "suspend", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Helm repository type. Possible values are default for a Helm HTTP/S repository, or oci for an OCI Helm repository.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
 
 
 @pulumi.input_type
 class _K8HelmRepositoryState:
     def __init__(__self__, *,
+                 helm_provider: Optional[pulumi.Input[str]] = None,
+                 insecure: Optional[pulumi.Input[bool]] = None,
                  interval: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 pass_credentials: Optional[pulumi.Input[bool]] = None,
+                 suspend: Optional[pulumi.Input[bool]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering K8HelmRepository resources.
+        :param pulumi.Input[str] helm_provider: The provider attribute in the spec block of a HelmRepository specifies the cloud  example: generic, aws, gcp, azure
+        :param pulumi.Input[bool] insecure: Set to skip TLS certificate verification when accessing the repository.
         :param pulumi.Input[str] interval: The interval associated to helm repository Defaults to `5m0s`.
         :param pulumi.Input[str] name: The identifier name for the helm repository in duplocloud
+        :param pulumi.Input[bool] pass_credentials: Pass credentials even to a different host than the one used in url
+        :param pulumi.Input[bool] suspend: Used to pause the reconciliation of the repository by the controller.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the storage bucket will be created in.
+        :param pulumi.Input[str] type: The Helm repository type. Possible values are default for a Helm HTTP/S repository, or oci for an OCI Helm repository.
         :param pulumi.Input[str] url: The url of helm repository to be attached
         """
+        if helm_provider is not None:
+            pulumi.set(__self__, "helm_provider", helm_provider)
+        if insecure is not None:
+            pulumi.set(__self__, "insecure", insecure)
         if interval is not None:
             pulumi.set(__self__, "interval", interval)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if pass_credentials is not None:
+            pulumi.set(__self__, "pass_credentials", pass_credentials)
+        if suspend is not None:
+            pulumi.set(__self__, "suspend", suspend)
         if tenant_id is not None:
             pulumi.set(__self__, "tenant_id", tenant_id)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
         if url is not None:
             pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter(name="helmProvider")
+    def helm_provider(self) -> Optional[pulumi.Input[str]]:
+        """
+        The provider attribute in the spec block of a HelmRepository specifies the cloud  example: generic, aws, gcp, azure
+        """
+        return pulumi.get(self, "helm_provider")
+
+    @helm_provider.setter
+    def helm_provider(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "helm_provider", value)
+
+    @property
+    @pulumi.getter
+    def insecure(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set to skip TLS certificate verification when accessing the repository.
+        """
+        return pulumi.get(self, "insecure")
+
+    @insecure.setter
+    def insecure(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "insecure", value)
 
     @property
     @pulumi.getter
@@ -132,6 +256,30 @@ class _K8HelmRepositoryState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="passCredentials")
+    def pass_credentials(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Pass credentials even to a different host than the one used in url
+        """
+        return pulumi.get(self, "pass_credentials")
+
+    @pass_credentials.setter
+    def pass_credentials(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "pass_credentials", value)
+
+    @property
+    @pulumi.getter
+    def suspend(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Used to pause the reconciliation of the repository by the controller.
+        """
+        return pulumi.get(self, "suspend")
+
+    @suspend.setter
+    def suspend(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "suspend", value)
 
     @property
     @pulumi.getter(name="tenantId")
@@ -144,6 +292,18 @@ class _K8HelmRepositoryState:
     @tenant_id.setter
     def tenant_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "tenant_id", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Helm repository type. Possible values are default for a Helm HTTP/S repository, or oci for an OCI Helm repository.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
 
     @property
     @pulumi.getter
@@ -163,29 +323,18 @@ class K8HelmRepository(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 helm_provider: Optional[pulumi.Input[str]] = None,
+                 insecure: Optional[pulumi.Input[bool]] = None,
                  interval: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 pass_credentials: Optional[pulumi.Input[bool]] = None,
+                 suspend: Optional[pulumi.Input[bool]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         `duplocloud_helm_repository` manages helm repository in duplocloud
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_duplocloud as duplocloud
-
-        myapp = duplocloud.Tenant("myapp",
-            account_name="myapp",
-            plan_id="default")
-        repo = duplocloud.index.HelmRepository("repo",
-            tenant_id=myapp.tenant_id,
-            name=repo-name,
-            interval=06m00s,
-            url=https://helm.github.com)
-        ```
 
         ## Import
 
@@ -203,9 +352,14 @@ class K8HelmRepository(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] helm_provider: The provider attribute in the spec block of a HelmRepository specifies the cloud  example: generic, aws, gcp, azure
+        :param pulumi.Input[bool] insecure: Set to skip TLS certificate verification when accessing the repository.
         :param pulumi.Input[str] interval: The interval associated to helm repository Defaults to `5m0s`.
         :param pulumi.Input[str] name: The identifier name for the helm repository in duplocloud
+        :param pulumi.Input[bool] pass_credentials: Pass credentials even to a different host than the one used in url
+        :param pulumi.Input[bool] suspend: Used to pause the reconciliation of the repository by the controller.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the storage bucket will be created in.
+        :param pulumi.Input[str] type: The Helm repository type. Possible values are default for a Helm HTTP/S repository, or oci for an OCI Helm repository.
         :param pulumi.Input[str] url: The url of helm repository to be attached
         """
         ...
@@ -216,22 +370,6 @@ class K8HelmRepository(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         `duplocloud_helm_repository` manages helm repository in duplocloud
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_duplocloud as duplocloud
-
-        myapp = duplocloud.Tenant("myapp",
-            account_name="myapp",
-            plan_id="default")
-        repo = duplocloud.index.HelmRepository("repo",
-            tenant_id=myapp.tenant_id,
-            name=repo-name,
-            interval=06m00s,
-            url=https://helm.github.com)
-        ```
 
         ## Import
 
@@ -262,9 +400,14 @@ class K8HelmRepository(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 helm_provider: Optional[pulumi.Input[str]] = None,
+                 insecure: Optional[pulumi.Input[bool]] = None,
                  interval: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 pass_credentials: Optional[pulumi.Input[bool]] = None,
+                 suspend: Optional[pulumi.Input[bool]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -275,11 +418,16 @@ class K8HelmRepository(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = K8HelmRepositoryArgs.__new__(K8HelmRepositoryArgs)
 
+            __props__.__dict__["helm_provider"] = helm_provider
+            __props__.__dict__["insecure"] = insecure
             __props__.__dict__["interval"] = interval
             __props__.__dict__["name"] = name
+            __props__.__dict__["pass_credentials"] = pass_credentials
+            __props__.__dict__["suspend"] = suspend
             if tenant_id is None and not opts.urn:
                 raise TypeError("Missing required property 'tenant_id'")
             __props__.__dict__["tenant_id"] = tenant_id
+            __props__.__dict__["type"] = type
             if url is None and not opts.urn:
                 raise TypeError("Missing required property 'url'")
             __props__.__dict__["url"] = url
@@ -293,9 +441,14 @@ class K8HelmRepository(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            helm_provider: Optional[pulumi.Input[str]] = None,
+            insecure: Optional[pulumi.Input[bool]] = None,
             interval: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            pass_credentials: Optional[pulumi.Input[bool]] = None,
+            suspend: Optional[pulumi.Input[bool]] = None,
             tenant_id: Optional[pulumi.Input[str]] = None,
+            type: Optional[pulumi.Input[str]] = None,
             url: Optional[pulumi.Input[str]] = None) -> 'K8HelmRepository':
         """
         Get an existing K8HelmRepository resource's state with the given name, id, and optional extra
@@ -304,20 +457,46 @@ class K8HelmRepository(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] helm_provider: The provider attribute in the spec block of a HelmRepository specifies the cloud  example: generic, aws, gcp, azure
+        :param pulumi.Input[bool] insecure: Set to skip TLS certificate verification when accessing the repository.
         :param pulumi.Input[str] interval: The interval associated to helm repository Defaults to `5m0s`.
         :param pulumi.Input[str] name: The identifier name for the helm repository in duplocloud
+        :param pulumi.Input[bool] pass_credentials: Pass credentials even to a different host than the one used in url
+        :param pulumi.Input[bool] suspend: Used to pause the reconciliation of the repository by the controller.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the storage bucket will be created in.
+        :param pulumi.Input[str] type: The Helm repository type. Possible values are default for a Helm HTTP/S repository, or oci for an OCI Helm repository.
         :param pulumi.Input[str] url: The url of helm repository to be attached
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _K8HelmRepositoryState.__new__(_K8HelmRepositoryState)
 
+        __props__.__dict__["helm_provider"] = helm_provider
+        __props__.__dict__["insecure"] = insecure
         __props__.__dict__["interval"] = interval
         __props__.__dict__["name"] = name
+        __props__.__dict__["pass_credentials"] = pass_credentials
+        __props__.__dict__["suspend"] = suspend
         __props__.__dict__["tenant_id"] = tenant_id
+        __props__.__dict__["type"] = type
         __props__.__dict__["url"] = url
         return K8HelmRepository(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="helmProvider")
+    def helm_provider(self) -> pulumi.Output[str]:
+        """
+        The provider attribute in the spec block of a HelmRepository specifies the cloud  example: generic, aws, gcp, azure
+        """
+        return pulumi.get(self, "helm_provider")
+
+    @property
+    @pulumi.getter
+    def insecure(self) -> pulumi.Output[bool]:
+        """
+        Set to skip TLS certificate verification when accessing the repository.
+        """
+        return pulumi.get(self, "insecure")
 
     @property
     @pulumi.getter
@@ -336,12 +515,36 @@ class K8HelmRepository(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="passCredentials")
+    def pass_credentials(self) -> pulumi.Output[bool]:
+        """
+        Pass credentials even to a different host than the one used in url
+        """
+        return pulumi.get(self, "pass_credentials")
+
+    @property
+    @pulumi.getter
+    def suspend(self) -> pulumi.Output[bool]:
+        """
+        Used to pause the reconciliation of the repository by the controller.
+        """
+        return pulumi.get(self, "suspend")
+
+    @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> pulumi.Output[str]:
         """
         The GUID of the tenant that the storage bucket will be created in.
         """
         return pulumi.get(self, "tenant_id")
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Output[str]:
+        """
+        The Helm repository type. Possible values are default for a Helm HTTP/S repository, or oci for an OCI Helm repository.
+        """
+        return pulumi.get(self, "type")
 
     @property
     @pulumi.getter

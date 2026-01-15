@@ -19,17 +19,17 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var duplo_app = new Duplocloud.Tenant("duplo-app", new()
+    ///     var duplo_app = new Pulumi.Tenant("duplo-app", new()
     ///     {
     ///         AccountName = "duplo-app",
     ///         PlanId = "default",
     ///     });
     /// 
-    ///     var cwErule = new Duplocloud.AwsCloudwatchEventRule("cw_erule", new()
+    ///     var cwErule = new Pulumi.AwsCloudwatchEventRule("cw_erule", new()
     ///     {
     ///         TenantId = duplo_app.TenantId,
     ///         Name = "cw_erule",
@@ -38,12 +38,12 @@ namespace DuploCloud.Pulumi
     ///         State = "DISABLED",
     ///         Tags = new[]
     ///         {
-    ///             new Duplocloud.Inputs.AwsCloudwatchEventRuleTagArgs
+    ///             new Pulumi.Inputs.AwsCloudwatchEventRuleTagArgs
     ///             {
     ///                 Key = "CreatedBy",
     ///                 Value = "Duplo",
     ///             },
-    ///             new Duplocloud.Inputs.AwsCloudwatchEventRuleTagArgs
+    ///             new Pulumi.Inputs.AwsCloudwatchEventRuleTagArgs
     ///             {
     ///                 Key = "CreatedFrom",
     ///                 Value = "Duplo",
@@ -51,7 +51,7 @@ namespace DuploCloud.Pulumi
     ///         },
     ///     });
     /// 
-    ///     var cwEtarget1 = new Duplocloud.AwsCloudwatchEventTarget("cw_etarget1", new()
+    ///     var cwEtarget1 = new Pulumi.AwsCloudwatchEventTarget("cw_etarget1", new()
     ///     {
     ///         TenantId = duplo_app.TenantId,
     ///         RuleName = cwErule.Fullname,
@@ -59,7 +59,7 @@ namespace DuploCloud.Pulumi
     ///         TargetId = "lamda-tst1",
     ///     });
     /// 
-    ///     var cwEtarget2 = new Duplocloud.AwsCloudwatchEventTarget("cw_etarget2", new()
+    ///     var cwEtarget2 = new Pulumi.AwsCloudwatchEventTarget("cw_etarget2", new()
     ///     {
     ///         TenantId = duplo_app.TenantId,
     ///         RuleName = cwErule.Fullname,

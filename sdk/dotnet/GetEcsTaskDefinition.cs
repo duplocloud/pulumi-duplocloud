@@ -91,16 +91,25 @@ namespace DuploCloud.Pulumi
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<Outputs.GetEcsTaskDefinitionInferenceAcceleratorResult> InferenceAccelerators;
+        /// <summary>
+        /// valid values are `host`, `none`, `task`
+        /// </summary>
         public readonly string IpcMode;
         public readonly string Memory;
+        /// <summary>
+        /// Valid values are `bridge`,`host`,`awsvpc`,`none`
+        /// </summary>
         public readonly string NetworkMode;
+        /// <summary>
+        /// Valida values are `host`, `task`
+        /// </summary>
         public readonly string PidMode;
         public readonly ImmutableArray<Outputs.GetEcsTaskDefinitionPlacementConstraintResult> PlacementConstraints;
-        public readonly bool PreventTfDestroy;
+        public readonly string PreventTfDestroy;
         public readonly ImmutableArray<Outputs.GetEcsTaskDefinitionProxyConfigurationResult> ProxyConfigurations;
         public readonly ImmutableArray<Outputs.GetEcsTaskDefinitionRequiresAttributeResult> RequiresAttributes;
         /// <summary>
-        /// Requires compatibilities for running jobs. Valid values are [FARGATE]
+        /// Requires compatibilities for running jobs. Such as EC2, FARGATE, EXTERNAL. It varies based on network mode and how AWS maps it. `FARGATE` should be used if network mode is set to `awsvpc`.
         /// </summary>
         public readonly ImmutableArray<string> RequiresCompatibilities;
         /// <summary>
@@ -121,6 +130,9 @@ namespace DuploCloud.Pulumi
         /// The GUID of the tenant that the task definition will be created in.
         /// </summary>
         public readonly string TenantId;
+        /// <summary>
+        /// A JSON-encoded string containing a list of volumes that are used by the ECS task definition.
+        /// </summary>
         public readonly string Volumes;
 
         [OutputConstructor]
@@ -153,7 +165,7 @@ namespace DuploCloud.Pulumi
 
             ImmutableArray<Outputs.GetEcsTaskDefinitionPlacementConstraintResult> placementConstraints,
 
-            bool preventTfDestroy,
+            string preventTfDestroy,
 
             ImmutableArray<Outputs.GetEcsTaskDefinitionProxyConfigurationResult> proxyConfigurations,
 

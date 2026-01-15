@@ -109,6 +109,9 @@ func NewK8HelmRelease(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Charts == nil {
+		return nil, errors.New("invalid value for required argument 'Charts'")
+	}
 	if args.ReleaseName == nil {
 		return nil, errors.New("invalid value for required argument 'ReleaseName'")
 	}

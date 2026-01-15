@@ -21,18 +21,18 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myapp = new Duplocloud.Tenant("myapp", new()
+    ///     var myapp = new Pulumi.Tenant("myapp", new()
     ///     {
     ///         AccountName = "myapp",
     ///         PlanId = "default",
     ///     });
     /// 
     ///     // Deploy NGINX using Duplo's native container agent, and configure additional load balancer settings.
-    ///     var myservice = new Duplocloud.DuploService("myservice", new()
+    ///     var myservice = new Pulumi.DuploService("myservice", new()
     ///     {
     ///         TenantId = myapp.TenantId,
     ///         Name = "myservice",
@@ -41,13 +41,13 @@ namespace DuploCloud.Pulumi
     ///         Replicas = 1,
     ///     });
     /// 
-    ///     var myserviceDuploServiceLbconfigs = new Duplocloud.DuploServiceLbconfigs("myservice", new()
+    ///     var myserviceDuploServiceLbconfigs = new Pulumi.DuploServiceLbconfigs("myservice", new()
     ///     {
     ///         TenantId = myservice.TenantId,
     ///         ReplicationControllerName = myservice.Name,
     ///         Lbconfigs = new[]
     ///         {
-    ///             new Duplocloud.Inputs.DuploServiceLbconfigsLbconfigArgs
+    ///             new Pulumi.Inputs.DuploServiceLbconfigsLbconfigArgs
     ///             {
     ///                 ExternalPort = 80,
     ///                 HealthCheckUrl = "/",
@@ -59,7 +59,7 @@ namespace DuploCloud.Pulumi
     ///         },
     ///     });
     /// 
-    ///     var myserviceDuploServiceParams = new Duplocloud.DuploServiceParams("myservice", new()
+    ///     var myserviceDuploServiceParams = new Pulumi.DuploServiceParams("myservice", new()
     ///     {
     ///         TenantId = myserviceDuploServiceLbconfigs.TenantId,
     ///         ReplicationControllerName = myserviceDuploServiceLbconfigs.ReplicationControllerName,

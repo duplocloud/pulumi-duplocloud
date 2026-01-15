@@ -14,57 +14,6 @@ import (
 
 // `EcsService` manages a Amazon ECS service in Duplo.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/duplocloud/pulumi-duplocloud/sdk/go/duplocloud"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myapp, err := duplocloud.NewTenant(ctx, "myapp", &duplocloud.TenantArgs{
-//				AccountName: pulumi.String("myapp"),
-//				PlanId:      pulumi.String("default"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			myservice, err := duplocloud.NewEcsTaskDefinition(ctx, "myservice", nil)
-//			if err != nil {
-//				return err
-//			}
-//			// Deploy NGINX using ECS
-//			_, err = duplocloud.NewEcsService(ctx, "myservice", &duplocloud.EcsServiceArgs{
-//				TenantId:       myapp.TenantId,
-//				TaskDefinition: myservice.Arn,
-//				Replicas:       pulumi.Int(2),
-//				LoadBalancers: duplocloud.EcsServiceLoadBalancerArray{
-//					&duplocloud.EcsServiceLoadBalancerArgs{
-//						LbType:             pulumi.Int(1),
-//						Port:               pulumi.String("8080"),
-//						ExternalPort:       pulumi.Int(80),
-//						Protocol:           pulumi.String("HTTP"),
-//						EnableAccessLogs:   pulumi.Bool(false),
-//						DropInvalidHeaders: pulumi.Bool(true),
-//						HealthCheckUrl:     pulumi.String("https://example.healthcheckurl.com/healthcheck"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Example: Importing an existing service
@@ -82,6 +31,7 @@ type EcsService struct {
 	pulumi.CustomResourceState
 
 	CapacityProviderStrategies EcsServiceCapacityProviderStrategyArrayOutput `pulumi:"capacityProviderStrategies"`
+	DeploymentConfiguration    EcsServiceDeploymentConfigurationPtrOutput    `pulumi:"deploymentConfiguration"`
 	// The DNS prefix to assign to this service's load balancer.
 	DnsPrfx                       pulumi.StringPtrOutput `pulumi:"dnsPrfx"`
 	HealthCheckGracePeriodSeconds pulumi.IntPtrOutput    `pulumi:"healthCheckGracePeriodSeconds"`
@@ -94,6 +44,11 @@ type EcsService struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The number of older task definitions to retain in AWS.
 	OldTaskDefinitionBufferSize pulumi.IntPtrOutput `pulumi:"oldTaskDefinitionBufferSize"`
+	// Rules that are taken into consideration during task placement. Maximum number of `placementConstraints` is `10`
+	PlacementConstraints EcsServicePlacementConstraintArrayOutput `pulumi:"placementConstraints"`
+	// Service level strategy rules that are taken into consideration during task placement. List from top to bottom in order
+	// of precedence. The maximum number of `placementStrategy` blocks is `5`
+	PlacementStrategies EcsServicePlacementStrategyArrayOutput `pulumi:"placementStrategies"`
 	// The number of container replicas to create.
 	Replicas        pulumi.IntOutput         `pulumi:"replicas"`
 	TargetGroupArns pulumi.StringArrayOutput `pulumi:"targetGroupArns"`
@@ -145,6 +100,7 @@ func GetEcsService(ctx *pulumi.Context,
 // Input properties used for looking up and filtering EcsService resources.
 type ecsServiceState struct {
 	CapacityProviderStrategies []EcsServiceCapacityProviderStrategy `pulumi:"capacityProviderStrategies"`
+	DeploymentConfiguration    *EcsServiceDeploymentConfiguration   `pulumi:"deploymentConfiguration"`
 	// The DNS prefix to assign to this service's load balancer.
 	DnsPrfx                       *string `pulumi:"dnsPrfx"`
 	HealthCheckGracePeriodSeconds *int    `pulumi:"healthCheckGracePeriodSeconds"`
@@ -157,6 +113,11 @@ type ecsServiceState struct {
 	Name *string `pulumi:"name"`
 	// The number of older task definitions to retain in AWS.
 	OldTaskDefinitionBufferSize *int `pulumi:"oldTaskDefinitionBufferSize"`
+	// Rules that are taken into consideration during task placement. Maximum number of `placementConstraints` is `10`
+	PlacementConstraints []EcsServicePlacementConstraint `pulumi:"placementConstraints"`
+	// Service level strategy rules that are taken into consideration during task placement. List from top to bottom in order
+	// of precedence. The maximum number of `placementStrategy` blocks is `5`
+	PlacementStrategies []EcsServicePlacementStrategy `pulumi:"placementStrategies"`
 	// The number of container replicas to create.
 	Replicas        *int     `pulumi:"replicas"`
 	TargetGroupArns []string `pulumi:"targetGroupArns"`
@@ -170,6 +131,7 @@ type ecsServiceState struct {
 
 type EcsServiceState struct {
 	CapacityProviderStrategies EcsServiceCapacityProviderStrategyArrayInput
+	DeploymentConfiguration    EcsServiceDeploymentConfigurationPtrInput
 	// The DNS prefix to assign to this service's load balancer.
 	DnsPrfx                       pulumi.StringPtrInput
 	HealthCheckGracePeriodSeconds pulumi.IntPtrInput
@@ -182,6 +144,11 @@ type EcsServiceState struct {
 	Name pulumi.StringPtrInput
 	// The number of older task definitions to retain in AWS.
 	OldTaskDefinitionBufferSize pulumi.IntPtrInput
+	// Rules that are taken into consideration during task placement. Maximum number of `placementConstraints` is `10`
+	PlacementConstraints EcsServicePlacementConstraintArrayInput
+	// Service level strategy rules that are taken into consideration during task placement. List from top to bottom in order
+	// of precedence. The maximum number of `placementStrategy` blocks is `5`
+	PlacementStrategies EcsServicePlacementStrategyArrayInput
 	// The number of container replicas to create.
 	Replicas        pulumi.IntPtrInput
 	TargetGroupArns pulumi.StringArrayInput
@@ -199,6 +166,7 @@ func (EcsServiceState) ElementType() reflect.Type {
 
 type ecsServiceArgs struct {
 	CapacityProviderStrategies []EcsServiceCapacityProviderStrategy `pulumi:"capacityProviderStrategies"`
+	DeploymentConfiguration    *EcsServiceDeploymentConfiguration   `pulumi:"deploymentConfiguration"`
 	// The DNS prefix to assign to this service's load balancer.
 	DnsPrfx                       *string `pulumi:"dnsPrfx"`
 	HealthCheckGracePeriodSeconds *int    `pulumi:"healthCheckGracePeriodSeconds"`
@@ -209,6 +177,11 @@ type ecsServiceArgs struct {
 	Name *string `pulumi:"name"`
 	// The number of older task definitions to retain in AWS.
 	OldTaskDefinitionBufferSize *int `pulumi:"oldTaskDefinitionBufferSize"`
+	// Rules that are taken into consideration during task placement. Maximum number of `placementConstraints` is `10`
+	PlacementConstraints []EcsServicePlacementConstraint `pulumi:"placementConstraints"`
+	// Service level strategy rules that are taken into consideration during task placement. List from top to bottom in order
+	// of precedence. The maximum number of `placementStrategy` blocks is `5`
+	PlacementStrategies []EcsServicePlacementStrategy `pulumi:"placementStrategies"`
 	// The number of container replicas to create.
 	Replicas int `pulumi:"replicas"`
 	// The ARN of the task definition to use.
@@ -222,6 +195,7 @@ type ecsServiceArgs struct {
 // The set of arguments for constructing a EcsService resource.
 type EcsServiceArgs struct {
 	CapacityProviderStrategies EcsServiceCapacityProviderStrategyArrayInput
+	DeploymentConfiguration    EcsServiceDeploymentConfigurationPtrInput
 	// The DNS prefix to assign to this service's load balancer.
 	DnsPrfx                       pulumi.StringPtrInput
 	HealthCheckGracePeriodSeconds pulumi.IntPtrInput
@@ -232,6 +206,11 @@ type EcsServiceArgs struct {
 	Name pulumi.StringPtrInput
 	// The number of older task definitions to retain in AWS.
 	OldTaskDefinitionBufferSize pulumi.IntPtrInput
+	// Rules that are taken into consideration during task placement. Maximum number of `placementConstraints` is `10`
+	PlacementConstraints EcsServicePlacementConstraintArrayInput
+	// Service level strategy rules that are taken into consideration during task placement. List from top to bottom in order
+	// of precedence. The maximum number of `placementStrategy` blocks is `5`
+	PlacementStrategies EcsServicePlacementStrategyArrayInput
 	// The number of container replicas to create.
 	Replicas pulumi.IntInput
 	// The ARN of the task definition to use.
@@ -333,6 +312,10 @@ func (o EcsServiceOutput) CapacityProviderStrategies() EcsServiceCapacityProvide
 	return o.ApplyT(func(v *EcsService) EcsServiceCapacityProviderStrategyArrayOutput { return v.CapacityProviderStrategies }).(EcsServiceCapacityProviderStrategyArrayOutput)
 }
 
+func (o EcsServiceOutput) DeploymentConfiguration() EcsServiceDeploymentConfigurationPtrOutput {
+	return o.ApplyT(func(v *EcsService) EcsServiceDeploymentConfigurationPtrOutput { return v.DeploymentConfiguration }).(EcsServiceDeploymentConfigurationPtrOutput)
+}
+
 // The DNS prefix to assign to this service's load balancer.
 func (o EcsServiceOutput) DnsPrfx() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsService) pulumi.StringPtrOutput { return v.DnsPrfx }).(pulumi.StringPtrOutput)
@@ -364,6 +347,17 @@ func (o EcsServiceOutput) Name() pulumi.StringOutput {
 // The number of older task definitions to retain in AWS.
 func (o EcsServiceOutput) OldTaskDefinitionBufferSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *EcsService) pulumi.IntPtrOutput { return v.OldTaskDefinitionBufferSize }).(pulumi.IntPtrOutput)
+}
+
+// Rules that are taken into consideration during task placement. Maximum number of `placementConstraints` is `10`
+func (o EcsServiceOutput) PlacementConstraints() EcsServicePlacementConstraintArrayOutput {
+	return o.ApplyT(func(v *EcsService) EcsServicePlacementConstraintArrayOutput { return v.PlacementConstraints }).(EcsServicePlacementConstraintArrayOutput)
+}
+
+// Service level strategy rules that are taken into consideration during task placement. List from top to bottom in order
+// of precedence. The maximum number of `placementStrategy` blocks is `5`
+func (o EcsServiceOutput) PlacementStrategies() EcsServicePlacementStrategyArrayOutput {
+	return o.ApplyT(func(v *EcsService) EcsServicePlacementStrategyArrayOutput { return v.PlacementStrategies }).(EcsServicePlacementStrategyArrayOutput)
 }
 
 // The number of container replicas to create.

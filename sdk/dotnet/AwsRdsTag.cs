@@ -19,12 +19,12 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myapp = new Duplocloud.Tenant("myapp", new()
+    ///     var myapp = new Pulumi.Tenant("myapp", new()
     ///     {
     ///         AccountName = "myapp",
     ///         PlanId = "default",
@@ -38,7 +38,7 @@ namespace DuploCloud.Pulumi
     ///     });
     /// 
     ///     // Create an RDS instance.
-    ///     var mydb = new Duplocloud.RdsInstance("mydb", new()
+    ///     var mydb = new Pulumi.RdsInstance("mydb", new()
     ///     {
     ///         TenantId = myapp.TenantId,
     ///         Name = "mydb",
@@ -51,7 +51,7 @@ namespace DuploCloud.Pulumi
     ///     });
     /// 
     ///     // Create RDS Tag for type "instance".
-    ///     var tag = new Duplocloud.AwsRdsTag("tag", new()
+    ///     var tag = new Pulumi.AwsRdsTag("tag", new()
     ///     {
     ///         TenantId = myapp.TenantId,
     ///         ResourceType = "instance",

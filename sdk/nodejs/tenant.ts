@@ -61,7 +61,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as duplocloud from "@duplocloud/pulumi";
- * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  *
  * // Ensure the 'nonprod' infrastructure is already created before setting up the tenant.
  * const infra = duplocloud.getInfrastructure({
@@ -78,7 +78,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as duplocloud from "@duplocloud/pulumi";
- * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  *
  * const config = new pulumi.Config();
  * const infraName = config.get("infraName") || "nonprod";
@@ -99,7 +99,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  * import * as duplocloud from "@duplocloud/pulumi";
- * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  *
  * // A prerequisite for creating a tenant is having an existing infrastructure. Here’s how you can reference an existing infrastructure.
  * const infra = duplocloud.getInfrastructure({
@@ -123,7 +123,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  * import * as duplocloud from "@duplocloud/pulumi";
- * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  *
  * // A prerequisite for creating a tenant is having an existing infrastructure. Here’s how you can reference an existing infrastructure.
  * const infra = duplocloud.getInfrastructure({
@@ -146,7 +146,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as duplocloud from "@duplocloud/pulumi";
- * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  *
  * const infra = duplocloud.getInfrastructure({
  *     infraName: "nonprod",
@@ -171,7 +171,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as duplocloud from "@duplocloud/pulumi";
- * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  *
  * const infra = duplocloud.getInfrastructure({
  *     infraName: "nonprod",
@@ -196,7 +196,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as duplocloud from "@duplocloud/pulumi";
- * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  *
  * const infra = duplocloud.getInfrastructure({
  *     infraName: "myinfra",
@@ -221,7 +221,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as duplocloud from "@duplocloud/pulumi";
- * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  *
  * const infra = duplocloud.getInfrastructure({
  *     infraName: "myinfra",
@@ -282,7 +282,7 @@ export class Tenant extends pulumi.CustomResource {
     }
 
     /**
-     * The name of the tenant. Tenant names are globally unique, and cannot be a prefix of any other tenant name.
+     * The name of the tenant. Tenant names are globally unique, and cannot be a prefix of any other tenant name. Will be converted to lowercase.
      */
     public readonly accountName!: pulumi.Output<string>;
     /**
@@ -365,7 +365,7 @@ export class Tenant extends pulumi.CustomResource {
  */
 export interface TenantState {
     /**
-     * The name of the tenant. Tenant names are globally unique, and cannot be a prefix of any other tenant name.
+     * The name of the tenant. Tenant names are globally unique, and cannot be a prefix of any other tenant name. Will be converted to lowercase.
      */
     accountName?: pulumi.Input<string>;
     /**
@@ -402,7 +402,7 @@ export interface TenantState {
  */
 export interface TenantArgs {
     /**
-     * The name of the tenant. Tenant names are globally unique, and cannot be a prefix of any other tenant name.
+     * The name of the tenant. Tenant names are globally unique, and cannot be a prefix of any other tenant name. Will be converted to lowercase.
      */
     accountName: pulumi.Input<string>;
     /**

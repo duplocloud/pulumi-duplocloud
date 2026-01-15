@@ -80,13 +80,14 @@ import (
 type GcpHost struct {
 	pulumi.CustomResourceState
 
-	// The number of the guest accelerator cards exposed to this instance. Defaults to `0`.
+	// The number of the guest accelerator cards exposed to this instance.
 	AcceleratorCount pulumi.IntPtrOutput `pulumi:"acceleratorCount"`
 	// The accelerator type resource to expose to this instance
 	AcceleratorType pulumi.StringOutput `pulumi:"acceleratorType"`
-	// The numeric ID of the container agent pool that this host is added to. Defaults to `0`.
+	// The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
+	// Windows
 	AgentPlatform pulumi.IntPtrOutput `pulumi:"agentPlatform"`
-	// Whether or not to allocate a public IP. Defaults to `false`.
+	// Whether or not to allocate a public IP.
 	AllocatedPublicIp pulumi.BoolPtrOutput `pulumi:"allocatedPublicIp"`
 	Architecture      pulumi.StringOutput  `pulumi:"architecture"`
 	// The machine type to create
@@ -101,7 +102,9 @@ type GcpHost struct {
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// A set of key/value label pairs assigned to the vm
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// Configuration, metadata used when creating the host.\n\n*Note: To configure OS disk size OsDiskSize can be specified as Key and its size as value, size value should be atleast 10, Similarly to added start up script one can pass the key as startupScript and startup command as its value*
+	// Configuration, metadata used when creating the host.<br>*Note: To configure OS disk size OsDiskSize can be specified as
+	// Key and its size as value, size value should be atleast 10, Similarly to added start up script one can pass the key as
+	// startupScript and startup command as its value*
 	Metadata         pulumi.StringMapOutput `pulumi:"metadata"`
 	PrivateIpAddress pulumi.StringOutput    `pulumi:"privateIpAddress"`
 	PublicIpAddress  pulumi.StringOutput    `pulumi:"publicIpAddress"`
@@ -112,8 +115,7 @@ type GcpHost struct {
 	// The GUID of the tenant that the host will be created in.
 	TenantId pulumi.StringOutput `pulumi:"tenantId"`
 	// The email id of the user.
-	UserAccount pulumi.StringOutput `pulumi:"userAccount"`
-	// Defaults to `true`.
+	UserAccount    pulumi.StringOutput  `pulumi:"userAccount"`
 	WaitUntilReady pulumi.BoolPtrOutput `pulumi:"waitUntilReady"`
 	// The zone that the machine should be created in
 	Zone pulumi.StringOutput `pulumi:"zone"`
@@ -167,13 +169,14 @@ func GetGcpHost(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GcpHost resources.
 type gcpHostState struct {
-	// The number of the guest accelerator cards exposed to this instance. Defaults to `0`.
+	// The number of the guest accelerator cards exposed to this instance.
 	AcceleratorCount *int `pulumi:"acceleratorCount"`
 	// The accelerator type resource to expose to this instance
 	AcceleratorType *string `pulumi:"acceleratorType"`
-	// The numeric ID of the container agent pool that this host is added to. Defaults to `0`.
+	// The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
+	// Windows
 	AgentPlatform *int `pulumi:"agentPlatform"`
-	// Whether or not to allocate a public IP. Defaults to `false`.
+	// Whether or not to allocate a public IP.
 	AllocatedPublicIp *bool   `pulumi:"allocatedPublicIp"`
 	Architecture      *string `pulumi:"architecture"`
 	// The machine type to create
@@ -188,7 +191,9 @@ type gcpHostState struct {
 	InstanceId *string `pulumi:"instanceId"`
 	// A set of key/value label pairs assigned to the vm
 	Labels map[string]string `pulumi:"labels"`
-	// Configuration, metadata used when creating the host.\n\n*Note: To configure OS disk size OsDiskSize can be specified as Key and its size as value, size value should be atleast 10, Similarly to added start up script one can pass the key as startupScript and startup command as its value*
+	// Configuration, metadata used when creating the host.<br>*Note: To configure OS disk size OsDiskSize can be specified as
+	// Key and its size as value, size value should be atleast 10, Similarly to added start up script one can pass the key as
+	// startupScript and startup command as its value*
 	Metadata         map[string]string `pulumi:"metadata"`
 	PrivateIpAddress *string           `pulumi:"privateIpAddress"`
 	PublicIpAddress  *string           `pulumi:"publicIpAddress"`
@@ -199,21 +204,21 @@ type gcpHostState struct {
 	// The GUID of the tenant that the host will be created in.
 	TenantId *string `pulumi:"tenantId"`
 	// The email id of the user.
-	UserAccount *string `pulumi:"userAccount"`
-	// Defaults to `true`.
-	WaitUntilReady *bool `pulumi:"waitUntilReady"`
+	UserAccount    *string `pulumi:"userAccount"`
+	WaitUntilReady *bool   `pulumi:"waitUntilReady"`
 	// The zone that the machine should be created in
 	Zone *string `pulumi:"zone"`
 }
 
 type GcpHostState struct {
-	// The number of the guest accelerator cards exposed to this instance. Defaults to `0`.
+	// The number of the guest accelerator cards exposed to this instance.
 	AcceleratorCount pulumi.IntPtrInput
 	// The accelerator type resource to expose to this instance
 	AcceleratorType pulumi.StringPtrInput
-	// The numeric ID of the container agent pool that this host is added to. Defaults to `0`.
+	// The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
+	// Windows
 	AgentPlatform pulumi.IntPtrInput
-	// Whether or not to allocate a public IP. Defaults to `false`.
+	// Whether or not to allocate a public IP.
 	AllocatedPublicIp pulumi.BoolPtrInput
 	Architecture      pulumi.StringPtrInput
 	// The machine type to create
@@ -228,7 +233,9 @@ type GcpHostState struct {
 	InstanceId pulumi.StringPtrInput
 	// A set of key/value label pairs assigned to the vm
 	Labels pulumi.StringMapInput
-	// Configuration, metadata used when creating the host.\n\n*Note: To configure OS disk size OsDiskSize can be specified as Key and its size as value, size value should be atleast 10, Similarly to added start up script one can pass the key as startupScript and startup command as its value*
+	// Configuration, metadata used when creating the host.<br>*Note: To configure OS disk size OsDiskSize can be specified as
+	// Key and its size as value, size value should be atleast 10, Similarly to added start up script one can pass the key as
+	// startupScript and startup command as its value*
 	Metadata         pulumi.StringMapInput
 	PrivateIpAddress pulumi.StringPtrInput
 	PublicIpAddress  pulumi.StringPtrInput
@@ -239,8 +246,7 @@ type GcpHostState struct {
 	// The GUID of the tenant that the host will be created in.
 	TenantId pulumi.StringPtrInput
 	// The email id of the user.
-	UserAccount pulumi.StringPtrInput
-	// Defaults to `true`.
+	UserAccount    pulumi.StringPtrInput
 	WaitUntilReady pulumi.BoolPtrInput
 	// The zone that the machine should be created in
 	Zone pulumi.StringPtrInput
@@ -251,13 +257,14 @@ func (GcpHostState) ElementType() reflect.Type {
 }
 
 type gcpHostArgs struct {
-	// The number of the guest accelerator cards exposed to this instance. Defaults to `0`.
+	// The number of the guest accelerator cards exposed to this instance.
 	AcceleratorCount *int `pulumi:"acceleratorCount"`
 	// The accelerator type resource to expose to this instance
 	AcceleratorType *string `pulumi:"acceleratorType"`
-	// The numeric ID of the container agent pool that this host is added to. Defaults to `0`.
+	// The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
+	// Windows
 	AgentPlatform *int `pulumi:"agentPlatform"`
-	// Whether or not to allocate a public IP. Defaults to `false`.
+	// Whether or not to allocate a public IP.
 	AllocatedPublicIp *bool `pulumi:"allocatedPublicIp"`
 	// The machine type to create
 	Capacity string `pulumi:"capacity"`
@@ -267,29 +274,31 @@ type gcpHostArgs struct {
 	ImageId string `pulumi:"imageId"`
 	// A set of key/value label pairs assigned to the vm
 	Labels map[string]string `pulumi:"labels"`
-	// Configuration, metadata used when creating the host.\n\n*Note: To configure OS disk size OsDiskSize can be specified as Key and its size as value, size value should be atleast 10, Similarly to added start up script one can pass the key as startupScript and startup command as its value*
+	// Configuration, metadata used when creating the host.<br>*Note: To configure OS disk size OsDiskSize can be specified as
+	// Key and its size as value, size value should be atleast 10, Similarly to added start up script one can pass the key as
+	// startupScript and startup command as its value*
 	Metadata map[string]string `pulumi:"metadata"`
 	// List of network tags that can be added to the vm
 	Tags []string `pulumi:"tags"`
 	// The GUID of the tenant that the host will be created in.
 	TenantId string `pulumi:"tenantId"`
 	// The email id of the user.
-	UserAccount string `pulumi:"userAccount"`
-	// Defaults to `true`.
-	WaitUntilReady *bool `pulumi:"waitUntilReady"`
+	UserAccount    string `pulumi:"userAccount"`
+	WaitUntilReady *bool  `pulumi:"waitUntilReady"`
 	// The zone that the machine should be created in
 	Zone string `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a GcpHost resource.
 type GcpHostArgs struct {
-	// The number of the guest accelerator cards exposed to this instance. Defaults to `0`.
+	// The number of the guest accelerator cards exposed to this instance.
 	AcceleratorCount pulumi.IntPtrInput
 	// The accelerator type resource to expose to this instance
 	AcceleratorType pulumi.StringPtrInput
-	// The numeric ID of the container agent pool that this host is added to. Defaults to `0`.
+	// The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
+	// Windows
 	AgentPlatform pulumi.IntPtrInput
-	// Whether or not to allocate a public IP. Defaults to `false`.
+	// Whether or not to allocate a public IP.
 	AllocatedPublicIp pulumi.BoolPtrInput
 	// The machine type to create
 	Capacity pulumi.StringInput
@@ -299,15 +308,16 @@ type GcpHostArgs struct {
 	ImageId pulumi.StringInput
 	// A set of key/value label pairs assigned to the vm
 	Labels pulumi.StringMapInput
-	// Configuration, metadata used when creating the host.\n\n*Note: To configure OS disk size OsDiskSize can be specified as Key and its size as value, size value should be atleast 10, Similarly to added start up script one can pass the key as startupScript and startup command as its value*
+	// Configuration, metadata used when creating the host.<br>*Note: To configure OS disk size OsDiskSize can be specified as
+	// Key and its size as value, size value should be atleast 10, Similarly to added start up script one can pass the key as
+	// startupScript and startup command as its value*
 	Metadata pulumi.StringMapInput
 	// List of network tags that can be added to the vm
 	Tags pulumi.StringArrayInput
 	// The GUID of the tenant that the host will be created in.
 	TenantId pulumi.StringInput
 	// The email id of the user.
-	UserAccount pulumi.StringInput
-	// Defaults to `true`.
+	UserAccount    pulumi.StringInput
 	WaitUntilReady pulumi.BoolPtrInput
 	// The zone that the machine should be created in
 	Zone pulumi.StringInput
@@ -400,7 +410,7 @@ func (o GcpHostOutput) ToGcpHostOutputWithContext(ctx context.Context) GcpHostOu
 	return o
 }
 
-// The number of the guest accelerator cards exposed to this instance. Defaults to `0`.
+// The number of the guest accelerator cards exposed to this instance.
 func (o GcpHostOutput) AcceleratorCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GcpHost) pulumi.IntPtrOutput { return v.AcceleratorCount }).(pulumi.IntPtrOutput)
 }
@@ -410,12 +420,13 @@ func (o GcpHostOutput) AcceleratorType() pulumi.StringOutput {
 	return o.ApplyT(func(v *GcpHost) pulumi.StringOutput { return v.AcceleratorType }).(pulumi.StringOutput)
 }
 
-// The numeric ID of the container agent pool that this host is added to. Defaults to `0`.
+// The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
+// Windows
 func (o GcpHostOutput) AgentPlatform() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GcpHost) pulumi.IntPtrOutput { return v.AgentPlatform }).(pulumi.IntPtrOutput)
 }
 
-// Whether or not to allocate a public IP. Defaults to `false`.
+// Whether or not to allocate a public IP.
 func (o GcpHostOutput) AllocatedPublicIp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GcpHost) pulumi.BoolPtrOutput { return v.AllocatedPublicIp }).(pulumi.BoolPtrOutput)
 }
@@ -457,7 +468,9 @@ func (o GcpHostOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GcpHost) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Configuration, metadata used when creating the host.\n\n*Note: To configure OS disk size OsDiskSize can be specified as Key and its size as value, size value should be atleast 10, Similarly to added start up script one can pass the key as startupScript and startup command as its value*
+// Configuration, metadata used when creating the host.<br>*Note: To configure OS disk size OsDiskSize can be specified as
+// Key and its size as value, size value should be atleast 10, Similarly to added start up script one can pass the key as
+// startupScript and startup command as its value*
 func (o GcpHostOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GcpHost) pulumi.StringMapOutput { return v.Metadata }).(pulumi.StringMapOutput)
 }
@@ -493,7 +506,6 @@ func (o GcpHostOutput) UserAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v *GcpHost) pulumi.StringOutput { return v.UserAccount }).(pulumi.StringOutput)
 }
 
-// Defaults to `true`.
 func (o GcpHostOutput) WaitUntilReady() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GcpHost) pulumi.BoolPtrOutput { return v.WaitUntilReady }).(pulumi.BoolPtrOutput)
 }

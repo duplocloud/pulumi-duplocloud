@@ -31,7 +31,8 @@ namespace DuploCloud.Pulumi
     public partial class AsgProfile : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The numeric ID of the container agent pool that this host is added to.
+        /// The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
+        /// Windows - 7: EKS Linux - 8: ECS
         /// </summary>
         [Output("agentPlatform")]
         public Output<int?> AgentPlatform { get; private set; } = null!;
@@ -41,6 +42,12 @@ namespace DuploCloud.Pulumi
         /// </summary>
         [Output("allocatedPublicIp")]
         public Output<bool?> AllocatedPublicIp { get; private set; } = null!;
+
+        /// <summary>
+        /// The ASG arn.
+        /// </summary>
+        [Output("arn")]
+        public Output<string> Arn { get; private set; } = null!;
 
         /// <summary>
         /// Base64 encoded EC2 user data to associated with the host.
@@ -122,8 +129,8 @@ namespace DuploCloud.Pulumi
         public Output<bool?> IsMinion { get; private set; } = null!;
 
         /// <summary>
-        /// The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : ED25519 - `2` : RSA (deprecated
-        /// - some operating systems no longer support it)
+        /// The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : RSA (deprecated - some operating
+        /// systems no longer support it) - `2` : ED25519
         /// </summary>
         [Output("keypairType")]
         public Output<int> KeypairType { get; private set; } = null!;
@@ -217,14 +224,14 @@ namespace DuploCloud.Pulumi
         public Output<bool?> WaitForCapacity { get; private set; } = null!;
 
         /// <summary>
-        /// The availability zone to launch the host in, expressed as a number and starting at 0.
+        /// The availability zone to launch the host in is expressed as a numeric value ranging from 0 to 3.
         /// </summary>
         [Output("zone")]
-        public Output<int?> Zone { get; private set; } = null!;
+        public Output<string?> Zone { get; private set; } = null!;
 
         /// <summary>
-        /// The multi availability zone to launch the asg in, expressed as a number and starting at 0 - Automatic 1 - Zone A 2 -
-        /// Zone B
+        /// The multi availability zone to launch the asg in, expressed as a number and starting at 0 - Zone A to 3 - Zone D, based
+        /// on the infra setup
         /// </summary>
         [Output("zones")]
         public Output<ImmutableArray<int>> Zones { get; private set; } = null!;
@@ -277,7 +284,8 @@ namespace DuploCloud.Pulumi
     public sealed class AsgProfileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The numeric ID of the container agent pool that this host is added to.
+        /// The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
+        /// Windows - 7: EKS Linux - 8: ECS
         /// </summary>
         [Input("agentPlatform")]
         public Input<int>? AgentPlatform { get; set; }
@@ -371,8 +379,8 @@ namespace DuploCloud.Pulumi
         public Input<bool>? IsMinion { get; set; }
 
         /// <summary>
-        /// The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : ED25519 - `2` : RSA (deprecated
-        /// - some operating systems no longer support it)
+        /// The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : RSA (deprecated - some operating
+        /// systems no longer support it) - `2` : ED25519
         /// </summary>
         [Input("keypairType")]
         public Input<int>? KeypairType { get; set; }
@@ -495,17 +503,17 @@ namespace DuploCloud.Pulumi
         public Input<bool>? WaitForCapacity { get; set; }
 
         /// <summary>
-        /// The availability zone to launch the host in, expressed as a number and starting at 0.
+        /// The availability zone to launch the host in is expressed as a numeric value ranging from 0 to 3.
         /// </summary>
         [Input("zone")]
-        public Input<int>? Zone { get; set; }
+        public Input<string>? Zone { get; set; }
 
         [Input("zones")]
         private InputList<int>? _zones;
 
         /// <summary>
-        /// The multi availability zone to launch the asg in, expressed as a number and starting at 0 - Automatic 1 - Zone A 2 -
-        /// Zone B
+        /// The multi availability zone to launch the asg in, expressed as a number and starting at 0 - Zone A to 3 - Zone D, based
+        /// on the infra setup
         /// </summary>
         public InputList<int> Zones
         {
@@ -522,7 +530,8 @@ namespace DuploCloud.Pulumi
     public sealed class AsgProfileState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The numeric ID of the container agent pool that this host is added to.
+        /// The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
+        /// Windows - 7: EKS Linux - 8: ECS
         /// </summary>
         [Input("agentPlatform")]
         public Input<int>? AgentPlatform { get; set; }
@@ -532,6 +541,12 @@ namespace DuploCloud.Pulumi
         /// </summary>
         [Input("allocatedPublicIp")]
         public Input<bool>? AllocatedPublicIp { get; set; }
+
+        /// <summary>
+        /// The ASG arn.
+        /// </summary>
+        [Input("arn")]
+        public Input<string>? Arn { get; set; }
 
         /// <summary>
         /// Base64 encoded EC2 user data to associated with the host.
@@ -625,8 +640,8 @@ namespace DuploCloud.Pulumi
         public Input<bool>? IsMinion { get; set; }
 
         /// <summary>
-        /// The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : ED25519 - `2` : RSA (deprecated
-        /// - some operating systems no longer support it)
+        /// The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : RSA (deprecated - some operating
+        /// systems no longer support it) - `2` : ED25519
         /// </summary>
         [Input("keypairType")]
         public Input<int>? KeypairType { get; set; }
@@ -755,17 +770,17 @@ namespace DuploCloud.Pulumi
         public Input<bool>? WaitForCapacity { get; set; }
 
         /// <summary>
-        /// The availability zone to launch the host in, expressed as a number and starting at 0.
+        /// The availability zone to launch the host in is expressed as a numeric value ranging from 0 to 3.
         /// </summary>
         [Input("zone")]
-        public Input<int>? Zone { get; set; }
+        public Input<string>? Zone { get; set; }
 
         [Input("zones")]
         private InputList<int>? _zones;
 
         /// <summary>
-        /// The multi availability zone to launch the asg in, expressed as a number and starting at 0 - Automatic 1 - Zone A 2 -
-        /// Zone B
+        /// The multi availability zone to launch the asg in, expressed as a number and starting at 0 - Zone A to 3 - Zone D, based
+        /// on the infra setup
         /// </summary>
         public InputList<int> Zones
         {

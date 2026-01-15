@@ -16,68 +16,6 @@ import (
 //
 // NOTE: For Amazon ECS services, see the `EcsService` resource.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/duplocloud/pulumi-duplocloud/sdk/go/duplocloud"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myapp, err := duplocloud.NewTenant(ctx, "myapp", &duplocloud.TenantArgs{
-//				AccountName: pulumi.String("myapp"),
-//				PlanId:      pulumi.String("default"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// Deploy NGINX using Duplo's native container agent, and configure a load balancer.
-//			myservice, err := duplocloud.NewDuploService(ctx, "myservice", &duplocloud.DuploServiceArgs{
-//				TenantId:      myapp.TenantId,
-//				Name:          pulumi.String("myservice"),
-//				AgentPlatform: pulumi.Int(0),
-//				DockerImage:   pulumi.String("nginx:latest"),
-//				Replicas:      pulumi.Int(1),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = duplocloud.NewDuploServiceLbconfigs(ctx, "myservice", &duplocloud.DuploServiceLbconfigsArgs{
-//				TenantId:                  myservice.TenantId,
-//				ReplicationControllerName: myservice.Name,
-//				Lbconfigs: duplocloud.DuploServiceLbconfigsLbconfigArray{
-//					&duplocloud.DuploServiceLbconfigsLbconfigArgs{
-//						ExternalPort:   pulumi.Int(80),
-//						HealthCheckUrl: pulumi.String("/"),
-//						IsNative:       pulumi.Bool(false),
-//						LbType:         pulumi.Int(1),
-//						Port:           pulumi.String("80"),
-//						Protocol:       pulumi.String("http"),
-//						HealthCheck: &duplocloud.DuploServiceLbconfigsLbconfigHealthCheckArgs{
-//							HealthyThreshold:   pulumi.Int(4),
-//							UnhealthyThreshold: pulumi.Int(4),
-//							Timeout:            pulumi.Int(50),
-//							Interval:           pulumi.Int(30),
-//							HttpSuccessCodes:   pulumi.String("200-399"),
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Example: Importing an existing service's load balancer configurations

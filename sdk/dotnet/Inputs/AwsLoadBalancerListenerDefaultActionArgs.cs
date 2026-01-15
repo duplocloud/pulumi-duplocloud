@@ -13,14 +13,14 @@ namespace DuploCloud.Pulumi.Inputs
 
     public sealed class AwsLoadBalancerListenerDefaultActionArgs : global::Pulumi.ResourceArgs
     {
-        [Input("order")]
-        public Input<int>? Order { get; set; }
+        [Input("fixedResponse")]
+        public Input<Inputs.AwsLoadBalancerListenerDefaultActionFixedResponseArgs>? FixedResponse { get; set; }
 
-        [Input("targetGroupArn")]
-        public Input<string>? TargetGroupArn { get; set; }
+        [Input("forward")]
+        public Input<Inputs.AwsLoadBalancerListenerDefaultActionForwardArgs>? Forward { get; set; }
 
-        [Input("type")]
-        public Input<string>? Type { get; set; }
+        [Input("redirect")]
+        public Input<Inputs.AwsLoadBalancerListenerDefaultActionRedirectArgs>? Redirect { get; set; }
 
         public AwsLoadBalancerListenerDefaultActionArgs()
         {

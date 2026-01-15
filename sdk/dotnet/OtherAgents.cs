@@ -19,16 +19,16 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var agents = new Duplocloud.OtherAgents("agents", new()
+    ///     var agents = new Pulumi.OtherAgents("agents", new()
     ///     {
     ///         Name = "duplo-agents",
     ///         Agents = new[]
     ///         {
-    ///             new Duplocloud.Inputs.OtherAgentsAgentArgs
+    ///             new Pulumi.Inputs.OtherAgentsAgentArgs
     ///             {
     ///                 AgentName = "CloudWatchAgent_0",
     ///                 AgentLinuxPackagePath = "https://s3.amazonaws.com/amazoncloudwatch-agent/ubuntu/amd64/latest/amazon-cloudwatch-agent.deb",

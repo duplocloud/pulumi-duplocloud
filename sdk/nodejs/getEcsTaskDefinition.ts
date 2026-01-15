@@ -56,16 +56,25 @@ export interface GetEcsTaskDefinitionResult {
      */
     readonly id: string;
     readonly inferenceAccelerators: outputs.GetEcsTaskDefinitionInferenceAccelerator[];
+    /**
+     * valid values are `host`, `none`, `task`
+     */
     readonly ipcMode: string;
     readonly memory: string;
+    /**
+     * Valid values are `bridge`,`host`,`awsvpc`,`none`
+     */
     readonly networkMode: string;
+    /**
+     * Valida values are `host`, `task`
+     */
     readonly pidMode: string;
     readonly placementConstraints: outputs.GetEcsTaskDefinitionPlacementConstraint[];
-    readonly preventTfDestroy: boolean;
+    readonly preventTfDestroy: string;
     readonly proxyConfigurations: outputs.GetEcsTaskDefinitionProxyConfiguration[];
     readonly requiresAttributes: outputs.GetEcsTaskDefinitionRequiresAttribute[];
     /**
-     * Requires compatibilities for running jobs. Valid values are [FARGATE]
+     * Requires compatibilities for running jobs. Such as EC2, FARGATE, EXTERNAL. It varies based on network mode and how AWS maps it. `FARGATE` should be used if network mode is set to `awsvpc`.
      */
     readonly requiresCompatibilities: string[];
     /**
@@ -86,6 +95,9 @@ export interface GetEcsTaskDefinitionResult {
      * The GUID of the tenant that the task definition will be created in.
      */
     readonly tenantId: string;
+    /**
+     * A JSON-encoded string containing a list of volumes that are used by the ECS task definition.
+     */
     readonly volumes: string;
 }
 export function getEcsTaskDefinitionOutput(args: GetEcsTaskDefinitionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEcsTaskDefinitionResult> {

@@ -41,14 +41,16 @@ class GcpHostArgs:
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the host will be created in.
         :param pulumi.Input[str] user_account: The email id of the user.
         :param pulumi.Input[str] zone: The zone that the machine should be created in
-        :param pulumi.Input[int] accelerator_count: The number of the guest accelerator cards exposed to this instance. Defaults to `0`.
+        :param pulumi.Input[int] accelerator_count: The number of the guest accelerator cards exposed to this instance.
         :param pulumi.Input[str] accelerator_type: The accelerator type resource to expose to this instance
-        :param pulumi.Input[int] agent_platform: The numeric ID of the container agent pool that this host is added to. Defaults to `0`.
-        :param pulumi.Input[bool] allocated_public_ip: Whether or not to allocate a public IP. Defaults to `false`.
+        :param pulumi.Input[int] agent_platform: The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
+               Windows
+        :param pulumi.Input[bool] allocated_public_ip: Whether or not to allocate a public IP.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs assigned to the vm
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Configuration, metadata used when creating the host.\\n\\n*Note: To configure OS disk size OsDiskSize can be specified as Key and its size as value, size value should be atleast 10, Similarly to added start up script one can pass the key as startup_script and startup command as its value*
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Configuration, metadata used when creating the host.<br>*Note: To configure OS disk size OsDiskSize can be specified as
+               Key and its size as value, size value should be atleast 10, Similarly to added start up script one can pass the key as
+               startup_script and startup command as its value*
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: List of network tags that can be added to the vm
-        :param pulumi.Input[bool] wait_until_ready: Defaults to `true`.
         """
         pulumi.set(__self__, "capacity", capacity)
         pulumi.set(__self__, "friendly_name", friendly_name)
@@ -149,7 +151,7 @@ class GcpHostArgs:
     @pulumi.getter(name="acceleratorCount")
     def accelerator_count(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of the guest accelerator cards exposed to this instance. Defaults to `0`.
+        The number of the guest accelerator cards exposed to this instance.
         """
         return pulumi.get(self, "accelerator_count")
 
@@ -173,7 +175,8 @@ class GcpHostArgs:
     @pulumi.getter(name="agentPlatform")
     def agent_platform(self) -> Optional[pulumi.Input[int]]:
         """
-        The numeric ID of the container agent pool that this host is added to. Defaults to `0`.
+        The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
+        Windows
         """
         return pulumi.get(self, "agent_platform")
 
@@ -185,7 +188,7 @@ class GcpHostArgs:
     @pulumi.getter(name="allocatedPublicIp")
     def allocated_public_ip(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether or not to allocate a public IP. Defaults to `false`.
+        Whether or not to allocate a public IP.
         """
         return pulumi.get(self, "allocated_public_ip")
 
@@ -209,7 +212,9 @@ class GcpHostArgs:
     @pulumi.getter
     def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Configuration, metadata used when creating the host.\\n\\n*Note: To configure OS disk size OsDiskSize can be specified as Key and its size as value, size value should be atleast 10, Similarly to added start up script one can pass the key as startup_script and startup command as its value*
+        Configuration, metadata used when creating the host.<br>*Note: To configure OS disk size OsDiskSize can be specified as
+        Key and its size as value, size value should be atleast 10, Similarly to added start up script one can pass the key as
+        startup_script and startup command as its value*
         """
         return pulumi.get(self, "metadata")
 
@@ -232,9 +237,6 @@ class GcpHostArgs:
     @property
     @pulumi.getter(name="waitUntilReady")
     def wait_until_ready(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Defaults to `true`.
-        """
         return pulumi.get(self, "wait_until_ready")
 
     @wait_until_ready.setter
@@ -269,20 +271,22 @@ class _GcpHostState:
                  zone: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering GcpHost resources.
-        :param pulumi.Input[int] accelerator_count: The number of the guest accelerator cards exposed to this instance. Defaults to `0`.
+        :param pulumi.Input[int] accelerator_count: The number of the guest accelerator cards exposed to this instance.
         :param pulumi.Input[str] accelerator_type: The accelerator type resource to expose to this instance
-        :param pulumi.Input[int] agent_platform: The numeric ID of the container agent pool that this host is added to. Defaults to `0`.
-        :param pulumi.Input[bool] allocated_public_ip: Whether or not to allocate a public IP. Defaults to `false`.
+        :param pulumi.Input[int] agent_platform: The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
+               Windows
+        :param pulumi.Input[bool] allocated_public_ip: Whether or not to allocate a public IP.
         :param pulumi.Input[str] capacity: The machine type to create
         :param pulumi.Input[str] friendly_name: The name of the vm.
         :param pulumi.Input[str] fullname: The full name of the vm.
         :param pulumi.Input[str] image_id: The image from which to initialize this vm
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs assigned to the vm
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Configuration, metadata used when creating the host.\\n\\n*Note: To configure OS disk size OsDiskSize can be specified as Key and its size as value, size value should be atleast 10, Similarly to added start up script one can pass the key as startup_script and startup command as its value*
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Configuration, metadata used when creating the host.<br>*Note: To configure OS disk size OsDiskSize can be specified as
+               Key and its size as value, size value should be atleast 10, Similarly to added start up script one can pass the key as
+               startup_script and startup command as its value*
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: List of network tags that can be added to the vm
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the host will be created in.
         :param pulumi.Input[str] user_account: The email id of the user.
-        :param pulumi.Input[bool] wait_until_ready: Defaults to `true`.
         :param pulumi.Input[str] zone: The zone that the machine should be created in
         """
         if accelerator_count is not None:
@@ -334,7 +338,7 @@ class _GcpHostState:
     @pulumi.getter(name="acceleratorCount")
     def accelerator_count(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of the guest accelerator cards exposed to this instance. Defaults to `0`.
+        The number of the guest accelerator cards exposed to this instance.
         """
         return pulumi.get(self, "accelerator_count")
 
@@ -358,7 +362,8 @@ class _GcpHostState:
     @pulumi.getter(name="agentPlatform")
     def agent_platform(self) -> Optional[pulumi.Input[int]]:
         """
-        The numeric ID of the container agent pool that this host is added to. Defaults to `0`.
+        The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
+        Windows
         """
         return pulumi.get(self, "agent_platform")
 
@@ -370,7 +375,7 @@ class _GcpHostState:
     @pulumi.getter(name="allocatedPublicIp")
     def allocated_public_ip(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether or not to allocate a public IP. Defaults to `false`.
+        Whether or not to allocate a public IP.
         """
         return pulumi.get(self, "allocated_public_ip")
 
@@ -469,7 +474,9 @@ class _GcpHostState:
     @pulumi.getter
     def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Configuration, metadata used when creating the host.\\n\\n*Note: To configure OS disk size OsDiskSize can be specified as Key and its size as value, size value should be atleast 10, Similarly to added start up script one can pass the key as startup_script and startup command as its value*
+        Configuration, metadata used when creating the host.<br>*Note: To configure OS disk size OsDiskSize can be specified as
+        Key and its size as value, size value should be atleast 10, Similarly to added start up script one can pass the key as
+        startup_script and startup command as its value*
         """
         return pulumi.get(self, "metadata")
 
@@ -552,9 +559,6 @@ class _GcpHostState:
     @property
     @pulumi.getter(name="waitUntilReady")
     def wait_until_ready(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Defaults to `true`.
-        """
         return pulumi.get(self, "wait_until_ready")
 
     @wait_until_ready.setter
@@ -641,19 +645,21 @@ class GcpHost(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] accelerator_count: The number of the guest accelerator cards exposed to this instance. Defaults to `0`.
+        :param pulumi.Input[int] accelerator_count: The number of the guest accelerator cards exposed to this instance.
         :param pulumi.Input[str] accelerator_type: The accelerator type resource to expose to this instance
-        :param pulumi.Input[int] agent_platform: The numeric ID of the container agent pool that this host is added to. Defaults to `0`.
-        :param pulumi.Input[bool] allocated_public_ip: Whether or not to allocate a public IP. Defaults to `false`.
+        :param pulumi.Input[int] agent_platform: The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
+               Windows
+        :param pulumi.Input[bool] allocated_public_ip: Whether or not to allocate a public IP.
         :param pulumi.Input[str] capacity: The machine type to create
         :param pulumi.Input[str] friendly_name: The name of the vm.
         :param pulumi.Input[str] image_id: The image from which to initialize this vm
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs assigned to the vm
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Configuration, metadata used when creating the host.\\n\\n*Note: To configure OS disk size OsDiskSize can be specified as Key and its size as value, size value should be atleast 10, Similarly to added start up script one can pass the key as startup_script and startup command as its value*
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Configuration, metadata used when creating the host.<br>*Note: To configure OS disk size OsDiskSize can be specified as
+               Key and its size as value, size value should be atleast 10, Similarly to added start up script one can pass the key as
+               startup_script and startup command as its value*
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: List of network tags that can be added to the vm
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the host will be created in.
         :param pulumi.Input[str] user_account: The email id of the user.
-        :param pulumi.Input[bool] wait_until_ready: Defaults to `true`.
         :param pulumi.Input[str] zone: The zone that the machine should be created in
         """
         ...
@@ -818,20 +824,22 @@ class GcpHost(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] accelerator_count: The number of the guest accelerator cards exposed to this instance. Defaults to `0`.
+        :param pulumi.Input[int] accelerator_count: The number of the guest accelerator cards exposed to this instance.
         :param pulumi.Input[str] accelerator_type: The accelerator type resource to expose to this instance
-        :param pulumi.Input[int] agent_platform: The numeric ID of the container agent pool that this host is added to. Defaults to `0`.
-        :param pulumi.Input[bool] allocated_public_ip: Whether or not to allocate a public IP. Defaults to `false`.
+        :param pulumi.Input[int] agent_platform: The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
+               Windows
+        :param pulumi.Input[bool] allocated_public_ip: Whether or not to allocate a public IP.
         :param pulumi.Input[str] capacity: The machine type to create
         :param pulumi.Input[str] friendly_name: The name of the vm.
         :param pulumi.Input[str] fullname: The full name of the vm.
         :param pulumi.Input[str] image_id: The image from which to initialize this vm
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs assigned to the vm
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Configuration, metadata used when creating the host.\\n\\n*Note: To configure OS disk size OsDiskSize can be specified as Key and its size as value, size value should be atleast 10, Similarly to added start up script one can pass the key as startup_script and startup command as its value*
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Configuration, metadata used when creating the host.<br>*Note: To configure OS disk size OsDiskSize can be specified as
+               Key and its size as value, size value should be atleast 10, Similarly to added start up script one can pass the key as
+               startup_script and startup command as its value*
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: List of network tags that can be added to the vm
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the host will be created in.
         :param pulumi.Input[str] user_account: The email id of the user.
-        :param pulumi.Input[bool] wait_until_ready: Defaults to `true`.
         :param pulumi.Input[str] zone: The zone that the machine should be created in
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -866,7 +874,7 @@ class GcpHost(pulumi.CustomResource):
     @pulumi.getter(name="acceleratorCount")
     def accelerator_count(self) -> pulumi.Output[Optional[int]]:
         """
-        The number of the guest accelerator cards exposed to this instance. Defaults to `0`.
+        The number of the guest accelerator cards exposed to this instance.
         """
         return pulumi.get(self, "accelerator_count")
 
@@ -882,7 +890,8 @@ class GcpHost(pulumi.CustomResource):
     @pulumi.getter(name="agentPlatform")
     def agent_platform(self) -> pulumi.Output[Optional[int]]:
         """
-        The numeric ID of the container agent pool that this host is added to. Defaults to `0`.
+        The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
+        Windows
         """
         return pulumi.get(self, "agent_platform")
 
@@ -890,7 +899,7 @@ class GcpHost(pulumi.CustomResource):
     @pulumi.getter(name="allocatedPublicIp")
     def allocated_public_ip(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether or not to allocate a public IP. Defaults to `false`.
+        Whether or not to allocate a public IP.
         """
         return pulumi.get(self, "allocated_public_ip")
 
@@ -953,7 +962,9 @@ class GcpHost(pulumi.CustomResource):
     @pulumi.getter
     def metadata(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        Configuration, metadata used when creating the host.\\n\\n*Note: To configure OS disk size OsDiskSize can be specified as Key and its size as value, size value should be atleast 10, Similarly to added start up script one can pass the key as startup_script and startup command as its value*
+        Configuration, metadata used when creating the host.<br>*Note: To configure OS disk size OsDiskSize can be specified as
+        Key and its size as value, size value should be atleast 10, Similarly to added start up script one can pass the key as
+        startup_script and startup command as its value*
         """
         return pulumi.get(self, "metadata")
 
@@ -1004,9 +1015,6 @@ class GcpHost(pulumi.CustomResource):
     @property
     @pulumi.getter(name="waitUntilReady")
     def wait_until_ready(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Defaults to `true`.
-        """
         return pulumi.get(self, "wait_until_ready")
 
     @property

@@ -4,7 +4,12 @@ The DuploCloud Resource Provider lets you manage [DuploCloud](https://duplocloud
 
 ## Installing
 
-This package is available for several languages/platforms:
+The DuploCloud provider is available as a package in all Pulumi languages:
+
+* JavaScript/TypeScript: [`@duplocloud/pulumi`](https://www.npmjs.com/package/@duplocloud/pulumi)
+* Python: [`pulumi-duplocloud`](https://pypi.org/project/pulumi-duplocloud/)
+* Go: [`github.com/duplocloud/pulumi-duplocloud/sdk/go/duplocloud`](https://github.com/duplocloud/pulumi-duplocloud)
+* .NET: [`DuploCloud.Pulumi`](https://www.nuget.org/packages/DuploCloud.Pulumi/)
 
 ### Node.js (JavaScript/TypeScript)
 
@@ -36,6 +41,27 @@ To use from Go, use `go get` to grab the latest version of the library:
 go get github.com/duplocloud/pulumi-duplocloud/sdk/go/...
 ```
 
+### C#
+
+To use from .NET, install using `dotnet add package`:
+
+```bash
+dotnet add package DuploCloud.Pulumi
+```
+
+### Provider Binary
+
+For local development or specific version requirements, you can install the provider plugin directly:
+
+```bash
+pulumi plugin install resource duplocloud --server github://api.github.com/duplocloud/pulumi-duplocloud
+```
+
+To install a specific version:
+
+```bash
+pulumi plugin install resource duplocloud v0.0.1 --server github://api.github.com/duplocloud/pulumi-duplocloud
+```
 
 ## Configuration
 
@@ -52,6 +78,8 @@ export duplo_token="<your_duplo_token>"
 ```
 
 ## Example usage
+
+An example demonstrating the deployment of DuploCloud infrastructure, tenant, EKS node, and web application on Kubernetes using the DuploCloud Pulumi provider across multiple language SDKs.
 
 ### Go
 
@@ -320,5 +348,129 @@ const appLbconfigs = new duplocloud.DuploServiceLbconfigs("web-application-lbcon
             httpSuccessCodes: "200-399",
         },
     }],
+});
+```
+
+### C#
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Pulumi;
+using Duplocloud = DuploCloud.Pulumi;
+
+return await Deployment.RunAsync(() =>
+{
+
+    // Create a new infrastructure in AWS
+    var infra = new Duplocloud.Infrastructure("pulumi-infra", new Duplocloud.InfrastructureArgs
+    {
+        InfraName = "pulumi-infra",
+        Cloud = 0,
+        Region = "us-east-2",
+        Azcount = 2,
+        EnableK8Cluster = true,
+        AddressPrefix = "10.22.0.0/16",
+        SubnetCidr = 24,
+    });
+    infra.VpcId.Apply(id =>
+    {
+        Pulumi.Log.Info($"VPC ID : {id}");
+        return id;
+    });
+
+    // Create tenant
+    var tenant = new Duplocloud.Tenant("dev", new()
+    {
+        AccountName = "dev",
+        PlanId = infra.InfraName,
+    },
+    new CustomResourceOptions { DependsOn = { infra } });
+
+    tenant.TenantId.Apply(id =>
+    {
+        Pulumi.Log.Info($"Tenant ID : {id}");
+        return id;
+    });
+
+    var imageOutput = Duplocloud.GetNativeHostImage.Invoke(new()
+    {
+        TenantId = tenant.TenantId,
+        IsKubernetes = true,
+    });
+
+     imageOutput.Apply(image =>
+    {
+        Pulumi.Log.Info($"AMI ID : {image.ImageId}");
+        return image.ImageId;
+    });
+
+    // Create EKS Node
+    var host = new Duplocloud.AwsHost("Node01", new()
+    {
+        TenantId = tenant.TenantId,
+        FriendlyName = "Node01",
+        ImageId = imageOutput.Apply(image => image.ImageId),
+        Capacity = "t3a.small",
+        AgentPlatform = 7,
+        Zone = 0,
+        Metadatas = new[]
+        {
+            new Duplocloud.Inputs.AwsHostMetadataArgs
+            {
+                Key = "OsDiskSize",
+                Value = "20",
+            },
+        },
+    },
+    new CustomResourceOptions { DependsOn = { tenant } });
+
+    // Create EKS Deployment
+    var certArn="arn:aws:acm:us-east-1:1234567890:certificate/d6c4138f-583e-4c75-a314-851142670b64";
+    var appService = new Duplocloud.DuploService("web-application", new()
+    {
+        TenantId = tenant.TenantId,
+        Name = "web-application",
+        AgentPlatform = 7,
+        DockerImage = "nginx:latest",
+        Replicas = 1,
+    },
+    new CustomResourceOptions { DependsOn = { host } });
+
+    // Create EKS Service
+    var appLBConfigs = new Duplocloud.DuploServiceLbconfigs("web-application-lb", new()
+    {
+        TenantId = appService.TenantId,
+        ReplicationControllerName = appService.Name,
+        Lbconfigs = new[]
+        {
+            new Duplocloud.Inputs.DuploServiceLbconfigsLbconfigArgs
+            {
+                ExternalPort = 443,
+                HealthCheckUrl = "/",
+                IsNative = false,
+                LbType = 1,
+                Port = "80",
+                Protocol = "http",
+                CertificateArn = certArn,
+                HealthCheck = new Duplocloud.Inputs.DuploServiceLbconfigsLbconfigHealthCheckArgs
+                {
+                    HealthyThreshold = 4,
+                    UnhealthyThreshold = 4,
+                    Timeout = 10,
+                    Interval = 30,
+                    HttpSuccessCodes = "200-399",
+                },
+            },
+        },
+    },
+    new CustomResourceOptions { DependsOn = { appService } });
+
+    return new Dictionary<string, object>
+    {
+        { "VpcId",  infra.VpcId },
+        { "tenantId",  tenant.TenantId },
+    };
 });
 ```

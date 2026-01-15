@@ -1133,7 +1133,7 @@ class AwsLambdaFunction(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def architectures(self) -> pulumi.Output[Optional[str]]:
+    def architectures(self) -> pulumi.Output[str]:
         """
         Instruction set architecture for your Lambda function. Valid values are `[x86_64]` and `[arm64]`. Default is `[x86_64]`
         """

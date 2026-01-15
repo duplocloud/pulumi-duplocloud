@@ -19,17 +19,17 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var tenant = new Duplocloud.Tenant("tenant", new()
+    ///     var tenant = new Pulumi.Tenant("tenant", new()
     ///     {
     ///         AccountName = "test",
     ///         PlanId = "test",
     ///     });
     /// 
-    ///     var kv = new Duplocloud.AzureTenantKeyVault("kv", new()
+    ///     var kv = new Pulumi.AzureTenantKeyVault("kv", new()
     ///     {
     ///         TenantId = tenant.TenantId,
     ///         Name = "tst-kv001",
@@ -38,7 +38,7 @@ namespace DuploCloud.Pulumi
     ///         SoftDeleteRetentionDays = 90,
     ///     });
     /// 
-    ///     var kvSecret = new Duplocloud.AzureTenantKeyVaultSecret("kv_secret", new()
+    ///     var kvSecret = new Pulumi.AzureTenantKeyVaultSecret("kv_secret", new()
     ///     {
     ///         TenantId = tenant.TenantId,
     ///         VaultName = kv.Name,
@@ -144,6 +144,10 @@ namespace DuploCloud.Pulumi
             {
                 Version = Utilities.Version,
                 PluginDownloadURL = "github://api.github.com/duplocloud/pulumi-duplocloud",
+                AdditionalSecretOutputs =
+                {
+                    "value",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -185,11 +189,21 @@ namespace DuploCloud.Pulumi
         [Input("tenantId", required: true)]
         public Input<string> TenantId { get; set; } = null!;
 
+        [Input("value", required: true)]
+        private Input<string>? _value;
+
         /// <summary>
         /// Specifies the value of the Key Vault Secret. Changing this will create a new version of the Key Vault Secret.
         /// </summary>
-        [Input("value", required: true)]
-        public Input<string> Value { get; set; } = null!;
+        public Input<string>? Value
+        {
+            get => _value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _value = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Name of the Key Vault where the Secret should be created.
@@ -235,11 +249,21 @@ namespace DuploCloud.Pulumi
         [Input("tenantId")]
         public Input<string>? TenantId { get; set; }
 
+        [Input("value")]
+        private Input<string>? _value;
+
         /// <summary>
         /// Specifies the value of the Key Vault Secret. Changing this will create a new version of the Key Vault Secret.
         /// </summary>
-        [Input("value")]
-        public Input<string>? Value { get; set; }
+        public Input<string>? Value
+        {
+            get => _value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _value = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Base URL of the Azure Key Vault

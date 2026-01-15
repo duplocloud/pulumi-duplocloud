@@ -711,6 +711,24 @@ class GcpCloudFunction(pulumi.CustomResource):
                 "foo": "bar",
             },
             https_trigger={})
+        #Example of a cloud function with an event trigger
+        # This example shows how to create a cloud function that is triggered by a Pub/Sub event
+        # The function will be triggered when a message is published to the specified Pub/Sub topic
+        example_pubsub_function = duplocloud.GcpCloudFunction("example_pubsub_function",
+            tenant_id=myapp.tenant_id,
+            name="example-pubsub-fn",
+            runtime="python39",
+            entrypoint="hello_pubsub",
+            event_trigger={
+                "event_type": "google.pubsub.topic.publish",
+                "resource": "projects/projectid/topics/topicname",
+            },
+            environment_variables={
+                "EXAMPLE_ENV": "value",
+            },
+            available_memory_mb=128,
+            timeout=60,
+            source_archive_url="gs://bucketname/code.ext")
         ```
 
         ## Import
@@ -785,6 +803,24 @@ class GcpCloudFunction(pulumi.CustomResource):
                 "foo": "bar",
             },
             https_trigger={})
+        #Example of a cloud function with an event trigger
+        # This example shows how to create a cloud function that is triggered by a Pub/Sub event
+        # The function will be triggered when a message is published to the specified Pub/Sub topic
+        example_pubsub_function = duplocloud.GcpCloudFunction("example_pubsub_function",
+            tenant_id=myapp.tenant_id,
+            name="example-pubsub-fn",
+            runtime="python39",
+            entrypoint="hello_pubsub",
+            event_trigger={
+                "event_type": "google.pubsub.topic.publish",
+                "resource": "projects/projectid/topics/topicname",
+            },
+            environment_variables={
+                "EXAMPLE_ENV": "value",
+            },
+            available_memory_mb=128,
+            timeout=60,
+            source_archive_url="gs://bucketname/code.ext")
         ```
 
         ## Import

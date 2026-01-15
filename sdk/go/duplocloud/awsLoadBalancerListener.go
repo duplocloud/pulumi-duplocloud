@@ -14,53 +14,6 @@ import (
 
 // `AwsLoadBalancerListener` manages an AWS application load balancer listener in Duplo.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/duplocloud/pulumi-duplocloud/sdk/go/duplocloud"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myapp, err := duplocloud.NewTenant(ctx, "myapp", &duplocloud.TenantArgs{
-//				AccountName: pulumi.String("myapp"),
-//				PlanId:      pulumi.String("default"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			myappAwsLoadBalancer, err := duplocloud.NewAwsLoadBalancer(ctx, "myapp", &duplocloud.AwsLoadBalancerArgs{
-//				TenantId:           myapp.TenantId,
-//				Name:               pulumi.String("myapp"),
-//				IsInternal:         pulumi.Bool(true),
-//				EnableAccessLogs:   pulumi.Bool(true),
-//				DropInvalidHeaders: pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = duplocloud.NewAwsLoadBalancerListener(ctx, "myapp-listener", &duplocloud.AwsLoadBalancerListenerArgs{
-//				TenantId:         myapp.TenantId,
-//				LoadBalancerName: myappAwsLoadBalancer.Name,
-//				Port:             pulumi.Int(8443),
-//				Protocol:         pulumi.String("https"),
-//				TargetGroupArn:   pulumi.String("arn:aws:elasticloadbalancing:us-west-2:1234567890:targetgroup/duplo2-stage-antcmw-http4000/fc6f818e85fa737a"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Example: Importing an existing AWS load balancer listener
@@ -95,8 +48,10 @@ type AwsLoadBalancerListener struct {
 	// Protocol for connections from clients to the load balancer.
 	Protocol  pulumi.StringOutput `pulumi:"protocol"`
 	SslPolicy pulumi.StringOutput `pulumi:"sslPolicy"`
-	// ARN of the Target Group to which to route traffic.
-	TargetGroupArn pulumi.StringOutput `pulumi:"targetGroupArn"`
+	// ARN of the Target Group to which to route traffic. target*group*arn has moved to default*actions.forward.target*group*arn. This field is available for backward compatibility. We recommend to use default*actions block
+	//
+	// Deprecated: target_group_arn has moved to default_actions.forward.target_group_arn. This field is available for backward compatibility. We recommend to use defaultActions block
+	TargetGroupArn pulumi.StringPtrOutput `pulumi:"targetGroupArn"`
 	// The GUID of the tenant that the load balancer will be created in.
 	TenantId pulumi.StringOutput `pulumi:"tenantId"`
 }
@@ -116,9 +71,6 @@ func NewAwsLoadBalancerListener(ctx *pulumi.Context,
 	}
 	if args.Protocol == nil {
 		return nil, errors.New("invalid value for required argument 'Protocol'")
-	}
-	if args.TargetGroupArn == nil {
-		return nil, errors.New("invalid value for required argument 'TargetGroupArn'")
 	}
 	if args.TenantId == nil {
 		return nil, errors.New("invalid value for required argument 'TenantId'")
@@ -162,7 +114,9 @@ type awsLoadBalancerListenerState struct {
 	// Protocol for connections from clients to the load balancer.
 	Protocol  *string `pulumi:"protocol"`
 	SslPolicy *string `pulumi:"sslPolicy"`
-	// ARN of the Target Group to which to route traffic.
+	// ARN of the Target Group to which to route traffic. target*group*arn has moved to default*actions.forward.target*group*arn. This field is available for backward compatibility. We recommend to use default*actions block
+	//
+	// Deprecated: target_group_arn has moved to default_actions.forward.target_group_arn. This field is available for backward compatibility. We recommend to use defaultActions block
 	TargetGroupArn *string `pulumi:"targetGroupArn"`
 	// The GUID of the tenant that the load balancer will be created in.
 	TenantId *string `pulumi:"tenantId"`
@@ -185,7 +139,9 @@ type AwsLoadBalancerListenerState struct {
 	// Protocol for connections from clients to the load balancer.
 	Protocol  pulumi.StringPtrInput
 	SslPolicy pulumi.StringPtrInput
-	// ARN of the Target Group to which to route traffic.
+	// ARN of the Target Group to which to route traffic. target*group*arn has moved to default*actions.forward.target*group*arn. This field is available for backward compatibility. We recommend to use default*actions block
+	//
+	// Deprecated: target_group_arn has moved to default_actions.forward.target_group_arn. This field is available for backward compatibility. We recommend to use defaultActions block
 	TargetGroupArn pulumi.StringPtrInput
 	// The GUID of the tenant that the load balancer will be created in.
 	TenantId pulumi.StringPtrInput
@@ -197,15 +153,18 @@ func (AwsLoadBalancerListenerState) ElementType() reflect.Type {
 
 type awsLoadBalancerListenerArgs struct {
 	// The ARN of the certificate to attach to the listener.
-	CertificateArn *string `pulumi:"certificateArn"`
+	CertificateArn *string                                `pulumi:"certificateArn"`
+	DefaultActions []AwsLoadBalancerListenerDefaultAction `pulumi:"defaultActions"`
 	// The short name of the load balancer.  Duplo will add a prefix to the name.  You can retrieve the full name from the `fullname` attribute.
 	LoadBalancerName string `pulumi:"loadBalancerName"`
 	// Port on which the load balancer is listening.
 	Port int `pulumi:"port"`
 	// Protocol for connections from clients to the load balancer.
 	Protocol string `pulumi:"protocol"`
-	// ARN of the Target Group to which to route traffic.
-	TargetGroupArn string `pulumi:"targetGroupArn"`
+	// ARN of the Target Group to which to route traffic. target*group*arn has moved to default*actions.forward.target*group*arn. This field is available for backward compatibility. We recommend to use default*actions block
+	//
+	// Deprecated: target_group_arn has moved to default_actions.forward.target_group_arn. This field is available for backward compatibility. We recommend to use defaultActions block
+	TargetGroupArn *string `pulumi:"targetGroupArn"`
 	// The GUID of the tenant that the load balancer will be created in.
 	TenantId string `pulumi:"tenantId"`
 }
@@ -214,14 +173,17 @@ type awsLoadBalancerListenerArgs struct {
 type AwsLoadBalancerListenerArgs struct {
 	// The ARN of the certificate to attach to the listener.
 	CertificateArn pulumi.StringPtrInput
+	DefaultActions AwsLoadBalancerListenerDefaultActionArrayInput
 	// The short name of the load balancer.  Duplo will add a prefix to the name.  You can retrieve the full name from the `fullname` attribute.
 	LoadBalancerName pulumi.StringInput
 	// Port on which the load balancer is listening.
 	Port pulumi.IntInput
 	// Protocol for connections from clients to the load balancer.
 	Protocol pulumi.StringInput
-	// ARN of the Target Group to which to route traffic.
-	TargetGroupArn pulumi.StringInput
+	// ARN of the Target Group to which to route traffic. target*group*arn has moved to default*actions.forward.target*group*arn. This field is available for backward compatibility. We recommend to use default*actions block
+	//
+	// Deprecated: target_group_arn has moved to default_actions.forward.target_group_arn. This field is available for backward compatibility. We recommend to use defaultActions block
+	TargetGroupArn pulumi.StringPtrInput
 	// The GUID of the tenant that the load balancer will be created in.
 	TenantId pulumi.StringInput
 }
@@ -361,9 +323,11 @@ func (o AwsLoadBalancerListenerOutput) SslPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v *AwsLoadBalancerListener) pulumi.StringOutput { return v.SslPolicy }).(pulumi.StringOutput)
 }
 
-// ARN of the Target Group to which to route traffic.
-func (o AwsLoadBalancerListenerOutput) TargetGroupArn() pulumi.StringOutput {
-	return o.ApplyT(func(v *AwsLoadBalancerListener) pulumi.StringOutput { return v.TargetGroupArn }).(pulumi.StringOutput)
+// ARN of the Target Group to which to route traffic. target*group*arn has moved to default*actions.forward.target*group*arn. This field is available for backward compatibility. We recommend to use default*actions block
+//
+// Deprecated: target_group_arn has moved to default_actions.forward.target_group_arn. This field is available for backward compatibility. We recommend to use defaultActions block
+func (o AwsLoadBalancerListenerOutput) TargetGroupArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsLoadBalancerListener) pulumi.StringPtrOutput { return v.TargetGroupArn }).(pulumi.StringPtrOutput)
 }
 
 // The GUID of the tenant that the load balancer will be created in.

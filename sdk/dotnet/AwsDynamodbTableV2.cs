@@ -117,6 +117,9 @@ namespace DuploCloud.Pulumi
         [Output("streamViewType")]
         public Output<string> StreamViewType { get; private set; } = null!;
 
+        /// <summary>
+        /// Tag support has been removed from this resource to manage tage use the `duplocloud.AwsTag` resource.
+        /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<Outputs.AwsDynamodbTableV2Tag>> Tags { get; private set; } = null!;
 
@@ -277,6 +280,11 @@ namespace DuploCloud.Pulumi
 
         [Input("tags")]
         private InputList<Inputs.AwsDynamodbTableV2TagArgs>? _tags;
+
+        /// <summary>
+        /// Tag support has been removed from this resource to manage tage use the `duplocloud.AwsTag` resource.
+        /// </summary>
+        [Obsolete(@"Tag support has been removed from this resource to manage tage use the `duplocloud.AwsTag` resource.")]
         public InputList<Inputs.AwsDynamodbTableV2TagArgs> Tags
         {
             get => _tags ?? (_tags = new InputList<Inputs.AwsDynamodbTableV2TagArgs>());
@@ -425,6 +433,11 @@ namespace DuploCloud.Pulumi
 
         [Input("tags")]
         private InputList<Inputs.AwsDynamodbTableV2TagGetArgs>? _tags;
+
+        /// <summary>
+        /// Tag support has been removed from this resource to manage tage use the `duplocloud.AwsTag` resource.
+        /// </summary>
+        [Obsolete(@"Tag support has been removed from this resource to manage tage use the `duplocloud.AwsTag` resource.")]
         public InputList<Inputs.AwsDynamodbTableV2TagGetArgs> Tags
         {
             get => _tags ?? (_tags = new InputList<Inputs.AwsDynamodbTableV2TagGetArgs>());

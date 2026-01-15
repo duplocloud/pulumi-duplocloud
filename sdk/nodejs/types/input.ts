@@ -553,6 +553,9 @@ export interface AwsCloudfrontDistributionOriginOriginShield {
 }
 
 export interface AwsCloudfrontDistributionOriginS3OriginConfig {
+    /**
+     * The CloudFront origin access identity to associate with the origin. This is used to restrict access to the S3 bucket. Duplo assigns this automatically when the "use*origin*access_identity" is set to true. Any explicit value set here will be ignored and duplo created oai will be used.
+     */
     originAccessIdentity?: pulumi.Input<string>;
 }
 
@@ -916,6 +919,69 @@ export interface AwsLambdaFunctionTracingConfig {
     mode: pulumi.Input<string>;
 }
 
+export interface AwsLaunchTemplateBlockDeviceMapping {
+    /**
+     * The name of the device to mount
+     */
+    deviceName: pulumi.Input<string>;
+    /**
+     * Configure EBS volume properties.
+     */
+    ebs?: pulumi.Input<inputs.AwsLaunchTemplateBlockDeviceMappingEbs>;
+    /**
+     * Suppresses the specified device included in the AMI's block device mapping.
+     */
+    noDevice?: pulumi.Input<string>;
+    /**
+     * The virtual device name (ephemeralN). Instance store volumes are numbered starting from 0. An instance type with 2 available instance store volumes can specify mappings for ephemeral0 and ephemeral1. The number of available instance store volumes depends on the instance type. After you connect to the instance, you must mount the volume.
+     */
+    virtualName?: pulumi.Input<string>;
+}
+
+export interface AwsLaunchTemplateBlockDeviceMappingEbs {
+    /**
+     * Whether the volume should be destroyed on instance termination Defaults to `true`.
+     */
+    deleteOnTermination?: pulumi.Input<boolean>;
+    /**
+     * Enables EBS encryption on the volume. Cannot be used with snapshotId Defaults to `false`.
+     */
+    encrypted?: pulumi.Input<boolean>;
+    /**
+     * The amount of provisioned IOPS. This must be set with a volumeType of 'io1/io2/gp3'
+     */
+    iops?: pulumi.Input<number>;
+    /**
+     * The ARN of the KMS Key to use when encrypting the volume (if encrypted is true).
+     */
+    kmsKeyId?: pulumi.Input<string>;
+    /**
+     * The Snapshot ID to mount. Should not be used if encrypted is true
+     */
+    snapshotId?: pulumi.Input<string>;
+    /**
+     * The throughput to provision for a 'gp3' volume in MiB/s. Minumum value of 125 and maximum of 1000.
+     */
+    throughput?: pulumi.Input<number>;
+    /**
+     * The volume initialization rate in MiB/s, with a minimum of 100 MiB/s and maximum of 300 MiB/s.
+     */
+    volumeInitializationRate?: pulumi.Input<number>;
+    /**
+     * The size of the volume in gigabytes.\n
+     * 								gp2 and gp3: 1 - 16,384 GiB\n+
+     * 								io1: 4 - 16,384 GiB
+     * 								io2: 4 - 65,536 GiB
+     * 								st1 and sc1: 125 - 16,384 GiB
+     * 								standard: 1 - 1024 GiB
+     */
+    volumeSize?: pulumi.Input<number>;
+    /**
+     * The volume type. Can be one of standard, gp2, gp3, io1, io2, sc1 or st1
+     */
+    volumeType?: pulumi.Input<string>;
+}
+
 export interface AwsLbListenerRuleAction {
     /**
      * Information for creating an authenticate action using Cognito. Required if `type` is `authenticate-cognito`.
@@ -1214,9 +1280,43 @@ export interface AwsLoadBalancerListenerCertificate {
 }
 
 export interface AwsLoadBalancerListenerDefaultAction {
-    order?: pulumi.Input<number>;
-    targetGroupArn?: pulumi.Input<string>;
-    type?: pulumi.Input<string>;
+    fixedResponse?: pulumi.Input<inputs.AwsLoadBalancerListenerDefaultActionFixedResponse>;
+    forward?: pulumi.Input<inputs.AwsLoadBalancerListenerDefaultActionForward>;
+    redirect?: pulumi.Input<inputs.AwsLoadBalancerListenerDefaultActionRedirect>;
+}
+
+export interface AwsLoadBalancerListenerDefaultActionFixedResponse {
+    /**
+     * Defaults to `text/plain`.
+     */
+    contentType?: pulumi.Input<string>;
+    messageBody?: pulumi.Input<string>;
+    /**
+     * Defaults to `200`.
+     */
+    statusCode?: pulumi.Input<string>;
+}
+
+export interface AwsLoadBalancerListenerDefaultActionForward {
+    targetGroupArn: pulumi.Input<string>;
+}
+
+export interface AwsLoadBalancerListenerDefaultActionRedirect {
+    /**
+     * Defaults to `#{host}`.
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * Defaults to `/#{path}`.
+     */
+    path?: pulumi.Input<string>;
+    port: pulumi.Input<string>;
+    protocol: pulumi.Input<string>;
+    /**
+     * Defaults to `#{query}`.
+     */
+    query?: pulumi.Input<string>;
+    statusCode: pulumi.Input<string>;
 }
 
 export interface AwsLoadBalancerTag {
@@ -1356,6 +1456,79 @@ export interface AzureAvailabilitySetVirtualMachine {
     id?: pulumi.Input<string>;
 }
 
+export interface AzureCosmosDbAccountBackupPolicy {
+    /**
+     * Backup interval in minutes. Can be configured when type is set to Periodic
+     */
+    backupInterval?: pulumi.Input<number>;
+    /**
+     * Backup retention interval in hours
+     */
+    backupRetentionInterval?: pulumi.Input<number>;
+    /**
+     * Backup storage redundancy type. Valid values are Geo, Local, Zone. Defaults to Geo.
+     */
+    backupStorageRedundancy?: pulumi.Input<string>;
+    /**
+     * The continuous mode tier for the Cosmos DB account. This is only applicable if the backup policy type is Continuous.
+     */
+    continuousModeTier?: pulumi.Input<string>;
+    /**
+     * The type of backup. Possible values are Periodic and Continuous
+     * 					> ⚠️ **Note:**:
+     * 					> Update from Periodic to Continuous type is allowed. To change from Periodic to Continuous resource need to be recreated Defaults to `Periodic`.
+     */
+    type?: pulumi.Input<string>;
+}
+
+export interface AzureCosmosDbAccountCapability {
+    /**
+     * Name of the Cosmos DB capability, for example, 'EnableServerless'.
+     */
+    name: pulumi.Input<string>;
+}
+
+export interface AzureCosmosDbAccountConsistencyPolicy {
+    /**
+     * Specify the default consistency level and configuration settings of the Cosmos DB account. Possible values include: 'Eventual', 'Session', 'BoundedStaleness','Strong', 'ConsistentPrefix'
+     */
+    defaultConsistencyLevel?: pulumi.Input<string>;
+    /**
+     * When used with the 'Bounded Staleness' consistency level, this value represents the time amount of staleness (in seconds) tolerated. The accepted range for this value is 5 - 86400 (1 day). Required when consistencyLevel is set to BoundedStaleness.
+     */
+    maxIntervalInSeconds?: pulumi.Input<number>;
+    /**
+     * When used with the 'Bounded Staleness' consistency level, this value represents the number of stale requests tolerated. The accepted range for this value is 10 – 2147483647. Defaults to 100. Required when 'consistency_level' is set to 'BoundedStaleness'
+     */
+    maxStalenessPrefix?: pulumi.Input<number>;
+}
+
+export interface AzureCosmosDbAccountGeoLocation {
+    /**
+     * The failover priority of the region. A failover priority of 0 indicates a write region. The maximum value for a failover priority = (total number of regions - 1). Failover priority values must be unique for each of the regions in which the database account exists. Changing this causes the location to be re-provisioned and cannot be changed for the location with failover priority 0
+     */
+    failoverPriority: pulumi.Input<number>;
+    /**
+     * Should zone redundancy be enabled for this region? Defaults to `false`.
+     */
+    isZoneRedundant?: pulumi.Input<boolean>;
+    /**
+     * The name of the Azure region to host replicated data
+     */
+    locationName: pulumi.Input<string>;
+}
+
+export interface AzureCosmosDbAccountVirtualNetworkRule {
+    /**
+     * If set to true, the specified subnet will be added as a virtual network rule even if its CosmosDB service endpoint is not active Defaults to `false`.
+     */
+    ignoreMissingVnetServiceEndpoint?: pulumi.Input<boolean>;
+    /**
+     * The ID of the subnet to allow access to this CosmosDB account. This should be in the format /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}
+     */
+    subnetId: pulumi.Input<string>;
+}
+
 export interface AzureK8NodePoolNodeLabel {
     key: pulumi.Input<string>;
     value: pulumi.Input<string>;
@@ -1376,6 +1549,25 @@ export interface AzureK8NodePoolScalePriority {
     spotMaxPrice?: pulumi.Input<number>;
 }
 
+export interface AzureK8sClusterActiveDirectoryConfig {
+    /**
+     * The Azure Active Directory tenant ID.
+     */
+    adTenantId: pulumi.Input<string>;
+    /**
+     * List of Azure AD group object IDs that have admin access to the AKS cluster.
+     */
+    adminGroupObjectIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Enable Azure Active Directory integration. Defaults to `false`.
+     */
+    enableAd?: pulumi.Input<boolean>;
+    /**
+     * Enable Azure RBAC for Kubernetes authorization. Defaults to `false`.
+     */
+    enableRbac?: pulumi.Input<boolean>;
+}
+
 export interface AzureMssqlDatabaseSku {
     capacity: pulumi.Input<number>;
     name: pulumi.Input<string>;
@@ -1386,6 +1578,33 @@ export interface AzureMssqlElasticpoolSku {
     capacity: pulumi.Input<number>;
     name: pulumi.Input<string>;
     tier?: pulumi.Input<string>;
+}
+
+export interface AzureMssqlServerActiveDirectoryAdministrator {
+    /**
+     * Specifies whether only AD Users and administrators can be used to login (`true`) or also local database users (`false`).
+     */
+    adAuthenticationOnly?: pulumi.Input<boolean>;
+    /**
+     * Implicitly inferred. Valid value ActiveDirectory
+     */
+    administratorType?: pulumi.Input<string>;
+    /**
+     * The login name of the principal to set as the server administrator
+     */
+    login: pulumi.Input<string>;
+    /**
+     * The ID of the principal to set as the server administrator
+     */
+    objectId: pulumi.Input<string>;
+    /**
+     * Specify the type of the principal: `User`, `Group`, or `Application`
+     */
+    principalType?: pulumi.Input<string>;
+    /**
+     * The Azure Tenant ID
+     */
+    tenantId: pulumi.Input<string>;
 }
 
 export interface AzurePrivateEndpointPrivateLinkServiceConnection {
@@ -1816,7 +2035,7 @@ export interface AzureVirtualMachineVolume {
 
 export interface AzureVmMaintenanceConfigurationWindow {
     /**
-     * The duration of the maintenance window in HH:mm format.
+     * The duration of the maintenance window in HH:mm format. Should be less than or equal to 3 Hrs
      */
     duration?: pulumi.Input<string>;
     /**
@@ -1842,11 +2061,25 @@ export interface ByohTag {
     value: pulumi.Input<string>;
 }
 
+export interface DuploServiceInitContainerDockerImage {
+    /**
+     * Init container docker image.
+     */
+    image: pulumi.Input<string>;
+    /**
+     * Init container name.
+     */
+    name: pulumi.Input<string>;
+}
+
 export interface DuploServiceLbconfigsLbconfig {
     /**
      * Applicable for internal lb.
      */
     allowGlobalAccess?: pulumi.Input<boolean>;
+    /**
+     * Is used for communication between the load balancer and the target instances. This field is used to set protocol version for ALB load balancer. Only applicable when protocol is HTTP or HTTPS. The protocol version. Specify GRPC to send requests to targets using gRPC. Specify HTTP2 to send requests to targets using HTTP/2. The default is HTTP1, which sends requests to targets using HTTP/1.1
+     */
     backendProtocolVersion?: pulumi.Input<string>;
     /**
      * The ARN of an ACM certificate to associate with this load balancer.  Only applicable for HTTPS.
@@ -1930,6 +2163,15 @@ export interface DuploServiceLbconfigsLbconfig {
     port: pulumi.Input<string>;
     /**
      * The backend protocol associated with this load balancer configuration.
+     * Supported protocol based on lb_type:
+     *
+     * 	- `0 (ELB)`: HTTP, HTTPS, TCP, UDP
+     * 	- `1 (ALB)` : HTTP, HTTPS
+     * 	- `3 (K8S Service w/ Cluster IP)`: TCP, UDP
+     * 	- `4 (K8S Service w/ Node Port)` : TCP, UDP
+     * 	- `5 (Azure Shared Application Gateway)`: HTTP, HTTPS
+     * 	- `6 (NLB)` : TCP, UDP, TLS
+     * 	- `7 (Target Group Only)` : HTTP, HTTPS, TCP, UDP, TLS
      */
     protocol: pulumi.Input<string>;
     /**
@@ -2012,13 +2254,51 @@ export interface EcsServiceCapacityProviderStrategy {
      */
     base?: pulumi.Input<number>;
     /**
-     * Name of the capacity provider.
+     * Name of the capacity provider. Should be one of:
+     *  	- FARGATE
+     *  	- FARGATE_SPOT
+     *  	- ASG fullname: Used when asg created with agent platform ECS
      */
     capacityProvider: pulumi.Input<string>;
     /**
      * The relative percentage of the total number of launched tasks that should use the specified capacity provider.
      */
     weight?: pulumi.Input<number>;
+}
+
+export interface EcsServiceDeploymentConfiguration {
+    alarms?: pulumi.Input<pulumi.Input<inputs.EcsServiceDeploymentConfigurationAlarm>[]>;
+    /**
+     * Enables ECS deployment circuit breaker to stop deployments on failures.
+     */
+    enableCircuitBreaker?: pulumi.Input<boolean>;
+    /**
+     * Specifies the maximum percentage of tasks that can run at once during a deployment.
+     */
+    maximumPercent?: pulumi.Input<number>;
+    /**
+     * Specifies the minimum percentage of tasks that must remain in the RUNNING state during a deployment
+     */
+    minimumHealthyPercent?: pulumi.Input<number>;
+    /**
+     * Enables automatic rollback when the circuit breaker detects a failed deployment.
+     */
+    rollbackCircuitBreaker?: pulumi.Input<boolean>;
+}
+
+export interface EcsServiceDeploymentConfigurationAlarm {
+    /**
+     * Enables or disables CloudWatch alarm monitoring during deployments.
+     */
+    enable?: pulumi.Input<boolean>;
+    /**
+     * Names of CloudWatch alarms that ECS monitors during deployments.
+     */
+    names?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Automatically rolls back the deployment if any configured CloudWatch alarm enters ALARM state.
+     */
+    rollback?: pulumi.Input<boolean>;
 }
 
 export interface EcsServiceLoadBalancer {
@@ -2117,6 +2397,28 @@ export interface EcsServiceLoadBalancerHealthCheckConfig {
     unhealthyThresholdCount?: pulumi.Input<number>;
 }
 
+export interface EcsServicePlacementConstraint {
+    /**
+     * Cluster Query Language expression to apply to the constraint. Does not need to be specified for the distinctInstance type. For more information, see [Cluster Query Language in the Amazon EC2 Container Service Developer Guide](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html).
+     */
+    expression?: pulumi.Input<string>;
+    /**
+     * Type of constraint. The only valid values at this time are `memberOf` and `distinctInstance`
+     */
+    type: pulumi.Input<string>;
+}
+
+export interface EcsServicePlacementStrategy {
+    /**
+     * For the spread placement strategy, valid values are instanceId, or any platform or custom attribute that is applied to a container instance. For the binpack type, valid values are memory and cpu. For the random type, this attribute is not needed. For more information, see [PlacementStrategy](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PlacementStrategy.html)
+     */
+    field?: pulumi.Input<string>;
+    /**
+     * Type of placement strategy. Must be one of: `binpack`, `random`, or `spread`
+     */
+    type: pulumi.Input<string>;
+}
+
 export interface EcsTaskDefinitionInferenceAccelerator {
     deviceName: pulumi.Input<string>;
     deviceType: pulumi.Input<string>;
@@ -2206,7 +2508,7 @@ export interface GcpInfraMaintenanceWindowRecurringWindow {
 
 export interface GcpInfraSecurityRulePortsAndProtocol {
     /**
-     * The list of ports to which this rule applies. This field is only applicable for UDP, TCP and SCTP protocol.
+     * The list of ports to which this rule applies. This field is only applicable for UDP, TCP and SCTP protocol. To apply all ports dont specify the field
      */
     ports?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -2432,6 +2734,17 @@ export interface GcpSchedulerJobPubsubTarget {
     topicName: pulumi.Input<string>;
 }
 
+export interface GcpSqlDatabaseInstanceDatabaseFlag {
+    /**
+     * The name of the database flag.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The value of the database flag.
+     */
+    value: pulumi.Input<string>;
+}
+
 export interface GcpStorageBucketV2DefaultEncryption {
     /**
      * Default encryption method.  Must be one of: `None`, `Sse`, `AwsKms`, `TenantKms`. Defaults to `Sse`.
@@ -2441,7 +2754,7 @@ export interface GcpStorageBucketV2DefaultEncryption {
 
 export interface GcpTenantSecurityRulePortsAndProtocol {
     /**
-     * The list of ports to which this rule applies. This field is only applicable for UDP, TCP and SCTP protocol.
+     * The list of ports to which this rule applies. This field is only applicable for UDP, TCP and SCTP protocol. To apply all ports dont specify the field
      */
     ports?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -2853,9 +3166,15 @@ export interface K8HelmReleaseChart {
 
 export interface K8IngressLbconfig {
     /**
-     * The ARN of an ACM certificate to associate with this load balancer.  Only applicable for HTTPS.
+     * The ARN of an ACM certificate to associate with this load balancer.  Only applicable for HTTPS. This field has been deprecated use certificate_arns
+     *
+     * @deprecated This field has been deprecated use certificate_arns
      */
     certificateArn?: pulumi.Input<string>;
+    /**
+     * The list of ARN of an ACM certificate to associate with this load balancer.  Only applicable for HTTPS.
+     */
+    certificateArns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The DNS prefix to expose services using Route53 domain.
      */
@@ -2872,6 +3191,10 @@ export interface K8IngressLbconfig {
      * Whether or not to create an internal load balancer.
      */
     isInternal: pulumi.Input<boolean>;
+    /**
+     * Port override for the load balancer. Currently supported for Azure
+     */
+    portOverride?: pulumi.Input<string>;
 }
 
 export interface K8IngressRule {
@@ -9695,6 +10018,21 @@ export interface TenantConfigMetadata {
 export interface TenantConfigSetting {
     key: pulumi.Input<string>;
     value: pulumi.Input<string>;
+}
+
+export interface TenantKmsKm {
+    arn: pulumi.Input<string>;
+    /**
+     * The ID of this resource.
+     */
+    id: pulumi.Input<string>;
+    name: pulumi.Input<string>;
+}
+
+export interface TenantKmsUnspecifiedKmsKey {
+    arn?: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }
 
 export interface TenantPolicy {

@@ -21,18 +21,18 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var duplo_app = new Duplocloud.Tenant("duplo-app", new()
+    ///     var duplo_app = new Pulumi.Tenant("duplo-app", new()
     ///     {
     ///         AccountName = "duplo-app",
     ///         PlanId = "default",
     ///         AllowDeletion = true,
     ///     });
     /// 
-    ///     var dockerCreds = new Duplocloud.DockerCredentials("docker_creds", new()
+    ///     var dockerCreds = new Pulumi.DockerCredentials("docker_creds", new()
     ///     {
     ///         TenantId = duplo_app.TenantId,
     ///         UserName = "myname",

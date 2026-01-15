@@ -14,7 +14,7 @@ namespace DuploCloud.Pulumi.Inputs
     public sealed class AzureVmMaintenanceConfigurationWindowArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The duration of the maintenance window in HH:mm format.
+        /// The duration of the maintenance window in HH:mm format. Should be less than or equal to 3 Hrs
         /// </summary>
         [Input("duration")]
         public Input<string>? Duration { get; set; }

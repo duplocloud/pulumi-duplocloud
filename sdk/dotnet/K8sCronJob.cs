@@ -17,38 +17,38 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myapp = new Duplocloud.Tenant("myapp", new()
+    ///     var myapp = new Pulumi.Tenant("myapp", new()
     ///     {
     ///         AccountName = "myapp",
     ///         PlanId = "default",
     ///     });
     /// 
-    ///     var myappK8sCronJob = new Duplocloud.K8sCronJob("myapp", new()
+    ///     var myappK8sCronJob = new Pulumi.K8sCronJob("myapp", new()
     ///     {
     ///         TenantId = myapp.TenantId,
-    ///         Metadata = new Duplocloud.Inputs.K8sCronJobMetadataArgs
+    ///         Metadata = new Pulumi.Inputs.K8sCronJobMetadataArgs
     ///         {
     ///             Name = "jobname",
     ///         },
     ///         Specs = new[]
     ///         {
-    ///             new Duplocloud.Inputs.K8sCronJobSpecArgs
+    ///             new Pulumi.Inputs.K8sCronJobSpecArgs
     ///             {
-    ///                 JobTemplate = new Duplocloud.Inputs.K8sCronJobSpecJobTemplateArgs
+    ///                 JobTemplate = new Pulumi.Inputs.K8sCronJobSpecJobTemplateArgs
     ///                 {
-    ///                     Spec = new Duplocloud.Inputs.K8sCronJobSpecJobTemplateSpecArgs
+    ///                     Spec = new Pulumi.Inputs.K8sCronJobSpecJobTemplateSpecArgs
     ///                     {
-    ///                         Template = new Duplocloud.Inputs.K8sCronJobSpecJobTemplateSpecTemplateArgs
+    ///                         Template = new Pulumi.Inputs.K8sCronJobSpecJobTemplateSpecTemplateArgs
     ///                         {
-    ///                             Spec = new Duplocloud.Inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecArgs
+    ///                             Spec = new Pulumi.Inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecArgs
     ///                             {
     ///                                 Containers = new[]
     ///                                 {
-    ///                                     new Duplocloud.Inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerArgs
+    ///                                     new Pulumi.Inputs.K8sCronJobSpecJobTemplateSpecTemplateSpecContainerArgs
     ///                                     {
     ///                                         Name = "containername",
     ///                                         Image = "nginx:latest",
@@ -83,6 +83,12 @@ namespace DuploCloud.Pulumi
     [PulumiResourceType("duplocloud:index/k8sCronJob:K8sCronJob")]
     public partial class K8sCronJob : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Allocation tags is the simplest way to constraint containers/pods with hosts/nodes. DuploCloud/Kubernetes Orchestrator will make sure containers will run on the hosts having same allocation tags.
+        /// </summary>
+        [Output("allocationTags")]
+        public Output<string?> AllocationTags { get; private set; } = null!;
+
         /// <summary>
         /// Defaults to `false`.
         /// </summary>
@@ -155,6 +161,12 @@ namespace DuploCloud.Pulumi
     public sealed class K8sCronJobArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Allocation tags is the simplest way to constraint containers/pods with hosts/nodes. DuploCloud/Kubernetes Orchestrator will make sure containers will run on the hosts having same allocation tags.
+        /// </summary>
+        [Input("allocationTags")]
+        public Input<string>? AllocationTags { get; set; }
+
+        /// <summary>
         /// Defaults to `false`.
         /// </summary>
         [Input("isAnyHostAllowed")]
@@ -192,6 +204,12 @@ namespace DuploCloud.Pulumi
 
     public sealed class K8sCronJobState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Allocation tags is the simplest way to constraint containers/pods with hosts/nodes. DuploCloud/Kubernetes Orchestrator will make sure containers will run on the hosts having same allocation tags.
+        /// </summary>
+        [Input("allocationTags")]
+        public Input<string>? AllocationTags { get; set; }
+
         /// <summary>
         /// Defaults to `false`.
         /// </summary>

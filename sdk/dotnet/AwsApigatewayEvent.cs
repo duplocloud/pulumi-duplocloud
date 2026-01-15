@@ -19,17 +19,17 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myapp = new Duplocloud.Tenant("myapp", new()
+    ///     var myapp = new Pulumi.Tenant("myapp", new()
     ///     {
     ///         AccountName = "myapp",
     ///         PlanId = "default",
     ///     });
     /// 
-    ///     var apigatewayEvent = new Duplocloud.AwsApigatewayEvent("apigateway_event", new()
+    ///     var apigatewayEvent = new Pulumi.AwsApigatewayEvent("apigateway_event", new()
     ///     {
     ///         TenantId = myapp.TenantId,
     ///         ApiGatewayId = "t84tb3skz0",
@@ -38,7 +38,7 @@ namespace DuploCloud.Pulumi
     ///         Cors = true,
     ///         AuthorizationType = "COGNITO_USER_POOLS",
     ///         AuthorizerId = "gto03x",
-    ///         Integration = new Duplocloud.Inputs.AwsApigatewayEventIntegrationArgs
+    ///         Integration = new Pulumi.Inputs.AwsApigatewayEventIntegrationArgs
     ///         {
     ///             Type = "AWS_PROXY",
     ///             Uri = "arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:1234567890:function:duploservices-dev-valuation-test/invocations",

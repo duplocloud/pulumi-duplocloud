@@ -474,3 +474,78 @@ return await Deployment.RunAsync(() =>
     };
 });
 ```
+
+## Development
+
+### Building the Provider
+
+To build the provider locally:
+
+```bash
+make build
+```
+
+This will:
+- Build the provider binary
+- Generate and build all language SDKs (Go, Python, Node.js, .NET)
+- Install the provider and SDKs locally for testing
+
+### Upgrading the Terraform Provider
+
+This Pulumi provider is built on top of the [DuploCloud Terraform Provider](https://github.com/duplocloud/terraform-provider-duplocloud). To upgrade to a newer version of the Terraform provider:
+
+#### Automated Upgrade (Recommended)
+
+The repository includes automated workflows that check for new Terraform provider versions daily:
+
+```bash
+# Trigger upgrade workflow manually via GitHub CLI
+gh workflow run upgrade-provider.yml -f version=0.11.31
+
+# Or let it auto-detect the latest version
+gh workflow run upgrade-provider.yml
+```
+
+You can also trigger it from the GitHub Actions UI at:
+https://github.com/duplocloud/pulumi-duplocloud/actions/workflows/upgrade-provider.yml
+
+#### Manual Upgrade
+
+For manual upgrades, follow these steps:
+
+```bash
+# 1. Update the Terraform provider version in provider/go.mod
+# Change: github.com/duplocloud/terraform-provider-duplocloud v0.11.0
+# To:     github.com/duplocloud/terraform-provider-duplocloud v0.11.31
+
+# 2. Update Go dependencies
+cd provider && go mod tidy && cd ..
+
+# 3. Regenerate the schema
+make schema
+
+# 4. Regenerate all language SDKs
+make generate_sdks
+
+# 5. Build and test
+make build
+make test_provider
+```
+
+For detailed instructions, see [UPGRADE_PROVIDER.md](./UPGRADE_PROVIDER.md).
+
+### Running Tests
+
+```bash
+# Run provider tests
+make test_provider
+
+# Run example tests (requires DuploCloud credentials)
+export duplo_host="https://your-instance.duplocloud.net"
+export duplo_token="your-token"
+make test
+```
+
+### Contributing
+
+Contributions are welcome! Please see [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines.

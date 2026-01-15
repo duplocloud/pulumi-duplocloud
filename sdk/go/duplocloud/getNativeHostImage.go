@@ -12,6 +12,36 @@ import (
 )
 
 // `getNativeHostImage` retrieves details of a specific image for a given tenant.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/duplocloud/pulumi-duplocloud/sdk/go/duplocloud"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := duplocloud.GetNativeHostImage(ctx, &duplocloud.GetNativeHostImageArgs{
+//				TenantId:   "f4bf01f0-5077-489e-aa51-95fb77049608",
+//				Name:       pulumi.StringRef("EKS-Oregon-1.32"),
+//				Os:         pulumi.StringRef("AmazonLinux2023"),
+//				K8sVersion: pulumi.StringRef("1.32"),
+//				Arch:       pulumi.StringRef("amd64"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetNativeHostImage(ctx *pulumi.Context, args *GetNativeHostImageArgs, opts ...pulumi.InvokeOption) (*GetNativeHostImageResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetNativeHostImageResult
@@ -24,27 +54,46 @@ func GetNativeHostImage(ctx *pulumi.Context, args *GetNativeHostImageArgs, opts 
 
 // A collection of arguments for invoking getNativeHostImage.
 type GetNativeHostImageArgs struct {
-	Arch         *string `pulumi:"arch"`
-	IsKubernetes *bool   `pulumi:"isKubernetes"`
-	Name         *string `pulumi:"name"`
+	// Architecture of the native host
+	Arch *string `pulumi:"arch"`
+	// This field is deprecated. Use k8sVersion for precise filtering
+	//
+	// Deprecated: This field is deprecated. Use k8sVersion for precise filtering
+	IsKubernetes *bool `pulumi:"isKubernetes"`
+	// K8 version of the native host
+	K8sVersion *string `pulumi:"k8sVersion"`
+	// Name of the Duplocloud native host
+	Name *string `pulumi:"name"`
+	// OS of native host
+	Os *string `pulumi:"os"`
 	// The tenant ID
 	TenantId string `pulumi:"tenantId"`
+	// username associated to native host
+	Username *string `pulumi:"username"`
 }
 
 // A collection of values returned by getNativeHostImage.
 type GetNativeHostImageResult struct {
-	Arch string `pulumi:"arch"`
+	// Architecture of the native host
+	Arch *string `pulumi:"arch"`
 	// The provider-assigned unique ID for this managed resource.
-	Id           string                  `pulumi:"id"`
-	ImageId      string                  `pulumi:"imageId"`
-	IsKubernetes bool                    `pulumi:"isKubernetes"`
-	K8sVersion   string                  `pulumi:"k8sVersion"`
-	Name         string                  `pulumi:"name"`
-	Os           string                  `pulumi:"os"`
-	Region       string                  `pulumi:"region"`
-	Tags         []GetNativeHostImageTag `pulumi:"tags"`
+	Id      string `pulumi:"id"`
+	ImageId string `pulumi:"imageId"`
+	// This field is deprecated. Use k8sVersion for precise filtering
+	//
+	// Deprecated: This field is deprecated. Use k8sVersion for precise filtering
+	IsKubernetes bool `pulumi:"isKubernetes"`
+	// K8 version of the native host
+	K8sVersion *string `pulumi:"k8sVersion"`
+	// Name of the Duplocloud native host
+	Name *string `pulumi:"name"`
+	// OS of native host
+	Os     *string                 `pulumi:"os"`
+	Region string                  `pulumi:"region"`
+	Tags   []GetNativeHostImageTag `pulumi:"tags"`
 	// The tenant ID
 	TenantId string `pulumi:"tenantId"`
+	// username associated to native host
 	Username string `pulumi:"username"`
 }
 
@@ -59,11 +108,22 @@ func GetNativeHostImageOutput(ctx *pulumi.Context, args GetNativeHostImageOutput
 
 // A collection of arguments for invoking getNativeHostImage.
 type GetNativeHostImageOutputArgs struct {
-	Arch         pulumi.StringPtrInput `pulumi:"arch"`
-	IsKubernetes pulumi.BoolPtrInput   `pulumi:"isKubernetes"`
-	Name         pulumi.StringPtrInput `pulumi:"name"`
+	// Architecture of the native host
+	Arch pulumi.StringPtrInput `pulumi:"arch"`
+	// This field is deprecated. Use k8sVersion for precise filtering
+	//
+	// Deprecated: This field is deprecated. Use k8sVersion for precise filtering
+	IsKubernetes pulumi.BoolPtrInput `pulumi:"isKubernetes"`
+	// K8 version of the native host
+	K8sVersion pulumi.StringPtrInput `pulumi:"k8sVersion"`
+	// Name of the Duplocloud native host
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// OS of native host
+	Os pulumi.StringPtrInput `pulumi:"os"`
 	// The tenant ID
 	TenantId pulumi.StringInput `pulumi:"tenantId"`
+	// username associated to native host
+	Username pulumi.StringPtrInput `pulumi:"username"`
 }
 
 func (GetNativeHostImageOutputArgs) ElementType() reflect.Type {
@@ -85,8 +145,9 @@ func (o GetNativeHostImageResultOutput) ToGetNativeHostImageResultOutputWithCont
 	return o
 }
 
-func (o GetNativeHostImageResultOutput) Arch() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNativeHostImageResult) string { return v.Arch }).(pulumi.StringOutput)
+// Architecture of the native host
+func (o GetNativeHostImageResultOutput) Arch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNativeHostImageResult) *string { return v.Arch }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
@@ -98,20 +159,26 @@ func (o GetNativeHostImageResultOutput) ImageId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNativeHostImageResult) string { return v.ImageId }).(pulumi.StringOutput)
 }
 
+// This field is deprecated. Use k8sVersion for precise filtering
+//
+// Deprecated: This field is deprecated. Use k8sVersion for precise filtering
 func (o GetNativeHostImageResultOutput) IsKubernetes() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetNativeHostImageResult) bool { return v.IsKubernetes }).(pulumi.BoolOutput)
 }
 
-func (o GetNativeHostImageResultOutput) K8sVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNativeHostImageResult) string { return v.K8sVersion }).(pulumi.StringOutput)
+// K8 version of the native host
+func (o GetNativeHostImageResultOutput) K8sVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNativeHostImageResult) *string { return v.K8sVersion }).(pulumi.StringPtrOutput)
 }
 
-func (o GetNativeHostImageResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNativeHostImageResult) string { return v.Name }).(pulumi.StringOutput)
+// Name of the Duplocloud native host
+func (o GetNativeHostImageResultOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNativeHostImageResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-func (o GetNativeHostImageResultOutput) Os() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNativeHostImageResult) string { return v.Os }).(pulumi.StringOutput)
+// OS of native host
+func (o GetNativeHostImageResultOutput) Os() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNativeHostImageResult) *string { return v.Os }).(pulumi.StringPtrOutput)
 }
 
 func (o GetNativeHostImageResultOutput) Region() pulumi.StringOutput {
@@ -127,6 +194,7 @@ func (o GetNativeHostImageResultOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNativeHostImageResult) string { return v.TenantId }).(pulumi.StringOutput)
 }
 
+// username associated to native host
 func (o GetNativeHostImageResultOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNativeHostImageResult) string { return v.Username }).(pulumi.StringOutput)
 }

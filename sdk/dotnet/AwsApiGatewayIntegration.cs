@@ -19,17 +19,17 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var duplo_app = new Duplocloud.Tenant("duplo-app", new()
+    ///     var duplo_app = new Pulumi.Tenant("duplo-app", new()
     ///     {
     ///         AccountName = "duplo-app",
     ///         PlanId = "default",
     ///     });
     /// 
-    ///     var apigw_lambda = new Duplocloud.AwsApiGatewayIntegration("apigw-lambda", new()
+    ///     var apigw_lambda = new Pulumi.AwsApiGatewayIntegration("apigw-lambda", new()
     ///     {
     ///         TenantId = duplo_app.TenantId,
     ///         Name = "test-api-lambda",

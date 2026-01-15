@@ -51,7 +51,7 @@ class AsgProfileArgs:
                  user_account: Optional[pulumi.Input[str]] = None,
                  volumes: Optional[pulumi.Input[Sequence[pulumi.Input['AsgProfileVolumeArgs']]]] = None,
                  wait_for_capacity: Optional[pulumi.Input[bool]] = None,
-                 zone: Optional[pulumi.Input[int]] = None,
+                 zone: Optional[pulumi.Input[str]] = None,
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None):
         """
         The set of arguments for constructing a AsgProfile resource.
@@ -59,7 +59,8 @@ class AsgProfileArgs:
         :param pulumi.Input[str] friendly_name: The short name of the host.
         :param pulumi.Input[str] image_id: The AMI ID to use.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the host will be created in.
-        :param pulumi.Input[int] agent_platform: The numeric ID of the container agent pool that this host is added to.
+        :param pulumi.Input[int] agent_platform: The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
+               Windows - 7: EKS Linux - 8: ECS
         :param pulumi.Input[bool] allocated_public_ip: Whether or not to allocate a public IP.
         :param pulumi.Input[str] base64_user_data: Base64 encoded EC2 user data to associated with the host.
         :param pulumi.Input[bool] can_scale_from_zero: Whether or not ASG should leverage duplocloud's scale from 0 feature
@@ -69,8 +70,8 @@ class AsgProfileArgs:
                metrics.`GroupMinSize`,`GroupMaxSize`,`GroupDesiredCapacity`,`GroupInServiceInstances`,`GroupPendingInstances`,`GroupStandbyInstances`,`GroupTerminatingInstances`,`GroupTotalInstances`,`GroupInServiceCapacity`,`GroupPendingCapacity`,`GroupStandbyCapacity`,`GroupTerminatingCapacity`,`GroupTotalCapacity`,`WarmPoolDesiredCapacity`,`WarmPoolWarmedCapacity`,`WarmPoolPendingCapacity`,`WarmPoolTerminatingCapacity`,`WarmPoolTotalCapacity`,`GroupAndWarmPoolDesiredCapacity`,`GroupAndWarmPoolTotalCapacity`.
         :param pulumi.Input[int] instance_count: The number of instances that should be running in the group.
         :param pulumi.Input[bool] is_cluster_autoscaled: Whether or not to enable cluster autoscaler.
-        :param pulumi.Input[int] keypair_type: The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : ED25519 - `2` : RSA (deprecated
-               - some operating systems no longer support it)
+        :param pulumi.Input[int] keypair_type: The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : RSA (deprecated - some operating
+               systems no longer support it) - `2` : ED25519
         :param pulumi.Input[int] max_instance_count: The maximum size of the Auto Scaling Group.
         :param pulumi.Input[str] max_spot_price: Maximum price to pay for a spot instance in dollars per unit hour.
         :param pulumi.Input[Sequence[pulumi.Input['AsgProfileMetadataArgs']]] metadatas: Configuration metadata used when creating the host.<br>*Note: To configure OS disk size OsDiskSize can be specified as
@@ -84,9 +85,9 @@ class AsgProfileArgs:
         :param pulumi.Input[str] user_account: The name of the tenant that the host will be created in.
         :param pulumi.Input[Sequence[pulumi.Input['AsgProfileVolumeArgs']]] volumes: Block to specify additional or secondary volume beyond the root device
         :param pulumi.Input[bool] wait_for_capacity: Whether or not to wait until ASG instances to be healthy, after creation.
-        :param pulumi.Input[int] zone: The availability zone to launch the host in, expressed as a number and starting at 0.
-        :param pulumi.Input[Sequence[pulumi.Input[int]]] zones: The multi availability zone to launch the asg in, expressed as a number and starting at 0 - Automatic 1 - Zone A 2 -
-               Zone B
+        :param pulumi.Input[str] zone: The availability zone to launch the host in is expressed as a numeric value ranging from 0 to 3.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] zones: The multi availability zone to launch the asg in, expressed as a number and starting at 0 - Zone A to 3 - Zone D, based
+               on the infra setup
         """
         pulumi.set(__self__, "capacity", capacity)
         pulumi.set(__self__, "friendly_name", friendly_name)
@@ -145,8 +146,8 @@ class AsgProfileArgs:
         if wait_for_capacity is not None:
             pulumi.set(__self__, "wait_for_capacity", wait_for_capacity)
         if zone is not None:
-            warnings.warn("""zone has been deprecated instead use zones""", DeprecationWarning)
-            pulumi.log.warn("""zone is deprecated: zone has been deprecated instead use zones""")
+            warnings.warn("""For environments on the July 2024 release or earlier, use zone. For environments on releases after July 2024, use zones, as zone has been deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""zone is deprecated: For environments on the July 2024 release or earlier, use zone. For environments on releases after July 2024, use zones, as zone has been deprecated.""")
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
         if zones is not None:
@@ -204,7 +205,8 @@ class AsgProfileArgs:
     @pulumi.getter(name="agentPlatform")
     def agent_platform(self) -> Optional[pulumi.Input[int]]:
         """
-        The numeric ID of the container agent pool that this host is added to.
+        The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
+        Windows - 7: EKS Linux - 8: ECS
         """
         return pulumi.get(self, "agent_platform")
 
@@ -340,8 +342,8 @@ class AsgProfileArgs:
     @pulumi.getter(name="keypairType")
     def keypair_type(self) -> Optional[pulumi.Input[int]]:
         """
-        The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : ED25519 - `2` : RSA (deprecated
-        - some operating systems no longer support it)
+        The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : RSA (deprecated - some operating
+        systems no longer support it) - `2` : ED25519
         """
         return pulumi.get(self, "keypair_type")
 
@@ -505,23 +507,23 @@ class AsgProfileArgs:
 
     @property
     @pulumi.getter
-    @_utilities.deprecated("""zone has been deprecated instead use zones""")
-    def zone(self) -> Optional[pulumi.Input[int]]:
+    @_utilities.deprecated("""For environments on the July 2024 release or earlier, use zone. For environments on releases after July 2024, use zones, as zone has been deprecated.""")
+    def zone(self) -> Optional[pulumi.Input[str]]:
         """
-        The availability zone to launch the host in, expressed as a number and starting at 0.
+        The availability zone to launch the host in is expressed as a numeric value ranging from 0 to 3.
         """
         return pulumi.get(self, "zone")
 
     @zone.setter
-    def zone(self, value: Optional[pulumi.Input[int]]):
+    def zone(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "zone", value)
 
     @property
     @pulumi.getter
     def zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
         """
-        The multi availability zone to launch the asg in, expressed as a number and starting at 0 - Automatic 1 - Zone A 2 -
-        Zone B
+        The multi availability zone to launch the asg in, expressed as a number and starting at 0 - Zone A to 3 - Zone D, based
+        on the infra setup
         """
         return pulumi.get(self, "zones")
 
@@ -535,6 +537,7 @@ class _AsgProfileState:
     def __init__(__self__, *,
                  agent_platform: Optional[pulumi.Input[int]] = None,
                  allocated_public_ip: Optional[pulumi.Input[bool]] = None,
+                 arn: Optional[pulumi.Input[str]] = None,
                  base64_user_data: Optional[pulumi.Input[str]] = None,
                  can_scale_from_zero: Optional[pulumi.Input[bool]] = None,
                  capacity: Optional[pulumi.Input[str]] = None,
@@ -566,12 +569,14 @@ class _AsgProfileState:
                  user_account: Optional[pulumi.Input[str]] = None,
                  volumes: Optional[pulumi.Input[Sequence[pulumi.Input['AsgProfileVolumeArgs']]]] = None,
                  wait_for_capacity: Optional[pulumi.Input[bool]] = None,
-                 zone: Optional[pulumi.Input[int]] = None,
+                 zone: Optional[pulumi.Input[str]] = None,
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None):
         """
         Input properties used for looking up and filtering AsgProfile resources.
-        :param pulumi.Input[int] agent_platform: The numeric ID of the container agent pool that this host is added to.
+        :param pulumi.Input[int] agent_platform: The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
+               Windows - 7: EKS Linux - 8: ECS
         :param pulumi.Input[bool] allocated_public_ip: Whether or not to allocate a public IP.
+        :param pulumi.Input[str] arn: The ASG arn.
         :param pulumi.Input[str] base64_user_data: Base64 encoded EC2 user data to associated with the host.
         :param pulumi.Input[bool] can_scale_from_zero: Whether or not ASG should leverage duplocloud's scale from 0 feature
         :param pulumi.Input[str] capacity: The AWS EC2 instance type.
@@ -584,8 +589,8 @@ class _AsgProfileState:
         :param pulumi.Input[str] image_id: The AMI ID to use.
         :param pulumi.Input[int] instance_count: The number of instances that should be running in the group.
         :param pulumi.Input[bool] is_cluster_autoscaled: Whether or not to enable cluster autoscaler.
-        :param pulumi.Input[int] keypair_type: The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : ED25519 - `2` : RSA (deprecated
-               - some operating systems no longer support it)
+        :param pulumi.Input[int] keypair_type: The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : RSA (deprecated - some operating
+               systems no longer support it) - `2` : ED25519
         :param pulumi.Input[int] max_instance_count: The maximum size of the Auto Scaling Group.
         :param pulumi.Input[str] max_spot_price: Maximum price to pay for a spot instance in dollars per unit hour.
         :param pulumi.Input[Sequence[pulumi.Input['AsgProfileMetadataArgs']]] metadatas: Configuration metadata used when creating the host.<br>*Note: To configure OS disk size OsDiskSize can be specified as
@@ -601,14 +606,16 @@ class _AsgProfileState:
         :param pulumi.Input[str] user_account: The name of the tenant that the host will be created in.
         :param pulumi.Input[Sequence[pulumi.Input['AsgProfileVolumeArgs']]] volumes: Block to specify additional or secondary volume beyond the root device
         :param pulumi.Input[bool] wait_for_capacity: Whether or not to wait until ASG instances to be healthy, after creation.
-        :param pulumi.Input[int] zone: The availability zone to launch the host in, expressed as a number and starting at 0.
-        :param pulumi.Input[Sequence[pulumi.Input[int]]] zones: The multi availability zone to launch the asg in, expressed as a number and starting at 0 - Automatic 1 - Zone A 2 -
-               Zone B
+        :param pulumi.Input[str] zone: The availability zone to launch the host in is expressed as a numeric value ranging from 0 to 3.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] zones: The multi availability zone to launch the asg in, expressed as a number and starting at 0 - Zone A to 3 - Zone D, based
+               on the infra setup
         """
         if agent_platform is not None:
             pulumi.set(__self__, "agent_platform", agent_platform)
         if allocated_public_ip is not None:
             pulumi.set(__self__, "allocated_public_ip", allocated_public_ip)
+        if arn is not None:
+            pulumi.set(__self__, "arn", arn)
         if base64_user_data is not None:
             pulumi.set(__self__, "base64_user_data", base64_user_data)
         if can_scale_from_zero is not None:
@@ -672,8 +679,8 @@ class _AsgProfileState:
         if wait_for_capacity is not None:
             pulumi.set(__self__, "wait_for_capacity", wait_for_capacity)
         if zone is not None:
-            warnings.warn("""zone has been deprecated instead use zones""", DeprecationWarning)
-            pulumi.log.warn("""zone is deprecated: zone has been deprecated instead use zones""")
+            warnings.warn("""For environments on the July 2024 release or earlier, use zone. For environments on releases after July 2024, use zones, as zone has been deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""zone is deprecated: For environments on the July 2024 release or earlier, use zone. For environments on releases after July 2024, use zones, as zone has been deprecated.""")
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
         if zones is not None:
@@ -683,7 +690,8 @@ class _AsgProfileState:
     @pulumi.getter(name="agentPlatform")
     def agent_platform(self) -> Optional[pulumi.Input[int]]:
         """
-        The numeric ID of the container agent pool that this host is added to.
+        The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
+        Windows - 7: EKS Linux - 8: ECS
         """
         return pulumi.get(self, "agent_platform")
 
@@ -702,6 +710,18 @@ class _AsgProfileState:
     @allocated_public_ip.setter
     def allocated_public_ip(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "allocated_public_ip", value)
+
+    @property
+    @pulumi.getter
+    def arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ASG arn.
+        """
+        return pulumi.get(self, "arn")
+
+    @arn.setter
+    def arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "arn", value)
 
     @property
     @pulumi.getter(name="base64UserData")
@@ -876,8 +896,8 @@ class _AsgProfileState:
     @pulumi.getter(name="keypairType")
     def keypair_type(self) -> Optional[pulumi.Input[int]]:
         """
-        The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : ED25519 - `2` : RSA (deprecated
-        - some operating systems no longer support it)
+        The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : RSA (deprecated - some operating
+        systems no longer support it) - `2` : ED25519
         """
         return pulumi.get(self, "keypair_type")
 
@@ -1065,23 +1085,23 @@ class _AsgProfileState:
 
     @property
     @pulumi.getter
-    @_utilities.deprecated("""zone has been deprecated instead use zones""")
-    def zone(self) -> Optional[pulumi.Input[int]]:
+    @_utilities.deprecated("""For environments on the July 2024 release or earlier, use zone. For environments on releases after July 2024, use zones, as zone has been deprecated.""")
+    def zone(self) -> Optional[pulumi.Input[str]]:
         """
-        The availability zone to launch the host in, expressed as a number and starting at 0.
+        The availability zone to launch the host in is expressed as a numeric value ranging from 0 to 3.
         """
         return pulumi.get(self, "zone")
 
     @zone.setter
-    def zone(self, value: Optional[pulumi.Input[int]]):
+    def zone(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "zone", value)
 
     @property
     @pulumi.getter
     def zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
         """
-        The multi availability zone to launch the asg in, expressed as a number and starting at 0 - Automatic 1 - Zone A 2 -
-        Zone B
+        The multi availability zone to launch the asg in, expressed as a number and starting at 0 - Zone A to 3 - Zone D, based
+        on the infra setup
         """
         return pulumi.get(self, "zones")
 
@@ -1125,7 +1145,7 @@ class AsgProfile(pulumi.CustomResource):
                  user_account: Optional[pulumi.Input[str]] = None,
                  volumes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AsgProfileVolumeArgs', 'AsgProfileVolumeArgsDict']]]]] = None,
                  wait_for_capacity: Optional[pulumi.Input[bool]] = None,
-                 zone: Optional[pulumi.Input[int]] = None,
+                 zone: Optional[pulumi.Input[str]] = None,
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  __props__=None):
         """
@@ -1147,7 +1167,8 @@ class AsgProfile(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] agent_platform: The numeric ID of the container agent pool that this host is added to.
+        :param pulumi.Input[int] agent_platform: The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
+               Windows - 7: EKS Linux - 8: ECS
         :param pulumi.Input[bool] allocated_public_ip: Whether or not to allocate a public IP.
         :param pulumi.Input[str] base64_user_data: Base64 encoded EC2 user data to associated with the host.
         :param pulumi.Input[bool] can_scale_from_zero: Whether or not ASG should leverage duplocloud's scale from 0 feature
@@ -1160,8 +1181,8 @@ class AsgProfile(pulumi.CustomResource):
         :param pulumi.Input[str] image_id: The AMI ID to use.
         :param pulumi.Input[int] instance_count: The number of instances that should be running in the group.
         :param pulumi.Input[bool] is_cluster_autoscaled: Whether or not to enable cluster autoscaler.
-        :param pulumi.Input[int] keypair_type: The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : ED25519 - `2` : RSA (deprecated
-               - some operating systems no longer support it)
+        :param pulumi.Input[int] keypair_type: The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : RSA (deprecated - some operating
+               systems no longer support it) - `2` : ED25519
         :param pulumi.Input[int] max_instance_count: The maximum size of the Auto Scaling Group.
         :param pulumi.Input[str] max_spot_price: Maximum price to pay for a spot instance in dollars per unit hour.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AsgProfileMetadataArgs', 'AsgProfileMetadataArgsDict']]]] metadatas: Configuration metadata used when creating the host.<br>*Note: To configure OS disk size OsDiskSize can be specified as
@@ -1176,9 +1197,9 @@ class AsgProfile(pulumi.CustomResource):
         :param pulumi.Input[str] user_account: The name of the tenant that the host will be created in.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AsgProfileVolumeArgs', 'AsgProfileVolumeArgsDict']]]] volumes: Block to specify additional or secondary volume beyond the root device
         :param pulumi.Input[bool] wait_for_capacity: Whether or not to wait until ASG instances to be healthy, after creation.
-        :param pulumi.Input[int] zone: The availability zone to launch the host in, expressed as a number and starting at 0.
-        :param pulumi.Input[Sequence[pulumi.Input[int]]] zones: The multi availability zone to launch the asg in, expressed as a number and starting at 0 - Automatic 1 - Zone A 2 -
-               Zone B
+        :param pulumi.Input[str] zone: The availability zone to launch the host in is expressed as a numeric value ranging from 0 to 3.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] zones: The multi availability zone to launch the asg in, expressed as a number and starting at 0 - Zone A to 3 - Zone D, based
+               on the infra setup
         """
         ...
     @overload
@@ -1248,7 +1269,7 @@ class AsgProfile(pulumi.CustomResource):
                  user_account: Optional[pulumi.Input[str]] = None,
                  volumes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AsgProfileVolumeArgs', 'AsgProfileVolumeArgsDict']]]]] = None,
                  wait_for_capacity: Optional[pulumi.Input[bool]] = None,
-                 zone: Optional[pulumi.Input[int]] = None,
+                 zone: Optional[pulumi.Input[str]] = None,
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1299,6 +1320,7 @@ class AsgProfile(pulumi.CustomResource):
             __props__.__dict__["wait_for_capacity"] = wait_for_capacity
             __props__.__dict__["zone"] = zone
             __props__.__dict__["zones"] = zones
+            __props__.__dict__["arn"] = None
             __props__.__dict__["fullname"] = None
             __props__.__dict__["initial_base64_user_data"] = None
             __props__.__dict__["public_ip_address"] = None
@@ -1314,6 +1336,7 @@ class AsgProfile(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             agent_platform: Optional[pulumi.Input[int]] = None,
             allocated_public_ip: Optional[pulumi.Input[bool]] = None,
+            arn: Optional[pulumi.Input[str]] = None,
             base64_user_data: Optional[pulumi.Input[str]] = None,
             can_scale_from_zero: Optional[pulumi.Input[bool]] = None,
             capacity: Optional[pulumi.Input[str]] = None,
@@ -1345,7 +1368,7 @@ class AsgProfile(pulumi.CustomResource):
             user_account: Optional[pulumi.Input[str]] = None,
             volumes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AsgProfileVolumeArgs', 'AsgProfileVolumeArgsDict']]]]] = None,
             wait_for_capacity: Optional[pulumi.Input[bool]] = None,
-            zone: Optional[pulumi.Input[int]] = None,
+            zone: Optional[pulumi.Input[str]] = None,
             zones: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None) -> 'AsgProfile':
         """
         Get an existing AsgProfile resource's state with the given name, id, and optional extra
@@ -1354,8 +1377,10 @@ class AsgProfile(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] agent_platform: The numeric ID of the container agent pool that this host is added to.
+        :param pulumi.Input[int] agent_platform: The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
+               Windows - 7: EKS Linux - 8: ECS
         :param pulumi.Input[bool] allocated_public_ip: Whether or not to allocate a public IP.
+        :param pulumi.Input[str] arn: The ASG arn.
         :param pulumi.Input[str] base64_user_data: Base64 encoded EC2 user data to associated with the host.
         :param pulumi.Input[bool] can_scale_from_zero: Whether or not ASG should leverage duplocloud's scale from 0 feature
         :param pulumi.Input[str] capacity: The AWS EC2 instance type.
@@ -1368,8 +1393,8 @@ class AsgProfile(pulumi.CustomResource):
         :param pulumi.Input[str] image_id: The AMI ID to use.
         :param pulumi.Input[int] instance_count: The number of instances that should be running in the group.
         :param pulumi.Input[bool] is_cluster_autoscaled: Whether or not to enable cluster autoscaler.
-        :param pulumi.Input[int] keypair_type: The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : ED25519 - `2` : RSA (deprecated
-               - some operating systems no longer support it)
+        :param pulumi.Input[int] keypair_type: The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : RSA (deprecated - some operating
+               systems no longer support it) - `2` : ED25519
         :param pulumi.Input[int] max_instance_count: The maximum size of the Auto Scaling Group.
         :param pulumi.Input[str] max_spot_price: Maximum price to pay for a spot instance in dollars per unit hour.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AsgProfileMetadataArgs', 'AsgProfileMetadataArgsDict']]]] metadatas: Configuration metadata used when creating the host.<br>*Note: To configure OS disk size OsDiskSize can be specified as
@@ -1385,9 +1410,9 @@ class AsgProfile(pulumi.CustomResource):
         :param pulumi.Input[str] user_account: The name of the tenant that the host will be created in.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AsgProfileVolumeArgs', 'AsgProfileVolumeArgsDict']]]] volumes: Block to specify additional or secondary volume beyond the root device
         :param pulumi.Input[bool] wait_for_capacity: Whether or not to wait until ASG instances to be healthy, after creation.
-        :param pulumi.Input[int] zone: The availability zone to launch the host in, expressed as a number and starting at 0.
-        :param pulumi.Input[Sequence[pulumi.Input[int]]] zones: The multi availability zone to launch the asg in, expressed as a number and starting at 0 - Automatic 1 - Zone A 2 -
-               Zone B
+        :param pulumi.Input[str] zone: The availability zone to launch the host in is expressed as a numeric value ranging from 0 to 3.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] zones: The multi availability zone to launch the asg in, expressed as a number and starting at 0 - Zone A to 3 - Zone D, based
+               on the infra setup
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1395,6 +1420,7 @@ class AsgProfile(pulumi.CustomResource):
 
         __props__.__dict__["agent_platform"] = agent_platform
         __props__.__dict__["allocated_public_ip"] = allocated_public_ip
+        __props__.__dict__["arn"] = arn
         __props__.__dict__["base64_user_data"] = base64_user_data
         __props__.__dict__["can_scale_from_zero"] = can_scale_from_zero
         __props__.__dict__["capacity"] = capacity
@@ -1434,7 +1460,8 @@ class AsgProfile(pulumi.CustomResource):
     @pulumi.getter(name="agentPlatform")
     def agent_platform(self) -> pulumi.Output[Optional[int]]:
         """
-        The numeric ID of the container agent pool that this host is added to.
+        The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
+        Windows - 7: EKS Linux - 8: ECS
         """
         return pulumi.get(self, "agent_platform")
 
@@ -1445,6 +1472,14 @@ class AsgProfile(pulumi.CustomResource):
         Whether or not to allocate a public IP.
         """
         return pulumi.get(self, "allocated_public_ip")
+
+    @property
+    @pulumi.getter
+    def arn(self) -> pulumi.Output[str]:
+        """
+        The ASG arn.
+        """
+        return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter(name="base64UserData")
@@ -1559,8 +1594,8 @@ class AsgProfile(pulumi.CustomResource):
     @pulumi.getter(name="keypairType")
     def keypair_type(self) -> pulumi.Output[int]:
         """
-        The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : ED25519 - `2` : RSA (deprecated
-        - some operating systems no longer support it)
+        The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : RSA (deprecated - some operating
+        systems no longer support it) - `2` : ED25519
         """
         return pulumi.get(self, "keypair_type")
 
@@ -1684,19 +1719,19 @@ class AsgProfile(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    @_utilities.deprecated("""zone has been deprecated instead use zones""")
-    def zone(self) -> pulumi.Output[Optional[int]]:
+    @_utilities.deprecated("""For environments on the July 2024 release or earlier, use zone. For environments on releases after July 2024, use zones, as zone has been deprecated.""")
+    def zone(self) -> pulumi.Output[Optional[str]]:
         """
-        The availability zone to launch the host in, expressed as a number and starting at 0.
+        The availability zone to launch the host in is expressed as a numeric value ranging from 0 to 3.
         """
         return pulumi.get(self, "zone")
 
     @property
     @pulumi.getter
-    def zones(self) -> pulumi.Output[Optional[Sequence[int]]]:
+    def zones(self) -> pulumi.Output[Sequence[int]]:
         """
-        The multi availability zone to launch the asg in, expressed as a number and starting at 0 - Automatic 1 - Zone A 2 -
-        Zone B
+        The multi availability zone to launch the asg in, expressed as a number and starting at 0 - Zone A to 3 - Zone D, based
+        on the infra setup
         """
         return pulumi.get(self, "zones")
 

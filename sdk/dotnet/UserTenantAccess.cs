@@ -19,18 +19,18 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myapp = new Duplocloud.Tenant("myapp", new()
+    ///     var myapp = new Pulumi.Tenant("myapp", new()
     ///     {
     ///         AccountName = "myapp",
     ///         PlanId = "default",
     ///     });
     /// 
     ///     // Simple Example 1:  Grant access of tenant to user
-    ///     var access = new Duplocloud.UserTenantAccess("access", new()
+    ///     var access = new Pulumi.UserTenantAccess("access", new()
     ///     {
     ///         Username = "user@domain",
     ///         TenantId = myapp.TenantId,

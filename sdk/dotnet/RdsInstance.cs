@@ -19,13 +19,13 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Before creating an RDS instance, you must first set up the infrastructure and tenant. Below is the resource for creating the infrastructure.
-    ///     var infra = new Duplocloud.Infrastructure("infra", new()
+    ///     var infra = new Pulumi.Infrastructure("infra", new()
     ///     {
     ///         InfraName = "dev",
     ///         Cloud = 0,
@@ -35,7 +35,7 @@ namespace DuploCloud.Pulumi
     ///     });
     /// 
     ///     // Use the infrastructure name as the 'plan_id' from the 'duplocloud_infrastructure' resource while creating tenant.
-    ///     var tenant = new Duplocloud.Tenant("tenant", new()
+    ///     var tenant = new Pulumi.Tenant("tenant", new()
     ///     {
     ///         AccountName = "dev",
     ///         PlanId = infra.InfraName,
@@ -49,7 +49,7 @@ namespace DuploCloud.Pulumi
     ///     });
     /// 
     ///     // Create an RDS instance.
-    ///     var dev_db = new Duplocloud.RdsInstance("dev-db", new()
+    ///     var dev_db = new Pulumi.RdsInstance("dev-db", new()
     ///     {
     ///         TenantId = tenant.TenantId,
     ///         Name = "dev-db",
@@ -71,13 +71,14 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
+    /// using Pulumi = Pulumi.Pulumi;
     /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Ensure the 'dev' tenant is already created before creating the RDS instance.
-    ///     var tenant = Duplocloud.GetTenant.Invoke(new()
+    ///     var tenant = Pulumi.GetTenant.Invoke(new()
     ///     {
     ///         Name = "dev",
     ///     });
@@ -89,7 +90,7 @@ namespace DuploCloud.Pulumi
     ///         Special = false,
     ///     });
     /// 
-    ///     var dev_db = new Duplocloud.RdsInstance("dev-db", new()
+    ///     var dev_db = new Pulumi.RdsInstance("dev-db", new()
     ///     {
     ///         TenantId = tenant.Apply(getTenantResult =&gt; getTenantResult.Id),
     ///         Name = "dev-db",
@@ -113,13 +114,14 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
+    /// using Pulumi = Pulumi.Pulumi;
     /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Ensure the 'dev' tenant is already created before creating the RDS instance.
-    ///     var tenant = Duplocloud.GetTenant.Invoke(new()
+    ///     var tenant = Pulumi.GetTenant.Invoke(new()
     ///     {
     ///         Name = "dev",
     ///     });
@@ -131,7 +133,7 @@ namespace DuploCloud.Pulumi
     ///         Special = false,
     ///     });
     /// 
-    ///     var aurora_postgres_db = new Duplocloud.RdsInstance("aurora-postgres-db", new()
+    ///     var aurora_postgres_db = new Pulumi.RdsInstance("aurora-postgres-db", new()
     ///     {
     ///         TenantId = tenant.Apply(getTenantResult =&gt; getTenantResult.Id),
     ///         Name = "aurora-postgres-db",
@@ -153,13 +155,14 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
+    /// using Pulumi = Pulumi.Pulumi;
     /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Ensure the 'dev' tenant is already created before creating the RDS instance.
-    ///     var tenant = Duplocloud.GetTenant.Invoke(new()
+    ///     var tenant = Pulumi.GetTenant.Invoke(new()
     ///     {
     ///         Name = "dev",
     ///     });
@@ -171,7 +174,7 @@ namespace DuploCloud.Pulumi
     ///         Special = false,
     ///     });
     /// 
-    ///     var aurora_serverless = new Duplocloud.RdsInstance("aurora-serverless", new()
+    ///     var aurora_serverless = new Pulumi.RdsInstance("aurora-serverless", new()
     ///     {
     ///         TenantId = tenant.Apply(getTenantResult =&gt; getTenantResult.Id),
     ///         Name = "aurora-postgres",
@@ -182,7 +185,7 @@ namespace DuploCloud.Pulumi
     ///         MasterPassword = mypassword.Result,
     ///         EncryptStorage = true,
     ///         BackupRetentionPeriod = 7,
-    ///         V2ScalingConfiguration = new Duplocloud.Inputs.RdsInstanceV2ScalingConfigurationArgs
+    ///         V2ScalingConfiguration = new Pulumi.Inputs.RdsInstanceV2ScalingConfigurationArgs
     ///         {
     ///             MinCapacity = 0.5,
     ///             MaxCapacity = 2,
@@ -191,7 +194,7 @@ namespace DuploCloud.Pulumi
     ///         DeletionProtection = true,
     ///     });
     /// 
-    ///     var read_replica = new Duplocloud.RdsReadReplica("read-replica", new()
+    ///     var read_replica = new Pulumi.RdsReadReplica("read-replica", new()
     ///     {
     ///         TenantId = tenant.Apply(getTenantResult =&gt; getTenantResult.Id),
     ///         Name = "aurora-postgres-read-replica",
@@ -214,13 +217,14 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
+    /// using Pulumi = Pulumi.Pulumi;
     /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Ensure the 'dev' tenant is already created before creating the RDS instance.
-    ///     var tenant = Duplocloud.GetTenant.Invoke(new()
+    ///     var tenant = Pulumi.GetTenant.Invoke(new()
     ///     {
     ///         Name = "dev",
     ///     });
@@ -233,7 +237,7 @@ namespace DuploCloud.Pulumi
     ///     });
     /// 
     ///     // Create an RDS instance.
-    ///     var dev_db = new Duplocloud.RdsInstance("dev-db", new()
+    ///     var dev_db = new Pulumi.RdsInstance("dev-db", new()
     ///     {
     ///         TenantId = tenant.Apply(getTenantResult =&gt; getTenantResult.Id),
     ///         Name = "dev-db",
@@ -255,13 +259,14 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
+    /// using Pulumi = Pulumi.Pulumi;
     /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Ensure the 'dev' tenant is already created before creating the RDS instance.
-    ///     var tenant = Duplocloud.GetTenant.Invoke(new()
+    ///     var tenant = Pulumi.GetTenant.Invoke(new()
     ///     {
     ///         Name = "dev",
     ///     });
@@ -274,7 +279,7 @@ namespace DuploCloud.Pulumi
     ///     });
     /// 
     ///     // Create an RDS instance.
-    ///     var dev_db = new Duplocloud.RdsInstance("dev-db", new()
+    ///     var dev_db = new Pulumi.RdsInstance("dev-db", new()
     ///     {
     ///         TenantId = tenant.Apply(getTenantResult =&gt; getTenantResult.Id),
     ///         Name = "dev-db",
@@ -299,13 +304,14 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
+    /// using Pulumi = Pulumi.Pulumi;
     /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Ensure the 'dev' tenant is already created before creating the RDS instance.
-    ///     var tenant = Duplocloud.GetTenant.Invoke(new()
+    ///     var tenant = Pulumi.GetTenant.Invoke(new()
     ///     {
     ///         Name = "dev",
     ///     });
@@ -318,7 +324,7 @@ namespace DuploCloud.Pulumi
     ///     });
     /// 
     ///     // Create an RDS instance.
-    ///     var mysql_db = new Duplocloud.RdsInstance("mysql-db", new()
+    ///     var mysql_db = new Pulumi.RdsInstance("mysql-db", new()
     ///     {
     ///         TenantId = tenant.Apply(getTenantResult =&gt; getTenantResult.Id),
     ///         Name = "mysql-db",
@@ -345,11 +351,11 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var mydb = new Duplocloud.RdsInstance("mydb", new()
+    ///     var mydb = new Pulumi.RdsInstance("mydb", new()
     ///     {
     ///         TenantId = tenant.Id,
     ///         Name = "mydb1psql",
@@ -362,7 +368,7 @@ namespace DuploCloud.Pulumi
     ///         StoreDetailsInSecretManager = true,
     ///         EnhancedMonitoring = 0,
     ///         StorageType = "gp2",
-    ///         PerformanceInsights = new Duplocloud.Inputs.RdsInstancePerformanceInsightsArgs
+    ///         PerformanceInsights = new Pulumi.Inputs.RdsInstancePerformanceInsightsArgs
     ///         {
     ///             Enabled = true,
     ///             RetentionPeriod = 7,
@@ -378,11 +384,11 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var mydb = new Duplocloud.RdsInstance("mydb", new()
+    ///     var mydb = new Pulumi.RdsInstance("mydb", new()
     ///     {
     ///         TenantId = tenant.Id,
     ///         Name = "clust",
@@ -394,7 +400,7 @@ namespace DuploCloud.Pulumi
     ///         EncryptStorage = true,
     ///         StoreDetailsInSecretManager = true,
     ///         EnhancedMonitoring = 0,
-    ///         PerformanceInsights = new Duplocloud.Inputs.RdsInstancePerformanceInsightsArgs
+    ///         PerformanceInsights = new Pulumi.Inputs.RdsInstancePerformanceInsightsArgs
     ///         {
     ///             Enabled = true,
     ///             RetentionPeriod = 7,
@@ -409,11 +415,11 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var mydb = new Duplocloud.RdsInstance("mydb", new()
+    ///     var mydb = new Pulumi.RdsInstance("mydb", new()
     ///     {
     ///         TenantId = tenant.Id,
     ///         Name = "doc",
@@ -425,7 +431,7 @@ namespace DuploCloud.Pulumi
     ///         EncryptStorage = true,
     ///         StoreDetailsInSecretManager = true,
     ///         EnhancedMonitoring = 0,
-    ///         PerformanceInsights = new Duplocloud.Inputs.RdsInstancePerformanceInsightsArgs
+    ///         PerformanceInsights = new Pulumi.Inputs.RdsInstancePerformanceInsightsArgs
     ///         {
     ///             Enabled = true,
     ///             RetentionPeriod = 7,
@@ -439,12 +445,12 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Example for creating db using snapshot
-    ///     var mydb = new Duplocloud.RdsInstance("mydb", new()
+    ///     var mydb = new Pulumi.RdsInstance("mydb", new()
     ///     {
     ///         TenantId = tenant.Id,
     ///         Name = "mydbpsql",
@@ -452,6 +458,102 @@ namespace DuploCloud.Pulumi
     ///         EngineVersion = "5.7.44",
     ///         Size = "db.t3.medium",
     ///         SnapshotId = "rds:duplotest-snapdb-2024-12-17-07-00",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// # Example to showcase use of parameter group in writer and read replica for aurora cluster instance
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
+    /// using Random = Pulumi.Random;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var mypassword = new Random.Index.Password("mypassword", new()
+    ///     {
+    ///         Length = 16,
+    ///         Special = false,
+    ///     });
+    /// 
+    ///     var app = new Pulumi.RdsInstance("app", new()
+    ///     {
+    ///         TenantId = tenant.Id,
+    ///         Name = "writer1-sqlnew",
+    ///         Engine = 8,
+    ///         EngineVersion = "5.7.mysql_aurora.2.11.5",
+    ///         Size = "db.r5.large",
+    ///         MasterUsername = "myuser",
+    ///         MasterPassword = mypassword.Result,
+    ///         EncryptStorage = true,
+    ///         BackupRetentionPeriod = 10,
+    ///         DbName = "auroradb",
+    ///         SkipFinalSnapshot = true,
+    ///         StoreDetailsInSecretManager = false,
+    ///         EnhancedMonitoring = 0,
+    ///         AvailabilityZone = "us-west-2b",
+    ///         StorageType = "aurora",
+    ///         ClusterParameterGroupName = "c-aurora-mysql",
+    ///         ParameterGroupName = "aurora-mysql-dbparam",
+    ///     });
+    /// 
+    ///     var replica1 = new Pulumi.RdsReadReplica("replica1", new()
+    ///     {
+    ///         TenantId = app.TenantId,
+    ///         Name = "aurora-replica-new",
+    ///         Size = "db.r5.large",
+    ///         ClusterIdentifier = app.ClusterIdentifier,
+    ///         AvailabilityZone = "us-west-2a",
+    ///         ParameterGroupName = "aurora-mysql-dbparam",
+    ///         EngineType = app.Engine,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// # Example to showcase use of parameter group in writer and read replica for standalone instance
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var mydb = new Pulumi.RdsInstance("mydb", new()
+    ///     {
+    ///         TenantId = tenant.Id,
+    ///         Name = "tf-postgresql1",
+    ///         Engine = 1,
+    ///         EngineVersion = "13.11",
+    ///         Size = "db.t3.medium",
+    ///         MasterUsername = "myuser",
+    ///         MasterPassword = "Qaazwedd#1",
+    ///         ParameterGroupName = "psql13dbparam",
+    ///         EncryptStorage = false,
+    ///         StoreDetailsInSecretManager = false,
+    ///         EnhancedMonitoring = 0,
+    ///         StorageType = "gp2",
+    ///     });
+    /// 
+    ///     var replica = new Pulumi.RdsReadReplica("replica", new()
+    ///     {
+    ///         TenantId = mydb.TenantId,
+    ///         Name = "postgresql-rep1",
+    ///         Size = "db.t3.medium",
+    ///         ClusterIdentifier = mydb.ClusterIdentifier,
+    ///         PerformanceInsights = new Pulumi.Inputs.RdsReadReplicaPerformanceInsightsArgs
+    ///         {
+    ///             Enabled = true,
+    ///             RetentionPeriod = 31,
+    ///         },
+    ///         EngineType = mydb.Engine,
+    ///         ParameterGroupName = mydb.ParameterGroupName,
     ///     });
     /// 
     /// });
@@ -470,128 +572,6 @@ namespace DuploCloud.Pulumi
     /// ```sh
     /// $ pulumi import duplocloud:index/rdsInstance:RdsInstance mydb v2/subscriptions/*TENANT_ID*/RDSDBInstance/*SHORTNAME*
     /// ```
-    /// 
-    /// Example to showcase use of parameter group in writer and read replica for aurora cluster instance
-    /// 
-    /// resource "random_password" "mypassword" {
-    /// 
-    ///   length  = 16
-    /// 
-    ///   special = false
-    /// 
-    /// }
-    /// 
-    /// resource "duplocloud_rds_instance" "app" {
-    /// 
-    ///   tenant_id      = data.duplocloud_tenant.tenant.id
-    /// 
-    ///   name           = "writer1-sqlnew"
-    /// 
-    ///   engine         = 8
-    /// 
-    ///   engine_version = "5.7.mysql_aurora.2.11.5"
-    /// 
-    ///   size           = "db.r5.large"
-    /// 
-    ///   master_username              = "myuser"
-    /// 
-    ///   master_password              = random_password.mypassword.result
-    /// 
-    ///   encrypt_storage         = true
-    /// 
-    ///   backup_retention_period = 10
-    /// 
-    ///   db_name         =  "auroradb"
-    /// 
-    ///   skip_final_snapshot = true
-    /// 
-    ///   store_details_in_secret_manager = false
-    /// 
-    ///   enhanced_monitoring = 0
-    /// 
-    ///   availability_zone = "us-west-2b"
-    /// 
-    ///   storage_type                    = "aurora"
-    /// 
-    ///   cluster_parameter_group_name = "c-aurora-mysql"
-    /// 
-    ///   parameter_group_name = "aurora-mysql-dbparam"
-    /// 
-    /// }
-    /// 
-    /// resource "duplocloud_rds_read_replica" "replica1" {
-    /// 
-    ///   tenant_id          = duplocloud_rds_instance.app.tenant_id
-    /// 
-    ///   name               = "aurora-replica-new"
-    /// 
-    ///   size               = "db.r5.large"
-    /// 
-    ///   cluster_identifier = duplocloud_rds_instance.app.cluster_identifier
-    /// 
-    ///   availability_zone = "us-west-2a"
-    /// 
-    ///   parameter_group_name = "aurora-mysql-dbparam"
-    /// 
-    ///   engine_type=duplocloud_rds_instance.app.engine
-    /// 
-    /// }
-    /// 
-    /// Example to showcase use of parameter group in writer and read replica for standalone instance
-    /// 
-    /// resource "duplocloud_rds_instance" "mydb" {
-    /// 
-    ///   tenant_id      = data.duplocloud_tenant.tenant.id
-    /// 
-    ///   name           = "tf-postgresql1"
-    /// 
-    ///   engine         = 1// PostgreSQL
-    /// 
-    ///   engine_version = "13.11"
-    /// 
-    ///   size           = "db.t3.medium"
-    /// 
-    ///   master_username = "myuser"
-    /// 
-    ///   master_password = "Qaazwedd#1"
-    /// 
-    ///   parameter_group_name = "psql13dbparam"
-    /// 
-    ///   encrypt_storage                 = false
-    /// 
-    ///   store_details_in_secret_manager = false
-    /// 
-    ///   enhanced_monitoring             = 0
-    /// 
-    ///   storage_type                    = "gp2"
-    /// 
-    /// }
-    /// 
-    /// resource "duplocloud_rds_read_replica" "replica" {
-    /// 
-    ///   tenant_id          = duplocloud_rds_instance.mydb.tenant_id
-    /// 
-    ///   name               = "postgresql-rep1"
-    /// 
-    ///   size               = "db.t3.medium"
-    /// 
-    ///   cluster_identifier = duplocloud_rds_instance.mydb.cluster_identifier
-    /// 
-    ///   #availability_zone = "us-east-1b"
-    /// 
-    ///   performance_insights {
-    /// 
-    ///     enabled          = true
-    ///     
-    ///     retention_period = 31
-    /// 
-    ///   }
-    /// 
-    ///   engine_type=duplocloud_rds_instance.mydb.engine
-    /// 
-    ///   parameter_group_name=duplocloud_rds_instance.mydb.parameter_group_name
-    /// 
-    /// }
     /// </summary>
     [PulumiResourceType("duplocloud:index/rdsInstance:RdsInstance")]
     public partial class RdsInstance : global::Pulumi.CustomResource
@@ -607,6 +587,12 @@ namespace DuploCloud.Pulumi
         /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable or disable auto minor version upgrade
+        /// </summary>
+        [Output("autoMinorVersionUpgrade")]
+        public Output<bool> AutoMinorVersionUpgrade { get; private set; } = null!;
 
         /// <summary>
         /// Specify a valid Availability Zone for the RDS primary instance (when Multi-AZ is disabled) or for the Aurora writer
@@ -653,7 +639,7 @@ namespace DuploCloud.Pulumi
         public Output<bool?> DeletionProtection { get; private set; } = null!;
 
         /// <summary>
-        /// Whether or not to enable the RDS IAM authentication.
+        /// Whether or not to enable the RDS IAM authentication. It can only be set during instance creation.
         /// </summary>
         [Output("enableIamAuth")]
         public Output<bool> EnableIamAuth { get; private set; } = null!;
@@ -744,7 +730,7 @@ namespace DuploCloud.Pulumi
         /// Specifies if the RDS instance is multi-AZ.
         /// </summary>
         [Output("multiAz")]
-        public Output<bool> MultiAz { get; private set; } = null!;
+        public Output<bool?> MultiAz { get; private set; } = null!;
 
         /// <summary>
         /// The short name of the RDS instance. Duplo will add a prefix to the name. You can retrieve the full name from the
@@ -757,7 +743,7 @@ namespace DuploCloud.Pulumi
         /// A RDS parameter group name to apply to the RDS instance.
         /// </summary>
         [Output("parameterGroupName")]
-        public Output<string> ParameterGroupName { get; private set; } = null!;
+        public Output<string?> ParameterGroupName { get; private set; } = null!;
 
         /// <summary>
         /// Amazon RDS Performance Insights is a database performance tuning and monitoring feature that helps you quickly assess
@@ -891,6 +877,12 @@ namespace DuploCloud.Pulumi
         public Input<int>? AllocatedStorage { get; set; }
 
         /// <summary>
+        /// Enable or disable auto minor version upgrade
+        /// </summary>
+        [Input("autoMinorVersionUpgrade")]
+        public Input<bool>? AutoMinorVersionUpgrade { get; set; }
+
+        /// <summary>
         /// Specify a valid Availability Zone for the RDS primary instance (when Multi-AZ is disabled) or for the Aurora writer
         /// instance. e.g. us-west-2a
         /// </summary>
@@ -929,7 +921,7 @@ namespace DuploCloud.Pulumi
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
-        /// Whether or not to enable the RDS IAM authentication.
+        /// Whether or not to enable the RDS IAM authentication. It can only be set during instance creation.
         /// </summary>
         [Input("enableIamAuth")]
         public Input<bool>? EnableIamAuth { get; set; }
@@ -1110,6 +1102,12 @@ namespace DuploCloud.Pulumi
         public Input<string>? Arn { get; set; }
 
         /// <summary>
+        /// Enable or disable auto minor version upgrade
+        /// </summary>
+        [Input("autoMinorVersionUpgrade")]
+        public Input<bool>? AutoMinorVersionUpgrade { get; set; }
+
+        /// <summary>
         /// Specify a valid Availability Zone for the RDS primary instance (when Multi-AZ is disabled) or for the Aurora writer
         /// instance. e.g. us-west-2a
         /// </summary>
@@ -1154,7 +1152,7 @@ namespace DuploCloud.Pulumi
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
-        /// Whether or not to enable the RDS IAM authentication.
+        /// Whether or not to enable the RDS IAM authentication. It can only be set during instance creation.
         /// </summary>
         [Input("enableIamAuth")]
         public Input<bool>? EnableIamAuth { get; set; }

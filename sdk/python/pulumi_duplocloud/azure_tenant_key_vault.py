@@ -22,6 +22,7 @@ class AzureTenantKeyVaultArgs:
                  sku_name: pulumi.Input[str],
                  tenant_id: pulumi.Input[str],
                  name: Optional[pulumi.Input[str]] = None,
+                 purge: Optional[pulumi.Input[bool]] = None,
                  purge_protection_enabled: Optional[pulumi.Input[bool]] = None,
                  soft_delete_retention_days: Optional[pulumi.Input[int]] = None):
         """
@@ -29,6 +30,7 @@ class AzureTenantKeyVaultArgs:
         :param pulumi.Input[str] sku_name: The Name of the SKU used for this Key Vault. Possible values are `standard` and `premium`.
         :param pulumi.Input[str] tenant_id: The GUID of the DuploCloud tenant that the key vault will be created in.
         :param pulumi.Input[str] name: Specifies the name of the Key Vault.
+        :param pulumi.Input[bool] purge: Purge the Key Vault. Defaults to `false`.
         :param pulumi.Input[bool] purge_protection_enabled: Is Purge Protection enabled for this Key Vault?
         :param pulumi.Input[int] soft_delete_retention_days: The number of days that items should be retained for once soft-deleted. This value can be between `7` and `90` (the default) days. Defaults to `90`.
         """
@@ -36,6 +38,8 @@ class AzureTenantKeyVaultArgs:
         pulumi.set(__self__, "tenant_id", tenant_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if purge is not None:
+            pulumi.set(__self__, "purge", purge)
         if purge_protection_enabled is not None:
             pulumi.set(__self__, "purge_protection_enabled", purge_protection_enabled)
         if soft_delete_retention_days is not None:
@@ -78,6 +82,18 @@ class AzureTenantKeyVaultArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter
+    def purge(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Purge the Key Vault. Defaults to `false`.
+        """
+        return pulumi.get(self, "purge")
+
+    @purge.setter
+    def purge(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "purge", value)
+
+    @property
     @pulumi.getter(name="purgeProtectionEnabled")
     def purge_protection_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -108,6 +124,7 @@ class _AzureTenantKeyVaultState:
                  azure_id: Optional[pulumi.Input[str]] = None,
                  enabled_for_disk_encryption: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 purge: Optional[pulumi.Input[bool]] = None,
                  purge_protection_enabled: Optional[pulumi.Input[bool]] = None,
                  sku_name: Optional[pulumi.Input[str]] = None,
                  soft_delete_retention_days: Optional[pulumi.Input[int]] = None,
@@ -118,6 +135,7 @@ class _AzureTenantKeyVaultState:
         :param pulumi.Input[str] azure_id: The azure ID of the Key Vault.
         :param pulumi.Input[bool] enabled_for_disk_encryption: Azure Disk Encryption is permitted to retrieve secrets from the vault and unwrap keys.
         :param pulumi.Input[str] name: Specifies the name of the Key Vault.
+        :param pulumi.Input[bool] purge: Purge the Key Vault. Defaults to `false`.
         :param pulumi.Input[bool] purge_protection_enabled: Is Purge Protection enabled for this Key Vault?
         :param pulumi.Input[str] sku_name: The Name of the SKU used for this Key Vault. Possible values are `standard` and `premium`.
         :param pulumi.Input[int] soft_delete_retention_days: The number of days that items should be retained for once soft-deleted. This value can be between `7` and `90` (the default) days. Defaults to `90`.
@@ -130,6 +148,8 @@ class _AzureTenantKeyVaultState:
             pulumi.set(__self__, "enabled_for_disk_encryption", enabled_for_disk_encryption)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if purge is not None:
+            pulumi.set(__self__, "purge", purge)
         if purge_protection_enabled is not None:
             pulumi.set(__self__, "purge_protection_enabled", purge_protection_enabled)
         if sku_name is not None:
@@ -176,6 +196,18 @@ class _AzureTenantKeyVaultState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def purge(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Purge the Key Vault. Defaults to `false`.
+        """
+        return pulumi.get(self, "purge")
+
+    @purge.setter
+    def purge(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "purge", value)
 
     @property
     @pulumi.getter(name="purgeProtectionEnabled")
@@ -244,6 +276,7 @@ class AzureTenantKeyVault(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 purge: Optional[pulumi.Input[bool]] = None,
                  purge_protection_enabled: Optional[pulumi.Input[bool]] = None,
                  sku_name: Optional[pulumi.Input[str]] = None,
                  soft_delete_retention_days: Optional[pulumi.Input[int]] = None,
@@ -251,23 +284,6 @@ class AzureTenantKeyVault(pulumi.CustomResource):
                  __props__=None):
         """
         `AzureTenantKeyVault` manages a azure Key Vault in DuploCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_duplocloud as duplocloud
-
-        tenant = duplocloud.Tenant("tenant",
-            account_name="test",
-            plan_id="test")
-        kv = duplocloud.AzureTenantKeyVault("kv",
-            tenant_id=tenant.tenant_id,
-            name="tst-kv001",
-            sku_name="standard",
-            purge_protection_enabled=True,
-            soft_delete_retention_days=90)
-        ```
 
         ## Import
 
@@ -286,6 +302,7 @@ class AzureTenantKeyVault(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: Specifies the name of the Key Vault.
+        :param pulumi.Input[bool] purge: Purge the Key Vault. Defaults to `false`.
         :param pulumi.Input[bool] purge_protection_enabled: Is Purge Protection enabled for this Key Vault?
         :param pulumi.Input[str] sku_name: The Name of the SKU used for this Key Vault. Possible values are `standard` and `premium`.
         :param pulumi.Input[int] soft_delete_retention_days: The number of days that items should be retained for once soft-deleted. This value can be between `7` and `90` (the default) days. Defaults to `90`.
@@ -299,23 +316,6 @@ class AzureTenantKeyVault(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         `AzureTenantKeyVault` manages a azure Key Vault in DuploCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_duplocloud as duplocloud
-
-        tenant = duplocloud.Tenant("tenant",
-            account_name="test",
-            plan_id="test")
-        kv = duplocloud.AzureTenantKeyVault("kv",
-            tenant_id=tenant.tenant_id,
-            name="tst-kv001",
-            sku_name="standard",
-            purge_protection_enabled=True,
-            soft_delete_retention_days=90)
-        ```
 
         ## Import
 
@@ -347,6 +347,7 @@ class AzureTenantKeyVault(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 purge: Optional[pulumi.Input[bool]] = None,
                  purge_protection_enabled: Optional[pulumi.Input[bool]] = None,
                  sku_name: Optional[pulumi.Input[str]] = None,
                  soft_delete_retention_days: Optional[pulumi.Input[int]] = None,
@@ -361,6 +362,7 @@ class AzureTenantKeyVault(pulumi.CustomResource):
             __props__ = AzureTenantKeyVaultArgs.__new__(AzureTenantKeyVaultArgs)
 
             __props__.__dict__["name"] = name
+            __props__.__dict__["purge"] = purge
             __props__.__dict__["purge_protection_enabled"] = purge_protection_enabled
             if sku_name is None and not opts.urn:
                 raise TypeError("Missing required property 'sku_name'")
@@ -385,6 +387,7 @@ class AzureTenantKeyVault(pulumi.CustomResource):
             azure_id: Optional[pulumi.Input[str]] = None,
             enabled_for_disk_encryption: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            purge: Optional[pulumi.Input[bool]] = None,
             purge_protection_enabled: Optional[pulumi.Input[bool]] = None,
             sku_name: Optional[pulumi.Input[str]] = None,
             soft_delete_retention_days: Optional[pulumi.Input[int]] = None,
@@ -400,6 +403,7 @@ class AzureTenantKeyVault(pulumi.CustomResource):
         :param pulumi.Input[str] azure_id: The azure ID of the Key Vault.
         :param pulumi.Input[bool] enabled_for_disk_encryption: Azure Disk Encryption is permitted to retrieve secrets from the vault and unwrap keys.
         :param pulumi.Input[str] name: Specifies the name of the Key Vault.
+        :param pulumi.Input[bool] purge: Purge the Key Vault. Defaults to `false`.
         :param pulumi.Input[bool] purge_protection_enabled: Is Purge Protection enabled for this Key Vault?
         :param pulumi.Input[str] sku_name: The Name of the SKU used for this Key Vault. Possible values are `standard` and `premium`.
         :param pulumi.Input[int] soft_delete_retention_days: The number of days that items should be retained for once soft-deleted. This value can be between `7` and `90` (the default) days. Defaults to `90`.
@@ -413,6 +417,7 @@ class AzureTenantKeyVault(pulumi.CustomResource):
         __props__.__dict__["azure_id"] = azure_id
         __props__.__dict__["enabled_for_disk_encryption"] = enabled_for_disk_encryption
         __props__.__dict__["name"] = name
+        __props__.__dict__["purge"] = purge
         __props__.__dict__["purge_protection_enabled"] = purge_protection_enabled
         __props__.__dict__["sku_name"] = sku_name
         __props__.__dict__["soft_delete_retention_days"] = soft_delete_retention_days
@@ -443,6 +448,14 @@ class AzureTenantKeyVault(pulumi.CustomResource):
         Specifies the name of the Key Vault.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def purge(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Purge the Key Vault. Defaults to `false`.
+        """
+        return pulumi.get(self, "purge")
 
     @property
     @pulumi.getter(name="purgeProtectionEnabled")

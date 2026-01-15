@@ -30,6 +30,7 @@ class AwsSqsQueueArgs:
                  fifo_throughput_limit: Optional[pulumi.Input[str]] = None,
                  message_retention_seconds: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 receive_wait_time_seconds: Optional[pulumi.Input[int]] = None,
                  visibility_timeout_seconds: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a AwsSqsQueue resource.
@@ -42,6 +43,7 @@ class AwsSqsQueueArgs:
         :param pulumi.Input[str] fifo_throughput_limit: Specifies whether the FIFO queue throughput quota applies to the entire queue or per message group. Valid values are `perQueue` (default) and `perMessageGroupId`.
         :param pulumi.Input[int] message_retention_seconds: The number of seconds Amazon SQS retains a message. Integer representing seconds, from 60 (1 minute) to 1209600 (14 days).
         :param pulumi.Input[str] name: The name of the queue. Queue names must be made up of only uppercase and lowercase ASCII letters, numbers, underscores, and hyphens, and have up to 80 characters long which is inclusive of duplo prefix (duploservices-{tenant_name}-) appended by the system.
+        :param pulumi.Input[int] receive_wait_time_seconds: The time for which a ReceiveMessage call will wait for a message to arrive. An integer from 0 to 20 (seconds).
         :param pulumi.Input[int] visibility_timeout_seconds: The visibility timeout for the queue. An integer from 0 to 43200 (12 hours).
         """
         pulumi.set(__self__, "tenant_id", tenant_id)
@@ -61,6 +63,8 @@ class AwsSqsQueueArgs:
             pulumi.set(__self__, "message_retention_seconds", message_retention_seconds)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if receive_wait_time_seconds is not None:
+            pulumi.set(__self__, "receive_wait_time_seconds", receive_wait_time_seconds)
         if visibility_timeout_seconds is not None:
             pulumi.set(__self__, "visibility_timeout_seconds", visibility_timeout_seconds)
 
@@ -173,6 +177,18 @@ class AwsSqsQueueArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="receiveWaitTimeSeconds")
+    def receive_wait_time_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        The time for which a ReceiveMessage call will wait for a message to arrive. An integer from 0 to 20 (seconds).
+        """
+        return pulumi.get(self, "receive_wait_time_seconds")
+
+    @receive_wait_time_seconds.setter
+    def receive_wait_time_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "receive_wait_time_seconds", value)
+
+    @property
     @pulumi.getter(name="visibilityTimeoutSeconds")
     def visibility_timeout_seconds(self) -> Optional[pulumi.Input[int]]:
         """
@@ -198,6 +214,7 @@ class _AwsSqsQueueState:
                  fullname: Optional[pulumi.Input[str]] = None,
                  message_retention_seconds: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 receive_wait_time_seconds: Optional[pulumi.Input[int]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None,
                  visibility_timeout_seconds: Optional[pulumi.Input[int]] = None):
@@ -213,6 +230,7 @@ class _AwsSqsQueueState:
         :param pulumi.Input[str] fullname: The full name of the SQS queue.
         :param pulumi.Input[int] message_retention_seconds: The number of seconds Amazon SQS retains a message. Integer representing seconds, from 60 (1 minute) to 1209600 (14 days).
         :param pulumi.Input[str] name: The name of the queue. Queue names must be made up of only uppercase and lowercase ASCII letters, numbers, underscores, and hyphens, and have up to 80 characters long which is inclusive of duplo prefix (duploservices-{tenant_name}-) appended by the system.
+        :param pulumi.Input[int] receive_wait_time_seconds: The time for which a ReceiveMessage call will wait for a message to arrive. An integer from 0 to 20 (seconds).
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the SQS queue will be created in.
         :param pulumi.Input[str] url: The URL for the created Amazon SQS queue.
         :param pulumi.Input[int] visibility_timeout_seconds: The visibility timeout for the queue. An integer from 0 to 43200 (12 hours).
@@ -237,6 +255,8 @@ class _AwsSqsQueueState:
             pulumi.set(__self__, "message_retention_seconds", message_retention_seconds)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if receive_wait_time_seconds is not None:
+            pulumi.set(__self__, "receive_wait_time_seconds", receive_wait_time_seconds)
         if tenant_id is not None:
             pulumi.set(__self__, "tenant_id", tenant_id)
         if url is not None:
@@ -365,6 +385,18 @@ class _AwsSqsQueueState:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="receiveWaitTimeSeconds")
+    def receive_wait_time_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        The time for which a ReceiveMessage call will wait for a message to arrive. An integer from 0 to 20 (seconds).
+        """
+        return pulumi.get(self, "receive_wait_time_seconds")
+
+    @receive_wait_time_seconds.setter
+    def receive_wait_time_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "receive_wait_time_seconds", value)
+
+    @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -414,6 +446,7 @@ class AwsSqsQueue(pulumi.CustomResource):
                  fifo_throughput_limit: Optional[pulumi.Input[str]] = None,
                  message_retention_seconds: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 receive_wait_time_seconds: Optional[pulumi.Input[int]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  visibility_timeout_seconds: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -476,6 +509,7 @@ class AwsSqsQueue(pulumi.CustomResource):
         :param pulumi.Input[str] fifo_throughput_limit: Specifies whether the FIFO queue throughput quota applies to the entire queue or per message group. Valid values are `perQueue` (default) and `perMessageGroupId`.
         :param pulumi.Input[int] message_retention_seconds: The number of seconds Amazon SQS retains a message. Integer representing seconds, from 60 (1 minute) to 1209600 (14 days).
         :param pulumi.Input[str] name: The name of the queue. Queue names must be made up of only uppercase and lowercase ASCII letters, numbers, underscores, and hyphens, and have up to 80 characters long which is inclusive of duplo prefix (duploservices-{tenant_name}-) appended by the system.
+        :param pulumi.Input[int] receive_wait_time_seconds: The time for which a ReceiveMessage call will wait for a message to arrive. An integer from 0 to 20 (seconds).
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the SQS queue will be created in.
         :param pulumi.Input[int] visibility_timeout_seconds: The visibility timeout for the queue. An integer from 0 to 43200 (12 hours).
         """
@@ -557,6 +591,7 @@ class AwsSqsQueue(pulumi.CustomResource):
                  fifo_throughput_limit: Optional[pulumi.Input[str]] = None,
                  message_retention_seconds: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 receive_wait_time_seconds: Optional[pulumi.Input[int]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  visibility_timeout_seconds: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -576,6 +611,7 @@ class AwsSqsQueue(pulumi.CustomResource):
             __props__.__dict__["fifo_throughput_limit"] = fifo_throughput_limit
             __props__.__dict__["message_retention_seconds"] = message_retention_seconds
             __props__.__dict__["name"] = name
+            __props__.__dict__["receive_wait_time_seconds"] = receive_wait_time_seconds
             if tenant_id is None and not opts.urn:
                 raise TypeError("Missing required property 'tenant_id'")
             __props__.__dict__["tenant_id"] = tenant_id
@@ -603,6 +639,7 @@ class AwsSqsQueue(pulumi.CustomResource):
             fullname: Optional[pulumi.Input[str]] = None,
             message_retention_seconds: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            receive_wait_time_seconds: Optional[pulumi.Input[int]] = None,
             tenant_id: Optional[pulumi.Input[str]] = None,
             url: Optional[pulumi.Input[str]] = None,
             visibility_timeout_seconds: Optional[pulumi.Input[int]] = None) -> 'AwsSqsQueue':
@@ -623,6 +660,7 @@ class AwsSqsQueue(pulumi.CustomResource):
         :param pulumi.Input[str] fullname: The full name of the SQS queue.
         :param pulumi.Input[int] message_retention_seconds: The number of seconds Amazon SQS retains a message. Integer representing seconds, from 60 (1 minute) to 1209600 (14 days).
         :param pulumi.Input[str] name: The name of the queue. Queue names must be made up of only uppercase and lowercase ASCII letters, numbers, underscores, and hyphens, and have up to 80 characters long which is inclusive of duplo prefix (duploservices-{tenant_name}-) appended by the system.
+        :param pulumi.Input[int] receive_wait_time_seconds: The time for which a ReceiveMessage call will wait for a message to arrive. An integer from 0 to 20 (seconds).
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the SQS queue will be created in.
         :param pulumi.Input[str] url: The URL for the created Amazon SQS queue.
         :param pulumi.Input[int] visibility_timeout_seconds: The visibility timeout for the queue. An integer from 0 to 43200 (12 hours).
@@ -641,6 +679,7 @@ class AwsSqsQueue(pulumi.CustomResource):
         __props__.__dict__["fullname"] = fullname
         __props__.__dict__["message_retention_seconds"] = message_retention_seconds
         __props__.__dict__["name"] = name
+        __props__.__dict__["receive_wait_time_seconds"] = receive_wait_time_seconds
         __props__.__dict__["tenant_id"] = tenant_id
         __props__.__dict__["url"] = url
         __props__.__dict__["visibility_timeout_seconds"] = visibility_timeout_seconds
@@ -725,6 +764,14 @@ class AwsSqsQueue(pulumi.CustomResource):
         The name of the queue. Queue names must be made up of only uppercase and lowercase ASCII letters, numbers, underscores, and hyphens, and have up to 80 characters long which is inclusive of duplo prefix (duploservices-{tenant_name}-) appended by the system.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="receiveWaitTimeSeconds")
+    def receive_wait_time_seconds(self) -> pulumi.Output[int]:
+        """
+        The time for which a ReceiveMessage call will wait for a message to arrive. An integer from 0 to 20 (seconds).
+        """
+        return pulumi.get(self, "receive_wait_time_seconds")
 
     @property
     @pulumi.getter(name="tenantId")

@@ -13,34 +13,6 @@ namespace DuploCloud.Pulumi
     /// <summary>
     /// `duplocloud.AzureTenantKeyVault` manages a azure Key Vault in DuploCloud.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var tenant = new Duplocloud.Tenant("tenant", new()
-    ///     {
-    ///         AccountName = "test",
-    ///         PlanId = "test",
-    ///     });
-    /// 
-    ///     var kv = new Duplocloud.AzureTenantKeyVault("kv", new()
-    ///     {
-    ///         TenantId = tenant.TenantId,
-    ///         Name = "tst-kv001",
-    ///         SkuName = "standard",
-    ///         PurgeProtectionEnabled = true,
-    ///         SoftDeleteRetentionDays = 90,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Example: Importing an existing Azure Tenant Key Vault
@@ -75,6 +47,12 @@ namespace DuploCloud.Pulumi
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Purge the Key Vault. Defaults to `false`.
+        /// </summary>
+        [Output("purge")]
+        public Output<bool?> Purge { get; private set; } = null!;
 
         /// <summary>
         /// Is Purge Protection enabled for this Key Vault?
@@ -160,6 +138,12 @@ namespace DuploCloud.Pulumi
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Purge the Key Vault. Defaults to `false`.
+        /// </summary>
+        [Input("purge")]
+        public Input<bool>? Purge { get; set; }
+
+        /// <summary>
         /// Is Purge Protection enabled for this Key Vault?
         /// </summary>
         [Input("purgeProtectionEnabled")]
@@ -208,6 +192,12 @@ namespace DuploCloud.Pulumi
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Purge the Key Vault. Defaults to `false`.
+        /// </summary>
+        [Input("purge")]
+        public Input<bool>? Purge { get; set; }
 
         /// <summary>
         /// Is Purge Protection enabled for this Key Vault?

@@ -14,42 +14,6 @@ import (
 
 // `duplocloudHelmRepository` manages helm repository in duplocloud
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/duplocloud/pulumi-duplocloud/sdk/go/duplocloud"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myapp, err := duplocloud.NewTenant(ctx, "myapp", &duplocloud.TenantArgs{
-//				AccountName: pulumi.String("myapp"),
-//				PlanId:      pulumi.String("default"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = duplocloud.NewHelmRepository(ctx, "repo", &duplocloud.HelmRepositoryArgs{
-//				TenantId: myapp.TenantId,
-//				Name:     "repo-name",
-//				Interval: "06m00s",
-//				Url:      "https://helm.github.com",
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Example: Importing an existing helm repository
@@ -66,12 +30,22 @@ import (
 type K8HelmRepository struct {
 	pulumi.CustomResourceState
 
+	// The provider attribute in the spec block of a HelmRepository specifies the cloud  example: generic, aws, gcp, azure
+	HelmProvider pulumi.StringOutput `pulumi:"helmProvider"`
+	// Set to skip TLS certificate verification when accessing the repository.
+	Insecure pulumi.BoolOutput `pulumi:"insecure"`
 	// The interval associated to helm repository Defaults to `5m0s`.
 	Interval pulumi.StringPtrOutput `pulumi:"interval"`
 	// The identifier name for the helm repository in duplocloud
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Pass credentials even to a different host than the one used in url
+	PassCredentials pulumi.BoolOutput `pulumi:"passCredentials"`
+	// Used to pause the reconciliation of the repository by the controller.
+	Suspend pulumi.BoolOutput `pulumi:"suspend"`
 	// The GUID of the tenant that the storage bucket will be created in.
 	TenantId pulumi.StringOutput `pulumi:"tenantId"`
+	// The Helm repository type. Possible values are default for a Helm HTTP/S repository, or oci for an OCI Helm repository.
+	Type pulumi.StringOutput `pulumi:"type"`
 	// The url of helm repository to be attached
 	Url pulumi.StringOutput `pulumi:"url"`
 }
@@ -112,23 +86,43 @@ func GetK8HelmRepository(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering K8HelmRepository resources.
 type k8helmRepositoryState struct {
+	// The provider attribute in the spec block of a HelmRepository specifies the cloud  example: generic, aws, gcp, azure
+	HelmProvider *string `pulumi:"helmProvider"`
+	// Set to skip TLS certificate verification when accessing the repository.
+	Insecure *bool `pulumi:"insecure"`
 	// The interval associated to helm repository Defaults to `5m0s`.
 	Interval *string `pulumi:"interval"`
 	// The identifier name for the helm repository in duplocloud
 	Name *string `pulumi:"name"`
+	// Pass credentials even to a different host than the one used in url
+	PassCredentials *bool `pulumi:"passCredentials"`
+	// Used to pause the reconciliation of the repository by the controller.
+	Suspend *bool `pulumi:"suspend"`
 	// The GUID of the tenant that the storage bucket will be created in.
 	TenantId *string `pulumi:"tenantId"`
+	// The Helm repository type. Possible values are default for a Helm HTTP/S repository, or oci for an OCI Helm repository.
+	Type *string `pulumi:"type"`
 	// The url of helm repository to be attached
 	Url *string `pulumi:"url"`
 }
 
 type K8HelmRepositoryState struct {
+	// The provider attribute in the spec block of a HelmRepository specifies the cloud  example: generic, aws, gcp, azure
+	HelmProvider pulumi.StringPtrInput
+	// Set to skip TLS certificate verification when accessing the repository.
+	Insecure pulumi.BoolPtrInput
 	// The interval associated to helm repository Defaults to `5m0s`.
 	Interval pulumi.StringPtrInput
 	// The identifier name for the helm repository in duplocloud
 	Name pulumi.StringPtrInput
+	// Pass credentials even to a different host than the one used in url
+	PassCredentials pulumi.BoolPtrInput
+	// Used to pause the reconciliation of the repository by the controller.
+	Suspend pulumi.BoolPtrInput
 	// The GUID of the tenant that the storage bucket will be created in.
 	TenantId pulumi.StringPtrInput
+	// The Helm repository type. Possible values are default for a Helm HTTP/S repository, or oci for an OCI Helm repository.
+	Type pulumi.StringPtrInput
 	// The url of helm repository to be attached
 	Url pulumi.StringPtrInput
 }
@@ -138,24 +132,44 @@ func (K8HelmRepositoryState) ElementType() reflect.Type {
 }
 
 type k8helmRepositoryArgs struct {
+	// The provider attribute in the spec block of a HelmRepository specifies the cloud  example: generic, aws, gcp, azure
+	HelmProvider *string `pulumi:"helmProvider"`
+	// Set to skip TLS certificate verification when accessing the repository.
+	Insecure *bool `pulumi:"insecure"`
 	// The interval associated to helm repository Defaults to `5m0s`.
 	Interval *string `pulumi:"interval"`
 	// The identifier name for the helm repository in duplocloud
 	Name *string `pulumi:"name"`
+	// Pass credentials even to a different host than the one used in url
+	PassCredentials *bool `pulumi:"passCredentials"`
+	// Used to pause the reconciliation of the repository by the controller.
+	Suspend *bool `pulumi:"suspend"`
 	// The GUID of the tenant that the storage bucket will be created in.
 	TenantId string `pulumi:"tenantId"`
+	// The Helm repository type. Possible values are default for a Helm HTTP/S repository, or oci for an OCI Helm repository.
+	Type *string `pulumi:"type"`
 	// The url of helm repository to be attached
 	Url string `pulumi:"url"`
 }
 
 // The set of arguments for constructing a K8HelmRepository resource.
 type K8HelmRepositoryArgs struct {
+	// The provider attribute in the spec block of a HelmRepository specifies the cloud  example: generic, aws, gcp, azure
+	HelmProvider pulumi.StringPtrInput
+	// Set to skip TLS certificate verification when accessing the repository.
+	Insecure pulumi.BoolPtrInput
 	// The interval associated to helm repository Defaults to `5m0s`.
 	Interval pulumi.StringPtrInput
 	// The identifier name for the helm repository in duplocloud
 	Name pulumi.StringPtrInput
+	// Pass credentials even to a different host than the one used in url
+	PassCredentials pulumi.BoolPtrInput
+	// Used to pause the reconciliation of the repository by the controller.
+	Suspend pulumi.BoolPtrInput
 	// The GUID of the tenant that the storage bucket will be created in.
 	TenantId pulumi.StringInput
+	// The Helm repository type. Possible values are default for a Helm HTTP/S repository, or oci for an OCI Helm repository.
+	Type pulumi.StringPtrInput
 	// The url of helm repository to be attached
 	Url pulumi.StringInput
 }
@@ -247,6 +261,16 @@ func (o K8HelmRepositoryOutput) ToK8HelmRepositoryOutputWithContext(ctx context.
 	return o
 }
 
+// The provider attribute in the spec block of a HelmRepository specifies the cloud  example: generic, aws, gcp, azure
+func (o K8HelmRepositoryOutput) HelmProvider() pulumi.StringOutput {
+	return o.ApplyT(func(v *K8HelmRepository) pulumi.StringOutput { return v.HelmProvider }).(pulumi.StringOutput)
+}
+
+// Set to skip TLS certificate verification when accessing the repository.
+func (o K8HelmRepositoryOutput) Insecure() pulumi.BoolOutput {
+	return o.ApplyT(func(v *K8HelmRepository) pulumi.BoolOutput { return v.Insecure }).(pulumi.BoolOutput)
+}
+
 // The interval associated to helm repository Defaults to `5m0s`.
 func (o K8HelmRepositoryOutput) Interval() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *K8HelmRepository) pulumi.StringPtrOutput { return v.Interval }).(pulumi.StringPtrOutput)
@@ -257,9 +281,24 @@ func (o K8HelmRepositoryOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *K8HelmRepository) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Pass credentials even to a different host than the one used in url
+func (o K8HelmRepositoryOutput) PassCredentials() pulumi.BoolOutput {
+	return o.ApplyT(func(v *K8HelmRepository) pulumi.BoolOutput { return v.PassCredentials }).(pulumi.BoolOutput)
+}
+
+// Used to pause the reconciliation of the repository by the controller.
+func (o K8HelmRepositoryOutput) Suspend() pulumi.BoolOutput {
+	return o.ApplyT(func(v *K8HelmRepository) pulumi.BoolOutput { return v.Suspend }).(pulumi.BoolOutput)
+}
+
 // The GUID of the tenant that the storage bucket will be created in.
 func (o K8HelmRepositoryOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v *K8HelmRepository) pulumi.StringOutput { return v.TenantId }).(pulumi.StringOutput)
+}
+
+// The Helm repository type. Possible values are default for a Helm HTTP/S repository, or oci for an OCI Helm repository.
+func (o K8HelmRepositoryOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *K8HelmRepository) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
 // The url of helm repository to be attached

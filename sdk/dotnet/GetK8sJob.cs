@@ -19,14 +19,14 @@ namespace DuploCloud.Pulumi
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Duplocloud = DuploCloud.Pulumi;
+        /// using Pulumi = Pulumi.Pulumi;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var job = Duplocloud.GetK8sJob.Invoke(new()
+        ///     var job = Pulumi.GetK8sJob.Invoke(new()
         ///     {
         ///         TenantId = tenantId,
-        ///         Metadata = new Duplocloud.Inputs.GetK8sJobMetadataInputArgs
+        ///         Metadata = new Pulumi.Inputs.GetK8sJobMetadataInputArgs
         ///         {
         ///             Name = "datajob",
         ///         },
@@ -49,14 +49,14 @@ namespace DuploCloud.Pulumi
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Duplocloud = DuploCloud.Pulumi;
+        /// using Pulumi = Pulumi.Pulumi;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var job = Duplocloud.GetK8sJob.Invoke(new()
+        ///     var job = Pulumi.GetK8sJob.Invoke(new()
         ///     {
         ///         TenantId = tenantId,
-        ///         Metadata = new Duplocloud.Inputs.GetK8sJobMetadataInputArgs
+        ///         Metadata = new Pulumi.Inputs.GetK8sJobMetadataInputArgs
         ///         {
         ///             Name = "datajob",
         ///         },
@@ -79,14 +79,14 @@ namespace DuploCloud.Pulumi
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Duplocloud = DuploCloud.Pulumi;
+        /// using Pulumi = Pulumi.Pulumi;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var job = Duplocloud.GetK8sJob.Invoke(new()
+        ///     var job = Pulumi.GetK8sJob.Invoke(new()
         ///     {
         ///         TenantId = tenantId,
-        ///         Metadata = new Duplocloud.Inputs.GetK8sJobMetadataInputArgs
+        ///         Metadata = new Pulumi.Inputs.GetK8sJobMetadataInputArgs
         ///         {
         ///             Name = "datajob",
         ///         },
@@ -106,6 +106,12 @@ namespace DuploCloud.Pulumi
 
     public sealed class GetK8sJobArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Allocation tags is the simplest way to constraint containers/pods with hosts/nodes. DuploCloud/Kubernetes Orchestrator will make sure containers will run on the hosts having same allocation tags.
+        /// </summary>
+        [Input("allocationTags")]
+        public string? AllocationTags { get; set; }
+
         /// <summary>
         /// Defaults to `false`.
         /// </summary>
@@ -132,6 +138,12 @@ namespace DuploCloud.Pulumi
 
     public sealed class GetK8sJobInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Allocation tags is the simplest way to constraint containers/pods with hosts/nodes. DuploCloud/Kubernetes Orchestrator will make sure containers will run on the hosts having same allocation tags.
+        /// </summary>
+        [Input("allocationTags")]
+        public Input<string>? AllocationTags { get; set; }
+
         /// <summary>
         /// Defaults to `false`.
         /// </summary>
@@ -161,6 +173,10 @@ namespace DuploCloud.Pulumi
     public sealed class GetK8sJobResult
     {
         /// <summary>
+        /// Allocation tags is the simplest way to constraint containers/pods with hosts/nodes. DuploCloud/Kubernetes Orchestrator will make sure containers will run on the hosts having same allocation tags.
+        /// </summary>
+        public readonly string? AllocationTags;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -184,6 +200,8 @@ namespace DuploCloud.Pulumi
 
         [OutputConstructor]
         private GetK8sJobResult(
+            string? allocationTags,
+
             string id,
 
             bool? isAnyHostAllowed,
@@ -196,6 +214,7 @@ namespace DuploCloud.Pulumi
 
             bool waitForCompletion)
         {
+            AllocationTags = allocationTags;
             Id = id;
             IsAnyHostAllowed = isAnyHostAllowed;
             Metadata = metadata;

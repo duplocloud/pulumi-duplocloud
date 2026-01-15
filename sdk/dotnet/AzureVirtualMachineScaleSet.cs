@@ -19,33 +19,33 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myapp = new Duplocloud.Tenant("myapp", new()
+    ///     var myapp = new Pulumi.Tenant("myapp", new()
     ///     {
     ///         AccountName = "myapp",
     ///         PlanId = "default",
     ///     });
     /// 
-    ///     var vmss = new Duplocloud.AzureVirtualMachineScaleSet("vmss", new()
+    ///     var vmss = new Pulumi.AzureVirtualMachineScaleSet("vmss", new()
     ///     {
     ///         TenantId = myapp.TenantId,
     ///         Name = "tstvmss",
-    ///         Sku = new Duplocloud.Inputs.AzureVirtualMachineScaleSetSkuArgs
+    ///         Sku = new Pulumi.Inputs.AzureVirtualMachineScaleSetSkuArgs
     ///         {
     ///             Tier = "Standard",
     ///             Name = "Standard_D1_v2",
     ///             Capacity = 2,
     ///         },
-    ///         OsProfile = new Duplocloud.Inputs.AzureVirtualMachineScaleSetOsProfileArgs
+    ///         OsProfile = new Pulumi.Inputs.AzureVirtualMachineScaleSetOsProfileArgs
     ///         {
     ///             AdminPassword = "DuploTest007",
     ///             AdminUsername = "duploadmin",
     ///             ComputerNamePrefix = "tst",
     ///         },
-    ///         StorageProfileImageReference = new Duplocloud.Inputs.AzureVirtualMachineScaleSetStorageProfileImageReferenceArgs
+    ///         StorageProfileImageReference = new Pulumi.Inputs.AzureVirtualMachineScaleSetStorageProfileImageReferenceArgs
     ///         {
     ///             Sku = "2016-Datacenter",
     ///             Publisher = "MicrosoftWindowsServer",
@@ -54,13 +54,13 @@ namespace DuploCloud.Pulumi
     ///         },
     ///         NetworkProfiles = new[]
     ///         {
-    ///             new Duplocloud.Inputs.AzureVirtualMachineScaleSetNetworkProfileArgs
+    ///             new Pulumi.Inputs.AzureVirtualMachineScaleSetNetworkProfileArgs
     ///             {
     ///                 Name = "tstvmss",
     ///                 Primary = true,
     ///                 IpConfigurations = new[]
     ///                 {
-    ///                     new Duplocloud.Inputs.AzureVirtualMachineScaleSetNetworkProfileIpConfigurationArgs
+    ///                     new Pulumi.Inputs.AzureVirtualMachineScaleSetNetworkProfileIpConfigurationArgs
     ///                     {
     ///                         Name = "tstvmss",
     ///                         SubnetId = "/subscriptions/143ffc59-9394-4ec6-8f5a-c408a238be62/resourceGroups/duploinfra-testdb/providers/Microsoft.Network/virtualNetworks/testdb/subnets/duploinfra-sub01",

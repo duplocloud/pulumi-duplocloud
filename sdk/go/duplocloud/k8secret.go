@@ -14,6 +14,60 @@ import (
 
 // `K8Secret` manages a kubernetes secret in a Duplo tenant.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//
+//	"github.com/duplocloud/pulumi-duplocloud/sdk/go/duplocloud"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myapp, err := duplocloud.NewTenant(ctx, "myapp", &duplocloud.TenantArgs{
+//				AccountName: pulumi.String("myapp"),
+//				PlanId:      pulumi.String("default"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"foo": "bar2",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			_, err = duplocloud.NewK8Secret(ctx, "myapp", &duplocloud.K8SecretArgs{
+//				TenantId:   myapp.TenantId,
+//				SecretName: pulumi.String("mysecret"),
+//				SecretType: pulumi.String("Opaque"),
+//				SecretData: pulumi.String(json0),
+//				SecretLabels: pulumi.StringMap{
+//					"KeyA":                        pulumi.String("ValueA"),
+//					"KeyB":                        pulumi.String("ValueB"),
+//					"app.duplocloud.net/app-name": pulumi.String("<appname>"),
+//				},
+//				SecretAnnotations: pulumi.StringMap{
+//					"annotA": pulumi.String("ValueA"),
+//					"annotB": pulumi.String("ValueB"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Example: Importing an existing kubernetes secret
@@ -31,9 +85,10 @@ type K8Secret struct {
 	pulumi.CustomResourceState
 
 	ClientSecretVersion pulumi.StringOutput `pulumi:"clientSecretVersion"`
-	// Annotations for the secret
+	// Annotations for the secret.
 	SecretAnnotations pulumi.StringMapOutput `pulumi:"secretAnnotations"`
-	// A JSON encoded string representing the secret metadata. You can use the `jsonencode()` function to convert map or object data, if needed. You can use the `jsondecode()` function to read data.
+	// A JSON encoded string representing the secret metadata. You can use the `jsonencode()` function to convert map or object
+	// data, if needed. You can use the `jsondecode()` function to read data.
 	SecretData pulumi.StringPtrOutput `pulumi:"secretData"`
 	// Map of string keys and values that can be used to organize and categorize (scope and select) the secret
 	SecretLabels pulumi.StringMapOutput `pulumi:"secretLabels"`
@@ -93,9 +148,10 @@ func GetK8Secret(ctx *pulumi.Context,
 // Input properties used for looking up and filtering K8Secret resources.
 type k8secretState struct {
 	ClientSecretVersion *string `pulumi:"clientSecretVersion"`
-	// Annotations for the secret
+	// Annotations for the secret.
 	SecretAnnotations map[string]string `pulumi:"secretAnnotations"`
-	// A JSON encoded string representing the secret metadata. You can use the `jsonencode()` function to convert map or object data, if needed. You can use the `jsondecode()` function to read data.
+	// A JSON encoded string representing the secret metadata. You can use the `jsonencode()` function to convert map or object
+	// data, if needed. You can use the `jsondecode()` function to read data.
 	SecretData *string `pulumi:"secretData"`
 	// Map of string keys and values that can be used to organize and categorize (scope and select) the secret
 	SecretLabels map[string]string `pulumi:"secretLabels"`
@@ -110,9 +166,10 @@ type k8secretState struct {
 
 type K8SecretState struct {
 	ClientSecretVersion pulumi.StringPtrInput
-	// Annotations for the secret
+	// Annotations for the secret.
 	SecretAnnotations pulumi.StringMapInput
-	// A JSON encoded string representing the secret metadata. You can use the `jsonencode()` function to convert map or object data, if needed. You can use the `jsondecode()` function to read data.
+	// A JSON encoded string representing the secret metadata. You can use the `jsonencode()` function to convert map or object
+	// data, if needed. You can use the `jsondecode()` function to read data.
 	SecretData pulumi.StringPtrInput
 	// Map of string keys and values that can be used to organize and categorize (scope and select) the secret
 	SecretLabels pulumi.StringMapInput
@@ -130,9 +187,10 @@ func (K8SecretState) ElementType() reflect.Type {
 }
 
 type k8secretArgs struct {
-	// Annotations for the secret
+	// Annotations for the secret.
 	SecretAnnotations map[string]string `pulumi:"secretAnnotations"`
-	// A JSON encoded string representing the secret metadata. You can use the `jsonencode()` function to convert map or object data, if needed. You can use the `jsondecode()` function to read data.
+	// A JSON encoded string representing the secret metadata. You can use the `jsonencode()` function to convert map or object
+	// data, if needed. You can use the `jsondecode()` function to read data.
 	SecretData *string `pulumi:"secretData"`
 	// Map of string keys and values that can be used to organize and categorize (scope and select) the secret
 	SecretLabels map[string]string `pulumi:"secretLabels"`
@@ -146,9 +204,10 @@ type k8secretArgs struct {
 
 // The set of arguments for constructing a K8Secret resource.
 type K8SecretArgs struct {
-	// Annotations for the secret
+	// Annotations for the secret.
 	SecretAnnotations pulumi.StringMapInput
-	// A JSON encoded string representing the secret metadata. You can use the `jsonencode()` function to convert map or object data, if needed. You can use the `jsondecode()` function to read data.
+	// A JSON encoded string representing the secret metadata. You can use the `jsonencode()` function to convert map or object
+	// data, if needed. You can use the `jsondecode()` function to read data.
 	SecretData pulumi.StringPtrInput
 	// Map of string keys and values that can be used to organize and categorize (scope and select) the secret
 	SecretLabels pulumi.StringMapInput
@@ -251,12 +310,13 @@ func (o K8SecretOutput) ClientSecretVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *K8Secret) pulumi.StringOutput { return v.ClientSecretVersion }).(pulumi.StringOutput)
 }
 
-// Annotations for the secret
+// Annotations for the secret.
 func (o K8SecretOutput) SecretAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *K8Secret) pulumi.StringMapOutput { return v.SecretAnnotations }).(pulumi.StringMapOutput)
 }
 
-// A JSON encoded string representing the secret metadata. You can use the `jsonencode()` function to convert map or object data, if needed. You can use the `jsondecode()` function to read data.
+// A JSON encoded string representing the secret metadata. You can use the `jsonencode()` function to convert map or object
+// data, if needed. You can use the `jsondecode()` function to read data.
 func (o K8SecretOutput) SecretData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *K8Secret) pulumi.StringPtrOutput { return v.SecretData }).(pulumi.StringPtrOutput)
 }

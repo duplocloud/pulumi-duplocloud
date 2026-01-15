@@ -19,17 +19,17 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myapp = new Duplocloud.Tenant("myapp", new()
+    ///     var myapp = new Pulumi.Tenant("myapp", new()
     ///     {
     ///         AccountName = "myapp",
     ///         PlanId = "default",
     ///     });
     /// 
-    ///     var myOciNodePool = new Duplocloud.OciContainerengineNodePool("myOciNodePool", new()
+    ///     var myOciNodePool = new Pulumi.OciContainerengineNodePool("myOciNodePool", new()
     ///     {
     ///         TenantId = myapp.TenantId,
     ///         Name = "tf-test",
@@ -37,18 +37,18 @@ namespace DuploCloud.Pulumi
     ///         NodeImageId = "ocid1.image.oc1.ap-mumbai-1.aaaaaaaagosxifkwha6a6pi2fxx4idf3te3icdsf7z6jar2sxls6xycnehna",
     ///         InitialNodeLabels = new[]
     ///         {
-    ///             new Duplocloud.Inputs.OciContainerengineNodePoolInitialNodeLabelArgs
+    ///             new Pulumi.Inputs.OciContainerengineNodePoolInitialNodeLabelArgs
     ///             {
     ///                 Key = "allocationtags",
     ///                 Value = "test",
     ///             },
     ///         },
-    ///         NodeConfigDetails = new Duplocloud.Inputs.OciContainerengineNodePoolNodeConfigDetailsArgs
+    ///         NodeConfigDetails = new Pulumi.Inputs.OciContainerengineNodePoolNodeConfigDetailsArgs
     ///         {
     ///             Size = 1,
     ///             PlacementConfigs = new[]
     ///             {
-    ///                 new Duplocloud.Inputs.OciContainerengineNodePoolNodeConfigDetailsPlacementConfigArgs
+    ///                 new Pulumi.Inputs.OciContainerengineNodePoolNodeConfigDetailsPlacementConfigArgs
     ///                 {
     ///                     AvailabilityDomain = "uwFr:AP-MUMBAI-1-AD-1",
     ///                     SubnetId = "ocid1.subnet.oc1.ap-mumbai-1.aaaaaaaasz36nwww2zygjn7arpuq4fbz3z22kn6adlalldvld3b5nu6afuxa",

@@ -19,18 +19,18 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var irule = new Duplocloud.GcpInfraSecurityRule("irule", new()
+    ///     var irule = new Pulumi.GcpInfraSecurityRule("irule", new()
     ///     {
     ///         InfraName = "test",
     ///         Name = "test-infra-r14",
     ///         Description = "test rule for infra test",
     ///         PortsAndProtocols = new[]
     ///         {
-    ///             new Duplocloud.Inputs.GcpInfraSecurityRulePortsAndProtocolArgs
+    ///             new Pulumi.Inputs.GcpInfraSecurityRulePortsAndProtocolArgs
     ///             {
     ///                 Ports = new[]
     ///                 {
@@ -39,7 +39,7 @@ namespace DuploCloud.Pulumi
     ///                 },
     ///                 ServiceProtocol = "tcp",
     ///             },
-    ///             new Duplocloud.Inputs.GcpInfraSecurityRulePortsAndProtocolArgs
+    ///             new Pulumi.Inputs.GcpInfraSecurityRulePortsAndProtocolArgs
     ///             {
     ///                 Ports = new[]
     ///                 {

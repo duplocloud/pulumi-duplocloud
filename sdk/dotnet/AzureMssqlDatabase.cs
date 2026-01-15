@@ -43,6 +43,12 @@ namespace DuploCloud.Pulumi
         public Output<string?> ElasticPoolId { get; private set; } = null!;
 
         /// <summary>
+        /// Maximum allowed database size in GB for more information please refer following link https://learn.microsoft.com/en-us/azure/azure-sql/database/resource-limits-vcore-single-databases?view=azuresql Defaults to `32`.
+        /// </summary>
+        [Output("maxSizeGb")]
+        public Output<int?> MaxSizeGb { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the MS SQL Database.
         /// </summary>
         [Output("name")]
@@ -123,6 +129,12 @@ namespace DuploCloud.Pulumi
         public Input<string>? ElasticPoolId { get; set; }
 
         /// <summary>
+        /// Maximum allowed database size in GB for more information please refer following link https://learn.microsoft.com/en-us/azure/azure-sql/database/resource-limits-vcore-single-databases?view=azuresql Defaults to `32`.
+        /// </summary>
+        [Input("maxSizeGb")]
+        public Input<int>? MaxSizeGb { get; set; }
+
+        /// <summary>
         /// The name of the MS SQL Database.
         /// </summary>
         [Input("name")]
@@ -162,6 +174,12 @@ namespace DuploCloud.Pulumi
         /// </summary>
         [Input("elasticPoolId")]
         public Input<string>? ElasticPoolId { get; set; }
+
+        /// <summary>
+        /// Maximum allowed database size in GB for more information please refer following link https://learn.microsoft.com/en-us/azure/azure-sql/database/resource-limits-vcore-single-databases?view=azuresql Defaults to `32`.
+        /// </summary>
+        [Input("maxSizeGb")]
+        public Input<int>? MaxSizeGb { get; set; }
 
         /// <summary>
         /// The name of the MS SQL Database.

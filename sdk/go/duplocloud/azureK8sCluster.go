@@ -49,6 +49,32 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			_, err = duplocloud.NewAzureK8sCluster(ctx, "ac", &duplocloud.AzureK8sClusterArgs{
+//				InfraName:                         infra.InfraName,
+//				PrivateClusterEnabled:             pulumi.Bool(true),
+//				EnableWorkloadIdentity:            pulumi.Bool(true),
+//				EnableBlobCsiDriver:               pulumi.Bool(true),
+//				DisableRunCommand:                 pulumi.Bool(true),
+//				AddCriticalTaintToSystemAgentPool: pulumi.Bool(true),
+//				EnableImageCleaner:                pulumi.Bool(true),
+//				ImageCleanerIntervalInDays:        pulumi.Int(7),
+//				PricingTier:                       pulumi.String("Free"),
+//				LinuxAdminUsername:                pulumi.String("kubuser"),
+//				LinuxSshPublicKey:                 pulumi.String("ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC666PWPnhOI3oc+4t4CmW6HtTKfns3uOa3ZW6EN57qti20Ln4SvoBT8mwMvwnZq6Z413Kp5MFbSdkVv1t+5ZXQ0E0NdJKM59O6bTtUriekkQoeoBgu2AU2Gmk20SbMZ/7lRJDhHYg0JM3HWup7RoL3tGEJDKmv0fZ1WYYsqGkX6Dc/XP1DfmUVwd2I41yVjDWpXY/FG9/t2tKoG4DONGOJY974C6P1cxhptWyt/yqzEU7VyOB3L/kdbhTe4Z64TEYSR57jW7GsnYBbmvX8lLTAhkIFbqENXNJHl26OcwCj4M8+HU2Y4oba7vTUxb7rcgQ0vDsYgjlK6zLzPs5mcbIzjTW4VMcXBC3bciiXlurXe+ByoEUSKiXAzgszg2aD6LlMWfS6jQwGDpnfC962RxeDv/EY8ggL7xBVTe9B8H3khbeLTQpFvDYtY1GwYq0+/911LHvdRJycP7GuEWghhSDGNmh1/MhG/Qgmqh49NYhKn1RNZkYn7ePxNkTUA7h9lyU= noname"),
+//				NetworkPlugin:                     pulumi.String("kubenet"),
+//				ActiveDirectoryConfig: &duplocloud.AzureK8sClusterActiveDirectoryConfigArgs{
+//					AdTenantId: pulumi.String("<ad-tenant-id>"),
+//					AdminGroupObjectIds: pulumi.StringArray{
+//						pulumi.String("<admin-group-object-id>"),
+//					},
+//					EnableAd:   pulumi.Bool(true),
+//					EnableRbac: pulumi.Bool(true),
+//				},
+//				KubernetesVersion: pulumi.String("1.31.5"),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			return nil
 //		})
 //	}
@@ -69,16 +95,36 @@ import (
 type AzureK8sCluster struct {
 	pulumi.CustomResourceState
 
+	// Azure Active Directory configuration for the AKS cluster.
+	ActiveDirectoryConfig AzureK8sClusterActiveDirectoryConfigOutput `pulumi:"activeDirectoryConfig"`
+	// Add a critical taint to the system agent pool. This prevents the scheduler from scheduling non-critical pods on the system agent pool. Defaults to `false`.
+	AddCriticalTaintToSystemAgentPool pulumi.BoolPtrOutput `pulumi:"addCriticalTaintToSystemAgentPool"`
+	// Disable the Run Command feature for the AKS cluster. This prevents the use of the Azure CLI to run commands directly on the nodes. Defaults to `false`.
+	DisableRunCommand pulumi.BoolPtrOutput `pulumi:"disableRunCommand"`
+	// Enable the Azure Blob CSI driver for the AKS cluster. This allows Kubernetes workloads to use Azure Blob Storage as persistent storage. Defaults to `false`.
+	EnableBlobCsiDriver pulumi.BoolPtrOutput `pulumi:"enableBlobCsiDriver"`
+	// Enable the image cleaner for the AKS cluster. This helps to clean up unused container images in the cluster. Defaults to `false`.
+	EnableImageCleaner pulumi.BoolPtrOutput `pulumi:"enableImageCleaner"`
+	// Enable Workload Identity for the AKS cluster. This allows Kubernetes workloads to access Azure resources using Azure AD identities. Defaults to `false`.
+	EnableWorkloadIdentity pulumi.BoolPtrOutput `pulumi:"enableWorkloadIdentity"`
+	// Interval in days for the image cleaner to run. This determines how often the image cleaner will check for unused images. Valid values are between 1 and 90. Defaults to `30`.
+	ImageCleanerIntervalInDays pulumi.IntPtrOutput `pulumi:"imageCleanerIntervalInDays"`
 	// The name of the infrastructure.
 	InfraName pulumi.StringOutput `pulumi:"infraName"`
 	// Version of Kubernetes specified when creating the AKS managed cluster.
 	KubernetesVersion pulumi.StringOutput `pulumi:"kubernetesVersion"`
+	// The username for the Linux administrator of the AKS cluster. This user will have administrative access to the nodes in the cluster.
+	LinuxAdminUsername pulumi.StringOutput `pulumi:"linuxAdminUsername"`
+	// The SSH public key for the Linux administrator of the AKS cluster. This key will be used to access the nodes in the cluster via SSH.
+	LinuxSshPublicKey pulumi.StringOutput `pulumi:"linuxSshPublicKey"`
 	// The name of the aks. If not specified default name would be infra name
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Network plugin to use for networking. Valid values are: `azure` and `kubenet`.
 	NetworkPlugin pulumi.StringOutput `pulumi:"networkPlugin"`
 	// The outbound (egress) routing method which should be used for this Kubernetes Cluster. Valid values are: `loadBalancer` and `userDefinedRouting`.
 	OutboundType pulumi.StringOutput `pulumi:"outboundType"`
+	// Pricing tier for the AKS cluster. Valid values are: `Free`, `Standard`, and `Premium`. This determines the level of support and features available for the AKS cluster.
+	PricingTier pulumi.StringOutput `pulumi:"pricingTier"`
 	// Should this Kubernetes Cluster have its API server only exposed on internal IP addresses? This provides a Private IP Address for the Kubernetes API on the Virtual Network where the Kubernetes Cluster is located. Defaults to `false`.
 	PrivateClusterEnabled pulumi.BoolPtrOutput `pulumi:"privateClusterEnabled"`
 	// The name of the aks resource group.
@@ -120,16 +166,36 @@ func GetAzureK8sCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AzureK8sCluster resources.
 type azureK8sClusterState struct {
+	// Azure Active Directory configuration for the AKS cluster.
+	ActiveDirectoryConfig *AzureK8sClusterActiveDirectoryConfig `pulumi:"activeDirectoryConfig"`
+	// Add a critical taint to the system agent pool. This prevents the scheduler from scheduling non-critical pods on the system agent pool. Defaults to `false`.
+	AddCriticalTaintToSystemAgentPool *bool `pulumi:"addCriticalTaintToSystemAgentPool"`
+	// Disable the Run Command feature for the AKS cluster. This prevents the use of the Azure CLI to run commands directly on the nodes. Defaults to `false`.
+	DisableRunCommand *bool `pulumi:"disableRunCommand"`
+	// Enable the Azure Blob CSI driver for the AKS cluster. This allows Kubernetes workloads to use Azure Blob Storage as persistent storage. Defaults to `false`.
+	EnableBlobCsiDriver *bool `pulumi:"enableBlobCsiDriver"`
+	// Enable the image cleaner for the AKS cluster. This helps to clean up unused container images in the cluster. Defaults to `false`.
+	EnableImageCleaner *bool `pulumi:"enableImageCleaner"`
+	// Enable Workload Identity for the AKS cluster. This allows Kubernetes workloads to access Azure resources using Azure AD identities. Defaults to `false`.
+	EnableWorkloadIdentity *bool `pulumi:"enableWorkloadIdentity"`
+	// Interval in days for the image cleaner to run. This determines how often the image cleaner will check for unused images. Valid values are between 1 and 90. Defaults to `30`.
+	ImageCleanerIntervalInDays *int `pulumi:"imageCleanerIntervalInDays"`
 	// The name of the infrastructure.
 	InfraName *string `pulumi:"infraName"`
 	// Version of Kubernetes specified when creating the AKS managed cluster.
 	KubernetesVersion *string `pulumi:"kubernetesVersion"`
+	// The username for the Linux administrator of the AKS cluster. This user will have administrative access to the nodes in the cluster.
+	LinuxAdminUsername *string `pulumi:"linuxAdminUsername"`
+	// The SSH public key for the Linux administrator of the AKS cluster. This key will be used to access the nodes in the cluster via SSH.
+	LinuxSshPublicKey *string `pulumi:"linuxSshPublicKey"`
 	// The name of the aks. If not specified default name would be infra name
 	Name *string `pulumi:"name"`
 	// Network plugin to use for networking. Valid values are: `azure` and `kubenet`.
 	NetworkPlugin *string `pulumi:"networkPlugin"`
 	// The outbound (egress) routing method which should be used for this Kubernetes Cluster. Valid values are: `loadBalancer` and `userDefinedRouting`.
 	OutboundType *string `pulumi:"outboundType"`
+	// Pricing tier for the AKS cluster. Valid values are: `Free`, `Standard`, and `Premium`. This determines the level of support and features available for the AKS cluster.
+	PricingTier *string `pulumi:"pricingTier"`
 	// Should this Kubernetes Cluster have its API server only exposed on internal IP addresses? This provides a Private IP Address for the Kubernetes API on the Virtual Network where the Kubernetes Cluster is located. Defaults to `false`.
 	PrivateClusterEnabled *bool `pulumi:"privateClusterEnabled"`
 	// The name of the aks resource group.
@@ -139,16 +205,36 @@ type azureK8sClusterState struct {
 }
 
 type AzureK8sClusterState struct {
+	// Azure Active Directory configuration for the AKS cluster.
+	ActiveDirectoryConfig AzureK8sClusterActiveDirectoryConfigPtrInput
+	// Add a critical taint to the system agent pool. This prevents the scheduler from scheduling non-critical pods on the system agent pool. Defaults to `false`.
+	AddCriticalTaintToSystemAgentPool pulumi.BoolPtrInput
+	// Disable the Run Command feature for the AKS cluster. This prevents the use of the Azure CLI to run commands directly on the nodes. Defaults to `false`.
+	DisableRunCommand pulumi.BoolPtrInput
+	// Enable the Azure Blob CSI driver for the AKS cluster. This allows Kubernetes workloads to use Azure Blob Storage as persistent storage. Defaults to `false`.
+	EnableBlobCsiDriver pulumi.BoolPtrInput
+	// Enable the image cleaner for the AKS cluster. This helps to clean up unused container images in the cluster. Defaults to `false`.
+	EnableImageCleaner pulumi.BoolPtrInput
+	// Enable Workload Identity for the AKS cluster. This allows Kubernetes workloads to access Azure resources using Azure AD identities. Defaults to `false`.
+	EnableWorkloadIdentity pulumi.BoolPtrInput
+	// Interval in days for the image cleaner to run. This determines how often the image cleaner will check for unused images. Valid values are between 1 and 90. Defaults to `30`.
+	ImageCleanerIntervalInDays pulumi.IntPtrInput
 	// The name of the infrastructure.
 	InfraName pulumi.StringPtrInput
 	// Version of Kubernetes specified when creating the AKS managed cluster.
 	KubernetesVersion pulumi.StringPtrInput
+	// The username for the Linux administrator of the AKS cluster. This user will have administrative access to the nodes in the cluster.
+	LinuxAdminUsername pulumi.StringPtrInput
+	// The SSH public key for the Linux administrator of the AKS cluster. This key will be used to access the nodes in the cluster via SSH.
+	LinuxSshPublicKey pulumi.StringPtrInput
 	// The name of the aks. If not specified default name would be infra name
 	Name pulumi.StringPtrInput
 	// Network plugin to use for networking. Valid values are: `azure` and `kubenet`.
 	NetworkPlugin pulumi.StringPtrInput
 	// The outbound (egress) routing method which should be used for this Kubernetes Cluster. Valid values are: `loadBalancer` and `userDefinedRouting`.
 	OutboundType pulumi.StringPtrInput
+	// Pricing tier for the AKS cluster. Valid values are: `Free`, `Standard`, and `Premium`. This determines the level of support and features available for the AKS cluster.
+	PricingTier pulumi.StringPtrInput
 	// Should this Kubernetes Cluster have its API server only exposed on internal IP addresses? This provides a Private IP Address for the Kubernetes API on the Virtual Network where the Kubernetes Cluster is located. Defaults to `false`.
 	PrivateClusterEnabled pulumi.BoolPtrInput
 	// The name of the aks resource group.
@@ -162,16 +248,36 @@ func (AzureK8sClusterState) ElementType() reflect.Type {
 }
 
 type azureK8sClusterArgs struct {
+	// Azure Active Directory configuration for the AKS cluster.
+	ActiveDirectoryConfig *AzureK8sClusterActiveDirectoryConfig `pulumi:"activeDirectoryConfig"`
+	// Add a critical taint to the system agent pool. This prevents the scheduler from scheduling non-critical pods on the system agent pool. Defaults to `false`.
+	AddCriticalTaintToSystemAgentPool *bool `pulumi:"addCriticalTaintToSystemAgentPool"`
+	// Disable the Run Command feature for the AKS cluster. This prevents the use of the Azure CLI to run commands directly on the nodes. Defaults to `false`.
+	DisableRunCommand *bool `pulumi:"disableRunCommand"`
+	// Enable the Azure Blob CSI driver for the AKS cluster. This allows Kubernetes workloads to use Azure Blob Storage as persistent storage. Defaults to `false`.
+	EnableBlobCsiDriver *bool `pulumi:"enableBlobCsiDriver"`
+	// Enable the image cleaner for the AKS cluster. This helps to clean up unused container images in the cluster. Defaults to `false`.
+	EnableImageCleaner *bool `pulumi:"enableImageCleaner"`
+	// Enable Workload Identity for the AKS cluster. This allows Kubernetes workloads to access Azure resources using Azure AD identities. Defaults to `false`.
+	EnableWorkloadIdentity *bool `pulumi:"enableWorkloadIdentity"`
+	// Interval in days for the image cleaner to run. This determines how often the image cleaner will check for unused images. Valid values are between 1 and 90. Defaults to `30`.
+	ImageCleanerIntervalInDays *int `pulumi:"imageCleanerIntervalInDays"`
 	// The name of the infrastructure.
 	InfraName string `pulumi:"infraName"`
 	// Version of Kubernetes specified when creating the AKS managed cluster.
 	KubernetesVersion *string `pulumi:"kubernetesVersion"`
+	// The username for the Linux administrator of the AKS cluster. This user will have administrative access to the nodes in the cluster.
+	LinuxAdminUsername *string `pulumi:"linuxAdminUsername"`
+	// The SSH public key for the Linux administrator of the AKS cluster. This key will be used to access the nodes in the cluster via SSH.
+	LinuxSshPublicKey *string `pulumi:"linuxSshPublicKey"`
 	// The name of the aks. If not specified default name would be infra name
 	Name *string `pulumi:"name"`
 	// Network plugin to use for networking. Valid values are: `azure` and `kubenet`.
 	NetworkPlugin *string `pulumi:"networkPlugin"`
 	// The outbound (egress) routing method which should be used for this Kubernetes Cluster. Valid values are: `loadBalancer` and `userDefinedRouting`.
 	OutboundType *string `pulumi:"outboundType"`
+	// Pricing tier for the AKS cluster. Valid values are: `Free`, `Standard`, and `Premium`. This determines the level of support and features available for the AKS cluster.
+	PricingTier *string `pulumi:"pricingTier"`
 	// Should this Kubernetes Cluster have its API server only exposed on internal IP addresses? This provides a Private IP Address for the Kubernetes API on the Virtual Network where the Kubernetes Cluster is located. Defaults to `false`.
 	PrivateClusterEnabled *bool `pulumi:"privateClusterEnabled"`
 	// The name of the aks resource group.
@@ -182,16 +288,36 @@ type azureK8sClusterArgs struct {
 
 // The set of arguments for constructing a AzureK8sCluster resource.
 type AzureK8sClusterArgs struct {
+	// Azure Active Directory configuration for the AKS cluster.
+	ActiveDirectoryConfig AzureK8sClusterActiveDirectoryConfigPtrInput
+	// Add a critical taint to the system agent pool. This prevents the scheduler from scheduling non-critical pods on the system agent pool. Defaults to `false`.
+	AddCriticalTaintToSystemAgentPool pulumi.BoolPtrInput
+	// Disable the Run Command feature for the AKS cluster. This prevents the use of the Azure CLI to run commands directly on the nodes. Defaults to `false`.
+	DisableRunCommand pulumi.BoolPtrInput
+	// Enable the Azure Blob CSI driver for the AKS cluster. This allows Kubernetes workloads to use Azure Blob Storage as persistent storage. Defaults to `false`.
+	EnableBlobCsiDriver pulumi.BoolPtrInput
+	// Enable the image cleaner for the AKS cluster. This helps to clean up unused container images in the cluster. Defaults to `false`.
+	EnableImageCleaner pulumi.BoolPtrInput
+	// Enable Workload Identity for the AKS cluster. This allows Kubernetes workloads to access Azure resources using Azure AD identities. Defaults to `false`.
+	EnableWorkloadIdentity pulumi.BoolPtrInput
+	// Interval in days for the image cleaner to run. This determines how often the image cleaner will check for unused images. Valid values are between 1 and 90. Defaults to `30`.
+	ImageCleanerIntervalInDays pulumi.IntPtrInput
 	// The name of the infrastructure.
 	InfraName pulumi.StringInput
 	// Version of Kubernetes specified when creating the AKS managed cluster.
 	KubernetesVersion pulumi.StringPtrInput
+	// The username for the Linux administrator of the AKS cluster. This user will have administrative access to the nodes in the cluster.
+	LinuxAdminUsername pulumi.StringPtrInput
+	// The SSH public key for the Linux administrator of the AKS cluster. This key will be used to access the nodes in the cluster via SSH.
+	LinuxSshPublicKey pulumi.StringPtrInput
 	// The name of the aks. If not specified default name would be infra name
 	Name pulumi.StringPtrInput
 	// Network plugin to use for networking. Valid values are: `azure` and `kubenet`.
 	NetworkPlugin pulumi.StringPtrInput
 	// The outbound (egress) routing method which should be used for this Kubernetes Cluster. Valid values are: `loadBalancer` and `userDefinedRouting`.
 	OutboundType pulumi.StringPtrInput
+	// Pricing tier for the AKS cluster. Valid values are: `Free`, `Standard`, and `Premium`. This determines the level of support and features available for the AKS cluster.
+	PricingTier pulumi.StringPtrInput
 	// Should this Kubernetes Cluster have its API server only exposed on internal IP addresses? This provides a Private IP Address for the Kubernetes API on the Virtual Network where the Kubernetes Cluster is located. Defaults to `false`.
 	PrivateClusterEnabled pulumi.BoolPtrInput
 	// The name of the aks resource group.
@@ -287,6 +413,41 @@ func (o AzureK8sClusterOutput) ToAzureK8sClusterOutputWithContext(ctx context.Co
 	return o
 }
 
+// Azure Active Directory configuration for the AKS cluster.
+func (o AzureK8sClusterOutput) ActiveDirectoryConfig() AzureK8sClusterActiveDirectoryConfigOutput {
+	return o.ApplyT(func(v *AzureK8sCluster) AzureK8sClusterActiveDirectoryConfigOutput { return v.ActiveDirectoryConfig }).(AzureK8sClusterActiveDirectoryConfigOutput)
+}
+
+// Add a critical taint to the system agent pool. This prevents the scheduler from scheduling non-critical pods on the system agent pool. Defaults to `false`.
+func (o AzureK8sClusterOutput) AddCriticalTaintToSystemAgentPool() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AzureK8sCluster) pulumi.BoolPtrOutput { return v.AddCriticalTaintToSystemAgentPool }).(pulumi.BoolPtrOutput)
+}
+
+// Disable the Run Command feature for the AKS cluster. This prevents the use of the Azure CLI to run commands directly on the nodes. Defaults to `false`.
+func (o AzureK8sClusterOutput) DisableRunCommand() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AzureK8sCluster) pulumi.BoolPtrOutput { return v.DisableRunCommand }).(pulumi.BoolPtrOutput)
+}
+
+// Enable the Azure Blob CSI driver for the AKS cluster. This allows Kubernetes workloads to use Azure Blob Storage as persistent storage. Defaults to `false`.
+func (o AzureK8sClusterOutput) EnableBlobCsiDriver() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AzureK8sCluster) pulumi.BoolPtrOutput { return v.EnableBlobCsiDriver }).(pulumi.BoolPtrOutput)
+}
+
+// Enable the image cleaner for the AKS cluster. This helps to clean up unused container images in the cluster. Defaults to `false`.
+func (o AzureK8sClusterOutput) EnableImageCleaner() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AzureK8sCluster) pulumi.BoolPtrOutput { return v.EnableImageCleaner }).(pulumi.BoolPtrOutput)
+}
+
+// Enable Workload Identity for the AKS cluster. This allows Kubernetes workloads to access Azure resources using Azure AD identities. Defaults to `false`.
+func (o AzureK8sClusterOutput) EnableWorkloadIdentity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AzureK8sCluster) pulumi.BoolPtrOutput { return v.EnableWorkloadIdentity }).(pulumi.BoolPtrOutput)
+}
+
+// Interval in days for the image cleaner to run. This determines how often the image cleaner will check for unused images. Valid values are between 1 and 90. Defaults to `30`.
+func (o AzureK8sClusterOutput) ImageCleanerIntervalInDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AzureK8sCluster) pulumi.IntPtrOutput { return v.ImageCleanerIntervalInDays }).(pulumi.IntPtrOutput)
+}
+
 // The name of the infrastructure.
 func (o AzureK8sClusterOutput) InfraName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzureK8sCluster) pulumi.StringOutput { return v.InfraName }).(pulumi.StringOutput)
@@ -295,6 +456,16 @@ func (o AzureK8sClusterOutput) InfraName() pulumi.StringOutput {
 // Version of Kubernetes specified when creating the AKS managed cluster.
 func (o AzureK8sClusterOutput) KubernetesVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzureK8sCluster) pulumi.StringOutput { return v.KubernetesVersion }).(pulumi.StringOutput)
+}
+
+// The username for the Linux administrator of the AKS cluster. This user will have administrative access to the nodes in the cluster.
+func (o AzureK8sClusterOutput) LinuxAdminUsername() pulumi.StringOutput {
+	return o.ApplyT(func(v *AzureK8sCluster) pulumi.StringOutput { return v.LinuxAdminUsername }).(pulumi.StringOutput)
+}
+
+// The SSH public key for the Linux administrator of the AKS cluster. This key will be used to access the nodes in the cluster via SSH.
+func (o AzureK8sClusterOutput) LinuxSshPublicKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *AzureK8sCluster) pulumi.StringOutput { return v.LinuxSshPublicKey }).(pulumi.StringOutput)
 }
 
 // The name of the aks. If not specified default name would be infra name
@@ -310,6 +481,11 @@ func (o AzureK8sClusterOutput) NetworkPlugin() pulumi.StringOutput {
 // The outbound (egress) routing method which should be used for this Kubernetes Cluster. Valid values are: `loadBalancer` and `userDefinedRouting`.
 func (o AzureK8sClusterOutput) OutboundType() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzureK8sCluster) pulumi.StringOutput { return v.OutboundType }).(pulumi.StringOutput)
+}
+
+// Pricing tier for the AKS cluster. Valid values are: `Free`, `Standard`, and `Premium`. This determines the level of support and features available for the AKS cluster.
+func (o AzureK8sClusterOutput) PricingTier() pulumi.StringOutput {
+	return o.ApplyT(func(v *AzureK8sCluster) pulumi.StringOutput { return v.PricingTier }).(pulumi.StringOutput)
 }
 
 // Should this Kubernetes Cluster have its API server only exposed on internal IP addresses? This provides a Private IP Address for the Kubernetes API on the Virtual Network where the Kubernetes Cluster is located. Defaults to `false`.

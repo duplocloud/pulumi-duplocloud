@@ -84,6 +84,7 @@ export class AwsKafkaCluster extends pulumi.CustomResource {
      * An revision of a Kafka configuration to apply to the cluster.
      */
     public readonly configurationRevision!: pulumi.Output<number>;
+    public /*out*/ readonly currentVersion!: pulumi.Output<string>;
     /**
      * Encryption setting for data in transit between clients and brokers. Valid values: `TLS`, `TLS_PLAINTEXT`, and `PLAINTEXT`
      */
@@ -164,6 +165,7 @@ export class AwsKafkaCluster extends pulumi.CustomResource {
             resourceInputs["azDistribution"] = state ? state.azDistribution : undefined;
             resourceInputs["configurationArn"] = state ? state.configurationArn : undefined;
             resourceInputs["configurationRevision"] = state ? state.configurationRevision : undefined;
+            resourceInputs["currentVersion"] = state ? state.currentVersion : undefined;
             resourceInputs["encryptionInTransit"] = state ? state.encryptionInTransit : undefined;
             resourceInputs["fullname"] = state ? state.fullname : undefined;
             resourceInputs["instanceType"] = state ? state.instanceType : undefined;
@@ -205,6 +207,7 @@ export class AwsKafkaCluster extends pulumi.CustomResource {
             resourceInputs["tenantId"] = args ? args.tenantId : undefined;
             resourceInputs["arn"] = undefined /*out*/;
             resourceInputs["azDistribution"] = undefined /*out*/;
+            resourceInputs["currentVersion"] = undefined /*out*/;
             resourceInputs["fullname"] = undefined /*out*/;
             resourceInputs["numberOfBrokerNodes"] = undefined /*out*/;
             resourceInputs["plaintextBootstrapBrokerString"] = undefined /*out*/;
@@ -240,6 +243,7 @@ export interface AwsKafkaClusterState {
      * An revision of a Kafka configuration to apply to the cluster.
      */
     configurationRevision?: pulumi.Input<number>;
+    currentVersion?: pulumi.Input<string>;
     /**
      * Encryption setting for data in transit between clients and brokers. Valid values: `TLS`, `TLS_PLAINTEXT`, and `PLAINTEXT`
      */

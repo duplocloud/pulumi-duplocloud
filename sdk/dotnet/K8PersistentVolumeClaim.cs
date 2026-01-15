@@ -19,17 +19,17 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var tenantId = "3a0b2ea5-7403-4765-ad6e-8771ca8fa0fd";
     /// 
-    ///     var pvc = new Duplocloud.K8PersistentVolumeClaim("pvc", new()
+    ///     var pvc = new Pulumi.K8PersistentVolumeClaim("pvc", new()
     ///     {
     ///         TenantId = tenantId,
     ///         Name = "pvc",
-    ///         Spec = new Duplocloud.Inputs.K8PersistentVolumeClaimSpecArgs
+    ///         Spec = new Pulumi.Inputs.K8PersistentVolumeClaimSpecArgs
     ///         {
     ///             AccessModes = new[]
     ///             {
@@ -37,7 +37,7 @@ namespace DuploCloud.Pulumi
     ///             },
     ///             VolumeMode = "Filesystem",
     ///             StorageClassName = "duploservices-dev02-sc",
-    ///             Resources = new Duplocloud.Inputs.K8PersistentVolumeClaimSpecResourcesArgs
+    ///             Resources = new Pulumi.Inputs.K8PersistentVolumeClaimSpecResourcesArgs
     ///             {
     ///                 Limits = 
     ///                 {

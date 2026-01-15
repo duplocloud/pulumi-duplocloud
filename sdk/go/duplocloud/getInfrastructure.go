@@ -87,6 +87,7 @@ type LookupInfrastructureResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id             string                           `pulumi:"id"`
 	InfraName      string                           `pulumi:"infraName"`
+	NatIps         []string                         `pulumi:"natIps"`
 	PrivateSubnets []GetInfrastructurePrivateSubnet `pulumi:"privateSubnets"`
 	PublicSubnets  []GetInfrastructurePublicSubnet  `pulumi:"publicSubnets"`
 	Region         string                           `pulumi:"region"`
@@ -159,6 +160,10 @@ func (o LookupInfrastructureResultOutput) Id() pulumi.StringOutput {
 
 func (o LookupInfrastructureResultOutput) InfraName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInfrastructureResult) string { return v.InfraName }).(pulumi.StringOutput)
+}
+
+func (o LookupInfrastructureResultOutput) NatIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupInfrastructureResult) []string { return v.NatIps }).(pulumi.StringArrayOutput)
 }
 
 func (o LookupInfrastructureResultOutput) PrivateSubnets() GetInfrastructurePrivateSubnetArrayOutput {

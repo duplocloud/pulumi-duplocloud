@@ -13,40 +13,6 @@ namespace DuploCloud.Pulumi
     /// <summary>
     /// ## Example Usage
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // For AWS
-    ///     var aws_subnet = new Duplocloud.InfrastructureSubnet("aws-subnet", new()
-    ///     {
-    ///         Name = "mySubnet",
-    ///         InfraName = "myinfra",
-    ///         CidrBlock = "10.34.1.0/24",
-    ///         Type = "private",
-    ///         Zone = "A",
-    ///     });
-    /// 
-    ///     // For Azure
-    ///     var az_subnet = new Duplocloud.InfrastructureSubnet("az-subnet", new()
-    ///     {
-    ///         Name = "mySubnet",
-    ///         InfraName = "myinfra",
-    ///         CidrBlock = "10.34.1.0/24",
-    ///         Type = "appgwsubnet",
-    ///         ServiceEndpoints = new[]
-    ///         {
-    ///             "Microsoft.Storage",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Example: Importing an existing infrastructure subnet
@@ -82,7 +48,7 @@ namespace DuploCloud.Pulumi
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The list of Service endpoints to associate with the azure subnet. Possible values include: `Microsoft.AzureActiveDirectory`, `Microsoft.AzureCosmosDB`, `Microsoft.ContainerRegistry`, `Microsoft.EventHub`, `Microsoft.KeyVault`, `Microsoft.ServiceBus`,`Microsoft.Sql`, `Microsoft.Storage` and `Microsoft.Web`. This is applicable only for Azure subnets.
+        /// The list of Service endpoints to associate with the azure subnet. Possible values include: `Microsoft.Storage`, `Microsoft.Sql`, `Microsoft.AzureActiveDirectory`, `Microsoft.AzureCosmosDB`, `Microsoft.Web`, `Microsoft.NetworkServiceEndpointTest`, `Microsoft.KeyVault`, `Microsoft.EventHub`, `Microsoft.ServiceBus`, `Microsoft.ContainerRegistry`, `Microsoft.CognitiveServices`, `Microsoft.Storage.Global`. This is applicable only for Azure subnets.
         /// </summary>
         [Output("serviceEndpoints")]
         public Output<ImmutableArray<string>> ServiceEndpoints { get; private set; } = null!;
@@ -100,7 +66,7 @@ namespace DuploCloud.Pulumi
         public Output<ImmutableDictionary<string, string>> TagsAll { get; private set; } = null!;
 
         /// <summary>
-        /// Specify subnet type. `private` and `public` is used for AWS subnet. Will be one of `none`, `appgwsubnet`, `appgw-internal-subnet`, `azurebastionsubnet`, `managedinstance`, `databrick-workspace`, `mysql-flexiserver`, `postgres-flexiserver` is used for azure.
+        /// Specify subnet type. `private` and `public` is used for AWS subnet. Will be one of `none`, `appgwsubnet`, `appgw-internal-subnet`, `azurebastionsubnet`, `managedinstance`, `databrick-workspace`, `mysql-flexiserver`, `postgres-flexiserver` ,`app-service-plan`,`sql-server`,`cosmos-db` is used for azure. \n\n`NOTE` :In Azure Delegation subnet configuration will be handled by Duplo based on Azure specific subnet type)
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -177,7 +143,7 @@ namespace DuploCloud.Pulumi
         private InputList<string>? _serviceEndpoints;
 
         /// <summary>
-        /// The list of Service endpoints to associate with the azure subnet. Possible values include: `Microsoft.AzureActiveDirectory`, `Microsoft.AzureCosmosDB`, `Microsoft.ContainerRegistry`, `Microsoft.EventHub`, `Microsoft.KeyVault`, `Microsoft.ServiceBus`,`Microsoft.Sql`, `Microsoft.Storage` and `Microsoft.Web`. This is applicable only for Azure subnets.
+        /// The list of Service endpoints to associate with the azure subnet. Possible values include: `Microsoft.Storage`, `Microsoft.Sql`, `Microsoft.AzureActiveDirectory`, `Microsoft.AzureCosmosDB`, `Microsoft.Web`, `Microsoft.NetworkServiceEndpointTest`, `Microsoft.KeyVault`, `Microsoft.EventHub`, `Microsoft.ServiceBus`, `Microsoft.ContainerRegistry`, `Microsoft.CognitiveServices`, `Microsoft.Storage.Global`. This is applicable only for Azure subnets.
         /// </summary>
         public InputList<string> ServiceEndpoints
         {
@@ -194,7 +160,7 @@ namespace DuploCloud.Pulumi
         }
 
         /// <summary>
-        /// Specify subnet type. `private` and `public` is used for AWS subnet. Will be one of `none`, `appgwsubnet`, `appgw-internal-subnet`, `azurebastionsubnet`, `managedinstance`, `databrick-workspace`, `mysql-flexiserver`, `postgres-flexiserver` is used for azure.
+        /// Specify subnet type. `private` and `public` is used for AWS subnet. Will be one of `none`, `appgwsubnet`, `appgw-internal-subnet`, `azurebastionsubnet`, `managedinstance`, `databrick-workspace`, `mysql-flexiserver`, `postgres-flexiserver` ,`app-service-plan`,`sql-server`,`cosmos-db` is used for azure. \n\n`NOTE` :In Azure Delegation subnet configuration will be handled by Duplo based on Azure specific subnet type)
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -232,7 +198,7 @@ namespace DuploCloud.Pulumi
         private InputList<string>? _serviceEndpoints;
 
         /// <summary>
-        /// The list of Service endpoints to associate with the azure subnet. Possible values include: `Microsoft.AzureActiveDirectory`, `Microsoft.AzureCosmosDB`, `Microsoft.ContainerRegistry`, `Microsoft.EventHub`, `Microsoft.KeyVault`, `Microsoft.ServiceBus`,`Microsoft.Sql`, `Microsoft.Storage` and `Microsoft.Web`. This is applicable only for Azure subnets.
+        /// The list of Service endpoints to associate with the azure subnet. Possible values include: `Microsoft.Storage`, `Microsoft.Sql`, `Microsoft.AzureActiveDirectory`, `Microsoft.AzureCosmosDB`, `Microsoft.Web`, `Microsoft.NetworkServiceEndpointTest`, `Microsoft.KeyVault`, `Microsoft.EventHub`, `Microsoft.ServiceBus`, `Microsoft.ContainerRegistry`, `Microsoft.CognitiveServices`, `Microsoft.Storage.Global`. This is applicable only for Azure subnets.
         /// </summary>
         public InputList<string> ServiceEndpoints
         {
@@ -263,7 +229,7 @@ namespace DuploCloud.Pulumi
         }
 
         /// <summary>
-        /// Specify subnet type. `private` and `public` is used for AWS subnet. Will be one of `none`, `appgwsubnet`, `appgw-internal-subnet`, `azurebastionsubnet`, `managedinstance`, `databrick-workspace`, `mysql-flexiserver`, `postgres-flexiserver` is used for azure.
+        /// Specify subnet type. `private` and `public` is used for AWS subnet. Will be one of `none`, `appgwsubnet`, `appgw-internal-subnet`, `azurebastionsubnet`, `managedinstance`, `databrick-workspace`, `mysql-flexiserver`, `postgres-flexiserver` ,`app-service-plan`,`sql-server`,`cosmos-db` is used for azure. \n\n`NOTE` :In Azure Delegation subnet configuration will be handled by Duplo based on Azure specific subnet type)
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

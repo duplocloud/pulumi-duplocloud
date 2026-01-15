@@ -19,22 +19,23 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
+    /// using Pulumi = Pulumi.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myapp = new Duplocloud.Tenant("myapp", new()
+    ///     var myapp = new Pulumi.Tenant("myapp", new()
     ///     {
     ///         AccountName = "myapp",
     ///         PlanId = "default",
     ///     });
     /// 
-    ///     var tenantKmsKey = Duplocloud.GetTenantAwsKmsKey.Invoke(new()
+    ///     var tenantKmsKey = Pulumi.GetTenantAwsKmsKey.Invoke(new()
     ///     {
     ///         TenantId = myapp.TenantId,
     ///     });
     /// 
-    ///     var my_mwaa = new Duplocloud.AwsMwaaEnvironment("my-mwaa", new()
+    ///     var my_mwaa = new Pulumi.AwsMwaaEnvironment("my-mwaa", new()
     ///     {
     ///         TenantId = myapp.TenantId,
     ///         Name = "airflow-test",
@@ -54,29 +55,29 @@ namespace DuploCloud.Pulumi
     ///         {
     ///             { "core.log_format", "[%%(asctime)s] {{%%(filename)s:%%(lineno)d}} %%(levelname)s - %%(message)s" },
     ///         },
-    ///         LoggingConfiguration = new Duplocloud.Inputs.AwsMwaaEnvironmentLoggingConfigurationArgs
+    ///         LoggingConfiguration = new Pulumi.Inputs.AwsMwaaEnvironmentLoggingConfigurationArgs
     ///         {
-    ///             DagProcessingLogs = new Duplocloud.Inputs.AwsMwaaEnvironmentLoggingConfigurationDagProcessingLogsArgs
+    ///             DagProcessingLogs = new Pulumi.Inputs.AwsMwaaEnvironmentLoggingConfigurationDagProcessingLogsArgs
     ///             {
     ///                 Enabled = false,
     ///                 LogLevel = "INFO",
     ///             },
-    ///             SchedulerLogs = new Duplocloud.Inputs.AwsMwaaEnvironmentLoggingConfigurationSchedulerLogsArgs
+    ///             SchedulerLogs = new Pulumi.Inputs.AwsMwaaEnvironmentLoggingConfigurationSchedulerLogsArgs
     ///             {
     ///                 Enabled = false,
     ///                 LogLevel = "INFO",
     ///             },
-    ///             TaskLogs = new Duplocloud.Inputs.AwsMwaaEnvironmentLoggingConfigurationTaskLogsArgs
+    ///             TaskLogs = new Pulumi.Inputs.AwsMwaaEnvironmentLoggingConfigurationTaskLogsArgs
     ///             {
     ///                 Enabled = false,
     ///                 LogLevel = "INFO",
     ///             },
-    ///             WebserverLogs = new Duplocloud.Inputs.AwsMwaaEnvironmentLoggingConfigurationWebserverLogsArgs
+    ///             WebserverLogs = new Pulumi.Inputs.AwsMwaaEnvironmentLoggingConfigurationWebserverLogsArgs
     ///             {
     ///                 Enabled = false,
     ///                 LogLevel = "INFO",
     ///             },
-    ///             WorkerLogs = new Duplocloud.Inputs.AwsMwaaEnvironmentLoggingConfigurationWorkerLogsArgs
+    ///             WorkerLogs = new Pulumi.Inputs.AwsMwaaEnvironmentLoggingConfigurationWorkerLogsArgs
     ///             {
     ///                 Enabled = false,
     ///                 LogLevel = "INFO",

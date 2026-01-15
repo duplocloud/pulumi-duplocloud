@@ -25,6 +25,8 @@ func LookupAwsLaunchTemplate(ctx *pulumi.Context, args *LookupAwsLaunchTemplateA
 type LookupAwsLaunchTemplateArgs struct {
 	Name     string `pulumi:"name"`
 	TenantId string `pulumi:"tenantId"`
+	// Any of the existing version of the launch template
+	Version *string `pulumi:"version"`
 }
 
 // A collection of values returned by getAwsLaunchTemplate.
@@ -55,6 +57,8 @@ func LookupAwsLaunchTemplateOutput(ctx *pulumi.Context, args LookupAwsLaunchTemp
 type LookupAwsLaunchTemplateOutputArgs struct {
 	Name     pulumi.StringInput `pulumi:"name"`
 	TenantId pulumi.StringInput `pulumi:"tenantId"`
+	// Any of the existing version of the launch template
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (LookupAwsLaunchTemplateOutputArgs) ElementType() reflect.Type {

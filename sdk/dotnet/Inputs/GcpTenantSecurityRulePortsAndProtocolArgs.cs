@@ -17,7 +17,7 @@ namespace DuploCloud.Pulumi.Inputs
         private InputList<string>? _ports;
 
         /// <summary>
-        /// The list of ports to which this rule applies. This field is only applicable for UDP, TCP and SCTP protocol.
+        /// The list of ports to which this rule applies. This field is only applicable for UDP, TCP and SCTP protocol. To apply all ports dont specify the field
         /// </summary>
         public InputList<string> Ports
         {

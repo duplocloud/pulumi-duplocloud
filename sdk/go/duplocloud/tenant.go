@@ -472,7 +472,7 @@ import (
 type Tenant struct {
 	pulumi.CustomResourceState
 
-	// The name of the tenant. Tenant names are globally unique, and cannot be a prefix of any other tenant name.
+	// The name of the tenant. Tenant names are globally unique, and cannot be a prefix of any other tenant name. Will be converted to lowercase.
 	AccountName pulumi.StringOutput `pulumi:"accountName"`
 	// Whether or not to even try and delete the tenant. *NOTE: This only works if you have disabled deletion protection for the tenant.* Defaults to `false`.
 	AllowDeletion pulumi.BoolPtrOutput `pulumi:"allowDeletion"`
@@ -527,7 +527,7 @@ func GetTenant(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Tenant resources.
 type tenantState struct {
-	// The name of the tenant. Tenant names are globally unique, and cannot be a prefix of any other tenant name.
+	// The name of the tenant. Tenant names are globally unique, and cannot be a prefix of any other tenant name. Will be converted to lowercase.
 	AccountName *string `pulumi:"accountName"`
 	// Whether or not to even try and delete the tenant. *NOTE: This only works if you have disabled deletion protection for the tenant.* Defaults to `false`.
 	AllowDeletion *bool `pulumi:"allowDeletion"`
@@ -547,7 +547,7 @@ type tenantState struct {
 }
 
 type TenantState struct {
-	// The name of the tenant. Tenant names are globally unique, and cannot be a prefix of any other tenant name.
+	// The name of the tenant. Tenant names are globally unique, and cannot be a prefix of any other tenant name. Will be converted to lowercase.
 	AccountName pulumi.StringPtrInput
 	// Whether or not to even try and delete the tenant. *NOTE: This only works if you have disabled deletion protection for the tenant.* Defaults to `false`.
 	AllowDeletion pulumi.BoolPtrInput
@@ -571,7 +571,7 @@ func (TenantState) ElementType() reflect.Type {
 }
 
 type tenantArgs struct {
-	// The name of the tenant. Tenant names are globally unique, and cannot be a prefix of any other tenant name.
+	// The name of the tenant. Tenant names are globally unique, and cannot be a prefix of any other tenant name. Will be converted to lowercase.
 	AccountName string `pulumi:"accountName"`
 	// Whether or not to even try and delete the tenant. *NOTE: This only works if you have disabled deletion protection for the tenant.* Defaults to `false`.
 	AllowDeletion *bool `pulumi:"allowDeletion"`
@@ -587,7 +587,7 @@ type tenantArgs struct {
 
 // The set of arguments for constructing a Tenant resource.
 type TenantArgs struct {
-	// The name of the tenant. Tenant names are globally unique, and cannot be a prefix of any other tenant name.
+	// The name of the tenant. Tenant names are globally unique, and cannot be a prefix of any other tenant name. Will be converted to lowercase.
 	AccountName pulumi.StringInput
 	// Whether or not to even try and delete the tenant. *NOTE: This only works if you have disabled deletion protection for the tenant.* Defaults to `false`.
 	AllowDeletion pulumi.BoolPtrInput
@@ -688,7 +688,7 @@ func (o TenantOutput) ToTenantOutputWithContext(ctx context.Context) TenantOutpu
 	return o
 }
 
-// The name of the tenant. Tenant names are globally unique, and cannot be a prefix of any other tenant name.
+// The name of the tenant. Tenant names are globally unique, and cannot be a prefix of any other tenant name. Will be converted to lowercase.
 func (o TenantOutput) AccountName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Tenant) pulumi.StringOutput { return v.AccountName }).(pulumi.StringOutput)
 }

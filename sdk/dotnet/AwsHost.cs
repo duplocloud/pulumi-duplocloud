@@ -19,12 +19,13 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
+    /// using Pulumi = Pulumi.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Before creating a host, you must first set up the infrastructure without an eks cluster. Then, you must create a tenant inside the infra. Below is the resource for creating the infrastructure.
-    ///     var infra = new Duplocloud.Infrastructure("infra", new()
+    ///     var infra = new Pulumi.Infrastructure("infra", new()
     ///     {
     ///         InfraName = "dev",
     ///         Cloud = 0,
@@ -34,20 +35,20 @@ namespace DuploCloud.Pulumi
     ///     });
     /// 
     ///     // Use the infrastructure name as the 'plan_id' from the 'duplocloud_infrastructure' resource while creating tenant.
-    ///     var tenant = new Duplocloud.Tenant("tenant", new()
+    ///     var tenant = new Pulumi.Tenant("tenant", new()
     ///     {
     ///         AccountName = "dev",
     ///         PlanId = infra.InfraName,
     ///     });
     /// 
     ///     // Create a data source to retrieve the Machine Image ID to be used by the host
-    ///     var image = Duplocloud.GetNativeHostImage.Invoke(new()
+    ///     var image = Pulumi.GetNativeHostImage.Invoke(new()
     ///     {
     ///         TenantId = tenant.TenantId,
     ///         IsKubernetes = false,
     ///     });
     /// 
-    ///     var native = new Duplocloud.AwsHost("native", new()
+    ///     var native = new Pulumi.AwsHost("native", new()
     ///     {
     ///         TenantId = tenant.TenantId,
     ///         FriendlyName = "host01",
@@ -58,7 +59,7 @@ namespace DuploCloud.Pulumi
     ///         UserAccount = tenant.AccountName,
     ///         Metadatas = new[]
     ///         {
-    ///             new Duplocloud.Inputs.AwsHostMetadataArgs
+    ///             new Pulumi.Inputs.AwsHostMetadataArgs
     ///             {
     ///                 Key = "OsDiskSize",
     ///                 Value = "20",
@@ -75,12 +76,13 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
+    /// using Pulumi = Pulumi.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Before creating the EKS worker node, you must first set up the infrastructure with EKS cluster enabled and a tenant. Below is the resource for creating the infrastructure.
-    ///     var infra = new Duplocloud.Infrastructure("infra", new()
+    ///     var infra = new Pulumi.Infrastructure("infra", new()
     ///     {
     ///         InfraName = "dev",
     ///         Cloud = 0,
@@ -90,20 +92,20 @@ namespace DuploCloud.Pulumi
     ///     });
     /// 
     ///     // Use the infrastructure name as the 'plan_id' from the 'duplocloud_infrastructure' resource while creating tenant.
-    ///     var tenant = new Duplocloud.Tenant("tenant", new()
+    ///     var tenant = new Pulumi.Tenant("tenant", new()
     ///     {
     ///         AccountName = "dev",
     ///         PlanId = infra.InfraName,
     ///     });
     /// 
     ///     // Create a data source to retrieve the Machine Image ID to be used by the host
-    ///     var image = Duplocloud.GetNativeHostImage.Invoke(new()
+    ///     var image = Pulumi.GetNativeHostImage.Invoke(new()
     ///     {
     ///         TenantId = tenant.TenantId,
     ///         IsKubernetes = true,
     ///     });
     /// 
-    ///     var host = new Duplocloud.AwsHost("host", new()
+    ///     var host = new Pulumi.AwsHost("host", new()
     ///     {
     ///         TenantId = tenant.TenantId,
     ///         FriendlyName = "host02",
@@ -124,23 +126,24 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
+    /// using Pulumi = Pulumi.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Ensure the 'dev' tenant is already created before setting up the EKS worker node.
-    ///     var tenant = Duplocloud.GetTenant.Invoke(new()
+    ///     var tenant = Pulumi.GetTenant.Invoke(new()
     ///     {
     ///         Name = "dev",
     ///     });
     /// 
-    ///     var image = Duplocloud.GetNativeHostImage.Invoke(new()
+    ///     var image = Pulumi.GetNativeHostImage.Invoke(new()
     ///     {
     ///         TenantId = tenant.Apply(getTenantResult =&gt; getTenantResult.Id),
     ///         IsKubernetes = true,
     ///     });
     /// 
-    ///     var host = new Duplocloud.AwsHost("host", new()
+    ///     var host = new Pulumi.AwsHost("host", new()
     ///     {
     ///         TenantId = tenant.Apply(getTenantResult =&gt; getTenantResult.Id),
     ///         FriendlyName = "host03",
@@ -152,12 +155,12 @@ namespace DuploCloud.Pulumi
     ///         KeypairType = 1,
     ///         Metadatas = new[]
     ///         {
-    ///             new Duplocloud.Inputs.AwsHostMetadataArgs
+    ///             new Pulumi.Inputs.AwsHostMetadataArgs
     ///             {
     ///                 Key = "OsDiskSize",
     ///                 Value = "20",
     ///             },
-    ///             new Duplocloud.Inputs.AwsHostMetadataArgs
+    ///             new Pulumi.Inputs.AwsHostMetadataArgs
     ///             {
     ///                 Key = "MetadataServiceOption",
     ///                 Value = "enabled_v2_only",
@@ -186,7 +189,8 @@ namespace DuploCloud.Pulumi
     public partial class AwsHost : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The numeric ID of the container agent pool that this host is added to.
+        /// The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
+        /// Windows - 7: EKS Linux - 8: ECS
         /// </summary>
         [Output("agentPlatform")]
         public Output<int?> AgentPlatform { get; private set; } = null!;
@@ -255,8 +259,8 @@ namespace DuploCloud.Pulumi
         public Output<bool?> IsMinion { get; private set; } = null!;
 
         /// <summary>
-        /// The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : ED25519 - `2` : RSA (deprecated
-        /// - some operating systems no longer support it)
+        /// The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : RSA (deprecated - some operating
+        /// systems no longer support it) - `2` : ED25519
         /// </summary>
         [Output("keypairType")]
         public Output<int> KeypairType { get; private set; } = null!;
@@ -391,7 +395,8 @@ namespace DuploCloud.Pulumi
     public sealed class AwsHostArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The numeric ID of the container agent pool that this host is added to.
+        /// The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
+        /// Windows - 7: EKS Linux - 8: ECS
         /// </summary>
         [Input("agentPlatform")]
         public Input<int>? AgentPlatform { get; set; }
@@ -451,8 +456,8 @@ namespace DuploCloud.Pulumi
         public Input<bool>? IsMinion { get; set; }
 
         /// <summary>
-        /// The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : ED25519 - `2` : RSA (deprecated
-        /// - some operating systems no longer support it)
+        /// The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : RSA (deprecated - some operating
+        /// systems no longer support it) - `2` : ED25519
         /// </summary>
         [Input("keypairType")]
         public Input<int>? KeypairType { get; set; }
@@ -565,7 +570,8 @@ namespace DuploCloud.Pulumi
     public sealed class AwsHostState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The numeric ID of the container agent pool that this host is added to.
+        /// The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
+        /// Windows - 7: EKS Linux - 8: ECS
         /// </summary>
         [Input("agentPlatform")]
         public Input<int>? AgentPlatform { get; set; }
@@ -640,8 +646,8 @@ namespace DuploCloud.Pulumi
         public Input<bool>? IsMinion { get; set; }
 
         /// <summary>
-        /// The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : ED25519 - `2` : RSA (deprecated
-        /// - some operating systems no longer support it)
+        /// The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : RSA (deprecated - some operating
+        /// systems no longer support it) - `2` : ED25519
         /// </summary>
         [Input("keypairType")]
         public Input<int>? KeypairType { get; set; }

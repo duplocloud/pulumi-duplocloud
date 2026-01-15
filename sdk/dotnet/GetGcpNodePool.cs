@@ -21,11 +21,11 @@ namespace DuploCloud.Pulumi
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Duplocloud = DuploCloud.Pulumi;
+        /// using Pulumi = Pulumi.Pulumi;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var pool = Duplocloud.GetGcpNodePool.Invoke(new()
+        ///     var pool = Pulumi.GetGcpNodePool.Invoke(new()
         ///     {
         ///         TenantId = "tenantid",
         ///         Name = "nodepool-name",
@@ -58,11 +58,11 @@ namespace DuploCloud.Pulumi
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Duplocloud = DuploCloud.Pulumi;
+        /// using Pulumi = Pulumi.Pulumi;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var pool = Duplocloud.GetGcpNodePool.Invoke(new()
+        ///     var pool = Pulumi.GetGcpNodePool.Invoke(new()
         ///     {
         ///         TenantId = "tenantid",
         ///         Name = "nodepool-name",
@@ -95,11 +95,11 @@ namespace DuploCloud.Pulumi
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Duplocloud = DuploCloud.Pulumi;
+        /// using Pulumi = Pulumi.Pulumi;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var pool = Duplocloud.GetGcpNodePool.Invoke(new()
+        ///     var pool = Pulumi.GetGcpNodePool.Invoke(new()
         ///     {
         ///         TenantId = "tenantid",
         ///         Name = "nodepool-name",

@@ -106,6 +106,8 @@ type AwsSqsQueue struct {
 	MessageRetentionSeconds pulumi.IntOutput `pulumi:"messageRetentionSeconds"`
 	// The name of the queue. Queue names must be made up of only uppercase and lowercase ASCII letters, numbers, underscores, and hyphens, and have up to 80 characters long which is inclusive of duplo prefix (duploservices-{tenant_name}-) appended by the system.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The time for which a ReceiveMessage call will wait for a message to arrive. An integer from 0 to 20 (seconds).
+	ReceiveWaitTimeSeconds pulumi.IntOutput `pulumi:"receiveWaitTimeSeconds"`
 	// The GUID of the tenant that the SQS queue will be created in.
 	TenantId pulumi.StringOutput `pulumi:"tenantId"`
 	// The URL for the created Amazon SQS queue.
@@ -167,6 +169,8 @@ type awsSqsQueueState struct {
 	MessageRetentionSeconds *int `pulumi:"messageRetentionSeconds"`
 	// The name of the queue. Queue names must be made up of only uppercase and lowercase ASCII letters, numbers, underscores, and hyphens, and have up to 80 characters long which is inclusive of duplo prefix (duploservices-{tenant_name}-) appended by the system.
 	Name *string `pulumi:"name"`
+	// The time for which a ReceiveMessage call will wait for a message to arrive. An integer from 0 to 20 (seconds).
+	ReceiveWaitTimeSeconds *int `pulumi:"receiveWaitTimeSeconds"`
 	// The GUID of the tenant that the SQS queue will be created in.
 	TenantId *string `pulumi:"tenantId"`
 	// The URL for the created Amazon SQS queue.
@@ -196,6 +200,8 @@ type AwsSqsQueueState struct {
 	MessageRetentionSeconds pulumi.IntPtrInput
 	// The name of the queue. Queue names must be made up of only uppercase and lowercase ASCII letters, numbers, underscores, and hyphens, and have up to 80 characters long which is inclusive of duplo prefix (duploservices-{tenant_name}-) appended by the system.
 	Name pulumi.StringPtrInput
+	// The time for which a ReceiveMessage call will wait for a message to arrive. An integer from 0 to 20 (seconds).
+	ReceiveWaitTimeSeconds pulumi.IntPtrInput
 	// The GUID of the tenant that the SQS queue will be created in.
 	TenantId pulumi.StringPtrInput
 	// The URL for the created Amazon SQS queue.
@@ -225,6 +231,8 @@ type awsSqsQueueArgs struct {
 	MessageRetentionSeconds *int `pulumi:"messageRetentionSeconds"`
 	// The name of the queue. Queue names must be made up of only uppercase and lowercase ASCII letters, numbers, underscores, and hyphens, and have up to 80 characters long which is inclusive of duplo prefix (duploservices-{tenant_name}-) appended by the system.
 	Name *string `pulumi:"name"`
+	// The time for which a ReceiveMessage call will wait for a message to arrive. An integer from 0 to 20 (seconds).
+	ReceiveWaitTimeSeconds *int `pulumi:"receiveWaitTimeSeconds"`
 	// The GUID of the tenant that the SQS queue will be created in.
 	TenantId string `pulumi:"tenantId"`
 	// The visibility timeout for the queue. An integer from 0 to 43200 (12 hours).
@@ -249,6 +257,8 @@ type AwsSqsQueueArgs struct {
 	MessageRetentionSeconds pulumi.IntPtrInput
 	// The name of the queue. Queue names must be made up of only uppercase and lowercase ASCII letters, numbers, underscores, and hyphens, and have up to 80 characters long which is inclusive of duplo prefix (duploservices-{tenant_name}-) appended by the system.
 	Name pulumi.StringPtrInput
+	// The time for which a ReceiveMessage call will wait for a message to arrive. An integer from 0 to 20 (seconds).
+	ReceiveWaitTimeSeconds pulumi.IntPtrInput
 	// The GUID of the tenant that the SQS queue will be created in.
 	TenantId pulumi.StringInput
 	// The visibility timeout for the queue. An integer from 0 to 43200 (12 hours).
@@ -392,6 +402,11 @@ func (o AwsSqsQueueOutput) MessageRetentionSeconds() pulumi.IntOutput {
 // The name of the queue. Queue names must be made up of only uppercase and lowercase ASCII letters, numbers, underscores, and hyphens, and have up to 80 characters long which is inclusive of duplo prefix (duploservices-{tenant_name}-) appended by the system.
 func (o AwsSqsQueueOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AwsSqsQueue) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The time for which a ReceiveMessage call will wait for a message to arrive. An integer from 0 to 20 (seconds).
+func (o AwsSqsQueueOutput) ReceiveWaitTimeSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v *AwsSqsQueue) pulumi.IntOutput { return v.ReceiveWaitTimeSeconds }).(pulumi.IntOutput)
 }
 
 // The GUID of the tenant that the SQS queue will be created in.

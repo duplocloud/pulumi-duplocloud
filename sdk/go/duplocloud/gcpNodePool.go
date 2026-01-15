@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// `duplocloudGcpK8NodePools` manages a GCP Node Pool in Duplo.
+// `GcpNodePool` manages a GCP Node Pool in Duplo.
 //
 // ## Import
 //

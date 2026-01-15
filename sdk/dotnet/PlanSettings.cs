@@ -19,15 +19,15 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myplanSettings = new Duplocloud.PlanSettings("myplanSettings", new()
+    ///     var myplanSettings = new Pulumi.PlanSettings("myplanSettings", new()
     ///     {
     ///         PlanId = "myplan",
     ///         UnrestrictedExtLb = true,
-    ///         DnsSetting = new Duplocloud.Inputs.PlanSettingsDnsSettingArgs
+    ///         DnsSetting = new Pulumi.Inputs.PlanSettingsDnsSettingArgs
     ///         {
     ///             DomainId = "Z02791752705G9GHH8CYF",
     ///             InternalDnsSuffix = ".test.duplocloud.net",

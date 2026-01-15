@@ -30,8 +30,9 @@ class K8SecretArgs:
         :param pulumi.Input[str] secret_name: The name of the secret.
         :param pulumi.Input[str] secret_type: The type of the secret.  Usually `"Opaque"`.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the secret will be created in.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] secret_annotations: Annotations for the secret
-        :param pulumi.Input[str] secret_data: A JSON encoded string representing the secret metadata. You can use the `jsonencode()` function to convert map or object data, if needed. You can use the `jsondecode()` function to read data.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] secret_annotations: Annotations for the secret.
+        :param pulumi.Input[str] secret_data: A JSON encoded string representing the secret metadata. You can use the `jsonencode()` function to convert map or object
+               data, if needed. You can use the `jsondecode()` function to read data.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] secret_labels: Map of string keys and values that can be used to organize and categorize (scope and select) the secret
         """
         pulumi.set(__self__, "secret_name", secret_name)
@@ -84,7 +85,7 @@ class K8SecretArgs:
     @pulumi.getter(name="secretAnnotations")
     def secret_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Annotations for the secret
+        Annotations for the secret.
         """
         return pulumi.get(self, "secret_annotations")
 
@@ -96,7 +97,8 @@ class K8SecretArgs:
     @pulumi.getter(name="secretData")
     def secret_data(self) -> Optional[pulumi.Input[str]]:
         """
-        A JSON encoded string representing the secret metadata. You can use the `jsonencode()` function to convert map or object data, if needed. You can use the `jsondecode()` function to read data.
+        A JSON encoded string representing the secret metadata. You can use the `jsonencode()` function to convert map or object
+        data, if needed. You can use the `jsondecode()` function to read data.
         """
         return pulumi.get(self, "secret_data")
 
@@ -130,8 +132,9 @@ class _K8SecretState:
                  tenant_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering K8Secret resources.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] secret_annotations: Annotations for the secret
-        :param pulumi.Input[str] secret_data: A JSON encoded string representing the secret metadata. You can use the `jsonencode()` function to convert map or object data, if needed. You can use the `jsondecode()` function to read data.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] secret_annotations: Annotations for the secret.
+        :param pulumi.Input[str] secret_data: A JSON encoded string representing the secret metadata. You can use the `jsonencode()` function to convert map or object
+               data, if needed. You can use the `jsondecode()` function to read data.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] secret_labels: Map of string keys and values that can be used to organize and categorize (scope and select) the secret
         :param pulumi.Input[str] secret_name: The name of the secret.
         :param pulumi.Input[str] secret_type: The type of the secret.  Usually `"Opaque"`.
@@ -167,7 +170,7 @@ class _K8SecretState:
     @pulumi.getter(name="secretAnnotations")
     def secret_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Annotations for the secret
+        Annotations for the secret.
         """
         return pulumi.get(self, "secret_annotations")
 
@@ -179,7 +182,8 @@ class _K8SecretState:
     @pulumi.getter(name="secretData")
     def secret_data(self) -> Optional[pulumi.Input[str]]:
         """
-        A JSON encoded string representing the secret metadata. You can use the `jsonencode()` function to convert map or object data, if needed. You can use the `jsondecode()` function to read data.
+        A JSON encoded string representing the secret metadata. You can use the `jsonencode()` function to convert map or object
+        data, if needed. You can use the `jsondecode()` function to read data.
         """
         return pulumi.get(self, "secret_data")
 
@@ -260,6 +264,34 @@ class K8Secret(pulumi.CustomResource):
         """
         `K8Secret` manages a kubernetes secret in a Duplo tenant.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_duplocloud as duplocloud
+
+        myapp = duplocloud.Tenant("myapp",
+            account_name="myapp",
+            plan_id="default")
+        myapp_k8_secret = duplocloud.K8Secret("myapp",
+            tenant_id=myapp.tenant_id,
+            secret_name="mysecret",
+            secret_type="Opaque",
+            secret_data=json.dumps({
+                "foo": "bar2",
+            }),
+            secret_labels={
+                "KeyA": "ValueA",
+                "KeyB": "ValueB",
+                "app.duplocloud.net/app-name": "<appname>",
+            },
+            secret_annotations={
+                "annotA": "ValueA",
+                "annotB": "ValueB",
+            })
+        ```
+
         ## Import
 
         Example: Importing an existing kubernetes secret
@@ -276,8 +308,9 @@ class K8Secret(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] secret_annotations: Annotations for the secret
-        :param pulumi.Input[str] secret_data: A JSON encoded string representing the secret metadata. You can use the `jsonencode()` function to convert map or object data, if needed. You can use the `jsondecode()` function to read data.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] secret_annotations: Annotations for the secret.
+        :param pulumi.Input[str] secret_data: A JSON encoded string representing the secret metadata. You can use the `jsonencode()` function to convert map or object
+               data, if needed. You can use the `jsondecode()` function to read data.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] secret_labels: Map of string keys and values that can be used to organize and categorize (scope and select) the secret
         :param pulumi.Input[str] secret_name: The name of the secret.
         :param pulumi.Input[str] secret_type: The type of the secret.  Usually `"Opaque"`.
@@ -291,6 +324,34 @@ class K8Secret(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         `K8Secret` manages a kubernetes secret in a Duplo tenant.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_duplocloud as duplocloud
+
+        myapp = duplocloud.Tenant("myapp",
+            account_name="myapp",
+            plan_id="default")
+        myapp_k8_secret = duplocloud.K8Secret("myapp",
+            tenant_id=myapp.tenant_id,
+            secret_name="mysecret",
+            secret_type="Opaque",
+            secret_data=json.dumps({
+                "foo": "bar2",
+            }),
+            secret_labels={
+                "KeyA": "ValueA",
+                "KeyB": "ValueB",
+                "app.duplocloud.net/app-name": "<appname>",
+            },
+            secret_annotations={
+                "annotA": "ValueA",
+                "annotB": "ValueB",
+            })
+        ```
 
         ## Import
 
@@ -377,8 +438,9 @@ class K8Secret(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] secret_annotations: Annotations for the secret
-        :param pulumi.Input[str] secret_data: A JSON encoded string representing the secret metadata. You can use the `jsonencode()` function to convert map or object data, if needed. You can use the `jsondecode()` function to read data.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] secret_annotations: Annotations for the secret.
+        :param pulumi.Input[str] secret_data: A JSON encoded string representing the secret metadata. You can use the `jsonencode()` function to convert map or object
+               data, if needed. You can use the `jsondecode()` function to read data.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] secret_labels: Map of string keys and values that can be used to organize and categorize (scope and select) the secret
         :param pulumi.Input[str] secret_name: The name of the secret.
         :param pulumi.Input[str] secret_type: The type of the secret.  Usually `"Opaque"`.
@@ -407,7 +469,7 @@ class K8Secret(pulumi.CustomResource):
     @pulumi.getter(name="secretAnnotations")
     def secret_annotations(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        Annotations for the secret
+        Annotations for the secret.
         """
         return pulumi.get(self, "secret_annotations")
 
@@ -415,7 +477,8 @@ class K8Secret(pulumi.CustomResource):
     @pulumi.getter(name="secretData")
     def secret_data(self) -> pulumi.Output[Optional[str]]:
         """
-        A JSON encoded string representing the secret metadata. You can use the `jsonencode()` function to convert map or object data, if needed. You can use the `jsondecode()` function to read data.
+        A JSON encoded string representing the secret metadata. You can use the `jsonencode()` function to convert map or object
+        data, if needed. You can use the `jsondecode()` function to read data.
         """
         return pulumi.get(self, "secret_data")
 

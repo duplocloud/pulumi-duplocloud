@@ -14,6 +14,9 @@ namespace DuploCloud.Pulumi.Outputs
     [OutputType]
     public sealed class AwsCloudfrontDistributionOriginS3OriginConfig
     {
+        /// <summary>
+        /// The CloudFront origin access identity to associate with the origin. This is used to restrict access to the S3 bucket. Duplo assigns this automatically when the "use*origin*access_identity" is set to true. Any explicit value set here will be ignored and duplo created oai will be used.
+        /// </summary>
         public readonly string? OriginAccessIdentity;
 
         [OutputConstructor]

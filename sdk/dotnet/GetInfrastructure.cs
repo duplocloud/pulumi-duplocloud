@@ -21,30 +21,30 @@ namespace DuploCloud.Pulumi
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Duplocloud = DuploCloud.Pulumi;
+        /// using Pulumi = Pulumi.Pulumi;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // Example 1 - look up an infrastructure by tenant ID.
-        ///     var myinfra1 = Duplocloud.GetInfrastructure.Invoke(new()
+        ///     var myinfra1 = Pulumi.GetInfrastructure.Invoke(new()
         ///     {
         ///         TenantId = tenantId,
         ///     });
         /// 
         ///     // Example 2 - look up an infrastructure by name.
-        ///     var myinfra2 = Duplocloud.GetInfrastructure.Invoke(new()
+        ///     var myinfra2 = Pulumi.GetInfrastructure.Invoke(new()
         ///     {
         ///         InfraName = "myinfra",
         ///     });
         /// 
         ///     // Example 3 - look up list of certificates by plan ID.
-        ///     var certList = Duplocloud.GetPlanCertificates.Invoke(new()
+        ///     var certList = Pulumi.GetPlanCertificates.Invoke(new()
         ///     {
         ///         PlanId = "default",
         ///     });
         /// 
         ///     // Example 3 - look up plan certificates by plan ID and certificate name.
-        ///     var singleCert = Duplocloud.GetPlanCertificate.Invoke(new()
+        ///     var singleCert = Pulumi.GetPlanCertificate.Invoke(new()
         ///     {
         ///         PlanId = "default",
         ///         Name = "poc.duplocloud.net",
@@ -65,30 +65,30 @@ namespace DuploCloud.Pulumi
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Duplocloud = DuploCloud.Pulumi;
+        /// using Pulumi = Pulumi.Pulumi;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // Example 1 - look up an infrastructure by tenant ID.
-        ///     var myinfra1 = Duplocloud.GetInfrastructure.Invoke(new()
+        ///     var myinfra1 = Pulumi.GetInfrastructure.Invoke(new()
         ///     {
         ///         TenantId = tenantId,
         ///     });
         /// 
         ///     // Example 2 - look up an infrastructure by name.
-        ///     var myinfra2 = Duplocloud.GetInfrastructure.Invoke(new()
+        ///     var myinfra2 = Pulumi.GetInfrastructure.Invoke(new()
         ///     {
         ///         InfraName = "myinfra",
         ///     });
         /// 
         ///     // Example 3 - look up list of certificates by plan ID.
-        ///     var certList = Duplocloud.GetPlanCertificates.Invoke(new()
+        ///     var certList = Pulumi.GetPlanCertificates.Invoke(new()
         ///     {
         ///         PlanId = "default",
         ///     });
         /// 
         ///     // Example 3 - look up plan certificates by plan ID and certificate name.
-        ///     var singleCert = Duplocloud.GetPlanCertificate.Invoke(new()
+        ///     var singleCert = Pulumi.GetPlanCertificate.Invoke(new()
         ///     {
         ///         PlanId = "default",
         ///         Name = "poc.duplocloud.net",
@@ -109,30 +109,30 @@ namespace DuploCloud.Pulumi
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Duplocloud = DuploCloud.Pulumi;
+        /// using Pulumi = Pulumi.Pulumi;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // Example 1 - look up an infrastructure by tenant ID.
-        ///     var myinfra1 = Duplocloud.GetInfrastructure.Invoke(new()
+        ///     var myinfra1 = Pulumi.GetInfrastructure.Invoke(new()
         ///     {
         ///         TenantId = tenantId,
         ///     });
         /// 
         ///     // Example 2 - look up an infrastructure by name.
-        ///     var myinfra2 = Duplocloud.GetInfrastructure.Invoke(new()
+        ///     var myinfra2 = Pulumi.GetInfrastructure.Invoke(new()
         ///     {
         ///         InfraName = "myinfra",
         ///     });
         /// 
         ///     // Example 3 - look up list of certificates by plan ID.
-        ///     var certList = Duplocloud.GetPlanCertificates.Invoke(new()
+        ///     var certList = Pulumi.GetPlanCertificates.Invoke(new()
         ///     {
         ///         PlanId = "default",
         ///     });
         /// 
         ///     // Example 3 - look up plan certificates by plan ID and certificate name.
-        ///     var singleCert = Duplocloud.GetPlanCertificate.Invoke(new()
+        ///     var singleCert = Pulumi.GetPlanCertificate.Invoke(new()
         ///     {
         ///         PlanId = "default",
         ///         Name = "poc.duplocloud.net",
@@ -188,6 +188,7 @@ namespace DuploCloud.Pulumi
         /// </summary>
         public readonly string Id;
         public readonly string InfraName;
+        public readonly ImmutableArray<string> NatIps;
         public readonly ImmutableArray<Outputs.GetInfrastructurePrivateSubnetResult> PrivateSubnets;
         public readonly ImmutableArray<Outputs.GetInfrastructurePublicSubnetResult> PublicSubnets;
         public readonly string Region;
@@ -214,6 +215,8 @@ namespace DuploCloud.Pulumi
 
             string infraName,
 
+            ImmutableArray<string> natIps,
+
             ImmutableArray<Outputs.GetInfrastructurePrivateSubnetResult> privateSubnets,
 
             ImmutableArray<Outputs.GetInfrastructurePublicSubnetResult> publicSubnets,
@@ -239,6 +242,7 @@ namespace DuploCloud.Pulumi
             EnableK8Cluster = enableK8Cluster;
             Id = id;
             InfraName = infraName;
+            NatIps = natIps;
             PrivateSubnets = privateSubnets;
             PublicSubnets = publicSubnets;
             Region = region;

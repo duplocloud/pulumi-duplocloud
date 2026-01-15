@@ -64,7 +64,10 @@ class GetNativeHostImageResult:
 
     @property
     @pulumi.getter
-    def arch(self) -> str:
+    def arch(self) -> Optional[str]:
+        """
+        Architecture of the native host
+        """
         return pulumi.get(self, "arch")
 
     @property
@@ -82,22 +85,35 @@ class GetNativeHostImageResult:
 
     @property
     @pulumi.getter(name="isKubernetes")
+    @_utilities.deprecated("""This field is deprecated. Use k8s_version for precise filtering""")
     def is_kubernetes(self) -> bool:
+        """
+        This field is deprecated. Use k8s_version for precise filtering
+        """
         return pulumi.get(self, "is_kubernetes")
 
     @property
     @pulumi.getter(name="k8sVersion")
-    def k8s_version(self) -> str:
+    def k8s_version(self) -> Optional[str]:
+        """
+        K8 version of the native host
+        """
         return pulumi.get(self, "k8s_version")
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> Optional[str]:
+        """
+        Name of the Duplocloud native host
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
-    def os(self) -> str:
+    def os(self) -> Optional[str]:
+        """
+        OS of native host
+        """
         return pulumi.get(self, "os")
 
     @property
@@ -121,6 +137,9 @@ class GetNativeHostImageResult:
     @property
     @pulumi.getter
     def username(self) -> str:
+        """
+        username associated to native host
+        """
         return pulumi.get(self, "username")
 
 
@@ -145,20 +164,45 @@ class AwaitableGetNativeHostImageResult(GetNativeHostImageResult):
 
 def get_native_host_image(arch: Optional[str] = None,
                           is_kubernetes: Optional[bool] = None,
+                          k8s_version: Optional[str] = None,
                           name: Optional[str] = None,
+                          os: Optional[str] = None,
                           tenant_id: Optional[str] = None,
+                          username: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNativeHostImageResult:
     """
     `get_native_host_image` retrieves details of a specific image for a given tenant.
 
+    ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_duplocloud as duplocloud
+
+    img = duplocloud.get_native_host_image(tenant_id="f4bf01f0-5077-489e-aa51-95fb77049608",
+        name="EKS-Oregon-1.32",
+        os="AmazonLinux2023",
+        k8s_version="1.32",
+        arch="amd64")
+    ```
+
+
+    :param str arch: Architecture of the native host
+    :param bool is_kubernetes: This field is deprecated. Use k8s_version for precise filtering
+    :param str k8s_version: K8 version of the native host
+    :param str name: Name of the Duplocloud native host
+    :param str os: OS of native host
     :param str tenant_id: The tenant ID
+    :param str username: username associated to native host
     """
     __args__ = dict()
     __args__['arch'] = arch
     __args__['isKubernetes'] = is_kubernetes
+    __args__['k8sVersion'] = k8s_version
     __args__['name'] = name
+    __args__['os'] = os
     __args__['tenantId'] = tenant_id
+    __args__['username'] = username
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('duplocloud:index/getNativeHostImage:getNativeHostImage', __args__, opts=opts, typ=GetNativeHostImageResult).value
 
@@ -176,20 +220,45 @@ def get_native_host_image(arch: Optional[str] = None,
         username=pulumi.get(__ret__, 'username'))
 def get_native_host_image_output(arch: Optional[pulumi.Input[Optional[str]]] = None,
                                  is_kubernetes: Optional[pulumi.Input[Optional[bool]]] = None,
+                                 k8s_version: Optional[pulumi.Input[Optional[str]]] = None,
                                  name: Optional[pulumi.Input[Optional[str]]] = None,
+                                 os: Optional[pulumi.Input[Optional[str]]] = None,
                                  tenant_id: Optional[pulumi.Input[str]] = None,
+                                 username: Optional[pulumi.Input[Optional[str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNativeHostImageResult]:
     """
     `get_native_host_image` retrieves details of a specific image for a given tenant.
 
+    ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_duplocloud as duplocloud
+
+    img = duplocloud.get_native_host_image(tenant_id="f4bf01f0-5077-489e-aa51-95fb77049608",
+        name="EKS-Oregon-1.32",
+        os="AmazonLinux2023",
+        k8s_version="1.32",
+        arch="amd64")
+    ```
+
+
+    :param str arch: Architecture of the native host
+    :param bool is_kubernetes: This field is deprecated. Use k8s_version for precise filtering
+    :param str k8s_version: K8 version of the native host
+    :param str name: Name of the Duplocloud native host
+    :param str os: OS of native host
     :param str tenant_id: The tenant ID
+    :param str username: username associated to native host
     """
     __args__ = dict()
     __args__['arch'] = arch
     __args__['isKubernetes'] = is_kubernetes
+    __args__['k8sVersion'] = k8s_version
     __args__['name'] = name
+    __args__['os'] = os
     __args__['tenantId'] = tenant_id
+    __args__['username'] = username
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('duplocloud:index/getNativeHostImage:getNativeHostImage', __args__, opts=opts, typ=GetNativeHostImageResult)
     return __ret__.apply(lambda __response__: GetNativeHostImageResult(

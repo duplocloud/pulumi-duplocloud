@@ -19,7 +19,7 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -27,7 +27,7 @@ namespace DuploCloud.Pulumi
     /// 
     ///     var vpcId = "vpc-0ba0667cfc20111122233";
     /// 
-    ///     var tg = new Duplocloud.AwsLbTargetGroup("tg", new()
+    ///     var tg = new Pulumi.AwsLbTargetGroup("tg", new()
     ///     {
     ///         TenantId = tenantId,
     ///         Name = "tg1",
@@ -35,7 +35,7 @@ namespace DuploCloud.Pulumi
     ///         Protocol = "HTTP",
     ///         VpcId = vpcId,
     ///         TargetType = "instance",
-    ///         HealthCheck = new Duplocloud.Inputs.AwsLbTargetGroupHealthCheckArgs
+    ///         HealthCheck = new Pulumi.Inputs.AwsLbTargetGroupHealthCheckArgs
     ///         {
     ///             HealthyThreshold = 8,
     ///             Interval = 300,

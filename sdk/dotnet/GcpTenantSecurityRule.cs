@@ -19,24 +19,24 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myapp = new Duplocloud.Tenant("myapp", new()
+    ///     var myapp = new Pulumi.Tenant("myapp", new()
     ///     {
     ///         AccountName = "myapp",
     ///         PlanId = "default",
     ///     });
     /// 
-    ///     var trule = new Duplocloud.GcpTenantSecurityRule("trule", new()
+    ///     var trule = new Pulumi.GcpTenantSecurityRule("trule", new()
     ///     {
     ///         TenantId = myapp.TenantId,
     ///         Name = "tenant-rule",
     ///         Description = "security rule for target tenant",
     ///         PortsAndProtocols = new[]
     ///         {
-    ///             new Duplocloud.Inputs.GcpTenantSecurityRulePortsAndProtocolArgs
+    ///             new Pulumi.Inputs.GcpTenantSecurityRulePortsAndProtocolArgs
     ///             {
     ///                 Ports = new[]
     ///                 {
@@ -45,7 +45,7 @@ namespace DuploCloud.Pulumi
     ///                 },
     ///                 ServiceProtocol = "tcp",
     ///             },
-    ///             new Duplocloud.Inputs.GcpTenantSecurityRulePortsAndProtocolArgs
+    ///             new Pulumi.Inputs.GcpTenantSecurityRulePortsAndProtocolArgs
     ///             {
     ///                 Ports = new[]
     ///                 {

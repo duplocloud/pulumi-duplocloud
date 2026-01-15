@@ -554,6 +554,120 @@ import (
 //
 // ```
 //
+// # Example to showcase use of parameter group in writer and read replica for aurora cluster instance
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/duplocloud/pulumi-duplocloud/sdk/go/duplocloud"
+//	"github.com/pulumi/pulumi-random/sdk/go/random"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			mypassword, err := random.NewPassword(ctx, "mypassword", &random.PasswordArgs{
+//				Length:  16,
+//				Special: false,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			app, err := duplocloud.NewRdsInstance(ctx, "app", &duplocloud.RdsInstanceArgs{
+//				TenantId:                    pulumi.Any(tenant.Id),
+//				Name:                        pulumi.String("writer1-sqlnew"),
+//				Engine:                      pulumi.Int(8),
+//				EngineVersion:               pulumi.String("5.7.mysql_aurora.2.11.5"),
+//				Size:                        pulumi.String("db.r5.large"),
+//				MasterUsername:              pulumi.String("myuser"),
+//				MasterPassword:              mypassword.Result,
+//				EncryptStorage:              pulumi.Bool(true),
+//				BackupRetentionPeriod:       pulumi.Int(10),
+//				DbName:                      pulumi.String("auroradb"),
+//				SkipFinalSnapshot:           pulumi.Bool(true),
+//				StoreDetailsInSecretManager: pulumi.Bool(false),
+//				EnhancedMonitoring:          pulumi.Int(0),
+//				AvailabilityZone:            pulumi.String("us-west-2b"),
+//				StorageType:                 pulumi.String("aurora"),
+//				ClusterParameterGroupName:   pulumi.String("c-aurora-mysql"),
+//				ParameterGroupName:          pulumi.String("aurora-mysql-dbparam"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = duplocloud.NewRdsReadReplica(ctx, "replica1", &duplocloud.RdsReadReplicaArgs{
+//				TenantId:           app.TenantId,
+//				Name:               pulumi.String("aurora-replica-new"),
+//				Size:               pulumi.String("db.r5.large"),
+//				ClusterIdentifier:  app.ClusterIdentifier,
+//				AvailabilityZone:   pulumi.String("us-west-2a"),
+//				ParameterGroupName: pulumi.String("aurora-mysql-dbparam"),
+//				EngineType:         app.Engine,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// # Example to showcase use of parameter group in writer and read replica for standalone instance
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/duplocloud/pulumi-duplocloud/sdk/go/duplocloud"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			mydb, err := duplocloud.NewRdsInstance(ctx, "mydb", &duplocloud.RdsInstanceArgs{
+//				TenantId:                    pulumi.Any(tenant.Id),
+//				Name:                        pulumi.String("tf-postgresql1"),
+//				Engine:                      pulumi.Int(1),
+//				EngineVersion:               pulumi.String("13.11"),
+//				Size:                        pulumi.String("db.t3.medium"),
+//				MasterUsername:              pulumi.String("myuser"),
+//				MasterPassword:              pulumi.String("Qaazwedd#1"),
+//				ParameterGroupName:          pulumi.String("psql13dbparam"),
+//				EncryptStorage:              pulumi.Bool(false),
+//				StoreDetailsInSecretManager: pulumi.Bool(false),
+//				EnhancedMonitoring:          pulumi.Int(0),
+//				StorageType:                 pulumi.String("gp2"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = duplocloud.NewRdsReadReplica(ctx, "replica", &duplocloud.RdsReadReplicaArgs{
+//				TenantId:          mydb.TenantId,
+//				Name:              pulumi.String("postgresql-rep1"),
+//				Size:              pulumi.String("db.t3.medium"),
+//				ClusterIdentifier: mydb.ClusterIdentifier,
+//				PerformanceInsights: &duplocloud.RdsReadReplicaPerformanceInsightsArgs{
+//					Enabled:         pulumi.Bool(true),
+//					RetentionPeriod: pulumi.Int(31),
+//				},
+//				EngineType:         mydb.Engine,
+//				ParameterGroupName: mydb.ParameterGroupName,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Example: Importing an existing RDS instance
@@ -567,128 +681,6 @@ import (
 // ```sh
 // $ pulumi import duplocloud:index/rdsInstance:RdsInstance mydb v2/subscriptions/*TENANT_ID*/RDSDBInstance/*SHORTNAME*
 // ```
-//
-// # Example to showcase use of parameter group in writer and read replica for aurora cluster instance
-//
-// resource "random_password" "mypassword" {
-//
-//	length  = 16
-//
-//	special = false
-//
-// }
-//
-// resource "duplocloud_rds_instance" "app" {
-//
-//	tenant_id      = data.duplocloud_tenant.tenant.id
-//
-//	name           = "writer1-sqlnew"
-//
-//	engine         = 8
-//
-//	engine_version = "5.7.mysql_aurora.2.11.5"
-//
-//	size           = "db.r5.large"
-//
-//	master_username              = "myuser"
-//
-//	master_password              = random_password.mypassword.result
-//
-//	encrypt_storage         = true
-//
-//	backup_retention_period = 10
-//
-//	db_name         =  "auroradb"
-//
-//	skip_final_snapshot = true
-//
-//	store_details_in_secret_manager = false
-//
-//	enhanced_monitoring = 0
-//
-//	availability_zone = "us-west-2b"
-//
-//	storage_type                    = "aurora"
-//
-//	cluster_parameter_group_name = "c-aurora-mysql"
-//
-//	parameter_group_name = "aurora-mysql-dbparam"
-//
-// }
-//
-// resource "duplocloud_rds_read_replica" "replica1" {
-//
-//	tenant_id          = duplocloud_rds_instance.app.tenant_id
-//
-//	name               = "aurora-replica-new"
-//
-//	size               = "db.r5.large"
-//
-//	cluster_identifier = duplocloud_rds_instance.app.cluster_identifier
-//
-//	availability_zone = "us-west-2a"
-//
-//	parameter_group_name = "aurora-mysql-dbparam"
-//
-//	engine_type=duplocloud_rds_instance.app.engine
-//
-// }
-//
-// # Example to showcase use of parameter group in writer and read replica for standalone instance
-//
-// resource "duplocloud_rds_instance" "mydb" {
-//
-//	tenant_id      = data.duplocloud_tenant.tenant.id
-//
-//	name           = "tf-postgresql1"
-//
-//	engine         = 1// PostgreSQL
-//
-//	engine_version = "13.11"
-//
-//	size           = "db.t3.medium"
-//
-//	master_username = "myuser"
-//
-//	master_password = "Qaazwedd#1"
-//
-//	parameter_group_name = "psql13dbparam"
-//
-//	encrypt_storage                 = false
-//
-//	store_details_in_secret_manager = false
-//
-//	enhanced_monitoring             = 0
-//
-//	storage_type                    = "gp2"
-//
-// }
-//
-// resource "duplocloud_rds_read_replica" "replica" {
-//
-//	tenant_id          = duplocloud_rds_instance.mydb.tenant_id
-//
-//	name               = "postgresql-rep1"
-//
-//	size               = "db.t3.medium"
-//
-//	cluster_identifier = duplocloud_rds_instance.mydb.cluster_identifier
-//
-//	#availability_zone = "us-east-1b"
-//
-//	performance_insights {
-//
-//	  enabled          = true
-//
-//	  retention_period = 31
-//
-//	}
-//
-//	engine_type=duplocloud_rds_instance.mydb.engine
-//
-//	parameter_group_name=duplocloud_rds_instance.mydb.parameter_group_name
-//
-// }
 type RdsInstance struct {
 	pulumi.CustomResourceState
 
@@ -696,6 +688,8 @@ type RdsInstance struct {
 	AllocatedStorage pulumi.IntOutput `pulumi:"allocatedStorage"`
 	// The ARN of the RDS instance.
 	Arn pulumi.StringOutput `pulumi:"arn"`
+	// Enable or disable auto minor version upgrade
+	AutoMinorVersionUpgrade pulumi.BoolOutput `pulumi:"autoMinorVersionUpgrade"`
 	// Specify a valid Availability Zone for the RDS primary instance (when Multi-AZ is disabled) or for the Aurora writer
 	// instance. e.g. us-west-2a
 	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
@@ -712,7 +706,7 @@ type RdsInstance struct {
 	// If the DB instance should have deletion protection enabled.The database can't be deleted when this value is set to
 	// `true`. This setting is not applicable for document db cluster instance.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
-	// Whether or not to enable the RDS IAM authentication.
+	// Whether or not to enable the RDS IAM authentication. It can only be set during instance creation.
 	EnableIamAuth pulumi.BoolOutput `pulumi:"enableIamAuth"`
 	// Whether or not to enable the RDS instance logging. This setting is not applicable for document db cluster instance.
 	EnableLogging pulumi.BoolOutput `pulumi:"enableLogging"`
@@ -745,12 +739,12 @@ type RdsInstance struct {
 	// The master username of the RDS instance.
 	MasterUsername pulumi.StringOutput `pulumi:"masterUsername"`
 	// Specifies if the RDS instance is multi-AZ.
-	MultiAz pulumi.BoolOutput `pulumi:"multiAz"`
+	MultiAz pulumi.BoolPtrOutput `pulumi:"multiAz"`
 	// The short name of the RDS instance. Duplo will add a prefix to the name. You can retrieve the full name from the
 	// `identifier` attribute.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A RDS parameter group name to apply to the RDS instance.
-	ParameterGroupName pulumi.StringOutput `pulumi:"parameterGroupName"`
+	ParameterGroupName pulumi.StringPtrOutput `pulumi:"parameterGroupName"`
 	// Amazon RDS Performance Insights is a database performance tuning and monitoring feature that helps you quickly assess
 	// the load on your database, and determine when and where to take action. Perfomance Insights get apply when enable is set
 	// to true.
@@ -841,6 +835,8 @@ type rdsInstanceState struct {
 	AllocatedStorage *int `pulumi:"allocatedStorage"`
 	// The ARN of the RDS instance.
 	Arn *string `pulumi:"arn"`
+	// Enable or disable auto minor version upgrade
+	AutoMinorVersionUpgrade *bool `pulumi:"autoMinorVersionUpgrade"`
 	// Specify a valid Availability Zone for the RDS primary instance (when Multi-AZ is disabled) or for the Aurora writer
 	// instance. e.g. us-west-2a
 	AvailabilityZone *string `pulumi:"availabilityZone"`
@@ -857,7 +853,7 @@ type rdsInstanceState struct {
 	// If the DB instance should have deletion protection enabled.The database can't be deleted when this value is set to
 	// `true`. This setting is not applicable for document db cluster instance.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
-	// Whether or not to enable the RDS IAM authentication.
+	// Whether or not to enable the RDS IAM authentication. It can only be set during instance creation.
 	EnableIamAuth *bool `pulumi:"enableIamAuth"`
 	// Whether or not to enable the RDS instance logging. This setting is not applicable for document db cluster instance.
 	EnableLogging *bool `pulumi:"enableLogging"`
@@ -941,6 +937,8 @@ type RdsInstanceState struct {
 	AllocatedStorage pulumi.IntPtrInput
 	// The ARN of the RDS instance.
 	Arn pulumi.StringPtrInput
+	// Enable or disable auto minor version upgrade
+	AutoMinorVersionUpgrade pulumi.BoolPtrInput
 	// Specify a valid Availability Zone for the RDS primary instance (when Multi-AZ is disabled) or for the Aurora writer
 	// instance. e.g. us-west-2a
 	AvailabilityZone pulumi.StringPtrInput
@@ -957,7 +955,7 @@ type RdsInstanceState struct {
 	// If the DB instance should have deletion protection enabled.The database can't be deleted when this value is set to
 	// `true`. This setting is not applicable for document db cluster instance.
 	DeletionProtection pulumi.BoolPtrInput
-	// Whether or not to enable the RDS IAM authentication.
+	// Whether or not to enable the RDS IAM authentication. It can only be set during instance creation.
 	EnableIamAuth pulumi.BoolPtrInput
 	// Whether or not to enable the RDS instance logging. This setting is not applicable for document db cluster instance.
 	EnableLogging pulumi.BoolPtrInput
@@ -1043,6 +1041,8 @@ func (RdsInstanceState) ElementType() reflect.Type {
 type rdsInstanceArgs struct {
 	// (Required unless a `snapshotId` is provided) The allocated storage in gigabytes.
 	AllocatedStorage *int `pulumi:"allocatedStorage"`
+	// Enable or disable auto minor version upgrade
+	AutoMinorVersionUpgrade *bool `pulumi:"autoMinorVersionUpgrade"`
 	// Specify a valid Availability Zone for the RDS primary instance (when Multi-AZ is disabled) or for the Aurora writer
 	// instance. e.g. us-west-2a
 	AvailabilityZone *string `pulumi:"availabilityZone"`
@@ -1057,7 +1057,7 @@ type rdsInstanceArgs struct {
 	// If the DB instance should have deletion protection enabled.The database can't be deleted when this value is set to
 	// `true`. This setting is not applicable for document db cluster instance.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
-	// Whether or not to enable the RDS IAM authentication.
+	// Whether or not to enable the RDS IAM authentication. It can only be set during instance creation.
 	EnableIamAuth *bool `pulumi:"enableIamAuth"`
 	// Whether or not to enable the RDS instance logging. This setting is not applicable for document db cluster instance.
 	EnableLogging *bool `pulumi:"enableLogging"`
@@ -1130,6 +1130,8 @@ type rdsInstanceArgs struct {
 type RdsInstanceArgs struct {
 	// (Required unless a `snapshotId` is provided) The allocated storage in gigabytes.
 	AllocatedStorage pulumi.IntPtrInput
+	// Enable or disable auto minor version upgrade
+	AutoMinorVersionUpgrade pulumi.BoolPtrInput
 	// Specify a valid Availability Zone for the RDS primary instance (when Multi-AZ is disabled) or for the Aurora writer
 	// instance. e.g. us-west-2a
 	AvailabilityZone pulumi.StringPtrInput
@@ -1144,7 +1146,7 @@ type RdsInstanceArgs struct {
 	// If the DB instance should have deletion protection enabled.The database can't be deleted when this value is set to
 	// `true`. This setting is not applicable for document db cluster instance.
 	DeletionProtection pulumi.BoolPtrInput
-	// Whether or not to enable the RDS IAM authentication.
+	// Whether or not to enable the RDS IAM authentication. It can only be set during instance creation.
 	EnableIamAuth pulumi.BoolPtrInput
 	// Whether or not to enable the RDS instance logging. This setting is not applicable for document db cluster instance.
 	EnableLogging pulumi.BoolPtrInput
@@ -1310,6 +1312,11 @@ func (o RdsInstanceOutput) Arn() pulumi.StringOutput {
 	return o.ApplyT(func(v *RdsInstance) pulumi.StringOutput { return v.Arn }).(pulumi.StringOutput)
 }
 
+// Enable or disable auto minor version upgrade
+func (o RdsInstanceOutput) AutoMinorVersionUpgrade() pulumi.BoolOutput {
+	return o.ApplyT(func(v *RdsInstance) pulumi.BoolOutput { return v.AutoMinorVersionUpgrade }).(pulumi.BoolOutput)
+}
+
 // Specify a valid Availability Zone for the RDS primary instance (when Multi-AZ is disabled) or for the Aurora writer
 // instance. e.g. us-west-2a
 func (o RdsInstanceOutput) AvailabilityZone() pulumi.StringOutput {
@@ -1347,7 +1354,7 @@ func (o RdsInstanceOutput) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *RdsInstance) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }
 
-// Whether or not to enable the RDS IAM authentication.
+// Whether or not to enable the RDS IAM authentication. It can only be set during instance creation.
 func (o RdsInstanceOutput) EnableIamAuth() pulumi.BoolOutput {
 	return o.ApplyT(func(v *RdsInstance) pulumi.BoolOutput { return v.EnableIamAuth }).(pulumi.BoolOutput)
 }
@@ -1422,8 +1429,8 @@ func (o RdsInstanceOutput) MasterUsername() pulumi.StringOutput {
 }
 
 // Specifies if the RDS instance is multi-AZ.
-func (o RdsInstanceOutput) MultiAz() pulumi.BoolOutput {
-	return o.ApplyT(func(v *RdsInstance) pulumi.BoolOutput { return v.MultiAz }).(pulumi.BoolOutput)
+func (o RdsInstanceOutput) MultiAz() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RdsInstance) pulumi.BoolPtrOutput { return v.MultiAz }).(pulumi.BoolPtrOutput)
 }
 
 // The short name of the RDS instance. Duplo will add a prefix to the name. You can retrieve the full name from the
@@ -1433,8 +1440,8 @@ func (o RdsInstanceOutput) Name() pulumi.StringOutput {
 }
 
 // A RDS parameter group name to apply to the RDS instance.
-func (o RdsInstanceOutput) ParameterGroupName() pulumi.StringOutput {
-	return o.ApplyT(func(v *RdsInstance) pulumi.StringOutput { return v.ParameterGroupName }).(pulumi.StringOutput)
+func (o RdsInstanceOutput) ParameterGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RdsInstance) pulumi.StringPtrOutput { return v.ParameterGroupName }).(pulumi.StringPtrOutput)
 }
 
 // Amazon RDS Performance Insights is a database performance tuning and monitoring feature that helps you quickly assess

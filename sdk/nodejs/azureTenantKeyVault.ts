@@ -7,25 +7,6 @@ import * as utilities from "./utilities";
 /**
  * `duplocloud.AzureTenantKeyVault` manages a azure Key Vault in DuploCloud.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@duplocloud/pulumi";
- *
- * const tenant = new duplocloud.Tenant("tenant", {
- *     accountName: "test",
- *     planId: "test",
- * });
- * const kv = new duplocloud.AzureTenantKeyVault("kv", {
- *     tenantId: tenant.tenantId,
- *     name: "tst-kv001",
- *     skuName: "standard",
- *     purgeProtectionEnabled: true,
- *     softDeleteRetentionDays: 90,
- * });
- * ```
- *
  * ## Import
  *
  * Example: Importing an existing Azure Tenant Key Vault
@@ -81,6 +62,10 @@ export class AzureTenantKeyVault extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * Purge the Key Vault. Defaults to `false`.
+     */
+    public readonly purge!: pulumi.Output<boolean | undefined>;
+    /**
      * Is Purge Protection enabled for this Key Vault?
      */
     public readonly purgeProtectionEnabled!: pulumi.Output<boolean>;
@@ -117,6 +102,7 @@ export class AzureTenantKeyVault extends pulumi.CustomResource {
             resourceInputs["azureId"] = state ? state.azureId : undefined;
             resourceInputs["enabledForDiskEncryption"] = state ? state.enabledForDiskEncryption : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["purge"] = state ? state.purge : undefined;
             resourceInputs["purgeProtectionEnabled"] = state ? state.purgeProtectionEnabled : undefined;
             resourceInputs["skuName"] = state ? state.skuName : undefined;
             resourceInputs["softDeleteRetentionDays"] = state ? state.softDeleteRetentionDays : undefined;
@@ -131,6 +117,7 @@ export class AzureTenantKeyVault extends pulumi.CustomResource {
                 throw new Error("Missing required property 'tenantId'");
             }
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["purge"] = args ? args.purge : undefined;
             resourceInputs["purgeProtectionEnabled"] = args ? args.purgeProtectionEnabled : undefined;
             resourceInputs["skuName"] = args ? args.skuName : undefined;
             resourceInputs["softDeleteRetentionDays"] = args ? args.softDeleteRetentionDays : undefined;
@@ -161,6 +148,10 @@ export interface AzureTenantKeyVaultState {
      */
     name?: pulumi.Input<string>;
     /**
+     * Purge the Key Vault. Defaults to `false`.
+     */
+    purge?: pulumi.Input<boolean>;
+    /**
      * Is Purge Protection enabled for this Key Vault?
      */
     purgeProtectionEnabled?: pulumi.Input<boolean>;
@@ -190,6 +181,10 @@ export interface AzureTenantKeyVaultArgs {
      * Specifies the name of the Key Vault.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Purge the Key Vault. Defaults to `false`.
+     */
+    purge?: pulumi.Input<boolean>;
     /**
      * Is Purge Protection enabled for this Key Vault?
      */

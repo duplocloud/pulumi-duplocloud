@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -25,6 +27,24 @@ import * as utilities from "./utilities";
  *     versionDescription: "launch template description",
  *     ami: "ami-123test",
  * });
+ * const name = new duplocloud.AwsLaunchTemplate("name", {
+ *     tenantId: myapp.tenantId,
+ *     instanceType: "t3a.small",
+ *     name: "launch-template-name",
+ *     versionDescription: "launch template block device mapping",
+ *     version: "2",
+ *     blockDeviceMappings: [{
+ *         deviceName: "/dev/xvda",
+ *         ebs: {
+ *             volumeSize: 30,
+ *             volumeType: "gp3",
+ *             deleteOnTermination: true,
+ *             encrypted: false,
+ *             iops: 3000,
+ *         },
+ *         virtualName: "ephemeral1",
+ *     }],
+ * });
  * ```
  *
  * ## Import
@@ -35,7 +55,7 @@ import * as utilities from "./utilities";
  *
  *  - *NAME* is the name of the AWS launch template
  *
- *  - *VERSION* available version of launch template
+ *  - *VERSION* available version of launch template , it is optional, use if needed to import specific version of available launch template
  *
  * ```sh
  * $ pulumi import duplocloud:index/awsLaunchTemplate:AwsLaunchTemplate lt *TENANT_ID*&#47;launch-template/*NAME*&#47;*VERSION*
@@ -74,6 +94,10 @@ export class AwsLaunchTemplate extends pulumi.CustomResource {
      */
     public readonly ami!: pulumi.Output<string>;
     /**
+     * Configure additional volumes of the instance besides specified by the AMI
+     */
+    public readonly blockDeviceMappings!: pulumi.Output<outputs.AwsLaunchTemplateBlockDeviceMapping[] | undefined>;
+    /**
      * The current default version of the launch template.
      */
     public /*out*/ readonly defaultVersion!: pulumi.Output<string>;
@@ -94,9 +118,9 @@ export class AwsLaunchTemplate extends pulumi.CustomResource {
      */
     public readonly tenantId!: pulumi.Output<string>;
     /**
-     * Any of the existing version of the launch template
+     * Any of the existing version of the launch template, if not provided, the latest version will be used
      */
-    public readonly version!: pulumi.Output<string>;
+    public readonly version!: pulumi.Output<string | undefined>;
     /**
      * The version of the launch template
      */
@@ -117,6 +141,7 @@ export class AwsLaunchTemplate extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as AwsLaunchTemplateState | undefined;
             resourceInputs["ami"] = state ? state.ami : undefined;
+            resourceInputs["blockDeviceMappings"] = state ? state.blockDeviceMappings : undefined;
             resourceInputs["defaultVersion"] = state ? state.defaultVersion : undefined;
             resourceInputs["instanceType"] = state ? state.instanceType : undefined;
             resourceInputs["latestVersion"] = state ? state.latestVersion : undefined;
@@ -133,10 +158,8 @@ export class AwsLaunchTemplate extends pulumi.CustomResource {
             if ((!args || args.tenantId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tenantId'");
             }
-            if ((!args || args.version === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'version'");
-            }
             resourceInputs["ami"] = args ? args.ami : undefined;
+            resourceInputs["blockDeviceMappings"] = args ? args.blockDeviceMappings : undefined;
             resourceInputs["instanceType"] = args ? args.instanceType : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["tenantId"] = args ? args.tenantId : undefined;
@@ -160,6 +183,10 @@ export interface AwsLaunchTemplateState {
      */
     ami?: pulumi.Input<string>;
     /**
+     * Configure additional volumes of the instance besides specified by the AMI
+     */
+    blockDeviceMappings?: pulumi.Input<pulumi.Input<inputs.AwsLaunchTemplateBlockDeviceMapping>[]>;
+    /**
      * The current default version of the launch template.
      */
     defaultVersion?: pulumi.Input<string>;
@@ -180,7 +207,7 @@ export interface AwsLaunchTemplateState {
      */
     tenantId?: pulumi.Input<string>;
     /**
-     * Any of the existing version of the launch template
+     * Any of the existing version of the launch template, if not provided, the latest version will be used
      */
     version?: pulumi.Input<string>;
     /**
@@ -199,6 +226,10 @@ export interface AwsLaunchTemplateArgs {
      */
     ami?: pulumi.Input<string>;
     /**
+     * Configure additional volumes of the instance besides specified by the AMI
+     */
+    blockDeviceMappings?: pulumi.Input<pulumi.Input<inputs.AwsLaunchTemplateBlockDeviceMapping>[]>;
+    /**
      * Asg instance type to be used to update the version from the current version
      */
     instanceType: pulumi.Input<string>;
@@ -211,9 +242,9 @@ export interface AwsLaunchTemplateArgs {
      */
     tenantId: pulumi.Input<string>;
     /**
-     * Any of the existing version of the launch template
+     * Any of the existing version of the launch template, if not provided, the latest version will be used
      */
-    version: pulumi.Input<string>;
+    version?: pulumi.Input<string>;
     /**
      * The version of the launch template
      */

@@ -21,11 +21,11 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myplan = new Duplocloud.PlanWaf("myplan", new()
+    ///     var myplan = new Pulumi.PlanWaf("myplan", new()
     ///     {
     ///         PlanId = "plan-name",
     ///         WafName = "WebAcl name",

@@ -25,6 +25,7 @@ class AzureMssqlDatabaseArgs:
                  tenant_id: pulumi.Input[str],
                  collation: Optional[pulumi.Input[str]] = None,
                  elastic_pool_id: Optional[pulumi.Input[str]] = None,
+                 max_size_gb: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  sku: Optional[pulumi.Input['AzureMssqlDatabaseSkuArgs']] = None):
         """
@@ -33,6 +34,7 @@ class AzureMssqlDatabaseArgs:
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the azure mssql database will be created in.
         :param pulumi.Input[str] collation: Specifies the collation of the database.
         :param pulumi.Input[str] elastic_pool_id: Specifies the id of the elastic pool containing this database.
+        :param pulumi.Input[int] max_size_gb: Maximum allowed database size in GB for more information please refer following link https://learn.microsoft.com/en-us/azure/azure-sql/database/resource-limits-vcore-single-databases?view=azuresql Defaults to `32`.
         :param pulumi.Input[str] name: The name of the MS SQL Database.
         """
         pulumi.set(__self__, "server_name", server_name)
@@ -41,6 +43,8 @@ class AzureMssqlDatabaseArgs:
             pulumi.set(__self__, "collation", collation)
         if elastic_pool_id is not None:
             pulumi.set(__self__, "elastic_pool_id", elastic_pool_id)
+        if max_size_gb is not None:
+            pulumi.set(__self__, "max_size_gb", max_size_gb)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if sku is not None:
@@ -95,6 +99,18 @@ class AzureMssqlDatabaseArgs:
         pulumi.set(self, "elastic_pool_id", value)
 
     @property
+    @pulumi.getter(name="maxSizeGb")
+    def max_size_gb(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum allowed database size in GB for more information please refer following link https://learn.microsoft.com/en-us/azure/azure-sql/database/resource-limits-vcore-single-databases?view=azuresql Defaults to `32`.
+        """
+        return pulumi.get(self, "max_size_gb")
+
+    @max_size_gb.setter
+    def max_size_gb(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_size_gb", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -121,6 +137,7 @@ class _AzureMssqlDatabaseState:
     def __init__(__self__, *,
                  collation: Optional[pulumi.Input[str]] = None,
                  elastic_pool_id: Optional[pulumi.Input[str]] = None,
+                 max_size_gb: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  server_name: Optional[pulumi.Input[str]] = None,
                  sku: Optional[pulumi.Input['AzureMssqlDatabaseSkuArgs']] = None,
@@ -129,6 +146,7 @@ class _AzureMssqlDatabaseState:
         Input properties used for looking up and filtering AzureMssqlDatabase resources.
         :param pulumi.Input[str] collation: Specifies the collation of the database.
         :param pulumi.Input[str] elastic_pool_id: Specifies the id of the elastic pool containing this database.
+        :param pulumi.Input[int] max_size_gb: Maximum allowed database size in GB for more information please refer following link https://learn.microsoft.com/en-us/azure/azure-sql/database/resource-limits-vcore-single-databases?view=azuresql Defaults to `32`.
         :param pulumi.Input[str] name: The name of the MS SQL Database.
         :param pulumi.Input[str] server_name: The name of the MS SQL Server on which to create the database.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the azure mssql database will be created in.
@@ -137,6 +155,8 @@ class _AzureMssqlDatabaseState:
             pulumi.set(__self__, "collation", collation)
         if elastic_pool_id is not None:
             pulumi.set(__self__, "elastic_pool_id", elastic_pool_id)
+        if max_size_gb is not None:
+            pulumi.set(__self__, "max_size_gb", max_size_gb)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if server_name is not None:
@@ -169,6 +189,18 @@ class _AzureMssqlDatabaseState:
     @elastic_pool_id.setter
     def elastic_pool_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "elastic_pool_id", value)
+
+    @property
+    @pulumi.getter(name="maxSizeGb")
+    def max_size_gb(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum allowed database size in GB for more information please refer following link https://learn.microsoft.com/en-us/azure/azure-sql/database/resource-limits-vcore-single-databases?view=azuresql Defaults to `32`.
+        """
+        return pulumi.get(self, "max_size_gb")
+
+    @max_size_gb.setter
+    def max_size_gb(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_size_gb", value)
 
     @property
     @pulumi.getter
@@ -223,6 +255,7 @@ class AzureMssqlDatabase(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  collation: Optional[pulumi.Input[str]] = None,
                  elastic_pool_id: Optional[pulumi.Input[str]] = None,
+                 max_size_gb: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  server_name: Optional[pulumi.Input[str]] = None,
                  sku: Optional[pulumi.Input[Union['AzureMssqlDatabaseSkuArgs', 'AzureMssqlDatabaseSkuArgsDict']]] = None,
@@ -249,6 +282,7 @@ class AzureMssqlDatabase(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] collation: Specifies the collation of the database.
         :param pulumi.Input[str] elastic_pool_id: Specifies the id of the elastic pool containing this database.
+        :param pulumi.Input[int] max_size_gb: Maximum allowed database size in GB for more information please refer following link https://learn.microsoft.com/en-us/azure/azure-sql/database/resource-limits-vcore-single-databases?view=azuresql Defaults to `32`.
         :param pulumi.Input[str] name: The name of the MS SQL Database.
         :param pulumi.Input[str] server_name: The name of the MS SQL Server on which to create the database.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the azure mssql database will be created in.
@@ -293,6 +327,7 @@ class AzureMssqlDatabase(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  collation: Optional[pulumi.Input[str]] = None,
                  elastic_pool_id: Optional[pulumi.Input[str]] = None,
+                 max_size_gb: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  server_name: Optional[pulumi.Input[str]] = None,
                  sku: Optional[pulumi.Input[Union['AzureMssqlDatabaseSkuArgs', 'AzureMssqlDatabaseSkuArgsDict']]] = None,
@@ -308,6 +343,7 @@ class AzureMssqlDatabase(pulumi.CustomResource):
 
             __props__.__dict__["collation"] = collation
             __props__.__dict__["elastic_pool_id"] = elastic_pool_id
+            __props__.__dict__["max_size_gb"] = max_size_gb
             __props__.__dict__["name"] = name
             if server_name is None and not opts.urn:
                 raise TypeError("Missing required property 'server_name'")
@@ -328,6 +364,7 @@ class AzureMssqlDatabase(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             collation: Optional[pulumi.Input[str]] = None,
             elastic_pool_id: Optional[pulumi.Input[str]] = None,
+            max_size_gb: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             server_name: Optional[pulumi.Input[str]] = None,
             sku: Optional[pulumi.Input[Union['AzureMssqlDatabaseSkuArgs', 'AzureMssqlDatabaseSkuArgsDict']]] = None,
@@ -341,6 +378,7 @@ class AzureMssqlDatabase(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] collation: Specifies the collation of the database.
         :param pulumi.Input[str] elastic_pool_id: Specifies the id of the elastic pool containing this database.
+        :param pulumi.Input[int] max_size_gb: Maximum allowed database size in GB for more information please refer following link https://learn.microsoft.com/en-us/azure/azure-sql/database/resource-limits-vcore-single-databases?view=azuresql Defaults to `32`.
         :param pulumi.Input[str] name: The name of the MS SQL Database.
         :param pulumi.Input[str] server_name: The name of the MS SQL Server on which to create the database.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the azure mssql database will be created in.
@@ -351,6 +389,7 @@ class AzureMssqlDatabase(pulumi.CustomResource):
 
         __props__.__dict__["collation"] = collation
         __props__.__dict__["elastic_pool_id"] = elastic_pool_id
+        __props__.__dict__["max_size_gb"] = max_size_gb
         __props__.__dict__["name"] = name
         __props__.__dict__["server_name"] = server_name
         __props__.__dict__["sku"] = sku
@@ -372,6 +411,14 @@ class AzureMssqlDatabase(pulumi.CustomResource):
         Specifies the id of the elastic pool containing this database.
         """
         return pulumi.get(self, "elastic_pool_id")
+
+    @property
+    @pulumi.getter(name="maxSizeGb")
+    def max_size_gb(self) -> pulumi.Output[Optional[int]]:
+        """
+        Maximum allowed database size in GB for more information please refer following link https://learn.microsoft.com/en-us/azure/azure-sql/database/resource-limits-vcore-single-databases?view=azuresql Defaults to `32`.
+        """
+        return pulumi.get(self, "max_size_gb")
 
     @property
     @pulumi.getter

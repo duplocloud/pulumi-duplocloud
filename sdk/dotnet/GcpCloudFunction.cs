@@ -19,18 +19,18 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myapp = new Duplocloud.Tenant("myapp", new()
+    ///     var myapp = new Pulumi.Tenant("myapp", new()
     ///     {
     ///         AccountName = "myapp",
     ///         PlanId = "default",
     ///     });
     /// 
     ///     // A simple cloud function with an HTTPS trigger
-    ///     var myfunc = new Duplocloud.GcpCloudFunction("myfunc", new()
+    ///     var myfunc = new Pulumi.GcpCloudFunction("myfunc", new()
     ///     {
     ///         TenantId = myapp.TenantId,
     ///         Name = "myfunc",
@@ -45,6 +45,29 @@ namespace DuploCloud.Pulumi
     ///             { "foo", "bar" },
     ///         },
     ///         HttpsTrigger = null,
+    ///     });
+    /// 
+    ///     //Example of a cloud function with an event trigger
+    ///     // This example shows how to create a cloud function that is triggered by a Pub/Sub event
+    ///     // The function will be triggered when a message is published to the specified Pub/Sub topic
+    ///     var examplePubsubFunction = new Pulumi.GcpCloudFunction("example_pubsub_function", new()
+    ///     {
+    ///         TenantId = myapp.TenantId,
+    ///         Name = "example-pubsub-fn",
+    ///         Runtime = "python39",
+    ///         Entrypoint = "hello_pubsub",
+    ///         EventTrigger = new Pulumi.Inputs.GcpCloudFunctionEventTriggerArgs
+    ///         {
+    ///             EventType = "google.pubsub.topic.publish",
+    ///             Resource = "projects/projectid/topics/topicname",
+    ///         },
+    ///         EnvironmentVariables = 
+    ///         {
+    ///             { "EXAMPLE_ENV", "value" },
+    ///         },
+    ///         AvailableMemoryMb = 128,
+    ///         Timeout = 60,
+    ///         SourceArchiveUrl = "gs://bucketname/code.ext",
     ///     });
     /// 
     /// });

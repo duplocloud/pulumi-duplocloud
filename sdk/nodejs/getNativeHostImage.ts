@@ -8,14 +8,32 @@ import * as utilities from "./utilities";
 
 /**
  * `duplocloud.getNativeHostImage` retrieves details of a specific image for a given tenant.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
+ *
+ * const img = duplocloud.getNativeHostImage({
+ *     tenantId: "f4bf01f0-5077-489e-aa51-95fb77049608",
+ *     name: "EKS-Oregon-1.32",
+ *     os: "AmazonLinux2023",
+ *     k8sVersion: "1.32",
+ *     arch: "amd64",
+ * });
+ * ```
  */
 export function getNativeHostImage(args: GetNativeHostImageArgs, opts?: pulumi.InvokeOptions): Promise<GetNativeHostImageResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("duplocloud:index/getNativeHostImage:getNativeHostImage", {
         "arch": args.arch,
         "isKubernetes": args.isKubernetes,
+        "k8sVersion": args.k8sVersion,
         "name": args.name,
+        "os": args.os,
         "tenantId": args.tenantId,
+        "username": args.username,
     }, opts);
 }
 
@@ -23,47 +41,108 @@ export function getNativeHostImage(args: GetNativeHostImageArgs, opts?: pulumi.I
  * A collection of arguments for invoking getNativeHostImage.
  */
 export interface GetNativeHostImageArgs {
+    /**
+     * Architecture of the native host
+     */
     arch?: string;
+    /**
+     * This field is deprecated. Use k8sVersion for precise filtering
+     *
+     * @deprecated This field is deprecated. Use k8sVersion for precise filtering
+     */
     isKubernetes?: boolean;
+    /**
+     * K8 version of the native host
+     */
+    k8sVersion?: string;
+    /**
+     * Name of the Duplocloud native host
+     */
     name?: string;
+    /**
+     * OS of native host
+     */
+    os?: string;
     /**
      * The tenant ID
      */
     tenantId: string;
+    /**
+     * username associated to native host
+     */
+    username?: string;
 }
 
 /**
  * A collection of values returned by getNativeHostImage.
  */
 export interface GetNativeHostImageResult {
-    readonly arch: string;
+    /**
+     * Architecture of the native host
+     */
+    readonly arch?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly imageId: string;
+    /**
+     * This field is deprecated. Use k8sVersion for precise filtering
+     *
+     * @deprecated This field is deprecated. Use k8sVersion for precise filtering
+     */
     readonly isKubernetes: boolean;
-    readonly k8sVersion: string;
-    readonly name: string;
-    readonly os: string;
+    /**
+     * K8 version of the native host
+     */
+    readonly k8sVersion?: string;
+    /**
+     * Name of the Duplocloud native host
+     */
+    readonly name?: string;
+    /**
+     * OS of native host
+     */
+    readonly os?: string;
     readonly region: string;
     readonly tags: outputs.GetNativeHostImageTag[];
     /**
      * The tenant ID
      */
     readonly tenantId: string;
+    /**
+     * username associated to native host
+     */
     readonly username: string;
 }
 /**
  * `duplocloud.getNativeHostImage` retrieves details of a specific image for a given tenant.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
+ *
+ * const img = duplocloud.getNativeHostImage({
+ *     tenantId: "f4bf01f0-5077-489e-aa51-95fb77049608",
+ *     name: "EKS-Oregon-1.32",
+ *     os: "AmazonLinux2023",
+ *     k8sVersion: "1.32",
+ *     arch: "amd64",
+ * });
+ * ```
  */
 export function getNativeHostImageOutput(args: GetNativeHostImageOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNativeHostImageResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("duplocloud:index/getNativeHostImage:getNativeHostImage", {
         "arch": args.arch,
         "isKubernetes": args.isKubernetes,
+        "k8sVersion": args.k8sVersion,
         "name": args.name,
+        "os": args.os,
         "tenantId": args.tenantId,
+        "username": args.username,
     }, opts);
 }
 
@@ -71,11 +150,34 @@ export function getNativeHostImageOutput(args: GetNativeHostImageOutputArgs, opt
  * A collection of arguments for invoking getNativeHostImage.
  */
 export interface GetNativeHostImageOutputArgs {
+    /**
+     * Architecture of the native host
+     */
     arch?: pulumi.Input<string>;
+    /**
+     * This field is deprecated. Use k8sVersion for precise filtering
+     *
+     * @deprecated This field is deprecated. Use k8sVersion for precise filtering
+     */
     isKubernetes?: pulumi.Input<boolean>;
+    /**
+     * K8 version of the native host
+     */
+    k8sVersion?: pulumi.Input<string>;
+    /**
+     * Name of the Duplocloud native host
+     */
     name?: pulumi.Input<string>;
+    /**
+     * OS of native host
+     */
+    os?: pulumi.Input<string>;
     /**
      * The tenant ID
      */
     tenantId: pulumi.Input<string>;
+    /**
+     * username associated to native host
+     */
+    username?: pulumi.Input<string>;
 }

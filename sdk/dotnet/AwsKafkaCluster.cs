@@ -19,17 +19,17 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myapp = new Duplocloud.Tenant("myapp", new()
+    ///     var myapp = new Pulumi.Tenant("myapp", new()
     ///     {
     ///         AccountName = "myapp",
     ///         PlanId = "default",
     ///     });
     /// 
-    ///     var mycluster = new Duplocloud.AwsKafkaCluster("mycluster", new()
+    ///     var mycluster = new Pulumi.AwsKafkaCluster("mycluster", new()
     ///     {
     ///         TenantId = @this.TenantId,
     ///         Name = "mycluster",
@@ -81,6 +81,9 @@ namespace DuploCloud.Pulumi
         /// </summary>
         [Output("configurationRevision")]
         public Output<int> ConfigurationRevision { get; private set; } = null!;
+
+        [Output("currentVersion")]
+        public Output<string> CurrentVersion { get; private set; } = null!;
 
         /// <summary>
         /// Encryption setting for data in transit between clients and brokers. Valid values: `TLS`, `TLS_PLAINTEXT`, and `PLAINTEXT`
@@ -315,6 +318,9 @@ namespace DuploCloud.Pulumi
         /// </summary>
         [Input("configurationRevision")]
         public Input<int>? ConfigurationRevision { get; set; }
+
+        [Input("currentVersion")]
+        public Input<string>? CurrentVersion { get; set; }
 
         /// <summary>
         /// Encryption setting for data in transit between clients and brokers. Valid values: `TLS`, `TLS_PLAINTEXT`, and `PLAINTEXT`

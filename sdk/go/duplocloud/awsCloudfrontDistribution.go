@@ -21,6 +21,8 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/duplocloud/pulumi-duplocloud/sdk/go/duplocloud"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -35,43 +37,52 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = duplocloud.NewAwsCloudfrontDistribution(ctx, "cfd", &duplocloud.AwsCloudfrontDistributionArgs{
+//			region := "us-west2"
+//			tenantName := "nonprod"
+//			forcloudfront, err := duplocloud.NewS3Bucket(ctx, "forcloudfront", &duplocloud.S3BucketArgs{
 //				TenantId:          duplo_app.TenantId,
-//				Comment:           pulumi.String("duploservices-dev01-app"),
-//				DefaultRootObject: pulumi.String("index.html"),
-//				Enabled:           pulumi.Bool(true),
-//				HttpVersion:       pulumi.String("http2"),
-//				IsIpv6Enabled:     pulumi.Bool(true),
-//				Aliases: pulumi.StringArray{
-//					pulumi.String("app-dev.abc.xyz"),
+//				Name:              pulumi.String("cloudfrontbucket"),
+//				AllowPublicAccess: pulumi.Bool(true),
+//				EnableAccessLogs:  pulumi.Bool(false),
+//				EnableVersioning:  pulumi.Bool(true),
+//				ManagedPolicies: pulumi.StringArray{
+//					pulumi.String("ssl"),
 //				},
-//				PriceClass:        pulumi.String("PriceClass_All"),
-//				WaitForDeployment: pulumi.Bool(true),
+//				DefaultEncryption: &duplocloud.S3BucketDefaultEncryptionArgs{
+//					Method: pulumi.String("Sse"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = duplocloud.NewAwsCloudfrontDistribution(ctx, "cloudfront", &duplocloud.AwsCloudfrontDistributionArgs{
+//				TenantId:      duplo_app.TenantId,
+//				Comment:       pulumi.Sprintf("duploservices-%v-communities-dev4-fe", tenantName),
+//				Enabled:       pulumi.Bool(false),
+//				HttpVersion:   pulumi.String("http2"),
+//				PriceClass:    pulumi.String("PriceClass_All"),
+//				IsIpv6Enabled: pulumi.Bool(true),
+//				ViewerCertificate: &duplocloud.AwsCloudfrontDistributionViewerCertificateArgs{
+//					AcmCertificateArn:      pulumi.String("arn:aws:acm:us-east-1:182680712604:certificate/75e94c99-b916-459c-b9a1-ed9dec0ae550"),
+//					MinimumProtocolVersion: pulumi.String("TLSv1.2_2021"),
+//					SslSupportMethod:       pulumi.String("sni-only"),
+//				},
 //				Origins: duplocloud.AwsCloudfrontDistributionOriginArray{
 //					&duplocloud.AwsCloudfrontDistributionOriginArgs{
-//						DomainName:         pulumi.String("pa-api-dev01.abc.xyz"),
-//						OriginId:           pulumi.String("pa-api-dev01.abc.xyz"),
 //						ConnectionAttempts: pulumi.Int(3),
 //						ConnectionTimeout:  pulumi.Int(10),
-//						CustomOriginConfig: &duplocloud.AwsCloudfrontDistributionOriginCustomOriginConfigArgs{
-//							HttpPort:               pulumi.Int(80),
-//							HttpsPort:              pulumi.Int(443),
-//							OriginKeepaliveTimeout: pulumi.Int(30),
-//							OriginReadTimeout:      pulumi.Int(30),
-//							OriginProtocolPolicy:   pulumi.String("https-only"),
-//							OriginSslProtocols: pulumi.StringArray{
-//								pulumi.String("TLSv1.2"),
-//							},
-//						},
-//					},
-//					&duplocloud.AwsCloudfrontDistributionOriginArgs{
-//						DomainName:         pulumi.String("duploservices-dev01-abc-app-1234567890.s3.us-west-2.amazonaws.com"),
-//						OriginId:           pulumi.String("duploservices-dev01-abc-app-1234567890.s3.us-west-2.amazonaws.com"),
-//						ConnectionAttempts: pulumi.Int(3),
-//						ConnectionTimeout:  pulumi.Int(10),
+//						DomainName: forcloudfront.Fullname.ApplyT(func(fullname string) (string, error) {
+//							return fmt.Sprintf("%v.s3.%v.amazonaws.com", fullname, region), nil
+//						}).(pulumi.StringOutput),
+//						OriginId: forcloudfront.Fullname.ApplyT(func(fullname string) (string, error) {
+//							return fmt.Sprintf("%v.s3.%v.amazonaws.com", fullname, region), nil
+//						}).(pulumi.StringOutput),
 //					},
 //				},
 //				DefaultCacheBehavior: &duplocloud.AwsCloudfrontDistributionDefaultCacheBehaviorArgs{
+//					TargetOriginId: forcloudfront.Fullname.ApplyT(func(fullname string) (string, error) {
+//						return fmt.Sprintf("%v.s3.%v.amazonaws.com", fullname, region), nil
+//					}).(pulumi.StringOutput),
 //					AllowedMethods: pulumi.StringArray{
 //						pulumi.String("GET"),
 //						pulumi.String("HEAD"),
@@ -80,12 +91,9 @@ import (
 //						pulumi.String("GET"),
 //						pulumi.String("HEAD"),
 //					},
-//					TargetOriginId:       pulumi.String("duploservices-dev01-abc-app-1234567890.s3.us-west-2.amazonaws.com"),
-//					Compress:             pulumi.Bool(false),
+//					CachePolicyId:        pulumi.String("658327ea-f89d-4fab-a63d-7e88639e58f6"),
+//					Compress:             pulumi.Bool(true),
 //					ViewerProtocolPolicy: pulumi.String("redirect-to-https"),
-//					MinTtl:               pulumi.Int(0),
-//					DefaultTtl:           pulumi.Int(0),
-//					MaxTtl:               pulumi.Int(0),
 //				},
 //				OrderedCacheBehaviors: duplocloud.AwsCloudfrontDistributionOrderedCacheBehaviorArray{
 //					&duplocloud.AwsCloudfrontDistributionOrderedCacheBehaviorArgs{
@@ -97,19 +105,22 @@ import (
 //							pulumi.String("GET"),
 //							pulumi.String("HEAD"),
 //						},
-//						TargetOriginId:       pulumi.String("pa-api-dev01.abc.xyz"),
+//						TargetOriginId: forcloudfront.Fullname.ApplyT(func(fullname string) (string, error) {
+//							return fmt.Sprintf("%v.s3.%v.amazonaws.com", fullname, region), nil
+//						}).(pulumi.StringOutput),
 //						Compress:             pulumi.Bool(false),
 //						ViewerProtocolPolicy: pulumi.String("redirect-to-https"),
-//						MinTtl:               pulumi.Int(0),
+//						MinTtl:               pulumi.Int(2),
 //						DefaultTtl:           pulumi.Int(0),
 //						MaxTtl:               pulumi.Int(0),
 //						PathPattern:          pulumi.String("/api/*"),
+//						ForwardedValues: &duplocloud.AwsCloudfrontDistributionOrderedCacheBehaviorForwardedValuesArgs{
+//							Cookies: &duplocloud.AwsCloudfrontDistributionOrderedCacheBehaviorForwardedValuesCookiesArgs{
+//								Forward: pulumi.String("all"),
+//							},
+//							QueryString: pulumi.Bool(false),
+//						},
 //					},
-//				},
-//				ViewerCertificate: &duplocloud.AwsCloudfrontDistributionViewerCertificateArgs{
-//					AcmCertificateArn:      pulumi.String("arn:aws:acm:us-east-1:1234567890:certificate/49c7a151-14b1-486e-801f-cf6bc9a43804"),
-//					MinimumProtocolVersion: pulumi.String("TLSv1.2_2019"),
-//					SslSupportMethod:       pulumi.String("sni-only"),
 //				},
 //				Restrictions: &duplocloud.AwsCloudfrontDistributionRestrictionsArgs{
 //					GeoRestriction: &duplocloud.AwsCloudfrontDistributionRestrictionsGeoRestrictionArgs{
@@ -155,10 +166,10 @@ type AwsCloudfrontDistribution struct {
 	// The object that you want CloudFront to return (for example, index.html) when an end user requests the root URL.
 	DefaultRootObject pulumi.StringOutput `pulumi:"defaultRootObject"`
 	DomainName        pulumi.StringOutput `pulumi:"domainName"`
-	// Whether the distribution is enabled to accept end user requests for content.
-	Enabled      pulumi.BoolOutput   `pulumi:"enabled"`
-	Etag         pulumi.StringOutput `pulumi:"etag"`
-	HostedZoneId pulumi.StringOutput `pulumi:"hostedZoneId"`
+	// Whether the distribution is enabled to accept end user requests for content. Defaults to `true`.
+	Enabled      pulumi.BoolPtrOutput `pulumi:"enabled"`
+	Etag         pulumi.StringOutput  `pulumi:"etag"`
+	HostedZoneId pulumi.StringOutput  `pulumi:"hostedZoneId"`
 	// The maximum HTTP version to support on the distribution. Allowed values are `http1.1` and `http2` Defaults to `http2`.
 	HttpVersion pulumi.StringPtrOutput `pulumi:"httpVersion"`
 	// Defaults to `false`.
@@ -194,9 +205,6 @@ func NewAwsCloudfrontDistribution(ctx *pulumi.Context,
 
 	if args.DefaultCacheBehavior == nil {
 		return nil, errors.New("invalid value for required argument 'DefaultCacheBehavior'")
-	}
-	if args.Enabled == nil {
-		return nil, errors.New("invalid value for required argument 'Enabled'")
 	}
 	if args.Origins == nil {
 		return nil, errors.New("invalid value for required argument 'Origins'")
@@ -243,7 +251,7 @@ type awsCloudfrontDistributionState struct {
 	// The object that you want CloudFront to return (for example, index.html) when an end user requests the root URL.
 	DefaultRootObject *string `pulumi:"defaultRootObject"`
 	DomainName        *string `pulumi:"domainName"`
-	// Whether the distribution is enabled to accept end user requests for content.
+	// Whether the distribution is enabled to accept end user requests for content. Defaults to `true`.
 	Enabled      *bool   `pulumi:"enabled"`
 	Etag         *string `pulumi:"etag"`
 	HostedZoneId *string `pulumi:"hostedZoneId"`
@@ -287,7 +295,7 @@ type AwsCloudfrontDistributionState struct {
 	// The object that you want CloudFront to return (for example, index.html) when an end user requests the root URL.
 	DefaultRootObject pulumi.StringPtrInput
 	DomainName        pulumi.StringPtrInput
-	// Whether the distribution is enabled to accept end user requests for content.
+	// Whether the distribution is enabled to accept end user requests for content. Defaults to `true`.
 	Enabled      pulumi.BoolPtrInput
 	Etag         pulumi.StringPtrInput
 	HostedZoneId pulumi.StringPtrInput
@@ -333,8 +341,8 @@ type awsCloudfrontDistributionArgs struct {
 	DefaultCacheBehavior AwsCloudfrontDistributionDefaultCacheBehavior  `pulumi:"defaultCacheBehavior"`
 	// The object that you want CloudFront to return (for example, index.html) when an end user requests the root URL.
 	DefaultRootObject *string `pulumi:"defaultRootObject"`
-	// Whether the distribution is enabled to accept end user requests for content.
-	Enabled bool `pulumi:"enabled"`
+	// Whether the distribution is enabled to accept end user requests for content. Defaults to `true`.
+	Enabled *bool `pulumi:"enabled"`
 	// The maximum HTTP version to support on the distribution. Allowed values are `http1.1` and `http2` Defaults to `http2`.
 	HttpVersion *string `pulumi:"httpVersion"`
 	// Defaults to `false`.
@@ -372,8 +380,8 @@ type AwsCloudfrontDistributionArgs struct {
 	DefaultCacheBehavior AwsCloudfrontDistributionDefaultCacheBehaviorInput
 	// The object that you want CloudFront to return (for example, index.html) when an end user requests the root URL.
 	DefaultRootObject pulumi.StringPtrInput
-	// Whether the distribution is enabled to accept end user requests for content.
-	Enabled pulumi.BoolInput
+	// Whether the distribution is enabled to accept end user requests for content. Defaults to `true`.
+	Enabled pulumi.BoolPtrInput
 	// The maximum HTTP version to support on the distribution. Allowed values are `http1.1` and `http2` Defaults to `http2`.
 	HttpVersion pulumi.StringPtrInput
 	// Defaults to `false`.
@@ -526,9 +534,9 @@ func (o AwsCloudfrontDistributionOutput) DomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AwsCloudfrontDistribution) pulumi.StringOutput { return v.DomainName }).(pulumi.StringOutput)
 }
 
-// Whether the distribution is enabled to accept end user requests for content.
-func (o AwsCloudfrontDistributionOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v *AwsCloudfrontDistribution) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
+// Whether the distribution is enabled to accept end user requests for content. Defaults to `true`.
+func (o AwsCloudfrontDistributionOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistribution) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
 func (o AwsCloudfrontDistributionOutput) Etag() pulumi.StringOutput {

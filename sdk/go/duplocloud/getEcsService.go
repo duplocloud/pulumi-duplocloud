@@ -32,6 +32,7 @@ type LookupEcsServiceArgs struct {
 // A collection of values returned by getEcsService.
 type LookupEcsServiceResult struct {
 	CapacityProviderStrategies []GetEcsServiceCapacityProviderStrategy `pulumi:"capacityProviderStrategies"`
+	DeploymentConfigurations   []GetEcsServiceDeploymentConfiguration  `pulumi:"deploymentConfigurations"`
 	// The DNS prefix to assign to this service's load balancer.
 	DnsPrfx                       string `pulumi:"dnsPrfx"`
 	HealthCheckGracePeriodSeconds int    `pulumi:"healthCheckGracePeriodSeconds"`
@@ -46,6 +47,10 @@ type LookupEcsServiceResult struct {
 	Name string `pulumi:"name"`
 	// The number of older task definitions to retain in AWS.
 	OldTaskDefinitionBufferSize int `pulumi:"oldTaskDefinitionBufferSize"`
+	// Rules that are taken into consideration during task placement. Maximum number of `placementConstraints` is `10`
+	PlacementConstraints []GetEcsServicePlacementConstraint `pulumi:"placementConstraints"`
+	// Service level strategy rules that are taken into consideration during task placement. List from top to bottom in order of precedence. The maximum number of `placementStrategy` blocks is `5`
+	PlacementStrategies []GetEcsServicePlacementStrategy `pulumi:"placementStrategies"`
 	// The number of container replicas to create.
 	Replicas        int      `pulumi:"replicas"`
 	TargetGroupArns []string `pulumi:"targetGroupArns"`
@@ -99,6 +104,12 @@ func (o LookupEcsServiceResultOutput) CapacityProviderStrategies() GetEcsService
 	}).(GetEcsServiceCapacityProviderStrategyArrayOutput)
 }
 
+func (o LookupEcsServiceResultOutput) DeploymentConfigurations() GetEcsServiceDeploymentConfigurationArrayOutput {
+	return o.ApplyT(func(v LookupEcsServiceResult) []GetEcsServiceDeploymentConfiguration {
+		return v.DeploymentConfigurations
+	}).(GetEcsServiceDeploymentConfigurationArrayOutput)
+}
+
 // The DNS prefix to assign to this service's load balancer.
 func (o LookupEcsServiceResultOutput) DnsPrfx() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEcsServiceResult) string { return v.DnsPrfx }).(pulumi.StringOutput)
@@ -135,6 +146,16 @@ func (o LookupEcsServiceResultOutput) Name() pulumi.StringOutput {
 // The number of older task definitions to retain in AWS.
 func (o LookupEcsServiceResultOutput) OldTaskDefinitionBufferSize() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupEcsServiceResult) int { return v.OldTaskDefinitionBufferSize }).(pulumi.IntOutput)
+}
+
+// Rules that are taken into consideration during task placement. Maximum number of `placementConstraints` is `10`
+func (o LookupEcsServiceResultOutput) PlacementConstraints() GetEcsServicePlacementConstraintArrayOutput {
+	return o.ApplyT(func(v LookupEcsServiceResult) []GetEcsServicePlacementConstraint { return v.PlacementConstraints }).(GetEcsServicePlacementConstraintArrayOutput)
+}
+
+// Service level strategy rules that are taken into consideration during task placement. List from top to bottom in order of precedence. The maximum number of `placementStrategy` blocks is `5`
+func (o LookupEcsServiceResultOutput) PlacementStrategies() GetEcsServicePlacementStrategyArrayOutput {
+	return o.ApplyT(func(v LookupEcsServiceResult) []GetEcsServicePlacementStrategy { return v.PlacementStrategies }).(GetEcsServicePlacementStrategyArrayOutput)
 }
 
 // The number of container replicas to create.

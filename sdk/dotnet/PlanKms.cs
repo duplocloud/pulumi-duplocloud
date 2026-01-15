@@ -21,11 +21,11 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myplan = new Duplocloud.PlanKms("myplan", new()
+    ///     var myplan = new Pulumi.PlanKms("myplan", new()
     ///     {
     ///         PlanId = "plan-name",
     ///         KmsId = "kms-id",

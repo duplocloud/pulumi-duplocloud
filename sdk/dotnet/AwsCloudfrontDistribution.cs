@@ -19,61 +19,64 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var duplo_app = new Duplocloud.Tenant("duplo-app", new()
+    ///     var duplo_app = new Pulumi.Tenant("duplo-app", new()
     ///     {
     ///         AccountName = "duplo-app",
     ///         PlanId = "default",
     ///     });
     /// 
-    ///     var cfd = new Duplocloud.AwsCloudfrontDistribution("cfd", new()
+    ///     var region = "us-west2";
+    /// 
+    ///     var tenantName = "nonprod";
+    /// 
+    ///     var forcloudfront = new Pulumi.S3Bucket("forcloudfront", new()
     ///     {
     ///         TenantId = duplo_app.TenantId,
-    ///         Comment = "duploservices-dev01-app",
-    ///         DefaultRootObject = "index.html",
-    ///         Enabled = true,
-    ///         HttpVersion = "http2",
-    ///         IsIpv6Enabled = true,
-    ///         Aliases = new[]
+    ///         Name = "cloudfrontbucket",
+    ///         AllowPublicAccess = true,
+    ///         EnableAccessLogs = false,
+    ///         EnableVersioning = true,
+    ///         ManagedPolicies = new[]
     ///         {
-    ///             "app-dev.abc.xyz",
+    ///             "ssl",
     ///         },
+    ///         DefaultEncryption = new Pulumi.Inputs.S3BucketDefaultEncryptionArgs
+    ///         {
+    ///             Method = "Sse",
+    ///         },
+    ///     });
+    /// 
+    ///     var cloudfront = new Pulumi.AwsCloudfrontDistribution("cloudfront", new()
+    ///     {
+    ///         TenantId = duplo_app.TenantId,
+    ///         Comment = $"duploservices-{tenantName}-communities-dev4-fe",
+    ///         Enabled = false,
+    ///         HttpVersion = "http2",
     ///         PriceClass = "PriceClass_All",
-    ///         WaitForDeployment = true,
+    ///         IsIpv6Enabled = true,
+    ///         ViewerCertificate = new Pulumi.Inputs.AwsCloudfrontDistributionViewerCertificateArgs
+    ///         {
+    ///             AcmCertificateArn = "arn:aws:acm:us-east-1:182680712604:certificate/75e94c99-b916-459c-b9a1-ed9dec0ae550",
+    ///             MinimumProtocolVersion = "TLSv1.2_2021",
+    ///             SslSupportMethod = "sni-only",
+    ///         },
     ///         Origins = new[]
     ///         {
-    ///             new Duplocloud.Inputs.AwsCloudfrontDistributionOriginArgs
+    ///             new Pulumi.Inputs.AwsCloudfrontDistributionOriginArgs
     ///             {
-    ///                 DomainName = "pa-api-dev01.abc.xyz",
-    ///                 OriginId = "pa-api-dev01.abc.xyz",
     ///                 ConnectionAttempts = 3,
     ///                 ConnectionTimeout = 10,
-    ///                 CustomOriginConfig = new Duplocloud.Inputs.AwsCloudfrontDistributionOriginCustomOriginConfigArgs
-    ///                 {
-    ///                     HttpPort = 80,
-    ///                     HttpsPort = 443,
-    ///                     OriginKeepaliveTimeout = 30,
-    ///                     OriginReadTimeout = 30,
-    ///                     OriginProtocolPolicy = "https-only",
-    ///                     OriginSslProtocols = new[]
-    ///                     {
-    ///                         "TLSv1.2",
-    ///                     },
-    ///                 },
-    ///             },
-    ///             new Duplocloud.Inputs.AwsCloudfrontDistributionOriginArgs
-    ///             {
-    ///                 DomainName = "duploservices-dev01-abc-app-1234567890.s3.us-west-2.amazonaws.com",
-    ///                 OriginId = "duploservices-dev01-abc-app-1234567890.s3.us-west-2.amazonaws.com",
-    ///                 ConnectionAttempts = 3,
-    ///                 ConnectionTimeout = 10,
+    ///                 DomainName = forcloudfront.Fullname.Apply(fullname =&gt; $"{fullname}.s3.{region}.amazonaws.com"),
+    ///                 OriginId = forcloudfront.Fullname.Apply(fullname =&gt; $"{fullname}.s3.{region}.amazonaws.com"),
     ///             },
     ///         },
-    ///         DefaultCacheBehavior = new Duplocloud.Inputs.AwsCloudfrontDistributionDefaultCacheBehaviorArgs
+    ///         DefaultCacheBehavior = new Pulumi.Inputs.AwsCloudfrontDistributionDefaultCacheBehaviorArgs
     ///         {
+    ///             TargetOriginId = forcloudfront.Fullname.Apply(fullname =&gt; $"{fullname}.s3.{region}.amazonaws.com"),
     ///             AllowedMethods = new[]
     ///             {
     ///                 "GET",
@@ -84,16 +87,13 @@ namespace DuploCloud.Pulumi
     ///                 "GET",
     ///                 "HEAD",
     ///             },
-    ///             TargetOriginId = "duploservices-dev01-abc-app-1234567890.s3.us-west-2.amazonaws.com",
-    ///             Compress = false,
+    ///             CachePolicyId = "658327ea-f89d-4fab-a63d-7e88639e58f6",
+    ///             Compress = true,
     ///             ViewerProtocolPolicy = "redirect-to-https",
-    ///             MinTtl = 0,
-    ///             DefaultTtl = 0,
-    ///             MaxTtl = 0,
     ///         },
     ///         OrderedCacheBehaviors = new[]
     ///         {
-    ///             new Duplocloud.Inputs.AwsCloudfrontDistributionOrderedCacheBehaviorArgs
+    ///             new Pulumi.Inputs.AwsCloudfrontDistributionOrderedCacheBehaviorArgs
     ///             {
     ///                 AllowedMethods = new[]
     ///                 {
@@ -105,24 +105,26 @@ namespace DuploCloud.Pulumi
     ///                     "GET",
     ///                     "HEAD",
     ///                 },
-    ///                 TargetOriginId = "pa-api-dev01.abc.xyz",
+    ///                 TargetOriginId = forcloudfront.Fullname.Apply(fullname =&gt; $"{fullname}.s3.{region}.amazonaws.com"),
     ///                 Compress = false,
     ///                 ViewerProtocolPolicy = "redirect-to-https",
-    ///                 MinTtl = 0,
+    ///                 MinTtl = 2,
     ///                 DefaultTtl = 0,
     ///                 MaxTtl = 0,
     ///                 PathPattern = "/api/*",
+    ///                 ForwardedValues = new Pulumi.Inputs.AwsCloudfrontDistributionOrderedCacheBehaviorForwardedValuesArgs
+    ///                 {
+    ///                     Cookies = new Pulumi.Inputs.AwsCloudfrontDistributionOrderedCacheBehaviorForwardedValuesCookiesArgs
+    ///                     {
+    ///                         Forward = "all",
+    ///                     },
+    ///                     QueryString = false,
+    ///                 },
     ///             },
     ///         },
-    ///         ViewerCertificate = new Duplocloud.Inputs.AwsCloudfrontDistributionViewerCertificateArgs
+    ///         Restrictions = new Pulumi.Inputs.AwsCloudfrontDistributionRestrictionsArgs
     ///         {
-    ///             AcmCertificateArn = "arn:aws:acm:us-east-1:1234567890:certificate/49c7a151-14b1-486e-801f-cf6bc9a43804",
-    ///             MinimumProtocolVersion = "TLSv1.2_2019",
-    ///             SslSupportMethod = "sni-only",
-    ///         },
-    ///         Restrictions = new Duplocloud.Inputs.AwsCloudfrontDistributionRestrictionsArgs
-    ///         {
-    ///             GeoRestriction = new Duplocloud.Inputs.AwsCloudfrontDistributionRestrictionsGeoRestrictionArgs
+    ///             GeoRestriction = new Pulumi.Inputs.AwsCloudfrontDistributionRestrictionsGeoRestrictionArgs
     ///             {
     ///                 RestrictionType = "none",
     ///             },
@@ -183,10 +185,10 @@ namespace DuploCloud.Pulumi
         public Output<string> DomainName { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the distribution is enabled to accept end user requests for content.
+        /// Whether the distribution is enabled to accept end user requests for content. Defaults to `true`.
         /// </summary>
         [Output("enabled")]
-        public Output<bool> Enabled { get; private set; } = null!;
+        public Output<bool?> Enabled { get; private set; } = null!;
 
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
@@ -357,10 +359,10 @@ namespace DuploCloud.Pulumi
         public Input<string>? DefaultRootObject { get; set; }
 
         /// <summary>
-        /// Whether the distribution is enabled to accept end user requests for content.
+        /// Whether the distribution is enabled to accept end user requests for content. Defaults to `true`.
         /// </summary>
-        [Input("enabled", required: true)]
-        public Input<bool> Enabled { get; set; } = null!;
+        [Input("enabled")]
+        public Input<bool>? Enabled { get; set; }
 
         /// <summary>
         /// The maximum HTTP version to support on the distribution. Allowed values are `http1.1` and `http2` Defaults to `http2`.
@@ -501,7 +503,7 @@ namespace DuploCloud.Pulumi
         public Input<string>? DomainName { get; set; }
 
         /// <summary>
-        /// Whether the distribution is enabled to accept end user requests for content.
+        /// Whether the distribution is enabled to accept end user requests for content. Defaults to `true`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

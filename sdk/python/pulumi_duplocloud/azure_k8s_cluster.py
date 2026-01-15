@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['AzureK8sClusterArgs', 'AzureK8sCluster']
 
@@ -20,33 +22,73 @@ __all__ = ['AzureK8sClusterArgs', 'AzureK8sCluster']
 class AzureK8sClusterArgs:
     def __init__(__self__, *,
                  infra_name: pulumi.Input[str],
+                 active_directory_config: Optional[pulumi.Input['AzureK8sClusterActiveDirectoryConfigArgs']] = None,
+                 add_critical_taint_to_system_agent_pool: Optional[pulumi.Input[bool]] = None,
+                 disable_run_command: Optional[pulumi.Input[bool]] = None,
+                 enable_blob_csi_driver: Optional[pulumi.Input[bool]] = None,
+                 enable_image_cleaner: Optional[pulumi.Input[bool]] = None,
+                 enable_workload_identity: Optional[pulumi.Input[bool]] = None,
+                 image_cleaner_interval_in_days: Optional[pulumi.Input[int]] = None,
                  kubernetes_version: Optional[pulumi.Input[str]] = None,
+                 linux_admin_username: Optional[pulumi.Input[str]] = None,
+                 linux_ssh_public_key: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_plugin: Optional[pulumi.Input[str]] = None,
                  outbound_type: Optional[pulumi.Input[str]] = None,
+                 pricing_tier: Optional[pulumi.Input[str]] = None,
                  private_cluster_enabled: Optional[pulumi.Input[bool]] = None,
                  resource_group_name: Optional[pulumi.Input[str]] = None,
                  vm_size: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AzureK8sCluster resource.
         :param pulumi.Input[str] infra_name: The name of the infrastructure.
+        :param pulumi.Input['AzureK8sClusterActiveDirectoryConfigArgs'] active_directory_config: Azure Active Directory configuration for the AKS cluster.
+        :param pulumi.Input[bool] add_critical_taint_to_system_agent_pool: Add a critical taint to the system agent pool. This prevents the scheduler from scheduling non-critical pods on the system agent pool. Defaults to `false`.
+        :param pulumi.Input[bool] disable_run_command: Disable the Run Command feature for the AKS cluster. This prevents the use of the Azure CLI to run commands directly on the nodes. Defaults to `false`.
+        :param pulumi.Input[bool] enable_blob_csi_driver: Enable the Azure Blob CSI driver for the AKS cluster. This allows Kubernetes workloads to use Azure Blob Storage as persistent storage. Defaults to `false`.
+        :param pulumi.Input[bool] enable_image_cleaner: Enable the image cleaner for the AKS cluster. This helps to clean up unused container images in the cluster. Defaults to `false`.
+        :param pulumi.Input[bool] enable_workload_identity: Enable Workload Identity for the AKS cluster. This allows Kubernetes workloads to access Azure resources using Azure AD identities. Defaults to `false`.
+        :param pulumi.Input[int] image_cleaner_interval_in_days: Interval in days for the image cleaner to run. This determines how often the image cleaner will check for unused images. Valid values are between 1 and 90. Defaults to `30`.
         :param pulumi.Input[str] kubernetes_version: Version of Kubernetes specified when creating the AKS managed cluster.
+        :param pulumi.Input[str] linux_admin_username: The username for the Linux administrator of the AKS cluster. This user will have administrative access to the nodes in the cluster.
+        :param pulumi.Input[str] linux_ssh_public_key: The SSH public key for the Linux administrator of the AKS cluster. This key will be used to access the nodes in the cluster via SSH.
         :param pulumi.Input[str] name: The name of the aks. If not specified default name would be infra name
         :param pulumi.Input[str] network_plugin: Network plugin to use for networking. Valid values are: `azure` and `kubenet`.
         :param pulumi.Input[str] outbound_type: The outbound (egress) routing method which should be used for this Kubernetes Cluster. Valid values are: `loadBalancer` and `userDefinedRouting`.
+        :param pulumi.Input[str] pricing_tier: Pricing tier for the AKS cluster. Valid values are: `Free`, `Standard`, and `Premium`. This determines the level of support and features available for the AKS cluster.
         :param pulumi.Input[bool] private_cluster_enabled: Should this Kubernetes Cluster have its API server only exposed on internal IP addresses? This provides a Private IP Address for the Kubernetes API on the Virtual Network where the Kubernetes Cluster is located. Defaults to `false`.
         :param pulumi.Input[str] resource_group_name: The name of the aks resource group.
         :param pulumi.Input[str] vm_size: The size of the Virtual Machine.
         """
         pulumi.set(__self__, "infra_name", infra_name)
+        if active_directory_config is not None:
+            pulumi.set(__self__, "active_directory_config", active_directory_config)
+        if add_critical_taint_to_system_agent_pool is not None:
+            pulumi.set(__self__, "add_critical_taint_to_system_agent_pool", add_critical_taint_to_system_agent_pool)
+        if disable_run_command is not None:
+            pulumi.set(__self__, "disable_run_command", disable_run_command)
+        if enable_blob_csi_driver is not None:
+            pulumi.set(__self__, "enable_blob_csi_driver", enable_blob_csi_driver)
+        if enable_image_cleaner is not None:
+            pulumi.set(__self__, "enable_image_cleaner", enable_image_cleaner)
+        if enable_workload_identity is not None:
+            pulumi.set(__self__, "enable_workload_identity", enable_workload_identity)
+        if image_cleaner_interval_in_days is not None:
+            pulumi.set(__self__, "image_cleaner_interval_in_days", image_cleaner_interval_in_days)
         if kubernetes_version is not None:
             pulumi.set(__self__, "kubernetes_version", kubernetes_version)
+        if linux_admin_username is not None:
+            pulumi.set(__self__, "linux_admin_username", linux_admin_username)
+        if linux_ssh_public_key is not None:
+            pulumi.set(__self__, "linux_ssh_public_key", linux_ssh_public_key)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if network_plugin is not None:
             pulumi.set(__self__, "network_plugin", network_plugin)
         if outbound_type is not None:
             pulumi.set(__self__, "outbound_type", outbound_type)
+        if pricing_tier is not None:
+            pulumi.set(__self__, "pricing_tier", pricing_tier)
         if private_cluster_enabled is not None:
             pulumi.set(__self__, "private_cluster_enabled", private_cluster_enabled)
         if resource_group_name is not None:
@@ -67,6 +109,90 @@ class AzureK8sClusterArgs:
         pulumi.set(self, "infra_name", value)
 
     @property
+    @pulumi.getter(name="activeDirectoryConfig")
+    def active_directory_config(self) -> Optional[pulumi.Input['AzureK8sClusterActiveDirectoryConfigArgs']]:
+        """
+        Azure Active Directory configuration for the AKS cluster.
+        """
+        return pulumi.get(self, "active_directory_config")
+
+    @active_directory_config.setter
+    def active_directory_config(self, value: Optional[pulumi.Input['AzureK8sClusterActiveDirectoryConfigArgs']]):
+        pulumi.set(self, "active_directory_config", value)
+
+    @property
+    @pulumi.getter(name="addCriticalTaintToSystemAgentPool")
+    def add_critical_taint_to_system_agent_pool(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Add a critical taint to the system agent pool. This prevents the scheduler from scheduling non-critical pods on the system agent pool. Defaults to `false`.
+        """
+        return pulumi.get(self, "add_critical_taint_to_system_agent_pool")
+
+    @add_critical_taint_to_system_agent_pool.setter
+    def add_critical_taint_to_system_agent_pool(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "add_critical_taint_to_system_agent_pool", value)
+
+    @property
+    @pulumi.getter(name="disableRunCommand")
+    def disable_run_command(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disable the Run Command feature for the AKS cluster. This prevents the use of the Azure CLI to run commands directly on the nodes. Defaults to `false`.
+        """
+        return pulumi.get(self, "disable_run_command")
+
+    @disable_run_command.setter
+    def disable_run_command(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_run_command", value)
+
+    @property
+    @pulumi.getter(name="enableBlobCsiDriver")
+    def enable_blob_csi_driver(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable the Azure Blob CSI driver for the AKS cluster. This allows Kubernetes workloads to use Azure Blob Storage as persistent storage. Defaults to `false`.
+        """
+        return pulumi.get(self, "enable_blob_csi_driver")
+
+    @enable_blob_csi_driver.setter
+    def enable_blob_csi_driver(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_blob_csi_driver", value)
+
+    @property
+    @pulumi.getter(name="enableImageCleaner")
+    def enable_image_cleaner(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable the image cleaner for the AKS cluster. This helps to clean up unused container images in the cluster. Defaults to `false`.
+        """
+        return pulumi.get(self, "enable_image_cleaner")
+
+    @enable_image_cleaner.setter
+    def enable_image_cleaner(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_image_cleaner", value)
+
+    @property
+    @pulumi.getter(name="enableWorkloadIdentity")
+    def enable_workload_identity(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable Workload Identity for the AKS cluster. This allows Kubernetes workloads to access Azure resources using Azure AD identities. Defaults to `false`.
+        """
+        return pulumi.get(self, "enable_workload_identity")
+
+    @enable_workload_identity.setter
+    def enable_workload_identity(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_workload_identity", value)
+
+    @property
+    @pulumi.getter(name="imageCleanerIntervalInDays")
+    def image_cleaner_interval_in_days(self) -> Optional[pulumi.Input[int]]:
+        """
+        Interval in days for the image cleaner to run. This determines how often the image cleaner will check for unused images. Valid values are between 1 and 90. Defaults to `30`.
+        """
+        return pulumi.get(self, "image_cleaner_interval_in_days")
+
+    @image_cleaner_interval_in_days.setter
+    def image_cleaner_interval_in_days(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "image_cleaner_interval_in_days", value)
+
+    @property
     @pulumi.getter(name="kubernetesVersion")
     def kubernetes_version(self) -> Optional[pulumi.Input[str]]:
         """
@@ -77,6 +203,30 @@ class AzureK8sClusterArgs:
     @kubernetes_version.setter
     def kubernetes_version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "kubernetes_version", value)
+
+    @property
+    @pulumi.getter(name="linuxAdminUsername")
+    def linux_admin_username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username for the Linux administrator of the AKS cluster. This user will have administrative access to the nodes in the cluster.
+        """
+        return pulumi.get(self, "linux_admin_username")
+
+    @linux_admin_username.setter
+    def linux_admin_username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "linux_admin_username", value)
+
+    @property
+    @pulumi.getter(name="linuxSshPublicKey")
+    def linux_ssh_public_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The SSH public key for the Linux administrator of the AKS cluster. This key will be used to access the nodes in the cluster via SSH.
+        """
+        return pulumi.get(self, "linux_ssh_public_key")
+
+    @linux_ssh_public_key.setter
+    def linux_ssh_public_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "linux_ssh_public_key", value)
 
     @property
     @pulumi.getter
@@ -113,6 +263,18 @@ class AzureK8sClusterArgs:
     @outbound_type.setter
     def outbound_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "outbound_type", value)
+
+    @property
+    @pulumi.getter(name="pricingTier")
+    def pricing_tier(self) -> Optional[pulumi.Input[str]]:
+        """
+        Pricing tier for the AKS cluster. Valid values are: `Free`, `Standard`, and `Premium`. This determines the level of support and features available for the AKS cluster.
+        """
+        return pulumi.get(self, "pricing_tier")
+
+    @pricing_tier.setter
+    def pricing_tier(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pricing_tier", value)
 
     @property
     @pulumi.getter(name="privateClusterEnabled")
@@ -154,41 +316,165 @@ class AzureK8sClusterArgs:
 @pulumi.input_type
 class _AzureK8sClusterState:
     def __init__(__self__, *,
+                 active_directory_config: Optional[pulumi.Input['AzureK8sClusterActiveDirectoryConfigArgs']] = None,
+                 add_critical_taint_to_system_agent_pool: Optional[pulumi.Input[bool]] = None,
+                 disable_run_command: Optional[pulumi.Input[bool]] = None,
+                 enable_blob_csi_driver: Optional[pulumi.Input[bool]] = None,
+                 enable_image_cleaner: Optional[pulumi.Input[bool]] = None,
+                 enable_workload_identity: Optional[pulumi.Input[bool]] = None,
+                 image_cleaner_interval_in_days: Optional[pulumi.Input[int]] = None,
                  infra_name: Optional[pulumi.Input[str]] = None,
                  kubernetes_version: Optional[pulumi.Input[str]] = None,
+                 linux_admin_username: Optional[pulumi.Input[str]] = None,
+                 linux_ssh_public_key: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_plugin: Optional[pulumi.Input[str]] = None,
                  outbound_type: Optional[pulumi.Input[str]] = None,
+                 pricing_tier: Optional[pulumi.Input[str]] = None,
                  private_cluster_enabled: Optional[pulumi.Input[bool]] = None,
                  resource_group_name: Optional[pulumi.Input[str]] = None,
                  vm_size: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AzureK8sCluster resources.
+        :param pulumi.Input['AzureK8sClusterActiveDirectoryConfigArgs'] active_directory_config: Azure Active Directory configuration for the AKS cluster.
+        :param pulumi.Input[bool] add_critical_taint_to_system_agent_pool: Add a critical taint to the system agent pool. This prevents the scheduler from scheduling non-critical pods on the system agent pool. Defaults to `false`.
+        :param pulumi.Input[bool] disable_run_command: Disable the Run Command feature for the AKS cluster. This prevents the use of the Azure CLI to run commands directly on the nodes. Defaults to `false`.
+        :param pulumi.Input[bool] enable_blob_csi_driver: Enable the Azure Blob CSI driver for the AKS cluster. This allows Kubernetes workloads to use Azure Blob Storage as persistent storage. Defaults to `false`.
+        :param pulumi.Input[bool] enable_image_cleaner: Enable the image cleaner for the AKS cluster. This helps to clean up unused container images in the cluster. Defaults to `false`.
+        :param pulumi.Input[bool] enable_workload_identity: Enable Workload Identity for the AKS cluster. This allows Kubernetes workloads to access Azure resources using Azure AD identities. Defaults to `false`.
+        :param pulumi.Input[int] image_cleaner_interval_in_days: Interval in days for the image cleaner to run. This determines how often the image cleaner will check for unused images. Valid values are between 1 and 90. Defaults to `30`.
         :param pulumi.Input[str] infra_name: The name of the infrastructure.
         :param pulumi.Input[str] kubernetes_version: Version of Kubernetes specified when creating the AKS managed cluster.
+        :param pulumi.Input[str] linux_admin_username: The username for the Linux administrator of the AKS cluster. This user will have administrative access to the nodes in the cluster.
+        :param pulumi.Input[str] linux_ssh_public_key: The SSH public key for the Linux administrator of the AKS cluster. This key will be used to access the nodes in the cluster via SSH.
         :param pulumi.Input[str] name: The name of the aks. If not specified default name would be infra name
         :param pulumi.Input[str] network_plugin: Network plugin to use for networking. Valid values are: `azure` and `kubenet`.
         :param pulumi.Input[str] outbound_type: The outbound (egress) routing method which should be used for this Kubernetes Cluster. Valid values are: `loadBalancer` and `userDefinedRouting`.
+        :param pulumi.Input[str] pricing_tier: Pricing tier for the AKS cluster. Valid values are: `Free`, `Standard`, and `Premium`. This determines the level of support and features available for the AKS cluster.
         :param pulumi.Input[bool] private_cluster_enabled: Should this Kubernetes Cluster have its API server only exposed on internal IP addresses? This provides a Private IP Address for the Kubernetes API on the Virtual Network where the Kubernetes Cluster is located. Defaults to `false`.
         :param pulumi.Input[str] resource_group_name: The name of the aks resource group.
         :param pulumi.Input[str] vm_size: The size of the Virtual Machine.
         """
+        if active_directory_config is not None:
+            pulumi.set(__self__, "active_directory_config", active_directory_config)
+        if add_critical_taint_to_system_agent_pool is not None:
+            pulumi.set(__self__, "add_critical_taint_to_system_agent_pool", add_critical_taint_to_system_agent_pool)
+        if disable_run_command is not None:
+            pulumi.set(__self__, "disable_run_command", disable_run_command)
+        if enable_blob_csi_driver is not None:
+            pulumi.set(__self__, "enable_blob_csi_driver", enable_blob_csi_driver)
+        if enable_image_cleaner is not None:
+            pulumi.set(__self__, "enable_image_cleaner", enable_image_cleaner)
+        if enable_workload_identity is not None:
+            pulumi.set(__self__, "enable_workload_identity", enable_workload_identity)
+        if image_cleaner_interval_in_days is not None:
+            pulumi.set(__self__, "image_cleaner_interval_in_days", image_cleaner_interval_in_days)
         if infra_name is not None:
             pulumi.set(__self__, "infra_name", infra_name)
         if kubernetes_version is not None:
             pulumi.set(__self__, "kubernetes_version", kubernetes_version)
+        if linux_admin_username is not None:
+            pulumi.set(__self__, "linux_admin_username", linux_admin_username)
+        if linux_ssh_public_key is not None:
+            pulumi.set(__self__, "linux_ssh_public_key", linux_ssh_public_key)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if network_plugin is not None:
             pulumi.set(__self__, "network_plugin", network_plugin)
         if outbound_type is not None:
             pulumi.set(__self__, "outbound_type", outbound_type)
+        if pricing_tier is not None:
+            pulumi.set(__self__, "pricing_tier", pricing_tier)
         if private_cluster_enabled is not None:
             pulumi.set(__self__, "private_cluster_enabled", private_cluster_enabled)
         if resource_group_name is not None:
             pulumi.set(__self__, "resource_group_name", resource_group_name)
         if vm_size is not None:
             pulumi.set(__self__, "vm_size", vm_size)
+
+    @property
+    @pulumi.getter(name="activeDirectoryConfig")
+    def active_directory_config(self) -> Optional[pulumi.Input['AzureK8sClusterActiveDirectoryConfigArgs']]:
+        """
+        Azure Active Directory configuration for the AKS cluster.
+        """
+        return pulumi.get(self, "active_directory_config")
+
+    @active_directory_config.setter
+    def active_directory_config(self, value: Optional[pulumi.Input['AzureK8sClusterActiveDirectoryConfigArgs']]):
+        pulumi.set(self, "active_directory_config", value)
+
+    @property
+    @pulumi.getter(name="addCriticalTaintToSystemAgentPool")
+    def add_critical_taint_to_system_agent_pool(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Add a critical taint to the system agent pool. This prevents the scheduler from scheduling non-critical pods on the system agent pool. Defaults to `false`.
+        """
+        return pulumi.get(self, "add_critical_taint_to_system_agent_pool")
+
+    @add_critical_taint_to_system_agent_pool.setter
+    def add_critical_taint_to_system_agent_pool(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "add_critical_taint_to_system_agent_pool", value)
+
+    @property
+    @pulumi.getter(name="disableRunCommand")
+    def disable_run_command(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disable the Run Command feature for the AKS cluster. This prevents the use of the Azure CLI to run commands directly on the nodes. Defaults to `false`.
+        """
+        return pulumi.get(self, "disable_run_command")
+
+    @disable_run_command.setter
+    def disable_run_command(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_run_command", value)
+
+    @property
+    @pulumi.getter(name="enableBlobCsiDriver")
+    def enable_blob_csi_driver(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable the Azure Blob CSI driver for the AKS cluster. This allows Kubernetes workloads to use Azure Blob Storage as persistent storage. Defaults to `false`.
+        """
+        return pulumi.get(self, "enable_blob_csi_driver")
+
+    @enable_blob_csi_driver.setter
+    def enable_blob_csi_driver(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_blob_csi_driver", value)
+
+    @property
+    @pulumi.getter(name="enableImageCleaner")
+    def enable_image_cleaner(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable the image cleaner for the AKS cluster. This helps to clean up unused container images in the cluster. Defaults to `false`.
+        """
+        return pulumi.get(self, "enable_image_cleaner")
+
+    @enable_image_cleaner.setter
+    def enable_image_cleaner(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_image_cleaner", value)
+
+    @property
+    @pulumi.getter(name="enableWorkloadIdentity")
+    def enable_workload_identity(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable Workload Identity for the AKS cluster. This allows Kubernetes workloads to access Azure resources using Azure AD identities. Defaults to `false`.
+        """
+        return pulumi.get(self, "enable_workload_identity")
+
+    @enable_workload_identity.setter
+    def enable_workload_identity(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_workload_identity", value)
+
+    @property
+    @pulumi.getter(name="imageCleanerIntervalInDays")
+    def image_cleaner_interval_in_days(self) -> Optional[pulumi.Input[int]]:
+        """
+        Interval in days for the image cleaner to run. This determines how often the image cleaner will check for unused images. Valid values are between 1 and 90. Defaults to `30`.
+        """
+        return pulumi.get(self, "image_cleaner_interval_in_days")
+
+    @image_cleaner_interval_in_days.setter
+    def image_cleaner_interval_in_days(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "image_cleaner_interval_in_days", value)
 
     @property
     @pulumi.getter(name="infraName")
@@ -213,6 +499,30 @@ class _AzureK8sClusterState:
     @kubernetes_version.setter
     def kubernetes_version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "kubernetes_version", value)
+
+    @property
+    @pulumi.getter(name="linuxAdminUsername")
+    def linux_admin_username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username for the Linux administrator of the AKS cluster. This user will have administrative access to the nodes in the cluster.
+        """
+        return pulumi.get(self, "linux_admin_username")
+
+    @linux_admin_username.setter
+    def linux_admin_username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "linux_admin_username", value)
+
+    @property
+    @pulumi.getter(name="linuxSshPublicKey")
+    def linux_ssh_public_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The SSH public key for the Linux administrator of the AKS cluster. This key will be used to access the nodes in the cluster via SSH.
+        """
+        return pulumi.get(self, "linux_ssh_public_key")
+
+    @linux_ssh_public_key.setter
+    def linux_ssh_public_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "linux_ssh_public_key", value)
 
     @property
     @pulumi.getter
@@ -249,6 +559,18 @@ class _AzureK8sClusterState:
     @outbound_type.setter
     def outbound_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "outbound_type", value)
+
+    @property
+    @pulumi.getter(name="pricingTier")
+    def pricing_tier(self) -> Optional[pulumi.Input[str]]:
+        """
+        Pricing tier for the AKS cluster. Valid values are: `Free`, `Standard`, and `Premium`. This determines the level of support and features available for the AKS cluster.
+        """
+        return pulumi.get(self, "pricing_tier")
+
+    @pricing_tier.setter
+    def pricing_tier(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pricing_tier", value)
 
     @property
     @pulumi.getter(name="privateClusterEnabled")
@@ -292,11 +614,21 @@ class AzureK8sCluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 active_directory_config: Optional[pulumi.Input[Union['AzureK8sClusterActiveDirectoryConfigArgs', 'AzureK8sClusterActiveDirectoryConfigArgsDict']]] = None,
+                 add_critical_taint_to_system_agent_pool: Optional[pulumi.Input[bool]] = None,
+                 disable_run_command: Optional[pulumi.Input[bool]] = None,
+                 enable_blob_csi_driver: Optional[pulumi.Input[bool]] = None,
+                 enable_image_cleaner: Optional[pulumi.Input[bool]] = None,
+                 enable_workload_identity: Optional[pulumi.Input[bool]] = None,
+                 image_cleaner_interval_in_days: Optional[pulumi.Input[int]] = None,
                  infra_name: Optional[pulumi.Input[str]] = None,
                  kubernetes_version: Optional[pulumi.Input[str]] = None,
+                 linux_admin_username: Optional[pulumi.Input[str]] = None,
+                 linux_ssh_public_key: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_plugin: Optional[pulumi.Input[str]] = None,
                  outbound_type: Optional[pulumi.Input[str]] = None,
+                 pricing_tier: Optional[pulumi.Input[str]] = None,
                  private_cluster_enabled: Optional[pulumi.Input[bool]] = None,
                  resource_group_name: Optional[pulumi.Input[str]] = None,
                  vm_size: Optional[pulumi.Input[str]] = None,
@@ -322,6 +654,26 @@ class AzureK8sCluster(pulumi.CustomResource):
             subnet_name="sub01",
             subnet_address_prefix="10.50.1.0/24")
         cluster = duplocloud.AzureK8sCluster("cluster", infra_name=infra.infra_name)
+        ac = duplocloud.AzureK8sCluster("ac",
+            infra_name=infra.infra_name,
+            private_cluster_enabled=True,
+            enable_workload_identity=True,
+            enable_blob_csi_driver=True,
+            disable_run_command=True,
+            add_critical_taint_to_system_agent_pool=True,
+            enable_image_cleaner=True,
+            image_cleaner_interval_in_days=7,
+            pricing_tier="Free",
+            linux_admin_username="kubuser",
+            linux_ssh_public_key="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC666PWPnhOI3oc+4t4CmW6HtTKfns3uOa3ZW6EN57qti20Ln4SvoBT8mwMvwnZq6Z413Kp5MFbSdkVv1t+5ZXQ0E0NdJKM59O6bTtUriekkQoeoBgu2AU2Gmk20SbMZ/7lRJDhHYg0JM3HWup7RoL3tGEJDKmv0fZ1WYYsqGkX6Dc/XP1DfmUVwd2I41yVjDWpXY/FG9/t2tKoG4DONGOJY974C6P1cxhptWyt/yqzEU7VyOB3L/kdbhTe4Z64TEYSR57jW7GsnYBbmvX8lLTAhkIFbqENXNJHl26OcwCj4M8+HU2Y4oba7vTUxb7rcgQ0vDsYgjlK6zLzPs5mcbIzjTW4VMcXBC3bciiXlurXe+ByoEUSKiXAzgszg2aD6LlMWfS6jQwGDpnfC962RxeDv/EY8ggL7xBVTe9B8H3khbeLTQpFvDYtY1GwYq0+/911LHvdRJycP7GuEWghhSDGNmh1/MhG/Qgmqh49NYhKn1RNZkYn7ePxNkTUA7h9lyU= noname",
+            network_plugin="kubenet",
+            active_directory_config={
+                "ad_tenant_id": "<ad-tenant-id>",
+                "admin_group_object_ids": ["<admin-group-object-id>"],
+                "enable_ad": True,
+                "enable_rbac": True,
+            },
+            kubernetes_version="1.31.5")
         ```
 
         ## Import
@@ -338,11 +690,21 @@ class AzureK8sCluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['AzureK8sClusterActiveDirectoryConfigArgs', 'AzureK8sClusterActiveDirectoryConfigArgsDict']] active_directory_config: Azure Active Directory configuration for the AKS cluster.
+        :param pulumi.Input[bool] add_critical_taint_to_system_agent_pool: Add a critical taint to the system agent pool. This prevents the scheduler from scheduling non-critical pods on the system agent pool. Defaults to `false`.
+        :param pulumi.Input[bool] disable_run_command: Disable the Run Command feature for the AKS cluster. This prevents the use of the Azure CLI to run commands directly on the nodes. Defaults to `false`.
+        :param pulumi.Input[bool] enable_blob_csi_driver: Enable the Azure Blob CSI driver for the AKS cluster. This allows Kubernetes workloads to use Azure Blob Storage as persistent storage. Defaults to `false`.
+        :param pulumi.Input[bool] enable_image_cleaner: Enable the image cleaner for the AKS cluster. This helps to clean up unused container images in the cluster. Defaults to `false`.
+        :param pulumi.Input[bool] enable_workload_identity: Enable Workload Identity for the AKS cluster. This allows Kubernetes workloads to access Azure resources using Azure AD identities. Defaults to `false`.
+        :param pulumi.Input[int] image_cleaner_interval_in_days: Interval in days for the image cleaner to run. This determines how often the image cleaner will check for unused images. Valid values are between 1 and 90. Defaults to `30`.
         :param pulumi.Input[str] infra_name: The name of the infrastructure.
         :param pulumi.Input[str] kubernetes_version: Version of Kubernetes specified when creating the AKS managed cluster.
+        :param pulumi.Input[str] linux_admin_username: The username for the Linux administrator of the AKS cluster. This user will have administrative access to the nodes in the cluster.
+        :param pulumi.Input[str] linux_ssh_public_key: The SSH public key for the Linux administrator of the AKS cluster. This key will be used to access the nodes in the cluster via SSH.
         :param pulumi.Input[str] name: The name of the aks. If not specified default name would be infra name
         :param pulumi.Input[str] network_plugin: Network plugin to use for networking. Valid values are: `azure` and `kubenet`.
         :param pulumi.Input[str] outbound_type: The outbound (egress) routing method which should be used for this Kubernetes Cluster. Valid values are: `loadBalancer` and `userDefinedRouting`.
+        :param pulumi.Input[str] pricing_tier: Pricing tier for the AKS cluster. Valid values are: `Free`, `Standard`, and `Premium`. This determines the level of support and features available for the AKS cluster.
         :param pulumi.Input[bool] private_cluster_enabled: Should this Kubernetes Cluster have its API server only exposed on internal IP addresses? This provides a Private IP Address for the Kubernetes API on the Virtual Network where the Kubernetes Cluster is located. Defaults to `false`.
         :param pulumi.Input[str] resource_group_name: The name of the aks resource group.
         :param pulumi.Input[str] vm_size: The size of the Virtual Machine.
@@ -374,6 +736,26 @@ class AzureK8sCluster(pulumi.CustomResource):
             subnet_name="sub01",
             subnet_address_prefix="10.50.1.0/24")
         cluster = duplocloud.AzureK8sCluster("cluster", infra_name=infra.infra_name)
+        ac = duplocloud.AzureK8sCluster("ac",
+            infra_name=infra.infra_name,
+            private_cluster_enabled=True,
+            enable_workload_identity=True,
+            enable_blob_csi_driver=True,
+            disable_run_command=True,
+            add_critical_taint_to_system_agent_pool=True,
+            enable_image_cleaner=True,
+            image_cleaner_interval_in_days=7,
+            pricing_tier="Free",
+            linux_admin_username="kubuser",
+            linux_ssh_public_key="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC666PWPnhOI3oc+4t4CmW6HtTKfns3uOa3ZW6EN57qti20Ln4SvoBT8mwMvwnZq6Z413Kp5MFbSdkVv1t+5ZXQ0E0NdJKM59O6bTtUriekkQoeoBgu2AU2Gmk20SbMZ/7lRJDhHYg0JM3HWup7RoL3tGEJDKmv0fZ1WYYsqGkX6Dc/XP1DfmUVwd2I41yVjDWpXY/FG9/t2tKoG4DONGOJY974C6P1cxhptWyt/yqzEU7VyOB3L/kdbhTe4Z64TEYSR57jW7GsnYBbmvX8lLTAhkIFbqENXNJHl26OcwCj4M8+HU2Y4oba7vTUxb7rcgQ0vDsYgjlK6zLzPs5mcbIzjTW4VMcXBC3bciiXlurXe+ByoEUSKiXAzgszg2aD6LlMWfS6jQwGDpnfC962RxeDv/EY8ggL7xBVTe9B8H3khbeLTQpFvDYtY1GwYq0+/911LHvdRJycP7GuEWghhSDGNmh1/MhG/Qgmqh49NYhKn1RNZkYn7ePxNkTUA7h9lyU= noname",
+            network_plugin="kubenet",
+            active_directory_config={
+                "ad_tenant_id": "<ad-tenant-id>",
+                "admin_group_object_ids": ["<admin-group-object-id>"],
+                "enable_ad": True,
+                "enable_rbac": True,
+            },
+            kubernetes_version="1.31.5")
         ```
 
         ## Import
@@ -403,11 +785,21 @@ class AzureK8sCluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 active_directory_config: Optional[pulumi.Input[Union['AzureK8sClusterActiveDirectoryConfigArgs', 'AzureK8sClusterActiveDirectoryConfigArgsDict']]] = None,
+                 add_critical_taint_to_system_agent_pool: Optional[pulumi.Input[bool]] = None,
+                 disable_run_command: Optional[pulumi.Input[bool]] = None,
+                 enable_blob_csi_driver: Optional[pulumi.Input[bool]] = None,
+                 enable_image_cleaner: Optional[pulumi.Input[bool]] = None,
+                 enable_workload_identity: Optional[pulumi.Input[bool]] = None,
+                 image_cleaner_interval_in_days: Optional[pulumi.Input[int]] = None,
                  infra_name: Optional[pulumi.Input[str]] = None,
                  kubernetes_version: Optional[pulumi.Input[str]] = None,
+                 linux_admin_username: Optional[pulumi.Input[str]] = None,
+                 linux_ssh_public_key: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_plugin: Optional[pulumi.Input[str]] = None,
                  outbound_type: Optional[pulumi.Input[str]] = None,
+                 pricing_tier: Optional[pulumi.Input[str]] = None,
                  private_cluster_enabled: Optional[pulumi.Input[bool]] = None,
                  resource_group_name: Optional[pulumi.Input[str]] = None,
                  vm_size: Optional[pulumi.Input[str]] = None,
@@ -420,13 +812,23 @@ class AzureK8sCluster(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AzureK8sClusterArgs.__new__(AzureK8sClusterArgs)
 
+            __props__.__dict__["active_directory_config"] = active_directory_config
+            __props__.__dict__["add_critical_taint_to_system_agent_pool"] = add_critical_taint_to_system_agent_pool
+            __props__.__dict__["disable_run_command"] = disable_run_command
+            __props__.__dict__["enable_blob_csi_driver"] = enable_blob_csi_driver
+            __props__.__dict__["enable_image_cleaner"] = enable_image_cleaner
+            __props__.__dict__["enable_workload_identity"] = enable_workload_identity
+            __props__.__dict__["image_cleaner_interval_in_days"] = image_cleaner_interval_in_days
             if infra_name is None and not opts.urn:
                 raise TypeError("Missing required property 'infra_name'")
             __props__.__dict__["infra_name"] = infra_name
             __props__.__dict__["kubernetes_version"] = kubernetes_version
+            __props__.__dict__["linux_admin_username"] = linux_admin_username
+            __props__.__dict__["linux_ssh_public_key"] = linux_ssh_public_key
             __props__.__dict__["name"] = name
             __props__.__dict__["network_plugin"] = network_plugin
             __props__.__dict__["outbound_type"] = outbound_type
+            __props__.__dict__["pricing_tier"] = pricing_tier
             __props__.__dict__["private_cluster_enabled"] = private_cluster_enabled
             __props__.__dict__["resource_group_name"] = resource_group_name
             __props__.__dict__["vm_size"] = vm_size
@@ -440,11 +842,21 @@ class AzureK8sCluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            active_directory_config: Optional[pulumi.Input[Union['AzureK8sClusterActiveDirectoryConfigArgs', 'AzureK8sClusterActiveDirectoryConfigArgsDict']]] = None,
+            add_critical_taint_to_system_agent_pool: Optional[pulumi.Input[bool]] = None,
+            disable_run_command: Optional[pulumi.Input[bool]] = None,
+            enable_blob_csi_driver: Optional[pulumi.Input[bool]] = None,
+            enable_image_cleaner: Optional[pulumi.Input[bool]] = None,
+            enable_workload_identity: Optional[pulumi.Input[bool]] = None,
+            image_cleaner_interval_in_days: Optional[pulumi.Input[int]] = None,
             infra_name: Optional[pulumi.Input[str]] = None,
             kubernetes_version: Optional[pulumi.Input[str]] = None,
+            linux_admin_username: Optional[pulumi.Input[str]] = None,
+            linux_ssh_public_key: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network_plugin: Optional[pulumi.Input[str]] = None,
             outbound_type: Optional[pulumi.Input[str]] = None,
+            pricing_tier: Optional[pulumi.Input[str]] = None,
             private_cluster_enabled: Optional[pulumi.Input[bool]] = None,
             resource_group_name: Optional[pulumi.Input[str]] = None,
             vm_size: Optional[pulumi.Input[str]] = None) -> 'AzureK8sCluster':
@@ -455,11 +867,21 @@ class AzureK8sCluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['AzureK8sClusterActiveDirectoryConfigArgs', 'AzureK8sClusterActiveDirectoryConfigArgsDict']] active_directory_config: Azure Active Directory configuration for the AKS cluster.
+        :param pulumi.Input[bool] add_critical_taint_to_system_agent_pool: Add a critical taint to the system agent pool. This prevents the scheduler from scheduling non-critical pods on the system agent pool. Defaults to `false`.
+        :param pulumi.Input[bool] disable_run_command: Disable the Run Command feature for the AKS cluster. This prevents the use of the Azure CLI to run commands directly on the nodes. Defaults to `false`.
+        :param pulumi.Input[bool] enable_blob_csi_driver: Enable the Azure Blob CSI driver for the AKS cluster. This allows Kubernetes workloads to use Azure Blob Storage as persistent storage. Defaults to `false`.
+        :param pulumi.Input[bool] enable_image_cleaner: Enable the image cleaner for the AKS cluster. This helps to clean up unused container images in the cluster. Defaults to `false`.
+        :param pulumi.Input[bool] enable_workload_identity: Enable Workload Identity for the AKS cluster. This allows Kubernetes workloads to access Azure resources using Azure AD identities. Defaults to `false`.
+        :param pulumi.Input[int] image_cleaner_interval_in_days: Interval in days for the image cleaner to run. This determines how often the image cleaner will check for unused images. Valid values are between 1 and 90. Defaults to `30`.
         :param pulumi.Input[str] infra_name: The name of the infrastructure.
         :param pulumi.Input[str] kubernetes_version: Version of Kubernetes specified when creating the AKS managed cluster.
+        :param pulumi.Input[str] linux_admin_username: The username for the Linux administrator of the AKS cluster. This user will have administrative access to the nodes in the cluster.
+        :param pulumi.Input[str] linux_ssh_public_key: The SSH public key for the Linux administrator of the AKS cluster. This key will be used to access the nodes in the cluster via SSH.
         :param pulumi.Input[str] name: The name of the aks. If not specified default name would be infra name
         :param pulumi.Input[str] network_plugin: Network plugin to use for networking. Valid values are: `azure` and `kubenet`.
         :param pulumi.Input[str] outbound_type: The outbound (egress) routing method which should be used for this Kubernetes Cluster. Valid values are: `loadBalancer` and `userDefinedRouting`.
+        :param pulumi.Input[str] pricing_tier: Pricing tier for the AKS cluster. Valid values are: `Free`, `Standard`, and `Premium`. This determines the level of support and features available for the AKS cluster.
         :param pulumi.Input[bool] private_cluster_enabled: Should this Kubernetes Cluster have its API server only exposed on internal IP addresses? This provides a Private IP Address for the Kubernetes API on the Virtual Network where the Kubernetes Cluster is located. Defaults to `false`.
         :param pulumi.Input[str] resource_group_name: The name of the aks resource group.
         :param pulumi.Input[str] vm_size: The size of the Virtual Machine.
@@ -468,15 +890,81 @@ class AzureK8sCluster(pulumi.CustomResource):
 
         __props__ = _AzureK8sClusterState.__new__(_AzureK8sClusterState)
 
+        __props__.__dict__["active_directory_config"] = active_directory_config
+        __props__.__dict__["add_critical_taint_to_system_agent_pool"] = add_critical_taint_to_system_agent_pool
+        __props__.__dict__["disable_run_command"] = disable_run_command
+        __props__.__dict__["enable_blob_csi_driver"] = enable_blob_csi_driver
+        __props__.__dict__["enable_image_cleaner"] = enable_image_cleaner
+        __props__.__dict__["enable_workload_identity"] = enable_workload_identity
+        __props__.__dict__["image_cleaner_interval_in_days"] = image_cleaner_interval_in_days
         __props__.__dict__["infra_name"] = infra_name
         __props__.__dict__["kubernetes_version"] = kubernetes_version
+        __props__.__dict__["linux_admin_username"] = linux_admin_username
+        __props__.__dict__["linux_ssh_public_key"] = linux_ssh_public_key
         __props__.__dict__["name"] = name
         __props__.__dict__["network_plugin"] = network_plugin
         __props__.__dict__["outbound_type"] = outbound_type
+        __props__.__dict__["pricing_tier"] = pricing_tier
         __props__.__dict__["private_cluster_enabled"] = private_cluster_enabled
         __props__.__dict__["resource_group_name"] = resource_group_name
         __props__.__dict__["vm_size"] = vm_size
         return AzureK8sCluster(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="activeDirectoryConfig")
+    def active_directory_config(self) -> pulumi.Output['outputs.AzureK8sClusterActiveDirectoryConfig']:
+        """
+        Azure Active Directory configuration for the AKS cluster.
+        """
+        return pulumi.get(self, "active_directory_config")
+
+    @property
+    @pulumi.getter(name="addCriticalTaintToSystemAgentPool")
+    def add_critical_taint_to_system_agent_pool(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Add a critical taint to the system agent pool. This prevents the scheduler from scheduling non-critical pods on the system agent pool. Defaults to `false`.
+        """
+        return pulumi.get(self, "add_critical_taint_to_system_agent_pool")
+
+    @property
+    @pulumi.getter(name="disableRunCommand")
+    def disable_run_command(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Disable the Run Command feature for the AKS cluster. This prevents the use of the Azure CLI to run commands directly on the nodes. Defaults to `false`.
+        """
+        return pulumi.get(self, "disable_run_command")
+
+    @property
+    @pulumi.getter(name="enableBlobCsiDriver")
+    def enable_blob_csi_driver(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Enable the Azure Blob CSI driver for the AKS cluster. This allows Kubernetes workloads to use Azure Blob Storage as persistent storage. Defaults to `false`.
+        """
+        return pulumi.get(self, "enable_blob_csi_driver")
+
+    @property
+    @pulumi.getter(name="enableImageCleaner")
+    def enable_image_cleaner(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Enable the image cleaner for the AKS cluster. This helps to clean up unused container images in the cluster. Defaults to `false`.
+        """
+        return pulumi.get(self, "enable_image_cleaner")
+
+    @property
+    @pulumi.getter(name="enableWorkloadIdentity")
+    def enable_workload_identity(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Enable Workload Identity for the AKS cluster. This allows Kubernetes workloads to access Azure resources using Azure AD identities. Defaults to `false`.
+        """
+        return pulumi.get(self, "enable_workload_identity")
+
+    @property
+    @pulumi.getter(name="imageCleanerIntervalInDays")
+    def image_cleaner_interval_in_days(self) -> pulumi.Output[Optional[int]]:
+        """
+        Interval in days for the image cleaner to run. This determines how often the image cleaner will check for unused images. Valid values are between 1 and 90. Defaults to `30`.
+        """
+        return pulumi.get(self, "image_cleaner_interval_in_days")
 
     @property
     @pulumi.getter(name="infraName")
@@ -493,6 +981,22 @@ class AzureK8sCluster(pulumi.CustomResource):
         Version of Kubernetes specified when creating the AKS managed cluster.
         """
         return pulumi.get(self, "kubernetes_version")
+
+    @property
+    @pulumi.getter(name="linuxAdminUsername")
+    def linux_admin_username(self) -> pulumi.Output[str]:
+        """
+        The username for the Linux administrator of the AKS cluster. This user will have administrative access to the nodes in the cluster.
+        """
+        return pulumi.get(self, "linux_admin_username")
+
+    @property
+    @pulumi.getter(name="linuxSshPublicKey")
+    def linux_ssh_public_key(self) -> pulumi.Output[str]:
+        """
+        The SSH public key for the Linux administrator of the AKS cluster. This key will be used to access the nodes in the cluster via SSH.
+        """
+        return pulumi.get(self, "linux_ssh_public_key")
 
     @property
     @pulumi.getter
@@ -517,6 +1021,14 @@ class AzureK8sCluster(pulumi.CustomResource):
         The outbound (egress) routing method which should be used for this Kubernetes Cluster. Valid values are: `loadBalancer` and `userDefinedRouting`.
         """
         return pulumi.get(self, "outbound_type")
+
+    @property
+    @pulumi.getter(name="pricingTier")
+    def pricing_tier(self) -> pulumi.Output[str]:
+        """
+        Pricing tier for the AKS cluster. Valid values are: `Free`, `Standard`, and `Premium`. This determines the level of support and features available for the AKS cluster.
+        """
+        return pulumi.get(self, "pricing_tier")
 
     @property
     @pulumi.getter(name="privateClusterEnabled")

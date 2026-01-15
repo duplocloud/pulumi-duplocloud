@@ -19,11 +19,11 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var logAnalyticsWorkspace = new Duplocloud.AzureLogAnalyticsWorkspace("log_analytics_workspace", new()
+    ///     var logAnalyticsWorkspace = new Pulumi.AzureLogAnalyticsWorkspace("log_analytics_workspace", new()
     ///     {
     ///         InfraName = "demo",
     ///         ResourceGroupName = "duploinfra-demo",

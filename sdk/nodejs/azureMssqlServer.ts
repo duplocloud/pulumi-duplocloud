@@ -2,30 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
  * `duplocloud.AzureMssqlServer` manages an azure mssql server in Duplo.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@duplocloud/pulumi";
- *
- * const myapp = new duplocloud.Tenant("myapp", {
- *     accountName: "myapp",
- *     planId: "default",
- * });
- * const mssqlServer = new duplocloud.AzureMssqlServer("mssql_server", {
- *     tenantId: myapp.tenantId,
- *     name: "mssql-test",
- *     administratorLogin: "testroot",
- *     administratorLoginPassword: "P@ssword12345",
- *     version: "12.0",
- *     minimumTlsVersion: "1.2",
- * });
- * ```
  *
  * ## Import
  *
@@ -69,6 +51,10 @@ export class AzureMssqlServer extends pulumi.CustomResource {
         return obj['__pulumiType'] === AzureMssqlServer.__pulumiType;
     }
 
+    /**
+     * Allows you to set a user or group as the AD administrator for an Azure SQL server.
+     */
+    public readonly activeDirectoryAdministrator!: pulumi.Output<outputs.AzureMssqlServerActiveDirectoryAdministrator | undefined>;
     /**
      * The Administrator Login for the  MS sql Server.
      */
@@ -120,6 +106,7 @@ export class AzureMssqlServer extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AzureMssqlServerState | undefined;
+            resourceInputs["activeDirectoryAdministrator"] = state ? state.activeDirectoryAdministrator : undefined;
             resourceInputs["administratorLogin"] = state ? state.administratorLogin : undefined;
             resourceInputs["administratorLoginPassword"] = state ? state.administratorLoginPassword : undefined;
             resourceInputs["fqdn"] = state ? state.fqdn : undefined;
@@ -138,6 +125,7 @@ export class AzureMssqlServer extends pulumi.CustomResource {
             if ((!args || args.version === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'version'");
             }
+            resourceInputs["activeDirectoryAdministrator"] = args ? args.activeDirectoryAdministrator : undefined;
             resourceInputs["administratorLogin"] = args ? args.administratorLogin : undefined;
             resourceInputs["administratorLoginPassword"] = args?.administratorLoginPassword ? pulumi.secret(args.administratorLoginPassword) : undefined;
             resourceInputs["minimumTlsVersion"] = args ? args.minimumTlsVersion : undefined;
@@ -160,6 +148,10 @@ export class AzureMssqlServer extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AzureMssqlServer resources.
  */
 export interface AzureMssqlServerState {
+    /**
+     * Allows you to set a user or group as the AD administrator for an Azure SQL server.
+     */
+    activeDirectoryAdministrator?: pulumi.Input<inputs.AzureMssqlServerActiveDirectoryAdministrator>;
     /**
      * The Administrator Login for the  MS sql Server.
      */
@@ -203,6 +195,10 @@ export interface AzureMssqlServerState {
  * The set of arguments for constructing a AzureMssqlServer resource.
  */
 export interface AzureMssqlServerArgs {
+    /**
+     * Allows you to set a user or group as the AD administrator for an Azure SQL server.
+     */
+    activeDirectoryAdministrator?: pulumi.Input<inputs.AzureMssqlServerActiveDirectoryAdministrator>;
     /**
      * The Administrator Login for the  MS sql Server.
      */

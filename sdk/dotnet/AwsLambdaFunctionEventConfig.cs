@@ -19,17 +19,17 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myapp = new Duplocloud.Tenant("myapp", new()
+    ///     var myapp = new Pulumi.Tenant("myapp", new()
     ///     {
     ///         AccountName = "myapp",
     ///         PlanId = "nondefault",
     ///     });
     /// 
-    ///     var myfunction = new Duplocloud.AwsLambdaFunction("myfunction", new()
+    ///     var myfunction = new Pulumi.AwsLambdaFunction("myfunction", new()
     ///     {
     ///         TenantId = myapp.TenantId,
     ///         Name = "myfunction",
@@ -38,7 +38,7 @@ namespace DuploCloud.Pulumi
     ///         Handler = "com.example.MyFunction::handleRequest",
     ///         S3Bucket = "my-bucket-name",
     ///         S3Key = "my-function.zip",
-    ///         Environment = new Duplocloud.Inputs.AwsLambdaFunctionEnvironmentArgs
+    ///         Environment = new Pulumi.Inputs.AwsLambdaFunctionEnvironmentArgs
     ///         {
     ///             Variables = 
     ///             {
@@ -49,7 +49,7 @@ namespace DuploCloud.Pulumi
     ///         MemorySize = 512,
     ///     });
     /// 
-    ///     var failureQueue = new Duplocloud.AwsSqsQueue("failure_queue", new()
+    ///     var failureQueue = new Pulumi.AwsSqsQueue("failure_queue", new()
     ///     {
     ///         TenantId = myapp.TenantId,
     ///         Name = "failure_queue",
@@ -60,7 +60,7 @@ namespace DuploCloud.Pulumi
     ///         DelaySeconds = 10,
     ///     });
     /// 
-    ///     var successQueue = new Duplocloud.AwsSqsQueue("success_queue", new()
+    ///     var successQueue = new Pulumi.AwsSqsQueue("success_queue", new()
     ///     {
     ///         TenantId = myapp.TenantId,
     ///         Name = "success_queue",
@@ -71,19 +71,19 @@ namespace DuploCloud.Pulumi
     ///         DelaySeconds = 10,
     ///     });
     /// 
-    ///     var event_invoke_config = new Duplocloud.AwsLambdaFunctionEventConfig("event-invoke-config", new()
+    ///     var event_invoke_config = new Pulumi.AwsLambdaFunctionEventConfig("event-invoke-config", new()
     ///     {
     ///         TenantId = myapp.TenantId,
     ///         FunctionName = myfunction.Fullname,
     ///         MaxRetryAttempts = 1,
     ///         MaxEventAgeInSeconds = 100,
-    ///         DestinationConfig = new Duplocloud.Inputs.AwsLambdaFunctionEventConfigDestinationConfigArgs
+    ///         DestinationConfig = new Pulumi.Inputs.AwsLambdaFunctionEventConfigDestinationConfigArgs
     ///         {
-    ///             OnFailure = new Duplocloud.Inputs.AwsLambdaFunctionEventConfigDestinationConfigOnFailureArgs
+    ///             OnFailure = new Pulumi.Inputs.AwsLambdaFunctionEventConfigDestinationConfigOnFailureArgs
     ///             {
     ///                 Destination = failureQueue.Arn,
     ///             },
-    ///             OnSuccess = new Duplocloud.Inputs.AwsLambdaFunctionEventConfigDestinationConfigOnSuccessArgs
+    ///             OnSuccess = new Pulumi.Inputs.AwsLambdaFunctionEventConfigDestinationConfigOnSuccessArgs
     ///             {
     ///                 Destination = successQueue.Arn,
     ///             },

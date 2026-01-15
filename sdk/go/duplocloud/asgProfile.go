@@ -30,10 +30,13 @@ import (
 type AsgProfile struct {
 	pulumi.CustomResourceState
 
-	// The numeric ID of the container agent pool that this host is added to.
+	// The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
+	// Windows - 7: EKS Linux - 8: ECS
 	AgentPlatform pulumi.IntPtrOutput `pulumi:"agentPlatform"`
 	// Whether or not to allocate a public IP.
 	AllocatedPublicIp pulumi.BoolPtrOutput `pulumi:"allocatedPublicIp"`
+	// The ASG arn.
+	Arn pulumi.StringOutput `pulumi:"arn"`
 	// Base64 encoded EC2 user data to associated with the host.
 	Base64UserData pulumi.StringOutput `pulumi:"base64UserData"`
 	// Whether or not ASG should leverage duplocloud's scale from 0 feature
@@ -61,8 +64,8 @@ type AsgProfile struct {
 	IsClusterAutoscaled pulumi.BoolOutput    `pulumi:"isClusterAutoscaled"`
 	IsEbsOptimized      pulumi.BoolPtrOutput `pulumi:"isEbsOptimized"`
 	IsMinion            pulumi.BoolPtrOutput `pulumi:"isMinion"`
-	// The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : ED25519 - `2` : RSA (deprecated
-	// - some operating systems no longer support it)
+	// The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : RSA (deprecated - some operating
+	// systems no longer support it) - `2` : ED25519
 	KeypairType pulumi.IntOutput `pulumi:"keypairType"`
 	// The maximum size of the Auto Scaling Group.
 	MaxInstanceCount pulumi.IntOutput `pulumi:"maxInstanceCount"`
@@ -94,12 +97,12 @@ type AsgProfile struct {
 	Volumes AsgProfileVolumeArrayOutput `pulumi:"volumes"`
 	// Whether or not to wait until ASG instances to be healthy, after creation.
 	WaitForCapacity pulumi.BoolPtrOutput `pulumi:"waitForCapacity"`
-	// The availability zone to launch the host in, expressed as a number and starting at 0.
+	// The availability zone to launch the host in is expressed as a numeric value ranging from 0 to 3.
 	//
-	// Deprecated: zone has been deprecated instead use zones
-	Zone pulumi.IntPtrOutput `pulumi:"zone"`
-	// The multi availability zone to launch the asg in, expressed as a number and starting at 0 - Automatic 1 - Zone A 2 -
-	// Zone B
+	// Deprecated: For environments on the July 2024 release or earlier, use zone. For environments on releases after July 2024, use zones, as zone has been deprecated.
+	Zone pulumi.StringPtrOutput `pulumi:"zone"`
+	// The multi availability zone to launch the asg in, expressed as a number and starting at 0 - Zone A to 3 - Zone D, based
+	// on the infra setup
 	Zones pulumi.IntArrayOutput `pulumi:"zones"`
 }
 
@@ -145,10 +148,13 @@ func GetAsgProfile(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AsgProfile resources.
 type asgProfileState struct {
-	// The numeric ID of the container agent pool that this host is added to.
+	// The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
+	// Windows - 7: EKS Linux - 8: ECS
 	AgentPlatform *int `pulumi:"agentPlatform"`
 	// Whether or not to allocate a public IP.
 	AllocatedPublicIp *bool `pulumi:"allocatedPublicIp"`
+	// The ASG arn.
+	Arn *string `pulumi:"arn"`
 	// Base64 encoded EC2 user data to associated with the host.
 	Base64UserData *string `pulumi:"base64UserData"`
 	// Whether or not ASG should leverage duplocloud's scale from 0 feature
@@ -176,8 +182,8 @@ type asgProfileState struct {
 	IsClusterAutoscaled *bool `pulumi:"isClusterAutoscaled"`
 	IsEbsOptimized      *bool `pulumi:"isEbsOptimized"`
 	IsMinion            *bool `pulumi:"isMinion"`
-	// The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : ED25519 - `2` : RSA (deprecated
-	// - some operating systems no longer support it)
+	// The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : RSA (deprecated - some operating
+	// systems no longer support it) - `2` : ED25519
 	KeypairType *int `pulumi:"keypairType"`
 	// The maximum size of the Auto Scaling Group.
 	MaxInstanceCount *int `pulumi:"maxInstanceCount"`
@@ -209,20 +215,23 @@ type asgProfileState struct {
 	Volumes []AsgProfileVolume `pulumi:"volumes"`
 	// Whether or not to wait until ASG instances to be healthy, after creation.
 	WaitForCapacity *bool `pulumi:"waitForCapacity"`
-	// The availability zone to launch the host in, expressed as a number and starting at 0.
+	// The availability zone to launch the host in is expressed as a numeric value ranging from 0 to 3.
 	//
-	// Deprecated: zone has been deprecated instead use zones
-	Zone *int `pulumi:"zone"`
-	// The multi availability zone to launch the asg in, expressed as a number and starting at 0 - Automatic 1 - Zone A 2 -
-	// Zone B
+	// Deprecated: For environments on the July 2024 release or earlier, use zone. For environments on releases after July 2024, use zones, as zone has been deprecated.
+	Zone *string `pulumi:"zone"`
+	// The multi availability zone to launch the asg in, expressed as a number and starting at 0 - Zone A to 3 - Zone D, based
+	// on the infra setup
 	Zones []int `pulumi:"zones"`
 }
 
 type AsgProfileState struct {
-	// The numeric ID of the container agent pool that this host is added to.
+	// The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
+	// Windows - 7: EKS Linux - 8: ECS
 	AgentPlatform pulumi.IntPtrInput
 	// Whether or not to allocate a public IP.
 	AllocatedPublicIp pulumi.BoolPtrInput
+	// The ASG arn.
+	Arn pulumi.StringPtrInput
 	// Base64 encoded EC2 user data to associated with the host.
 	Base64UserData pulumi.StringPtrInput
 	// Whether or not ASG should leverage duplocloud's scale from 0 feature
@@ -250,8 +259,8 @@ type AsgProfileState struct {
 	IsClusterAutoscaled pulumi.BoolPtrInput
 	IsEbsOptimized      pulumi.BoolPtrInput
 	IsMinion            pulumi.BoolPtrInput
-	// The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : ED25519 - `2` : RSA (deprecated
-	// - some operating systems no longer support it)
+	// The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : RSA (deprecated - some operating
+	// systems no longer support it) - `2` : ED25519
 	KeypairType pulumi.IntPtrInput
 	// The maximum size of the Auto Scaling Group.
 	MaxInstanceCount pulumi.IntPtrInput
@@ -283,12 +292,12 @@ type AsgProfileState struct {
 	Volumes AsgProfileVolumeArrayInput
 	// Whether or not to wait until ASG instances to be healthy, after creation.
 	WaitForCapacity pulumi.BoolPtrInput
-	// The availability zone to launch the host in, expressed as a number and starting at 0.
+	// The availability zone to launch the host in is expressed as a numeric value ranging from 0 to 3.
 	//
-	// Deprecated: zone has been deprecated instead use zones
-	Zone pulumi.IntPtrInput
-	// The multi availability zone to launch the asg in, expressed as a number and starting at 0 - Automatic 1 - Zone A 2 -
-	// Zone B
+	// Deprecated: For environments on the July 2024 release or earlier, use zone. For environments on releases after July 2024, use zones, as zone has been deprecated.
+	Zone pulumi.StringPtrInput
+	// The multi availability zone to launch the asg in, expressed as a number and starting at 0 - Zone A to 3 - Zone D, based
+	// on the infra setup
 	Zones pulumi.IntArrayInput
 }
 
@@ -297,7 +306,8 @@ func (AsgProfileState) ElementType() reflect.Type {
 }
 
 type asgProfileArgs struct {
-	// The numeric ID of the container agent pool that this host is added to.
+	// The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
+	// Windows - 7: EKS Linux - 8: ECS
 	AgentPlatform *int `pulumi:"agentPlatform"`
 	// Whether or not to allocate a public IP.
 	AllocatedPublicIp *bool `pulumi:"allocatedPublicIp"`
@@ -325,8 +335,8 @@ type asgProfileArgs struct {
 	IsClusterAutoscaled *bool `pulumi:"isClusterAutoscaled"`
 	IsEbsOptimized      *bool `pulumi:"isEbsOptimized"`
 	IsMinion            *bool `pulumi:"isMinion"`
-	// The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : ED25519 - `2` : RSA (deprecated
-	// - some operating systems no longer support it)
+	// The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : RSA (deprecated - some operating
+	// systems no longer support it) - `2` : ED25519
 	KeypairType *int `pulumi:"keypairType"`
 	// The maximum size of the Auto Scaling Group.
 	MaxInstanceCount *int `pulumi:"maxInstanceCount"`
@@ -356,18 +366,19 @@ type asgProfileArgs struct {
 	Volumes []AsgProfileVolume `pulumi:"volumes"`
 	// Whether or not to wait until ASG instances to be healthy, after creation.
 	WaitForCapacity *bool `pulumi:"waitForCapacity"`
-	// The availability zone to launch the host in, expressed as a number and starting at 0.
+	// The availability zone to launch the host in is expressed as a numeric value ranging from 0 to 3.
 	//
-	// Deprecated: zone has been deprecated instead use zones
-	Zone *int `pulumi:"zone"`
-	// The multi availability zone to launch the asg in, expressed as a number and starting at 0 - Automatic 1 - Zone A 2 -
-	// Zone B
+	// Deprecated: For environments on the July 2024 release or earlier, use zone. For environments on releases after July 2024, use zones, as zone has been deprecated.
+	Zone *string `pulumi:"zone"`
+	// The multi availability zone to launch the asg in, expressed as a number and starting at 0 - Zone A to 3 - Zone D, based
+	// on the infra setup
 	Zones []int `pulumi:"zones"`
 }
 
 // The set of arguments for constructing a AsgProfile resource.
 type AsgProfileArgs struct {
-	// The numeric ID of the container agent pool that this host is added to.
+	// The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
+	// Windows - 7: EKS Linux - 8: ECS
 	AgentPlatform pulumi.IntPtrInput
 	// Whether or not to allocate a public IP.
 	AllocatedPublicIp pulumi.BoolPtrInput
@@ -395,8 +406,8 @@ type AsgProfileArgs struct {
 	IsClusterAutoscaled pulumi.BoolPtrInput
 	IsEbsOptimized      pulumi.BoolPtrInput
 	IsMinion            pulumi.BoolPtrInput
-	// The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : ED25519 - `2` : RSA (deprecated
-	// - some operating systems no longer support it)
+	// The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : RSA (deprecated - some operating
+	// systems no longer support it) - `2` : ED25519
 	KeypairType pulumi.IntPtrInput
 	// The maximum size of the Auto Scaling Group.
 	MaxInstanceCount pulumi.IntPtrInput
@@ -426,12 +437,12 @@ type AsgProfileArgs struct {
 	Volumes AsgProfileVolumeArrayInput
 	// Whether or not to wait until ASG instances to be healthy, after creation.
 	WaitForCapacity pulumi.BoolPtrInput
-	// The availability zone to launch the host in, expressed as a number and starting at 0.
+	// The availability zone to launch the host in is expressed as a numeric value ranging from 0 to 3.
 	//
-	// Deprecated: zone has been deprecated instead use zones
-	Zone pulumi.IntPtrInput
-	// The multi availability zone to launch the asg in, expressed as a number and starting at 0 - Automatic 1 - Zone A 2 -
-	// Zone B
+	// Deprecated: For environments on the July 2024 release or earlier, use zone. For environments on releases after July 2024, use zones, as zone has been deprecated.
+	Zone pulumi.StringPtrInput
+	// The multi availability zone to launch the asg in, expressed as a number and starting at 0 - Zone A to 3 - Zone D, based
+	// on the infra setup
 	Zones pulumi.IntArrayInput
 }
 
@@ -522,7 +533,8 @@ func (o AsgProfileOutput) ToAsgProfileOutputWithContext(ctx context.Context) Asg
 	return o
 }
 
-// The numeric ID of the container agent pool that this host is added to.
+// The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
+// Windows - 7: EKS Linux - 8: ECS
 func (o AsgProfileOutput) AgentPlatform() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AsgProfile) pulumi.IntPtrOutput { return v.AgentPlatform }).(pulumi.IntPtrOutput)
 }
@@ -530,6 +542,11 @@ func (o AsgProfileOutput) AgentPlatform() pulumi.IntPtrOutput {
 // Whether or not to allocate a public IP.
 func (o AsgProfileOutput) AllocatedPublicIp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AsgProfile) pulumi.BoolPtrOutput { return v.AllocatedPublicIp }).(pulumi.BoolPtrOutput)
+}
+
+// The ASG arn.
+func (o AsgProfileOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v *AsgProfile) pulumi.StringOutput { return v.Arn }).(pulumi.StringOutput)
 }
 
 // Base64 encoded EC2 user data to associated with the host.
@@ -604,8 +621,8 @@ func (o AsgProfileOutput) IsMinion() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AsgProfile) pulumi.BoolPtrOutput { return v.IsMinion }).(pulumi.BoolPtrOutput)
 }
 
-// The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : ED25519 - `2` : RSA (deprecated
-// - some operating systems no longer support it)
+// The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : RSA (deprecated - some operating
+// systems no longer support it) - `2` : ED25519
 func (o AsgProfileOutput) KeypairType() pulumi.IntOutput {
 	return o.ApplyT(func(v *AsgProfile) pulumi.IntOutput { return v.KeypairType }).(pulumi.IntOutput)
 }
@@ -685,15 +702,15 @@ func (o AsgProfileOutput) WaitForCapacity() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AsgProfile) pulumi.BoolPtrOutput { return v.WaitForCapacity }).(pulumi.BoolPtrOutput)
 }
 
-// The availability zone to launch the host in, expressed as a number and starting at 0.
+// The availability zone to launch the host in is expressed as a numeric value ranging from 0 to 3.
 //
-// Deprecated: zone has been deprecated instead use zones
-func (o AsgProfileOutput) Zone() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *AsgProfile) pulumi.IntPtrOutput { return v.Zone }).(pulumi.IntPtrOutput)
+// Deprecated: For environments on the July 2024 release or earlier, use zone. For environments on releases after July 2024, use zones, as zone has been deprecated.
+func (o AsgProfileOutput) Zone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AsgProfile) pulumi.StringPtrOutput { return v.Zone }).(pulumi.StringPtrOutput)
 }
 
-// The multi availability zone to launch the asg in, expressed as a number and starting at 0 - Automatic 1 - Zone A 2 -
-// Zone B
+// The multi availability zone to launch the asg in, expressed as a number and starting at 0 - Zone A to 3 - Zone D, based
+// on the infra setup
 func (o AsgProfileOutput) Zones() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v *AsgProfile) pulumi.IntArrayOutput { return v.Zones }).(pulumi.IntArrayOutput)
 }

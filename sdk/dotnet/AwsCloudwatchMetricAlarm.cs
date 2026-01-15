@@ -19,17 +19,17 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var duplo_app = new Duplocloud.Tenant("duplo-app", new()
+    ///     var duplo_app = new Pulumi.Tenant("duplo-app", new()
     ///     {
     ///         AccountName = "duplo-app",
     ///         PlanId = "default",
     ///     });
     /// 
-    ///     var mAlarm = new Duplocloud.AwsCloudwatchMetricAlarm("mAlarm", new()
+    ///     var mAlarm = new Pulumi.AwsCloudwatchMetricAlarm("mAlarm", new()
     ///     {
     ///         TenantId = duplo_app.TenantId,
     ///         MetricName = "CPUUtilization",
@@ -41,7 +41,7 @@ namespace DuploCloud.Pulumi
     ///         Statistic = "Average",
     ///         Dimensions = new[]
     ///         {
-    ///             new Duplocloud.Inputs.AwsCloudwatchMetricAlarmDimensionArgs
+    ///             new Pulumi.Inputs.AwsCloudwatchMetricAlarmDimensionArgs
     ///             {
     ///                 Key = "InstanceId",
     ///                 Value = "i-1234567abcdefghj",

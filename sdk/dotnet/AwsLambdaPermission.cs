@@ -19,11 +19,11 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myfunction = new Duplocloud.AwsLambdaFunction("myfunction", new()
+    ///     var myfunction = new Pulumi.AwsLambdaFunction("myfunction", new()
     ///     {
     ///         TenantId = "mytenant",
     ///         Name = "myfunction",
@@ -32,7 +32,7 @@ namespace DuploCloud.Pulumi
     ///         Handler = "com.example.MyFunction::handleRequest",
     ///         S3Bucket = "my-bucket-name",
     ///         S3Key = "my-function.zip",
-    ///         Environment = new Duplocloud.Inputs.AwsLambdaFunctionEnvironmentArgs
+    ///         Environment = new Pulumi.Inputs.AwsLambdaFunctionEnvironmentArgs
     ///         {
     ///             Variables = 
     ///             {
@@ -43,7 +43,7 @@ namespace DuploCloud.Pulumi
     ///         MemorySize = 512,
     ///     });
     /// 
-    ///     var permission = new Duplocloud.AwsLambdaPermission("permission", new()
+    ///     var permission = new Pulumi.AwsLambdaPermission("permission", new()
     ///     {
     ///         StatementId = "AllowExecutionFromAPIGateway",
     ///         Action = "lambda:InvokeFunction",
@@ -85,7 +85,7 @@ namespace DuploCloud.Pulumi
         /// The Event Source Token to validate.
         /// </summary>
         [Output("eventSourceToken")]
-        public Output<string?> EventSourceToken { get; private set; } = null!;
+        public Output<string> EventSourceToken { get; private set; } = null!;
 
         /// <summary>
         /// Name of the Lambda function whose resource policy you are updating.
@@ -103,19 +103,19 @@ namespace DuploCloud.Pulumi
         /// Query parameter to specify function version or alias name. The permission will then apply to the specific qualified ARN.
         /// </summary>
         [Output("qualifier")]
-        public Output<string?> Qualifier { get; private set; } = null!;
+        public Output<string> Qualifier { get; private set; } = null!;
 
         /// <summary>
         /// This parameter is used for S3 and SES. The AWS account ID (without a hyphen) of the source owner.
         /// </summary>
         [Output("sourceAccount")]
-        public Output<string?> SourceAccount { get; private set; } = null!;
+        public Output<string> SourceAccount { get; private set; } = null!;
 
         /// <summary>
         /// When the principal is an AWS service, the ARN of the specific resource within that service to grant permission to.
         /// </summary>
         [Output("sourceArn")]
-        public Output<string?> SourceArn { get; private set; } = null!;
+        public Output<string> SourceArn { get; private set; } = null!;
 
         /// <summary>
         /// A unique statement identifier.

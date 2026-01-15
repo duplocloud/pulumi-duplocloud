@@ -83,6 +83,8 @@ import (
 type K8sCronJob struct {
 	pulumi.CustomResourceState
 
+	// Allocation tags is the simplest way to constraint containers/pods with hosts/nodes. DuploCloud/Kubernetes Orchestrator will make sure containers will run on the hosts having same allocation tags.
+	AllocationTags pulumi.StringPtrOutput `pulumi:"allocationTags"`
 	// Defaults to `false`.
 	IsAnyHostAllowed pulumi.BoolPtrOutput `pulumi:"isAnyHostAllowed"`
 	// Standard cronjob's metadata. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
@@ -129,6 +131,8 @@ func GetK8sCronJob(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering K8sCronJob resources.
 type k8sCronJobState struct {
+	// Allocation tags is the simplest way to constraint containers/pods with hosts/nodes. DuploCloud/Kubernetes Orchestrator will make sure containers will run on the hosts having same allocation tags.
+	AllocationTags *string `pulumi:"allocationTags"`
 	// Defaults to `false`.
 	IsAnyHostAllowed *bool `pulumi:"isAnyHostAllowed"`
 	// Standard cronjob's metadata. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
@@ -140,6 +144,8 @@ type k8sCronJobState struct {
 }
 
 type K8sCronJobState struct {
+	// Allocation tags is the simplest way to constraint containers/pods with hosts/nodes. DuploCloud/Kubernetes Orchestrator will make sure containers will run on the hosts having same allocation tags.
+	AllocationTags pulumi.StringPtrInput
 	// Defaults to `false`.
 	IsAnyHostAllowed pulumi.BoolPtrInput
 	// Standard cronjob's metadata. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
@@ -155,6 +161,8 @@ func (K8sCronJobState) ElementType() reflect.Type {
 }
 
 type k8sCronJobArgs struct {
+	// Allocation tags is the simplest way to constraint containers/pods with hosts/nodes. DuploCloud/Kubernetes Orchestrator will make sure containers will run on the hosts having same allocation tags.
+	AllocationTags *string `pulumi:"allocationTags"`
 	// Defaults to `false`.
 	IsAnyHostAllowed *bool `pulumi:"isAnyHostAllowed"`
 	// Standard cronjob's metadata. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
@@ -167,6 +175,8 @@ type k8sCronJobArgs struct {
 
 // The set of arguments for constructing a K8sCronJob resource.
 type K8sCronJobArgs struct {
+	// Allocation tags is the simplest way to constraint containers/pods with hosts/nodes. DuploCloud/Kubernetes Orchestrator will make sure containers will run on the hosts having same allocation tags.
+	AllocationTags pulumi.StringPtrInput
 	// Defaults to `false`.
 	IsAnyHostAllowed pulumi.BoolPtrInput
 	// Standard cronjob's metadata. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
@@ -262,6 +272,11 @@ func (o K8sCronJobOutput) ToK8sCronJobOutput() K8sCronJobOutput {
 
 func (o K8sCronJobOutput) ToK8sCronJobOutputWithContext(ctx context.Context) K8sCronJobOutput {
 	return o
+}
+
+// Allocation tags is the simplest way to constraint containers/pods with hosts/nodes. DuploCloud/Kubernetes Orchestrator will make sure containers will run on the hosts having same allocation tags.
+func (o K8sCronJobOutput) AllocationTags() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *K8sCronJob) pulumi.StringPtrOutput { return v.AllocationTags }).(pulumi.StringPtrOutput)
 }
 
 // Defaults to `false`.

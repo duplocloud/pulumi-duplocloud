@@ -127,6 +127,10 @@ export class AwsSqsQueue extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * The time for which a ReceiveMessage call will wait for a message to arrive. An integer from 0 to 20 (seconds).
+     */
+    public readonly receiveWaitTimeSeconds!: pulumi.Output<number>;
+    /**
      * The GUID of the tenant that the SQS queue will be created in.
      */
     public readonly tenantId!: pulumi.Output<string>;
@@ -162,6 +166,7 @@ export class AwsSqsQueue extends pulumi.CustomResource {
             resourceInputs["fullname"] = state ? state.fullname : undefined;
             resourceInputs["messageRetentionSeconds"] = state ? state.messageRetentionSeconds : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["receiveWaitTimeSeconds"] = state ? state.receiveWaitTimeSeconds : undefined;
             resourceInputs["tenantId"] = state ? state.tenantId : undefined;
             resourceInputs["url"] = state ? state.url : undefined;
             resourceInputs["visibilityTimeoutSeconds"] = state ? state.visibilityTimeoutSeconds : undefined;
@@ -178,6 +183,7 @@ export class AwsSqsQueue extends pulumi.CustomResource {
             resourceInputs["fifoThroughputLimit"] = args ? args.fifoThroughputLimit : undefined;
             resourceInputs["messageRetentionSeconds"] = args ? args.messageRetentionSeconds : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["receiveWaitTimeSeconds"] = args ? args.receiveWaitTimeSeconds : undefined;
             resourceInputs["tenantId"] = args ? args.tenantId : undefined;
             resourceInputs["visibilityTimeoutSeconds"] = args ? args.visibilityTimeoutSeconds : undefined;
             resourceInputs["arn"] = undefined /*out*/;
@@ -234,6 +240,10 @@ export interface AwsSqsQueueState {
      */
     name?: pulumi.Input<string>;
     /**
+     * The time for which a ReceiveMessage call will wait for a message to arrive. An integer from 0 to 20 (seconds).
+     */
+    receiveWaitTimeSeconds?: pulumi.Input<number>;
+    /**
      * The GUID of the tenant that the SQS queue will be created in.
      */
     tenantId?: pulumi.Input<string>;
@@ -283,6 +293,10 @@ export interface AwsSqsQueueArgs {
      * The name of the queue. Queue names must be made up of only uppercase and lowercase ASCII letters, numbers, underscores, and hyphens, and have up to 80 characters long which is inclusive of duplo prefix (duploservices-{tenant_name}-) appended by the system.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The time for which a ReceiveMessage call will wait for a message to arrive. An integer from 0 to 20 (seconds).
+     */
+    receiveWaitTimeSeconds?: pulumi.Input<number>;
     /**
      * The GUID of the tenant that the SQS queue will be created in.
      */

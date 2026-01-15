@@ -19,12 +19,12 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Before creating a tenant, you must first set up the infrastructure. Below is the resource for creating the infrastructure.
-    ///     var infra = new Duplocloud.Infrastructure("infra", new()
+    ///     var infra = new Pulumi.Infrastructure("infra", new()
     ///     {
     ///         InfraName = "prod",
     ///         Cloud = 0,
@@ -34,7 +34,7 @@ namespace DuploCloud.Pulumi
     ///     });
     /// 
     ///     // Use the infrastructure name as the 'plan_id' from the 'duplocloud_infrastructure' resource while creating tenant.
-    ///     var tenant = new Duplocloud.Tenant("tenant", new()
+    ///     var tenant = new Pulumi.Tenant("tenant", new()
     ///     {
     ///         AccountName = "prod",
     ///         PlanId = infra.InfraName,
@@ -49,11 +49,11 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var infra = new Duplocloud.Infrastructure("infra", new()
+    ///     var infra = new Pulumi.Infrastructure("infra", new()
     ///     {
     ///         InfraName = "prod",
     ///         Cloud = 0,
@@ -69,12 +69,12 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Use the infrastructure name as the 'plan_id' from the 'duplocloud_infrastructure' resource.
-    ///     var tenant = new Duplocloud.Tenant("tenant", new()
+    ///     var tenant = new Pulumi.Tenant("tenant", new()
     ///     {
     ///         AccountName = "prod",
     ///         PlanId = infra.InfraName,
@@ -89,17 +89,18 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
+    /// using Pulumi = Pulumi.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Ensure the 'nonprod' infrastructure is already created before setting up the tenant.
-    ///     var infra = Duplocloud.GetInfrastructure.Invoke(new()
+    ///     var infra = Pulumi.GetInfrastructure.Invoke(new()
     ///     {
     ///         InfraName = "nonprod",
     ///     });
     /// 
-    ///     var tenant = new Duplocloud.Tenant("tenant", new()
+    ///     var tenant = new Pulumi.Tenant("tenant", new()
     ///     {
     ///         AccountName = "dev",
     ///         PlanId = infra.Apply(getInfrastructureResult =&gt; getInfrastructureResult.InfraName),
@@ -114,19 +115,20 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
+    /// using Pulumi = Pulumi.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
     ///     var infraName = config.Get("infraName") ?? "nonprod";
     ///     // Ensure the 'nonprod' infrastructure is already created before setting up the tenant.
-    ///     var infra = Duplocloud.GetInfrastructure.Invoke(new()
+    ///     var infra = Pulumi.GetInfrastructure.Invoke(new()
     ///     {
     ///         InfraName = "nonprod",
     ///     });
     /// 
-    ///     var tenant = new Duplocloud.Tenant("tenant", new()
+    ///     var tenant = new Pulumi.Tenant("tenant", new()
     ///     {
     ///         AccountName = "dev",
     ///         PlanId = infra.Apply(getInfrastructureResult =&gt; getInfrastructureResult.InfraName),
@@ -146,18 +148,19 @@ namespace DuploCloud.Pulumi
     /// using System.Linq;
     /// using Pulumi;
     /// using Aws = Pulumi.Aws;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
+    /// using Pulumi = Pulumi.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // A prerequisite for creating a tenant is having an existing infrastructure. Here’s how you can reference an existing infrastructure.
-    ///     var infra = Duplocloud.GetInfrastructure.Invoke(new()
+    ///     var infra = Pulumi.GetInfrastructure.Invoke(new()
     ///     {
     ///         InfraName = "nonprod",
     ///     });
     /// 
     ///     // Here’s how to create a tenant by providing the infrastructure name for the plan_id field.
-    ///     var tenant = new Duplocloud.Tenant("tenant", new()
+    ///     var tenant = new Pulumi.Tenant("tenant", new()
     ///     {
     ///         AccountName = "dev",
     ///         PlanId = infra.Apply(getInfrastructureResult =&gt; getInfrastructureResult.InfraName),
@@ -180,18 +183,19 @@ namespace DuploCloud.Pulumi
     /// using System.Linq;
     /// using Pulumi;
     /// using Aws = Pulumi.Aws;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
+    /// using Pulumi = Pulumi.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // A prerequisite for creating a tenant is having an existing infrastructure. Here’s how you can reference an existing infrastructure.
-    ///     var infra = Duplocloud.GetInfrastructure.Invoke(new()
+    ///     var infra = Pulumi.GetInfrastructure.Invoke(new()
     ///     {
     ///         InfraName = "nonprod",
     ///     });
     /// 
     ///     // Here’s how to create a tenant by providing the infrastructure name for the plan_id field.
-    ///     var tenant = new Duplocloud.Tenant("tenant", new()
+    ///     var tenant = new Pulumi.Tenant("tenant", new()
     ///     {
     ///         AccountName = "qa",
     ///         PlanId = infra.Apply(getInfrastructureResult =&gt; getInfrastructureResult.InfraName),
@@ -213,23 +217,24 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
+    /// using Pulumi = Pulumi.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var infra = Duplocloud.GetInfrastructure.Invoke(new()
+    ///     var infra = Pulumi.GetInfrastructure.Invoke(new()
     ///     {
     ///         InfraName = "nonprod",
     ///     });
     /// 
-    ///     var tenant = new Duplocloud.Tenant("tenant", new()
+    ///     var tenant = new Pulumi.Tenant("tenant", new()
     ///     {
     ///         AccountName = "dev",
     ///         PlanId = infra.Apply(getInfrastructureResult =&gt; getInfrastructureResult.InfraName),
     ///     });
     /// 
     ///     // Allow communication on port 5432 for the PostgreSQL database from the 10.220.0.0/16 subnet
-    ///     var allowFromVpn = new Duplocloud.TenantNetworkSecurityRule("allow_from_vpn", new()
+    ///     var allowFromVpn = new Pulumi.TenantNetworkSecurityRule("allow_from_vpn", new()
     ///     {
     ///         TenantId = tenant.TenantId,
     ///         SourceAddress = "10.220.0.0/16",
@@ -248,23 +253,24 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
+    /// using Pulumi = Pulumi.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var infra = Duplocloud.GetInfrastructure.Invoke(new()
+    ///     var infra = Pulumi.GetInfrastructure.Invoke(new()
     ///     {
     ///         InfraName = "nonprod",
     ///     });
     /// 
-    ///     var tenant = new Duplocloud.Tenant("tenant", new()
+    ///     var tenant = new Pulumi.Tenant("tenant", new()
     ///     {
     ///         AccountName = "dev",
     ///         PlanId = infra.Apply(getInfrastructureResult =&gt; getInfrastructureResult.InfraName),
     ///     });
     /// 
     ///     // Allow communication on port 22 from the 10.220.0.0/16 subnet.
-    ///     var allowFromVpn = new Duplocloud.TenantNetworkSecurityRule("allow_from_vpn", new()
+    ///     var allowFromVpn = new Pulumi.TenantNetworkSecurityRule("allow_from_vpn", new()
     ///     {
     ///         TenantId = tenant.TenantId,
     ///         SourceAddress = "10.220.0.0/16",
@@ -283,16 +289,17 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
+    /// using Pulumi = Pulumi.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var infra = Duplocloud.GetInfrastructure.Invoke(new()
+    ///     var infra = Pulumi.GetInfrastructure.Invoke(new()
     ///     {
     ///         InfraName = "myinfra",
     ///     });
     /// 
-    ///     var tenant = new Duplocloud.Tenant("tenant", new()
+    ///     var tenant = new Pulumi.Tenant("tenant", new()
     ///     {
     ///         AccountName = "myapp",
     ///         PlanId = infra.Apply(getInfrastructureResult =&gt; getInfrastructureResult.InfraName),
@@ -300,12 +307,12 @@ namespace DuploCloud.Pulumi
     ///     });
     /// 
     ///     // Reference the tenant_id field from the duplocloud_tenant resource.
-    ///     var tenantConfig = new Duplocloud.TenantConfig("tenant_config", new()
+    ///     var tenantConfig = new Pulumi.TenantConfig("tenant_config", new()
     ///     {
     ///         TenantId = tenant.TenantId,
     ///         Settings = new[]
     ///         {
-    ///             new Duplocloud.Inputs.TenantConfigSettingArgs
+    ///             new Pulumi.Inputs.TenantConfigSettingArgs
     ///             {
     ///                 Key = "delete_protection",
     ///                 Value = "false",
@@ -322,16 +329,17 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
+    /// using Pulumi = Pulumi.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var infra = Duplocloud.GetInfrastructure.Invoke(new()
+    ///     var infra = Pulumi.GetInfrastructure.Invoke(new()
     ///     {
     ///         InfraName = "myinfra",
     ///     });
     /// 
-    ///     var tenant = new Duplocloud.Tenant("tenant", new()
+    ///     var tenant = new Pulumi.Tenant("tenant", new()
     ///     {
     ///         AccountName = "myapp",
     ///         PlanId = infra.Apply(getInfrastructureResult =&gt; getInfrastructureResult.InfraName),
@@ -339,17 +347,17 @@ namespace DuploCloud.Pulumi
     ///     });
     /// 
     ///     // Reference the tenant_id field from the duplocloud_tenant resource.
-    ///     var tenantConfig = new Duplocloud.TenantConfig("tenant_config", new()
+    ///     var tenantConfig = new Pulumi.TenantConfig("tenant_config", new()
     ///     {
     ///         TenantId = tenant.TenantId,
     ///         Settings = new[]
     ///         {
-    ///             new Duplocloud.Inputs.TenantConfigSettingArgs
+    ///             new Pulumi.Inputs.TenantConfigSettingArgs
     ///             {
     ///                 Key = "block_public_access_to_s3",
     ///                 Value = "true",
     ///             },
-    ///             new Duplocloud.Inputs.TenantConfigSettingArgs
+    ///             new Pulumi.Inputs.TenantConfigSettingArgs
     ///             {
     ///                 Key = "enforce_ssl_for_s3",
     ///                 Value = "true",
@@ -370,7 +378,7 @@ namespace DuploCloud.Pulumi
     public partial class Tenant : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The name of the tenant. Tenant names are globally unique, and cannot be a prefix of any other tenant name.
+        /// The name of the tenant. Tenant names are globally unique, and cannot be a prefix of any other tenant name. Will be converted to lowercase.
         /// </summary>
         [Output("accountName")]
         public Output<string> AccountName { get; private set; } = null!;
@@ -468,7 +476,7 @@ namespace DuploCloud.Pulumi
     public sealed class TenantArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the tenant. Tenant names are globally unique, and cannot be a prefix of any other tenant name.
+        /// The name of the tenant. Tenant names are globally unique, and cannot be a prefix of any other tenant name. Will be converted to lowercase.
         /// </summary>
         [Input("accountName", required: true)]
         public Input<string> AccountName { get; set; } = null!;
@@ -512,7 +520,7 @@ namespace DuploCloud.Pulumi
     public sealed class TenantState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the tenant. Tenant names are globally unique, and cannot be a prefix of any other tenant name.
+        /// The name of the tenant. Tenant names are globally unique, and cannot be a prefix of any other tenant name. Will be converted to lowercase.
         /// </summary>
         [Input("accountName")]
         public Input<string>? AccountName { get; set; }

@@ -19,25 +19,25 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myapp = new Duplocloud.Tenant("myapp", new()
+    ///     var myapp = new Pulumi.Tenant("myapp", new()
     ///     {
     ///         AccountName = "myapp",
     ///         PlanId = "default",
     ///     });
     /// 
-    ///     var mt = new Duplocloud.AzureVmMaintenanceConfiguration("mt", new()
+    ///     var mt = new Pulumi.AzureVmMaintenanceConfiguration("mt", new()
     ///     {
     ///         TenantId = myapp.TenantId,
     ///         VmName = "schedl",
-    ///         Window = new Duplocloud.Inputs.AzureVmMaintenanceConfigurationWindowArgs
+    ///         Window = new Pulumi.Inputs.AzureVmMaintenanceConfigurationWindowArgs
     ///         {
     ///             StartTime = "2024-11-12 00:00",
     ///             ExpirationTime = "2024-11-19 00:00",
-    ///             Duration = "06:00",
+    ///             Duration = "02:00",
     ///             RecurEvery = "1Month day1,day2,day3,day4,day5,day6,day7,day8,day9,day10,day11,day12,day13,day14,day15,day16,day17,day18,day19,day20,day21,day22,day23,day24,day25,day26,day27,day28,day29,day30,day31,day-1",
     ///             TimeZone = "India Standard Time",
     ///         },

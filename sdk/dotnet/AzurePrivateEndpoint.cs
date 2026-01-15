@@ -19,24 +19,24 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myapp = new Duplocloud.Tenant("myapp", new()
+    ///     var myapp = new Pulumi.Tenant("myapp", new()
     ///     {
     ///         AccountName = "myapp",
     ///         PlanId = "default",
     ///     });
     /// 
-    ///     var mssqlServerPrivateEndpoint = new Duplocloud.AzurePrivateEndpoint("mssql_server_private_endpoint", new()
+    ///     var mssqlServerPrivateEndpoint = new Pulumi.AzurePrivateEndpoint("mssql_server_private_endpoint", new()
     ///     {
     ///         TenantId = myapp.TenantId,
     ///         Name = "pe-duplo-tf",
     ///         SubnetId = "/subscriptions/&lt;subscription-id&gt;/resourceGroups/&lt;resource-group&gt;/providers/Microsoft.Network/virtualNetworks/tmerge/subnets/duploinfra-default",
     ///         PrivateLinkServiceConnections = new[]
     ///         {
-    ///             new Duplocloud.Inputs.AzurePrivateEndpointPrivateLinkServiceConnectionArgs
+    ///             new Pulumi.Inputs.AzurePrivateEndpointPrivateLinkServiceConnectionArgs
     ///             {
     ///                 Name = "pe-mssql",
     ///                 PrivateConnectionResourceId = "/subscriptions/&lt;subscription-id&gt;/resourceGroups/duploservices-jee556/providers/Microsoft.Sql/servers/thisistotestprivateendpoint",
@@ -48,14 +48,14 @@ namespace DuploCloud.Pulumi
     ///         },
     ///     });
     /// 
-    ///     var storageServerPrivateEndpoint = new Duplocloud.AzurePrivateEndpoint("storage_server_private_endpoint", new()
+    ///     var storageServerPrivateEndpoint = new Pulumi.AzurePrivateEndpoint("storage_server_private_endpoint", new()
     ///     {
     ///         TenantId = myapp.TenantId,
     ///         Name = "pe-duplo-tf-storage",
     ///         SubnetId = "/subscriptions/&lt;subscription-id&gt;/resourceGroups/&lt;resource-group&gt;/providers/Microsoft.Network/virtualNetworks/tmerge/subnets/duploinfra-default",
     ///         PrivateLinkServiceConnections = new[]
     ///         {
-    ///             new Duplocloud.Inputs.AzurePrivateEndpointPrivateLinkServiceConnectionArgs
+    ///             new Pulumi.Inputs.AzurePrivateEndpointPrivateLinkServiceConnectionArgs
     ///             {
     ///                 Name = "pe-storage",
     ///                 PrivateConnectionResourceId = "/subscriptions/&lt;subscription-id&gt;/resourceGroups/duploservices-jee556/providers/Microsoft.Storage/storageAccounts/letsfixprivateendpoint",

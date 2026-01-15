@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * `duplocloudGcpK8NodePools` manages a GCP Node Pool in Duplo.
+ * `duplocloud.GcpNodePool` manages a GCP Node Pool in Duplo.
  *
  * ## Import
  *
@@ -145,7 +145,7 @@ export class GcpNodePool extends pulumi.CustomResource {
      * and are specified by the client during cluster or node pool creation. Each tag within the list must comply with RFC1035.
      */
     public readonly tags!: pulumi.Output<string[]>;
-    public readonly taints!: pulumi.Output<outputs.GcpNodePoolTaint[] | undefined>;
+    public readonly taints!: pulumi.Output<outputs.GcpNodePoolTaint[]>;
     /**
      * The GUID of the tenant that the node pool will be created in.
      */

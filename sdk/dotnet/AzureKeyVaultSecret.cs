@@ -19,17 +19,17 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myapp = new Duplocloud.Tenant("myapp", new()
+    ///     var myapp = new Pulumi.Tenant("myapp", new()
     ///     {
     ///         AccountName = "myapp",
     ///         PlanId = "default",
     ///     });
     /// 
-    ///     var myappAzureKeyVaultSecret = new Duplocloud.AzureKeyVaultSecret("myapp", new()
+    ///     var myappAzureKeyVaultSecret = new Pulumi.AzureKeyVaultSecret("myapp", new()
     ///     {
     ///         TenantId = myapp.TenantId,
     ///         Name = "base01-test",

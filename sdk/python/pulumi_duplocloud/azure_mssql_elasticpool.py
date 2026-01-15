@@ -23,16 +23,20 @@ class AzureMssqlElasticpoolArgs:
     def __init__(__self__, *,
                  server_name: pulumi.Input[str],
                  tenant_id: pulumi.Input[str],
+                 max_size_gb: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  sku: Optional[pulumi.Input['AzureMssqlElasticpoolSkuArgs']] = None):
         """
         The set of arguments for constructing a AzureMssqlElasticpool resource.
         :param pulumi.Input[str] server_name: The name of the SQL Server on which to create the elastic pool.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the azure mssql elastic pool will be created in.
+        :param pulumi.Input[int] max_size_gb: Maximum allowed data size in GB Defaults to `50`.
         :param pulumi.Input[str] name: The name of the MS SQL elastic pool.
         """
         pulumi.set(__self__, "server_name", server_name)
         pulumi.set(__self__, "tenant_id", tenant_id)
+        if max_size_gb is not None:
+            pulumi.set(__self__, "max_size_gb", max_size_gb)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if sku is not None:
@@ -63,6 +67,18 @@ class AzureMssqlElasticpoolArgs:
         pulumi.set(self, "tenant_id", value)
 
     @property
+    @pulumi.getter(name="maxSizeGb")
+    def max_size_gb(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum allowed data size in GB Defaults to `50`.
+        """
+        return pulumi.get(self, "max_size_gb")
+
+    @max_size_gb.setter
+    def max_size_gb(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_size_gb", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -88,6 +104,7 @@ class AzureMssqlElasticpoolArgs:
 class _AzureMssqlElasticpoolState:
     def __init__(__self__, *,
                  elastic_pool_id: Optional[pulumi.Input[str]] = None,
+                 max_size_gb: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  server_name: Optional[pulumi.Input[str]] = None,
                  sku: Optional[pulumi.Input['AzureMssqlElasticpoolSkuArgs']] = None,
@@ -95,12 +112,15 @@ class _AzureMssqlElasticpoolState:
         """
         Input properties used for looking up and filtering AzureMssqlElasticpool resources.
         :param pulumi.Input[str] elastic_pool_id: The ID of the MS SQL Elastic Pool.
+        :param pulumi.Input[int] max_size_gb: Maximum allowed data size in GB Defaults to `50`.
         :param pulumi.Input[str] name: The name of the MS SQL elastic pool.
         :param pulumi.Input[str] server_name: The name of the SQL Server on which to create the elastic pool.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the azure mssql elastic pool will be created in.
         """
         if elastic_pool_id is not None:
             pulumi.set(__self__, "elastic_pool_id", elastic_pool_id)
+        if max_size_gb is not None:
+            pulumi.set(__self__, "max_size_gb", max_size_gb)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if server_name is not None:
@@ -121,6 +141,18 @@ class _AzureMssqlElasticpoolState:
     @elastic_pool_id.setter
     def elastic_pool_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "elastic_pool_id", value)
+
+    @property
+    @pulumi.getter(name="maxSizeGb")
+    def max_size_gb(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum allowed data size in GB Defaults to `50`.
+        """
+        return pulumi.get(self, "max_size_gb")
+
+    @max_size_gb.setter
+    def max_size_gb(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_size_gb", value)
 
     @property
     @pulumi.getter
@@ -173,6 +205,7 @@ class AzureMssqlElasticpool(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 max_size_gb: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  server_name: Optional[pulumi.Input[str]] = None,
                  sku: Optional[pulumi.Input[Union['AzureMssqlElasticpoolSkuArgs', 'AzureMssqlElasticpoolSkuArgsDict']]] = None,
@@ -180,25 +213,6 @@ class AzureMssqlElasticpool(pulumi.CustomResource):
                  __props__=None):
         """
         `AzureMssqlElasticpool` manages an azure mssql elastic pool in Duplo.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_duplocloud as duplocloud
-
-        myapp = duplocloud.Tenant("myapp",
-            account_name="myapp",
-            plan_id="default")
-        mssql_elasticpool = duplocloud.AzureMssqlElasticpool("mssql_elasticpool",
-            tenant_id=myapp.tenant_id,
-            name="mssql-ep",
-            server_name="mysqlserver",
-            sku={
-                "name": "StandardPool",
-                "capacity": 50,
-            })
-        ```
 
         ## Import
 
@@ -216,6 +230,7 @@ class AzureMssqlElasticpool(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[int] max_size_gb: Maximum allowed data size in GB Defaults to `50`.
         :param pulumi.Input[str] name: The name of the MS SQL elastic pool.
         :param pulumi.Input[str] server_name: The name of the SQL Server on which to create the elastic pool.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the azure mssql elastic pool will be created in.
@@ -228,25 +243,6 @@ class AzureMssqlElasticpool(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         `AzureMssqlElasticpool` manages an azure mssql elastic pool in Duplo.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_duplocloud as duplocloud
-
-        myapp = duplocloud.Tenant("myapp",
-            account_name="myapp",
-            plan_id="default")
-        mssql_elasticpool = duplocloud.AzureMssqlElasticpool("mssql_elasticpool",
-            tenant_id=myapp.tenant_id,
-            name="mssql-ep",
-            server_name="mysqlserver",
-            sku={
-                "name": "StandardPool",
-                "capacity": 50,
-            })
-        ```
 
         ## Import
 
@@ -277,6 +273,7 @@ class AzureMssqlElasticpool(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 max_size_gb: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  server_name: Optional[pulumi.Input[str]] = None,
                  sku: Optional[pulumi.Input[Union['AzureMssqlElasticpoolSkuArgs', 'AzureMssqlElasticpoolSkuArgsDict']]] = None,
@@ -290,6 +287,7 @@ class AzureMssqlElasticpool(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AzureMssqlElasticpoolArgs.__new__(AzureMssqlElasticpoolArgs)
 
+            __props__.__dict__["max_size_gb"] = max_size_gb
             __props__.__dict__["name"] = name
             if server_name is None and not opts.urn:
                 raise TypeError("Missing required property 'server_name'")
@@ -310,6 +308,7 @@ class AzureMssqlElasticpool(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             elastic_pool_id: Optional[pulumi.Input[str]] = None,
+            max_size_gb: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             server_name: Optional[pulumi.Input[str]] = None,
             sku: Optional[pulumi.Input[Union['AzureMssqlElasticpoolSkuArgs', 'AzureMssqlElasticpoolSkuArgsDict']]] = None,
@@ -322,6 +321,7 @@ class AzureMssqlElasticpool(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] elastic_pool_id: The ID of the MS SQL Elastic Pool.
+        :param pulumi.Input[int] max_size_gb: Maximum allowed data size in GB Defaults to `50`.
         :param pulumi.Input[str] name: The name of the MS SQL elastic pool.
         :param pulumi.Input[str] server_name: The name of the SQL Server on which to create the elastic pool.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the azure mssql elastic pool will be created in.
@@ -331,6 +331,7 @@ class AzureMssqlElasticpool(pulumi.CustomResource):
         __props__ = _AzureMssqlElasticpoolState.__new__(_AzureMssqlElasticpoolState)
 
         __props__.__dict__["elastic_pool_id"] = elastic_pool_id
+        __props__.__dict__["max_size_gb"] = max_size_gb
         __props__.__dict__["name"] = name
         __props__.__dict__["server_name"] = server_name
         __props__.__dict__["sku"] = sku
@@ -344,6 +345,14 @@ class AzureMssqlElasticpool(pulumi.CustomResource):
         The ID of the MS SQL Elastic Pool.
         """
         return pulumi.get(self, "elastic_pool_id")
+
+    @property
+    @pulumi.getter(name="maxSizeGb")
+    def max_size_gb(self) -> pulumi.Output[Optional[int]]:
+        """
+        Maximum allowed data size in GB Defaults to `50`.
+        """
+        return pulumi.get(self, "max_size_gb")
 
     @property
     @pulumi.getter

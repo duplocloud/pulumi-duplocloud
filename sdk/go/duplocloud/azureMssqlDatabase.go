@@ -34,6 +34,8 @@ type AzureMssqlDatabase struct {
 	Collation pulumi.StringOutput `pulumi:"collation"`
 	// Specifies the id of the elastic pool containing this database.
 	ElasticPoolId pulumi.StringPtrOutput `pulumi:"elasticPoolId"`
+	// Maximum allowed database size in GB for more information please refer following link https://learn.microsoft.com/en-us/azure/azure-sql/database/resource-limits-vcore-single-databases?view=azuresql Defaults to `32`.
+	MaxSizeGb pulumi.IntPtrOutput `pulumi:"maxSizeGb"`
 	// The name of the MS SQL Database.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The name of the MS SQL Server on which to create the database.
@@ -83,6 +85,8 @@ type azureMssqlDatabaseState struct {
 	Collation *string `pulumi:"collation"`
 	// Specifies the id of the elastic pool containing this database.
 	ElasticPoolId *string `pulumi:"elasticPoolId"`
+	// Maximum allowed database size in GB for more information please refer following link https://learn.microsoft.com/en-us/azure/azure-sql/database/resource-limits-vcore-single-databases?view=azuresql Defaults to `32`.
+	MaxSizeGb *int `pulumi:"maxSizeGb"`
 	// The name of the MS SQL Database.
 	Name *string `pulumi:"name"`
 	// The name of the MS SQL Server on which to create the database.
@@ -97,6 +101,8 @@ type AzureMssqlDatabaseState struct {
 	Collation pulumi.StringPtrInput
 	// Specifies the id of the elastic pool containing this database.
 	ElasticPoolId pulumi.StringPtrInput
+	// Maximum allowed database size in GB for more information please refer following link https://learn.microsoft.com/en-us/azure/azure-sql/database/resource-limits-vcore-single-databases?view=azuresql Defaults to `32`.
+	MaxSizeGb pulumi.IntPtrInput
 	// The name of the MS SQL Database.
 	Name pulumi.StringPtrInput
 	// The name of the MS SQL Server on which to create the database.
@@ -115,6 +121,8 @@ type azureMssqlDatabaseArgs struct {
 	Collation *string `pulumi:"collation"`
 	// Specifies the id of the elastic pool containing this database.
 	ElasticPoolId *string `pulumi:"elasticPoolId"`
+	// Maximum allowed database size in GB for more information please refer following link https://learn.microsoft.com/en-us/azure/azure-sql/database/resource-limits-vcore-single-databases?view=azuresql Defaults to `32`.
+	MaxSizeGb *int `pulumi:"maxSizeGb"`
 	// The name of the MS SQL Database.
 	Name *string `pulumi:"name"`
 	// The name of the MS SQL Server on which to create the database.
@@ -130,6 +138,8 @@ type AzureMssqlDatabaseArgs struct {
 	Collation pulumi.StringPtrInput
 	// Specifies the id of the elastic pool containing this database.
 	ElasticPoolId pulumi.StringPtrInput
+	// Maximum allowed database size in GB for more information please refer following link https://learn.microsoft.com/en-us/azure/azure-sql/database/resource-limits-vcore-single-databases?view=azuresql Defaults to `32`.
+	MaxSizeGb pulumi.IntPtrInput
 	// The name of the MS SQL Database.
 	Name pulumi.StringPtrInput
 	// The name of the MS SQL Server on which to create the database.
@@ -234,6 +244,11 @@ func (o AzureMssqlDatabaseOutput) Collation() pulumi.StringOutput {
 // Specifies the id of the elastic pool containing this database.
 func (o AzureMssqlDatabaseOutput) ElasticPoolId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AzureMssqlDatabase) pulumi.StringPtrOutput { return v.ElasticPoolId }).(pulumi.StringPtrOutput)
+}
+
+// Maximum allowed database size in GB for more information please refer following link https://learn.microsoft.com/en-us/azure/azure-sql/database/resource-limits-vcore-single-databases?view=azuresql Defaults to `32`.
+func (o AzureMssqlDatabaseOutput) MaxSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AzureMssqlDatabase) pulumi.IntPtrOutput { return v.MaxSizeGb }).(pulumi.IntPtrOutput)
 }
 
 // The name of the MS SQL Database.

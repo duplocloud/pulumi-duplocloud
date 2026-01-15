@@ -27,7 +27,7 @@ class GetInfrastructureResult:
     """
     A collection of values returned by getInfrastructure.
     """
-    def __init__(__self__, account_id=None, address_prefix=None, azcount=None, cloud=None, enable_k8_cluster=None, id=None, infra_name=None, private_subnets=None, public_subnets=None, region=None, security_groups=None, status=None, subnet_cidr=None, tenant_id=None, vpc_id=None, vpc_name=None):
+    def __init__(__self__, account_id=None, address_prefix=None, azcount=None, cloud=None, enable_k8_cluster=None, id=None, infra_name=None, nat_ips=None, private_subnets=None, public_subnets=None, region=None, security_groups=None, status=None, subnet_cidr=None, tenant_id=None, vpc_id=None, vpc_name=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -49,6 +49,9 @@ class GetInfrastructureResult:
         if infra_name and not isinstance(infra_name, str):
             raise TypeError("Expected argument 'infra_name' to be a str")
         pulumi.set(__self__, "infra_name", infra_name)
+        if nat_ips and not isinstance(nat_ips, list):
+            raise TypeError("Expected argument 'nat_ips' to be a list")
+        pulumi.set(__self__, "nat_ips", nat_ips)
         if private_subnets and not isinstance(private_subnets, list):
             raise TypeError("Expected argument 'private_subnets' to be a list")
         pulumi.set(__self__, "private_subnets", private_subnets)
@@ -116,6 +119,11 @@ class GetInfrastructureResult:
         return pulumi.get(self, "infra_name")
 
     @property
+    @pulumi.getter(name="natIps")
+    def nat_ips(self) -> Sequence[str]:
+        return pulumi.get(self, "nat_ips")
+
+    @property
     @pulumi.getter(name="privateSubnets")
     def private_subnets(self) -> Sequence['outputs.GetInfrastructurePrivateSubnetResult']:
         return pulumi.get(self, "private_subnets")
@@ -174,6 +182,7 @@ class AwaitableGetInfrastructureResult(GetInfrastructureResult):
             enable_k8_cluster=self.enable_k8_cluster,
             id=self.id,
             infra_name=self.infra_name,
+            nat_ips=self.nat_ips,
             private_subnets=self.private_subnets,
             public_subnets=self.public_subnets,
             region=self.region,
@@ -222,6 +231,7 @@ def get_infrastructure(infra_name: Optional[str] = None,
         enable_k8_cluster=pulumi.get(__ret__, 'enable_k8_cluster'),
         id=pulumi.get(__ret__, 'id'),
         infra_name=pulumi.get(__ret__, 'infra_name'),
+        nat_ips=pulumi.get(__ret__, 'nat_ips'),
         private_subnets=pulumi.get(__ret__, 'private_subnets'),
         public_subnets=pulumi.get(__ret__, 'public_subnets'),
         region=pulumi.get(__ret__, 'region'),
@@ -267,6 +277,7 @@ def get_infrastructure_output(infra_name: Optional[pulumi.Input[Optional[str]]] 
         enable_k8_cluster=pulumi.get(__response__, 'enable_k8_cluster'),
         id=pulumi.get(__response__, 'id'),
         infra_name=pulumi.get(__response__, 'infra_name'),
+        nat_ips=pulumi.get(__response__, 'nat_ips'),
         private_subnets=pulumi.get(__response__, 'private_subnets'),
         public_subnets=pulumi.get(__response__, 'public_subnets'),
         region=pulumi.get(__response__, 'region'),

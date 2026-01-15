@@ -25,6 +25,7 @@ class RdsInstanceArgs:
                  size: pulumi.Input[str],
                  tenant_id: pulumi.Input[str],
                  allocated_storage: Optional[pulumi.Input[int]] = None,
+                 auto_minor_version_upgrade: Optional[pulumi.Input[bool]] = None,
                  availability_zone: Optional[pulumi.Input[str]] = None,
                  backup_retention_period: Optional[pulumi.Input[int]] = None,
                  cluster_parameter_group_name: Optional[pulumi.Input[str]] = None,
@@ -59,6 +60,7 @@ class RdsInstanceArgs:
                serverless
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the RDS instance will be created in.
         :param pulumi.Input[int] allocated_storage: (Required unless a `snapshot_id` is provided) The allocated storage in gigabytes.
+        :param pulumi.Input[bool] auto_minor_version_upgrade: Enable or disable auto minor version upgrade
         :param pulumi.Input[str] availability_zone: Specify a valid Availability Zone for the RDS primary instance (when Multi-AZ is disabled) or for the Aurora writer
                instance. e.g. us-west-2a
         :param pulumi.Input[int] backup_retention_period: Specifies backup retention period between 1 and 35 day(s). Default backup retention period is 1 day.
@@ -67,7 +69,7 @@ class RdsInstanceArgs:
         :param pulumi.Input[str] db_subnet_group_name: Name of DB subnet group. DB instance will be created in the VPC associated with the DB subnet group.
         :param pulumi.Input[bool] deletion_protection: If the DB instance should have deletion protection enabled.The database can't be deleted when this value is set to
                `true`. This setting is not applicable for document db cluster instance.
-        :param pulumi.Input[bool] enable_iam_auth: Whether or not to enable the RDS IAM authentication.
+        :param pulumi.Input[bool] enable_iam_auth: Whether or not to enable the RDS IAM authentication. It can only be set during instance creation.
         :param pulumi.Input[bool] enable_logging: Whether or not to enable the RDS instance logging. This setting is not applicable for document db cluster instance.
         :param pulumi.Input[bool] encrypt_storage: Whether or not to encrypt the RDS instance storage.
         :param pulumi.Input[str] engine_version: The database engine version to use the for the RDS instance. If you don't know the available engine versions for your
@@ -112,6 +114,8 @@ class RdsInstanceArgs:
         pulumi.set(__self__, "tenant_id", tenant_id)
         if allocated_storage is not None:
             pulumi.set(__self__, "allocated_storage", allocated_storage)
+        if auto_minor_version_upgrade is not None:
+            pulumi.set(__self__, "auto_minor_version_upgrade", auto_minor_version_upgrade)
         if availability_zone is not None:
             pulumi.set(__self__, "availability_zone", availability_zone)
         if backup_retention_period is not None:
@@ -214,6 +218,18 @@ class RdsInstanceArgs:
         pulumi.set(self, "allocated_storage", value)
 
     @property
+    @pulumi.getter(name="autoMinorVersionUpgrade")
+    def auto_minor_version_upgrade(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable or disable auto minor version upgrade
+        """
+        return pulumi.get(self, "auto_minor_version_upgrade")
+
+    @auto_minor_version_upgrade.setter
+    def auto_minor_version_upgrade(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_minor_version_upgrade", value)
+
+    @property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> Optional[pulumi.Input[str]]:
         """
@@ -291,7 +307,7 @@ class RdsInstanceArgs:
     @pulumi.getter(name="enableIamAuth")
     def enable_iam_auth(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether or not to enable the RDS IAM authentication.
+        Whether or not to enable the RDS IAM authentication. It can only be set during instance creation.
         """
         return pulumi.get(self, "enable_iam_auth")
 
@@ -530,6 +546,7 @@ class _RdsInstanceState:
     def __init__(__self__, *,
                  allocated_storage: Optional[pulumi.Input[int]] = None,
                  arn: Optional[pulumi.Input[str]] = None,
+                 auto_minor_version_upgrade: Optional[pulumi.Input[bool]] = None,
                  availability_zone: Optional[pulumi.Input[str]] = None,
                  backup_retention_period: Optional[pulumi.Input[int]] = None,
                  cluster_identifier: Optional[pulumi.Input[str]] = None,
@@ -567,6 +584,7 @@ class _RdsInstanceState:
         Input properties used for looking up and filtering RdsInstance resources.
         :param pulumi.Input[int] allocated_storage: (Required unless a `snapshot_id` is provided) The allocated storage in gigabytes.
         :param pulumi.Input[str] arn: The ARN of the RDS instance.
+        :param pulumi.Input[bool] auto_minor_version_upgrade: Enable or disable auto minor version upgrade
         :param pulumi.Input[str] availability_zone: Specify a valid Availability Zone for the RDS primary instance (when Multi-AZ is disabled) or for the Aurora writer
                instance. e.g. us-west-2a
         :param pulumi.Input[int] backup_retention_period: Specifies backup retention period between 1 and 35 day(s). Default backup retention period is 1 day.
@@ -576,7 +594,7 @@ class _RdsInstanceState:
         :param pulumi.Input[str] db_subnet_group_name: Name of DB subnet group. DB instance will be created in the VPC associated with the DB subnet group.
         :param pulumi.Input[bool] deletion_protection: If the DB instance should have deletion protection enabled.The database can't be deleted when this value is set to
                `true`. This setting is not applicable for document db cluster instance.
-        :param pulumi.Input[bool] enable_iam_auth: Whether or not to enable the RDS IAM authentication.
+        :param pulumi.Input[bool] enable_iam_auth: Whether or not to enable the RDS IAM authentication. It can only be set during instance creation.
         :param pulumi.Input[bool] enable_logging: Whether or not to enable the RDS instance logging. This setting is not applicable for document db cluster instance.
         :param pulumi.Input[bool] encrypt_storage: Whether or not to encrypt the RDS instance storage.
         :param pulumi.Input[str] endpoint: The endpoint of the RDS instance.
@@ -632,6 +650,8 @@ class _RdsInstanceState:
             pulumi.set(__self__, "allocated_storage", allocated_storage)
         if arn is not None:
             pulumi.set(__self__, "arn", arn)
+        if auto_minor_version_upgrade is not None:
+            pulumi.set(__self__, "auto_minor_version_upgrade", auto_minor_version_upgrade)
         if availability_zone is not None:
             pulumi.set(__self__, "availability_zone", availability_zone)
         if backup_retention_period is not None:
@@ -724,6 +744,18 @@ class _RdsInstanceState:
         pulumi.set(self, "arn", value)
 
     @property
+    @pulumi.getter(name="autoMinorVersionUpgrade")
+    def auto_minor_version_upgrade(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable or disable auto minor version upgrade
+        """
+        return pulumi.get(self, "auto_minor_version_upgrade")
+
+    @auto_minor_version_upgrade.setter
+    def auto_minor_version_upgrade(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_minor_version_upgrade", value)
+
+    @property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> Optional[pulumi.Input[str]]:
         """
@@ -813,7 +845,7 @@ class _RdsInstanceState:
     @pulumi.getter(name="enableIamAuth")
     def enable_iam_auth(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether or not to enable the RDS IAM authentication.
+        Whether or not to enable the RDS IAM authentication. It can only be set during instance creation.
         """
         return pulumi.get(self, "enable_iam_auth")
 
@@ -1153,6 +1185,7 @@ class RdsInstance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allocated_storage: Optional[pulumi.Input[int]] = None,
+                 auto_minor_version_upgrade: Optional[pulumi.Input[bool]] = None,
                  availability_zone: Optional[pulumi.Input[str]] = None,
                  backup_retention_period: Optional[pulumi.Input[int]] = None,
                  cluster_parameter_group_name: Optional[pulumi.Input[str]] = None,
@@ -1477,6 +1510,76 @@ class RdsInstance(pulumi.CustomResource):
             snapshot_id="rds:duplotest-snapdb-2024-12-17-07-00")
         ```
 
+        # Example to showcase use of parameter group in writer and read replica for aurora cluster instance
+
+        ```python
+        import pulumi
+        import pulumi_duplocloud as duplocloud
+        import pulumi_random as random
+
+        mypassword = random.index.Password("mypassword",
+            length=16,
+            special=False)
+        app = duplocloud.RdsInstance("app",
+            tenant_id=tenant["id"],
+            name="writer1-sqlnew",
+            engine=8,
+            engine_version="5.7.mysql_aurora.2.11.5",
+            size="db.r5.large",
+            master_username="myuser",
+            master_password=mypassword["result"],
+            encrypt_storage=True,
+            backup_retention_period=10,
+            db_name="auroradb",
+            skip_final_snapshot=True,
+            store_details_in_secret_manager=False,
+            enhanced_monitoring=0,
+            availability_zone="us-west-2b",
+            storage_type="aurora",
+            cluster_parameter_group_name="c-aurora-mysql",
+            parameter_group_name="aurora-mysql-dbparam")
+        replica1 = duplocloud.RdsReadReplica("replica1",
+            tenant_id=app.tenant_id,
+            name="aurora-replica-new",
+            size="db.r5.large",
+            cluster_identifier=app.cluster_identifier,
+            availability_zone="us-west-2a",
+            parameter_group_name="aurora-mysql-dbparam",
+            engine_type=app.engine)
+        ```
+
+        # Example to showcase use of parameter group in writer and read replica for standalone instance
+
+        ```python
+        import pulumi
+        import pulumi_duplocloud as duplocloud
+
+        mydb = duplocloud.RdsInstance("mydb",
+            tenant_id=tenant["id"],
+            name="tf-postgresql1",
+            engine=1,
+            engine_version="13.11",
+            size="db.t3.medium",
+            master_username="myuser",
+            master_password="Qaazwedd#1",
+            parameter_group_name="psql13dbparam",
+            encrypt_storage=False,
+            store_details_in_secret_manager=False,
+            enhanced_monitoring=0,
+            storage_type="gp2")
+        replica = duplocloud.RdsReadReplica("replica",
+            tenant_id=mydb.tenant_id,
+            name="postgresql-rep1",
+            size="db.t3.medium",
+            cluster_identifier=mydb.cluster_identifier,
+            performance_insights={
+                "enabled": True,
+                "retention_period": 31,
+            },
+            engine_type=mydb.engine,
+            parameter_group_name=mydb.parameter_group_name)
+        ```
+
         ## Import
 
         Example: Importing an existing RDS instance
@@ -1491,131 +1594,10 @@ class RdsInstance(pulumi.CustomResource):
         $ pulumi import duplocloud:index/rdsInstance:RdsInstance mydb v2/subscriptions/*TENANT_ID*/RDSDBInstance/*SHORTNAME*
         ```
 
-        Example to showcase use of parameter group in writer and read replica for aurora cluster instance
-
-        resource "random_password" "mypassword" {
-
-          length  = 16
-
-          special = false
-
-        }
-
-        resource "duplocloud_rds_instance" "app" {
-
-          tenant_id      = data.duplocloud_tenant.tenant.id
-
-          name           = "writer1-sqlnew"
-
-          engine         = 8
-
-          engine_version = "5.7.mysql_aurora.2.11.5"
-
-          size           = "db.r5.large"
-
-          master_username              = "myuser"
-
-          master_password              = random_password.mypassword.result
-
-          encrypt_storage         = true
-
-          backup_retention_period = 10
-
-          db_name         =  "auroradb"
-
-          skip_final_snapshot = true
-
-          store_details_in_secret_manager = false
-
-          enhanced_monitoring = 0
-
-          availability_zone = "us-west-2b"
-
-          storage_type                    = "aurora"
-
-          cluster_parameter_group_name = "c-aurora-mysql"
-
-          parameter_group_name = "aurora-mysql-dbparam"
-
-        }
-
-        resource "duplocloud_rds_read_replica" "replica1" {
-
-          tenant_id          = duplocloud_rds_instance.app.tenant_id
-
-          name               = "aurora-replica-new"
-
-          size               = "db.r5.large"
-
-          cluster_identifier = duplocloud_rds_instance.app.cluster_identifier
-
-          availability_zone = "us-west-2a"
-
-          parameter_group_name = "aurora-mysql-dbparam"
-
-          engine_type=duplocloud_rds_instance.app.engine
-
-        }
-
-        Example to showcase use of parameter group in writer and read replica for standalone instance
-
-        resource "duplocloud_rds_instance" "mydb" {
-
-          tenant_id      = data.duplocloud_tenant.tenant.id
-
-          name           = "tf-postgresql1"
-
-          engine         = 1// PostgreSQL
-
-          engine_version = "13.11"
-
-          size           = "db.t3.medium"
-
-          master_username = "myuser"
-
-          master_password = "Qaazwedd#1"
-
-          parameter_group_name = "psql13dbparam"
-
-          encrypt_storage                 = false
-
-          store_details_in_secret_manager = false
-
-          enhanced_monitoring             = 0
-
-          storage_type                    = "gp2"
-
-        }
-
-        resource "duplocloud_rds_read_replica" "replica" {
-
-          tenant_id          = duplocloud_rds_instance.mydb.tenant_id
-
-          name               = "postgresql-rep1"
-
-          size               = "db.t3.medium"
-
-          cluster_identifier = duplocloud_rds_instance.mydb.cluster_identifier
-
-          #availability_zone = "us-east-1b"
-
-          performance_insights {
-
-            enabled          = true
-            
-            retention_period = 31
-
-          }
-
-          engine_type=duplocloud_rds_instance.mydb.engine
-
-          parameter_group_name=duplocloud_rds_instance.mydb.parameter_group_name
-
-        }
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] allocated_storage: (Required unless a `snapshot_id` is provided) The allocated storage in gigabytes.
+        :param pulumi.Input[bool] auto_minor_version_upgrade: Enable or disable auto minor version upgrade
         :param pulumi.Input[str] availability_zone: Specify a valid Availability Zone for the RDS primary instance (when Multi-AZ is disabled) or for the Aurora writer
                instance. e.g. us-west-2a
         :param pulumi.Input[int] backup_retention_period: Specifies backup retention period between 1 and 35 day(s). Default backup retention period is 1 day.
@@ -1624,7 +1606,7 @@ class RdsInstance(pulumi.CustomResource):
         :param pulumi.Input[str] db_subnet_group_name: Name of DB subnet group. DB instance will be created in the VPC associated with the DB subnet group.
         :param pulumi.Input[bool] deletion_protection: If the DB instance should have deletion protection enabled.The database can't be deleted when this value is set to
                `true`. This setting is not applicable for document db cluster instance.
-        :param pulumi.Input[bool] enable_iam_auth: Whether or not to enable the RDS IAM authentication.
+        :param pulumi.Input[bool] enable_iam_auth: Whether or not to enable the RDS IAM authentication. It can only be set during instance creation.
         :param pulumi.Input[bool] enable_logging: Whether or not to enable the RDS instance logging. This setting is not applicable for document db cluster instance.
         :param pulumi.Input[bool] encrypt_storage: Whether or not to encrypt the RDS instance storage.
         :param pulumi.Input[int] engine: The numerical index of database engine to use the for the RDS instance. Should be one of: - `0` : MySQL - `1` :
@@ -1973,6 +1955,76 @@ class RdsInstance(pulumi.CustomResource):
             snapshot_id="rds:duplotest-snapdb-2024-12-17-07-00")
         ```
 
+        # Example to showcase use of parameter group in writer and read replica for aurora cluster instance
+
+        ```python
+        import pulumi
+        import pulumi_duplocloud as duplocloud
+        import pulumi_random as random
+
+        mypassword = random.index.Password("mypassword",
+            length=16,
+            special=False)
+        app = duplocloud.RdsInstance("app",
+            tenant_id=tenant["id"],
+            name="writer1-sqlnew",
+            engine=8,
+            engine_version="5.7.mysql_aurora.2.11.5",
+            size="db.r5.large",
+            master_username="myuser",
+            master_password=mypassword["result"],
+            encrypt_storage=True,
+            backup_retention_period=10,
+            db_name="auroradb",
+            skip_final_snapshot=True,
+            store_details_in_secret_manager=False,
+            enhanced_monitoring=0,
+            availability_zone="us-west-2b",
+            storage_type="aurora",
+            cluster_parameter_group_name="c-aurora-mysql",
+            parameter_group_name="aurora-mysql-dbparam")
+        replica1 = duplocloud.RdsReadReplica("replica1",
+            tenant_id=app.tenant_id,
+            name="aurora-replica-new",
+            size="db.r5.large",
+            cluster_identifier=app.cluster_identifier,
+            availability_zone="us-west-2a",
+            parameter_group_name="aurora-mysql-dbparam",
+            engine_type=app.engine)
+        ```
+
+        # Example to showcase use of parameter group in writer and read replica for standalone instance
+
+        ```python
+        import pulumi
+        import pulumi_duplocloud as duplocloud
+
+        mydb = duplocloud.RdsInstance("mydb",
+            tenant_id=tenant["id"],
+            name="tf-postgresql1",
+            engine=1,
+            engine_version="13.11",
+            size="db.t3.medium",
+            master_username="myuser",
+            master_password="Qaazwedd#1",
+            parameter_group_name="psql13dbparam",
+            encrypt_storage=False,
+            store_details_in_secret_manager=False,
+            enhanced_monitoring=0,
+            storage_type="gp2")
+        replica = duplocloud.RdsReadReplica("replica",
+            tenant_id=mydb.tenant_id,
+            name="postgresql-rep1",
+            size="db.t3.medium",
+            cluster_identifier=mydb.cluster_identifier,
+            performance_insights={
+                "enabled": True,
+                "retention_period": 31,
+            },
+            engine_type=mydb.engine,
+            parameter_group_name=mydb.parameter_group_name)
+        ```
+
         ## Import
 
         Example: Importing an existing RDS instance
@@ -1986,128 +2038,6 @@ class RdsInstance(pulumi.CustomResource):
         ```sh
         $ pulumi import duplocloud:index/rdsInstance:RdsInstance mydb v2/subscriptions/*TENANT_ID*/RDSDBInstance/*SHORTNAME*
         ```
-
-        Example to showcase use of parameter group in writer and read replica for aurora cluster instance
-
-        resource "random_password" "mypassword" {
-
-          length  = 16
-
-          special = false
-
-        }
-
-        resource "duplocloud_rds_instance" "app" {
-
-          tenant_id      = data.duplocloud_tenant.tenant.id
-
-          name           = "writer1-sqlnew"
-
-          engine         = 8
-
-          engine_version = "5.7.mysql_aurora.2.11.5"
-
-          size           = "db.r5.large"
-
-          master_username              = "myuser"
-
-          master_password              = random_password.mypassword.result
-
-          encrypt_storage         = true
-
-          backup_retention_period = 10
-
-          db_name         =  "auroradb"
-
-          skip_final_snapshot = true
-
-          store_details_in_secret_manager = false
-
-          enhanced_monitoring = 0
-
-          availability_zone = "us-west-2b"
-
-          storage_type                    = "aurora"
-
-          cluster_parameter_group_name = "c-aurora-mysql"
-
-          parameter_group_name = "aurora-mysql-dbparam"
-
-        }
-
-        resource "duplocloud_rds_read_replica" "replica1" {
-
-          tenant_id          = duplocloud_rds_instance.app.tenant_id
-
-          name               = "aurora-replica-new"
-
-          size               = "db.r5.large"
-
-          cluster_identifier = duplocloud_rds_instance.app.cluster_identifier
-
-          availability_zone = "us-west-2a"
-
-          parameter_group_name = "aurora-mysql-dbparam"
-
-          engine_type=duplocloud_rds_instance.app.engine
-
-        }
-
-        Example to showcase use of parameter group in writer and read replica for standalone instance
-
-        resource "duplocloud_rds_instance" "mydb" {
-
-          tenant_id      = data.duplocloud_tenant.tenant.id
-
-          name           = "tf-postgresql1"
-
-          engine         = 1// PostgreSQL
-
-          engine_version = "13.11"
-
-          size           = "db.t3.medium"
-
-          master_username = "myuser"
-
-          master_password = "Qaazwedd#1"
-
-          parameter_group_name = "psql13dbparam"
-
-          encrypt_storage                 = false
-
-          store_details_in_secret_manager = false
-
-          enhanced_monitoring             = 0
-
-          storage_type                    = "gp2"
-
-        }
-
-        resource "duplocloud_rds_read_replica" "replica" {
-
-          tenant_id          = duplocloud_rds_instance.mydb.tenant_id
-
-          name               = "postgresql-rep1"
-
-          size               = "db.t3.medium"
-
-          cluster_identifier = duplocloud_rds_instance.mydb.cluster_identifier
-
-          #availability_zone = "us-east-1b"
-
-          performance_insights {
-
-            enabled          = true
-            
-            retention_period = 31
-
-          }
-
-          engine_type=duplocloud_rds_instance.mydb.engine
-
-          parameter_group_name=duplocloud_rds_instance.mydb.parameter_group_name
-
-        }
 
         :param str resource_name: The name of the resource.
         :param RdsInstanceArgs args: The arguments to use to populate this resource's properties.
@@ -2125,6 +2055,7 @@ class RdsInstance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allocated_storage: Optional[pulumi.Input[int]] = None,
+                 auto_minor_version_upgrade: Optional[pulumi.Input[bool]] = None,
                  availability_zone: Optional[pulumi.Input[str]] = None,
                  backup_retention_period: Optional[pulumi.Input[int]] = None,
                  cluster_parameter_group_name: Optional[pulumi.Input[str]] = None,
@@ -2162,6 +2093,7 @@ class RdsInstance(pulumi.CustomResource):
             __props__ = RdsInstanceArgs.__new__(RdsInstanceArgs)
 
             __props__.__dict__["allocated_storage"] = allocated_storage
+            __props__.__dict__["auto_minor_version_upgrade"] = auto_minor_version_upgrade
             __props__.__dict__["availability_zone"] = availability_zone
             __props__.__dict__["backup_retention_period"] = backup_retention_period
             __props__.__dict__["cluster_parameter_group_name"] = cluster_parameter_group_name
@@ -2216,6 +2148,7 @@ class RdsInstance(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             allocated_storage: Optional[pulumi.Input[int]] = None,
             arn: Optional[pulumi.Input[str]] = None,
+            auto_minor_version_upgrade: Optional[pulumi.Input[bool]] = None,
             availability_zone: Optional[pulumi.Input[str]] = None,
             backup_retention_period: Optional[pulumi.Input[int]] = None,
             cluster_identifier: Optional[pulumi.Input[str]] = None,
@@ -2258,6 +2191,7 @@ class RdsInstance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] allocated_storage: (Required unless a `snapshot_id` is provided) The allocated storage in gigabytes.
         :param pulumi.Input[str] arn: The ARN of the RDS instance.
+        :param pulumi.Input[bool] auto_minor_version_upgrade: Enable or disable auto minor version upgrade
         :param pulumi.Input[str] availability_zone: Specify a valid Availability Zone for the RDS primary instance (when Multi-AZ is disabled) or for the Aurora writer
                instance. e.g. us-west-2a
         :param pulumi.Input[int] backup_retention_period: Specifies backup retention period between 1 and 35 day(s). Default backup retention period is 1 day.
@@ -2267,7 +2201,7 @@ class RdsInstance(pulumi.CustomResource):
         :param pulumi.Input[str] db_subnet_group_name: Name of DB subnet group. DB instance will be created in the VPC associated with the DB subnet group.
         :param pulumi.Input[bool] deletion_protection: If the DB instance should have deletion protection enabled.The database can't be deleted when this value is set to
                `true`. This setting is not applicable for document db cluster instance.
-        :param pulumi.Input[bool] enable_iam_auth: Whether or not to enable the RDS IAM authentication.
+        :param pulumi.Input[bool] enable_iam_auth: Whether or not to enable the RDS IAM authentication. It can only be set during instance creation.
         :param pulumi.Input[bool] enable_logging: Whether or not to enable the RDS instance logging. This setting is not applicable for document db cluster instance.
         :param pulumi.Input[bool] encrypt_storage: Whether or not to encrypt the RDS instance storage.
         :param pulumi.Input[str] endpoint: The endpoint of the RDS instance.
@@ -2325,6 +2259,7 @@ class RdsInstance(pulumi.CustomResource):
 
         __props__.__dict__["allocated_storage"] = allocated_storage
         __props__.__dict__["arn"] = arn
+        __props__.__dict__["auto_minor_version_upgrade"] = auto_minor_version_upgrade
         __props__.__dict__["availability_zone"] = availability_zone
         __props__.__dict__["backup_retention_period"] = backup_retention_period
         __props__.__dict__["cluster_identifier"] = cluster_identifier
@@ -2375,6 +2310,14 @@ class RdsInstance(pulumi.CustomResource):
         The ARN of the RDS instance.
         """
         return pulumi.get(self, "arn")
+
+    @property
+    @pulumi.getter(name="autoMinorVersionUpgrade")
+    def auto_minor_version_upgrade(self) -> pulumi.Output[bool]:
+        """
+        Enable or disable auto minor version upgrade
+        """
+        return pulumi.get(self, "auto_minor_version_upgrade")
 
     @property
     @pulumi.getter(name="availabilityZone")
@@ -2438,7 +2381,7 @@ class RdsInstance(pulumi.CustomResource):
     @pulumi.getter(name="enableIamAuth")
     def enable_iam_auth(self) -> pulumi.Output[bool]:
         """
-        Whether or not to enable the RDS IAM authentication.
+        Whether or not to enable the RDS IAM authentication. It can only be set during instance creation.
         """
         return pulumi.get(self, "enable_iam_auth")
 
@@ -2552,7 +2495,7 @@ class RdsInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="multiAz")
-    def multi_az(self) -> pulumi.Output[bool]:
+    def multi_az(self) -> pulumi.Output[Optional[bool]]:
         """
         Specifies if the RDS instance is multi-AZ.
         """
@@ -2569,7 +2512,7 @@ class RdsInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="parameterGroupName")
-    def parameter_group_name(self) -> pulumi.Output[str]:
+    def parameter_group_name(self) -> pulumi.Output[Optional[str]]:
         """
         A RDS parameter group name to apply to the RDS instance.
         """

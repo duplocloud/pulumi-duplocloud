@@ -147,7 +147,7 @@ export class AzureTenantKeyVaultSecret extends pulumi.CustomResource {
             resourceInputs["contentType"] = args ? args.contentType : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["tenantId"] = args ? args.tenantId : undefined;
-            resourceInputs["value"] = args ? args.value : undefined;
+            resourceInputs["value"] = args?.value ? pulumi.secret(args.value) : undefined;
             resourceInputs["vaultName"] = args ? args.vaultName : undefined;
             resourceInputs["azureId"] = undefined /*out*/;
             resourceInputs["recoveryLevel"] = undefined /*out*/;
@@ -155,6 +155,8 @@ export class AzureTenantKeyVaultSecret extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["value"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(AzureTenantKeyVaultSecret.__pulumiType, name, resourceInputs, opts);
     }
 }

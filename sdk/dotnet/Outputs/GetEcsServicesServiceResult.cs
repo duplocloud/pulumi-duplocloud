@@ -15,6 +15,7 @@ namespace DuploCloud.Pulumi.Outputs
     public sealed class GetEcsServicesServiceResult
     {
         public readonly ImmutableArray<Outputs.GetEcsServicesServiceCapacityProviderStrategyResult> CapacityProviderStrategies;
+        public readonly ImmutableArray<Outputs.GetEcsServicesServiceDeploymentConfigurationResult> DeploymentConfigurations;
         /// <summary>
         /// The DNS prefix to assign to this service's load balancer.
         /// </summary>
@@ -38,6 +39,14 @@ namespace DuploCloud.Pulumi.Outputs
         /// </summary>
         public readonly int OldTaskDefinitionBufferSize;
         /// <summary>
+        /// Rules that are taken into consideration during task placement. Maximum number of `placement_constraints` is `10`
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetEcsServicesServicePlacementConstraintResult> PlacementConstraints;
+        /// <summary>
+        /// Service level strategy rules that are taken into consideration during task placement. List from top to bottom in order of precedence. The maximum number of `placement_strategy` blocks is `5`
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetEcsServicesServicePlacementStrategyResult> PlacementStrategies;
+        /// <summary>
         /// The number of container replicas to create.
         /// </summary>
         public readonly int Replicas;
@@ -55,6 +64,8 @@ namespace DuploCloud.Pulumi.Outputs
         private GetEcsServicesServiceResult(
             ImmutableArray<Outputs.GetEcsServicesServiceCapacityProviderStrategyResult> capacityProviderStrategies,
 
+            ImmutableArray<Outputs.GetEcsServicesServiceDeploymentConfigurationResult> deploymentConfigurations,
+
             string dnsPrfx,
 
             int healthCheckGracePeriodSeconds,
@@ -69,6 +80,10 @@ namespace DuploCloud.Pulumi.Outputs
 
             int oldTaskDefinitionBufferSize,
 
+            ImmutableArray<Outputs.GetEcsServicesServicePlacementConstraintResult> placementConstraints,
+
+            ImmutableArray<Outputs.GetEcsServicesServicePlacementStrategyResult> placementStrategies,
+
             int replicas,
 
             ImmutableArray<string> targetGroupArns,
@@ -78,6 +93,7 @@ namespace DuploCloud.Pulumi.Outputs
             string tenantId)
         {
             CapacityProviderStrategies = capacityProviderStrategies;
+            DeploymentConfigurations = deploymentConfigurations;
             DnsPrfx = dnsPrfx;
             HealthCheckGracePeriodSeconds = healthCheckGracePeriodSeconds;
             Index = index;
@@ -85,6 +101,8 @@ namespace DuploCloud.Pulumi.Outputs
             LoadBalancers = loadBalancers;
             Name = name;
             OldTaskDefinitionBufferSize = oldTaskDefinitionBufferSize;
+            PlacementConstraints = placementConstraints;
+            PlacementStrategies = placementStrategies;
             Replicas = replicas;
             TargetGroupArns = targetGroupArns;
             TaskDefinition = taskDefinition;

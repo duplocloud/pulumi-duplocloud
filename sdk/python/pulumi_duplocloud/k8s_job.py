@@ -23,6 +23,7 @@ class K8sJobArgs:
     def __init__(__self__, *,
                  metadata: pulumi.Input['K8sJobMetadataArgs'],
                  tenant_id: pulumi.Input[str],
+                 allocation_tags: Optional[pulumi.Input[str]] = None,
                  is_any_host_allowed: Optional[pulumi.Input[bool]] = None,
                  specs: Optional[pulumi.Input[Sequence[pulumi.Input['K8sJobSpecArgs']]]] = None,
                  wait_for_completion: Optional[pulumi.Input[bool]] = None):
@@ -30,11 +31,14 @@ class K8sJobArgs:
         The set of arguments for constructing a K8sJob resource.
         :param pulumi.Input['K8sJobMetadataArgs'] metadata: Standard job's metadata. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the job will be created in.
+        :param pulumi.Input[str] allocation_tags: Allocation tags is the simplest way to constraint containers/pods with hosts/nodes. DuploCloud/Kubernetes Orchestrator will make sure containers will run on the hosts having same allocation tags.
         :param pulumi.Input[bool] is_any_host_allowed: Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input['K8sJobSpecArgs']]] specs: Spec of the job owned by the cluster
         """
         pulumi.set(__self__, "metadata", metadata)
         pulumi.set(__self__, "tenant_id", tenant_id)
+        if allocation_tags is not None:
+            pulumi.set(__self__, "allocation_tags", allocation_tags)
         if is_any_host_allowed is not None:
             pulumi.set(__self__, "is_any_host_allowed", is_any_host_allowed)
         if specs is not None:
@@ -65,6 +69,18 @@ class K8sJobArgs:
     @tenant_id.setter
     def tenant_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "tenant_id", value)
+
+    @property
+    @pulumi.getter(name="allocationTags")
+    def allocation_tags(self) -> Optional[pulumi.Input[str]]:
+        """
+        Allocation tags is the simplest way to constraint containers/pods with hosts/nodes. DuploCloud/Kubernetes Orchestrator will make sure containers will run on the hosts having same allocation tags.
+        """
+        return pulumi.get(self, "allocation_tags")
+
+    @allocation_tags.setter
+    def allocation_tags(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "allocation_tags", value)
 
     @property
     @pulumi.getter(name="isAnyHostAllowed")
@@ -103,6 +119,7 @@ class K8sJobArgs:
 @pulumi.input_type
 class _K8sJobState:
     def __init__(__self__, *,
+                 allocation_tags: Optional[pulumi.Input[str]] = None,
                  is_any_host_allowed: Optional[pulumi.Input[bool]] = None,
                  metadata: Optional[pulumi.Input['K8sJobMetadataArgs']] = None,
                  specs: Optional[pulumi.Input[Sequence[pulumi.Input['K8sJobSpecArgs']]]] = None,
@@ -110,11 +127,14 @@ class _K8sJobState:
                  wait_for_completion: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering K8sJob resources.
+        :param pulumi.Input[str] allocation_tags: Allocation tags is the simplest way to constraint containers/pods with hosts/nodes. DuploCloud/Kubernetes Orchestrator will make sure containers will run on the hosts having same allocation tags.
         :param pulumi.Input[bool] is_any_host_allowed: Defaults to `false`.
         :param pulumi.Input['K8sJobMetadataArgs'] metadata: Standard job's metadata. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
         :param pulumi.Input[Sequence[pulumi.Input['K8sJobSpecArgs']]] specs: Spec of the job owned by the cluster
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the job will be created in.
         """
+        if allocation_tags is not None:
+            pulumi.set(__self__, "allocation_tags", allocation_tags)
         if is_any_host_allowed is not None:
             pulumi.set(__self__, "is_any_host_allowed", is_any_host_allowed)
         if metadata is not None:
@@ -125,6 +145,18 @@ class _K8sJobState:
             pulumi.set(__self__, "tenant_id", tenant_id)
         if wait_for_completion is not None:
             pulumi.set(__self__, "wait_for_completion", wait_for_completion)
+
+    @property
+    @pulumi.getter(name="allocationTags")
+    def allocation_tags(self) -> Optional[pulumi.Input[str]]:
+        """
+        Allocation tags is the simplest way to constraint containers/pods with hosts/nodes. DuploCloud/Kubernetes Orchestrator will make sure containers will run on the hosts having same allocation tags.
+        """
+        return pulumi.get(self, "allocation_tags")
+
+    @allocation_tags.setter
+    def allocation_tags(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "allocation_tags", value)
 
     @property
     @pulumi.getter(name="isAnyHostAllowed")
@@ -189,6 +221,7 @@ class K8sJob(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 allocation_tags: Optional[pulumi.Input[str]] = None,
                  is_any_host_allowed: Optional[pulumi.Input[bool]] = None,
                  metadata: Optional[pulumi.Input[Union['K8sJobMetadataArgs', 'K8sJobMetadataArgsDict']]] = None,
                  specs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['K8sJobSpecArgs', 'K8sJobSpecArgsDict']]]]] = None,
@@ -238,6 +271,7 @@ class K8sJob(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] allocation_tags: Allocation tags is the simplest way to constraint containers/pods with hosts/nodes. DuploCloud/Kubernetes Orchestrator will make sure containers will run on the hosts having same allocation tags.
         :param pulumi.Input[bool] is_any_host_allowed: Defaults to `false`.
         :param pulumi.Input[Union['K8sJobMetadataArgs', 'K8sJobMetadataArgsDict']] metadata: Standard job's metadata. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
         :param pulumi.Input[Sequence[pulumi.Input[Union['K8sJobSpecArgs', 'K8sJobSpecArgsDict']]]] specs: Spec of the job owned by the cluster
@@ -305,6 +339,7 @@ class K8sJob(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 allocation_tags: Optional[pulumi.Input[str]] = None,
                  is_any_host_allowed: Optional[pulumi.Input[bool]] = None,
                  metadata: Optional[pulumi.Input[Union['K8sJobMetadataArgs', 'K8sJobMetadataArgsDict']]] = None,
                  specs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['K8sJobSpecArgs', 'K8sJobSpecArgsDict']]]]] = None,
@@ -319,6 +354,7 @@ class K8sJob(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = K8sJobArgs.__new__(K8sJobArgs)
 
+            __props__.__dict__["allocation_tags"] = allocation_tags
             __props__.__dict__["is_any_host_allowed"] = is_any_host_allowed
             if metadata is None and not opts.urn:
                 raise TypeError("Missing required property 'metadata'")
@@ -338,6 +374,7 @@ class K8sJob(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            allocation_tags: Optional[pulumi.Input[str]] = None,
             is_any_host_allowed: Optional[pulumi.Input[bool]] = None,
             metadata: Optional[pulumi.Input[Union['K8sJobMetadataArgs', 'K8sJobMetadataArgsDict']]] = None,
             specs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['K8sJobSpecArgs', 'K8sJobSpecArgsDict']]]]] = None,
@@ -350,6 +387,7 @@ class K8sJob(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] allocation_tags: Allocation tags is the simplest way to constraint containers/pods with hosts/nodes. DuploCloud/Kubernetes Orchestrator will make sure containers will run on the hosts having same allocation tags.
         :param pulumi.Input[bool] is_any_host_allowed: Defaults to `false`.
         :param pulumi.Input[Union['K8sJobMetadataArgs', 'K8sJobMetadataArgsDict']] metadata: Standard job's metadata. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
         :param pulumi.Input[Sequence[pulumi.Input[Union['K8sJobSpecArgs', 'K8sJobSpecArgsDict']]]] specs: Spec of the job owned by the cluster
@@ -359,12 +397,21 @@ class K8sJob(pulumi.CustomResource):
 
         __props__ = _K8sJobState.__new__(_K8sJobState)
 
+        __props__.__dict__["allocation_tags"] = allocation_tags
         __props__.__dict__["is_any_host_allowed"] = is_any_host_allowed
         __props__.__dict__["metadata"] = metadata
         __props__.__dict__["specs"] = specs
         __props__.__dict__["tenant_id"] = tenant_id
         __props__.__dict__["wait_for_completion"] = wait_for_completion
         return K8sJob(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="allocationTags")
+    def allocation_tags(self) -> pulumi.Output[Optional[str]]:
+        """
+        Allocation tags is the simplest way to constraint containers/pods with hosts/nodes. DuploCloud/Kubernetes Orchestrator will make sure containers will run on the hosts having same allocation tags.
+        """
+        return pulumi.get(self, "allocation_tags")
 
     @property
     @pulumi.getter(name="isAnyHostAllowed")

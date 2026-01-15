@@ -85,17 +85,17 @@ type AwsLambdaPermission struct {
 	// The AWS Lambda action you want to allow in this statement. (e.g. `lambda:InvokeFunction`)
 	Action pulumi.StringOutput `pulumi:"action"`
 	// The Event Source Token to validate.
-	EventSourceToken pulumi.StringPtrOutput `pulumi:"eventSourceToken"`
+	EventSourceToken pulumi.StringOutput `pulumi:"eventSourceToken"`
 	// Name of the Lambda function whose resource policy you are updating.
 	FunctionName pulumi.StringOutput `pulumi:"functionName"`
 	// The principal who is getting this permission.
 	Principal pulumi.StringOutput `pulumi:"principal"`
 	// Query parameter to specify function version or alias name. The permission will then apply to the specific qualified ARN.
-	Qualifier pulumi.StringPtrOutput `pulumi:"qualifier"`
+	Qualifier pulumi.StringOutput `pulumi:"qualifier"`
 	// This parameter is used for S3 and SES. The AWS account ID (without a hyphen) of the source owner.
-	SourceAccount pulumi.StringPtrOutput `pulumi:"sourceAccount"`
+	SourceAccount pulumi.StringOutput `pulumi:"sourceAccount"`
 	// When the principal is an AWS service, the ARN of the specific resource within that service to grant permission to.
-	SourceArn pulumi.StringPtrOutput `pulumi:"sourceArn"`
+	SourceArn pulumi.StringOutput `pulumi:"sourceArn"`
 	// A unique statement identifier.
 	StatementId pulumi.StringOutput `pulumi:"statementId"`
 	// The GUID of the tenant that the lambda permission will be created in.
@@ -328,8 +328,8 @@ func (o AwsLambdaPermissionOutput) Action() pulumi.StringOutput {
 }
 
 // The Event Source Token to validate.
-func (o AwsLambdaPermissionOutput) EventSourceToken() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AwsLambdaPermission) pulumi.StringPtrOutput { return v.EventSourceToken }).(pulumi.StringPtrOutput)
+func (o AwsLambdaPermissionOutput) EventSourceToken() pulumi.StringOutput {
+	return o.ApplyT(func(v *AwsLambdaPermission) pulumi.StringOutput { return v.EventSourceToken }).(pulumi.StringOutput)
 }
 
 // Name of the Lambda function whose resource policy you are updating.
@@ -343,18 +343,18 @@ func (o AwsLambdaPermissionOutput) Principal() pulumi.StringOutput {
 }
 
 // Query parameter to specify function version or alias name. The permission will then apply to the specific qualified ARN.
-func (o AwsLambdaPermissionOutput) Qualifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AwsLambdaPermission) pulumi.StringPtrOutput { return v.Qualifier }).(pulumi.StringPtrOutput)
+func (o AwsLambdaPermissionOutput) Qualifier() pulumi.StringOutput {
+	return o.ApplyT(func(v *AwsLambdaPermission) pulumi.StringOutput { return v.Qualifier }).(pulumi.StringOutput)
 }
 
 // This parameter is used for S3 and SES. The AWS account ID (without a hyphen) of the source owner.
-func (o AwsLambdaPermissionOutput) SourceAccount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AwsLambdaPermission) pulumi.StringPtrOutput { return v.SourceAccount }).(pulumi.StringPtrOutput)
+func (o AwsLambdaPermissionOutput) SourceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v *AwsLambdaPermission) pulumi.StringOutput { return v.SourceAccount }).(pulumi.StringOutput)
 }
 
 // When the principal is an AWS service, the ARN of the specific resource within that service to grant permission to.
-func (o AwsLambdaPermissionOutput) SourceArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AwsLambdaPermission) pulumi.StringPtrOutput { return v.SourceArn }).(pulumi.StringPtrOutput)
+func (o AwsLambdaPermissionOutput) SourceArn() pulumi.StringOutput {
+	return o.ApplyT(func(v *AwsLambdaPermission) pulumi.StringOutput { return v.SourceArn }).(pulumi.StringOutput)
 }
 
 // A unique statement identifier.

@@ -71,21 +71,27 @@ export class EcsTaskDefinition extends pulumi.CustomResource {
      */
     public /*out*/ readonly fullFamilyName!: pulumi.Output<string>;
     public readonly inferenceAccelerators!: pulumi.Output<outputs.EcsTaskDefinitionInferenceAccelerator[] | undefined>;
+    /**
+     * valid values are `host`, `none`, `task`
+     */
     public readonly ipcMode!: pulumi.Output<string | undefined>;
     public readonly memory!: pulumi.Output<string | undefined>;
     /**
-     * Defaults to `awsvpc`.
+     * Valid values are `bridge`,`host`,`awsvpc`,`none` Defaults to `awsvpc`.
      */
     public readonly networkMode!: pulumi.Output<string | undefined>;
+    /**
+     * Valida values are `host`, `task`
+     */
     public readonly pidMode!: pulumi.Output<string | undefined>;
     public readonly placementConstraints!: pulumi.Output<outputs.EcsTaskDefinitionPlacementConstraint[] | undefined>;
-    public readonly preventTfDestroy!: pulumi.Output<boolean | undefined>;
+    public readonly preventTfDestroy!: pulumi.Output<string | undefined>;
     public readonly proxyConfiguration!: pulumi.Output<outputs.EcsTaskDefinitionProxyConfiguration | undefined>;
     public readonly requiresAttributes!: pulumi.Output<outputs.EcsTaskDefinitionRequiresAttribute[]>;
     /**
-     * Requires compatibilities for running jobs. Valid values are [FARGATE]
+     * Requires compatibilities for running jobs. Such as EC2, FARGATE, EXTERNAL. It varies based on network mode and how AWS maps it. `FARGATE` should be used if network mode is set to `awsvpc`.
      */
-    public readonly requiresCompatibilities!: pulumi.Output<string[]>;
+    public readonly requiresCompatibilities!: pulumi.Output<string[] | undefined>;
     /**
      * The current revision of the task definition.
      */
@@ -105,7 +111,7 @@ export class EcsTaskDefinition extends pulumi.CustomResource {
      */
     public readonly tenantId!: pulumi.Output<string>;
     /**
-     * Defaults to `[]`.
+     * A JSON-encoded string containing a list of volumes that are used by the ECS task definition. Defaults to `[]`.
      */
     public readonly volumes!: pulumi.Output<string | undefined>;
 
@@ -211,19 +217,25 @@ export interface EcsTaskDefinitionState {
      */
     fullFamilyName?: pulumi.Input<string>;
     inferenceAccelerators?: pulumi.Input<pulumi.Input<inputs.EcsTaskDefinitionInferenceAccelerator>[]>;
+    /**
+     * valid values are `host`, `none`, `task`
+     */
     ipcMode?: pulumi.Input<string>;
     memory?: pulumi.Input<string>;
     /**
-     * Defaults to `awsvpc`.
+     * Valid values are `bridge`,`host`,`awsvpc`,`none` Defaults to `awsvpc`.
      */
     networkMode?: pulumi.Input<string>;
+    /**
+     * Valida values are `host`, `task`
+     */
     pidMode?: pulumi.Input<string>;
     placementConstraints?: pulumi.Input<pulumi.Input<inputs.EcsTaskDefinitionPlacementConstraint>[]>;
-    preventTfDestroy?: pulumi.Input<boolean>;
+    preventTfDestroy?: pulumi.Input<string>;
     proxyConfiguration?: pulumi.Input<inputs.EcsTaskDefinitionProxyConfiguration>;
     requiresAttributes?: pulumi.Input<pulumi.Input<inputs.EcsTaskDefinitionRequiresAttribute>[]>;
     /**
-     * Requires compatibilities for running jobs. Valid values are [FARGATE]
+     * Requires compatibilities for running jobs. Such as EC2, FARGATE, EXTERNAL. It varies based on network mode and how AWS maps it. `FARGATE` should be used if network mode is set to `awsvpc`.
      */
     requiresCompatibilities?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -245,7 +257,7 @@ export interface EcsTaskDefinitionState {
      */
     tenantId?: pulumi.Input<string>;
     /**
-     * Defaults to `[]`.
+     * A JSON-encoded string containing a list of volumes that are used by the ECS task definition. Defaults to `[]`.
      */
     volumes?: pulumi.Input<string>;
 }
@@ -261,19 +273,25 @@ export interface EcsTaskDefinitionArgs {
      */
     family: pulumi.Input<string>;
     inferenceAccelerators?: pulumi.Input<pulumi.Input<inputs.EcsTaskDefinitionInferenceAccelerator>[]>;
+    /**
+     * valid values are `host`, `none`, `task`
+     */
     ipcMode?: pulumi.Input<string>;
     memory?: pulumi.Input<string>;
     /**
-     * Defaults to `awsvpc`.
+     * Valid values are `bridge`,`host`,`awsvpc`,`none` Defaults to `awsvpc`.
      */
     networkMode?: pulumi.Input<string>;
+    /**
+     * Valida values are `host`, `task`
+     */
     pidMode?: pulumi.Input<string>;
     placementConstraints?: pulumi.Input<pulumi.Input<inputs.EcsTaskDefinitionPlacementConstraint>[]>;
-    preventTfDestroy?: pulumi.Input<boolean>;
+    preventTfDestroy?: pulumi.Input<string>;
     proxyConfiguration?: pulumi.Input<inputs.EcsTaskDefinitionProxyConfiguration>;
     requiresAttributes?: pulumi.Input<pulumi.Input<inputs.EcsTaskDefinitionRequiresAttribute>[]>;
     /**
-     * Requires compatibilities for running jobs. Valid values are [FARGATE]
+     * Requires compatibilities for running jobs. Such as EC2, FARGATE, EXTERNAL. It varies based on network mode and how AWS maps it. `FARGATE` should be used if network mode is set to `awsvpc`.
      */
     requiresCompatibilities?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -285,7 +303,7 @@ export interface EcsTaskDefinitionArgs {
      */
     tenantId: pulumi.Input<string>;
     /**
-     * Defaults to `[]`.
+     * A JSON-encoded string containing a list of volumes that are used by the ECS task definition. Defaults to `[]`.
      */
     volumes?: pulumi.Input<string>;
 }

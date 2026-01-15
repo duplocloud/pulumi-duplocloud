@@ -9,27 +9,6 @@ import * as utilities from "./utilities";
 /**
  * `duplocloud.AzureMssqlElasticpool` manages an azure mssql elastic pool in Duplo.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@duplocloud/pulumi";
- *
- * const myapp = new duplocloud.Tenant("myapp", {
- *     accountName: "myapp",
- *     planId: "default",
- * });
- * const mssqlElasticpool = new duplocloud.AzureMssqlElasticpool("mssql_elasticpool", {
- *     tenantId: myapp.tenantId,
- *     name: "mssql-ep",
- *     serverName: "mysqlserver",
- *     sku: {
- *         name: "StandardPool",
- *         capacity: 50,
- *     },
- * });
- * ```
- *
  * ## Import
  *
  * Example: Importing an existing Azure MS SQL databse
@@ -77,6 +56,10 @@ export class AzureMssqlElasticpool extends pulumi.CustomResource {
      */
     public /*out*/ readonly elasticPoolId!: pulumi.Output<string>;
     /**
+     * Maximum allowed data size in GB Defaults to `50`.
+     */
+    public readonly maxSizeGb!: pulumi.Output<number | undefined>;
+    /**
      * The name of the MS SQL elastic pool.
      */
     public readonly name!: pulumi.Output<string>;
@@ -104,6 +87,7 @@ export class AzureMssqlElasticpool extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as AzureMssqlElasticpoolState | undefined;
             resourceInputs["elasticPoolId"] = state ? state.elasticPoolId : undefined;
+            resourceInputs["maxSizeGb"] = state ? state.maxSizeGb : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["serverName"] = state ? state.serverName : undefined;
             resourceInputs["sku"] = state ? state.sku : undefined;
@@ -116,6 +100,7 @@ export class AzureMssqlElasticpool extends pulumi.CustomResource {
             if ((!args || args.tenantId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tenantId'");
             }
+            resourceInputs["maxSizeGb"] = args ? args.maxSizeGb : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["serverName"] = args ? args.serverName : undefined;
             resourceInputs["sku"] = args ? args.sku : undefined;
@@ -136,6 +121,10 @@ export interface AzureMssqlElasticpoolState {
      */
     elasticPoolId?: pulumi.Input<string>;
     /**
+     * Maximum allowed data size in GB Defaults to `50`.
+     */
+    maxSizeGb?: pulumi.Input<number>;
+    /**
      * The name of the MS SQL elastic pool.
      */
     name?: pulumi.Input<string>;
@@ -154,6 +143,10 @@ export interface AzureMssqlElasticpoolState {
  * The set of arguments for constructing a AzureMssqlElasticpool resource.
  */
 export interface AzureMssqlElasticpoolArgs {
+    /**
+     * Maximum allowed data size in GB Defaults to `50`.
+     */
+    maxSizeGb?: pulumi.Input<number>;
     /**
      * The name of the MS SQL elastic pool.
      */

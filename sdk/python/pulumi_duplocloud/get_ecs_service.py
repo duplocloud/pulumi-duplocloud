@@ -27,10 +27,13 @@ class GetEcsServiceResult:
     """
     A collection of values returned by getEcsService.
     """
-    def __init__(__self__, capacity_provider_strategies=None, dns_prfx=None, health_check_grace_period_seconds=None, id=None, index=None, is_target_group_only=None, load_balancers=None, name=None, old_task_definition_buffer_size=None, replicas=None, target_group_arns=None, task_definition=None, tenant_id=None, wait_until_targets_ready=None):
+    def __init__(__self__, capacity_provider_strategies=None, deployment_configurations=None, dns_prfx=None, health_check_grace_period_seconds=None, id=None, index=None, is_target_group_only=None, load_balancers=None, name=None, old_task_definition_buffer_size=None, placement_constraints=None, placement_strategies=None, replicas=None, target_group_arns=None, task_definition=None, tenant_id=None, wait_until_targets_ready=None):
         if capacity_provider_strategies and not isinstance(capacity_provider_strategies, list):
             raise TypeError("Expected argument 'capacity_provider_strategies' to be a list")
         pulumi.set(__self__, "capacity_provider_strategies", capacity_provider_strategies)
+        if deployment_configurations and not isinstance(deployment_configurations, list):
+            raise TypeError("Expected argument 'deployment_configurations' to be a list")
+        pulumi.set(__self__, "deployment_configurations", deployment_configurations)
         if dns_prfx and not isinstance(dns_prfx, str):
             raise TypeError("Expected argument 'dns_prfx' to be a str")
         pulumi.set(__self__, "dns_prfx", dns_prfx)
@@ -55,6 +58,12 @@ class GetEcsServiceResult:
         if old_task_definition_buffer_size and not isinstance(old_task_definition_buffer_size, int):
             raise TypeError("Expected argument 'old_task_definition_buffer_size' to be a int")
         pulumi.set(__self__, "old_task_definition_buffer_size", old_task_definition_buffer_size)
+        if placement_constraints and not isinstance(placement_constraints, list):
+            raise TypeError("Expected argument 'placement_constraints' to be a list")
+        pulumi.set(__self__, "placement_constraints", placement_constraints)
+        if placement_strategies and not isinstance(placement_strategies, list):
+            raise TypeError("Expected argument 'placement_strategies' to be a list")
+        pulumi.set(__self__, "placement_strategies", placement_strategies)
         if replicas and not isinstance(replicas, int):
             raise TypeError("Expected argument 'replicas' to be a int")
         pulumi.set(__self__, "replicas", replicas)
@@ -75,6 +84,11 @@ class GetEcsServiceResult:
     @pulumi.getter(name="capacityProviderStrategies")
     def capacity_provider_strategies(self) -> Sequence['outputs.GetEcsServiceCapacityProviderStrategyResult']:
         return pulumi.get(self, "capacity_provider_strategies")
+
+    @property
+    @pulumi.getter(name="deploymentConfigurations")
+    def deployment_configurations(self) -> Sequence['outputs.GetEcsServiceDeploymentConfigurationResult']:
+        return pulumi.get(self, "deployment_configurations")
 
     @property
     @pulumi.getter(name="dnsPrfx")
@@ -135,6 +149,22 @@ class GetEcsServiceResult:
         return pulumi.get(self, "old_task_definition_buffer_size")
 
     @property
+    @pulumi.getter(name="placementConstraints")
+    def placement_constraints(self) -> Sequence['outputs.GetEcsServicePlacementConstraintResult']:
+        """
+        Rules that are taken into consideration during task placement. Maximum number of `placement_constraints` is `10`
+        """
+        return pulumi.get(self, "placement_constraints")
+
+    @property
+    @pulumi.getter(name="placementStrategies")
+    def placement_strategies(self) -> Sequence['outputs.GetEcsServicePlacementStrategyResult']:
+        """
+        Service level strategy rules that are taken into consideration during task placement. List from top to bottom in order of precedence. The maximum number of `placement_strategy` blocks is `5`
+        """
+        return pulumi.get(self, "placement_strategies")
+
+    @property
     @pulumi.getter
     def replicas(self) -> int:
         """
@@ -179,6 +209,7 @@ class AwaitableGetEcsServiceResult(GetEcsServiceResult):
             yield self
         return GetEcsServiceResult(
             capacity_provider_strategies=self.capacity_provider_strategies,
+            deployment_configurations=self.deployment_configurations,
             dns_prfx=self.dns_prfx,
             health_check_grace_period_seconds=self.health_check_grace_period_seconds,
             id=self.id,
@@ -187,6 +218,8 @@ class AwaitableGetEcsServiceResult(GetEcsServiceResult):
             load_balancers=self.load_balancers,
             name=self.name,
             old_task_definition_buffer_size=self.old_task_definition_buffer_size,
+            placement_constraints=self.placement_constraints,
+            placement_strategies=self.placement_strategies,
             replicas=self.replicas,
             target_group_arns=self.target_group_arns,
             task_definition=self.task_definition,
@@ -211,6 +244,7 @@ def get_ecs_service(name: Optional[str] = None,
 
     return AwaitableGetEcsServiceResult(
         capacity_provider_strategies=pulumi.get(__ret__, 'capacity_provider_strategies'),
+        deployment_configurations=pulumi.get(__ret__, 'deployment_configurations'),
         dns_prfx=pulumi.get(__ret__, 'dns_prfx'),
         health_check_grace_period_seconds=pulumi.get(__ret__, 'health_check_grace_period_seconds'),
         id=pulumi.get(__ret__, 'id'),
@@ -219,6 +253,8 @@ def get_ecs_service(name: Optional[str] = None,
         load_balancers=pulumi.get(__ret__, 'load_balancers'),
         name=pulumi.get(__ret__, 'name'),
         old_task_definition_buffer_size=pulumi.get(__ret__, 'old_task_definition_buffer_size'),
+        placement_constraints=pulumi.get(__ret__, 'placement_constraints'),
+        placement_strategies=pulumi.get(__ret__, 'placement_strategies'),
         replicas=pulumi.get(__ret__, 'replicas'),
         target_group_arns=pulumi.get(__ret__, 'target_group_arns'),
         task_definition=pulumi.get(__ret__, 'task_definition'),
@@ -240,6 +276,7 @@ def get_ecs_service_output(name: Optional[pulumi.Input[str]] = None,
     __ret__ = pulumi.runtime.invoke_output('duplocloud:index/getEcsService:getEcsService', __args__, opts=opts, typ=GetEcsServiceResult)
     return __ret__.apply(lambda __response__: GetEcsServiceResult(
         capacity_provider_strategies=pulumi.get(__response__, 'capacity_provider_strategies'),
+        deployment_configurations=pulumi.get(__response__, 'deployment_configurations'),
         dns_prfx=pulumi.get(__response__, 'dns_prfx'),
         health_check_grace_period_seconds=pulumi.get(__response__, 'health_check_grace_period_seconds'),
         id=pulumi.get(__response__, 'id'),
@@ -248,6 +285,8 @@ def get_ecs_service_output(name: Optional[pulumi.Input[str]] = None,
         load_balancers=pulumi.get(__response__, 'load_balancers'),
         name=pulumi.get(__response__, 'name'),
         old_task_definition_buffer_size=pulumi.get(__response__, 'old_task_definition_buffer_size'),
+        placement_constraints=pulumi.get(__response__, 'placement_constraints'),
+        placement_strategies=pulumi.get(__response__, 'placement_strategies'),
         replicas=pulumi.get(__response__, 'replicas'),
         target_group_arns=pulumi.get(__response__, 'target_group_arns'),
         task_definition=pulumi.get(__response__, 'task_definition'),

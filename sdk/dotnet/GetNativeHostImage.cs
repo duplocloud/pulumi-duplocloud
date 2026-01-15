@@ -14,18 +14,84 @@ namespace DuploCloud.Pulumi
     {
         /// <summary>
         /// `duplocloud.getNativeHostImage` retrieves details of a specific image for a given tenant.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Pulumi = Pulumi.Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var img = Pulumi.GetNativeHostImage.Invoke(new()
+        ///     {
+        ///         TenantId = "f4bf01f0-5077-489e-aa51-95fb77049608",
+        ///         Name = "EKS-Oregon-1.32",
+        ///         Os = "AmazonLinux2023",
+        ///         K8sVersion = "1.32",
+        ///         Arch = "amd64",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetNativeHostImageResult> InvokeAsync(GetNativeHostImageArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNativeHostImageResult>("duplocloud:index/getNativeHostImage:getNativeHostImage", args ?? new GetNativeHostImageArgs(), options.WithDefaults());
 
         /// <summary>
         /// `duplocloud.getNativeHostImage` retrieves details of a specific image for a given tenant.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Pulumi = Pulumi.Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var img = Pulumi.GetNativeHostImage.Invoke(new()
+        ///     {
+        ///         TenantId = "f4bf01f0-5077-489e-aa51-95fb77049608",
+        ///         Name = "EKS-Oregon-1.32",
+        ///         Os = "AmazonLinux2023",
+        ///         K8sVersion = "1.32",
+        ///         Arch = "amd64",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetNativeHostImageResult> Invoke(GetNativeHostImageInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNativeHostImageResult>("duplocloud:index/getNativeHostImage:getNativeHostImage", args ?? new GetNativeHostImageInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// `duplocloud.getNativeHostImage` retrieves details of a specific image for a given tenant.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Pulumi = Pulumi.Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var img = Pulumi.GetNativeHostImage.Invoke(new()
+        ///     {
+        ///         TenantId = "f4bf01f0-5077-489e-aa51-95fb77049608",
+        ///         Name = "EKS-Oregon-1.32",
+        ///         Os = "AmazonLinux2023",
+        ///         K8sVersion = "1.32",
+        ///         Arch = "amd64",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetNativeHostImageResult> Invoke(GetNativeHostImageInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetNativeHostImageResult>("duplocloud:index/getNativeHostImage:getNativeHostImage", args ?? new GetNativeHostImageInvokeArgs(), options.WithDefaults());
@@ -34,20 +100,47 @@ namespace DuploCloud.Pulumi
 
     public sealed class GetNativeHostImageArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Architecture of the native host
+        /// </summary>
         [Input("arch")]
         public string? Arch { get; set; }
 
+        /// <summary>
+        /// This field is deprecated. Use k8s_version for precise filtering
+        /// </summary>
         [Input("isKubernetes")]
         public bool? IsKubernetes { get; set; }
 
+        /// <summary>
+        /// K8 version of the native host
+        /// </summary>
+        [Input("k8sVersion")]
+        public string? K8sVersion { get; set; }
+
+        /// <summary>
+        /// Name of the Duplocloud native host
+        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
+
+        /// <summary>
+        /// OS of native host
+        /// </summary>
+        [Input("os")]
+        public string? Os { get; set; }
 
         /// <summary>
         /// The tenant ID
         /// </summary>
         [Input("tenantId", required: true)]
         public string TenantId { get; set; } = null!;
+
+        /// <summary>
+        /// username associated to native host
+        /// </summary>
+        [Input("username")]
+        public string? Username { get; set; }
 
         public GetNativeHostImageArgs()
         {
@@ -57,20 +150,47 @@ namespace DuploCloud.Pulumi
 
     public sealed class GetNativeHostImageInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Architecture of the native host
+        /// </summary>
         [Input("arch")]
         public Input<string>? Arch { get; set; }
 
+        /// <summary>
+        /// This field is deprecated. Use k8s_version for precise filtering
+        /// </summary>
         [Input("isKubernetes")]
         public Input<bool>? IsKubernetes { get; set; }
 
+        /// <summary>
+        /// K8 version of the native host
+        /// </summary>
+        [Input("k8sVersion")]
+        public Input<string>? K8sVersion { get; set; }
+
+        /// <summary>
+        /// Name of the Duplocloud native host
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// OS of native host
+        /// </summary>
+        [Input("os")]
+        public Input<string>? Os { get; set; }
 
         /// <summary>
         /// The tenant ID
         /// </summary>
         [Input("tenantId", required: true)]
         public Input<string> TenantId { get; set; } = null!;
+
+        /// <summary>
+        /// username associated to native host
+        /// </summary>
+        [Input("username")]
+        public Input<string>? Username { get; set; }
 
         public GetNativeHostImageInvokeArgs()
         {
@@ -82,27 +202,45 @@ namespace DuploCloud.Pulumi
     [OutputType]
     public sealed class GetNativeHostImageResult
     {
-        public readonly string Arch;
+        /// <summary>
+        /// Architecture of the native host
+        /// </summary>
+        public readonly string? Arch;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly string ImageId;
+        /// <summary>
+        /// This field is deprecated. Use k8s_version for precise filtering
+        /// </summary>
         public readonly bool IsKubernetes;
-        public readonly string K8sVersion;
-        public readonly string Name;
-        public readonly string Os;
+        /// <summary>
+        /// K8 version of the native host
+        /// </summary>
+        public readonly string? K8sVersion;
+        /// <summary>
+        /// Name of the Duplocloud native host
+        /// </summary>
+        public readonly string? Name;
+        /// <summary>
+        /// OS of native host
+        /// </summary>
+        public readonly string? Os;
         public readonly string Region;
         public readonly ImmutableArray<Outputs.GetNativeHostImageTagResult> Tags;
         /// <summary>
         /// The tenant ID
         /// </summary>
         public readonly string TenantId;
+        /// <summary>
+        /// username associated to native host
+        /// </summary>
         public readonly string Username;
 
         [OutputConstructor]
         private GetNativeHostImageResult(
-            string arch,
+            string? arch,
 
             string id,
 
@@ -110,11 +248,11 @@ namespace DuploCloud.Pulumi
 
             bool isKubernetes,
 
-            string k8sVersion,
+            string? k8sVersion,
 
-            string name,
+            string? name,
 
-            string os,
+            string? os,
 
             string region,
 

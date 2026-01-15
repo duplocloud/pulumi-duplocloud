@@ -104,7 +104,12 @@ export class AwsDynamodbTableV2 extends pulumi.CustomResource {
      * When an item in the table is modified, StreamViewType determines what information is written to the table's stream. Valid values are `KEYS_ONLY`, `NEW_IMAGE`, `OLD_IMAGE`, `NEW_AND_OLD_IMAGES`.
      */
     public readonly streamViewType!: pulumi.Output<string>;
-    public readonly tags!: pulumi.Output<outputs.AwsDynamodbTableV2Tag[]>;
+    /**
+     * Tag support has been removed from this resource to manage tage use the `duplocloud.AwsTag` resource.
+     *
+     * @deprecated Tag support has been removed from this resource to manage tage use the `duplocloud.AwsTag` resource.
+     */
+    public readonly tags!: pulumi.Output<outputs.AwsDynamodbTableV2Tag[] | undefined>;
     /**
      * The GUID of the tenant that the dynamodb table will be created in.
      */
@@ -253,6 +258,11 @@ export interface AwsDynamodbTableV2State {
      * When an item in the table is modified, StreamViewType determines what information is written to the table's stream. Valid values are `KEYS_ONLY`, `NEW_IMAGE`, `OLD_IMAGE`, `NEW_AND_OLD_IMAGES`.
      */
     streamViewType?: pulumi.Input<string>;
+    /**
+     * Tag support has been removed from this resource to manage tage use the `duplocloud.AwsTag` resource.
+     *
+     * @deprecated Tag support has been removed from this resource to manage tage use the `duplocloud.AwsTag` resource.
+     */
     tags?: pulumi.Input<pulumi.Input<inputs.AwsDynamodbTableV2Tag>[]>;
     /**
      * The GUID of the tenant that the dynamodb table will be created in.
@@ -315,6 +325,11 @@ export interface AwsDynamodbTableV2Args {
      * When an item in the table is modified, StreamViewType determines what information is written to the table's stream. Valid values are `KEYS_ONLY`, `NEW_IMAGE`, `OLD_IMAGE`, `NEW_AND_OLD_IMAGES`.
      */
     streamViewType?: pulumi.Input<string>;
+    /**
+     * Tag support has been removed from this resource to manage tage use the `duplocloud.AwsTag` resource.
+     *
+     * @deprecated Tag support has been removed from this resource to manage tage use the `duplocloud.AwsTag` resource.
+     */
     tags?: pulumi.Input<pulumi.Input<inputs.AwsDynamodbTableV2Tag>[]>;
     /**
      * The GUID of the tenant that the dynamodb table will be created in.

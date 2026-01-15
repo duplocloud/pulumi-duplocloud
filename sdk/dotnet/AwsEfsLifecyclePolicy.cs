@@ -19,17 +19,17 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myapp = new Duplocloud.Tenant("myapp", new()
+    ///     var myapp = new Pulumi.Tenant("myapp", new()
     ///     {
     ///         AccountName = "myapp",
     ///         PlanId = "default",
     ///     });
     /// 
-    ///     var efs = new Duplocloud.AwsEfsFileSystem("efs", new()
+    ///     var efs = new Pulumi.AwsEfsFileSystem("efs", new()
     ///     {
     ///         TenantId = myapp.TenantId,
     ///         Name = "efs-test",
@@ -39,21 +39,21 @@ namespace DuploCloud.Pulumi
     ///         Encrypted = true,
     ///     });
     /// 
-    ///     var efsPolicy = new Duplocloud.AwsEfsLifecyclePolicy("efs_policy", new()
+    ///     var efsPolicy = new Pulumi.AwsEfsLifecyclePolicy("efs_policy", new()
     ///     {
     ///         TenantId = myapp.TenantId,
     ///         FileSystemId = efs.FileSystemId,
     ///         LifecyclePolicies = new[]
     ///         {
-    ///             new Duplocloud.Inputs.AwsEfsLifecyclePolicyLifecyclePolicyArgs
+    ///             new Pulumi.Inputs.AwsEfsLifecyclePolicyLifecyclePolicyArgs
     ///             {
     ///                 TransitionToIa = "AFTER_7_DAYS",
     ///             },
-    ///             new Duplocloud.Inputs.AwsEfsLifecyclePolicyLifecyclePolicyArgs
+    ///             new Pulumi.Inputs.AwsEfsLifecyclePolicyLifecyclePolicyArgs
     ///             {
     ///                 TransitionToArchive = "AFTER_14_DAYS",
     ///             },
-    ///             new Duplocloud.Inputs.AwsEfsLifecyclePolicyLifecyclePolicyArgs
+    ///             new Pulumi.Inputs.AwsEfsLifecyclePolicyLifecyclePolicyArgs
     ///             {
     ///                 TransitionToPrimaryStorageClass = "AFTER_1_ACCESS",
     ///             },

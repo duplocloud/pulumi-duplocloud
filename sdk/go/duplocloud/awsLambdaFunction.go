@@ -127,7 +127,7 @@ type AwsLambdaFunction struct {
 	pulumi.CustomResourceState
 
 	// Instruction set architecture for your Lambda function. Valid values are `[x8664]` and `[arm64]`. Default is `[x8664]`
-	Architectures pulumi.StringPtrOutput `pulumi:"architectures"`
+	Architectures pulumi.StringOutput `pulumi:"architectures"`
 	// The ARN of the lambda function.
 	Arn pulumi.StringOutput `pulumi:"arn"`
 	// Dead letter queue configuration that specifies the queue or topic where Lambda sends asynchronous events when they fail processing.
@@ -492,8 +492,8 @@ func (o AwsLambdaFunctionOutput) ToAwsLambdaFunctionOutputWithContext(ctx contex
 }
 
 // Instruction set architecture for your Lambda function. Valid values are `[x8664]` and `[arm64]`. Default is `[x8664]`
-func (o AwsLambdaFunctionOutput) Architectures() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AwsLambdaFunction) pulumi.StringPtrOutput { return v.Architectures }).(pulumi.StringPtrOutput)
+func (o AwsLambdaFunctionOutput) Architectures() pulumi.StringOutput {
+	return o.ApplyT(func(v *AwsLambdaFunction) pulumi.StringOutput { return v.Architectures }).(pulumi.StringOutput)
 }
 
 // The ARN of the lambda function.

@@ -504,7 +504,7 @@ export interface AwsCloudfrontDistributionOrigin {
      */
     originPath?: string;
     originShield?: outputs.AwsCloudfrontDistributionOriginOriginShield;
-    s3OriginConfig: outputs.AwsCloudfrontDistributionOriginS3OriginConfig;
+    s3OriginConfig?: outputs.AwsCloudfrontDistributionOriginS3OriginConfig;
 }
 
 export interface AwsCloudfrontDistributionOriginCustomHeader {
@@ -553,6 +553,9 @@ export interface AwsCloudfrontDistributionOriginOriginShield {
 }
 
 export interface AwsCloudfrontDistributionOriginS3OriginConfig {
+    /**
+     * The CloudFront origin access identity to associate with the origin. This is used to restrict access to the S3 bucket. Duplo assigns this automatically when the "use*origin*access_identity" is set to true. Any explicit value set here will be ignored and duplo created oai will be used.
+     */
     originAccessIdentity: string;
 }
 
@@ -916,6 +919,69 @@ export interface AwsLambdaFunctionTracingConfig {
     mode: string;
 }
 
+export interface AwsLaunchTemplateBlockDeviceMapping {
+    /**
+     * The name of the device to mount
+     */
+    deviceName: string;
+    /**
+     * Configure EBS volume properties.
+     */
+    ebs?: outputs.AwsLaunchTemplateBlockDeviceMappingEbs;
+    /**
+     * Suppresses the specified device included in the AMI's block device mapping.
+     */
+    noDevice?: string;
+    /**
+     * The virtual device name (ephemeralN). Instance store volumes are numbered starting from 0. An instance type with 2 available instance store volumes can specify mappings for ephemeral0 and ephemeral1. The number of available instance store volumes depends on the instance type. After you connect to the instance, you must mount the volume.
+     */
+    virtualName?: string;
+}
+
+export interface AwsLaunchTemplateBlockDeviceMappingEbs {
+    /**
+     * Whether the volume should be destroyed on instance termination Defaults to `true`.
+     */
+    deleteOnTermination?: boolean;
+    /**
+     * Enables EBS encryption on the volume. Cannot be used with snapshotId Defaults to `false`.
+     */
+    encrypted?: boolean;
+    /**
+     * The amount of provisioned IOPS. This must be set with a volumeType of 'io1/io2/gp3'
+     */
+    iops?: number;
+    /**
+     * The ARN of the KMS Key to use when encrypting the volume (if encrypted is true).
+     */
+    kmsKeyId?: string;
+    /**
+     * The Snapshot ID to mount. Should not be used if encrypted is true
+     */
+    snapshotId?: string;
+    /**
+     * The throughput to provision for a 'gp3' volume in MiB/s. Minumum value of 125 and maximum of 1000.
+     */
+    throughput?: number;
+    /**
+     * The volume initialization rate in MiB/s, with a minimum of 100 MiB/s and maximum of 300 MiB/s.
+     */
+    volumeInitializationRate?: number;
+    /**
+     * The size of the volume in gigabytes.\n
+     * 								gp2 and gp3: 1 - 16,384 GiB\n+
+     * 								io1: 4 - 16,384 GiB
+     * 								io2: 4 - 65,536 GiB
+     * 								st1 and sc1: 125 - 16,384 GiB
+     * 								standard: 1 - 1024 GiB
+     */
+    volumeSize?: number;
+    /**
+     * The volume type. Can be one of standard, gp2, gp3, io1, io2, sc1 or st1
+     */
+    volumeType?: string;
+}
+
 export interface AwsLbListenerRuleAction {
     /**
      * Information for creating an authenticate action using Cognito. Required if `type` is `authenticate-cognito`.
@@ -1214,9 +1280,43 @@ export interface AwsLoadBalancerListenerCertificate {
 }
 
 export interface AwsLoadBalancerListenerDefaultAction {
-    order: number;
+    fixedResponse?: outputs.AwsLoadBalancerListenerDefaultActionFixedResponse;
+    forward?: outputs.AwsLoadBalancerListenerDefaultActionForward;
+    redirect?: outputs.AwsLoadBalancerListenerDefaultActionRedirect;
+}
+
+export interface AwsLoadBalancerListenerDefaultActionFixedResponse {
+    /**
+     * Defaults to `text/plain`.
+     */
+    contentType?: string;
+    messageBody?: string;
+    /**
+     * Defaults to `200`.
+     */
+    statusCode?: string;
+}
+
+export interface AwsLoadBalancerListenerDefaultActionForward {
     targetGroupArn: string;
-    type: string;
+}
+
+export interface AwsLoadBalancerListenerDefaultActionRedirect {
+    /**
+     * Defaults to `#{host}`.
+     */
+    host?: string;
+    /**
+     * Defaults to `/#{path}`.
+     */
+    path?: string;
+    port: string;
+    protocol: string;
+    /**
+     * Defaults to `#{query}`.
+     */
+    query?: string;
+    statusCode: string;
 }
 
 export interface AwsLoadBalancerTag {
@@ -1356,6 +1456,79 @@ export interface AzureAvailabilitySetVirtualMachine {
     id: string;
 }
 
+export interface AzureCosmosDbAccountBackupPolicy {
+    /**
+     * Backup interval in minutes. Can be configured when type is set to Periodic
+     */
+    backupInterval?: number;
+    /**
+     * Backup retention interval in hours
+     */
+    backupRetentionInterval?: number;
+    /**
+     * Backup storage redundancy type. Valid values are Geo, Local, Zone. Defaults to Geo.
+     */
+    backupStorageRedundancy: string;
+    /**
+     * The continuous mode tier for the Cosmos DB account. This is only applicable if the backup policy type is Continuous.
+     */
+    continuousModeTier: string;
+    /**
+     * The type of backup. Possible values are Periodic and Continuous
+     * 					> ⚠️ **Note:**:
+     * 					> Update from Periodic to Continuous type is allowed. To change from Periodic to Continuous resource need to be recreated Defaults to `Periodic`.
+     */
+    type?: string;
+}
+
+export interface AzureCosmosDbAccountCapability {
+    /**
+     * Name of the Cosmos DB capability, for example, 'EnableServerless'.
+     */
+    name: string;
+}
+
+export interface AzureCosmosDbAccountConsistencyPolicy {
+    /**
+     * Specify the default consistency level and configuration settings of the Cosmos DB account. Possible values include: 'Eventual', 'Session', 'BoundedStaleness','Strong', 'ConsistentPrefix'
+     */
+    defaultConsistencyLevel?: string;
+    /**
+     * When used with the 'Bounded Staleness' consistency level, this value represents the time amount of staleness (in seconds) tolerated. The accepted range for this value is 5 - 86400 (1 day). Required when consistencyLevel is set to BoundedStaleness.
+     */
+    maxIntervalInSeconds: number;
+    /**
+     * When used with the 'Bounded Staleness' consistency level, this value represents the number of stale requests tolerated. The accepted range for this value is 10 – 2147483647. Defaults to 100. Required when 'consistency_level' is set to 'BoundedStaleness'
+     */
+    maxStalenessPrefix: number;
+}
+
+export interface AzureCosmosDbAccountGeoLocation {
+    /**
+     * The failover priority of the region. A failover priority of 0 indicates a write region. The maximum value for a failover priority = (total number of regions - 1). Failover priority values must be unique for each of the regions in which the database account exists. Changing this causes the location to be re-provisioned and cannot be changed for the location with failover priority 0
+     */
+    failoverPriority: number;
+    /**
+     * Should zone redundancy be enabled for this region? Defaults to `false`.
+     */
+    isZoneRedundant?: boolean;
+    /**
+     * The name of the Azure region to host replicated data
+     */
+    locationName: string;
+}
+
+export interface AzureCosmosDbAccountVirtualNetworkRule {
+    /**
+     * If set to true, the specified subnet will be added as a virtual network rule even if its CosmosDB service endpoint is not active Defaults to `false`.
+     */
+    ignoreMissingVnetServiceEndpoint?: boolean;
+    /**
+     * The ID of the subnet to allow access to this CosmosDB account. This should be in the format /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}
+     */
+    subnetId: string;
+}
+
 export interface AzureK8NodePoolNodeLabel {
     key: string;
     value: string;
@@ -1376,6 +1549,25 @@ export interface AzureK8NodePoolScalePriority {
     spotMaxPrice: number;
 }
 
+export interface AzureK8sClusterActiveDirectoryConfig {
+    /**
+     * The Azure Active Directory tenant ID.
+     */
+    adTenantId: string;
+    /**
+     * List of Azure AD group object IDs that have admin access to the AKS cluster.
+     */
+    adminGroupObjectIds: string[];
+    /**
+     * Enable Azure Active Directory integration. Defaults to `false`.
+     */
+    enableAd?: boolean;
+    /**
+     * Enable Azure RBAC for Kubernetes authorization. Defaults to `false`.
+     */
+    enableRbac?: boolean;
+}
+
 export interface AzureMssqlDatabaseSku {
     capacity: number;
     name: string;
@@ -1386,6 +1578,33 @@ export interface AzureMssqlElasticpoolSku {
     capacity: number;
     name: string;
     tier: string;
+}
+
+export interface AzureMssqlServerActiveDirectoryAdministrator {
+    /**
+     * Specifies whether only AD Users and administrators can be used to login (`true`) or also local database users (`false`).
+     */
+    adAuthenticationOnly?: boolean;
+    /**
+     * Implicitly inferred. Valid value ActiveDirectory
+     */
+    administratorType?: string;
+    /**
+     * The login name of the principal to set as the server administrator
+     */
+    login: string;
+    /**
+     * The ID of the principal to set as the server administrator
+     */
+    objectId: string;
+    /**
+     * Specify the type of the principal: `User`, `Group`, or `Application`
+     */
+    principalType?: string;
+    /**
+     * The Azure Tenant ID
+     */
+    tenantId: string;
 }
 
 export interface AzurePrivateEndpointPrivateLinkServiceConnection {
@@ -1816,7 +2035,7 @@ export interface AzureVirtualMachineVolume {
 
 export interface AzureVmMaintenanceConfigurationWindow {
     /**
-     * The duration of the maintenance window in HH:mm format.
+     * The duration of the maintenance window in HH:mm format. Should be less than or equal to 3 Hrs
      */
     duration: string;
     /**
@@ -1842,11 +2061,25 @@ export interface ByohTag {
     value: string;
 }
 
+export interface DuploServiceInitContainerDockerImage {
+    /**
+     * Init container docker image.
+     */
+    image: string;
+    /**
+     * Init container name.
+     */
+    name: string;
+}
+
 export interface DuploServiceLbconfigsLbconfig {
     /**
      * Applicable for internal lb.
      */
     allowGlobalAccess: boolean;
+    /**
+     * Is used for communication between the load balancer and the target instances. This field is used to set protocol version for ALB load balancer. Only applicable when protocol is HTTP or HTTPS. The protocol version. Specify GRPC to send requests to targets using gRPC. Specify HTTP2 to send requests to targets using HTTP/2. The default is HTTP1, which sends requests to targets using HTTP/1.1
+     */
     backendProtocolVersion: string;
     /**
      * The ARN of an ACM certificate to associate with this load balancer.  Only applicable for HTTPS.
@@ -1930,6 +2163,15 @@ export interface DuploServiceLbconfigsLbconfig {
     port: string;
     /**
      * The backend protocol associated with this load balancer configuration.
+     * Supported protocol based on lb_type:
+     *
+     * 	- `0 (ELB)`: HTTP, HTTPS, TCP, UDP
+     * 	- `1 (ALB)` : HTTP, HTTPS
+     * 	- `3 (K8S Service w/ Cluster IP)`: TCP, UDP
+     * 	- `4 (K8S Service w/ Node Port)` : TCP, UDP
+     * 	- `5 (Azure Shared Application Gateway)`: HTTP, HTTPS
+     * 	- `6 (NLB)` : TCP, UDP, TLS
+     * 	- `7 (Target Group Only)` : HTTP, HTTPS, TCP, UDP, TLS
      */
     protocol: string;
     /**
@@ -2012,13 +2254,51 @@ export interface EcsServiceCapacityProviderStrategy {
      */
     base: number;
     /**
-     * Name of the capacity provider.
+     * Name of the capacity provider. Should be one of:
+     *  	- FARGATE
+     *  	- FARGATE_SPOT
+     *  	- ASG fullname: Used when asg created with agent platform ECS
      */
     capacityProvider: string;
     /**
      * The relative percentage of the total number of launched tasks that should use the specified capacity provider.
      */
     weight: number;
+}
+
+export interface EcsServiceDeploymentConfiguration {
+    alarms?: outputs.EcsServiceDeploymentConfigurationAlarm[];
+    /**
+     * Enables ECS deployment circuit breaker to stop deployments on failures.
+     */
+    enableCircuitBreaker?: boolean;
+    /**
+     * Specifies the maximum percentage of tasks that can run at once during a deployment.
+     */
+    maximumPercent: number;
+    /**
+     * Specifies the minimum percentage of tasks that must remain in the RUNNING state during a deployment
+     */
+    minimumHealthyPercent: number;
+    /**
+     * Enables automatic rollback when the circuit breaker detects a failed deployment.
+     */
+    rollbackCircuitBreaker?: boolean;
+}
+
+export interface EcsServiceDeploymentConfigurationAlarm {
+    /**
+     * Enables or disables CloudWatch alarm monitoring during deployments.
+     */
+    enable?: boolean;
+    /**
+     * Names of CloudWatch alarms that ECS monitors during deployments.
+     */
+    names?: string[];
+    /**
+     * Automatically rolls back the deployment if any configured CloudWatch alarm enters ALARM state.
+     */
+    rollback?: boolean;
 }
 
 export interface EcsServiceLoadBalancer {
@@ -2117,6 +2397,28 @@ export interface EcsServiceLoadBalancerHealthCheckConfig {
     unhealthyThresholdCount: number;
 }
 
+export interface EcsServicePlacementConstraint {
+    /**
+     * Cluster Query Language expression to apply to the constraint. Does not need to be specified for the distinctInstance type. For more information, see [Cluster Query Language in the Amazon EC2 Container Service Developer Guide](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html).
+     */
+    expression?: string;
+    /**
+     * Type of constraint. The only valid values at this time are `memberOf` and `distinctInstance`
+     */
+    type: string;
+}
+
+export interface EcsServicePlacementStrategy {
+    /**
+     * For the spread placement strategy, valid values are instanceId, or any platform or custom attribute that is applied to a container instance. For the binpack type, valid values are memory and cpu. For the random type, this attribute is not needed. For more information, see [PlacementStrategy](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PlacementStrategy.html)
+     */
+    field?: string;
+    /**
+     * Type of placement strategy. Must be one of: `binpack`, `random`, or `spread`
+     */
+    type: string;
+}
+
 export interface EcsTaskDefinitionInferenceAccelerator {
     deviceName: string;
     deviceType: string;
@@ -2206,7 +2508,7 @@ export interface GcpInfraMaintenanceWindowRecurringWindow {
 
 export interface GcpInfraSecurityRulePortsAndProtocol {
     /**
-     * The list of ports to which this rule applies. This field is only applicable for UDP, TCP and SCTP protocol.
+     * The list of ports to which this rule applies. This field is only applicable for UDP, TCP and SCTP protocol. To apply all ports dont specify the field
      */
     ports?: string[];
     /**
@@ -2432,6 +2734,17 @@ export interface GcpSchedulerJobPubsubTarget {
     topicName: string;
 }
 
+export interface GcpSqlDatabaseInstanceDatabaseFlag {
+    /**
+     * The name of the database flag.
+     */
+    name: string;
+    /**
+     * The value of the database flag.
+     */
+    value: string;
+}
+
 export interface GcpStorageBucketV2DefaultEncryption {
     /**
      * Default encryption method.  Must be one of: `None`, `Sse`, `AwsKms`, `TenantKms`. Defaults to `Sse`.
@@ -2441,7 +2754,7 @@ export interface GcpStorageBucketV2DefaultEncryption {
 
 export interface GcpTenantSecurityRulePortsAndProtocol {
     /**
-     * The list of ports to which this rule applies. This field is only applicable for UDP, TCP and SCTP protocol.
+     * The list of ports to which this rule applies. This field is only applicable for UDP, TCP and SCTP protocol. To apply all ports dont specify the field
      */
     ports?: string[];
     /**
@@ -2453,12 +2766,21 @@ export interface GcpTenantSecurityRulePortsAndProtocol {
 export interface GetAsgProfilesAsgProfile {
     /**
      * The numeric ID of the container agent pool that this host is added to.
+     *  - 0: Linux Docker/Native
+     * - 	4: None
+     * - 5: Docker Windows
+     * - 7: EKS Linux
+     * - 8: ECS
      */
     agentPlatform?: number;
     /**
      * Whether or not to allocate a public IP.
      */
     allocatedPublicIp?: boolean;
+    /**
+     * The ASG arn.
+     */
+    arn: string;
     /**
      * Base64 encoded EC2 user data to associated with the host.
      */
@@ -2511,8 +2833,8 @@ export interface GetAsgProfilesAsgProfile {
      * The numeric ID of the keypair type being used.Should be one of:
      *
      *    - `0` : Default
-     *    - `1` : ED25519
-     *    - `2` : RSA (deprecated - some operating systems no longer support it)
+     *    - `1` : RSA (deprecated - some operating systems no longer support it)
+     *    - `2` : ED25519
      */
     keypairType: number;
     /**
@@ -2703,6 +3025,77 @@ export interface GetAzureAvailabilitySetVirtualMachine {
     id: string;
 }
 
+export interface GetAzureCosmosDbAccountBackupPolicy {
+    /**
+     * Backup interval in minutes
+     */
+    backupInterval: number;
+    /**
+     * Backup retention interval in hours
+     */
+    backupRetentionInterval: number;
+    /**
+     * Backup storage redundancy type. Valid values are Geo, Local, Zone. Defaults to Geo.
+     */
+    backupStorageRedundancy: string;
+    /**
+     * The continuous mode tier for the Cosmos DB account. This is only applicable if the backup policy type is Continuous.
+     */
+    continuousModeTier: string;
+    /**
+     * Valid values Periodic, Continuous
+     */
+    type: string;
+}
+
+export interface GetAzureCosmosDbAccountCapability {
+    /**
+     * Name of the Cosmos DB capability, for example, 'EnableServerless'.
+     */
+    name: string;
+}
+
+export interface GetAzureCosmosDbAccountConsistencyPolicy {
+    /**
+     * Specify the default consistency level and configuration settings of the Cosmos DB account. Possible values include: 'Eventual', 'Session', 'BoundedStaleness','Strong', 'ConsistentPrefix'
+     */
+    defaultConsistencyLevel: string;
+    /**
+     * Max amount of time staleness (in seconds) is tolerated
+     */
+    maxIntervalInSeconds: number;
+    /**
+     * Max number of stale requests tolerated. Accepted range for this values 1 to 2147483647
+     */
+    maxStalenessPrefix: number;
+}
+
+export interface GetAzureCosmosDbAccountGeoLocation {
+    /**
+     * The failover priority of the region. A failover priority of 0 indicates a write region. The maximum value for a failover priority = (total number of regions - 1). Failover priority values must be unique for each of the regions in which the database account exists. Changing this causes the location to be re-provisioned and cannot be changed for the location with failover priority 0
+     */
+    failoverPriority: number;
+    /**
+     * Should zone redundancy be enabled for this region?
+     */
+    isZoneRedundant: boolean;
+    /**
+     * The name of the Azure region to host replicated data
+     */
+    locationName: string;
+}
+
+export interface GetAzureCosmosDbAccountVirtualNetworkRule {
+    /**
+     * If set to true, the specified subnet will be added as a virtual network rule even if its CosmosDB service endpoint is not active
+     */
+    ignoreMissingVnetServiceEndpoint: boolean;
+    /**
+     * The ID of the subnet to allow access to this CosmosDB account. This should be in the format /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}
+     */
+    subnetId: string;
+}
+
 export interface GetDuploServiceLbconfigsService {
     /**
      * The ARN (or ID) of the cloud load balancer (if applicable).
@@ -2728,6 +3121,9 @@ export interface GetDuploServiceLbconfigsServiceLbconfig {
      * Applicable for internal lb.
      */
     allowGlobalAccess: boolean;
+    /**
+     * Is used for communication between the load balancer and the target instances. This field is used to set protocol version for ALB load balancer. Only applicable when protocol is HTTP or HTTPS. The protocol version. Specify GRPC to send requests to targets using gRPC. Specify HTTP2 to send requests to targets using HTTP/2. The default is HTTP1, which sends requests to targets using HTTP/1.1
+     */
     backendProtocolVersion: string;
     /**
      * The ARN of an ACM certificate to associate with this load balancer.  Only applicable for HTTPS.
@@ -2811,6 +3207,15 @@ export interface GetDuploServiceLbconfigsServiceLbconfig {
     port: string;
     /**
      * The backend protocol associated with this load balancer configuration.
+     * Supported protocol based on lb_type:
+     *
+     * 	- `0 (ELB)`: HTTP, HTTPS, TCP, UDP
+     * 	- `1 (ALB)` : HTTP, HTTPS
+     * 	- `3 (K8S Service w/ Cluster IP)`: TCP, UDP
+     * 	- `4 (K8S Service w/ Node Port)` : TCP, UDP
+     * 	- `5 (Azure Shared Application Gateway)`: HTTP, HTTPS
+     * 	- `6 (NLB)` : TCP, UDP, TLS
+     * 	- `7 (Target Group Only)` : HTTP, HTTPS, TCP, UDP, TLS
      */
     protocol: string;
     /**
@@ -2934,13 +3339,51 @@ export interface GetEcsServiceCapacityProviderStrategy {
      */
     base: number;
     /**
-     * Name of the capacity provider.
+     * Name of the capacity provider. Should be one of:
+     *  	- FARGATE
+     *  	- FARGATE_SPOT
+     *  	- ASG fullname: Used when asg created with agent platform ECS
      */
     capacityProvider: string;
     /**
      * The relative percentage of the total number of launched tasks that should use the specified capacity provider.
      */
     weight: number;
+}
+
+export interface GetEcsServiceDeploymentConfiguration {
+    alarms: outputs.GetEcsServiceDeploymentConfigurationAlarm[];
+    /**
+     * Enables ECS deployment circuit breaker to stop deployments on failures.
+     */
+    enableCircuitBreaker: boolean;
+    /**
+     * Specifies the maximum percentage of tasks that can run at once during a deployment.
+     */
+    maximumPercent: number;
+    /**
+     * Specifies the minimum percentage of tasks that must remain in the RUNNING state during a deployment
+     */
+    minimumHealthyPercent: number;
+    /**
+     * Enables automatic rollback when the circuit breaker detects a failed deployment.
+     */
+    rollbackCircuitBreaker: boolean;
+}
+
+export interface GetEcsServiceDeploymentConfigurationAlarm {
+    /**
+     * Enables or disables CloudWatch alarm monitoring during deployments.
+     */
+    enable: boolean;
+    /**
+     * Names of CloudWatch alarms that ECS monitors during deployments.
+     */
+    names: string[];
+    /**
+     * Automatically rolls back the deployment if any configured CloudWatch alarm enters ALARM state.
+     */
+    rollback: boolean;
 }
 
 export interface GetEcsServiceLoadBalancer {
@@ -3039,8 +3482,31 @@ export interface GetEcsServiceLoadBalancerHealthCheckConfig {
     unhealthyThresholdCount: number;
 }
 
+export interface GetEcsServicePlacementConstraint {
+    /**
+     * Cluster Query Language expression to apply to the constraint. Does not need to be specified for the distinctInstance type. For more information, see [Cluster Query Language in the Amazon EC2 Container Service Developer Guide](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html).
+     */
+    expression: string;
+    /**
+     * Type of constraint. The only valid values at this time are `memberOf` and `distinctInstance`
+     */
+    type: string;
+}
+
+export interface GetEcsServicePlacementStrategy {
+    /**
+     * For the spread placement strategy, valid values are instanceId, or any platform or custom attribute that is applied to a container instance. For the binpack type, valid values are memory and cpu. For the random type, this attribute is not needed. For more information, see [PlacementStrategy](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PlacementStrategy.html)
+     */
+    field: string;
+    /**
+     * Type of placement strategy. Must be one of: `binpack`, `random`, or `spread`
+     */
+    type: string;
+}
+
 export interface GetEcsServicesService {
     capacityProviderStrategies: outputs.GetEcsServicesServiceCapacityProviderStrategy[];
+    deploymentConfigurations: outputs.GetEcsServicesServiceDeploymentConfiguration[];
     /**
      * The DNS prefix to assign to this service's load balancer.
      */
@@ -3064,6 +3530,14 @@ export interface GetEcsServicesService {
      */
     oldTaskDefinitionBufferSize: number;
     /**
+     * Rules that are taken into consideration during task placement. Maximum number of `placementConstraints` is `10`
+     */
+    placementConstraints: outputs.GetEcsServicesServicePlacementConstraint[];
+    /**
+     * Service level strategy rules that are taken into consideration during task placement. List from top to bottom in order of precedence. The maximum number of `placementStrategy` blocks is `5`
+     */
+    placementStrategies: outputs.GetEcsServicesServicePlacementStrategy[];
+    /**
      * The number of container replicas to create.
      */
     replicas: number;
@@ -3084,13 +3558,51 @@ export interface GetEcsServicesServiceCapacityProviderStrategy {
      */
     base: number;
     /**
-     * Name of the capacity provider.
+     * Name of the capacity provider. Should be one of:
+     *  	- FARGATE
+     *  	- FARGATE_SPOT
+     *  	- ASG fullname: Used when asg created with agent platform ECS
      */
     capacityProvider: string;
     /**
      * The relative percentage of the total number of launched tasks that should use the specified capacity provider.
      */
     weight: number;
+}
+
+export interface GetEcsServicesServiceDeploymentConfiguration {
+    alarms: outputs.GetEcsServicesServiceDeploymentConfigurationAlarm[];
+    /**
+     * Enables ECS deployment circuit breaker to stop deployments on failures.
+     */
+    enableCircuitBreaker: boolean;
+    /**
+     * Specifies the maximum percentage of tasks that can run at once during a deployment.
+     */
+    maximumPercent: number;
+    /**
+     * Specifies the minimum percentage of tasks that must remain in the RUNNING state during a deployment
+     */
+    minimumHealthyPercent: number;
+    /**
+     * Enables automatic rollback when the circuit breaker detects a failed deployment.
+     */
+    rollbackCircuitBreaker: boolean;
+}
+
+export interface GetEcsServicesServiceDeploymentConfigurationAlarm {
+    /**
+     * Enables or disables CloudWatch alarm monitoring during deployments.
+     */
+    enable: boolean;
+    /**
+     * Names of CloudWatch alarms that ECS monitors during deployments.
+     */
+    names: string[];
+    /**
+     * Automatically rolls back the deployment if any configured CloudWatch alarm enters ALARM state.
+     */
+    rollback: boolean;
 }
 
 export interface GetEcsServicesServiceLoadBalancer {
@@ -3187,6 +3699,28 @@ export interface GetEcsServicesServiceLoadBalancerHealthCheckConfig {
     healthyThresholdCount: number;
     httpSuccessCode: string;
     unhealthyThresholdCount: number;
+}
+
+export interface GetEcsServicesServicePlacementConstraint {
+    /**
+     * Cluster Query Language expression to apply to the constraint. Does not need to be specified for the distinctInstance type. For more information, see [Cluster Query Language in the Amazon EC2 Container Service Developer Guide](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html).
+     */
+    expression: string;
+    /**
+     * Type of constraint. The only valid values at this time are `memberOf` and `distinctInstance`
+     */
+    type: string;
+}
+
+export interface GetEcsServicesServicePlacementStrategy {
+    /**
+     * For the spread placement strategy, valid values are instanceId, or any platform or custom attribute that is applied to a container instance. For the binpack type, valid values are memory and cpu. For the random type, this attribute is not needed. For more information, see [PlacementStrategy](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PlacementStrategy.html)
+     */
+    field: string;
+    /**
+     * Type of placement strategy. Must be one of: `binpack`, `random`, or `spread`
+     */
+    type: string;
 }
 
 export interface GetEcsTaskDefinitionInferenceAccelerator {
@@ -3735,6 +4269,10 @@ export interface GetInfrastructuresData {
      * The name of the infrastructure.
      */
     infraName: string;
+    /**
+     * The NAT IPs for the subnet.
+     */
+    natIps: string[];
     /**
      * The cloud provider region.  The Duplo portal must have already been configured to support this region.
      */
@@ -10235,14 +10773,29 @@ export interface GetNativeHostImageTag {
 }
 
 export interface GetNativeHostImagesImage {
+    /**
+     * Architecture of the native host
+     */
     arch: string;
     imageId: string;
     isKubernetes: boolean;
+    /**
+     * K8 version of the native host
+     */
     k8sVersion: string;
+    /**
+     * Name of the Duplocloud native host
+     */
     name: string;
+    /**
+     * OS of native host
+     */
     os: string;
     region: string;
     tags: outputs.GetNativeHostImagesImageTag[];
+    /**
+     * username associated to native host
+     */
     username: string;
 }
 
@@ -10254,6 +10807,11 @@ export interface GetNativeHostImagesImageTag {
 export interface GetNativeHostsHost {
     /**
      * The numeric ID of the container agent pool that this host is added to.
+     *  - 0: Linux Docker/Native
+     * - 	4: None
+     * - 5: Docker Windows
+     * - 7: EKS Linux
+     * - 8: ECS
      */
     agentPlatform?: number;
     /**
@@ -10300,8 +10858,8 @@ export interface GetNativeHostsHost {
      * The numeric ID of the keypair type being used.Should be one of:
      *
      *    - `0` : Default
-     *    - `1` : ED25519
-     *    - `2` : RSA (deprecated - some operating systems no longer support it)
+     *    - `1` : RSA (deprecated - some operating systems no longer support it)
+     *    - `2` : ED25519
      */
     keypairType: number;
     /**
@@ -10680,6 +11238,17 @@ export interface GetPlansDataWafInfo {
     name: string;
 }
 
+export interface GetSystemFeaturesAppConfig {
+    key: string;
+    type: string;
+    value: string;
+}
+
+export interface GetSystemFeaturesEksVersion {
+    defaultVersion: string;
+    supportedVersions: string[];
+}
+
 export interface GetTenantAwsKmsKeysKey {
     keyArn: string;
     keyId: string;
@@ -10912,9 +11481,15 @@ export interface K8HelmReleaseChart {
 
 export interface K8IngressLbconfig {
     /**
-     * The ARN of an ACM certificate to associate with this load balancer.  Only applicable for HTTPS.
+     * The ARN of an ACM certificate to associate with this load balancer.  Only applicable for HTTPS. This field has been deprecated use certificate_arns
+     *
+     * @deprecated This field has been deprecated use certificate_arns
      */
-    certificateArn: string;
+    certificateArn?: string;
+    /**
+     * The list of ARN of an ACM certificate to associate with this load balancer.  Only applicable for HTTPS.
+     */
+    certificateArns?: string[];
     /**
      * The DNS prefix to expose services using Route53 domain.
      */
@@ -10931,6 +11506,10 @@ export interface K8IngressLbconfig {
      * Whether or not to create an internal load balancer.
      */
     isInternal: boolean;
+    /**
+     * Port override for the load balancer. Currently supported for Azure
+     */
+    portOverride: string;
 }
 
 export interface K8IngressRule {
@@ -17754,6 +18333,21 @@ export interface TenantConfigMetadata {
 export interface TenantConfigSetting {
     key: string;
     value: string;
+}
+
+export interface TenantKmsKm {
+    arn: string;
+    /**
+     * The ID of this resource.
+     */
+    id: string;
+    name: string;
+}
+
+export interface TenantKmsUnspecifiedKmsKey {
+    arn: string;
+    id: string;
+    name: string;
 }
 
 export interface TenantPolicy {

@@ -19,17 +19,17 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myapp = new Duplocloud.Tenant("myapp", new()
+    ///     var myapp = new Pulumi.Tenant("myapp", new()
     ///     {
     ///         AccountName = "myapp",
     ///         PlanId = "default",
     ///     });
     /// 
-    ///     var lt = new Duplocloud.AwsLaunchTemplate("lt", new()
+    ///     var lt = new Pulumi.AwsLaunchTemplate("lt", new()
     ///     {
     ///         TenantId = myapp.TenantId,
     ///         Name = "launch-template-name",
@@ -37,6 +37,31 @@ namespace DuploCloud.Pulumi
     ///         Version = "1",
     ///         VersionDescription = "launch template description",
     ///         Ami = "ami-123test",
+    ///     });
+    /// 
+    ///     var name = new Pulumi.AwsLaunchTemplate("name", new()
+    ///     {
+    ///         TenantId = myapp.TenantId,
+    ///         InstanceType = "t3a.small",
+    ///         Name = "launch-template-name",
+    ///         VersionDescription = "launch template block device mapping",
+    ///         Version = "2",
+    ///         BlockDeviceMappings = new[]
+    ///         {
+    ///             new Pulumi.Inputs.AwsLaunchTemplateBlockDeviceMappingArgs
+    ///             {
+    ///                 DeviceName = "/dev/xvda",
+    ///                 Ebs = new Pulumi.Inputs.AwsLaunchTemplateBlockDeviceMappingEbsArgs
+    ///                 {
+    ///                     VolumeSize = 30,
+    ///                     VolumeType = "gp3",
+    ///                     DeleteOnTermination = true,
+    ///                     Encrypted = false,
+    ///                     Iops = 3000,
+    ///                 },
+    ///                 VirtualName = "ephemeral1",
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });
@@ -50,7 +75,7 @@ namespace DuploCloud.Pulumi
     /// 
     ///  - *NAME* is the name of the AWS launch template
     /// 
-    ///  - *VERSION* available version of launch template
+    ///  - *VERSION* available version of launch template , it is optional, use if needed to import specific version of available launch template
     /// 
     /// ```sh
     /// $ pulumi import duplocloud:index/awsLaunchTemplate:AwsLaunchTemplate lt *TENANT_ID*/launch-template/*NAME*/*VERSION*
@@ -64,6 +89,12 @@ namespace DuploCloud.Pulumi
         /// </summary>
         [Output("ami")]
         public Output<string> Ami { get; private set; } = null!;
+
+        /// <summary>
+        /// Configure additional volumes of the instance besides specified by the AMI
+        /// </summary>
+        [Output("blockDeviceMappings")]
+        public Output<ImmutableArray<Outputs.AwsLaunchTemplateBlockDeviceMapping>> BlockDeviceMappings { get; private set; } = null!;
 
         /// <summary>
         /// The current default version of the launch template.
@@ -96,10 +127,10 @@ namespace DuploCloud.Pulumi
         public Output<string> TenantId { get; private set; } = null!;
 
         /// <summary>
-        /// Any of the existing version of the launch template
+        /// Any of the existing version of the launch template, if not provided, the latest version will be used
         /// </summary>
         [Output("version")]
-        public Output<string> Version { get; private set; } = null!;
+        public Output<string?> Version { get; private set; } = null!;
 
         /// <summary>
         /// The version of the launch template
@@ -163,6 +194,18 @@ namespace DuploCloud.Pulumi
         [Input("ami")]
         public Input<string>? Ami { get; set; }
 
+        [Input("blockDeviceMappings")]
+        private InputList<Inputs.AwsLaunchTemplateBlockDeviceMappingArgs>? _blockDeviceMappings;
+
+        /// <summary>
+        /// Configure additional volumes of the instance besides specified by the AMI
+        /// </summary>
+        public InputList<Inputs.AwsLaunchTemplateBlockDeviceMappingArgs> BlockDeviceMappings
+        {
+            get => _blockDeviceMappings ?? (_blockDeviceMappings = new InputList<Inputs.AwsLaunchTemplateBlockDeviceMappingArgs>());
+            set => _blockDeviceMappings = value;
+        }
+
         /// <summary>
         /// Asg instance type to be used to update the version from the current version
         /// </summary>
@@ -182,10 +225,10 @@ namespace DuploCloud.Pulumi
         public Input<string> TenantId { get; set; } = null!;
 
         /// <summary>
-        /// Any of the existing version of the launch template
+        /// Any of the existing version of the launch template, if not provided, the latest version will be used
         /// </summary>
-        [Input("version", required: true)]
-        public Input<string> Version { get; set; } = null!;
+        [Input("version")]
+        public Input<string>? Version { get; set; }
 
         /// <summary>
         /// The version of the launch template
@@ -206,6 +249,18 @@ namespace DuploCloud.Pulumi
         /// </summary>
         [Input("ami")]
         public Input<string>? Ami { get; set; }
+
+        [Input("blockDeviceMappings")]
+        private InputList<Inputs.AwsLaunchTemplateBlockDeviceMappingGetArgs>? _blockDeviceMappings;
+
+        /// <summary>
+        /// Configure additional volumes of the instance besides specified by the AMI
+        /// </summary>
+        public InputList<Inputs.AwsLaunchTemplateBlockDeviceMappingGetArgs> BlockDeviceMappings
+        {
+            get => _blockDeviceMappings ?? (_blockDeviceMappings = new InputList<Inputs.AwsLaunchTemplateBlockDeviceMappingGetArgs>());
+            set => _blockDeviceMappings = value;
+        }
 
         /// <summary>
         /// The current default version of the launch template.
@@ -238,7 +293,7 @@ namespace DuploCloud.Pulumi
         public Input<string>? TenantId { get; set; }
 
         /// <summary>
-        /// Any of the existing version of the launch template
+        /// Any of the existing version of the launch template, if not provided, the latest version will be used
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

@@ -14,43 +14,6 @@ import (
 
 // `AzureTenantKeyVault` manages a azure Key Vault in DuploCloud.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/duplocloud/pulumi-duplocloud/sdk/go/duplocloud"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			tenant, err := duplocloud.NewTenant(ctx, "tenant", &duplocloud.TenantArgs{
-//				AccountName: pulumi.String("test"),
-//				PlanId:      pulumi.String("test"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = duplocloud.NewAzureTenantKeyVault(ctx, "kv", &duplocloud.AzureTenantKeyVaultArgs{
-//				TenantId:                tenant.TenantId,
-//				Name:                    pulumi.String("tst-kv001"),
-//				SkuName:                 pulumi.String("standard"),
-//				PurgeProtectionEnabled:  pulumi.Bool(true),
-//				SoftDeleteRetentionDays: pulumi.Int(90),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Example: Importing an existing Azure Tenant Key Vault
@@ -73,6 +36,8 @@ type AzureTenantKeyVault struct {
 	EnabledForDiskEncryption pulumi.BoolOutput `pulumi:"enabledForDiskEncryption"`
 	// Specifies the name of the Key Vault.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Purge the Key Vault. Defaults to `false`.
+	Purge pulumi.BoolPtrOutput `pulumi:"purge"`
 	// Is Purge Protection enabled for this Key Vault?
 	PurgeProtectionEnabled pulumi.BoolOutput `pulumi:"purgeProtectionEnabled"`
 	// The Name of the SKU used for this Key Vault. Possible values are `standard` and `premium`.
@@ -127,6 +92,8 @@ type azureTenantKeyVaultState struct {
 	EnabledForDiskEncryption *bool `pulumi:"enabledForDiskEncryption"`
 	// Specifies the name of the Key Vault.
 	Name *string `pulumi:"name"`
+	// Purge the Key Vault. Defaults to `false`.
+	Purge *bool `pulumi:"purge"`
 	// Is Purge Protection enabled for this Key Vault?
 	PurgeProtectionEnabled *bool `pulumi:"purgeProtectionEnabled"`
 	// The Name of the SKU used for this Key Vault. Possible values are `standard` and `premium`.
@@ -146,6 +113,8 @@ type AzureTenantKeyVaultState struct {
 	EnabledForDiskEncryption pulumi.BoolPtrInput
 	// Specifies the name of the Key Vault.
 	Name pulumi.StringPtrInput
+	// Purge the Key Vault. Defaults to `false`.
+	Purge pulumi.BoolPtrInput
 	// Is Purge Protection enabled for this Key Vault?
 	PurgeProtectionEnabled pulumi.BoolPtrInput
 	// The Name of the SKU used for this Key Vault. Possible values are `standard` and `premium`.
@@ -165,6 +134,8 @@ func (AzureTenantKeyVaultState) ElementType() reflect.Type {
 type azureTenantKeyVaultArgs struct {
 	// Specifies the name of the Key Vault.
 	Name *string `pulumi:"name"`
+	// Purge the Key Vault. Defaults to `false`.
+	Purge *bool `pulumi:"purge"`
 	// Is Purge Protection enabled for this Key Vault?
 	PurgeProtectionEnabled *bool `pulumi:"purgeProtectionEnabled"`
 	// The Name of the SKU used for this Key Vault. Possible values are `standard` and `premium`.
@@ -179,6 +150,8 @@ type azureTenantKeyVaultArgs struct {
 type AzureTenantKeyVaultArgs struct {
 	// Specifies the name of the Key Vault.
 	Name pulumi.StringPtrInput
+	// Purge the Key Vault. Defaults to `false`.
+	Purge pulumi.BoolPtrInput
 	// Is Purge Protection enabled for this Key Vault?
 	PurgeProtectionEnabled pulumi.BoolPtrInput
 	// The Name of the SKU used for this Key Vault. Possible values are `standard` and `premium`.
@@ -289,6 +262,11 @@ func (o AzureTenantKeyVaultOutput) EnabledForDiskEncryption() pulumi.BoolOutput 
 // Specifies the name of the Key Vault.
 func (o AzureTenantKeyVaultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzureTenantKeyVault) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Purge the Key Vault. Defaults to `false`.
+func (o AzureTenantKeyVaultOutput) Purge() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AzureTenantKeyVault) pulumi.BoolPtrOutput { return v.Purge }).(pulumi.BoolPtrOutput)
 }
 
 // Is Purge Protection enabled for this Key Vault?

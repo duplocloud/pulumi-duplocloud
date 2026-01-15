@@ -19,17 +19,17 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myapp = new Duplocloud.Tenant("myapp", new()
+    ///     var myapp = new Pulumi.Tenant("myapp", new()
     ///     {
     ///         AccountName = "myapp",
     ///         PlanId = "default",
     ///     });
     /// 
-    ///     var myfunction = new Duplocloud.AwsLambdaFunction("myfunction", new()
+    ///     var myfunction = new Pulumi.AwsLambdaFunction("myfunction", new()
     ///     {
     ///         TenantId = @this.TenantId,
     ///         Name = "myfunction",
@@ -38,7 +38,7 @@ namespace DuploCloud.Pulumi
     ///         Handler = "com.example.MyFunction::handleRequest",
     ///         S3Bucket = "my-bucket-name",
     ///         S3Key = "my-function.zip",
-    ///         Environment = new Duplocloud.Inputs.AwsLambdaFunctionEnvironmentArgs
+    ///         Environment = new Pulumi.Inputs.AwsLambdaFunctionEnvironmentArgs
     ///         {
     ///             Variables = 
     ///             {
@@ -49,14 +49,14 @@ namespace DuploCloud.Pulumi
     ///         MemorySize = 512,
     ///     });
     /// 
-    ///     var thisfunction = new Duplocloud.AwsLambdaFunction("thisfunction", new()
+    ///     var thisfunction = new Pulumi.AwsLambdaFunction("thisfunction", new()
     ///     {
     ///         TenantId = @this.TenantId,
     ///         Name = "thisfunction",
     ///         Description = "A description of my function",
     ///         PackageType = "Image",
     ///         ImageUri = "dkr.ecr.us-west-2.amazonaws.com/myimage:latest",
-    ///         ImageConfig = new Duplocloud.Inputs.AwsLambdaFunctionImageConfigArgs
+    ///         ImageConfig = new Pulumi.Inputs.AwsLambdaFunctionImageConfigArgs
     ///         {
     ///             Commands = new[]
     ///             {
@@ -69,7 +69,7 @@ namespace DuploCloud.Pulumi
     ///             },
     ///             WorkingDirectory = "/tmp3",
     ///         },
-    ///         TracingConfig = new Duplocloud.Inputs.AwsLambdaFunctionTracingConfigArgs
+    ///         TracingConfig = new Pulumi.Inputs.AwsLambdaFunctionTracingConfigArgs
     ///         {
     ///             Mode = "PassThrough",
     ///         },
@@ -77,14 +77,14 @@ namespace DuploCloud.Pulumi
     ///         MemorySize = 512,
     ///     });
     /// 
-    ///     var edgefunction = new Duplocloud.AwsLambdaFunction("edgefunction", new()
+    ///     var edgefunction = new Pulumi.AwsLambdaFunction("edgefunction", new()
     ///     {
     ///         TenantId = "c7163b39-43ca-4d44-81ce-9a323087039b",
     ///         Name = "edgefunction",
     ///         Description = "An example edge function",
     ///         PackageType = "Image",
     ///         ImageUri = "dkr.ecr.us-east-1.amazonaws.com/myimage:1.0",
-    ///         ImageConfig = new Duplocloud.Inputs.AwsLambdaFunctionImageConfigArgs
+    ///         ImageConfig = new Pulumi.Inputs.AwsLambdaFunctionImageConfigArgs
     ///         {
     ///             Commands = new[]
     ///             {
@@ -129,7 +129,7 @@ namespace DuploCloud.Pulumi
         /// Instruction set architecture for your Lambda function. Valid values are `[x86_64]` and `[arm64]`. Default is `[x86_64]`
         /// </summary>
         [Output("architectures")]
-        public Output<string?> Architectures { get; private set; } = null!;
+        public Output<string> Architectures { get; private set; } = null!;
 
         /// <summary>
         /// The ARN of the lambda function.

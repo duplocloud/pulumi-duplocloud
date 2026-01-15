@@ -19,32 +19,32 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myapp = new Duplocloud.Tenant("myapp", new()
+    ///     var myapp = new Pulumi.Tenant("myapp", new()
     ///     {
     ///         AccountName = "myapp",
     ///         PlanId = "default",
     ///     });
     /// 
-    ///     var bsp = new Duplocloud.AwsBatchSchedulingPolicy("bsp", new()
+    ///     var bsp = new Pulumi.AwsBatchSchedulingPolicy("bsp", new()
     ///     {
     ///         TenantId = myapp.TenantId,
     ///         Name = "test",
-    ///         FairSharePolicy = new Duplocloud.Inputs.AwsBatchSchedulingPolicyFairSharePolicyArgs
+    ///         FairSharePolicy = new Pulumi.Inputs.AwsBatchSchedulingPolicyFairSharePolicyArgs
     ///         {
     ///             ComputeReservation = 1,
     ///             ShareDecaySeconds = 3600,
     ///             ShareDistributions = new[]
     ///             {
-    ///                 new Duplocloud.Inputs.AwsBatchSchedulingPolicyFairSharePolicyShareDistributionArgs
+    ///                 new Pulumi.Inputs.AwsBatchSchedulingPolicyFairSharePolicyShareDistributionArgs
     ///                 {
     ///                     ShareIdentifier = "A1*",
     ///                     WeightFactor = 0.1,
     ///                 },
-    ///                 new Duplocloud.Inputs.AwsBatchSchedulingPolicyFairSharePolicyShareDistributionArgs
+    ///                 new Pulumi.Inputs.AwsBatchSchedulingPolicyFairSharePolicyShareDistributionArgs
     ///                 {
     ///                     ShareIdentifier = "A2",
     ///                     WeightFactor = 0.2,

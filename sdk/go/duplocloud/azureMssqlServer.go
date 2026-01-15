@@ -14,44 +14,6 @@ import (
 
 // `AzureMssqlServer` manages an azure mssql server in Duplo.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/duplocloud/pulumi-duplocloud/sdk/go/duplocloud"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myapp, err := duplocloud.NewTenant(ctx, "myapp", &duplocloud.TenantArgs{
-//				AccountName: pulumi.String("myapp"),
-//				PlanId:      pulumi.String("default"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = duplocloud.NewAzureMssqlServer(ctx, "mssql_server", &duplocloud.AzureMssqlServerArgs{
-//				TenantId:                   myapp.TenantId,
-//				Name:                       pulumi.String("mssql-test"),
-//				AdministratorLogin:         pulumi.String("testroot"),
-//				AdministratorLoginPassword: pulumi.String("P@ssword12345"),
-//				Version:                    pulumi.String("12.0"),
-//				MinimumTlsVersion:          pulumi.String("1.2"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Example: Importing an existing Azure MS SQL Server
@@ -68,6 +30,8 @@ import (
 type AzureMssqlServer struct {
 	pulumi.CustomResourceState
 
+	// Allows you to set a user or group as the AD administrator for an Azure SQL server.
+	ActiveDirectoryAdministrator AzureMssqlServerActiveDirectoryAdministratorPtrOutput `pulumi:"activeDirectoryAdministrator"`
 	// The Administrator Login for the  MS sql Server.
 	AdministratorLogin pulumi.StringOutput `pulumi:"administratorLogin"`
 	// The Password associated with the `administratorLogin` for the MS sql Server.
@@ -132,6 +96,8 @@ func GetAzureMssqlServer(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AzureMssqlServer resources.
 type azureMssqlServerState struct {
+	// Allows you to set a user or group as the AD administrator for an Azure SQL server.
+	ActiveDirectoryAdministrator *AzureMssqlServerActiveDirectoryAdministrator `pulumi:"activeDirectoryAdministrator"`
 	// The Administrator Login for the  MS sql Server.
 	AdministratorLogin *string `pulumi:"administratorLogin"`
 	// The Password associated with the `administratorLogin` for the MS sql Server.
@@ -154,6 +120,8 @@ type azureMssqlServerState struct {
 }
 
 type AzureMssqlServerState struct {
+	// Allows you to set a user or group as the AD administrator for an Azure SQL server.
+	ActiveDirectoryAdministrator AzureMssqlServerActiveDirectoryAdministratorPtrInput
 	// The Administrator Login for the  MS sql Server.
 	AdministratorLogin pulumi.StringPtrInput
 	// The Password associated with the `administratorLogin` for the MS sql Server.
@@ -180,6 +148,8 @@ func (AzureMssqlServerState) ElementType() reflect.Type {
 }
 
 type azureMssqlServerArgs struct {
+	// Allows you to set a user or group as the AD administrator for an Azure SQL server.
+	ActiveDirectoryAdministrator *AzureMssqlServerActiveDirectoryAdministrator `pulumi:"activeDirectoryAdministrator"`
 	// The Administrator Login for the  MS sql Server.
 	AdministratorLogin *string `pulumi:"administratorLogin"`
 	// The Password associated with the `administratorLogin` for the MS sql Server.
@@ -200,6 +170,8 @@ type azureMssqlServerArgs struct {
 
 // The set of arguments for constructing a AzureMssqlServer resource.
 type AzureMssqlServerArgs struct {
+	// Allows you to set a user or group as the AD administrator for an Azure SQL server.
+	ActiveDirectoryAdministrator AzureMssqlServerActiveDirectoryAdministratorPtrInput
 	// The Administrator Login for the  MS sql Server.
 	AdministratorLogin pulumi.StringPtrInput
 	// The Password associated with the `administratorLogin` for the MS sql Server.
@@ -303,6 +275,13 @@ func (o AzureMssqlServerOutput) ToAzureMssqlServerOutput() AzureMssqlServerOutpu
 
 func (o AzureMssqlServerOutput) ToAzureMssqlServerOutputWithContext(ctx context.Context) AzureMssqlServerOutput {
 	return o
+}
+
+// Allows you to set a user or group as the AD administrator for an Azure SQL server.
+func (o AzureMssqlServerOutput) ActiveDirectoryAdministrator() AzureMssqlServerActiveDirectoryAdministratorPtrOutput {
+	return o.ApplyT(func(v *AzureMssqlServer) AzureMssqlServerActiveDirectoryAdministratorPtrOutput {
+		return v.ActiveDirectoryAdministrator
+	}).(AzureMssqlServerActiveDirectoryAdministratorPtrOutput)
 }
 
 // The Administrator Login for the  MS sql Server.

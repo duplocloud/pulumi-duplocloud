@@ -80,7 +80,7 @@ export class GcpHost extends pulumi.CustomResource {
     }
 
     /**
-     * The number of the guest accelerator cards exposed to this instance. Defaults to `0`.
+     * The number of the guest accelerator cards exposed to this instance.
      */
     public readonly acceleratorCount!: pulumi.Output<number | undefined>;
     /**
@@ -88,11 +88,12 @@ export class GcpHost extends pulumi.CustomResource {
      */
     public readonly acceleratorType!: pulumi.Output<string>;
     /**
-     * The numeric ID of the container agent pool that this host is added to. Defaults to `0`.
+     * The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
+     * Windows
      */
     public readonly agentPlatform!: pulumi.Output<number | undefined>;
     /**
-     * Whether or not to allocate a public IP. Defaults to `false`.
+     * Whether or not to allocate a public IP.
      */
     public readonly allocatedPublicIp!: pulumi.Output<boolean | undefined>;
     public /*out*/ readonly architecture!: pulumi.Output<string>;
@@ -119,7 +120,9 @@ export class GcpHost extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Configuration, metadata used when creating the host.\n\n*Note: To configure OS disk size OsDiskSize can be specified as Key and its size as value, size value should be atleast 10, Similarly to added start up script one can pass the key as startupScript and startup command as its value*
+     * Configuration, metadata used when creating the host.<br>*Note: To configure OS disk size OsDiskSize can be specified as
+     * Key and its size as value, size value should be atleast 10, Similarly to added start up script one can pass the key as
+     * startupScript and startup command as its value*
      */
     public readonly metadata!: pulumi.Output<{[key: string]: string}>;
     public /*out*/ readonly privateIpAddress!: pulumi.Output<string>;
@@ -138,9 +141,6 @@ export class GcpHost extends pulumi.CustomResource {
      * The email id of the user.
      */
     public readonly userAccount!: pulumi.Output<string>;
-    /**
-     * Defaults to `true`.
-     */
     public readonly waitUntilReady!: pulumi.Output<boolean | undefined>;
     /**
      * The zone that the machine should be created in
@@ -235,7 +235,7 @@ export class GcpHost extends pulumi.CustomResource {
  */
 export interface GcpHostState {
     /**
-     * The number of the guest accelerator cards exposed to this instance. Defaults to `0`.
+     * The number of the guest accelerator cards exposed to this instance.
      */
     acceleratorCount?: pulumi.Input<number>;
     /**
@@ -243,11 +243,12 @@ export interface GcpHostState {
      */
     acceleratorType?: pulumi.Input<string>;
     /**
-     * The numeric ID of the container agent pool that this host is added to. Defaults to `0`.
+     * The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
+     * Windows
      */
     agentPlatform?: pulumi.Input<number>;
     /**
-     * Whether or not to allocate a public IP. Defaults to `false`.
+     * Whether or not to allocate a public IP.
      */
     allocatedPublicIp?: pulumi.Input<boolean>;
     architecture?: pulumi.Input<string>;
@@ -274,7 +275,9 @@ export interface GcpHostState {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Configuration, metadata used when creating the host.\n\n*Note: To configure OS disk size OsDiskSize can be specified as Key and its size as value, size value should be atleast 10, Similarly to added start up script one can pass the key as startupScript and startup command as its value*
+     * Configuration, metadata used when creating the host.<br>*Note: To configure OS disk size OsDiskSize can be specified as
+     * Key and its size as value, size value should be atleast 10, Similarly to added start up script one can pass the key as
+     * startupScript and startup command as its value*
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     privateIpAddress?: pulumi.Input<string>;
@@ -293,9 +296,6 @@ export interface GcpHostState {
      * The email id of the user.
      */
     userAccount?: pulumi.Input<string>;
-    /**
-     * Defaults to `true`.
-     */
     waitUntilReady?: pulumi.Input<boolean>;
     /**
      * The zone that the machine should be created in
@@ -308,7 +308,7 @@ export interface GcpHostState {
  */
 export interface GcpHostArgs {
     /**
-     * The number of the guest accelerator cards exposed to this instance. Defaults to `0`.
+     * The number of the guest accelerator cards exposed to this instance.
      */
     acceleratorCount?: pulumi.Input<number>;
     /**
@@ -316,11 +316,12 @@ export interface GcpHostArgs {
      */
     acceleratorType?: pulumi.Input<string>;
     /**
-     * The numeric ID of the container agent pool that this host is added to. Defaults to `0`.
+     * The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
+     * Windows
      */
     agentPlatform?: pulumi.Input<number>;
     /**
-     * Whether or not to allocate a public IP. Defaults to `false`.
+     * Whether or not to allocate a public IP.
      */
     allocatedPublicIp?: pulumi.Input<boolean>;
     /**
@@ -340,7 +341,9 @@ export interface GcpHostArgs {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Configuration, metadata used when creating the host.\n\n*Note: To configure OS disk size OsDiskSize can be specified as Key and its size as value, size value should be atleast 10, Similarly to added start up script one can pass the key as startupScript and startup command as its value*
+     * Configuration, metadata used when creating the host.<br>*Note: To configure OS disk size OsDiskSize can be specified as
+     * Key and its size as value, size value should be atleast 10, Similarly to added start up script one can pass the key as
+     * startupScript and startup command as its value*
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -355,9 +358,6 @@ export interface GcpHostArgs {
      * The email id of the user.
      */
     userAccount: pulumi.Input<string>;
-    /**
-     * Defaults to `true`.
-     */
     waitUntilReady?: pulumi.Input<boolean>;
     /**
      * The zone that the machine should be created in

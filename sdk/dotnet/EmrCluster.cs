@@ -20,18 +20,18 @@ namespace DuploCloud.Pulumi
     /// using System.Linq;
     /// using System.Text.Json;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myapp = new Duplocloud.Tenant("myapp", new()
+    ///     var myapp = new Pulumi.Tenant("myapp", new()
     ///     {
     ///         AccountName = "myapp",
     ///         PlanId = "default",
     ///     });
     /// 
     ///     // Example 1:  EMR cluster with auto-scaling.
-    ///     var test = new Duplocloud.EmrCluster("test", new()
+    ///     var test = new Pulumi.EmrCluster("test", new()
     ///     {
     ///         TenantId = myapp.TenantId,
     ///         Name = "emrp1",

@@ -269,7 +269,7 @@ export class Infrastructure extends pulumi.CustomResource {
     }
 
     /**
-     * The cloud account ID.
+     * The cloud account ID — use this for Azure (Subscription ID) and Google Cloud (Project ID). Not applicable for AWS.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
@@ -325,6 +325,10 @@ export class Infrastructure extends pulumi.CustomResource {
      */
     public readonly isServerlessKubernetes!: pulumi.Output<boolean>;
     /**
+     * The NAT IPs for the subnet.
+     */
+    public /*out*/ readonly natIps!: pulumi.Output<string[]>;
+    /**
      * The private subnets for the VPC or VNet.
      */
     public /*out*/ readonly privateSubnets!: pulumi.Output<outputs.InfrastructurePrivateSubnet[]>;
@@ -357,7 +361,7 @@ export class Infrastructure extends pulumi.CustomResource {
      */
     public readonly subnetAddressPrefix!: pulumi.Output<string>;
     /**
-     * The CIDR subnet size (in bits) for the automatically created subnets. This is applicable only for AWS.
+     * The CIDR subnet size (in bits) for the automatically created subnets.
      */
     public readonly subnetCidr!: pulumi.Output<number | undefined>;
     /**
@@ -407,6 +411,7 @@ export class Infrastructure extends pulumi.CustomResource {
             resourceInputs["enableK8Cluster"] = state ? state.enableK8Cluster : undefined;
             resourceInputs["infraName"] = state ? state.infraName : undefined;
             resourceInputs["isServerlessKubernetes"] = state ? state.isServerlessKubernetes : undefined;
+            resourceInputs["natIps"] = state ? state.natIps : undefined;
             resourceInputs["privateSubnets"] = state ? state.privateSubnets : undefined;
             resourceInputs["publicSubnets"] = state ? state.publicSubnets : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
@@ -454,6 +459,7 @@ export class Infrastructure extends pulumi.CustomResource {
             resourceInputs["subnetName"] = args ? args.subnetName : undefined;
             resourceInputs["waitUntilDeleted"] = args ? args.waitUntilDeleted : undefined;
             resourceInputs["allSettings"] = undefined /*out*/;
+            resourceInputs["natIps"] = undefined /*out*/;
             resourceInputs["privateSubnets"] = undefined /*out*/;
             resourceInputs["publicSubnets"] = undefined /*out*/;
             resourceInputs["securityGroups"] = undefined /*out*/;
@@ -473,7 +479,7 @@ export class Infrastructure extends pulumi.CustomResource {
  */
 export interface InfrastructureState {
     /**
-     * The cloud account ID.
+     * The cloud account ID — use this for Azure (Subscription ID) and Google Cloud (Project ID). Not applicable for AWS.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -529,6 +535,10 @@ export interface InfrastructureState {
      */
     isServerlessKubernetes?: pulumi.Input<boolean>;
     /**
+     * The NAT IPs for the subnet.
+     */
+    natIps?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * The private subnets for the VPC or VNet.
      */
     privateSubnets?: pulumi.Input<pulumi.Input<inputs.InfrastructurePrivateSubnet>[]>;
@@ -561,7 +571,7 @@ export interface InfrastructureState {
      */
     subnetAddressPrefix?: pulumi.Input<string>;
     /**
-     * The CIDR subnet size (in bits) for the automatically created subnets. This is applicable only for AWS.
+     * The CIDR subnet size (in bits) for the automatically created subnets.
      */
     subnetCidr?: pulumi.Input<number>;
     /**
@@ -591,7 +601,7 @@ export interface InfrastructureState {
  */
 export interface InfrastructureArgs {
     /**
-     * The cloud account ID.
+     * The cloud account ID — use this for Azure (Subscription ID) and Google Cloud (Project ID). Not applicable for AWS.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -655,7 +665,7 @@ export interface InfrastructureArgs {
      */
     subnetAddressPrefix?: pulumi.Input<string>;
     /**
-     * The CIDR subnet size (in bits) for the automatically created subnets. This is applicable only for AWS.
+     * The CIDR subnet size (in bits) for the automatically created subnets.
      */
     subnetCidr?: pulumi.Input<number>;
     /**

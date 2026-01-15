@@ -21,11 +21,11 @@ namespace DuploCloud.Pulumi
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Duplocloud = DuploCloud.Pulumi;
+        /// using Pulumi = Pulumi.Pulumi;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var app = Duplocloud.GetGcpNodePools.Invoke(new()
+        ///     var app = Pulumi.GetGcpNodePools.Invoke(new()
         ///     {
         ///         TenantId = "tenantid",
         ///     });
@@ -52,11 +52,11 @@ namespace DuploCloud.Pulumi
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Duplocloud = DuploCloud.Pulumi;
+        /// using Pulumi = Pulumi.Pulumi;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var app = Duplocloud.GetGcpNodePools.Invoke(new()
+        ///     var app = Pulumi.GetGcpNodePools.Invoke(new()
         ///     {
         ///         TenantId = "tenantid",
         ///     });
@@ -83,11 +83,11 @@ namespace DuploCloud.Pulumi
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Duplocloud = DuploCloud.Pulumi;
+        /// using Pulumi = Pulumi.Pulumi;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var app = Duplocloud.GetGcpNodePools.Invoke(new()
+        ///     var app = Pulumi.GetGcpNodePools.Invoke(new()
         ///     {
         ///         TenantId = "tenantid",
         ///     });

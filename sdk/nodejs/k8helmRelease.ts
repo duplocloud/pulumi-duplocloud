@@ -128,6 +128,9 @@ export class K8HelmRelease extends pulumi.CustomResource {
             resourceInputs["values"] = state ? state.values : undefined;
         } else {
             const args = argsOrState as K8HelmReleaseArgs | undefined;
+            if ((!args || args.charts === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'charts'");
+            }
             if ((!args || args.releaseName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'releaseName'");
             }
@@ -183,7 +186,7 @@ export interface K8HelmReleaseArgs {
     /**
      * Helm chart
      */
-    charts?: pulumi.Input<pulumi.Input<inputs.K8HelmReleaseChart>[]>;
+    charts: pulumi.Input<pulumi.Input<inputs.K8HelmReleaseChart>[]>;
     /**
      * Interval related to helm release Defaults to `5m0s`.
      */

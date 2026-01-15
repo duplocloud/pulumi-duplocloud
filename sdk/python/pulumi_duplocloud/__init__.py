@@ -6,6 +6,7 @@ from . import _utilities
 import typing
 # Export this package's modules as members:
 from .admin_system_setting import *
+from .asg_instance_refresh import *
 from .asg_profile import *
 from .aws_api_gateway_integration import *
 from .aws_apigateway_event import *
@@ -37,14 +38,19 @@ from .aws_lb_target_group import *
 from .aws_load_balancer import *
 from .aws_load_balancer_listener import *
 from .aws_mwaa_environment import *
+from .aws_rds_global_secondary import *
 from .aws_rds_tag import *
 from .aws_sns_topic import *
 from .aws_sqs_queue import *
 from .aws_ssm_parameter import *
+from .aws_tag import *
 from .aws_target_group_attributes import *
 from .aws_timestreamwrite_database import *
 from .aws_timestreamwrite_table import *
 from .azure_availability_set import *
+from .azure_cosmos_db_account import *
+from .azure_cosmos_db_container import *
+from .azure_cosmos_db_database import *
 from .azure_datafactory import *
 from .azure_k8_node_pool import *
 from .azure_k8s_cluster import *
@@ -53,10 +59,13 @@ from .azure_log_analytics_workspace import *
 from .azure_mssql_database import *
 from .azure_mssql_elasticpool import *
 from .azure_mssql_server import *
+from .azure_mssqldb_retention_backup import *
 from .azure_mysql_database import *
 from .azure_network_security_rule import *
 from .azure_postgresql_database import *
 from .azure_postgresql_flexible_database import *
+from .azure_postgresql_flexible_database_v2 import *
+from .azure_postgresql_flexible_db_ad_administrator import *
 from .azure_private_endpoint import *
 from .azure_recovery_services_vault import *
 from .azure_redis_cache import *
@@ -80,6 +89,8 @@ from .docker_credentials import *
 from .duplo_service import *
 from .duplo_service_lbconfigs import *
 from .duplo_service_params import *
+from .ecache_associate_global_secondary_cluster import *
+from .ecache_global_datastore import *
 from .ecache_instance import *
 from .ecs_service import *
 from .ecs_task_definition import *
@@ -106,6 +117,8 @@ from .get_aws_lb_target_groups import *
 from .get_aws_ssm_parameter import *
 from .get_aws_ssm_parameters import *
 from .get_azure_availability_set import *
+from .get_azure_cosmos_db_account import *
+from .get_azure_cosmos_db_database import *
 from .get_azure_storage_account_key import *
 from .get_duplo_service import *
 from .get_duplo_service_lbconfigs import *
@@ -153,6 +166,7 @@ from .get_plan_waf_v2 import *
 from .get_plan_wafs import *
 from .get_plan_wafs_v2 import *
 from .get_plans import *
+from .get_system_features import *
 from .get_tenant import *
 from .get_tenant_aws_credentials import *
 from .get_tenant_aws_kms_key import *
@@ -199,6 +213,9 @@ from .tenant import *
 from .tenant_access_grant import *
 from .tenant_cleanup_timers import *
 from .tenant_config import *
+from .tenant_k8s_resource_quota import *
+from .tenant_kms import *
+from .tenant_metadata import *
 from .tenant_network_security_rule import *
 from .tenant_secret import *
 from .tenant_tag import *
@@ -223,6 +240,14 @@ _utilities.register(
   "fqn": "pulumi_duplocloud",
   "classes": {
    "duplocloud:index/adminSystemSetting:AdminSystemSetting": "AdminSystemSetting"
+  }
+ },
+ {
+  "pkg": "duplocloud",
+  "mod": "index/asgInstanceRefresh",
+  "fqn": "pulumi_duplocloud",
+  "classes": {
+   "duplocloud:index/asgInstanceRefresh:AsgInstanceRefresh": "AsgInstanceRefresh"
   }
  },
  {
@@ -475,6 +500,14 @@ _utilities.register(
  },
  {
   "pkg": "duplocloud",
+  "mod": "index/awsRdsGlobalSecondary",
+  "fqn": "pulumi_duplocloud",
+  "classes": {
+   "duplocloud:index/awsRdsGlobalSecondary:AwsRdsGlobalSecondary": "AwsRdsGlobalSecondary"
+  }
+ },
+ {
+  "pkg": "duplocloud",
   "mod": "index/awsRdsTag",
   "fqn": "pulumi_duplocloud",
   "classes": {
@@ -507,6 +540,14 @@ _utilities.register(
  },
  {
   "pkg": "duplocloud",
+  "mod": "index/awsTag",
+  "fqn": "pulumi_duplocloud",
+  "classes": {
+   "duplocloud:index/awsTag:AwsTag": "AwsTag"
+  }
+ },
+ {
+  "pkg": "duplocloud",
   "mod": "index/awsTargetGroupAttributes",
   "fqn": "pulumi_duplocloud",
   "classes": {
@@ -535,6 +576,30 @@ _utilities.register(
   "fqn": "pulumi_duplocloud",
   "classes": {
    "duplocloud:index/azureAvailabilitySet:AzureAvailabilitySet": "AzureAvailabilitySet"
+  }
+ },
+ {
+  "pkg": "duplocloud",
+  "mod": "index/azureCosmosDbAccount",
+  "fqn": "pulumi_duplocloud",
+  "classes": {
+   "duplocloud:index/azureCosmosDbAccount:AzureCosmosDbAccount": "AzureCosmosDbAccount"
+  }
+ },
+ {
+  "pkg": "duplocloud",
+  "mod": "index/azureCosmosDbContainer",
+  "fqn": "pulumi_duplocloud",
+  "classes": {
+   "duplocloud:index/azureCosmosDbContainer:AzureCosmosDbContainer": "AzureCosmosDbContainer"
+  }
+ },
+ {
+  "pkg": "duplocloud",
+  "mod": "index/azureCosmosDbDatabase",
+  "fqn": "pulumi_duplocloud",
+  "classes": {
+   "duplocloud:index/azureCosmosDbDatabase:AzureCosmosDbDatabase": "AzureCosmosDbDatabase"
   }
  },
  {
@@ -603,6 +668,14 @@ _utilities.register(
  },
  {
   "pkg": "duplocloud",
+  "mod": "index/azureMssqldbRetentionBackup",
+  "fqn": "pulumi_duplocloud",
+  "classes": {
+   "duplocloud:index/azureMssqldbRetentionBackup:AzureMssqldbRetentionBackup": "AzureMssqldbRetentionBackup"
+  }
+ },
+ {
+  "pkg": "duplocloud",
   "mod": "index/azureMysqlDatabase",
   "fqn": "pulumi_duplocloud",
   "classes": {
@@ -631,6 +704,22 @@ _utilities.register(
   "fqn": "pulumi_duplocloud",
   "classes": {
    "duplocloud:index/azurePostgresqlFlexibleDatabase:AzurePostgresqlFlexibleDatabase": "AzurePostgresqlFlexibleDatabase"
+  }
+ },
+ {
+  "pkg": "duplocloud",
+  "mod": "index/azurePostgresqlFlexibleDatabaseV2",
+  "fqn": "pulumi_duplocloud",
+  "classes": {
+   "duplocloud:index/azurePostgresqlFlexibleDatabaseV2:AzurePostgresqlFlexibleDatabaseV2": "AzurePostgresqlFlexibleDatabaseV2"
+  }
+ },
+ {
+  "pkg": "duplocloud",
+  "mod": "index/azurePostgresqlFlexibleDbAdAdministrator",
+  "fqn": "pulumi_duplocloud",
+  "classes": {
+   "duplocloud:index/azurePostgresqlFlexibleDbAdAdministrator:AzurePostgresqlFlexibleDbAdAdministrator": "AzurePostgresqlFlexibleDbAdAdministrator"
   }
  },
  {
@@ -815,6 +904,22 @@ _utilities.register(
   "fqn": "pulumi_duplocloud",
   "classes": {
    "duplocloud:index/duploServiceParams:DuploServiceParams": "DuploServiceParams"
+  }
+ },
+ {
+  "pkg": "duplocloud",
+  "mod": "index/ecacheAssociateGlobalSecondaryCluster",
+  "fqn": "pulumi_duplocloud",
+  "classes": {
+   "duplocloud:index/ecacheAssociateGlobalSecondaryCluster:EcacheAssociateGlobalSecondaryCluster": "EcacheAssociateGlobalSecondaryCluster"
+  }
+ },
+ {
+  "pkg": "duplocloud",
+  "mod": "index/ecacheGlobalDatastore",
+  "fqn": "pulumi_duplocloud",
+  "classes": {
+   "duplocloud:index/ecacheGlobalDatastore:EcacheGlobalDatastore": "EcacheGlobalDatastore"
   }
  },
  {
@@ -1207,6 +1312,30 @@ _utilities.register(
   "fqn": "pulumi_duplocloud",
   "classes": {
    "duplocloud:index/tenantConfig:TenantConfig": "TenantConfig"
+  }
+ },
+ {
+  "pkg": "duplocloud",
+  "mod": "index/tenantK8sResourceQuota",
+  "fqn": "pulumi_duplocloud",
+  "classes": {
+   "duplocloud:index/tenantK8sResourceQuota:TenantK8sResourceQuota": "TenantK8sResourceQuota"
+  }
+ },
+ {
+  "pkg": "duplocloud",
+  "mod": "index/tenantKms",
+  "fqn": "pulumi_duplocloud",
+  "classes": {
+   "duplocloud:index/tenantKms:TenantKms": "TenantKms"
+  }
+ },
+ {
+  "pkg": "duplocloud",
+  "mod": "index/tenantMetadata",
+  "fqn": "pulumi_duplocloud",
+  "classes": {
+   "duplocloud:index/tenantMetadata:TenantMetadata": "TenantMetadata"
   }
  },
  {

@@ -72,24 +72,15 @@ namespace DuploCloud.Pulumi
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Annotations for the secret
+        /// Annotations for the secret.
         /// </summary>
         public readonly ImmutableDictionary<string, string> SecretAnnotations;
-        /// <summary>
-        /// A JSON encoded string representing the secret metadata. You can use the `jsonencode()` function to convert map or object data, if needed. You can use the `jsondecode()` function to read data.
-        /// </summary>
         public readonly string SecretData;
-        /// <summary>
-        /// Map of string keys and values that can be used to organize and categorize (scope and select) the secret
-        /// </summary>
         public readonly ImmutableDictionary<string, string> SecretLabels;
         /// <summary>
         /// The name of the secret.
         /// </summary>
         public readonly string SecretName;
-        /// <summary>
-        /// The type of the secret.  Usually `"Opaque"`.
-        /// </summary>
         public readonly string SecretType;
         public readonly string SecretVersion;
         /// <summary>

@@ -19,6 +19,9 @@ namespace DuploCloud.Pulumi.Inputs
         [Input("allowGlobalAccess")]
         public Input<bool>? AllowGlobalAccess { get; set; }
 
+        /// <summary>
+        /// Is used for communication between the load balancer and the target instances. This field is used to set protocol version for ALB load balancer. Only applicable when protocol is HTTP or HTTPS. The protocol version. Specify GRPC to send requests to targets using gRPC. Specify HTTP2 to send requests to targets using HTTP/2. The default is HTTP1, which sends requests to targets using HTTP/1.1
+        /// </summary>
         [Input("backendProtocolVersion")]
         public Input<string>? BackendProtocolVersion { get; set; }
 
@@ -154,6 +157,15 @@ namespace DuploCloud.Pulumi.Inputs
 
         /// <summary>
         /// The backend protocol associated with this load balancer configuration.
+        /// Supported protocol based on lb_type:
+        /// 
+        /// 	- `0 (ELB)`: HTTP, HTTPS, TCP, UDP
+        /// 	- `1 (ALB)` : HTTP, HTTPS
+        /// 	- `3 (K8S Service w/ Cluster IP)`: TCP, UDP
+        /// 	- `4 (K8S Service w/ Node Port)` : TCP, UDP
+        /// 	- `5 (Azure Shared Application Gateway)`: HTTP, HTTPS
+        /// 	- `6 (NLB)` : TCP, UDP, TLS
+        /// 	- `7 (Target Group Only)` : HTTP, HTTPS, TCP, UDP, TLS
         /// </summary>
         [Input("protocol", required: true)]
         public Input<string> Protocol { get; set; } = null!;

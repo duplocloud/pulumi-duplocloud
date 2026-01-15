@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as duplocloud from "@duplocloud/pulumi";
- * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  *
  * // Before creating a host, you must first set up the infrastructure without an eks cluster. Then, you must create a tenant inside the infra. Below is the resource for creating the infrastructure.
  * const infra = new duplocloud.Infrastructure("infra", {
@@ -54,7 +54,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as duplocloud from "@duplocloud/pulumi";
- * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  *
  * // Before creating the EKS worker node, you must first set up the infrastructure with EKS cluster enabled and a tenant. Below is the resource for creating the infrastructure.
  * const infra = new duplocloud.Infrastructure("infra", {
@@ -91,7 +91,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as duplocloud from "@duplocloud/pulumi";
- * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  *
  * // Ensure the 'dev' tenant is already created before setting up the EKS worker node.
  * const tenant = duplocloud.getTenant({
@@ -166,7 +166,8 @@ export class AwsHost extends pulumi.CustomResource {
     }
 
     /**
-     * The numeric ID of the container agent pool that this host is added to.
+     * The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
+     * Windows - 7: EKS Linux - 8: ECS
      */
     public readonly agentPlatform!: pulumi.Output<number | undefined>;
     /**
@@ -209,8 +210,8 @@ export class AwsHost extends pulumi.CustomResource {
     public readonly isEbsOptimized!: pulumi.Output<boolean | undefined>;
     public readonly isMinion!: pulumi.Output<boolean | undefined>;
     /**
-     * The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : ED25519 - `2` : RSA (deprecated
-     * - some operating systems no longer support it)
+     * The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : RSA (deprecated - some operating
+     * systems no longer support it) - `2` : ED25519
      */
     public readonly keypairType!: pulumi.Output<number>;
     /**
@@ -362,7 +363,8 @@ export class AwsHost extends pulumi.CustomResource {
  */
 export interface AwsHostState {
     /**
-     * The numeric ID of the container agent pool that this host is added to.
+     * The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
+     * Windows - 7: EKS Linux - 8: ECS
      */
     agentPlatform?: pulumi.Input<number>;
     /**
@@ -405,8 +407,8 @@ export interface AwsHostState {
     isEbsOptimized?: pulumi.Input<boolean>;
     isMinion?: pulumi.Input<boolean>;
     /**
-     * The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : ED25519 - `2` : RSA (deprecated
-     * - some operating systems no longer support it)
+     * The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : RSA (deprecated - some operating
+     * systems no longer support it) - `2` : ED25519
      */
     keypairType?: pulumi.Input<number>;
     /**
@@ -470,7 +472,8 @@ export interface AwsHostState {
  */
 export interface AwsHostArgs {
     /**
-     * The numeric ID of the container agent pool that this host is added to.
+     * The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
+     * Windows - 7: EKS Linux - 8: ECS
      */
     agentPlatform?: pulumi.Input<number>;
     /**
@@ -504,8 +507,8 @@ export interface AwsHostArgs {
     isEbsOptimized?: pulumi.Input<boolean>;
     isMinion?: pulumi.Input<boolean>;
     /**
-     * The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : ED25519 - `2` : RSA (deprecated
-     * - some operating systems no longer support it)
+     * The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : RSA (deprecated - some operating
+     * systems no longer support it) - `2` : ED25519
      */
     keypairType?: pulumi.Input<number>;
     /**

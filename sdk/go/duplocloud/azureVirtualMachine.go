@@ -87,55 +87,59 @@ import (
 type AzureVirtualMachine struct {
 	pulumi.CustomResourceState
 
-	// Specify domain service provided by Microsoft Azure for managing identities and access in the cloud. Valid values are `aadjoin` or `addsjoin`.
+	// Specify domain service provided by Microsoft Azure for managing identities and access in the cloud. Valid values are
+	// `aadjoin` or `addsjoin`.
 	AdDomainType pulumi.StringOutput `pulumi:"adDomainType"`
 	// The password associated with the local administrator account.
 	AdminPassword pulumi.StringPtrOutput `pulumi:"adminPassword"`
 	// Specifies the name of the local administrator account.
 	AdminUsername pulumi.StringOutput `pulumi:"adminUsername"`
-	// The numeric ID of the container agent pool that this host is added to. Defaults to `0`.
+	// The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 5: Docker Windows
 	AgentPlatform pulumi.IntPtrOutput `pulumi:"agentPlatform"`
-	// Whether or not to allocate a public IP. Defaults to `false`.
+	// Whether or not to allocate a public IP.
 	AllocatedPublicIp pulumi.BoolPtrOutput `pulumi:"allocatedPublicIp"`
 	// Specify availability set id to which virtual machine should be added to
 	AvailabilitySetId pulumi.StringOutput `pulumi:"availabilitySetId"`
 	// Base64 encoded user data to associated with the host.
 	Base64UserData pulumi.StringOutput `pulumi:"base64UserData"`
-	// Specifies the [size of the Virtual Machine](https://docs.microsoft.com/azure/virtual-machines/sizes-general). See also [Azure VM Naming Conventions](https://docs.microsoft.com/azure/virtual-machines/vm-naming-conventions).
+	// Specifies the [size of the Virtual Machine](https://docs.microsoft.com/azure/virtual-machines/sizes-general). See also
+	// [Azure VM Naming Conventions](https://docs.microsoft.com/azure/virtual-machines/vm-naming-conventions).
 	Capacity pulumi.StringOutput `pulumi:"capacity"`
-	// disk control types refer to the different levels of management and performance control provided for disks attached to virtual machines (VMs)
+	// disk control types refer to the different levels of management and performance control provided for disks attached to
+	// virtual machines (VMs)
 	DiskControlType pulumi.StringOutput `pulumi:"diskControlType"`
-	// Specifies the size of the OS Disk in gigabytes Defaults to `128`.
-	DiskSizeGb pulumi.IntPtrOutput `pulumi:"diskSizeGb"`
-	// Defaults to `false`.
+	// Specifies the size of the OS Disk in gigabytes
+	DiskSizeGb          pulumi.IntPtrOutput  `pulumi:"diskSizeGb"`
 	EnableEncryptAtHost pulumi.BoolPtrOutput `pulumi:"enableEncryptAtHost"`
-	// Enable log analytics on virtual machine. Defaults to `false`.
+	// Enable log analytics on virtual machine.
 	EnableLogAnalytics pulumi.BoolPtrOutput `pulumi:"enableLogAnalytics"`
-	// Specify to enable Secure Boot for your VM. Used with security_type=TrustedLaunch Defaults to `true`.
+	// Specify to enable Secure Boot for your VM. Used with security_type=TrustedLaunch
 	EnableSecurityBoot pulumi.BoolPtrOutput `pulumi:"enableSecurityBoot"`
-	// Specify to enable virtual Trusted Platform Module (vTPM) for Azure VM. Used with security_type=TrustedLaunch Defaults to `true`.
-	EnableVtpm pulumi.BoolPtrOutput `pulumi:"enableVtpm"`
-	// Defaults to `false`.
+	// Specify to enable virtual Trusted Platform Module (vTPM) for Azure VM. Used with security_type=TrustedLaunch
+	EnableVtpm  pulumi.BoolPtrOutput `pulumi:"enableVtpm"`
 	EncryptDisk pulumi.BoolPtrOutput `pulumi:"encryptDisk"`
 	// The short name of the host.
 	FriendlyName pulumi.StringOutput `pulumi:"friendlyName"`
 	// The full name of the host.
 	Fullname pulumi.StringOutput `pulumi:"fullname"`
-	// The Image ID to use to create virtual machine. Provide id as semicolon separated string with sequence of sku, publisher and offer. For example, 16.04-LTS;Canonical;UbuntuServe
+	// The Image ID to use to create virtual machine. Provide id as semicolon separated string with sequence of sku, publisher
+	// and offer. For example, 16.04-LTS;Canonical;UbuntuServe
 	ImageId pulumi.StringOutput `pulumi:"imageId"`
+	// Bootstrap an AKS host with Duplo's user data, prepending it to custom user data if also provided.
+	InstallDuploNativeAgent pulumi.BoolOutput `pulumi:"installDuploNativeAgent"`
 	// The Azure Virtual Machine ID of the host.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	IsMinion   pulumi.BoolOutput   `pulumi:"isMinion"`
-	// Join a Windows Server virtual machine to an Azure Active Directory Domain Services. Defaults to `false`.
+	// Join a Windows Server virtual machine to an Azure Active Directory Domain Services.
 	JoinDomain pulumi.BoolPtrOutput `pulumi:"joinDomain"`
 	// A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value.
 	MinionTags AzureVirtualMachineMinionTagArrayOutput `pulumi:"minionTags"`
-	// Specifies the type of managed disk to create. Possible values are either `Standard_LRS`, `StandardSSD_LRS`, `Premium_LRS`, `PremiumV2_LRS`, `Premium_ZRS`, `StandardSSD_ZRS` or `UltraSSD_LRS`.
+	// Specifies the type of managed disk to create. Possible values are either `Standard_LRS`, `StandardSSD_LRS`,
+	// `Premium_LRS`, `PremiumV2_LRS`, `Premium_ZRS`, `StandardSSD_ZRS` or `UltraSSD_LRS`.
 	OsDiskType pulumi.StringOutput `pulumi:"osDiskType"`
-	// Specify "Standard" or "TrustedLaunch" security type. Defaults to "Standard".
-	// 		Use TrustedLaunch for the security of "Generation 2" virtual machines (VMs).
-	// 		[Supported Sizes](https://learn.microsoft.com/en-us/azure/virtual-machines/trusted-launch#virtual-machines-sizes)
-	// 		 Defaults to `Standard`.
+	// Specify "Standard" or "TrustedLaunch" security type. Defaults to "Standard". Use TrustedLaunch for the security of
+	// "Generation 2" virtual machines (VMs). [Supported
+	// Sizes](https://learn.microsoft.com/en-us/azure/virtual-machines/trusted-launch#virtual-machines-sizes)
 	SecurityType pulumi.StringPtrOutput `pulumi:"securityType"`
 	// The current status of the host.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -144,12 +148,13 @@ type AzureVirtualMachine struct {
 	Tags     AzureVirtualMachineTagArrayOutput `pulumi:"tags"`
 	// The GUID of the tenant that the host will be created in.
 	TenantId pulumi.StringOutput `pulumi:"tenantId"`
-	// Specifies the time zone of the virtual machine, [the possible values are defined here](https://jackstromberg.com/2017/01/list-of-time-zones-consumed-by-azure/).
+	// Specifies the time zone of the virtual machine, [the possible values are defined
+	// here](https://jackstromberg.com/2017/01/list-of-time-zones-consumed-by-azure/).
 	Timezone pulumi.StringPtrOutput `pulumi:"timezone"`
 	// The name of the tenant that the host will be created in.
 	UserAccount pulumi.StringOutput                  `pulumi:"userAccount"`
 	Volumes     AzureVirtualMachineVolumeArrayOutput `pulumi:"volumes"`
-	// Whether or not to wait until azure virtual machine to be ready, after creation. Defaults to `true`.
+	// Whether or not to wait until azure virtual machine to be ready, after creation.
 	WaitUntilReady pulumi.BoolPtrOutput `pulumi:"waitUntilReady"`
 }
 
@@ -208,55 +213,59 @@ func GetAzureVirtualMachine(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AzureVirtualMachine resources.
 type azureVirtualMachineState struct {
-	// Specify domain service provided by Microsoft Azure for managing identities and access in the cloud. Valid values are `aadjoin` or `addsjoin`.
+	// Specify domain service provided by Microsoft Azure for managing identities and access in the cloud. Valid values are
+	// `aadjoin` or `addsjoin`.
 	AdDomainType *string `pulumi:"adDomainType"`
 	// The password associated with the local administrator account.
 	AdminPassword *string `pulumi:"adminPassword"`
 	// Specifies the name of the local administrator account.
 	AdminUsername *string `pulumi:"adminUsername"`
-	// The numeric ID of the container agent pool that this host is added to. Defaults to `0`.
+	// The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 5: Docker Windows
 	AgentPlatform *int `pulumi:"agentPlatform"`
-	// Whether or not to allocate a public IP. Defaults to `false`.
+	// Whether or not to allocate a public IP.
 	AllocatedPublicIp *bool `pulumi:"allocatedPublicIp"`
 	// Specify availability set id to which virtual machine should be added to
 	AvailabilitySetId *string `pulumi:"availabilitySetId"`
 	// Base64 encoded user data to associated with the host.
 	Base64UserData *string `pulumi:"base64UserData"`
-	// Specifies the [size of the Virtual Machine](https://docs.microsoft.com/azure/virtual-machines/sizes-general). See also [Azure VM Naming Conventions](https://docs.microsoft.com/azure/virtual-machines/vm-naming-conventions).
+	// Specifies the [size of the Virtual Machine](https://docs.microsoft.com/azure/virtual-machines/sizes-general). See also
+	// [Azure VM Naming Conventions](https://docs.microsoft.com/azure/virtual-machines/vm-naming-conventions).
 	Capacity *string `pulumi:"capacity"`
-	// disk control types refer to the different levels of management and performance control provided for disks attached to virtual machines (VMs)
+	// disk control types refer to the different levels of management and performance control provided for disks attached to
+	// virtual machines (VMs)
 	DiskControlType *string `pulumi:"diskControlType"`
-	// Specifies the size of the OS Disk in gigabytes Defaults to `128`.
-	DiskSizeGb *int `pulumi:"diskSizeGb"`
-	// Defaults to `false`.
+	// Specifies the size of the OS Disk in gigabytes
+	DiskSizeGb          *int  `pulumi:"diskSizeGb"`
 	EnableEncryptAtHost *bool `pulumi:"enableEncryptAtHost"`
-	// Enable log analytics on virtual machine. Defaults to `false`.
+	// Enable log analytics on virtual machine.
 	EnableLogAnalytics *bool `pulumi:"enableLogAnalytics"`
-	// Specify to enable Secure Boot for your VM. Used with security_type=TrustedLaunch Defaults to `true`.
+	// Specify to enable Secure Boot for your VM. Used with security_type=TrustedLaunch
 	EnableSecurityBoot *bool `pulumi:"enableSecurityBoot"`
-	// Specify to enable virtual Trusted Platform Module (vTPM) for Azure VM. Used with security_type=TrustedLaunch Defaults to `true`.
-	EnableVtpm *bool `pulumi:"enableVtpm"`
-	// Defaults to `false`.
+	// Specify to enable virtual Trusted Platform Module (vTPM) for Azure VM. Used with security_type=TrustedLaunch
+	EnableVtpm  *bool `pulumi:"enableVtpm"`
 	EncryptDisk *bool `pulumi:"encryptDisk"`
 	// The short name of the host.
 	FriendlyName *string `pulumi:"friendlyName"`
 	// The full name of the host.
 	Fullname *string `pulumi:"fullname"`
-	// The Image ID to use to create virtual machine. Provide id as semicolon separated string with sequence of sku, publisher and offer. For example, 16.04-LTS;Canonical;UbuntuServe
+	// The Image ID to use to create virtual machine. Provide id as semicolon separated string with sequence of sku, publisher
+	// and offer. For example, 16.04-LTS;Canonical;UbuntuServe
 	ImageId *string `pulumi:"imageId"`
+	// Bootstrap an AKS host with Duplo's user data, prepending it to custom user data if also provided.
+	InstallDuploNativeAgent *bool `pulumi:"installDuploNativeAgent"`
 	// The Azure Virtual Machine ID of the host.
 	InstanceId *string `pulumi:"instanceId"`
 	IsMinion   *bool   `pulumi:"isMinion"`
-	// Join a Windows Server virtual machine to an Azure Active Directory Domain Services. Defaults to `false`.
+	// Join a Windows Server virtual machine to an Azure Active Directory Domain Services.
 	JoinDomain *bool `pulumi:"joinDomain"`
 	// A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value.
 	MinionTags []AzureVirtualMachineMinionTag `pulumi:"minionTags"`
-	// Specifies the type of managed disk to create. Possible values are either `Standard_LRS`, `StandardSSD_LRS`, `Premium_LRS`, `PremiumV2_LRS`, `Premium_ZRS`, `StandardSSD_ZRS` or `UltraSSD_LRS`.
+	// Specifies the type of managed disk to create. Possible values are either `Standard_LRS`, `StandardSSD_LRS`,
+	// `Premium_LRS`, `PremiumV2_LRS`, `Premium_ZRS`, `StandardSSD_ZRS` or `UltraSSD_LRS`.
 	OsDiskType *string `pulumi:"osDiskType"`
-	// Specify "Standard" or "TrustedLaunch" security type. Defaults to "Standard".
-	// 		Use TrustedLaunch for the security of "Generation 2" virtual machines (VMs).
-	// 		[Supported Sizes](https://learn.microsoft.com/en-us/azure/virtual-machines/trusted-launch#virtual-machines-sizes)
-	// 		 Defaults to `Standard`.
+	// Specify "Standard" or "TrustedLaunch" security type. Defaults to "Standard". Use TrustedLaunch for the security of
+	// "Generation 2" virtual machines (VMs). [Supported
+	// Sizes](https://learn.microsoft.com/en-us/azure/virtual-machines/trusted-launch#virtual-machines-sizes)
 	SecurityType *string `pulumi:"securityType"`
 	// The current status of the host.
 	Status *string `pulumi:"status"`
@@ -265,65 +274,70 @@ type azureVirtualMachineState struct {
 	Tags     []AzureVirtualMachineTag `pulumi:"tags"`
 	// The GUID of the tenant that the host will be created in.
 	TenantId *string `pulumi:"tenantId"`
-	// Specifies the time zone of the virtual machine, [the possible values are defined here](https://jackstromberg.com/2017/01/list-of-time-zones-consumed-by-azure/).
+	// Specifies the time zone of the virtual machine, [the possible values are defined
+	// here](https://jackstromberg.com/2017/01/list-of-time-zones-consumed-by-azure/).
 	Timezone *string `pulumi:"timezone"`
 	// The name of the tenant that the host will be created in.
 	UserAccount *string                     `pulumi:"userAccount"`
 	Volumes     []AzureVirtualMachineVolume `pulumi:"volumes"`
-	// Whether or not to wait until azure virtual machine to be ready, after creation. Defaults to `true`.
+	// Whether or not to wait until azure virtual machine to be ready, after creation.
 	WaitUntilReady *bool `pulumi:"waitUntilReady"`
 }
 
 type AzureVirtualMachineState struct {
-	// Specify domain service provided by Microsoft Azure for managing identities and access in the cloud. Valid values are `aadjoin` or `addsjoin`.
+	// Specify domain service provided by Microsoft Azure for managing identities and access in the cloud. Valid values are
+	// `aadjoin` or `addsjoin`.
 	AdDomainType pulumi.StringPtrInput
 	// The password associated with the local administrator account.
 	AdminPassword pulumi.StringPtrInput
 	// Specifies the name of the local administrator account.
 	AdminUsername pulumi.StringPtrInput
-	// The numeric ID of the container agent pool that this host is added to. Defaults to `0`.
+	// The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 5: Docker Windows
 	AgentPlatform pulumi.IntPtrInput
-	// Whether or not to allocate a public IP. Defaults to `false`.
+	// Whether or not to allocate a public IP.
 	AllocatedPublicIp pulumi.BoolPtrInput
 	// Specify availability set id to which virtual machine should be added to
 	AvailabilitySetId pulumi.StringPtrInput
 	// Base64 encoded user data to associated with the host.
 	Base64UserData pulumi.StringPtrInput
-	// Specifies the [size of the Virtual Machine](https://docs.microsoft.com/azure/virtual-machines/sizes-general). See also [Azure VM Naming Conventions](https://docs.microsoft.com/azure/virtual-machines/vm-naming-conventions).
+	// Specifies the [size of the Virtual Machine](https://docs.microsoft.com/azure/virtual-machines/sizes-general). See also
+	// [Azure VM Naming Conventions](https://docs.microsoft.com/azure/virtual-machines/vm-naming-conventions).
 	Capacity pulumi.StringPtrInput
-	// disk control types refer to the different levels of management and performance control provided for disks attached to virtual machines (VMs)
+	// disk control types refer to the different levels of management and performance control provided for disks attached to
+	// virtual machines (VMs)
 	DiskControlType pulumi.StringPtrInput
-	// Specifies the size of the OS Disk in gigabytes Defaults to `128`.
-	DiskSizeGb pulumi.IntPtrInput
-	// Defaults to `false`.
+	// Specifies the size of the OS Disk in gigabytes
+	DiskSizeGb          pulumi.IntPtrInput
 	EnableEncryptAtHost pulumi.BoolPtrInput
-	// Enable log analytics on virtual machine. Defaults to `false`.
+	// Enable log analytics on virtual machine.
 	EnableLogAnalytics pulumi.BoolPtrInput
-	// Specify to enable Secure Boot for your VM. Used with security_type=TrustedLaunch Defaults to `true`.
+	// Specify to enable Secure Boot for your VM. Used with security_type=TrustedLaunch
 	EnableSecurityBoot pulumi.BoolPtrInput
-	// Specify to enable virtual Trusted Platform Module (vTPM) for Azure VM. Used with security_type=TrustedLaunch Defaults to `true`.
-	EnableVtpm pulumi.BoolPtrInput
-	// Defaults to `false`.
+	// Specify to enable virtual Trusted Platform Module (vTPM) for Azure VM. Used with security_type=TrustedLaunch
+	EnableVtpm  pulumi.BoolPtrInput
 	EncryptDisk pulumi.BoolPtrInput
 	// The short name of the host.
 	FriendlyName pulumi.StringPtrInput
 	// The full name of the host.
 	Fullname pulumi.StringPtrInput
-	// The Image ID to use to create virtual machine. Provide id as semicolon separated string with sequence of sku, publisher and offer. For example, 16.04-LTS;Canonical;UbuntuServe
+	// The Image ID to use to create virtual machine. Provide id as semicolon separated string with sequence of sku, publisher
+	// and offer. For example, 16.04-LTS;Canonical;UbuntuServe
 	ImageId pulumi.StringPtrInput
+	// Bootstrap an AKS host with Duplo's user data, prepending it to custom user data if also provided.
+	InstallDuploNativeAgent pulumi.BoolPtrInput
 	// The Azure Virtual Machine ID of the host.
 	InstanceId pulumi.StringPtrInput
 	IsMinion   pulumi.BoolPtrInput
-	// Join a Windows Server virtual machine to an Azure Active Directory Domain Services. Defaults to `false`.
+	// Join a Windows Server virtual machine to an Azure Active Directory Domain Services.
 	JoinDomain pulumi.BoolPtrInput
 	// A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value.
 	MinionTags AzureVirtualMachineMinionTagArrayInput
-	// Specifies the type of managed disk to create. Possible values are either `Standard_LRS`, `StandardSSD_LRS`, `Premium_LRS`, `PremiumV2_LRS`, `Premium_ZRS`, `StandardSSD_ZRS` or `UltraSSD_LRS`.
+	// Specifies the type of managed disk to create. Possible values are either `Standard_LRS`, `StandardSSD_LRS`,
+	// `Premium_LRS`, `PremiumV2_LRS`, `Premium_ZRS`, `StandardSSD_ZRS` or `UltraSSD_LRS`.
 	OsDiskType pulumi.StringPtrInput
-	// Specify "Standard" or "TrustedLaunch" security type. Defaults to "Standard".
-	// 		Use TrustedLaunch for the security of "Generation 2" virtual machines (VMs).
-	// 		[Supported Sizes](https://learn.microsoft.com/en-us/azure/virtual-machines/trusted-launch#virtual-machines-sizes)
-	// 		 Defaults to `Standard`.
+	// Specify "Standard" or "TrustedLaunch" security type. Defaults to "Standard". Use TrustedLaunch for the security of
+	// "Generation 2" virtual machines (VMs). [Supported
+	// Sizes](https://learn.microsoft.com/en-us/azure/virtual-machines/trusted-launch#virtual-machines-sizes)
 	SecurityType pulumi.StringPtrInput
 	// The current status of the host.
 	Status pulumi.StringPtrInput
@@ -332,12 +346,13 @@ type AzureVirtualMachineState struct {
 	Tags     AzureVirtualMachineTagArrayInput
 	// The GUID of the tenant that the host will be created in.
 	TenantId pulumi.StringPtrInput
-	// Specifies the time zone of the virtual machine, [the possible values are defined here](https://jackstromberg.com/2017/01/list-of-time-zones-consumed-by-azure/).
+	// Specifies the time zone of the virtual machine, [the possible values are defined
+	// here](https://jackstromberg.com/2017/01/list-of-time-zones-consumed-by-azure/).
 	Timezone pulumi.StringPtrInput
 	// The name of the tenant that the host will be created in.
 	UserAccount pulumi.StringPtrInput
 	Volumes     AzureVirtualMachineVolumeArrayInput
-	// Whether or not to wait until azure virtual machine to be ready, after creation. Defaults to `true`.
+	// Whether or not to wait until azure virtual machine to be ready, after creation.
 	WaitUntilReady pulumi.BoolPtrInput
 }
 
@@ -346,121 +361,131 @@ func (AzureVirtualMachineState) ElementType() reflect.Type {
 }
 
 type azureVirtualMachineArgs struct {
-	// Specify domain service provided by Microsoft Azure for managing identities and access in the cloud. Valid values are `aadjoin` or `addsjoin`.
+	// Specify domain service provided by Microsoft Azure for managing identities and access in the cloud. Valid values are
+	// `aadjoin` or `addsjoin`.
 	AdDomainType *string `pulumi:"adDomainType"`
 	// The password associated with the local administrator account.
 	AdminPassword *string `pulumi:"adminPassword"`
 	// Specifies the name of the local administrator account.
 	AdminUsername string `pulumi:"adminUsername"`
-	// The numeric ID of the container agent pool that this host is added to. Defaults to `0`.
+	// The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 5: Docker Windows
 	AgentPlatform *int `pulumi:"agentPlatform"`
-	// Whether or not to allocate a public IP. Defaults to `false`.
+	// Whether or not to allocate a public IP.
 	AllocatedPublicIp *bool `pulumi:"allocatedPublicIp"`
 	// Specify availability set id to which virtual machine should be added to
 	AvailabilitySetId *string `pulumi:"availabilitySetId"`
 	// Base64 encoded user data to associated with the host.
 	Base64UserData *string `pulumi:"base64UserData"`
-	// Specifies the [size of the Virtual Machine](https://docs.microsoft.com/azure/virtual-machines/sizes-general). See also [Azure VM Naming Conventions](https://docs.microsoft.com/azure/virtual-machines/vm-naming-conventions).
+	// Specifies the [size of the Virtual Machine](https://docs.microsoft.com/azure/virtual-machines/sizes-general). See also
+	// [Azure VM Naming Conventions](https://docs.microsoft.com/azure/virtual-machines/vm-naming-conventions).
 	Capacity string `pulumi:"capacity"`
-	// disk control types refer to the different levels of management and performance control provided for disks attached to virtual machines (VMs)
+	// disk control types refer to the different levels of management and performance control provided for disks attached to
+	// virtual machines (VMs)
 	DiskControlType *string `pulumi:"diskControlType"`
-	// Specifies the size of the OS Disk in gigabytes Defaults to `128`.
-	DiskSizeGb *int `pulumi:"diskSizeGb"`
-	// Defaults to `false`.
+	// Specifies the size of the OS Disk in gigabytes
+	DiskSizeGb          *int  `pulumi:"diskSizeGb"`
 	EnableEncryptAtHost *bool `pulumi:"enableEncryptAtHost"`
-	// Enable log analytics on virtual machine. Defaults to `false`.
+	// Enable log analytics on virtual machine.
 	EnableLogAnalytics *bool `pulumi:"enableLogAnalytics"`
-	// Specify to enable Secure Boot for your VM. Used with security_type=TrustedLaunch Defaults to `true`.
+	// Specify to enable Secure Boot for your VM. Used with security_type=TrustedLaunch
 	EnableSecurityBoot *bool `pulumi:"enableSecurityBoot"`
-	// Specify to enable virtual Trusted Platform Module (vTPM) for Azure VM. Used with security_type=TrustedLaunch Defaults to `true`.
-	EnableVtpm *bool `pulumi:"enableVtpm"`
-	// Defaults to `false`.
+	// Specify to enable virtual Trusted Platform Module (vTPM) for Azure VM. Used with security_type=TrustedLaunch
+	EnableVtpm  *bool `pulumi:"enableVtpm"`
 	EncryptDisk *bool `pulumi:"encryptDisk"`
 	// The short name of the host.
 	FriendlyName string `pulumi:"friendlyName"`
-	// The Image ID to use to create virtual machine. Provide id as semicolon separated string with sequence of sku, publisher and offer. For example, 16.04-LTS;Canonical;UbuntuServe
-	ImageId  string `pulumi:"imageId"`
-	IsMinion *bool  `pulumi:"isMinion"`
-	// Join a Windows Server virtual machine to an Azure Active Directory Domain Services. Defaults to `false`.
+	// The Image ID to use to create virtual machine. Provide id as semicolon separated string with sequence of sku, publisher
+	// and offer. For example, 16.04-LTS;Canonical;UbuntuServe
+	ImageId string `pulumi:"imageId"`
+	// Bootstrap an AKS host with Duplo's user data, prepending it to custom user data if also provided.
+	InstallDuploNativeAgent *bool `pulumi:"installDuploNativeAgent"`
+	IsMinion                *bool `pulumi:"isMinion"`
+	// Join a Windows Server virtual machine to an Azure Active Directory Domain Services.
 	JoinDomain *bool `pulumi:"joinDomain"`
 	// A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value.
 	MinionTags []AzureVirtualMachineMinionTag `pulumi:"minionTags"`
-	// Specifies the type of managed disk to create. Possible values are either `Standard_LRS`, `StandardSSD_LRS`, `Premium_LRS`, `PremiumV2_LRS`, `Premium_ZRS`, `StandardSSD_ZRS` or `UltraSSD_LRS`.
+	// Specifies the type of managed disk to create. Possible values are either `Standard_LRS`, `StandardSSD_LRS`,
+	// `Premium_LRS`, `PremiumV2_LRS`, `Premium_ZRS`, `StandardSSD_ZRS` or `UltraSSD_LRS`.
 	OsDiskType *string `pulumi:"osDiskType"`
-	// Specify "Standard" or "TrustedLaunch" security type. Defaults to "Standard".
-	// 		Use TrustedLaunch for the security of "Generation 2" virtual machines (VMs).
-	// 		[Supported Sizes](https://learn.microsoft.com/en-us/azure/virtual-machines/trusted-launch#virtual-machines-sizes)
-	// 		 Defaults to `Standard`.
+	// Specify "Standard" or "TrustedLaunch" security type. Defaults to "Standard". Use TrustedLaunch for the security of
+	// "Generation 2" virtual machines (VMs). [Supported
+	// Sizes](https://learn.microsoft.com/en-us/azure/virtual-machines/trusted-launch#virtual-machines-sizes)
 	SecurityType *string `pulumi:"securityType"`
 	// Subnet ID which should be associated with the Virtual Machine.
 	SubnetId string                   `pulumi:"subnetId"`
 	Tags     []AzureVirtualMachineTag `pulumi:"tags"`
 	// The GUID of the tenant that the host will be created in.
 	TenantId string `pulumi:"tenantId"`
-	// Specifies the time zone of the virtual machine, [the possible values are defined here](https://jackstromberg.com/2017/01/list-of-time-zones-consumed-by-azure/).
+	// Specifies the time zone of the virtual machine, [the possible values are defined
+	// here](https://jackstromberg.com/2017/01/list-of-time-zones-consumed-by-azure/).
 	Timezone *string                     `pulumi:"timezone"`
 	Volumes  []AzureVirtualMachineVolume `pulumi:"volumes"`
-	// Whether or not to wait until azure virtual machine to be ready, after creation. Defaults to `true`.
+	// Whether or not to wait until azure virtual machine to be ready, after creation.
 	WaitUntilReady *bool `pulumi:"waitUntilReady"`
 }
 
 // The set of arguments for constructing a AzureVirtualMachine resource.
 type AzureVirtualMachineArgs struct {
-	// Specify domain service provided by Microsoft Azure for managing identities and access in the cloud. Valid values are `aadjoin` or `addsjoin`.
+	// Specify domain service provided by Microsoft Azure for managing identities and access in the cloud. Valid values are
+	// `aadjoin` or `addsjoin`.
 	AdDomainType pulumi.StringPtrInput
 	// The password associated with the local administrator account.
 	AdminPassword pulumi.StringPtrInput
 	// Specifies the name of the local administrator account.
 	AdminUsername pulumi.StringInput
-	// The numeric ID of the container agent pool that this host is added to. Defaults to `0`.
+	// The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 5: Docker Windows
 	AgentPlatform pulumi.IntPtrInput
-	// Whether or not to allocate a public IP. Defaults to `false`.
+	// Whether or not to allocate a public IP.
 	AllocatedPublicIp pulumi.BoolPtrInput
 	// Specify availability set id to which virtual machine should be added to
 	AvailabilitySetId pulumi.StringPtrInput
 	// Base64 encoded user data to associated with the host.
 	Base64UserData pulumi.StringPtrInput
-	// Specifies the [size of the Virtual Machine](https://docs.microsoft.com/azure/virtual-machines/sizes-general). See also [Azure VM Naming Conventions](https://docs.microsoft.com/azure/virtual-machines/vm-naming-conventions).
+	// Specifies the [size of the Virtual Machine](https://docs.microsoft.com/azure/virtual-machines/sizes-general). See also
+	// [Azure VM Naming Conventions](https://docs.microsoft.com/azure/virtual-machines/vm-naming-conventions).
 	Capacity pulumi.StringInput
-	// disk control types refer to the different levels of management and performance control provided for disks attached to virtual machines (VMs)
+	// disk control types refer to the different levels of management and performance control provided for disks attached to
+	// virtual machines (VMs)
 	DiskControlType pulumi.StringPtrInput
-	// Specifies the size of the OS Disk in gigabytes Defaults to `128`.
-	DiskSizeGb pulumi.IntPtrInput
-	// Defaults to `false`.
+	// Specifies the size of the OS Disk in gigabytes
+	DiskSizeGb          pulumi.IntPtrInput
 	EnableEncryptAtHost pulumi.BoolPtrInput
-	// Enable log analytics on virtual machine. Defaults to `false`.
+	// Enable log analytics on virtual machine.
 	EnableLogAnalytics pulumi.BoolPtrInput
-	// Specify to enable Secure Boot for your VM. Used with security_type=TrustedLaunch Defaults to `true`.
+	// Specify to enable Secure Boot for your VM. Used with security_type=TrustedLaunch
 	EnableSecurityBoot pulumi.BoolPtrInput
-	// Specify to enable virtual Trusted Platform Module (vTPM) for Azure VM. Used with security_type=TrustedLaunch Defaults to `true`.
-	EnableVtpm pulumi.BoolPtrInput
-	// Defaults to `false`.
+	// Specify to enable virtual Trusted Platform Module (vTPM) for Azure VM. Used with security_type=TrustedLaunch
+	EnableVtpm  pulumi.BoolPtrInput
 	EncryptDisk pulumi.BoolPtrInput
 	// The short name of the host.
 	FriendlyName pulumi.StringInput
-	// The Image ID to use to create virtual machine. Provide id as semicolon separated string with sequence of sku, publisher and offer. For example, 16.04-LTS;Canonical;UbuntuServe
-	ImageId  pulumi.StringInput
-	IsMinion pulumi.BoolPtrInput
-	// Join a Windows Server virtual machine to an Azure Active Directory Domain Services. Defaults to `false`.
+	// The Image ID to use to create virtual machine. Provide id as semicolon separated string with sequence of sku, publisher
+	// and offer. For example, 16.04-LTS;Canonical;UbuntuServe
+	ImageId pulumi.StringInput
+	// Bootstrap an AKS host with Duplo's user data, prepending it to custom user data if also provided.
+	InstallDuploNativeAgent pulumi.BoolPtrInput
+	IsMinion                pulumi.BoolPtrInput
+	// Join a Windows Server virtual machine to an Azure Active Directory Domain Services.
 	JoinDomain pulumi.BoolPtrInput
 	// A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value.
 	MinionTags AzureVirtualMachineMinionTagArrayInput
-	// Specifies the type of managed disk to create. Possible values are either `Standard_LRS`, `StandardSSD_LRS`, `Premium_LRS`, `PremiumV2_LRS`, `Premium_ZRS`, `StandardSSD_ZRS` or `UltraSSD_LRS`.
+	// Specifies the type of managed disk to create. Possible values are either `Standard_LRS`, `StandardSSD_LRS`,
+	// `Premium_LRS`, `PremiumV2_LRS`, `Premium_ZRS`, `StandardSSD_ZRS` or `UltraSSD_LRS`.
 	OsDiskType pulumi.StringPtrInput
-	// Specify "Standard" or "TrustedLaunch" security type. Defaults to "Standard".
-	// 		Use TrustedLaunch for the security of "Generation 2" virtual machines (VMs).
-	// 		[Supported Sizes](https://learn.microsoft.com/en-us/azure/virtual-machines/trusted-launch#virtual-machines-sizes)
-	// 		 Defaults to `Standard`.
+	// Specify "Standard" or "TrustedLaunch" security type. Defaults to "Standard". Use TrustedLaunch for the security of
+	// "Generation 2" virtual machines (VMs). [Supported
+	// Sizes](https://learn.microsoft.com/en-us/azure/virtual-machines/trusted-launch#virtual-machines-sizes)
 	SecurityType pulumi.StringPtrInput
 	// Subnet ID which should be associated with the Virtual Machine.
 	SubnetId pulumi.StringInput
 	Tags     AzureVirtualMachineTagArrayInput
 	// The GUID of the tenant that the host will be created in.
 	TenantId pulumi.StringInput
-	// Specifies the time zone of the virtual machine, [the possible values are defined here](https://jackstromberg.com/2017/01/list-of-time-zones-consumed-by-azure/).
+	// Specifies the time zone of the virtual machine, [the possible values are defined
+	// here](https://jackstromberg.com/2017/01/list-of-time-zones-consumed-by-azure/).
 	Timezone pulumi.StringPtrInput
 	Volumes  AzureVirtualMachineVolumeArrayInput
-	// Whether or not to wait until azure virtual machine to be ready, after creation. Defaults to `true`.
+	// Whether or not to wait until azure virtual machine to be ready, after creation.
 	WaitUntilReady pulumi.BoolPtrInput
 }
 
@@ -551,7 +576,8 @@ func (o AzureVirtualMachineOutput) ToAzureVirtualMachineOutputWithContext(ctx co
 	return o
 }
 
-// Specify domain service provided by Microsoft Azure for managing identities and access in the cloud. Valid values are `aadjoin` or `addsjoin`.
+// Specify domain service provided by Microsoft Azure for managing identities and access in the cloud. Valid values are
+// `aadjoin` or `addsjoin`.
 func (o AzureVirtualMachineOutput) AdDomainType() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzureVirtualMachine) pulumi.StringOutput { return v.AdDomainType }).(pulumi.StringOutput)
 }
@@ -566,12 +592,12 @@ func (o AzureVirtualMachineOutput) AdminUsername() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzureVirtualMachine) pulumi.StringOutput { return v.AdminUsername }).(pulumi.StringOutput)
 }
 
-// The numeric ID of the container agent pool that this host is added to. Defaults to `0`.
+// The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 5: Docker Windows
 func (o AzureVirtualMachineOutput) AgentPlatform() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AzureVirtualMachine) pulumi.IntPtrOutput { return v.AgentPlatform }).(pulumi.IntPtrOutput)
 }
 
-// Whether or not to allocate a public IP. Defaults to `false`.
+// Whether or not to allocate a public IP.
 func (o AzureVirtualMachineOutput) AllocatedPublicIp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AzureVirtualMachine) pulumi.BoolPtrOutput { return v.AllocatedPublicIp }).(pulumi.BoolPtrOutput)
 }
@@ -586,42 +612,42 @@ func (o AzureVirtualMachineOutput) Base64UserData() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzureVirtualMachine) pulumi.StringOutput { return v.Base64UserData }).(pulumi.StringOutput)
 }
 
-// Specifies the [size of the Virtual Machine](https://docs.microsoft.com/azure/virtual-machines/sizes-general). See also [Azure VM Naming Conventions](https://docs.microsoft.com/azure/virtual-machines/vm-naming-conventions).
+// Specifies the [size of the Virtual Machine](https://docs.microsoft.com/azure/virtual-machines/sizes-general). See also
+// [Azure VM Naming Conventions](https://docs.microsoft.com/azure/virtual-machines/vm-naming-conventions).
 func (o AzureVirtualMachineOutput) Capacity() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzureVirtualMachine) pulumi.StringOutput { return v.Capacity }).(pulumi.StringOutput)
 }
 
-// disk control types refer to the different levels of management and performance control provided for disks attached to virtual machines (VMs)
+// disk control types refer to the different levels of management and performance control provided for disks attached to
+// virtual machines (VMs)
 func (o AzureVirtualMachineOutput) DiskControlType() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzureVirtualMachine) pulumi.StringOutput { return v.DiskControlType }).(pulumi.StringOutput)
 }
 
-// Specifies the size of the OS Disk in gigabytes Defaults to `128`.
+// Specifies the size of the OS Disk in gigabytes
 func (o AzureVirtualMachineOutput) DiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AzureVirtualMachine) pulumi.IntPtrOutput { return v.DiskSizeGb }).(pulumi.IntPtrOutput)
 }
 
-// Defaults to `false`.
 func (o AzureVirtualMachineOutput) EnableEncryptAtHost() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AzureVirtualMachine) pulumi.BoolPtrOutput { return v.EnableEncryptAtHost }).(pulumi.BoolPtrOutput)
 }
 
-// Enable log analytics on virtual machine. Defaults to `false`.
+// Enable log analytics on virtual machine.
 func (o AzureVirtualMachineOutput) EnableLogAnalytics() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AzureVirtualMachine) pulumi.BoolPtrOutput { return v.EnableLogAnalytics }).(pulumi.BoolPtrOutput)
 }
 
-// Specify to enable Secure Boot for your VM. Used with security_type=TrustedLaunch Defaults to `true`.
+// Specify to enable Secure Boot for your VM. Used with security_type=TrustedLaunch
 func (o AzureVirtualMachineOutput) EnableSecurityBoot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AzureVirtualMachine) pulumi.BoolPtrOutput { return v.EnableSecurityBoot }).(pulumi.BoolPtrOutput)
 }
 
-// Specify to enable virtual Trusted Platform Module (vTPM) for Azure VM. Used with security_type=TrustedLaunch Defaults to `true`.
+// Specify to enable virtual Trusted Platform Module (vTPM) for Azure VM. Used with security_type=TrustedLaunch
 func (o AzureVirtualMachineOutput) EnableVtpm() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AzureVirtualMachine) pulumi.BoolPtrOutput { return v.EnableVtpm }).(pulumi.BoolPtrOutput)
 }
 
-// Defaults to `false`.
 func (o AzureVirtualMachineOutput) EncryptDisk() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AzureVirtualMachine) pulumi.BoolPtrOutput { return v.EncryptDisk }).(pulumi.BoolPtrOutput)
 }
@@ -636,9 +662,15 @@ func (o AzureVirtualMachineOutput) Fullname() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzureVirtualMachine) pulumi.StringOutput { return v.Fullname }).(pulumi.StringOutput)
 }
 
-// The Image ID to use to create virtual machine. Provide id as semicolon separated string with sequence of sku, publisher and offer. For example, 16.04-LTS;Canonical;UbuntuServe
+// The Image ID to use to create virtual machine. Provide id as semicolon separated string with sequence of sku, publisher
+// and offer. For example, 16.04-LTS;Canonical;UbuntuServe
 func (o AzureVirtualMachineOutput) ImageId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzureVirtualMachine) pulumi.StringOutput { return v.ImageId }).(pulumi.StringOutput)
+}
+
+// Bootstrap an AKS host with Duplo's user data, prepending it to custom user data if also provided.
+func (o AzureVirtualMachineOutput) InstallDuploNativeAgent() pulumi.BoolOutput {
+	return o.ApplyT(func(v *AzureVirtualMachine) pulumi.BoolOutput { return v.InstallDuploNativeAgent }).(pulumi.BoolOutput)
 }
 
 // The Azure Virtual Machine ID of the host.
@@ -650,7 +682,7 @@ func (o AzureVirtualMachineOutput) IsMinion() pulumi.BoolOutput {
 	return o.ApplyT(func(v *AzureVirtualMachine) pulumi.BoolOutput { return v.IsMinion }).(pulumi.BoolOutput)
 }
 
-// Join a Windows Server virtual machine to an Azure Active Directory Domain Services. Defaults to `false`.
+// Join a Windows Server virtual machine to an Azure Active Directory Domain Services.
 func (o AzureVirtualMachineOutput) JoinDomain() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AzureVirtualMachine) pulumi.BoolPtrOutput { return v.JoinDomain }).(pulumi.BoolPtrOutput)
 }
@@ -660,16 +692,15 @@ func (o AzureVirtualMachineOutput) MinionTags() AzureVirtualMachineMinionTagArra
 	return o.ApplyT(func(v *AzureVirtualMachine) AzureVirtualMachineMinionTagArrayOutput { return v.MinionTags }).(AzureVirtualMachineMinionTagArrayOutput)
 }
 
-// Specifies the type of managed disk to create. Possible values are either `Standard_LRS`, `StandardSSD_LRS`, `Premium_LRS`, `PremiumV2_LRS`, `Premium_ZRS`, `StandardSSD_ZRS` or `UltraSSD_LRS`.
+// Specifies the type of managed disk to create. Possible values are either `Standard_LRS`, `StandardSSD_LRS`,
+// `Premium_LRS`, `PremiumV2_LRS`, `Premium_ZRS`, `StandardSSD_ZRS` or `UltraSSD_LRS`.
 func (o AzureVirtualMachineOutput) OsDiskType() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzureVirtualMachine) pulumi.StringOutput { return v.OsDiskType }).(pulumi.StringOutput)
 }
 
-// Specify "Standard" or "TrustedLaunch" security type. Defaults to "Standard".
-//
-//	Use TrustedLaunch for the security of "Generation 2" virtual machines (VMs).
-//	[Supported Sizes](https://learn.microsoft.com/en-us/azure/virtual-machines/trusted-launch#virtual-machines-sizes)
-//	 Defaults to `Standard`.
+// Specify "Standard" or "TrustedLaunch" security type. Defaults to "Standard". Use TrustedLaunch for the security of
+// "Generation 2" virtual machines (VMs). [Supported
+// Sizes](https://learn.microsoft.com/en-us/azure/virtual-machines/trusted-launch#virtual-machines-sizes)
 func (o AzureVirtualMachineOutput) SecurityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AzureVirtualMachine) pulumi.StringPtrOutput { return v.SecurityType }).(pulumi.StringPtrOutput)
 }
@@ -693,7 +724,8 @@ func (o AzureVirtualMachineOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzureVirtualMachine) pulumi.StringOutput { return v.TenantId }).(pulumi.StringOutput)
 }
 
-// Specifies the time zone of the virtual machine, [the possible values are defined here](https://jackstromberg.com/2017/01/list-of-time-zones-consumed-by-azure/).
+// Specifies the time zone of the virtual machine, [the possible values are defined
+// here](https://jackstromberg.com/2017/01/list-of-time-zones-consumed-by-azure/).
 func (o AzureVirtualMachineOutput) Timezone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AzureVirtualMachine) pulumi.StringPtrOutput { return v.Timezone }).(pulumi.StringPtrOutput)
 }
@@ -707,7 +739,7 @@ func (o AzureVirtualMachineOutput) Volumes() AzureVirtualMachineVolumeArrayOutpu
 	return o.ApplyT(func(v *AzureVirtualMachine) AzureVirtualMachineVolumeArrayOutput { return v.Volumes }).(AzureVirtualMachineVolumeArrayOutput)
 }
 
-// Whether or not to wait until azure virtual machine to be ready, after creation. Defaults to `true`.
+// Whether or not to wait until azure virtual machine to be ready, after creation.
 func (o AzureVirtualMachineOutput) WaitUntilReady() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AzureVirtualMachine) pulumi.BoolPtrOutput { return v.WaitUntilReady }).(pulumi.BoolPtrOutput)
 }

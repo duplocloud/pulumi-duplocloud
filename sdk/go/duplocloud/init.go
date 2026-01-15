@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "duplocloud:index/adminSystemSetting:AdminSystemSetting":
 		r = &AdminSystemSetting{}
+	case "duplocloud:index/asgInstanceRefresh:AsgInstanceRefresh":
+		r = &AsgInstanceRefresh{}
 	case "duplocloud:index/asgProfile:AsgProfile":
 		r = &AsgProfile{}
 	case "duplocloud:index/awsApiGatewayIntegration:AwsApiGatewayIntegration":
@@ -85,6 +87,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AwsLoadBalancerListener{}
 	case "duplocloud:index/awsMwaaEnvironment:AwsMwaaEnvironment":
 		r = &AwsMwaaEnvironment{}
+	case "duplocloud:index/awsRdsGlobalSecondary:AwsRdsGlobalSecondary":
+		r = &AwsRdsGlobalSecondary{}
 	case "duplocloud:index/awsRdsTag:AwsRdsTag":
 		r = &AwsRdsTag{}
 	case "duplocloud:index/awsSnsTopic:AwsSnsTopic":
@@ -93,6 +97,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AwsSqsQueue{}
 	case "duplocloud:index/awsSsmParameter:AwsSsmParameter":
 		r = &AwsSsmParameter{}
+	case "duplocloud:index/awsTag:AwsTag":
+		r = &AwsTag{}
 	case "duplocloud:index/awsTargetGroupAttributes:AwsTargetGroupAttributes":
 		r = &AwsTargetGroupAttributes{}
 	case "duplocloud:index/awsTimestreamwriteDatabase:AwsTimestreamwriteDatabase":
@@ -101,6 +107,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AwsTimestreamwriteTable{}
 	case "duplocloud:index/azureAvailabilitySet:AzureAvailabilitySet":
 		r = &AzureAvailabilitySet{}
+	case "duplocloud:index/azureCosmosDbAccount:AzureCosmosDbAccount":
+		r = &AzureCosmosDbAccount{}
+	case "duplocloud:index/azureCosmosDbContainer:AzureCosmosDbContainer":
+		r = &AzureCosmosDbContainer{}
+	case "duplocloud:index/azureCosmosDbDatabase:AzureCosmosDbDatabase":
+		r = &AzureCosmosDbDatabase{}
 	case "duplocloud:index/azureDatafactory:AzureDatafactory":
 		r = &AzureDatafactory{}
 	case "duplocloud:index/azureK8NodePool:AzureK8NodePool":
@@ -117,6 +129,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AzureMssqlElasticpool{}
 	case "duplocloud:index/azureMssqlServer:AzureMssqlServer":
 		r = &AzureMssqlServer{}
+	case "duplocloud:index/azureMssqldbRetentionBackup:AzureMssqldbRetentionBackup":
+		r = &AzureMssqldbRetentionBackup{}
 	case "duplocloud:index/azureMysqlDatabase:AzureMysqlDatabase":
 		r = &AzureMysqlDatabase{}
 	case "duplocloud:index/azureNetworkSecurityRule:AzureNetworkSecurityRule":
@@ -125,6 +139,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AzurePostgresqlDatabase{}
 	case "duplocloud:index/azurePostgresqlFlexibleDatabase:AzurePostgresqlFlexibleDatabase":
 		r = &AzurePostgresqlFlexibleDatabase{}
+	case "duplocloud:index/azurePostgresqlFlexibleDatabaseV2:AzurePostgresqlFlexibleDatabaseV2":
+		r = &AzurePostgresqlFlexibleDatabaseV2{}
+	case "duplocloud:index/azurePostgresqlFlexibleDbAdAdministrator:AzurePostgresqlFlexibleDbAdAdministrator":
+		r = &AzurePostgresqlFlexibleDbAdAdministrator{}
 	case "duplocloud:index/azurePrivateEndpoint:AzurePrivateEndpoint":
 		r = &AzurePrivateEndpoint{}
 	case "duplocloud:index/azureRecoveryServicesVault:AzureRecoveryServicesVault":
@@ -171,6 +189,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DuploServiceLbconfigs{}
 	case "duplocloud:index/duploServiceParams:DuploServiceParams":
 		r = &DuploServiceParams{}
+	case "duplocloud:index/ecacheAssociateGlobalSecondaryCluster:EcacheAssociateGlobalSecondaryCluster":
+		r = &EcacheAssociateGlobalSecondaryCluster{}
+	case "duplocloud:index/ecacheGlobalDatastore:EcacheGlobalDatastore":
+		r = &EcacheGlobalDatastore{}
 	case "duplocloud:index/ecacheInstance:EcacheInstance":
 		r = &EcacheInstance{}
 	case "duplocloud:index/ecsService:EcsService":
@@ -269,6 +291,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &TenantCleanupTimers{}
 	case "duplocloud:index/tenantConfig:TenantConfig":
 		r = &TenantConfig{}
+	case "duplocloud:index/tenantK8sResourceQuota:TenantK8sResourceQuota":
+		r = &TenantK8sResourceQuota{}
+	case "duplocloud:index/tenantKms:TenantKms":
+		r = &TenantKms{}
+	case "duplocloud:index/tenantMetadata:TenantMetadata":
+		r = &TenantMetadata{}
 	case "duplocloud:index/tenantNetworkSecurityRule:TenantNetworkSecurityRule":
 		r = &TenantNetworkSecurityRule{}
 	case "duplocloud:index/tenantSecret:TenantSecret":
@@ -313,6 +341,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"duplocloud",
 		"index/adminSystemSetting",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"duplocloud",
+		"index/asgInstanceRefresh",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -472,6 +505,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"duplocloud",
+		"index/awsRdsGlobalSecondary",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"duplocloud",
 		"index/awsRdsTag",
 		&module{version},
 	)
@@ -492,6 +530,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"duplocloud",
+		"index/awsTag",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"duplocloud",
 		"index/awsTargetGroupAttributes",
 		&module{version},
 	)
@@ -508,6 +551,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"duplocloud",
 		"index/azureAvailabilitySet",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"duplocloud",
+		"index/azureCosmosDbAccount",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"duplocloud",
+		"index/azureCosmosDbContainer",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"duplocloud",
+		"index/azureCosmosDbDatabase",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -552,6 +610,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"duplocloud",
+		"index/azureMssqldbRetentionBackup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"duplocloud",
 		"index/azureMysqlDatabase",
 		&module{version},
 	)
@@ -568,6 +631,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"duplocloud",
 		"index/azurePostgresqlFlexibleDatabase",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"duplocloud",
+		"index/azurePostgresqlFlexibleDatabaseV2",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"duplocloud",
+		"index/azurePostgresqlFlexibleDbAdAdministrator",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -683,6 +756,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"duplocloud",
 		"index/duploServiceParams",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"duplocloud",
+		"index/ecacheAssociateGlobalSecondaryCluster",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"duplocloud",
+		"index/ecacheGlobalDatastore",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -928,6 +1011,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"duplocloud",
 		"index/tenantConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"duplocloud",
+		"index/tenantK8sResourceQuota",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"duplocloud",
+		"index/tenantKms",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"duplocloud",
+		"index/tenantMetadata",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

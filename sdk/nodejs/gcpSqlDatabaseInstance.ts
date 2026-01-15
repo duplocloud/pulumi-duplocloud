@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -87,6 +89,10 @@ export class GcpSqlDatabaseInstance extends pulumi.CustomResource {
      */
     public /*out*/ readonly connectionName!: pulumi.Output<string>;
     /**
+     * List of database flags to be set on the database instance. Please refer to the [Database Flags Documentation](https://cloud.google.com/sql/docs/mysql/flags) for more details on available flags.
+     */
+    public readonly databaseFlags!: pulumi.Output<outputs.GcpSqlDatabaseInstanceDatabaseFlag[] | undefined>;
+    /**
      * The MySQL, PostgreSQL or SQL Server version to use.Supported values include `MYSQL_5_6`,`MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`,`POSTGRES_10`,`POSTGRES_11`,`POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`, `POSTGRES_15`,`POSTGRES_16`,`POSTGRES_17`, `SQLSERVER_2017_STANDARD`,`SQLSERVER_2017_ENTERPRISE`,`SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`,`SQLSERVER_2019_STANDARD`, `SQLSERVER_2019_ENTERPRISE`, `SQLSERVER_2019_EXPRESS`,`SQLSERVER_2019_WEB`,`SQLSERVER_2022_WEB`,`SQLSERVER_2022_EXPRESS`,`SQLSERVER_2022_ENTERPRISE`,`SQLSERVER_2022_STANDARD`.[Database Version Policies](https://cloud.google.com/sql/docs/db-versions) includes an up-to-date reference of supported versions.
      */
     public readonly databaseVersion!: pulumi.Output<string>;
@@ -94,6 +100,10 @@ export class GcpSqlDatabaseInstance extends pulumi.CustomResource {
      * The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
      */
     public readonly diskSize!: pulumi.Output<number>;
+    /**
+     * Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS Defaults to `ENTERPRISE`.
+     */
+    public readonly edition!: pulumi.Output<string | undefined>;
     /**
      * The full name of the sql database.
      */
@@ -149,8 +159,10 @@ export class GcpSqlDatabaseInstance extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as GcpSqlDatabaseInstanceState | undefined;
             resourceInputs["connectionName"] = state ? state.connectionName : undefined;
+            resourceInputs["databaseFlags"] = state ? state.databaseFlags : undefined;
             resourceInputs["databaseVersion"] = state ? state.databaseVersion : undefined;
             resourceInputs["diskSize"] = state ? state.diskSize : undefined;
+            resourceInputs["edition"] = state ? state.edition : undefined;
             resourceInputs["fullname"] = state ? state.fullname : undefined;
             resourceInputs["ipAddresses"] = state ? state.ipAddresses : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
@@ -172,8 +184,10 @@ export class GcpSqlDatabaseInstance extends pulumi.CustomResource {
             if ((!args || args.tier === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tier'");
             }
+            resourceInputs["databaseFlags"] = args ? args.databaseFlags : undefined;
             resourceInputs["databaseVersion"] = args ? args.databaseVersion : undefined;
             resourceInputs["diskSize"] = args ? args.diskSize : undefined;
+            resourceInputs["edition"] = args ? args.edition : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["needBackup"] = args ? args.needBackup : undefined;
@@ -200,6 +214,10 @@ export interface GcpSqlDatabaseInstanceState {
      */
     connectionName?: pulumi.Input<string>;
     /**
+     * List of database flags to be set on the database instance. Please refer to the [Database Flags Documentation](https://cloud.google.com/sql/docs/mysql/flags) for more details on available flags.
+     */
+    databaseFlags?: pulumi.Input<pulumi.Input<inputs.GcpSqlDatabaseInstanceDatabaseFlag>[]>;
+    /**
      * The MySQL, PostgreSQL or SQL Server version to use.Supported values include `MYSQL_5_6`,`MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`,`POSTGRES_10`,`POSTGRES_11`,`POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`, `POSTGRES_15`,`POSTGRES_16`,`POSTGRES_17`, `SQLSERVER_2017_STANDARD`,`SQLSERVER_2017_ENTERPRISE`,`SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`,`SQLSERVER_2019_STANDARD`, `SQLSERVER_2019_ENTERPRISE`, `SQLSERVER_2019_EXPRESS`,`SQLSERVER_2019_WEB`,`SQLSERVER_2022_WEB`,`SQLSERVER_2022_EXPRESS`,`SQLSERVER_2022_ENTERPRISE`,`SQLSERVER_2022_STANDARD`.[Database Version Policies](https://cloud.google.com/sql/docs/db-versions) includes an up-to-date reference of supported versions.
      */
     databaseVersion?: pulumi.Input<string>;
@@ -207,6 +225,10 @@ export interface GcpSqlDatabaseInstanceState {
      * The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
      */
     diskSize?: pulumi.Input<number>;
+    /**
+     * Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS Defaults to `ENTERPRISE`.
+     */
+    edition?: pulumi.Input<string>;
     /**
      * The full name of the sql database.
      */
@@ -254,6 +276,10 @@ export interface GcpSqlDatabaseInstanceState {
  */
 export interface GcpSqlDatabaseInstanceArgs {
     /**
+     * List of database flags to be set on the database instance. Please refer to the [Database Flags Documentation](https://cloud.google.com/sql/docs/mysql/flags) for more details on available flags.
+     */
+    databaseFlags?: pulumi.Input<pulumi.Input<inputs.GcpSqlDatabaseInstanceDatabaseFlag>[]>;
+    /**
      * The MySQL, PostgreSQL or SQL Server version to use.Supported values include `MYSQL_5_6`,`MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`,`POSTGRES_10`,`POSTGRES_11`,`POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`, `POSTGRES_15`,`POSTGRES_16`,`POSTGRES_17`, `SQLSERVER_2017_STANDARD`,`SQLSERVER_2017_ENTERPRISE`,`SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`,`SQLSERVER_2019_STANDARD`, `SQLSERVER_2019_ENTERPRISE`, `SQLSERVER_2019_EXPRESS`,`SQLSERVER_2019_WEB`,`SQLSERVER_2022_WEB`,`SQLSERVER_2022_EXPRESS`,`SQLSERVER_2022_ENTERPRISE`,`SQLSERVER_2022_STANDARD`.[Database Version Policies](https://cloud.google.com/sql/docs/db-versions) includes an up-to-date reference of supported versions.
      */
     databaseVersion: pulumi.Input<string>;
@@ -261,6 +287,10 @@ export interface GcpSqlDatabaseInstanceArgs {
      * The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
      */
     diskSize?: pulumi.Input<number>;
+    /**
+     * Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS Defaults to `ENTERPRISE`.
+     */
+    edition?: pulumi.Input<string>;
     /**
      * Map of string keys and values that can be used to organize and categorize this resource.
      */

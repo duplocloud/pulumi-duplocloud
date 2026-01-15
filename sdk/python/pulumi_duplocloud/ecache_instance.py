@@ -47,23 +47,23 @@ class EcacheInstanceArgs:
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the elasticache instance will be created in.
         :param pulumi.Input[str] auth_token: Set a password for authenticating to the ElastiCache instance.  Only supported if `encryption_in_transit` is to to `true`.
         :param pulumi.Input[bool] automatic_failover_enabled: Enables automatic failover.
-        :param pulumi.Input[int] cache_type: The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache
-        :param pulumi.Input[bool] enable_cluster_mode: Flag to enable/disable redis cluster mode.
+        :param pulumi.Input[int] cache_type: The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache - `2` : Valkey
+        :param pulumi.Input[bool] enable_cluster_mode: Flag to enable/disable redis/valkey cluster mode.
         :param pulumi.Input[bool] encryption_at_rest: Enables encryption-at-rest.
         :param pulumi.Input[bool] encryption_in_transit: Enables encryption-in-transit.
-        :param pulumi.Input[str] engine_version: The engine version of the elastic instance. See AWS documentation for the [available Redis instance
+        :param pulumi.Input[str] engine_version: The engine version of the elastic instance. See AWS documentation for the [available Redis and Valkey instance
                types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/supported-engine-versions.html) or the [available
                Memcached instance
                types](https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/supported-engine-versions-mc.html).
         :param pulumi.Input[str] kms_key_id: The globally unique identifier for the key.
         :param pulumi.Input[str] name: The short name of the elasticache instance.  Duplo will add a prefix to the name.  You can retrieve the full name from the `identifier` attribute.
         :param pulumi.Input[int] number_of_shards: The number of shards to create. Applicable only if enable_cluster_mode is set to true
-        :param pulumi.Input[str] parameter_group_name: The REDIS parameter group to supply.
+        :param pulumi.Input[str] parameter_group_name: The REDIS/Valkey parameter group to supply.
         :param pulumi.Input[int] replicas: The number of replicas to create. Supported number of replicas is 1 to 6
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] snapshot_arns: Specify the ARN of a Redis RDB snapshot file stored in Amazon S3. User should have the access to export snapshot to s3
-               bucket. One can find steps to provide access to export snapshot to s3 on following link
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] snapshot_arns: Specify the ARN of a Redis/Valkey RDB snapshot file stored in Amazon S3. User should have the access to export snapshot
+               to s3 bucket. One can find steps to provide access to export snapshot to s3 on following link
                https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html
-        :param pulumi.Input[str] snapshot_name: Select the snapshot/backup you want to use for creating redis.
+        :param pulumi.Input[str] snapshot_name: Select the snapshot/backup you want to use for creating redis/valkey.
         :param pulumi.Input[int] snapshot_retention_limit: Specify retention limit in days. Accepted values - 1-35.
         :param pulumi.Input[str] snapshot_window: Specify snapshot window limit The daily time range (in UTC) during which ElastiCache begins taking a daily snapshot of
                your node group (shard). Example: 05:00-09:00. If you do not specify this parameter, ElastiCache automatically chooses
@@ -159,7 +159,7 @@ class EcacheInstanceArgs:
     @pulumi.getter(name="cacheType")
     def cache_type(self) -> Optional[pulumi.Input[int]]:
         """
-        The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache
+        The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache - `2` : Valkey
         """
         return pulumi.get(self, "cache_type")
 
@@ -171,7 +171,7 @@ class EcacheInstanceArgs:
     @pulumi.getter(name="enableClusterMode")
     def enable_cluster_mode(self) -> Optional[pulumi.Input[bool]]:
         """
-        Flag to enable/disable redis cluster mode.
+        Flag to enable/disable redis/valkey cluster mode.
         """
         return pulumi.get(self, "enable_cluster_mode")
 
@@ -207,7 +207,7 @@ class EcacheInstanceArgs:
     @pulumi.getter(name="engineVersion")
     def engine_version(self) -> Optional[pulumi.Input[str]]:
         """
-        The engine version of the elastic instance. See AWS documentation for the [available Redis instance
+        The engine version of the elastic instance. See AWS documentation for the [available Redis and Valkey instance
         types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/supported-engine-versions.html) or the [available
         Memcached instance
         types](https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/supported-engine-versions-mc.html).
@@ -267,7 +267,7 @@ class EcacheInstanceArgs:
     @pulumi.getter(name="parameterGroupName")
     def parameter_group_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The REDIS parameter group to supply.
+        The REDIS/Valkey parameter group to supply.
         """
         return pulumi.get(self, "parameter_group_name")
 
@@ -291,8 +291,8 @@ class EcacheInstanceArgs:
     @pulumi.getter(name="snapshotArns")
     def snapshot_arns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Specify the ARN of a Redis RDB snapshot file stored in Amazon S3. User should have the access to export snapshot to s3
-        bucket. One can find steps to provide access to export snapshot to s3 on following link
+        Specify the ARN of a Redis/Valkey RDB snapshot file stored in Amazon S3. User should have the access to export snapshot
+        to s3 bucket. One can find steps to provide access to export snapshot to s3 on following link
         https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html
         """
         return pulumi.get(self, "snapshot_arns")
@@ -305,7 +305,7 @@ class EcacheInstanceArgs:
     @pulumi.getter(name="snapshotName")
     def snapshot_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Select the snapshot/backup you want to use for creating redis.
+        Select the snapshot/backup you want to use for creating redis/valkey.
         """
         return pulumi.get(self, "snapshot_name")
 
@@ -343,6 +343,7 @@ class EcacheInstanceArgs:
 @pulumi.input_type
 class _EcacheInstanceState:
     def __init__(__self__, *,
+                 actual_engine_version: Optional[pulumi.Input[str]] = None,
                  arn: Optional[pulumi.Input[str]] = None,
                  auth_token: Optional[pulumi.Input[str]] = None,
                  automatic_failover_enabled: Optional[pulumi.Input[bool]] = None,
@@ -355,6 +356,7 @@ class _EcacheInstanceState:
                  host: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  instance_status: Optional[pulumi.Input[str]] = None,
+                 is_primary: Optional[pulumi.Input[bool]] = None,
                  kms_key_id: Optional[pulumi.Input[str]] = None,
                  log_delivery_configurations: Optional[pulumi.Input[Sequence[pulumi.Input['EcacheInstanceLogDeliveryConfigurationArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -373,36 +375,39 @@ class _EcacheInstanceState:
         :param pulumi.Input[str] arn: The ARN of the elasticache instance.
         :param pulumi.Input[str] auth_token: Set a password for authenticating to the ElastiCache instance.  Only supported if `encryption_in_transit` is to to `true`.
         :param pulumi.Input[bool] automatic_failover_enabled: Enables automatic failover.
-        :param pulumi.Input[int] cache_type: The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache
-        :param pulumi.Input[bool] enable_cluster_mode: Flag to enable/disable redis cluster mode.
+        :param pulumi.Input[int] cache_type: The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache - `2` : Valkey
+        :param pulumi.Input[bool] enable_cluster_mode: Flag to enable/disable redis/valkey cluster mode.
         :param pulumi.Input[bool] encryption_at_rest: Enables encryption-at-rest.
         :param pulumi.Input[bool] encryption_in_transit: Enables encryption-in-transit.
         :param pulumi.Input[str] endpoint: The endpoint of the elasticache instance.
-        :param pulumi.Input[str] engine_version: The engine version of the elastic instance. See AWS documentation for the [available Redis instance
+        :param pulumi.Input[str] engine_version: The engine version of the elastic instance. See AWS documentation for the [available Redis and Valkey instance
                types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/supported-engine-versions.html) or the [available
                Memcached instance
                types](https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/supported-engine-versions-mc.html).
         :param pulumi.Input[str] host: The DNS hostname of the elasticache instance.
         :param pulumi.Input[str] identifier: The full name of the elasticache instance.
         :param pulumi.Input[str] instance_status: The status of the elasticache instance.
+        :param pulumi.Input[bool] is_primary: Flag to indicate if this is primary replication group
         :param pulumi.Input[str] kms_key_id: The globally unique identifier for the key.
         :param pulumi.Input[str] name: The short name of the elasticache instance.  Duplo will add a prefix to the name.  You can retrieve the full name from the `identifier` attribute.
         :param pulumi.Input[int] number_of_shards: The number of shards to create. Applicable only if enable_cluster_mode is set to true
-        :param pulumi.Input[str] parameter_group_name: The REDIS parameter group to supply.
+        :param pulumi.Input[str] parameter_group_name: The REDIS/Valkey parameter group to supply.
         :param pulumi.Input[int] port: The listening port of the elasticache instance.
         :param pulumi.Input[int] replicas: The number of replicas to create. Supported number of replicas is 1 to 6
         :param pulumi.Input[str] size: The instance type of the elasticache instance.
                See AWS documentation for the [available instance types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] snapshot_arns: Specify the ARN of a Redis RDB snapshot file stored in Amazon S3. User should have the access to export snapshot to s3
-               bucket. One can find steps to provide access to export snapshot to s3 on following link
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] snapshot_arns: Specify the ARN of a Redis/Valkey RDB snapshot file stored in Amazon S3. User should have the access to export snapshot
+               to s3 bucket. One can find steps to provide access to export snapshot to s3 on following link
                https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html
-        :param pulumi.Input[str] snapshot_name: Select the snapshot/backup you want to use for creating redis.
+        :param pulumi.Input[str] snapshot_name: Select the snapshot/backup you want to use for creating redis/valkey.
         :param pulumi.Input[int] snapshot_retention_limit: Specify retention limit in days. Accepted values - 1-35.
         :param pulumi.Input[str] snapshot_window: Specify snapshot window limit The daily time range (in UTC) during which ElastiCache begins taking a daily snapshot of
                your node group (shard). Example: 05:00-09:00. If you do not specify this parameter, ElastiCache automatically chooses
                an appropriate time range.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the elasticache instance will be created in.
         """
+        if actual_engine_version is not None:
+            pulumi.set(__self__, "actual_engine_version", actual_engine_version)
         if arn is not None:
             pulumi.set(__self__, "arn", arn)
         if auth_token is not None:
@@ -427,6 +432,8 @@ class _EcacheInstanceState:
             pulumi.set(__self__, "identifier", identifier)
         if instance_status is not None:
             pulumi.set(__self__, "instance_status", instance_status)
+        if is_primary is not None:
+            pulumi.set(__self__, "is_primary", is_primary)
         if kms_key_id is not None:
             pulumi.set(__self__, "kms_key_id", kms_key_id)
         if log_delivery_configurations is not None:
@@ -453,6 +460,15 @@ class _EcacheInstanceState:
             pulumi.set(__self__, "snapshot_window", snapshot_window)
         if tenant_id is not None:
             pulumi.set(__self__, "tenant_id", tenant_id)
+
+    @property
+    @pulumi.getter(name="actualEngineVersion")
+    def actual_engine_version(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "actual_engine_version")
+
+    @actual_engine_version.setter
+    def actual_engine_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "actual_engine_version", value)
 
     @property
     @pulumi.getter
@@ -494,7 +510,7 @@ class _EcacheInstanceState:
     @pulumi.getter(name="cacheType")
     def cache_type(self) -> Optional[pulumi.Input[int]]:
         """
-        The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache
+        The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache - `2` : Valkey
         """
         return pulumi.get(self, "cache_type")
 
@@ -506,7 +522,7 @@ class _EcacheInstanceState:
     @pulumi.getter(name="enableClusterMode")
     def enable_cluster_mode(self) -> Optional[pulumi.Input[bool]]:
         """
-        Flag to enable/disable redis cluster mode.
+        Flag to enable/disable redis/valkey cluster mode.
         """
         return pulumi.get(self, "enable_cluster_mode")
 
@@ -554,7 +570,7 @@ class _EcacheInstanceState:
     @pulumi.getter(name="engineVersion")
     def engine_version(self) -> Optional[pulumi.Input[str]]:
         """
-        The engine version of the elastic instance. See AWS documentation for the [available Redis instance
+        The engine version of the elastic instance. See AWS documentation for the [available Redis and Valkey instance
         types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/supported-engine-versions.html) or the [available
         Memcached instance
         types](https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/supported-engine-versions-mc.html).
@@ -600,6 +616,18 @@ class _EcacheInstanceState:
     @instance_status.setter
     def instance_status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "instance_status", value)
+
+    @property
+    @pulumi.getter(name="isPrimary")
+    def is_primary(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Flag to indicate if this is primary replication group
+        """
+        return pulumi.get(self, "is_primary")
+
+    @is_primary.setter
+    def is_primary(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_primary", value)
 
     @property
     @pulumi.getter(name="kmsKeyId")
@@ -650,7 +678,7 @@ class _EcacheInstanceState:
     @pulumi.getter(name="parameterGroupName")
     def parameter_group_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The REDIS parameter group to supply.
+        The REDIS/Valkey parameter group to supply.
         """
         return pulumi.get(self, "parameter_group_name")
 
@@ -699,8 +727,8 @@ class _EcacheInstanceState:
     @pulumi.getter(name="snapshotArns")
     def snapshot_arns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Specify the ARN of a Redis RDB snapshot file stored in Amazon S3. User should have the access to export snapshot to s3
-        bucket. One can find steps to provide access to export snapshot to s3 on following link
+        Specify the ARN of a Redis/Valkey RDB snapshot file stored in Amazon S3. User should have the access to export snapshot
+        to s3 bucket. One can find steps to provide access to export snapshot to s3 on following link
         https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html
         """
         return pulumi.get(self, "snapshot_arns")
@@ -713,7 +741,7 @@ class _EcacheInstanceState:
     @pulumi.getter(name="snapshotName")
     def snapshot_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Select the snapshot/backup you want to use for creating redis.
+        Select the snapshot/backup you want to use for creating redis/valkey.
         """
         return pulumi.get(self, "snapshot_name")
 
@@ -918,6 +946,40 @@ class EcacheInstance(pulumi.CustomResource):
             snapshot_window="04:00-13:00")
         ```
 
+        ### Creating an Amazon Valkey with snapshot window
+        ```python
+        import pulumi
+        import pulumi_duplocloud as duplocloud
+
+        mycaches = duplocloud.EcacheInstance("mycaches",
+            tenant_id=tenant["id"],
+            name="myvalkey",
+            cache_type=2,
+            size="cache.t3.medium",
+            engine_version="7.2",
+            snapshot_window="19:50-20:51",
+            snapshot_retention_limit=12)
+        ```
+
+        ### Creating an Amazon Valkey with cluster mode enabled
+        ```python
+        import pulumi
+        import pulumi_duplocloud as duplocloud
+
+        mycaches = duplocloud.EcacheInstance("mycaches",
+            tenant_id=tenant["id"],
+            name="tf-clust1",
+            cache_type=2,
+            size="cache.t3.medium",
+            engine_version="7.2",
+            snapshot_window="19:50-20:51",
+            snapshot_retention_limit=12,
+            enable_cluster_mode=True,
+            number_of_shards=3,
+            automatic_failover_enabled=True,
+            replicas=2)
+        ```
+
         ## Import
 
         Example: Importing an existing AWS ElastiCache cluster
@@ -936,25 +998,25 @@ class EcacheInstance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] auth_token: Set a password for authenticating to the ElastiCache instance.  Only supported if `encryption_in_transit` is to to `true`.
         :param pulumi.Input[bool] automatic_failover_enabled: Enables automatic failover.
-        :param pulumi.Input[int] cache_type: The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache
-        :param pulumi.Input[bool] enable_cluster_mode: Flag to enable/disable redis cluster mode.
+        :param pulumi.Input[int] cache_type: The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache - `2` : Valkey
+        :param pulumi.Input[bool] enable_cluster_mode: Flag to enable/disable redis/valkey cluster mode.
         :param pulumi.Input[bool] encryption_at_rest: Enables encryption-at-rest.
         :param pulumi.Input[bool] encryption_in_transit: Enables encryption-in-transit.
-        :param pulumi.Input[str] engine_version: The engine version of the elastic instance. See AWS documentation for the [available Redis instance
+        :param pulumi.Input[str] engine_version: The engine version of the elastic instance. See AWS documentation for the [available Redis and Valkey instance
                types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/supported-engine-versions.html) or the [available
                Memcached instance
                types](https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/supported-engine-versions-mc.html).
         :param pulumi.Input[str] kms_key_id: The globally unique identifier for the key.
         :param pulumi.Input[str] name: The short name of the elasticache instance.  Duplo will add a prefix to the name.  You can retrieve the full name from the `identifier` attribute.
         :param pulumi.Input[int] number_of_shards: The number of shards to create. Applicable only if enable_cluster_mode is set to true
-        :param pulumi.Input[str] parameter_group_name: The REDIS parameter group to supply.
+        :param pulumi.Input[str] parameter_group_name: The REDIS/Valkey parameter group to supply.
         :param pulumi.Input[int] replicas: The number of replicas to create. Supported number of replicas is 1 to 6
         :param pulumi.Input[str] size: The instance type of the elasticache instance.
                See AWS documentation for the [available instance types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] snapshot_arns: Specify the ARN of a Redis RDB snapshot file stored in Amazon S3. User should have the access to export snapshot to s3
-               bucket. One can find steps to provide access to export snapshot to s3 on following link
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] snapshot_arns: Specify the ARN of a Redis/Valkey RDB snapshot file stored in Amazon S3. User should have the access to export snapshot
+               to s3 bucket. One can find steps to provide access to export snapshot to s3 on following link
                https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html
-        :param pulumi.Input[str] snapshot_name: Select the snapshot/backup you want to use for creating redis.
+        :param pulumi.Input[str] snapshot_name: Select the snapshot/backup you want to use for creating redis/valkey.
         :param pulumi.Input[int] snapshot_retention_limit: Specify retention limit in days. Accepted values - 1-35.
         :param pulumi.Input[str] snapshot_window: Specify snapshot window limit The daily time range (in UTC) during which ElastiCache begins taking a daily snapshot of
                your node group (shard). Example: 05:00-09:00. If you do not specify this parameter, ElastiCache automatically chooses
@@ -1100,6 +1162,40 @@ class EcacheInstance(pulumi.CustomResource):
             snapshot_window="04:00-13:00")
         ```
 
+        ### Creating an Amazon Valkey with snapshot window
+        ```python
+        import pulumi
+        import pulumi_duplocloud as duplocloud
+
+        mycaches = duplocloud.EcacheInstance("mycaches",
+            tenant_id=tenant["id"],
+            name="myvalkey",
+            cache_type=2,
+            size="cache.t3.medium",
+            engine_version="7.2",
+            snapshot_window="19:50-20:51",
+            snapshot_retention_limit=12)
+        ```
+
+        ### Creating an Amazon Valkey with cluster mode enabled
+        ```python
+        import pulumi
+        import pulumi_duplocloud as duplocloud
+
+        mycaches = duplocloud.EcacheInstance("mycaches",
+            tenant_id=tenant["id"],
+            name="tf-clust1",
+            cache_type=2,
+            size="cache.t3.medium",
+            engine_version="7.2",
+            snapshot_window="19:50-20:51",
+            snapshot_retention_limit=12,
+            enable_cluster_mode=True,
+            number_of_shards=3,
+            automatic_failover_enabled=True,
+            replicas=2)
+        ```
+
         ## Import
 
         Example: Importing an existing AWS ElastiCache cluster
@@ -1180,11 +1276,13 @@ class EcacheInstance(pulumi.CustomResource):
             if tenant_id is None and not opts.urn:
                 raise TypeError("Missing required property 'tenant_id'")
             __props__.__dict__["tenant_id"] = tenant_id
+            __props__.__dict__["actual_engine_version"] = None
             __props__.__dict__["arn"] = None
             __props__.__dict__["endpoint"] = None
             __props__.__dict__["host"] = None
             __props__.__dict__["identifier"] = None
             __props__.__dict__["instance_status"] = None
+            __props__.__dict__["is_primary"] = None
             __props__.__dict__["port"] = None
         super(EcacheInstance, __self__).__init__(
             'duplocloud:index/ecacheInstance:EcacheInstance',
@@ -1196,6 +1294,7 @@ class EcacheInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            actual_engine_version: Optional[pulumi.Input[str]] = None,
             arn: Optional[pulumi.Input[str]] = None,
             auth_token: Optional[pulumi.Input[str]] = None,
             automatic_failover_enabled: Optional[pulumi.Input[bool]] = None,
@@ -1208,6 +1307,7 @@ class EcacheInstance(pulumi.CustomResource):
             host: Optional[pulumi.Input[str]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
             instance_status: Optional[pulumi.Input[str]] = None,
+            is_primary: Optional[pulumi.Input[bool]] = None,
             kms_key_id: Optional[pulumi.Input[str]] = None,
             log_delivery_configurations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EcacheInstanceLogDeliveryConfigurationArgs', 'EcacheInstanceLogDeliveryConfigurationArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -1231,30 +1331,31 @@ class EcacheInstance(pulumi.CustomResource):
         :param pulumi.Input[str] arn: The ARN of the elasticache instance.
         :param pulumi.Input[str] auth_token: Set a password for authenticating to the ElastiCache instance.  Only supported if `encryption_in_transit` is to to `true`.
         :param pulumi.Input[bool] automatic_failover_enabled: Enables automatic failover.
-        :param pulumi.Input[int] cache_type: The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache
-        :param pulumi.Input[bool] enable_cluster_mode: Flag to enable/disable redis cluster mode.
+        :param pulumi.Input[int] cache_type: The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache - `2` : Valkey
+        :param pulumi.Input[bool] enable_cluster_mode: Flag to enable/disable redis/valkey cluster mode.
         :param pulumi.Input[bool] encryption_at_rest: Enables encryption-at-rest.
         :param pulumi.Input[bool] encryption_in_transit: Enables encryption-in-transit.
         :param pulumi.Input[str] endpoint: The endpoint of the elasticache instance.
-        :param pulumi.Input[str] engine_version: The engine version of the elastic instance. See AWS documentation for the [available Redis instance
+        :param pulumi.Input[str] engine_version: The engine version of the elastic instance. See AWS documentation for the [available Redis and Valkey instance
                types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/supported-engine-versions.html) or the [available
                Memcached instance
                types](https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/supported-engine-versions-mc.html).
         :param pulumi.Input[str] host: The DNS hostname of the elasticache instance.
         :param pulumi.Input[str] identifier: The full name of the elasticache instance.
         :param pulumi.Input[str] instance_status: The status of the elasticache instance.
+        :param pulumi.Input[bool] is_primary: Flag to indicate if this is primary replication group
         :param pulumi.Input[str] kms_key_id: The globally unique identifier for the key.
         :param pulumi.Input[str] name: The short name of the elasticache instance.  Duplo will add a prefix to the name.  You can retrieve the full name from the `identifier` attribute.
         :param pulumi.Input[int] number_of_shards: The number of shards to create. Applicable only if enable_cluster_mode is set to true
-        :param pulumi.Input[str] parameter_group_name: The REDIS parameter group to supply.
+        :param pulumi.Input[str] parameter_group_name: The REDIS/Valkey parameter group to supply.
         :param pulumi.Input[int] port: The listening port of the elasticache instance.
         :param pulumi.Input[int] replicas: The number of replicas to create. Supported number of replicas is 1 to 6
         :param pulumi.Input[str] size: The instance type of the elasticache instance.
                See AWS documentation for the [available instance types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] snapshot_arns: Specify the ARN of a Redis RDB snapshot file stored in Amazon S3. User should have the access to export snapshot to s3
-               bucket. One can find steps to provide access to export snapshot to s3 on following link
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] snapshot_arns: Specify the ARN of a Redis/Valkey RDB snapshot file stored in Amazon S3. User should have the access to export snapshot
+               to s3 bucket. One can find steps to provide access to export snapshot to s3 on following link
                https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html
-        :param pulumi.Input[str] snapshot_name: Select the snapshot/backup you want to use for creating redis.
+        :param pulumi.Input[str] snapshot_name: Select the snapshot/backup you want to use for creating redis/valkey.
         :param pulumi.Input[int] snapshot_retention_limit: Specify retention limit in days. Accepted values - 1-35.
         :param pulumi.Input[str] snapshot_window: Specify snapshot window limit The daily time range (in UTC) during which ElastiCache begins taking a daily snapshot of
                your node group (shard). Example: 05:00-09:00. If you do not specify this parameter, ElastiCache automatically chooses
@@ -1265,6 +1366,7 @@ class EcacheInstance(pulumi.CustomResource):
 
         __props__ = _EcacheInstanceState.__new__(_EcacheInstanceState)
 
+        __props__.__dict__["actual_engine_version"] = actual_engine_version
         __props__.__dict__["arn"] = arn
         __props__.__dict__["auth_token"] = auth_token
         __props__.__dict__["automatic_failover_enabled"] = automatic_failover_enabled
@@ -1277,6 +1379,7 @@ class EcacheInstance(pulumi.CustomResource):
         __props__.__dict__["host"] = host
         __props__.__dict__["identifier"] = identifier
         __props__.__dict__["instance_status"] = instance_status
+        __props__.__dict__["is_primary"] = is_primary
         __props__.__dict__["kms_key_id"] = kms_key_id
         __props__.__dict__["log_delivery_configurations"] = log_delivery_configurations
         __props__.__dict__["name"] = name
@@ -1291,6 +1394,11 @@ class EcacheInstance(pulumi.CustomResource):
         __props__.__dict__["snapshot_window"] = snapshot_window
         __props__.__dict__["tenant_id"] = tenant_id
         return EcacheInstance(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="actualEngineVersion")
+    def actual_engine_version(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "actual_engine_version")
 
     @property
     @pulumi.getter
@@ -1320,15 +1428,15 @@ class EcacheInstance(pulumi.CustomResource):
     @pulumi.getter(name="cacheType")
     def cache_type(self) -> pulumi.Output[Optional[int]]:
         """
-        The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache
+        The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache - `2` : Valkey
         """
         return pulumi.get(self, "cache_type")
 
     @property
     @pulumi.getter(name="enableClusterMode")
-    def enable_cluster_mode(self) -> pulumi.Output[bool]:
+    def enable_cluster_mode(self) -> pulumi.Output[Optional[bool]]:
         """
-        Flag to enable/disable redis cluster mode.
+        Flag to enable/disable redis/valkey cluster mode.
         """
         return pulumi.get(self, "enable_cluster_mode")
 
@@ -1358,9 +1466,9 @@ class EcacheInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="engineVersion")
-    def engine_version(self) -> pulumi.Output[Optional[str]]:
+    def engine_version(self) -> pulumi.Output[str]:
         """
-        The engine version of the elastic instance. See AWS documentation for the [available Redis instance
+        The engine version of the elastic instance. See AWS documentation for the [available Redis and Valkey instance
         types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/supported-engine-versions.html) or the [available
         Memcached instance
         types](https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/supported-engine-versions-mc.html).
@@ -1390,6 +1498,14 @@ class EcacheInstance(pulumi.CustomResource):
         The status of the elasticache instance.
         """
         return pulumi.get(self, "instance_status")
+
+    @property
+    @pulumi.getter(name="isPrimary")
+    def is_primary(self) -> pulumi.Output[bool]:
+        """
+        Flag to indicate if this is primary replication group
+        """
+        return pulumi.get(self, "is_primary")
 
     @property
     @pulumi.getter(name="kmsKeyId")
@@ -1424,7 +1540,7 @@ class EcacheInstance(pulumi.CustomResource):
     @pulumi.getter(name="parameterGroupName")
     def parameter_group_name(self) -> pulumi.Output[str]:
         """
-        The REDIS parameter group to supply.
+        The REDIS/Valkey parameter group to supply.
         """
         return pulumi.get(self, "parameter_group_name")
 
@@ -1457,8 +1573,8 @@ class EcacheInstance(pulumi.CustomResource):
     @pulumi.getter(name="snapshotArns")
     def snapshot_arns(self) -> pulumi.Output[Sequence[str]]:
         """
-        Specify the ARN of a Redis RDB snapshot file stored in Amazon S3. User should have the access to export snapshot to s3
-        bucket. One can find steps to provide access to export snapshot to s3 on following link
+        Specify the ARN of a Redis/Valkey RDB snapshot file stored in Amazon S3. User should have the access to export snapshot
+        to s3 bucket. One can find steps to provide access to export snapshot to s3 on following link
         https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html
         """
         return pulumi.get(self, "snapshot_arns")
@@ -1467,7 +1583,7 @@ class EcacheInstance(pulumi.CustomResource):
     @pulumi.getter(name="snapshotName")
     def snapshot_name(self) -> pulumi.Output[str]:
         """
-        Select the snapshot/backup you want to use for creating redis.
+        Select the snapshot/backup you want to use for creating redis/valkey.
         """
         return pulumi.get(self, "snapshot_name")
 

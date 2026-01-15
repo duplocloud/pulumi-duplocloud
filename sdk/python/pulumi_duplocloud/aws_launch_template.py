@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['AwsLaunchTemplateArgs', 'AwsLaunchTemplate']
 
@@ -21,26 +23,31 @@ class AwsLaunchTemplateArgs:
     def __init__(__self__, *,
                  instance_type: pulumi.Input[str],
                  tenant_id: pulumi.Input[str],
-                 version: pulumi.Input[str],
                  ami: Optional[pulumi.Input[str]] = None,
+                 block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['AwsLaunchTemplateBlockDeviceMappingArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input[str]] = None,
                  version_description: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AwsLaunchTemplate resource.
         :param pulumi.Input[str] instance_type: Asg instance type to be used to update the version from the current version
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the launch template will be created in.
-        :param pulumi.Input[str] version: Any of the existing version of the launch template
         :param pulumi.Input[str] ami: Asg ami to be used to update the version from the current version
+        :param pulumi.Input[Sequence[pulumi.Input['AwsLaunchTemplateBlockDeviceMappingArgs']]] block_device_mappings: Configure additional volumes of the instance besides specified by the AMI
         :param pulumi.Input[str] name: The fullname of the asg group
+        :param pulumi.Input[str] version: Any of the existing version of the launch template, if not provided, the latest version will be used
         :param pulumi.Input[str] version_description: The version of the launch template
         """
         pulumi.set(__self__, "instance_type", instance_type)
         pulumi.set(__self__, "tenant_id", tenant_id)
-        pulumi.set(__self__, "version", version)
         if ami is not None:
             pulumi.set(__self__, "ami", ami)
+        if block_device_mappings is not None:
+            pulumi.set(__self__, "block_device_mappings", block_device_mappings)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
         if version_description is not None:
             pulumi.set(__self__, "version_description", version_description)
 
@@ -70,18 +77,6 @@ class AwsLaunchTemplateArgs:
 
     @property
     @pulumi.getter
-    def version(self) -> pulumi.Input[str]:
-        """
-        Any of the existing version of the launch template
-        """
-        return pulumi.get(self, "version")
-
-    @version.setter
-    def version(self, value: pulumi.Input[str]):
-        pulumi.set(self, "version", value)
-
-    @property
-    @pulumi.getter
     def ami(self) -> Optional[pulumi.Input[str]]:
         """
         Asg ami to be used to update the version from the current version
@@ -91,6 +86,18 @@ class AwsLaunchTemplateArgs:
     @ami.setter
     def ami(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ami", value)
+
+    @property
+    @pulumi.getter(name="blockDeviceMappings")
+    def block_device_mappings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AwsLaunchTemplateBlockDeviceMappingArgs']]]]:
+        """
+        Configure additional volumes of the instance besides specified by the AMI
+        """
+        return pulumi.get(self, "block_device_mappings")
+
+    @block_device_mappings.setter
+    def block_device_mappings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AwsLaunchTemplateBlockDeviceMappingArgs']]]]):
+        pulumi.set(self, "block_device_mappings", value)
 
     @property
     @pulumi.getter
@@ -103,6 +110,18 @@ class AwsLaunchTemplateArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Any of the existing version of the launch template, if not provided, the latest version will be used
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
 
     @property
     @pulumi.getter(name="versionDescription")
@@ -121,6 +140,7 @@ class AwsLaunchTemplateArgs:
 class _AwsLaunchTemplateState:
     def __init__(__self__, *,
                  ami: Optional[pulumi.Input[str]] = None,
+                 block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['AwsLaunchTemplateBlockDeviceMappingArgs']]]] = None,
                  default_version: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  latest_version: Optional[pulumi.Input[str]] = None,
@@ -132,16 +152,19 @@ class _AwsLaunchTemplateState:
         """
         Input properties used for looking up and filtering AwsLaunchTemplate resources.
         :param pulumi.Input[str] ami: Asg ami to be used to update the version from the current version
+        :param pulumi.Input[Sequence[pulumi.Input['AwsLaunchTemplateBlockDeviceMappingArgs']]] block_device_mappings: Configure additional volumes of the instance besides specified by the AMI
         :param pulumi.Input[str] default_version: The current default version of the launch template.
         :param pulumi.Input[str] instance_type: Asg instance type to be used to update the version from the current version
         :param pulumi.Input[str] latest_version: The latest launch template version
         :param pulumi.Input[str] name: The fullname of the asg group
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the launch template will be created in.
-        :param pulumi.Input[str] version: Any of the existing version of the launch template
+        :param pulumi.Input[str] version: Any of the existing version of the launch template, if not provided, the latest version will be used
         :param pulumi.Input[str] version_description: The version of the launch template
         """
         if ami is not None:
             pulumi.set(__self__, "ami", ami)
+        if block_device_mappings is not None:
+            pulumi.set(__self__, "block_device_mappings", block_device_mappings)
         if default_version is not None:
             pulumi.set(__self__, "default_version", default_version)
         if instance_type is not None:
@@ -170,6 +193,18 @@ class _AwsLaunchTemplateState:
     @ami.setter
     def ami(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ami", value)
+
+    @property
+    @pulumi.getter(name="blockDeviceMappings")
+    def block_device_mappings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AwsLaunchTemplateBlockDeviceMappingArgs']]]]:
+        """
+        Configure additional volumes of the instance besides specified by the AMI
+        """
+        return pulumi.get(self, "block_device_mappings")
+
+    @block_device_mappings.setter
+    def block_device_mappings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AwsLaunchTemplateBlockDeviceMappingArgs']]]]):
+        pulumi.set(self, "block_device_mappings", value)
 
     @property
     @pulumi.getter(name="defaultVersion")
@@ -235,7 +270,7 @@ class _AwsLaunchTemplateState:
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
         """
-        Any of the existing version of the launch template
+        Any of the existing version of the launch template, if not provided, the latest version will be used
         """
         return pulumi.get(self, "version")
 
@@ -271,6 +306,7 @@ class AwsLaunchTemplate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ami: Optional[pulumi.Input[str]] = None,
+                 block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AwsLaunchTemplateBlockDeviceMappingArgs', 'AwsLaunchTemplateBlockDeviceMappingArgsDict']]]]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
@@ -296,6 +332,23 @@ class AwsLaunchTemplate(pulumi.CustomResource):
             version="1",
             version_description="launch template description",
             ami="ami-123test")
+        name = duplocloud.AwsLaunchTemplate("name",
+            tenant_id=myapp.tenant_id,
+            instance_type="t3a.small",
+            name="launch-template-name",
+            version_description="launch template block device mapping",
+            version="2",
+            block_device_mappings=[{
+                "device_name": "/dev/xvda",
+                "ebs": {
+                    "volume_size": 30,
+                    "volume_type": "gp3",
+                    "delete_on_termination": True,
+                    "encrypted": False,
+                    "iops": 3000,
+                },
+                "virtual_name": "ephemeral1",
+            }])
         ```
 
         ## Import
@@ -306,7 +359,7 @@ class AwsLaunchTemplate(pulumi.CustomResource):
 
          - *NAME* is the name of the AWS launch template
 
-         - *VERSION* available version of launch template
+         - *VERSION* available version of launch template , it is optional, use if needed to import specific version of available launch template
 
         ```sh
         $ pulumi import duplocloud:index/awsLaunchTemplate:AwsLaunchTemplate lt *TENANT_ID*/launch-template/*NAME*/*VERSION*
@@ -315,10 +368,11 @@ class AwsLaunchTemplate(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ami: Asg ami to be used to update the version from the current version
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AwsLaunchTemplateBlockDeviceMappingArgs', 'AwsLaunchTemplateBlockDeviceMappingArgsDict']]]] block_device_mappings: Configure additional volumes of the instance besides specified by the AMI
         :param pulumi.Input[str] instance_type: Asg instance type to be used to update the version from the current version
         :param pulumi.Input[str] name: The fullname of the asg group
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the launch template will be created in.
-        :param pulumi.Input[str] version: Any of the existing version of the launch template
+        :param pulumi.Input[str] version: Any of the existing version of the launch template, if not provided, the latest version will be used
         :param pulumi.Input[str] version_description: The version of the launch template
         """
         ...
@@ -346,6 +400,23 @@ class AwsLaunchTemplate(pulumi.CustomResource):
             version="1",
             version_description="launch template description",
             ami="ami-123test")
+        name = duplocloud.AwsLaunchTemplate("name",
+            tenant_id=myapp.tenant_id,
+            instance_type="t3a.small",
+            name="launch-template-name",
+            version_description="launch template block device mapping",
+            version="2",
+            block_device_mappings=[{
+                "device_name": "/dev/xvda",
+                "ebs": {
+                    "volume_size": 30,
+                    "volume_type": "gp3",
+                    "delete_on_termination": True,
+                    "encrypted": False,
+                    "iops": 3000,
+                },
+                "virtual_name": "ephemeral1",
+            }])
         ```
 
         ## Import
@@ -356,7 +427,7 @@ class AwsLaunchTemplate(pulumi.CustomResource):
 
          - *NAME* is the name of the AWS launch template
 
-         - *VERSION* available version of launch template
+         - *VERSION* available version of launch template , it is optional, use if needed to import specific version of available launch template
 
         ```sh
         $ pulumi import duplocloud:index/awsLaunchTemplate:AwsLaunchTemplate lt *TENANT_ID*/launch-template/*NAME*/*VERSION*
@@ -378,6 +449,7 @@ class AwsLaunchTemplate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ami: Optional[pulumi.Input[str]] = None,
+                 block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AwsLaunchTemplateBlockDeviceMappingArgs', 'AwsLaunchTemplateBlockDeviceMappingArgsDict']]]]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
@@ -393,6 +465,7 @@ class AwsLaunchTemplate(pulumi.CustomResource):
             __props__ = AwsLaunchTemplateArgs.__new__(AwsLaunchTemplateArgs)
 
             __props__.__dict__["ami"] = ami
+            __props__.__dict__["block_device_mappings"] = block_device_mappings
             if instance_type is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_type'")
             __props__.__dict__["instance_type"] = instance_type
@@ -400,8 +473,6 @@ class AwsLaunchTemplate(pulumi.CustomResource):
             if tenant_id is None and not opts.urn:
                 raise TypeError("Missing required property 'tenant_id'")
             __props__.__dict__["tenant_id"] = tenant_id
-            if version is None and not opts.urn:
-                raise TypeError("Missing required property 'version'")
             __props__.__dict__["version"] = version
             __props__.__dict__["version_description"] = version_description
             __props__.__dict__["default_version"] = None
@@ -418,6 +489,7 @@ class AwsLaunchTemplate(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             ami: Optional[pulumi.Input[str]] = None,
+            block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AwsLaunchTemplateBlockDeviceMappingArgs', 'AwsLaunchTemplateBlockDeviceMappingArgsDict']]]]] = None,
             default_version: Optional[pulumi.Input[str]] = None,
             instance_type: Optional[pulumi.Input[str]] = None,
             latest_version: Optional[pulumi.Input[str]] = None,
@@ -434,12 +506,13 @@ class AwsLaunchTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ami: Asg ami to be used to update the version from the current version
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AwsLaunchTemplateBlockDeviceMappingArgs', 'AwsLaunchTemplateBlockDeviceMappingArgsDict']]]] block_device_mappings: Configure additional volumes of the instance besides specified by the AMI
         :param pulumi.Input[str] default_version: The current default version of the launch template.
         :param pulumi.Input[str] instance_type: Asg instance type to be used to update the version from the current version
         :param pulumi.Input[str] latest_version: The latest launch template version
         :param pulumi.Input[str] name: The fullname of the asg group
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the launch template will be created in.
-        :param pulumi.Input[str] version: Any of the existing version of the launch template
+        :param pulumi.Input[str] version: Any of the existing version of the launch template, if not provided, the latest version will be used
         :param pulumi.Input[str] version_description: The version of the launch template
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -447,6 +520,7 @@ class AwsLaunchTemplate(pulumi.CustomResource):
         __props__ = _AwsLaunchTemplateState.__new__(_AwsLaunchTemplateState)
 
         __props__.__dict__["ami"] = ami
+        __props__.__dict__["block_device_mappings"] = block_device_mappings
         __props__.__dict__["default_version"] = default_version
         __props__.__dict__["instance_type"] = instance_type
         __props__.__dict__["latest_version"] = latest_version
@@ -464,6 +538,14 @@ class AwsLaunchTemplate(pulumi.CustomResource):
         Asg ami to be used to update the version from the current version
         """
         return pulumi.get(self, "ami")
+
+    @property
+    @pulumi.getter(name="blockDeviceMappings")
+    def block_device_mappings(self) -> pulumi.Output[Optional[Sequence['outputs.AwsLaunchTemplateBlockDeviceMapping']]]:
+        """
+        Configure additional volumes of the instance besides specified by the AMI
+        """
+        return pulumi.get(self, "block_device_mappings")
 
     @property
     @pulumi.getter(name="defaultVersion")
@@ -507,9 +589,9 @@ class AwsLaunchTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def version(self) -> pulumi.Output[str]:
+    def version(self) -> pulumi.Output[Optional[str]]:
         """
-        Any of the existing version of the launch template
+        Any of the existing version of the launch template, if not provided, the latest version will be used
         """
         return pulumi.get(self, "version")
 

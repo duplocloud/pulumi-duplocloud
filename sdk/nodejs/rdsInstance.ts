@@ -53,7 +53,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as duplocloud from "@duplocloud/pulumi";
- * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  * import * as random from "@pulumi/random";
  *
  * // Ensure the 'dev' tenant is already created before creating the RDS instance.
@@ -85,7 +85,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as duplocloud from "@duplocloud/pulumi";
- * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  * import * as random from "@pulumi/random";
  *
  * // Ensure the 'dev' tenant is already created before creating the RDS instance.
@@ -115,7 +115,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as duplocloud from "@duplocloud/pulumi";
- * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  * import * as random from "@pulumi/random";
  *
  * // Ensure the 'dev' tenant is already created before creating the RDS instance.
@@ -159,7 +159,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as duplocloud from "@duplocloud/pulumi";
- * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  * import * as random from "@pulumi/random";
  *
  * // Ensure the 'dev' tenant is already created before creating the RDS instance.
@@ -190,7 +190,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as duplocloud from "@duplocloud/pulumi";
- * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  * import * as random from "@pulumi/random";
  *
  * // Ensure the 'dev' tenant is already created before creating the RDS instance.
@@ -224,7 +224,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as duplocloud from "@duplocloud/pulumi";
- * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  * import * as random from "@pulumi/random";
  *
  * // Ensure the 'dev' tenant is already created before creating the RDS instance.
@@ -342,6 +342,81 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
+ * # Example to showcase use of parameter group in writer and read replica for aurora cluster instance
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as random from "@pulumi/random";
+ *
+ * const mypassword = new random.index.Password("mypassword", {
+ *     length: 16,
+ *     special: false,
+ * });
+ * const app = new duplocloud.RdsInstance("app", {
+ *     tenantId: tenant.id,
+ *     name: "writer1-sqlnew",
+ *     engine: 8,
+ *     engineVersion: "5.7.mysql_aurora.2.11.5",
+ *     size: "db.r5.large",
+ *     masterUsername: "myuser",
+ *     masterPassword: mypassword.result,
+ *     encryptStorage: true,
+ *     backupRetentionPeriod: 10,
+ *     dbName: "auroradb",
+ *     skipFinalSnapshot: true,
+ *     storeDetailsInSecretManager: false,
+ *     enhancedMonitoring: 0,
+ *     availabilityZone: "us-west-2b",
+ *     storageType: "aurora",
+ *     clusterParameterGroupName: "c-aurora-mysql",
+ *     parameterGroupName: "aurora-mysql-dbparam",
+ * });
+ * const replica1 = new duplocloud.RdsReadReplica("replica1", {
+ *     tenantId: app.tenantId,
+ *     name: "aurora-replica-new",
+ *     size: "db.r5.large",
+ *     clusterIdentifier: app.clusterIdentifier,
+ *     availabilityZone: "us-west-2a",
+ *     parameterGroupName: "aurora-mysql-dbparam",
+ *     engineType: app.engine,
+ * });
+ * ```
+ *
+ * # Example to showcase use of parameter group in writer and read replica for standalone instance
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as duplocloud from "@duplocloud/pulumi";
+ *
+ * const mydb = new duplocloud.RdsInstance("mydb", {
+ *     tenantId: tenant.id,
+ *     name: "tf-postgresql1",
+ *     engine: 1,
+ *     engineVersion: "13.11",
+ *     size: "db.t3.medium",
+ *     masterUsername: "myuser",
+ *     masterPassword: "Qaazwedd#1",
+ *     parameterGroupName: "psql13dbparam",
+ *     encryptStorage: false,
+ *     storeDetailsInSecretManager: false,
+ *     enhancedMonitoring: 0,
+ *     storageType: "gp2",
+ * });
+ * const replica = new duplocloud.RdsReadReplica("replica", {
+ *     tenantId: mydb.tenantId,
+ *     name: "postgresql-rep1",
+ *     size: "db.t3.medium",
+ *     clusterIdentifier: mydb.clusterIdentifier,
+ *     performanceInsights: {
+ *         enabled: true,
+ *         retentionPeriod: 31,
+ *     },
+ *     engineType: mydb.engine,
+ *     parameterGroupName: mydb.parameterGroupName,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Example: Importing an existing RDS instance
@@ -355,128 +430,6 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import duplocloud:index/rdsInstance:RdsInstance mydb v2/subscriptions/*TENANT_ID*&#47;RDSDBInstance/*SHORTNAME*
  * ```
- *
- * Example to showcase use of parameter group in writer and read replica for aurora cluster instance
- *
- * resource "random_password" "mypassword" {
- *
- *   length  = 16
- *
- *   special = false
- *
- * }
- *
- * resource "duplocloud_rds_instance" "app" {
- *
- *   tenant_id      = data.duplocloud_tenant.tenant.id
- *
- *   name           = "writer1-sqlnew"
- *
- *   engine         = 8
- *
- *   engine_version = "5.7.mysql_aurora.2.11.5"
- *
- *   size           = "db.r5.large"
- *
- *   master_username              = "myuser"
- *
- *   master_password              = random_password.mypassword.result
- *
- *   encrypt_storage         = true
- *
- *   backup_retention_period = 10
- *
- *   db_name         =  "auroradb"
- *
- *   skip_final_snapshot = true
- *
- *   store_details_in_secret_manager = false
- *
- *   enhanced_monitoring = 0
- *
- *   availability_zone = "us-west-2b"
- *
- *   storage_type                    = "aurora"
- *
- *   cluster_parameter_group_name = "c-aurora-mysql"
- *
- *   parameter_group_name = "aurora-mysql-dbparam"
- *
- * }
- *
- * resource "duplocloud_rds_read_replica" "replica1" {
- *
- *   tenant_id          = duplocloud_rds_instance.app.tenant_id
- *
- *   name               = "aurora-replica-new"
- *
- *   size               = "db.r5.large"
- *
- *   cluster_identifier = duplocloud_rds_instance.app.cluster_identifier
- *
- *   availability_zone = "us-west-2a"
- *
- *   parameter_group_name = "aurora-mysql-dbparam"
- *
- *   engine_type=duplocloud_rds_instance.app.engine
- *
- * }
- *
- * Example to showcase use of parameter group in writer and read replica for standalone instance
- *
- * resource "duplocloud_rds_instance" "mydb" {
- *
- *   tenant_id      = data.duplocloud_tenant.tenant.id
- *
- *   name           = "tf-postgresql1"
- *
- *   engine         = 1// PostgreSQL
- *
- *   engine_version = "13.11"
- *
- *   size           = "db.t3.medium"
- *
- *   master_username = "myuser"
- *
- *   master_password = "Qaazwedd#1"
- *
- *   parameter_group_name = "psql13dbparam"
- *
- *   encrypt_storage                 = false
- *
- *   store_details_in_secret_manager = false
- *
- *   enhanced_monitoring             = 0
- *
- *   storage_type                    = "gp2"
- *
- * }
- *
- * resource "duplocloud_rds_read_replica" "replica" {
- *
- *   tenant_id          = duplocloud_rds_instance.mydb.tenant_id
- *
- *   name               = "postgresql-rep1"
- *
- *   size               = "db.t3.medium"
- *
- *   cluster_identifier = duplocloud_rds_instance.mydb.cluster_identifier
- *
- *   #availability_zone = "us-east-1b"
- *
- *   performance_insights {
- *
- *     enabled          = true
- *     
- *     retention_period = 31
- *
- *   }
- *
- *   engine_type=duplocloud_rds_instance.mydb.engine
- *
- *   parameter_group_name=duplocloud_rds_instance.mydb.parameter_group_name
- *
- * }
  */
 export class RdsInstance extends pulumi.CustomResource {
     /**
@@ -515,6 +468,10 @@ export class RdsInstance extends pulumi.CustomResource {
      */
     public /*out*/ readonly arn!: pulumi.Output<string>;
     /**
+     * Enable or disable auto minor version upgrade
+     */
+    public readonly autoMinorVersionUpgrade!: pulumi.Output<boolean>;
+    /**
      * Specify a valid Availability Zone for the RDS primary instance (when Multi-AZ is disabled) or for the Aurora writer
      * instance. e.g. us-west-2a
      */
@@ -545,7 +502,7 @@ export class RdsInstance extends pulumi.CustomResource {
      */
     public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     /**
-     * Whether or not to enable the RDS IAM authentication.
+     * Whether or not to enable the RDS IAM authentication. It can only be set during instance creation.
      */
     public readonly enableIamAuth!: pulumi.Output<boolean>;
     /**
@@ -607,7 +564,7 @@ export class RdsInstance extends pulumi.CustomResource {
     /**
      * Specifies if the RDS instance is multi-AZ.
      */
-    public readonly multiAz!: pulumi.Output<boolean>;
+    public readonly multiAz!: pulumi.Output<boolean | undefined>;
     /**
      * The short name of the RDS instance. Duplo will add a prefix to the name. You can retrieve the full name from the
      * `identifier` attribute.
@@ -616,7 +573,7 @@ export class RdsInstance extends pulumi.CustomResource {
     /**
      * A RDS parameter group name to apply to the RDS instance.
      */
-    public readonly parameterGroupName!: pulumi.Output<string>;
+    public readonly parameterGroupName!: pulumi.Output<string | undefined>;
     /**
      * Amazon RDS Performance Insights is a database performance tuning and monitoring feature that helps you quickly assess
      * the load on your database, and determine when and where to take action. Perfomance Insights get apply when enable is set
@@ -689,6 +646,7 @@ export class RdsInstance extends pulumi.CustomResource {
             const state = argsOrState as RdsInstanceState | undefined;
             resourceInputs["allocatedStorage"] = state ? state.allocatedStorage : undefined;
             resourceInputs["arn"] = state ? state.arn : undefined;
+            resourceInputs["autoMinorVersionUpgrade"] = state ? state.autoMinorVersionUpgrade : undefined;
             resourceInputs["availabilityZone"] = state ? state.availabilityZone : undefined;
             resourceInputs["backupRetentionPeriod"] = state ? state.backupRetentionPeriod : undefined;
             resourceInputs["clusterIdentifier"] = state ? state.clusterIdentifier : undefined;
@@ -734,6 +692,7 @@ export class RdsInstance extends pulumi.CustomResource {
                 throw new Error("Missing required property 'tenantId'");
             }
             resourceInputs["allocatedStorage"] = args ? args.allocatedStorage : undefined;
+            resourceInputs["autoMinorVersionUpgrade"] = args ? args.autoMinorVersionUpgrade : undefined;
             resourceInputs["availabilityZone"] = args ? args.availabilityZone : undefined;
             resourceInputs["backupRetentionPeriod"] = args ? args.backupRetentionPeriod : undefined;
             resourceInputs["clusterParameterGroupName"] = args ? args.clusterParameterGroupName : undefined;
@@ -789,6 +748,10 @@ export interface RdsInstanceState {
      */
     arn?: pulumi.Input<string>;
     /**
+     * Enable or disable auto minor version upgrade
+     */
+    autoMinorVersionUpgrade?: pulumi.Input<boolean>;
+    /**
      * Specify a valid Availability Zone for the RDS primary instance (when Multi-AZ is disabled) or for the Aurora writer
      * instance. e.g. us-west-2a
      */
@@ -819,7 +782,7 @@ export interface RdsInstanceState {
      */
     deletionProtection?: pulumi.Input<boolean>;
     /**
-     * Whether or not to enable the RDS IAM authentication.
+     * Whether or not to enable the RDS IAM authentication. It can only be set during instance creation.
      */
     enableIamAuth?: pulumi.Input<boolean>;
     /**
@@ -958,6 +921,10 @@ export interface RdsInstanceArgs {
      */
     allocatedStorage?: pulumi.Input<number>;
     /**
+     * Enable or disable auto minor version upgrade
+     */
+    autoMinorVersionUpgrade?: pulumi.Input<boolean>;
+    /**
      * Specify a valid Availability Zone for the RDS primary instance (when Multi-AZ is disabled) or for the Aurora writer
      * instance. e.g. us-west-2a
      */
@@ -984,7 +951,7 @@ export interface RdsInstanceArgs {
      */
     deletionProtection?: pulumi.Input<boolean>;
     /**
-     * Whether or not to enable the RDS IAM authentication.
+     * Whether or not to enable the RDS IAM authentication. It can only be set during instance creation.
      */
     enableIamAuth?: pulumi.Input<boolean>;
     /**

@@ -19,11 +19,11 @@ namespace DuploCloud.Pulumi
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Duplocloud = DuploCloud.Pulumi;
+        /// using Pulumi = Pulumi.Pulumi;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var credential = Duplocloud.GetGkeCredentials.Invoke(new()
+        ///     var credential = Pulumi.GetGkeCredentials.Invoke(new()
         ///     {
         ///         PlanId = "non-prod",
         ///     });
@@ -53,11 +53,11 @@ namespace DuploCloud.Pulumi
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Duplocloud = DuploCloud.Pulumi;
+        /// using Pulumi = Pulumi.Pulumi;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var credential = Duplocloud.GetGkeCredentials.Invoke(new()
+        ///     var credential = Pulumi.GetGkeCredentials.Invoke(new()
         ///     {
         ///         PlanId = "non-prod",
         ///     });
@@ -87,11 +87,11 @@ namespace DuploCloud.Pulumi
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Duplocloud = DuploCloud.Pulumi;
+        /// using Pulumi = Pulumi.Pulumi;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var credential = Duplocloud.GetGkeCredentials.Invoke(new()
+        ///     var credential = Pulumi.GetGkeCredentials.Invoke(new()
         ///     {
         ///         PlanId = "non-prod",
         ///     });

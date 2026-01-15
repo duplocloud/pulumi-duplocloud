@@ -70,8 +70,8 @@ class GetEcsTaskDefinitionResult:
         if placement_constraints and not isinstance(placement_constraints, list):
             raise TypeError("Expected argument 'placement_constraints' to be a list")
         pulumi.set(__self__, "placement_constraints", placement_constraints)
-        if prevent_tf_destroy and not isinstance(prevent_tf_destroy, bool):
-            raise TypeError("Expected argument 'prevent_tf_destroy' to be a bool")
+        if prevent_tf_destroy and not isinstance(prevent_tf_destroy, str):
+            raise TypeError("Expected argument 'prevent_tf_destroy' to be a str")
         pulumi.set(__self__, "prevent_tf_destroy", prevent_tf_destroy)
         if proxy_configurations and not isinstance(proxy_configurations, list):
             raise TypeError("Expected argument 'proxy_configurations' to be a list")
@@ -167,6 +167,9 @@ class GetEcsTaskDefinitionResult:
     @property
     @pulumi.getter(name="ipcMode")
     def ipc_mode(self) -> str:
+        """
+        valid values are `host`, `none`, `task`
+        """
         return pulumi.get(self, "ipc_mode")
 
     @property
@@ -177,11 +180,17 @@ class GetEcsTaskDefinitionResult:
     @property
     @pulumi.getter(name="networkMode")
     def network_mode(self) -> str:
+        """
+        Valid values are `bridge`,`host`,`awsvpc`,`none`
+        """
         return pulumi.get(self, "network_mode")
 
     @property
     @pulumi.getter(name="pidMode")
     def pid_mode(self) -> str:
+        """
+        Valida values are `host`, `task`
+        """
         return pulumi.get(self, "pid_mode")
 
     @property
@@ -191,7 +200,7 @@ class GetEcsTaskDefinitionResult:
 
     @property
     @pulumi.getter(name="preventTfDestroy")
-    def prevent_tf_destroy(self) -> bool:
+    def prevent_tf_destroy(self) -> str:
         return pulumi.get(self, "prevent_tf_destroy")
 
     @property
@@ -208,7 +217,7 @@ class GetEcsTaskDefinitionResult:
     @pulumi.getter(name="requiresCompatibilities")
     def requires_compatibilities(self) -> Sequence[str]:
         """
-        Requires compatibilities for running jobs. Valid values are [FARGATE]
+        Requires compatibilities for running jobs. Such as EC2, FARGATE, EXTERNAL. It varies based on network mode and how AWS maps it. `FARGATE` should be used if network mode is set to `awsvpc`.
         """
         return pulumi.get(self, "requires_compatibilities")
 
@@ -257,6 +266,9 @@ class GetEcsTaskDefinitionResult:
     @property
     @pulumi.getter
     def volumes(self) -> str:
+        """
+        A JSON-encoded string containing a list of volumes that are used by the ECS task definition.
+        """
         return pulumi.get(self, "volumes")
 
 

@@ -58,8 +58,11 @@ type AwsDynamodbTableV2 struct {
 	StreamEnabled pulumi.BoolPtrOutput `pulumi:"streamEnabled"`
 	StreamLabel   pulumi.StringOutput  `pulumi:"streamLabel"`
 	// When an item in the table is modified, StreamViewType determines what information is written to the table's stream. Valid values are `KEYS_ONLY`, `NEW_IMAGE`, `OLD_IMAGE`, `NEW_AND_OLD_IMAGES`.
-	StreamViewType pulumi.StringOutput              `pulumi:"streamViewType"`
-	Tags           AwsDynamodbTableV2TagArrayOutput `pulumi:"tags"`
+	StreamViewType pulumi.StringOutput `pulumi:"streamViewType"`
+	// Tag support has been removed from this resource to manage tage use the `AwsTag` resource.
+	//
+	// Deprecated: Tag support has been removed from this resource to manage tage use the `AwsTag` resource.
+	Tags AwsDynamodbTableV2TagArrayOutput `pulumi:"tags"`
 	// The GUID of the tenant that the dynamodb table will be created in.
 	TenantId pulumi.StringOutput `pulumi:"tenantId"`
 	// Setup ttl for dynamodb table. Defaults to `false or empty`, To disable ttl, enabled field should be set to false
@@ -137,8 +140,11 @@ type awsDynamodbTableV2State struct {
 	StreamEnabled *bool   `pulumi:"streamEnabled"`
 	StreamLabel   *string `pulumi:"streamLabel"`
 	// When an item in the table is modified, StreamViewType determines what information is written to the table's stream. Valid values are `KEYS_ONLY`, `NEW_IMAGE`, `OLD_IMAGE`, `NEW_AND_OLD_IMAGES`.
-	StreamViewType *string                 `pulumi:"streamViewType"`
-	Tags           []AwsDynamodbTableV2Tag `pulumi:"tags"`
+	StreamViewType *string `pulumi:"streamViewType"`
+	// Tag support has been removed from this resource to manage tage use the `AwsTag` resource.
+	//
+	// Deprecated: Tag support has been removed from this resource to manage tage use the `AwsTag` resource.
+	Tags []AwsDynamodbTableV2Tag `pulumi:"tags"`
 	// The GUID of the tenant that the dynamodb table will be created in.
 	TenantId *string `pulumi:"tenantId"`
 	// Setup ttl for dynamodb table. Defaults to `false or empty`, To disable ttl, enabled field should be set to false
@@ -179,7 +185,10 @@ type AwsDynamodbTableV2State struct {
 	StreamLabel   pulumi.StringPtrInput
 	// When an item in the table is modified, StreamViewType determines what information is written to the table's stream. Valid values are `KEYS_ONLY`, `NEW_IMAGE`, `OLD_IMAGE`, `NEW_AND_OLD_IMAGES`.
 	StreamViewType pulumi.StringPtrInput
-	Tags           AwsDynamodbTableV2TagArrayInput
+	// Tag support has been removed from this resource to manage tage use the `AwsTag` resource.
+	//
+	// Deprecated: Tag support has been removed from this resource to manage tage use the `AwsTag` resource.
+	Tags AwsDynamodbTableV2TagArrayInput
 	// The GUID of the tenant that the dynamodb table will be created in.
 	TenantId pulumi.StringPtrInput
 	// Setup ttl for dynamodb table. Defaults to `false or empty`, To disable ttl, enabled field should be set to false
@@ -215,8 +224,11 @@ type awsDynamodbTableV2Args struct {
 	// Indicates whether Streams are to be enabled (true) or disabled (false).
 	StreamEnabled *bool `pulumi:"streamEnabled"`
 	// When an item in the table is modified, StreamViewType determines what information is written to the table's stream. Valid values are `KEYS_ONLY`, `NEW_IMAGE`, `OLD_IMAGE`, `NEW_AND_OLD_IMAGES`.
-	StreamViewType *string                 `pulumi:"streamViewType"`
-	Tags           []AwsDynamodbTableV2Tag `pulumi:"tags"`
+	StreamViewType *string `pulumi:"streamViewType"`
+	// Tag support has been removed from this resource to manage tage use the `AwsTag` resource.
+	//
+	// Deprecated: Tag support has been removed from this resource to manage tage use the `AwsTag` resource.
+	Tags []AwsDynamodbTableV2Tag `pulumi:"tags"`
 	// The GUID of the tenant that the dynamodb table will be created in.
 	TenantId string `pulumi:"tenantId"`
 	// Setup ttl for dynamodb table. Defaults to `false or empty`, To disable ttl, enabled field should be set to false
@@ -250,7 +262,10 @@ type AwsDynamodbTableV2Args struct {
 	StreamEnabled pulumi.BoolPtrInput
 	// When an item in the table is modified, StreamViewType determines what information is written to the table's stream. Valid values are `KEYS_ONLY`, `NEW_IMAGE`, `OLD_IMAGE`, `NEW_AND_OLD_IMAGES`.
 	StreamViewType pulumi.StringPtrInput
-	Tags           AwsDynamodbTableV2TagArrayInput
+	// Tag support has been removed from this resource to manage tage use the `AwsTag` resource.
+	//
+	// Deprecated: Tag support has been removed from this resource to manage tage use the `AwsTag` resource.
+	Tags AwsDynamodbTableV2TagArrayInput
 	// The GUID of the tenant that the dynamodb table will be created in.
 	TenantId pulumi.StringInput
 	// Setup ttl for dynamodb table. Defaults to `false or empty`, To disable ttl, enabled field should be set to false
@@ -434,6 +449,9 @@ func (o AwsDynamodbTableV2Output) StreamViewType() pulumi.StringOutput {
 	return o.ApplyT(func(v *AwsDynamodbTableV2) pulumi.StringOutput { return v.StreamViewType }).(pulumi.StringOutput)
 }
 
+// Tag support has been removed from this resource to manage tage use the `AwsTag` resource.
+//
+// Deprecated: Tag support has been removed from this resource to manage tage use the `AwsTag` resource.
 func (o AwsDynamodbTableV2Output) Tags() AwsDynamodbTableV2TagArrayOutput {
 	return o.ApplyT(func(v *AwsDynamodbTableV2) AwsDynamodbTableV2TagArrayOutput { return v.Tags }).(AwsDynamodbTableV2TagArrayOutput)
 }

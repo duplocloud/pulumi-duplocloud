@@ -21,31 +21,42 @@ __all__ = ['K8HelmReleaseArgs', 'K8HelmRelease']
 @pulumi.input_type
 class K8HelmReleaseArgs:
     def __init__(__self__, *,
+                 charts: pulumi.Input[Sequence[pulumi.Input['K8HelmReleaseChartArgs']]],
                  release_name: pulumi.Input[str],
                  tenant_id: pulumi.Input[str],
-                 charts: Optional[pulumi.Input[Sequence[pulumi.Input['K8HelmReleaseChartArgs']]]] = None,
                  interval: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  values: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a K8HelmRelease resource.
+        :param pulumi.Input[Sequence[pulumi.Input['K8HelmReleaseChartArgs']]] charts: Helm chart
         :param pulumi.Input[str] release_name: Provide release name to identify specific deployment of helm chart.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the storage bucket will be created in.
-        :param pulumi.Input[Sequence[pulumi.Input['K8HelmReleaseChartArgs']]] charts: Helm chart
         :param pulumi.Input[str] interval: Interval related to helm release Defaults to `5m0s`.
         :param pulumi.Input[str] name: The name of the helm chart
         :param pulumi.Input[str] values: Customise an helm chart.
         """
+        pulumi.set(__self__, "charts", charts)
         pulumi.set(__self__, "release_name", release_name)
         pulumi.set(__self__, "tenant_id", tenant_id)
-        if charts is not None:
-            pulumi.set(__self__, "charts", charts)
         if interval is not None:
             pulumi.set(__self__, "interval", interval)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if values is not None:
             pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def charts(self) -> pulumi.Input[Sequence[pulumi.Input['K8HelmReleaseChartArgs']]]:
+        """
+        Helm chart
+        """
+        return pulumi.get(self, "charts")
+
+    @charts.setter
+    def charts(self, value: pulumi.Input[Sequence[pulumi.Input['K8HelmReleaseChartArgs']]]):
+        pulumi.set(self, "charts", value)
 
     @property
     @pulumi.getter(name="releaseName")
@@ -70,18 +81,6 @@ class K8HelmReleaseArgs:
     @tenant_id.setter
     def tenant_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "tenant_id", value)
-
-    @property
-    @pulumi.getter
-    def charts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8HelmReleaseChartArgs']]]]:
-        """
-        Helm chart
-        """
-        return pulumi.get(self, "charts")
-
-    @charts.setter
-    def charts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8HelmReleaseChartArgs']]]]):
-        pulumi.set(self, "charts", value)
 
     @property
     @pulumi.getter
@@ -375,6 +374,8 @@ class K8HelmRelease(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = K8HelmReleaseArgs.__new__(K8HelmReleaseArgs)
 
+            if charts is None and not opts.urn:
+                raise TypeError("Missing required property 'charts'")
             __props__.__dict__["charts"] = charts
             __props__.__dict__["interval"] = interval
             __props__.__dict__["name"] = name

@@ -75,6 +75,10 @@ export class User extends pulumi.CustomResource {
     public readonly isReadonly!: pulumi.Output<boolean | undefined>;
     public /*out*/ readonly isVpnConfigCreated!: pulumi.Output<boolean>;
     /**
+     * The list of permissions assigned to the user.
+     */
+    public readonly permissions!: pulumi.Output<string[] | undefined>;
+    /**
      * Defaults to `false`.
      */
     public readonly reallocateVpnAddress!: pulumi.Output<boolean | undefined>;
@@ -109,6 +113,7 @@ export class User extends pulumi.CustomResource {
             resourceInputs["isConfirmationEmailSent"] = state ? state.isConfirmationEmailSent : undefined;
             resourceInputs["isReadonly"] = state ? state.isReadonly : undefined;
             resourceInputs["isVpnConfigCreated"] = state ? state.isVpnConfigCreated : undefined;
+            resourceInputs["permissions"] = state ? state.permissions : undefined;
             resourceInputs["reallocateVpnAddress"] = state ? state.reallocateVpnAddress : undefined;
             resourceInputs["regenerateVpnPassword"] = state ? state.regenerateVpnPassword : undefined;
             resourceInputs["roles"] = state ? state.roles : undefined;
@@ -123,6 +128,7 @@ export class User extends pulumi.CustomResource {
                 throw new Error("Missing required property 'username'");
             }
             resourceInputs["isReadonly"] = args ? args.isReadonly : undefined;
+            resourceInputs["permissions"] = args ? args.permissions : undefined;
             resourceInputs["reallocateVpnAddress"] = args ? args.reallocateVpnAddress : undefined;
             resourceInputs["regenerateVpnPassword"] = args ? args.regenerateVpnPassword : undefined;
             resourceInputs["roles"] = args ? args.roles : undefined;
@@ -148,6 +154,10 @@ export interface UserState {
      */
     isReadonly?: pulumi.Input<boolean>;
     isVpnConfigCreated?: pulumi.Input<boolean>;
+    /**
+     * The list of permissions assigned to the user.
+     */
+    permissions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Defaults to `false`.
      */
@@ -175,6 +185,10 @@ export interface UserArgs {
      * Defaults to `false`.
      */
     isReadonly?: pulumi.Input<boolean>;
+    /**
+     * The list of permissions assigned to the user.
+     */
+    permissions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Defaults to `false`.
      */

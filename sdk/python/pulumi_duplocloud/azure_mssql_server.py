@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['AzureMssqlServerArgs', 'AzureMssqlServer']
 
@@ -21,6 +23,7 @@ class AzureMssqlServerArgs:
     def __init__(__self__, *,
                  tenant_id: pulumi.Input[str],
                  version: pulumi.Input[str],
+                 active_directory_administrator: Optional[pulumi.Input['AzureMssqlServerActiveDirectoryAdministratorArgs']] = None,
                  administrator_login: Optional[pulumi.Input[str]] = None,
                  administrator_login_password: Optional[pulumi.Input[str]] = None,
                  minimum_tls_version: Optional[pulumi.Input[str]] = None,
@@ -31,6 +34,7 @@ class AzureMssqlServerArgs:
         The set of arguments for constructing a AzureMssqlServer resource.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the azure mssql server will be created in.
         :param pulumi.Input[str] version: The version for the new server. Valid values are: `2.0` (for v11 server) and `12.0` (for v12 server).
+        :param pulumi.Input['AzureMssqlServerActiveDirectoryAdministratorArgs'] active_directory_administrator: Allows you to set a user or group as the AD administrator for an Azure SQL server.
         :param pulumi.Input[str] administrator_login: The Administrator Login for the  MS sql Server.
         :param pulumi.Input[str] administrator_login_password: The Password associated with the `administrator_login` for the MS sql Server.
         :param pulumi.Input[str] minimum_tls_version: The Minimum TLS Version for all SQL Database and SQL Data Warehouse databases associated with the server. Valid values are: `1.0`, `1.1` and `1.2`.
@@ -40,6 +44,8 @@ class AzureMssqlServerArgs:
         """
         pulumi.set(__self__, "tenant_id", tenant_id)
         pulumi.set(__self__, "version", version)
+        if active_directory_administrator is not None:
+            pulumi.set(__self__, "active_directory_administrator", active_directory_administrator)
         if administrator_login is not None:
             pulumi.set(__self__, "administrator_login", administrator_login)
         if administrator_login_password is not None:
@@ -76,6 +82,18 @@ class AzureMssqlServerArgs:
     @version.setter
     def version(self, value: pulumi.Input[str]):
         pulumi.set(self, "version", value)
+
+    @property
+    @pulumi.getter(name="activeDirectoryAdministrator")
+    def active_directory_administrator(self) -> Optional[pulumi.Input['AzureMssqlServerActiveDirectoryAdministratorArgs']]:
+        """
+        Allows you to set a user or group as the AD administrator for an Azure SQL server.
+        """
+        return pulumi.get(self, "active_directory_administrator")
+
+    @active_directory_administrator.setter
+    def active_directory_administrator(self, value: Optional[pulumi.Input['AzureMssqlServerActiveDirectoryAdministratorArgs']]):
+        pulumi.set(self, "active_directory_administrator", value)
 
     @property
     @pulumi.getter(name="administratorLogin")
@@ -153,6 +171,7 @@ class AzureMssqlServerArgs:
 @pulumi.input_type
 class _AzureMssqlServerState:
     def __init__(__self__, *,
+                 active_directory_administrator: Optional[pulumi.Input['AzureMssqlServerActiveDirectoryAdministratorArgs']] = None,
                  administrator_login: Optional[pulumi.Input[str]] = None,
                  administrator_login_password: Optional[pulumi.Input[str]] = None,
                  fqdn: Optional[pulumi.Input[str]] = None,
@@ -165,6 +184,7 @@ class _AzureMssqlServerState:
                  wait_until_ready: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering AzureMssqlServer resources.
+        :param pulumi.Input['AzureMssqlServerActiveDirectoryAdministratorArgs'] active_directory_administrator: Allows you to set a user or group as the AD administrator for an Azure SQL server.
         :param pulumi.Input[str] administrator_login: The Administrator Login for the  MS sql Server.
         :param pulumi.Input[str] administrator_login_password: The Password associated with the `administrator_login` for the MS sql Server.
         :param pulumi.Input[str] fqdn: The fully qualified domain name of the Azure SQL Server.
@@ -175,6 +195,8 @@ class _AzureMssqlServerState:
         :param pulumi.Input[str] version: The version for the new server. Valid values are: `2.0` (for v11 server) and `12.0` (for v12 server).
         :param pulumi.Input[bool] wait_until_ready: Whether or not to wait until PostgreSQL Server instance to be ready, after creation. Defaults to `true`.
         """
+        if active_directory_administrator is not None:
+            pulumi.set(__self__, "active_directory_administrator", active_directory_administrator)
         if administrator_login is not None:
             pulumi.set(__self__, "administrator_login", administrator_login)
         if administrator_login_password is not None:
@@ -195,6 +217,18 @@ class _AzureMssqlServerState:
             pulumi.set(__self__, "version", version)
         if wait_until_ready is not None:
             pulumi.set(__self__, "wait_until_ready", wait_until_ready)
+
+    @property
+    @pulumi.getter(name="activeDirectoryAdministrator")
+    def active_directory_administrator(self) -> Optional[pulumi.Input['AzureMssqlServerActiveDirectoryAdministratorArgs']]:
+        """
+        Allows you to set a user or group as the AD administrator for an Azure SQL server.
+        """
+        return pulumi.get(self, "active_directory_administrator")
+
+    @active_directory_administrator.setter
+    def active_directory_administrator(self, value: Optional[pulumi.Input['AzureMssqlServerActiveDirectoryAdministratorArgs']]):
+        pulumi.set(self, "active_directory_administrator", value)
 
     @property
     @pulumi.getter(name="administratorLogin")
@@ -319,6 +353,7 @@ class AzureMssqlServer(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 active_directory_administrator: Optional[pulumi.Input[Union['AzureMssqlServerActiveDirectoryAdministratorArgs', 'AzureMssqlServerActiveDirectoryAdministratorArgsDict']]] = None,
                  administrator_login: Optional[pulumi.Input[str]] = None,
                  administrator_login_password: Optional[pulumi.Input[str]] = None,
                  minimum_tls_version: Optional[pulumi.Input[str]] = None,
@@ -330,24 +365,6 @@ class AzureMssqlServer(pulumi.CustomResource):
                  __props__=None):
         """
         `AzureMssqlServer` manages an azure mssql server in Duplo.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_duplocloud as duplocloud
-
-        myapp = duplocloud.Tenant("myapp",
-            account_name="myapp",
-            plan_id="default")
-        mssql_server = duplocloud.AzureMssqlServer("mssql_server",
-            tenant_id=myapp.tenant_id,
-            name="mssql-test",
-            administrator_login="testroot",
-            administrator_login_password="P@ssword12345",
-            version="12.0",
-            minimum_tls_version="1.2")
-        ```
 
         ## Import
 
@@ -365,6 +382,7 @@ class AzureMssqlServer(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['AzureMssqlServerActiveDirectoryAdministratorArgs', 'AzureMssqlServerActiveDirectoryAdministratorArgsDict']] active_directory_administrator: Allows you to set a user or group as the AD administrator for an Azure SQL server.
         :param pulumi.Input[str] administrator_login: The Administrator Login for the  MS sql Server.
         :param pulumi.Input[str] administrator_login_password: The Password associated with the `administrator_login` for the MS sql Server.
         :param pulumi.Input[str] minimum_tls_version: The Minimum TLS Version for all SQL Database and SQL Data Warehouse databases associated with the server. Valid values are: `1.0`, `1.1` and `1.2`.
@@ -382,24 +400,6 @@ class AzureMssqlServer(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         `AzureMssqlServer` manages an azure mssql server in Duplo.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_duplocloud as duplocloud
-
-        myapp = duplocloud.Tenant("myapp",
-            account_name="myapp",
-            plan_id="default")
-        mssql_server = duplocloud.AzureMssqlServer("mssql_server",
-            tenant_id=myapp.tenant_id,
-            name="mssql-test",
-            administrator_login="testroot",
-            administrator_login_password="P@ssword12345",
-            version="12.0",
-            minimum_tls_version="1.2")
-        ```
 
         ## Import
 
@@ -430,6 +430,7 @@ class AzureMssqlServer(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 active_directory_administrator: Optional[pulumi.Input[Union['AzureMssqlServerActiveDirectoryAdministratorArgs', 'AzureMssqlServerActiveDirectoryAdministratorArgsDict']]] = None,
                  administrator_login: Optional[pulumi.Input[str]] = None,
                  administrator_login_password: Optional[pulumi.Input[str]] = None,
                  minimum_tls_version: Optional[pulumi.Input[str]] = None,
@@ -447,6 +448,7 @@ class AzureMssqlServer(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AzureMssqlServerArgs.__new__(AzureMssqlServerArgs)
 
+            __props__.__dict__["active_directory_administrator"] = active_directory_administrator
             __props__.__dict__["administrator_login"] = administrator_login
             __props__.__dict__["administrator_login_password"] = None if administrator_login_password is None else pulumi.Output.secret(administrator_login_password)
             __props__.__dict__["minimum_tls_version"] = minimum_tls_version
@@ -473,6 +475,7 @@ class AzureMssqlServer(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            active_directory_administrator: Optional[pulumi.Input[Union['AzureMssqlServerActiveDirectoryAdministratorArgs', 'AzureMssqlServerActiveDirectoryAdministratorArgsDict']]] = None,
             administrator_login: Optional[pulumi.Input[str]] = None,
             administrator_login_password: Optional[pulumi.Input[str]] = None,
             fqdn: Optional[pulumi.Input[str]] = None,
@@ -490,6 +493,7 @@ class AzureMssqlServer(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['AzureMssqlServerActiveDirectoryAdministratorArgs', 'AzureMssqlServerActiveDirectoryAdministratorArgsDict']] active_directory_administrator: Allows you to set a user or group as the AD administrator for an Azure SQL server.
         :param pulumi.Input[str] administrator_login: The Administrator Login for the  MS sql Server.
         :param pulumi.Input[str] administrator_login_password: The Password associated with the `administrator_login` for the MS sql Server.
         :param pulumi.Input[str] fqdn: The fully qualified domain name of the Azure SQL Server.
@@ -504,6 +508,7 @@ class AzureMssqlServer(pulumi.CustomResource):
 
         __props__ = _AzureMssqlServerState.__new__(_AzureMssqlServerState)
 
+        __props__.__dict__["active_directory_administrator"] = active_directory_administrator
         __props__.__dict__["administrator_login"] = administrator_login
         __props__.__dict__["administrator_login_password"] = administrator_login_password
         __props__.__dict__["fqdn"] = fqdn
@@ -515,6 +520,14 @@ class AzureMssqlServer(pulumi.CustomResource):
         __props__.__dict__["version"] = version
         __props__.__dict__["wait_until_ready"] = wait_until_ready
         return AzureMssqlServer(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="activeDirectoryAdministrator")
+    def active_directory_administrator(self) -> pulumi.Output[Optional['outputs.AzureMssqlServerActiveDirectoryAdministrator']]:
+        """
+        Allows you to set a user or group as the AD administrator for an Azure SQL server.
+        """
+        return pulumi.get(self, "active_directory_administrator")
 
     @property
     @pulumi.getter(name="administratorLogin")

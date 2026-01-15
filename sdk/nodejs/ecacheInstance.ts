@@ -45,7 +45,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as duplocloud from "@duplocloud/pulumi";
- * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  *
  * // Assuming the 'dev' tenant is already created, use a data source to fetch the tenant ID.
  * const tenant = duplocloud.getTenant({
@@ -68,7 +68,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as duplocloud from "@duplocloud/pulumi";
- * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  *
  * // Assuming the 'dev' tenant is already created, use a data source to fetch the tenant ID.
  * const tenant = duplocloud.getTenant({
@@ -104,7 +104,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as duplocloud from "@duplocloud/pulumi";
- * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  *
  * // Assuming the 'dev' tenant is already created, use a data source to fetch the tenant ID.
  * const tenant = duplocloud.getTenant({
@@ -127,7 +127,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as duplocloud from "@duplocloud/pulumi";
- * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  *
  * // Assuming the 'dev' tenant is already created, use a data source to fetch the tenant ID.
  * const tenant = duplocloud.getTenant({
@@ -156,6 +156,42 @@ import * as utilities from "./utilities";
  *     size: "cache.t3.small",
  *     engineVersion: "7.1",
  *     snapshotWindow: "04:00-13:00",
+ * });
+ * ```
+ *
+ * ### Creating an Amazon Valkey with snapshot window
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as duplocloud from "@duplocloud/pulumi";
+ *
+ * const mycaches = new duplocloud.EcacheInstance("mycaches", {
+ *     tenantId: tenant.id,
+ *     name: "myvalkey",
+ *     cacheType: 2,
+ *     size: "cache.t3.medium",
+ *     engineVersion: "7.2",
+ *     snapshotWindow: "19:50-20:51",
+ *     snapshotRetentionLimit: 12,
+ * });
+ * ```
+ *
+ * ### Creating an Amazon Valkey with cluster mode enabled
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as duplocloud from "@duplocloud/pulumi";
+ *
+ * const mycaches = new duplocloud.EcacheInstance("mycaches", {
+ *     tenantId: tenant.id,
+ *     name: "tf-clust1",
+ *     cacheType: 2,
+ *     size: "cache.t3.medium",
+ *     engineVersion: "7.2",
+ *     snapshotWindow: "19:50-20:51",
+ *     snapshotRetentionLimit: 12,
+ *     enableClusterMode: true,
+ *     numberOfShards: 3,
+ *     automaticFailoverEnabled: true,
+ *     replicas: 2,
  * });
  * ```
  *
@@ -201,6 +237,7 @@ export class EcacheInstance extends pulumi.CustomResource {
         return obj['__pulumiType'] === EcacheInstance.__pulumiType;
     }
 
+    public /*out*/ readonly actualEngineVersion!: pulumi.Output<string>;
     /**
      * The ARN of the elasticache instance.
      */
@@ -214,13 +251,13 @@ export class EcacheInstance extends pulumi.CustomResource {
      */
     public readonly automaticFailoverEnabled!: pulumi.Output<boolean | undefined>;
     /**
-     * The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache
+     * The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache - `2` : Valkey
      */
     public readonly cacheType!: pulumi.Output<number | undefined>;
     /**
-     * Flag to enable/disable redis cluster mode.
+     * Flag to enable/disable redis/valkey cluster mode.
      */
-    public readonly enableClusterMode!: pulumi.Output<boolean>;
+    public readonly enableClusterMode!: pulumi.Output<boolean | undefined>;
     /**
      * Enables encryption-at-rest.
      */
@@ -234,12 +271,12 @@ export class EcacheInstance extends pulumi.CustomResource {
      */
     public /*out*/ readonly endpoint!: pulumi.Output<string>;
     /**
-     * The engine version of the elastic instance. See AWS documentation for the [available Redis instance
+     * The engine version of the elastic instance. See AWS documentation for the [available Redis and Valkey instance
      * types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/supported-engine-versions.html) or the [available
      * Memcached instance
      * types](https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/supported-engine-versions-mc.html).
      */
-    public readonly engineVersion!: pulumi.Output<string | undefined>;
+    public readonly engineVersion!: pulumi.Output<string>;
     /**
      * The DNS hostname of the elasticache instance.
      */
@@ -252,6 +289,10 @@ export class EcacheInstance extends pulumi.CustomResource {
      * The status of the elasticache instance.
      */
     public /*out*/ readonly instanceStatus!: pulumi.Output<string>;
+    /**
+     * Flag to indicate if this is primary replication group
+     */
+    public /*out*/ readonly isPrimary!: pulumi.Output<boolean>;
     /**
      * The globally unique identifier for the key.
      */
@@ -266,7 +307,7 @@ export class EcacheInstance extends pulumi.CustomResource {
      */
     public readonly numberOfShards!: pulumi.Output<number>;
     /**
-     * The REDIS parameter group to supply.
+     * The REDIS/Valkey parameter group to supply.
      */
     public readonly parameterGroupName!: pulumi.Output<string>;
     /**
@@ -283,13 +324,13 @@ export class EcacheInstance extends pulumi.CustomResource {
      */
     public readonly size!: pulumi.Output<string>;
     /**
-     * Specify the ARN of a Redis RDB snapshot file stored in Amazon S3. User should have the access to export snapshot to s3
-     * bucket. One can find steps to provide access to export snapshot to s3 on following link
+     * Specify the ARN of a Redis/Valkey RDB snapshot file stored in Amazon S3. User should have the access to export snapshot
+     * to s3 bucket. One can find steps to provide access to export snapshot to s3 on following link
      * https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html
      */
     public readonly snapshotArns!: pulumi.Output<string[]>;
     /**
-     * Select the snapshot/backup you want to use for creating redis.
+     * Select the snapshot/backup you want to use for creating redis/valkey.
      */
     public readonly snapshotName!: pulumi.Output<string>;
     /**
@@ -320,6 +361,7 @@ export class EcacheInstance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EcacheInstanceState | undefined;
+            resourceInputs["actualEngineVersion"] = state ? state.actualEngineVersion : undefined;
             resourceInputs["arn"] = state ? state.arn : undefined;
             resourceInputs["authToken"] = state ? state.authToken : undefined;
             resourceInputs["automaticFailoverEnabled"] = state ? state.automaticFailoverEnabled : undefined;
@@ -332,6 +374,7 @@ export class EcacheInstance extends pulumi.CustomResource {
             resourceInputs["host"] = state ? state.host : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
             resourceInputs["instanceStatus"] = state ? state.instanceStatus : undefined;
+            resourceInputs["isPrimary"] = state ? state.isPrimary : undefined;
             resourceInputs["kmsKeyId"] = state ? state.kmsKeyId : undefined;
             resourceInputs["logDeliveryConfigurations"] = state ? state.logDeliveryConfigurations : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -372,11 +415,13 @@ export class EcacheInstance extends pulumi.CustomResource {
             resourceInputs["snapshotRetentionLimit"] = args ? args.snapshotRetentionLimit : undefined;
             resourceInputs["snapshotWindow"] = args ? args.snapshotWindow : undefined;
             resourceInputs["tenantId"] = args ? args.tenantId : undefined;
+            resourceInputs["actualEngineVersion"] = undefined /*out*/;
             resourceInputs["arn"] = undefined /*out*/;
             resourceInputs["endpoint"] = undefined /*out*/;
             resourceInputs["host"] = undefined /*out*/;
             resourceInputs["identifier"] = undefined /*out*/;
             resourceInputs["instanceStatus"] = undefined /*out*/;
+            resourceInputs["isPrimary"] = undefined /*out*/;
             resourceInputs["port"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -388,6 +433,7 @@ export class EcacheInstance extends pulumi.CustomResource {
  * Input properties used for looking up and filtering EcacheInstance resources.
  */
 export interface EcacheInstanceState {
+    actualEngineVersion?: pulumi.Input<string>;
     /**
      * The ARN of the elasticache instance.
      */
@@ -401,11 +447,11 @@ export interface EcacheInstanceState {
      */
     automaticFailoverEnabled?: pulumi.Input<boolean>;
     /**
-     * The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache
+     * The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache - `2` : Valkey
      */
     cacheType?: pulumi.Input<number>;
     /**
-     * Flag to enable/disable redis cluster mode.
+     * Flag to enable/disable redis/valkey cluster mode.
      */
     enableClusterMode?: pulumi.Input<boolean>;
     /**
@@ -421,7 +467,7 @@ export interface EcacheInstanceState {
      */
     endpoint?: pulumi.Input<string>;
     /**
-     * The engine version of the elastic instance. See AWS documentation for the [available Redis instance
+     * The engine version of the elastic instance. See AWS documentation for the [available Redis and Valkey instance
      * types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/supported-engine-versions.html) or the [available
      * Memcached instance
      * types](https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/supported-engine-versions-mc.html).
@@ -440,6 +486,10 @@ export interface EcacheInstanceState {
      */
     instanceStatus?: pulumi.Input<string>;
     /**
+     * Flag to indicate if this is primary replication group
+     */
+    isPrimary?: pulumi.Input<boolean>;
+    /**
      * The globally unique identifier for the key.
      */
     kmsKeyId?: pulumi.Input<string>;
@@ -453,7 +503,7 @@ export interface EcacheInstanceState {
      */
     numberOfShards?: pulumi.Input<number>;
     /**
-     * The REDIS parameter group to supply.
+     * The REDIS/Valkey parameter group to supply.
      */
     parameterGroupName?: pulumi.Input<string>;
     /**
@@ -470,13 +520,13 @@ export interface EcacheInstanceState {
      */
     size?: pulumi.Input<string>;
     /**
-     * Specify the ARN of a Redis RDB snapshot file stored in Amazon S3. User should have the access to export snapshot to s3
-     * bucket. One can find steps to provide access to export snapshot to s3 on following link
+     * Specify the ARN of a Redis/Valkey RDB snapshot file stored in Amazon S3. User should have the access to export snapshot
+     * to s3 bucket. One can find steps to provide access to export snapshot to s3 on following link
      * https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html
      */
     snapshotArns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Select the snapshot/backup you want to use for creating redis.
+     * Select the snapshot/backup you want to use for creating redis/valkey.
      */
     snapshotName?: pulumi.Input<string>;
     /**
@@ -508,11 +558,11 @@ export interface EcacheInstanceArgs {
      */
     automaticFailoverEnabled?: pulumi.Input<boolean>;
     /**
-     * The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache
+     * The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache - `2` : Valkey
      */
     cacheType?: pulumi.Input<number>;
     /**
-     * Flag to enable/disable redis cluster mode.
+     * Flag to enable/disable redis/valkey cluster mode.
      */
     enableClusterMode?: pulumi.Input<boolean>;
     /**
@@ -524,7 +574,7 @@ export interface EcacheInstanceArgs {
      */
     encryptionInTransit?: pulumi.Input<boolean>;
     /**
-     * The engine version of the elastic instance. See AWS documentation for the [available Redis instance
+     * The engine version of the elastic instance. See AWS documentation for the [available Redis and Valkey instance
      * types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/supported-engine-versions.html) or the [available
      * Memcached instance
      * types](https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/supported-engine-versions-mc.html).
@@ -544,7 +594,7 @@ export interface EcacheInstanceArgs {
      */
     numberOfShards?: pulumi.Input<number>;
     /**
-     * The REDIS parameter group to supply.
+     * The REDIS/Valkey parameter group to supply.
      */
     parameterGroupName?: pulumi.Input<string>;
     /**
@@ -557,13 +607,13 @@ export interface EcacheInstanceArgs {
      */
     size: pulumi.Input<string>;
     /**
-     * Specify the ARN of a Redis RDB snapshot file stored in Amazon S3. User should have the access to export snapshot to s3
-     * bucket. One can find steps to provide access to export snapshot to s3 on following link
+     * Specify the ARN of a Redis/Valkey RDB snapshot file stored in Amazon S3. User should have the access to export snapshot
+     * to s3 bucket. One can find steps to provide access to export snapshot to s3 on following link
      * https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html
      */
     snapshotArns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Select the snapshot/backup you want to use for creating redis.
+     * Select the snapshot/backup you want to use for creating redis/valkey.
      */
     snapshotName?: pulumi.Input<string>;
     /**

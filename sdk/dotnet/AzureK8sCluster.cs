@@ -19,11 +19,11 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var infra = new Duplocloud.Infrastructure("infra", new()
+    ///     var infra = new Pulumi.Infrastructure("infra", new()
     ///     {
     ///         InfraName = "tst-0206",
     ///         AccountId = "143ffc59-9394-4ec6-8f5a-c408a238be62",
@@ -37,9 +37,36 @@ namespace DuploCloud.Pulumi
     ///         SubnetAddressPrefix = "10.50.1.0/24",
     ///     });
     /// 
-    ///     var cluster = new Duplocloud.AzureK8sCluster("cluster", new()
+    ///     var cluster = new Pulumi.AzureK8sCluster("cluster", new()
     ///     {
     ///         InfraName = infra.InfraName,
+    ///     });
+    /// 
+    ///     var ac = new Pulumi.AzureK8sCluster("ac", new()
+    ///     {
+    ///         InfraName = infra.InfraName,
+    ///         PrivateClusterEnabled = true,
+    ///         EnableWorkloadIdentity = true,
+    ///         EnableBlobCsiDriver = true,
+    ///         DisableRunCommand = true,
+    ///         AddCriticalTaintToSystemAgentPool = true,
+    ///         EnableImageCleaner = true,
+    ///         ImageCleanerIntervalInDays = 7,
+    ///         PricingTier = "Free",
+    ///         LinuxAdminUsername = "kubuser",
+    ///         LinuxSshPublicKey = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC666PWPnhOI3oc+4t4CmW6HtTKfns3uOa3ZW6EN57qti20Ln4SvoBT8mwMvwnZq6Z413Kp5MFbSdkVv1t+5ZXQ0E0NdJKM59O6bTtUriekkQoeoBgu2AU2Gmk20SbMZ/7lRJDhHYg0JM3HWup7RoL3tGEJDKmv0fZ1WYYsqGkX6Dc/XP1DfmUVwd2I41yVjDWpXY/FG9/t2tKoG4DONGOJY974C6P1cxhptWyt/yqzEU7VyOB3L/kdbhTe4Z64TEYSR57jW7GsnYBbmvX8lLTAhkIFbqENXNJHl26OcwCj4M8+HU2Y4oba7vTUxb7rcgQ0vDsYgjlK6zLzPs5mcbIzjTW4VMcXBC3bciiXlurXe+ByoEUSKiXAzgszg2aD6LlMWfS6jQwGDpnfC962RxeDv/EY8ggL7xBVTe9B8H3khbeLTQpFvDYtY1GwYq0+/911LHvdRJycP7GuEWghhSDGNmh1/MhG/Qgmqh49NYhKn1RNZkYn7ePxNkTUA7h9lyU= noname",
+    ///         NetworkPlugin = "kubenet",
+    ///         ActiveDirectoryConfig = new Pulumi.Inputs.AzureK8sClusterActiveDirectoryConfigArgs
+    ///         {
+    ///             AdTenantId = "&lt;ad-tenant-id&gt;",
+    ///             AdminGroupObjectIds = new[]
+    ///             {
+    ///                 "&lt;admin-group-object-id&gt;",
+    ///             },
+    ///             EnableAd = true,
+    ///             EnableRbac = true,
+    ///         },
+    ///         KubernetesVersion = "1.31.5",
     ///     });
     /// 
     /// });
@@ -61,6 +88,48 @@ namespace DuploCloud.Pulumi
     public partial class AzureK8sCluster : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Azure Active Directory configuration for the AKS cluster.
+        /// </summary>
+        [Output("activeDirectoryConfig")]
+        public Output<Outputs.AzureK8sClusterActiveDirectoryConfig> ActiveDirectoryConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Add a critical taint to the system agent pool. This prevents the scheduler from scheduling non-critical pods on the system agent pool. Defaults to `false`.
+        /// </summary>
+        [Output("addCriticalTaintToSystemAgentPool")]
+        public Output<bool?> AddCriticalTaintToSystemAgentPool { get; private set; } = null!;
+
+        /// <summary>
+        /// Disable the Run Command feature for the AKS cluster. This prevents the use of the Azure CLI to run commands directly on the nodes. Defaults to `false`.
+        /// </summary>
+        [Output("disableRunCommand")]
+        public Output<bool?> DisableRunCommand { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable the Azure Blob CSI driver for the AKS cluster. This allows Kubernetes workloads to use Azure Blob Storage as persistent storage. Defaults to `false`.
+        /// </summary>
+        [Output("enableBlobCsiDriver")]
+        public Output<bool?> EnableBlobCsiDriver { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable the image cleaner for the AKS cluster. This helps to clean up unused container images in the cluster. Defaults to `false`.
+        /// </summary>
+        [Output("enableImageCleaner")]
+        public Output<bool?> EnableImageCleaner { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable Workload Identity for the AKS cluster. This allows Kubernetes workloads to access Azure resources using Azure AD identities. Defaults to `false`.
+        /// </summary>
+        [Output("enableWorkloadIdentity")]
+        public Output<bool?> EnableWorkloadIdentity { get; private set; } = null!;
+
+        /// <summary>
+        /// Interval in days for the image cleaner to run. This determines how often the image cleaner will check for unused images. Valid values are between 1 and 90. Defaults to `30`.
+        /// </summary>
+        [Output("imageCleanerIntervalInDays")]
+        public Output<int?> ImageCleanerIntervalInDays { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the infrastructure.
         /// </summary>
         [Output("infraName")]
@@ -71,6 +140,18 @@ namespace DuploCloud.Pulumi
         /// </summary>
         [Output("kubernetesVersion")]
         public Output<string> KubernetesVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// The username for the Linux administrator of the AKS cluster. This user will have administrative access to the nodes in the cluster.
+        /// </summary>
+        [Output("linuxAdminUsername")]
+        public Output<string> LinuxAdminUsername { get; private set; } = null!;
+
+        /// <summary>
+        /// The SSH public key for the Linux administrator of the AKS cluster. This key will be used to access the nodes in the cluster via SSH.
+        /// </summary>
+        [Output("linuxSshPublicKey")]
+        public Output<string> LinuxSshPublicKey { get; private set; } = null!;
 
         /// <summary>
         /// The name of the aks. If not specified default name would be infra name
@@ -89,6 +170,12 @@ namespace DuploCloud.Pulumi
         /// </summary>
         [Output("outboundType")]
         public Output<string> OutboundType { get; private set; } = null!;
+
+        /// <summary>
+        /// Pricing tier for the AKS cluster. Valid values are: `Free`, `Standard`, and `Premium`. This determines the level of support and features available for the AKS cluster.
+        /// </summary>
+        [Output("pricingTier")]
+        public Output<string> PricingTier { get; private set; } = null!;
 
         /// <summary>
         /// Should this Kubernetes Cluster have its API server only exposed on internal IP addresses? This provides a Private IP Address for the Kubernetes API on the Virtual Network where the Kubernetes Cluster is located. Defaults to `false`.
@@ -156,6 +243,48 @@ namespace DuploCloud.Pulumi
     public sealed class AzureK8sClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Azure Active Directory configuration for the AKS cluster.
+        /// </summary>
+        [Input("activeDirectoryConfig")]
+        public Input<Inputs.AzureK8sClusterActiveDirectoryConfigArgs>? ActiveDirectoryConfig { get; set; }
+
+        /// <summary>
+        /// Add a critical taint to the system agent pool. This prevents the scheduler from scheduling non-critical pods on the system agent pool. Defaults to `false`.
+        /// </summary>
+        [Input("addCriticalTaintToSystemAgentPool")]
+        public Input<bool>? AddCriticalTaintToSystemAgentPool { get; set; }
+
+        /// <summary>
+        /// Disable the Run Command feature for the AKS cluster. This prevents the use of the Azure CLI to run commands directly on the nodes. Defaults to `false`.
+        /// </summary>
+        [Input("disableRunCommand")]
+        public Input<bool>? DisableRunCommand { get; set; }
+
+        /// <summary>
+        /// Enable the Azure Blob CSI driver for the AKS cluster. This allows Kubernetes workloads to use Azure Blob Storage as persistent storage. Defaults to `false`.
+        /// </summary>
+        [Input("enableBlobCsiDriver")]
+        public Input<bool>? EnableBlobCsiDriver { get; set; }
+
+        /// <summary>
+        /// Enable the image cleaner for the AKS cluster. This helps to clean up unused container images in the cluster. Defaults to `false`.
+        /// </summary>
+        [Input("enableImageCleaner")]
+        public Input<bool>? EnableImageCleaner { get; set; }
+
+        /// <summary>
+        /// Enable Workload Identity for the AKS cluster. This allows Kubernetes workloads to access Azure resources using Azure AD identities. Defaults to `false`.
+        /// </summary>
+        [Input("enableWorkloadIdentity")]
+        public Input<bool>? EnableWorkloadIdentity { get; set; }
+
+        /// <summary>
+        /// Interval in days for the image cleaner to run. This determines how often the image cleaner will check for unused images. Valid values are between 1 and 90. Defaults to `30`.
+        /// </summary>
+        [Input("imageCleanerIntervalInDays")]
+        public Input<int>? ImageCleanerIntervalInDays { get; set; }
+
+        /// <summary>
         /// The name of the infrastructure.
         /// </summary>
         [Input("infraName", required: true)]
@@ -166,6 +295,18 @@ namespace DuploCloud.Pulumi
         /// </summary>
         [Input("kubernetesVersion")]
         public Input<string>? KubernetesVersion { get; set; }
+
+        /// <summary>
+        /// The username for the Linux administrator of the AKS cluster. This user will have administrative access to the nodes in the cluster.
+        /// </summary>
+        [Input("linuxAdminUsername")]
+        public Input<string>? LinuxAdminUsername { get; set; }
+
+        /// <summary>
+        /// The SSH public key for the Linux administrator of the AKS cluster. This key will be used to access the nodes in the cluster via SSH.
+        /// </summary>
+        [Input("linuxSshPublicKey")]
+        public Input<string>? LinuxSshPublicKey { get; set; }
 
         /// <summary>
         /// The name of the aks. If not specified default name would be infra name
@@ -184,6 +325,12 @@ namespace DuploCloud.Pulumi
         /// </summary>
         [Input("outboundType")]
         public Input<string>? OutboundType { get; set; }
+
+        /// <summary>
+        /// Pricing tier for the AKS cluster. Valid values are: `Free`, `Standard`, and `Premium`. This determines the level of support and features available for the AKS cluster.
+        /// </summary>
+        [Input("pricingTier")]
+        public Input<string>? PricingTier { get; set; }
 
         /// <summary>
         /// Should this Kubernetes Cluster have its API server only exposed on internal IP addresses? This provides a Private IP Address for the Kubernetes API on the Virtual Network where the Kubernetes Cluster is located. Defaults to `false`.
@@ -212,6 +359,48 @@ namespace DuploCloud.Pulumi
     public sealed class AzureK8sClusterState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Azure Active Directory configuration for the AKS cluster.
+        /// </summary>
+        [Input("activeDirectoryConfig")]
+        public Input<Inputs.AzureK8sClusterActiveDirectoryConfigGetArgs>? ActiveDirectoryConfig { get; set; }
+
+        /// <summary>
+        /// Add a critical taint to the system agent pool. This prevents the scheduler from scheduling non-critical pods on the system agent pool. Defaults to `false`.
+        /// </summary>
+        [Input("addCriticalTaintToSystemAgentPool")]
+        public Input<bool>? AddCriticalTaintToSystemAgentPool { get; set; }
+
+        /// <summary>
+        /// Disable the Run Command feature for the AKS cluster. This prevents the use of the Azure CLI to run commands directly on the nodes. Defaults to `false`.
+        /// </summary>
+        [Input("disableRunCommand")]
+        public Input<bool>? DisableRunCommand { get; set; }
+
+        /// <summary>
+        /// Enable the Azure Blob CSI driver for the AKS cluster. This allows Kubernetes workloads to use Azure Blob Storage as persistent storage. Defaults to `false`.
+        /// </summary>
+        [Input("enableBlobCsiDriver")]
+        public Input<bool>? EnableBlobCsiDriver { get; set; }
+
+        /// <summary>
+        /// Enable the image cleaner for the AKS cluster. This helps to clean up unused container images in the cluster. Defaults to `false`.
+        /// </summary>
+        [Input("enableImageCleaner")]
+        public Input<bool>? EnableImageCleaner { get; set; }
+
+        /// <summary>
+        /// Enable Workload Identity for the AKS cluster. This allows Kubernetes workloads to access Azure resources using Azure AD identities. Defaults to `false`.
+        /// </summary>
+        [Input("enableWorkloadIdentity")]
+        public Input<bool>? EnableWorkloadIdentity { get; set; }
+
+        /// <summary>
+        /// Interval in days for the image cleaner to run. This determines how often the image cleaner will check for unused images. Valid values are between 1 and 90. Defaults to `30`.
+        /// </summary>
+        [Input("imageCleanerIntervalInDays")]
+        public Input<int>? ImageCleanerIntervalInDays { get; set; }
+
+        /// <summary>
         /// The name of the infrastructure.
         /// </summary>
         [Input("infraName")]
@@ -222,6 +411,18 @@ namespace DuploCloud.Pulumi
         /// </summary>
         [Input("kubernetesVersion")]
         public Input<string>? KubernetesVersion { get; set; }
+
+        /// <summary>
+        /// The username for the Linux administrator of the AKS cluster. This user will have administrative access to the nodes in the cluster.
+        /// </summary>
+        [Input("linuxAdminUsername")]
+        public Input<string>? LinuxAdminUsername { get; set; }
+
+        /// <summary>
+        /// The SSH public key for the Linux administrator of the AKS cluster. This key will be used to access the nodes in the cluster via SSH.
+        /// </summary>
+        [Input("linuxSshPublicKey")]
+        public Input<string>? LinuxSshPublicKey { get; set; }
 
         /// <summary>
         /// The name of the aks. If not specified default name would be infra name
@@ -240,6 +441,12 @@ namespace DuploCloud.Pulumi
         /// </summary>
         [Input("outboundType")]
         public Input<string>? OutboundType { get; set; }
+
+        /// <summary>
+        /// Pricing tier for the AKS cluster. Valid values are: `Free`, `Standard`, and `Premium`. This determines the level of support and features available for the AKS cluster.
+        /// </summary>
+        [Input("pricingTier")]
+        public Input<string>? PricingTier { get; set; }
 
         /// <summary>
         /// Should this Kubernetes Cluster have its API server only exposed on internal IP addresses? This provides a Private IP Address for the Kubernetes API on the Virtual Network where the Kubernetes Cluster is located. Defaults to `false`.

@@ -126,13 +126,17 @@ class AwaitableGetAwsLaunchTemplateResult(GetAwsLaunchTemplateResult):
 
 def get_aws_launch_template(name: Optional[str] = None,
                             tenant_id: Optional[str] = None,
+                            version: Optional[str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAwsLaunchTemplateResult:
     """
     Use this data source to access information about an existing resource.
+
+    :param str version: Any of the existing version of the launch template
     """
     __args__ = dict()
     __args__['name'] = name
     __args__['tenantId'] = tenant_id
+    __args__['version'] = version
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('duplocloud:index/getAwsLaunchTemplate:getAwsLaunchTemplate', __args__, opts=opts, typ=GetAwsLaunchTemplateResult).value
 
@@ -148,13 +152,17 @@ def get_aws_launch_template(name: Optional[str] = None,
         version_description=pulumi.get(__ret__, 'version_description'))
 def get_aws_launch_template_output(name: Optional[pulumi.Input[str]] = None,
                                    tenant_id: Optional[pulumi.Input[str]] = None,
+                                   version: Optional[pulumi.Input[Optional[str]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAwsLaunchTemplateResult]:
     """
     Use this data source to access information about an existing resource.
+
+    :param str version: Any of the existing version of the launch template
     """
     __args__ = dict()
     __args__['name'] = name
     __args__['tenantId'] = tenant_id
+    __args__['version'] = version
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('duplocloud:index/getAwsLaunchTemplate:getAwsLaunchTemplate', __args__, opts=opts, typ=GetAwsLaunchTemplateResult)
     return __ret__.apply(lambda __response__: GetAwsLaunchTemplateResult(

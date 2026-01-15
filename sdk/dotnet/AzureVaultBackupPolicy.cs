@@ -19,25 +19,25 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var backupPolicy = new Duplocloud.AzureVaultBackupPolicy("backup_policy", new()
+    ///     var backupPolicy = new Pulumi.AzureVaultBackupPolicy("backup_policy", new()
     ///     {
     ///         InfraName = "test-infra",
     ///         Name = "rt01",
     ///         Timezone = "UTC",
-    ///         Backup = new Duplocloud.Inputs.AzureVaultBackupPolicyBackupArgs
+    ///         Backup = new Pulumi.Inputs.AzureVaultBackupPolicyBackupArgs
     ///         {
     ///             Frequency = "Daily",
     ///             Time = "23:00",
     ///         },
-    ///         RetentionDaily = new Duplocloud.Inputs.AzureVaultBackupPolicyRetentionDailyArgs
+    ///         RetentionDaily = new Pulumi.Inputs.AzureVaultBackupPolicyRetentionDailyArgs
     ///         {
     ///             Count = 10,
     ///         },
-    ///         RetentionWeekly = new Duplocloud.Inputs.AzureVaultBackupPolicyRetentionWeeklyArgs
+    ///         RetentionWeekly = new Pulumi.Inputs.AzureVaultBackupPolicyRetentionWeeklyArgs
     ///         {
     ///             Count = 42,
     ///             Weekdays = new[]
@@ -48,7 +48,7 @@ namespace DuploCloud.Pulumi
     ///                 "Saturday",
     ///             },
     ///         },
-    ///         RetentionMonthly = new Duplocloud.Inputs.AzureVaultBackupPolicyRetentionMonthlyArgs
+    ///         RetentionMonthly = new Pulumi.Inputs.AzureVaultBackupPolicyRetentionMonthlyArgs
     ///         {
     ///             Count = 7,
     ///             Weekdays = new[]
@@ -62,7 +62,7 @@ namespace DuploCloud.Pulumi
     ///                 "Last",
     ///             },
     ///         },
-    ///         RetentionYearly = new Duplocloud.Inputs.AzureVaultBackupPolicyRetentionYearlyArgs
+    ///         RetentionYearly = new Pulumi.Inputs.AzureVaultBackupPolicyRetentionYearlyArgs
     ///         {
     ///             Count = 77,
     ///             Weekdays = new[]

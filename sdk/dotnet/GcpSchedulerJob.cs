@@ -19,24 +19,24 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myapp = new Duplocloud.Tenant("myapp", new()
+    ///     var myapp = new Pulumi.Tenant("myapp", new()
     ///     {
     ///         AccountName = "myapp",
     ///         PlanId = "default",
     ///     });
     /// 
     ///     // A simple scheduler job with an HTTPS target, running at 9 am daily.
-    ///     var myjob = new Duplocloud.GcpSchedulerJob("myjob", new()
+    ///     var myjob = new Pulumi.GcpSchedulerJob("myjob", new()
     ///     {
     ///         TenantId = myapp.TenantId,
     ///         Name = "myjob",
     ///         Schedule = "* 9 * * *",
     ///         Timezone = "America/New_York",
-    ///         HttpTarget = new Duplocloud.Inputs.GcpSchedulerJobHttpTargetArgs
+    ///         HttpTarget = new Pulumi.Inputs.GcpSchedulerJobHttpTargetArgs
     ///         {
     ///             Method = "GET",
     ///             Uri = "https://www.google.com",

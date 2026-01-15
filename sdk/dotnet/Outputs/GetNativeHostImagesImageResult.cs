@@ -14,14 +14,29 @@ namespace DuploCloud.Pulumi.Outputs
     [OutputType]
     public sealed class GetNativeHostImagesImageResult
     {
+        /// <summary>
+        /// Architecture of the native host
+        /// </summary>
         public readonly string Arch;
         public readonly string ImageId;
         public readonly bool IsKubernetes;
+        /// <summary>
+        /// K8 version of the native host
+        /// </summary>
         public readonly string K8sVersion;
+        /// <summary>
+        /// Name of the Duplocloud native host
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// OS of native host
+        /// </summary>
         public readonly string Os;
         public readonly string Region;
         public readonly ImmutableArray<Outputs.GetNativeHostImagesImageTagResult> Tags;
+        /// <summary>
+        /// username associated to native host
+        /// </summary>
         public readonly string Username;
 
         [OutputConstructor]

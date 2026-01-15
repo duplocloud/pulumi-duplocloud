@@ -26,6 +26,7 @@ class DuploServiceArgs:
                  agent_platform: Optional[pulumi.Input[int]] = None,
                  allocation_tags: Optional[pulumi.Input[str]] = None,
                  any_host_allowed: Optional[pulumi.Input[bool]] = None,
+                 app_name: Optional[pulumi.Input[str]] = None,
                  cloud: Optional[pulumi.Input[int]] = None,
                  cloud_creds_from_k8s_service_account: Optional[pulumi.Input[bool]] = None,
                  commands: Optional[pulumi.Input[str]] = None,
@@ -33,8 +34,10 @@ class DuploServiceArgs:
                  force_recreate_on_volumes_change: Optional[pulumi.Input[bool]] = None,
                  force_stateful_set: Optional[pulumi.Input[bool]] = None,
                  hpa_specs: Optional[pulumi.Input[str]] = None,
+                 init_container_docker_images: Optional[pulumi.Input[Sequence[pulumi.Input['DuploServiceInitContainerDockerImageArgs']]]] = None,
                  is_daemonset: Optional[pulumi.Input[bool]] = None,
                  is_unique_k8s_node_required: Optional[pulumi.Input[bool]] = None,
+                 k8s_worker_os: Optional[pulumi.Input[str]] = None,
                  lb_synced_deployment: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  other_docker_config: Optional[pulumi.Input[str]] = None,
@@ -51,14 +54,17 @@ class DuploServiceArgs:
         :param pulumi.Input[int] agent_platform: The numeric ID of the container agent to use for deployment. Should be one of: - `0` : Duplo Native container agent -
                `7` : Linux container agent for Kubernetes
         :param pulumi.Input[bool] any_host_allowed: Whether or not the service can run on hosts in other tenants (within the the same plan as the current tenant).
+        :param pulumi.Input[str] app_name: The name of the app where service will be a part
         :param pulumi.Input[int] cloud: The numeric ID of the cloud provider to launch the service in. Should be one of: - `0` : AWS (Default) - `1` : Oracle -
                `2` : Azure - `3` : Google - `4` : Byoh - `5` : Unknown - `6` : DigitalOcean - `10` : OnPrem
         :param pulumi.Input[bool] cloud_creds_from_k8s_service_account: Whether or not the service gets it's cloud credentials from Kubernetes service account.
         :param pulumi.Input[bool] force_recreate_on_volumes_change: if 'force_recreate_on_volumes_change=true' and any changing to Volumes, will results in forceNew and hence recreating
                the resource.
         :param pulumi.Input[bool] force_stateful_set: Whether or not to force a StatefulSet to be created.
+        :param pulumi.Input[Sequence[pulumi.Input['DuploServiceInitContainerDockerImageArgs']]] init_container_docker_images: The docker images to use for the launched init container(s).
         :param pulumi.Input[bool] is_daemonset: Whether or not to enable DaemonSet.
         :param pulumi.Input[bool] is_unique_k8s_node_required: Whether or not the replicas must be scheduled on separate Kubernetes nodes. Only supported on Kubernetes.
+        :param pulumi.Input[str] k8s_worker_os: OS type for k8s worker, this field is associated to azure cloud. Valid values: `Linux`, `Windows`
         :param pulumi.Input[str] name: The name of the service to create.
         :param pulumi.Input[bool] replica_collocation_allowed: Allow replica collocation for the service. If this is set then 2 replicas can be on the same host.
         :param pulumi.Input[int] replicas: The number of container replicas to deploy.
@@ -73,6 +79,8 @@ class DuploServiceArgs:
             pulumi.set(__self__, "allocation_tags", allocation_tags)
         if any_host_allowed is not None:
             pulumi.set(__self__, "any_host_allowed", any_host_allowed)
+        if app_name is not None:
+            pulumi.set(__self__, "app_name", app_name)
         if cloud is not None:
             pulumi.set(__self__, "cloud", cloud)
         if cloud_creds_from_k8s_service_account is not None:
@@ -87,10 +95,14 @@ class DuploServiceArgs:
             pulumi.set(__self__, "force_stateful_set", force_stateful_set)
         if hpa_specs is not None:
             pulumi.set(__self__, "hpa_specs", hpa_specs)
+        if init_container_docker_images is not None:
+            pulumi.set(__self__, "init_container_docker_images", init_container_docker_images)
         if is_daemonset is not None:
             pulumi.set(__self__, "is_daemonset", is_daemonset)
         if is_unique_k8s_node_required is not None:
             pulumi.set(__self__, "is_unique_k8s_node_required", is_unique_k8s_node_required)
+        if k8s_worker_os is not None:
+            pulumi.set(__self__, "k8s_worker_os", k8s_worker_os)
         if lb_synced_deployment is not None:
             pulumi.set(__self__, "lb_synced_deployment", lb_synced_deployment)
         if name is not None:
@@ -167,6 +179,18 @@ class DuploServiceArgs:
     @any_host_allowed.setter
     def any_host_allowed(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "any_host_allowed", value)
+
+    @property
+    @pulumi.getter(name="appName")
+    def app_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the app where service will be a part
+        """
+        return pulumi.get(self, "app_name")
+
+    @app_name.setter
+    def app_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "app_name", value)
 
     @property
     @pulumi.getter
@@ -246,6 +270,18 @@ class DuploServiceArgs:
         pulumi.set(self, "hpa_specs", value)
 
     @property
+    @pulumi.getter(name="initContainerDockerImages")
+    def init_container_docker_images(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DuploServiceInitContainerDockerImageArgs']]]]:
+        """
+        The docker images to use for the launched init container(s).
+        """
+        return pulumi.get(self, "init_container_docker_images")
+
+    @init_container_docker_images.setter
+    def init_container_docker_images(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DuploServiceInitContainerDockerImageArgs']]]]):
+        pulumi.set(self, "init_container_docker_images", value)
+
+    @property
     @pulumi.getter(name="isDaemonset")
     def is_daemonset(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -268,6 +304,18 @@ class DuploServiceArgs:
     @is_unique_k8s_node_required.setter
     def is_unique_k8s_node_required(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "is_unique_k8s_node_required", value)
+
+    @property
+    @pulumi.getter(name="k8sWorkerOs")
+    def k8s_worker_os(self) -> Optional[pulumi.Input[str]]:
+        """
+        OS type for k8s worker, this field is associated to azure cloud. Valid values: `Linux`, `Windows`
+        """
+        return pulumi.get(self, "k8s_worker_os")
+
+    @k8s_worker_os.setter
+    def k8s_worker_os(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "k8s_worker_os", value)
 
     @property
     @pulumi.getter(name="lbSyncedDeployment")
@@ -372,6 +420,7 @@ class _DuploServiceState:
                  agent_platform: Optional[pulumi.Input[int]] = None,
                  allocation_tags: Optional[pulumi.Input[str]] = None,
                  any_host_allowed: Optional[pulumi.Input[bool]] = None,
+                 app_name: Optional[pulumi.Input[str]] = None,
                  cloud: Optional[pulumi.Input[int]] = None,
                  cloud_creds_from_k8s_service_account: Optional[pulumi.Input[bool]] = None,
                  commands: Optional[pulumi.Input[str]] = None,
@@ -384,8 +433,10 @@ class _DuploServiceState:
                  fqdn_ex: Optional[pulumi.Input[str]] = None,
                  hpa_specs: Optional[pulumi.Input[str]] = None,
                  index: Optional[pulumi.Input[int]] = None,
+                 init_container_docker_images: Optional[pulumi.Input[Sequence[pulumi.Input['DuploServiceInitContainerDockerImageArgs']]]] = None,
                  is_daemonset: Optional[pulumi.Input[bool]] = None,
                  is_unique_k8s_node_required: Optional[pulumi.Input[bool]] = None,
+                 k8s_worker_os: Optional[pulumi.Input[str]] = None,
                  lb_synced_deployment: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  other_docker_config: Optional[pulumi.Input[str]] = None,
@@ -403,6 +454,7 @@ class _DuploServiceState:
         :param pulumi.Input[int] agent_platform: The numeric ID of the container agent to use for deployment. Should be one of: - `0` : Duplo Native container agent -
                `7` : Linux container agent for Kubernetes
         :param pulumi.Input[bool] any_host_allowed: Whether or not the service can run on hosts in other tenants (within the the same plan as the current tenant).
+        :param pulumi.Input[str] app_name: The name of the app where service will be a part
         :param pulumi.Input[int] cloud: The numeric ID of the cloud provider to launch the service in. Should be one of: - `0` : AWS (Default) - `1` : Oracle -
                `2` : Azure - `3` : Google - `4` : Byoh - `5` : Unknown - `6` : DigitalOcean - `10` : OnPrem
         :param pulumi.Input[bool] cloud_creds_from_k8s_service_account: Whether or not the service gets it's cloud credentials from Kubernetes service account.
@@ -414,8 +466,10 @@ class _DuploServiceState:
         :param pulumi.Input[str] fqdn: The fully qualified domain associated with the service
         :param pulumi.Input[str] fqdn_ex: External fully qualified domain associated with the service
         :param pulumi.Input[int] index: The index of the service.
+        :param pulumi.Input[Sequence[pulumi.Input['DuploServiceInitContainerDockerImageArgs']]] init_container_docker_images: The docker images to use for the launched init container(s).
         :param pulumi.Input[bool] is_daemonset: Whether or not to enable DaemonSet.
         :param pulumi.Input[bool] is_unique_k8s_node_required: Whether or not the replicas must be scheduled on separate Kubernetes nodes. Only supported on Kubernetes.
+        :param pulumi.Input[str] k8s_worker_os: OS type for k8s worker, this field is associated to azure cloud. Valid values: `Linux`, `Windows`
         :param pulumi.Input[str] name: The name of the service to create.
         :param pulumi.Input[str] parent_domain: The service's parent domain
         :param pulumi.Input[bool] replica_collocation_allowed: Allow replica collocation for the service. If this is set then 2 replicas can be on the same host.
@@ -430,6 +484,8 @@ class _DuploServiceState:
             pulumi.set(__self__, "allocation_tags", allocation_tags)
         if any_host_allowed is not None:
             pulumi.set(__self__, "any_host_allowed", any_host_allowed)
+        if app_name is not None:
+            pulumi.set(__self__, "app_name", app_name)
         if cloud is not None:
             pulumi.set(__self__, "cloud", cloud)
         if cloud_creds_from_k8s_service_account is not None:
@@ -454,10 +510,14 @@ class _DuploServiceState:
             pulumi.set(__self__, "hpa_specs", hpa_specs)
         if index is not None:
             pulumi.set(__self__, "index", index)
+        if init_container_docker_images is not None:
+            pulumi.set(__self__, "init_container_docker_images", init_container_docker_images)
         if is_daemonset is not None:
             pulumi.set(__self__, "is_daemonset", is_daemonset)
         if is_unique_k8s_node_required is not None:
             pulumi.set(__self__, "is_unique_k8s_node_required", is_unique_k8s_node_required)
+        if k8s_worker_os is not None:
+            pulumi.set(__self__, "k8s_worker_os", k8s_worker_os)
         if lb_synced_deployment is not None:
             pulumi.set(__self__, "lb_synced_deployment", lb_synced_deployment)
         if name is not None:
@@ -516,6 +576,18 @@ class _DuploServiceState:
     @any_host_allowed.setter
     def any_host_allowed(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "any_host_allowed", value)
+
+    @property
+    @pulumi.getter(name="appName")
+    def app_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the app where service will be a part
+        """
+        return pulumi.get(self, "app_name")
+
+    @app_name.setter
+    def app_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "app_name", value)
 
     @property
     @pulumi.getter
@@ -655,6 +727,18 @@ class _DuploServiceState:
         pulumi.set(self, "index", value)
 
     @property
+    @pulumi.getter(name="initContainerDockerImages")
+    def init_container_docker_images(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DuploServiceInitContainerDockerImageArgs']]]]:
+        """
+        The docker images to use for the launched init container(s).
+        """
+        return pulumi.get(self, "init_container_docker_images")
+
+    @init_container_docker_images.setter
+    def init_container_docker_images(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DuploServiceInitContainerDockerImageArgs']]]]):
+        pulumi.set(self, "init_container_docker_images", value)
+
+    @property
     @pulumi.getter(name="isDaemonset")
     def is_daemonset(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -677,6 +761,18 @@ class _DuploServiceState:
     @is_unique_k8s_node_required.setter
     def is_unique_k8s_node_required(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "is_unique_k8s_node_required", value)
+
+    @property
+    @pulumi.getter(name="k8sWorkerOs")
+    def k8s_worker_os(self) -> Optional[pulumi.Input[str]]:
+        """
+        OS type for k8s worker, this field is associated to azure cloud. Valid values: `Linux`, `Windows`
+        """
+        return pulumi.get(self, "k8s_worker_os")
+
+    @k8s_worker_os.setter
+    def k8s_worker_os(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "k8s_worker_os", value)
 
     @property
     @pulumi.getter(name="lbSyncedDeployment")
@@ -816,6 +912,7 @@ class DuploService(pulumi.CustomResource):
                  agent_platform: Optional[pulumi.Input[int]] = None,
                  allocation_tags: Optional[pulumi.Input[str]] = None,
                  any_host_allowed: Optional[pulumi.Input[bool]] = None,
+                 app_name: Optional[pulumi.Input[str]] = None,
                  cloud: Optional[pulumi.Input[int]] = None,
                  cloud_creds_from_k8s_service_account: Optional[pulumi.Input[bool]] = None,
                  commands: Optional[pulumi.Input[str]] = None,
@@ -824,8 +921,10 @@ class DuploService(pulumi.CustomResource):
                  force_recreate_on_volumes_change: Optional[pulumi.Input[bool]] = None,
                  force_stateful_set: Optional[pulumi.Input[bool]] = None,
                  hpa_specs: Optional[pulumi.Input[str]] = None,
+                 init_container_docker_images: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DuploServiceInitContainerDockerImageArgs', 'DuploServiceInitContainerDockerImageArgsDict']]]]] = None,
                  is_daemonset: Optional[pulumi.Input[bool]] = None,
                  is_unique_k8s_node_required: Optional[pulumi.Input[bool]] = None,
+                 k8s_worker_os: Optional[pulumi.Input[str]] = None,
                  lb_synced_deployment: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  other_docker_config: Optional[pulumi.Input[str]] = None,
@@ -1058,6 +1157,47 @@ class DuploService(pulumi.CustomResource):
             }))
         ```
 
+        ### Deploy an Nginx service named nginx with liveliness probe and init container. Create it inside the dev tenant which already exists.
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_duplocloud as duplocloud
+
+        # Ensure the 'dev' tenant is already created before deploying the Nginx duplo service.
+        tenant = duplocloud.get_tenant(name="dev")
+        # Assuming a host already exists in the tenant, create the duplo service
+        nginx = duplocloud.DuploService("nginx",
+            tenant_id=tenant.id,
+            name="nginx",
+            agent_platform=7,
+            docker_image="nginx:latest",
+            replicas=1,
+            other_docker_config=json.dumps({
+                "initContainers": [{
+                    "name": "nginx-init",
+                    "command": [
+                        "/bin/sh",
+                        "-c",
+                        "echo 'Initializing Nginx container...'; sleep 5",
+                    ],
+                }],
+                "LivenessProbe": {
+                    "initialDelaySeconds": 10,
+                    "periodSeconds": 30,
+                    "successThreshold": 1,
+                    "httpGet": {
+                        "path": "/health",
+                        "port": 80,
+                    },
+                },
+            }),
+            init_container_docker_images=[{
+                "name": "nginx-init",
+                "image": "busybox:latest",
+            }])
+        ```
+
         ## Import
 
         Example: Importing an existing service
@@ -1077,6 +1217,7 @@ class DuploService(pulumi.CustomResource):
         :param pulumi.Input[int] agent_platform: The numeric ID of the container agent to use for deployment. Should be one of: - `0` : Duplo Native container agent -
                `7` : Linux container agent for Kubernetes
         :param pulumi.Input[bool] any_host_allowed: Whether or not the service can run on hosts in other tenants (within the the same plan as the current tenant).
+        :param pulumi.Input[str] app_name: The name of the app where service will be a part
         :param pulumi.Input[int] cloud: The numeric ID of the cloud provider to launch the service in. Should be one of: - `0` : AWS (Default) - `1` : Oracle -
                `2` : Azure - `3` : Google - `4` : Byoh - `5` : Unknown - `6` : DigitalOcean - `10` : OnPrem
         :param pulumi.Input[bool] cloud_creds_from_k8s_service_account: Whether or not the service gets it's cloud credentials from Kubernetes service account.
@@ -1084,8 +1225,10 @@ class DuploService(pulumi.CustomResource):
         :param pulumi.Input[bool] force_recreate_on_volumes_change: if 'force_recreate_on_volumes_change=true' and any changing to Volumes, will results in forceNew and hence recreating
                the resource.
         :param pulumi.Input[bool] force_stateful_set: Whether or not to force a StatefulSet to be created.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DuploServiceInitContainerDockerImageArgs', 'DuploServiceInitContainerDockerImageArgsDict']]]] init_container_docker_images: The docker images to use for the launched init container(s).
         :param pulumi.Input[bool] is_daemonset: Whether or not to enable DaemonSet.
         :param pulumi.Input[bool] is_unique_k8s_node_required: Whether or not the replicas must be scheduled on separate Kubernetes nodes. Only supported on Kubernetes.
+        :param pulumi.Input[str] k8s_worker_os: OS type for k8s worker, this field is associated to azure cloud. Valid values: `Linux`, `Windows`
         :param pulumi.Input[str] name: The name of the service to create.
         :param pulumi.Input[bool] replica_collocation_allowed: Allow replica collocation for the service. If this is set then 2 replicas can be on the same host.
         :param pulumi.Input[int] replicas: The number of container replicas to deploy.
@@ -1320,6 +1463,47 @@ class DuploService(pulumi.CustomResource):
             }))
         ```
 
+        ### Deploy an Nginx service named nginx with liveliness probe and init container. Create it inside the dev tenant which already exists.
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_duplocloud as duplocloud
+
+        # Ensure the 'dev' tenant is already created before deploying the Nginx duplo service.
+        tenant = duplocloud.get_tenant(name="dev")
+        # Assuming a host already exists in the tenant, create the duplo service
+        nginx = duplocloud.DuploService("nginx",
+            tenant_id=tenant.id,
+            name="nginx",
+            agent_platform=7,
+            docker_image="nginx:latest",
+            replicas=1,
+            other_docker_config=json.dumps({
+                "initContainers": [{
+                    "name": "nginx-init",
+                    "command": [
+                        "/bin/sh",
+                        "-c",
+                        "echo 'Initializing Nginx container...'; sleep 5",
+                    ],
+                }],
+                "LivenessProbe": {
+                    "initialDelaySeconds": 10,
+                    "periodSeconds": 30,
+                    "successThreshold": 1,
+                    "httpGet": {
+                        "path": "/health",
+                        "port": 80,
+                    },
+                },
+            }),
+            init_container_docker_images=[{
+                "name": "nginx-init",
+                "image": "busybox:latest",
+            }])
+        ```
+
         ## Import
 
         Example: Importing an existing service
@@ -1352,6 +1536,7 @@ class DuploService(pulumi.CustomResource):
                  agent_platform: Optional[pulumi.Input[int]] = None,
                  allocation_tags: Optional[pulumi.Input[str]] = None,
                  any_host_allowed: Optional[pulumi.Input[bool]] = None,
+                 app_name: Optional[pulumi.Input[str]] = None,
                  cloud: Optional[pulumi.Input[int]] = None,
                  cloud_creds_from_k8s_service_account: Optional[pulumi.Input[bool]] = None,
                  commands: Optional[pulumi.Input[str]] = None,
@@ -1360,8 +1545,10 @@ class DuploService(pulumi.CustomResource):
                  force_recreate_on_volumes_change: Optional[pulumi.Input[bool]] = None,
                  force_stateful_set: Optional[pulumi.Input[bool]] = None,
                  hpa_specs: Optional[pulumi.Input[str]] = None,
+                 init_container_docker_images: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DuploServiceInitContainerDockerImageArgs', 'DuploServiceInitContainerDockerImageArgsDict']]]]] = None,
                  is_daemonset: Optional[pulumi.Input[bool]] = None,
                  is_unique_k8s_node_required: Optional[pulumi.Input[bool]] = None,
+                 k8s_worker_os: Optional[pulumi.Input[str]] = None,
                  lb_synced_deployment: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  other_docker_config: Optional[pulumi.Input[str]] = None,
@@ -1384,6 +1571,7 @@ class DuploService(pulumi.CustomResource):
             __props__.__dict__["agent_platform"] = agent_platform
             __props__.__dict__["allocation_tags"] = allocation_tags
             __props__.__dict__["any_host_allowed"] = any_host_allowed
+            __props__.__dict__["app_name"] = app_name
             __props__.__dict__["cloud"] = cloud
             __props__.__dict__["cloud_creds_from_k8s_service_account"] = cloud_creds_from_k8s_service_account
             __props__.__dict__["commands"] = commands
@@ -1394,8 +1582,10 @@ class DuploService(pulumi.CustomResource):
             __props__.__dict__["force_recreate_on_volumes_change"] = force_recreate_on_volumes_change
             __props__.__dict__["force_stateful_set"] = force_stateful_set
             __props__.__dict__["hpa_specs"] = hpa_specs
+            __props__.__dict__["init_container_docker_images"] = init_container_docker_images
             __props__.__dict__["is_daemonset"] = is_daemonset
             __props__.__dict__["is_unique_k8s_node_required"] = is_unique_k8s_node_required
+            __props__.__dict__["k8s_worker_os"] = k8s_worker_os
             __props__.__dict__["lb_synced_deployment"] = lb_synced_deployment
             __props__.__dict__["name"] = name
             __props__.__dict__["other_docker_config"] = other_docker_config
@@ -1427,6 +1617,7 @@ class DuploService(pulumi.CustomResource):
             agent_platform: Optional[pulumi.Input[int]] = None,
             allocation_tags: Optional[pulumi.Input[str]] = None,
             any_host_allowed: Optional[pulumi.Input[bool]] = None,
+            app_name: Optional[pulumi.Input[str]] = None,
             cloud: Optional[pulumi.Input[int]] = None,
             cloud_creds_from_k8s_service_account: Optional[pulumi.Input[bool]] = None,
             commands: Optional[pulumi.Input[str]] = None,
@@ -1439,8 +1630,10 @@ class DuploService(pulumi.CustomResource):
             fqdn_ex: Optional[pulumi.Input[str]] = None,
             hpa_specs: Optional[pulumi.Input[str]] = None,
             index: Optional[pulumi.Input[int]] = None,
+            init_container_docker_images: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DuploServiceInitContainerDockerImageArgs', 'DuploServiceInitContainerDockerImageArgsDict']]]]] = None,
             is_daemonset: Optional[pulumi.Input[bool]] = None,
             is_unique_k8s_node_required: Optional[pulumi.Input[bool]] = None,
+            k8s_worker_os: Optional[pulumi.Input[str]] = None,
             lb_synced_deployment: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             other_docker_config: Optional[pulumi.Input[str]] = None,
@@ -1463,6 +1656,7 @@ class DuploService(pulumi.CustomResource):
         :param pulumi.Input[int] agent_platform: The numeric ID of the container agent to use for deployment. Should be one of: - `0` : Duplo Native container agent -
                `7` : Linux container agent for Kubernetes
         :param pulumi.Input[bool] any_host_allowed: Whether or not the service can run on hosts in other tenants (within the the same plan as the current tenant).
+        :param pulumi.Input[str] app_name: The name of the app where service will be a part
         :param pulumi.Input[int] cloud: The numeric ID of the cloud provider to launch the service in. Should be one of: - `0` : AWS (Default) - `1` : Oracle -
                `2` : Azure - `3` : Google - `4` : Byoh - `5` : Unknown - `6` : DigitalOcean - `10` : OnPrem
         :param pulumi.Input[bool] cloud_creds_from_k8s_service_account: Whether or not the service gets it's cloud credentials from Kubernetes service account.
@@ -1474,8 +1668,10 @@ class DuploService(pulumi.CustomResource):
         :param pulumi.Input[str] fqdn: The fully qualified domain associated with the service
         :param pulumi.Input[str] fqdn_ex: External fully qualified domain associated with the service
         :param pulumi.Input[int] index: The index of the service.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DuploServiceInitContainerDockerImageArgs', 'DuploServiceInitContainerDockerImageArgsDict']]]] init_container_docker_images: The docker images to use for the launched init container(s).
         :param pulumi.Input[bool] is_daemonset: Whether or not to enable DaemonSet.
         :param pulumi.Input[bool] is_unique_k8s_node_required: Whether or not the replicas must be scheduled on separate Kubernetes nodes. Only supported on Kubernetes.
+        :param pulumi.Input[str] k8s_worker_os: OS type for k8s worker, this field is associated to azure cloud. Valid values: `Linux`, `Windows`
         :param pulumi.Input[str] name: The name of the service to create.
         :param pulumi.Input[str] parent_domain: The service's parent domain
         :param pulumi.Input[bool] replica_collocation_allowed: Allow replica collocation for the service. If this is set then 2 replicas can be on the same host.
@@ -1491,6 +1687,7 @@ class DuploService(pulumi.CustomResource):
         __props__.__dict__["agent_platform"] = agent_platform
         __props__.__dict__["allocation_tags"] = allocation_tags
         __props__.__dict__["any_host_allowed"] = any_host_allowed
+        __props__.__dict__["app_name"] = app_name
         __props__.__dict__["cloud"] = cloud
         __props__.__dict__["cloud_creds_from_k8s_service_account"] = cloud_creds_from_k8s_service_account
         __props__.__dict__["commands"] = commands
@@ -1503,8 +1700,10 @@ class DuploService(pulumi.CustomResource):
         __props__.__dict__["fqdn_ex"] = fqdn_ex
         __props__.__dict__["hpa_specs"] = hpa_specs
         __props__.__dict__["index"] = index
+        __props__.__dict__["init_container_docker_images"] = init_container_docker_images
         __props__.__dict__["is_daemonset"] = is_daemonset
         __props__.__dict__["is_unique_k8s_node_required"] = is_unique_k8s_node_required
+        __props__.__dict__["k8s_worker_os"] = k8s_worker_os
         __props__.__dict__["lb_synced_deployment"] = lb_synced_deployment
         __props__.__dict__["name"] = name
         __props__.__dict__["other_docker_config"] = other_docker_config
@@ -1540,6 +1739,14 @@ class DuploService(pulumi.CustomResource):
         Whether or not the service can run on hosts in other tenants (within the the same plan as the current tenant).
         """
         return pulumi.get(self, "any_host_allowed")
+
+    @property
+    @pulumi.getter(name="appName")
+    def app_name(self) -> pulumi.Output[str]:
+        """
+        The name of the app where service will be a part
+        """
+        return pulumi.get(self, "app_name")
 
     @property
     @pulumi.getter
@@ -1631,6 +1838,14 @@ class DuploService(pulumi.CustomResource):
         return pulumi.get(self, "index")
 
     @property
+    @pulumi.getter(name="initContainerDockerImages")
+    def init_container_docker_images(self) -> pulumi.Output[Sequence['outputs.DuploServiceInitContainerDockerImage']]:
+        """
+        The docker images to use for the launched init container(s).
+        """
+        return pulumi.get(self, "init_container_docker_images")
+
+    @property
     @pulumi.getter(name="isDaemonset")
     def is_daemonset(self) -> pulumi.Output[Optional[bool]]:
         """
@@ -1645,6 +1860,14 @@ class DuploService(pulumi.CustomResource):
         Whether or not the replicas must be scheduled on separate Kubernetes nodes. Only supported on Kubernetes.
         """
         return pulumi.get(self, "is_unique_k8s_node_required")
+
+    @property
+    @pulumi.getter(name="k8sWorkerOs")
+    def k8s_worker_os(self) -> pulumi.Output[Optional[str]]:
+        """
+        OS type for k8s worker, this field is associated to azure cloud. Valid values: `Linux`, `Windows`
+        """
+        return pulumi.get(self, "k8s_worker_os")
 
     @property
     @pulumi.getter(name="lbSyncedDeployment")

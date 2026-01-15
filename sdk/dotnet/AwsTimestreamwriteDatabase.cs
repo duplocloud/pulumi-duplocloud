@@ -19,18 +19,19 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
+    /// using Pulumi = Pulumi.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var tenantId = "d186700c-ad18-4525-9593-aad467c843ff";
     /// 
-    ///     var kmsKey = Duplocloud.GetTenantAwsKmsKey.Invoke(new()
+    ///     var kmsKey = Pulumi.GetTenantAwsKmsKey.Invoke(new()
     ///     {
     ///         TenantId = tenantId,
     ///     });
     /// 
-    ///     var timestreamwriteDatabase = new Duplocloud.AwsTimestreamwriteDatabase("timestreamwrite_database", new()
+    ///     var timestreamwriteDatabase = new Pulumi.AwsTimestreamwriteDatabase("timestreamwrite_database", new()
     ///     {
     ///         TenantId = tenantId,
     ///         Name = "test",

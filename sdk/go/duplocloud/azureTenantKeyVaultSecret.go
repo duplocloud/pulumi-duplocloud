@@ -112,6 +112,13 @@ func NewAzureTenantKeyVaultSecret(ctx *pulumi.Context,
 	if args.VaultName == nil {
 		return nil, errors.New("invalid value for required argument 'VaultName'")
 	}
+	if args.Value != nil {
+		args.Value = pulumi.ToSecret(args.Value).(pulumi.StringInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"value",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AzureTenantKeyVaultSecret
 	err := ctx.RegisterResource("duplocloud:index/azureTenantKeyVaultSecret:AzureTenantKeyVaultSecret", name, args, &resource, opts...)

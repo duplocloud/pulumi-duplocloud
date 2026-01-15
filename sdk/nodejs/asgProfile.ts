@@ -52,13 +52,18 @@ export class AsgProfile extends pulumi.CustomResource {
     }
 
     /**
-     * The numeric ID of the container agent pool that this host is added to.
+     * The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
+     * Windows - 7: EKS Linux - 8: ECS
      */
     public readonly agentPlatform!: pulumi.Output<number | undefined>;
     /**
      * Whether or not to allocate a public IP.
      */
     public readonly allocatedPublicIp!: pulumi.Output<boolean | undefined>;
+    /**
+     * The ASG arn.
+     */
+    public /*out*/ readonly arn!: pulumi.Output<string>;
     /**
      * Base64 encoded EC2 user data to associated with the host.
      */
@@ -109,8 +114,8 @@ export class AsgProfile extends pulumi.CustomResource {
     public readonly isEbsOptimized!: pulumi.Output<boolean | undefined>;
     public readonly isMinion!: pulumi.Output<boolean | undefined>;
     /**
-     * The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : ED25519 - `2` : RSA (deprecated
-     * - some operating systems no longer support it)
+     * The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : RSA (deprecated - some operating
+     * systems no longer support it) - `2` : ED25519
      */
     public readonly keypairType!: pulumi.Output<number>;
     /**
@@ -172,16 +177,16 @@ export class AsgProfile extends pulumi.CustomResource {
      */
     public readonly waitForCapacity!: pulumi.Output<boolean | undefined>;
     /**
-     * The availability zone to launch the host in, expressed as a number and starting at 0.
+     * The availability zone to launch the host in is expressed as a numeric value ranging from 0 to 3.
      *
-     * @deprecated zone has been deprecated instead use zones
+     * @deprecated For environments on the July 2024 release or earlier, use zone. For environments on releases after July 2024, use zones, as zone has been deprecated.
      */
-    public readonly zone!: pulumi.Output<number | undefined>;
+    public readonly zone!: pulumi.Output<string | undefined>;
     /**
-     * The multi availability zone to launch the asg in, expressed as a number and starting at 0 - Automatic 1 - Zone A 2 -
-     * Zone B
+     * The multi availability zone to launch the asg in, expressed as a number and starting at 0 - Zone A to 3 - Zone D, based
+     * on the infra setup
      */
-    public readonly zones!: pulumi.Output<number[] | undefined>;
+    public readonly zones!: pulumi.Output<number[]>;
 
     /**
      * Create a AsgProfile resource with the given unique name, arguments, and options.
@@ -198,6 +203,7 @@ export class AsgProfile extends pulumi.CustomResource {
             const state = argsOrState as AsgProfileState | undefined;
             resourceInputs["agentPlatform"] = state ? state.agentPlatform : undefined;
             resourceInputs["allocatedPublicIp"] = state ? state.allocatedPublicIp : undefined;
+            resourceInputs["arn"] = state ? state.arn : undefined;
             resourceInputs["base64UserData"] = state ? state.base64UserData : undefined;
             resourceInputs["canScaleFromZero"] = state ? state.canScaleFromZero : undefined;
             resourceInputs["capacity"] = state ? state.capacity : undefined;
@@ -277,6 +283,7 @@ export class AsgProfile extends pulumi.CustomResource {
             resourceInputs["waitForCapacity"] = args ? args.waitForCapacity : undefined;
             resourceInputs["zone"] = args ? args.zone : undefined;
             resourceInputs["zones"] = args ? args.zones : undefined;
+            resourceInputs["arn"] = undefined /*out*/;
             resourceInputs["fullname"] = undefined /*out*/;
             resourceInputs["initialBase64UserData"] = undefined /*out*/;
             resourceInputs["publicIpAddress"] = undefined /*out*/;
@@ -291,13 +298,18 @@ export class AsgProfile extends pulumi.CustomResource {
  */
 export interface AsgProfileState {
     /**
-     * The numeric ID of the container agent pool that this host is added to.
+     * The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
+     * Windows - 7: EKS Linux - 8: ECS
      */
     agentPlatform?: pulumi.Input<number>;
     /**
      * Whether or not to allocate a public IP.
      */
     allocatedPublicIp?: pulumi.Input<boolean>;
+    /**
+     * The ASG arn.
+     */
+    arn?: pulumi.Input<string>;
     /**
      * Base64 encoded EC2 user data to associated with the host.
      */
@@ -348,8 +360,8 @@ export interface AsgProfileState {
     isEbsOptimized?: pulumi.Input<boolean>;
     isMinion?: pulumi.Input<boolean>;
     /**
-     * The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : ED25519 - `2` : RSA (deprecated
-     * - some operating systems no longer support it)
+     * The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : RSA (deprecated - some operating
+     * systems no longer support it) - `2` : ED25519
      */
     keypairType?: pulumi.Input<number>;
     /**
@@ -411,14 +423,14 @@ export interface AsgProfileState {
      */
     waitForCapacity?: pulumi.Input<boolean>;
     /**
-     * The availability zone to launch the host in, expressed as a number and starting at 0.
+     * The availability zone to launch the host in is expressed as a numeric value ranging from 0 to 3.
      *
-     * @deprecated zone has been deprecated instead use zones
+     * @deprecated For environments on the July 2024 release or earlier, use zone. For environments on releases after July 2024, use zones, as zone has been deprecated.
      */
-    zone?: pulumi.Input<number>;
+    zone?: pulumi.Input<string>;
     /**
-     * The multi availability zone to launch the asg in, expressed as a number and starting at 0 - Automatic 1 - Zone A 2 -
-     * Zone B
+     * The multi availability zone to launch the asg in, expressed as a number and starting at 0 - Zone A to 3 - Zone D, based
+     * on the infra setup
      */
     zones?: pulumi.Input<pulumi.Input<number>[]>;
 }
@@ -428,7 +440,8 @@ export interface AsgProfileState {
  */
 export interface AsgProfileArgs {
     /**
-     * The numeric ID of the container agent pool that this host is added to.
+     * The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
+     * Windows - 7: EKS Linux - 8: ECS
      */
     agentPlatform?: pulumi.Input<number>;
     /**
@@ -480,8 +493,8 @@ export interface AsgProfileArgs {
     isEbsOptimized?: pulumi.Input<boolean>;
     isMinion?: pulumi.Input<boolean>;
     /**
-     * The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : ED25519 - `2` : RSA (deprecated
-     * - some operating systems no longer support it)
+     * The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : RSA (deprecated - some operating
+     * systems no longer support it) - `2` : ED25519
      */
     keypairType?: pulumi.Input<number>;
     /**
@@ -539,14 +552,14 @@ export interface AsgProfileArgs {
      */
     waitForCapacity?: pulumi.Input<boolean>;
     /**
-     * The availability zone to launch the host in, expressed as a number and starting at 0.
+     * The availability zone to launch the host in is expressed as a numeric value ranging from 0 to 3.
      *
-     * @deprecated zone has been deprecated instead use zones
+     * @deprecated For environments on the July 2024 release or earlier, use zone. For environments on releases after July 2024, use zones, as zone has been deprecated.
      */
-    zone?: pulumi.Input<number>;
+    zone?: pulumi.Input<string>;
     /**
-     * The multi availability zone to launch the asg in, expressed as a number and starting at 0 - Automatic 1 - Zone A 2 -
-     * Zone B
+     * The multi availability zone to launch the asg in, expressed as a number and starting at 0 - Zone A to 3 - Zone D, based
+     * on the infra setup
      */
     zones?: pulumi.Input<pulumi.Input<number>[]>;
 }

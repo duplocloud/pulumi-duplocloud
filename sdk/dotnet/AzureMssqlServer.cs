@@ -13,35 +13,6 @@ namespace DuploCloud.Pulumi
     /// <summary>
     /// `duplocloud.AzureMssqlServer` manages an azure mssql server in Duplo.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var myapp = new Duplocloud.Tenant("myapp", new()
-    ///     {
-    ///         AccountName = "myapp",
-    ///         PlanId = "default",
-    ///     });
-    /// 
-    ///     var mssqlServer = new Duplocloud.AzureMssqlServer("mssql_server", new()
-    ///     {
-    ///         TenantId = myapp.TenantId,
-    ///         Name = "mssql-test",
-    ///         AdministratorLogin = "testroot",
-    ///         AdministratorLoginPassword = "P@ssword12345",
-    ///         Version = "12.0",
-    ///         MinimumTlsVersion = "1.2",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Example: Importing an existing Azure MS SQL Server
@@ -59,6 +30,12 @@ namespace DuploCloud.Pulumi
     [PulumiResourceType("duplocloud:index/azureMssqlServer:AzureMssqlServer")]
     public partial class AzureMssqlServer : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Allows you to set a user or group as the AD administrator for an Azure SQL server.
+        /// </summary>
+        [Output("activeDirectoryAdministrator")]
+        public Output<Outputs.AzureMssqlServerActiveDirectoryAdministrator?> ActiveDirectoryAdministrator { get; private set; } = null!;
+
         /// <summary>
         /// The Administrator Login for the  MS sql Server.
         /// </summary>
@@ -168,6 +145,12 @@ namespace DuploCloud.Pulumi
     public sealed class AzureMssqlServerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Allows you to set a user or group as the AD administrator for an Azure SQL server.
+        /// </summary>
+        [Input("activeDirectoryAdministrator")]
+        public Input<Inputs.AzureMssqlServerActiveDirectoryAdministratorArgs>? ActiveDirectoryAdministrator { get; set; }
+
+        /// <summary>
         /// The Administrator Login for the  MS sql Server.
         /// </summary>
         [Input("administratorLogin")]
@@ -233,6 +216,12 @@ namespace DuploCloud.Pulumi
 
     public sealed class AzureMssqlServerState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Allows you to set a user or group as the AD administrator for an Azure SQL server.
+        /// </summary>
+        [Input("activeDirectoryAdministrator")]
+        public Input<Inputs.AzureMssqlServerActiveDirectoryAdministratorGetArgs>? ActiveDirectoryAdministrator { get; set; }
+
         /// <summary>
         /// The Administrator Login for the  MS sql Server.
         /// </summary>

@@ -31,7 +31,7 @@ class EcsTaskDefinitionArgs:
                  network_mode: Optional[pulumi.Input[str]] = None,
                  pid_mode: Optional[pulumi.Input[str]] = None,
                  placement_constraints: Optional[pulumi.Input[Sequence[pulumi.Input['EcsTaskDefinitionPlacementConstraintArgs']]]] = None,
-                 prevent_tf_destroy: Optional[pulumi.Input[bool]] = None,
+                 prevent_tf_destroy: Optional[pulumi.Input[str]] = None,
                  proxy_configuration: Optional[pulumi.Input['EcsTaskDefinitionProxyConfigurationArgs']] = None,
                  requires_attributes: Optional[pulumi.Input[Sequence[pulumi.Input['EcsTaskDefinitionRequiresAttributeArgs']]]] = None,
                  requires_compatibilities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -41,10 +41,12 @@ class EcsTaskDefinitionArgs:
         The set of arguments for constructing a EcsTaskDefinition resource.
         :param pulumi.Input[str] family: The name of the task definition to create.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the task definition will be created in.
-        :param pulumi.Input[str] network_mode: Defaults to `awsvpc`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] requires_compatibilities: Requires compatibilities for running jobs. Valid values are [FARGATE]
+        :param pulumi.Input[str] ipc_mode: valid values are `host`, `none`, `task`
+        :param pulumi.Input[str] network_mode: Valid values are `bridge`,`host`,`awsvpc`,`none` Defaults to `awsvpc`.
+        :param pulumi.Input[str] pid_mode: Valida values are `host`, `task`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] requires_compatibilities: Requires compatibilities for running jobs. Such as EC2, FARGATE, EXTERNAL. It varies based on network mode and how AWS maps it. `FARGATE` should be used if network mode is set to `awsvpc`.
         :param pulumi.Input['EcsTaskDefinitionRuntimePlatformArgs'] runtime_platform: Configuration block for runtime*platform that containers in your task may use. Required on ecs tasks that are hosted on Fargate.
-        :param pulumi.Input[str] volumes: Defaults to `[]`.
+        :param pulumi.Input[str] volumes: A JSON-encoded string containing a list of volumes that are used by the ECS task definition. Defaults to `[]`.
         """
         pulumi.set(__self__, "container_definitions", container_definitions)
         pulumi.set(__self__, "family", family)
@@ -130,6 +132,9 @@ class EcsTaskDefinitionArgs:
     @property
     @pulumi.getter(name="ipcMode")
     def ipc_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        valid values are `host`, `none`, `task`
+        """
         return pulumi.get(self, "ipc_mode")
 
     @ipc_mode.setter
@@ -149,7 +154,7 @@ class EcsTaskDefinitionArgs:
     @pulumi.getter(name="networkMode")
     def network_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        Defaults to `awsvpc`.
+        Valid values are `bridge`,`host`,`awsvpc`,`none` Defaults to `awsvpc`.
         """
         return pulumi.get(self, "network_mode")
 
@@ -160,6 +165,9 @@ class EcsTaskDefinitionArgs:
     @property
     @pulumi.getter(name="pidMode")
     def pid_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Valida values are `host`, `task`
+        """
         return pulumi.get(self, "pid_mode")
 
     @pid_mode.setter
@@ -177,11 +185,11 @@ class EcsTaskDefinitionArgs:
 
     @property
     @pulumi.getter(name="preventTfDestroy")
-    def prevent_tf_destroy(self) -> Optional[pulumi.Input[bool]]:
+    def prevent_tf_destroy(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "prevent_tf_destroy")
 
     @prevent_tf_destroy.setter
-    def prevent_tf_destroy(self, value: Optional[pulumi.Input[bool]]):
+    def prevent_tf_destroy(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "prevent_tf_destroy", value)
 
     @property
@@ -206,7 +214,7 @@ class EcsTaskDefinitionArgs:
     @pulumi.getter(name="requiresCompatibilities")
     def requires_compatibilities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Requires compatibilities for running jobs. Valid values are [FARGATE]
+        Requires compatibilities for running jobs. Such as EC2, FARGATE, EXTERNAL. It varies based on network mode and how AWS maps it. `FARGATE` should be used if network mode is set to `awsvpc`.
         """
         return pulumi.get(self, "requires_compatibilities")
 
@@ -230,7 +238,7 @@ class EcsTaskDefinitionArgs:
     @pulumi.getter
     def volumes(self) -> Optional[pulumi.Input[str]]:
         """
-        Defaults to `[]`.
+        A JSON-encoded string containing a list of volumes that are used by the ECS task definition. Defaults to `[]`.
         """
         return pulumi.get(self, "volumes")
 
@@ -255,7 +263,7 @@ class _EcsTaskDefinitionState:
                  network_mode: Optional[pulumi.Input[str]] = None,
                  pid_mode: Optional[pulumi.Input[str]] = None,
                  placement_constraints: Optional[pulumi.Input[Sequence[pulumi.Input['EcsTaskDefinitionPlacementConstraintArgs']]]] = None,
-                 prevent_tf_destroy: Optional[pulumi.Input[bool]] = None,
+                 prevent_tf_destroy: Optional[pulumi.Input[str]] = None,
                  proxy_configuration: Optional[pulumi.Input['EcsTaskDefinitionProxyConfigurationArgs']] = None,
                  requires_attributes: Optional[pulumi.Input[Sequence[pulumi.Input['EcsTaskDefinitionRequiresAttributeArgs']]]] = None,
                  requires_compatibilities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -272,13 +280,15 @@ class _EcsTaskDefinitionState:
         :param pulumi.Input[str] container_definitions_updates: container_definitions updates in backend
         :param pulumi.Input[str] family: The name of the task definition to create.
         :param pulumi.Input[str] full_family_name: The name of the task definition to create.
-        :param pulumi.Input[str] network_mode: Defaults to `awsvpc`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] requires_compatibilities: Requires compatibilities for running jobs. Valid values are [FARGATE]
+        :param pulumi.Input[str] ipc_mode: valid values are `host`, `none`, `task`
+        :param pulumi.Input[str] network_mode: Valid values are `bridge`,`host`,`awsvpc`,`none` Defaults to `awsvpc`.
+        :param pulumi.Input[str] pid_mode: Valida values are `host`, `task`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] requires_compatibilities: Requires compatibilities for running jobs. Such as EC2, FARGATE, EXTERNAL. It varies based on network mode and how AWS maps it. `FARGATE` should be used if network mode is set to `awsvpc`.
         :param pulumi.Input[int] revision: The current revision of the task definition.
         :param pulumi.Input['EcsTaskDefinitionRuntimePlatformArgs'] runtime_platform: Configuration block for runtime*platform that containers in your task may use. Required on ecs tasks that are hosted on Fargate.
         :param pulumi.Input[str] status: The status of the task definition.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the task definition will be created in.
-        :param pulumi.Input[str] volumes: Defaults to `[]`.
+        :param pulumi.Input[str] volumes: A JSON-encoded string containing a list of volumes that are used by the ECS task definition. Defaults to `[]`.
         """
         if arn is not None:
             pulumi.set(__self__, "arn", arn)
@@ -416,6 +426,9 @@ class _EcsTaskDefinitionState:
     @property
     @pulumi.getter(name="ipcMode")
     def ipc_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        valid values are `host`, `none`, `task`
+        """
         return pulumi.get(self, "ipc_mode")
 
     @ipc_mode.setter
@@ -435,7 +448,7 @@ class _EcsTaskDefinitionState:
     @pulumi.getter(name="networkMode")
     def network_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        Defaults to `awsvpc`.
+        Valid values are `bridge`,`host`,`awsvpc`,`none` Defaults to `awsvpc`.
         """
         return pulumi.get(self, "network_mode")
 
@@ -446,6 +459,9 @@ class _EcsTaskDefinitionState:
     @property
     @pulumi.getter(name="pidMode")
     def pid_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Valida values are `host`, `task`
+        """
         return pulumi.get(self, "pid_mode")
 
     @pid_mode.setter
@@ -463,11 +479,11 @@ class _EcsTaskDefinitionState:
 
     @property
     @pulumi.getter(name="preventTfDestroy")
-    def prevent_tf_destroy(self) -> Optional[pulumi.Input[bool]]:
+    def prevent_tf_destroy(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "prevent_tf_destroy")
 
     @prevent_tf_destroy.setter
-    def prevent_tf_destroy(self, value: Optional[pulumi.Input[bool]]):
+    def prevent_tf_destroy(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "prevent_tf_destroy", value)
 
     @property
@@ -492,7 +508,7 @@ class _EcsTaskDefinitionState:
     @pulumi.getter(name="requiresCompatibilities")
     def requires_compatibilities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Requires compatibilities for running jobs. Valid values are [FARGATE]
+        Requires compatibilities for running jobs. Such as EC2, FARGATE, EXTERNAL. It varies based on network mode and how AWS maps it. `FARGATE` should be used if network mode is set to `awsvpc`.
         """
         return pulumi.get(self, "requires_compatibilities")
 
@@ -570,7 +586,7 @@ class _EcsTaskDefinitionState:
     @pulumi.getter
     def volumes(self) -> Optional[pulumi.Input[str]]:
         """
-        Defaults to `[]`.
+        A JSON-encoded string containing a list of volumes that are used by the ECS task definition. Defaults to `[]`.
         """
         return pulumi.get(self, "volumes")
 
@@ -593,7 +609,7 @@ class EcsTaskDefinition(pulumi.CustomResource):
                  network_mode: Optional[pulumi.Input[str]] = None,
                  pid_mode: Optional[pulumi.Input[str]] = None,
                  placement_constraints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EcsTaskDefinitionPlacementConstraintArgs', 'EcsTaskDefinitionPlacementConstraintArgsDict']]]]] = None,
-                 prevent_tf_destroy: Optional[pulumi.Input[bool]] = None,
+                 prevent_tf_destroy: Optional[pulumi.Input[str]] = None,
                  proxy_configuration: Optional[pulumi.Input[Union['EcsTaskDefinitionProxyConfigurationArgs', 'EcsTaskDefinitionProxyConfigurationArgsDict']]] = None,
                  requires_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EcsTaskDefinitionRequiresAttributeArgs', 'EcsTaskDefinitionRequiresAttributeArgsDict']]]]] = None,
                  requires_compatibilities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -621,11 +637,13 @@ class EcsTaskDefinition(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] family: The name of the task definition to create.
-        :param pulumi.Input[str] network_mode: Defaults to `awsvpc`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] requires_compatibilities: Requires compatibilities for running jobs. Valid values are [FARGATE]
+        :param pulumi.Input[str] ipc_mode: valid values are `host`, `none`, `task`
+        :param pulumi.Input[str] network_mode: Valid values are `bridge`,`host`,`awsvpc`,`none` Defaults to `awsvpc`.
+        :param pulumi.Input[str] pid_mode: Valida values are `host`, `task`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] requires_compatibilities: Requires compatibilities for running jobs. Such as EC2, FARGATE, EXTERNAL. It varies based on network mode and how AWS maps it. `FARGATE` should be used if network mode is set to `awsvpc`.
         :param pulumi.Input[Union['EcsTaskDefinitionRuntimePlatformArgs', 'EcsTaskDefinitionRuntimePlatformArgsDict']] runtime_platform: Configuration block for runtime*platform that containers in your task may use. Required on ecs tasks that are hosted on Fargate.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the task definition will be created in.
-        :param pulumi.Input[str] volumes: Defaults to `[]`.
+        :param pulumi.Input[str] volumes: A JSON-encoded string containing a list of volumes that are used by the ECS task definition. Defaults to `[]`.
         """
         ...
     @overload
@@ -674,7 +692,7 @@ class EcsTaskDefinition(pulumi.CustomResource):
                  network_mode: Optional[pulumi.Input[str]] = None,
                  pid_mode: Optional[pulumi.Input[str]] = None,
                  placement_constraints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EcsTaskDefinitionPlacementConstraintArgs', 'EcsTaskDefinitionPlacementConstraintArgsDict']]]]] = None,
-                 prevent_tf_destroy: Optional[pulumi.Input[bool]] = None,
+                 prevent_tf_destroy: Optional[pulumi.Input[str]] = None,
                  proxy_configuration: Optional[pulumi.Input[Union['EcsTaskDefinitionProxyConfigurationArgs', 'EcsTaskDefinitionProxyConfigurationArgsDict']]] = None,
                  requires_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EcsTaskDefinitionRequiresAttributeArgs', 'EcsTaskDefinitionRequiresAttributeArgsDict']]]]] = None,
                  requires_compatibilities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -743,7 +761,7 @@ class EcsTaskDefinition(pulumi.CustomResource):
             network_mode: Optional[pulumi.Input[str]] = None,
             pid_mode: Optional[pulumi.Input[str]] = None,
             placement_constraints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EcsTaskDefinitionPlacementConstraintArgs', 'EcsTaskDefinitionPlacementConstraintArgsDict']]]]] = None,
-            prevent_tf_destroy: Optional[pulumi.Input[bool]] = None,
+            prevent_tf_destroy: Optional[pulumi.Input[str]] = None,
             proxy_configuration: Optional[pulumi.Input[Union['EcsTaskDefinitionProxyConfigurationArgs', 'EcsTaskDefinitionProxyConfigurationArgsDict']]] = None,
             requires_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EcsTaskDefinitionRequiresAttributeArgs', 'EcsTaskDefinitionRequiresAttributeArgsDict']]]]] = None,
             requires_compatibilities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -765,13 +783,15 @@ class EcsTaskDefinition(pulumi.CustomResource):
         :param pulumi.Input[str] container_definitions_updates: container_definitions updates in backend
         :param pulumi.Input[str] family: The name of the task definition to create.
         :param pulumi.Input[str] full_family_name: The name of the task definition to create.
-        :param pulumi.Input[str] network_mode: Defaults to `awsvpc`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] requires_compatibilities: Requires compatibilities for running jobs. Valid values are [FARGATE]
+        :param pulumi.Input[str] ipc_mode: valid values are `host`, `none`, `task`
+        :param pulumi.Input[str] network_mode: Valid values are `bridge`,`host`,`awsvpc`,`none` Defaults to `awsvpc`.
+        :param pulumi.Input[str] pid_mode: Valida values are `host`, `task`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] requires_compatibilities: Requires compatibilities for running jobs. Such as EC2, FARGATE, EXTERNAL. It varies based on network mode and how AWS maps it. `FARGATE` should be used if network mode is set to `awsvpc`.
         :param pulumi.Input[int] revision: The current revision of the task definition.
         :param pulumi.Input[Union['EcsTaskDefinitionRuntimePlatformArgs', 'EcsTaskDefinitionRuntimePlatformArgsDict']] runtime_platform: Configuration block for runtime*platform that containers in your task may use. Required on ecs tasks that are hosted on Fargate.
         :param pulumi.Input[str] status: The status of the task definition.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the task definition will be created in.
-        :param pulumi.Input[str] volumes: Defaults to `[]`.
+        :param pulumi.Input[str] volumes: A JSON-encoded string containing a list of volumes that are used by the ECS task definition. Defaults to `[]`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -858,6 +878,9 @@ class EcsTaskDefinition(pulumi.CustomResource):
     @property
     @pulumi.getter(name="ipcMode")
     def ipc_mode(self) -> pulumi.Output[Optional[str]]:
+        """
+        valid values are `host`, `none`, `task`
+        """
         return pulumi.get(self, "ipc_mode")
 
     @property
@@ -869,13 +892,16 @@ class EcsTaskDefinition(pulumi.CustomResource):
     @pulumi.getter(name="networkMode")
     def network_mode(self) -> pulumi.Output[Optional[str]]:
         """
-        Defaults to `awsvpc`.
+        Valid values are `bridge`,`host`,`awsvpc`,`none` Defaults to `awsvpc`.
         """
         return pulumi.get(self, "network_mode")
 
     @property
     @pulumi.getter(name="pidMode")
     def pid_mode(self) -> pulumi.Output[Optional[str]]:
+        """
+        Valida values are `host`, `task`
+        """
         return pulumi.get(self, "pid_mode")
 
     @property
@@ -885,7 +911,7 @@ class EcsTaskDefinition(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="preventTfDestroy")
-    def prevent_tf_destroy(self) -> pulumi.Output[Optional[bool]]:
+    def prevent_tf_destroy(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "prevent_tf_destroy")
 
     @property
@@ -900,9 +926,9 @@ class EcsTaskDefinition(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="requiresCompatibilities")
-    def requires_compatibilities(self) -> pulumi.Output[Sequence[str]]:
+    def requires_compatibilities(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Requires compatibilities for running jobs. Valid values are [FARGATE]
+        Requires compatibilities for running jobs. Such as EC2, FARGATE, EXTERNAL. It varies based on network mode and how AWS maps it. `FARGATE` should be used if network mode is set to `awsvpc`.
         """
         return pulumi.get(self, "requires_compatibilities")
 
@@ -952,7 +978,7 @@ class EcsTaskDefinition(pulumi.CustomResource):
     @pulumi.getter
     def volumes(self) -> pulumi.Output[Optional[str]]:
         """
-        Defaults to `[]`.
+        A JSON-encoded string containing a list of volumes that are used by the ECS task definition. Defaults to `[]`.
         """
         return pulumi.get(self, "volumes")
 

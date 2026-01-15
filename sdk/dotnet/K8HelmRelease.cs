@@ -20,17 +20,17 @@ namespace DuploCloud.Pulumi
     /// using System.Linq;
     /// using System.Text.Json;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myapp = new Duplocloud.Tenant("myapp", new()
+    ///     var myapp = new Pulumi.Tenant("myapp", new()
     ///     {
     ///         AccountName = "myapp",
     ///         PlanId = "default",
     ///     });
     /// 
-    ///     var release = new Duplocloud.K8HelmRelease("release", new()
+    ///     var release = new Pulumi.K8HelmRelease("release", new()
     ///     {
     ///         TenantId = myapp.TenantId,
     ///         Name = "helm-release-name",
@@ -38,7 +38,7 @@ namespace DuploCloud.Pulumi
     ///         ReleaseName = "helm-release-1",
     ///         Charts = new[]
     ///         {
-    ///             new Duplocloud.Inputs.K8HelmReleaseChartArgs
+    ///             new Pulumi.Inputs.K8HelmReleaseChartArgs
     ///             {
     ///                 Name = "chart-name",
     ///                 Version = "v1",
@@ -160,7 +160,7 @@ namespace DuploCloud.Pulumi
 
     public sealed class K8HelmReleaseArgs : global::Pulumi.ResourceArgs
     {
-        [Input("charts")]
+        [Input("charts", required: true)]
         private InputList<Inputs.K8HelmReleaseChartArgs>? _charts;
 
         /// <summary>

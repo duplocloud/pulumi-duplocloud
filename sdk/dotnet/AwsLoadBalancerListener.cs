@@ -13,43 +13,6 @@ namespace DuploCloud.Pulumi
     /// <summary>
     /// `duplocloud.AwsLoadBalancerListener` manages an AWS application load balancer listener in Duplo.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var myapp = new Duplocloud.Tenant("myapp", new()
-    ///     {
-    ///         AccountName = "myapp",
-    ///         PlanId = "default",
-    ///     });
-    /// 
-    ///     var myappAwsLoadBalancer = new Duplocloud.AwsLoadBalancer("myapp", new()
-    ///     {
-    ///         TenantId = myapp.TenantId,
-    ///         Name = "myapp",
-    ///         IsInternal = true,
-    ///         EnableAccessLogs = true,
-    ///         DropInvalidHeaders = true,
-    ///     });
-    /// 
-    ///     var myapp_listener = new Duplocloud.AwsLoadBalancerListener("myapp-listener", new()
-    ///     {
-    ///         TenantId = myapp.TenantId,
-    ///         LoadBalancerName = myappAwsLoadBalancer.Name,
-    ///         Port = 8443,
-    ///         Protocol = "https",
-    ///         TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:1234567890:targetgroup/duplo2-stage-antcmw-http4000/fc6f818e85fa737a",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Example: Importing an existing AWS load balancer listener
@@ -118,10 +81,10 @@ namespace DuploCloud.Pulumi
         public Output<string> SslPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// ARN of the Target Group to which to route traffic.
+        /// ARN of the Target Group to which to route traffic. target*group*arn has moved to default*actions.forward.target*group*arn. This field is available for backward compatibility. We recommend to use default*actions block
         /// </summary>
         [Output("targetGroupArn")]
-        public Output<string> TargetGroupArn { get; private set; } = null!;
+        public Output<string?> TargetGroupArn { get; private set; } = null!;
 
         /// <summary>
         /// The GUID of the tenant that the load balancer will be created in.
@@ -182,6 +145,14 @@ namespace DuploCloud.Pulumi
         [Input("certificateArn")]
         public Input<string>? CertificateArn { get; set; }
 
+        [Input("defaultActions")]
+        private InputList<Inputs.AwsLoadBalancerListenerDefaultActionArgs>? _defaultActions;
+        public InputList<Inputs.AwsLoadBalancerListenerDefaultActionArgs> DefaultActions
+        {
+            get => _defaultActions ?? (_defaultActions = new InputList<Inputs.AwsLoadBalancerListenerDefaultActionArgs>());
+            set => _defaultActions = value;
+        }
+
         /// <summary>
         /// The short name of the load balancer.  Duplo will add a prefix to the name.  You can retrieve the full name from the `fullname` attribute.
         /// </summary>
@@ -201,10 +172,10 @@ namespace DuploCloud.Pulumi
         public Input<string> Protocol { get; set; } = null!;
 
         /// <summary>
-        /// ARN of the Target Group to which to route traffic.
+        /// ARN of the Target Group to which to route traffic. target*group*arn has moved to default*actions.forward.target*group*arn. This field is available for backward compatibility. We recommend to use default*actions block
         /// </summary>
-        [Input("targetGroupArn", required: true)]
-        public Input<string> TargetGroupArn { get; set; } = null!;
+        [Input("targetGroupArn")]
+        public Input<string>? TargetGroupArn { get; set; }
 
         /// <summary>
         /// The GUID of the tenant that the load balancer will be created in.
@@ -279,7 +250,7 @@ namespace DuploCloud.Pulumi
         public Input<string>? SslPolicy { get; set; }
 
         /// <summary>
-        /// ARN of the Target Group to which to route traffic.
+        /// ARN of the Target Group to which to route traffic. target*group*arn has moved to default*actions.forward.target*group*arn. This field is available for backward compatibility. We recommend to use default*actions block
         /// </summary>
         [Input("targetGroupArn")]
         public Input<string>? TargetGroupArn { get; set; }

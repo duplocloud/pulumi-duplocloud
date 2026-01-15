@@ -22,6 +22,7 @@ class UserArgs:
                  roles: pulumi.Input[Sequence[pulumi.Input[str]]],
                  username: pulumi.Input[str],
                  is_readonly: Optional[pulumi.Input[bool]] = None,
+                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  reallocate_vpn_address: Optional[pulumi.Input[bool]] = None,
                  regenerate_vpn_password: Optional[pulumi.Input[bool]] = None):
         """
@@ -29,6 +30,7 @@ class UserArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: The list of roles to be assigned to thh created user. Valid values are - `User`, `Administrator`, `SignupUser`, `SecurityAdmin`.
         :param pulumi.Input[str] username: The unique user name or the email.
         :param pulumi.Input[bool] is_readonly: Defaults to `false`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions: The list of permissions assigned to the user.
         :param pulumi.Input[bool] reallocate_vpn_address: Defaults to `false`.
         :param pulumi.Input[bool] regenerate_vpn_password: Defaults to `false`.
         """
@@ -36,6 +38,8 @@ class UserArgs:
         pulumi.set(__self__, "username", username)
         if is_readonly is not None:
             pulumi.set(__self__, "is_readonly", is_readonly)
+        if permissions is not None:
+            pulumi.set(__self__, "permissions", permissions)
         if reallocate_vpn_address is not None:
             pulumi.set(__self__, "reallocate_vpn_address", reallocate_vpn_address)
         if regenerate_vpn_password is not None:
@@ -78,6 +82,18 @@ class UserArgs:
         pulumi.set(self, "is_readonly", value)
 
     @property
+    @pulumi.getter
+    def permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The list of permissions assigned to the user.
+        """
+        return pulumi.get(self, "permissions")
+
+    @permissions.setter
+    def permissions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "permissions", value)
+
+    @property
     @pulumi.getter(name="reallocateVpnAddress")
     def reallocate_vpn_address(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -109,6 +125,7 @@ class _UserState:
                  is_confirmation_email_sent: Optional[pulumi.Input[bool]] = None,
                  is_readonly: Optional[pulumi.Input[bool]] = None,
                  is_vpn_config_created: Optional[pulumi.Input[bool]] = None,
+                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  reallocate_vpn_address: Optional[pulumi.Input[bool]] = None,
                  regenerate_vpn_password: Optional[pulumi.Input[bool]] = None,
                  roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -117,6 +134,7 @@ class _UserState:
         """
         Input properties used for looking up and filtering User resources.
         :param pulumi.Input[bool] is_readonly: Defaults to `false`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions: The list of permissions assigned to the user.
         :param pulumi.Input[bool] reallocate_vpn_address: Defaults to `false`.
         :param pulumi.Input[bool] regenerate_vpn_password: Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: The list of roles to be assigned to thh created user. Valid values are - `User`, `Administrator`, `SignupUser`, `SecurityAdmin`.
@@ -130,6 +148,8 @@ class _UserState:
             pulumi.set(__self__, "is_readonly", is_readonly)
         if is_vpn_config_created is not None:
             pulumi.set(__self__, "is_vpn_config_created", is_vpn_config_created)
+        if permissions is not None:
+            pulumi.set(__self__, "permissions", permissions)
         if reallocate_vpn_address is not None:
             pulumi.set(__self__, "reallocate_vpn_address", reallocate_vpn_address)
         if regenerate_vpn_password is not None:
@@ -179,6 +199,18 @@ class _UserState:
     @is_vpn_config_created.setter
     def is_vpn_config_created(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "is_vpn_config_created", value)
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The list of permissions assigned to the user.
+        """
+        return pulumi.get(self, "permissions")
+
+    @permissions.setter
+    def permissions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "permissions", value)
 
     @property
     @pulumi.getter(name="reallocateVpnAddress")
@@ -244,6 +276,7 @@ class User(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  is_readonly: Optional[pulumi.Input[bool]] = None,
+                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  reallocate_vpn_address: Optional[pulumi.Input[bool]] = None,
                  regenerate_vpn_password: Optional[pulumi.Input[bool]] = None,
                  roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -286,6 +319,7 @@ class User(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] is_readonly: Defaults to `false`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions: The list of permissions assigned to the user.
         :param pulumi.Input[bool] reallocate_vpn_address: Defaults to `false`.
         :param pulumi.Input[bool] regenerate_vpn_password: Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: The list of roles to be assigned to thh created user. Valid values are - `User`, `Administrator`, `SignupUser`, `SecurityAdmin`.
@@ -347,6 +381,7 @@ class User(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  is_readonly: Optional[pulumi.Input[bool]] = None,
+                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  reallocate_vpn_address: Optional[pulumi.Input[bool]] = None,
                  regenerate_vpn_password: Optional[pulumi.Input[bool]] = None,
                  roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -361,6 +396,7 @@ class User(pulumi.CustomResource):
             __props__ = UserArgs.__new__(UserArgs)
 
             __props__.__dict__["is_readonly"] = is_readonly
+            __props__.__dict__["permissions"] = permissions
             __props__.__dict__["reallocate_vpn_address"] = reallocate_vpn_address
             __props__.__dict__["regenerate_vpn_password"] = regenerate_vpn_password
             if roles is None and not opts.urn:
@@ -387,6 +423,7 @@ class User(pulumi.CustomResource):
             is_confirmation_email_sent: Optional[pulumi.Input[bool]] = None,
             is_readonly: Optional[pulumi.Input[bool]] = None,
             is_vpn_config_created: Optional[pulumi.Input[bool]] = None,
+            permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             reallocate_vpn_address: Optional[pulumi.Input[bool]] = None,
             regenerate_vpn_password: Optional[pulumi.Input[bool]] = None,
             roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -400,6 +437,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] is_readonly: Defaults to `false`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions: The list of permissions assigned to the user.
         :param pulumi.Input[bool] reallocate_vpn_address: Defaults to `false`.
         :param pulumi.Input[bool] regenerate_vpn_password: Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: The list of roles to be assigned to thh created user. Valid values are - `User`, `Administrator`, `SignupUser`, `SecurityAdmin`.
@@ -413,6 +451,7 @@ class User(pulumi.CustomResource):
         __props__.__dict__["is_confirmation_email_sent"] = is_confirmation_email_sent
         __props__.__dict__["is_readonly"] = is_readonly
         __props__.__dict__["is_vpn_config_created"] = is_vpn_config_created
+        __props__.__dict__["permissions"] = permissions
         __props__.__dict__["reallocate_vpn_address"] = reallocate_vpn_address
         __props__.__dict__["regenerate_vpn_password"] = regenerate_vpn_password
         __props__.__dict__["roles"] = roles
@@ -442,6 +481,14 @@ class User(pulumi.CustomResource):
     @pulumi.getter(name="isVpnConfigCreated")
     def is_vpn_config_created(self) -> pulumi.Output[bool]:
         return pulumi.get(self, "is_vpn_config_created")
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        The list of permissions assigned to the user.
+        """
+        return pulumi.get(self, "permissions")
 
     @property
     @pulumi.getter(name="reallocateVpnAddress")

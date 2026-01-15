@@ -74,7 +74,8 @@ type AwsKafkaCluster struct {
 	// An ARN of a Kafka configuration to apply to the cluster.
 	ConfigurationArn pulumi.StringOutput `pulumi:"configurationArn"`
 	// An revision of a Kafka configuration to apply to the cluster.
-	ConfigurationRevision pulumi.IntOutput `pulumi:"configurationRevision"`
+	ConfigurationRevision pulumi.IntOutput    `pulumi:"configurationRevision"`
+	CurrentVersion        pulumi.StringOutput `pulumi:"currentVersion"`
 	// Encryption setting for data in transit between clients and brokers. Valid values: `TLS`, `TLS_PLAINTEXT`, and `PLAINTEXT`
 	EncryptionInTransit pulumi.StringOutput `pulumi:"encryptionInTransit"`
 	// The full name of the Kakfa cluster.
@@ -158,7 +159,8 @@ type awsKafkaClusterState struct {
 	// An ARN of a Kafka configuration to apply to the cluster.
 	ConfigurationArn *string `pulumi:"configurationArn"`
 	// An revision of a Kafka configuration to apply to the cluster.
-	ConfigurationRevision *int `pulumi:"configurationRevision"`
+	ConfigurationRevision *int    `pulumi:"configurationRevision"`
+	CurrentVersion        *string `pulumi:"currentVersion"`
 	// Encryption setting for data in transit between clients and brokers. Valid values: `TLS`, `TLS_PLAINTEXT`, and `PLAINTEXT`
 	EncryptionInTransit *string `pulumi:"encryptionInTransit"`
 	// The full name of the Kakfa cluster.
@@ -202,6 +204,7 @@ type AwsKafkaClusterState struct {
 	ConfigurationArn pulumi.StringPtrInput
 	// An revision of a Kafka configuration to apply to the cluster.
 	ConfigurationRevision pulumi.IntPtrInput
+	CurrentVersion        pulumi.StringPtrInput
 	// Encryption setting for data in transit between clients and brokers. Valid values: `TLS`, `TLS_PLAINTEXT`, and `PLAINTEXT`
 	EncryptionInTransit pulumi.StringPtrInput
 	// The full name of the Kakfa cluster.
@@ -390,6 +393,10 @@ func (o AwsKafkaClusterOutput) ConfigurationArn() pulumi.StringOutput {
 // An revision of a Kafka configuration to apply to the cluster.
 func (o AwsKafkaClusterOutput) ConfigurationRevision() pulumi.IntOutput {
 	return o.ApplyT(func(v *AwsKafkaCluster) pulumi.IntOutput { return v.ConfigurationRevision }).(pulumi.IntOutput)
+}
+
+func (o AwsKafkaClusterOutput) CurrentVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AwsKafkaCluster) pulumi.StringOutput { return v.CurrentVersion }).(pulumi.StringOutput)
 }
 
 // Encryption setting for data in transit between clients and brokers. Valid values: `TLS`, `TLS_PLAINTEXT`, and `PLAINTEXT`

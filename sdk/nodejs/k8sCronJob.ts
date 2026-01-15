@@ -83,6 +83,10 @@ export class K8sCronJob extends pulumi.CustomResource {
     }
 
     /**
+     * Allocation tags is the simplest way to constraint containers/pods with hosts/nodes. DuploCloud/Kubernetes Orchestrator will make sure containers will run on the hosts having same allocation tags.
+     */
+    public readonly allocationTags!: pulumi.Output<string | undefined>;
+    /**
      * Defaults to `false`.
      */
     public readonly isAnyHostAllowed!: pulumi.Output<boolean | undefined>;
@@ -112,6 +116,7 @@ export class K8sCronJob extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as K8sCronJobState | undefined;
+            resourceInputs["allocationTags"] = state ? state.allocationTags : undefined;
             resourceInputs["isAnyHostAllowed"] = state ? state.isAnyHostAllowed : undefined;
             resourceInputs["metadata"] = state ? state.metadata : undefined;
             resourceInputs["specs"] = state ? state.specs : undefined;
@@ -124,6 +129,7 @@ export class K8sCronJob extends pulumi.CustomResource {
             if ((!args || args.tenantId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tenantId'");
             }
+            resourceInputs["allocationTags"] = args ? args.allocationTags : undefined;
             resourceInputs["isAnyHostAllowed"] = args ? args.isAnyHostAllowed : undefined;
             resourceInputs["metadata"] = args ? args.metadata : undefined;
             resourceInputs["specs"] = args ? args.specs : undefined;
@@ -138,6 +144,10 @@ export class K8sCronJob extends pulumi.CustomResource {
  * Input properties used for looking up and filtering K8sCronJob resources.
  */
 export interface K8sCronJobState {
+    /**
+     * Allocation tags is the simplest way to constraint containers/pods with hosts/nodes. DuploCloud/Kubernetes Orchestrator will make sure containers will run on the hosts having same allocation tags.
+     */
+    allocationTags?: pulumi.Input<string>;
     /**
      * Defaults to `false`.
      */
@@ -160,6 +170,10 @@ export interface K8sCronJobState {
  * The set of arguments for constructing a K8sCronJob resource.
  */
 export interface K8sCronJobArgs {
+    /**
+     * Allocation tags is the simplest way to constraint containers/pods with hosts/nodes. DuploCloud/Kubernetes Orchestrator will make sure containers will run on the hosts having same allocation tags.
+     */
+    allocationTags?: pulumi.Input<string>;
     /**
      * Defaults to `false`.
      */

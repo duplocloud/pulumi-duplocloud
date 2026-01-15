@@ -16,12 +16,21 @@ namespace DuploCloud.Pulumi.Outputs
     {
         /// <summary>
         /// The numeric ID of the container agent pool that this host is added to.
+        ///  - 0: Linux Docker/Native
+        /// - 	4: None
+        /// - 5: Docker Windows
+        /// - 7: EKS Linux
+        /// - 8: ECS
         /// </summary>
         public readonly int? AgentPlatform;
         /// <summary>
         /// Whether or not to allocate a public IP.
         /// </summary>
         public readonly bool? AllocatedPublicIp;
+        /// <summary>
+        /// The ASG arn.
+        /// </summary>
+        public readonly string Arn;
         /// <summary>
         /// Base64 encoded EC2 user data to associated with the host.
         /// </summary>
@@ -74,8 +83,8 @@ namespace DuploCloud.Pulumi.Outputs
         /// The numeric ID of the keypair type being used.Should be one of:
         /// 
         ///    - `0` : Default
-        ///    - `1` : ED25519
-        ///    - `2` : RSA (deprecated - some operating systems no longer support it)
+        ///    - `1` : RSA (deprecated - some operating systems no longer support it)
+        ///    - `2` : ED25519
         /// </summary>
         public readonly int KeypairType;
         /// <summary>
@@ -146,6 +155,8 @@ namespace DuploCloud.Pulumi.Outputs
 
             bool? allocatedPublicIp,
 
+            string arn,
+
             string base64UserData,
 
             bool canScaleFromZero,
@@ -212,6 +223,7 @@ namespace DuploCloud.Pulumi.Outputs
         {
             AgentPlatform = agentPlatform;
             AllocatedPublicIp = allocatedPublicIp;
+            Arn = arn;
             Base64UserData = base64UserData;
             CanScaleFromZero = canScaleFromZero;
             Capacity = capacity;

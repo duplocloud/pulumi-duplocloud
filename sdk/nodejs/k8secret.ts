@@ -7,6 +7,35 @@ import * as utilities from "./utilities";
 /**
  * `duplocloud.K8Secret` manages a kubernetes secret in a Duplo tenant.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as duplocloud from "@duplocloud/pulumi";
+ *
+ * const myapp = new duplocloud.Tenant("myapp", {
+ *     accountName: "myapp",
+ *     planId: "default",
+ * });
+ * const myappK8Secret = new duplocloud.K8Secret("myapp", {
+ *     tenantId: myapp.tenantId,
+ *     secretName: "mysecret",
+ *     secretType: "Opaque",
+ *     secretData: JSON.stringify({
+ *         foo: "bar2",
+ *     }),
+ *     secretLabels: {
+ *         KeyA: "ValueA",
+ *         KeyB: "ValueB",
+ *         "app.duplocloud.net/app-name": "<appname>",
+ *     },
+ *     secretAnnotations: {
+ *         annotA: "ValueA",
+ *         annotB: "ValueB",
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * Example: Importing an existing kubernetes secret
@@ -51,11 +80,12 @@ export class K8Secret extends pulumi.CustomResource {
 
     public /*out*/ readonly clientSecretVersion!: pulumi.Output<string>;
     /**
-     * Annotations for the secret
+     * Annotations for the secret.
      */
     public readonly secretAnnotations!: pulumi.Output<{[key: string]: string}>;
     /**
-     * A JSON encoded string representing the secret metadata. You can use the `jsonencode()` function to convert map or object data, if needed. You can use the `jsondecode()` function to read data.
+     * A JSON encoded string representing the secret metadata. You can use the `jsonencode()` function to convert map or object
+     * data, if needed. You can use the `jsondecode()` function to read data.
      */
     public readonly secretData!: pulumi.Output<string | undefined>;
     /**
@@ -130,11 +160,12 @@ export class K8Secret extends pulumi.CustomResource {
 export interface K8SecretState {
     clientSecretVersion?: pulumi.Input<string>;
     /**
-     * Annotations for the secret
+     * Annotations for the secret.
      */
     secretAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * A JSON encoded string representing the secret metadata. You can use the `jsonencode()` function to convert map or object data, if needed. You can use the `jsondecode()` function to read data.
+     * A JSON encoded string representing the secret metadata. You can use the `jsonencode()` function to convert map or object
+     * data, if needed. You can use the `jsondecode()` function to read data.
      */
     secretData?: pulumi.Input<string>;
     /**
@@ -161,11 +192,12 @@ export interface K8SecretState {
  */
 export interface K8SecretArgs {
     /**
-     * Annotations for the secret
+     * Annotations for the secret.
      */
     secretAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * A JSON encoded string representing the secret metadata. You can use the `jsonencode()` function to convert map or object data, if needed. You can use the `jsondecode()` function to read data.
+     * A JSON encoded string representing the secret metadata. You can use the `jsonencode()` function to convert map or object
+     * data, if needed. You can use the `jsondecode()` function to read data.
      */
     secretData?: pulumi.Input<string>;
     /**

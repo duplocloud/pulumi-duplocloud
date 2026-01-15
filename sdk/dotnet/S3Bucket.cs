@@ -19,12 +19,12 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Before creating a tenant, you must first set up the infrastructure. Below is the resource for creating the infrastructure.
-    ///     var infra = new Duplocloud.Infrastructure("infra", new()
+    ///     var infra = new Pulumi.Infrastructure("infra", new()
     ///     {
     ///         InfraName = "prod",
     ///         Cloud = 0,
@@ -34,14 +34,14 @@ namespace DuploCloud.Pulumi
     ///     });
     /// 
     ///     // Use the infrastructure name as the 'plan_id' from the 'duplocloud_infrastructure' resource while creating tenant.
-    ///     var tenant = new Duplocloud.Tenant("tenant", new()
+    ///     var tenant = new Pulumi.Tenant("tenant", new()
     ///     {
     ///         AccountName = "prod",
     ///         PlanId = infra.InfraName,
     ///     });
     /// 
     ///     // Use the tenant_id from the duplocloud_tenant, which will be populated after the tenant resource is created, when setting up the S3 bucket.
-    ///     var bucket = new Duplocloud.S3Bucket("bucket", new()
+    ///     var bucket = new Pulumi.S3Bucket("bucket", new()
     ///     {
     ///         TenantId = tenant.TenantId,
     ///         Name = "static_assets",
@@ -52,7 +52,7 @@ namespace DuploCloud.Pulumi
     ///         {
     ///             "ssl",
     ///         },
-    ///         DefaultEncryption = new Duplocloud.Inputs.S3BucketDefaultEncryptionArgs
+    ///         DefaultEncryption = new Pulumi.Inputs.S3BucketDefaultEncryptionArgs
     ///         {
     ///             Method = "Sse",
     ///         },
@@ -67,17 +67,18 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
+    /// using Pulumi = Pulumi.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Ensure the 'dev' tenant is already created before setting up the s3 bucket.
-    ///     var tenant = Duplocloud.GetTenant.Invoke(new()
+    ///     var tenant = Pulumi.GetTenant.Invoke(new()
     ///     {
     ///         Name = "dev",
     ///     });
     /// 
-    ///     var bucket = new Duplocloud.S3Bucket("bucket", new()
+    ///     var bucket = new Pulumi.S3Bucket("bucket", new()
     ///     {
     ///         TenantId = tenant.Apply(getTenantResult =&gt; getTenantResult.Id),
     ///         Name = "bucket",
@@ -88,7 +89,7 @@ namespace DuploCloud.Pulumi
     ///         {
     ///             "ssl",
     ///         },
-    ///         DefaultEncryption = new Duplocloud.Inputs.S3BucketDefaultEncryptionArgs
+    ///         DefaultEncryption = new Pulumi.Inputs.S3BucketDefaultEncryptionArgs
     ///         {
     ///             Method = "Sse",
     ///         },
@@ -103,17 +104,18 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
+    /// using Pulumi = Pulumi.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Ensure the 'dev' tenant is already created before setting up the s3 bucket.
-    ///     var tenant = Duplocloud.GetTenant.Invoke(new()
+    ///     var tenant = Pulumi.GetTenant.Invoke(new()
     ///     {
     ///         Name = "dev",
     ///     });
     /// 
-    ///     var bucket = new Duplocloud.S3Bucket("bucket", new()
+    ///     var bucket = new Pulumi.S3Bucket("bucket", new()
     ///     {
     ///         TenantId = tenant.Apply(getTenantResult =&gt; getTenantResult.Id),
     ///         Name = "bucket",
@@ -124,7 +126,7 @@ namespace DuploCloud.Pulumi
     ///         {
     ///             "ssl",
     ///         },
-    ///         DefaultEncryption = new Duplocloud.Inputs.S3BucketDefaultEncryptionArgs
+    ///         DefaultEncryption = new Pulumi.Inputs.S3BucketDefaultEncryptionArgs
     ///         {
     ///             Method = "Sse",
     ///         },
@@ -139,16 +141,17 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
+    /// using Pulumi = Pulumi.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var tenant = Duplocloud.GetTenant.Invoke(new()
+    ///     var tenant = Pulumi.GetTenant.Invoke(new()
     ///     {
     ///         Name = "dev",
     ///     });
     /// 
-    ///     var bucket = new Duplocloud.S3Bucket("bucket", new()
+    ///     var bucket = new Pulumi.S3Bucket("bucket", new()
     ///     {
     ///         TenantId = tenant.Apply(getTenantResult =&gt; getTenantResult.Id),
     ///         Name = "bucket",
@@ -159,7 +162,7 @@ namespace DuploCloud.Pulumi
     ///         {
     ///             "ssl",
     ///         },
-    ///         DefaultEncryption = new Duplocloud.Inputs.S3BucketDefaultEncryptionArgs
+    ///         DefaultEncryption = new Pulumi.Inputs.S3BucketDefaultEncryptionArgs
     ///         {
     ///             Method = "Sse",
     ///         },
@@ -174,16 +177,17 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
+    /// using Pulumi = Pulumi.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var tenant = Duplocloud.GetTenant.Invoke(new()
+    ///     var tenant = Pulumi.GetTenant.Invoke(new()
     ///     {
     ///         Name = "qa",
     ///     });
     /// 
-    ///     var bucket = new Duplocloud.S3Bucket("bucket", new()
+    ///     var bucket = new Pulumi.S3Bucket("bucket", new()
     ///     {
     ///         TenantId = tenant.Apply(getTenantResult =&gt; getTenantResult.Id),
     ///         Name = "bucket",
@@ -194,7 +198,7 @@ namespace DuploCloud.Pulumi
     ///         {
     ///             "ssl",
     ///         },
-    ///         DefaultEncryption = new Duplocloud.Inputs.S3BucketDefaultEncryptionArgs
+    ///         DefaultEncryption = new Pulumi.Inputs.S3BucketDefaultEncryptionArgs
     ///         {
     ///             Method = "Sse",
     ///         },
@@ -209,16 +213,17 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
+    /// using Pulumi = Pulumi.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var tenant = Duplocloud.GetTenant.Invoke(new()
+    ///     var tenant = Pulumi.GetTenant.Invoke(new()
     ///     {
     ///         Name = "qa",
     ///     });
     /// 
-    ///     var bucket = new Duplocloud.S3Bucket("bucket", new()
+    ///     var bucket = new Pulumi.S3Bucket("bucket", new()
     ///     {
     ///         TenantId = tenant.Apply(getTenantResult =&gt; getTenantResult.Id),
     ///         Name = "bucket",
@@ -229,7 +234,7 @@ namespace DuploCloud.Pulumi
     ///         {
     ///             "ssl",
     ///         },
-    ///         DefaultEncryption = new Duplocloud.Inputs.S3BucketDefaultEncryptionArgs
+    ///         DefaultEncryption = new Pulumi.Inputs.S3BucketDefaultEncryptionArgs
     ///         {
     ///             Method = "Sse",
     ///         },
@@ -244,16 +249,17 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
+    /// using Pulumi = Pulumi.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var tenant = Duplocloud.GetTenant.Invoke(new()
+    ///     var tenant = Pulumi.GetTenant.Invoke(new()
     ///     {
     ///         Name = "preprod",
     ///     });
     /// 
-    ///     var bucket = new Duplocloud.S3Bucket("bucket", new()
+    ///     var bucket = new Pulumi.S3Bucket("bucket", new()
     ///     {
     ///         TenantId = tenant.Apply(getTenantResult =&gt; getTenantResult.Id),
     ///         Name = "data",
@@ -264,7 +270,7 @@ namespace DuploCloud.Pulumi
     ///         {
     ///             "ssl",
     ///         },
-    ///         DefaultEncryption = new Duplocloud.Inputs.S3BucketDefaultEncryptionArgs
+    ///         DefaultEncryption = new Pulumi.Inputs.S3BucketDefaultEncryptionArgs
     ///         {
     ///             Method = "TenantKms",
     ///         },
@@ -279,16 +285,17 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
+    /// using Pulumi = Pulumi.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var tenant = Duplocloud.GetTenant.Invoke(new()
+    ///     var tenant = Pulumi.GetTenant.Invoke(new()
     ///     {
     ///         Name = "test",
     ///     });
     /// 
-    ///     var mydata = new Duplocloud.S3Bucket("mydata", new()
+    ///     var mydata = new Pulumi.S3Bucket("mydata", new()
     ///     {
     ///         TenantId = tenant.Apply(getTenantResult =&gt; getTenantResult.Id),
     ///         Name = "mydata",
@@ -299,7 +306,7 @@ namespace DuploCloud.Pulumi
     ///         {
     ///             "ssl",
     ///         },
-    ///         DefaultEncryption = new Duplocloud.Inputs.S3BucketDefaultEncryptionArgs
+    ///         DefaultEncryption = new Pulumi.Inputs.S3BucketDefaultEncryptionArgs
     ///         {
     ///             Method = "Sse",
     ///         },
@@ -314,16 +321,17 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
+    /// using Pulumi = Pulumi.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var tenant = Duplocloud.GetTenant.Invoke(new()
+    ///     var tenant = Pulumi.GetTenant.Invoke(new()
     ///     {
     ///         Name = "test",
     ///     });
     /// 
-    ///     var www = new Duplocloud.S3Bucket("www", new()
+    ///     var www = new Pulumi.S3Bucket("www", new()
     ///     {
     ///         TenantId = tenant.Apply(getTenantResult =&gt; getTenantResult.Id),
     ///         Name = "website",
@@ -334,7 +342,7 @@ namespace DuploCloud.Pulumi
     ///         {
     ///             "ssl",
     ///         },
-    ///         DefaultEncryption = new Duplocloud.Inputs.S3BucketDefaultEncryptionArgs
+    ///         DefaultEncryption = new Pulumi.Inputs.S3BucketDefaultEncryptionArgs
     ///         {
     ///             Method = "Sse",
     ///         },
@@ -349,17 +357,18 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
+    /// using Pulumi = Pulumi.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Ensure the 'test' tenant is already created before creating the s3 bucket.
-    ///     var tenant = Duplocloud.GetTenant.Invoke(new()
+    ///     var tenant = Pulumi.GetTenant.Invoke(new()
     ///     {
     ///         Name = "test",
     ///     });
     /// 
-    ///     var staticAssets = new Duplocloud.S3Bucket("static_assets", new()
+    ///     var staticAssets = new Pulumi.S3Bucket("static_assets", new()
     ///     {
     ///         TenantId = tenant.Apply(getTenantResult =&gt; getTenantResult.Id),
     ///         Name = "static_assets",
@@ -370,7 +379,7 @@ namespace DuploCloud.Pulumi
     ///         {
     ///             "ssl",
     ///         },
-    ///         DefaultEncryption = new Duplocloud.Inputs.S3BucketDefaultEncryptionArgs
+    ///         DefaultEncryption = new Pulumi.Inputs.S3BucketDefaultEncryptionArgs
     ///         {
     ///             Method = "Sse",
     ///         },

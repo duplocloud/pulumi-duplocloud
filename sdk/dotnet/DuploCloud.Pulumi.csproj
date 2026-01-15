@@ -4,7 +4,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>DuploCloud</Authors>
     <Company>DuploCloud</Company>
-    <Description>A Pulumi package for creating and managing duplocloud cloud resources.</Description>
+    <Description>A Pulumi provider for creating and managing DuploCloud infrastructure.</Description>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageProjectUrl>https://duplocloud.com</PackageProjectUrl>
     <RepositoryUrl>https://github.com/duplocloud/pulumi-duplocloud</RepositoryUrl>

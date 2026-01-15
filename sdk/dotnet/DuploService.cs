@@ -19,12 +19,13 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
+    /// using Pulumi = Pulumi.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Before creating an NGINX service, you must first set up the infrastructure and tenant. Below is the resource for creating the infrastructure.
-    ///     var infra = new Duplocloud.Infrastructure("infra", new()
+    ///     var infra = new Pulumi.Infrastructure("infra", new()
     ///     {
     ///         InfraName = "dev",
     ///         Cloud = 0,
@@ -34,20 +35,20 @@ namespace DuploCloud.Pulumi
     ///     });
     /// 
     ///     // Use the infrastructure name as the 'plan_id' from the 'duplocloud_infrastructure' resource while creating tenant.
-    ///     var tenant = new Duplocloud.Tenant("tenant", new()
+    ///     var tenant = new Pulumi.Tenant("tenant", new()
     ///     {
     ///         AccountName = "dev",
     ///         PlanId = infra.InfraName,
     ///     });
     /// 
     ///     // You will need a DuploCloud host to launch the Duplo service, so create a host using following resource configuration.
-    ///     var image = Duplocloud.GetNativeHostImage.Invoke(new()
+    ///     var image = Pulumi.GetNativeHostImage.Invoke(new()
     ///     {
     ///         TenantId = tenant.TenantId,
     ///         IsKubernetes = false,
     ///     });
     /// 
-    ///     var host = new Duplocloud.AwsHost("host", new()
+    ///     var host = new Pulumi.AwsHost("host", new()
     ///     {
     ///         TenantId = tenant.TenantId,
     ///         FriendlyName = "host01",
@@ -59,7 +60,7 @@ namespace DuploCloud.Pulumi
     ///         KeypairType = 1,
     ///     });
     /// 
-    ///     var myservice = new Duplocloud.DuploService("myservice", new()
+    ///     var myservice = new Pulumi.DuploService("myservice", new()
     ///     {
     ///         TenantId = tenant.TenantId,
     ///         Name = "myservice",
@@ -78,24 +79,25 @@ namespace DuploCloud.Pulumi
     /// using System.Linq;
     /// using System.Text.Json;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
+    /// using Pulumi = Pulumi.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Ensure the 'nonprod' tenant is already created before deploying the Nginx duplo service.
-    ///     var tenant = Duplocloud.GetTenant.Invoke(new()
+    ///     var tenant = Pulumi.GetTenant.Invoke(new()
     ///     {
     ///         Name = "nonprod",
     ///     });
     /// 
     ///     // Create a data source to retrieve the Machine Image ID to be used by the host
-    ///     var image = Duplocloud.GetNativeHostImage.Invoke(new()
+    ///     var image = Pulumi.GetNativeHostImage.Invoke(new()
     ///     {
     ///         TenantId = tenant.Apply(getTenantResult =&gt; getTenantResult.Id),
     ///         IsKubernetes = false,
     ///     });
     /// 
-    ///     var host = new Duplocloud.AwsHost("host", new()
+    ///     var host = new Pulumi.AwsHost("host", new()
     ///     {
     ///         TenantId = tenant.Apply(getTenantResult =&gt; getTenantResult.Id),
     ///         FriendlyName = "host01",
@@ -108,7 +110,7 @@ namespace DuploCloud.Pulumi
     ///     });
     /// 
     ///     // Create the DuploCloud service
-    ///     var myservice = new Duplocloud.DuploService("myservice", new()
+    ///     var myservice = new Pulumi.DuploService("myservice", new()
     ///     {
     ///         TenantId = tenant.Apply(getTenantResult =&gt; getTenantResult.Id),
     ///         Name = "myservice",
@@ -140,18 +142,19 @@ namespace DuploCloud.Pulumi
     /// using System.Linq;
     /// using System.Text.Json;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
+    /// using Pulumi = Pulumi.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Ensure the 'dev' tenant is already created before deploying the Nginx duplo service.
-    ///     var tenant = Duplocloud.GetTenant.Invoke(new()
+    ///     var tenant = Pulumi.GetTenant.Invoke(new()
     ///     {
     ///         Name = "dev",
     ///     });
     /// 
     ///     // Assuming that a host already exists in the tenant, create a service
-    ///     var nginx = new Duplocloud.DuploService("nginx", new()
+    ///     var nginx = new Pulumi.DuploService("nginx", new()
     ///     {
     ///         TenantId = tenant.Apply(getTenantResult =&gt; getTenantResult.Id),
     ///         Name = "nginx",
@@ -186,18 +189,19 @@ namespace DuploCloud.Pulumi
     /// using System.Linq;
     /// using System.Text.Json;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
+    /// using Pulumi = Pulumi.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Ensure the 'prod' tenant is already created before deploying the Nginx duplo service.
-    ///     var tenant = Duplocloud.GetTenant.Invoke(new()
+    ///     var tenant = Pulumi.GetTenant.Invoke(new()
     ///     {
     ///         Name = "prod",
     ///     });
     /// 
     ///     // Create a secret with the env vars values 1. FOO: bar 2. PING: pong if it does not exist
-    ///     var nginx = new Duplocloud.K8Secret("nginx", new()
+    ///     var nginx = new Pulumi.K8Secret("nginx", new()
     ///     {
     ///         TenantId = tenant.Apply(getTenantResult =&gt; getTenantResult.Id),
     ///         SecretName = "nginx-secret",
@@ -210,7 +214,7 @@ namespace DuploCloud.Pulumi
     ///     });
     /// 
     ///     // Assuming that a host exists in the tenant.
-    ///     var nginxDuploService = new Duplocloud.DuploService("nginx", new()
+    ///     var nginxDuploService = new Pulumi.DuploService("nginx", new()
     ///     {
     ///         TenantId = tenant.Apply(getTenantResult =&gt; getTenantResult.Id),
     ///         Name = "nginx",
@@ -242,18 +246,19 @@ namespace DuploCloud.Pulumi
     /// using System.Linq;
     /// using System.Text.Json;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
+    /// using Pulumi = Pulumi.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Ensure the 'dev' tenant is already created before deploying the Nginx duplo service.
-    ///     var tenant = Duplocloud.GetTenant.Invoke(new()
+    ///     var tenant = Pulumi.GetTenant.Invoke(new()
     ///     {
     ///         Name = "dev",
     ///     });
     /// 
     ///     // Create a configmap with the env vars values 1. FOO: bar 2. PING: pong if it does not exists
-    ///     var nginx = new Duplocloud.K8ConfigMap("nginx", new()
+    ///     var nginx = new Pulumi.K8ConfigMap("nginx", new()
     ///     {
     ///         TenantId = tenant.Apply(getTenantResult =&gt; getTenantResult.Id),
     ///         Name = "nginx-cm",
@@ -265,7 +270,7 @@ namespace DuploCloud.Pulumi
     ///     });
     /// 
     ///     // Ensure that the host is also created in the tenant.
-    ///     var nginxDuploService = new Duplocloud.DuploService("nginx", new()
+    ///     var nginxDuploService = new Pulumi.DuploService("nginx", new()
     ///     {
     ///         TenantId = tenant.Apply(getTenantResult =&gt; getTenantResult.Id),
     ///         Name = "nginx",
@@ -296,18 +301,19 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
+    /// using Pulumi = Pulumi.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Ensure the 'dev' tenant is already created before deploying the Nginx duplo service.
-    ///     var tenant = Duplocloud.GetTenant.Invoke(new()
+    ///     var tenant = Pulumi.GetTenant.Invoke(new()
     ///     {
     ///         Name = "dev",
     ///     });
     /// 
     ///     // Ensure that the host is also created in the tenant.
-    ///     var nginx = new Duplocloud.DuploService("nginx", new()
+    ///     var nginx = new Pulumi.DuploService("nginx", new()
     ///     {
     ///         TenantId = tenant.Apply(getTenantResult =&gt; getTenantResult.Id),
     ///         Name = "nginx",
@@ -326,18 +332,19 @@ namespace DuploCloud.Pulumi
     /// using System.Linq;
     /// using System.Text.Json;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
+    /// using Pulumi = Pulumi.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Ensure the 'dev' tenant is already created before deploying the Nginx duplo service.
-    ///     var tenant = Duplocloud.GetTenant.Invoke(new()
+    ///     var tenant = Pulumi.GetTenant.Invoke(new()
     ///     {
     ///         Name = "dev",
     ///     });
     /// 
     ///     // Assuming a host already exists in the tenant, create the duplo service
-    ///     var nginx = new Duplocloud.DuploService("nginx", new()
+    ///     var nginx = new Pulumi.DuploService("nginx", new()
     ///     {
     ///         TenantId = tenant.Apply(getTenantResult =&gt; getTenantResult.Id),
     ///         Name = "nginx",
@@ -358,6 +365,72 @@ namespace DuploCloud.Pulumi
     ///                 },
     ///             },
     ///         }),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Deploy an Nginx service named nginx with liveliness probe and init container. Create it inside the dev tenant which already exists.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
+    /// using Pulumi = Pulumi.Pulumi;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Ensure the 'dev' tenant is already created before deploying the Nginx duplo service.
+    ///     var tenant = Pulumi.GetTenant.Invoke(new()
+    ///     {
+    ///         Name = "dev",
+    ///     });
+    /// 
+    ///     // Assuming a host already exists in the tenant, create the duplo service
+    ///     var nginx = new Pulumi.DuploService("nginx", new()
+    ///     {
+    ///         TenantId = tenant.Apply(getTenantResult =&gt; getTenantResult.Id),
+    ///         Name = "nginx",
+    ///         AgentPlatform = 7,
+    ///         DockerImage = "nginx:latest",
+    ///         Replicas = 1,
+    ///         OtherDockerConfig = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///             ["initContainers"] = new[]
+    ///             {
+    ///                 new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["name"] = "nginx-init",
+    ///                     ["command"] = new[]
+    ///                     {
+    ///                         "/bin/sh",
+    ///                         "-c",
+    ///                         "echo 'Initializing Nginx container...'; sleep 5",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             ["LivenessProbe"] = new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 ["initialDelaySeconds"] = 10,
+    ///                 ["periodSeconds"] = 30,
+    ///                 ["successThreshold"] = 1,
+    ///                 ["httpGet"] = new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["path"] = "/health",
+    ///                     ["port"] = 80,
+    ///                 },
+    ///             },
+    ///         }),
+    ///         InitContainerDockerImages = new[]
+    ///         {
+    ///             new Pulumi.Inputs.DuploServiceInitContainerDockerImageArgs
+    ///             {
+    ///                 Name = "nginx-init",
+    ///                 Image = "busybox:latest",
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });
@@ -395,6 +468,12 @@ namespace DuploCloud.Pulumi
         /// </summary>
         [Output("anyHostAllowed")]
         public Output<bool?> AnyHostAllowed { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the app where service will be a part
+        /// </summary>
+        [Output("appName")]
+        public Output<string> AppName { get; private set; } = null!;
 
         /// <summary>
         /// The numeric ID of the cloud provider to launch the service in. Should be one of: - `0` : AWS (Default) - `1` : Oracle -
@@ -462,6 +541,12 @@ namespace DuploCloud.Pulumi
         public Output<int> Index { get; private set; } = null!;
 
         /// <summary>
+        /// The docker images to use for the launched init container(s).
+        /// </summary>
+        [Output("initContainerDockerImages")]
+        public Output<ImmutableArray<Outputs.DuploServiceInitContainerDockerImage>> InitContainerDockerImages { get; private set; } = null!;
+
+        /// <summary>
         /// Whether or not to enable DaemonSet.
         /// </summary>
         [Output("isDaemonset")]
@@ -472,6 +557,12 @@ namespace DuploCloud.Pulumi
         /// </summary>
         [Output("isUniqueK8sNodeRequired")]
         public Output<bool?> IsUniqueK8sNodeRequired { get; private set; } = null!;
+
+        /// <summary>
+        /// OS type for k8s worker, this field is associated to azure cloud. Valid values: `Linux`, `Windows`
+        /// </summary>
+        [Output("k8sWorkerOs")]
+        public Output<string?> K8sWorkerOs { get; private set; } = null!;
 
         [Output("lbSyncedDeployment")]
         public Output<bool?> LbSyncedDeployment { get; private set; } = null!;
@@ -594,6 +685,12 @@ namespace DuploCloud.Pulumi
         public Input<bool>? AnyHostAllowed { get; set; }
 
         /// <summary>
+        /// The name of the app where service will be a part
+        /// </summary>
+        [Input("appName")]
+        public Input<string>? AppName { get; set; }
+
+        /// <summary>
         /// The numeric ID of the cloud provider to launch the service in. Should be one of: - `0` : AWS (Default) - `1` : Oracle -
         /// `2` : Azure - `3` : Google - `4` : Byoh - `5` : Unknown - `6` : DigitalOcean - `10` : OnPrem
         /// </summary>
@@ -634,6 +731,18 @@ namespace DuploCloud.Pulumi
         [Input("hpaSpecs")]
         public Input<string>? HpaSpecs { get; set; }
 
+        [Input("initContainerDockerImages")]
+        private InputList<Inputs.DuploServiceInitContainerDockerImageArgs>? _initContainerDockerImages;
+
+        /// <summary>
+        /// The docker images to use for the launched init container(s).
+        /// </summary>
+        public InputList<Inputs.DuploServiceInitContainerDockerImageArgs> InitContainerDockerImages
+        {
+            get => _initContainerDockerImages ?? (_initContainerDockerImages = new InputList<Inputs.DuploServiceInitContainerDockerImageArgs>());
+            set => _initContainerDockerImages = value;
+        }
+
         /// <summary>
         /// Whether or not to enable DaemonSet.
         /// </summary>
@@ -645,6 +754,12 @@ namespace DuploCloud.Pulumi
         /// </summary>
         [Input("isUniqueK8sNodeRequired")]
         public Input<bool>? IsUniqueK8sNodeRequired { get; set; }
+
+        /// <summary>
+        /// OS type for k8s worker, this field is associated to azure cloud. Valid values: `Linux`, `Windows`
+        /// </summary>
+        [Input("k8sWorkerOs")]
+        public Input<string>? K8sWorkerOs { get; set; }
 
         [Input("lbSyncedDeployment")]
         public Input<bool>? LbSyncedDeployment { get; set; }
@@ -719,6 +834,12 @@ namespace DuploCloud.Pulumi
         public Input<bool>? AnyHostAllowed { get; set; }
 
         /// <summary>
+        /// The name of the app where service will be a part
+        /// </summary>
+        [Input("appName")]
+        public Input<string>? AppName { get; set; }
+
+        /// <summary>
         /// The numeric ID of the cloud provider to launch the service in. Should be one of: - `0` : AWS (Default) - `1` : Oracle -
         /// `2` : Azure - `3` : Google - `4` : Byoh - `5` : Unknown - `6` : DigitalOcean - `10` : OnPrem
         /// </summary>
@@ -783,6 +904,18 @@ namespace DuploCloud.Pulumi
         [Input("index")]
         public Input<int>? Index { get; set; }
 
+        [Input("initContainerDockerImages")]
+        private InputList<Inputs.DuploServiceInitContainerDockerImageGetArgs>? _initContainerDockerImages;
+
+        /// <summary>
+        /// The docker images to use for the launched init container(s).
+        /// </summary>
+        public InputList<Inputs.DuploServiceInitContainerDockerImageGetArgs> InitContainerDockerImages
+        {
+            get => _initContainerDockerImages ?? (_initContainerDockerImages = new InputList<Inputs.DuploServiceInitContainerDockerImageGetArgs>());
+            set => _initContainerDockerImages = value;
+        }
+
         /// <summary>
         /// Whether or not to enable DaemonSet.
         /// </summary>
@@ -794,6 +927,12 @@ namespace DuploCloud.Pulumi
         /// </summary>
         [Input("isUniqueK8sNodeRequired")]
         public Input<bool>? IsUniqueK8sNodeRequired { get; set; }
+
+        /// <summary>
+        /// OS type for k8s worker, this field is associated to azure cloud. Valid values: `Linux`, `Windows`
+        /// </summary>
+        [Input("k8sWorkerOs")]
+        public Input<string>? K8sWorkerOs { get; set; }
 
         [Input("lbSyncedDeployment")]
         public Input<bool>? LbSyncedDeployment { get; set; }

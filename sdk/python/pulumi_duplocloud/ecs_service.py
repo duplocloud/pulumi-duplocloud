@@ -25,12 +25,15 @@ class EcsServiceArgs:
                  task_definition: pulumi.Input[str],
                  tenant_id: pulumi.Input[str],
                  capacity_provider_strategies: Optional[pulumi.Input[Sequence[pulumi.Input['EcsServiceCapacityProviderStrategyArgs']]]] = None,
+                 deployment_configuration: Optional[pulumi.Input['EcsServiceDeploymentConfigurationArgs']] = None,
                  dns_prfx: Optional[pulumi.Input[str]] = None,
                  health_check_grace_period_seconds: Optional[pulumi.Input[int]] = None,
                  is_target_group_only: Optional[pulumi.Input[bool]] = None,
                  load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input['EcsServiceLoadBalancerArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  old_task_definition_buffer_size: Optional[pulumi.Input[int]] = None,
+                 placement_constraints: Optional[pulumi.Input[Sequence[pulumi.Input['EcsServicePlacementConstraintArgs']]]] = None,
+                 placement_strategies: Optional[pulumi.Input[Sequence[pulumi.Input['EcsServicePlacementStrategyArgs']]]] = None,
                  wait_until_targets_ready: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a EcsService resource.
@@ -41,6 +44,9 @@ class EcsServiceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['EcsServiceLoadBalancerArgs']]] load_balancers: Zero or more load balancer configurations to associate with this service.
         :param pulumi.Input[str] name: The name of the service to create.
         :param pulumi.Input[int] old_task_definition_buffer_size: The number of older task definitions to retain in AWS.
+        :param pulumi.Input[Sequence[pulumi.Input['EcsServicePlacementConstraintArgs']]] placement_constraints: Rules that are taken into consideration during task placement. Maximum number of `placement_constraints` is `10`
+        :param pulumi.Input[Sequence[pulumi.Input['EcsServicePlacementStrategyArgs']]] placement_strategies: Service level strategy rules that are taken into consideration during task placement. List from top to bottom in order
+               of precedence. The maximum number of `placement_strategy` blocks is `5`
         :param pulumi.Input[bool] wait_until_targets_ready: Whether or not to wait until all target groups are created for ecs service, after creation.
         """
         pulumi.set(__self__, "replicas", replicas)
@@ -48,6 +54,8 @@ class EcsServiceArgs:
         pulumi.set(__self__, "tenant_id", tenant_id)
         if capacity_provider_strategies is not None:
             pulumi.set(__self__, "capacity_provider_strategies", capacity_provider_strategies)
+        if deployment_configuration is not None:
+            pulumi.set(__self__, "deployment_configuration", deployment_configuration)
         if dns_prfx is not None:
             pulumi.set(__self__, "dns_prfx", dns_prfx)
         if health_check_grace_period_seconds is not None:
@@ -60,6 +68,10 @@ class EcsServiceArgs:
             pulumi.set(__self__, "name", name)
         if old_task_definition_buffer_size is not None:
             pulumi.set(__self__, "old_task_definition_buffer_size", old_task_definition_buffer_size)
+        if placement_constraints is not None:
+            pulumi.set(__self__, "placement_constraints", placement_constraints)
+        if placement_strategies is not None:
+            pulumi.set(__self__, "placement_strategies", placement_strategies)
         if wait_until_targets_ready is not None:
             pulumi.set(__self__, "wait_until_targets_ready", wait_until_targets_ready)
 
@@ -107,6 +119,15 @@ class EcsServiceArgs:
     @capacity_provider_strategies.setter
     def capacity_provider_strategies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EcsServiceCapacityProviderStrategyArgs']]]]):
         pulumi.set(self, "capacity_provider_strategies", value)
+
+    @property
+    @pulumi.getter(name="deploymentConfiguration")
+    def deployment_configuration(self) -> Optional[pulumi.Input['EcsServiceDeploymentConfigurationArgs']]:
+        return pulumi.get(self, "deployment_configuration")
+
+    @deployment_configuration.setter
+    def deployment_configuration(self, value: Optional[pulumi.Input['EcsServiceDeploymentConfigurationArgs']]):
+        pulumi.set(self, "deployment_configuration", value)
 
     @property
     @pulumi.getter(name="dnsPrfx")
@@ -175,6 +196,31 @@ class EcsServiceArgs:
         pulumi.set(self, "old_task_definition_buffer_size", value)
 
     @property
+    @pulumi.getter(name="placementConstraints")
+    def placement_constraints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EcsServicePlacementConstraintArgs']]]]:
+        """
+        Rules that are taken into consideration during task placement. Maximum number of `placement_constraints` is `10`
+        """
+        return pulumi.get(self, "placement_constraints")
+
+    @placement_constraints.setter
+    def placement_constraints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EcsServicePlacementConstraintArgs']]]]):
+        pulumi.set(self, "placement_constraints", value)
+
+    @property
+    @pulumi.getter(name="placementStrategies")
+    def placement_strategies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EcsServicePlacementStrategyArgs']]]]:
+        """
+        Service level strategy rules that are taken into consideration during task placement. List from top to bottom in order
+        of precedence. The maximum number of `placement_strategy` blocks is `5`
+        """
+        return pulumi.get(self, "placement_strategies")
+
+    @placement_strategies.setter
+    def placement_strategies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EcsServicePlacementStrategyArgs']]]]):
+        pulumi.set(self, "placement_strategies", value)
+
+    @property
     @pulumi.getter(name="waitUntilTargetsReady")
     def wait_until_targets_ready(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -191,6 +237,7 @@ class EcsServiceArgs:
 class _EcsServiceState:
     def __init__(__self__, *,
                  capacity_provider_strategies: Optional[pulumi.Input[Sequence[pulumi.Input['EcsServiceCapacityProviderStrategyArgs']]]] = None,
+                 deployment_configuration: Optional[pulumi.Input['EcsServiceDeploymentConfigurationArgs']] = None,
                  dns_prfx: Optional[pulumi.Input[str]] = None,
                  health_check_grace_period_seconds: Optional[pulumi.Input[int]] = None,
                  index: Optional[pulumi.Input[int]] = None,
@@ -198,6 +245,8 @@ class _EcsServiceState:
                  load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input['EcsServiceLoadBalancerArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  old_task_definition_buffer_size: Optional[pulumi.Input[int]] = None,
+                 placement_constraints: Optional[pulumi.Input[Sequence[pulumi.Input['EcsServicePlacementConstraintArgs']]]] = None,
+                 placement_strategies: Optional[pulumi.Input[Sequence[pulumi.Input['EcsServicePlacementStrategyArgs']]]] = None,
                  replicas: Optional[pulumi.Input[int]] = None,
                  target_group_arns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  task_definition: Optional[pulumi.Input[str]] = None,
@@ -210,6 +259,9 @@ class _EcsServiceState:
         :param pulumi.Input[Sequence[pulumi.Input['EcsServiceLoadBalancerArgs']]] load_balancers: Zero or more load balancer configurations to associate with this service.
         :param pulumi.Input[str] name: The name of the service to create.
         :param pulumi.Input[int] old_task_definition_buffer_size: The number of older task definitions to retain in AWS.
+        :param pulumi.Input[Sequence[pulumi.Input['EcsServicePlacementConstraintArgs']]] placement_constraints: Rules that are taken into consideration during task placement. Maximum number of `placement_constraints` is `10`
+        :param pulumi.Input[Sequence[pulumi.Input['EcsServicePlacementStrategyArgs']]] placement_strategies: Service level strategy rules that are taken into consideration during task placement. List from top to bottom in order
+               of precedence. The maximum number of `placement_strategy` blocks is `5`
         :param pulumi.Input[int] replicas: The number of container replicas to create.
         :param pulumi.Input[str] task_definition: The ARN of the task definition to use.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the service will be created in.
@@ -217,6 +269,8 @@ class _EcsServiceState:
         """
         if capacity_provider_strategies is not None:
             pulumi.set(__self__, "capacity_provider_strategies", capacity_provider_strategies)
+        if deployment_configuration is not None:
+            pulumi.set(__self__, "deployment_configuration", deployment_configuration)
         if dns_prfx is not None:
             pulumi.set(__self__, "dns_prfx", dns_prfx)
         if health_check_grace_period_seconds is not None:
@@ -231,6 +285,10 @@ class _EcsServiceState:
             pulumi.set(__self__, "name", name)
         if old_task_definition_buffer_size is not None:
             pulumi.set(__self__, "old_task_definition_buffer_size", old_task_definition_buffer_size)
+        if placement_constraints is not None:
+            pulumi.set(__self__, "placement_constraints", placement_constraints)
+        if placement_strategies is not None:
+            pulumi.set(__self__, "placement_strategies", placement_strategies)
         if replicas is not None:
             pulumi.set(__self__, "replicas", replicas)
         if target_group_arns is not None:
@@ -250,6 +308,15 @@ class _EcsServiceState:
     @capacity_provider_strategies.setter
     def capacity_provider_strategies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EcsServiceCapacityProviderStrategyArgs']]]]):
         pulumi.set(self, "capacity_provider_strategies", value)
+
+    @property
+    @pulumi.getter(name="deploymentConfiguration")
+    def deployment_configuration(self) -> Optional[pulumi.Input['EcsServiceDeploymentConfigurationArgs']]:
+        return pulumi.get(self, "deployment_configuration")
+
+    @deployment_configuration.setter
+    def deployment_configuration(self, value: Optional[pulumi.Input['EcsServiceDeploymentConfigurationArgs']]):
+        pulumi.set(self, "deployment_configuration", value)
 
     @property
     @pulumi.getter(name="dnsPrfx")
@@ -330,6 +397,31 @@ class _EcsServiceState:
         pulumi.set(self, "old_task_definition_buffer_size", value)
 
     @property
+    @pulumi.getter(name="placementConstraints")
+    def placement_constraints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EcsServicePlacementConstraintArgs']]]]:
+        """
+        Rules that are taken into consideration during task placement. Maximum number of `placement_constraints` is `10`
+        """
+        return pulumi.get(self, "placement_constraints")
+
+    @placement_constraints.setter
+    def placement_constraints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EcsServicePlacementConstraintArgs']]]]):
+        pulumi.set(self, "placement_constraints", value)
+
+    @property
+    @pulumi.getter(name="placementStrategies")
+    def placement_strategies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EcsServicePlacementStrategyArgs']]]]:
+        """
+        Service level strategy rules that are taken into consideration during task placement. List from top to bottom in order
+        of precedence. The maximum number of `placement_strategy` blocks is `5`
+        """
+        return pulumi.get(self, "placement_strategies")
+
+    @placement_strategies.setter
+    def placement_strategies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EcsServicePlacementStrategyArgs']]]]):
+        pulumi.set(self, "placement_strategies", value)
+
+    @property
     @pulumi.getter
     def replicas(self) -> Optional[pulumi.Input[int]]:
         """
@@ -393,12 +485,15 @@ class EcsService(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  capacity_provider_strategies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EcsServiceCapacityProviderStrategyArgs', 'EcsServiceCapacityProviderStrategyArgsDict']]]]] = None,
+                 deployment_configuration: Optional[pulumi.Input[Union['EcsServiceDeploymentConfigurationArgs', 'EcsServiceDeploymentConfigurationArgsDict']]] = None,
                  dns_prfx: Optional[pulumi.Input[str]] = None,
                  health_check_grace_period_seconds: Optional[pulumi.Input[int]] = None,
                  is_target_group_only: Optional[pulumi.Input[bool]] = None,
                  load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EcsServiceLoadBalancerArgs', 'EcsServiceLoadBalancerArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  old_task_definition_buffer_size: Optional[pulumi.Input[int]] = None,
+                 placement_constraints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EcsServicePlacementConstraintArgs', 'EcsServicePlacementConstraintArgsDict']]]]] = None,
+                 placement_strategies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EcsServicePlacementStrategyArgs', 'EcsServicePlacementStrategyArgsDict']]]]] = None,
                  replicas: Optional[pulumi.Input[int]] = None,
                  task_definition: Optional[pulumi.Input[str]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
@@ -406,32 +501,6 @@ class EcsService(pulumi.CustomResource):
                  __props__=None):
         """
         `EcsService` manages a Amazon ECS service in Duplo.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_duplocloud as duplocloud
-
-        myapp = duplocloud.Tenant("myapp",
-            account_name="myapp",
-            plan_id="default")
-        myservice = duplocloud.EcsTaskDefinition("myservice")
-        # Deploy NGINX using ECS
-        myservice_ecs_service = duplocloud.EcsService("myservice",
-            tenant_id=myapp.tenant_id,
-            task_definition=myservice.arn,
-            replicas=2,
-            load_balancers=[{
-                "lb_type": 1,
-                "port": "8080",
-                "external_port": 80,
-                "protocol": "HTTP",
-                "enable_access_logs": False,
-                "drop_invalid_headers": True,
-                "health_check_url": "https://example.healthcheckurl.com/healthcheck",
-            }])
-        ```
 
         ## Import
 
@@ -453,6 +522,9 @@ class EcsService(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['EcsServiceLoadBalancerArgs', 'EcsServiceLoadBalancerArgsDict']]]] load_balancers: Zero or more load balancer configurations to associate with this service.
         :param pulumi.Input[str] name: The name of the service to create.
         :param pulumi.Input[int] old_task_definition_buffer_size: The number of older task definitions to retain in AWS.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EcsServicePlacementConstraintArgs', 'EcsServicePlacementConstraintArgsDict']]]] placement_constraints: Rules that are taken into consideration during task placement. Maximum number of `placement_constraints` is `10`
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EcsServicePlacementStrategyArgs', 'EcsServicePlacementStrategyArgsDict']]]] placement_strategies: Service level strategy rules that are taken into consideration during task placement. List from top to bottom in order
+               of precedence. The maximum number of `placement_strategy` blocks is `5`
         :param pulumi.Input[int] replicas: The number of container replicas to create.
         :param pulumi.Input[str] task_definition: The ARN of the task definition to use.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the service will be created in.
@@ -466,32 +538,6 @@ class EcsService(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         `EcsService` manages a Amazon ECS service in Duplo.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_duplocloud as duplocloud
-
-        myapp = duplocloud.Tenant("myapp",
-            account_name="myapp",
-            plan_id="default")
-        myservice = duplocloud.EcsTaskDefinition("myservice")
-        # Deploy NGINX using ECS
-        myservice_ecs_service = duplocloud.EcsService("myservice",
-            tenant_id=myapp.tenant_id,
-            task_definition=myservice.arn,
-            replicas=2,
-            load_balancers=[{
-                "lb_type": 1,
-                "port": "8080",
-                "external_port": 80,
-                "protocol": "HTTP",
-                "enable_access_logs": False,
-                "drop_invalid_headers": True,
-                "health_check_url": "https://example.healthcheckurl.com/healthcheck",
-            }])
-        ```
 
         ## Import
 
@@ -523,12 +569,15 @@ class EcsService(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  capacity_provider_strategies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EcsServiceCapacityProviderStrategyArgs', 'EcsServiceCapacityProviderStrategyArgsDict']]]]] = None,
+                 deployment_configuration: Optional[pulumi.Input[Union['EcsServiceDeploymentConfigurationArgs', 'EcsServiceDeploymentConfigurationArgsDict']]] = None,
                  dns_prfx: Optional[pulumi.Input[str]] = None,
                  health_check_grace_period_seconds: Optional[pulumi.Input[int]] = None,
                  is_target_group_only: Optional[pulumi.Input[bool]] = None,
                  load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EcsServiceLoadBalancerArgs', 'EcsServiceLoadBalancerArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  old_task_definition_buffer_size: Optional[pulumi.Input[int]] = None,
+                 placement_constraints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EcsServicePlacementConstraintArgs', 'EcsServicePlacementConstraintArgsDict']]]]] = None,
+                 placement_strategies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EcsServicePlacementStrategyArgs', 'EcsServicePlacementStrategyArgsDict']]]]] = None,
                  replicas: Optional[pulumi.Input[int]] = None,
                  task_definition: Optional[pulumi.Input[str]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
@@ -543,12 +592,15 @@ class EcsService(pulumi.CustomResource):
             __props__ = EcsServiceArgs.__new__(EcsServiceArgs)
 
             __props__.__dict__["capacity_provider_strategies"] = capacity_provider_strategies
+            __props__.__dict__["deployment_configuration"] = deployment_configuration
             __props__.__dict__["dns_prfx"] = dns_prfx
             __props__.__dict__["health_check_grace_period_seconds"] = health_check_grace_period_seconds
             __props__.__dict__["is_target_group_only"] = is_target_group_only
             __props__.__dict__["load_balancers"] = load_balancers
             __props__.__dict__["name"] = name
             __props__.__dict__["old_task_definition_buffer_size"] = old_task_definition_buffer_size
+            __props__.__dict__["placement_constraints"] = placement_constraints
+            __props__.__dict__["placement_strategies"] = placement_strategies
             if replicas is None and not opts.urn:
                 raise TypeError("Missing required property 'replicas'")
             __props__.__dict__["replicas"] = replicas
@@ -572,6 +624,7 @@ class EcsService(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             capacity_provider_strategies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EcsServiceCapacityProviderStrategyArgs', 'EcsServiceCapacityProviderStrategyArgsDict']]]]] = None,
+            deployment_configuration: Optional[pulumi.Input[Union['EcsServiceDeploymentConfigurationArgs', 'EcsServiceDeploymentConfigurationArgsDict']]] = None,
             dns_prfx: Optional[pulumi.Input[str]] = None,
             health_check_grace_period_seconds: Optional[pulumi.Input[int]] = None,
             index: Optional[pulumi.Input[int]] = None,
@@ -579,6 +632,8 @@ class EcsService(pulumi.CustomResource):
             load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EcsServiceLoadBalancerArgs', 'EcsServiceLoadBalancerArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             old_task_definition_buffer_size: Optional[pulumi.Input[int]] = None,
+            placement_constraints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EcsServicePlacementConstraintArgs', 'EcsServicePlacementConstraintArgsDict']]]]] = None,
+            placement_strategies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EcsServicePlacementStrategyArgs', 'EcsServicePlacementStrategyArgsDict']]]]] = None,
             replicas: Optional[pulumi.Input[int]] = None,
             target_group_arns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             task_definition: Optional[pulumi.Input[str]] = None,
@@ -596,6 +651,9 @@ class EcsService(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['EcsServiceLoadBalancerArgs', 'EcsServiceLoadBalancerArgsDict']]]] load_balancers: Zero or more load balancer configurations to associate with this service.
         :param pulumi.Input[str] name: The name of the service to create.
         :param pulumi.Input[int] old_task_definition_buffer_size: The number of older task definitions to retain in AWS.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EcsServicePlacementConstraintArgs', 'EcsServicePlacementConstraintArgsDict']]]] placement_constraints: Rules that are taken into consideration during task placement. Maximum number of `placement_constraints` is `10`
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EcsServicePlacementStrategyArgs', 'EcsServicePlacementStrategyArgsDict']]]] placement_strategies: Service level strategy rules that are taken into consideration during task placement. List from top to bottom in order
+               of precedence. The maximum number of `placement_strategy` blocks is `5`
         :param pulumi.Input[int] replicas: The number of container replicas to create.
         :param pulumi.Input[str] task_definition: The ARN of the task definition to use.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the service will be created in.
@@ -606,6 +664,7 @@ class EcsService(pulumi.CustomResource):
         __props__ = _EcsServiceState.__new__(_EcsServiceState)
 
         __props__.__dict__["capacity_provider_strategies"] = capacity_provider_strategies
+        __props__.__dict__["deployment_configuration"] = deployment_configuration
         __props__.__dict__["dns_prfx"] = dns_prfx
         __props__.__dict__["health_check_grace_period_seconds"] = health_check_grace_period_seconds
         __props__.__dict__["index"] = index
@@ -613,6 +672,8 @@ class EcsService(pulumi.CustomResource):
         __props__.__dict__["load_balancers"] = load_balancers
         __props__.__dict__["name"] = name
         __props__.__dict__["old_task_definition_buffer_size"] = old_task_definition_buffer_size
+        __props__.__dict__["placement_constraints"] = placement_constraints
+        __props__.__dict__["placement_strategies"] = placement_strategies
         __props__.__dict__["replicas"] = replicas
         __props__.__dict__["target_group_arns"] = target_group_arns
         __props__.__dict__["task_definition"] = task_definition
@@ -624,6 +685,11 @@ class EcsService(pulumi.CustomResource):
     @pulumi.getter(name="capacityProviderStrategies")
     def capacity_provider_strategies(self) -> pulumi.Output[Sequence['outputs.EcsServiceCapacityProviderStrategy']]:
         return pulumi.get(self, "capacity_provider_strategies")
+
+    @property
+    @pulumi.getter(name="deploymentConfiguration")
+    def deployment_configuration(self) -> pulumi.Output[Optional['outputs.EcsServiceDeploymentConfiguration']]:
+        return pulumi.get(self, "deployment_configuration")
 
     @property
     @pulumi.getter(name="dnsPrfx")
@@ -674,6 +740,23 @@ class EcsService(pulumi.CustomResource):
         The number of older task definitions to retain in AWS.
         """
         return pulumi.get(self, "old_task_definition_buffer_size")
+
+    @property
+    @pulumi.getter(name="placementConstraints")
+    def placement_constraints(self) -> pulumi.Output[Optional[Sequence['outputs.EcsServicePlacementConstraint']]]:
+        """
+        Rules that are taken into consideration during task placement. Maximum number of `placement_constraints` is `10`
+        """
+        return pulumi.get(self, "placement_constraints")
+
+    @property
+    @pulumi.getter(name="placementStrategies")
+    def placement_strategies(self) -> pulumi.Output[Optional[Sequence['outputs.EcsServicePlacementStrategy']]]:
+        """
+        Service level strategy rules that are taken into consideration during task placement. List from top to bottom in order
+        of precedence. The maximum number of `placement_strategy` blocks is `5`
+        """
+        return pulumi.get(self, "placement_strategies")
 
     @property
     @pulumi.getter

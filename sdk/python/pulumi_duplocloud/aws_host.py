@@ -49,13 +49,14 @@ class AwsHostArgs:
         :param pulumi.Input[str] friendly_name: The short name of the host.
         :param pulumi.Input[str] image_id: The AMI ID to use.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the host will be created in.
-        :param pulumi.Input[int] agent_platform: The numeric ID of the container agent pool that this host is added to.
+        :param pulumi.Input[int] agent_platform: The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
+               Windows - 7: EKS Linux - 8: ECS
         :param pulumi.Input[bool] allocated_public_ip: Whether or not to allocate a public IP.
         :param pulumi.Input[str] base64_user_data: Base64 encoded EC2 user data to associated with the host.
         :param pulumi.Input[int] cloud: The numeric ID of the cloud provider to launch the host in.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_node_labels: Specify the labels to attach to the nodes.
-        :param pulumi.Input[int] keypair_type: The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : ED25519 - `2` : RSA (deprecated
-               - some operating systems no longer support it)
+        :param pulumi.Input[int] keypair_type: The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : RSA (deprecated - some operating
+               systems no longer support it) - `2` : ED25519
         :param pulumi.Input[Sequence[pulumi.Input['AwsHostMetadataArgs']]] metadatas: Configuration metadata used when creating the host.<br>*Note: To configure OS disk size OsDiskSize can be specified as
                Key and its size as value, size value should be atleast 10*
         :param pulumi.Input[Sequence[pulumi.Input['AwsHostMinionTagArgs']]] minion_tags: A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value.
@@ -160,7 +161,8 @@ class AwsHostArgs:
     @pulumi.getter(name="agentPlatform")
     def agent_platform(self) -> Optional[pulumi.Input[int]]:
         """
-        The numeric ID of the container agent pool that this host is added to.
+        The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
+        Windows - 7: EKS Linux - 8: ECS
         """
         return pulumi.get(self, "agent_platform")
 
@@ -238,8 +240,8 @@ class AwsHostArgs:
     @pulumi.getter(name="keypairType")
     def keypair_type(self) -> Optional[pulumi.Input[int]]:
         """
-        The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : ED25519 - `2` : RSA (deprecated
-        - some operating systems no longer support it)
+        The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : RSA (deprecated - some operating
+        systems no longer support it) - `2` : ED25519
         """
         return pulumi.get(self, "keypair_type")
 
@@ -399,7 +401,8 @@ class _AwsHostState:
                  zone: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering AwsHost resources.
-        :param pulumi.Input[int] agent_platform: The numeric ID of the container agent pool that this host is added to.
+        :param pulumi.Input[int] agent_platform: The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
+               Windows - 7: EKS Linux - 8: ECS
         :param pulumi.Input[bool] allocated_public_ip: Whether or not to allocate a public IP.
         :param pulumi.Input[str] base64_user_data: Base64 encoded EC2 user data to associated with the host.
         :param pulumi.Input[str] capacity: The AWS EC2 instance type.
@@ -409,8 +412,8 @@ class _AwsHostState:
         :param pulumi.Input[str] identity_role: The name of the IAM role associated with this host.
         :param pulumi.Input[str] image_id: The AMI ID to use.
         :param pulumi.Input[str] instance_id: The AWS EC2 instance ID of the host.
-        :param pulumi.Input[int] keypair_type: The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : ED25519 - `2` : RSA (deprecated
-               - some operating systems no longer support it)
+        :param pulumi.Input[int] keypair_type: The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : RSA (deprecated - some operating
+               systems no longer support it) - `2` : ED25519
         :param pulumi.Input[Sequence[pulumi.Input['AwsHostMetadataArgs']]] metadatas: Configuration metadata used when creating the host.<br>*Note: To configure OS disk size OsDiskSize can be specified as
                Key and its size as value, size value should be atleast 10*
         :param pulumi.Input[Sequence[pulumi.Input['AwsHostMinionTagArgs']]] minion_tags: A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value.
@@ -487,7 +490,8 @@ class _AwsHostState:
     @pulumi.getter(name="agentPlatform")
     def agent_platform(self) -> Optional[pulumi.Input[int]]:
         """
-        The numeric ID of the container agent pool that this host is added to.
+        The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
+        Windows - 7: EKS Linux - 8: ECS
         """
         return pulumi.get(self, "agent_platform")
 
@@ -634,8 +638,8 @@ class _AwsHostState:
     @pulumi.getter(name="keypairType")
     def keypair_type(self) -> Optional[pulumi.Input[int]]:
         """
-        The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : ED25519 - `2` : RSA (deprecated
-        - some operating systems no longer support it)
+        The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : RSA (deprecated - some operating
+        systems no longer support it) - `2` : ED25519
         """
         return pulumi.get(self, "keypair_type")
 
@@ -953,7 +957,8 @@ class AwsHost(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] agent_platform: The numeric ID of the container agent pool that this host is added to.
+        :param pulumi.Input[int] agent_platform: The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
+               Windows - 7: EKS Linux - 8: ECS
         :param pulumi.Input[bool] allocated_public_ip: Whether or not to allocate a public IP.
         :param pulumi.Input[str] base64_user_data: Base64 encoded EC2 user data to associated with the host.
         :param pulumi.Input[str] capacity: The AWS EC2 instance type.
@@ -961,8 +966,8 @@ class AwsHost(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_node_labels: Specify the labels to attach to the nodes.
         :param pulumi.Input[str] friendly_name: The short name of the host.
         :param pulumi.Input[str] image_id: The AMI ID to use.
-        :param pulumi.Input[int] keypair_type: The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : ED25519 - `2` : RSA (deprecated
-               - some operating systems no longer support it)
+        :param pulumi.Input[int] keypair_type: The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : RSA (deprecated - some operating
+               systems no longer support it) - `2` : ED25519
         :param pulumi.Input[Sequence[pulumi.Input[Union['AwsHostMetadataArgs', 'AwsHostMetadataArgsDict']]]] metadatas: Configuration metadata used when creating the host.<br>*Note: To configure OS disk size OsDiskSize can be specified as
                Key and its size as value, size value should be atleast 10*
         :param pulumi.Input[Sequence[pulumi.Input[Union['AwsHostMinionTagArgs', 'AwsHostMinionTagArgsDict']]]] minion_tags: A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value.
@@ -1221,7 +1226,8 @@ class AwsHost(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] agent_platform: The numeric ID of the container agent pool that this host is added to.
+        :param pulumi.Input[int] agent_platform: The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
+               Windows - 7: EKS Linux - 8: ECS
         :param pulumi.Input[bool] allocated_public_ip: Whether or not to allocate a public IP.
         :param pulumi.Input[str] base64_user_data: Base64 encoded EC2 user data to associated with the host.
         :param pulumi.Input[str] capacity: The AWS EC2 instance type.
@@ -1231,8 +1237,8 @@ class AwsHost(pulumi.CustomResource):
         :param pulumi.Input[str] identity_role: The name of the IAM role associated with this host.
         :param pulumi.Input[str] image_id: The AMI ID to use.
         :param pulumi.Input[str] instance_id: The AWS EC2 instance ID of the host.
-        :param pulumi.Input[int] keypair_type: The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : ED25519 - `2` : RSA (deprecated
-               - some operating systems no longer support it)
+        :param pulumi.Input[int] keypair_type: The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : RSA (deprecated - some operating
+               systems no longer support it) - `2` : ED25519
         :param pulumi.Input[Sequence[pulumi.Input[Union['AwsHostMetadataArgs', 'AwsHostMetadataArgsDict']]]] metadatas: Configuration metadata used when creating the host.<br>*Note: To configure OS disk size OsDiskSize can be specified as
                Key and its size as value, size value should be atleast 10*
         :param pulumi.Input[Sequence[pulumi.Input[Union['AwsHostMinionTagArgs', 'AwsHostMinionTagArgsDict']]]] minion_tags: A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value.
@@ -1286,7 +1292,8 @@ class AwsHost(pulumi.CustomResource):
     @pulumi.getter(name="agentPlatform")
     def agent_platform(self) -> pulumi.Output[Optional[int]]:
         """
-        The numeric ID of the container agent pool that this host is added to.
+        The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
+        Windows - 7: EKS Linux - 8: ECS
         """
         return pulumi.get(self, "agent_platform")
 
@@ -1381,8 +1388,8 @@ class AwsHost(pulumi.CustomResource):
     @pulumi.getter(name="keypairType")
     def keypair_type(self) -> pulumi.Output[int]:
         """
-        The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : ED25519 - `2` : RSA (deprecated
-        - some operating systems no longer support it)
+        The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : RSA (deprecated - some operating
+        systems no longer support it) - `2` : ED25519
         """
         return pulumi.get(self, "keypair_type")
 

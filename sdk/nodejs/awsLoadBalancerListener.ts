@@ -9,32 +9,6 @@ import * as utilities from "./utilities";
 /**
  * `duplocloud.AwsLoadBalancerListener` manages an AWS application load balancer listener in Duplo.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@duplocloud/pulumi";
- *
- * const myapp = new duplocloud.Tenant("myapp", {
- *     accountName: "myapp",
- *     planId: "default",
- * });
- * const myappAwsLoadBalancer = new duplocloud.AwsLoadBalancer("myapp", {
- *     tenantId: myapp.tenantId,
- *     name: "myapp",
- *     isInternal: true,
- *     enableAccessLogs: true,
- *     dropInvalidHeaders: true,
- * });
- * const myapp_listener = new duplocloud.AwsLoadBalancerListener("myapp-listener", {
- *     tenantId: myapp.tenantId,
- *     loadBalancerName: myappAwsLoadBalancer.name,
- *     port: 8443,
- *     protocol: "https",
- *     targetGroupArn: "arn:aws:elasticloadbalancing:us-west-2:1234567890:targetgroup/duplo2-stage-antcmw-http4000/fc6f818e85fa737a",
- * });
- * ```
- *
  * ## Import
  *
  * Example: Importing an existing AWS load balancer listener
@@ -88,7 +62,7 @@ export class AwsLoadBalancerListener extends pulumi.CustomResource {
      */
     public readonly certificateArn!: pulumi.Output<string>;
     public /*out*/ readonly certificates!: pulumi.Output<outputs.AwsLoadBalancerListenerCertificate[]>;
-    public /*out*/ readonly defaultActions!: pulumi.Output<outputs.AwsLoadBalancerListenerDefaultAction[]>;
+    public readonly defaultActions!: pulumi.Output<outputs.AwsLoadBalancerListenerDefaultAction[] | undefined>;
     public /*out*/ readonly loadBalancerArn!: pulumi.Output<string>;
     /**
      * The full name of the load balancer.
@@ -108,9 +82,11 @@ export class AwsLoadBalancerListener extends pulumi.CustomResource {
     public readonly protocol!: pulumi.Output<string>;
     public /*out*/ readonly sslPolicy!: pulumi.Output<string>;
     /**
-     * ARN of the Target Group to which to route traffic.
+     * ARN of the Target Group to which to route traffic. target*group*arn has moved to default*actions.forward.target*group*arn. This field is available for backward compatibility. We recommend to use default*actions block
+     *
+     * @deprecated target_group_arn has moved to default_actions.forward.target_group_arn. This field is available for backward compatibility. We recommend to use defaultActions block
      */
-    public readonly targetGroupArn!: pulumi.Output<string>;
+    public readonly targetGroupArn!: pulumi.Output<string | undefined>;
     /**
      * The GUID of the tenant that the load balancer will be created in.
      */
@@ -152,13 +128,11 @@ export class AwsLoadBalancerListener extends pulumi.CustomResource {
             if ((!args || args.protocol === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'protocol'");
             }
-            if ((!args || args.targetGroupArn === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'targetGroupArn'");
-            }
             if ((!args || args.tenantId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tenantId'");
             }
             resourceInputs["certificateArn"] = args ? args.certificateArn : undefined;
+            resourceInputs["defaultActions"] = args ? args.defaultActions : undefined;
             resourceInputs["loadBalancerName"] = args ? args.loadBalancerName : undefined;
             resourceInputs["port"] = args ? args.port : undefined;
             resourceInputs["protocol"] = args ? args.protocol : undefined;
@@ -166,7 +140,6 @@ export class AwsLoadBalancerListener extends pulumi.CustomResource {
             resourceInputs["tenantId"] = args ? args.tenantId : undefined;
             resourceInputs["arn"] = undefined /*out*/;
             resourceInputs["certificates"] = undefined /*out*/;
-            resourceInputs["defaultActions"] = undefined /*out*/;
             resourceInputs["loadBalancerArn"] = undefined /*out*/;
             resourceInputs["loadBalancerFullname"] = undefined /*out*/;
             resourceInputs["sslPolicy"] = undefined /*out*/;
@@ -209,7 +182,9 @@ export interface AwsLoadBalancerListenerState {
     protocol?: pulumi.Input<string>;
     sslPolicy?: pulumi.Input<string>;
     /**
-     * ARN of the Target Group to which to route traffic.
+     * ARN of the Target Group to which to route traffic. target*group*arn has moved to default*actions.forward.target*group*arn. This field is available for backward compatibility. We recommend to use default*actions block
+     *
+     * @deprecated target_group_arn has moved to default_actions.forward.target_group_arn. This field is available for backward compatibility. We recommend to use defaultActions block
      */
     targetGroupArn?: pulumi.Input<string>;
     /**
@@ -226,6 +201,7 @@ export interface AwsLoadBalancerListenerArgs {
      * The ARN of the certificate to attach to the listener.
      */
     certificateArn?: pulumi.Input<string>;
+    defaultActions?: pulumi.Input<pulumi.Input<inputs.AwsLoadBalancerListenerDefaultAction>[]>;
     /**
      * The short name of the load balancer.  Duplo will add a prefix to the name.  You can retrieve the full name from the `fullname` attribute.
      */
@@ -239,9 +215,11 @@ export interface AwsLoadBalancerListenerArgs {
      */
     protocol: pulumi.Input<string>;
     /**
-     * ARN of the Target Group to which to route traffic.
+     * ARN of the Target Group to which to route traffic. target*group*arn has moved to default*actions.forward.target*group*arn. This field is available for backward compatibility. We recommend to use default*actions block
+     *
+     * @deprecated target_group_arn has moved to default_actions.forward.target_group_arn. This field is available for backward compatibility. We recommend to use defaultActions block
      */
-    targetGroupArn: pulumi.Input<string>;
+    targetGroupArn?: pulumi.Input<string>;
     /**
      * The GUID of the tenant that the load balancer will be created in.
      */

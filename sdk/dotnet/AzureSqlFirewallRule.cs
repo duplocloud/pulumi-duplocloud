@@ -19,17 +19,17 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myapp = new Duplocloud.Tenant("myapp", new()
+    ///     var myapp = new Pulumi.Tenant("myapp", new()
     ///     {
     ///         AccountName = "myapp",
     ///         PlanId = "default",
     ///     });
     /// 
-    ///     var sqlFirewallRule = new Duplocloud.AzureSqlFirewallRule("sql_firewall_rule", new()
+    ///     var sqlFirewallRule = new Pulumi.AzureSqlFirewallRule("sql_firewall_rule", new()
     ///     {
     ///         TenantId = myapp.TenantId,
     ///         Name = "test-rule",

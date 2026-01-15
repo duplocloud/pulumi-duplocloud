@@ -19,7 +19,10 @@ namespace DuploCloud.Pulumi.Outputs
         /// </summary>
         public readonly int? Base;
         /// <summary>
-        /// Name of the capacity provider.
+        /// Name of the capacity provider. Should be one of:
+        ///  	- FARGATE
+        ///  	- FARGATE_SPOT
+        ///  	- ASG fullname: Used when asg created with agent platform ECS
         /// </summary>
         public readonly string CapacityProvider;
         /// <summary>

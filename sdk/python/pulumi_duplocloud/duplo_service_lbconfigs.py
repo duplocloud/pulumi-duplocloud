@@ -198,42 +198,6 @@ class DuploServiceLbconfigs(pulumi.CustomResource):
 
         NOTE: For Amazon ECS services, see the `EcsService` resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_duplocloud as duplocloud
-
-        myapp = duplocloud.Tenant("myapp",
-            account_name="myapp",
-            plan_id="default")
-        # Deploy NGINX using Duplo's native container agent, and configure a load balancer.
-        myservice = duplocloud.DuploService("myservice",
-            tenant_id=myapp.tenant_id,
-            name="myservice",
-            agent_platform=0,
-            docker_image="nginx:latest",
-            replicas=1)
-        myservice_duplo_service_lbconfigs = duplocloud.DuploServiceLbconfigs("myservice",
-            tenant_id=myservice.tenant_id,
-            replication_controller_name=myservice.name,
-            lbconfigs=[{
-                "external_port": 80,
-                "health_check_url": "/",
-                "is_native": False,
-                "lb_type": 1,
-                "port": "80",
-                "protocol": "http",
-                "health_check": {
-                    "healthy_threshold": 4,
-                    "unhealthy_threshold": 4,
-                    "timeout": 50,
-                    "interval": 30,
-                    "http_success_codes": "200-399",
-                },
-            }])
-        ```
-
         ## Import
 
         Example: Importing an existing service's load balancer configurations
@@ -264,42 +228,6 @@ class DuploServiceLbconfigs(pulumi.CustomResource):
         `DuploServiceLbconfigs` manages load balancer configuration(s) for a container-based service in Duplo.
 
         NOTE: For Amazon ECS services, see the `EcsService` resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_duplocloud as duplocloud
-
-        myapp = duplocloud.Tenant("myapp",
-            account_name="myapp",
-            plan_id="default")
-        # Deploy NGINX using Duplo's native container agent, and configure a load balancer.
-        myservice = duplocloud.DuploService("myservice",
-            tenant_id=myapp.tenant_id,
-            name="myservice",
-            agent_platform=0,
-            docker_image="nginx:latest",
-            replicas=1)
-        myservice_duplo_service_lbconfigs = duplocloud.DuploServiceLbconfigs("myservice",
-            tenant_id=myservice.tenant_id,
-            replication_controller_name=myservice.name,
-            lbconfigs=[{
-                "external_port": 80,
-                "health_check_url": "/",
-                "is_native": False,
-                "lb_type": 1,
-                "port": "80",
-                "protocol": "http",
-                "health_check": {
-                    "healthy_threshold": 4,
-                    "unhealthy_threshold": 4,
-                    "timeout": 50,
-                    "interval": 30,
-                    "http_success_codes": "200-399",
-                },
-            }])
-        ```
 
         ## Import
 

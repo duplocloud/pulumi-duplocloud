@@ -9,34 +9,6 @@ import * as utilities from "./utilities";
 /**
  * `duplocloud.EcsService` manages a Amazon ECS service in Duplo.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@duplocloud/pulumi";
- *
- * const myapp = new duplocloud.Tenant("myapp", {
- *     accountName: "myapp",
- *     planId: "default",
- * });
- * const myservice = new duplocloud.EcsTaskDefinition("myservice", {});
- * // Deploy NGINX using ECS
- * const myserviceEcsService = new duplocloud.EcsService("myservice", {
- *     tenantId: myapp.tenantId,
- *     taskDefinition: myservice.arn,
- *     replicas: 2,
- *     loadBalancers: [{
- *         lbType: 1,
- *         port: "8080",
- *         externalPort: 80,
- *         protocol: "HTTP",
- *         enableAccessLogs: false,
- *         dropInvalidHeaders: true,
- *         healthCheckUrl: "https://example.healthcheckurl.com/healthcheck",
- *     }],
- * });
- * ```
- *
  * ## Import
  *
  * Example: Importing an existing service
@@ -80,6 +52,7 @@ export class EcsService extends pulumi.CustomResource {
     }
 
     public readonly capacityProviderStrategies!: pulumi.Output<outputs.EcsServiceCapacityProviderStrategy[]>;
+    public readonly deploymentConfiguration!: pulumi.Output<outputs.EcsServiceDeploymentConfiguration | undefined>;
     /**
      * The DNS prefix to assign to this service's load balancer.
      */
@@ -102,6 +75,15 @@ export class EcsService extends pulumi.CustomResource {
      * The number of older task definitions to retain in AWS.
      */
     public readonly oldTaskDefinitionBufferSize!: pulumi.Output<number | undefined>;
+    /**
+     * Rules that are taken into consideration during task placement. Maximum number of `placementConstraints` is `10`
+     */
+    public readonly placementConstraints!: pulumi.Output<outputs.EcsServicePlacementConstraint[] | undefined>;
+    /**
+     * Service level strategy rules that are taken into consideration during task placement. List from top to bottom in order
+     * of precedence. The maximum number of `placementStrategy` blocks is `5`
+     */
+    public readonly placementStrategies!: pulumi.Output<outputs.EcsServicePlacementStrategy[] | undefined>;
     /**
      * The number of container replicas to create.
      */
@@ -134,6 +116,7 @@ export class EcsService extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as EcsServiceState | undefined;
             resourceInputs["capacityProviderStrategies"] = state ? state.capacityProviderStrategies : undefined;
+            resourceInputs["deploymentConfiguration"] = state ? state.deploymentConfiguration : undefined;
             resourceInputs["dnsPrfx"] = state ? state.dnsPrfx : undefined;
             resourceInputs["healthCheckGracePeriodSeconds"] = state ? state.healthCheckGracePeriodSeconds : undefined;
             resourceInputs["index"] = state ? state.index : undefined;
@@ -141,6 +124,8 @@ export class EcsService extends pulumi.CustomResource {
             resourceInputs["loadBalancers"] = state ? state.loadBalancers : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["oldTaskDefinitionBufferSize"] = state ? state.oldTaskDefinitionBufferSize : undefined;
+            resourceInputs["placementConstraints"] = state ? state.placementConstraints : undefined;
+            resourceInputs["placementStrategies"] = state ? state.placementStrategies : undefined;
             resourceInputs["replicas"] = state ? state.replicas : undefined;
             resourceInputs["targetGroupArns"] = state ? state.targetGroupArns : undefined;
             resourceInputs["taskDefinition"] = state ? state.taskDefinition : undefined;
@@ -158,12 +143,15 @@ export class EcsService extends pulumi.CustomResource {
                 throw new Error("Missing required property 'tenantId'");
             }
             resourceInputs["capacityProviderStrategies"] = args ? args.capacityProviderStrategies : undefined;
+            resourceInputs["deploymentConfiguration"] = args ? args.deploymentConfiguration : undefined;
             resourceInputs["dnsPrfx"] = args ? args.dnsPrfx : undefined;
             resourceInputs["healthCheckGracePeriodSeconds"] = args ? args.healthCheckGracePeriodSeconds : undefined;
             resourceInputs["isTargetGroupOnly"] = args ? args.isTargetGroupOnly : undefined;
             resourceInputs["loadBalancers"] = args ? args.loadBalancers : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["oldTaskDefinitionBufferSize"] = args ? args.oldTaskDefinitionBufferSize : undefined;
+            resourceInputs["placementConstraints"] = args ? args.placementConstraints : undefined;
+            resourceInputs["placementStrategies"] = args ? args.placementStrategies : undefined;
             resourceInputs["replicas"] = args ? args.replicas : undefined;
             resourceInputs["taskDefinition"] = args ? args.taskDefinition : undefined;
             resourceInputs["tenantId"] = args ? args.tenantId : undefined;
@@ -181,6 +169,7 @@ export class EcsService extends pulumi.CustomResource {
  */
 export interface EcsServiceState {
     capacityProviderStrategies?: pulumi.Input<pulumi.Input<inputs.EcsServiceCapacityProviderStrategy>[]>;
+    deploymentConfiguration?: pulumi.Input<inputs.EcsServiceDeploymentConfiguration>;
     /**
      * The DNS prefix to assign to this service's load balancer.
      */
@@ -203,6 +192,15 @@ export interface EcsServiceState {
      * The number of older task definitions to retain in AWS.
      */
     oldTaskDefinitionBufferSize?: pulumi.Input<number>;
+    /**
+     * Rules that are taken into consideration during task placement. Maximum number of `placementConstraints` is `10`
+     */
+    placementConstraints?: pulumi.Input<pulumi.Input<inputs.EcsServicePlacementConstraint>[]>;
+    /**
+     * Service level strategy rules that are taken into consideration during task placement. List from top to bottom in order
+     * of precedence. The maximum number of `placementStrategy` blocks is `5`
+     */
+    placementStrategies?: pulumi.Input<pulumi.Input<inputs.EcsServicePlacementStrategy>[]>;
     /**
      * The number of container replicas to create.
      */
@@ -227,6 +225,7 @@ export interface EcsServiceState {
  */
 export interface EcsServiceArgs {
     capacityProviderStrategies?: pulumi.Input<pulumi.Input<inputs.EcsServiceCapacityProviderStrategy>[]>;
+    deploymentConfiguration?: pulumi.Input<inputs.EcsServiceDeploymentConfiguration>;
     /**
      * The DNS prefix to assign to this service's load balancer.
      */
@@ -245,6 +244,15 @@ export interface EcsServiceArgs {
      * The number of older task definitions to retain in AWS.
      */
     oldTaskDefinitionBufferSize?: pulumi.Input<number>;
+    /**
+     * Rules that are taken into consideration during task placement. Maximum number of `placementConstraints` is `10`
+     */
+    placementConstraints?: pulumi.Input<pulumi.Input<inputs.EcsServicePlacementConstraint>[]>;
+    /**
+     * Service level strategy rules that are taken into consideration during task placement. List from top to bottom in order
+     * of precedence. The maximum number of `placementStrategy` blocks is `5`
+     */
+    placementStrategies?: pulumi.Input<pulumi.Input<inputs.EcsServicePlacementStrategy>[]>;
     /**
      * The number of container replicas to create.
      */

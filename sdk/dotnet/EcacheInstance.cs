@@ -19,12 +19,12 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Before creating a ElastiCache cluster, you must first set up the infrastructure and tenant. Below is the resource for creating the infrastructure.
-    ///     var infra = new Duplocloud.Infrastructure("infra", new()
+    ///     var infra = new Pulumi.Infrastructure("infra", new()
     ///     {
     ///         InfraName = "prod",
     ///         Cloud = 0,
@@ -34,14 +34,14 @@ namespace DuploCloud.Pulumi
     ///     });
     /// 
     ///     // Use the infrastructure name as the 'plan_id' from the 'duplocloud_infrastructure' resource while creating tenant.
-    ///     var tenant = new Duplocloud.Tenant("tenant", new()
+    ///     var tenant = new Pulumi.Tenant("tenant", new()
     ///     {
     ///         AccountName = "prod",
     ///         PlanId = infra.InfraName,
     ///     });
     /// 
     ///     // Use the tenant_id from the duplocloud_tenant, which will be populated after the tenant resource is created, when setting up the Redis ElastiCache cluster.
-    ///     var redisCache = new Duplocloud.EcacheInstance("redis_cache", new()
+    ///     var redisCache = new Pulumi.EcacheInstance("redis_cache", new()
     ///     {
     ///         TenantId = tenant.TenantId,
     ///         Name = "mycache",
@@ -61,18 +61,19 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
+    /// using Pulumi = Pulumi.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Assuming the 'dev' tenant is already created, use a data source to fetch the tenant ID.
-    ///     var tenant = Duplocloud.GetTenant.Invoke(new()
+    ///     var tenant = Pulumi.GetTenant.Invoke(new()
     ///     {
     ///         Name = "dev",
     ///     });
     /// 
     ///     // Use the tenant_id from the duplocloud_tenant, which will be populated after the tenant resource is created, when setting up the Redis ElastiCache cluster.
-    ///     var redisCache = new Duplocloud.EcacheInstance("redis_cache", new()
+    ///     var redisCache = new Pulumi.EcacheInstance("redis_cache", new()
     ///     {
     ///         TenantId = tenant.Apply(getTenantResult =&gt; getTenantResult.Id),
     ///         Name = "mycache",
@@ -92,18 +93,19 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
+    /// using Pulumi = Pulumi.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Assuming the 'dev' tenant is already created, use a data source to fetch the tenant ID.
-    ///     var tenant = Duplocloud.GetTenant.Invoke(new()
+    ///     var tenant = Pulumi.GetTenant.Invoke(new()
     ///     {
     ///         Name = "dev",
     ///     });
     /// 
     ///     // Use the tenant_id from the duplocloud_tenant, which will be populated after the tenant resource is created, when setting up the Redis ElastiCache.
-    ///     var redisCache = new Duplocloud.EcacheInstance("redis_cache", new()
+    ///     var redisCache = new Pulumi.EcacheInstance("redis_cache", new()
     ///     {
     ///         TenantId = tenant.Apply(getTenantResult =&gt; getTenantResult.Id),
     ///         Name = "mycache",
@@ -113,14 +115,14 @@ namespace DuploCloud.Pulumi
     ///         AutomaticFailoverEnabled = true,
     ///         LogDeliveryConfigurations = new[]
     ///         {
-    ///             new Duplocloud.Inputs.EcacheInstanceLogDeliveryConfigurationArgs
+    ///             new Pulumi.Inputs.EcacheInstanceLogDeliveryConfigurationArgs
     ///             {
     ///                 LogGroup = "/elasticache/redis",
     ///                 DestinationType = "cloudwatch-logs",
     ///                 LogFormat = "text",
     ///                 LogType = "slow-log",
     ///             },
-    ///             new Duplocloud.Inputs.EcacheInstanceLogDeliveryConfigurationArgs
+    ///             new Pulumi.Inputs.EcacheInstanceLogDeliveryConfigurationArgs
     ///             {
     ///                 LogGroup = "/elasticache/redis",
     ///                 DestinationType = "cloudwatch-logs",
@@ -139,18 +141,19 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
+    /// using Pulumi = Pulumi.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Assuming the 'dev' tenant is already created, use a data source to fetch the tenant ID.
-    ///     var tenant = Duplocloud.GetTenant.Invoke(new()
+    ///     var tenant = Pulumi.GetTenant.Invoke(new()
     ///     {
     ///         Name = "dev",
     ///     });
     /// 
     ///     // Use the tenant_id from the duplocloud_tenant, which will be populated after the tenant resource is created, when setting up the Redis ElastiCache cluster.
-    ///     var redisCache = new Duplocloud.EcacheInstance("redis_cache", new()
+    ///     var redisCache = new Pulumi.EcacheInstance("redis_cache", new()
     ///     {
     ///         TenantId = tenant.Apply(getTenantResult =&gt; getTenantResult.Id),
     ///         Name = "mycache",
@@ -170,18 +173,19 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
+    /// using Pulumi = Pulumi.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Assuming the 'dev' tenant is already created, use a data source to fetch the tenant ID.
-    ///     var tenant = Duplocloud.GetTenant.Invoke(new()
+    ///     var tenant = Pulumi.GetTenant.Invoke(new()
     ///     {
     ///         Name = "dev",
     ///     });
     /// 
     ///     // Use the tenant_id from the duplocloud_tenant data source, which will be populated after the tenant data source is created, when setting up the Memcached ElastiCache cluster.
-    ///     var memCache = new Duplocloud.EcacheInstance("mem_cache", new()
+    ///     var memCache = new Pulumi.EcacheInstance("mem_cache", new()
     ///     {
     ///         TenantId = tenant.Apply(getTenantResult =&gt; getTenantResult.Id),
     ///         Name = "mycache",
@@ -198,11 +202,11 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var mycaches = new Duplocloud.EcacheInstance("mycaches", new()
+    ///     var mycaches = new Pulumi.EcacheInstance("mycaches", new()
     ///     {
     ///         TenantId = tenant.Id,
     ///         Name = "mycache",
@@ -211,6 +215,56 @@ namespace DuploCloud.Pulumi
     ///         Size = "cache.t3.small",
     ///         EngineVersion = "7.1",
     ///         SnapshotWindow = "04:00-13:00",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Creating an Amazon Valkey with snapshot window
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var mycaches = new Pulumi.EcacheInstance("mycaches", new()
+    ///     {
+    ///         TenantId = tenant.Id,
+    ///         Name = "myvalkey",
+    ///         CacheType = 2,
+    ///         Size = "cache.t3.medium",
+    ///         EngineVersion = "7.2",
+    ///         SnapshotWindow = "19:50-20:51",
+    ///         SnapshotRetentionLimit = 12,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Creating an Amazon Valkey with cluster mode enabled
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var mycaches = new Pulumi.EcacheInstance("mycaches", new()
+    ///     {
+    ///         TenantId = tenant.Id,
+    ///         Name = "tf-clust1",
+    ///         CacheType = 2,
+    ///         Size = "cache.t3.medium",
+    ///         EngineVersion = "7.2",
+    ///         SnapshotWindow = "19:50-20:51",
+    ///         SnapshotRetentionLimit = 12,
+    ///         EnableClusterMode = true,
+    ///         NumberOfShards = 3,
+    ///         AutomaticFailoverEnabled = true,
+    ///         Replicas = 2,
     ///     });
     /// 
     /// });
@@ -233,6 +287,9 @@ namespace DuploCloud.Pulumi
     [PulumiResourceType("duplocloud:index/ecacheInstance:EcacheInstance")]
     public partial class EcacheInstance : global::Pulumi.CustomResource
     {
+        [Output("actualEngineVersion")]
+        public Output<string> ActualEngineVersion { get; private set; } = null!;
+
         /// <summary>
         /// The ARN of the elasticache instance.
         /// </summary>
@@ -252,16 +309,16 @@ namespace DuploCloud.Pulumi
         public Output<bool?> AutomaticFailoverEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache
+        /// The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache - `2` : Valkey
         /// </summary>
         [Output("cacheType")]
         public Output<int?> CacheType { get; private set; } = null!;
 
         /// <summary>
-        /// Flag to enable/disable redis cluster mode.
+        /// Flag to enable/disable redis/valkey cluster mode.
         /// </summary>
         [Output("enableClusterMode")]
-        public Output<bool> EnableClusterMode { get; private set; } = null!;
+        public Output<bool?> EnableClusterMode { get; private set; } = null!;
 
         /// <summary>
         /// Enables encryption-at-rest.
@@ -282,13 +339,13 @@ namespace DuploCloud.Pulumi
         public Output<string> Endpoint { get; private set; } = null!;
 
         /// <summary>
-        /// The engine version of the elastic instance. See AWS documentation for the [available Redis instance
+        /// The engine version of the elastic instance. See AWS documentation for the [available Redis and Valkey instance
         /// types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/supported-engine-versions.html) or the [available
         /// Memcached instance
         /// types](https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/supported-engine-versions-mc.html).
         /// </summary>
         [Output("engineVersion")]
-        public Output<string?> EngineVersion { get; private set; } = null!;
+        public Output<string> EngineVersion { get; private set; } = null!;
 
         /// <summary>
         /// The DNS hostname of the elasticache instance.
@@ -307,6 +364,12 @@ namespace DuploCloud.Pulumi
         /// </summary>
         [Output("instanceStatus")]
         public Output<string> InstanceStatus { get; private set; } = null!;
+
+        /// <summary>
+        /// Flag to indicate if this is primary replication group
+        /// </summary>
+        [Output("isPrimary")]
+        public Output<bool> IsPrimary { get; private set; } = null!;
 
         /// <summary>
         /// The globally unique identifier for the key.
@@ -330,7 +393,7 @@ namespace DuploCloud.Pulumi
         public Output<int> NumberOfShards { get; private set; } = null!;
 
         /// <summary>
-        /// The REDIS parameter group to supply.
+        /// The REDIS/Valkey parameter group to supply.
         /// </summary>
         [Output("parameterGroupName")]
         public Output<string> ParameterGroupName { get; private set; } = null!;
@@ -355,15 +418,15 @@ namespace DuploCloud.Pulumi
         public Output<string> Size { get; private set; } = null!;
 
         /// <summary>
-        /// Specify the ARN of a Redis RDB snapshot file stored in Amazon S3. User should have the access to export snapshot to s3
-        /// bucket. One can find steps to provide access to export snapshot to s3 on following link
+        /// Specify the ARN of a Redis/Valkey RDB snapshot file stored in Amazon S3. User should have the access to export snapshot
+        /// to s3 bucket. One can find steps to provide access to export snapshot to s3 on following link
         /// https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html
         /// </summary>
         [Output("snapshotArns")]
         public Output<ImmutableArray<string>> SnapshotArns { get; private set; } = null!;
 
         /// <summary>
-        /// Select the snapshot/backup you want to use for creating redis.
+        /// Select the snapshot/backup you want to use for creating redis/valkey.
         /// </summary>
         [Output("snapshotName")]
         public Output<string> SnapshotName { get; private set; } = null!;
@@ -448,13 +511,13 @@ namespace DuploCloud.Pulumi
         public Input<bool>? AutomaticFailoverEnabled { get; set; }
 
         /// <summary>
-        /// The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache
+        /// The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache - `2` : Valkey
         /// </summary>
         [Input("cacheType")]
         public Input<int>? CacheType { get; set; }
 
         /// <summary>
-        /// Flag to enable/disable redis cluster mode.
+        /// Flag to enable/disable redis/valkey cluster mode.
         /// </summary>
         [Input("enableClusterMode")]
         public Input<bool>? EnableClusterMode { get; set; }
@@ -472,7 +535,7 @@ namespace DuploCloud.Pulumi
         public Input<bool>? EncryptionInTransit { get; set; }
 
         /// <summary>
-        /// The engine version of the elastic instance. See AWS documentation for the [available Redis instance
+        /// The engine version of the elastic instance. See AWS documentation for the [available Redis and Valkey instance
         /// types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/supported-engine-versions.html) or the [available
         /// Memcached instance
         /// types](https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/supported-engine-versions-mc.html).
@@ -507,7 +570,7 @@ namespace DuploCloud.Pulumi
         public Input<int>? NumberOfShards { get; set; }
 
         /// <summary>
-        /// The REDIS parameter group to supply.
+        /// The REDIS/Valkey parameter group to supply.
         /// </summary>
         [Input("parameterGroupName")]
         public Input<string>? ParameterGroupName { get; set; }
@@ -529,8 +592,8 @@ namespace DuploCloud.Pulumi
         private InputList<string>? _snapshotArns;
 
         /// <summary>
-        /// Specify the ARN of a Redis RDB snapshot file stored in Amazon S3. User should have the access to export snapshot to s3
-        /// bucket. One can find steps to provide access to export snapshot to s3 on following link
+        /// Specify the ARN of a Redis/Valkey RDB snapshot file stored in Amazon S3. User should have the access to export snapshot
+        /// to s3 bucket. One can find steps to provide access to export snapshot to s3 on following link
         /// https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html
         /// </summary>
         public InputList<string> SnapshotArns
@@ -540,7 +603,7 @@ namespace DuploCloud.Pulumi
         }
 
         /// <summary>
-        /// Select the snapshot/backup you want to use for creating redis.
+        /// Select the snapshot/backup you want to use for creating redis/valkey.
         /// </summary>
         [Input("snapshotName")]
         public Input<string>? SnapshotName { get; set; }
@@ -573,6 +636,9 @@ namespace DuploCloud.Pulumi
 
     public sealed class EcacheInstanceState : global::Pulumi.ResourceArgs
     {
+        [Input("actualEngineVersion")]
+        public Input<string>? ActualEngineVersion { get; set; }
+
         /// <summary>
         /// The ARN of the elasticache instance.
         /// </summary>
@@ -592,13 +658,13 @@ namespace DuploCloud.Pulumi
         public Input<bool>? AutomaticFailoverEnabled { get; set; }
 
         /// <summary>
-        /// The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache
+        /// The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache - `2` : Valkey
         /// </summary>
         [Input("cacheType")]
         public Input<int>? CacheType { get; set; }
 
         /// <summary>
-        /// Flag to enable/disable redis cluster mode.
+        /// Flag to enable/disable redis/valkey cluster mode.
         /// </summary>
         [Input("enableClusterMode")]
         public Input<bool>? EnableClusterMode { get; set; }
@@ -622,7 +688,7 @@ namespace DuploCloud.Pulumi
         public Input<string>? Endpoint { get; set; }
 
         /// <summary>
-        /// The engine version of the elastic instance. See AWS documentation for the [available Redis instance
+        /// The engine version of the elastic instance. See AWS documentation for the [available Redis and Valkey instance
         /// types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/supported-engine-versions.html) or the [available
         /// Memcached instance
         /// types](https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/supported-engine-versions-mc.html).
@@ -647,6 +713,12 @@ namespace DuploCloud.Pulumi
         /// </summary>
         [Input("instanceStatus")]
         public Input<string>? InstanceStatus { get; set; }
+
+        /// <summary>
+        /// Flag to indicate if this is primary replication group
+        /// </summary>
+        [Input("isPrimary")]
+        public Input<bool>? IsPrimary { get; set; }
 
         /// <summary>
         /// The globally unique identifier for the key.
@@ -675,7 +747,7 @@ namespace DuploCloud.Pulumi
         public Input<int>? NumberOfShards { get; set; }
 
         /// <summary>
-        /// The REDIS parameter group to supply.
+        /// The REDIS/Valkey parameter group to supply.
         /// </summary>
         [Input("parameterGroupName")]
         public Input<string>? ParameterGroupName { get; set; }
@@ -703,8 +775,8 @@ namespace DuploCloud.Pulumi
         private InputList<string>? _snapshotArns;
 
         /// <summary>
-        /// Specify the ARN of a Redis RDB snapshot file stored in Amazon S3. User should have the access to export snapshot to s3
-        /// bucket. One can find steps to provide access to export snapshot to s3 on following link
+        /// Specify the ARN of a Redis/Valkey RDB snapshot file stored in Amazon S3. User should have the access to export snapshot
+        /// to s3 bucket. One can find steps to provide access to export snapshot to s3 on following link
         /// https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html
         /// </summary>
         public InputList<string> SnapshotArns
@@ -714,7 +786,7 @@ namespace DuploCloud.Pulumi
         }
 
         /// <summary>
-        /// Select the snapshot/backup you want to use for creating redis.
+        /// Select the snapshot/backup you want to use for creating redis/valkey.
         /// </summary>
         [Input("snapshotName")]
         public Input<string>? SnapshotName { get; set; }

@@ -21,11 +21,11 @@ namespace DuploCloud.Pulumi
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Duplocloud = DuploCloud.Pulumi;
+        /// using Pulumi = Pulumi.Pulumi;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var test = Duplocloud.GetK8ConfigMaps.Invoke(new()
+        ///     var test = Pulumi.GetK8ConfigMaps.Invoke(new()
         ///     {
         ///         TenantId = tenantId,
         ///     });
@@ -49,11 +49,11 @@ namespace DuploCloud.Pulumi
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Duplocloud = DuploCloud.Pulumi;
+        /// using Pulumi = Pulumi.Pulumi;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var test = Duplocloud.GetK8ConfigMaps.Invoke(new()
+        ///     var test = Pulumi.GetK8ConfigMaps.Invoke(new()
         ///     {
         ///         TenantId = tenantId,
         ///     });
@@ -77,11 +77,11 @@ namespace DuploCloud.Pulumi
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Duplocloud = DuploCloud.Pulumi;
+        /// using Pulumi = Pulumi.Pulumi;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var test = Duplocloud.GetK8ConfigMaps.Invoke(new()
+        ///     var test = Pulumi.GetK8ConfigMaps.Invoke(new()
         ///     {
         ///         TenantId = tenantId,
         ///     });

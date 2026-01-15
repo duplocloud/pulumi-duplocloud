@@ -14,21 +14,21 @@ namespace DuploCloud.Pulumi.Outputs
     [OutputType]
     public sealed class AwsLoadBalancerListenerDefaultAction
     {
-        public readonly int? Order;
-        public readonly string? TargetGroupArn;
-        public readonly string? Type;
+        public readonly Outputs.AwsLoadBalancerListenerDefaultActionFixedResponse? FixedResponse;
+        public readonly Outputs.AwsLoadBalancerListenerDefaultActionForward? Forward;
+        public readonly Outputs.AwsLoadBalancerListenerDefaultActionRedirect? Redirect;
 
         [OutputConstructor]
         private AwsLoadBalancerListenerDefaultAction(
-            int? order,
+            Outputs.AwsLoadBalancerListenerDefaultActionFixedResponse? fixedResponse,
 
-            string? targetGroupArn,
+            Outputs.AwsLoadBalancerListenerDefaultActionForward? forward,
 
-            string? type)
+            Outputs.AwsLoadBalancerListenerDefaultActionRedirect? redirect)
         {
-            Order = order;
-            TargetGroupArn = targetGroupArn;
-            Type = type;
+            FixedResponse = fixedResponse;
+            Forward = forward;
+            Redirect = redirect;
         }
     }
 }

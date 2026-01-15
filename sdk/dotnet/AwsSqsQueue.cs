@@ -19,17 +19,17 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myapp = new Duplocloud.Tenant("myapp", new()
+    ///     var myapp = new Pulumi.Tenant("myapp", new()
     ///     {
     ///         AccountName = "myapp",
     ///         PlanId = "default",
     ///     });
     /// 
-    ///     var sqsQueue = new Duplocloud.AwsSqsQueue("sqs_queue", new()
+    ///     var sqsQueue = new Pulumi.AwsSqsQueue("sqs_queue", new()
     ///     {
     ///         TenantId = myapp.TenantId,
     ///         Name = "duplo_queue",
@@ -41,7 +41,7 @@ namespace DuploCloud.Pulumi
     ///     });
     /// 
     ///     // SQS queue with dead letter queue configuration
-    ///     var sqsQueueWithDlq = new Duplocloud.AwsSqsQueue("sqs_queue_with_dlq", new()
+    ///     var sqsQueueWithDlq = new Pulumi.AwsSqsQueue("sqs_queue_with_dlq", new()
     ///     {
     ///         TenantId = myapp.TenantId,
     ///         Name = "duplo_queue",
@@ -50,7 +50,7 @@ namespace DuploCloud.Pulumi
     ///         VisibilityTimeoutSeconds = 30,
     ///         ContentBasedDeduplication = true,
     ///         DelaySeconds = 10,
-    ///         DeadLetterQueueConfiguration = new Duplocloud.Inputs.AwsSqsQueueDeadLetterQueueConfigurationArgs
+    ///         DeadLetterQueueConfiguration = new Pulumi.Inputs.AwsSqsQueueDeadLetterQueueConfigurationArgs
     ///         {
     ///             TargetSqsDlqName = sqsQueue.Fullname,
     ///             MaxMessageReceiveAttempts = 5,
@@ -136,6 +136,12 @@ namespace DuploCloud.Pulumi
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The time for which a ReceiveMessage call will wait for a message to arrive. An integer from 0 to 20 (seconds).
+        /// </summary>
+        [Output("receiveWaitTimeSeconds")]
+        public Output<int> ReceiveWaitTimeSeconds { get; private set; } = null!;
 
         /// <summary>
         /// The GUID of the tenant that the SQS queue will be created in.
@@ -251,6 +257,12 @@ namespace DuploCloud.Pulumi
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// The time for which a ReceiveMessage call will wait for a message to arrive. An integer from 0 to 20 (seconds).
+        /// </summary>
+        [Input("receiveWaitTimeSeconds")]
+        public Input<int>? ReceiveWaitTimeSeconds { get; set; }
+
+        /// <summary>
         /// The GUID of the tenant that the SQS queue will be created in.
         /// </summary>
         [Input("tenantId", required: true)]
@@ -329,6 +341,12 @@ namespace DuploCloud.Pulumi
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The time for which a ReceiveMessage call will wait for a message to arrive. An integer from 0 to 20 (seconds).
+        /// </summary>
+        [Input("receiveWaitTimeSeconds")]
+        public Input<int>? ReceiveWaitTimeSeconds { get; set; }
 
         /// <summary>
         /// The GUID of the tenant that the SQS queue will be created in.

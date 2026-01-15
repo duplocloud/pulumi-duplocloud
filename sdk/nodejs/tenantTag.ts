@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Example: Importing an existing S3 bucket
+ * Example: Importing an existing tenant tag
  *
  *  - *TENANT_ID* is the tenant GUID
  *

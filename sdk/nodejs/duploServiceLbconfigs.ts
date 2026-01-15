@@ -11,45 +11,6 @@ import * as utilities from "./utilities";
  *
  * NOTE: For Amazon ECS services, see the `duplocloud.EcsService` resource.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@duplocloud/pulumi";
- *
- * const myapp = new duplocloud.Tenant("myapp", {
- *     accountName: "myapp",
- *     planId: "default",
- * });
- * // Deploy NGINX using Duplo's native container agent, and configure a load balancer.
- * const myservice = new duplocloud.DuploService("myservice", {
- *     tenantId: myapp.tenantId,
- *     name: "myservice",
- *     agentPlatform: 0,
- *     dockerImage: "nginx:latest",
- *     replicas: 1,
- * });
- * const myserviceDuploServiceLbconfigs = new duplocloud.DuploServiceLbconfigs("myservice", {
- *     tenantId: myservice.tenantId,
- *     replicationControllerName: myservice.name,
- *     lbconfigs: [{
- *         externalPort: 80,
- *         healthCheckUrl: "/",
- *         isNative: false,
- *         lbType: 1,
- *         port: "80",
- *         protocol: "http",
- *         healthCheck: {
- *             healthyThreshold: 4,
- *             unhealthyThreshold: 4,
- *             timeout: 50,
- *             interval: 30,
- *             httpSuccessCodes: "200-399",
- *         },
- *     }],
- * });
- * ```
- *
  * ## Import
  *
  * Example: Importing an existing service's load balancer configurations

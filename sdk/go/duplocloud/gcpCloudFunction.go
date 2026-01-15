@@ -53,6 +53,28 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Example of a cloud function with an event trigger
+//			// This example shows how to create a cloud function that is triggered by a Pub/Sub event
+//			// The function will be triggered when a message is published to the specified Pub/Sub topic
+//			_, err = duplocloud.NewGcpCloudFunction(ctx, "example_pubsub_function", &duplocloud.GcpCloudFunctionArgs{
+//				TenantId:   myapp.TenantId,
+//				Name:       pulumi.String("example-pubsub-fn"),
+//				Runtime:    pulumi.String("python39"),
+//				Entrypoint: pulumi.String("hello_pubsub"),
+//				EventTrigger: &duplocloud.GcpCloudFunctionEventTriggerArgs{
+//					EventType: pulumi.String("google.pubsub.topic.publish"),
+//					Resource:  pulumi.String("projects/projectid/topics/topicname"),
+//				},
+//				EnvironmentVariables: pulumi.StringMap{
+//					"EXAMPLE_ENV": pulumi.String("value"),
+//				},
+//				AvailableMemoryMb: pulumi.Int(128),
+//				Timeout:           pulumi.Int(60),
+//				SourceArchiveUrl:  pulumi.String("gs://bucketname/code.ext"),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			return nil
 //		})
 //	}

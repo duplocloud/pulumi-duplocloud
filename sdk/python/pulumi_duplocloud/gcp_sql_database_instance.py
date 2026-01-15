@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['GcpSqlDatabaseInstanceArgs', 'GcpSqlDatabaseInstance']
 
@@ -22,7 +24,9 @@ class GcpSqlDatabaseInstanceArgs:
                  database_version: pulumi.Input[str],
                  tenant_id: pulumi.Input[str],
                  tier: pulumi.Input[str],
+                 database_flags: Optional[pulumi.Input[Sequence[pulumi.Input['GcpSqlDatabaseInstanceDatabaseFlagArgs']]]] = None,
                  disk_size: Optional[pulumi.Input[int]] = None,
+                 edition: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  need_backup: Optional[pulumi.Input[bool]] = None,
@@ -33,7 +37,9 @@ class GcpSqlDatabaseInstanceArgs:
         :param pulumi.Input[str] database_version: The MySQL, PostgreSQL or SQL Server version to use.Supported values include `MYSQL_5_6`,`MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`,`POSTGRES_10`,`POSTGRES_11`,`POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`, `POSTGRES_15`,`POSTGRES_16`,`POSTGRES_17`, `SQLSERVER_2017_STANDARD`,`SQLSERVER_2017_ENTERPRISE`,`SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`,`SQLSERVER_2019_STANDARD`, `SQLSERVER_2019_ENTERPRISE`, `SQLSERVER_2019_EXPRESS`,`SQLSERVER_2019_WEB`,`SQLSERVER_2022_WEB`,`SQLSERVER_2022_EXPRESS`,`SQLSERVER_2022_ENTERPRISE`,`SQLSERVER_2022_STANDARD`.[Database Version Policies](https://cloud.google.com/sql/docs/db-versions) includes an up-to-date reference of supported versions.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the sql database will be created in.
         :param pulumi.Input[str] tier: The machine type to use. See tiers for more details and supported versions. Postgres supports only shared-core machine types, and custom machine types such as `db-custom-2-13312`.See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
+        :param pulumi.Input[Sequence[pulumi.Input['GcpSqlDatabaseInstanceDatabaseFlagArgs']]] database_flags: List of database flags to be set on the database instance. Please refer to the [Database Flags Documentation](https://cloud.google.com/sql/docs/mysql/flags) for more details on available flags.
         :param pulumi.Input[int] disk_size: The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
+        :param pulumi.Input[str] edition: Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS Defaults to `ENTERPRISE`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Map of string keys and values that can be used to organize and categorize this resource.
         :param pulumi.Input[str] name: The short name of the sql database.  Duplo will add a prefix to the name.  You can retrieve the full name from the `fullname` attribute.
         :param pulumi.Input[bool] need_backup: Flag to enable backup process on delete of database Defaults to `true`.
@@ -43,8 +49,12 @@ class GcpSqlDatabaseInstanceArgs:
         pulumi.set(__self__, "database_version", database_version)
         pulumi.set(__self__, "tenant_id", tenant_id)
         pulumi.set(__self__, "tier", tier)
+        if database_flags is not None:
+            pulumi.set(__self__, "database_flags", database_flags)
         if disk_size is not None:
             pulumi.set(__self__, "disk_size", disk_size)
+        if edition is not None:
+            pulumi.set(__self__, "edition", edition)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -93,6 +103,18 @@ class GcpSqlDatabaseInstanceArgs:
         pulumi.set(self, "tier", value)
 
     @property
+    @pulumi.getter(name="databaseFlags")
+    def database_flags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GcpSqlDatabaseInstanceDatabaseFlagArgs']]]]:
+        """
+        List of database flags to be set on the database instance. Please refer to the [Database Flags Documentation](https://cloud.google.com/sql/docs/mysql/flags) for more details on available flags.
+        """
+        return pulumi.get(self, "database_flags")
+
+    @database_flags.setter
+    def database_flags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GcpSqlDatabaseInstanceDatabaseFlagArgs']]]]):
+        pulumi.set(self, "database_flags", value)
+
+    @property
     @pulumi.getter(name="diskSize")
     def disk_size(self) -> Optional[pulumi.Input[int]]:
         """
@@ -103,6 +125,18 @@ class GcpSqlDatabaseInstanceArgs:
     @disk_size.setter
     def disk_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "disk_size", value)
+
+    @property
+    @pulumi.getter
+    def edition(self) -> Optional[pulumi.Input[str]]:
+        """
+        Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS Defaults to `ENTERPRISE`.
+        """
+        return pulumi.get(self, "edition")
+
+    @edition.setter
+    def edition(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "edition", value)
 
     @property
     @pulumi.getter
@@ -169,8 +203,10 @@ class GcpSqlDatabaseInstanceArgs:
 class _GcpSqlDatabaseInstanceState:
     def __init__(__self__, *,
                  connection_name: Optional[pulumi.Input[str]] = None,
+                 database_flags: Optional[pulumi.Input[Sequence[pulumi.Input['GcpSqlDatabaseInstanceDatabaseFlagArgs']]]] = None,
                  database_version: Optional[pulumi.Input[str]] = None,
                  disk_size: Optional[pulumi.Input[int]] = None,
+                 edition: Optional[pulumi.Input[str]] = None,
                  fullname: Optional[pulumi.Input[str]] = None,
                  ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -184,8 +220,10 @@ class _GcpSqlDatabaseInstanceState:
         """
         Input properties used for looking up and filtering GcpSqlDatabaseInstance resources.
         :param pulumi.Input[str] connection_name: Connection name of the database.
+        :param pulumi.Input[Sequence[pulumi.Input['GcpSqlDatabaseInstanceDatabaseFlagArgs']]] database_flags: List of database flags to be set on the database instance. Please refer to the [Database Flags Documentation](https://cloud.google.com/sql/docs/mysql/flags) for more details on available flags.
         :param pulumi.Input[str] database_version: The MySQL, PostgreSQL or SQL Server version to use.Supported values include `MYSQL_5_6`,`MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`,`POSTGRES_10`,`POSTGRES_11`,`POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`, `POSTGRES_15`,`POSTGRES_16`,`POSTGRES_17`, `SQLSERVER_2017_STANDARD`,`SQLSERVER_2017_ENTERPRISE`,`SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`,`SQLSERVER_2019_STANDARD`, `SQLSERVER_2019_ENTERPRISE`, `SQLSERVER_2019_EXPRESS`,`SQLSERVER_2019_WEB`,`SQLSERVER_2022_WEB`,`SQLSERVER_2022_EXPRESS`,`SQLSERVER_2022_ENTERPRISE`,`SQLSERVER_2022_STANDARD`.[Database Version Policies](https://cloud.google.com/sql/docs/db-versions) includes an up-to-date reference of supported versions.
         :param pulumi.Input[int] disk_size: The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
+        :param pulumi.Input[str] edition: Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS Defaults to `ENTERPRISE`.
         :param pulumi.Input[str] fullname: The full name of the sql database.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_addresses: List of IP addresses of the database.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Map of string keys and values that can be used to organize and categorize this resource.
@@ -199,10 +237,14 @@ class _GcpSqlDatabaseInstanceState:
         """
         if connection_name is not None:
             pulumi.set(__self__, "connection_name", connection_name)
+        if database_flags is not None:
+            pulumi.set(__self__, "database_flags", database_flags)
         if database_version is not None:
             pulumi.set(__self__, "database_version", database_version)
         if disk_size is not None:
             pulumi.set(__self__, "disk_size", disk_size)
+        if edition is not None:
+            pulumi.set(__self__, "edition", edition)
         if fullname is not None:
             pulumi.set(__self__, "fullname", fullname)
         if ip_addresses is not None:
@@ -237,6 +279,18 @@ class _GcpSqlDatabaseInstanceState:
         pulumi.set(self, "connection_name", value)
 
     @property
+    @pulumi.getter(name="databaseFlags")
+    def database_flags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GcpSqlDatabaseInstanceDatabaseFlagArgs']]]]:
+        """
+        List of database flags to be set on the database instance. Please refer to the [Database Flags Documentation](https://cloud.google.com/sql/docs/mysql/flags) for more details on available flags.
+        """
+        return pulumi.get(self, "database_flags")
+
+    @database_flags.setter
+    def database_flags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GcpSqlDatabaseInstanceDatabaseFlagArgs']]]]):
+        pulumi.set(self, "database_flags", value)
+
+    @property
     @pulumi.getter(name="databaseVersion")
     def database_version(self) -> Optional[pulumi.Input[str]]:
         """
@@ -259,6 +313,18 @@ class _GcpSqlDatabaseInstanceState:
     @disk_size.setter
     def disk_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "disk_size", value)
+
+    @property
+    @pulumi.getter
+    def edition(self) -> Optional[pulumi.Input[str]]:
+        """
+        Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS Defaults to `ENTERPRISE`.
+        """
+        return pulumi.get(self, "edition")
+
+    @edition.setter
+    def edition(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "edition", value)
 
     @property
     @pulumi.getter
@@ -386,8 +452,10 @@ class GcpSqlDatabaseInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 database_flags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GcpSqlDatabaseInstanceDatabaseFlagArgs', 'GcpSqlDatabaseInstanceDatabaseFlagArgsDict']]]]] = None,
                  database_version: Optional[pulumi.Input[str]] = None,
                  disk_size: Optional[pulumi.Input[int]] = None,
+                 edition: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  need_backup: Optional[pulumi.Input[bool]] = None,
@@ -445,8 +513,10 @@ class GcpSqlDatabaseInstance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GcpSqlDatabaseInstanceDatabaseFlagArgs', 'GcpSqlDatabaseInstanceDatabaseFlagArgsDict']]]] database_flags: List of database flags to be set on the database instance. Please refer to the [Database Flags Documentation](https://cloud.google.com/sql/docs/mysql/flags) for more details on available flags.
         :param pulumi.Input[str] database_version: The MySQL, PostgreSQL or SQL Server version to use.Supported values include `MYSQL_5_6`,`MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`,`POSTGRES_10`,`POSTGRES_11`,`POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`, `POSTGRES_15`,`POSTGRES_16`,`POSTGRES_17`, `SQLSERVER_2017_STANDARD`,`SQLSERVER_2017_ENTERPRISE`,`SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`,`SQLSERVER_2019_STANDARD`, `SQLSERVER_2019_ENTERPRISE`, `SQLSERVER_2019_EXPRESS`,`SQLSERVER_2019_WEB`,`SQLSERVER_2022_WEB`,`SQLSERVER_2022_EXPRESS`,`SQLSERVER_2022_ENTERPRISE`,`SQLSERVER_2022_STANDARD`.[Database Version Policies](https://cloud.google.com/sql/docs/db-versions) includes an up-to-date reference of supported versions.
         :param pulumi.Input[int] disk_size: The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
+        :param pulumi.Input[str] edition: Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS Defaults to `ENTERPRISE`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Map of string keys and values that can be used to organize and categorize this resource.
         :param pulumi.Input[str] name: The short name of the sql database.  Duplo will add a prefix to the name.  You can retrieve the full name from the `fullname` attribute.
         :param pulumi.Input[bool] need_backup: Flag to enable backup process on delete of database Defaults to `true`.
@@ -523,8 +593,10 @@ class GcpSqlDatabaseInstance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 database_flags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GcpSqlDatabaseInstanceDatabaseFlagArgs', 'GcpSqlDatabaseInstanceDatabaseFlagArgsDict']]]]] = None,
                  database_version: Optional[pulumi.Input[str]] = None,
                  disk_size: Optional[pulumi.Input[int]] = None,
+                 edition: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  need_backup: Optional[pulumi.Input[bool]] = None,
@@ -541,10 +613,12 @@ class GcpSqlDatabaseInstance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GcpSqlDatabaseInstanceArgs.__new__(GcpSqlDatabaseInstanceArgs)
 
+            __props__.__dict__["database_flags"] = database_flags
             if database_version is None and not opts.urn:
                 raise TypeError("Missing required property 'database_version'")
             __props__.__dict__["database_version"] = database_version
             __props__.__dict__["disk_size"] = disk_size
+            __props__.__dict__["edition"] = edition
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             __props__.__dict__["need_backup"] = need_backup
@@ -571,8 +645,10 @@ class GcpSqlDatabaseInstance(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             connection_name: Optional[pulumi.Input[str]] = None,
+            database_flags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GcpSqlDatabaseInstanceDatabaseFlagArgs', 'GcpSqlDatabaseInstanceDatabaseFlagArgsDict']]]]] = None,
             database_version: Optional[pulumi.Input[str]] = None,
             disk_size: Optional[pulumi.Input[int]] = None,
+            edition: Optional[pulumi.Input[str]] = None,
             fullname: Optional[pulumi.Input[str]] = None,
             ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -591,8 +667,10 @@ class GcpSqlDatabaseInstance(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] connection_name: Connection name of the database.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GcpSqlDatabaseInstanceDatabaseFlagArgs', 'GcpSqlDatabaseInstanceDatabaseFlagArgsDict']]]] database_flags: List of database flags to be set on the database instance. Please refer to the [Database Flags Documentation](https://cloud.google.com/sql/docs/mysql/flags) for more details on available flags.
         :param pulumi.Input[str] database_version: The MySQL, PostgreSQL or SQL Server version to use.Supported values include `MYSQL_5_6`,`MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`,`POSTGRES_10`,`POSTGRES_11`,`POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`, `POSTGRES_15`,`POSTGRES_16`,`POSTGRES_17`, `SQLSERVER_2017_STANDARD`,`SQLSERVER_2017_ENTERPRISE`,`SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`,`SQLSERVER_2019_STANDARD`, `SQLSERVER_2019_ENTERPRISE`, `SQLSERVER_2019_EXPRESS`,`SQLSERVER_2019_WEB`,`SQLSERVER_2022_WEB`,`SQLSERVER_2022_EXPRESS`,`SQLSERVER_2022_ENTERPRISE`,`SQLSERVER_2022_STANDARD`.[Database Version Policies](https://cloud.google.com/sql/docs/db-versions) includes an up-to-date reference of supported versions.
         :param pulumi.Input[int] disk_size: The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
+        :param pulumi.Input[str] edition: Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS Defaults to `ENTERPRISE`.
         :param pulumi.Input[str] fullname: The full name of the sql database.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_addresses: List of IP addresses of the database.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Map of string keys and values that can be used to organize and categorize this resource.
@@ -609,8 +687,10 @@ class GcpSqlDatabaseInstance(pulumi.CustomResource):
         __props__ = _GcpSqlDatabaseInstanceState.__new__(_GcpSqlDatabaseInstanceState)
 
         __props__.__dict__["connection_name"] = connection_name
+        __props__.__dict__["database_flags"] = database_flags
         __props__.__dict__["database_version"] = database_version
         __props__.__dict__["disk_size"] = disk_size
+        __props__.__dict__["edition"] = edition
         __props__.__dict__["fullname"] = fullname
         __props__.__dict__["ip_addresses"] = ip_addresses
         __props__.__dict__["labels"] = labels
@@ -632,6 +712,14 @@ class GcpSqlDatabaseInstance(pulumi.CustomResource):
         return pulumi.get(self, "connection_name")
 
     @property
+    @pulumi.getter(name="databaseFlags")
+    def database_flags(self) -> pulumi.Output[Optional[Sequence['outputs.GcpSqlDatabaseInstanceDatabaseFlag']]]:
+        """
+        List of database flags to be set on the database instance. Please refer to the [Database Flags Documentation](https://cloud.google.com/sql/docs/mysql/flags) for more details on available flags.
+        """
+        return pulumi.get(self, "database_flags")
+
+    @property
     @pulumi.getter(name="databaseVersion")
     def database_version(self) -> pulumi.Output[str]:
         """
@@ -646,6 +734,14 @@ class GcpSqlDatabaseInstance(pulumi.CustomResource):
         The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
         """
         return pulumi.get(self, "disk_size")
+
+    @property
+    @pulumi.getter
+    def edition(self) -> pulumi.Output[Optional[str]]:
+        """
+        Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS Defaults to `ENTERPRISE`.
+        """
+        return pulumi.get(self, "edition")
 
     @property
     @pulumi.getter

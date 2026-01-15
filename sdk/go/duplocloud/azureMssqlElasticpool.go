@@ -14,45 +14,6 @@ import (
 
 // `AzureMssqlElasticpool` manages an azure mssql elastic pool in Duplo.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/duplocloud/pulumi-duplocloud/sdk/go/duplocloud"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myapp, err := duplocloud.NewTenant(ctx, "myapp", &duplocloud.TenantArgs{
-//				AccountName: pulumi.String("myapp"),
-//				PlanId:      pulumi.String("default"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = duplocloud.NewAzureMssqlElasticpool(ctx, "mssql_elasticpool", &duplocloud.AzureMssqlElasticpoolArgs{
-//				TenantId:   myapp.TenantId,
-//				Name:       pulumi.String("mssql-ep"),
-//				ServerName: pulumi.String("mysqlserver"),
-//				Sku: &duplocloud.AzureMssqlElasticpoolSkuArgs{
-//					Name:     pulumi.String("StandardPool"),
-//					Capacity: pulumi.Int(50),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Example: Importing an existing Azure MS SQL databse
@@ -71,6 +32,8 @@ type AzureMssqlElasticpool struct {
 
 	// The ID of the MS SQL Elastic Pool.
 	ElasticPoolId pulumi.StringOutput `pulumi:"elasticPoolId"`
+	// Maximum allowed data size in GB Defaults to `50`.
+	MaxSizeGb pulumi.IntPtrOutput `pulumi:"maxSizeGb"`
 	// The name of the MS SQL elastic pool.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The name of the SQL Server on which to create the elastic pool.
@@ -118,6 +81,8 @@ func GetAzureMssqlElasticpool(ctx *pulumi.Context,
 type azureMssqlElasticpoolState struct {
 	// The ID of the MS SQL Elastic Pool.
 	ElasticPoolId *string `pulumi:"elasticPoolId"`
+	// Maximum allowed data size in GB Defaults to `50`.
+	MaxSizeGb *int `pulumi:"maxSizeGb"`
 	// The name of the MS SQL elastic pool.
 	Name *string `pulumi:"name"`
 	// The name of the SQL Server on which to create the elastic pool.
@@ -130,6 +95,8 @@ type azureMssqlElasticpoolState struct {
 type AzureMssqlElasticpoolState struct {
 	// The ID of the MS SQL Elastic Pool.
 	ElasticPoolId pulumi.StringPtrInput
+	// Maximum allowed data size in GB Defaults to `50`.
+	MaxSizeGb pulumi.IntPtrInput
 	// The name of the MS SQL elastic pool.
 	Name pulumi.StringPtrInput
 	// The name of the SQL Server on which to create the elastic pool.
@@ -144,6 +111,8 @@ func (AzureMssqlElasticpoolState) ElementType() reflect.Type {
 }
 
 type azureMssqlElasticpoolArgs struct {
+	// Maximum allowed data size in GB Defaults to `50`.
+	MaxSizeGb *int `pulumi:"maxSizeGb"`
 	// The name of the MS SQL elastic pool.
 	Name *string `pulumi:"name"`
 	// The name of the SQL Server on which to create the elastic pool.
@@ -155,6 +124,8 @@ type azureMssqlElasticpoolArgs struct {
 
 // The set of arguments for constructing a AzureMssqlElasticpool resource.
 type AzureMssqlElasticpoolArgs struct {
+	// Maximum allowed data size in GB Defaults to `50`.
+	MaxSizeGb pulumi.IntPtrInput
 	// The name of the MS SQL elastic pool.
 	Name pulumi.StringPtrInput
 	// The name of the SQL Server on which to create the elastic pool.
@@ -254,6 +225,11 @@ func (o AzureMssqlElasticpoolOutput) ToAzureMssqlElasticpoolOutputWithContext(ct
 // The ID of the MS SQL Elastic Pool.
 func (o AzureMssqlElasticpoolOutput) ElasticPoolId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzureMssqlElasticpool) pulumi.StringOutput { return v.ElasticPoolId }).(pulumi.StringOutput)
+}
+
+// Maximum allowed data size in GB Defaults to `50`.
+func (o AzureMssqlElasticpoolOutput) MaxSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AzureMssqlElasticpool) pulumi.IntPtrOutput { return v.MaxSizeGb }).(pulumi.IntPtrOutput)
 }
 
 // The name of the MS SQL elastic pool.

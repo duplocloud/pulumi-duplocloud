@@ -19,11 +19,11 @@ namespace DuploCloud.Pulumi
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Duplocloud = DuploCloud.Pulumi;
+        /// using Pulumi = Pulumi.Pulumi;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var app = Duplocloud.GetGcpRedisInstance.Invoke(new()
+        ///     var app = Pulumi.GetGcpRedisInstance.Invoke(new()
         ///     {
         ///         TenantId = "tenant_id",
         ///         Name = "name",
@@ -59,11 +59,11 @@ namespace DuploCloud.Pulumi
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Duplocloud = DuploCloud.Pulumi;
+        /// using Pulumi = Pulumi.Pulumi;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var app = Duplocloud.GetGcpRedisInstance.Invoke(new()
+        ///     var app = Pulumi.GetGcpRedisInstance.Invoke(new()
         ///     {
         ///         TenantId = "tenant_id",
         ///         Name = "name",
@@ -99,11 +99,11 @@ namespace DuploCloud.Pulumi
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Duplocloud = DuploCloud.Pulumi;
+        /// using Pulumi = Pulumi.Pulumi;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var app = Duplocloud.GetGcpRedisInstance.Invoke(new()
+        ///     var app = Pulumi.GetGcpRedisInstance.Invoke(new()
         ///     {
         ///         TenantId = "tenant_id",
         ///         Name = "name",

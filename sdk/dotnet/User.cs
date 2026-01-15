@@ -19,11 +19,11 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myuser = new Duplocloud.User("myuser", new()
+    ///     var myuser = new Pulumi.User("myuser", new()
     ///     {
     ///         Username = "me@abc.com",
     ///         Roles = new[]
@@ -70,6 +70,12 @@ namespace DuploCloud.Pulumi
 
         [Output("isVpnConfigCreated")]
         public Output<bool> IsVpnConfigCreated { get; private set; } = null!;
+
+        /// <summary>
+        /// The list of permissions assigned to the user.
+        /// </summary>
+        [Output("permissions")]
+        public Output<ImmutableArray<string>> Permissions { get; private set; } = null!;
 
         /// <summary>
         /// Defaults to `false`.
@@ -151,6 +157,18 @@ namespace DuploCloud.Pulumi
         [Input("isReadonly")]
         public Input<bool>? IsReadonly { get; set; }
 
+        [Input("permissions")]
+        private InputList<string>? _permissions;
+
+        /// <summary>
+        /// The list of permissions assigned to the user.
+        /// </summary>
+        public InputList<string> Permissions
+        {
+            get => _permissions ?? (_permissions = new InputList<string>());
+            set => _permissions = value;
+        }
+
         /// <summary>
         /// Defaults to `false`.
         /// </summary>
@@ -203,6 +221,18 @@ namespace DuploCloud.Pulumi
 
         [Input("isVpnConfigCreated")]
         public Input<bool>? IsVpnConfigCreated { get; set; }
+
+        [Input("permissions")]
+        private InputList<string>? _permissions;
+
+        /// <summary>
+        /// The list of permissions assigned to the user.
+        /// </summary>
+        public InputList<string> Permissions
+        {
+            get => _permissions ?? (_permissions = new InputList<string>());
+            set => _permissions = value;
+        }
 
         /// <summary>
         /// Defaults to `false`.

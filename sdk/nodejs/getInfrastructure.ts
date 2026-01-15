@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  *
  * // Example 1 - look up an infrastructure by tenant ID.
  * const myinfra1 = duplocloud.getInfrastructure({
@@ -65,6 +65,7 @@ export interface GetInfrastructureResult {
      */
     readonly id: string;
     readonly infraName: string;
+    readonly natIps: string[];
     readonly privateSubnets: outputs.GetInfrastructurePrivateSubnet[];
     readonly publicSubnets: outputs.GetInfrastructurePublicSubnet[];
     readonly region: string;
@@ -82,7 +83,7 @@ export interface GetInfrastructureResult {
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  *
  * // Example 1 - look up an infrastructure by tenant ID.
  * const myinfra1 = duplocloud.getInfrastructure({

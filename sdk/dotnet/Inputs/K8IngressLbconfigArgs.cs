@@ -14,10 +14,22 @@ namespace DuploCloud.Pulumi.Inputs
     public sealed class K8IngressLbconfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ARN of an ACM certificate to associate with this load balancer.  Only applicable for HTTPS.
+        /// The ARN of an ACM certificate to associate with this load balancer.  Only applicable for HTTPS. This field has been deprecated use certificate_arns
         /// </summary>
         [Input("certificateArn")]
         public Input<string>? CertificateArn { get; set; }
+
+        [Input("certificateArns")]
+        private InputList<string>? _certificateArns;
+
+        /// <summary>
+        /// The list of ARN of an ACM certificate to associate with this load balancer.  Only applicable for HTTPS.
+        /// </summary>
+        public InputList<string> CertificateArns
+        {
+            get => _certificateArns ?? (_certificateArns = new InputList<string>());
+            set => _certificateArns = value;
+        }
 
         /// <summary>
         /// The DNS prefix to expose services using Route53 domain.
@@ -42,6 +54,12 @@ namespace DuploCloud.Pulumi.Inputs
         /// </summary>
         [Input("isInternal", required: true)]
         public Input<bool> IsInternal { get; set; } = null!;
+
+        /// <summary>
+        /// Port override for the load balancer. Currently supported for Azure
+        /// </summary>
+        [Input("portOverride")]
+        public Input<string>? PortOverride { get; set; }
 
         public K8IngressLbconfigArgs()
         {

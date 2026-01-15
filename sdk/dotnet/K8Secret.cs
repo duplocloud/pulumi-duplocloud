@@ -13,6 +13,48 @@ namespace DuploCloud.Pulumi
     /// <summary>
     /// `duplocloud.K8Secret` manages a kubernetes secret in a Duplo tenant.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myapp = new Pulumi.Tenant("myapp", new()
+    ///     {
+    ///         AccountName = "myapp",
+    ///         PlanId = "default",
+    ///     });
+    /// 
+    ///     var myappK8Secret = new Pulumi.K8Secret("myapp", new()
+    ///     {
+    ///         TenantId = myapp.TenantId,
+    ///         SecretName = "mysecret",
+    ///         SecretType = "Opaque",
+    ///         SecretData = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///             ["foo"] = "bar2",
+    ///         }),
+    ///         SecretLabels = 
+    ///         {
+    ///             { "KeyA", "ValueA" },
+    ///             { "KeyB", "ValueB" },
+    ///             { "app.duplocloud.net/app-name", "&lt;appname&gt;" },
+    ///         },
+    ///         SecretAnnotations = 
+    ///         {
+    ///             { "annotA", "ValueA" },
+    ///             { "annotB", "ValueB" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Example: Importing an existing kubernetes secret
@@ -34,13 +76,14 @@ namespace DuploCloud.Pulumi
         public Output<string> ClientSecretVersion { get; private set; } = null!;
 
         /// <summary>
-        /// Annotations for the secret
+        /// Annotations for the secret.
         /// </summary>
         [Output("secretAnnotations")]
         public Output<ImmutableDictionary<string, string>> SecretAnnotations { get; private set; } = null!;
 
         /// <summary>
-        /// A JSON encoded string representing the secret metadata. You can use the `jsonencode()` function to convert map or object data, if needed. You can use the `jsondecode()` function to read data.
+        /// A JSON encoded string representing the secret metadata. You can use the `jsonencode()` function to convert map or object
+        /// data, if needed. You can use the `jsondecode()` function to read data.
         /// </summary>
         [Output("secretData")]
         public Output<string?> SecretData { get; private set; } = null!;
@@ -127,7 +170,7 @@ namespace DuploCloud.Pulumi
         private InputMap<string>? _secretAnnotations;
 
         /// <summary>
-        /// Annotations for the secret
+        /// Annotations for the secret.
         /// </summary>
         public InputMap<string> SecretAnnotations
         {
@@ -139,7 +182,8 @@ namespace DuploCloud.Pulumi
         private Input<string>? _secretData;
 
         /// <summary>
-        /// A JSON encoded string representing the secret metadata. You can use the `jsonencode()` function to convert map or object data, if needed. You can use the `jsondecode()` function to read data.
+        /// A JSON encoded string representing the secret metadata. You can use the `jsonencode()` function to convert map or object
+        /// data, if needed. You can use the `jsondecode()` function to read data.
         /// </summary>
         public Input<string>? SecretData
         {
@@ -196,7 +240,7 @@ namespace DuploCloud.Pulumi
         private InputMap<string>? _secretAnnotations;
 
         /// <summary>
-        /// Annotations for the secret
+        /// Annotations for the secret.
         /// </summary>
         public InputMap<string> SecretAnnotations
         {
@@ -208,7 +252,8 @@ namespace DuploCloud.Pulumi
         private Input<string>? _secretData;
 
         /// <summary>
-        /// A JSON encoded string representing the secret metadata. You can use the `jsonencode()` function to convert map or object data, if needed. You can use the `jsondecode()` function to read data.
+        /// A JSON encoded string representing the secret metadata. You can use the `jsonencode()` function to convert map or object
+        /// data, if needed. You can use the `jsondecode()` function to read data.
         /// </summary>
         public Input<string>? SecretData
         {

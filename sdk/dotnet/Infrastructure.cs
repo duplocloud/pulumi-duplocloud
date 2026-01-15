@@ -19,11 +19,11 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var infra = new Duplocloud.Infrastructure("infra", new()
+    ///     var infra = new Pulumi.Infrastructure("infra", new()
     ///     {
     ///         InfraName = "nonprod",
     ///         Cloud = 0,
@@ -41,11 +41,11 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var infra = new Duplocloud.Infrastructure("infra", new()
+    ///     var infra = new Pulumi.Infrastructure("infra", new()
     ///     {
     ///         InfraName = "nonprod",
     ///         Cloud = 0,
@@ -63,11 +63,11 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var infra = new Duplocloud.Infrastructure("infra", new()
+    ///     var infra = new Pulumi.Infrastructure("infra", new()
     ///     {
     ///         InfraName = "nonprod",
     ///         Cloud = 0,
@@ -86,11 +86,11 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var infra = new Duplocloud.Infrastructure("infra", new()
+    ///     var infra = new Pulumi.Infrastructure("infra", new()
     ///     {
     ///         InfraName = "prod",
     ///         Cloud = 0,
@@ -110,11 +110,11 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var prodInfra = new Duplocloud.Infrastructure("prod_infra", new()
+    ///     var prodInfra = new Pulumi.Infrastructure("prod_infra", new()
     ///     {
     ///         InfraName = "prod",
     ///         Cloud = 0,
@@ -125,12 +125,12 @@ namespace DuploCloud.Pulumi
     ///         SubnetCidr = 24,
     ///     });
     /// 
-    ///     var settings = new Duplocloud.InfrastructureSetting("settings", new()
+    ///     var settings = new Pulumi.InfrastructureSetting("settings", new()
     ///     {
     ///         InfraName = prodInfra.InfraName,
     ///         Settings = new[]
     ///         {
-    ///             new Duplocloud.Inputs.InfrastructureSettingSettingArgs
+    ///             new Pulumi.Inputs.InfrastructureSettingSettingArgs
     ///             {
     ///                 Key = "EnableAwsAlbIngress",
     ///                 Value = "true",
@@ -147,11 +147,11 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var nonprodInfra = new Duplocloud.Infrastructure("nonprod_infra", new()
+    ///     var nonprodInfra = new Pulumi.Infrastructure("nonprod_infra", new()
     ///     {
     ///         InfraName = "nonprod",
     ///         Cloud = 0,
@@ -162,12 +162,12 @@ namespace DuploCloud.Pulumi
     ///         SubnetCidr = 24,
     ///     });
     /// 
-    ///     var nonprodSettings = new Duplocloud.InfrastructureSetting("nonprod_settings", new()
+    ///     var nonprodSettings = new Pulumi.InfrastructureSetting("nonprod_settings", new()
     ///     {
     ///         InfraName = nonprodInfra.InfraName,
     ///         Settings = new[]
     ///         {
-    ///             new Duplocloud.Inputs.InfrastructureSettingSettingArgs
+    ///             new Pulumi.Inputs.InfrastructureSettingSettingArgs
     ///             {
     ///                 Key = "EnableClusterAutoscaler",
     ///                 Value = "true",
@@ -184,11 +184,11 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var nonprodInfra = new Duplocloud.Infrastructure("nonprod_infra", new()
+    ///     var nonprodInfra = new Pulumi.Infrastructure("nonprod_infra", new()
     ///     {
     ///         InfraName = "nonprod",
     ///         Cloud = 0,
@@ -199,22 +199,22 @@ namespace DuploCloud.Pulumi
     ///         SubnetCidr = 24,
     ///     });
     /// 
-    ///     var nonprodSettings = new Duplocloud.InfrastructureSetting("nonprod_settings", new()
+    ///     var nonprodSettings = new Pulumi.InfrastructureSetting("nonprod_settings", new()
     ///     {
     ///         InfraName = nonprodInfra.InfraName,
     ///         Settings = new[]
     ///         {
-    ///             new Duplocloud.Inputs.InfrastructureSettingSettingArgs
+    ///             new Pulumi.Inputs.InfrastructureSettingSettingArgs
     ///             {
     ///                 Key = "EnableClusterAutoscaler",
     ///                 Value = "true",
     ///             },
-    ///             new Duplocloud.Inputs.InfrastructureSettingSettingArgs
+    ///             new Pulumi.Inputs.InfrastructureSettingSettingArgs
     ///             {
     ///                 Key = "EnableAwsAlbIngress",
     ///                 Value = "true",
     ///             },
-    ///             new Duplocloud.Inputs.InfrastructureSettingSettingArgs
+    ///             new Pulumi.Inputs.InfrastructureSettingSettingArgs
     ///             {
     ///                 Key = "EnableSecretCsiDriver",
     ///                 Value = "true",
@@ -231,11 +231,11 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var infra = new Duplocloud.Infrastructure("infra", new()
+    ///     var infra = new Pulumi.Infrastructure("infra", new()
     ///     {
     ///         InfraName = "prod",
     ///         Cloud = 0,
@@ -255,11 +255,11 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var infra = new Duplocloud.Infrastructure("infra", new()
+    ///     var infra = new Pulumi.Infrastructure("infra", new()
     ///     {
     ///         InfraName = "prod",
     ///         Cloud = 0,
@@ -280,7 +280,7 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -303,7 +303,7 @@ namespace DuploCloud.Pulumi
     ///             { "value", "true" },
     ///         },
     ///     };
-    ///     var nonprodInfra = new Duplocloud.Infrastructure("nonprod_infra", new()
+    ///     var nonprodInfra = new Pulumi.Infrastructure("nonprod_infra", new()
     ///     {
     ///         InfraName = "nonprod",
     ///         Cloud = 0,
@@ -314,11 +314,11 @@ namespace DuploCloud.Pulumi
     ///         SubnetCidr = 22,
     ///     });
     /// 
-    ///     var nonprodSettings = new Duplocloud.InfrastructureSetting("nonprod_settings", new()
+    ///     var nonprodSettings = new Pulumi.InfrastructureSetting("nonprod_settings", new()
     ///     {
     ///         Settings = infraSettings.Select((v, k) =&gt; new { Key = k, Value = v }).Select(entry =&gt; 
     ///         {
-    ///             return new Duplocloud.Inputs.InfrastructureSettingSettingArgs
+    ///             return new Pulumi.Inputs.InfrastructureSettingSettingArgs
     ///             {
     ///                 Key = entry.Value.Key,
     ///                 Value = entry.Value.Value,
@@ -352,7 +352,7 @@ namespace DuploCloud.Pulumi
     public partial class Infrastructure : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The cloud account ID.
+        /// The cloud account ID — use this for Azure (Subscription ID) and Google Cloud (Project ID). Not applicable for AWS.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
@@ -432,6 +432,12 @@ namespace DuploCloud.Pulumi
         public Output<bool> IsServerlessKubernetes { get; private set; } = null!;
 
         /// <summary>
+        /// The NAT IPs for the subnet.
+        /// </summary>
+        [Output("natIps")]
+        public Output<ImmutableArray<string>> NatIps { get; private set; } = null!;
+
+        /// <summary>
         /// The private subnets for the VPC or VNet.
         /// </summary>
         [Output("privateSubnets")]
@@ -480,7 +486,7 @@ namespace DuploCloud.Pulumi
         public Output<string> SubnetAddressPrefix { get; private set; } = null!;
 
         /// <summary>
-        /// The CIDR subnet size (in bits) for the automatically created subnets. This is applicable only for AWS.
+        /// The CIDR subnet size (in bits) for the automatically created subnets.
         /// </summary>
         [Output("subnetCidr")]
         public Output<int?> SubnetCidr { get; private set; } = null!;
@@ -563,7 +569,7 @@ namespace DuploCloud.Pulumi
     public sealed class InfrastructureArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The cloud account ID.
+        /// The cloud account ID — use this for Azure (Subscription ID) and Google Cloud (Project ID). Not applicable for AWS.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -668,7 +674,7 @@ namespace DuploCloud.Pulumi
         public Input<string>? SubnetAddressPrefix { get; set; }
 
         /// <summary>
-        /// The CIDR subnet size (in bits) for the automatically created subnets. This is applicable only for AWS.
+        /// The CIDR subnet size (in bits) for the automatically created subnets.
         /// </summary>
         [Input("subnetCidr")]
         public Input<int>? SubnetCidr { get; set; }
@@ -694,7 +700,7 @@ namespace DuploCloud.Pulumi
     public sealed class InfrastructureState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The cloud account ID.
+        /// The cloud account ID — use this for Azure (Subscription ID) and Google Cloud (Project ID). Not applicable for AWS.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -786,6 +792,18 @@ namespace DuploCloud.Pulumi
         [Input("isServerlessKubernetes")]
         public Input<bool>? IsServerlessKubernetes { get; set; }
 
+        [Input("natIps")]
+        private InputList<string>? _natIps;
+
+        /// <summary>
+        /// The NAT IPs for the subnet.
+        /// </summary>
+        public InputList<string> NatIps
+        {
+            get => _natIps ?? (_natIps = new InputList<string>());
+            set => _natIps = value;
+        }
+
         [Input("privateSubnets")]
         private InputList<Inputs.InfrastructurePrivateSubnetGetArgs>? _privateSubnets;
 
@@ -865,7 +883,7 @@ namespace DuploCloud.Pulumi
         public Input<string>? SubnetAddressPrefix { get; set; }
 
         /// <summary>
-        /// The CIDR subnet size (in bits) for the automatically created subnets. This is applicable only for AWS.
+        /// The CIDR subnet size (in bits) for the automatically created subnets.
         /// </summary>
         [Input("subnetCidr")]
         public Input<int>? SubnetCidr { get; set; }

@@ -86,10 +86,14 @@ type GcpSqlDatabaseInstance struct {
 
 	// Connection name of the database.
 	ConnectionName pulumi.StringOutput `pulumi:"connectionName"`
+	// List of database flags to be set on the database instance. Please refer to the [Database Flags Documentation](https://cloud.google.com/sql/docs/mysql/flags) for more details on available flags.
+	DatabaseFlags GcpSqlDatabaseInstanceDatabaseFlagArrayOutput `pulumi:"databaseFlags"`
 	// The MySQL, PostgreSQL or SQL Server version to use.Supported values include `MYSQL_5_6`,`MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`,`POSTGRES_10`,`POSTGRES_11`,`POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`, `POSTGRES_15`,`POSTGRES_16`,`POSTGRES_17`, `SQLSERVER_2017_STANDARD`,`SQLSERVER_2017_ENTERPRISE`,`SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`,`SQLSERVER_2019_STANDARD`, `SQLSERVER_2019_ENTERPRISE`, `SQLSERVER_2019_EXPRESS`,`SQLSERVER_2019_WEB`,`SQLSERVER_2022_WEB`,`SQLSERVER_2022_EXPRESS`,`SQLSERVER_2022_ENTERPRISE`,`SQLSERVER_2022_STANDARD`.[Database Version Policies](https://cloud.google.com/sql/docs/db-versions) includes an up-to-date reference of supported versions.
 	DatabaseVersion pulumi.StringOutput `pulumi:"databaseVersion"`
 	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
 	DiskSize pulumi.IntOutput `pulumi:"diskSize"`
+	// Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS Defaults to `ENTERPRISE`.
+	Edition pulumi.StringPtrOutput `pulumi:"edition"`
 	// The full name of the sql database.
 	Fullname pulumi.StringOutput `pulumi:"fullname"`
 	// List of IP addresses of the database.
@@ -153,10 +157,14 @@ func GetGcpSqlDatabaseInstance(ctx *pulumi.Context,
 type gcpSqlDatabaseInstanceState struct {
 	// Connection name of the database.
 	ConnectionName *string `pulumi:"connectionName"`
+	// List of database flags to be set on the database instance. Please refer to the [Database Flags Documentation](https://cloud.google.com/sql/docs/mysql/flags) for more details on available flags.
+	DatabaseFlags []GcpSqlDatabaseInstanceDatabaseFlag `pulumi:"databaseFlags"`
 	// The MySQL, PostgreSQL or SQL Server version to use.Supported values include `MYSQL_5_6`,`MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`,`POSTGRES_10`,`POSTGRES_11`,`POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`, `POSTGRES_15`,`POSTGRES_16`,`POSTGRES_17`, `SQLSERVER_2017_STANDARD`,`SQLSERVER_2017_ENTERPRISE`,`SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`,`SQLSERVER_2019_STANDARD`, `SQLSERVER_2019_ENTERPRISE`, `SQLSERVER_2019_EXPRESS`,`SQLSERVER_2019_WEB`,`SQLSERVER_2022_WEB`,`SQLSERVER_2022_EXPRESS`,`SQLSERVER_2022_ENTERPRISE`,`SQLSERVER_2022_STANDARD`.[Database Version Policies](https://cloud.google.com/sql/docs/db-versions) includes an up-to-date reference of supported versions.
 	DatabaseVersion *string `pulumi:"databaseVersion"`
 	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
 	DiskSize *int `pulumi:"diskSize"`
+	// Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS Defaults to `ENTERPRISE`.
+	Edition *string `pulumi:"edition"`
 	// The full name of the sql database.
 	Fullname *string `pulumi:"fullname"`
 	// List of IP addresses of the database.
@@ -182,10 +190,14 @@ type gcpSqlDatabaseInstanceState struct {
 type GcpSqlDatabaseInstanceState struct {
 	// Connection name of the database.
 	ConnectionName pulumi.StringPtrInput
+	// List of database flags to be set on the database instance. Please refer to the [Database Flags Documentation](https://cloud.google.com/sql/docs/mysql/flags) for more details on available flags.
+	DatabaseFlags GcpSqlDatabaseInstanceDatabaseFlagArrayInput
 	// The MySQL, PostgreSQL or SQL Server version to use.Supported values include `MYSQL_5_6`,`MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`,`POSTGRES_10`,`POSTGRES_11`,`POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`, `POSTGRES_15`,`POSTGRES_16`,`POSTGRES_17`, `SQLSERVER_2017_STANDARD`,`SQLSERVER_2017_ENTERPRISE`,`SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`,`SQLSERVER_2019_STANDARD`, `SQLSERVER_2019_ENTERPRISE`, `SQLSERVER_2019_EXPRESS`,`SQLSERVER_2019_WEB`,`SQLSERVER_2022_WEB`,`SQLSERVER_2022_EXPRESS`,`SQLSERVER_2022_ENTERPRISE`,`SQLSERVER_2022_STANDARD`.[Database Version Policies](https://cloud.google.com/sql/docs/db-versions) includes an up-to-date reference of supported versions.
 	DatabaseVersion pulumi.StringPtrInput
 	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
 	DiskSize pulumi.IntPtrInput
+	// Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS Defaults to `ENTERPRISE`.
+	Edition pulumi.StringPtrInput
 	// The full name of the sql database.
 	Fullname pulumi.StringPtrInput
 	// List of IP addresses of the database.
@@ -213,10 +225,14 @@ func (GcpSqlDatabaseInstanceState) ElementType() reflect.Type {
 }
 
 type gcpSqlDatabaseInstanceArgs struct {
+	// List of database flags to be set on the database instance. Please refer to the [Database Flags Documentation](https://cloud.google.com/sql/docs/mysql/flags) for more details on available flags.
+	DatabaseFlags []GcpSqlDatabaseInstanceDatabaseFlag `pulumi:"databaseFlags"`
 	// The MySQL, PostgreSQL or SQL Server version to use.Supported values include `MYSQL_5_6`,`MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`,`POSTGRES_10`,`POSTGRES_11`,`POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`, `POSTGRES_15`,`POSTGRES_16`,`POSTGRES_17`, `SQLSERVER_2017_STANDARD`,`SQLSERVER_2017_ENTERPRISE`,`SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`,`SQLSERVER_2019_STANDARD`, `SQLSERVER_2019_ENTERPRISE`, `SQLSERVER_2019_EXPRESS`,`SQLSERVER_2019_WEB`,`SQLSERVER_2022_WEB`,`SQLSERVER_2022_EXPRESS`,`SQLSERVER_2022_ENTERPRISE`,`SQLSERVER_2022_STANDARD`.[Database Version Policies](https://cloud.google.com/sql/docs/db-versions) includes an up-to-date reference of supported versions.
 	DatabaseVersion string `pulumi:"databaseVersion"`
 	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
 	DiskSize *int `pulumi:"diskSize"`
+	// Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS Defaults to `ENTERPRISE`.
+	Edition *string `pulumi:"edition"`
 	// Map of string keys and values that can be used to organize and categorize this resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The short name of the sql database.  Duplo will add a prefix to the name.  You can retrieve the full name from the `fullname` attribute.
@@ -235,10 +251,14 @@ type gcpSqlDatabaseInstanceArgs struct {
 
 // The set of arguments for constructing a GcpSqlDatabaseInstance resource.
 type GcpSqlDatabaseInstanceArgs struct {
+	// List of database flags to be set on the database instance. Please refer to the [Database Flags Documentation](https://cloud.google.com/sql/docs/mysql/flags) for more details on available flags.
+	DatabaseFlags GcpSqlDatabaseInstanceDatabaseFlagArrayInput
 	// The MySQL, PostgreSQL or SQL Server version to use.Supported values include `MYSQL_5_6`,`MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`,`POSTGRES_10`,`POSTGRES_11`,`POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`, `POSTGRES_15`,`POSTGRES_16`,`POSTGRES_17`, `SQLSERVER_2017_STANDARD`,`SQLSERVER_2017_ENTERPRISE`,`SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`,`SQLSERVER_2019_STANDARD`, `SQLSERVER_2019_ENTERPRISE`, `SQLSERVER_2019_EXPRESS`,`SQLSERVER_2019_WEB`,`SQLSERVER_2022_WEB`,`SQLSERVER_2022_EXPRESS`,`SQLSERVER_2022_ENTERPRISE`,`SQLSERVER_2022_STANDARD`.[Database Version Policies](https://cloud.google.com/sql/docs/db-versions) includes an up-to-date reference of supported versions.
 	DatabaseVersion pulumi.StringInput
 	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
 	DiskSize pulumi.IntPtrInput
+	// Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS Defaults to `ENTERPRISE`.
+	Edition pulumi.StringPtrInput
 	// Map of string keys and values that can be used to organize and categorize this resource.
 	Labels pulumi.StringMapInput
 	// The short name of the sql database.  Duplo will add a prefix to the name.  You can retrieve the full name from the `fullname` attribute.
@@ -347,6 +367,11 @@ func (o GcpSqlDatabaseInstanceOutput) ConnectionName() pulumi.StringOutput {
 	return o.ApplyT(func(v *GcpSqlDatabaseInstance) pulumi.StringOutput { return v.ConnectionName }).(pulumi.StringOutput)
 }
 
+// List of database flags to be set on the database instance. Please refer to the [Database Flags Documentation](https://cloud.google.com/sql/docs/mysql/flags) for more details on available flags.
+func (o GcpSqlDatabaseInstanceOutput) DatabaseFlags() GcpSqlDatabaseInstanceDatabaseFlagArrayOutput {
+	return o.ApplyT(func(v *GcpSqlDatabaseInstance) GcpSqlDatabaseInstanceDatabaseFlagArrayOutput { return v.DatabaseFlags }).(GcpSqlDatabaseInstanceDatabaseFlagArrayOutput)
+}
+
 // The MySQL, PostgreSQL or SQL Server version to use.Supported values include `MYSQL_5_6`,`MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`,`POSTGRES_10`,`POSTGRES_11`,`POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`, `POSTGRES_15`,`POSTGRES_16`,`POSTGRES_17`, `SQLSERVER_2017_STANDARD`,`SQLSERVER_2017_ENTERPRISE`,`SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`,`SQLSERVER_2019_STANDARD`, `SQLSERVER_2019_ENTERPRISE`, `SQLSERVER_2019_EXPRESS`,`SQLSERVER_2019_WEB`,`SQLSERVER_2022_WEB`,`SQLSERVER_2022_EXPRESS`,`SQLSERVER_2022_ENTERPRISE`,`SQLSERVER_2022_STANDARD`.[Database Version Policies](https://cloud.google.com/sql/docs/db-versions) includes an up-to-date reference of supported versions.
 func (o GcpSqlDatabaseInstanceOutput) DatabaseVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *GcpSqlDatabaseInstance) pulumi.StringOutput { return v.DatabaseVersion }).(pulumi.StringOutput)
@@ -355,6 +380,11 @@ func (o GcpSqlDatabaseInstanceOutput) DatabaseVersion() pulumi.StringOutput {
 // The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
 func (o GcpSqlDatabaseInstanceOutput) DiskSize() pulumi.IntOutput {
 	return o.ApplyT(func(v *GcpSqlDatabaseInstance) pulumi.IntOutput { return v.DiskSize }).(pulumi.IntOutput)
+}
+
+// Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS Defaults to `ENTERPRISE`.
+func (o GcpSqlDatabaseInstanceOutput) Edition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpSqlDatabaseInstance) pulumi.StringPtrOutput { return v.Edition }).(pulumi.StringPtrOutput)
 }
 
 // The full name of the sql database.

@@ -94,6 +94,8 @@ __all__ = [
     'AwsLambdaFunctionEventConfigDestinationConfigOnSuccess',
     'AwsLambdaFunctionImageConfig',
     'AwsLambdaFunctionTracingConfig',
+    'AwsLaunchTemplateBlockDeviceMapping',
+    'AwsLaunchTemplateBlockDeviceMappingEbs',
     'AwsLbListenerRuleAction',
     'AwsLbListenerRuleActionAuthenticateCognito',
     'AwsLbListenerRuleActionAuthenticateOidc',
@@ -113,6 +115,9 @@ __all__ = [
     'AwsLbTargetGroupHealthCheck',
     'AwsLoadBalancerListenerCertificate',
     'AwsLoadBalancerListenerDefaultAction',
+    'AwsLoadBalancerListenerDefaultActionFixedResponse',
+    'AwsLoadBalancerListenerDefaultActionForward',
+    'AwsLoadBalancerListenerDefaultActionRedirect',
     'AwsLoadBalancerTag',
     'AwsMwaaEnvironmentLastUpdated',
     'AwsMwaaEnvironmentLastUpdatedError',
@@ -133,10 +138,17 @@ __all__ = [
     'AwsTimestreamwriteTableRetentionProperties',
     'AwsTimestreamwriteTableTag',
     'AzureAvailabilitySetVirtualMachine',
+    'AzureCosmosDbAccountBackupPolicy',
+    'AzureCosmosDbAccountCapability',
+    'AzureCosmosDbAccountConsistencyPolicy',
+    'AzureCosmosDbAccountGeoLocation',
+    'AzureCosmosDbAccountVirtualNetworkRule',
     'AzureK8NodePoolNodeLabel',
     'AzureK8NodePoolScalePriority',
+    'AzureK8sClusterActiveDirectoryConfig',
     'AzureMssqlDatabaseSku',
     'AzureMssqlElasticpoolSku',
+    'AzureMssqlServerActiveDirectoryAdministrator',
     'AzurePrivateEndpointPrivateLinkServiceConnection',
     'AzureVaultBackupPolicyBackup',
     'AzureVaultBackupPolicyRetentionDaily',
@@ -169,14 +181,19 @@ __all__ = [
     'AzureVirtualMachineVolume',
     'AzureVmMaintenanceConfigurationWindow',
     'ByohTag',
+    'DuploServiceInitContainerDockerImage',
     'DuploServiceLbconfigsLbconfig',
     'DuploServiceLbconfigsLbconfigExtraSelectorLabel',
     'DuploServiceLbconfigsLbconfigHealthCheck',
     'DuploServiceTag',
     'EcacheInstanceLogDeliveryConfiguration',
     'EcsServiceCapacityProviderStrategy',
+    'EcsServiceDeploymentConfiguration',
+    'EcsServiceDeploymentConfigurationAlarm',
     'EcsServiceLoadBalancer',
     'EcsServiceLoadBalancerHealthCheckConfig',
+    'EcsServicePlacementConstraint',
+    'EcsServicePlacementStrategy',
     'EcsTaskDefinitionInferenceAccelerator',
     'EcsTaskDefinitionPlacementConstraint',
     'EcsTaskDefinitionProxyConfiguration',
@@ -203,6 +220,7 @@ __all__ = [
     'GcpSchedulerJobHttpTargetOauthToken',
     'GcpSchedulerJobHttpTargetOidcToken',
     'GcpSchedulerJobPubsubTarget',
+    'GcpSqlDatabaseInstanceDatabaseFlag',
     'GcpStorageBucketV2DefaultEncryption',
     'GcpTenantSecurityRulePortsAndProtocol',
     'InfrastructureAllSetting',
@@ -631,6 +649,8 @@ __all__ = [
     'S3BucketTag',
     'TenantConfigMetadata',
     'TenantConfigSetting',
+    'TenantKmsKm',
+    'TenantKmsUnspecifiedKmsKey',
     'TenantPolicy',
     'TenantSecretTag',
     'TenantTag',
@@ -650,6 +670,11 @@ __all__ = [
     'GetAwsLbTargetGroupsTargetGroupHealthCheckMatcherResult',
     'GetAwsSsmParametersParameterResult',
     'GetAzureAvailabilitySetVirtualMachineResult',
+    'GetAzureCosmosDbAccountBackupPolicyResult',
+    'GetAzureCosmosDbAccountCapabilityResult',
+    'GetAzureCosmosDbAccountConsistencyPolicyResult',
+    'GetAzureCosmosDbAccountGeoLocationResult',
+    'GetAzureCosmosDbAccountVirtualNetworkRuleResult',
     'GetDuploServiceLbconfigsServiceResult',
     'GetDuploServiceLbconfigsServiceLbconfigResult',
     'GetDuploServiceLbconfigsServiceLbconfigExtraSelectorLabelResult',
@@ -659,12 +684,20 @@ __all__ = [
     'GetDuploServicesServiceResult',
     'GetDuploServicesServiceTagResult',
     'GetEcsServiceCapacityProviderStrategyResult',
+    'GetEcsServiceDeploymentConfigurationResult',
+    'GetEcsServiceDeploymentConfigurationAlarmResult',
     'GetEcsServiceLoadBalancerResult',
     'GetEcsServiceLoadBalancerHealthCheckConfigResult',
+    'GetEcsServicePlacementConstraintResult',
+    'GetEcsServicePlacementStrategyResult',
     'GetEcsServicesServiceResult',
     'GetEcsServicesServiceCapacityProviderStrategyResult',
+    'GetEcsServicesServiceDeploymentConfigurationResult',
+    'GetEcsServicesServiceDeploymentConfigurationAlarmResult',
     'GetEcsServicesServiceLoadBalancerResult',
     'GetEcsServicesServiceLoadBalancerHealthCheckConfigResult',
+    'GetEcsServicesServicePlacementConstraintResult',
+    'GetEcsServicesServicePlacementStrategyResult',
     'GetEcsTaskDefinitionInferenceAcceleratorResult',
     'GetEcsTaskDefinitionPlacementConstraintResult',
     'GetEcsTaskDefinitionProxyConfigurationResult',
@@ -1120,6 +1153,8 @@ __all__ = [
     'GetPlansDataKubernetesConfigResult',
     'GetPlansDataMetadataResult',
     'GetPlansDataWafInfoResult',
+    'GetSystemFeaturesAppConfigResult',
+    'GetSystemFeaturesEksVersionResult',
     'GetTenantAwsKmsKeysKeyResult',
     'GetTenantConfigMetadataResult',
     'GetTenantPolicyResult',
@@ -3819,12 +3854,18 @@ class AwsCloudfrontDistributionOriginS3OriginConfig(dict):
 
     def __init__(__self__, *,
                  origin_access_identity: Optional[str] = None):
+        """
+        :param str origin_access_identity: The CloudFront origin access identity to associate with the origin. This is used to restrict access to the S3 bucket. Duplo assigns this automatically when the "use*origin*access_identity" is set to true. Any explicit value set here will be ignored and duplo created oai will be used.
+        """
         if origin_access_identity is not None:
             pulumi.set(__self__, "origin_access_identity", origin_access_identity)
 
     @property
     @pulumi.getter(name="originAccessIdentity")
     def origin_access_identity(self) -> Optional[str]:
+        """
+        The CloudFront origin access identity to associate with the origin. This is used to restrict access to the S3 bucket. Duplo assigns this automatically when the "use*origin*access_identity" is set to true. Any explicit value set here will be ignored and duplo created oai will be used.
+        """
         return pulumi.get(self, "origin_access_identity")
 
 
@@ -5468,6 +5509,233 @@ class AwsLambdaFunctionTracingConfig(dict):
 
 
 @pulumi.output_type
+class AwsLaunchTemplateBlockDeviceMapping(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deviceName":
+            suggest = "device_name"
+        elif key == "noDevice":
+            suggest = "no_device"
+        elif key == "virtualName":
+            suggest = "virtual_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AwsLaunchTemplateBlockDeviceMapping. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AwsLaunchTemplateBlockDeviceMapping.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AwsLaunchTemplateBlockDeviceMapping.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 device_name: str,
+                 ebs: Optional['outputs.AwsLaunchTemplateBlockDeviceMappingEbs'] = None,
+                 no_device: Optional[str] = None,
+                 virtual_name: Optional[str] = None):
+        """
+        :param str device_name: The name of the device to mount
+        :param 'AwsLaunchTemplateBlockDeviceMappingEbsArgs' ebs: Configure EBS volume properties.
+        :param str no_device: Suppresses the specified device included in the AMI's block device mapping.
+        :param str virtual_name: The virtual device name (ephemeralN). Instance store volumes are numbered starting from 0. An instance type with 2 available instance store volumes can specify mappings for ephemeral0 and ephemeral1. The number of available instance store volumes depends on the instance type. After you connect to the instance, you must mount the volume.
+        """
+        pulumi.set(__self__, "device_name", device_name)
+        if ebs is not None:
+            pulumi.set(__self__, "ebs", ebs)
+        if no_device is not None:
+            pulumi.set(__self__, "no_device", no_device)
+        if virtual_name is not None:
+            pulumi.set(__self__, "virtual_name", virtual_name)
+
+    @property
+    @pulumi.getter(name="deviceName")
+    def device_name(self) -> str:
+        """
+        The name of the device to mount
+        """
+        return pulumi.get(self, "device_name")
+
+    @property
+    @pulumi.getter
+    def ebs(self) -> Optional['outputs.AwsLaunchTemplateBlockDeviceMappingEbs']:
+        """
+        Configure EBS volume properties.
+        """
+        return pulumi.get(self, "ebs")
+
+    @property
+    @pulumi.getter(name="noDevice")
+    def no_device(self) -> Optional[str]:
+        """
+        Suppresses the specified device included in the AMI's block device mapping.
+        """
+        return pulumi.get(self, "no_device")
+
+    @property
+    @pulumi.getter(name="virtualName")
+    def virtual_name(self) -> Optional[str]:
+        """
+        The virtual device name (ephemeralN). Instance store volumes are numbered starting from 0. An instance type with 2 available instance store volumes can specify mappings for ephemeral0 and ephemeral1. The number of available instance store volumes depends on the instance type. After you connect to the instance, you must mount the volume.
+        """
+        return pulumi.get(self, "virtual_name")
+
+
+@pulumi.output_type
+class AwsLaunchTemplateBlockDeviceMappingEbs(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deleteOnTermination":
+            suggest = "delete_on_termination"
+        elif key == "kmsKeyId":
+            suggest = "kms_key_id"
+        elif key == "snapshotId":
+            suggest = "snapshot_id"
+        elif key == "volumeInitializationRate":
+            suggest = "volume_initialization_rate"
+        elif key == "volumeSize":
+            suggest = "volume_size"
+        elif key == "volumeType":
+            suggest = "volume_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AwsLaunchTemplateBlockDeviceMappingEbs. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AwsLaunchTemplateBlockDeviceMappingEbs.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AwsLaunchTemplateBlockDeviceMappingEbs.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 delete_on_termination: Optional[bool] = None,
+                 encrypted: Optional[bool] = None,
+                 iops: Optional[int] = None,
+                 kms_key_id: Optional[str] = None,
+                 snapshot_id: Optional[str] = None,
+                 throughput: Optional[int] = None,
+                 volume_initialization_rate: Optional[int] = None,
+                 volume_size: Optional[int] = None,
+                 volume_type: Optional[str] = None):
+        """
+        :param bool delete_on_termination: Whether the volume should be destroyed on instance termination Defaults to `true`.
+        :param bool encrypted: Enables EBS encryption on the volume. Cannot be used with snapshot_id Defaults to `false`.
+        :param int iops: The amount of provisioned IOPS. This must be set with a volume_type of 'io1/io2/gp3'
+        :param str kms_key_id: The ARN of the KMS Key to use when encrypting the volume (if encrypted is true).
+        :param str snapshot_id: The Snapshot ID to mount. Should not be used if encrypted is true
+        :param int throughput: The throughput to provision for a 'gp3' volume in MiB/s. Minumum value of 125 and maximum of 1000.
+        :param int volume_initialization_rate: The volume initialization rate in MiB/s, with a minimum of 100 MiB/s and maximum of 300 MiB/s.
+        :param int volume_size: The size of the volume in gigabytes.\\n
+               								gp2 and gp3: 1 - 16,384 GiB\\n+
+               								io1: 4 - 16,384 GiB
+               								io2: 4 - 65,536 GiB
+               								st1 and sc1: 125 - 16,384 GiB
+               								standard: 1 - 1024 GiB
+        :param str volume_type: The volume type. Can be one of standard, gp2, gp3, io1, io2, sc1 or st1
+        """
+        if delete_on_termination is not None:
+            pulumi.set(__self__, "delete_on_termination", delete_on_termination)
+        if encrypted is not None:
+            pulumi.set(__self__, "encrypted", encrypted)
+        if iops is not None:
+            pulumi.set(__self__, "iops", iops)
+        if kms_key_id is not None:
+            pulumi.set(__self__, "kms_key_id", kms_key_id)
+        if snapshot_id is not None:
+            pulumi.set(__self__, "snapshot_id", snapshot_id)
+        if throughput is not None:
+            pulumi.set(__self__, "throughput", throughput)
+        if volume_initialization_rate is not None:
+            pulumi.set(__self__, "volume_initialization_rate", volume_initialization_rate)
+        if volume_size is not None:
+            pulumi.set(__self__, "volume_size", volume_size)
+        if volume_type is not None:
+            pulumi.set(__self__, "volume_type", volume_type)
+
+    @property
+    @pulumi.getter(name="deleteOnTermination")
+    def delete_on_termination(self) -> Optional[bool]:
+        """
+        Whether the volume should be destroyed on instance termination Defaults to `true`.
+        """
+        return pulumi.get(self, "delete_on_termination")
+
+    @property
+    @pulumi.getter
+    def encrypted(self) -> Optional[bool]:
+        """
+        Enables EBS encryption on the volume. Cannot be used with snapshot_id Defaults to `false`.
+        """
+        return pulumi.get(self, "encrypted")
+
+    @property
+    @pulumi.getter
+    def iops(self) -> Optional[int]:
+        """
+        The amount of provisioned IOPS. This must be set with a volume_type of 'io1/io2/gp3'
+        """
+        return pulumi.get(self, "iops")
+
+    @property
+    @pulumi.getter(name="kmsKeyId")
+    def kms_key_id(self) -> Optional[str]:
+        """
+        The ARN of the KMS Key to use when encrypting the volume (if encrypted is true).
+        """
+        return pulumi.get(self, "kms_key_id")
+
+    @property
+    @pulumi.getter(name="snapshotId")
+    def snapshot_id(self) -> Optional[str]:
+        """
+        The Snapshot ID to mount. Should not be used if encrypted is true
+        """
+        return pulumi.get(self, "snapshot_id")
+
+    @property
+    @pulumi.getter
+    def throughput(self) -> Optional[int]:
+        """
+        The throughput to provision for a 'gp3' volume in MiB/s. Minumum value of 125 and maximum of 1000.
+        """
+        return pulumi.get(self, "throughput")
+
+    @property
+    @pulumi.getter(name="volumeInitializationRate")
+    def volume_initialization_rate(self) -> Optional[int]:
+        """
+        The volume initialization rate in MiB/s, with a minimum of 100 MiB/s and maximum of 300 MiB/s.
+        """
+        return pulumi.get(self, "volume_initialization_rate")
+
+    @property
+    @pulumi.getter(name="volumeSize")
+    def volume_size(self) -> Optional[int]:
+        """
+        The size of the volume in gigabytes.\\n
+        								gp2 and gp3: 1 - 16,384 GiB\\n+
+        								io1: 4 - 16,384 GiB
+        								io2: 4 - 65,536 GiB
+        								st1 and sc1: 125 - 16,384 GiB
+        								standard: 1 - 1024 GiB
+        """
+        return pulumi.get(self, "volume_size")
+
+    @property
+    @pulumi.getter(name="volumeType")
+    def volume_type(self) -> Optional[str]:
+        """
+        The volume type. Can be one of standard, gp2, gp3, io1, io2, sc1 or st1
+        """
+        return pulumi.get(self, "volume_type")
+
+
+@pulumi.output_type
 class AwsLbListenerRuleAction(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -6566,8 +6834,8 @@ class AwsLoadBalancerListenerDefaultAction(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "targetGroupArn":
-            suggest = "target_group_arn"
+        if key == "fixedResponse":
+            suggest = "fixed_response"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AwsLoadBalancerListenerDefaultAction. Access the value via the '{suggest}' property getter instead.")
@@ -6581,30 +6849,200 @@ class AwsLoadBalancerListenerDefaultAction(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 order: Optional[int] = None,
-                 target_group_arn: Optional[str] = None,
-                 type: Optional[str] = None):
-        if order is not None:
-            pulumi.set(__self__, "order", order)
-        if target_group_arn is not None:
-            pulumi.set(__self__, "target_group_arn", target_group_arn)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
+                 fixed_response: Optional['outputs.AwsLoadBalancerListenerDefaultActionFixedResponse'] = None,
+                 forward: Optional['outputs.AwsLoadBalancerListenerDefaultActionForward'] = None,
+                 redirect: Optional['outputs.AwsLoadBalancerListenerDefaultActionRedirect'] = None):
+        if fixed_response is not None:
+            pulumi.set(__self__, "fixed_response", fixed_response)
+        if forward is not None:
+            pulumi.set(__self__, "forward", forward)
+        if redirect is not None:
+            pulumi.set(__self__, "redirect", redirect)
+
+    @property
+    @pulumi.getter(name="fixedResponse")
+    def fixed_response(self) -> Optional['outputs.AwsLoadBalancerListenerDefaultActionFixedResponse']:
+        return pulumi.get(self, "fixed_response")
 
     @property
     @pulumi.getter
-    def order(self) -> Optional[int]:
-        return pulumi.get(self, "order")
+    def forward(self) -> Optional['outputs.AwsLoadBalancerListenerDefaultActionForward']:
+        return pulumi.get(self, "forward")
+
+    @property
+    @pulumi.getter
+    def redirect(self) -> Optional['outputs.AwsLoadBalancerListenerDefaultActionRedirect']:
+        return pulumi.get(self, "redirect")
+
+
+@pulumi.output_type
+class AwsLoadBalancerListenerDefaultActionFixedResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "contentType":
+            suggest = "content_type"
+        elif key == "messageBody":
+            suggest = "message_body"
+        elif key == "statusCode":
+            suggest = "status_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AwsLoadBalancerListenerDefaultActionFixedResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AwsLoadBalancerListenerDefaultActionFixedResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AwsLoadBalancerListenerDefaultActionFixedResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 content_type: Optional[str] = None,
+                 message_body: Optional[str] = None,
+                 status_code: Optional[str] = None):
+        """
+        :param str content_type: Defaults to `text/plain`.
+        :param str status_code: Defaults to `200`.
+        """
+        if content_type is not None:
+            pulumi.set(__self__, "content_type", content_type)
+        if message_body is not None:
+            pulumi.set(__self__, "message_body", message_body)
+        if status_code is not None:
+            pulumi.set(__self__, "status_code", status_code)
+
+    @property
+    @pulumi.getter(name="contentType")
+    def content_type(self) -> Optional[str]:
+        """
+        Defaults to `text/plain`.
+        """
+        return pulumi.get(self, "content_type")
+
+    @property
+    @pulumi.getter(name="messageBody")
+    def message_body(self) -> Optional[str]:
+        return pulumi.get(self, "message_body")
+
+    @property
+    @pulumi.getter(name="statusCode")
+    def status_code(self) -> Optional[str]:
+        """
+        Defaults to `200`.
+        """
+        return pulumi.get(self, "status_code")
+
+
+@pulumi.output_type
+class AwsLoadBalancerListenerDefaultActionForward(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "targetGroupArn":
+            suggest = "target_group_arn"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AwsLoadBalancerListenerDefaultActionForward. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AwsLoadBalancerListenerDefaultActionForward.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AwsLoadBalancerListenerDefaultActionForward.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 target_group_arn: str):
+        pulumi.set(__self__, "target_group_arn", target_group_arn)
 
     @property
     @pulumi.getter(name="targetGroupArn")
-    def target_group_arn(self) -> Optional[str]:
+    def target_group_arn(self) -> str:
         return pulumi.get(self, "target_group_arn")
+
+
+@pulumi.output_type
+class AwsLoadBalancerListenerDefaultActionRedirect(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "statusCode":
+            suggest = "status_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AwsLoadBalancerListenerDefaultActionRedirect. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AwsLoadBalancerListenerDefaultActionRedirect.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AwsLoadBalancerListenerDefaultActionRedirect.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 port: str,
+                 protocol: str,
+                 status_code: str,
+                 host: Optional[str] = None,
+                 path: Optional[str] = None,
+                 query: Optional[str] = None):
+        """
+        :param str host: Defaults to `#{host}`.
+        :param str path: Defaults to `/#{path}`.
+        :param str query: Defaults to `#{query}`.
+        """
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "status_code", status_code)
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if query is not None:
+            pulumi.set(__self__, "query", query)
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[str]:
-        return pulumi.get(self, "type")
+    def port(self) -> str:
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> str:
+        return pulumi.get(self, "protocol")
+
+    @property
+    @pulumi.getter(name="statusCode")
+    def status_code(self) -> str:
+        return pulumi.get(self, "status_code")
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[str]:
+        """
+        Defaults to `#{host}`.
+        """
+        return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[str]:
+        """
+        Defaults to `/#{path}`.
+        """
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def query(self) -> Optional[str]:
+        """
+        Defaults to `#{query}`.
+        """
+        return pulumi.get(self, "query")
 
 
 @pulumi.output_type
@@ -7343,6 +7781,293 @@ class AzureAvailabilitySetVirtualMachine(dict):
 
 
 @pulumi.output_type
+class AzureCosmosDbAccountBackupPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "backupInterval":
+            suggest = "backup_interval"
+        elif key == "backupRetentionInterval":
+            suggest = "backup_retention_interval"
+        elif key == "backupStorageRedundancy":
+            suggest = "backup_storage_redundancy"
+        elif key == "continuousModeTier":
+            suggest = "continuous_mode_tier"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AzureCosmosDbAccountBackupPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AzureCosmosDbAccountBackupPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AzureCosmosDbAccountBackupPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 backup_interval: Optional[int] = None,
+                 backup_retention_interval: Optional[int] = None,
+                 backup_storage_redundancy: Optional[str] = None,
+                 continuous_mode_tier: Optional[str] = None,
+                 type: Optional[str] = None):
+        """
+        :param int backup_interval: Backup interval in minutes. Can be configured when type is set to Periodic
+        :param int backup_retention_interval: Backup retention interval in hours
+        :param str backup_storage_redundancy: Backup storage redundancy type. Valid values are Geo, Local, Zone. Defaults to Geo.
+        :param str continuous_mode_tier: The continuous mode tier for the Cosmos DB account. This is only applicable if the backup policy type is Continuous.
+        :param str type: The type of backup. Possible values are Periodic and Continuous
+               					> ⚠️ **Note:**:
+               					> Update from Periodic to Continuous type is allowed. To change from Periodic to Continuous resource need to be recreated Defaults to `Periodic`.
+        """
+        if backup_interval is not None:
+            pulumi.set(__self__, "backup_interval", backup_interval)
+        if backup_retention_interval is not None:
+            pulumi.set(__self__, "backup_retention_interval", backup_retention_interval)
+        if backup_storage_redundancy is not None:
+            pulumi.set(__self__, "backup_storage_redundancy", backup_storage_redundancy)
+        if continuous_mode_tier is not None:
+            pulumi.set(__self__, "continuous_mode_tier", continuous_mode_tier)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="backupInterval")
+    def backup_interval(self) -> Optional[int]:
+        """
+        Backup interval in minutes. Can be configured when type is set to Periodic
+        """
+        return pulumi.get(self, "backup_interval")
+
+    @property
+    @pulumi.getter(name="backupRetentionInterval")
+    def backup_retention_interval(self) -> Optional[int]:
+        """
+        Backup retention interval in hours
+        """
+        return pulumi.get(self, "backup_retention_interval")
+
+    @property
+    @pulumi.getter(name="backupStorageRedundancy")
+    def backup_storage_redundancy(self) -> Optional[str]:
+        """
+        Backup storage redundancy type. Valid values are Geo, Local, Zone. Defaults to Geo.
+        """
+        return pulumi.get(self, "backup_storage_redundancy")
+
+    @property
+    @pulumi.getter(name="continuousModeTier")
+    def continuous_mode_tier(self) -> Optional[str]:
+        """
+        The continuous mode tier for the Cosmos DB account. This is only applicable if the backup policy type is Continuous.
+        """
+        return pulumi.get(self, "continuous_mode_tier")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        The type of backup. Possible values are Periodic and Continuous
+        					> ⚠️ **Note:**:
+        					> Update from Periodic to Continuous type is allowed. To change from Periodic to Continuous resource need to be recreated Defaults to `Periodic`.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class AzureCosmosDbAccountCapability(dict):
+    def __init__(__self__, *,
+                 name: str):
+        """
+        :param str name: Name of the Cosmos DB capability, for example, 'EnableServerless'.
+        """
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the Cosmos DB capability, for example, 'EnableServerless'.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class AzureCosmosDbAccountConsistencyPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultConsistencyLevel":
+            suggest = "default_consistency_level"
+        elif key == "maxIntervalInSeconds":
+            suggest = "max_interval_in_seconds"
+        elif key == "maxStalenessPrefix":
+            suggest = "max_staleness_prefix"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AzureCosmosDbAccountConsistencyPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AzureCosmosDbAccountConsistencyPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AzureCosmosDbAccountConsistencyPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 default_consistency_level: Optional[str] = None,
+                 max_interval_in_seconds: Optional[int] = None,
+                 max_staleness_prefix: Optional[int] = None):
+        """
+        :param str default_consistency_level: Specify the default consistency level and configuration settings of the Cosmos DB account. Possible values include: 'Eventual', 'Session', 'BoundedStaleness','Strong', 'ConsistentPrefix'
+        :param int max_interval_in_seconds: When used with the 'Bounded Staleness' consistency level, this value represents the time amount of staleness (in seconds) tolerated. The accepted range for this value is 5 - 86400 (1 day). Required when consistency_level is set to BoundedStaleness.
+        :param int max_staleness_prefix: When used with the 'Bounded Staleness' consistency level, this value represents the number of stale requests tolerated. The accepted range for this value is 10 – 2147483647. Defaults to 100. Required when 'consistency_level' is set to 'BoundedStaleness'
+        """
+        if default_consistency_level is not None:
+            pulumi.set(__self__, "default_consistency_level", default_consistency_level)
+        if max_interval_in_seconds is not None:
+            pulumi.set(__self__, "max_interval_in_seconds", max_interval_in_seconds)
+        if max_staleness_prefix is not None:
+            pulumi.set(__self__, "max_staleness_prefix", max_staleness_prefix)
+
+    @property
+    @pulumi.getter(name="defaultConsistencyLevel")
+    def default_consistency_level(self) -> Optional[str]:
+        """
+        Specify the default consistency level and configuration settings of the Cosmos DB account. Possible values include: 'Eventual', 'Session', 'BoundedStaleness','Strong', 'ConsistentPrefix'
+        """
+        return pulumi.get(self, "default_consistency_level")
+
+    @property
+    @pulumi.getter(name="maxIntervalInSeconds")
+    def max_interval_in_seconds(self) -> Optional[int]:
+        """
+        When used with the 'Bounded Staleness' consistency level, this value represents the time amount of staleness (in seconds) tolerated. The accepted range for this value is 5 - 86400 (1 day). Required when consistency_level is set to BoundedStaleness.
+        """
+        return pulumi.get(self, "max_interval_in_seconds")
+
+    @property
+    @pulumi.getter(name="maxStalenessPrefix")
+    def max_staleness_prefix(self) -> Optional[int]:
+        """
+        When used with the 'Bounded Staleness' consistency level, this value represents the number of stale requests tolerated. The accepted range for this value is 10 – 2147483647. Defaults to 100. Required when 'consistency_level' is set to 'BoundedStaleness'
+        """
+        return pulumi.get(self, "max_staleness_prefix")
+
+
+@pulumi.output_type
+class AzureCosmosDbAccountGeoLocation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "failoverPriority":
+            suggest = "failover_priority"
+        elif key == "locationName":
+            suggest = "location_name"
+        elif key == "isZoneRedundant":
+            suggest = "is_zone_redundant"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AzureCosmosDbAccountGeoLocation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AzureCosmosDbAccountGeoLocation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AzureCosmosDbAccountGeoLocation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 failover_priority: int,
+                 location_name: str,
+                 is_zone_redundant: Optional[bool] = None):
+        """
+        :param int failover_priority: The failover priority of the region. A failover priority of 0 indicates a write region. The maximum value for a failover priority = (total number of regions - 1). Failover priority values must be unique for each of the regions in which the database account exists. Changing this causes the location to be re-provisioned and cannot be changed for the location with failover priority 0
+        :param str location_name: The name of the Azure region to host replicated data
+        :param bool is_zone_redundant: Should zone redundancy be enabled for this region? Defaults to `false`.
+        """
+        pulumi.set(__self__, "failover_priority", failover_priority)
+        pulumi.set(__self__, "location_name", location_name)
+        if is_zone_redundant is not None:
+            pulumi.set(__self__, "is_zone_redundant", is_zone_redundant)
+
+    @property
+    @pulumi.getter(name="failoverPriority")
+    def failover_priority(self) -> int:
+        """
+        The failover priority of the region. A failover priority of 0 indicates a write region. The maximum value for a failover priority = (total number of regions - 1). Failover priority values must be unique for each of the regions in which the database account exists. Changing this causes the location to be re-provisioned and cannot be changed for the location with failover priority 0
+        """
+        return pulumi.get(self, "failover_priority")
+
+    @property
+    @pulumi.getter(name="locationName")
+    def location_name(self) -> str:
+        """
+        The name of the Azure region to host replicated data
+        """
+        return pulumi.get(self, "location_name")
+
+    @property
+    @pulumi.getter(name="isZoneRedundant")
+    def is_zone_redundant(self) -> Optional[bool]:
+        """
+        Should zone redundancy be enabled for this region? Defaults to `false`.
+        """
+        return pulumi.get(self, "is_zone_redundant")
+
+
+@pulumi.output_type
+class AzureCosmosDbAccountVirtualNetworkRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "subnetId":
+            suggest = "subnet_id"
+        elif key == "ignoreMissingVnetServiceEndpoint":
+            suggest = "ignore_missing_vnet_service_endpoint"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AzureCosmosDbAccountVirtualNetworkRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AzureCosmosDbAccountVirtualNetworkRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AzureCosmosDbAccountVirtualNetworkRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 subnet_id: str,
+                 ignore_missing_vnet_service_endpoint: Optional[bool] = None):
+        """
+        :param str subnet_id: The ID of the subnet to allow access to this CosmosDB account. This should be in the format /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}
+        :param bool ignore_missing_vnet_service_endpoint: If set to true, the specified subnet will be added as a virtual network rule even if its CosmosDB service endpoint is not active Defaults to `false`.
+        """
+        pulumi.set(__self__, "subnet_id", subnet_id)
+        if ignore_missing_vnet_service_endpoint is not None:
+            pulumi.set(__self__, "ignore_missing_vnet_service_endpoint", ignore_missing_vnet_service_endpoint)
+
+    @property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> str:
+        """
+        The ID of the subnet to allow access to this CosmosDB account. This should be in the format /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @property
+    @pulumi.getter(name="ignoreMissingVnetServiceEndpoint")
+    def ignore_missing_vnet_service_endpoint(self) -> Optional[bool]:
+        """
+        If set to true, the specified subnet will be added as a virtual network rule even if its CosmosDB service endpoint is not active Defaults to `false`.
+        """
+        return pulumi.get(self, "ignore_missing_vnet_service_endpoint")
+
+
+@pulumi.output_type
 class AzureK8NodePoolNodeLabel(dict):
     def __init__(__self__, *,
                  key: str,
@@ -7424,6 +8149,83 @@ class AzureK8NodePoolScalePriority(dict):
 
 
 @pulumi.output_type
+class AzureK8sClusterActiveDirectoryConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "adTenantId":
+            suggest = "ad_tenant_id"
+        elif key == "adminGroupObjectIds":
+            suggest = "admin_group_object_ids"
+        elif key == "enableAd":
+            suggest = "enable_ad"
+        elif key == "enableRbac":
+            suggest = "enable_rbac"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AzureK8sClusterActiveDirectoryConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AzureK8sClusterActiveDirectoryConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AzureK8sClusterActiveDirectoryConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ad_tenant_id: str,
+                 admin_group_object_ids: Optional[Sequence[str]] = None,
+                 enable_ad: Optional[bool] = None,
+                 enable_rbac: Optional[bool] = None):
+        """
+        :param str ad_tenant_id: The Azure Active Directory tenant ID.
+        :param Sequence[str] admin_group_object_ids: List of Azure AD group object IDs that have admin access to the AKS cluster.
+        :param bool enable_ad: Enable Azure Active Directory integration. Defaults to `false`.
+        :param bool enable_rbac: Enable Azure RBAC for Kubernetes authorization. Defaults to `false`.
+        """
+        pulumi.set(__self__, "ad_tenant_id", ad_tenant_id)
+        if admin_group_object_ids is not None:
+            pulumi.set(__self__, "admin_group_object_ids", admin_group_object_ids)
+        if enable_ad is not None:
+            pulumi.set(__self__, "enable_ad", enable_ad)
+        if enable_rbac is not None:
+            pulumi.set(__self__, "enable_rbac", enable_rbac)
+
+    @property
+    @pulumi.getter(name="adTenantId")
+    def ad_tenant_id(self) -> str:
+        """
+        The Azure Active Directory tenant ID.
+        """
+        return pulumi.get(self, "ad_tenant_id")
+
+    @property
+    @pulumi.getter(name="adminGroupObjectIds")
+    def admin_group_object_ids(self) -> Optional[Sequence[str]]:
+        """
+        List of Azure AD group object IDs that have admin access to the AKS cluster.
+        """
+        return pulumi.get(self, "admin_group_object_ids")
+
+    @property
+    @pulumi.getter(name="enableAd")
+    def enable_ad(self) -> Optional[bool]:
+        """
+        Enable Azure Active Directory integration. Defaults to `false`.
+        """
+        return pulumi.get(self, "enable_ad")
+
+    @property
+    @pulumi.getter(name="enableRbac")
+    def enable_rbac(self) -> Optional[bool]:
+        """
+        Enable Azure RBAC for Kubernetes authorization. Defaults to `false`.
+        """
+        return pulumi.get(self, "enable_rbac")
+
+
+@pulumi.output_type
 class AzureMssqlDatabaseSku(dict):
     def __init__(__self__, *,
                  capacity: int,
@@ -7475,6 +8277,107 @@ class AzureMssqlElasticpoolSku(dict):
     @pulumi.getter
     def tier(self) -> Optional[str]:
         return pulumi.get(self, "tier")
+
+
+@pulumi.output_type
+class AzureMssqlServerActiveDirectoryAdministrator(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "objectId":
+            suggest = "object_id"
+        elif key == "tenantId":
+            suggest = "tenant_id"
+        elif key == "adAuthenticationOnly":
+            suggest = "ad_authentication_only"
+        elif key == "administratorType":
+            suggest = "administrator_type"
+        elif key == "principalType":
+            suggest = "principal_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AzureMssqlServerActiveDirectoryAdministrator. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AzureMssqlServerActiveDirectoryAdministrator.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AzureMssqlServerActiveDirectoryAdministrator.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 login: str,
+                 object_id: str,
+                 tenant_id: str,
+                 ad_authentication_only: Optional[bool] = None,
+                 administrator_type: Optional[str] = None,
+                 principal_type: Optional[str] = None):
+        """
+        :param str login: The login name of the principal to set as the server administrator
+        :param str object_id: The ID of the principal to set as the server administrator
+        :param str tenant_id: The Azure Tenant ID
+        :param bool ad_authentication_only: Specifies whether only AD Users and administrators can be used to login (`true`) or also local database users (`false`).
+        :param str administrator_type: Implicitly inferred. Valid value ActiveDirectory
+        :param str principal_type: Specify the type of the principal: `User`, `Group`, or `Application`
+        """
+        pulumi.set(__self__, "login", login)
+        pulumi.set(__self__, "object_id", object_id)
+        pulumi.set(__self__, "tenant_id", tenant_id)
+        if ad_authentication_only is not None:
+            pulumi.set(__self__, "ad_authentication_only", ad_authentication_only)
+        if administrator_type is not None:
+            pulumi.set(__self__, "administrator_type", administrator_type)
+        if principal_type is not None:
+            pulumi.set(__self__, "principal_type", principal_type)
+
+    @property
+    @pulumi.getter
+    def login(self) -> str:
+        """
+        The login name of the principal to set as the server administrator
+        """
+        return pulumi.get(self, "login")
+
+    @property
+    @pulumi.getter(name="objectId")
+    def object_id(self) -> str:
+        """
+        The ID of the principal to set as the server administrator
+        """
+        return pulumi.get(self, "object_id")
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> str:
+        """
+        The Azure Tenant ID
+        """
+        return pulumi.get(self, "tenant_id")
+
+    @property
+    @pulumi.getter(name="adAuthenticationOnly")
+    def ad_authentication_only(self) -> Optional[bool]:
+        """
+        Specifies whether only AD Users and administrators can be used to login (`true`) or also local database users (`false`).
+        """
+        return pulumi.get(self, "ad_authentication_only")
+
+    @property
+    @pulumi.getter(name="administratorType")
+    def administrator_type(self) -> Optional[str]:
+        """
+        Implicitly inferred. Valid value ActiveDirectory
+        """
+        return pulumi.get(self, "administrator_type")
+
+    @property
+    @pulumi.getter(name="principalType")
+    def principal_type(self) -> Optional[str]:
+        """
+        Specify the type of the principal: `User`, `Group`, or `Application`
+        """
+        return pulumi.get(self, "principal_type")
 
 
 @pulumi.output_type
@@ -9245,7 +10148,7 @@ class AzureVmMaintenanceConfigurationWindow(dict):
         """
         :param str start_time: Effective start date of the maintenance window in YYYY-MM-DD HH:MM format.
         :param str time_zone: The timezone on which maintenance should be scheduled.
-        :param str duration: The duration of the maintenance window in HH:mm format.
+        :param str duration: The duration of the maintenance window in HH:mm format. Should be less than or equal to 3 Hrs
         :param str expiration_time: Effective expiration date of the maintenance window in YYYY-MM-DD hh:mm format.
         :param str recur_every: he rate at which a maintenance window is expected to recur. The rate can be expressed as daily, weekly, or monthly schedules.
         """
@@ -9278,7 +10181,7 @@ class AzureVmMaintenanceConfigurationWindow(dict):
     @pulumi.getter
     def duration(self) -> Optional[str]:
         """
-        The duration of the maintenance window in HH:mm format.
+        The duration of the maintenance window in HH:mm format. Should be less than or equal to 3 Hrs
         """
         return pulumi.get(self, "duration")
 
@@ -9316,6 +10219,35 @@ class ByohTag(dict):
     @pulumi.getter
     def value(self) -> str:
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class DuploServiceInitContainerDockerImage(dict):
+    def __init__(__self__, *,
+                 image: str,
+                 name: str):
+        """
+        :param str image: Init container docker image.
+        :param str name: Init container name.
+        """
+        pulumi.set(__self__, "image", image)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def image(self) -> str:
+        """
+        Init container docker image.
+        """
+        return pulumi.get(self, "image")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Init container name.
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -9420,7 +10352,17 @@ class DuploServiceLbconfigsLbconfig(dict):
                   - `7` : Target Group Only
         :param str port: The backend port associated with this load balancer configuration.
         :param str protocol: The backend protocol associated with this load balancer configuration.
+               Supported protocol based on lb_type:
+               
+               	- `0 (ELB)`: HTTP, HTTPS, TCP, UDP
+               	- `1 (ALB)` : HTTP, HTTPS
+               	- `3 (K8S Service w/ Cluster IP)`: TCP, UDP
+               	- `4 (K8S Service w/ Node Port)` : TCP, UDP
+               	- `5 (Azure Shared Application Gateway)`: HTTP, HTTPS
+               	- `6 (NLB)` : TCP, UDP, TLS
+               	- `7 (Target Group Only)` : HTTP, HTTPS, TCP, UDP, TLS
         :param bool allow_global_access: Applicable for internal lb.
+        :param str backend_protocol_version: Is used for communication between the load balancer and the target instances. This field is used to set protocol version for ALB load balancer. Only applicable when protocol is HTTP or HTTPS. The protocol version. Specify GRPC to send requests to targets using gRPC. Specify HTTP2 to send requests to targets using HTTP/2. The default is HTTP1, which sends requests to targets using HTTP/1.1
         :param str certificate_arn: The ARN of an ACM certificate to associate with this load balancer.  Only applicable for HTTPS.
         :param str cloud_name: The name of the cloud load balancer (if applicable).
         :param Sequence[str] custom_cidrs: Specify CIDR Values. This is applicable only for Network Load Balancer if `lb_type` is `6`.
@@ -9522,6 +10464,15 @@ class DuploServiceLbconfigsLbconfig(dict):
     def protocol(self) -> str:
         """
         The backend protocol associated with this load balancer configuration.
+        Supported protocol based on lb_type:
+
+        	- `0 (ELB)`: HTTP, HTTPS, TCP, UDP
+        	- `1 (ALB)` : HTTP, HTTPS
+        	- `3 (K8S Service w/ Cluster IP)`: TCP, UDP
+        	- `4 (K8S Service w/ Node Port)` : TCP, UDP
+        	- `5 (Azure Shared Application Gateway)`: HTTP, HTTPS
+        	- `6 (NLB)` : TCP, UDP, TLS
+        	- `7 (Target Group Only)` : HTTP, HTTPS, TCP, UDP, TLS
         """
         return pulumi.get(self, "protocol")
 
@@ -9536,6 +10487,9 @@ class DuploServiceLbconfigsLbconfig(dict):
     @property
     @pulumi.getter(name="backendProtocolVersion")
     def backend_protocol_version(self) -> Optional[str]:
+        """
+        Is used for communication between the load balancer and the target instances. This field is used to set protocol version for ALB load balancer. Only applicable when protocol is HTTP or HTTPS. The protocol version. Specify GRPC to send requests to targets using gRPC. Specify HTTP2 to send requests to targets using HTTP/2. The default is HTTP1, which sends requests to targets using HTTP/1.1
+        """
         return pulumi.get(self, "backend_protocol_version")
 
     @property
@@ -9940,7 +10894,10 @@ class EcsServiceCapacityProviderStrategy(dict):
                  base: Optional[int] = None,
                  weight: Optional[int] = None):
         """
-        :param str capacity_provider: Name of the capacity provider.
+        :param str capacity_provider: Name of the capacity provider. Should be one of:
+                	- FARGATE
+                	- FARGATE_SPOT
+                	- ASG fullname: Used when asg created with agent platform ECS
         :param int base: The number of tasks, at a minimum, to run on the specified capacity provider.
         :param int weight: The relative percentage of the total number of launched tasks that should use the specified capacity provider.
         """
@@ -9954,7 +10911,10 @@ class EcsServiceCapacityProviderStrategy(dict):
     @pulumi.getter(name="capacityProvider")
     def capacity_provider(self) -> str:
         """
-        Name of the capacity provider.
+        Name of the capacity provider. Should be one of:
+         	- FARGATE
+         	- FARGATE_SPOT
+         	- ASG fullname: Used when asg created with agent platform ECS
         """
         return pulumi.get(self, "capacity_provider")
 
@@ -9973,6 +10933,135 @@ class EcsServiceCapacityProviderStrategy(dict):
         The relative percentage of the total number of launched tasks that should use the specified capacity provider.
         """
         return pulumi.get(self, "weight")
+
+
+@pulumi.output_type
+class EcsServiceDeploymentConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableCircuitBreaker":
+            suggest = "enable_circuit_breaker"
+        elif key == "maximumPercent":
+            suggest = "maximum_percent"
+        elif key == "minimumHealthyPercent":
+            suggest = "minimum_healthy_percent"
+        elif key == "rollbackCircuitBreaker":
+            suggest = "rollback_circuit_breaker"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EcsServiceDeploymentConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EcsServiceDeploymentConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EcsServiceDeploymentConfiguration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 alarms: Optional[Sequence['outputs.EcsServiceDeploymentConfigurationAlarm']] = None,
+                 enable_circuit_breaker: Optional[bool] = None,
+                 maximum_percent: Optional[int] = None,
+                 minimum_healthy_percent: Optional[int] = None,
+                 rollback_circuit_breaker: Optional[bool] = None):
+        """
+        :param bool enable_circuit_breaker: Enables ECS deployment circuit breaker to stop deployments on failures.
+        :param int maximum_percent: Specifies the maximum percentage of tasks that can run at once during a deployment.
+        :param int minimum_healthy_percent: Specifies the minimum percentage of tasks that must remain in the RUNNING state during a deployment
+        :param bool rollback_circuit_breaker: Enables automatic rollback when the circuit breaker detects a failed deployment.
+        """
+        if alarms is not None:
+            pulumi.set(__self__, "alarms", alarms)
+        if enable_circuit_breaker is not None:
+            pulumi.set(__self__, "enable_circuit_breaker", enable_circuit_breaker)
+        if maximum_percent is not None:
+            pulumi.set(__self__, "maximum_percent", maximum_percent)
+        if minimum_healthy_percent is not None:
+            pulumi.set(__self__, "minimum_healthy_percent", minimum_healthy_percent)
+        if rollback_circuit_breaker is not None:
+            pulumi.set(__self__, "rollback_circuit_breaker", rollback_circuit_breaker)
+
+    @property
+    @pulumi.getter
+    def alarms(self) -> Optional[Sequence['outputs.EcsServiceDeploymentConfigurationAlarm']]:
+        return pulumi.get(self, "alarms")
+
+    @property
+    @pulumi.getter(name="enableCircuitBreaker")
+    def enable_circuit_breaker(self) -> Optional[bool]:
+        """
+        Enables ECS deployment circuit breaker to stop deployments on failures.
+        """
+        return pulumi.get(self, "enable_circuit_breaker")
+
+    @property
+    @pulumi.getter(name="maximumPercent")
+    def maximum_percent(self) -> Optional[int]:
+        """
+        Specifies the maximum percentage of tasks that can run at once during a deployment.
+        """
+        return pulumi.get(self, "maximum_percent")
+
+    @property
+    @pulumi.getter(name="minimumHealthyPercent")
+    def minimum_healthy_percent(self) -> Optional[int]:
+        """
+        Specifies the minimum percentage of tasks that must remain in the RUNNING state during a deployment
+        """
+        return pulumi.get(self, "minimum_healthy_percent")
+
+    @property
+    @pulumi.getter(name="rollbackCircuitBreaker")
+    def rollback_circuit_breaker(self) -> Optional[bool]:
+        """
+        Enables automatic rollback when the circuit breaker detects a failed deployment.
+        """
+        return pulumi.get(self, "rollback_circuit_breaker")
+
+
+@pulumi.output_type
+class EcsServiceDeploymentConfigurationAlarm(dict):
+    def __init__(__self__, *,
+                 enable: Optional[bool] = None,
+                 names: Optional[Sequence[str]] = None,
+                 rollback: Optional[bool] = None):
+        """
+        :param bool enable: Enables or disables CloudWatch alarm monitoring during deployments.
+        :param Sequence[str] names: Names of CloudWatch alarms that ECS monitors during deployments.
+        :param bool rollback: Automatically rolls back the deployment if any configured CloudWatch alarm enters ALARM state.
+        """
+        if enable is not None:
+            pulumi.set(__self__, "enable", enable)
+        if names is not None:
+            pulumi.set(__self__, "names", names)
+        if rollback is not None:
+            pulumi.set(__self__, "rollback", rollback)
+
+    @property
+    @pulumi.getter
+    def enable(self) -> Optional[bool]:
+        """
+        Enables or disables CloudWatch alarm monitoring during deployments.
+        """
+        return pulumi.get(self, "enable")
+
+    @property
+    @pulumi.getter
+    def names(self) -> Optional[Sequence[str]]:
+        """
+        Names of CloudWatch alarms that ECS monitors during deployments.
+        """
+        return pulumi.get(self, "names")
+
+    @property
+    @pulumi.getter
+    def rollback(self) -> Optional[bool]:
+        """
+        Automatically rolls back the deployment if any configured CloudWatch alarm enters ALARM state.
+        """
+        return pulumi.get(self, "rollback")
 
 
 @pulumi.output_type
@@ -10349,6 +11438,66 @@ class EcsServiceLoadBalancerHealthCheckConfig(dict):
     @pulumi.getter(name="unhealthyThresholdCount")
     def unhealthy_threshold_count(self) -> Optional[int]:
         return pulumi.get(self, "unhealthy_threshold_count")
+
+
+@pulumi.output_type
+class EcsServicePlacementConstraint(dict):
+    def __init__(__self__, *,
+                 type: str,
+                 expression: Optional[str] = None):
+        """
+        :param str type: Type of constraint. The only valid values at this time are `memberOf` and `distinctInstance`
+        :param str expression: Cluster Query Language expression to apply to the constraint. Does not need to be specified for the distinctInstance type. For more information, see [Cluster Query Language in the Amazon EC2 Container Service Developer Guide](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html).
+        """
+        pulumi.set(__self__, "type", type)
+        if expression is not None:
+            pulumi.set(__self__, "expression", expression)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type of constraint. The only valid values at this time are `memberOf` and `distinctInstance`
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def expression(self) -> Optional[str]:
+        """
+        Cluster Query Language expression to apply to the constraint. Does not need to be specified for the distinctInstance type. For more information, see [Cluster Query Language in the Amazon EC2 Container Service Developer Guide](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html).
+        """
+        return pulumi.get(self, "expression")
+
+
+@pulumi.output_type
+class EcsServicePlacementStrategy(dict):
+    def __init__(__self__, *,
+                 type: str,
+                 field: Optional[str] = None):
+        """
+        :param str type: Type of placement strategy. Must be one of: `binpack`, `random`, or `spread`
+        :param str field: For the spread placement strategy, valid values are instanceId, or any platform or custom attribute that is applied to a container instance. For the binpack type, valid values are memory and cpu. For the random type, this attribute is not needed. For more information, see [PlacementStrategy](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PlacementStrategy.html)
+        """
+        pulumi.set(__self__, "type", type)
+        if field is not None:
+            pulumi.set(__self__, "field", field)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type of placement strategy. Must be one of: `binpack`, `random`, or `spread`
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def field(self) -> Optional[str]:
+        """
+        For the spread placement strategy, valid values are instanceId, or any platform or custom attribute that is applied to a container instance. For the binpack type, valid values are memory and cpu. For the random type, this attribute is not needed. For more information, see [PlacementStrategy](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PlacementStrategy.html)
+        """
+        return pulumi.get(self, "field")
 
 
 @pulumi.output_type
@@ -10785,7 +11934,7 @@ class GcpInfraSecurityRulePortsAndProtocol(dict):
                  ports: Optional[Sequence[str]] = None):
         """
         :param str service_protocol: The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, sctp, ipip, all), or the IP protocol number.
-        :param Sequence[str] ports: The list of ports to which this rule applies. This field is only applicable for UDP, TCP and SCTP protocol.
+        :param Sequence[str] ports: The list of ports to which this rule applies. This field is only applicable for UDP, TCP and SCTP protocol. To apply all ports dont specify the field
         """
         pulumi.set(__self__, "service_protocol", service_protocol)
         if ports is not None:
@@ -10803,7 +11952,7 @@ class GcpInfraSecurityRulePortsAndProtocol(dict):
     @pulumi.getter
     def ports(self) -> Optional[Sequence[str]]:
         """
-        The list of ports to which this rule applies. This field is only applicable for UDP, TCP and SCTP protocol.
+        The list of ports to which this rule applies. This field is only applicable for UDP, TCP and SCTP protocol. To apply all ports dont specify the field
         """
         return pulumi.get(self, "ports")
 
@@ -11702,6 +12851,35 @@ class GcpSchedulerJobPubsubTarget(dict):
 
 
 @pulumi.output_type
+class GcpSqlDatabaseInstanceDatabaseFlag(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 value: str):
+        """
+        :param str name: The name of the database flag.
+        :param str value: The value of the database flag.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the database flag.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        The value of the database flag.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
 class GcpStorageBucketV2DefaultEncryption(dict):
     def __init__(__self__, *,
                  method: Optional[str] = None):
@@ -11744,7 +12922,7 @@ class GcpTenantSecurityRulePortsAndProtocol(dict):
                  ports: Optional[Sequence[str]] = None):
         """
         :param str service_protocol: The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, sctp, ipip, all), or the IP protocol number.
-        :param Sequence[str] ports: The list of ports to which this rule applies. This field is only applicable for UDP, TCP and SCTP protocol.
+        :param Sequence[str] ports: The list of ports to which this rule applies. This field is only applicable for UDP, TCP and SCTP protocol. To apply all ports dont specify the field
         """
         pulumi.set(__self__, "service_protocol", service_protocol)
         if ports is not None:
@@ -11762,7 +12940,7 @@ class GcpTenantSecurityRulePortsAndProtocol(dict):
     @pulumi.getter
     def ports(self) -> Optional[Sequence[str]]:
         """
-        The list of ports to which this rule applies. This field is only applicable for UDP, TCP and SCTP protocol.
+        The list of ports to which this rule applies. This field is only applicable for UDP, TCP and SCTP protocol. To apply all ports dont specify the field
         """
         return pulumi.get(self, "ports")
 
@@ -12465,10 +13643,14 @@ class K8IngressLbconfig(dict):
             suggest = "is_internal"
         elif key == "certificateArn":
             suggest = "certificate_arn"
+        elif key == "certificateArns":
+            suggest = "certificate_arns"
         elif key == "httpPort":
             suggest = "http_port"
         elif key == "httpsPort":
             suggest = "https_port"
+        elif key == "portOverride":
+            suggest = "port_override"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in K8IngressLbconfig. Access the value via the '{suggest}' property getter instead.")
@@ -12485,23 +13667,31 @@ class K8IngressLbconfig(dict):
                  dns_prefix: str,
                  is_internal: bool,
                  certificate_arn: Optional[str] = None,
+                 certificate_arns: Optional[Sequence[str]] = None,
                  http_port: Optional[int] = None,
-                 https_port: Optional[int] = None):
+                 https_port: Optional[int] = None,
+                 port_override: Optional[str] = None):
         """
         :param str dns_prefix: The DNS prefix to expose services using Route53 domain.
         :param bool is_internal: Whether or not to create an internal load balancer.
-        :param str certificate_arn: The ARN of an ACM certificate to associate with this load balancer.  Only applicable for HTTPS.
+        :param str certificate_arn: The ARN of an ACM certificate to associate with this load balancer.  Only applicable for HTTPS. This field has been deprecated use certificate_arns
+        :param Sequence[str] certificate_arns: The list of ARN of an ACM certificate to associate with this load balancer.  Only applicable for HTTPS.
         :param int http_port: HTTP Listener Port.
         :param int https_port: HTTPS Listener Port.
+        :param str port_override: Port override for the load balancer. Currently supported for Azure
         """
         pulumi.set(__self__, "dns_prefix", dns_prefix)
         pulumi.set(__self__, "is_internal", is_internal)
         if certificate_arn is not None:
             pulumi.set(__self__, "certificate_arn", certificate_arn)
+        if certificate_arns is not None:
+            pulumi.set(__self__, "certificate_arns", certificate_arns)
         if http_port is not None:
             pulumi.set(__self__, "http_port", http_port)
         if https_port is not None:
             pulumi.set(__self__, "https_port", https_port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
 
     @property
     @pulumi.getter(name="dnsPrefix")
@@ -12521,11 +13711,20 @@ class K8IngressLbconfig(dict):
 
     @property
     @pulumi.getter(name="certificateArn")
+    @_utilities.deprecated("""This field has been deprecated use certificate_arns""")
     def certificate_arn(self) -> Optional[str]:
         """
-        The ARN of an ACM certificate to associate with this load balancer.  Only applicable for HTTPS.
+        The ARN of an ACM certificate to associate with this load balancer.  Only applicable for HTTPS. This field has been deprecated use certificate_arns
         """
         return pulumi.get(self, "certificate_arn")
+
+    @property
+    @pulumi.getter(name="certificateArns")
+    def certificate_arns(self) -> Optional[Sequence[str]]:
+        """
+        The list of ARN of an ACM certificate to associate with this load balancer.  Only applicable for HTTPS.
+        """
+        return pulumi.get(self, "certificate_arns")
 
     @property
     @pulumi.getter(name="httpPort")
@@ -12542,6 +13741,14 @@ class K8IngressLbconfig(dict):
         HTTPS Listener Port.
         """
         return pulumi.get(self, "https_port")
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[str]:
+        """
+        Port override for the load balancer. Currently supported for Azure
+        """
+        return pulumi.get(self, "port_override")
 
 
 @pulumi.output_type
@@ -37215,6 +38422,67 @@ class TenantConfigSetting(dict):
 
 
 @pulumi.output_type
+class TenantKmsKm(dict):
+    def __init__(__self__, *,
+                 arn: str,
+                 id: str,
+                 name: str):
+        """
+        :param str id: The ID of this resource.
+        """
+        pulumi.set(__self__, "arn", arn)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def arn(self) -> str:
+        return pulumi.get(self, "arn")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of this resource.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class TenantKmsUnspecifiedKmsKey(dict):
+    def __init__(__self__, *,
+                 arn: Optional[str] = None,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None):
+        if arn is not None:
+            pulumi.set(__self__, "arn", arn)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def arn(self) -> Optional[str]:
+        return pulumi.get(self, "arn")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
 class TenantPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -37295,6 +38563,7 @@ class TenantTag(dict):
 @pulumi.output_type
 class GetAsgProfilesAsgProfileResult(dict):
     def __init__(__self__, *,
+                 arn: str,
                  base64_user_data: str,
                  can_scale_from_zero: bool,
                  capacity: str,
@@ -37330,6 +38599,7 @@ class GetAsgProfilesAsgProfileResult(dict):
                  use_spot_instances: Optional[bool] = None,
                  wait_for_capacity: Optional[bool] = None):
         """
+        :param str arn: The ASG arn.
         :param str base64_user_data: Base64 encoded EC2 user data to associated with the host.
         :param bool can_scale_from_zero: Whether or not ASG should leverage duplocloud's scale from 0 feature
         :param str capacity: The AWS EC2 instance type.
@@ -37341,8 +38611,8 @@ class GetAsgProfilesAsgProfileResult(dict):
         :param int keypair_type: The numeric ID of the keypair type being used.Should be one of:
                
                   - `0` : Default
-                  - `1` : ED25519
-                  - `2` : RSA (deprecated - some operating systems no longer support it)
+                  - `1` : RSA (deprecated - some operating systems no longer support it)
+                  - `2` : ED25519
         :param int max_instance_count: The maximum size of the Auto Scaling Group.
         :param Sequence['GetAsgProfilesAsgProfileMetadataArgs'] metadatas: Configuration metadata used when creating the host.<br>*Note: To configure OS disk size OsDiskSize can be specified as Key and its size as value, size value should be atleast 10*
         :param int min_instance_count: The minimum size of the Auto Scaling Group.
@@ -37354,6 +38624,11 @@ class GetAsgProfilesAsgProfileResult(dict):
         :param Sequence['GetAsgProfilesAsgProfileVolumeArgs'] volumes: Block to specify additional or secondary volume beyond the root device
         :param Sequence[int] zones: The multi availability zone to launch the asg in, expressed as a number and starting at 0
         :param int agent_platform: The numeric ID of the container agent pool that this host is added to.
+                - 0: Linux Docker/Native
+               - 	4: None
+               - 5: Docker Windows
+               - 7: EKS Linux
+               - 8: ECS
         :param bool allocated_public_ip: Whether or not to allocate a public IP.
         :param int cloud: The numeric ID of the cloud provider to launch the host in.
         :param Mapping[str, str] custom_node_labels: Specify the labels to attach to the nodes.
@@ -37364,6 +38639,7 @@ class GetAsgProfilesAsgProfileResult(dict):
         :param bool use_spot_instances: Whether or not to use spot instances.
         :param bool wait_for_capacity: Whether or not to wait until ASG instances to be healthy, after creation.
         """
+        pulumi.set(__self__, "arn", arn)
         pulumi.set(__self__, "base64_user_data", base64_user_data)
         pulumi.set(__self__, "can_scale_from_zero", can_scale_from_zero)
         pulumi.set(__self__, "capacity", capacity)
@@ -37411,6 +38687,14 @@ class GetAsgProfilesAsgProfileResult(dict):
             pulumi.set(__self__, "use_spot_instances", use_spot_instances)
         if wait_for_capacity is not None:
             pulumi.set(__self__, "wait_for_capacity", wait_for_capacity)
+
+    @property
+    @pulumi.getter
+    def arn(self) -> str:
+        """
+        The ASG arn.
+        """
+        return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter(name="base64UserData")
@@ -37488,8 +38772,8 @@ class GetAsgProfilesAsgProfileResult(dict):
         The numeric ID of the keypair type being used.Should be one of:
 
            - `0` : Default
-           - `1` : ED25519
-           - `2` : RSA (deprecated - some operating systems no longer support it)
+           - `1` : RSA (deprecated - some operating systems no longer support it)
+           - `2` : ED25519
         """
         return pulumi.get(self, "keypair_type")
 
@@ -37583,6 +38867,11 @@ class GetAsgProfilesAsgProfileResult(dict):
     def agent_platform(self) -> Optional[int]:
         """
         The numeric ID of the container agent pool that this host is added to.
+         - 0: Linux Docker/Native
+        - 	4: None
+        - 5: Docker Windows
+        - 7: EKS Linux
+        - 8: ECS
         """
         return pulumi.get(self, "agent_platform")
 
@@ -38230,6 +39519,195 @@ class GetAzureAvailabilitySetVirtualMachineResult(dict):
 
 
 @pulumi.output_type
+class GetAzureCosmosDbAccountBackupPolicyResult(dict):
+    def __init__(__self__, *,
+                 backup_interval: int,
+                 backup_retention_interval: int,
+                 backup_storage_redundancy: str,
+                 continuous_mode_tier: str,
+                 type: str):
+        """
+        :param int backup_interval: Backup interval in minutes
+        :param int backup_retention_interval: Backup retention interval in hours
+        :param str backup_storage_redundancy: Backup storage redundancy type. Valid values are Geo, Local, Zone. Defaults to Geo.
+        :param str continuous_mode_tier: The continuous mode tier for the Cosmos DB account. This is only applicable if the backup policy type is Continuous.
+        :param str type: Valid values Periodic, Continuous
+        """
+        pulumi.set(__self__, "backup_interval", backup_interval)
+        pulumi.set(__self__, "backup_retention_interval", backup_retention_interval)
+        pulumi.set(__self__, "backup_storage_redundancy", backup_storage_redundancy)
+        pulumi.set(__self__, "continuous_mode_tier", continuous_mode_tier)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="backupInterval")
+    def backup_interval(self) -> int:
+        """
+        Backup interval in minutes
+        """
+        return pulumi.get(self, "backup_interval")
+
+    @property
+    @pulumi.getter(name="backupRetentionInterval")
+    def backup_retention_interval(self) -> int:
+        """
+        Backup retention interval in hours
+        """
+        return pulumi.get(self, "backup_retention_interval")
+
+    @property
+    @pulumi.getter(name="backupStorageRedundancy")
+    def backup_storage_redundancy(self) -> str:
+        """
+        Backup storage redundancy type. Valid values are Geo, Local, Zone. Defaults to Geo.
+        """
+        return pulumi.get(self, "backup_storage_redundancy")
+
+    @property
+    @pulumi.getter(name="continuousModeTier")
+    def continuous_mode_tier(self) -> str:
+        """
+        The continuous mode tier for the Cosmos DB account. This is only applicable if the backup policy type is Continuous.
+        """
+        return pulumi.get(self, "continuous_mode_tier")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Valid values Periodic, Continuous
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetAzureCosmosDbAccountCapabilityResult(dict):
+    def __init__(__self__, *,
+                 name: str):
+        """
+        :param str name: Name of the Cosmos DB capability, for example, 'EnableServerless'.
+        """
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the Cosmos DB capability, for example, 'EnableServerless'.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetAzureCosmosDbAccountConsistencyPolicyResult(dict):
+    def __init__(__self__, *,
+                 default_consistency_level: str,
+                 max_interval_in_seconds: int,
+                 max_staleness_prefix: int):
+        """
+        :param str default_consistency_level: Specify the default consistency level and configuration settings of the Cosmos DB account. Possible values include: 'Eventual', 'Session', 'BoundedStaleness','Strong', 'ConsistentPrefix'
+        :param int max_interval_in_seconds: Max amount of time staleness (in seconds) is tolerated
+        :param int max_staleness_prefix: Max number of stale requests tolerated. Accepted range for this values 1 to 2147483647
+        """
+        pulumi.set(__self__, "default_consistency_level", default_consistency_level)
+        pulumi.set(__self__, "max_interval_in_seconds", max_interval_in_seconds)
+        pulumi.set(__self__, "max_staleness_prefix", max_staleness_prefix)
+
+    @property
+    @pulumi.getter(name="defaultConsistencyLevel")
+    def default_consistency_level(self) -> str:
+        """
+        Specify the default consistency level and configuration settings of the Cosmos DB account. Possible values include: 'Eventual', 'Session', 'BoundedStaleness','Strong', 'ConsistentPrefix'
+        """
+        return pulumi.get(self, "default_consistency_level")
+
+    @property
+    @pulumi.getter(name="maxIntervalInSeconds")
+    def max_interval_in_seconds(self) -> int:
+        """
+        Max amount of time staleness (in seconds) is tolerated
+        """
+        return pulumi.get(self, "max_interval_in_seconds")
+
+    @property
+    @pulumi.getter(name="maxStalenessPrefix")
+    def max_staleness_prefix(self) -> int:
+        """
+        Max number of stale requests tolerated. Accepted range for this values 1 to 2147483647
+        """
+        return pulumi.get(self, "max_staleness_prefix")
+
+
+@pulumi.output_type
+class GetAzureCosmosDbAccountGeoLocationResult(dict):
+    def __init__(__self__, *,
+                 failover_priority: int,
+                 is_zone_redundant: bool,
+                 location_name: str):
+        """
+        :param int failover_priority: The failover priority of the region. A failover priority of 0 indicates a write region. The maximum value for a failover priority = (total number of regions - 1). Failover priority values must be unique for each of the regions in which the database account exists. Changing this causes the location to be re-provisioned and cannot be changed for the location with failover priority 0
+        :param bool is_zone_redundant: Should zone redundancy be enabled for this region?
+        :param str location_name: The name of the Azure region to host replicated data
+        """
+        pulumi.set(__self__, "failover_priority", failover_priority)
+        pulumi.set(__self__, "is_zone_redundant", is_zone_redundant)
+        pulumi.set(__self__, "location_name", location_name)
+
+    @property
+    @pulumi.getter(name="failoverPriority")
+    def failover_priority(self) -> int:
+        """
+        The failover priority of the region. A failover priority of 0 indicates a write region. The maximum value for a failover priority = (total number of regions - 1). Failover priority values must be unique for each of the regions in which the database account exists. Changing this causes the location to be re-provisioned and cannot be changed for the location with failover priority 0
+        """
+        return pulumi.get(self, "failover_priority")
+
+    @property
+    @pulumi.getter(name="isZoneRedundant")
+    def is_zone_redundant(self) -> bool:
+        """
+        Should zone redundancy be enabled for this region?
+        """
+        return pulumi.get(self, "is_zone_redundant")
+
+    @property
+    @pulumi.getter(name="locationName")
+    def location_name(self) -> str:
+        """
+        The name of the Azure region to host replicated data
+        """
+        return pulumi.get(self, "location_name")
+
+
+@pulumi.output_type
+class GetAzureCosmosDbAccountVirtualNetworkRuleResult(dict):
+    def __init__(__self__, *,
+                 ignore_missing_vnet_service_endpoint: bool,
+                 subnet_id: str):
+        """
+        :param bool ignore_missing_vnet_service_endpoint: If set to true, the specified subnet will be added as a virtual network rule even if its CosmosDB service endpoint is not active
+        :param str subnet_id: The ID of the subnet to allow access to this CosmosDB account. This should be in the format /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}
+        """
+        pulumi.set(__self__, "ignore_missing_vnet_service_endpoint", ignore_missing_vnet_service_endpoint)
+        pulumi.set(__self__, "subnet_id", subnet_id)
+
+    @property
+    @pulumi.getter(name="ignoreMissingVnetServiceEndpoint")
+    def ignore_missing_vnet_service_endpoint(self) -> bool:
+        """
+        If set to true, the specified subnet will be added as a virtual network rule even if its CosmosDB service endpoint is not active
+        """
+        return pulumi.get(self, "ignore_missing_vnet_service_endpoint")
+
+    @property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> str:
+        """
+        The ID of the subnet to allow access to this CosmosDB account. This should be in the format /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}
+        """
+        return pulumi.get(self, "subnet_id")
+
+
+@pulumi.output_type
 class GetDuploServiceLbconfigsServiceResult(dict):
     def __init__(__self__, *,
                  arn: str,
@@ -38318,6 +39796,7 @@ class GetDuploServiceLbconfigsServiceLbconfigResult(dict):
                  target_group_arn: str):
         """
         :param bool allow_global_access: Applicable for internal lb.
+        :param str backend_protocol_version: Is used for communication between the load balancer and the target instances. This field is used to set protocol version for ALB load balancer. Only applicable when protocol is HTTP or HTTPS. The protocol version. Specify GRPC to send requests to targets using gRPC. Specify HTTP2 to send requests to targets using HTTP/2. The default is HTTP1, which sends requests to targets using HTTP/1.1
         :param str certificate_arn: The ARN of an ACM certificate to associate with this load balancer.  Only applicable for HTTPS.
         :param str cloud_name: The name of the cloud load balancer (if applicable).
         :param Sequence[str] custom_cidrs: Specify CIDR Values. This is applicable only for Network Load Balancer if `lb_type` is `6`.
@@ -38346,6 +39825,15 @@ class GetDuploServiceLbconfigsServiceLbconfigResult(dict):
         :param str name: The name of the duplo service.
         :param str port: The backend port associated with this load balancer configuration.
         :param str protocol: The backend protocol associated with this load balancer configuration.
+               Supported protocol based on lb_type:
+               
+               	- `0 (ELB)`: HTTP, HTTPS, TCP, UDP
+               	- `1 (ALB)` : HTTP, HTTPS
+               	- `3 (K8S Service w/ Cluster IP)`: TCP, UDP
+               	- `4 (K8S Service w/ Node Port)` : TCP, UDP
+               	- `5 (Azure Shared Application Gateway)`: HTTP, HTTPS
+               	- `6 (NLB)` : TCP, UDP, TLS
+               	- `7 (Target Group Only)` : HTTP, HTTPS, TCP, UDP, TLS
         :param str replication_controller_name: The name of the duplo service.
         :param bool set_ingress_health_check: Only for K8S services or load balancers in Kubernetes.  Set to `true` to set health check annotations for ingress.
         :param bool skip_http_to_https: Skip http to https.
@@ -38389,6 +39877,9 @@ class GetDuploServiceLbconfigsServiceLbconfigResult(dict):
     @property
     @pulumi.getter(name="backendProtocolVersion")
     def backend_protocol_version(self) -> str:
+        """
+        Is used for communication between the load balancer and the target instances. This field is used to set protocol version for ALB load balancer. Only applicable when protocol is HTTP or HTTPS. The protocol version. Specify GRPC to send requests to targets using gRPC. Specify HTTP2 to send requests to targets using HTTP/2. The default is HTTP1, which sends requests to targets using HTTP/1.1
+        """
         return pulumi.get(self, "backend_protocol_version")
 
     @property
@@ -38552,6 +40043,15 @@ class GetDuploServiceLbconfigsServiceLbconfigResult(dict):
     def protocol(self) -> str:
         """
         The backend protocol associated with this load balancer configuration.
+        Supported protocol based on lb_type:
+
+        	- `0 (ELB)`: HTTP, HTTPS, TCP, UDP
+        	- `1 (ALB)` : HTTP, HTTPS
+        	- `3 (K8S Service w/ Cluster IP)`: TCP, UDP
+        	- `4 (K8S Service w/ Node Port)` : TCP, UDP
+        	- `5 (Azure Shared Application Gateway)`: HTTP, HTTPS
+        	- `6 (NLB)` : TCP, UDP, TLS
+        	- `7 (Target Group Only)` : HTTP, HTTPS, TCP, UDP, TLS
         """
         return pulumi.get(self, "protocol")
 
@@ -38982,7 +40482,10 @@ class GetEcsServiceCapacityProviderStrategyResult(dict):
                  weight: int):
         """
         :param int base: The number of tasks, at a minimum, to run on the specified capacity provider.
-        :param str capacity_provider: Name of the capacity provider.
+        :param str capacity_provider: Name of the capacity provider. Should be one of:
+                	- FARGATE
+                	- FARGATE_SPOT
+                	- ASG fullname: Used when asg created with agent platform ECS
         :param int weight: The relative percentage of the total number of launched tasks that should use the specified capacity provider.
         """
         pulumi.set(__self__, "base", base)
@@ -39001,7 +40504,10 @@ class GetEcsServiceCapacityProviderStrategyResult(dict):
     @pulumi.getter(name="capacityProvider")
     def capacity_provider(self) -> str:
         """
-        Name of the capacity provider.
+        Name of the capacity provider. Should be one of:
+         	- FARGATE
+         	- FARGATE_SPOT
+         	- ASG fullname: Used when asg created with agent platform ECS
         """
         return pulumi.get(self, "capacity_provider")
 
@@ -39012,6 +40518,104 @@ class GetEcsServiceCapacityProviderStrategyResult(dict):
         The relative percentage of the total number of launched tasks that should use the specified capacity provider.
         """
         return pulumi.get(self, "weight")
+
+
+@pulumi.output_type
+class GetEcsServiceDeploymentConfigurationResult(dict):
+    def __init__(__self__, *,
+                 alarms: Sequence['outputs.GetEcsServiceDeploymentConfigurationAlarmResult'],
+                 enable_circuit_breaker: bool,
+                 maximum_percent: int,
+                 minimum_healthy_percent: int,
+                 rollback_circuit_breaker: bool):
+        """
+        :param bool enable_circuit_breaker: Enables ECS deployment circuit breaker to stop deployments on failures.
+        :param int maximum_percent: Specifies the maximum percentage of tasks that can run at once during a deployment.
+        :param int minimum_healthy_percent: Specifies the minimum percentage of tasks that must remain in the RUNNING state during a deployment
+        :param bool rollback_circuit_breaker: Enables automatic rollback when the circuit breaker detects a failed deployment.
+        """
+        pulumi.set(__self__, "alarms", alarms)
+        pulumi.set(__self__, "enable_circuit_breaker", enable_circuit_breaker)
+        pulumi.set(__self__, "maximum_percent", maximum_percent)
+        pulumi.set(__self__, "minimum_healthy_percent", minimum_healthy_percent)
+        pulumi.set(__self__, "rollback_circuit_breaker", rollback_circuit_breaker)
+
+    @property
+    @pulumi.getter
+    def alarms(self) -> Sequence['outputs.GetEcsServiceDeploymentConfigurationAlarmResult']:
+        return pulumi.get(self, "alarms")
+
+    @property
+    @pulumi.getter(name="enableCircuitBreaker")
+    def enable_circuit_breaker(self) -> bool:
+        """
+        Enables ECS deployment circuit breaker to stop deployments on failures.
+        """
+        return pulumi.get(self, "enable_circuit_breaker")
+
+    @property
+    @pulumi.getter(name="maximumPercent")
+    def maximum_percent(self) -> int:
+        """
+        Specifies the maximum percentage of tasks that can run at once during a deployment.
+        """
+        return pulumi.get(self, "maximum_percent")
+
+    @property
+    @pulumi.getter(name="minimumHealthyPercent")
+    def minimum_healthy_percent(self) -> int:
+        """
+        Specifies the minimum percentage of tasks that must remain in the RUNNING state during a deployment
+        """
+        return pulumi.get(self, "minimum_healthy_percent")
+
+    @property
+    @pulumi.getter(name="rollbackCircuitBreaker")
+    def rollback_circuit_breaker(self) -> bool:
+        """
+        Enables automatic rollback when the circuit breaker detects a failed deployment.
+        """
+        return pulumi.get(self, "rollback_circuit_breaker")
+
+
+@pulumi.output_type
+class GetEcsServiceDeploymentConfigurationAlarmResult(dict):
+    def __init__(__self__, *,
+                 enable: bool,
+                 names: Sequence[str],
+                 rollback: bool):
+        """
+        :param bool enable: Enables or disables CloudWatch alarm monitoring during deployments.
+        :param Sequence[str] names: Names of CloudWatch alarms that ECS monitors during deployments.
+        :param bool rollback: Automatically rolls back the deployment if any configured CloudWatch alarm enters ALARM state.
+        """
+        pulumi.set(__self__, "enable", enable)
+        pulumi.set(__self__, "names", names)
+        pulumi.set(__self__, "rollback", rollback)
+
+    @property
+    @pulumi.getter
+    def enable(self) -> bool:
+        """
+        Enables or disables CloudWatch alarm monitoring during deployments.
+        """
+        return pulumi.get(self, "enable")
+
+    @property
+    @pulumi.getter
+    def names(self) -> Sequence[str]:
+        """
+        Names of CloudWatch alarms that ECS monitors during deployments.
+        """
+        return pulumi.get(self, "names")
+
+    @property
+    @pulumi.getter
+    def rollback(self) -> bool:
+        """
+        Automatically rolls back the deployment if any configured CloudWatch alarm enters ALARM state.
+        """
+        return pulumi.get(self, "rollback")
 
 
 @pulumi.output_type
@@ -39296,9 +40900,68 @@ class GetEcsServiceLoadBalancerHealthCheckConfigResult(dict):
 
 
 @pulumi.output_type
+class GetEcsServicePlacementConstraintResult(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 type: str):
+        """
+        :param str expression: Cluster Query Language expression to apply to the constraint. Does not need to be specified for the distinctInstance type. For more information, see [Cluster Query Language in the Amazon EC2 Container Service Developer Guide](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html).
+        :param str type: Type of constraint. The only valid values at this time are `memberOf` and `distinctInstance`
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        """
+        Cluster Query Language expression to apply to the constraint. Does not need to be specified for the distinctInstance type. For more information, see [Cluster Query Language in the Amazon EC2 Container Service Developer Guide](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html).
+        """
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type of constraint. The only valid values at this time are `memberOf` and `distinctInstance`
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetEcsServicePlacementStrategyResult(dict):
+    def __init__(__self__, *,
+                 field: str,
+                 type: str):
+        """
+        :param str field: For the spread placement strategy, valid values are instanceId, or any platform or custom attribute that is applied to a container instance. For the binpack type, valid values are memory and cpu. For the random type, this attribute is not needed. For more information, see [PlacementStrategy](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PlacementStrategy.html)
+        :param str type: Type of placement strategy. Must be one of: `binpack`, `random`, or `spread`
+        """
+        pulumi.set(__self__, "field", field)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def field(self) -> str:
+        """
+        For the spread placement strategy, valid values are instanceId, or any platform or custom attribute that is applied to a container instance. For the binpack type, valid values are memory and cpu. For the random type, this attribute is not needed. For more information, see [PlacementStrategy](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PlacementStrategy.html)
+        """
+        return pulumi.get(self, "field")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type of placement strategy. Must be one of: `binpack`, `random`, or `spread`
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
 class GetEcsServicesServiceResult(dict):
     def __init__(__self__, *,
                  capacity_provider_strategies: Sequence['outputs.GetEcsServicesServiceCapacityProviderStrategyResult'],
+                 deployment_configurations: Sequence['outputs.GetEcsServicesServiceDeploymentConfigurationResult'],
                  dns_prfx: str,
                  health_check_grace_period_seconds: int,
                  index: int,
@@ -39306,6 +40969,8 @@ class GetEcsServicesServiceResult(dict):
                  load_balancers: Sequence['outputs.GetEcsServicesServiceLoadBalancerResult'],
                  name: str,
                  old_task_definition_buffer_size: int,
+                 placement_constraints: Sequence['outputs.GetEcsServicesServicePlacementConstraintResult'],
+                 placement_strategies: Sequence['outputs.GetEcsServicesServicePlacementStrategyResult'],
                  replicas: int,
                  target_group_arns: Sequence[str],
                  task_definition: str,
@@ -39316,11 +40981,14 @@ class GetEcsServicesServiceResult(dict):
         :param Sequence['GetEcsServicesServiceLoadBalancerArgs'] load_balancers: Zero or more load balancer configurations to associate with this service.
         :param str name: The name of the service to create.
         :param int old_task_definition_buffer_size: The number of older task definitions to retain in AWS.
+        :param Sequence['GetEcsServicesServicePlacementConstraintArgs'] placement_constraints: Rules that are taken into consideration during task placement. Maximum number of `placement_constraints` is `10`
+        :param Sequence['GetEcsServicesServicePlacementStrategyArgs'] placement_strategies: Service level strategy rules that are taken into consideration during task placement. List from top to bottom in order of precedence. The maximum number of `placement_strategy` blocks is `5`
         :param int replicas: The number of container replicas to create.
         :param str task_definition: The ARN of the task definition to use.
         :param str tenant_id: The GUID of the tenant that the service will be created in.
         """
         pulumi.set(__self__, "capacity_provider_strategies", capacity_provider_strategies)
+        pulumi.set(__self__, "deployment_configurations", deployment_configurations)
         pulumi.set(__self__, "dns_prfx", dns_prfx)
         pulumi.set(__self__, "health_check_grace_period_seconds", health_check_grace_period_seconds)
         pulumi.set(__self__, "index", index)
@@ -39328,6 +40996,8 @@ class GetEcsServicesServiceResult(dict):
         pulumi.set(__self__, "load_balancers", load_balancers)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "old_task_definition_buffer_size", old_task_definition_buffer_size)
+        pulumi.set(__self__, "placement_constraints", placement_constraints)
+        pulumi.set(__self__, "placement_strategies", placement_strategies)
         pulumi.set(__self__, "replicas", replicas)
         pulumi.set(__self__, "target_group_arns", target_group_arns)
         pulumi.set(__self__, "task_definition", task_definition)
@@ -39337,6 +41007,11 @@ class GetEcsServicesServiceResult(dict):
     @pulumi.getter(name="capacityProviderStrategies")
     def capacity_provider_strategies(self) -> Sequence['outputs.GetEcsServicesServiceCapacityProviderStrategyResult']:
         return pulumi.get(self, "capacity_provider_strategies")
+
+    @property
+    @pulumi.getter(name="deploymentConfigurations")
+    def deployment_configurations(self) -> Sequence['outputs.GetEcsServicesServiceDeploymentConfigurationResult']:
+        return pulumi.get(self, "deployment_configurations")
 
     @property
     @pulumi.getter(name="dnsPrfx")
@@ -39389,6 +41064,22 @@ class GetEcsServicesServiceResult(dict):
         return pulumi.get(self, "old_task_definition_buffer_size")
 
     @property
+    @pulumi.getter(name="placementConstraints")
+    def placement_constraints(self) -> Sequence['outputs.GetEcsServicesServicePlacementConstraintResult']:
+        """
+        Rules that are taken into consideration during task placement. Maximum number of `placement_constraints` is `10`
+        """
+        return pulumi.get(self, "placement_constraints")
+
+    @property
+    @pulumi.getter(name="placementStrategies")
+    def placement_strategies(self) -> Sequence['outputs.GetEcsServicesServicePlacementStrategyResult']:
+        """
+        Service level strategy rules that are taken into consideration during task placement. List from top to bottom in order of precedence. The maximum number of `placement_strategy` blocks is `5`
+        """
+        return pulumi.get(self, "placement_strategies")
+
+    @property
     @pulumi.getter
     def replicas(self) -> int:
         """
@@ -39426,7 +41117,10 @@ class GetEcsServicesServiceCapacityProviderStrategyResult(dict):
                  weight: int):
         """
         :param int base: The number of tasks, at a minimum, to run on the specified capacity provider.
-        :param str capacity_provider: Name of the capacity provider.
+        :param str capacity_provider: Name of the capacity provider. Should be one of:
+                	- FARGATE
+                	- FARGATE_SPOT
+                	- ASG fullname: Used when asg created with agent platform ECS
         :param int weight: The relative percentage of the total number of launched tasks that should use the specified capacity provider.
         """
         pulumi.set(__self__, "base", base)
@@ -39445,7 +41139,10 @@ class GetEcsServicesServiceCapacityProviderStrategyResult(dict):
     @pulumi.getter(name="capacityProvider")
     def capacity_provider(self) -> str:
         """
-        Name of the capacity provider.
+        Name of the capacity provider. Should be one of:
+         	- FARGATE
+         	- FARGATE_SPOT
+         	- ASG fullname: Used when asg created with agent platform ECS
         """
         return pulumi.get(self, "capacity_provider")
 
@@ -39456,6 +41153,104 @@ class GetEcsServicesServiceCapacityProviderStrategyResult(dict):
         The relative percentage of the total number of launched tasks that should use the specified capacity provider.
         """
         return pulumi.get(self, "weight")
+
+
+@pulumi.output_type
+class GetEcsServicesServiceDeploymentConfigurationResult(dict):
+    def __init__(__self__, *,
+                 alarms: Sequence['outputs.GetEcsServicesServiceDeploymentConfigurationAlarmResult'],
+                 enable_circuit_breaker: bool,
+                 maximum_percent: int,
+                 minimum_healthy_percent: int,
+                 rollback_circuit_breaker: bool):
+        """
+        :param bool enable_circuit_breaker: Enables ECS deployment circuit breaker to stop deployments on failures.
+        :param int maximum_percent: Specifies the maximum percentage of tasks that can run at once during a deployment.
+        :param int minimum_healthy_percent: Specifies the minimum percentage of tasks that must remain in the RUNNING state during a deployment
+        :param bool rollback_circuit_breaker: Enables automatic rollback when the circuit breaker detects a failed deployment.
+        """
+        pulumi.set(__self__, "alarms", alarms)
+        pulumi.set(__self__, "enable_circuit_breaker", enable_circuit_breaker)
+        pulumi.set(__self__, "maximum_percent", maximum_percent)
+        pulumi.set(__self__, "minimum_healthy_percent", minimum_healthy_percent)
+        pulumi.set(__self__, "rollback_circuit_breaker", rollback_circuit_breaker)
+
+    @property
+    @pulumi.getter
+    def alarms(self) -> Sequence['outputs.GetEcsServicesServiceDeploymentConfigurationAlarmResult']:
+        return pulumi.get(self, "alarms")
+
+    @property
+    @pulumi.getter(name="enableCircuitBreaker")
+    def enable_circuit_breaker(self) -> bool:
+        """
+        Enables ECS deployment circuit breaker to stop deployments on failures.
+        """
+        return pulumi.get(self, "enable_circuit_breaker")
+
+    @property
+    @pulumi.getter(name="maximumPercent")
+    def maximum_percent(self) -> int:
+        """
+        Specifies the maximum percentage of tasks that can run at once during a deployment.
+        """
+        return pulumi.get(self, "maximum_percent")
+
+    @property
+    @pulumi.getter(name="minimumHealthyPercent")
+    def minimum_healthy_percent(self) -> int:
+        """
+        Specifies the minimum percentage of tasks that must remain in the RUNNING state during a deployment
+        """
+        return pulumi.get(self, "minimum_healthy_percent")
+
+    @property
+    @pulumi.getter(name="rollbackCircuitBreaker")
+    def rollback_circuit_breaker(self) -> bool:
+        """
+        Enables automatic rollback when the circuit breaker detects a failed deployment.
+        """
+        return pulumi.get(self, "rollback_circuit_breaker")
+
+
+@pulumi.output_type
+class GetEcsServicesServiceDeploymentConfigurationAlarmResult(dict):
+    def __init__(__self__, *,
+                 enable: bool,
+                 names: Sequence[str],
+                 rollback: bool):
+        """
+        :param bool enable: Enables or disables CloudWatch alarm monitoring during deployments.
+        :param Sequence[str] names: Names of CloudWatch alarms that ECS monitors during deployments.
+        :param bool rollback: Automatically rolls back the deployment if any configured CloudWatch alarm enters ALARM state.
+        """
+        pulumi.set(__self__, "enable", enable)
+        pulumi.set(__self__, "names", names)
+        pulumi.set(__self__, "rollback", rollback)
+
+    @property
+    @pulumi.getter
+    def enable(self) -> bool:
+        """
+        Enables or disables CloudWatch alarm monitoring during deployments.
+        """
+        return pulumi.get(self, "enable")
+
+    @property
+    @pulumi.getter
+    def names(self) -> Sequence[str]:
+        """
+        Names of CloudWatch alarms that ECS monitors during deployments.
+        """
+        return pulumi.get(self, "names")
+
+    @property
+    @pulumi.getter
+    def rollback(self) -> bool:
+        """
+        Automatically rolls back the deployment if any configured CloudWatch alarm enters ALARM state.
+        """
+        return pulumi.get(self, "rollback")
 
 
 @pulumi.output_type
@@ -39737,6 +41532,64 @@ class GetEcsServicesServiceLoadBalancerHealthCheckConfigResult(dict):
     @pulumi.getter(name="unhealthyThresholdCount")
     def unhealthy_threshold_count(self) -> int:
         return pulumi.get(self, "unhealthy_threshold_count")
+
+
+@pulumi.output_type
+class GetEcsServicesServicePlacementConstraintResult(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 type: str):
+        """
+        :param str expression: Cluster Query Language expression to apply to the constraint. Does not need to be specified for the distinctInstance type. For more information, see [Cluster Query Language in the Amazon EC2 Container Service Developer Guide](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html).
+        :param str type: Type of constraint. The only valid values at this time are `memberOf` and `distinctInstance`
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        """
+        Cluster Query Language expression to apply to the constraint. Does not need to be specified for the distinctInstance type. For more information, see [Cluster Query Language in the Amazon EC2 Container Service Developer Guide](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html).
+        """
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type of constraint. The only valid values at this time are `memberOf` and `distinctInstance`
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetEcsServicesServicePlacementStrategyResult(dict):
+    def __init__(__self__, *,
+                 field: str,
+                 type: str):
+        """
+        :param str field: For the spread placement strategy, valid values are instanceId, or any platform or custom attribute that is applied to a container instance. For the binpack type, valid values are memory and cpu. For the random type, this attribute is not needed. For more information, see [PlacementStrategy](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PlacementStrategy.html)
+        :param str type: Type of placement strategy. Must be one of: `binpack`, `random`, or `spread`
+        """
+        pulumi.set(__self__, "field", field)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def field(self) -> str:
+        """
+        For the spread placement strategy, valid values are instanceId, or any platform or custom attribute that is applied to a container instance. For the binpack type, valid values are memory and cpu. For the random type, this attribute is not needed. For more information, see [PlacementStrategy](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PlacementStrategy.html)
+        """
+        return pulumi.get(self, "field")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type of placement strategy. Must be one of: `binpack`, `random`, or `spread`
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type
@@ -41345,6 +43198,7 @@ class GetInfrastructuresDataResult(dict):
                  cloud: int,
                  enable_k8_cluster: bool,
                  infra_name: str,
+                 nat_ips: Sequence[str],
                  region: str,
                  status: str,
                  subnet_cidr: int):
@@ -41359,6 +43213,7 @@ class GetInfrastructuresDataResult(dict):
                   - `2` : Azure
         :param bool enable_k8_cluster: Whether or not a kubernetes cluster is provisioned.
         :param str infra_name: The name of the infrastructure.
+        :param Sequence[str] nat_ips: The NAT IPs for the subnet.
         :param str region: The cloud provider region.  The Duplo portal must have already been configured to support this region.
         :param str status: The status of the infrastructure.
         :param int subnet_cidr: The CIDR subnet size (in bits) of the automatically created subnets.
@@ -41369,6 +43224,7 @@ class GetInfrastructuresDataResult(dict):
         pulumi.set(__self__, "cloud", cloud)
         pulumi.set(__self__, "enable_k8_cluster", enable_k8_cluster)
         pulumi.set(__self__, "infra_name", infra_name)
+        pulumi.set(__self__, "nat_ips", nat_ips)
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "subnet_cidr", subnet_cidr)
@@ -41424,6 +43280,14 @@ class GetInfrastructuresDataResult(dict):
         The name of the infrastructure.
         """
         return pulumi.get(self, "infra_name")
+
+    @property
+    @pulumi.getter(name="natIps")
+    def nat_ips(self) -> Sequence[str]:
+        """
+        The NAT IPs for the subnet.
+        """
+        return pulumi.get(self, "nat_ips")
 
     @property
     @pulumi.getter
@@ -59943,6 +61807,13 @@ class GetNativeHostImagesImageResult(dict):
                  region: str,
                  tags: Sequence['outputs.GetNativeHostImagesImageTagResult'],
                  username: str):
+        """
+        :param str arch: Architecture of the native host
+        :param str k8s_version: K8 version of the native host
+        :param str name: Name of the Duplocloud native host
+        :param str os: OS of native host
+        :param str username: username associated to native host
+        """
         pulumi.set(__self__, "arch", arch)
         pulumi.set(__self__, "image_id", image_id)
         pulumi.set(__self__, "is_kubernetes", is_kubernetes)
@@ -59956,6 +61827,9 @@ class GetNativeHostImagesImageResult(dict):
     @property
     @pulumi.getter
     def arch(self) -> str:
+        """
+        Architecture of the native host
+        """
         return pulumi.get(self, "arch")
 
     @property
@@ -59971,16 +61845,25 @@ class GetNativeHostImagesImageResult(dict):
     @property
     @pulumi.getter(name="k8sVersion")
     def k8s_version(self) -> str:
+        """
+        K8 version of the native host
+        """
         return pulumi.get(self, "k8s_version")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        Name of the Duplocloud native host
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def os(self) -> str:
+        """
+        OS of native host
+        """
         return pulumi.get(self, "os")
 
     @property
@@ -59996,6 +61879,9 @@ class GetNativeHostImagesImageResult(dict):
     @property
     @pulumi.getter
     def username(self) -> str:
+        """
+        username associated to native host
+        """
         return pulumi.get(self, "username")
 
 
@@ -60059,8 +61945,8 @@ class GetNativeHostsHostResult(dict):
         :param int keypair_type: The numeric ID of the keypair type being used.Should be one of:
                
                   - `0` : Default
-                  - `1` : ED25519
-                  - `2` : RSA (deprecated - some operating systems no longer support it)
+                  - `1` : RSA (deprecated - some operating systems no longer support it)
+                  - `2` : ED25519
         :param Sequence['GetNativeHostsHostMetadataArgs'] metadatas: Configuration metadata used when creating the host.<br>*Note: To configure OS disk size OsDiskSize can be specified as Key and its size as value, size value should be atleast 10*
         :param Sequence['GetNativeHostsHostMinionTagArgs'] minion_tags: A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value.
         :param Sequence['GetNativeHostsHostNetworkInterfaceArgs'] network_interfaces: An optional list of custom network interface configurations to use when creating the host.
@@ -60071,6 +61957,11 @@ class GetNativeHostsHostResult(dict):
         :param str user_account: The name of the tenant that the host will be created in.
         :param Sequence['GetNativeHostsHostVolumeArgs'] volumes: Block to specify additional or secondary volume beyond the root device
         :param int agent_platform: The numeric ID of the container agent pool that this host is added to.
+                - 0: Linux Docker/Native
+               - 	4: None
+               - 5: Docker Windows
+               - 7: EKS Linux
+               - 8: ECS
         :param bool allocated_public_ip: Whether or not to allocate a public IP.
         :param int cloud: The numeric ID of the cloud provider to launch the host in.
         :param Mapping[str, str] custom_node_labels: Specify the labels to attach to the nodes.
@@ -60177,8 +62068,8 @@ class GetNativeHostsHostResult(dict):
         The numeric ID of the keypair type being used.Should be one of:
 
            - `0` : Default
-           - `1` : ED25519
-           - `2` : RSA (deprecated - some operating systems no longer support it)
+           - `1` : RSA (deprecated - some operating systems no longer support it)
+           - `2` : ED25519
         """
         return pulumi.get(self, "keypair_type")
 
@@ -60264,6 +62155,11 @@ class GetNativeHostsHostResult(dict):
     def agent_platform(self) -> Optional[int]:
         """
         The numeric ID of the container agent pool that this host is added to.
+         - 0: Linux Docker/Native
+        - 	4: None
+        - 5: Docker Windows
+        - 7: EKS Linux
+        - 8: ECS
         """
         return pulumi.get(self, "agent_platform")
 
@@ -61562,6 +63458,51 @@ class GetPlansDataWafInfoResult(dict):
     @pulumi.getter
     def name(self) -> str:
         return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetSystemFeaturesAppConfigResult(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 type: str,
+                 value: str):
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetSystemFeaturesEksVersionResult(dict):
+    def __init__(__self__, *,
+                 default_version: str,
+                 supported_versions: Sequence[str]):
+        pulumi.set(__self__, "default_version", default_version)
+        pulumi.set(__self__, "supported_versions", supported_versions)
+
+    @property
+    @pulumi.getter(name="defaultVersion")
+    def default_version(self) -> str:
+        return pulumi.get(self, "default_version")
+
+    @property
+    @pulumi.getter(name="supportedVersions")
+    def supported_versions(self) -> Sequence[str]:
+        return pulumi.get(self, "supported_versions")
 
 
 @pulumi.output_type

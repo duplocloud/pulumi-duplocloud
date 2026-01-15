@@ -19,28 +19,28 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var tenantId = "d186700c-ad18-4525-9593-aad467c843ff";
     /// 
-    ///     var bsp = new Duplocloud.AwsBatchSchedulingPolicy("bsp", new()
+    ///     var bsp = new Pulumi.AwsBatchSchedulingPolicy("bsp", new()
     ///     {
     ///         TenantId = tenantId,
     ///         Name = "rtt",
-    ///         FairSharePolicy = new Duplocloud.Inputs.AwsBatchSchedulingPolicyFairSharePolicyArgs
+    ///         FairSharePolicy = new Pulumi.Inputs.AwsBatchSchedulingPolicyFairSharePolicyArgs
     ///         {
     ///             ComputeReservation = 2,
     ///             ShareDecaySeconds = 3600,
     ///             ShareDistributions = new[]
     ///             {
-    ///                 new Duplocloud.Inputs.AwsBatchSchedulingPolicyFairSharePolicyShareDistributionArgs
+    ///                 new Pulumi.Inputs.AwsBatchSchedulingPolicyFairSharePolicyShareDistributionArgs
     ///                 {
     ///                     ShareIdentifier = "A1*",
     ///                     WeightFactor = 0.1,
     ///                 },
-    ///                 new Duplocloud.Inputs.AwsBatchSchedulingPolicyFairSharePolicyShareDistributionArgs
+    ///                 new Pulumi.Inputs.AwsBatchSchedulingPolicyFairSharePolicyShareDistributionArgs
     ///                 {
     ///                     ShareIdentifier = "A2",
     ///                     WeightFactor = 0.2,
@@ -53,13 +53,13 @@ namespace DuploCloud.Pulumi
     ///         },
     ///     });
     /// 
-    ///     var bce = new Duplocloud.AwsBatchComputeEnvironment("bce", new()
+    ///     var bce = new Pulumi.AwsBatchComputeEnvironment("bce", new()
     ///     {
     ///         TenantId = tenantId,
     ///         Name = "sample",
-    ///         ComputeResources = new Duplocloud.Inputs.AwsBatchComputeEnvironmentComputeResourcesArgs
+    ///         ComputeResources = new Pulumi.Inputs.AwsBatchComputeEnvironmentComputeResourcesArgs
     ///         {
-    ///             Ec2Configuration = new Duplocloud.Inputs.AwsBatchComputeEnvironmentComputeResourcesEc2ConfigurationArgs
+    ///             Ec2Configuration = new Pulumi.Inputs.AwsBatchComputeEnvironmentComputeResourcesEc2ConfigurationArgs
     ///             {
     ///                 ImageType = "ECS_AL2",
     ///             },
@@ -77,7 +77,7 @@ namespace DuploCloud.Pulumi
     ///         Type = "MANAGED",
     ///     });
     /// 
-    ///     var jq = new Duplocloud.AwsBatchJobQueue("jq", new()
+    ///     var jq = new Pulumi.AwsBatchJobQueue("jq", new()
     ///     {
     ///         TenantId = tenantId,
     ///         Name = "tf_job_queue",

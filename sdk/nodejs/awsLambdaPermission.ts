@@ -90,7 +90,7 @@ export class AwsLambdaPermission extends pulumi.CustomResource {
     /**
      * The Event Source Token to validate.
      */
-    public readonly eventSourceToken!: pulumi.Output<string | undefined>;
+    public readonly eventSourceToken!: pulumi.Output<string>;
     /**
      * Name of the Lambda function whose resource policy you are updating.
      */
@@ -102,15 +102,15 @@ export class AwsLambdaPermission extends pulumi.CustomResource {
     /**
      * Query parameter to specify function version or alias name. The permission will then apply to the specific qualified ARN.
      */
-    public readonly qualifier!: pulumi.Output<string | undefined>;
+    public readonly qualifier!: pulumi.Output<string>;
     /**
      * This parameter is used for S3 and SES. The AWS account ID (without a hyphen) of the source owner.
      */
-    public readonly sourceAccount!: pulumi.Output<string | undefined>;
+    public readonly sourceAccount!: pulumi.Output<string>;
     /**
      * When the principal is an AWS service, the ARN of the specific resource within that service to grant permission to.
      */
-    public readonly sourceArn!: pulumi.Output<string | undefined>;
+    public readonly sourceArn!: pulumi.Output<string>;
     /**
      * A unique statement identifier.
      */

@@ -19,17 +19,17 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myapp = new Duplocloud.Tenant("myapp", new()
+    ///     var myapp = new Pulumi.Tenant("myapp", new()
     ///     {
     ///         AccountName = "myapp",
     ///         PlanId = "default",
     ///     });
     /// 
-    ///     var sqlInstance = new Duplocloud.GcpSqlDatabaseInstance("sql_instance", new()
+    ///     var sqlInstance = new Pulumi.GcpSqlDatabaseInstance("sql_instance", new()
     ///     {
     ///         TenantId = myapp.TenantId,
     ///         Name = "sqlinstances01",
@@ -44,7 +44,7 @@ namespace DuploCloud.Pulumi
     ///     });
     /// 
     ///     // Backup configuration example
-    ///     var sql = new Duplocloud.GcpSqlDatabaseInstance("sql", new()
+    ///     var sql = new Pulumi.GcpSqlDatabaseInstance("sql", new()
     ///     {
     ///         TenantId = myapp.TenantId,
     ///         Name = "mysqlbckp",
@@ -82,6 +82,12 @@ namespace DuploCloud.Pulumi
         public Output<string> ConnectionName { get; private set; } = null!;
 
         /// <summary>
+        /// List of database flags to be set on the database instance. Please refer to the [Database Flags Documentation](https://cloud.google.com/sql/docs/mysql/flags) for more details on available flags.
+        /// </summary>
+        [Output("databaseFlags")]
+        public Output<ImmutableArray<Outputs.GcpSqlDatabaseInstanceDatabaseFlag>> DatabaseFlags { get; private set; } = null!;
+
+        /// <summary>
         /// The MySQL, PostgreSQL or SQL Server version to use.Supported values include `MYSQL_5_6`,`MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`,`POSTGRES_10`,`POSTGRES_11`,`POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`, `POSTGRES_15`,`POSTGRES_16`,`POSTGRES_17`, `SQLSERVER_2017_STANDARD`,`SQLSERVER_2017_ENTERPRISE`,`SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`,`SQLSERVER_2019_STANDARD`, `SQLSERVER_2019_ENTERPRISE`, `SQLSERVER_2019_EXPRESS`,`SQLSERVER_2019_WEB`,`SQLSERVER_2022_WEB`,`SQLSERVER_2022_EXPRESS`,`SQLSERVER_2022_ENTERPRISE`,`SQLSERVER_2022_STANDARD`.[Database Version Policies](https://cloud.google.com/sql/docs/db-versions) includes an up-to-date reference of supported versions.
         /// </summary>
         [Output("databaseVersion")]
@@ -92,6 +98,12 @@ namespace DuploCloud.Pulumi
         /// </summary>
         [Output("diskSize")]
         public Output<int> DiskSize { get; private set; } = null!;
+
+        /// <summary>
+        /// Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS Defaults to `ENTERPRISE`.
+        /// </summary>
+        [Output("edition")]
+        public Output<string?> Edition { get; private set; } = null!;
 
         /// <summary>
         /// The full name of the sql database.
@@ -200,6 +212,18 @@ namespace DuploCloud.Pulumi
 
     public sealed class GcpSqlDatabaseInstanceArgs : global::Pulumi.ResourceArgs
     {
+        [Input("databaseFlags")]
+        private InputList<Inputs.GcpSqlDatabaseInstanceDatabaseFlagArgs>? _databaseFlags;
+
+        /// <summary>
+        /// List of database flags to be set on the database instance. Please refer to the [Database Flags Documentation](https://cloud.google.com/sql/docs/mysql/flags) for more details on available flags.
+        /// </summary>
+        public InputList<Inputs.GcpSqlDatabaseInstanceDatabaseFlagArgs> DatabaseFlags
+        {
+            get => _databaseFlags ?? (_databaseFlags = new InputList<Inputs.GcpSqlDatabaseInstanceDatabaseFlagArgs>());
+            set => _databaseFlags = value;
+        }
+
         /// <summary>
         /// The MySQL, PostgreSQL or SQL Server version to use.Supported values include `MYSQL_5_6`,`MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`,`POSTGRES_10`,`POSTGRES_11`,`POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`, `POSTGRES_15`,`POSTGRES_16`,`POSTGRES_17`, `SQLSERVER_2017_STANDARD`,`SQLSERVER_2017_ENTERPRISE`,`SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`,`SQLSERVER_2019_STANDARD`, `SQLSERVER_2019_ENTERPRISE`, `SQLSERVER_2019_EXPRESS`,`SQLSERVER_2019_WEB`,`SQLSERVER_2022_WEB`,`SQLSERVER_2022_EXPRESS`,`SQLSERVER_2022_ENTERPRISE`,`SQLSERVER_2022_STANDARD`.[Database Version Policies](https://cloud.google.com/sql/docs/db-versions) includes an up-to-date reference of supported versions.
         /// </summary>
@@ -211,6 +235,12 @@ namespace DuploCloud.Pulumi
         /// </summary>
         [Input("diskSize")]
         public Input<int>? DiskSize { get; set; }
+
+        /// <summary>
+        /// Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS Defaults to `ENTERPRISE`.
+        /// </summary>
+        [Input("edition")]
+        public Input<string>? Edition { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -274,6 +304,18 @@ namespace DuploCloud.Pulumi
         [Input("connectionName")]
         public Input<string>? ConnectionName { get; set; }
 
+        [Input("databaseFlags")]
+        private InputList<Inputs.GcpSqlDatabaseInstanceDatabaseFlagGetArgs>? _databaseFlags;
+
+        /// <summary>
+        /// List of database flags to be set on the database instance. Please refer to the [Database Flags Documentation](https://cloud.google.com/sql/docs/mysql/flags) for more details on available flags.
+        /// </summary>
+        public InputList<Inputs.GcpSqlDatabaseInstanceDatabaseFlagGetArgs> DatabaseFlags
+        {
+            get => _databaseFlags ?? (_databaseFlags = new InputList<Inputs.GcpSqlDatabaseInstanceDatabaseFlagGetArgs>());
+            set => _databaseFlags = value;
+        }
+
         /// <summary>
         /// The MySQL, PostgreSQL or SQL Server version to use.Supported values include `MYSQL_5_6`,`MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`,`POSTGRES_10`,`POSTGRES_11`,`POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`, `POSTGRES_15`,`POSTGRES_16`,`POSTGRES_17`, `SQLSERVER_2017_STANDARD`,`SQLSERVER_2017_ENTERPRISE`,`SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`,`SQLSERVER_2019_STANDARD`, `SQLSERVER_2019_ENTERPRISE`, `SQLSERVER_2019_EXPRESS`,`SQLSERVER_2019_WEB`,`SQLSERVER_2022_WEB`,`SQLSERVER_2022_EXPRESS`,`SQLSERVER_2022_ENTERPRISE`,`SQLSERVER_2022_STANDARD`.[Database Version Policies](https://cloud.google.com/sql/docs/db-versions) includes an up-to-date reference of supported versions.
         /// </summary>
@@ -285,6 +327,12 @@ namespace DuploCloud.Pulumi
         /// </summary>
         [Input("diskSize")]
         public Input<int>? DiskSize { get; set; }
+
+        /// <summary>
+        /// Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS Defaults to `ENTERPRISE`.
+        /// </summary>
+        [Input("edition")]
+        public Input<string>? Edition { get; set; }
 
         /// <summary>
         /// The full name of the sql database.

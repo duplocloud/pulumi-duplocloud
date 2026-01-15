@@ -52,6 +52,8 @@ func LookupK8sJob(ctx *pulumi.Context, args *LookupK8sJobArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getK8sJob.
 type LookupK8sJobArgs struct {
+	// Allocation tags is the simplest way to constraint containers/pods with hosts/nodes. DuploCloud/Kubernetes Orchestrator will make sure containers will run on the hosts having same allocation tags.
+	AllocationTags *string `pulumi:"allocationTags"`
 	// Defaults to `false`.
 	IsAnyHostAllowed *bool `pulumi:"isAnyHostAllowed"`
 	// Standard job's metadata. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
@@ -62,6 +64,8 @@ type LookupK8sJobArgs struct {
 
 // A collection of values returned by getK8sJob.
 type LookupK8sJobResult struct {
+	// Allocation tags is the simplest way to constraint containers/pods with hosts/nodes. DuploCloud/Kubernetes Orchestrator will make sure containers will run on the hosts having same allocation tags.
+	AllocationTags *string `pulumi:"allocationTags"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Defaults to `false`.
@@ -86,6 +90,8 @@ func LookupK8sJobOutput(ctx *pulumi.Context, args LookupK8sJobOutputArgs, opts .
 
 // A collection of arguments for invoking getK8sJob.
 type LookupK8sJobOutputArgs struct {
+	// Allocation tags is the simplest way to constraint containers/pods with hosts/nodes. DuploCloud/Kubernetes Orchestrator will make sure containers will run on the hosts having same allocation tags.
+	AllocationTags pulumi.StringPtrInput `pulumi:"allocationTags"`
 	// Defaults to `false`.
 	IsAnyHostAllowed pulumi.BoolPtrInput `pulumi:"isAnyHostAllowed"`
 	// Standard job's metadata. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
@@ -111,6 +117,11 @@ func (o LookupK8sJobResultOutput) ToLookupK8sJobResultOutput() LookupK8sJobResul
 
 func (o LookupK8sJobResultOutput) ToLookupK8sJobResultOutputWithContext(ctx context.Context) LookupK8sJobResultOutput {
 	return o
+}
+
+// Allocation tags is the simplest way to constraint containers/pods with hosts/nodes. DuploCloud/Kubernetes Orchestrator will make sure containers will run on the hosts having same allocation tags.
+func (o LookupK8sJobResultOutput) AllocationTags() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupK8sJobResult) *string { return v.AllocationTags }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

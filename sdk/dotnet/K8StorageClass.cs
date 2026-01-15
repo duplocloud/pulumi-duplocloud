@@ -19,13 +19,13 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var tenantId = "3a0b2ea5-7403-4765-ad6e-8771ca8fa0fd";
     /// 
-    ///     var sc = new Duplocloud.K8StorageClass("sc", new()
+    ///     var sc = new Pulumi.K8StorageClass("sc", new()
     ///     {
     ///         TenantId = tenantId,
     ///         Name = "sc",

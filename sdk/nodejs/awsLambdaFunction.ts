@@ -122,7 +122,7 @@ export class AwsLambdaFunction extends pulumi.CustomResource {
     /**
      * Instruction set architecture for your Lambda function. Valid values are `[x8664]` and `[arm64]`. Default is `[x8664]`
      */
-    public readonly architectures!: pulumi.Output<string | undefined>;
+    public readonly architectures!: pulumi.Output<string>;
     /**
      * The ARN of the lambda function.
      */

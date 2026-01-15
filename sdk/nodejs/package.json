@@ -1,11 +1,18 @@
 {
     "name": "@duplocloud/pulumi",
     "version": "0.0.1",
-    "description": "A Pulumi package for creating and managing duplocloud cloud resources.",
+    "description": "A Pulumi provider for creating and managing DuploCloud infrastructure.",
     "keywords": [
         "pulumi",
         "duplocloud",
-        "category/cloud"
+        "category/cloud",
+        "infrastructure",
+        "kubernetes",
+        "containers",
+        "devops",
+        "aws",
+        "azure",
+        "gcp"
     ],
     "homepage": "https://duplocloud.com",
     "repository": "https://github.com/duplocloud/pulumi-duplocloud",

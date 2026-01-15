@@ -13,33 +13,6 @@ namespace DuploCloud.Pulumi
     /// <summary>
     /// `duplocloud_helm_repository` manages helm repository in duplocloud
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var myapp = new Duplocloud.Tenant("myapp", new()
-    ///     {
-    ///         AccountName = "myapp",
-    ///         PlanId = "default",
-    ///     });
-    /// 
-    ///     var repo = new Duplocloud.Index.HelmRepository("repo", new()
-    ///     {
-    ///         TenantId = myapp.TenantId,
-    ///         Name = "repo-name",
-    ///         Interval = "06m00s",
-    ///         Url = "https://helm.github.com",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Example: Importing an existing helm repository
@@ -58,6 +31,18 @@ namespace DuploCloud.Pulumi
     public partial class K8HelmRepository : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The provider attribute in the spec block of a HelmRepository specifies the cloud  example: generic, aws, gcp, azure
+        /// </summary>
+        [Output("helmProvider")]
+        public Output<string> HelmProvider { get; private set; } = null!;
+
+        /// <summary>
+        /// Set to skip TLS certificate verification when accessing the repository.
+        /// </summary>
+        [Output("insecure")]
+        public Output<bool> Insecure { get; private set; } = null!;
+
+        /// <summary>
         /// The interval associated to helm repository Defaults to `5m0s`.
         /// </summary>
         [Output("interval")]
@@ -70,10 +55,28 @@ namespace DuploCloud.Pulumi
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Pass credentials even to a different host than the one used in url
+        /// </summary>
+        [Output("passCredentials")]
+        public Output<bool> PassCredentials { get; private set; } = null!;
+
+        /// <summary>
+        /// Used to pause the reconciliation of the repository by the controller.
+        /// </summary>
+        [Output("suspend")]
+        public Output<bool> Suspend { get; private set; } = null!;
+
+        /// <summary>
         /// The GUID of the tenant that the storage bucket will be created in.
         /// </summary>
         [Output("tenantId")]
         public Output<string> TenantId { get; private set; } = null!;
+
+        /// <summary>
+        /// The Helm repository type. Possible values are default for a Helm HTTP/S repository, or oci for an OCI Helm repository.
+        /// </summary>
+        [Output("type")]
+        public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
         /// The url of helm repository to be attached
@@ -129,6 +132,18 @@ namespace DuploCloud.Pulumi
     public sealed class K8HelmRepositoryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The provider attribute in the spec block of a HelmRepository specifies the cloud  example: generic, aws, gcp, azure
+        /// </summary>
+        [Input("helmProvider")]
+        public Input<string>? HelmProvider { get; set; }
+
+        /// <summary>
+        /// Set to skip TLS certificate verification when accessing the repository.
+        /// </summary>
+        [Input("insecure")]
+        public Input<bool>? Insecure { get; set; }
+
+        /// <summary>
         /// The interval associated to helm repository Defaults to `5m0s`.
         /// </summary>
         [Input("interval")]
@@ -141,10 +156,28 @@ namespace DuploCloud.Pulumi
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Pass credentials even to a different host than the one used in url
+        /// </summary>
+        [Input("passCredentials")]
+        public Input<bool>? PassCredentials { get; set; }
+
+        /// <summary>
+        /// Used to pause the reconciliation of the repository by the controller.
+        /// </summary>
+        [Input("suspend")]
+        public Input<bool>? Suspend { get; set; }
+
+        /// <summary>
         /// The GUID of the tenant that the storage bucket will be created in.
         /// </summary>
         [Input("tenantId", required: true)]
         public Input<string> TenantId { get; set; } = null!;
+
+        /// <summary>
+        /// The Helm repository type. Possible values are default for a Helm HTTP/S repository, or oci for an OCI Helm repository.
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
 
         /// <summary>
         /// The url of helm repository to be attached
@@ -161,6 +194,18 @@ namespace DuploCloud.Pulumi
     public sealed class K8HelmRepositoryState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The provider attribute in the spec block of a HelmRepository specifies the cloud  example: generic, aws, gcp, azure
+        /// </summary>
+        [Input("helmProvider")]
+        public Input<string>? HelmProvider { get; set; }
+
+        /// <summary>
+        /// Set to skip TLS certificate verification when accessing the repository.
+        /// </summary>
+        [Input("insecure")]
+        public Input<bool>? Insecure { get; set; }
+
+        /// <summary>
         /// The interval associated to helm repository Defaults to `5m0s`.
         /// </summary>
         [Input("interval")]
@@ -173,10 +218,28 @@ namespace DuploCloud.Pulumi
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Pass credentials even to a different host than the one used in url
+        /// </summary>
+        [Input("passCredentials")]
+        public Input<bool>? PassCredentials { get; set; }
+
+        /// <summary>
+        /// Used to pause the reconciliation of the repository by the controller.
+        /// </summary>
+        [Input("suspend")]
+        public Input<bool>? Suspend { get; set; }
+
+        /// <summary>
         /// The GUID of the tenant that the storage bucket will be created in.
         /// </summary>
         [Input("tenantId")]
         public Input<string>? TenantId { get; set; }
+
+        /// <summary>
+        /// The Helm repository type. Possible values are default for a Helm HTTP/S repository, or oci for an OCI Helm repository.
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
 
         /// <summary>
         /// The url of helm repository to be attached

@@ -19,11 +19,11 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var securityRule = new Duplocloud.AzureNetworkSecurityRule("security_rule", new()
+    ///     var securityRule = new Pulumi.AzureNetworkSecurityRule("security_rule", new()
     ///     {
     ///         InfraName = "demo",
     ///         NetworkSecurityGroupName = "duploinfra-sub01",

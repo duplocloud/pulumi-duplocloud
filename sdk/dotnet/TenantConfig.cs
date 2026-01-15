@@ -21,27 +21,27 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myapp = new Duplocloud.Tenant("myapp", new()
+    ///     var myapp = new Pulumi.Tenant("myapp", new()
     ///     {
     ///         AccountName = "myapp",
     ///         PlanId = "default",
     ///     });
     /// 
-    ///     var myappTenantConfig = new Duplocloud.TenantConfig("myapp", new()
+    ///     var myappTenantConfig = new Pulumi.TenantConfig("myapp", new()
     ///     {
     ///         TenantId = myapp.TenantId,
     ///         Settings = new[]
     ///         {
-    ///             new Duplocloud.Inputs.TenantConfigSettingArgs
+    ///             new Pulumi.Inputs.TenantConfigSettingArgs
     ///             {
     ///                 Key = "block_public_access_to_s3",
     ///                 Value = "true",
     ///             },
-    ///             new Duplocloud.Inputs.TenantConfigSettingArgs
+    ///             new Pulumi.Inputs.TenantConfigSettingArgs
     ///             {
     ///                 Key = "enforce_ssl_for_s3",
     ///                 Value = "true",

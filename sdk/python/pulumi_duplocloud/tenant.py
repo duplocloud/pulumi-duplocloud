@@ -29,7 +29,7 @@ class TenantArgs:
                  wait_until_deleted: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Tenant resource.
-        :param pulumi.Input[str] account_name: The name of the tenant. Tenant names are globally unique, and cannot be a prefix of any other tenant name.
+        :param pulumi.Input[str] account_name: The name of the tenant. Tenant names are globally unique, and cannot be a prefix of any other tenant name. Will be converted to lowercase.
         :param pulumi.Input[str] plan_id: The name of the plan under which the tenant will be created.
         :param pulumi.Input[bool] allow_deletion: Whether or not to even try and delete the tenant. *NOTE: This only works if you have disabled deletion protection for the tenant.* Defaults to `false`.
         :param pulumi.Input[str] existing_k8s_namespace: Existing kubernetes namespace to use by the tenant. *NOTE: This is an advanced feature, please contact your DuploCloud administrator for help if you want to use this field.*
@@ -51,7 +51,7 @@ class TenantArgs:
     @pulumi.getter(name="accountName")
     def account_name(self) -> pulumi.Input[str]:
         """
-        The name of the tenant. Tenant names are globally unique, and cannot be a prefix of any other tenant name.
+        The name of the tenant. Tenant names are globally unique, and cannot be a prefix of any other tenant name. Will be converted to lowercase.
         """
         return pulumi.get(self, "account_name")
 
@@ -135,7 +135,7 @@ class _TenantState:
                  wait_until_deleted: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering Tenant resources.
-        :param pulumi.Input[str] account_name: The name of the tenant. Tenant names are globally unique, and cannot be a prefix of any other tenant name.
+        :param pulumi.Input[str] account_name: The name of the tenant. Tenant names are globally unique, and cannot be a prefix of any other tenant name. Will be converted to lowercase.
         :param pulumi.Input[bool] allow_deletion: Whether or not to even try and delete the tenant. *NOTE: This only works if you have disabled deletion protection for the tenant.* Defaults to `false`.
         :param pulumi.Input[str] existing_k8s_namespace: Existing kubernetes namespace to use by the tenant. *NOTE: This is an advanced feature, please contact your DuploCloud administrator for help if you want to use this field.*
         :param pulumi.Input[str] plan_id: The name of the plan under which the tenant will be created.
@@ -168,7 +168,7 @@ class _TenantState:
     @pulumi.getter(name="accountName")
     def account_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the tenant. Tenant names are globally unique, and cannot be a prefix of any other tenant name.
+        The name of the tenant. Tenant names are globally unique, and cannot be a prefix of any other tenant name. Will be converted to lowercase.
         """
         return pulumi.get(self, "account_name")
 
@@ -497,7 +497,7 @@ class Tenant(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_name: The name of the tenant. Tenant names are globally unique, and cannot be a prefix of any other tenant name.
+        :param pulumi.Input[str] account_name: The name of the tenant. Tenant names are globally unique, and cannot be a prefix of any other tenant name. Will be converted to lowercase.
         :param pulumi.Input[bool] allow_deletion: Whether or not to even try and delete the tenant. *NOTE: This only works if you have disabled deletion protection for the tenant.* Defaults to `false`.
         :param pulumi.Input[str] existing_k8s_namespace: Existing kubernetes namespace to use by the tenant. *NOTE: This is an advanced feature, please contact your DuploCloud administrator for help if you want to use this field.*
         :param pulumi.Input[str] plan_id: The name of the plan under which the tenant will be created.
@@ -788,7 +788,7 @@ class Tenant(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_name: The name of the tenant. Tenant names are globally unique, and cannot be a prefix of any other tenant name.
+        :param pulumi.Input[str] account_name: The name of the tenant. Tenant names are globally unique, and cannot be a prefix of any other tenant name. Will be converted to lowercase.
         :param pulumi.Input[bool] allow_deletion: Whether or not to even try and delete the tenant. *NOTE: This only works if you have disabled deletion protection for the tenant.* Defaults to `false`.
         :param pulumi.Input[str] existing_k8s_namespace: Existing kubernetes namespace to use by the tenant. *NOTE: This is an advanced feature, please contact your DuploCloud administrator for help if you want to use this field.*
         :param pulumi.Input[str] plan_id: The name of the plan under which the tenant will be created.
@@ -816,7 +816,7 @@ class Tenant(pulumi.CustomResource):
     @pulumi.getter(name="accountName")
     def account_name(self) -> pulumi.Output[str]:
         """
-        The name of the tenant. Tenant names are globally unique, and cannot be a prefix of any other tenant name.
+        The name of the tenant. Tenant names are globally unique, and cannot be a prefix of any other tenant name. Will be converted to lowercase.
         """
         return pulumi.get(self, "account_name")
 

@@ -35,24 +35,15 @@ export interface GetK8SecretResult {
      */
     readonly id: string;
     /**
-     * Annotations for the secret
+     * Annotations for the secret.
      */
     readonly secretAnnotations: {[key: string]: string};
-    /**
-     * A JSON encoded string representing the secret metadata. You can use the `jsonencode()` function to convert map or object data, if needed. You can use the `jsondecode()` function to read data.
-     */
     readonly secretData: string;
-    /**
-     * Map of string keys and values that can be used to organize and categorize (scope and select) the secret
-     */
     readonly secretLabels: {[key: string]: string};
     /**
      * The name of the secret.
      */
     readonly secretName: string;
-    /**
-     * The type of the secret.  Usually `"Opaque"`.
-     */
     readonly secretType: string;
     readonly secretVersion: string;
     /**

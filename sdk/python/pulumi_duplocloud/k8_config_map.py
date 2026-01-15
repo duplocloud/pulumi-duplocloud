@@ -21,6 +21,7 @@ class K8ConfigMapArgs:
     def __init__(__self__, *,
                  data: pulumi.Input[str],
                  tenant_id: pulumi.Input[str],
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a K8ConfigMap resource.
@@ -30,6 +31,8 @@ class K8ConfigMapArgs:
         """
         pulumi.set(__self__, "data", data)
         pulumi.set(__self__, "tenant_id", tenant_id)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
 
@@ -59,6 +62,15 @@ class K8ConfigMapArgs:
 
     @property
     @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the configmap.
@@ -74,6 +86,7 @@ class K8ConfigMapArgs:
 class _K8ConfigMapState:
     def __init__(__self__, *,
                  data: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  metadata: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None):
@@ -86,6 +99,8 @@ class _K8ConfigMapState:
         """
         if data is not None:
             pulumi.set(__self__, "data", data)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if metadata is not None:
             pulumi.set(__self__, "metadata", metadata)
         if name is not None:
@@ -104,6 +119,15 @@ class _K8ConfigMapState:
     @data.setter
     def data(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "data", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
 
     @property
     @pulumi.getter
@@ -148,6 +172,7 @@ class K8ConfigMap(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  data: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -169,7 +194,12 @@ class K8ConfigMap(pulumi.CustomResource):
             name="myconfigmap",
             data=json.dumps({
                 "foo": "bar2",
-            }))
+            }),
+            labels={
+                "ke1": "val1",
+                "ke2": "val3",
+                "app.duplocloud.net/app-name": "<appname>",
+            })
         ```
 
         ## Import
@@ -216,7 +246,12 @@ class K8ConfigMap(pulumi.CustomResource):
             name="myconfigmap",
             data=json.dumps({
                 "foo": "bar2",
-            }))
+            }),
+            labels={
+                "ke1": "val1",
+                "ke2": "val3",
+                "app.duplocloud.net/app-name": "<appname>",
+            })
         ```
 
         ## Import
@@ -249,6 +284,7 @@ class K8ConfigMap(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  data: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -263,6 +299,7 @@ class K8ConfigMap(pulumi.CustomResource):
             if data is None and not opts.urn:
                 raise TypeError("Missing required property 'data'")
             __props__.__dict__["data"] = data
+            __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             if tenant_id is None and not opts.urn:
                 raise TypeError("Missing required property 'tenant_id'")
@@ -279,6 +316,7 @@ class K8ConfigMap(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             data: Optional[pulumi.Input[str]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             metadata: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             tenant_id: Optional[pulumi.Input[str]] = None) -> 'K8ConfigMap':
@@ -299,6 +337,7 @@ class K8ConfigMap(pulumi.CustomResource):
         __props__ = _K8ConfigMapState.__new__(_K8ConfigMapState)
 
         __props__.__dict__["data"] = data
+        __props__.__dict__["labels"] = labels
         __props__.__dict__["metadata"] = metadata
         __props__.__dict__["name"] = name
         __props__.__dict__["tenant_id"] = tenant_id
@@ -311,6 +350,11 @@ class K8ConfigMap(pulumi.CustomResource):
         A JSON encoded string representing the configmap data. You can use the `jsonencode()` function to build this from JSON.
         """
         return pulumi.get(self, "data")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+        return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter

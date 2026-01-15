@@ -23,6 +23,11 @@ import * as utilities from "./utilities";
  *     data: JSON.stringify({
  *         foo: "bar2",
  *     }),
+ *     labels: {
+ *         ke1: "val1",
+ *         ke2: "val3",
+ *         "app.duplocloud.net/app-name": "<appname>",
+ *     },
  * });
  * ```
  *
@@ -72,6 +77,7 @@ export class K8ConfigMap extends pulumi.CustomResource {
      * A JSON encoded string representing the configmap data. You can use the `jsonencode()` function to build this from JSON.
      */
     public readonly data!: pulumi.Output<string>;
+    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * A JSON encoded string representing the configmap metadata. You can use the `jsondecode()` function to parse this, if needed.
      */
@@ -99,6 +105,7 @@ export class K8ConfigMap extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as K8ConfigMapState | undefined;
             resourceInputs["data"] = state ? state.data : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["metadata"] = state ? state.metadata : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["tenantId"] = state ? state.tenantId : undefined;
@@ -111,6 +118,7 @@ export class K8ConfigMap extends pulumi.CustomResource {
                 throw new Error("Missing required property 'tenantId'");
             }
             resourceInputs["data"] = args ? args.data : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["tenantId"] = args ? args.tenantId : undefined;
             resourceInputs["metadata"] = undefined /*out*/;
@@ -128,6 +136,7 @@ export interface K8ConfigMapState {
      * A JSON encoded string representing the configmap data. You can use the `jsonencode()` function to build this from JSON.
      */
     data?: pulumi.Input<string>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A JSON encoded string representing the configmap metadata. You can use the `jsondecode()` function to parse this, if needed.
      */
@@ -150,6 +159,7 @@ export interface K8ConfigMapArgs {
      * A JSON encoded string representing the configmap data. You can use the `jsonencode()` function to build this from JSON.
      */
     data: pulumi.Input<string>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the configmap.
      */

@@ -33,6 +33,7 @@ export interface GetEcsServiceArgs {
  */
 export interface GetEcsServiceResult {
     readonly capacityProviderStrategies: outputs.GetEcsServiceCapacityProviderStrategy[];
+    readonly deploymentConfigurations: outputs.GetEcsServiceDeploymentConfiguration[];
     /**
      * The DNS prefix to assign to this service's load balancer.
      */
@@ -59,6 +60,14 @@ export interface GetEcsServiceResult {
      * The number of older task definitions to retain in AWS.
      */
     readonly oldTaskDefinitionBufferSize: number;
+    /**
+     * Rules that are taken into consideration during task placement. Maximum number of `placementConstraints` is `10`
+     */
+    readonly placementConstraints: outputs.GetEcsServicePlacementConstraint[];
+    /**
+     * Service level strategy rules that are taken into consideration during task placement. List from top to bottom in order of precedence. The maximum number of `placementStrategy` blocks is `5`
+     */
+    readonly placementStrategies: outputs.GetEcsServicePlacementStrategy[];
     /**
      * The number of container replicas to create.
      */

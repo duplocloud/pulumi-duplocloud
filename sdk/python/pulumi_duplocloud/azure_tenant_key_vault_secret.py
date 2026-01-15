@@ -392,7 +392,7 @@ class AzureTenantKeyVaultSecret(pulumi.CustomResource):
             __props__.__dict__["tenant_id"] = tenant_id
             if value is None and not opts.urn:
                 raise TypeError("Missing required property 'value'")
-            __props__.__dict__["value"] = value
+            __props__.__dict__["value"] = None if value is None else pulumi.Output.secret(value)
             if vault_name is None and not opts.urn:
                 raise TypeError("Missing required property 'vault_name'")
             __props__.__dict__["vault_name"] = vault_name
@@ -400,6 +400,8 @@ class AzureTenantKeyVaultSecret(pulumi.CustomResource):
             __props__.__dict__["recovery_level"] = None
             __props__.__dict__["vault_base_url"] = None
             __props__.__dict__["version"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["value"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(AzureTenantKeyVaultSecret, __self__).__init__(
             'duplocloud:index/azureTenantKeyVaultSecret:AzureTenantKeyVaultSecret',
             resource_name,

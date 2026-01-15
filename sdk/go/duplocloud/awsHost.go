@@ -210,7 +210,8 @@ import (
 type AwsHost struct {
 	pulumi.CustomResourceState
 
-	// The numeric ID of the container agent pool that this host is added to.
+	// The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
+	// Windows - 7: EKS Linux - 8: ECS
 	AgentPlatform pulumi.IntPtrOutput `pulumi:"agentPlatform"`
 	// Whether or not to allocate a public IP.
 	AllocatedPublicIp pulumi.BoolPtrOutput `pulumi:"allocatedPublicIp"`
@@ -233,8 +234,8 @@ type AwsHost struct {
 	InstanceId     pulumi.StringOutput  `pulumi:"instanceId"`
 	IsEbsOptimized pulumi.BoolPtrOutput `pulumi:"isEbsOptimized"`
 	IsMinion       pulumi.BoolPtrOutput `pulumi:"isMinion"`
-	// The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : ED25519 - `2` : RSA (deprecated
-	// - some operating systems no longer support it)
+	// The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : RSA (deprecated - some operating
+	// systems no longer support it) - `2` : ED25519
 	KeypairType pulumi.IntOutput `pulumi:"keypairType"`
 	// Configuration metadata used when creating the host.<br>*Note: To configure OS disk size OsDiskSize can be specified as
 	// Key and its size as value, size value should be atleast 10*
@@ -308,7 +309,8 @@ func GetAwsHost(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AwsHost resources.
 type awsHostState struct {
-	// The numeric ID of the container agent pool that this host is added to.
+	// The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
+	// Windows - 7: EKS Linux - 8: ECS
 	AgentPlatform *int `pulumi:"agentPlatform"`
 	// Whether or not to allocate a public IP.
 	AllocatedPublicIp *bool `pulumi:"allocatedPublicIp"`
@@ -331,8 +333,8 @@ type awsHostState struct {
 	InstanceId     *string `pulumi:"instanceId"`
 	IsEbsOptimized *bool   `pulumi:"isEbsOptimized"`
 	IsMinion       *bool   `pulumi:"isMinion"`
-	// The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : ED25519 - `2` : RSA (deprecated
-	// - some operating systems no longer support it)
+	// The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : RSA (deprecated - some operating
+	// systems no longer support it) - `2` : ED25519
 	KeypairType *int `pulumi:"keypairType"`
 	// Configuration metadata used when creating the host.<br>*Note: To configure OS disk size OsDiskSize can be specified as
 	// Key and its size as value, size value should be atleast 10*
@@ -365,7 +367,8 @@ type awsHostState struct {
 }
 
 type AwsHostState struct {
-	// The numeric ID of the container agent pool that this host is added to.
+	// The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
+	// Windows - 7: EKS Linux - 8: ECS
 	AgentPlatform pulumi.IntPtrInput
 	// Whether or not to allocate a public IP.
 	AllocatedPublicIp pulumi.BoolPtrInput
@@ -388,8 +391,8 @@ type AwsHostState struct {
 	InstanceId     pulumi.StringPtrInput
 	IsEbsOptimized pulumi.BoolPtrInput
 	IsMinion       pulumi.BoolPtrInput
-	// The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : ED25519 - `2` : RSA (deprecated
-	// - some operating systems no longer support it)
+	// The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : RSA (deprecated - some operating
+	// systems no longer support it) - `2` : ED25519
 	KeypairType pulumi.IntPtrInput
 	// Configuration metadata used when creating the host.<br>*Note: To configure OS disk size OsDiskSize can be specified as
 	// Key and its size as value, size value should be atleast 10*
@@ -426,7 +429,8 @@ func (AwsHostState) ElementType() reflect.Type {
 }
 
 type awsHostArgs struct {
-	// The numeric ID of the container agent pool that this host is added to.
+	// The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
+	// Windows - 7: EKS Linux - 8: ECS
 	AgentPlatform *int `pulumi:"agentPlatform"`
 	// Whether or not to allocate a public IP.
 	AllocatedPublicIp *bool `pulumi:"allocatedPublicIp"`
@@ -444,8 +448,8 @@ type awsHostArgs struct {
 	ImageId        string `pulumi:"imageId"`
 	IsEbsOptimized *bool  `pulumi:"isEbsOptimized"`
 	IsMinion       *bool  `pulumi:"isMinion"`
-	// The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : ED25519 - `2` : RSA (deprecated
-	// - some operating systems no longer support it)
+	// The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : RSA (deprecated - some operating
+	// systems no longer support it) - `2` : ED25519
 	KeypairType *int `pulumi:"keypairType"`
 	// Configuration metadata used when creating the host.<br>*Note: To configure OS disk size OsDiskSize can be specified as
 	// Key and its size as value, size value should be atleast 10*
@@ -473,7 +477,8 @@ type awsHostArgs struct {
 
 // The set of arguments for constructing a AwsHost resource.
 type AwsHostArgs struct {
-	// The numeric ID of the container agent pool that this host is added to.
+	// The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
+	// Windows - 7: EKS Linux - 8: ECS
 	AgentPlatform pulumi.IntPtrInput
 	// Whether or not to allocate a public IP.
 	AllocatedPublicIp pulumi.BoolPtrInput
@@ -491,8 +496,8 @@ type AwsHostArgs struct {
 	ImageId        pulumi.StringInput
 	IsEbsOptimized pulumi.BoolPtrInput
 	IsMinion       pulumi.BoolPtrInput
-	// The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : ED25519 - `2` : RSA (deprecated
-	// - some operating systems no longer support it)
+	// The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : RSA (deprecated - some operating
+	// systems no longer support it) - `2` : ED25519
 	KeypairType pulumi.IntPtrInput
 	// Configuration metadata used when creating the host.<br>*Note: To configure OS disk size OsDiskSize can be specified as
 	// Key and its size as value, size value should be atleast 10*
@@ -605,7 +610,8 @@ func (o AwsHostOutput) ToAwsHostOutputWithContext(ctx context.Context) AwsHostOu
 	return o
 }
 
-// The numeric ID of the container agent pool that this host is added to.
+// The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
+// Windows - 7: EKS Linux - 8: ECS
 func (o AwsHostOutput) AgentPlatform() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AwsHost) pulumi.IntPtrOutput { return v.AgentPlatform }).(pulumi.IntPtrOutput)
 }
@@ -667,8 +673,8 @@ func (o AwsHostOutput) IsMinion() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AwsHost) pulumi.BoolPtrOutput { return v.IsMinion }).(pulumi.BoolPtrOutput)
 }
 
-// The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : ED25519 - `2` : RSA (deprecated
-// - some operating systems no longer support it)
+// The numeric ID of the keypair type being used.Should be one of: - `0` : Default - `1` : RSA (deprecated - some operating
+// systems no longer support it) - `2` : ED25519
 func (o AwsHostOutput) KeypairType() pulumi.IntOutput {
 	return o.ApplyT(func(v *AwsHost) pulumi.IntOutput { return v.KeypairType }).(pulumi.IntOutput)
 }

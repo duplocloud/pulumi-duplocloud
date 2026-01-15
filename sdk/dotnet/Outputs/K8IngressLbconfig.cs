@@ -15,9 +15,13 @@ namespace DuploCloud.Pulumi.Outputs
     public sealed class K8IngressLbconfig
     {
         /// <summary>
-        /// The ARN of an ACM certificate to associate with this load balancer.  Only applicable for HTTPS.
+        /// The ARN of an ACM certificate to associate with this load balancer.  Only applicable for HTTPS. This field has been deprecated use certificate_arns
         /// </summary>
         public readonly string? CertificateArn;
+        /// <summary>
+        /// The list of ARN of an ACM certificate to associate with this load balancer.  Only applicable for HTTPS.
+        /// </summary>
+        public readonly ImmutableArray<string> CertificateArns;
         /// <summary>
         /// The DNS prefix to expose services using Route53 domain.
         /// </summary>
@@ -34,10 +38,16 @@ namespace DuploCloud.Pulumi.Outputs
         /// Whether or not to create an internal load balancer.
         /// </summary>
         public readonly bool IsInternal;
+        /// <summary>
+        /// Port override for the load balancer. Currently supported for Azure
+        /// </summary>
+        public readonly string? PortOverride;
 
         [OutputConstructor]
         private K8IngressLbconfig(
             string? certificateArn,
+
+            ImmutableArray<string> certificateArns,
 
             string dnsPrefix,
 
@@ -45,13 +55,17 @@ namespace DuploCloud.Pulumi.Outputs
 
             int? httpsPort,
 
-            bool isInternal)
+            bool isInternal,
+
+            string? portOverride)
         {
             CertificateArn = certificateArn;
+            CertificateArns = certificateArns;
             DnsPrefix = dnsPrefix;
             HttpPort = httpPort;
             HttpsPort = httpsPort;
             IsInternal = isInternal;
+            PortOverride = portOverride;
         }
     }
 }

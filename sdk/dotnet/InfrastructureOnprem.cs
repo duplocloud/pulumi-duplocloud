@@ -19,13 +19,13 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     //## Create a DuploCloud onpremise infrastructure named onprem with eks vendor
     ///     //## Solution:
-    ///     var infra = new Duplocloud.InfrastructureOnprem("infra", new()
+    ///     var infra = new Pulumi.InfrastructureOnprem("infra", new()
     ///     {
     ///         InfraName = "onprem",
     ///         ClusterName = "onprem",
@@ -37,7 +37,7 @@ namespace DuploCloud.Pulumi
     ///         ApiToken = "&lt;api-token&gt;",
     ///         ClusterCertificateAuthorityData = "&lt;certificate-authority-data&gt;",
     ///         DataCenter = "us",
-    ///         EksConfig = new Duplocloud.Inputs.InfrastructureOnpremEksConfigArgs
+    ///         EksConfig = new Pulumi.Inputs.InfrastructureOnpremEksConfigArgs
     ///         {
     ///             PrivateSubnets = new[]
     ///             {
@@ -57,7 +57,7 @@ namespace DuploCloud.Pulumi
     ///         },
     ///         CustomDatas = new[]
     ///         {
-    ///             new Duplocloud.Inputs.InfrastructureOnpremCustomDataArgs
+    ///             new Pulumi.Inputs.InfrastructureOnpremCustomDataArgs
     ///             {
     ///                 Key = "K8sVersion",
     ///                 Value = "1.31",

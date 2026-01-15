@@ -19,18 +19,18 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var duplo_app = new Duplocloud.Tenant("duplo-app", new()
+    ///     var duplo_app = new Pulumi.Tenant("duplo-app", new()
     ///     {
     ///         AccountName = "duplo-app",
     ///         PlanId = "default",
     ///     });
     /// 
     ///     //ECS Service Autoscaling
-    ///     var asg_target = new Duplocloud.AwsAppautoscalingTarget("asg-target", new()
+    ///     var asg_target = new Pulumi.AwsAppautoscalingTarget("asg-target", new()
     ///     {
     ///         TenantId = duplo_app.TenantId,
     ///         MaxCapacity = 4,
@@ -40,7 +40,7 @@ namespace DuploCloud.Pulumi
     ///         ServiceNamespace = "ecs",
     ///     });
     /// 
-    ///     var asg_app_policy = new Duplocloud.AwsAppautoscalingPolicy("asg-app-policy", new()
+    ///     var asg_app_policy = new Pulumi.AwsAppautoscalingPolicy("asg-app-policy", new()
     ///     {
     ///         TenantId = duplo_app.TenantId,
     ///         Name = "avg-cpu-utilization",
@@ -48,9 +48,9 @@ namespace DuploCloud.Pulumi
     ///         ResourceId = asg_target.ResourceId,
     ///         ScalableDimension = asg_target.ScalableDimension,
     ///         ServiceNamespace = asg_target.ServiceNamespace,
-    ///         TargetTrackingScalingPolicyConfiguration = new Duplocloud.Inputs.AwsAppautoscalingPolicyTargetTrackingScalingPolicyConfigurationArgs
+    ///         TargetTrackingScalingPolicyConfiguration = new Pulumi.Inputs.AwsAppautoscalingPolicyTargetTrackingScalingPolicyConfigurationArgs
     ///         {
-    ///             PredefinedMetricSpecification = new Duplocloud.Inputs.AwsAppautoscalingPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgs
+    ///             PredefinedMetricSpecification = new Pulumi.Inputs.AwsAppautoscalingPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgs
     ///             {
     ///                 PredefinedMetricType = "ECSServiceAverageCPUUtilization",
     ///             },

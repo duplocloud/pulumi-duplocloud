@@ -173,6 +173,7 @@ class _AwsKafkaClusterState:
                  az_distribution: Optional[pulumi.Input[str]] = None,
                  configuration_arn: Optional[pulumi.Input[str]] = None,
                  configuration_revision: Optional[pulumi.Input[int]] = None,
+                 current_version: Optional[pulumi.Input[str]] = None,
                  encryption_in_transit: Optional[pulumi.Input[str]] = None,
                  fullname: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
@@ -220,6 +221,8 @@ class _AwsKafkaClusterState:
             pulumi.set(__self__, "configuration_arn", configuration_arn)
         if configuration_revision is not None:
             pulumi.set(__self__, "configuration_revision", configuration_revision)
+        if current_version is not None:
+            pulumi.set(__self__, "current_version", current_version)
         if encryption_in_transit is not None:
             pulumi.set(__self__, "encryption_in_transit", encryption_in_transit)
         if fullname is not None:
@@ -300,6 +303,15 @@ class _AwsKafkaClusterState:
     @configuration_revision.setter
     def configuration_revision(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "configuration_revision", value)
+
+    @property
+    @pulumi.getter(name="currentVersion")
+    def current_version(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "current_version")
+
+    @current_version.setter
+    def current_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "current_version", value)
 
     @property
     @pulumi.getter(name="encryptionInTransit")
@@ -646,6 +658,7 @@ class AwsKafkaCluster(pulumi.CustomResource):
             __props__.__dict__["tenant_id"] = tenant_id
             __props__.__dict__["arn"] = None
             __props__.__dict__["az_distribution"] = None
+            __props__.__dict__["current_version"] = None
             __props__.__dict__["fullname"] = None
             __props__.__dict__["number_of_broker_nodes"] = None
             __props__.__dict__["plaintext_bootstrap_broker_string"] = None
@@ -669,6 +682,7 @@ class AwsKafkaCluster(pulumi.CustomResource):
             az_distribution: Optional[pulumi.Input[str]] = None,
             configuration_arn: Optional[pulumi.Input[str]] = None,
             configuration_revision: Optional[pulumi.Input[int]] = None,
+            current_version: Optional[pulumi.Input[str]] = None,
             encryption_in_transit: Optional[pulumi.Input[str]] = None,
             fullname: Optional[pulumi.Input[str]] = None,
             instance_type: Optional[pulumi.Input[str]] = None,
@@ -721,6 +735,7 @@ class AwsKafkaCluster(pulumi.CustomResource):
         __props__.__dict__["az_distribution"] = az_distribution
         __props__.__dict__["configuration_arn"] = configuration_arn
         __props__.__dict__["configuration_revision"] = configuration_revision
+        __props__.__dict__["current_version"] = current_version
         __props__.__dict__["encryption_in_transit"] = encryption_in_transit
         __props__.__dict__["fullname"] = fullname
         __props__.__dict__["instance_type"] = instance_type
@@ -770,6 +785,11 @@ class AwsKafkaCluster(pulumi.CustomResource):
         An revision of a Kafka configuration to apply to the cluster.
         """
         return pulumi.get(self, "configuration_revision")
+
+    @property
+    @pulumi.getter(name="currentVersion")
+    def current_version(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "current_version")
 
     @property
     @pulumi.getter(name="encryptionInTransit")

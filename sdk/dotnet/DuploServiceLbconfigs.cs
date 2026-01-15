@@ -15,61 +15,6 @@ namespace DuploCloud.Pulumi
     /// 
     /// NOTE: For Amazon ECS services, see the `duplocloud.EcsService` resource.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var myapp = new Duplocloud.Tenant("myapp", new()
-    ///     {
-    ///         AccountName = "myapp",
-    ///         PlanId = "default",
-    ///     });
-    /// 
-    ///     // Deploy NGINX using Duplo's native container agent, and configure a load balancer.
-    ///     var myservice = new Duplocloud.DuploService("myservice", new()
-    ///     {
-    ///         TenantId = myapp.TenantId,
-    ///         Name = "myservice",
-    ///         AgentPlatform = 0,
-    ///         DockerImage = "nginx:latest",
-    ///         Replicas = 1,
-    ///     });
-    /// 
-    ///     var myserviceDuploServiceLbconfigs = new Duplocloud.DuploServiceLbconfigs("myservice", new()
-    ///     {
-    ///         TenantId = myservice.TenantId,
-    ///         ReplicationControllerName = myservice.Name,
-    ///         Lbconfigs = new[]
-    ///         {
-    ///             new Duplocloud.Inputs.DuploServiceLbconfigsLbconfigArgs
-    ///             {
-    ///                 ExternalPort = 80,
-    ///                 HealthCheckUrl = "/",
-    ///                 IsNative = false,
-    ///                 LbType = 1,
-    ///                 Port = "80",
-    ///                 Protocol = "http",
-    ///                 HealthCheck = new Duplocloud.Inputs.DuploServiceLbconfigsLbconfigHealthCheckArgs
-    ///                 {
-    ///                     HealthyThreshold = 4,
-    ///                     UnhealthyThreshold = 4,
-    ///                     Timeout = 50,
-    ///                     Interval = 30,
-    ///                     HttpSuccessCodes = "200-399",
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Example: Importing an existing service's load balancer configurations

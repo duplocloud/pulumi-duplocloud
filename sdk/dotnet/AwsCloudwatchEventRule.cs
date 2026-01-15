@@ -20,18 +20,18 @@ namespace DuploCloud.Pulumi
     /// using System.Linq;
     /// using System.Text.Json;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var duplo_app = new Duplocloud.Tenant("duplo-app", new()
+    ///     var duplo_app = new Pulumi.Tenant("duplo-app", new()
     ///     {
     ///         AccountName = "duplo-app",
     ///         PlanId = "default",
     ///     });
     /// 
     ///     // With Schedule Expression
-    ///     var cwErule = new Duplocloud.AwsCloudwatchEventRule("cw_erule", new()
+    ///     var cwErule = new Pulumi.AwsCloudwatchEventRule("cw_erule", new()
     ///     {
     ///         TenantId = duplo_app.TenantId,
     ///         Name = "cw_erule",
@@ -40,12 +40,12 @@ namespace DuploCloud.Pulumi
     ///         State = "DISABLED",
     ///         Tags = new[]
     ///         {
-    ///             new Duplocloud.Inputs.AwsCloudwatchEventRuleTagArgs
+    ///             new Pulumi.Inputs.AwsCloudwatchEventRuleTagArgs
     ///             {
     ///                 Key = "CreatedBy",
     ///                 Value = "Duplo",
     ///             },
-    ///             new Duplocloud.Inputs.AwsCloudwatchEventRuleTagArgs
+    ///             new Pulumi.Inputs.AwsCloudwatchEventRuleTagArgs
     ///             {
     ///                 Key = "CreatedFrom",
     ///                 Value = "Duplo",
@@ -54,7 +54,7 @@ namespace DuploCloud.Pulumi
     ///     });
     /// 
     ///     // With Event Pattern
-    ///     var cwErule2 = new Duplocloud.AwsCloudwatchEventRule("cw_erule2", new()
+    ///     var cwErule2 = new Pulumi.AwsCloudwatchEventRule("cw_erule2", new()
     ///     {
     ///         TenantId = duplo_app.TenantId,
     ///         Name = "cw_erule2",

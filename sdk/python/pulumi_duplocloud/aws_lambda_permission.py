@@ -559,7 +559,7 @@ class AwsLambdaPermission(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="eventSourceToken")
-    def event_source_token(self) -> pulumi.Output[Optional[str]]:
+    def event_source_token(self) -> pulumi.Output[str]:
         """
         The Event Source Token to validate.
         """
@@ -583,7 +583,7 @@ class AwsLambdaPermission(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def qualifier(self) -> pulumi.Output[Optional[str]]:
+    def qualifier(self) -> pulumi.Output[str]:
         """
         Query parameter to specify function version or alias name. The permission will then apply to the specific qualified ARN.
         """
@@ -591,7 +591,7 @@ class AwsLambdaPermission(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourceAccount")
-    def source_account(self) -> pulumi.Output[Optional[str]]:
+    def source_account(self) -> pulumi.Output[str]:
         """
         This parameter is used for S3 and SES. The AWS account ID (without a hyphen) of the source owner.
         """
@@ -599,7 +599,7 @@ class AwsLambdaPermission(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourceArn")
-    def source_arn(self) -> pulumi.Output[Optional[str]]:
+    def source_arn(self) -> pulumi.Output[str]:
         """
         When the principal is an AWS service, the ARN of the specific resource within that service to grant permission to.
         """

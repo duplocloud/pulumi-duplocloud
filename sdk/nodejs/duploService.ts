@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as duplocloud from "@duplocloud/pulumi";
- * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  *
  * // Before creating an NGINX service, you must first set up the infrastructure and tenant. Below is the resource for creating the infrastructure.
  * const infra = new duplocloud.Infrastructure("infra", {
@@ -58,7 +58,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as duplocloud from "@duplocloud/pulumi";
- * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  *
  * // Ensure the 'nonprod' tenant is already created before deploying the Nginx duplo service.
  * const tenant = duplocloud.getTenant({
@@ -102,7 +102,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as duplocloud from "@duplocloud/pulumi";
- * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  *
  * // Ensure the 'dev' tenant is already created before deploying the Nginx duplo service.
  * const tenant = duplocloud.getTenant({
@@ -135,7 +135,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as duplocloud from "@duplocloud/pulumi";
- * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  *
  * // Ensure the 'prod' tenant is already created before deploying the Nginx duplo service.
  * const tenant = duplocloud.getTenant({
@@ -173,7 +173,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as duplocloud from "@duplocloud/pulumi";
- * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  *
  * // Ensure the 'dev' tenant is already created before deploying the Nginx duplo service.
  * const tenant = duplocloud.getTenant({
@@ -210,7 +210,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as duplocloud from "@duplocloud/pulumi";
- * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  *
  * // Ensure the 'dev' tenant is already created before deploying the Nginx duplo service.
  * const tenant = duplocloud.getTenant({
@@ -231,7 +231,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as duplocloud from "@duplocloud/pulumi";
- * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  *
  * // Ensure the 'dev' tenant is already created before deploying the Nginx duplo service.
  * const tenant = duplocloud.getTenant({
@@ -255,6 +255,50 @@ import * as utilities from "./utilities";
  *             },
  *         },
  *     }),
+ * });
+ * ```
+ *
+ * ### Deploy an Nginx service named nginx with liveliness probe and init container. Create it inside the dev tenant which already exists.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
+ *
+ * // Ensure the 'dev' tenant is already created before deploying the Nginx duplo service.
+ * const tenant = duplocloud.getTenant({
+ *     name: "dev",
+ * });
+ * // Assuming a host already exists in the tenant, create the duplo service
+ * const nginx = new duplocloud.DuploService("nginx", {
+ *     tenantId: tenant.then(tenant => tenant.id),
+ *     name: "nginx",
+ *     agentPlatform: 7,
+ *     dockerImage: "nginx:latest",
+ *     replicas: 1,
+ *     otherDockerConfig: JSON.stringify({
+ *         initContainers: [{
+ *             name: "nginx-init",
+ *             command: [
+ *                 "/bin/sh",
+ *                 "-c",
+ *                 "echo 'Initializing Nginx container...'; sleep 5",
+ *             ],
+ *         }],
+ *         LivenessProbe: {
+ *             initialDelaySeconds: 10,
+ *             periodSeconds: 30,
+ *             successThreshold: 1,
+ *             httpGet: {
+ *                 path: "/health",
+ *                 port: 80,
+ *             },
+ *         },
+ *     }),
+ *     initContainerDockerImages: [{
+ *         name: "nginx-init",
+ *         image: "busybox:latest",
+ *     }],
  * });
  * ```
  *
@@ -311,6 +355,10 @@ export class DuploService extends pulumi.CustomResource {
      */
     public readonly anyHostAllowed!: pulumi.Output<boolean | undefined>;
     /**
+     * The name of the app where service will be a part
+     */
+    public readonly appName!: pulumi.Output<string>;
+    /**
      * The numeric ID of the cloud provider to launch the service in. Should be one of: - `0` : AWS (Default) - `1` : Oracle -
      * `2` : Azure - `3` : Google - `4` : Byoh - `5` : Unknown - `6` : DigitalOcean - `10` : OnPrem
      */
@@ -352,6 +400,10 @@ export class DuploService extends pulumi.CustomResource {
      */
     public /*out*/ readonly index!: pulumi.Output<number>;
     /**
+     * The docker images to use for the launched init container(s).
+     */
+    public readonly initContainerDockerImages!: pulumi.Output<outputs.DuploServiceInitContainerDockerImage[]>;
+    /**
      * Whether or not to enable DaemonSet.
      */
     public readonly isDaemonset!: pulumi.Output<boolean | undefined>;
@@ -359,6 +411,10 @@ export class DuploService extends pulumi.CustomResource {
      * Whether or not the replicas must be scheduled on separate Kubernetes nodes. Only supported on Kubernetes.
      */
     public readonly isUniqueK8sNodeRequired!: pulumi.Output<boolean | undefined>;
+    /**
+     * OS type for k8s worker, this field is associated to azure cloud. Valid values: `Linux`, `Windows`
+     */
+    public readonly k8sWorkerOs!: pulumi.Output<string | undefined>;
     public readonly lbSyncedDeployment!: pulumi.Output<boolean | undefined>;
     /**
      * The name of the service to create.
@@ -409,6 +465,7 @@ export class DuploService extends pulumi.CustomResource {
             resourceInputs["agentPlatform"] = state ? state.agentPlatform : undefined;
             resourceInputs["allocationTags"] = state ? state.allocationTags : undefined;
             resourceInputs["anyHostAllowed"] = state ? state.anyHostAllowed : undefined;
+            resourceInputs["appName"] = state ? state.appName : undefined;
             resourceInputs["cloud"] = state ? state.cloud : undefined;
             resourceInputs["cloudCredsFromK8sServiceAccount"] = state ? state.cloudCredsFromK8sServiceAccount : undefined;
             resourceInputs["commands"] = state ? state.commands : undefined;
@@ -421,8 +478,10 @@ export class DuploService extends pulumi.CustomResource {
             resourceInputs["fqdnEx"] = state ? state.fqdnEx : undefined;
             resourceInputs["hpaSpecs"] = state ? state.hpaSpecs : undefined;
             resourceInputs["index"] = state ? state.index : undefined;
+            resourceInputs["initContainerDockerImages"] = state ? state.initContainerDockerImages : undefined;
             resourceInputs["isDaemonset"] = state ? state.isDaemonset : undefined;
             resourceInputs["isUniqueK8sNodeRequired"] = state ? state.isUniqueK8sNodeRequired : undefined;
+            resourceInputs["k8sWorkerOs"] = state ? state.k8sWorkerOs : undefined;
             resourceInputs["lbSyncedDeployment"] = state ? state.lbSyncedDeployment : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["otherDockerConfig"] = state ? state.otherDockerConfig : undefined;
@@ -446,6 +505,7 @@ export class DuploService extends pulumi.CustomResource {
             resourceInputs["agentPlatform"] = args ? args.agentPlatform : undefined;
             resourceInputs["allocationTags"] = args ? args.allocationTags : undefined;
             resourceInputs["anyHostAllowed"] = args ? args.anyHostAllowed : undefined;
+            resourceInputs["appName"] = args ? args.appName : undefined;
             resourceInputs["cloud"] = args ? args.cloud : undefined;
             resourceInputs["cloudCredsFromK8sServiceAccount"] = args ? args.cloudCredsFromK8sServiceAccount : undefined;
             resourceInputs["commands"] = args ? args.commands : undefined;
@@ -454,8 +514,10 @@ export class DuploService extends pulumi.CustomResource {
             resourceInputs["forceRecreateOnVolumesChange"] = args ? args.forceRecreateOnVolumesChange : undefined;
             resourceInputs["forceStatefulSet"] = args ? args.forceStatefulSet : undefined;
             resourceInputs["hpaSpecs"] = args ? args.hpaSpecs : undefined;
+            resourceInputs["initContainerDockerImages"] = args ? args.initContainerDockerImages : undefined;
             resourceInputs["isDaemonset"] = args ? args.isDaemonset : undefined;
             resourceInputs["isUniqueK8sNodeRequired"] = args ? args.isUniqueK8sNodeRequired : undefined;
+            resourceInputs["k8sWorkerOs"] = args ? args.k8sWorkerOs : undefined;
             resourceInputs["lbSyncedDeployment"] = args ? args.lbSyncedDeployment : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["otherDockerConfig"] = args ? args.otherDockerConfig : undefined;
@@ -492,6 +554,10 @@ export interface DuploServiceState {
      * Whether or not the service can run on hosts in other tenants (within the the same plan as the current tenant).
      */
     anyHostAllowed?: pulumi.Input<boolean>;
+    /**
+     * The name of the app where service will be a part
+     */
+    appName?: pulumi.Input<string>;
     /**
      * The numeric ID of the cloud provider to launch the service in. Should be one of: - `0` : AWS (Default) - `1` : Oracle -
      * `2` : Azure - `3` : Google - `4` : Byoh - `5` : Unknown - `6` : DigitalOcean - `10` : OnPrem
@@ -534,6 +600,10 @@ export interface DuploServiceState {
      */
     index?: pulumi.Input<number>;
     /**
+     * The docker images to use for the launched init container(s).
+     */
+    initContainerDockerImages?: pulumi.Input<pulumi.Input<inputs.DuploServiceInitContainerDockerImage>[]>;
+    /**
      * Whether or not to enable DaemonSet.
      */
     isDaemonset?: pulumi.Input<boolean>;
@@ -541,6 +611,10 @@ export interface DuploServiceState {
      * Whether or not the replicas must be scheduled on separate Kubernetes nodes. Only supported on Kubernetes.
      */
     isUniqueK8sNodeRequired?: pulumi.Input<boolean>;
+    /**
+     * OS type for k8s worker, this field is associated to azure cloud. Valid values: `Linux`, `Windows`
+     */
+    k8sWorkerOs?: pulumi.Input<string>;
     lbSyncedDeployment?: pulumi.Input<boolean>;
     /**
      * The name of the service to create.
@@ -591,6 +665,10 @@ export interface DuploServiceArgs {
      */
     anyHostAllowed?: pulumi.Input<boolean>;
     /**
+     * The name of the app where service will be a part
+     */
+    appName?: pulumi.Input<string>;
+    /**
      * The numeric ID of the cloud provider to launch the service in. Should be one of: - `0` : AWS (Default) - `1` : Oracle -
      * `2` : Azure - `3` : Google - `4` : Byoh - `5` : Unknown - `6` : DigitalOcean - `10` : OnPrem
      */
@@ -616,6 +694,10 @@ export interface DuploServiceArgs {
     forceStatefulSet?: pulumi.Input<boolean>;
     hpaSpecs?: pulumi.Input<string>;
     /**
+     * The docker images to use for the launched init container(s).
+     */
+    initContainerDockerImages?: pulumi.Input<pulumi.Input<inputs.DuploServiceInitContainerDockerImage>[]>;
+    /**
      * Whether or not to enable DaemonSet.
      */
     isDaemonset?: pulumi.Input<boolean>;
@@ -623,6 +705,10 @@ export interface DuploServiceArgs {
      * Whether or not the replicas must be scheduled on separate Kubernetes nodes. Only supported on Kubernetes.
      */
     isUniqueK8sNodeRequired?: pulumi.Input<boolean>;
+    /**
+     * OS type for k8s worker, this field is associated to azure cloud. Valid values: `Linux`, `Windows`
+     */
+    k8sWorkerOs?: pulumi.Input<string>;
     lbSyncedDeployment?: pulumi.Input<boolean>;
     /**
      * The name of the service to create.

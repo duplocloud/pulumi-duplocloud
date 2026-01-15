@@ -45,7 +45,7 @@ class InfrastructureArgs:
         :param pulumi.Input[bool] enable_k8_cluster: Whether or not to provision a kubernetes cluster.
         :param pulumi.Input[str] infra_name: The name of the infrastructure. Infrastructure names are globally unique and less than 13 characters.
         :param pulumi.Input[str] region: The cloud provider region. The Duplo portal must have already been configured to support this region.
-        :param pulumi.Input[str] account_id: The cloud account ID.
+        :param pulumi.Input[str] account_id: The cloud account ID — use this for Azure (Subscription ID) and Google Cloud (Project ID). Not applicable for AWS.
         :param pulumi.Input[int] azcount: The number of availability zones. Must be one of: `2`, `3`, or `4`. This is applicable only for AWS.
         :param pulumi.Input[int] cloud: The numerical index of cloud provider to use for the infrastructure. Should be one of: - `0` : AWS - `2` : Azure - `3` :
                Google
@@ -58,7 +58,7 @@ class InfrastructureArgs:
         :param pulumi.Input[bool] is_serverless_kubernetes: Whether or not to make GKE with autopilot.
         :param pulumi.Input[Sequence[pulumi.Input['InfrastructureSettingArgs']]] settings: A list of configuration settings to manage, expressed as key / value pairs.
         :param pulumi.Input[str] subnet_address_prefix: The address prefixe to use for the subnet. This is applicable only for Azure
-        :param pulumi.Input[int] subnet_cidr: The CIDR subnet size (in bits) for the automatically created subnets. This is applicable only for AWS.
+        :param pulumi.Input[int] subnet_cidr: The CIDR subnet size (in bits) for the automatically created subnets.
         :param pulumi.Input[str] subnet_name: The name of the subnet. This is applicable only for Azure.
         :param pulumi.Input[bool] wait_until_deleted: Whether or not to wait until Duplo has destroyed the infrastructure.
         """
@@ -150,7 +150,7 @@ class InfrastructureArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The cloud account ID.
+        The cloud account ID — use this for Azure (Subscription ID) and Google Cloud (Project ID). Not applicable for AWS.
         """
         return pulumi.get(self, "account_id")
 
@@ -285,7 +285,7 @@ class InfrastructureArgs:
     @pulumi.getter(name="subnetCidr")
     def subnet_cidr(self) -> Optional[pulumi.Input[int]]:
         """
-        The CIDR subnet size (in bits) for the automatically created subnets. This is applicable only for AWS.
+        The CIDR subnet size (in bits) for the automatically created subnets.
         """
         return pulumi.get(self, "subnet_cidr")
 
@@ -334,6 +334,7 @@ class _InfrastructureState:
                  enable_k8_cluster: Optional[pulumi.Input[bool]] = None,
                  infra_name: Optional[pulumi.Input[str]] = None,
                  is_serverless_kubernetes: Optional[pulumi.Input[bool]] = None,
+                 nat_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  private_subnets: Optional[pulumi.Input[Sequence[pulumi.Input['InfrastructurePrivateSubnetArgs']]]] = None,
                  public_subnets: Optional[pulumi.Input[Sequence[pulumi.Input['InfrastructurePublicSubnetArgs']]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -350,7 +351,7 @@ class _InfrastructureState:
                  wait_until_deleted: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering Infrastructure resources.
-        :param pulumi.Input[str] account_id: The cloud account ID.
+        :param pulumi.Input[str] account_id: The cloud account ID — use this for Azure (Subscription ID) and Google Cloud (Project ID). Not applicable for AWS.
         :param pulumi.Input[str] address_prefix: The CIDR to use for the VPC or VNet.
         :param pulumi.Input[Sequence[pulumi.Input['InfrastructureAllSettingArgs']]] all_settings: A complete list of configuration settings for this infrastructure, even ones not being managed by this resource.
         :param pulumi.Input[int] azcount: The number of availability zones. Must be one of: `2`, `3`, or `4`. This is applicable only for AWS.
@@ -365,6 +366,7 @@ class _InfrastructureState:
         :param pulumi.Input[bool] enable_k8_cluster: Whether or not to provision a kubernetes cluster.
         :param pulumi.Input[str] infra_name: The name of the infrastructure. Infrastructure names are globally unique and less than 13 characters.
         :param pulumi.Input[bool] is_serverless_kubernetes: Whether or not to make GKE with autopilot.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] nat_ips: The NAT IPs for the subnet.
         :param pulumi.Input[Sequence[pulumi.Input['InfrastructurePrivateSubnetArgs']]] private_subnets: The private subnets for the VPC or VNet.
         :param pulumi.Input[Sequence[pulumi.Input['InfrastructurePublicSubnetArgs']]] public_subnets: The public subnets for the VPC or VNet.
         :param pulumi.Input[str] region: The cloud provider region. The Duplo portal must have already been configured to support this region.
@@ -373,7 +375,7 @@ class _InfrastructureState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] specified_settings: A list of configuration setting key being managed by this resource.
         :param pulumi.Input[str] status: The status of the infrastructure.
         :param pulumi.Input[str] subnet_address_prefix: The address prefixe to use for the subnet. This is applicable only for Azure
-        :param pulumi.Input[int] subnet_cidr: The CIDR subnet size (in bits) for the automatically created subnets. This is applicable only for AWS.
+        :param pulumi.Input[int] subnet_cidr: The CIDR subnet size (in bits) for the automatically created subnets.
         :param pulumi.Input[str] subnet_fullname: The full name of the subnet. This is applicable only for Azure.
         :param pulumi.Input[str] subnet_name: The name of the subnet. This is applicable only for Azure.
         :param pulumi.Input[str] vpc_id: The VPC or VNet ID.
@@ -409,6 +411,8 @@ class _InfrastructureState:
             pulumi.set(__self__, "infra_name", infra_name)
         if is_serverless_kubernetes is not None:
             pulumi.set(__self__, "is_serverless_kubernetes", is_serverless_kubernetes)
+        if nat_ips is not None:
+            pulumi.set(__self__, "nat_ips", nat_ips)
         if private_subnets is not None:
             pulumi.set(__self__, "private_subnets", private_subnets)
         if public_subnets is not None:
@@ -442,7 +446,7 @@ class _InfrastructureState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The cloud account ID.
+        The cloud account ID — use this for Azure (Subscription ID) and Google Cloud (Project ID). Not applicable for AWS.
         """
         return pulumi.get(self, "account_id")
 
@@ -598,6 +602,18 @@ class _InfrastructureState:
         pulumi.set(self, "is_serverless_kubernetes", value)
 
     @property
+    @pulumi.getter(name="natIps")
+    def nat_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The NAT IPs for the subnet.
+        """
+        return pulumi.get(self, "nat_ips")
+
+    @nat_ips.setter
+    def nat_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "nat_ips", value)
+
+    @property
     @pulumi.getter(name="privateSubnets")
     def private_subnets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InfrastructurePrivateSubnetArgs']]]]:
         """
@@ -697,7 +713,7 @@ class _InfrastructureState:
     @pulumi.getter(name="subnetCidr")
     def subnet_cidr(self) -> Optional[pulumi.Input[int]]:
         """
-        The CIDR subnet size (in bits) for the automatically created subnets. This is applicable only for AWS.
+        The CIDR subnet size (in bits) for the automatically created subnets.
         """
         return pulumi.get(self, "subnet_cidr")
 
@@ -1014,7 +1030,7 @@ class Infrastructure(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The cloud account ID.
+        :param pulumi.Input[str] account_id: The cloud account ID — use this for Azure (Subscription ID) and Google Cloud (Project ID). Not applicable for AWS.
         :param pulumi.Input[str] address_prefix: The CIDR to use for the VPC or VNet.
         :param pulumi.Input[int] azcount: The number of availability zones. Must be one of: `2`, `3`, or `4`. This is applicable only for AWS.
         :param pulumi.Input[int] cloud: The numerical index of cloud provider to use for the infrastructure. Should be one of: - `0` : AWS - `2` : Azure - `3` :
@@ -1031,7 +1047,7 @@ class Infrastructure(pulumi.CustomResource):
         :param pulumi.Input[str] region: The cloud provider region. The Duplo portal must have already been configured to support this region.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InfrastructureSettingArgs', 'InfrastructureSettingArgsDict']]]] settings: A list of configuration settings to manage, expressed as key / value pairs.
         :param pulumi.Input[str] subnet_address_prefix: The address prefixe to use for the subnet. This is applicable only for Azure
-        :param pulumi.Input[int] subnet_cidr: The CIDR subnet size (in bits) for the automatically created subnets. This is applicable only for AWS.
+        :param pulumi.Input[int] subnet_cidr: The CIDR subnet size (in bits) for the automatically created subnets.
         :param pulumi.Input[str] subnet_name: The name of the subnet. This is applicable only for Azure.
         :param pulumi.Input[bool] wait_until_deleted: Whether or not to wait until Duplo has destroyed the infrastructure.
         """
@@ -1332,6 +1348,7 @@ class Infrastructure(pulumi.CustomResource):
             __props__.__dict__["subnet_name"] = subnet_name
             __props__.__dict__["wait_until_deleted"] = wait_until_deleted
             __props__.__dict__["all_settings"] = None
+            __props__.__dict__["nat_ips"] = None
             __props__.__dict__["private_subnets"] = None
             __props__.__dict__["public_subnets"] = None
             __props__.__dict__["security_groups"] = None
@@ -1363,6 +1380,7 @@ class Infrastructure(pulumi.CustomResource):
             enable_k8_cluster: Optional[pulumi.Input[bool]] = None,
             infra_name: Optional[pulumi.Input[str]] = None,
             is_serverless_kubernetes: Optional[pulumi.Input[bool]] = None,
+            nat_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             private_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InfrastructurePrivateSubnetArgs', 'InfrastructurePrivateSubnetArgsDict']]]]] = None,
             public_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InfrastructurePublicSubnetArgs', 'InfrastructurePublicSubnetArgsDict']]]]] = None,
             region: Optional[pulumi.Input[str]] = None,
@@ -1384,7 +1402,7 @@ class Infrastructure(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The cloud account ID.
+        :param pulumi.Input[str] account_id: The cloud account ID — use this for Azure (Subscription ID) and Google Cloud (Project ID). Not applicable for AWS.
         :param pulumi.Input[str] address_prefix: The CIDR to use for the VPC or VNet.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InfrastructureAllSettingArgs', 'InfrastructureAllSettingArgsDict']]]] all_settings: A complete list of configuration settings for this infrastructure, even ones not being managed by this resource.
         :param pulumi.Input[int] azcount: The number of availability zones. Must be one of: `2`, `3`, or `4`. This is applicable only for AWS.
@@ -1399,6 +1417,7 @@ class Infrastructure(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_k8_cluster: Whether or not to provision a kubernetes cluster.
         :param pulumi.Input[str] infra_name: The name of the infrastructure. Infrastructure names are globally unique and less than 13 characters.
         :param pulumi.Input[bool] is_serverless_kubernetes: Whether or not to make GKE with autopilot.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] nat_ips: The NAT IPs for the subnet.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InfrastructurePrivateSubnetArgs', 'InfrastructurePrivateSubnetArgsDict']]]] private_subnets: The private subnets for the VPC or VNet.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InfrastructurePublicSubnetArgs', 'InfrastructurePublicSubnetArgsDict']]]] public_subnets: The public subnets for the VPC or VNet.
         :param pulumi.Input[str] region: The cloud provider region. The Duplo portal must have already been configured to support this region.
@@ -1407,7 +1426,7 @@ class Infrastructure(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] specified_settings: A list of configuration setting key being managed by this resource.
         :param pulumi.Input[str] status: The status of the infrastructure.
         :param pulumi.Input[str] subnet_address_prefix: The address prefixe to use for the subnet. This is applicable only for Azure
-        :param pulumi.Input[int] subnet_cidr: The CIDR subnet size (in bits) for the automatically created subnets. This is applicable only for AWS.
+        :param pulumi.Input[int] subnet_cidr: The CIDR subnet size (in bits) for the automatically created subnets.
         :param pulumi.Input[str] subnet_fullname: The full name of the subnet. This is applicable only for Azure.
         :param pulumi.Input[str] subnet_name: The name of the subnet. This is applicable only for Azure.
         :param pulumi.Input[str] vpc_id: The VPC or VNet ID.
@@ -1431,6 +1450,7 @@ class Infrastructure(pulumi.CustomResource):
         __props__.__dict__["enable_k8_cluster"] = enable_k8_cluster
         __props__.__dict__["infra_name"] = infra_name
         __props__.__dict__["is_serverless_kubernetes"] = is_serverless_kubernetes
+        __props__.__dict__["nat_ips"] = nat_ips
         __props__.__dict__["private_subnets"] = private_subnets
         __props__.__dict__["public_subnets"] = public_subnets
         __props__.__dict__["region"] = region
@@ -1451,7 +1471,7 @@ class Infrastructure(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
         """
-        The cloud account ID.
+        The cloud account ID — use this for Azure (Subscription ID) and Google Cloud (Project ID). Not applicable for AWS.
         """
         return pulumi.get(self, "account_id")
 
@@ -1555,6 +1575,14 @@ class Infrastructure(pulumi.CustomResource):
         return pulumi.get(self, "is_serverless_kubernetes")
 
     @property
+    @pulumi.getter(name="natIps")
+    def nat_ips(self) -> pulumi.Output[Sequence[str]]:
+        """
+        The NAT IPs for the subnet.
+        """
+        return pulumi.get(self, "nat_ips")
+
+    @property
     @pulumi.getter(name="privateSubnets")
     def private_subnets(self) -> pulumi.Output[Sequence['outputs.InfrastructurePrivateSubnet']]:
         """
@@ -1622,7 +1650,7 @@ class Infrastructure(pulumi.CustomResource):
     @pulumi.getter(name="subnetCidr")
     def subnet_cidr(self) -> pulumi.Output[Optional[int]]:
         """
-        The CIDR subnet size (in bits) for the automatically created subnets. This is applicable only for AWS.
+        The CIDR subnet size (in bits) for the automatically created subnets.
         """
         return pulumi.get(self, "subnet_cidr")
 

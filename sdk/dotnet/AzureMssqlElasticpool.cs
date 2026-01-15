@@ -13,37 +13,6 @@ namespace DuploCloud.Pulumi
     /// <summary>
     /// `duplocloud.AzureMssqlElasticpool` manages an azure mssql elastic pool in Duplo.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var myapp = new Duplocloud.Tenant("myapp", new()
-    ///     {
-    ///         AccountName = "myapp",
-    ///         PlanId = "default",
-    ///     });
-    /// 
-    ///     var mssqlElasticpool = new Duplocloud.AzureMssqlElasticpool("mssql_elasticpool", new()
-    ///     {
-    ///         TenantId = myapp.TenantId,
-    ///         Name = "mssql-ep",
-    ///         ServerName = "mysqlserver",
-    ///         Sku = new Duplocloud.Inputs.AzureMssqlElasticpoolSkuArgs
-    ///         {
-    ///             Name = "StandardPool",
-    ///             Capacity = 50,
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Example: Importing an existing Azure MS SQL databse
@@ -66,6 +35,12 @@ namespace DuploCloud.Pulumi
         /// </summary>
         [Output("elasticPoolId")]
         public Output<string> ElasticPoolId { get; private set; } = null!;
+
+        /// <summary>
+        /// Maximum allowed data size in GB Defaults to `50`.
+        /// </summary>
+        [Output("maxSizeGb")]
+        public Output<int?> MaxSizeGb { get; private set; } = null!;
 
         /// <summary>
         /// The name of the MS SQL elastic pool.
@@ -136,6 +111,12 @@ namespace DuploCloud.Pulumi
     public sealed class AzureMssqlElasticpoolArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Maximum allowed data size in GB Defaults to `50`.
+        /// </summary>
+        [Input("maxSizeGb")]
+        public Input<int>? MaxSizeGb { get; set; }
+
+        /// <summary>
         /// The name of the MS SQL elastic pool.
         /// </summary>
         [Input("name")]
@@ -169,6 +150,12 @@ namespace DuploCloud.Pulumi
         /// </summary>
         [Input("elasticPoolId")]
         public Input<string>? ElasticPoolId { get; set; }
+
+        /// <summary>
+        /// Maximum allowed data size in GB Defaults to `50`.
+        /// </summary>
+        [Input("maxSizeGb")]
+        public Input<int>? MaxSizeGb { get; set; }
 
         /// <summary>
         /// The name of the MS SQL elastic pool.

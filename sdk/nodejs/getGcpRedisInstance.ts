@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  *
  * const app = duplocloud.getGcpRedisInstance({
  *     tenantId: "tenant_id",
@@ -118,7 +118,7 @@ export interface GetGcpRedisInstanceResult {
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
  *
  * const app = duplocloud.getGcpRedisInstance({
  *     tenantId: "tenant_id",

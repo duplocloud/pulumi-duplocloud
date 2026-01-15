@@ -64,24 +64,18 @@ class GetK8SecretResult:
     @pulumi.getter(name="secretAnnotations")
     def secret_annotations(self) -> Mapping[str, str]:
         """
-        Annotations for the secret
+        Annotations for the secret.
         """
         return pulumi.get(self, "secret_annotations")
 
     @property
     @pulumi.getter(name="secretData")
     def secret_data(self) -> str:
-        """
-        A JSON encoded string representing the secret metadata. You can use the `jsonencode()` function to convert map or object data, if needed. You can use the `jsondecode()` function to read data.
-        """
         return pulumi.get(self, "secret_data")
 
     @property
     @pulumi.getter(name="secretLabels")
     def secret_labels(self) -> Mapping[str, str]:
-        """
-        Map of string keys and values that can be used to organize and categorize (scope and select) the secret
-        """
         return pulumi.get(self, "secret_labels")
 
     @property
@@ -95,9 +89,6 @@ class GetK8SecretResult:
     @property
     @pulumi.getter(name="secretType")
     def secret_type(self) -> str:
-        """
-        The type of the secret.  Usually `"Opaque"`.
-        """
         return pulumi.get(self, "secret_type")
 
     @property

@@ -16,6 +16,11 @@ namespace DuploCloud.Pulumi.Outputs
     {
         /// <summary>
         /// The numeric ID of the container agent pool that this host is added to.
+        ///  - 0: Linux Docker/Native
+        /// - 	4: None
+        /// - 5: Docker Windows
+        /// - 7: EKS Linux
+        /// - 8: ECS
         /// </summary>
         public readonly int? AgentPlatform;
         /// <summary>
@@ -62,8 +67,8 @@ namespace DuploCloud.Pulumi.Outputs
         /// The numeric ID of the keypair type being used.Should be one of:
         /// 
         ///    - `0` : Default
-        ///    - `1` : ED25519
-        ///    - `2` : RSA (deprecated - some operating systems no longer support it)
+        ///    - `1` : RSA (deprecated - some operating systems no longer support it)
+        ///    - `2` : ED25519
         /// </summary>
         public readonly int KeypairType;
         /// <summary>

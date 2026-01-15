@@ -19,17 +19,17 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myapp = new Duplocloud.Tenant("myapp", new()
+    ///     var myapp = new Pulumi.Tenant("myapp", new()
     ///     {
     ///         AccountName = "myapp",
     ///         PlanId = "default",
     ///     });
     /// 
-    ///     var azVm = new Duplocloud.AzureVirtualMachine("az_vm", new()
+    ///     var azVm = new Pulumi.AzureVirtualMachine("az_vm", new()
     ///     {
     ///         TenantId = myapp.TenantId,
     ///         FriendlyName = "test-vm",
@@ -42,7 +42,7 @@ namespace DuploCloud.Pulumi
     ///         SubnetId = "duploinfra-default",
     ///         MinionTags = new[]
     ///         {
-    ///             new Duplocloud.Inputs.AzureVirtualMachineMinionTagArgs
+    ///             new Pulumi.Inputs.AzureVirtualMachineMinionTagArgs
     ///             {
     ///                 Key = "AllocationTags",
     ///                 Value = "test-host",
@@ -50,12 +50,12 @@ namespace DuploCloud.Pulumi
     ///         },
     ///         Tags = new[]
     ///         {
-    ///             new Duplocloud.Inputs.AzureVirtualMachineTagArgs
+    ///             new Pulumi.Inputs.AzureVirtualMachineTagArgs
     ///             {
     ///                 Key = "CreatedBy",
     ///                 Value = "duplo",
     ///             },
-    ///             new Duplocloud.Inputs.AzureVirtualMachineTagArgs
+    ///             new Pulumi.Inputs.AzureVirtualMachineTagArgs
     ///             {
     ///                 Key = "Owner",
     ///                 Value = "duplo",
@@ -84,7 +84,8 @@ namespace DuploCloud.Pulumi
     public partial class AzureVirtualMachine : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Specify domain service provided by Microsoft Azure for managing identities and access in the cloud. Valid values are `aadjoin` or `addsjoin`.
+        /// Specify domain service provided by Microsoft Azure for managing identities and access in the cloud. Valid values are
+        /// `aadjoin` or `addsjoin`.
         /// </summary>
         [Output("adDomainType")]
         public Output<string> AdDomainType { get; private set; } = null!;
@@ -102,13 +103,13 @@ namespace DuploCloud.Pulumi
         public Output<string> AdminUsername { get; private set; } = null!;
 
         /// <summary>
-        /// The numeric ID of the container agent pool that this host is added to. Defaults to `0`.
+        /// The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 5: Docker Windows
         /// </summary>
         [Output("agentPlatform")]
         public Output<int?> AgentPlatform { get; private set; } = null!;
 
         /// <summary>
-        /// Whether or not to allocate a public IP. Defaults to `false`.
+        /// Whether or not to allocate a public IP.
         /// </summary>
         [Output("allocatedPublicIp")]
         public Output<bool?> AllocatedPublicIp { get; private set; } = null!;
@@ -126,50 +127,46 @@ namespace DuploCloud.Pulumi
         public Output<string> Base64UserData { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the [size of the Virtual Machine](https://docs.microsoft.com/azure/virtual-machines/sizes-general). See also [Azure VM Naming Conventions](https://docs.microsoft.com/azure/virtual-machines/vm-naming-conventions).
+        /// Specifies the [size of the Virtual Machine](https://docs.microsoft.com/azure/virtual-machines/sizes-general). See also
+        /// [Azure VM Naming Conventions](https://docs.microsoft.com/azure/virtual-machines/vm-naming-conventions).
         /// </summary>
         [Output("capacity")]
         public Output<string> Capacity { get; private set; } = null!;
 
         /// <summary>
-        /// disk control types refer to the different levels of management and performance control provided for disks attached to virtual machines (VMs)
+        /// disk control types refer to the different levels of management and performance control provided for disks attached to
+        /// virtual machines (VMs)
         /// </summary>
         [Output("diskControlType")]
         public Output<string> DiskControlType { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the size of the OS Disk in gigabytes Defaults to `128`.
+        /// Specifies the size of the OS Disk in gigabytes
         /// </summary>
         [Output("diskSizeGb")]
         public Output<int?> DiskSizeGb { get; private set; } = null!;
 
-        /// <summary>
-        /// Defaults to `false`.
-        /// </summary>
         [Output("enableEncryptAtHost")]
         public Output<bool?> EnableEncryptAtHost { get; private set; } = null!;
 
         /// <summary>
-        /// Enable log analytics on virtual machine. Defaults to `false`.
+        /// Enable log analytics on virtual machine.
         /// </summary>
         [Output("enableLogAnalytics")]
         public Output<bool?> EnableLogAnalytics { get; private set; } = null!;
 
         /// <summary>
-        /// Specify to enable Secure Boot for your VM. Used with security_type=TrustedLaunch Defaults to `true`.
+        /// Specify to enable Secure Boot for your VM. Used with security_type=TrustedLaunch
         /// </summary>
         [Output("enableSecurityBoot")]
         public Output<bool?> EnableSecurityBoot { get; private set; } = null!;
 
         /// <summary>
-        /// Specify to enable virtual Trusted Platform Module (vTPM) for Azure VM. Used with security_type=TrustedLaunch Defaults to `true`.
+        /// Specify to enable virtual Trusted Platform Module (vTPM) for Azure VM. Used with security_type=TrustedLaunch
         /// </summary>
         [Output("enableVtpm")]
         public Output<bool?> EnableVtpm { get; private set; } = null!;
 
-        /// <summary>
-        /// Defaults to `false`.
-        /// </summary>
         [Output("encryptDisk")]
         public Output<bool?> EncryptDisk { get; private set; } = null!;
 
@@ -186,10 +183,17 @@ namespace DuploCloud.Pulumi
         public Output<string> Fullname { get; private set; } = null!;
 
         /// <summary>
-        /// The Image ID to use to create virtual machine. Provide id as semicolon separated string with sequence of sku, publisher and offer. For example, 16.04-LTS;Canonical;UbuntuServe
+        /// The Image ID to use to create virtual machine. Provide id as semicolon separated string with sequence of sku, publisher
+        /// and offer. For example, 16.04-LTS;Canonical;UbuntuServe
         /// </summary>
         [Output("imageId")]
         public Output<string> ImageId { get; private set; } = null!;
+
+        /// <summary>
+        /// Bootstrap an AKS host with Duplo's user data, prepending it to custom user data if also provided.
+        /// </summary>
+        [Output("installDuploNativeAgent")]
+        public Output<bool> InstallDuploNativeAgent { get; private set; } = null!;
 
         /// <summary>
         /// The Azure Virtual Machine ID of the host.
@@ -201,7 +205,7 @@ namespace DuploCloud.Pulumi
         public Output<bool> IsMinion { get; private set; } = null!;
 
         /// <summary>
-        /// Join a Windows Server virtual machine to an Azure Active Directory Domain Services. Defaults to `false`.
+        /// Join a Windows Server virtual machine to an Azure Active Directory Domain Services.
         /// </summary>
         [Output("joinDomain")]
         public Output<bool?> JoinDomain { get; private set; } = null!;
@@ -213,16 +217,16 @@ namespace DuploCloud.Pulumi
         public Output<ImmutableArray<Outputs.AzureVirtualMachineMinionTag>> MinionTags { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the type of managed disk to create. Possible values are either `Standard_LRS`, `StandardSSD_LRS`, `Premium_LRS`, `PremiumV2_LRS`, `Premium_ZRS`, `StandardSSD_ZRS` or `UltraSSD_LRS`.
+        /// Specifies the type of managed disk to create. Possible values are either `Standard_LRS`, `StandardSSD_LRS`,
+        /// `Premium_LRS`, `PremiumV2_LRS`, `Premium_ZRS`, `StandardSSD_ZRS` or `UltraSSD_LRS`.
         /// </summary>
         [Output("osDiskType")]
         public Output<string> OsDiskType { get; private set; } = null!;
 
         /// <summary>
-        /// Specify "Standard" or "TrustedLaunch" security type. Defaults to "Standard".
-        /// 		Use TrustedLaunch for the security of "Generation 2" virtual machines (VMs).
-        /// 		[Supported Sizes](https://learn.microsoft.com/en-us/azure/virtual-machines/trusted-launch#virtual-machines-sizes)
-        /// 		 Defaults to `Standard`.
+        /// Specify "Standard" or "TrustedLaunch" security type. Defaults to "Standard". Use TrustedLaunch for the security of
+        /// "Generation 2" virtual machines (VMs). [Supported
+        /// Sizes](https://learn.microsoft.com/en-us/azure/virtual-machines/trusted-launch#virtual-machines-sizes)
         /// </summary>
         [Output("securityType")]
         public Output<string?> SecurityType { get; private set; } = null!;
@@ -249,7 +253,8 @@ namespace DuploCloud.Pulumi
         public Output<string> TenantId { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the time zone of the virtual machine, [the possible values are defined here](https://jackstromberg.com/2017/01/list-of-time-zones-consumed-by-azure/).
+        /// Specifies the time zone of the virtual machine, [the possible values are defined
+        /// here](https://jackstromberg.com/2017/01/list-of-time-zones-consumed-by-azure/).
         /// </summary>
         [Output("timezone")]
         public Output<string?> Timezone { get; private set; } = null!;
@@ -264,7 +269,7 @@ namespace DuploCloud.Pulumi
         public Output<ImmutableArray<Outputs.AzureVirtualMachineVolume>> Volumes { get; private set; } = null!;
 
         /// <summary>
-        /// Whether or not to wait until azure virtual machine to be ready, after creation. Defaults to `true`.
+        /// Whether or not to wait until azure virtual machine to be ready, after creation.
         /// </summary>
         [Output("waitUntilReady")]
         public Output<bool?> WaitUntilReady { get; private set; } = null!;
@@ -321,7 +326,8 @@ namespace DuploCloud.Pulumi
     public sealed class AzureVirtualMachineArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specify domain service provided by Microsoft Azure for managing identities and access in the cloud. Valid values are `aadjoin` or `addsjoin`.
+        /// Specify domain service provided by Microsoft Azure for managing identities and access in the cloud. Valid values are
+        /// `aadjoin` or `addsjoin`.
         /// </summary>
         [Input("adDomainType")]
         public Input<string>? AdDomainType { get; set; }
@@ -349,13 +355,13 @@ namespace DuploCloud.Pulumi
         public Input<string> AdminUsername { get; set; } = null!;
 
         /// <summary>
-        /// The numeric ID of the container agent pool that this host is added to. Defaults to `0`.
+        /// The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 5: Docker Windows
         /// </summary>
         [Input("agentPlatform")]
         public Input<int>? AgentPlatform { get; set; }
 
         /// <summary>
-        /// Whether or not to allocate a public IP. Defaults to `false`.
+        /// Whether or not to allocate a public IP.
         /// </summary>
         [Input("allocatedPublicIp")]
         public Input<bool>? AllocatedPublicIp { get; set; }
@@ -373,50 +379,46 @@ namespace DuploCloud.Pulumi
         public Input<string>? Base64UserData { get; set; }
 
         /// <summary>
-        /// Specifies the [size of the Virtual Machine](https://docs.microsoft.com/azure/virtual-machines/sizes-general). See also [Azure VM Naming Conventions](https://docs.microsoft.com/azure/virtual-machines/vm-naming-conventions).
+        /// Specifies the [size of the Virtual Machine](https://docs.microsoft.com/azure/virtual-machines/sizes-general). See also
+        /// [Azure VM Naming Conventions](https://docs.microsoft.com/azure/virtual-machines/vm-naming-conventions).
         /// </summary>
         [Input("capacity", required: true)]
         public Input<string> Capacity { get; set; } = null!;
 
         /// <summary>
-        /// disk control types refer to the different levels of management and performance control provided for disks attached to virtual machines (VMs)
+        /// disk control types refer to the different levels of management and performance control provided for disks attached to
+        /// virtual machines (VMs)
         /// </summary>
         [Input("diskControlType")]
         public Input<string>? DiskControlType { get; set; }
 
         /// <summary>
-        /// Specifies the size of the OS Disk in gigabytes Defaults to `128`.
+        /// Specifies the size of the OS Disk in gigabytes
         /// </summary>
         [Input("diskSizeGb")]
         public Input<int>? DiskSizeGb { get; set; }
 
-        /// <summary>
-        /// Defaults to `false`.
-        /// </summary>
         [Input("enableEncryptAtHost")]
         public Input<bool>? EnableEncryptAtHost { get; set; }
 
         /// <summary>
-        /// Enable log analytics on virtual machine. Defaults to `false`.
+        /// Enable log analytics on virtual machine.
         /// </summary>
         [Input("enableLogAnalytics")]
         public Input<bool>? EnableLogAnalytics { get; set; }
 
         /// <summary>
-        /// Specify to enable Secure Boot for your VM. Used with security_type=TrustedLaunch Defaults to `true`.
+        /// Specify to enable Secure Boot for your VM. Used with security_type=TrustedLaunch
         /// </summary>
         [Input("enableSecurityBoot")]
         public Input<bool>? EnableSecurityBoot { get; set; }
 
         /// <summary>
-        /// Specify to enable virtual Trusted Platform Module (vTPM) for Azure VM. Used with security_type=TrustedLaunch Defaults to `true`.
+        /// Specify to enable virtual Trusted Platform Module (vTPM) for Azure VM. Used with security_type=TrustedLaunch
         /// </summary>
         [Input("enableVtpm")]
         public Input<bool>? EnableVtpm { get; set; }
 
-        /// <summary>
-        /// Defaults to `false`.
-        /// </summary>
         [Input("encryptDisk")]
         public Input<bool>? EncryptDisk { get; set; }
 
@@ -427,16 +429,23 @@ namespace DuploCloud.Pulumi
         public Input<string> FriendlyName { get; set; } = null!;
 
         /// <summary>
-        /// The Image ID to use to create virtual machine. Provide id as semicolon separated string with sequence of sku, publisher and offer. For example, 16.04-LTS;Canonical;UbuntuServe
+        /// The Image ID to use to create virtual machine. Provide id as semicolon separated string with sequence of sku, publisher
+        /// and offer. For example, 16.04-LTS;Canonical;UbuntuServe
         /// </summary>
         [Input("imageId", required: true)]
         public Input<string> ImageId { get; set; } = null!;
+
+        /// <summary>
+        /// Bootstrap an AKS host with Duplo's user data, prepending it to custom user data if also provided.
+        /// </summary>
+        [Input("installDuploNativeAgent")]
+        public Input<bool>? InstallDuploNativeAgent { get; set; }
 
         [Input("isMinion")]
         public Input<bool>? IsMinion { get; set; }
 
         /// <summary>
-        /// Join a Windows Server virtual machine to an Azure Active Directory Domain Services. Defaults to `false`.
+        /// Join a Windows Server virtual machine to an Azure Active Directory Domain Services.
         /// </summary>
         [Input("joinDomain")]
         public Input<bool>? JoinDomain { get; set; }
@@ -454,16 +463,16 @@ namespace DuploCloud.Pulumi
         }
 
         /// <summary>
-        /// Specifies the type of managed disk to create. Possible values are either `Standard_LRS`, `StandardSSD_LRS`, `Premium_LRS`, `PremiumV2_LRS`, `Premium_ZRS`, `StandardSSD_ZRS` or `UltraSSD_LRS`.
+        /// Specifies the type of managed disk to create. Possible values are either `Standard_LRS`, `StandardSSD_LRS`,
+        /// `Premium_LRS`, `PremiumV2_LRS`, `Premium_ZRS`, `StandardSSD_ZRS` or `UltraSSD_LRS`.
         /// </summary>
         [Input("osDiskType")]
         public Input<string>? OsDiskType { get; set; }
 
         /// <summary>
-        /// Specify "Standard" or "TrustedLaunch" security type. Defaults to "Standard".
-        /// 		Use TrustedLaunch for the security of "Generation 2" virtual machines (VMs).
-        /// 		[Supported Sizes](https://learn.microsoft.com/en-us/azure/virtual-machines/trusted-launch#virtual-machines-sizes)
-        /// 		 Defaults to `Standard`.
+        /// Specify "Standard" or "TrustedLaunch" security type. Defaults to "Standard". Use TrustedLaunch for the security of
+        /// "Generation 2" virtual machines (VMs). [Supported
+        /// Sizes](https://learn.microsoft.com/en-us/azure/virtual-machines/trusted-launch#virtual-machines-sizes)
         /// </summary>
         [Input("securityType")]
         public Input<string>? SecurityType { get; set; }
@@ -489,7 +498,8 @@ namespace DuploCloud.Pulumi
         public Input<string> TenantId { get; set; } = null!;
 
         /// <summary>
-        /// Specifies the time zone of the virtual machine, [the possible values are defined here](https://jackstromberg.com/2017/01/list-of-time-zones-consumed-by-azure/).
+        /// Specifies the time zone of the virtual machine, [the possible values are defined
+        /// here](https://jackstromberg.com/2017/01/list-of-time-zones-consumed-by-azure/).
         /// </summary>
         [Input("timezone")]
         public Input<string>? Timezone { get; set; }
@@ -503,7 +513,7 @@ namespace DuploCloud.Pulumi
         }
 
         /// <summary>
-        /// Whether or not to wait until azure virtual machine to be ready, after creation. Defaults to `true`.
+        /// Whether or not to wait until azure virtual machine to be ready, after creation.
         /// </summary>
         [Input("waitUntilReady")]
         public Input<bool>? WaitUntilReady { get; set; }
@@ -517,7 +527,8 @@ namespace DuploCloud.Pulumi
     public sealed class AzureVirtualMachineState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specify domain service provided by Microsoft Azure for managing identities and access in the cloud. Valid values are `aadjoin` or `addsjoin`.
+        /// Specify domain service provided by Microsoft Azure for managing identities and access in the cloud. Valid values are
+        /// `aadjoin` or `addsjoin`.
         /// </summary>
         [Input("adDomainType")]
         public Input<string>? AdDomainType { get; set; }
@@ -545,13 +556,13 @@ namespace DuploCloud.Pulumi
         public Input<string>? AdminUsername { get; set; }
 
         /// <summary>
-        /// The numeric ID of the container agent pool that this host is added to. Defaults to `0`.
+        /// The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 5: Docker Windows
         /// </summary>
         [Input("agentPlatform")]
         public Input<int>? AgentPlatform { get; set; }
 
         /// <summary>
-        /// Whether or not to allocate a public IP. Defaults to `false`.
+        /// Whether or not to allocate a public IP.
         /// </summary>
         [Input("allocatedPublicIp")]
         public Input<bool>? AllocatedPublicIp { get; set; }
@@ -569,50 +580,46 @@ namespace DuploCloud.Pulumi
         public Input<string>? Base64UserData { get; set; }
 
         /// <summary>
-        /// Specifies the [size of the Virtual Machine](https://docs.microsoft.com/azure/virtual-machines/sizes-general). See also [Azure VM Naming Conventions](https://docs.microsoft.com/azure/virtual-machines/vm-naming-conventions).
+        /// Specifies the [size of the Virtual Machine](https://docs.microsoft.com/azure/virtual-machines/sizes-general). See also
+        /// [Azure VM Naming Conventions](https://docs.microsoft.com/azure/virtual-machines/vm-naming-conventions).
         /// </summary>
         [Input("capacity")]
         public Input<string>? Capacity { get; set; }
 
         /// <summary>
-        /// disk control types refer to the different levels of management and performance control provided for disks attached to virtual machines (VMs)
+        /// disk control types refer to the different levels of management and performance control provided for disks attached to
+        /// virtual machines (VMs)
         /// </summary>
         [Input("diskControlType")]
         public Input<string>? DiskControlType { get; set; }
 
         /// <summary>
-        /// Specifies the size of the OS Disk in gigabytes Defaults to `128`.
+        /// Specifies the size of the OS Disk in gigabytes
         /// </summary>
         [Input("diskSizeGb")]
         public Input<int>? DiskSizeGb { get; set; }
 
-        /// <summary>
-        /// Defaults to `false`.
-        /// </summary>
         [Input("enableEncryptAtHost")]
         public Input<bool>? EnableEncryptAtHost { get; set; }
 
         /// <summary>
-        /// Enable log analytics on virtual machine. Defaults to `false`.
+        /// Enable log analytics on virtual machine.
         /// </summary>
         [Input("enableLogAnalytics")]
         public Input<bool>? EnableLogAnalytics { get; set; }
 
         /// <summary>
-        /// Specify to enable Secure Boot for your VM. Used with security_type=TrustedLaunch Defaults to `true`.
+        /// Specify to enable Secure Boot for your VM. Used with security_type=TrustedLaunch
         /// </summary>
         [Input("enableSecurityBoot")]
         public Input<bool>? EnableSecurityBoot { get; set; }
 
         /// <summary>
-        /// Specify to enable virtual Trusted Platform Module (vTPM) for Azure VM. Used with security_type=TrustedLaunch Defaults to `true`.
+        /// Specify to enable virtual Trusted Platform Module (vTPM) for Azure VM. Used with security_type=TrustedLaunch
         /// </summary>
         [Input("enableVtpm")]
         public Input<bool>? EnableVtpm { get; set; }
 
-        /// <summary>
-        /// Defaults to `false`.
-        /// </summary>
         [Input("encryptDisk")]
         public Input<bool>? EncryptDisk { get; set; }
 
@@ -629,10 +636,17 @@ namespace DuploCloud.Pulumi
         public Input<string>? Fullname { get; set; }
 
         /// <summary>
-        /// The Image ID to use to create virtual machine. Provide id as semicolon separated string with sequence of sku, publisher and offer. For example, 16.04-LTS;Canonical;UbuntuServe
+        /// The Image ID to use to create virtual machine. Provide id as semicolon separated string with sequence of sku, publisher
+        /// and offer. For example, 16.04-LTS;Canonical;UbuntuServe
         /// </summary>
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }
+
+        /// <summary>
+        /// Bootstrap an AKS host with Duplo's user data, prepending it to custom user data if also provided.
+        /// </summary>
+        [Input("installDuploNativeAgent")]
+        public Input<bool>? InstallDuploNativeAgent { get; set; }
 
         /// <summary>
         /// The Azure Virtual Machine ID of the host.
@@ -644,7 +658,7 @@ namespace DuploCloud.Pulumi
         public Input<bool>? IsMinion { get; set; }
 
         /// <summary>
-        /// Join a Windows Server virtual machine to an Azure Active Directory Domain Services. Defaults to `false`.
+        /// Join a Windows Server virtual machine to an Azure Active Directory Domain Services.
         /// </summary>
         [Input("joinDomain")]
         public Input<bool>? JoinDomain { get; set; }
@@ -662,16 +676,16 @@ namespace DuploCloud.Pulumi
         }
 
         /// <summary>
-        /// Specifies the type of managed disk to create. Possible values are either `Standard_LRS`, `StandardSSD_LRS`, `Premium_LRS`, `PremiumV2_LRS`, `Premium_ZRS`, `StandardSSD_ZRS` or `UltraSSD_LRS`.
+        /// Specifies the type of managed disk to create. Possible values are either `Standard_LRS`, `StandardSSD_LRS`,
+        /// `Premium_LRS`, `PremiumV2_LRS`, `Premium_ZRS`, `StandardSSD_ZRS` or `UltraSSD_LRS`.
         /// </summary>
         [Input("osDiskType")]
         public Input<string>? OsDiskType { get; set; }
 
         /// <summary>
-        /// Specify "Standard" or "TrustedLaunch" security type. Defaults to "Standard".
-        /// 		Use TrustedLaunch for the security of "Generation 2" virtual machines (VMs).
-        /// 		[Supported Sizes](https://learn.microsoft.com/en-us/azure/virtual-machines/trusted-launch#virtual-machines-sizes)
-        /// 		 Defaults to `Standard`.
+        /// Specify "Standard" or "TrustedLaunch" security type. Defaults to "Standard". Use TrustedLaunch for the security of
+        /// "Generation 2" virtual machines (VMs). [Supported
+        /// Sizes](https://learn.microsoft.com/en-us/azure/virtual-machines/trusted-launch#virtual-machines-sizes)
         /// </summary>
         [Input("securityType")]
         public Input<string>? SecurityType { get; set; }
@@ -703,7 +717,8 @@ namespace DuploCloud.Pulumi
         public Input<string>? TenantId { get; set; }
 
         /// <summary>
-        /// Specifies the time zone of the virtual machine, [the possible values are defined here](https://jackstromberg.com/2017/01/list-of-time-zones-consumed-by-azure/).
+        /// Specifies the time zone of the virtual machine, [the possible values are defined
+        /// here](https://jackstromberg.com/2017/01/list-of-time-zones-consumed-by-azure/).
         /// </summary>
         [Input("timezone")]
         public Input<string>? Timezone { get; set; }
@@ -723,7 +738,7 @@ namespace DuploCloud.Pulumi
         }
 
         /// <summary>
-        /// Whether or not to wait until azure virtual machine to be ready, after creation. Defaults to `true`.
+        /// Whether or not to wait until azure virtual machine to be ready, after creation.
         /// </summary>
         [Input("waitUntilReady")]
         public Input<bool>? WaitUntilReady { get; set; }

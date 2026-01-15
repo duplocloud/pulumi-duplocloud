@@ -33,15 +33,12 @@ type LookupK8SecretArgs struct {
 type LookupK8SecretResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// Annotations for the secret
+	// Annotations for the secret.
 	SecretAnnotations map[string]string `pulumi:"secretAnnotations"`
-	// A JSON encoded string representing the secret metadata. You can use the `jsonencode()` function to convert map or object data, if needed. You can use the `jsondecode()` function to read data.
-	SecretData string `pulumi:"secretData"`
-	// Map of string keys and values that can be used to organize and categorize (scope and select) the secret
-	SecretLabels map[string]string `pulumi:"secretLabels"`
+	SecretData        string            `pulumi:"secretData"`
+	SecretLabels      map[string]string `pulumi:"secretLabels"`
 	// The name of the secret.
-	SecretName string `pulumi:"secretName"`
-	// The type of the secret.  Usually `"Opaque"`.
+	SecretName    string `pulumi:"secretName"`
 	SecretType    string `pulumi:"secretType"`
 	SecretVersion string `pulumi:"secretVersion"`
 	// The GUID of the tenant that the secret will be created in.
@@ -89,17 +86,15 @@ func (o LookupK8SecretResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupK8SecretResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Annotations for the secret
+// Annotations for the secret.
 func (o LookupK8SecretResultOutput) SecretAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupK8SecretResult) map[string]string { return v.SecretAnnotations }).(pulumi.StringMapOutput)
 }
 
-// A JSON encoded string representing the secret metadata. You can use the `jsonencode()` function to convert map or object data, if needed. You can use the `jsondecode()` function to read data.
 func (o LookupK8SecretResultOutput) SecretData() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupK8SecretResult) string { return v.SecretData }).(pulumi.StringOutput)
 }
 
-// Map of string keys and values that can be used to organize and categorize (scope and select) the secret
 func (o LookupK8SecretResultOutput) SecretLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupK8SecretResult) map[string]string { return v.SecretLabels }).(pulumi.StringMapOutput)
 }
@@ -109,7 +104,6 @@ func (o LookupK8SecretResultOutput) SecretName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupK8SecretResult) string { return v.SecretName }).(pulumi.StringOutput)
 }
 
-// The type of the secret.  Usually `"Opaque"`.
 func (o LookupK8SecretResultOutput) SecretType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupK8SecretResult) string { return v.SecretType }).(pulumi.StringOutput)
 }

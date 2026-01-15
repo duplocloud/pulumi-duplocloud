@@ -19,40 +19,41 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
+    /// using Pulumi = Pulumi.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var tenantId = "2a80c75d-9f58-4572-83b7-157b05bce259";
     /// 
-    ///     var kmsKey = Duplocloud.GetTenantAwsKmsKey.Invoke(new()
+    ///     var kmsKey = Pulumi.GetTenantAwsKmsKey.Invoke(new()
     ///     {
     ///         TenantId = tenantId,
     ///     });
     /// 
-    ///     var timestreamwriteDatabase = new Duplocloud.AwsTimestreamwriteDatabase("timestreamwrite_database", new()
+    ///     var timestreamwriteDatabase = new Pulumi.AwsTimestreamwriteDatabase("timestreamwrite_database", new()
     ///     {
     ///         TenantId = tenantId,
     ///         Name = "test",
     ///         KmsKeyId = kmsKey.Apply(getTenantAwsKmsKeyResult =&gt; getTenantAwsKmsKeyResult.KeyArn),
     ///     });
     /// 
-    ///     var timestreamwriteDatabaseTbl = new Duplocloud.AwsTimestreamwriteTable("timestreamwrite_database_tbl", new()
+    ///     var timestreamwriteDatabaseTbl = new Pulumi.AwsTimestreamwriteTable("timestreamwrite_database_tbl", new()
     ///     {
     ///         TenantId = tenantId,
     ///         DatabaseName = timestreamwriteDatabase.Fullname,
     ///         Name = "example",
-    ///         RetentionProperties = new Duplocloud.Inputs.AwsTimestreamwriteTableRetentionPropertiesArgs
+    ///         RetentionProperties = new Pulumi.Inputs.AwsTimestreamwriteTableRetentionPropertiesArgs
     ///         {
     ///             MagneticStoreRetentionPeriodInDays = 30,
     ///             MemoryStoreRetentionPeriodInHours = 8,
     ///         },
-    ///         MagneticStoreWriteProperties = new Duplocloud.Inputs.AwsTimestreamwriteTableMagneticStoreWritePropertiesArgs
+    ///         MagneticStoreWriteProperties = new Pulumi.Inputs.AwsTimestreamwriteTableMagneticStoreWritePropertiesArgs
     ///         {
     ///             EnableMagneticStoreWrites = true,
-    ///             MagneticStoreRejectedDataLocation = new Duplocloud.Inputs.AwsTimestreamwriteTableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationArgs
+    ///             MagneticStoreRejectedDataLocation = new Pulumi.Inputs.AwsTimestreamwriteTableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationArgs
     ///             {
-    ///                 S3Configuration = new Duplocloud.Inputs.AwsTimestreamwriteTableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3ConfigurationArgs
+    ///                 S3Configuration = new Pulumi.Inputs.AwsTimestreamwriteTableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3ConfigurationArgs
     ///                 {
     ///                     BucketName = "test",
     ///                     EncryptionOption = "SSE_KMS",

@@ -11,7 +11,7 @@ using Pulumi;
 namespace DuploCloud.Pulumi
 {
     /// <summary>
-    /// `duplocloud_gcp_k8_node_pools` manages a GCP Node Pool in Duplo.
+    /// `duplocloud.GcpNodePool` manages a GCP Node Pool in Duplo.
     /// 
     /// ## Import
     /// 

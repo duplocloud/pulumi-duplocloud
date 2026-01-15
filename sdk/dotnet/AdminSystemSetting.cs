@@ -19,11 +19,11 @@ namespace DuploCloud.Pulumi
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Duplocloud = DuploCloud.Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var test_setting = new Duplocloud.AdminSystemSetting("test-setting", new()
+    ///     var test_setting = new Pulumi.AdminSystemSetting("test-setting", new()
     ///     {
     ///         Key = "EnableVPN",
     ///         Value = "true",
