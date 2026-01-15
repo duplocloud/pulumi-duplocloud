@@ -2,8 +2,6 @@ module github.com/duplocloud/pulumi-duplocloud/provider
 
 go 1.23.0
 
-toolchain go1.24.3
-
 replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20250124205414-92ccb3765401
 
 require (
