@@ -114,7 +114,7 @@ type AwsMwaaEnvironment struct {
 	Arn pulumi.StringOutput `pulumi:"arn"`
 	// The relative path to the DAG folder on your Amazon S3 storage bucket.
 	DagS3Path pulumi.StringOutput `pulumi:"dagS3Path"`
-	// Environment class for the cluster. Possible options are `mw1.small`, `mw1.medium`, `mw1.large`, `mw1.xlarge`, `mw1.2xlarge`.
+	// Environment class for the cluster. Possible options are `mw1.micro`, `mw1.small`, `mw1.medium`, `mw1.large`, `mw1.xlarge`, `mw1.2xlarge`.
 	EnvironmentClass pulumi.StringOutput `pulumi:"environmentClass"`
 	// The Execution Role ARN of the Amazon MWAA Environment
 	ExecutionRoleArn pulumi.StringOutput `pulumi:"executionRoleArn"`
@@ -216,7 +216,7 @@ type awsMwaaEnvironmentState struct {
 	Arn *string `pulumi:"arn"`
 	// The relative path to the DAG folder on your Amazon S3 storage bucket.
 	DagS3Path *string `pulumi:"dagS3Path"`
-	// Environment class for the cluster. Possible options are `mw1.small`, `mw1.medium`, `mw1.large`, `mw1.xlarge`, `mw1.2xlarge`.
+	// Environment class for the cluster. Possible options are `mw1.micro`, `mw1.small`, `mw1.medium`, `mw1.large`, `mw1.xlarge`, `mw1.2xlarge`.
 	EnvironmentClass *string `pulumi:"environmentClass"`
 	// The Execution Role ARN of the Amazon MWAA Environment
 	ExecutionRoleArn *string `pulumi:"executionRoleArn"`
@@ -273,7 +273,7 @@ type AwsMwaaEnvironmentState struct {
 	Arn pulumi.StringPtrInput
 	// The relative path to the DAG folder on your Amazon S3 storage bucket.
 	DagS3Path pulumi.StringPtrInput
-	// Environment class for the cluster. Possible options are `mw1.small`, `mw1.medium`, `mw1.large`, `mw1.xlarge`, `mw1.2xlarge`.
+	// Environment class for the cluster. Possible options are `mw1.micro`, `mw1.small`, `mw1.medium`, `mw1.large`, `mw1.xlarge`, `mw1.2xlarge`.
 	EnvironmentClass pulumi.StringPtrInput
 	// The Execution Role ARN of the Amazon MWAA Environment
 	ExecutionRoleArn pulumi.StringPtrInput
@@ -332,7 +332,7 @@ type awsMwaaEnvironmentArgs struct {
 	AirflowVersion *string `pulumi:"airflowVersion"`
 	// The relative path to the DAG folder on your Amazon S3 storage bucket.
 	DagS3Path string `pulumi:"dagS3Path"`
-	// Environment class for the cluster. Possible options are `mw1.small`, `mw1.medium`, `mw1.large`, `mw1.xlarge`, `mw1.2xlarge`.
+	// Environment class for the cluster. Possible options are `mw1.micro`, `mw1.small`, `mw1.medium`, `mw1.large`, `mw1.xlarge`, `mw1.2xlarge`.
 	EnvironmentClass *string `pulumi:"environmentClass"`
 	// The Execution Role ARN of the Amazon MWAA Environment
 	ExecutionRoleArn *string `pulumi:"executionRoleArn"`
@@ -379,7 +379,7 @@ type AwsMwaaEnvironmentArgs struct {
 	AirflowVersion pulumi.StringPtrInput
 	// The relative path to the DAG folder on your Amazon S3 storage bucket.
 	DagS3Path pulumi.StringInput
-	// Environment class for the cluster. Possible options are `mw1.small`, `mw1.medium`, `mw1.large`, `mw1.xlarge`, `mw1.2xlarge`.
+	// Environment class for the cluster. Possible options are `mw1.micro`, `mw1.small`, `mw1.medium`, `mw1.large`, `mw1.xlarge`, `mw1.2xlarge`.
 	EnvironmentClass pulumi.StringPtrInput
 	// The Execution Role ARN of the Amazon MWAA Environment
 	ExecutionRoleArn pulumi.StringPtrInput
@@ -525,7 +525,7 @@ func (o AwsMwaaEnvironmentOutput) DagS3Path() pulumi.StringOutput {
 	return o.ApplyT(func(v *AwsMwaaEnvironment) pulumi.StringOutput { return v.DagS3Path }).(pulumi.StringOutput)
 }
 
-// Environment class for the cluster. Possible options are `mw1.small`, `mw1.medium`, `mw1.large`, `mw1.xlarge`, `mw1.2xlarge`.
+// Environment class for the cluster. Possible options are `mw1.micro`, `mw1.small`, `mw1.medium`, `mw1.large`, `mw1.xlarge`, `mw1.2xlarge`.
 func (o AwsMwaaEnvironmentOutput) EnvironmentClass() pulumi.StringOutput {
 	return o.ApplyT(func(v *AwsMwaaEnvironment) pulumi.StringOutput { return v.EnvironmentClass }).(pulumi.StringOutput)
 }

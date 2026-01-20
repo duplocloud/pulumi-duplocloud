@@ -16050,6 +16050,7 @@ type GetNativeHostsHost struct {
 	EncryptDisk      *bool             `pulumi:"encryptDisk"`
 	// The short name of the host.
 	FriendlyName string `pulumi:"friendlyName"`
+	Fullname     string `pulumi:"fullname"`
 	// The name of the IAM role associated with this host.
 	IdentityRole string `pulumi:"identityRole"`
 	// The AMI ID to use.
@@ -16124,6 +16125,7 @@ type GetNativeHostsHostArgs struct {
 	EncryptDisk      pulumi.BoolPtrInput   `pulumi:"encryptDisk"`
 	// The short name of the host.
 	FriendlyName pulumi.StringInput `pulumi:"friendlyName"`
+	Fullname     pulumi.StringInput `pulumi:"fullname"`
 	// The name of the IAM role associated with this host.
 	IdentityRole pulumi.StringInput `pulumi:"identityRole"`
 	// The AMI ID to use.
@@ -16260,6 +16262,10 @@ func (o GetNativeHostsHostOutput) EncryptDisk() pulumi.BoolPtrOutput {
 // The short name of the host.
 func (o GetNativeHostsHostOutput) FriendlyName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNativeHostsHost) string { return v.FriendlyName }).(pulumi.StringOutput)
+}
+
+func (o GetNativeHostsHostOutput) Fullname() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNativeHostsHost) string { return v.Fullname }).(pulumi.StringOutput)
 }
 
 // The name of the IAM role associated with this host.
@@ -17030,11 +17036,13 @@ func (o GetNativeHostsHostTaintArrayOutput) Index(i pulumi.IntInput) GetNativeHo
 }
 
 type GetNativeHostsHostVolume struct {
-	Iops       int    `pulumi:"iops"`
-	Name       string `pulumi:"name"`
-	Size       int    `pulumi:"size"`
-	VolumeId   string `pulumi:"volumeId"`
-	VolumeType string `pulumi:"volumeType"`
+	// Whether the volume should be deleted when the instance is terminated.
+	DeleteOnTermination bool   `pulumi:"deleteOnTermination"`
+	Iops                int    `pulumi:"iops"`
+	Name                string `pulumi:"name"`
+	Size                int    `pulumi:"size"`
+	VolumeId            string `pulumi:"volumeId"`
+	VolumeType          string `pulumi:"volumeType"`
 }
 
 // GetNativeHostsHostVolumeInput is an input type that accepts GetNativeHostsHostVolumeArgs and GetNativeHostsHostVolumeOutput values.
@@ -17049,11 +17057,13 @@ type GetNativeHostsHostVolumeInput interface {
 }
 
 type GetNativeHostsHostVolumeArgs struct {
-	Iops       pulumi.IntInput    `pulumi:"iops"`
-	Name       pulumi.StringInput `pulumi:"name"`
-	Size       pulumi.IntInput    `pulumi:"size"`
-	VolumeId   pulumi.StringInput `pulumi:"volumeId"`
-	VolumeType pulumi.StringInput `pulumi:"volumeType"`
+	// Whether the volume should be deleted when the instance is terminated.
+	DeleteOnTermination pulumi.BoolInput   `pulumi:"deleteOnTermination"`
+	Iops                pulumi.IntInput    `pulumi:"iops"`
+	Name                pulumi.StringInput `pulumi:"name"`
+	Size                pulumi.IntInput    `pulumi:"size"`
+	VolumeId            pulumi.StringInput `pulumi:"volumeId"`
+	VolumeType          pulumi.StringInput `pulumi:"volumeType"`
 }
 
 func (GetNativeHostsHostVolumeArgs) ElementType() reflect.Type {
@@ -17105,6 +17115,11 @@ func (o GetNativeHostsHostVolumeOutput) ToGetNativeHostsHostVolumeOutput() GetNa
 
 func (o GetNativeHostsHostVolumeOutput) ToGetNativeHostsHostVolumeOutputWithContext(ctx context.Context) GetNativeHostsHostVolumeOutput {
 	return o
+}
+
+// Whether the volume should be deleted when the instance is terminated.
+func (o GetNativeHostsHostVolumeOutput) DeleteOnTermination() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNativeHostsHostVolume) bool { return v.DeleteOnTermination }).(pulumi.BoolOutput)
 }
 
 func (o GetNativeHostsHostVolumeOutput) Iops() pulumi.IntOutput {

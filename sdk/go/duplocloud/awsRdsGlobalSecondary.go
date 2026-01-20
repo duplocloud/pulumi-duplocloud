@@ -92,8 +92,10 @@ type AwsRdsGlobalSecondary struct {
 	// The identifier of the primary Database.
 	ClusterIdentifier pulumi.StringOutput `pulumi:"clusterIdentifier"`
 	// The identifier of the Global Database.
-	GlobalId      pulumi.StringOutput `pulumi:"globalId"`
-	PrimaryRegion pulumi.StringOutput `pulumi:"primaryRegion"`
+	GlobalId pulumi.StringOutput `pulumi:"globalId"`
+	// It removes the reader instances under secondary cluster by retaining the secondary cluster, Valid during updation Defaults to `false`.
+	MakeHeadless  pulumi.BoolPtrOutput `pulumi:"makeHeadless"`
+	PrimaryRegion pulumi.StringOutput  `pulumi:"primaryRegion"`
 	// The region of the secondary Database.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The identifier of the secondary cluster.
@@ -151,7 +153,9 @@ type awsRdsGlobalSecondaryState struct {
 	// The identifier of the primary Database.
 	ClusterIdentifier *string `pulumi:"clusterIdentifier"`
 	// The identifier of the Global Database.
-	GlobalId      *string `pulumi:"globalId"`
+	GlobalId *string `pulumi:"globalId"`
+	// It removes the reader instances under secondary cluster by retaining the secondary cluster, Valid during updation Defaults to `false`.
+	MakeHeadless  *bool   `pulumi:"makeHeadless"`
 	PrimaryRegion *string `pulumi:"primaryRegion"`
 	// The region of the secondary Database.
 	Region *string `pulumi:"region"`
@@ -169,7 +173,9 @@ type AwsRdsGlobalSecondaryState struct {
 	// The identifier of the primary Database.
 	ClusterIdentifier pulumi.StringPtrInput
 	// The identifier of the Global Database.
-	GlobalId      pulumi.StringPtrInput
+	GlobalId pulumi.StringPtrInput
+	// It removes the reader instances under secondary cluster by retaining the secondary cluster, Valid during updation Defaults to `false`.
+	MakeHeadless  pulumi.BoolPtrInput
 	PrimaryRegion pulumi.StringPtrInput
 	// The region of the secondary Database.
 	Region pulumi.StringPtrInput
@@ -190,6 +196,8 @@ func (AwsRdsGlobalSecondaryState) ElementType() reflect.Type {
 type awsRdsGlobalSecondaryArgs struct {
 	// The identifier of the primary Database.
 	ClusterIdentifier string `pulumi:"clusterIdentifier"`
+	// It removes the reader instances under secondary cluster by retaining the secondary cluster, Valid during updation Defaults to `false`.
+	MakeHeadless *bool `pulumi:"makeHeadless"`
 	// The region of the secondary Database.
 	Region string `pulumi:"region"`
 	// The GUID of the tenant that the secondary RDS Global Database will be created in.
@@ -202,6 +210,8 @@ type awsRdsGlobalSecondaryArgs struct {
 type AwsRdsGlobalSecondaryArgs struct {
 	// The identifier of the primary Database.
 	ClusterIdentifier pulumi.StringInput
+	// It removes the reader instances under secondary cluster by retaining the secondary cluster, Valid during updation Defaults to `false`.
+	MakeHeadless pulumi.BoolPtrInput
 	// The region of the secondary Database.
 	Region pulumi.StringInput
 	// The GUID of the tenant that the secondary RDS Global Database will be created in.
@@ -305,6 +315,11 @@ func (o AwsRdsGlobalSecondaryOutput) ClusterIdentifier() pulumi.StringOutput {
 // The identifier of the Global Database.
 func (o AwsRdsGlobalSecondaryOutput) GlobalId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AwsRdsGlobalSecondary) pulumi.StringOutput { return v.GlobalId }).(pulumi.StringOutput)
+}
+
+// It removes the reader instances under secondary cluster by retaining the secondary cluster, Valid during updation Defaults to `false`.
+func (o AwsRdsGlobalSecondaryOutput) MakeHeadless() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AwsRdsGlobalSecondary) pulumi.BoolPtrOutput { return v.MakeHeadless }).(pulumi.BoolPtrOutput)
 }
 
 func (o AwsRdsGlobalSecondaryOutput) PrimaryRegion() pulumi.StringOutput {

@@ -16,8 +16,8 @@ namespace DuploCloud.Pulumi.Inputs
         /// <summary>
         /// The name of the device to mount
         /// </summary>
-        [Input("deviceName", required: true)]
-        public Input<string> DeviceName { get; set; } = null!;
+        [Input("deviceName")]
+        public Input<string>? DeviceName { get; set; }
 
         /// <summary>
         /// Configure EBS volume properties.

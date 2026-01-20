@@ -108,8 +108,8 @@ type AwsLaunchTemplate struct {
 	// Any of the existing version of the launch template, if not provided, the latest version will be used
 	Version pulumi.StringPtrOutput `pulumi:"version"`
 	// The version of the launch template
-	VersionDescription pulumi.StringOutput `pulumi:"versionDescription"`
-	VersionMetadata    pulumi.StringOutput `pulumi:"versionMetadata"`
+	VersionDescription pulumi.StringPtrOutput `pulumi:"versionDescription"`
+	VersionMetadata    pulumi.StringOutput    `pulumi:"versionMetadata"`
 }
 
 // NewAwsLaunchTemplate registers a new resource with the given unique name, arguments, and options.
@@ -119,9 +119,6 @@ func NewAwsLaunchTemplate(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.InstanceType == nil {
-		return nil, errors.New("invalid value for required argument 'InstanceType'")
-	}
 	if args.TenantId == nil {
 		return nil, errors.New("invalid value for required argument 'TenantId'")
 	}
@@ -201,7 +198,7 @@ type awsLaunchTemplateArgs struct {
 	// Configure additional volumes of the instance besides specified by the AMI
 	BlockDeviceMappings []AwsLaunchTemplateBlockDeviceMapping `pulumi:"blockDeviceMappings"`
 	// Asg instance type to be used to update the version from the current version
-	InstanceType string `pulumi:"instanceType"`
+	InstanceType *string `pulumi:"instanceType"`
 	// The fullname of the asg group
 	Name *string `pulumi:"name"`
 	// The GUID of the tenant that the launch template will be created in.
@@ -219,7 +216,7 @@ type AwsLaunchTemplateArgs struct {
 	// Configure additional volumes of the instance besides specified by the AMI
 	BlockDeviceMappings AwsLaunchTemplateBlockDeviceMappingArrayInput
 	// Asg instance type to be used to update the version from the current version
-	InstanceType pulumi.StringInput
+	InstanceType pulumi.StringPtrInput
 	// The fullname of the asg group
 	Name pulumi.StringPtrInput
 	// The GUID of the tenant that the launch template will be created in.
@@ -360,8 +357,8 @@ func (o AwsLaunchTemplateOutput) Version() pulumi.StringPtrOutput {
 }
 
 // The version of the launch template
-func (o AwsLaunchTemplateOutput) VersionDescription() pulumi.StringOutput {
-	return o.ApplyT(func(v *AwsLaunchTemplate) pulumi.StringOutput { return v.VersionDescription }).(pulumi.StringOutput)
+func (o AwsLaunchTemplateOutput) VersionDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsLaunchTemplate) pulumi.StringPtrOutput { return v.VersionDescription }).(pulumi.StringPtrOutput)
 }
 
 func (o AwsLaunchTemplateOutput) VersionMetadata() pulumi.StringOutput {

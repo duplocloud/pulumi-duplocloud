@@ -17,7 +17,7 @@ namespace DuploCloud.Pulumi.Outputs
         /// <summary>
         /// The name of the device to mount
         /// </summary>
-        public readonly string DeviceName;
+        public readonly string? DeviceName;
         /// <summary>
         /// Configure EBS volume properties.
         /// </summary>
@@ -33,7 +33,7 @@ namespace DuploCloud.Pulumi.Outputs
 
         [OutputConstructor]
         private AwsLaunchTemplateBlockDeviceMapping(
-            string deviceName,
+            string? deviceName,
 
             Outputs.AwsLaunchTemplateBlockDeviceMappingEbs? ebs,
 

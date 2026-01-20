@@ -95,6 +95,10 @@ export class AwsRdsGlobalSecondary extends pulumi.CustomResource {
      * The identifier of the Global Database.
      */
     public /*out*/ readonly globalId!: pulumi.Output<string>;
+    /**
+     * It removes the reader instances under secondary cluster by retaining the secondary cluster, Valid during updation Defaults to `false`.
+     */
+    public readonly makeHeadless!: pulumi.Output<boolean | undefined>;
     public /*out*/ readonly primaryRegion!: pulumi.Output<string>;
     /**
      * The region of the secondary Database.
@@ -132,6 +136,7 @@ export class AwsRdsGlobalSecondary extends pulumi.CustomResource {
             const state = argsOrState as AwsRdsGlobalSecondaryState | undefined;
             resourceInputs["clusterIdentifier"] = state ? state.clusterIdentifier : undefined;
             resourceInputs["globalId"] = state ? state.globalId : undefined;
+            resourceInputs["makeHeadless"] = state ? state.makeHeadless : undefined;
             resourceInputs["primaryRegion"] = state ? state.primaryRegion : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["secondaryCluster"] = state ? state.secondaryCluster : undefined;
@@ -153,6 +158,7 @@ export class AwsRdsGlobalSecondary extends pulumi.CustomResource {
                 throw new Error("Missing required property 'tenantId'");
             }
             resourceInputs["clusterIdentifier"] = args ? args.clusterIdentifier : undefined;
+            resourceInputs["makeHeadless"] = args ? args.makeHeadless : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["secondaryTenantId"] = args ? args.secondaryTenantId : undefined;
             resourceInputs["tenantId"] = args ? args.tenantId : undefined;
@@ -178,6 +184,10 @@ export interface AwsRdsGlobalSecondaryState {
      * The identifier of the Global Database.
      */
     globalId?: pulumi.Input<string>;
+    /**
+     * It removes the reader instances under secondary cluster by retaining the secondary cluster, Valid during updation Defaults to `false`.
+     */
+    makeHeadless?: pulumi.Input<boolean>;
     primaryRegion?: pulumi.Input<string>;
     /**
      * The region of the secondary Database.
@@ -209,6 +219,10 @@ export interface AwsRdsGlobalSecondaryArgs {
      * The identifier of the primary Database.
      */
     clusterIdentifier: pulumi.Input<string>;
+    /**
+     * It removes the reader instances under secondary cluster by retaining the secondary cluster, Valid during updation Defaults to `false`.
+     */
+    makeHeadless?: pulumi.Input<boolean>;
     /**
      * The region of the secondary Database.
      */

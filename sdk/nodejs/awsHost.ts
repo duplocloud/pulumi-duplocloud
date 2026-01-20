@@ -194,6 +194,7 @@ export class AwsHost extends pulumi.CustomResource {
      * The short name of the host.
      */
     public readonly friendlyName!: pulumi.Output<string>;
+    public /*out*/ readonly fullname!: pulumi.Output<string>;
     /**
      * The name of the IAM role associated with this host.
      */
@@ -289,6 +290,7 @@ export class AwsHost extends pulumi.CustomResource {
             resourceInputs["cloud"] = state ? state.cloud : undefined;
             resourceInputs["customNodeLabels"] = state ? state.customNodeLabels : undefined;
             resourceInputs["friendlyName"] = state ? state.friendlyName : undefined;
+            resourceInputs["fullname"] = state ? state.fullname : undefined;
             resourceInputs["identityRole"] = state ? state.identityRole : undefined;
             resourceInputs["imageId"] = state ? state.imageId : undefined;
             resourceInputs["initialBase64UserData"] = state ? state.initialBase64UserData : undefined;
@@ -346,6 +348,7 @@ export class AwsHost extends pulumi.CustomResource {
             resourceInputs["volumes"] = args ? args.volumes : undefined;
             resourceInputs["waitUntilConnected"] = args ? args.waitUntilConnected : undefined;
             resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["fullname"] = undefined /*out*/;
             resourceInputs["identityRole"] = undefined /*out*/;
             resourceInputs["initialBase64UserData"] = undefined /*out*/;
             resourceInputs["instanceId"] = undefined /*out*/;
@@ -391,6 +394,7 @@ export interface AwsHostState {
      * The short name of the host.
      */
     friendlyName?: pulumi.Input<string>;
+    fullname?: pulumi.Input<string>;
     /**
      * The name of the IAM role associated with this host.
      */

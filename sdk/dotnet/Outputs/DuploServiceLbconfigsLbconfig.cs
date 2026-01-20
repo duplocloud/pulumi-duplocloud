@@ -19,6 +19,10 @@ namespace DuploCloud.Pulumi.Outputs
         /// </summary>
         public readonly bool? AllowGlobalAccess;
         /// <summary>
+        /// The number of seconds to wait for the backend to send a response. Must be at least 1. Applicable only for GCP.
+        /// </summary>
+        public readonly int? BackendConfigTimeoutSec;
+        /// <summary>
         /// Is used for communication between the load balancer and the target instances. This field is used to set protocol version for ALB load balancer. Only applicable when protocol is HTTP or HTTPS. The protocol version. Specify GRPC to send requests to targets using gRPC. Specify HTTP2 to send requests to targets using HTTP/2. The default is HTTP1, which sends requests to targets using HTTP/1.1
         /// </summary>
         public readonly string? BackendProtocolVersion;
@@ -136,6 +140,8 @@ namespace DuploCloud.Pulumi.Outputs
         private DuploServiceLbconfigsLbconfig(
             bool? allowGlobalAccess,
 
+            int? backendConfigTimeoutSec,
+
             string? backendProtocolVersion,
 
             string? certificateArn,
@@ -187,6 +193,7 @@ namespace DuploCloud.Pulumi.Outputs
             string? targetGroupArn)
         {
             AllowGlobalAccess = allowGlobalAccess;
+            BackendConfigTimeoutSec = backendConfigTimeoutSec;
             BackendProtocolVersion = backendProtocolVersion;
             CertificateArn = certificateArn;
             CloudName = cloudName;

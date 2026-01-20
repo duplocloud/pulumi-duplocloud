@@ -130,7 +130,7 @@ namespace DuploCloud.Pulumi
         public Output<string> DagS3Path { get; private set; } = null!;
 
         /// <summary>
-        /// Environment class for the cluster. Possible options are `mw1.small`, `mw1.medium`, `mw1.large`, `mw1.xlarge`, `mw1.2xlarge`.
+        /// Environment class for the cluster. Possible options are `mw1.micro`, `mw1.small`, `mw1.medium`, `mw1.large`, `mw1.xlarge`, `mw1.2xlarge`.
         /// </summary>
         [Output("environmentClass")]
         public Output<string> EnvironmentClass { get; private set; } = null!;
@@ -347,7 +347,7 @@ namespace DuploCloud.Pulumi
         public Input<string> DagS3Path { get; set; } = null!;
 
         /// <summary>
-        /// Environment class for the cluster. Possible options are `mw1.small`, `mw1.medium`, `mw1.large`, `mw1.xlarge`, `mw1.2xlarge`.
+        /// Environment class for the cluster. Possible options are `mw1.micro`, `mw1.small`, `mw1.medium`, `mw1.large`, `mw1.xlarge`, `mw1.2xlarge`.
         /// </summary>
         [Input("environmentClass")]
         public Input<string>? EnvironmentClass { get; set; }
@@ -500,7 +500,7 @@ namespace DuploCloud.Pulumi
         public Input<string>? DagS3Path { get; set; }
 
         /// <summary>
-        /// Environment class for the cluster. Possible options are `mw1.small`, `mw1.medium`, `mw1.large`, `mw1.xlarge`, `mw1.2xlarge`.
+        /// Environment class for the cluster. Possible options are `mw1.micro`, `mw1.small`, `mw1.medium`, `mw1.large`, `mw1.xlarge`, `mw1.2xlarge`.
         /// </summary>
         [Input("environmentClass")]
         public Input<string>? EnvironmentClass { get; set; }

@@ -14,6 +14,10 @@ namespace DuploCloud.Pulumi.Outputs
     [OutputType]
     public sealed class GetAsgProfilesAsgProfileVolumeResult
     {
+        /// <summary>
+        /// Whether the volume should be deleted when the instance is terminated.
+        /// </summary>
+        public readonly bool DeleteOnTermination;
         public readonly int Iops;
         public readonly string Name;
         public readonly int Size;
@@ -22,6 +26,8 @@ namespace DuploCloud.Pulumi.Outputs
 
         [OutputConstructor]
         private GetAsgProfilesAsgProfileVolumeResult(
+            bool deleteOnTermination,
+
             int iops,
 
             string name,
@@ -32,6 +38,7 @@ namespace DuploCloud.Pulumi.Outputs
 
             string volumeType)
         {
+            DeleteOnTermination = deleteOnTermination;
             Iops = iops;
             Name = name;
             Size = size;

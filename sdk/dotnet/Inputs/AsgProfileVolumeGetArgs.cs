@@ -13,6 +13,12 @@ namespace DuploCloud.Pulumi.Inputs
 
     public sealed class AsgProfileVolumeGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether the volume should be deleted when the instance is terminated.
+        /// </summary>
+        [Input("deleteOnTermination")]
+        public Input<bool>? DeleteOnTermination { get; set; }
+
         [Input("iops")]
         public Input<int>? Iops { get; set; }
 

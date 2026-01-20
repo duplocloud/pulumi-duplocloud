@@ -48,6 +48,7 @@ namespace DuploCloud.Pulumi.Outputs
         /// The short name of the host.
         /// </summary>
         public readonly string FriendlyName;
+        public readonly string Fullname;
         /// <summary>
         /// The name of the IAM role associated with this host.
         /// </summary>
@@ -139,6 +140,8 @@ namespace DuploCloud.Pulumi.Outputs
 
             string friendlyName,
 
+            string fullname,
+
             string identityRole,
 
             string imageId,
@@ -187,6 +190,7 @@ namespace DuploCloud.Pulumi.Outputs
             CustomNodeLabels = customNodeLabels;
             EncryptDisk = encryptDisk;
             FriendlyName = friendlyName;
+            Fullname = fullname;
             IdentityRole = identityRole;
             ImageId = imageId;
             InitialBase64UserData = initialBase64UserData;

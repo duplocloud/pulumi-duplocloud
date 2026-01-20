@@ -56,6 +56,10 @@ export interface AsgProfileTaint {
 }
 
 export interface AsgProfileVolume {
+    /**
+     * Whether the volume should be deleted when the instance is terminated.
+     */
+    deleteOnTermination: boolean;
     iops: number;
     name: string;
     size: number;
@@ -851,6 +855,10 @@ export interface AwsHostTaint {
 }
 
 export interface AwsHostVolume {
+    /**
+     * Whether the volume should be deleted when the instance is terminated.
+     */
+    deleteOnTermination: boolean;
     iops: number;
     name: string;
     size: number;
@@ -923,7 +931,7 @@ export interface AwsLaunchTemplateBlockDeviceMapping {
     /**
      * The name of the device to mount
      */
-    deviceName: string;
+    deviceName?: string;
     /**
      * Configure EBS volume properties.
      */
@@ -2078,6 +2086,10 @@ export interface DuploServiceLbconfigsLbconfig {
      */
     allowGlobalAccess: boolean;
     /**
+     * The number of seconds to wait for the backend to send a response. Must be at least 1. Applicable only for GCP.
+     */
+    backendConfigTimeoutSec: number;
+    /**
      * Is used for communication between the load balancer and the target instances. This field is used to set protocol version for ALB load balancer. Only applicable when protocol is HTTP or HTTPS. The protocol version. Specify GRPC to send requests to targets using gRPC. Specify HTTP2 to send requests to targets using HTTP/2. The default is HTTP1, which sends requests to targets using HTTP/1.1
      */
     backendProtocolVersion: string;
@@ -2951,6 +2963,10 @@ export interface GetAsgProfilesAsgProfileTaint {
 }
 
 export interface GetAsgProfilesAsgProfileVolume {
+    /**
+     * Whether the volume should be deleted when the instance is terminated.
+     */
+    deleteOnTermination: boolean;
     iops: number;
     name: string;
     size: number;
@@ -3121,6 +3137,10 @@ export interface GetDuploServiceLbconfigsServiceLbconfig {
      * Applicable for internal lb.
      */
     allowGlobalAccess: boolean;
+    /**
+     * The number of seconds to wait for the backend to send a response. Must be at least 1. Applicable only for GCP.
+     */
+    backendConfigTimeoutSec: number;
     /**
      * Is used for communication between the load balancer and the target instances. This field is used to set protocol version for ALB load balancer. Only applicable when protocol is HTTP or HTTPS. The protocol version. Specify GRPC to send requests to targets using gRPC. Specify HTTP2 to send requests to targets using HTTP/2. The default is HTTP1, which sends requests to targets using HTTP/1.1
      */
@@ -10839,6 +10859,7 @@ export interface GetNativeHostsHost {
      * The short name of the host.
      */
     friendlyName: string;
+    fullname: string;
     /**
      * The name of the IAM role associated with this host.
      */
@@ -10964,6 +10985,10 @@ export interface GetNativeHostsHostTaint {
 }
 
 export interface GetNativeHostsHostVolume {
+    /**
+     * Whether the volume should be deleted when the instance is terminated.
+     */
+    deleteOnTermination: boolean;
     iops: number;
     name: string;
     size: number;

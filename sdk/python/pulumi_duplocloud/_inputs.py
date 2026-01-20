@@ -1619,6 +1619,10 @@ class AsgProfileTaintArgs:
 
 if not MYPY:
     class AsgProfileVolumeArgsDict(TypedDict):
+        delete_on_termination: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the volume should be deleted when the instance is terminated.
+        """
         iops: NotRequired[pulumi.Input[int]]
         name: NotRequired[pulumi.Input[str]]
         size: NotRequired[pulumi.Input[int]]
@@ -1630,11 +1634,17 @@ elif False:
 @pulumi.input_type
 class AsgProfileVolumeArgs:
     def __init__(__self__, *,
+                 delete_on_termination: Optional[pulumi.Input[bool]] = None,
                  iops: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  volume_id: Optional[pulumi.Input[str]] = None,
                  volume_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] delete_on_termination: Whether the volume should be deleted when the instance is terminated.
+        """
+        if delete_on_termination is not None:
+            pulumi.set(__self__, "delete_on_termination", delete_on_termination)
         if iops is not None:
             pulumi.set(__self__, "iops", iops)
         if name is not None:
@@ -1645,6 +1655,18 @@ class AsgProfileVolumeArgs:
             pulumi.set(__self__, "volume_id", volume_id)
         if volume_type is not None:
             pulumi.set(__self__, "volume_type", volume_type)
+
+    @property
+    @pulumi.getter(name="deleteOnTermination")
+    def delete_on_termination(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the volume should be deleted when the instance is terminated.
+        """
+        return pulumi.get(self, "delete_on_termination")
+
+    @delete_on_termination.setter
+    def delete_on_termination(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "delete_on_termination", value)
 
     @property
     @pulumi.getter
@@ -6261,6 +6283,10 @@ class AwsHostTaintArgs:
 
 if not MYPY:
     class AwsHostVolumeArgsDict(TypedDict):
+        delete_on_termination: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the volume should be deleted when the instance is terminated.
+        """
         iops: NotRequired[pulumi.Input[int]]
         name: NotRequired[pulumi.Input[str]]
         size: NotRequired[pulumi.Input[int]]
@@ -6272,11 +6298,17 @@ elif False:
 @pulumi.input_type
 class AwsHostVolumeArgs:
     def __init__(__self__, *,
+                 delete_on_termination: Optional[pulumi.Input[bool]] = None,
                  iops: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  volume_id: Optional[pulumi.Input[str]] = None,
                  volume_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] delete_on_termination: Whether the volume should be deleted when the instance is terminated.
+        """
+        if delete_on_termination is not None:
+            pulumi.set(__self__, "delete_on_termination", delete_on_termination)
         if iops is not None:
             pulumi.set(__self__, "iops", iops)
         if name is not None:
@@ -6287,6 +6319,18 @@ class AwsHostVolumeArgs:
             pulumi.set(__self__, "volume_id", volume_id)
         if volume_type is not None:
             pulumi.set(__self__, "volume_type", volume_type)
+
+    @property
+    @pulumi.getter(name="deleteOnTermination")
+    def delete_on_termination(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the volume should be deleted when the instance is terminated.
+        """
+        return pulumi.get(self, "delete_on_termination")
+
+    @delete_on_termination.setter
+    def delete_on_termination(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "delete_on_termination", value)
 
     @property
     @pulumi.getter
@@ -6617,7 +6661,7 @@ class AwsLambdaFunctionTracingConfigArgs:
 
 if not MYPY:
     class AwsLaunchTemplateBlockDeviceMappingArgsDict(TypedDict):
-        device_name: pulumi.Input[str]
+        device_name: NotRequired[pulumi.Input[str]]
         """
         The name of the device to mount
         """
@@ -6639,7 +6683,7 @@ elif False:
 @pulumi.input_type
 class AwsLaunchTemplateBlockDeviceMappingArgs:
     def __init__(__self__, *,
-                 device_name: pulumi.Input[str],
+                 device_name: Optional[pulumi.Input[str]] = None,
                  ebs: Optional[pulumi.Input['AwsLaunchTemplateBlockDeviceMappingEbsArgs']] = None,
                  no_device: Optional[pulumi.Input[str]] = None,
                  virtual_name: Optional[pulumi.Input[str]] = None):
@@ -6649,7 +6693,8 @@ class AwsLaunchTemplateBlockDeviceMappingArgs:
         :param pulumi.Input[str] no_device: Suppresses the specified device included in the AMI's block device mapping.
         :param pulumi.Input[str] virtual_name: The virtual device name (ephemeralN). Instance store volumes are numbered starting from 0. An instance type with 2 available instance store volumes can specify mappings for ephemeral0 and ephemeral1. The number of available instance store volumes depends on the instance type. After you connect to the instance, you must mount the volume.
         """
-        pulumi.set(__self__, "device_name", device_name)
+        if device_name is not None:
+            pulumi.set(__self__, "device_name", device_name)
         if ebs is not None:
             pulumi.set(__self__, "ebs", ebs)
         if no_device is not None:
@@ -6659,14 +6704,14 @@ class AwsLaunchTemplateBlockDeviceMappingArgs:
 
     @property
     @pulumi.getter(name="deviceName")
-    def device_name(self) -> pulumi.Input[str]:
+    def device_name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the device to mount
         """
         return pulumi.get(self, "device_name")
 
     @device_name.setter
-    def device_name(self, value: pulumi.Input[str]):
+    def device_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "device_name", value)
 
     @property
@@ -12705,6 +12750,10 @@ if not MYPY:
         """
         Applicable for internal lb.
         """
+        backend_config_timeout_sec: NotRequired[pulumi.Input[int]]
+        """
+        The number of seconds to wait for the backend to send a response. Must be at least 1. Applicable only for GCP.
+        """
         backend_protocol_version: NotRequired[pulumi.Input[str]]
         """
         Is used for communication between the load balancer and the target instances. This field is used to set protocol version for ALB load balancer. Only applicable when protocol is HTTP or HTTPS. The protocol version. Specify GRPC to send requests to targets using gRPC. Specify HTTP2 to send requests to targets using HTTP/2. The default is HTTP1, which sends requests to targets using HTTP/1.1
@@ -12797,6 +12846,7 @@ class DuploServiceLbconfigsLbconfigArgs:
                  port: pulumi.Input[str],
                  protocol: pulumi.Input[str],
                  allow_global_access: Optional[pulumi.Input[bool]] = None,
+                 backend_config_timeout_sec: Optional[pulumi.Input[int]] = None,
                  backend_protocol_version: Optional[pulumi.Input[str]] = None,
                  certificate_arn: Optional[pulumi.Input[str]] = None,
                  cloud_name: Optional[pulumi.Input[str]] = None,
@@ -12843,6 +12893,7 @@ class DuploServiceLbconfigsLbconfigArgs:
                	- `6 (NLB)` : TCP, UDP, TLS
                	- `7 (Target Group Only)` : HTTP, HTTPS, TCP, UDP, TLS
         :param pulumi.Input[bool] allow_global_access: Applicable for internal lb.
+        :param pulumi.Input[int] backend_config_timeout_sec: The number of seconds to wait for the backend to send a response. Must be at least 1. Applicable only for GCP.
         :param pulumi.Input[str] backend_protocol_version: Is used for communication between the load balancer and the target instances. This field is used to set protocol version for ALB load balancer. Only applicable when protocol is HTTP or HTTPS. The protocol version. Specify GRPC to send requests to targets using gRPC. Specify HTTP2 to send requests to targets using HTTP/2. The default is HTTP1, which sends requests to targets using HTTP/1.1
         :param pulumi.Input[str] certificate_arn: The ARN of an ACM certificate to associate with this load balancer.  Only applicable for HTTPS.
         :param pulumi.Input[str] cloud_name: The name of the cloud load balancer (if applicable).
@@ -12869,6 +12920,8 @@ class DuploServiceLbconfigsLbconfigArgs:
         pulumi.set(__self__, "protocol", protocol)
         if allow_global_access is not None:
             pulumi.set(__self__, "allow_global_access", allow_global_access)
+        if backend_config_timeout_sec is not None:
+            pulumi.set(__self__, "backend_config_timeout_sec", backend_config_timeout_sec)
         if backend_protocol_version is not None:
             pulumi.set(__self__, "backend_protocol_version", backend_protocol_version)
         if certificate_arn is not None:
@@ -12980,6 +13033,18 @@ class DuploServiceLbconfigsLbconfigArgs:
     @allow_global_access.setter
     def allow_global_access(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "allow_global_access", value)
+
+    @property
+    @pulumi.getter(name="backendConfigTimeoutSec")
+    def backend_config_timeout_sec(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of seconds to wait for the backend to send a response. Must be at least 1. Applicable only for GCP.
+        """
+        return pulumi.get(self, "backend_config_timeout_sec")
+
+    @backend_config_timeout_sec.setter
+    def backend_config_timeout_sec(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "backend_config_timeout_sec", value)
 
     @property
     @pulumi.getter(name="backendProtocolVersion")

@@ -659,11 +659,13 @@ func (o AsgProfileTaintArrayOutput) Index(i pulumi.IntInput) AsgProfileTaintOutp
 }
 
 type AsgProfileVolume struct {
-	Iops       *int    `pulumi:"iops"`
-	Name       *string `pulumi:"name"`
-	Size       *int    `pulumi:"size"`
-	VolumeId   *string `pulumi:"volumeId"`
-	VolumeType *string `pulumi:"volumeType"`
+	// Whether the volume should be deleted when the instance is terminated.
+	DeleteOnTermination *bool   `pulumi:"deleteOnTermination"`
+	Iops                *int    `pulumi:"iops"`
+	Name                *string `pulumi:"name"`
+	Size                *int    `pulumi:"size"`
+	VolumeId            *string `pulumi:"volumeId"`
+	VolumeType          *string `pulumi:"volumeType"`
 }
 
 // AsgProfileVolumeInput is an input type that accepts AsgProfileVolumeArgs and AsgProfileVolumeOutput values.
@@ -678,11 +680,13 @@ type AsgProfileVolumeInput interface {
 }
 
 type AsgProfileVolumeArgs struct {
-	Iops       pulumi.IntPtrInput    `pulumi:"iops"`
-	Name       pulumi.StringPtrInput `pulumi:"name"`
-	Size       pulumi.IntPtrInput    `pulumi:"size"`
-	VolumeId   pulumi.StringPtrInput `pulumi:"volumeId"`
-	VolumeType pulumi.StringPtrInput `pulumi:"volumeType"`
+	// Whether the volume should be deleted when the instance is terminated.
+	DeleteOnTermination pulumi.BoolPtrInput   `pulumi:"deleteOnTermination"`
+	Iops                pulumi.IntPtrInput    `pulumi:"iops"`
+	Name                pulumi.StringPtrInput `pulumi:"name"`
+	Size                pulumi.IntPtrInput    `pulumi:"size"`
+	VolumeId            pulumi.StringPtrInput `pulumi:"volumeId"`
+	VolumeType          pulumi.StringPtrInput `pulumi:"volumeType"`
 }
 
 func (AsgProfileVolumeArgs) ElementType() reflect.Type {
@@ -734,6 +738,11 @@ func (o AsgProfileVolumeOutput) ToAsgProfileVolumeOutput() AsgProfileVolumeOutpu
 
 func (o AsgProfileVolumeOutput) ToAsgProfileVolumeOutputWithContext(ctx context.Context) AsgProfileVolumeOutput {
 	return o
+}
+
+// Whether the volume should be deleted when the instance is terminated.
+func (o AsgProfileVolumeOutput) DeleteOnTermination() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AsgProfileVolume) *bool { return v.DeleteOnTermination }).(pulumi.BoolPtrOutput)
 }
 
 func (o AsgProfileVolumeOutput) Iops() pulumi.IntPtrOutput {
@@ -10150,11 +10159,13 @@ func (o AwsHostTaintArrayOutput) Index(i pulumi.IntInput) AwsHostTaintOutput {
 }
 
 type AwsHostVolume struct {
-	Iops       *int    `pulumi:"iops"`
-	Name       *string `pulumi:"name"`
-	Size       *int    `pulumi:"size"`
-	VolumeId   *string `pulumi:"volumeId"`
-	VolumeType *string `pulumi:"volumeType"`
+	// Whether the volume should be deleted when the instance is terminated.
+	DeleteOnTermination *bool   `pulumi:"deleteOnTermination"`
+	Iops                *int    `pulumi:"iops"`
+	Name                *string `pulumi:"name"`
+	Size                *int    `pulumi:"size"`
+	VolumeId            *string `pulumi:"volumeId"`
+	VolumeType          *string `pulumi:"volumeType"`
 }
 
 // AwsHostVolumeInput is an input type that accepts AwsHostVolumeArgs and AwsHostVolumeOutput values.
@@ -10169,11 +10180,13 @@ type AwsHostVolumeInput interface {
 }
 
 type AwsHostVolumeArgs struct {
-	Iops       pulumi.IntPtrInput    `pulumi:"iops"`
-	Name       pulumi.StringPtrInput `pulumi:"name"`
-	Size       pulumi.IntPtrInput    `pulumi:"size"`
-	VolumeId   pulumi.StringPtrInput `pulumi:"volumeId"`
-	VolumeType pulumi.StringPtrInput `pulumi:"volumeType"`
+	// Whether the volume should be deleted when the instance is terminated.
+	DeleteOnTermination pulumi.BoolPtrInput   `pulumi:"deleteOnTermination"`
+	Iops                pulumi.IntPtrInput    `pulumi:"iops"`
+	Name                pulumi.StringPtrInput `pulumi:"name"`
+	Size                pulumi.IntPtrInput    `pulumi:"size"`
+	VolumeId            pulumi.StringPtrInput `pulumi:"volumeId"`
+	VolumeType          pulumi.StringPtrInput `pulumi:"volumeType"`
 }
 
 func (AwsHostVolumeArgs) ElementType() reflect.Type {
@@ -10225,6 +10238,11 @@ func (o AwsHostVolumeOutput) ToAwsHostVolumeOutput() AwsHostVolumeOutput {
 
 func (o AwsHostVolumeOutput) ToAwsHostVolumeOutputWithContext(ctx context.Context) AwsHostVolumeOutput {
 	return o
+}
+
+// Whether the volume should be deleted when the instance is terminated.
+func (o AwsHostVolumeOutput) DeleteOnTermination() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AwsHostVolume) *bool { return v.DeleteOnTermination }).(pulumi.BoolPtrOutput)
 }
 
 func (o AwsHostVolumeOutput) Iops() pulumi.IntPtrOutput {
@@ -11249,7 +11267,7 @@ func (o AwsLambdaFunctionTracingConfigPtrOutput) Mode() pulumi.StringPtrOutput {
 
 type AwsLaunchTemplateBlockDeviceMapping struct {
 	// The name of the device to mount
-	DeviceName string `pulumi:"deviceName"`
+	DeviceName *string `pulumi:"deviceName"`
 	// Configure EBS volume properties.
 	Ebs *AwsLaunchTemplateBlockDeviceMappingEbs `pulumi:"ebs"`
 	// Suppresses the specified device included in the AMI's block device mapping.
@@ -11271,7 +11289,7 @@ type AwsLaunchTemplateBlockDeviceMappingInput interface {
 
 type AwsLaunchTemplateBlockDeviceMappingArgs struct {
 	// The name of the device to mount
-	DeviceName pulumi.StringInput `pulumi:"deviceName"`
+	DeviceName pulumi.StringPtrInput `pulumi:"deviceName"`
 	// Configure EBS volume properties.
 	Ebs AwsLaunchTemplateBlockDeviceMappingEbsPtrInput `pulumi:"ebs"`
 	// Suppresses the specified device included in the AMI's block device mapping.
@@ -11332,8 +11350,8 @@ func (o AwsLaunchTemplateBlockDeviceMappingOutput) ToAwsLaunchTemplateBlockDevic
 }
 
 // The name of the device to mount
-func (o AwsLaunchTemplateBlockDeviceMappingOutput) DeviceName() pulumi.StringOutput {
-	return o.ApplyT(func(v AwsLaunchTemplateBlockDeviceMapping) string { return v.DeviceName }).(pulumi.StringOutput)
+func (o AwsLaunchTemplateBlockDeviceMappingOutput) DeviceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsLaunchTemplateBlockDeviceMapping) *string { return v.DeviceName }).(pulumi.StringPtrOutput)
 }
 
 // Configure EBS volume properties.
@@ -24750,6 +24768,8 @@ func (o DuploServiceInitContainerDockerImageArrayOutput) Index(i pulumi.IntInput
 type DuploServiceLbconfigsLbconfig struct {
 	// Applicable for internal lb.
 	AllowGlobalAccess *bool `pulumi:"allowGlobalAccess"`
+	// The number of seconds to wait for the backend to send a response. Must be at least 1. Applicable only for GCP.
+	BackendConfigTimeoutSec *int `pulumi:"backendConfigTimeoutSec"`
 	// Is used for communication between the load balancer and the target instances. This field is used to set protocol version for ALB load balancer. Only applicable when protocol is HTTP or HTTPS. The protocol version. Specify GRPC to send requests to targets using gRPC. Specify HTTP2 to send requests to targets using HTTP/2. The default is HTTP1, which sends requests to targets using HTTP/1.1
 	BackendProtocolVersion *string `pulumi:"backendProtocolVersion"`
 	// The ARN of an ACM certificate to associate with this load balancer.  Only applicable for HTTPS.
@@ -24833,6 +24853,8 @@ type DuploServiceLbconfigsLbconfigInput interface {
 type DuploServiceLbconfigsLbconfigArgs struct {
 	// Applicable for internal lb.
 	AllowGlobalAccess pulumi.BoolPtrInput `pulumi:"allowGlobalAccess"`
+	// The number of seconds to wait for the backend to send a response. Must be at least 1. Applicable only for GCP.
+	BackendConfigTimeoutSec pulumi.IntPtrInput `pulumi:"backendConfigTimeoutSec"`
 	// Is used for communication between the load balancer and the target instances. This field is used to set protocol version for ALB load balancer. Only applicable when protocol is HTTP or HTTPS. The protocol version. Specify GRPC to send requests to targets using gRPC. Specify HTTP2 to send requests to targets using HTTP/2. The default is HTTP1, which sends requests to targets using HTTP/1.1
 	BackendProtocolVersion pulumi.StringPtrInput `pulumi:"backendProtocolVersion"`
 	// The ARN of an ACM certificate to associate with this load balancer.  Only applicable for HTTPS.
@@ -24956,6 +24978,11 @@ func (o DuploServiceLbconfigsLbconfigOutput) ToDuploServiceLbconfigsLbconfigOutp
 // Applicable for internal lb.
 func (o DuploServiceLbconfigsLbconfigOutput) AllowGlobalAccess() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DuploServiceLbconfigsLbconfig) *bool { return v.AllowGlobalAccess }).(pulumi.BoolPtrOutput)
+}
+
+// The number of seconds to wait for the backend to send a response. Must be at least 1. Applicable only for GCP.
+func (o DuploServiceLbconfigsLbconfigOutput) BackendConfigTimeoutSec() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DuploServiceLbconfigsLbconfig) *int { return v.BackendConfigTimeoutSec }).(pulumi.IntPtrOutput)
 }
 
 // Is used for communication between the load balancer and the target instances. This field is used to set protocol version for ALB load balancer. Only applicable when protocol is HTTP or HTTPS. The protocol version. Specify GRPC to send requests to targets using gRPC. Specify HTTP2 to send requests to targets using HTTP/2. The default is HTTP1, which sends requests to targets using HTTP/1.1

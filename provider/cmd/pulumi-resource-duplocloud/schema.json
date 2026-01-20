@@ -210,6 +210,10 @@
         },
         "duplocloud:index/AsgProfileVolume:AsgProfileVolume": {
             "properties": {
+                "deleteOnTermination": {
+                    "type": "boolean",
+                    "description": "Whether the volume should be deleted when the instance is terminated.\n"
+                },
                 "iops": {
                     "type": "integer"
                 },
@@ -230,6 +234,7 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
+                        "deleteOnTermination",
                         "iops",
                         "name",
                         "size",
@@ -1926,6 +1931,10 @@
         },
         "duplocloud:index/AwsHostVolume:AwsHostVolume": {
             "properties": {
+                "deleteOnTermination": {
+                    "type": "boolean",
+                    "description": "Whether the volume should be deleted when the instance is terminated.\n"
+                },
                 "iops": {
                     "type": "integer"
                 },
@@ -1946,6 +1955,7 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
+                        "deleteOnTermination",
                         "iops",
                         "name",
                         "size",
@@ -2052,13 +2062,11 @@
             "properties": {
                 "deviceName": {
                     "type": "string",
-                    "description": "The name of the device to mount\n",
-                    "willReplaceOnChanges": true
+                    "description": "The name of the device to mount\n"
                 },
                 "ebs": {
                     "$ref": "#/types/duplocloud:index/AwsLaunchTemplateBlockDeviceMappingEbs:AwsLaunchTemplateBlockDeviceMappingEbs",
-                    "description": "Configure EBS volume properties.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Configure EBS volume properties.\n"
                 },
                 "noDevice": {
                     "type": "string",
@@ -2071,57 +2079,45 @@
                     "willReplaceOnChanges": true
                 }
             },
-            "type": "object",
-            "required": [
-                "deviceName"
-            ]
+            "type": "object"
         },
         "duplocloud:index/AwsLaunchTemplateBlockDeviceMappingEbs:AwsLaunchTemplateBlockDeviceMappingEbs": {
             "properties": {
                 "deleteOnTermination": {
                     "type": "boolean",
-                    "description": "Whether the volume should be destroyed on instance termination Defaults to `true`.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Whether the volume should be destroyed on instance termination Defaults to `true`.\n"
                 },
                 "encrypted": {
                     "type": "boolean",
-                    "description": "Enables EBS encryption on the volume. Cannot be used with snapshot_id Defaults to `false`.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Enables EBS encryption on the volume. Cannot be used with snapshot_id Defaults to `false`.\n"
                 },
                 "iops": {
                     "type": "integer",
-                    "description": "The amount of provisioned IOPS. This must be set with a volume_type of 'io1/io2/gp3'\n",
-                    "willReplaceOnChanges": true
+                    "description": "The amount of provisioned IOPS. This must be set with a volume_type of 'io1/io2/gp3'\n"
                 },
                 "kmsKeyId": {
                     "type": "string",
-                    "description": "The ARN of the KMS Key to use when encrypting the volume (if encrypted is true).\n",
-                    "willReplaceOnChanges": true
+                    "description": "The ARN of the KMS Key to use when encrypting the volume (if encrypted is true).\n"
                 },
                 "snapshotId": {
                     "type": "string",
-                    "description": "The Snapshot ID to mount. Should not be used if encrypted is true\n",
-                    "willReplaceOnChanges": true
+                    "description": "The Snapshot ID to mount. Should not be used if encrypted is true\n"
                 },
                 "throughput": {
                     "type": "integer",
-                    "description": "The throughput to provision for a 'gp3' volume in MiB/s. Minumum value of 125 and maximum of 1000.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The throughput to provision for a 'gp3' volume in MiB/s. Minumum value of 125 and maximum of 1000.\n"
                 },
                 "volumeInitializationRate": {
                     "type": "integer",
-                    "description": "The volume initialization rate in MiB/s, with a minimum of 100 MiB/s and maximum of 300 MiB/s.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The volume initialization rate in MiB/s, with a minimum of 100 MiB/s and maximum of 300 MiB/s.\n"
                 },
                 "volumeSize": {
                     "type": "integer",
-                    "description": "The size of the volume in gigabytes.\\n\n\t\t\t\t\t\t\t\tgp2 and gp3: 1 - 16,384 GiB\\n+\n\t\t\t\t\t\t\t\tio1: 4 - 16,384 GiB\n\t\t\t\t\t\t\t\tio2: 4 - 65,536 GiB\n\t\t\t\t\t\t\t\tst1 and sc1: 125 - 16,384 GiB\n\t\t\t\t\t\t\t\tstandard: 1 - 1024 GiB\n",
-                    "willReplaceOnChanges": true
+                    "description": "The size of the volume in gigabytes.\\n\n\t\t\t\t\t\t\t\tgp2 and gp3: 1 - 16,384 GiB\\n+\n\t\t\t\t\t\t\t\tio1: 4 - 16,384 GiB\n\t\t\t\t\t\t\t\tio2: 4 - 65,536 GiB\n\t\t\t\t\t\t\t\tst1 and sc1: 125 - 16,384 GiB\n\t\t\t\t\t\t\t\tstandard: 1 - 1024 GiB\n"
                 },
                 "volumeType": {
                     "type": "string",
-                    "description": "The volume type. Can be one of standard, gp2, gp3, io1, io2, sc1 or st1\n",
-                    "willReplaceOnChanges": true
+                    "description": "The volume type. Can be one of standard, gp2, gp3, io1, io2, sc1 or st1\n"
                 }
             },
             "type": "object"
@@ -4249,6 +4245,10 @@
                     "type": "boolean",
                     "description": "Applicable for internal lb.\n"
                 },
+                "backendConfigTimeoutSec": {
+                    "type": "integer",
+                    "description": "The number of seconds to wait for the backend to send a response. Must be at least 1. Applicable only for GCP.\n"
+                },
                 "backendProtocolVersion": {
                     "type": "string",
                     "description": "Is used for communication between the load balancer and the target instances. This field is used to set protocol version for ALB load balancer. Only applicable when protocol is HTTP or HTTPS. The protocol version. Specify GRPC to send requests to targets using gRPC. Specify HTTP2 to send requests to targets using HTTP/2. The default is HTTP1, which sends requests to targets using HTTP/1.1\n"
@@ -4365,6 +4365,7 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "allowGlobalAccess",
+                        "backendConfigTimeoutSec",
                         "backendProtocolVersion",
                         "certificateArn",
                         "cloudName",
@@ -16390,6 +16391,10 @@
         },
         "duplocloud:index/getAsgProfilesAsgProfileVolume:getAsgProfilesAsgProfileVolume": {
             "properties": {
+                "deleteOnTermination": {
+                    "type": "boolean",
+                    "description": "Whether the volume should be deleted when the instance is terminated.\n"
+                },
                 "iops": {
                     "type": "integer"
                 },
@@ -16408,6 +16413,7 @@
             },
             "type": "object",
             "required": [
+                "deleteOnTermination",
                 "iops",
                 "name",
                 "size",
@@ -16878,6 +16884,10 @@
                     "type": "boolean",
                     "description": "Applicable for internal lb.\n"
                 },
+                "backendConfigTimeoutSec": {
+                    "type": "integer",
+                    "description": "The number of seconds to wait for the backend to send a response. Must be at least 1. Applicable only for GCP.\n"
+                },
                 "backendProtocolVersion": {
                     "type": "string",
                     "description": "Is used for communication between the load balancer and the target instances. This field is used to set protocol version for ALB load balancer. Only applicable when protocol is HTTP or HTTPS. The protocol version. Specify GRPC to send requests to targets using gRPC. Specify HTTP2 to send requests to targets using HTTP/2. The default is HTTP1, which sends requests to targets using HTTP/1.1\n"
@@ -16986,6 +16996,7 @@
             "type": "object",
             "required": [
                 "allowGlobalAccess",
+                "backendConfigTimeoutSec",
                 "backendProtocolVersion",
                 "certificateArn",
                 "cloudName",
@@ -28984,6 +28995,9 @@
                     "type": "string",
                     "description": "The short name of the host.\n"
                 },
+                "fullname": {
+                    "type": "string"
+                },
                 "identityRole": {
                     "type": "string",
                     "description": "The name of the IAM role associated with this host.\n"
@@ -29084,6 +29098,7 @@
                 "base64UserData",
                 "capacity",
                 "friendlyName",
+                "fullname",
                 "identityRole",
                 "imageId",
                 "initialBase64UserData",
@@ -29258,6 +29273,10 @@
         },
         "duplocloud:index/getNativeHostsHostVolume:getNativeHostsHostVolume": {
             "properties": {
+                "deleteOnTermination": {
+                    "type": "boolean",
+                    "description": "Whether the volume should be deleted when the instance is terminated.\n"
+                },
                 "iops": {
                     "type": "integer"
                 },
@@ -29276,6 +29295,7 @@
             },
             "type": "object",
             "required": [
+                "deleteOnTermination",
                 "iops",
                 "name",
                 "size",
@@ -30887,8 +30907,7 @@
                 },
                 "capacity": {
                     "type": "string",
-                    "description": "The AWS EC2 instance type.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The AWS EC2 instance type.\n"
                 },
                 "cloud": {
                     "type": "integer",
@@ -30922,8 +30941,7 @@
                 },
                 "imageId": {
                     "type": "string",
-                    "description": "The AMI ID to use.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The AMI ID to use.\n"
                 },
                 "instanceCount": {
                     "type": "integer",
@@ -31079,8 +31097,7 @@
                     },
                     "capacity": {
                         "type": "string",
-                        "description": "The AWS EC2 instance type.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The AWS EC2 instance type.\n"
                     },
                     "cloud": {
                         "type": "integer",
@@ -31119,8 +31136,7 @@
                     },
                     "imageId": {
                         "type": "string",
-                        "description": "The AMI ID to use.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The AMI ID to use.\n"
                     },
                     "initialBase64UserData": {
                         "type": "string"
@@ -34377,6 +34393,9 @@
                     "type": "string",
                     "description": "The short name of the host.\n"
                 },
+                "fullname": {
+                    "type": "string"
+                },
                 "identityRole": {
                     "type": "string",
                     "description": "The name of the IAM role associated with this host.\n"
@@ -34480,6 +34499,7 @@
                 "base64UserData",
                 "capacity",
                 "friendlyName",
+                "fullname",
                 "identityRole",
                 "imageId",
                 "initialBase64UserData",
@@ -34669,6 +34689,9 @@
                         "type": "string",
                         "description": "The short name of the host.\n",
                         "willReplaceOnChanges": true
+                    },
+                    "fullname": {
+                        "type": "string"
                     },
                     "identityRole": {
                         "type": "string",
@@ -35698,32 +35721,29 @@
             },
             "required": [
                 "ami",
+                "blockDeviceMappings",
                 "defaultVersion",
                 "instanceType",
                 "latestVersion",
                 "name",
                 "tenantId",
-                "versionDescription",
                 "versionMetadata"
             ],
             "inputProperties": {
                 "ami": {
                     "type": "string",
-                    "description": "Asg ami to be used to update the version from the current version\n",
-                    "willReplaceOnChanges": true
+                    "description": "Asg ami to be used to update the version from the current version\n"
                 },
                 "blockDeviceMappings": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/duplocloud:index/AwsLaunchTemplateBlockDeviceMapping:AwsLaunchTemplateBlockDeviceMapping"
                     },
-                    "description": "Configure additional volumes of the instance besides specified by the AMI\n",
-                    "willReplaceOnChanges": true
+                    "description": "Configure additional volumes of the instance besides specified by the AMI\n"
                 },
                 "instanceType": {
                     "type": "string",
-                    "description": "Asg instance type to be used to update the version from the current version\n",
-                    "willReplaceOnChanges": true
+                    "description": "Asg instance type to be used to update the version from the current version\n"
                 },
                 "name": {
                     "type": "string",
@@ -35747,7 +35767,6 @@
                 }
             },
             "requiredInputs": [
-                "instanceType",
                 "tenantId"
             ],
             "stateInputs": {
@@ -35755,16 +35774,14 @@
                 "properties": {
                     "ami": {
                         "type": "string",
-                        "description": "Asg ami to be used to update the version from the current version\n",
-                        "willReplaceOnChanges": true
+                        "description": "Asg ami to be used to update the version from the current version\n"
                     },
                     "blockDeviceMappings": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/duplocloud:index/AwsLaunchTemplateBlockDeviceMapping:AwsLaunchTemplateBlockDeviceMapping"
                         },
-                        "description": "Configure additional volumes of the instance besides specified by the AMI\n",
-                        "willReplaceOnChanges": true
+                        "description": "Configure additional volumes of the instance besides specified by the AMI\n"
                     },
                     "defaultVersion": {
                         "type": "string",
@@ -35772,8 +35789,7 @@
                     },
                     "instanceType": {
                         "type": "string",
-                        "description": "Asg instance type to be used to update the version from the current version\n",
-                        "willReplaceOnChanges": true
+                        "description": "Asg instance type to be used to update the version from the current version\n"
                     },
                     "latestVersion": {
                         "type": "string",
@@ -36540,7 +36556,7 @@
                 },
                 "environmentClass": {
                     "type": "string",
-                    "description": "Environment class for the cluster. Possible options are `mw1.small`, `mw1.medium`, `mw1.large`, `mw1.xlarge`, `mw1.2xlarge`.\n"
+                    "description": "Environment class for the cluster. Possible options are `mw1.micro`, `mw1.small`, `mw1.medium`, `mw1.large`, `mw1.xlarge`, `mw1.2xlarge`.\n"
                 },
                 "executionRoleArn": {
                     "type": "string",
@@ -36683,7 +36699,7 @@
                 },
                 "environmentClass": {
                     "type": "string",
-                    "description": "Environment class for the cluster. Possible options are `mw1.small`, `mw1.medium`, `mw1.large`, `mw1.xlarge`, `mw1.2xlarge`.\n"
+                    "description": "Environment class for the cluster. Possible options are `mw1.micro`, `mw1.small`, `mw1.medium`, `mw1.large`, `mw1.xlarge`, `mw1.2xlarge`.\n"
                 },
                 "executionRoleArn": {
                     "type": "string",
@@ -36792,7 +36808,7 @@
                     },
                     "environmentClass": {
                         "type": "string",
-                        "description": "Environment class for the cluster. Possible options are `mw1.small`, `mw1.medium`, `mw1.large`, `mw1.xlarge`, `mw1.2xlarge`.\n"
+                        "description": "Environment class for the cluster. Possible options are `mw1.micro`, `mw1.small`, `mw1.medium`, `mw1.large`, `mw1.xlarge`, `mw1.2xlarge`.\n"
                     },
                     "executionRoleArn": {
                         "type": "string",
@@ -36906,6 +36922,10 @@
                     "type": "string",
                     "description": "The identifier of the Global Database.\n"
                 },
+                "makeHeadless": {
+                    "type": "boolean",
+                    "description": "It removes the reader instances under secondary cluster by retaining the secondary cluster, Valid during updation Defaults to `false`.\n"
+                },
                 "primaryRegion": {
                     "type": "string"
                 },
@@ -36946,6 +36966,10 @@
                     "description": "The identifier of the primary Database.\n",
                     "willReplaceOnChanges": true
                 },
+                "makeHeadless": {
+                    "type": "boolean",
+                    "description": "It removes the reader instances under secondary cluster by retaining the secondary cluster, Valid during updation Defaults to `false`.\n"
+                },
                 "region": {
                     "type": "string",
                     "description": "The region of the secondary Database.\n",
@@ -36979,6 +37003,10 @@
                     "globalId": {
                         "type": "string",
                         "description": "The identifier of the Global Database.\n"
+                    },
+                    "makeHeadless": {
+                        "type": "boolean",
+                        "description": "It removes the reader instances under secondary cluster by retaining the secondary cluster, Valid during updation Defaults to `false`.\n"
                     },
                     "primaryRegion": {
                         "type": "string"

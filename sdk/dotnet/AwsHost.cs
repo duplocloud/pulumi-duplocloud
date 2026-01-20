@@ -231,6 +231,9 @@ namespace DuploCloud.Pulumi
         [Output("friendlyName")]
         public Output<string> FriendlyName { get; private set; } = null!;
 
+        [Output("fullname")]
+        public Output<string> Fullname { get; private set; } = null!;
+
         /// <summary>
         /// The name of the IAM role associated with this host.
         /// </summary>
@@ -617,6 +620,9 @@ namespace DuploCloud.Pulumi
         /// </summary>
         [Input("friendlyName")]
         public Input<string>? FriendlyName { get; set; }
+
+        [Input("fullname")]
+        public Input<string>? Fullname { get; set; }
 
         /// <summary>
         /// The name of the IAM role associated with this host.

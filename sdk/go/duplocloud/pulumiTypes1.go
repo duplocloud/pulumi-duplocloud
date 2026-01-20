@@ -22430,11 +22430,13 @@ func (o GetAsgProfilesAsgProfileTaintArrayOutput) Index(i pulumi.IntInput) GetAs
 }
 
 type GetAsgProfilesAsgProfileVolume struct {
-	Iops       int    `pulumi:"iops"`
-	Name       string `pulumi:"name"`
-	Size       int    `pulumi:"size"`
-	VolumeId   string `pulumi:"volumeId"`
-	VolumeType string `pulumi:"volumeType"`
+	// Whether the volume should be deleted when the instance is terminated.
+	DeleteOnTermination bool   `pulumi:"deleteOnTermination"`
+	Iops                int    `pulumi:"iops"`
+	Name                string `pulumi:"name"`
+	Size                int    `pulumi:"size"`
+	VolumeId            string `pulumi:"volumeId"`
+	VolumeType          string `pulumi:"volumeType"`
 }
 
 // GetAsgProfilesAsgProfileVolumeInput is an input type that accepts GetAsgProfilesAsgProfileVolumeArgs and GetAsgProfilesAsgProfileVolumeOutput values.
@@ -22449,11 +22451,13 @@ type GetAsgProfilesAsgProfileVolumeInput interface {
 }
 
 type GetAsgProfilesAsgProfileVolumeArgs struct {
-	Iops       pulumi.IntInput    `pulumi:"iops"`
-	Name       pulumi.StringInput `pulumi:"name"`
-	Size       pulumi.IntInput    `pulumi:"size"`
-	VolumeId   pulumi.StringInput `pulumi:"volumeId"`
-	VolumeType pulumi.StringInput `pulumi:"volumeType"`
+	// Whether the volume should be deleted when the instance is terminated.
+	DeleteOnTermination pulumi.BoolInput   `pulumi:"deleteOnTermination"`
+	Iops                pulumi.IntInput    `pulumi:"iops"`
+	Name                pulumi.StringInput `pulumi:"name"`
+	Size                pulumi.IntInput    `pulumi:"size"`
+	VolumeId            pulumi.StringInput `pulumi:"volumeId"`
+	VolumeType          pulumi.StringInput `pulumi:"volumeType"`
 }
 
 func (GetAsgProfilesAsgProfileVolumeArgs) ElementType() reflect.Type {
@@ -22505,6 +22509,11 @@ func (o GetAsgProfilesAsgProfileVolumeOutput) ToGetAsgProfilesAsgProfileVolumeOu
 
 func (o GetAsgProfilesAsgProfileVolumeOutput) ToGetAsgProfilesAsgProfileVolumeOutputWithContext(ctx context.Context) GetAsgProfilesAsgProfileVolumeOutput {
 	return o
+}
+
+// Whether the volume should be deleted when the instance is terminated.
+func (o GetAsgProfilesAsgProfileVolumeOutput) DeleteOnTermination() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAsgProfilesAsgProfileVolume) bool { return v.DeleteOnTermination }).(pulumi.BoolOutput)
 }
 
 func (o GetAsgProfilesAsgProfileVolumeOutput) Iops() pulumi.IntOutput {
@@ -24212,6 +24221,8 @@ func (o GetDuploServiceLbconfigsServiceArrayOutput) Index(i pulumi.IntInput) Get
 type GetDuploServiceLbconfigsServiceLbconfig struct {
 	// Applicable for internal lb.
 	AllowGlobalAccess bool `pulumi:"allowGlobalAccess"`
+	// The number of seconds to wait for the backend to send a response. Must be at least 1. Applicable only for GCP.
+	BackendConfigTimeoutSec int `pulumi:"backendConfigTimeoutSec"`
 	// Is used for communication between the load balancer and the target instances. This field is used to set protocol version for ALB load balancer. Only applicable when protocol is HTTP or HTTPS. The protocol version. Specify GRPC to send requests to targets using gRPC. Specify HTTP2 to send requests to targets using HTTP/2. The default is HTTP1, which sends requests to targets using HTTP/1.1
 	BackendProtocolVersion string `pulumi:"backendProtocolVersion"`
 	// The ARN of an ACM certificate to associate with this load balancer.  Only applicable for HTTPS.
@@ -24295,6 +24306,8 @@ type GetDuploServiceLbconfigsServiceLbconfigInput interface {
 type GetDuploServiceLbconfigsServiceLbconfigArgs struct {
 	// Applicable for internal lb.
 	AllowGlobalAccess pulumi.BoolInput `pulumi:"allowGlobalAccess"`
+	// The number of seconds to wait for the backend to send a response. Must be at least 1. Applicable only for GCP.
+	BackendConfigTimeoutSec pulumi.IntInput `pulumi:"backendConfigTimeoutSec"`
 	// Is used for communication between the load balancer and the target instances. This field is used to set protocol version for ALB load balancer. Only applicable when protocol is HTTP or HTTPS. The protocol version. Specify GRPC to send requests to targets using gRPC. Specify HTTP2 to send requests to targets using HTTP/2. The default is HTTP1, which sends requests to targets using HTTP/1.1
 	BackendProtocolVersion pulumi.StringInput `pulumi:"backendProtocolVersion"`
 	// The ARN of an ACM certificate to associate with this load balancer.  Only applicable for HTTPS.
@@ -24418,6 +24431,11 @@ func (o GetDuploServiceLbconfigsServiceLbconfigOutput) ToGetDuploServiceLbconfig
 // Applicable for internal lb.
 func (o GetDuploServiceLbconfigsServiceLbconfigOutput) AllowGlobalAccess() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDuploServiceLbconfigsServiceLbconfig) bool { return v.AllowGlobalAccess }).(pulumi.BoolOutput)
+}
+
+// The number of seconds to wait for the backend to send a response. Must be at least 1. Applicable only for GCP.
+func (o GetDuploServiceLbconfigsServiceLbconfigOutput) BackendConfigTimeoutSec() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDuploServiceLbconfigsServiceLbconfig) int { return v.BackendConfigTimeoutSec }).(pulumi.IntOutput)
 }
 
 // Is used for communication between the load balancer and the target instances. This field is used to set protocol version for ALB load balancer. Only applicable when protocol is HTTP or HTTPS. The protocol version. Specify GRPC to send requests to targets using gRPC. Specify HTTP2 to send requests to targets using HTTP/2. The default is HTTP1, which sends requests to targets using HTTP/1.1
