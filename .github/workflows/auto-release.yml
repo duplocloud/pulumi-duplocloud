@@ -1,0 +1,70 @@
+name: Auto Release
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  create_release:
+    # Only run this job if the PR was merged (not just closed) and had the needs-release label
+    if: |
+      github.event.pull_request.merged == true &&
+      (contains(github.event.pull_request.labels.*.name, 'needs-release/patch') ||
+       contains(github.event.pull_request.labels.*.name, 'needs-release/minor') ||
+       contains(github.event.pull_request.labels.*.name, 'needs-release/major'))
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Need full history for tags
+      
+      - name: Get Terraform provider version
+        id: get_version
+        run: |
+          # Extract version from provider/go.mod, ignoring comments and replace directives
+          VERSION=$(grep -v '^//' provider/go.mod | grep -v '^replace' | grep "github.com/duplocloud/terraform-provider-duplocloud" | awk '{print $2}' | sed 's/^v//')
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Found version: $VERSION"
+
+      - name: Create and push tag
+        run: |
+          VERSION="${{ steps.get_version.outputs.version }}"
+          echo "Creating tag v$VERSION"
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git tag -a "v$VERSION" -m "Release v$VERSION - Synchronized with terraform-provider-duplocloud v$VERSION"
+          git push origin "v$VERSION"
+
+      - name: Create GitHub Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          VERSION="${{ steps.get_version.outputs.version }}"
+          # Get PR title and body for release notes
+          PR_TITLE="${{ github.event.pull_request.title }}"
+          PR_BODY="${{ github.event.pull_request.body }}"
+          PR_NUMBER="${{ github.event.pull_request.number }}"
+          PR_URL="${{ github.event.pull_request.html_url }}"
+          
+          # Create release notes
+          cat << EOF > release_notes.md
+          # Release v$VERSION
+          
+          Synchronized with [terraform-provider-duplocloud v$VERSION](https://github.com/duplocloud/terraform-provider-duplocloud/releases/tag/v$VERSION)
+          
+          ## Changes
+          $PR_TITLE
+          
+          ## Details
+          This release was created automatically from PR #$PR_NUMBER ($PR_URL)
+          
+          $PR_BODY
+          EOF
+          
+          # Create GitHub Release
+          gh release create "v$VERSION" \
+            --title "v$VERSION" \
+            --notes-file release_notes.md

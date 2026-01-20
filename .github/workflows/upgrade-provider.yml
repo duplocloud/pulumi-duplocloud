@@ -97,3 +97,23 @@ jobs:
           automerge: true
           target-version: ${{ steps.target_version.outputs.version }}
           allow-missing-docs: true
+          pr-title: "Sync Pulumi provider with terraform-provider-duplocloud v${{ steps.target_version.outputs.version }}"
+          pr-body: |
+            This PR synchronizes the Pulumi DuploCloud provider with upstream terraform-provider-duplocloud v${{ steps.target_version.outputs.version }}.
+            
+            ## Changes
+            - Updated provider/go.mod to reference terraform-provider-duplocloud v${{ steps.target_version.outputs.version }}
+            - Regenerated Pulumi provider schema from Terraform provider
+            - Regenerated Pulumi SDKs for all languages:
+              - Go
+              - Python (PyPI)
+              - Node.js (npm)
+              - .NET (NuGet)
+            
+            ## Upstream Release
+            See [terraform-provider-duplocloud v${{ steps.target_version.outputs.version }}](https://github.com/duplocloud/terraform-provider-duplocloud/releases/tag/v${{ steps.target_version.outputs.version }}) for details about the changes in the underlying Terraform provider.
+            
+            ## Note
+            This PR will automatically trigger a release of the Pulumi provider when merged, creating:
+            - GitHub Release v${{ steps.target_version.outputs.version }}
+            - Updated packages on PyPI, npm, and NuGet
