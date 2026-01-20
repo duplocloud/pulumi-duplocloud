@@ -182,7 +182,10 @@ init() {
     esac
   done
 
-  assert_upstream_exists
+  if [[ ! -d upstream ]]; then
+    echo "No 'upstream' directory detected. Skipping init."
+    exit 0
+  fi
 
   if [[ "${force}" != "true" ]]; then
     assert_not_checked_out
@@ -234,7 +237,7 @@ checkout() {
   # Allow directory to be empty
   shopt -s nullglob
   for patch in ../patches/*.patch; do
-    if ! git am --3way "${patch}"; then
+    if ! git am --ignore-whitespace --3way "${patch}"; then
       err_failed_to_apply "$(basename "${patch}")"
     fi
   done

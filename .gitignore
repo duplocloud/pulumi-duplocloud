@@ -41,3 +41,6 @@ go.work.sum
 pkg
 examples/**/venv
 examples/**/__pycache__
+
+# Ignore local mise config
+mise.local.toml
