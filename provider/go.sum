@@ -1521,8 +1521,8 @@ github.com/deckarep/golang-set/v2 v2.5.0/go.mod h1:VAky9rY/yGXJOLEDv3OMci+7wtDpO
 github.com/djherbis/times v1.5.0 h1:79myA211VwPhFTqUk8xehWrsEO+zcIZj0zT8mXPVARU=
 github.com/djherbis/times v1.5.0/go.mod h1:5q7FDLvbNg1L/KaBmPcWlVR9NmoKo3+ucqUA3ijQhA0=
 github.com/docopt/docopt-go v0.0.0-20180111231733-ee0de3bc6815/go.mod h1:WwZ+bS3ebgob9U8Nd0kOddGdZWjyMGR8Wziv+TBNwSE=
-github.com/duplocloud/terraform-provider-duplocloud v0.11.31 h1:anD7P7w51i292BT2pdoH7VqfGAMvJf9H5JO88ZV6vuo=
-github.com/duplocloud/terraform-provider-duplocloud v0.11.31/go.mod h1:ZEHQnt1X8yILeCpiBVGpEBHj/VMqg2mz1NIDlOdpyaU=
+github.com/duplocloud/terraform-provider-duplocloud v0.11.32 h1:I8giaNSOK99JOBzXnxpPN61pShKt4Zrwpl/Jw1R1veU=
+github.com/duplocloud/terraform-provider-duplocloud v0.11.32/go.mod h1:ZEHQnt1X8yILeCpiBVGpEBHj/VMqg2mz1NIDlOdpyaU=
 github.com/dustin/go-humanize v1.0.0/go.mod h1:HtrtbFcZ19U5GC7JDqmcUSB87Iq5E25KnS6fMYU6eOk=
 github.com/dustin/go-humanize v1.0.1/go.mod h1:Mu1zIs6XwVuF/gI1OepvI0qD18qycQx+mFykh5fBlto=
 github.com/edsrzf/mmap-go v1.1.0 h1:6EUwBLQ/Mcr1EYLE4Tn1VdW1A4ckqCQWZBw8Hr0kjpQ=

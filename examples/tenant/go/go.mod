@@ -92,4 +92,4 @@ require (
 	lukechampine.com/frand v1.4.2 // indirect
 )
 
-replace github.com/duplocloud/pulumi-duplocloud/sdk => ../../sdk
+replace github.com/duplocloud/pulumi-duplocloud/sdk => ../../../sdk
