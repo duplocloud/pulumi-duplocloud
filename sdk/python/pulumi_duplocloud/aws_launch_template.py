@@ -21,47 +21,36 @@ __all__ = ['AwsLaunchTemplateArgs', 'AwsLaunchTemplate']
 @pulumi.input_type
 class AwsLaunchTemplateArgs:
     def __init__(__self__, *,
-                 instance_type: pulumi.Input[str],
                  tenant_id: pulumi.Input[str],
                  ami: Optional[pulumi.Input[str]] = None,
                  block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['AwsLaunchTemplateBlockDeviceMappingArgs']]]] = None,
+                 instance_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  version_description: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AwsLaunchTemplate resource.
-        :param pulumi.Input[str] instance_type: Asg instance type to be used to update the version from the current version
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the launch template will be created in.
         :param pulumi.Input[str] ami: Asg ami to be used to update the version from the current version
         :param pulumi.Input[Sequence[pulumi.Input['AwsLaunchTemplateBlockDeviceMappingArgs']]] block_device_mappings: Configure additional volumes of the instance besides specified by the AMI
+        :param pulumi.Input[str] instance_type: Asg instance type to be used to update the version from the current version
         :param pulumi.Input[str] name: The fullname of the asg group
         :param pulumi.Input[str] version: Any of the existing version of the launch template, if not provided, the latest version will be used
         :param pulumi.Input[str] version_description: The version of the launch template
         """
-        pulumi.set(__self__, "instance_type", instance_type)
         pulumi.set(__self__, "tenant_id", tenant_id)
         if ami is not None:
             pulumi.set(__self__, "ami", ami)
         if block_device_mappings is not None:
             pulumi.set(__self__, "block_device_mappings", block_device_mappings)
+        if instance_type is not None:
+            pulumi.set(__self__, "instance_type", instance_type)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if version is not None:
             pulumi.set(__self__, "version", version)
         if version_description is not None:
             pulumi.set(__self__, "version_description", version_description)
-
-    @property
-    @pulumi.getter(name="instanceType")
-    def instance_type(self) -> pulumi.Input[str]:
-        """
-        Asg instance type to be used to update the version from the current version
-        """
-        return pulumi.get(self, "instance_type")
-
-    @instance_type.setter
-    def instance_type(self, value: pulumi.Input[str]):
-        pulumi.set(self, "instance_type", value)
 
     @property
     @pulumi.getter(name="tenantId")
@@ -98,6 +87,18 @@ class AwsLaunchTemplateArgs:
     @block_device_mappings.setter
     def block_device_mappings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AwsLaunchTemplateBlockDeviceMappingArgs']]]]):
         pulumi.set(self, "block_device_mappings", value)
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Asg instance type to be used to update the version from the current version
+        """
+        return pulumi.get(self, "instance_type")
+
+    @instance_type.setter
+    def instance_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_type", value)
 
     @property
     @pulumi.getter
@@ -466,8 +467,6 @@ class AwsLaunchTemplate(pulumi.CustomResource):
 
             __props__.__dict__["ami"] = ami
             __props__.__dict__["block_device_mappings"] = block_device_mappings
-            if instance_type is None and not opts.urn:
-                raise TypeError("Missing required property 'instance_type'")
             __props__.__dict__["instance_type"] = instance_type
             __props__.__dict__["name"] = name
             if tenant_id is None and not opts.urn:
@@ -541,7 +540,7 @@ class AwsLaunchTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="blockDeviceMappings")
-    def block_device_mappings(self) -> pulumi.Output[Optional[Sequence['outputs.AwsLaunchTemplateBlockDeviceMapping']]]:
+    def block_device_mappings(self) -> pulumi.Output[Sequence['outputs.AwsLaunchTemplateBlockDeviceMapping']]:
         """
         Configure additional volumes of the instance besides specified by the AMI
         """
@@ -597,7 +596,7 @@ class AwsLaunchTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="versionDescription")
-    def version_description(self) -> pulumi.Output[str]:
+    def version_description(self) -> pulumi.Output[Optional[str]]:
         """
         The version of the launch template
         """

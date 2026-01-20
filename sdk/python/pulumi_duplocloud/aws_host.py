@@ -378,6 +378,7 @@ class _AwsHostState:
                  cloud: Optional[pulumi.Input[int]] = None,
                  custom_node_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
+                 fullname: Optional[pulumi.Input[str]] = None,
                  identity_role: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
                  initial_base64_user_data: Optional[pulumi.Input[str]] = None,
@@ -443,6 +444,8 @@ class _AwsHostState:
             pulumi.set(__self__, "custom_node_labels", custom_node_labels)
         if friendly_name is not None:
             pulumi.set(__self__, "friendly_name", friendly_name)
+        if fullname is not None:
+            pulumi.set(__self__, "fullname", fullname)
         if identity_role is not None:
             pulumi.set(__self__, "identity_role", identity_role)
         if image_id is not None:
@@ -570,6 +573,15 @@ class _AwsHostState:
     @friendly_name.setter
     def friendly_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "friendly_name", value)
+
+    @property
+    @pulumi.getter
+    def fullname(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "fullname")
+
+    @fullname.setter
+    def fullname(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fullname", value)
 
     @property
     @pulumi.getter(name="identityRole")
@@ -1175,6 +1187,7 @@ class AwsHost(pulumi.CustomResource):
             __props__.__dict__["volumes"] = volumes
             __props__.__dict__["wait_until_connected"] = wait_until_connected
             __props__.__dict__["zone"] = zone
+            __props__.__dict__["fullname"] = None
             __props__.__dict__["identity_role"] = None
             __props__.__dict__["initial_base64_user_data"] = None
             __props__.__dict__["instance_id"] = None
@@ -1198,6 +1211,7 @@ class AwsHost(pulumi.CustomResource):
             cloud: Optional[pulumi.Input[int]] = None,
             custom_node_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             friendly_name: Optional[pulumi.Input[str]] = None,
+            fullname: Optional[pulumi.Input[str]] = None,
             identity_role: Optional[pulumi.Input[str]] = None,
             image_id: Optional[pulumi.Input[str]] = None,
             initial_base64_user_data: Optional[pulumi.Input[str]] = None,
@@ -1265,6 +1279,7 @@ class AwsHost(pulumi.CustomResource):
         __props__.__dict__["cloud"] = cloud
         __props__.__dict__["custom_node_labels"] = custom_node_labels
         __props__.__dict__["friendly_name"] = friendly_name
+        __props__.__dict__["fullname"] = fullname
         __props__.__dict__["identity_role"] = identity_role
         __props__.__dict__["image_id"] = image_id
         __props__.__dict__["initial_base64_user_data"] = initial_base64_user_data
@@ -1344,6 +1359,11 @@ class AwsHost(pulumi.CustomResource):
         The short name of the host.
         """
         return pulumi.get(self, "friendly_name")
+
+    @property
+    @pulumi.getter
+    def fullname(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "fullname")
 
     @property
     @pulumi.getter(name="identityRole")

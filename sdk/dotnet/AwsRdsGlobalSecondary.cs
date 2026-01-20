@@ -91,6 +91,12 @@ namespace DuploCloud.Pulumi
         [Output("globalId")]
         public Output<string> GlobalId { get; private set; } = null!;
 
+        /// <summary>
+        /// It removes the reader instances under secondary cluster by retaining the secondary cluster, Valid during updation Defaults to `false`.
+        /// </summary>
+        [Output("makeHeadless")]
+        public Output<bool?> MakeHeadless { get; private set; } = null!;
+
         [Output("primaryRegion")]
         public Output<string> PrimaryRegion { get; private set; } = null!;
 
@@ -178,6 +184,12 @@ namespace DuploCloud.Pulumi
         public Input<string> ClusterIdentifier { get; set; } = null!;
 
         /// <summary>
+        /// It removes the reader instances under secondary cluster by retaining the secondary cluster, Valid during updation Defaults to `false`.
+        /// </summary>
+        [Input("makeHeadless")]
+        public Input<bool>? MakeHeadless { get; set; }
+
+        /// <summary>
         /// The region of the secondary Database.
         /// </summary>
         [Input("region", required: true)]
@@ -214,6 +226,12 @@ namespace DuploCloud.Pulumi
         /// </summary>
         [Input("globalId")]
         public Input<string>? GlobalId { get; set; }
+
+        /// <summary>
+        /// It removes the reader instances under secondary cluster by retaining the secondary cluster, Valid during updation Defaults to `false`.
+        /// </summary>
+        [Input("makeHeadless")]
+        public Input<bool>? MakeHeadless { get; set; }
 
         [Input("primaryRegion")]
         public Input<string>? PrimaryRegion { get; set; }

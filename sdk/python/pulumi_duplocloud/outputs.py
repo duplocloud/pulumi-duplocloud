@@ -1375,7 +1375,9 @@ class AsgProfileVolume(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "volumeId":
+        if key == "deleteOnTermination":
+            suggest = "delete_on_termination"
+        elif key == "volumeId":
             suggest = "volume_id"
         elif key == "volumeType":
             suggest = "volume_type"
@@ -1392,11 +1394,17 @@ class AsgProfileVolume(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 delete_on_termination: Optional[bool] = None,
                  iops: Optional[int] = None,
                  name: Optional[str] = None,
                  size: Optional[int] = None,
                  volume_id: Optional[str] = None,
                  volume_type: Optional[str] = None):
+        """
+        :param bool delete_on_termination: Whether the volume should be deleted when the instance is terminated.
+        """
+        if delete_on_termination is not None:
+            pulumi.set(__self__, "delete_on_termination", delete_on_termination)
         if iops is not None:
             pulumi.set(__self__, "iops", iops)
         if name is not None:
@@ -1407,6 +1415,14 @@ class AsgProfileVolume(dict):
             pulumi.set(__self__, "volume_id", volume_id)
         if volume_type is not None:
             pulumi.set(__self__, "volume_type", volume_type)
+
+    @property
+    @pulumi.getter(name="deleteOnTermination")
+    def delete_on_termination(self) -> Optional[bool]:
+        """
+        Whether the volume should be deleted when the instance is terminated.
+        """
+        return pulumi.get(self, "delete_on_termination")
 
     @property
     @pulumi.getter
@@ -5228,7 +5244,9 @@ class AwsHostVolume(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "volumeId":
+        if key == "deleteOnTermination":
+            suggest = "delete_on_termination"
+        elif key == "volumeId":
             suggest = "volume_id"
         elif key == "volumeType":
             suggest = "volume_type"
@@ -5245,11 +5263,17 @@ class AwsHostVolume(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 delete_on_termination: Optional[bool] = None,
                  iops: Optional[int] = None,
                  name: Optional[str] = None,
                  size: Optional[int] = None,
                  volume_id: Optional[str] = None,
                  volume_type: Optional[str] = None):
+        """
+        :param bool delete_on_termination: Whether the volume should be deleted when the instance is terminated.
+        """
+        if delete_on_termination is not None:
+            pulumi.set(__self__, "delete_on_termination", delete_on_termination)
         if iops is not None:
             pulumi.set(__self__, "iops", iops)
         if name is not None:
@@ -5260,6 +5284,14 @@ class AwsHostVolume(dict):
             pulumi.set(__self__, "volume_id", volume_id)
         if volume_type is not None:
             pulumi.set(__self__, "volume_type", volume_type)
+
+    @property
+    @pulumi.getter(name="deleteOnTermination")
+    def delete_on_termination(self) -> Optional[bool]:
+        """
+        Whether the volume should be deleted when the instance is terminated.
+        """
+        return pulumi.get(self, "delete_on_termination")
 
     @property
     @pulumi.getter
@@ -5532,7 +5564,7 @@ class AwsLaunchTemplateBlockDeviceMapping(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 device_name: str,
+                 device_name: Optional[str] = None,
                  ebs: Optional['outputs.AwsLaunchTemplateBlockDeviceMappingEbs'] = None,
                  no_device: Optional[str] = None,
                  virtual_name: Optional[str] = None):
@@ -5542,7 +5574,8 @@ class AwsLaunchTemplateBlockDeviceMapping(dict):
         :param str no_device: Suppresses the specified device included in the AMI's block device mapping.
         :param str virtual_name: The virtual device name (ephemeralN). Instance store volumes are numbered starting from 0. An instance type with 2 available instance store volumes can specify mappings for ephemeral0 and ephemeral1. The number of available instance store volumes depends on the instance type. After you connect to the instance, you must mount the volume.
         """
-        pulumi.set(__self__, "device_name", device_name)
+        if device_name is not None:
+            pulumi.set(__self__, "device_name", device_name)
         if ebs is not None:
             pulumi.set(__self__, "ebs", ebs)
         if no_device is not None:
@@ -5552,7 +5585,7 @@ class AwsLaunchTemplateBlockDeviceMapping(dict):
 
     @property
     @pulumi.getter(name="deviceName")
-    def device_name(self) -> str:
+    def device_name(self) -> Optional[str]:
         """
         The name of the device to mount
         """
@@ -10259,6 +10292,8 @@ class DuploServiceLbconfigsLbconfig(dict):
             suggest = "lb_type"
         elif key == "allowGlobalAccess":
             suggest = "allow_global_access"
+        elif key == "backendConfigTimeoutSec":
+            suggest = "backend_config_timeout_sec"
         elif key == "backendProtocolVersion":
             suggest = "backend_protocol_version"
         elif key == "certificateArn":
@@ -10316,6 +10351,7 @@ class DuploServiceLbconfigsLbconfig(dict):
                  port: str,
                  protocol: str,
                  allow_global_access: Optional[bool] = None,
+                 backend_config_timeout_sec: Optional[int] = None,
                  backend_protocol_version: Optional[str] = None,
                  certificate_arn: Optional[str] = None,
                  cloud_name: Optional[str] = None,
@@ -10362,6 +10398,7 @@ class DuploServiceLbconfigsLbconfig(dict):
                	- `6 (NLB)` : TCP, UDP, TLS
                	- `7 (Target Group Only)` : HTTP, HTTPS, TCP, UDP, TLS
         :param bool allow_global_access: Applicable for internal lb.
+        :param int backend_config_timeout_sec: The number of seconds to wait for the backend to send a response. Must be at least 1. Applicable only for GCP.
         :param str backend_protocol_version: Is used for communication between the load balancer and the target instances. This field is used to set protocol version for ALB load balancer. Only applicable when protocol is HTTP or HTTPS. The protocol version. Specify GRPC to send requests to targets using gRPC. Specify HTTP2 to send requests to targets using HTTP/2. The default is HTTP1, which sends requests to targets using HTTP/1.1
         :param str certificate_arn: The ARN of an ACM certificate to associate with this load balancer.  Only applicable for HTTPS.
         :param str cloud_name: The name of the cloud load balancer (if applicable).
@@ -10388,6 +10425,8 @@ class DuploServiceLbconfigsLbconfig(dict):
         pulumi.set(__self__, "protocol", protocol)
         if allow_global_access is not None:
             pulumi.set(__self__, "allow_global_access", allow_global_access)
+        if backend_config_timeout_sec is not None:
+            pulumi.set(__self__, "backend_config_timeout_sec", backend_config_timeout_sec)
         if backend_protocol_version is not None:
             pulumi.set(__self__, "backend_protocol_version", backend_protocol_version)
         if certificate_arn is not None:
@@ -10483,6 +10522,14 @@ class DuploServiceLbconfigsLbconfig(dict):
         Applicable for internal lb.
         """
         return pulumi.get(self, "allow_global_access")
+
+    @property
+    @pulumi.getter(name="backendConfigTimeoutSec")
+    def backend_config_timeout_sec(self) -> Optional[int]:
+        """
+        The number of seconds to wait for the backend to send a response. Must be at least 1. Applicable only for GCP.
+        """
+        return pulumi.get(self, "backend_config_timeout_sec")
 
     @property
     @pulumi.getter(name="backendProtocolVersion")
@@ -39140,16 +39187,29 @@ class GetAsgProfilesAsgProfileTaintResult(dict):
 @pulumi.output_type
 class GetAsgProfilesAsgProfileVolumeResult(dict):
     def __init__(__self__, *,
+                 delete_on_termination: bool,
                  iops: int,
                  name: str,
                  size: int,
                  volume_id: str,
                  volume_type: str):
+        """
+        :param bool delete_on_termination: Whether the volume should be deleted when the instance is terminated.
+        """
+        pulumi.set(__self__, "delete_on_termination", delete_on_termination)
         pulumi.set(__self__, "iops", iops)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "size", size)
         pulumi.set(__self__, "volume_id", volume_id)
         pulumi.set(__self__, "volume_type", volume_type)
+
+    @property
+    @pulumi.getter(name="deleteOnTermination")
+    def delete_on_termination(self) -> bool:
+        """
+        Whether the volume should be deleted when the instance is terminated.
+        """
+        return pulumi.get(self, "delete_on_termination")
 
     @property
     @pulumi.getter
@@ -39769,6 +39829,7 @@ class GetDuploServiceLbconfigsServiceResult(dict):
 class GetDuploServiceLbconfigsServiceLbconfigResult(dict):
     def __init__(__self__, *,
                  allow_global_access: bool,
+                 backend_config_timeout_sec: int,
                  backend_protocol_version: str,
                  certificate_arn: str,
                  cloud_name: str,
@@ -39796,6 +39857,7 @@ class GetDuploServiceLbconfigsServiceLbconfigResult(dict):
                  target_group_arn: str):
         """
         :param bool allow_global_access: Applicable for internal lb.
+        :param int backend_config_timeout_sec: The number of seconds to wait for the backend to send a response. Must be at least 1. Applicable only for GCP.
         :param str backend_protocol_version: Is used for communication between the load balancer and the target instances. This field is used to set protocol version for ALB load balancer. Only applicable when protocol is HTTP or HTTPS. The protocol version. Specify GRPC to send requests to targets using gRPC. Specify HTTP2 to send requests to targets using HTTP/2. The default is HTTP1, which sends requests to targets using HTTP/1.1
         :param str certificate_arn: The ARN of an ACM certificate to associate with this load balancer.  Only applicable for HTTPS.
         :param str cloud_name: The name of the cloud load balancer (if applicable).
@@ -39840,6 +39902,7 @@ class GetDuploServiceLbconfigsServiceLbconfigResult(dict):
         :param str target_group_arn: The ARN of the Target Group to which to route traffic.
         """
         pulumi.set(__self__, "allow_global_access", allow_global_access)
+        pulumi.set(__self__, "backend_config_timeout_sec", backend_config_timeout_sec)
         pulumi.set(__self__, "backend_protocol_version", backend_protocol_version)
         pulumi.set(__self__, "certificate_arn", certificate_arn)
         pulumi.set(__self__, "cloud_name", cloud_name)
@@ -39873,6 +39936,14 @@ class GetDuploServiceLbconfigsServiceLbconfigResult(dict):
         Applicable for internal lb.
         """
         return pulumi.get(self, "allow_global_access")
+
+    @property
+    @pulumi.getter(name="backendConfigTimeoutSec")
+    def backend_config_timeout_sec(self) -> int:
+        """
+        The number of seconds to wait for the backend to send a response. Must be at least 1. Applicable only for GCP.
+        """
+        return pulumi.get(self, "backend_config_timeout_sec")
 
     @property
     @pulumi.getter(name="backendProtocolVersion")
@@ -61910,6 +61981,7 @@ class GetNativeHostsHostResult(dict):
                  base64_user_data: str,
                  capacity: str,
                  friendly_name: str,
+                 fullname: str,
                  identity_role: str,
                  image_id: str,
                  initial_base64_user_data: str,
@@ -61972,6 +62044,7 @@ class GetNativeHostsHostResult(dict):
         pulumi.set(__self__, "base64_user_data", base64_user_data)
         pulumi.set(__self__, "capacity", capacity)
         pulumi.set(__self__, "friendly_name", friendly_name)
+        pulumi.set(__self__, "fullname", fullname)
         pulumi.set(__self__, "identity_role", identity_role)
         pulumi.set(__self__, "image_id", image_id)
         pulumi.set(__self__, "initial_base64_user_data", initial_base64_user_data)
@@ -62031,6 +62104,11 @@ class GetNativeHostsHostResult(dict):
         The short name of the host.
         """
         return pulumi.get(self, "friendly_name")
+
+    @property
+    @pulumi.getter
+    def fullname(self) -> str:
+        return pulumi.get(self, "fullname")
 
     @property
     @pulumi.getter(name="identityRole")
@@ -62404,16 +62482,29 @@ class GetNativeHostsHostTaintResult(dict):
 @pulumi.output_type
 class GetNativeHostsHostVolumeResult(dict):
     def __init__(__self__, *,
+                 delete_on_termination: bool,
                  iops: int,
                  name: str,
                  size: int,
                  volume_id: str,
                  volume_type: str):
+        """
+        :param bool delete_on_termination: Whether the volume should be deleted when the instance is terminated.
+        """
+        pulumi.set(__self__, "delete_on_termination", delete_on_termination)
         pulumi.set(__self__, "iops", iops)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "size", size)
         pulumi.set(__self__, "volume_id", volume_id)
         pulumi.set(__self__, "volume_type", volume_type)
+
+    @property
+    @pulumi.getter(name="deleteOnTermination")
+    def delete_on_termination(self) -> bool:
+        """
+        Whether the volume should be deleted when the instance is terminated.
+        """
+        return pulumi.get(self, "delete_on_termination")
 
     @property
     @pulumi.getter

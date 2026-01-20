@@ -96,7 +96,7 @@ export class AwsLaunchTemplate extends pulumi.CustomResource {
     /**
      * Configure additional volumes of the instance besides specified by the AMI
      */
-    public readonly blockDeviceMappings!: pulumi.Output<outputs.AwsLaunchTemplateBlockDeviceMapping[] | undefined>;
+    public readonly blockDeviceMappings!: pulumi.Output<outputs.AwsLaunchTemplateBlockDeviceMapping[]>;
     /**
      * The current default version of the launch template.
      */
@@ -124,7 +124,7 @@ export class AwsLaunchTemplate extends pulumi.CustomResource {
     /**
      * The version of the launch template
      */
-    public readonly versionDescription!: pulumi.Output<string>;
+    public readonly versionDescription!: pulumi.Output<string | undefined>;
     public /*out*/ readonly versionMetadata!: pulumi.Output<string>;
 
     /**
@@ -152,9 +152,6 @@ export class AwsLaunchTemplate extends pulumi.CustomResource {
             resourceInputs["versionMetadata"] = state ? state.versionMetadata : undefined;
         } else {
             const args = argsOrState as AwsLaunchTemplateArgs | undefined;
-            if ((!args || args.instanceType === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'instanceType'");
-            }
             if ((!args || args.tenantId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tenantId'");
             }
@@ -232,7 +229,7 @@ export interface AwsLaunchTemplateArgs {
     /**
      * Asg instance type to be used to update the version from the current version
      */
-    instanceType: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string>;
     /**
      * The fullname of the asg group
      */

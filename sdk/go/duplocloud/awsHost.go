@@ -225,6 +225,7 @@ type AwsHost struct {
 	CustomNodeLabels pulumi.StringMapOutput `pulumi:"customNodeLabels"`
 	// The short name of the host.
 	FriendlyName pulumi.StringOutput `pulumi:"friendlyName"`
+	Fullname     pulumi.StringOutput `pulumi:"fullname"`
 	// The name of the IAM role associated with this host.
 	IdentityRole pulumi.StringOutput `pulumi:"identityRole"`
 	// The AMI ID to use.
@@ -324,6 +325,7 @@ type awsHostState struct {
 	CustomNodeLabels map[string]string `pulumi:"customNodeLabels"`
 	// The short name of the host.
 	FriendlyName *string `pulumi:"friendlyName"`
+	Fullname     *string `pulumi:"fullname"`
 	// The name of the IAM role associated with this host.
 	IdentityRole *string `pulumi:"identityRole"`
 	// The AMI ID to use.
@@ -382,6 +384,7 @@ type AwsHostState struct {
 	CustomNodeLabels pulumi.StringMapInput
 	// The short name of the host.
 	FriendlyName pulumi.StringPtrInput
+	Fullname     pulumi.StringPtrInput
 	// The name of the IAM role associated with this host.
 	IdentityRole pulumi.StringPtrInput
 	// The AMI ID to use.
@@ -644,6 +647,10 @@ func (o AwsHostOutput) CustomNodeLabels() pulumi.StringMapOutput {
 // The short name of the host.
 func (o AwsHostOutput) FriendlyName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AwsHost) pulumi.StringOutput { return v.FriendlyName }).(pulumi.StringOutput)
+}
+
+func (o AwsHostOutput) Fullname() pulumi.StringOutput {
+	return o.ApplyT(func(v *AwsHost) pulumi.StringOutput { return v.Fullname }).(pulumi.StringOutput)
 }
 
 // The name of the IAM role associated with this host.

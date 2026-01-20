@@ -136,7 +136,7 @@ namespace DuploCloud.Pulumi
         /// The version of the launch template
         /// </summary>
         [Output("versionDescription")]
-        public Output<string> VersionDescription { get; private set; } = null!;
+        public Output<string?> VersionDescription { get; private set; } = null!;
 
         [Output("versionMetadata")]
         public Output<string> VersionMetadata { get; private set; } = null!;
@@ -209,8 +209,8 @@ namespace DuploCloud.Pulumi
         /// <summary>
         /// Asg instance type to be used to update the version from the current version
         /// </summary>
-        [Input("instanceType", required: true)]
-        public Input<string> InstanceType { get; set; } = null!;
+        [Input("instanceType")]
+        public Input<string>? InstanceType { get; set; }
 
         /// <summary>
         /// The fullname of the asg group
