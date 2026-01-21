@@ -1,11 +1,11 @@
-name: Auto Release
+name: Auto Tag on PR Merge
 
 on:
   pull_request:
     types: [closed]
 
 jobs:
-  create_release:
+  create_tag:
     # Only run this job if the PR was merged (not just closed) and had the needs-release label
     if: |
       github.event.pull_request.merged == true &&
@@ -35,51 +35,12 @@ jobs:
           echo "Creating tag v$VERSION"
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git tag -a "v$VERSION" -m "Release v$VERSION - Synchronized with terraform-provider-duplocloud v$VERSION"
-          git push origin "v$VERSION"
+          
+          # Create tag with detailed message including PR info
+          MESSAGE="Release v$VERSION - Synchronized with terraform-provider-duplocloud v$VERSION
 
-      - name: Create GitHub Release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          VERSION="${{ steps.get_version.outputs.version }}"
-          # Get PR title and body for release notes
-          PR_TITLE="${{ github.event.pull_request.title }}"
-          PR_BODY="${{ github.event.pull_request.body }}"
-          PR_NUMBER="${{ github.event.pull_request.number }}"
-          PR_URL="${{ github.event.pull_request.html_url }}"
+          This release was triggered by PR #${{ github.event.pull_request.number }} (${{ github.event.pull_request.title }})
+          See: ${{ github.event.pull_request.html_url }}"
           
-          # Create release notes
-          cat << EOF > release_notes.md
-          # Release v$VERSION
-          
-          Synchronized with [terraform-provider-duplocloud v$VERSION](https://github.com/duplocloud/terraform-provider-duplocloud/releases/tag/v$VERSION)
-          
-          ## SDK Packages
-          This release includes the following SDK packages, all versioned as v$VERSION:
-          
-          - Python: \`pip install pulumi-duplocloud==$VERSION\`
-          - Node.js: \`npm install @duplocloud/pulumi@$VERSION\`
-          - .NET: \`dotnet add package DuploCloud.Pulumi --version $VERSION\`
-          - Go: \`go get github.com/duplocloud/pulumi-duplocloud/sdk/go/duplocloud@v$VERSION\`
-          
-          ## Plugin Installation
-          You can also install the provider plugin directly:
-          
-          \`\`\`bash
-          pulumi plugin install resource duplocloud v$VERSION --server github://api.github.com/duplocloud/pulumi-duplocloud
-          \`\`\`
-          
-          ## Changes
-          $PR_TITLE
-          
-          ## Details
-          This release was created automatically from PR #$PR_NUMBER ($PR_URL)
-          
-          $PR_BODY
-          EOF
-          
-          # Create GitHub Release
-          gh release create "v$VERSION" \
-            --title "v$VERSION" \
-            --notes-file release_notes.md
+          git tag -a "v$VERSION" -m "$MESSAGE"
+          git push origin "v$VERSION"
