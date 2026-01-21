@@ -36,6 +36,10 @@ jobs:
           VERSION="${{ steps.get_version.outputs.version }}"
           echo "Creating tag v$VERSION"
           
+          # Set up git identity for GitHub Actions bot
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
           # Create tag message
           MESSAGE="Release v$VERSION - Synchronized with terraform-provider-duplocloud v$VERSION
 
