@@ -30,17 +30,18 @@ jobs:
           echo "Found version: $VERSION"
 
       - name: Create and push tag
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           VERSION="${{ steps.get_version.outputs.version }}"
           echo "Creating tag v$VERSION"
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
-          # Create tag with detailed message including PR info
+          # Create tag message
           MESSAGE="Release v$VERSION - Synchronized with terraform-provider-duplocloud v$VERSION
 
           This release was triggered by PR #${{ github.event.pull_request.number }} (${{ github.event.pull_request.title }})
           See: ${{ github.event.pull_request.html_url }}"
           
+          # Create and push tag
           git tag -a "v$VERSION" -m "$MESSAGE"
           git push origin "v$VERSION"
