@@ -58,10 +58,17 @@ jobs:
           ## SDK Packages
           This release includes the following SDK packages, all versioned as v$VERSION:
           
-          - Python: \`pip install pulumi_duplocloud==$VERSION\`
-          - Node.js: \`npm install @pulumi/duplocloud@$VERSION\`
-          - .NET: \`dotnet add package Pulumi.Duplocloud --version $VERSION\`
-          - Go: \`go get github.com/duplocloud/pulumi-duplocloud/sdk@v$VERSION\`
+          - Python: \`pip install pulumi-duplocloud==$VERSION\`
+          - Node.js: \`npm install @duplocloud/pulumi@$VERSION\`
+          - .NET: \`dotnet add package DuploCloud.Pulumi --version $VERSION\`
+          - Go: \`go get github.com/duplocloud/pulumi-duplocloud/sdk/go/duplocloud@v$VERSION\`
+          
+          ## Plugin Installation
+          You can also install the provider plugin directly:
+          
+          \`\`\`bash
+          pulumi plugin install resource duplocloud v$VERSION --server github://api.github.com/duplocloud/pulumi-duplocloud
+          \`\`\`
           
           ## Changes
           $PR_TITLE
