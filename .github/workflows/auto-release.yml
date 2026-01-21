@@ -47,17 +47,8 @@ jobs:
           This release was triggered by PR #${{ github.event.pull_request.number }} (${{ github.event.pull_request.title }})
           See: ${{ github.event.pull_request.html_url }}"
           
-          # Create and push tag
+          # Create and push tag exactly like manual command
           git tag -a "v$VERSION" -m "$MESSAGE"
-          
-          # Push tag with workflow trigger
-          git push origin "v$VERSION" --force
-          
-          # Wait a moment for tag to be processed
-          sleep 5
-          
-          # Verify tag exists and workflows are triggered
-          echo "Verifying tag..."
-          git ls-remote --tags origin "v$VERSION"
+          git push origin "v$VERSION"
           
           echo "Tag pushed successfully. Release workflow should trigger shortly."
