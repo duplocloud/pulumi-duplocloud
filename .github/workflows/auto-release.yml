@@ -15,13 +15,12 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      actions: write  # Allow triggering other workflows
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0 # Need full history for tags
-          token: ${{ secrets.PULUMI_PROVIDER_AUTOMATION_TOKEN || secrets.PULUMI_BOT_TOKEN || secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PULUMI_GPAT }}
 
       - name: Get Terraform provider version
         id: get_version
@@ -54,7 +53,8 @@ jobs:
 
           # Verify the tag was pushed
           if git ls-remote --tags origin | grep -q "refs/tags/v$VERSION"; then
-            echo "Tag verified on remote. Release workflow should trigger."
+            echo "✓ Tag v$VERSION successfully pushed to remote"
+            echo "✓ Release workflow will be triggered automatically"
           else
             echo "ERROR: Tag not found on remote!"
             exit 1
