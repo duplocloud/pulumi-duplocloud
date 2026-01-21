@@ -55,6 +55,14 @@ jobs:
           
           Synchronized with [terraform-provider-duplocloud v$VERSION](https://github.com/duplocloud/terraform-provider-duplocloud/releases/tag/v$VERSION)
           
+          ## SDK Packages
+          This release includes the following SDK packages, all versioned as v$VERSION:
+          
+          - Python: \`pip install pulumi_duplocloud==$VERSION\`
+          - Node.js: \`npm install @pulumi/duplocloud@$VERSION\`
+          - .NET: \`dotnet add package Pulumi.Duplocloud --version $VERSION\`
+          - Go: \`go get github.com/duplocloud/pulumi-duplocloud/sdk@v$VERSION\`
+          
           ## Changes
           $PR_TITLE
           
