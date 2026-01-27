@@ -117,3 +117,34 @@ jobs:
             This PR will automatically trigger a release of the Pulumi provider when merged, creating:
             - GitHub Release v${{ steps.target_version.outputs.version }}
             - Updated packages on PyPI, npm, and NuGet
+
+      - name: Send Slack notification (Success)
+        if: success() && steps.upgrade_provider.outcome == 'success'
+        uses: slackapi/slack-github-action@v2.1.1
+        with:
+          webhook-type: webhook-trigger
+          webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
+          payload: |
+            {
+              "header": "✅ Pulumi DuploCloud Provider Upgrade Successful! 🚀",
+              "release-version": "v${{ steps.target_version.outputs.version }}",
+              "pulumi-provider": "https://github.com/duplocloud/pulumi-duplocloud/provider/v${{ steps.target_version.outputs.version }}",
+              "terraform-provider": "https://github.com/duplocloud/terraform-provider-duplocloud/releases/tag/v${{ steps.target_version.outputs.version }}",
+              "node-sdk": "https://www.npmjs.com/package/@duplocloud/pulumi/v/${{ steps.target_version.outputs.version }}",
+              "python-sdk": "https://pypi.org/project/pulumi-duplocloud/${{ steps.target_version.outputs.version }}",
+              "go-sdk": "https://github.com/duplocloud/pulumi-duplocloud/sdk/v${{ steps.target_version.outputs.version }}",
+              "dotnet-sdk": "https://www.nuget.org/packages/DuploCloud.Pulumi/${{ steps.target_version.outputs.version }}"
+            }
+
+      - name: Send Slack notification (Failure)
+        if: failure() && steps.upgrade_provider.outcome == 'failure'
+        uses: slackapi/slack-github-action@v2.1.1
+        with:
+          webhook-type: webhook-trigger
+          webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
+          payload: |
+            {
+              "header": "❌ Pulumi DuploCloud Provider Upgrade Failed!",
+              "release-version": "v${{ steps.target_version.outputs.version }}",
+              "error": "The provider upgrade process failed. Please check the workflow logs for more information: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+            }
