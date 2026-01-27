@@ -9,6 +9,9 @@ import * as utilities from "./utilities";
 /**
  * `duplocloud.AsgProfile` manages a ASG Profile in Duplo.
  *
+ * **Note:** When updating a duplocloud.AsgProfile resource in versions later than 0.10.53 use duplocloud.AwsLaunchTemplate which creates a new version of launch template. To set the new version as default version use duplocloud.AwsLaunchTemplateDefaultVersion resource, this will avoid recreation of ASG profile.
+ * To refresh the ASG with new launch template version use duplocloud.AsgInstanceRefresh resource.
+ *
  * ## Import
  *
  * Example: Importing an existing AWS ASG

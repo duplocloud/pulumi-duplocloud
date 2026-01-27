@@ -136,7 +136,7 @@ class AwsLaunchTemplateDefaultVersion(pulumi.CustomResource):
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        duplocloud_aws_launch_template_default_version helps to set or update default version of launch template
+        duplocloud_aws_launch_template_default_version helps to set or update default version of launch template. It is usefull when you want asg to use new launch template version without recreating the asg profile.
 
         ## Example Usage
 
@@ -180,7 +180,7 @@ class AwsLaunchTemplateDefaultVersion(pulumi.CustomResource):
                  args: AwsLaunchTemplateDefaultVersionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        duplocloud_aws_launch_template_default_version helps to set or update default version of launch template
+        duplocloud_aws_launch_template_default_version helps to set or update default version of launch template. It is usefull when you want asg to use new launch template version without recreating the asg profile.
 
         ## Example Usage
 
