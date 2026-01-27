@@ -3,15 +3,22 @@ name: Auto Tag on PR Merge
 on:
   pull_request:
     types: [closed]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to release (e.g., 0.11.31). Leave empty to use version from provider/go.mod'
+        required: false
+        type: string
 
 jobs:
   create_tag:
-    # Only run this job if the PR was merged (not just closed) and had the needs-release label
+    # Run if: (1) PR was merged with needs-release label, OR (2) manually triggered
     if: |
-      github.event.pull_request.merged == true &&
-      (contains(github.event.pull_request.labels.*.name, 'needs-release/patch') ||
-       contains(github.event.pull_request.labels.*.name, 'needs-release/minor') ||
-       contains(github.event.pull_request.labels.*.name, 'needs-release/major'))
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.pull_request.merged == true &&
+       (contains(github.event.pull_request.labels.*.name, 'needs-release/patch') ||
+        contains(github.event.pull_request.labels.*.name, 'needs-release/minor') ||
+        contains(github.event.pull_request.labels.*.name, 'needs-release/major')))
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -25,10 +32,16 @@ jobs:
       - name: Get Terraform provider version
         id: get_version
         run: |
-          # Extract version from provider/go.mod, ignoring comments and replace directives
-          VERSION=$(grep -v '^//' provider/go.mod | grep -v '^replace' | grep "github.com/duplocloud/terraform-provider-duplocloud" | awk '{print $2}' | sed 's/^v//')
+          # Use manual input version if provided, otherwise extract from provider/go.mod
+          if [ -n "${{ github.event.inputs.version }}" ]; then
+            VERSION="${{ github.event.inputs.version }}"
+            echo "Using manually specified version: $VERSION"
+          else
+            # Extract version from provider/go.mod, ignoring comments and replace directives
+            VERSION=$(grep -v '^//' provider/go.mod | grep -v '^replace' | grep "github.com/duplocloud/terraform-provider-duplocloud" | awk '{print $2}' | sed 's/^v//')
+            echo "Extracted version from provider/go.mod: $VERSION"
+          fi
           echo "version=$VERSION" >> $GITHUB_OUTPUT
-          echo "Found version: $VERSION"
 
       - name: Create and push tag
         run: |
