@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// duplocloud_aws_launch_template_default_version helps to set or update default version of launch template
+// duplocloud_aws_launch_template_default_version helps to set or update default version of launch template. It is usefull when you want asg to use new launch template version without recreating the asg profile.
 //
 // ## Example Usage
 //
