@@ -128,11 +128,11 @@ jobs:
             {
               "header": "✅ Pulumi DuploCloud Provider Upgrade Successful! 🚀",
               "release-version": "v${{ steps.target_version.outputs.version }}",
-              "pulumi-provider": "https://github.com/duplocloud/pulumi-duplocloud/provider/v${{ steps.target_version.outputs.version }}",
+              "pulumi-provider": "https://github.com/duplocloud/pulumi-duplocloud/releases/tag/v${{ steps.target_version.outputs.version }}",
               "terraform-provider": "https://github.com/duplocloud/terraform-provider-duplocloud/releases/tag/v${{ steps.target_version.outputs.version }}",
               "node-sdk": "https://www.npmjs.com/package/@duplocloud/pulumi/v/${{ steps.target_version.outputs.version }}",
               "python-sdk": "https://pypi.org/project/pulumi-duplocloud/${{ steps.target_version.outputs.version }}",
-              "go-sdk": "https://github.com/duplocloud/pulumi-duplocloud/sdk/v${{ steps.target_version.outputs.version }}",
+              "go-sdk": "https://github.com/duplocloud/pulumi-duplocloud/releases/tag/v${{ steps.target_version.outputs.version }}",
               "dotnet-sdk": "https://www.nuget.org/packages/DuploCloud.Pulumi/${{ steps.target_version.outputs.version }}"
             }
 
