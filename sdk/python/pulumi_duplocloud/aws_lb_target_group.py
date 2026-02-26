@@ -38,7 +38,7 @@ class AwsLbTargetGroupArgs:
         :param pulumi.Input[str] ip_address_type: The type of IP addresses used by the target group, only supported when target type is set to `ip`. Possible values are `ipv4` or `ipv6`
         :param pulumi.Input[str] name: Name of the target group.
         :param pulumi.Input[int] port: Port to use to connect with the target. Valid values are either ports 1-65535.
-        :param pulumi.Input[str] protocol: Protocol to use to connect with the target. Not applicable when `target_type` is `lambda`. Defaults to `HTTP`.
+        :param pulumi.Input[str] protocol: Protocol to use to connect with the target. Not applicable when `target_type` is `lambda`. For non-lambda target type it defaults to `HTTP`
         :param pulumi.Input[str] protocol_version: Only applicable when protocol is `HTTP` or `HTTPS`. The protocol version. Specify GRPC to send requests to targets using gRPC. Specify HTTP2 to send requests to targets using HTTP/2. The default is HTTP1, which sends requests to targets using HTTP/1.1
         :param pulumi.Input[str] vpc_id: Identifier of the VPC in which to create the target group. Required when `target_type` is `instance`, `ip` or `alb`. Does not apply when `target_type` is `lambda`.
         """
@@ -135,7 +135,7 @@ class AwsLbTargetGroupArgs:
     @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input[str]]:
         """
-        Protocol to use to connect with the target. Not applicable when `target_type` is `lambda`. Defaults to `HTTP`.
+        Protocol to use to connect with the target. Not applicable when `target_type` is `lambda`. For non-lambda target type it defaults to `HTTP`
         """
         return pulumi.get(self, "protocol")
 
@@ -188,7 +188,7 @@ class _AwsLbTargetGroupState:
         :param pulumi.Input[str] ip_address_type: The type of IP addresses used by the target group, only supported when target type is set to `ip`. Possible values are `ipv4` or `ipv6`
         :param pulumi.Input[str] name: Name of the target group.
         :param pulumi.Input[int] port: Port to use to connect with the target. Valid values are either ports 1-65535.
-        :param pulumi.Input[str] protocol: Protocol to use to connect with the target. Not applicable when `target_type` is `lambda`. Defaults to `HTTP`.
+        :param pulumi.Input[str] protocol: Protocol to use to connect with the target. Not applicable when `target_type` is `lambda`. For non-lambda target type it defaults to `HTTP`
         :param pulumi.Input[str] protocol_version: Only applicable when protocol is `HTTP` or `HTTPS`. The protocol version. Specify GRPC to send requests to targets using gRPC. Specify HTTP2 to send requests to targets using HTTP/2. The default is HTTP1, which sends requests to targets using HTTP/1.1
         :param pulumi.Input[str] target_type: Type of target that you must specify when registering targets with this target group.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the target group will be created in.
@@ -279,7 +279,7 @@ class _AwsLbTargetGroupState:
     @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input[str]]:
         """
-        Protocol to use to connect with the target. Not applicable when `target_type` is `lambda`. Defaults to `HTTP`.
+        Protocol to use to connect with the target. Not applicable when `target_type` is `lambda`. For non-lambda target type it defaults to `HTTP`
         """
         return pulumi.get(self, "protocol")
 
@@ -400,7 +400,7 @@ class AwsLbTargetGroup(pulumi.CustomResource):
         :param pulumi.Input[str] ip_address_type: The type of IP addresses used by the target group, only supported when target type is set to `ip`. Possible values are `ipv4` or `ipv6`
         :param pulumi.Input[str] name: Name of the target group.
         :param pulumi.Input[int] port: Port to use to connect with the target. Valid values are either ports 1-65535.
-        :param pulumi.Input[str] protocol: Protocol to use to connect with the target. Not applicable when `target_type` is `lambda`. Defaults to `HTTP`.
+        :param pulumi.Input[str] protocol: Protocol to use to connect with the target. Not applicable when `target_type` is `lambda`. For non-lambda target type it defaults to `HTTP`
         :param pulumi.Input[str] protocol_version: Only applicable when protocol is `HTTP` or `HTTPS`. The protocol version. Specify GRPC to send requests to targets using gRPC. Specify HTTP2 to send requests to targets using HTTP/2. The default is HTTP1, which sends requests to targets using HTTP/1.1
         :param pulumi.Input[str] target_type: Type of target that you must specify when registering targets with this target group.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the target group will be created in.
@@ -534,7 +534,7 @@ class AwsLbTargetGroup(pulumi.CustomResource):
         :param pulumi.Input[str] ip_address_type: The type of IP addresses used by the target group, only supported when target type is set to `ip`. Possible values are `ipv4` or `ipv6`
         :param pulumi.Input[str] name: Name of the target group.
         :param pulumi.Input[int] port: Port to use to connect with the target. Valid values are either ports 1-65535.
-        :param pulumi.Input[str] protocol: Protocol to use to connect with the target. Not applicable when `target_type` is `lambda`. Defaults to `HTTP`.
+        :param pulumi.Input[str] protocol: Protocol to use to connect with the target. Not applicable when `target_type` is `lambda`. For non-lambda target type it defaults to `HTTP`
         :param pulumi.Input[str] protocol_version: Only applicable when protocol is `HTTP` or `HTTPS`. The protocol version. Specify GRPC to send requests to targets using gRPC. Specify HTTP2 to send requests to targets using HTTP/2. The default is HTTP1, which sends requests to targets using HTTP/1.1
         :param pulumi.Input[str] target_type: Type of target that you must specify when registering targets with this target group.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the target group will be created in.
@@ -600,7 +600,7 @@ class AwsLbTargetGroup(pulumi.CustomResource):
     @pulumi.getter
     def protocol(self) -> pulumi.Output[Optional[str]]:
         """
-        Protocol to use to connect with the target. Not applicable when `target_type` is `lambda`. Defaults to `HTTP`.
+        Protocol to use to connect with the target. Not applicable when `target_type` is `lambda`. For non-lambda target type it defaults to `HTTP`
         """
         return pulumi.get(self, "protocol")
 

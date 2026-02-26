@@ -67,7 +67,7 @@ type AwsApiGatewayIntegration struct {
 
 	// The full name of the api gateway.
 	Fullname pulumi.StringOutput `pulumi:"fullname"`
-	// Name of the lambda function to be integrated with API gateway.
+	// Name of the lambda function or arn to be integrated with API gateway.
 	LambdaFunctionName pulumi.StringOutput `pulumi:"lambdaFunctionName"`
 	Metadata           pulumi.StringOutput `pulumi:"metadata"`
 	// The short name of the api gateway.  Duplo will add a prefix to the name.  You can retrieve the full name from the `fullname` attribute.
@@ -114,7 +114,7 @@ func GetAwsApiGatewayIntegration(ctx *pulumi.Context,
 type awsApiGatewayIntegrationState struct {
 	// The full name of the api gateway.
 	Fullname *string `pulumi:"fullname"`
-	// Name of the lambda function to be integrated with API gateway.
+	// Name of the lambda function or arn to be integrated with API gateway.
 	LambdaFunctionName *string `pulumi:"lambdaFunctionName"`
 	Metadata           *string `pulumi:"metadata"`
 	// The short name of the api gateway.  Duplo will add a prefix to the name.  You can retrieve the full name from the `fullname` attribute.
@@ -126,7 +126,7 @@ type awsApiGatewayIntegrationState struct {
 type AwsApiGatewayIntegrationState struct {
 	// The full name of the api gateway.
 	Fullname pulumi.StringPtrInput
-	// Name of the lambda function to be integrated with API gateway.
+	// Name of the lambda function or arn to be integrated with API gateway.
 	LambdaFunctionName pulumi.StringPtrInput
 	Metadata           pulumi.StringPtrInput
 	// The short name of the api gateway.  Duplo will add a prefix to the name.  You can retrieve the full name from the `fullname` attribute.
@@ -140,7 +140,7 @@ func (AwsApiGatewayIntegrationState) ElementType() reflect.Type {
 }
 
 type awsApiGatewayIntegrationArgs struct {
-	// Name of the lambda function to be integrated with API gateway.
+	// Name of the lambda function or arn to be integrated with API gateway.
 	LambdaFunctionName string `pulumi:"lambdaFunctionName"`
 	// The short name of the api gateway.  Duplo will add a prefix to the name.  You can retrieve the full name from the `fullname` attribute.
 	Name *string `pulumi:"name"`
@@ -150,7 +150,7 @@ type awsApiGatewayIntegrationArgs struct {
 
 // The set of arguments for constructing a AwsApiGatewayIntegration resource.
 type AwsApiGatewayIntegrationArgs struct {
-	// Name of the lambda function to be integrated with API gateway.
+	// Name of the lambda function or arn to be integrated with API gateway.
 	LambdaFunctionName pulumi.StringInput
 	// The short name of the api gateway.  Duplo will add a prefix to the name.  You can retrieve the full name from the `fullname` attribute.
 	Name pulumi.StringPtrInput
@@ -250,7 +250,7 @@ func (o AwsApiGatewayIntegrationOutput) Fullname() pulumi.StringOutput {
 	return o.ApplyT(func(v *AwsApiGatewayIntegration) pulumi.StringOutput { return v.Fullname }).(pulumi.StringOutput)
 }
 
-// Name of the lambda function to be integrated with API gateway.
+// Name of the lambda function or arn to be integrated with API gateway.
 func (o AwsApiGatewayIntegrationOutput) LambdaFunctionName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AwsApiGatewayIntegration) pulumi.StringOutput { return v.LambdaFunctionName }).(pulumi.StringOutput)
 }

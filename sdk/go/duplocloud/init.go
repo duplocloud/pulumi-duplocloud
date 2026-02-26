@@ -45,6 +45,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AwsBatchSchedulingPolicy{}
 	case "duplocloud:index/awsCloudfrontDistribution:AwsCloudfrontDistribution":
 		r = &AwsCloudfrontDistribution{}
+	case "duplocloud:index/awsCloudfrontDistributionV2:AwsCloudfrontDistributionV2":
+		r = &AwsCloudfrontDistributionV2{}
+	case "duplocloud:index/awsCloudfrontFunction:AwsCloudfrontFunction":
+		r = &AwsCloudfrontFunction{}
 	case "duplocloud:index/awsCloudwatchEventRule:AwsCloudwatchEventRule":
 		r = &AwsCloudwatchEventRule{}
 	case "duplocloud:index/awsCloudwatchEventTarget:AwsCloudwatchEventTarget":
@@ -85,6 +89,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AwsLoadBalancer{}
 	case "duplocloud:index/awsLoadBalancerListener:AwsLoadBalancerListener":
 		r = &AwsLoadBalancerListener{}
+	case "duplocloud:index/awsMqBroker:AwsMqBroker":
+		r = &AwsMqBroker{}
+	case "duplocloud:index/awsMqConfig:AwsMqConfig":
+		r = &AwsMqConfig{}
 	case "duplocloud:index/awsMwaaEnvironment:AwsMwaaEnvironment":
 		r = &AwsMwaaEnvironment{}
 	case "duplocloud:index/awsRdsGlobalSecondary:AwsRdsGlobalSecondary":
@@ -101,6 +109,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AwsTag{}
 	case "duplocloud:index/awsTargetGroupAttributes:AwsTargetGroupAttributes":
 		r = &AwsTargetGroupAttributes{}
+	case "duplocloud:index/awsTargetGroupTargetRegister:AwsTargetGroupTargetRegister":
+		r = &AwsTargetGroupTargetRegister{}
 	case "duplocloud:index/awsTimestreamwriteDatabase:AwsTimestreamwriteDatabase":
 		r = &AwsTimestreamwriteDatabase{}
 	case "duplocloud:index/awsTimestreamwriteTable:AwsTimestreamwriteTable":
@@ -131,8 +141,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AzureMssqlServer{}
 	case "duplocloud:index/azureMssqldbRetentionBackup:AzureMssqldbRetentionBackup":
 		r = &AzureMssqldbRetentionBackup{}
-	case "duplocloud:index/azureMysqlDatabase:AzureMysqlDatabase":
-		r = &AzureMysqlDatabase{}
 	case "duplocloud:index/azureNetworkSecurityRule:AzureNetworkSecurityRule":
 		r = &AzureNetworkSecurityRule{}
 	case "duplocloud:index/azurePostgresqlDatabase:AzurePostgresqlDatabase":
@@ -203,6 +211,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &EmrCluster{}
 	case "duplocloud:index/gcpCloudFunction:GcpCloudFunction":
 		r = &GcpCloudFunction{}
+	case "duplocloud:index/gcpCloudQueue:GcpCloudQueue":
+		r = &GcpCloudQueue{}
+	case "duplocloud:index/gcpCloudTask:GcpCloudTask":
+		r = &GcpCloudTask{}
 	case "duplocloud:index/gcpFirestore:GcpFirestore":
 		r = &GcpFirestore{}
 	case "duplocloud:index/gcpHost:GcpHost":
@@ -213,6 +225,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GcpInfraSecurityRule{}
 	case "duplocloud:index/gcpNodePool:GcpNodePool":
 		r = &GcpNodePool{}
+	case "duplocloud:index/gcpPubsubSubscription:GcpPubsubSubscription":
+		r = &GcpPubsubSubscription{}
 	case "duplocloud:index/gcpPubsubTopic:GcpPubsubTopic":
 		r = &GcpPubsubTopic{}
 	case "duplocloud:index/gcpRedisInstance:GcpRedisInstance":
@@ -243,6 +257,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &K8HelmRepository{}
 	case "duplocloud:index/k8Ingress:K8Ingress":
 		r = &K8Ingress{}
+	case "duplocloud:index/k8OciRepository:K8OciRepository":
+		r = &K8OciRepository{}
 	case "duplocloud:index/k8PersistentVolumeClaim:K8PersistentVolumeClaim":
 		r = &K8PersistentVolumeClaim{}
 	case "duplocloud:index/k8Secret:K8Secret":
@@ -283,6 +299,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &S3Bucket{}
 	case "duplocloud:index/s3BucketReplication:S3BucketReplication":
 		r = &S3BucketReplication{}
+	case "duplocloud:index/s3EventNotification:S3EventNotification":
+		r = &S3EventNotification{}
 	case "duplocloud:index/tenant:Tenant":
 		r = &Tenant{}
 	case "duplocloud:index/tenantAccessGrant:TenantAccessGrant":
@@ -400,6 +418,16 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"duplocloud",
+		"index/awsCloudfrontDistributionV2",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"duplocloud",
+		"index/awsCloudfrontFunction",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"duplocloud",
 		"index/awsCloudwatchEventRule",
 		&module{version},
 	)
@@ -500,6 +528,16 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"duplocloud",
+		"index/awsMqBroker",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"duplocloud",
+		"index/awsMqConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"duplocloud",
 		"index/awsMwaaEnvironment",
 		&module{version},
 	)
@@ -536,6 +574,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"duplocloud",
 		"index/awsTargetGroupAttributes",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"duplocloud",
+		"index/awsTargetGroupTargetRegister",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -611,11 +654,6 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"duplocloud",
 		"index/azureMssqldbRetentionBackup",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"duplocloud",
-		"index/azureMysqlDatabase",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -795,6 +833,16 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"duplocloud",
+		"index/gcpCloudQueue",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"duplocloud",
+		"index/gcpCloudTask",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"duplocloud",
 		"index/gcpFirestore",
 		&module{version},
 	)
@@ -816,6 +864,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"duplocloud",
 		"index/gcpNodePool",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"duplocloud",
+		"index/gcpPubsubSubscription",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -891,6 +944,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"duplocloud",
 		"index/k8Ingress",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"duplocloud",
+		"index/k8OciRepository",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -991,6 +1049,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"duplocloud",
 		"index/s3BucketReplication",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"duplocloud",
+		"index/s3EventNotification",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

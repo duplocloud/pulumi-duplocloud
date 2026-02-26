@@ -536,6 +536,47 @@ import (
 //
 // ```
 //
+// # Example to run pod on Fargate
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//
+//	"github.com/duplocloud/pulumi-duplocloud/sdk/go/duplocloud"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"PodLabels": map[string]interface{}{
+//					"configure.duplocloud.net/run-on": "fargate",
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			_, err = duplocloud.NewDuploService(ctx, "myservice", &duplocloud.DuploServiceArgs{
+//				TenantId:          pulumi.Any(tenant.Id),
+//				Name:              pulumi.String("myservice"),
+//				AgentPlatform:     pulumi.Int(7),
+//				DockerImage:       pulumi.String("nginx:latest"),
+//				Replicas:          pulumi.Int(1),
+//				OtherDockerConfig: pulumi.String(json0),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Example: Importing an existing service

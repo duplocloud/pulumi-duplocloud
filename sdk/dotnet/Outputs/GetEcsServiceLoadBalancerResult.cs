@@ -39,11 +39,11 @@ namespace DuploCloud.Pulumi.Outputs
         /// </summary>
         public readonly int ExternalPort;
         /// <summary>
-        /// Health check configuration for this load balancer.
+        /// Health check configuration for this load balancer. Not applicable for NLB
         /// </summary>
         public readonly ImmutableArray<Outputs.GetEcsServiceLoadBalancerHealthCheckConfigResult> HealthCheckConfigs;
         /// <summary>
-        /// The health check URL to associate with this load balancer configuration.
+        /// The health check URL to associate with this load balancer configuration. Not applicable for NLB
         /// </summary>
         public readonly string HealthCheckUrl;
         /// <summary>
@@ -69,6 +69,7 @@ namespace DuploCloud.Pulumi.Outputs
         ///    - `0` : ELB (Classic Load Balancer)
         ///    - `1` : ALB (Application Load Balancer)
         ///    - `2` : Health-check Only (No Load Balancer)
+        ///    - `6` : NLB (Network Load Balancer)
         /// </summary>
         public readonly int LbType;
         /// <summary>

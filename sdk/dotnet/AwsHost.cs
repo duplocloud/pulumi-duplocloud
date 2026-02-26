@@ -223,7 +223,7 @@ namespace DuploCloud.Pulumi
         /// Specify the labels to attach to the nodes.
         /// </summary>
         [Output("customNodeLabels")]
-        public Output<ImmutableDictionary<string, string>?> CustomNodeLabels { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> CustomNodeLabels { get; private set; } = null!;
 
         /// <summary>
         /// The short name of the host.

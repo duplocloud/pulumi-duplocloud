@@ -20,7 +20,7 @@ namespace DuploCloud.Pulumi.Inputs
         public Input<bool>? AllowGlobalAccess { get; set; }
 
         /// <summary>
-        /// The number of seconds to wait for the backend to send a response. Must be at least 1. Applicable only for GCP.
+        /// The number of seconds to wait for the backend to send a response. Must be at least 1. Applicable only for GCP. Enable set_ingress_health_check when using this field
         /// </summary>
         [Input("backendConfigTimeoutSec")]
         public Input<int>? BackendConfigTimeoutSec { get; set; }
@@ -60,6 +60,20 @@ namespace DuploCloud.Pulumi.Inputs
         /// </summary>
         [Input("dnsName")]
         public Input<string>? DnsName { get; set; }
+
+        [Input("eipAllocations")]
+        private InputList<string>? _eipAllocations;
+
+        /// <summary>
+        /// Allocate Elastic IP to load balancer, which is configured under plan configuration.
+        /// 
+        /// Note: This field can only be set for non internal lbtype NLB(6)
+        /// </summary>
+        public InputList<string> EipAllocations
+        {
+            get => _eipAllocations ?? (_eipAllocations = new InputList<string>());
+            set => _eipAllocations = value;
+        }
 
         /// <summary>
         /// The frontend port associated with this load balancer configuration. Required if `lb_type` is not `7`.

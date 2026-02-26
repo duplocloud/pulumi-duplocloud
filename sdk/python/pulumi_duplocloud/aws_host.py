@@ -1346,7 +1346,7 @@ class AwsHost(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="customNodeLabels")
-    def custom_node_labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+    def custom_node_labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Specify the labels to attach to the nodes.
         """

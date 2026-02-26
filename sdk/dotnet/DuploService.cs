@@ -436,6 +436,35 @@ namespace DuploCloud.Pulumi
     /// });
     /// ```
     /// 
+    /// # Example to run pod on Fargate
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myservice = new Pulumi.DuploService("myservice", new()
+    ///     {
+    ///         TenantId = tenant.Id,
+    ///         Name = "myservice",
+    ///         AgentPlatform = 7,
+    ///         DockerImage = "nginx:latest",
+    ///         Replicas = 1,
+    ///         OtherDockerConfig = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///             ["PodLabels"] = new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 ["configure.duplocloud.net/run-on"] = "fargate",
+    ///             },
+    ///         }),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Example: Importing an existing service

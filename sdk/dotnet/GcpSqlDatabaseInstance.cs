@@ -13,51 +13,6 @@ namespace DuploCloud.Pulumi
     /// <summary>
     /// `duplocloud.GcpSqlDatabaseInstance` manages a GCP SQL Database Instance in Duplo.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Pulumi = DuploCloud.Pulumi;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var myapp = new Pulumi.Tenant("myapp", new()
-    ///     {
-    ///         AccountName = "myapp",
-    ///         PlanId = "default",
-    ///     });
-    /// 
-    ///     var sqlInstance = new Pulumi.GcpSqlDatabaseInstance("sql_instance", new()
-    ///     {
-    ///         TenantId = myapp.TenantId,
-    ///         Name = "sqlinstances01",
-    ///         DatabaseVersion = "MYSQL_8_0",
-    ///         Tier = "db-n1-standard-1",
-    ///         DiskSize = 17,
-    ///         Labels = 
-    ///         {
-    ///             { "managed-by", "duplocloud" },
-    ///             { "created-by", "terraform" },
-    ///         },
-    ///     });
-    /// 
-    ///     // Backup configuration example
-    ///     var sql = new Pulumi.GcpSqlDatabaseInstance("sql", new()
-    ///     {
-    ///         TenantId = myapp.TenantId,
-    ///         Name = "mysqlbckp",
-    ///         DatabaseVersion = "POSTGRES_14",
-    ///         DiskSize = 10,
-    ///         Tier = "db-f1-micro",
-    ///         RootPassword = "qwerty",
-    ///         NeedBackup = true,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Example: Importing an existing GCP SQL database instance
@@ -118,6 +73,12 @@ namespace DuploCloud.Pulumi
         public Output<ImmutableArray<string>> IpAddresses { get; private set; } = null!;
 
         /// <summary>
+        /// IP configuration for the database instance.
+        /// </summary>
+        [Output("ipConfiguration")]
+        public Output<Outputs.GcpSqlDatabaseInstanceIpConfiguration> IpConfiguration { get; private set; } = null!;
+
+        /// <summary>
         /// Map of string keys and values that can be used to organize and categorize this resource.
         /// </summary>
         [Output("labels")]
@@ -130,7 +91,7 @@ namespace DuploCloud.Pulumi
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Flag to enable backup process on delete of database Defaults to `true`.
+        /// Flag to enable backup process on delete of database
         /// </summary>
         [Output("needBackup")]
         public Output<bool?> NeedBackup { get; private set; } = null!;
@@ -154,13 +115,13 @@ namespace DuploCloud.Pulumi
         public Output<string> TenantId { get; private set; } = null!;
 
         /// <summary>
-        /// The machine type to use. See tiers for more details and supported versions. Postgres supports only shared-core machine types, and custom machine types such as `db-custom-2-13312`.See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
+        /// The machine type to use. See tiers for more details and supported versions. Postgres supports only shared-core machine types, and custom machine types, format for custom machine type db-custom-{vCPU}-{memory-in-MB} example `db-custom-2-13312`.See the [Machine Type Documentation](https://cloud.google.com/compute/docs/machine-resource) to learn more about machine types.
         /// </summary>
         [Output("tier")]
         public Output<string> Tier { get; private set; } = null!;
 
         /// <summary>
-        /// Whether or not to wait until sql database instance to be ready, after creation. Defaults to `true`.
+        /// Whether or not to wait until sql database instance to be ready, after creation.
         /// </summary>
         [Output("waitUntilReady")]
         public Output<bool?> WaitUntilReady { get; private set; } = null!;
@@ -242,6 +203,12 @@ namespace DuploCloud.Pulumi
         [Input("edition")]
         public Input<string>? Edition { get; set; }
 
+        /// <summary>
+        /// IP configuration for the database instance.
+        /// </summary>
+        [Input("ipConfiguration")]
+        public Input<Inputs.GcpSqlDatabaseInstanceIpConfigurationArgs>? IpConfiguration { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -261,7 +228,7 @@ namespace DuploCloud.Pulumi
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Flag to enable backup process on delete of database Defaults to `true`.
+        /// Flag to enable backup process on delete of database
         /// </summary>
         [Input("needBackup")]
         public Input<bool>? NeedBackup { get; set; }
@@ -279,13 +246,13 @@ namespace DuploCloud.Pulumi
         public Input<string> TenantId { get; set; } = null!;
 
         /// <summary>
-        /// The machine type to use. See tiers for more details and supported versions. Postgres supports only shared-core machine types, and custom machine types such as `db-custom-2-13312`.See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
+        /// The machine type to use. See tiers for more details and supported versions. Postgres supports only shared-core machine types, and custom machine types, format for custom machine type db-custom-{vCPU}-{memory-in-MB} example `db-custom-2-13312`.See the [Machine Type Documentation](https://cloud.google.com/compute/docs/machine-resource) to learn more about machine types.
         /// </summary>
         [Input("tier", required: true)]
         public Input<string> Tier { get; set; } = null!;
 
         /// <summary>
-        /// Whether or not to wait until sql database instance to be ready, after creation. Defaults to `true`.
+        /// Whether or not to wait until sql database instance to be ready, after creation.
         /// </summary>
         [Input("waitUntilReady")]
         public Input<bool>? WaitUntilReady { get; set; }
@@ -352,6 +319,12 @@ namespace DuploCloud.Pulumi
             set => _ipAddresses = value;
         }
 
+        /// <summary>
+        /// IP configuration for the database instance.
+        /// </summary>
+        [Input("ipConfiguration")]
+        public Input<Inputs.GcpSqlDatabaseInstanceIpConfigurationGetArgs>? IpConfiguration { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -371,7 +344,7 @@ namespace DuploCloud.Pulumi
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Flag to enable backup process on delete of database Defaults to `true`.
+        /// Flag to enable backup process on delete of database
         /// </summary>
         [Input("needBackup")]
         public Input<bool>? NeedBackup { get; set; }
@@ -395,13 +368,13 @@ namespace DuploCloud.Pulumi
         public Input<string>? TenantId { get; set; }
 
         /// <summary>
-        /// The machine type to use. See tiers for more details and supported versions. Postgres supports only shared-core machine types, and custom machine types such as `db-custom-2-13312`.See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
+        /// The machine type to use. See tiers for more details and supported versions. Postgres supports only shared-core machine types, and custom machine types, format for custom machine type db-custom-{vCPU}-{memory-in-MB} example `db-custom-2-13312`.See the [Machine Type Documentation](https://cloud.google.com/compute/docs/machine-resource) to learn more about machine types.
         /// </summary>
         [Input("tier")]
         public Input<string>? Tier { get; set; }
 
         /// <summary>
-        /// Whether or not to wait until sql database instance to be ready, after creation. Defaults to `true`.
+        /// Whether or not to wait until sql database instance to be ready, after creation.
         /// </summary>
         [Input("waitUntilReady")]
         public Input<bool>? WaitUntilReady { get; set; }

@@ -16,6 +16,10 @@ namespace DuploCloud.Pulumi.Outputs
     {
         public readonly string? GrpcSuccessCode;
         public readonly int? HealthCheckIntervalSeconds;
+        /// <summary>
+        /// The port the load balancer uses when performing health checks on targets. If not specified, it will be treated as the traffic port.
+        /// </summary>
+        public readonly int? HealthCheckPort;
         public readonly int? HealthCheckTimeoutSeconds;
         public readonly int? HealthyThresholdCount;
         public readonly string? HttpSuccessCode;
@@ -27,6 +31,8 @@ namespace DuploCloud.Pulumi.Outputs
 
             int? healthCheckIntervalSeconds,
 
+            int? healthCheckPort,
+
             int? healthCheckTimeoutSeconds,
 
             int? healthyThresholdCount,
@@ -37,6 +43,7 @@ namespace DuploCloud.Pulumi.Outputs
         {
             GrpcSuccessCode = grpcSuccessCode;
             HealthCheckIntervalSeconds = healthCheckIntervalSeconds;
+            HealthCheckPort = healthCheckPort;
             HealthCheckTimeoutSeconds = healthCheckTimeoutSeconds;
             HealthyThresholdCount = healthyThresholdCount;
             HttpSuccessCode = httpSuccessCode;

@@ -9,6 +9,8 @@ import * as utilities from "./utilities";
 /**
  * `duplocloud.AwsCloudfrontDistribution` manages an aws cloudfront distribution in Duplo.
  *
+ * NOTE: This resource has been deprecated in favor of `duplocloud.AwsCloudfrontDistributionV2` resource. No support will be provided for this resource going forward.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -192,7 +194,9 @@ export class AwsCloudfrontDistribution extends pulumi.CustomResource {
      */
     public readonly tenantId!: pulumi.Output<string>;
     /**
-     * Defaults to `true`.
+     * When field is set to false it adds the oai mentioned in origin.s3*origin*config.origin*access*identity.
+     * 		\n\n\n\n\n\nNote\n\n: For new cloudfront distributions, this field will work differently than for existing distributions.
+     * 		When use*origin*access_identity is set to true, Duplo will create an origin access control (OAC) and restrict the S3 origin access. On false it will be public\n\nFor migration from OAI to OAC can be done from duplo cloud portal. Defaults to `true`.
      */
     public readonly useOriginAccessIdentity!: pulumi.Output<boolean | undefined>;
     public readonly viewerCertificate!: pulumi.Output<outputs.AwsCloudfrontDistributionViewerCertificate>;
@@ -349,7 +353,9 @@ export interface AwsCloudfrontDistributionState {
      */
     tenantId?: pulumi.Input<string>;
     /**
-     * Defaults to `true`.
+     * When field is set to false it adds the oai mentioned in origin.s3*origin*config.origin*access*identity.
+     * 		\n\n\n\n\n\nNote\n\n: For new cloudfront distributions, this field will work differently than for existing distributions.
+     * 		When use*origin*access_identity is set to true, Duplo will create an origin access control (OAC) and restrict the S3 origin access. On false it will be public\n\nFor migration from OAI to OAC can be done from duplo cloud portal. Defaults to `true`.
      */
     useOriginAccessIdentity?: pulumi.Input<boolean>;
     viewerCertificate?: pulumi.Input<inputs.AwsCloudfrontDistributionViewerCertificate>;
@@ -414,7 +420,9 @@ export interface AwsCloudfrontDistributionArgs {
      */
     tenantId: pulumi.Input<string>;
     /**
-     * Defaults to `true`.
+     * When field is set to false it adds the oai mentioned in origin.s3*origin*config.origin*access*identity.
+     * 		\n\n\n\n\n\nNote\n\n: For new cloudfront distributions, this field will work differently than for existing distributions.
+     * 		When use*origin*access_identity is set to true, Duplo will create an origin access control (OAC) and restrict the S3 origin access. On false it will be public\n\nFor migration from OAI to OAC can be done from duplo cloud portal. Defaults to `true`.
      */
     useOriginAccessIdentity?: pulumi.Input<boolean>;
     viewerCertificate: pulumi.Input<inputs.AwsCloudfrontDistributionViewerCertificate>;

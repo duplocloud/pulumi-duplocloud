@@ -129,7 +129,7 @@ namespace DuploCloud.Pulumi
         public Output<int?> MaxEventAgeInSeconds { get; private set; } = null!;
 
         /// <summary>
-        /// Maximum number of attempts a Lambda function may retry in case of error
+        /// Maximum number of attempts a Lambda function may retry in case of error Defaults to `2`.
         /// </summary>
         [Output("maxRetryAttempts")]
         public Output<int?> MaxRetryAttempts { get; private set; } = null!;
@@ -212,7 +212,7 @@ namespace DuploCloud.Pulumi
         public Input<int>? MaxEventAgeInSeconds { get; set; }
 
         /// <summary>
-        /// Maximum number of attempts a Lambda function may retry in case of error
+        /// Maximum number of attempts a Lambda function may retry in case of error Defaults to `2`.
         /// </summary>
         [Input("maxRetryAttempts")]
         public Input<int>? MaxRetryAttempts { get; set; }
@@ -256,7 +256,7 @@ namespace DuploCloud.Pulumi
         public Input<int>? MaxEventAgeInSeconds { get; set; }
 
         /// <summary>
-        /// Maximum number of attempts a Lambda function may retry in case of error
+        /// Maximum number of attempts a Lambda function may retry in case of error Defaults to `2`.
         /// </summary>
         [Input("maxRetryAttempts")]
         public Input<int>? MaxRetryAttempts { get; set; }

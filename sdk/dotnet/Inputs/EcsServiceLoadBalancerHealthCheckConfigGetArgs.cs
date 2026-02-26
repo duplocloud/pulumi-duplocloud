@@ -19,6 +19,12 @@ namespace DuploCloud.Pulumi.Inputs
         [Input("healthCheckIntervalSeconds")]
         public Input<int>? HealthCheckIntervalSeconds { get; set; }
 
+        /// <summary>
+        /// The port the load balancer uses when performing health checks on targets. If not specified, it will be treated as the traffic port.
+        /// </summary>
+        [Input("healthCheckPort")]
+        public Input<int>? HealthCheckPort { get; set; }
+
         [Input("healthCheckTimeoutSeconds")]
         public Input<int>? HealthCheckTimeoutSeconds { get; set; }
 

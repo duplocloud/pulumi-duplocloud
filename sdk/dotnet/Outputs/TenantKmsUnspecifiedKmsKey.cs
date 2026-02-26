@@ -15,6 +15,9 @@ namespace DuploCloud.Pulumi.Outputs
     public sealed class TenantKmsUnspecifiedKmsKey
     {
         public readonly string? Arn;
+        /// <summary>
+        /// The ID of the KMS key.
+        /// </summary>
         public readonly string? Id;
         public readonly string? Name;
 

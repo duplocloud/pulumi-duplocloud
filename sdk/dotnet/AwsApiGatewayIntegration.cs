@@ -63,7 +63,7 @@ namespace DuploCloud.Pulumi
         public Output<string> Fullname { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the lambda function to be integrated with API gateway.
+        /// Name of the lambda function or arn to be integrated with API gateway.
         /// </summary>
         [Output("lambdaFunctionName")]
         public Output<string> LambdaFunctionName { get; private set; } = null!;
@@ -131,7 +131,7 @@ namespace DuploCloud.Pulumi
     public sealed class AwsApiGatewayIntegrationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of the lambda function to be integrated with API gateway.
+        /// Name of the lambda function or arn to be integrated with API gateway.
         /// </summary>
         [Input("lambdaFunctionName", required: true)]
         public Input<string> LambdaFunctionName { get; set; } = null!;
@@ -163,7 +163,7 @@ namespace DuploCloud.Pulumi
         public Input<string>? Fullname { get; set; }
 
         /// <summary>
-        /// Name of the lambda function to be integrated with API gateway.
+        /// Name of the lambda function or arn to be integrated with API gateway.
         /// </summary>
         [Input("lambdaFunctionName")]
         public Input<string>? LambdaFunctionName { get; set; }

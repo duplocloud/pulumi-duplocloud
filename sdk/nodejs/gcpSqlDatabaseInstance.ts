@@ -9,39 +9,6 @@ import * as utilities from "./utilities";
 /**
  * `duplocloud.GcpSqlDatabaseInstance` manages a GCP SQL Database Instance in Duplo.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@duplocloud/pulumi";
- *
- * const myapp = new duplocloud.Tenant("myapp", {
- *     accountName: "myapp",
- *     planId: "default",
- * });
- * const sqlInstance = new duplocloud.GcpSqlDatabaseInstance("sql_instance", {
- *     tenantId: myapp.tenantId,
- *     name: "sqlinstances01",
- *     databaseVersion: "MYSQL_8_0",
- *     tier: "db-n1-standard-1",
- *     diskSize: 17,
- *     labels: {
- *         "managed-by": "duplocloud",
- *         "created-by": "terraform",
- *     },
- * });
- * // Backup configuration example
- * const sql = new duplocloud.GcpSqlDatabaseInstance("sql", {
- *     tenantId: myapp.tenantId,
- *     name: "mysqlbckp",
- *     databaseVersion: "POSTGRES_14",
- *     diskSize: 10,
- *     tier: "db-f1-micro",
- *     rootPassword: "qwerty",
- *     needBackup: true,
- * });
- * ```
- *
  * ## Import
  *
  * Example: Importing an existing GCP SQL database instance
@@ -113,6 +80,10 @@ export class GcpSqlDatabaseInstance extends pulumi.CustomResource {
      */
     public /*out*/ readonly ipAddresses!: pulumi.Output<string[]>;
     /**
+     * IP configuration for the database instance.
+     */
+    public readonly ipConfiguration!: pulumi.Output<outputs.GcpSqlDatabaseInstanceIpConfiguration>;
+    /**
      * Map of string keys and values that can be used to organize and categorize this resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
@@ -121,7 +92,7 @@ export class GcpSqlDatabaseInstance extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Flag to enable backup process on delete of database Defaults to `true`.
+     * Flag to enable backup process on delete of database
      */
     public readonly needBackup!: pulumi.Output<boolean | undefined>;
     /**
@@ -137,11 +108,11 @@ export class GcpSqlDatabaseInstance extends pulumi.CustomResource {
      */
     public readonly tenantId!: pulumi.Output<string>;
     /**
-     * The machine type to use. See tiers for more details and supported versions. Postgres supports only shared-core machine types, and custom machine types such as `db-custom-2-13312`.See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
+     * The machine type to use. See tiers for more details and supported versions. Postgres supports only shared-core machine types, and custom machine types, format for custom machine type db-custom-{vCPU}-{memory-in-MB} example `db-custom-2-13312`.See the [Machine Type Documentation](https://cloud.google.com/compute/docs/machine-resource) to learn more about machine types.
      */
     public readonly tier!: pulumi.Output<string>;
     /**
-     * Whether or not to wait until sql database instance to be ready, after creation. Defaults to `true`.
+     * Whether or not to wait until sql database instance to be ready, after creation.
      */
     public readonly waitUntilReady!: pulumi.Output<boolean | undefined>;
 
@@ -165,6 +136,7 @@ export class GcpSqlDatabaseInstance extends pulumi.CustomResource {
             resourceInputs["edition"] = state ? state.edition : undefined;
             resourceInputs["fullname"] = state ? state.fullname : undefined;
             resourceInputs["ipAddresses"] = state ? state.ipAddresses : undefined;
+            resourceInputs["ipConfiguration"] = state ? state.ipConfiguration : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["needBackup"] = state ? state.needBackup : undefined;
@@ -188,6 +160,7 @@ export class GcpSqlDatabaseInstance extends pulumi.CustomResource {
             resourceInputs["databaseVersion"] = args ? args.databaseVersion : undefined;
             resourceInputs["diskSize"] = args ? args.diskSize : undefined;
             resourceInputs["edition"] = args ? args.edition : undefined;
+            resourceInputs["ipConfiguration"] = args ? args.ipConfiguration : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["needBackup"] = args ? args.needBackup : undefined;
@@ -238,6 +211,10 @@ export interface GcpSqlDatabaseInstanceState {
      */
     ipAddresses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * IP configuration for the database instance.
+     */
+    ipConfiguration?: pulumi.Input<inputs.GcpSqlDatabaseInstanceIpConfiguration>;
+    /**
      * Map of string keys and values that can be used to organize and categorize this resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -246,7 +223,7 @@ export interface GcpSqlDatabaseInstanceState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Flag to enable backup process on delete of database Defaults to `true`.
+     * Flag to enable backup process on delete of database
      */
     needBackup?: pulumi.Input<boolean>;
     /**
@@ -262,11 +239,11 @@ export interface GcpSqlDatabaseInstanceState {
      */
     tenantId?: pulumi.Input<string>;
     /**
-     * The machine type to use. See tiers for more details and supported versions. Postgres supports only shared-core machine types, and custom machine types such as `db-custom-2-13312`.See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
+     * The machine type to use. See tiers for more details and supported versions. Postgres supports only shared-core machine types, and custom machine types, format for custom machine type db-custom-{vCPU}-{memory-in-MB} example `db-custom-2-13312`.See the [Machine Type Documentation](https://cloud.google.com/compute/docs/machine-resource) to learn more about machine types.
      */
     tier?: pulumi.Input<string>;
     /**
-     * Whether or not to wait until sql database instance to be ready, after creation. Defaults to `true`.
+     * Whether or not to wait until sql database instance to be ready, after creation.
      */
     waitUntilReady?: pulumi.Input<boolean>;
 }
@@ -292,6 +269,10 @@ export interface GcpSqlDatabaseInstanceArgs {
      */
     edition?: pulumi.Input<string>;
     /**
+     * IP configuration for the database instance.
+     */
+    ipConfiguration?: pulumi.Input<inputs.GcpSqlDatabaseInstanceIpConfiguration>;
+    /**
      * Map of string keys and values that can be used to organize and categorize this resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -300,7 +281,7 @@ export interface GcpSqlDatabaseInstanceArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Flag to enable backup process on delete of database Defaults to `true`.
+     * Flag to enable backup process on delete of database
      */
     needBackup?: pulumi.Input<boolean>;
     /**
@@ -312,11 +293,11 @@ export interface GcpSqlDatabaseInstanceArgs {
      */
     tenantId: pulumi.Input<string>;
     /**
-     * The machine type to use. See tiers for more details and supported versions. Postgres supports only shared-core machine types, and custom machine types such as `db-custom-2-13312`.See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
+     * The machine type to use. See tiers for more details and supported versions. Postgres supports only shared-core machine types, and custom machine types, format for custom machine type db-custom-{vCPU}-{memory-in-MB} example `db-custom-2-13312`.See the [Machine Type Documentation](https://cloud.google.com/compute/docs/machine-resource) to learn more about machine types.
      */
     tier: pulumi.Input<string>;
     /**
-     * Whether or not to wait until sql database instance to be ready, after creation. Defaults to `true`.
+     * Whether or not to wait until sql database instance to be ready, after creation.
      */
     waitUntilReady?: pulumi.Input<boolean>;
 }

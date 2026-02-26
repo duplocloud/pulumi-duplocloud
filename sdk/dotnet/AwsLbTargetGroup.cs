@@ -98,7 +98,7 @@ namespace DuploCloud.Pulumi
         public Output<int> Port { get; private set; } = null!;
 
         /// <summary>
-        /// Protocol to use to connect with the target. Not applicable when `target_type` is `lambda`. Defaults to `HTTP`.
+        /// Protocol to use to connect with the target. Not applicable when `target_type` is `lambda`. For non-lambda target type it defaults to `HTTP`
         /// </summary>
         [Output("protocol")]
         public Output<string?> Protocol { get; private set; } = null!;
@@ -199,7 +199,7 @@ namespace DuploCloud.Pulumi
         public Input<int>? Port { get; set; }
 
         /// <summary>
-        /// Protocol to use to connect with the target. Not applicable when `target_type` is `lambda`. Defaults to `HTTP`.
+        /// Protocol to use to connect with the target. Not applicable when `target_type` is `lambda`. For non-lambda target type it defaults to `HTTP`
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
@@ -267,7 +267,7 @@ namespace DuploCloud.Pulumi
         public Input<int>? Port { get; set; }
 
         /// <summary>
-        /// Protocol to use to connect with the target. Not applicable when `target_type` is `lambda`. Defaults to `HTTP`.
+        /// Protocol to use to connect with the target. Not applicable when `target_type` is `lambda`. For non-lambda target type it defaults to `HTTP`
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }

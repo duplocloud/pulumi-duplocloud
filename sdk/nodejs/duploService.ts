@@ -302,6 +302,25 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
+ * # Example to run pod on Fargate
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as duplocloud from "@duplocloud/pulumi";
+ *
+ * const myservice = new duplocloud.DuploService("myservice", {
+ *     tenantId: tenant.id,
+ *     name: "myservice",
+ *     agentPlatform: 7,
+ *     dockerImage: "nginx:latest",
+ *     replicas: 1,
+ *     otherDockerConfig: JSON.stringify({
+ *         PodLabels: {
+ *             "configure.duplocloud.net/run-on": "fargate",
+ *         },
+ *     }),
+ * });
+ * ```
+ *
  * ## Import
  *
  * Example: Importing an existing service

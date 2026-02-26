@@ -27,7 +27,7 @@ import (
 // #
 //
 // ```sh
-// $ pulumi import duplocloud:index/awsTag:AwsTag custom *TENANT_ID*/*ARN*/*TAGKEY*
+// $ pulumi import duplocloud:index/awsTag:AwsTag custom *TENANT_ID*/*TAGKEY*/*ARN*
 // ```
 type AwsTag struct {
 	pulumi.CustomResourceState

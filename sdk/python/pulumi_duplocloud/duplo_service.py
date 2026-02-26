@@ -1198,6 +1198,25 @@ class DuploService(pulumi.CustomResource):
             }])
         ```
 
+        # Example to run pod on Fargate
+        ```python
+        import pulumi
+        import json
+        import pulumi_duplocloud as duplocloud
+
+        myservice = duplocloud.DuploService("myservice",
+            tenant_id=tenant["id"],
+            name="myservice",
+            agent_platform=7,
+            docker_image="nginx:latest",
+            replicas=1,
+            other_docker_config=json.dumps({
+                "PodLabels": {
+                    "configure.duplocloud.net/run-on": "fargate",
+                },
+            }))
+        ```
+
         ## Import
 
         Example: Importing an existing service
@@ -1502,6 +1521,25 @@ class DuploService(pulumi.CustomResource):
                 "name": "nginx-init",
                 "image": "busybox:latest",
             }])
+        ```
+
+        # Example to run pod on Fargate
+        ```python
+        import pulumi
+        import json
+        import pulumi_duplocloud as duplocloud
+
+        myservice = duplocloud.DuploService("myservice",
+            tenant_id=tenant["id"],
+            name="myservice",
+            agent_platform=7,
+            docker_image="nginx:latest",
+            replicas=1,
+            other_docker_config=json.dumps({
+                "PodLabels": {
+                    "configure.duplocloud.net/run-on": "fargate",
+                },
+            }))
         ```
 
         ## Import

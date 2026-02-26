@@ -74,6 +74,12 @@ namespace DuploCloud.Pulumi
         public Output<string> Data { get; private set; } = null!;
 
         /// <summary>
+        /// Config to bypass retention window before permanently deleting secret on AWS (FYI: field is managed localy in TF provider, importing the resource will not hold defined value)
+        /// </summary>
+        [Output("forceDeleteOnDestroy")]
+        public Output<bool?> ForceDeleteOnDestroy { get; private set; } = null!;
+
+        /// <summary>
         /// The full name of the secret.
         /// </summary>
         [Output("name")]
@@ -84,6 +90,12 @@ namespace DuploCloud.Pulumi
         /// </summary>
         [Output("nameSuffix")]
         public Output<string> NameSuffix { get; private set; } = null!;
+
+        /// <summary>
+        /// Retention period secret remains recoverable/not fully deleted before AWS permanently deletes it (FYI: field is managed localy in TF provider, importing the resource will not hold defined value)
+        /// </summary>
+        [Output("retentionWindowInDaysOnDestroy")]
+        public Output<int?> RetentionWindowInDaysOnDestroy { get; private set; } = null!;
 
         /// <summary>
         /// Whether or not rotation is enabled for this secret.
@@ -177,10 +189,22 @@ namespace DuploCloud.Pulumi
         }
 
         /// <summary>
+        /// Config to bypass retention window before permanently deleting secret on AWS (FYI: field is managed localy in TF provider, importing the resource will not hold defined value)
+        /// </summary>
+        [Input("forceDeleteOnDestroy")]
+        public Input<bool>? ForceDeleteOnDestroy { get; set; }
+
+        /// <summary>
         /// The short name of the secret. You can get the fullname from the `name` attribute after creation.
         /// </summary>
         [Input("nameSuffix", required: true)]
         public Input<string> NameSuffix { get; set; } = null!;
+
+        /// <summary>
+        /// Retention period secret remains recoverable/not fully deleted before AWS permanently deletes it (FYI: field is managed localy in TF provider, importing the resource will not hold defined value)
+        /// </summary>
+        [Input("retentionWindowInDaysOnDestroy")]
+        public Input<int>? RetentionWindowInDaysOnDestroy { get; set; }
 
         /// <summary>
         /// The GUID of the tenant that the secret will be created in.
@@ -219,6 +243,12 @@ namespace DuploCloud.Pulumi
         }
 
         /// <summary>
+        /// Config to bypass retention window before permanently deleting secret on AWS (FYI: field is managed localy in TF provider, importing the resource will not hold defined value)
+        /// </summary>
+        [Input("forceDeleteOnDestroy")]
+        public Input<bool>? ForceDeleteOnDestroy { get; set; }
+
+        /// <summary>
         /// The full name of the secret.
         /// </summary>
         [Input("name")]
@@ -229,6 +259,12 @@ namespace DuploCloud.Pulumi
         /// </summary>
         [Input("nameSuffix")]
         public Input<string>? NameSuffix { get; set; }
+
+        /// <summary>
+        /// Retention period secret remains recoverable/not fully deleted before AWS permanently deletes it (FYI: field is managed localy in TF provider, importing the resource will not hold defined value)
+        /// </summary>
+        [Input("retentionWindowInDaysOnDestroy")]
+        public Input<int>? RetentionWindowInDaysOnDestroy { get; set; }
 
         /// <summary>
         /// Whether or not rotation is enabled for this secret.

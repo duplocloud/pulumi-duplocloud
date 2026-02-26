@@ -299,6 +299,11 @@ export class EcacheInstance extends pulumi.CustomResource {
     public readonly kmsKeyId!: pulumi.Output<string>;
     public readonly logDeliveryConfigurations!: pulumi.Output<outputs.EcacheInstanceLogDeliveryConfiguration[] | undefined>;
     /**
+     * Enables Multi-AZ support for the ElastiCache instance. Multi-AZ is only applicable for Redis (cache_type=0) and Valkey
+     * (cache_type=2). When enabled, automaticFailoverEnabled must also be set to true.
+     */
+    public readonly multiAzEnabled!: pulumi.Output<boolean | undefined>;
+    /**
      * The short name of the elasticache instance.  Duplo will add a prefix to the name.  You can retrieve the full name from the `identifier` attribute.
      */
     public readonly name!: pulumi.Output<string>;
@@ -377,6 +382,7 @@ export class EcacheInstance extends pulumi.CustomResource {
             resourceInputs["isPrimary"] = state ? state.isPrimary : undefined;
             resourceInputs["kmsKeyId"] = state ? state.kmsKeyId : undefined;
             resourceInputs["logDeliveryConfigurations"] = state ? state.logDeliveryConfigurations : undefined;
+            resourceInputs["multiAzEnabled"] = state ? state.multiAzEnabled : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["numberOfShards"] = state ? state.numberOfShards : undefined;
             resourceInputs["parameterGroupName"] = state ? state.parameterGroupName : undefined;
@@ -405,6 +411,7 @@ export class EcacheInstance extends pulumi.CustomResource {
             resourceInputs["engineVersion"] = args ? args.engineVersion : undefined;
             resourceInputs["kmsKeyId"] = args ? args.kmsKeyId : undefined;
             resourceInputs["logDeliveryConfigurations"] = args ? args.logDeliveryConfigurations : undefined;
+            resourceInputs["multiAzEnabled"] = args ? args.multiAzEnabled : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["numberOfShards"] = args ? args.numberOfShards : undefined;
             resourceInputs["parameterGroupName"] = args ? args.parameterGroupName : undefined;
@@ -494,6 +501,11 @@ export interface EcacheInstanceState {
      */
     kmsKeyId?: pulumi.Input<string>;
     logDeliveryConfigurations?: pulumi.Input<pulumi.Input<inputs.EcacheInstanceLogDeliveryConfiguration>[]>;
+    /**
+     * Enables Multi-AZ support for the ElastiCache instance. Multi-AZ is only applicable for Redis (cache_type=0) and Valkey
+     * (cache_type=2). When enabled, automaticFailoverEnabled must also be set to true.
+     */
+    multiAzEnabled?: pulumi.Input<boolean>;
     /**
      * The short name of the elasticache instance.  Duplo will add a prefix to the name.  You can retrieve the full name from the `identifier` attribute.
      */
@@ -585,6 +597,11 @@ export interface EcacheInstanceArgs {
      */
     kmsKeyId?: pulumi.Input<string>;
     logDeliveryConfigurations?: pulumi.Input<pulumi.Input<inputs.EcacheInstanceLogDeliveryConfiguration>[]>;
+    /**
+     * Enables Multi-AZ support for the ElastiCache instance. Multi-AZ is only applicable for Redis (cache_type=0) and Valkey
+     * (cache_type=2). When enabled, automaticFailoverEnabled must also be set to true.
+     */
+    multiAzEnabled?: pulumi.Input<boolean>;
     /**
      * The short name of the elasticache instance.  Duplo will add a prefix to the name.  You can retrieve the full name from the `identifier` attribute.
      */

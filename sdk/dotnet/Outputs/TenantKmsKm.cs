@@ -16,7 +16,7 @@ namespace DuploCloud.Pulumi.Outputs
     {
         public readonly string Arn;
         /// <summary>
-        /// The ID of this resource.
+        /// The ID of the KMS key.
         /// </summary>
         public readonly string Id;
         public readonly string Name;

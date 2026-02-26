@@ -42,7 +42,7 @@ namespace DuploCloud.Pulumi.Outputs
         /// <summary>
         /// Specify the labels to attach to the nodes.
         /// </summary>
-        public readonly ImmutableDictionary<string, string>? CustomNodeLabels;
+        public readonly ImmutableDictionary<string, string> CustomNodeLabels;
         public readonly bool? EncryptDisk;
         /// <summary>
         /// The short name of the host.
@@ -134,7 +134,7 @@ namespace DuploCloud.Pulumi.Outputs
 
             int? cloud,
 
-            ImmutableDictionary<string, string>? customNodeLabels,
+            ImmutableDictionary<string, string> customNodeLabels,
 
             bool? encryptDisk,
 

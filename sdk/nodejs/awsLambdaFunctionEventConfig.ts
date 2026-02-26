@@ -124,7 +124,7 @@ export class AwsLambdaFunctionEventConfig extends pulumi.CustomResource {
      */
     public readonly maxEventAgeInSeconds!: pulumi.Output<number | undefined>;
     /**
-     * Maximum number of attempts a Lambda function may retry in case of error
+     * Maximum number of attempts a Lambda function may retry in case of error Defaults to `2`.
      */
     public readonly maxRetryAttempts!: pulumi.Output<number | undefined>;
     /**
@@ -192,7 +192,7 @@ export interface AwsLambdaFunctionEventConfigState {
      */
     maxEventAgeInSeconds?: pulumi.Input<number>;
     /**
-     * Maximum number of attempts a Lambda function may retry in case of error
+     * Maximum number of attempts a Lambda function may retry in case of error Defaults to `2`.
      */
     maxRetryAttempts?: pulumi.Input<number>;
     /**
@@ -222,7 +222,7 @@ export interface AwsLambdaFunctionEventConfigArgs {
      */
     maxEventAgeInSeconds?: pulumi.Input<number>;
     /**
-     * Maximum number of attempts a Lambda function may retry in case of error
+     * Maximum number of attempts a Lambda function may retry in case of error Defaults to `2`.
      */
     maxRetryAttempts?: pulumi.Input<number>;
     /**

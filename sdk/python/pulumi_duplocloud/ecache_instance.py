@@ -32,6 +32,7 @@ class EcacheInstanceArgs:
                  engine_version: Optional[pulumi.Input[str]] = None,
                  kms_key_id: Optional[pulumi.Input[str]] = None,
                  log_delivery_configurations: Optional[pulumi.Input[Sequence[pulumi.Input['EcacheInstanceLogDeliveryConfigurationArgs']]]] = None,
+                 multi_az_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  number_of_shards: Optional[pulumi.Input[int]] = None,
                  parameter_group_name: Optional[pulumi.Input[str]] = None,
@@ -56,6 +57,8 @@ class EcacheInstanceArgs:
                Memcached instance
                types](https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/supported-engine-versions-mc.html).
         :param pulumi.Input[str] kms_key_id: The globally unique identifier for the key.
+        :param pulumi.Input[bool] multi_az_enabled: Enables Multi-AZ support for the ElastiCache instance. Multi-AZ is only applicable for Redis (cache_type=0) and Valkey
+               (cache_type=2). When enabled, automatic_failover_enabled must also be set to true.
         :param pulumi.Input[str] name: The short name of the elasticache instance.  Duplo will add a prefix to the name.  You can retrieve the full name from the `identifier` attribute.
         :param pulumi.Input[int] number_of_shards: The number of shards to create. Applicable only if enable_cluster_mode is set to true
         :param pulumi.Input[str] parameter_group_name: The REDIS/Valkey parameter group to supply.
@@ -89,6 +92,8 @@ class EcacheInstanceArgs:
             pulumi.set(__self__, "kms_key_id", kms_key_id)
         if log_delivery_configurations is not None:
             pulumi.set(__self__, "log_delivery_configurations", log_delivery_configurations)
+        if multi_az_enabled is not None:
+            pulumi.set(__self__, "multi_az_enabled", multi_az_enabled)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if number_of_shards is not None:
@@ -240,6 +245,19 @@ class EcacheInstanceArgs:
         pulumi.set(self, "log_delivery_configurations", value)
 
     @property
+    @pulumi.getter(name="multiAzEnabled")
+    def multi_az_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enables Multi-AZ support for the ElastiCache instance. Multi-AZ is only applicable for Redis (cache_type=0) and Valkey
+        (cache_type=2). When enabled, automatic_failover_enabled must also be set to true.
+        """
+        return pulumi.get(self, "multi_az_enabled")
+
+    @multi_az_enabled.setter
+    def multi_az_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "multi_az_enabled", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -359,6 +377,7 @@ class _EcacheInstanceState:
                  is_primary: Optional[pulumi.Input[bool]] = None,
                  kms_key_id: Optional[pulumi.Input[str]] = None,
                  log_delivery_configurations: Optional[pulumi.Input[Sequence[pulumi.Input['EcacheInstanceLogDeliveryConfigurationArgs']]]] = None,
+                 multi_az_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  number_of_shards: Optional[pulumi.Input[int]] = None,
                  parameter_group_name: Optional[pulumi.Input[str]] = None,
@@ -389,6 +408,8 @@ class _EcacheInstanceState:
         :param pulumi.Input[str] instance_status: The status of the elasticache instance.
         :param pulumi.Input[bool] is_primary: Flag to indicate if this is primary replication group
         :param pulumi.Input[str] kms_key_id: The globally unique identifier for the key.
+        :param pulumi.Input[bool] multi_az_enabled: Enables Multi-AZ support for the ElastiCache instance. Multi-AZ is only applicable for Redis (cache_type=0) and Valkey
+               (cache_type=2). When enabled, automatic_failover_enabled must also be set to true.
         :param pulumi.Input[str] name: The short name of the elasticache instance.  Duplo will add a prefix to the name.  You can retrieve the full name from the `identifier` attribute.
         :param pulumi.Input[int] number_of_shards: The number of shards to create. Applicable only if enable_cluster_mode is set to true
         :param pulumi.Input[str] parameter_group_name: The REDIS/Valkey parameter group to supply.
@@ -438,6 +459,8 @@ class _EcacheInstanceState:
             pulumi.set(__self__, "kms_key_id", kms_key_id)
         if log_delivery_configurations is not None:
             pulumi.set(__self__, "log_delivery_configurations", log_delivery_configurations)
+        if multi_az_enabled is not None:
+            pulumi.set(__self__, "multi_az_enabled", multi_az_enabled)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if number_of_shards is not None:
@@ -651,6 +674,19 @@ class _EcacheInstanceState:
         pulumi.set(self, "log_delivery_configurations", value)
 
     @property
+    @pulumi.getter(name="multiAzEnabled")
+    def multi_az_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enables Multi-AZ support for the ElastiCache instance. Multi-AZ is only applicable for Redis (cache_type=0) and Valkey
+        (cache_type=2). When enabled, automatic_failover_enabled must also be set to true.
+        """
+        return pulumi.get(self, "multi_az_enabled")
+
+    @multi_az_enabled.setter
+    def multi_az_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "multi_az_enabled", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -802,6 +838,7 @@ class EcacheInstance(pulumi.CustomResource):
                  engine_version: Optional[pulumi.Input[str]] = None,
                  kms_key_id: Optional[pulumi.Input[str]] = None,
                  log_delivery_configurations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EcacheInstanceLogDeliveryConfigurationArgs', 'EcacheInstanceLogDeliveryConfigurationArgsDict']]]]] = None,
+                 multi_az_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  number_of_shards: Optional[pulumi.Input[int]] = None,
                  parameter_group_name: Optional[pulumi.Input[str]] = None,
@@ -1007,6 +1044,8 @@ class EcacheInstance(pulumi.CustomResource):
                Memcached instance
                types](https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/supported-engine-versions-mc.html).
         :param pulumi.Input[str] kms_key_id: The globally unique identifier for the key.
+        :param pulumi.Input[bool] multi_az_enabled: Enables Multi-AZ support for the ElastiCache instance. Multi-AZ is only applicable for Redis (cache_type=0) and Valkey
+               (cache_type=2). When enabled, automatic_failover_enabled must also be set to true.
         :param pulumi.Input[str] name: The short name of the elasticache instance.  Duplo will add a prefix to the name.  You can retrieve the full name from the `identifier` attribute.
         :param pulumi.Input[int] number_of_shards: The number of shards to create. Applicable only if enable_cluster_mode is set to true
         :param pulumi.Input[str] parameter_group_name: The REDIS/Valkey parameter group to supply.
@@ -1234,6 +1273,7 @@ class EcacheInstance(pulumi.CustomResource):
                  engine_version: Optional[pulumi.Input[str]] = None,
                  kms_key_id: Optional[pulumi.Input[str]] = None,
                  log_delivery_configurations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EcacheInstanceLogDeliveryConfigurationArgs', 'EcacheInstanceLogDeliveryConfigurationArgsDict']]]]] = None,
+                 multi_az_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  number_of_shards: Optional[pulumi.Input[int]] = None,
                  parameter_group_name: Optional[pulumi.Input[str]] = None,
@@ -1262,6 +1302,7 @@ class EcacheInstance(pulumi.CustomResource):
             __props__.__dict__["engine_version"] = engine_version
             __props__.__dict__["kms_key_id"] = kms_key_id
             __props__.__dict__["log_delivery_configurations"] = log_delivery_configurations
+            __props__.__dict__["multi_az_enabled"] = multi_az_enabled
             __props__.__dict__["name"] = name
             __props__.__dict__["number_of_shards"] = number_of_shards
             __props__.__dict__["parameter_group_name"] = parameter_group_name
@@ -1310,6 +1351,7 @@ class EcacheInstance(pulumi.CustomResource):
             is_primary: Optional[pulumi.Input[bool]] = None,
             kms_key_id: Optional[pulumi.Input[str]] = None,
             log_delivery_configurations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EcacheInstanceLogDeliveryConfigurationArgs', 'EcacheInstanceLogDeliveryConfigurationArgsDict']]]]] = None,
+            multi_az_enabled: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             number_of_shards: Optional[pulumi.Input[int]] = None,
             parameter_group_name: Optional[pulumi.Input[str]] = None,
@@ -1345,6 +1387,8 @@ class EcacheInstance(pulumi.CustomResource):
         :param pulumi.Input[str] instance_status: The status of the elasticache instance.
         :param pulumi.Input[bool] is_primary: Flag to indicate if this is primary replication group
         :param pulumi.Input[str] kms_key_id: The globally unique identifier for the key.
+        :param pulumi.Input[bool] multi_az_enabled: Enables Multi-AZ support for the ElastiCache instance. Multi-AZ is only applicable for Redis (cache_type=0) and Valkey
+               (cache_type=2). When enabled, automatic_failover_enabled must also be set to true.
         :param pulumi.Input[str] name: The short name of the elasticache instance.  Duplo will add a prefix to the name.  You can retrieve the full name from the `identifier` attribute.
         :param pulumi.Input[int] number_of_shards: The number of shards to create. Applicable only if enable_cluster_mode is set to true
         :param pulumi.Input[str] parameter_group_name: The REDIS/Valkey parameter group to supply.
@@ -1382,6 +1426,7 @@ class EcacheInstance(pulumi.CustomResource):
         __props__.__dict__["is_primary"] = is_primary
         __props__.__dict__["kms_key_id"] = kms_key_id
         __props__.__dict__["log_delivery_configurations"] = log_delivery_configurations
+        __props__.__dict__["multi_az_enabled"] = multi_az_enabled
         __props__.__dict__["name"] = name
         __props__.__dict__["number_of_shards"] = number_of_shards
         __props__.__dict__["parameter_group_name"] = parameter_group_name
@@ -1519,6 +1564,15 @@ class EcacheInstance(pulumi.CustomResource):
     @pulumi.getter(name="logDeliveryConfigurations")
     def log_delivery_configurations(self) -> pulumi.Output[Optional[Sequence['outputs.EcacheInstanceLogDeliveryConfiguration']]]:
         return pulumi.get(self, "log_delivery_configurations")
+
+    @property
+    @pulumi.getter(name="multiAzEnabled")
+    def multi_az_enabled(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Enables Multi-AZ support for the ElastiCache instance. Multi-AZ is only applicable for Redis (cache_type=0) and Valkey
+        (cache_type=2). When enabled, automatic_failover_enabled must also be set to true.
+        """
+        return pulumi.get(self, "multi_az_enabled")
 
     @property
     @pulumi.getter

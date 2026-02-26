@@ -99,7 +99,7 @@ export class AwsLbTargetGroup extends pulumi.CustomResource {
      */
     public readonly port!: pulumi.Output<number>;
     /**
-     * Protocol to use to connect with the target. Not applicable when `targetType` is `lambda`. Defaults to `HTTP`.
+     * Protocol to use to connect with the target. Not applicable when `targetType` is `lambda`. For non-lambda target type it defaults to `HTTP`
      */
     public readonly protocol!: pulumi.Output<string | undefined>;
     /**
@@ -191,7 +191,7 @@ export interface AwsLbTargetGroupState {
      */
     port?: pulumi.Input<number>;
     /**
-     * Protocol to use to connect with the target. Not applicable when `targetType` is `lambda`. Defaults to `HTTP`.
+     * Protocol to use to connect with the target. Not applicable when `targetType` is `lambda`. For non-lambda target type it defaults to `HTTP`
      */
     protocol?: pulumi.Input<string>;
     /**
@@ -233,7 +233,7 @@ export interface AwsLbTargetGroupArgs {
      */
     port?: pulumi.Input<number>;
     /**
-     * Protocol to use to connect with the target. Not applicable when `targetType` is `lambda`. Defaults to `HTTP`.
+     * Protocol to use to connect with the target. Not applicable when `targetType` is `lambda`. For non-lambda target type it defaults to `HTTP`
      */
     protocol?: pulumi.Input<string>;
     /**

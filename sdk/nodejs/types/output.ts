@@ -572,6 +572,245 @@ export interface AwsCloudfrontDistributionRestrictionsGeoRestriction {
     restrictionType: string;
 }
 
+export interface AwsCloudfrontDistributionV2CustomErrorResponse {
+    errorCachingMinTtl: number;
+    errorCode: number;
+    responseCode: number;
+    responsePagePath: string;
+}
+
+export interface AwsCloudfrontDistributionV2DefaultCacheBehavior {
+    allowedMethods: string[];
+    /**
+     * \n\n						
+     * | Policy name                                                                                                                                                                                  | Policy Id                            |
+     * |----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------|
+     * | Amplify                                                | 2e54312d-136d-493c-8eb9-b001f22f67d2 |
+     * | CachingDisabled                               | 4135ea2d-6df8-44a3-9df3-4b5a84be39ad |
+     * | CachingOptimized                                    | 658327ea-f89d-4fab-a63d-7e88639e58f6 |
+     * | CachingOptimizedForUncompressedObjects | b2884449-e4de-46a7-ac36-70bc7f1ddd6d |
+     * | Elemental-MediaPackage                            | 08627262-05a9-4f76-9ded-b50ca2e3a84f |
+     * \n\n
+     */
+    cachePolicyId: string;
+    cachedMethods: string[];
+    /**
+     * Defaults to `false`.
+     */
+    compress?: boolean;
+    /**
+     * default time to live: Not required when cache*policy*id is set
+     */
+    defaultTtl: number;
+    fieldLevelEncryptionId: string;
+    forwardedValues?: outputs.AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValues;
+    functionAssociations?: outputs.AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociation[];
+    lambdaFunctionAssociations?: outputs.AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociation[];
+    /**
+     * Maximum time to live: Not required when cache*policy*id is set
+     */
+    maxTtl: number;
+    /**
+     * Minimum time to live: Not required when cache*policy*id is set Defaults to `0`.
+     */
+    minTtl?: number;
+    originRequestPolicyId: string;
+    realtimeLogConfigArn: string;
+    responseHeadersPolicyId: string;
+    smoothStreaming: boolean;
+    targetOriginId: string;
+    trustedKeyGroups: string[];
+    trustedSigners: string[];
+    viewerProtocolPolicy: string;
+}
+
+export interface AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValues {
+    cookies: outputs.AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookies;
+    /**
+     * headers: Not required when cache*policy*id is set
+     */
+    headers: string[];
+    queryString: boolean;
+    /**
+     * query*string*cache*keys: Not required when cache*policy_id is set
+     */
+    queryStringCacheKeys: string[];
+}
+
+export interface AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookies {
+    forward: string;
+    whitelistedNames: string[];
+}
+
+export interface AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociation {
+    eventType: string;
+    functionArn: string;
+}
+
+export interface AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociation {
+    eventType: string;
+    /**
+     * Defaults to `false`.
+     */
+    includeBody?: boolean;
+    lambdaArn: string;
+}
+
+export interface AwsCloudfrontDistributionV2LoggingConfig {
+    bucket: string;
+    /**
+     * Defaults to `false`.
+     */
+    includeCookies?: boolean;
+    /**
+     * Defaults to ``.
+     */
+    prefix?: string;
+}
+
+export interface AwsCloudfrontDistributionV2OrderedCacheBehavior {
+    allowedMethods: string[];
+    cachePolicyId: string;
+    cachedMethods: string[];
+    /**
+     * Defaults to `false`.
+     */
+    compress?: boolean;
+    defaultTtl: number;
+    fieldLevelEncryptionId: string;
+    forwardedValues?: outputs.AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValues;
+    functionAssociations?: outputs.AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociation[];
+    lambdaFunctionAssociations?: outputs.AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociation[];
+    maxTtl: number;
+    /**
+     * Defaults to `0`.
+     */
+    minTtl?: number;
+    originRequestPolicyId: string;
+    pathPattern: string;
+    realtimeLogConfigArn: string;
+    responseHeadersPolicyId: string;
+    smoothStreaming: boolean;
+    targetOriginId: string;
+    trustedKeyGroups: string[];
+    trustedSigners: string[];
+    viewerProtocolPolicy: string;
+}
+
+export interface AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValues {
+    cookies: outputs.AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookies;
+    headers: string[];
+    queryString: boolean;
+    queryStringCacheKeys: string[];
+}
+
+export interface AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookies {
+    forward: string;
+    whitelistedNames: string[];
+}
+
+export interface AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociation {
+    eventType: string;
+    functionArn: string;
+}
+
+export interface AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociation {
+    eventType: string;
+    /**
+     * Defaults to `false`.
+     */
+    includeBody?: boolean;
+    lambdaArn: string;
+}
+
+export interface AwsCloudfrontDistributionV2Origin {
+    /**
+     * Defaults to `3`.
+     */
+    connectionAttempts?: number;
+    /**
+     * Defaults to `10`.
+     */
+    connectionTimeout?: number;
+    customHeaders?: outputs.AwsCloudfrontDistributionV2OriginCustomHeader[];
+    customOriginConfig?: outputs.AwsCloudfrontDistributionV2OriginCustomOriginConfig;
+    domainName: string;
+    originId: string;
+    /**
+     * Defaults to ``.
+     */
+    originPath?: string;
+    originShield?: outputs.AwsCloudfrontDistributionV2OriginOriginShield;
+}
+
+export interface AwsCloudfrontDistributionV2OriginCustomHeader {
+    name: string;
+    value: string;
+}
+
+export interface AwsCloudfrontDistributionV2OriginCustomOriginConfig {
+    /**
+     * Defaults to `80`.
+     */
+    httpPort?: number;
+    /**
+     * Defaults to `443`.
+     */
+    httpsPort?: number;
+    /**
+     * Defaults to `5`.
+     */
+    originKeepaliveTimeout?: number;
+    originProtocolPolicy: string;
+    /**
+     * Defaults to `30`.
+     */
+    originReadTimeout?: number;
+    originSslProtocols: string[];
+}
+
+export interface AwsCloudfrontDistributionV2OriginGroup {
+    failoverCriteria: outputs.AwsCloudfrontDistributionV2OriginGroupFailoverCriteria;
+    members: outputs.AwsCloudfrontDistributionV2OriginGroupMember[];
+    originId: string;
+}
+
+export interface AwsCloudfrontDistributionV2OriginGroupFailoverCriteria {
+    statusCodes: number[];
+}
+
+export interface AwsCloudfrontDistributionV2OriginGroupMember {
+    originId: string;
+}
+
+export interface AwsCloudfrontDistributionV2OriginOriginShield {
+    enabled: boolean;
+    originShieldRegion: string;
+}
+
+export interface AwsCloudfrontDistributionV2Restrictions {
+    geoRestriction: outputs.AwsCloudfrontDistributionV2RestrictionsGeoRestriction;
+}
+
+export interface AwsCloudfrontDistributionV2RestrictionsGeoRestriction {
+    locations: string[];
+    restrictionType: string;
+}
+
+export interface AwsCloudfrontDistributionV2ViewerCertificate {
+    acmCertificateArn: string;
+    cloudfrontDefaultCertificate: boolean;
+    iamCertificateId: string;
+    /**
+     * Defaults to `TLSv1.2_2021`.
+     */
+    minimumProtocolVersion?: string;
+    /**
+     * Defaults to `sni-only`.
+     */
+    sslSupportMethod?: string;
+}
+
 export interface AwsCloudfrontDistributionViewerCertificate {
     acmCertificateArn: string;
     cloudfrontDefaultCertificate: boolean;
@@ -990,6 +1229,28 @@ export interface AwsLaunchTemplateBlockDeviceMappingEbs {
     volumeType?: string;
 }
 
+export interface AwsLaunchTemplateInstanceRequirements {
+    allowedInstanceTypes: string[];
+    /**
+     * Block describing the minimum and maximum amount of memory (MiB). It is a required field when allowed*instance*types is set
+     */
+    memoryMib?: outputs.AwsLaunchTemplateInstanceRequirementsMemoryMib;
+    /**
+     * Block describing the minimum and maximum number of vCPUs. It is a required field when allowed*instance*types is set
+     */
+    vcpuCount?: outputs.AwsLaunchTemplateInstanceRequirementsVcpuCount;
+}
+
+export interface AwsLaunchTemplateInstanceRequirementsMemoryMib {
+    max: number;
+    min: number;
+}
+
+export interface AwsLaunchTemplateInstanceRequirementsVcpuCount {
+    max: number;
+    min: number;
+}
+
 export interface AwsLbListenerRuleAction {
     /**
      * Information for creating an authenticate action using Cognito. Required if `type` is `authenticate-cognito`.
@@ -1332,6 +1593,124 @@ export interface AwsLoadBalancerTag {
     value: string;
 }
 
+export interface AwsMqBrokerConfiguration {
+    /**
+     * Configuration ID.
+     */
+    id: string;
+    /**
+     * Configuration revision.
+     */
+    revision: number;
+}
+
+export interface AwsMqBrokerEncryptionOptions {
+    /**
+     * KMS Key ID for encryption.
+     */
+    kmsKeyId: string;
+    /**
+     * Whether to use AWS owned key. Defaults to `true`.
+     */
+    useAwsOwnedKey?: boolean;
+}
+
+export interface AwsMqBrokerLdapServerMetadata {
+    /**
+     * List of LDAP hosts.
+     */
+    hosts: string[];
+    /**
+     * LDAP role base.
+     */
+    roleBase: string;
+    /**
+     * LDAP role name.
+     */
+    roleName: string;
+    /**
+     * LDAP role search matching.
+     */
+    roleSearchMatching: string;
+    /**
+     * LDAP role search subtree.
+     */
+    roleSearchSubtree: boolean;
+    /**
+     * LDAP service account password.
+     */
+    serviceAccountPassword: string;
+    /**
+     * LDAP service account username.
+     */
+    serviceAccountUsername: string;
+    /**
+     * LDAP user base.
+     */
+    userBase: string;
+    /**
+     * LDAP user role name.
+     */
+    userRoleName: string;
+    /**
+     * LDAP user search matching.
+     */
+    userSearchMatching: string;
+    /**
+     * LDAP user search subtree.
+     */
+    userSearchSubtree: boolean;
+}
+
+export interface AwsMqBrokerLogs {
+    /**
+     * Enable audit logging (not applicable for RabbitMQ).
+     */
+    audit?: boolean;
+    /**
+     * Enable general logging.
+     */
+    general: boolean;
+}
+
+export interface AwsMqBrokerMaintenanceWindow {
+    /**
+     * Day of week for maintenance window.
+     */
+    dayOfWeek: string;
+    /**
+     * Time of day for maintenance window. 24 hours format
+     */
+    timeOfDay: string;
+    /**
+     * Time zone for maintenance window.
+     */
+    timeZone: string;
+}
+
+export interface AwsMqBrokerUser {
+    /**
+     * Defaults to `false`.
+     */
+    consoleAccess?: boolean;
+    /**
+     * Groups to which the user belongs.
+     */
+    groups: string[];
+    /**
+     * The password.
+     */
+    password: string;
+    /**
+     * Defaults to `false`.
+     */
+    replicationUser?: boolean;
+    /**
+     * The username.
+     */
+    userName: string;
+}
+
 export interface AwsMwaaEnvironmentLastUpdated {
     createdAt: string;
     errors: outputs.AwsMwaaEnvironmentLastUpdatedError[];
@@ -1390,6 +1769,15 @@ export interface AwsSqsQueueDeadLetterQueueConfiguration {
 export interface AwsTargetGroupAttributesAttribute {
     key: string;
     value: string;
+}
+
+export interface AwsTargetGroupTargetRegisterTarget {
+    availabilityZone: string;
+    /**
+     * The ID of the target. If the target type of the target group is INSTANCE, this is an instance ID. If the target type is IP , this is an IP address. If the target type is LAMBDA, this is the ARN of the Lambda function. If the target type is ALB, this is the ARN of the Application Load Balancer.
+     */
+    id: string;
+    port: number;
 }
 
 export interface AwsTimestreamwriteDatabaseAllTag {
@@ -2086,7 +2474,7 @@ export interface DuploServiceLbconfigsLbconfig {
      */
     allowGlobalAccess: boolean;
     /**
-     * The number of seconds to wait for the backend to send a response. Must be at least 1. Applicable only for GCP.
+     * The number of seconds to wait for the backend to send a response. Must be at least 1. Applicable only for GCP. Enable setIngressHealthCheck when using this field
      */
     backendConfigTimeoutSec: number;
     /**
@@ -2109,6 +2497,12 @@ export interface DuploServiceLbconfigsLbconfig {
      * The DNS name of the cloud load balancer (if applicable).
      */
     dnsName: string;
+    /**
+     * Allocate Elastic IP to load balancer, which is configured under plan configuration.
+     *
+     * Note: This field can only be set for non internal lbtype NLB(6)
+     */
+    eipAllocations: string[];
     /**
      * The frontend port associated with this load balancer configuration. Required if `lbType` is not `7`.
      */
@@ -2341,11 +2735,11 @@ export interface EcsServiceLoadBalancer {
      */
     externalPort: number;
     /**
-     * Health check configuration for this load balancer.
+     * Health check configuration for this load balancer. Not applicable for NLB
      */
     healthCheckConfig?: outputs.EcsServiceLoadBalancerHealthCheckConfig;
     /**
-     * The health check URL to associate with this load balancer configuration.
+     * The health check URL to associate with this load balancer configuration. Not applicable for NLB
      */
     healthCheckUrl?: string;
     /**
@@ -2371,6 +2765,7 @@ export interface EcsServiceLoadBalancer {
      *    - `0` : ELB (Classic Load Balancer)
      *    - `1` : ALB (Application Load Balancer)
      *    - `2` : Health-check Only (No Load Balancer)
+     *    - `6` : NLB (Network Load Balancer)
      */
     lbType: number;
     /**
@@ -2403,6 +2798,10 @@ export interface EcsServiceLoadBalancer {
 export interface EcsServiceLoadBalancerHealthCheckConfig {
     grpcSuccessCode: string;
     healthCheckIntervalSeconds: number;
+    /**
+     * The port the load balancer uses when performing health checks on targets. If not specified, it will be treated as the traffic port.
+     */
+    healthCheckPort: number;
     healthCheckTimeoutSeconds: number;
     healthyThresholdCount: number;
     httpSuccessCode: string;
@@ -2496,6 +2895,44 @@ export interface GcpCloudFunctionHttpsTrigger {
     securityLevel: string;
     /**
      * The URL of the HTTPS trigger
+     */
+    url: string;
+}
+
+export interface GcpCloudTaskAppEngine {
+    /**
+     * The body of the HTTP request. This field is optional and can be used to send additional data in the request should be base64 encoded.
+     */
+    body: string;
+    /**
+     * A map of HTTP headers to include in the request. Each key is a header name, and each value is the corresponding header value.
+     */
+    headers?: {[key: string]: string};
+    /**
+     * The HTTP method to use for the request. Must be one of: `POST`, `PUT`, `PATCH`.
+     */
+    method: string;
+    /**
+     * Specify the relative URL path to which the HTTP request will be sent when the Cloud Tasks queue triggers the App Engine target.
+     */
+    relativeUri: string;
+}
+
+export interface GcpCloudTaskHttpTarget {
+    /**
+     * The body of the HTTP request. This field is required and must be base64 string.
+     */
+    body?: string;
+    /**
+     * A map of HTTP headers to include in the request. Each key is a header name, and each value is the corresponding header value.
+     */
+    headers?: {[key: string]: string};
+    /**
+     * The HTTP method to use for the request. Must be one of: `POST`, `PUT`, `DELETE`, `PATCH`, `HEAD`.
+     */
+    method: string;
+    /**
+     * Specify the endpoint URL to which the HTTP request will be sent when the Cloud Tasks queue triggers the HTTP target.
      */
     url: string;
 }
@@ -2632,6 +3069,148 @@ export interface GcpNodePoolUpgradeSettingBlueGreenSettingStandardRolloutPolicy 
     batchSoakDuration: string;
 }
 
+export interface GcpPubsubSubscriptionBigQuery {
+    /**
+     * When true and use*topic*schema or use*table*schema is true, any fields that are a part of the topic schema or message schema that are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription's backlog Defaults to `false`.
+     */
+    dropUnknownFields?: boolean;
+    /**
+     * The service account to use to write to BigQuery. If not specified, the Pub/Sub service agent, service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+     */
+    serviceAccountEmail: string;
+    /**
+     * An output-only field that indicates whether or not the subscription can receive messages.
+     */
+    state: string;
+    /**
+     * The name of the table to which to write data.
+     */
+    table: string;
+    /**
+     * When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to additional columns in the table. Defaults to `false`.
+     */
+    useTableSchema?: boolean;
+    /**
+     * When true, use the topic's schema as the columns to write to in BigQuery, if it exists. Only one of use*topic*schema and use*table*schema can be set. Defaults to `false`.
+     */
+    useTopicSchema?: boolean;
+    /**
+     * When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output. Defaults to `false`.
+     */
+    writeMetadata?: boolean;
+}
+
+export interface GcpPubsubSubscriptionCloudStorageConfig {
+    avroConfig: outputs.GcpPubsubSubscriptionCloudStorageConfigAvroConfig;
+    /**
+     * User-provided name for the Cloud Storage bucket. The bucket must be created by the user. The bucket name must be without any prefix like 'gs://'.
+     */
+    bucket: string;
+    /**
+     * User-provided format string specifying how to represent datetimes in Cloud Storage filenames
+     */
+    filenameDatetimeFormat: string;
+    /**
+     * User-provided prefix for Cloud Storage filename.
+     */
+    filenamePrefix: string;
+    /**
+     * User-provided suffix for Cloud Storage filename. Must not end in '/'.
+     */
+    filenameSuffix: string;
+    /**
+     * The maximum bytes that can be written to a Cloud Storage file before a new file is created. Min 1 KB, max 10 GiB. The maxBytes limit may be exceeded in cases where messages are larger than the limit.
+     */
+    maxBytes: number;
+    /**
+     * The maximum duration that can elapse before a new Cloud Storage file is created. Min 1 minute, max 10 minutes, default 5 minutes. May not exceed the subscription's acknowledgement deadline Defaults to `300s`.
+     */
+    maxDuration?: string;
+    /**
+     * The maximum messages that can be written to a Cloud Storage file before a new file is created. Min 1000 messages. Defaults to `1000`.
+     */
+    maxMessages?: number;
+    /**
+     * The service account to use to write to BigQuery. If not specified, the Pub/Sub service agent, service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+     */
+    serviceAccountEmail: string;
+    /**
+     * An output-only field that indicates whether or not the subscription can receive messages.
+     */
+    state: string;
+}
+
+export interface GcpPubsubSubscriptionCloudStorageConfigAvroConfig {
+    /**
+     * When true, the output Cloud Storage file will be serialized using the topic schema, if it exists. Defaults to `false`.
+     */
+    useTopicSchema?: boolean;
+    /**
+     * When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output. Defaults to `false`.
+     */
+    writeMetadata?: boolean;
+}
+
+export interface GcpPubsubSubscriptionDeadLetterPolicy {
+    /**
+     * The name of the topic to which dead letter messages should be published.
+     */
+    deadLetterTopic: string;
+    /**
+     * The maximum number of delivery attempts for any message. The value must be between 5 and 100. The number of delivery attempts is defined as 1 + (the sum of number of NACKs and number of times the acknowledgement deadline has been exceeded for the message) Defaults to `5`.
+     */
+    maxDeliveryAttempts?: number;
+}
+
+export interface GcpPubsubSubscriptionExpirationPolicy {
+    /**
+     * Specifies the 'time-to-live' duration for an associated resource. The resource expires if it is not active for a period of ttl. If ttl is empty string, the associated resource never expires.  A duration in seconds with up to nine fractional digits, terminated by 's'. Example - '3.5s'.
+     */
+    ttl: string;
+}
+
+export interface GcpPubsubSubscriptionPushConfig {
+    attributes: {[key: string]: string};
+    /**
+     * When set, the payload to the push endpoint is not wrapped
+     */
+    noWrapper: outputs.GcpPubsubSubscriptionPushConfigNoWrapper;
+    oidcToken: outputs.GcpPubsubSubscriptionPushConfigOidcToken;
+    /**
+     * URL to which the Pub/Sub system should send messages for a push subscription. When a message is published to the topic, Pub/Sub will automatically send the message as an HTTP POST request to this specified endpoint.
+     */
+    pushEndpoint: string;
+}
+
+export interface GcpPubsubSubscriptionPushConfigNoWrapper {
+    /**
+     * When true, writes the Pub/Sub message metadata to x-goog-pubsub-\n\n:\n\n headers of the HTTP request. Writes the Pub/Sub message attributes to \n\n:\n\n headers of the HTTP request.
+     */
+    writeMetadata: boolean;
+}
+
+export interface GcpPubsubSubscriptionPushConfigOidcToken {
+    /**
+     * Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string. Defaults to `false`.
+     */
+    audience?: string;
+    /**
+     * Service account email to be used for generating the OIDC token.
+     */
+    serviceAccountEmail: string;
+}
+
+export interface GcpPubsubSubscriptionRetryPolicy {
+    /**
+     * The maximum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 600 seconds. Defaults to `600s`.
+     */
+    maximumBackoff?: string;
+    /**
+     * The minimum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 10 seconds Defaults to `10s`.
+     */
+    minimumBackoff?: string;
+}
+
 export interface GcpSchedulerJobAppEngineTarget {
     /**
      * The HTTP request body to send.
@@ -2757,6 +3336,17 @@ export interface GcpSqlDatabaseInstanceDatabaseFlag {
     value: string;
 }
 
+export interface GcpSqlDatabaseInstanceIpConfiguration {
+    /**
+     * Whether SSL is required for the database instance. Applicable for server database
+     */
+    requireSsl: boolean;
+    /**
+     * SSL mode for the database instance. Valid values are `ALLOW_UNENCRYPTED_AND_ENCRYPTED`, `ENCRYPTED_ONLY`, `TRUSTED_CLIENT_CERTIFICATE_REQUIRED`
+     */
+    sslMode: string;
+}
+
 export interface GcpStorageBucketV2DefaultEncryption {
     /**
      * Default encryption method.  Must be one of: `None`, `Sse`, `AwsKms`, `TenantKms`. Defaults to `Sse`.
@@ -2812,7 +3402,7 @@ export interface GetAsgProfilesAsgProfile {
     /**
      * Specify the labels to attach to the nodes.
      */
-    customNodeLabels?: {[key: string]: string};
+    customNodeLabels: {[key: string]: string};
     /**
      * List of metrics to collect for the ASG Specify one or more of the following metrics.`GroupMinSize`,`GroupMaxSize`,`GroupDesiredCapacity`,`GroupInServiceInstances`,`GroupPendingInstances`,`GroupStandbyInstances`,`GroupTerminatingInstances`,`GroupTotalInstances`,`GroupInServiceCapacity`,`GroupPendingCapacity`,`GroupStandbyCapacity`,`GroupTerminatingCapacity`,`GroupTotalCapacity`,`WarmPoolDesiredCapacity`,`WarmPoolWarmedCapacity`,`WarmPoolPendingCapacity`,`WarmPoolTerminatingCapacity`,`WarmPoolTotalCapacity`,`GroupAndWarmPoolDesiredCapacity`,`GroupAndWarmPoolTotalCapacity`.
      */
@@ -3026,6 +3616,17 @@ export interface GetAwsLbTargetGroupsTargetGroupHealthCheckMatcher {
     httpCode: string;
 }
 
+export interface GetAwsSqsQueueDeadLetterQueueConfiguration {
+    /**
+     * Maximum number of processing attempts before moving to the dead letter queue.
+     */
+    maxMessageReceiveAttempts: number;
+    /**
+     * Name of the SQS queue meant to be the target dead letter queue.
+     */
+    targetSqsDlqName: string;
+}
+
 export interface GetAwsSsmParametersParameter {
     allowedPattern: string;
     description: string;
@@ -3138,7 +3739,7 @@ export interface GetDuploServiceLbconfigsServiceLbconfig {
      */
     allowGlobalAccess: boolean;
     /**
-     * The number of seconds to wait for the backend to send a response. Must be at least 1. Applicable only for GCP.
+     * The number of seconds to wait for the backend to send a response. Must be at least 1. Applicable only for GCP. Enable setIngressHealthCheck when using this field
      */
     backendConfigTimeoutSec: number;
     /**
@@ -3161,6 +3762,12 @@ export interface GetDuploServiceLbconfigsServiceLbconfig {
      * The DNS name of the cloud load balancer (if applicable).
      */
     dnsName: string;
+    /**
+     * Allocate Elastic IP to load balancer, which is configured under plan configuration.
+     *
+     * Note: This field can only be set for non internal lbtype NLB(6)
+     */
+    eipAllocations: string[];
     /**
      * The frontend port associated with this load balancer configuration. Required if `lbType` is not `7`.
      */
@@ -3434,11 +4041,11 @@ export interface GetEcsServiceLoadBalancer {
      */
     externalPort: number;
     /**
-     * Health check configuration for this load balancer.
+     * Health check configuration for this load balancer. Not applicable for NLB
      */
     healthCheckConfigs: outputs.GetEcsServiceLoadBalancerHealthCheckConfig[];
     /**
-     * The health check URL to associate with this load balancer configuration.
+     * The health check URL to associate with this load balancer configuration. Not applicable for NLB
      */
     healthCheckUrl: string;
     /**
@@ -3464,6 +4071,7 @@ export interface GetEcsServiceLoadBalancer {
      *    - `0` : ELB (Classic Load Balancer)
      *    - `1` : ALB (Application Load Balancer)
      *    - `2` : Health-check Only (No Load Balancer)
+     *    - `6` : NLB (Network Load Balancer)
      */
     lbType: number;
     /**
@@ -3496,6 +4104,10 @@ export interface GetEcsServiceLoadBalancer {
 export interface GetEcsServiceLoadBalancerHealthCheckConfig {
     grpcSuccessCode: string;
     healthCheckIntervalSeconds: number;
+    /**
+     * The port the load balancer uses when performing health checks on targets. If not specified, it will be treated as the traffic port.
+     */
+    healthCheckPort: number;
     healthCheckTimeoutSeconds: number;
     healthyThresholdCount: number;
     httpSuccessCode: string;
@@ -3653,11 +4265,11 @@ export interface GetEcsServicesServiceLoadBalancer {
      */
     externalPort: number;
     /**
-     * Health check configuration for this load balancer.
+     * Health check configuration for this load balancer. Not applicable for NLB
      */
     healthCheckConfigs: outputs.GetEcsServicesServiceLoadBalancerHealthCheckConfig[];
     /**
-     * The health check URL to associate with this load balancer configuration.
+     * The health check URL to associate with this load balancer configuration. Not applicable for NLB
      */
     healthCheckUrl: string;
     /**
@@ -3683,6 +4295,7 @@ export interface GetEcsServicesServiceLoadBalancer {
      *    - `0` : ELB (Classic Load Balancer)
      *    - `1` : ALB (Application Load Balancer)
      *    - `2` : Health-check Only (No Load Balancer)
+     *    - `6` : NLB (Network Load Balancer)
      */
     lbType: number;
     /**
@@ -3715,6 +4328,10 @@ export interface GetEcsServicesServiceLoadBalancer {
 export interface GetEcsServicesServiceLoadBalancerHealthCheckConfig {
     grpcSuccessCode: string;
     healthCheckIntervalSeconds: number;
+    /**
+     * The port the load balancer uses when performing health checks on targets. If not specified, it will be treated as the traffic port.
+     */
+    healthCheckPort: number;
     healthCheckTimeoutSeconds: number;
     healthyThresholdCount: number;
     httpSuccessCode: string;
@@ -10853,7 +11470,7 @@ export interface GetNativeHostsHost {
     /**
      * Specify the labels to attach to the nodes.
      */
-    customNodeLabels?: {[key: string]: string};
+    customNodeLabels: {[key: string]: string};
     encryptDisk?: boolean;
     /**
      * The short name of the host.
@@ -11263,6 +11880,18 @@ export interface GetPlansDataWafInfo {
     name: string;
 }
 
+export interface GetS3BucketDefaultEncryption {
+    /**
+     * Default encryption method.
+     */
+    method: string;
+}
+
+export interface GetS3BucketTag {
+    key: string;
+    value: string;
+}
+
 export interface GetSystemFeaturesAppConfig {
     key: string;
     type: string;
@@ -11573,6 +12202,45 @@ export interface K8IngressTl {
      * The name of the secret used to terminate TLS traffic on port 443. This field is optional, enabling TLS routing based solely on the SNI hostname. If the SNI host in a listener conflicts with the 'Host' header in an IngressRule, the SNI host is used for termination, while the 'Host' header value is used for routing.
      */
     secretName: string;
+}
+
+export interface K8OciRepositorySpec {
+    /**
+     * The interval associated to oci repository Defaults to `5m0s`.
+     */
+    interval?: string;
+    /**
+     * The media type of oci repository to be attached. Accepted media type is
+     * 'application/vnd.cncf.helm.config.v1+json
+     * application/vnd.cncf.helm.chart.content.v1.tar+gzip
+     * application/vnd.oci.image.layer.v1.tar+gzip
+     * application/vnd.oci.image.config.v1.+json
+     * any other mediatype can be specified other than above ones
+     */
+    mediaType?: string;
+    /**
+     * The operation of oci repository to be attached
+     */
+    operation?: string;
+    /**
+     * Select the `dockerconfigjson` secret created from Kubernetes Secret to authenticate to OCI registry.
+     */
+    privateRegistrySecret?: string;
+    /**
+     * The ref of oci repository to be attached
+     */
+    ref?: outputs.K8OciRepositorySpecRef;
+    /**
+     * The url of oci repository to be attached
+     */
+    url: string;
+}
+
+export interface K8OciRepositorySpecRef {
+    /**
+     * The tag of oci repository to be attached Defaults to `latest`.
+     */
+    tag?: string;
 }
 
 export interface K8PersistentVolumeClaimSpec {
@@ -18270,6 +18938,17 @@ export interface RdsInstancePerformanceInsights {
     retentionPeriod?: number;
 }
 
+export interface RdsInstanceStorageAutoscaling {
+    /**
+     * Whether to enable storage autoscaling for the RDS instance. When enabled, the storage size can automatically increase up to the specified max_allocated_storage.
+     */
+    enable?: boolean;
+    /**
+     * The upper limit, in gibibytes (GiB), to which Amazon RDS can automatically scale the storage of the DB instance when autoscaling is enabled.
+     */
+    maxAllocatedStorage?: number;
+}
+
 export interface RdsInstanceV2ScalingConfiguration {
     /**
      * Specifies max scaling capacity.
@@ -18350,6 +19029,40 @@ export interface S3BucketTag {
     value: string;
 }
 
+export interface S3EventNotificationEvent {
+    /**
+     * The configuration ID of the S3 event notification.
+     */
+    configurationId: string;
+    /**
+     * The ARN of the specified destination type.
+     */
+    destinationArn: string;
+    /**
+     * The fully qualified duplo name of specified destination type.
+     */
+    destinationName: string;
+    /**
+     * The type of destination where event notification to be published.
+     */
+    destinationType: string;
+    /**
+     * Event types:
+     * 		's3:TestEvent'\n\n
+     * 		's3:ObjectCreated:*'\n\n
+     * 		's3:ObjectCreated:Put'\n\n
+     * 		's3:ObjectCreated:Post'\n\n
+     * 		's3:ObjectCreated:Copy'\n\n
+     * 		's3:ObjectCreated:CompleteMultipartUpload'\n\n
+     * 		's3:ObjectRemoved:*'\n\n
+     * 		's3:ObjectRemoved:Delete'\n\n
+     * 		's3:ObjectRemoved:DeleteMarkerCreated'\n\n
+     * 		's3:ObjectRestore:*'\n\n
+     * 		's3:ObjectRestore:Post'\n\n
+     */
+    eventTypes: string[];
+}
+
 export interface TenantConfigMetadata {
     key: string;
     value: string;
@@ -18363,7 +19076,7 @@ export interface TenantConfigSetting {
 export interface TenantKmsKm {
     arn: string;
     /**
-     * The ID of this resource.
+     * The ID of the KMS key.
      */
     id: string;
     name: string;
@@ -18371,6 +19084,9 @@ export interface TenantKmsKm {
 
 export interface TenantKmsUnspecifiedKmsKey {
     arn: string;
+    /**
+     * The ID of the KMS key.
+     */
     id: string;
     name: string;
 }

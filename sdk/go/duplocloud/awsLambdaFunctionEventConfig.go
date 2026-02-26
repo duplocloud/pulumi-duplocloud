@@ -123,7 +123,7 @@ type AwsLambdaFunctionEventConfig struct {
 	FunctionName pulumi.StringOutput `pulumi:"functionName"`
 	// The maximum age of a request that Lambda sends to a function for processing
 	MaxEventAgeInSeconds pulumi.IntPtrOutput `pulumi:"maxEventAgeInSeconds"`
-	// Maximum number of attempts a Lambda function may retry in case of error
+	// Maximum number of attempts a Lambda function may retry in case of error Defaults to `2`.
 	MaxRetryAttempts pulumi.IntPtrOutput `pulumi:"maxRetryAttempts"`
 	// The qualifier for the lambda event invoke configuration
 	Qualifier pulumi.StringPtrOutput `pulumi:"qualifier"`
@@ -173,7 +173,7 @@ type awsLambdaFunctionEventConfigState struct {
 	FunctionName *string `pulumi:"functionName"`
 	// The maximum age of a request that Lambda sends to a function for processing
 	MaxEventAgeInSeconds *int `pulumi:"maxEventAgeInSeconds"`
-	// Maximum number of attempts a Lambda function may retry in case of error
+	// Maximum number of attempts a Lambda function may retry in case of error Defaults to `2`.
 	MaxRetryAttempts *int `pulumi:"maxRetryAttempts"`
 	// The qualifier for the lambda event invoke configuration
 	Qualifier *string `pulumi:"qualifier"`
@@ -188,7 +188,7 @@ type AwsLambdaFunctionEventConfigState struct {
 	FunctionName pulumi.StringPtrInput
 	// The maximum age of a request that Lambda sends to a function for processing
 	MaxEventAgeInSeconds pulumi.IntPtrInput
-	// Maximum number of attempts a Lambda function may retry in case of error
+	// Maximum number of attempts a Lambda function may retry in case of error Defaults to `2`.
 	MaxRetryAttempts pulumi.IntPtrInput
 	// The qualifier for the lambda event invoke configuration
 	Qualifier pulumi.StringPtrInput
@@ -207,7 +207,7 @@ type awsLambdaFunctionEventConfigArgs struct {
 	FunctionName string `pulumi:"functionName"`
 	// The maximum age of a request that Lambda sends to a function for processing
 	MaxEventAgeInSeconds *int `pulumi:"maxEventAgeInSeconds"`
-	// Maximum number of attempts a Lambda function may retry in case of error
+	// Maximum number of attempts a Lambda function may retry in case of error Defaults to `2`.
 	MaxRetryAttempts *int `pulumi:"maxRetryAttempts"`
 	// The qualifier for the lambda event invoke configuration
 	Qualifier *string `pulumi:"qualifier"`
@@ -223,7 +223,7 @@ type AwsLambdaFunctionEventConfigArgs struct {
 	FunctionName pulumi.StringInput
 	// The maximum age of a request that Lambda sends to a function for processing
 	MaxEventAgeInSeconds pulumi.IntPtrInput
-	// Maximum number of attempts a Lambda function may retry in case of error
+	// Maximum number of attempts a Lambda function may retry in case of error Defaults to `2`.
 	MaxRetryAttempts pulumi.IntPtrInput
 	// The qualifier for the lambda event invoke configuration
 	Qualifier pulumi.StringPtrInput
@@ -335,7 +335,7 @@ func (o AwsLambdaFunctionEventConfigOutput) MaxEventAgeInSeconds() pulumi.IntPtr
 	return o.ApplyT(func(v *AwsLambdaFunctionEventConfig) pulumi.IntPtrOutput { return v.MaxEventAgeInSeconds }).(pulumi.IntPtrOutput)
 }
 
-// Maximum number of attempts a Lambda function may retry in case of error
+// Maximum number of attempts a Lambda function may retry in case of error Defaults to `2`.
 func (o AwsLambdaFunctionEventConfigOutput) MaxRetryAttempts() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AwsLambdaFunctionEventConfig) pulumi.IntPtrOutput { return v.MaxRetryAttempts }).(pulumi.IntPtrOutput)
 }

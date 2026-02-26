@@ -9,74 +9,6 @@ import * as utilities from "./utilities";
 /**
  * `duplocloud.AwsLambdaFunction` manages an AWS lambda function in Duplo.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as duplocloud from "@duplocloud/pulumi";
- *
- * const myapp = new duplocloud.Tenant("myapp", {
- *     accountName: "myapp",
- *     planId: "default",
- * });
- * const myfunction = new duplocloud.AwsLambdaFunction("myfunction", {
- *     tenantId: _this.tenantId,
- *     name: "myfunction",
- *     description: "A description of my function",
- *     runtime: "java11",
- *     handler: "com.example.MyFunction::handleRequest",
- *     s3Bucket: "my-bucket-name",
- *     s3Key: "my-function.zip",
- *     environment: {
- *         variables: {
- *             foo: "bar",
- *         },
- *     },
- *     timeout: 60,
- *     memorySize: 512,
- * });
- * const thisfunction = new duplocloud.AwsLambdaFunction("thisfunction", {
- *     tenantId: _this.tenantId,
- *     name: "thisfunction",
- *     description: "A description of my function",
- *     packageType: "Image",
- *     imageUri: "dkr.ecr.us-west-2.amazonaws.com/myimage:latest",
- *     imageConfig: {
- *         commands: [
- *             "echo",
- *             "hello world",
- *         ],
- *         entryPoints: ["echo hello workd"],
- *         workingDirectory: "/tmp3",
- *     },
- *     tracingConfig: {
- *         mode: "PassThrough",
- *     },
- *     timeout: 60,
- *     memorySize: 512,
- * });
- * const edgefunction = new duplocloud.AwsLambdaFunction("edgefunction", {
- *     tenantId: "c7163b39-43ca-4d44-81ce-9a323087039b",
- *     name: "edgefunction",
- *     description: "An example edge function",
- *     packageType: "Image",
- *     imageUri: "dkr.ecr.us-east-1.amazonaws.com/myimage:1.0",
- *     imageConfig: {
- *         commands: [
- *             "echo",
- *             "hello world",
- *         ],
- *         entryPoints: ["echo hello workd"],
- *         workingDirectory: "/tmp3",
- *     },
- *     tags: {
- *         IsEdgeDeploy: "true",
- *     },
- *     timeout: 5,
- *     memorySize: 128,
- * });
- * ```
- *
  * ## Import
  *
  * Example: Importing an existing AWS lambda function
@@ -159,6 +91,10 @@ export class AwsLambdaFunction extends pulumi.CustomResource {
      * The docker image that holds the lambda function's code. Used (and required) only when `packageType` is `"Image"`. The image must be in a private ECR.
      */
     public readonly imageUri!: pulumi.Output<string | undefined>;
+    /**
+     * The ARN to be used for invoking the lambda function.
+     */
+    public /*out*/ readonly invokeArn!: pulumi.Output<string>;
     /**
      * A timestamp string of lambda's last modification time.
      */
@@ -244,6 +180,7 @@ export class AwsLambdaFunction extends pulumi.CustomResource {
             resourceInputs["handler"] = state ? state.handler : undefined;
             resourceInputs["imageConfig"] = state ? state.imageConfig : undefined;
             resourceInputs["imageUri"] = state ? state.imageUri : undefined;
+            resourceInputs["invokeArn"] = state ? state.invokeArn : undefined;
             resourceInputs["lastModified"] = state ? state.lastModified : undefined;
             resourceInputs["layers"] = state ? state.layers : undefined;
             resourceInputs["memorySize"] = state ? state.memorySize : undefined;
@@ -286,6 +223,7 @@ export class AwsLambdaFunction extends pulumi.CustomResource {
             resourceInputs["tracingConfig"] = args ? args.tracingConfig : undefined;
             resourceInputs["arn"] = undefined /*out*/;
             resourceInputs["fullname"] = undefined /*out*/;
+            resourceInputs["invokeArn"] = undefined /*out*/;
             resourceInputs["lastModified"] = undefined /*out*/;
             resourceInputs["role"] = undefined /*out*/;
             resourceInputs["sourceCodeHash"] = undefined /*out*/;
@@ -341,6 +279,10 @@ export interface AwsLambdaFunctionState {
      * The docker image that holds the lambda function's code. Used (and required) only when `packageType` is `"Image"`. The image must be in a private ECR.
      */
     imageUri?: pulumi.Input<string>;
+    /**
+     * The ARN to be used for invoking the lambda function.
+     */
+    invokeArn?: pulumi.Input<string>;
     /**
      * A timestamp string of lambda's last modification time.
      */

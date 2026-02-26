@@ -572,6 +572,245 @@ export interface AwsCloudfrontDistributionRestrictionsGeoRestriction {
     restrictionType: pulumi.Input<string>;
 }
 
+export interface AwsCloudfrontDistributionV2CustomErrorResponse {
+    errorCachingMinTtl?: pulumi.Input<number>;
+    errorCode: pulumi.Input<number>;
+    responseCode?: pulumi.Input<number>;
+    responsePagePath?: pulumi.Input<string>;
+}
+
+export interface AwsCloudfrontDistributionV2DefaultCacheBehavior {
+    allowedMethods: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * \n\n						
+     * | Policy name                                                                                                                                                                                  | Policy Id                            |
+     * |----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------|
+     * | Amplify                                                | 2e54312d-136d-493c-8eb9-b001f22f67d2 |
+     * | CachingDisabled                               | 4135ea2d-6df8-44a3-9df3-4b5a84be39ad |
+     * | CachingOptimized                                    | 658327ea-f89d-4fab-a63d-7e88639e58f6 |
+     * | CachingOptimizedForUncompressedObjects | b2884449-e4de-46a7-ac36-70bc7f1ddd6d |
+     * | Elemental-MediaPackage                            | 08627262-05a9-4f76-9ded-b50ca2e3a84f |
+     * \n\n
+     */
+    cachePolicyId?: pulumi.Input<string>;
+    cachedMethods: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Defaults to `false`.
+     */
+    compress?: pulumi.Input<boolean>;
+    /**
+     * default time to live: Not required when cache*policy*id is set
+     */
+    defaultTtl?: pulumi.Input<number>;
+    fieldLevelEncryptionId?: pulumi.Input<string>;
+    forwardedValues?: pulumi.Input<inputs.AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValues>;
+    functionAssociations?: pulumi.Input<pulumi.Input<inputs.AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociation>[]>;
+    lambdaFunctionAssociations?: pulumi.Input<pulumi.Input<inputs.AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociation>[]>;
+    /**
+     * Maximum time to live: Not required when cache*policy*id is set
+     */
+    maxTtl?: pulumi.Input<number>;
+    /**
+     * Minimum time to live: Not required when cache*policy*id is set Defaults to `0`.
+     */
+    minTtl?: pulumi.Input<number>;
+    originRequestPolicyId?: pulumi.Input<string>;
+    realtimeLogConfigArn?: pulumi.Input<string>;
+    responseHeadersPolicyId?: pulumi.Input<string>;
+    smoothStreaming?: pulumi.Input<boolean>;
+    targetOriginId: pulumi.Input<string>;
+    trustedKeyGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    trustedSigners?: pulumi.Input<pulumi.Input<string>[]>;
+    viewerProtocolPolicy: pulumi.Input<string>;
+}
+
+export interface AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValues {
+    cookies: pulumi.Input<inputs.AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookies>;
+    /**
+     * headers: Not required when cache*policy*id is set
+     */
+    headers?: pulumi.Input<pulumi.Input<string>[]>;
+    queryString: pulumi.Input<boolean>;
+    /**
+     * query*string*cache*keys: Not required when cache*policy_id is set
+     */
+    queryStringCacheKeys?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookies {
+    forward: pulumi.Input<string>;
+    whitelistedNames?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociation {
+    eventType: pulumi.Input<string>;
+    functionArn: pulumi.Input<string>;
+}
+
+export interface AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociation {
+    eventType: pulumi.Input<string>;
+    /**
+     * Defaults to `false`.
+     */
+    includeBody?: pulumi.Input<boolean>;
+    lambdaArn: pulumi.Input<string>;
+}
+
+export interface AwsCloudfrontDistributionV2LoggingConfig {
+    bucket: pulumi.Input<string>;
+    /**
+     * Defaults to `false`.
+     */
+    includeCookies?: pulumi.Input<boolean>;
+    /**
+     * Defaults to ``.
+     */
+    prefix?: pulumi.Input<string>;
+}
+
+export interface AwsCloudfrontDistributionV2OrderedCacheBehavior {
+    allowedMethods: pulumi.Input<pulumi.Input<string>[]>;
+    cachePolicyId?: pulumi.Input<string>;
+    cachedMethods: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Defaults to `false`.
+     */
+    compress?: pulumi.Input<boolean>;
+    defaultTtl?: pulumi.Input<number>;
+    fieldLevelEncryptionId?: pulumi.Input<string>;
+    forwardedValues?: pulumi.Input<inputs.AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValues>;
+    functionAssociations?: pulumi.Input<pulumi.Input<inputs.AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociation>[]>;
+    lambdaFunctionAssociations?: pulumi.Input<pulumi.Input<inputs.AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociation>[]>;
+    maxTtl?: pulumi.Input<number>;
+    /**
+     * Defaults to `0`.
+     */
+    minTtl?: pulumi.Input<number>;
+    originRequestPolicyId?: pulumi.Input<string>;
+    pathPattern: pulumi.Input<string>;
+    realtimeLogConfigArn?: pulumi.Input<string>;
+    responseHeadersPolicyId?: pulumi.Input<string>;
+    smoothStreaming?: pulumi.Input<boolean>;
+    targetOriginId: pulumi.Input<string>;
+    trustedKeyGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    trustedSigners?: pulumi.Input<pulumi.Input<string>[]>;
+    viewerProtocolPolicy: pulumi.Input<string>;
+}
+
+export interface AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValues {
+    cookies: pulumi.Input<inputs.AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookies>;
+    headers?: pulumi.Input<pulumi.Input<string>[]>;
+    queryString: pulumi.Input<boolean>;
+    queryStringCacheKeys?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookies {
+    forward: pulumi.Input<string>;
+    whitelistedNames?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociation {
+    eventType: pulumi.Input<string>;
+    functionArn: pulumi.Input<string>;
+}
+
+export interface AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociation {
+    eventType: pulumi.Input<string>;
+    /**
+     * Defaults to `false`.
+     */
+    includeBody?: pulumi.Input<boolean>;
+    lambdaArn: pulumi.Input<string>;
+}
+
+export interface AwsCloudfrontDistributionV2Origin {
+    /**
+     * Defaults to `3`.
+     */
+    connectionAttempts?: pulumi.Input<number>;
+    /**
+     * Defaults to `10`.
+     */
+    connectionTimeout?: pulumi.Input<number>;
+    customHeaders?: pulumi.Input<pulumi.Input<inputs.AwsCloudfrontDistributionV2OriginCustomHeader>[]>;
+    customOriginConfig?: pulumi.Input<inputs.AwsCloudfrontDistributionV2OriginCustomOriginConfig>;
+    domainName: pulumi.Input<string>;
+    originId: pulumi.Input<string>;
+    /**
+     * Defaults to ``.
+     */
+    originPath?: pulumi.Input<string>;
+    originShield?: pulumi.Input<inputs.AwsCloudfrontDistributionV2OriginOriginShield>;
+}
+
+export interface AwsCloudfrontDistributionV2OriginCustomHeader {
+    name: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
+export interface AwsCloudfrontDistributionV2OriginCustomOriginConfig {
+    /**
+     * Defaults to `80`.
+     */
+    httpPort?: pulumi.Input<number>;
+    /**
+     * Defaults to `443`.
+     */
+    httpsPort?: pulumi.Input<number>;
+    /**
+     * Defaults to `5`.
+     */
+    originKeepaliveTimeout?: pulumi.Input<number>;
+    originProtocolPolicy: pulumi.Input<string>;
+    /**
+     * Defaults to `30`.
+     */
+    originReadTimeout?: pulumi.Input<number>;
+    originSslProtocols: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AwsCloudfrontDistributionV2OriginGroup {
+    failoverCriteria: pulumi.Input<inputs.AwsCloudfrontDistributionV2OriginGroupFailoverCriteria>;
+    members: pulumi.Input<pulumi.Input<inputs.AwsCloudfrontDistributionV2OriginGroupMember>[]>;
+    originId: pulumi.Input<string>;
+}
+
+export interface AwsCloudfrontDistributionV2OriginGroupFailoverCriteria {
+    statusCodes: pulumi.Input<pulumi.Input<number>[]>;
+}
+
+export interface AwsCloudfrontDistributionV2OriginGroupMember {
+    originId: pulumi.Input<string>;
+}
+
+export interface AwsCloudfrontDistributionV2OriginOriginShield {
+    enabled: pulumi.Input<boolean>;
+    originShieldRegion: pulumi.Input<string>;
+}
+
+export interface AwsCloudfrontDistributionV2Restrictions {
+    geoRestriction: pulumi.Input<inputs.AwsCloudfrontDistributionV2RestrictionsGeoRestriction>;
+}
+
+export interface AwsCloudfrontDistributionV2RestrictionsGeoRestriction {
+    locations?: pulumi.Input<pulumi.Input<string>[]>;
+    restrictionType: pulumi.Input<string>;
+}
+
+export interface AwsCloudfrontDistributionV2ViewerCertificate {
+    acmCertificateArn?: pulumi.Input<string>;
+    cloudfrontDefaultCertificate?: pulumi.Input<boolean>;
+    iamCertificateId?: pulumi.Input<string>;
+    /**
+     * Defaults to `TLSv1.2_2021`.
+     */
+    minimumProtocolVersion?: pulumi.Input<string>;
+    /**
+     * Defaults to `sni-only`.
+     */
+    sslSupportMethod?: pulumi.Input<string>;
+}
+
 export interface AwsCloudfrontDistributionViewerCertificate {
     acmCertificateArn?: pulumi.Input<string>;
     cloudfrontDefaultCertificate?: pulumi.Input<boolean>;
@@ -990,6 +1229,28 @@ export interface AwsLaunchTemplateBlockDeviceMappingEbs {
     volumeType?: pulumi.Input<string>;
 }
 
+export interface AwsLaunchTemplateInstanceRequirements {
+    allowedInstanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Block describing the minimum and maximum amount of memory (MiB). It is a required field when allowed*instance*types is set
+     */
+    memoryMib?: pulumi.Input<inputs.AwsLaunchTemplateInstanceRequirementsMemoryMib>;
+    /**
+     * Block describing the minimum and maximum number of vCPUs. It is a required field when allowed*instance*types is set
+     */
+    vcpuCount?: pulumi.Input<inputs.AwsLaunchTemplateInstanceRequirementsVcpuCount>;
+}
+
+export interface AwsLaunchTemplateInstanceRequirementsMemoryMib {
+    max: pulumi.Input<number>;
+    min: pulumi.Input<number>;
+}
+
+export interface AwsLaunchTemplateInstanceRequirementsVcpuCount {
+    max: pulumi.Input<number>;
+    min: pulumi.Input<number>;
+}
+
 export interface AwsLbListenerRuleAction {
     /**
      * Information for creating an authenticate action using Cognito. Required if `type` is `authenticate-cognito`.
@@ -1332,6 +1593,124 @@ export interface AwsLoadBalancerTag {
     value: pulumi.Input<string>;
 }
 
+export interface AwsMqBrokerConfiguration {
+    /**
+     * Configuration ID.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * Configuration revision.
+     */
+    revision: pulumi.Input<number>;
+}
+
+export interface AwsMqBrokerEncryptionOptions {
+    /**
+     * KMS Key ID for encryption.
+     */
+    kmsKeyId?: pulumi.Input<string>;
+    /**
+     * Whether to use AWS owned key. Defaults to `true`.
+     */
+    useAwsOwnedKey?: pulumi.Input<boolean>;
+}
+
+export interface AwsMqBrokerLdapServerMetadata {
+    /**
+     * List of LDAP hosts.
+     */
+    hosts: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * LDAP role base.
+     */
+    roleBase: pulumi.Input<string>;
+    /**
+     * LDAP role name.
+     */
+    roleName: pulumi.Input<string>;
+    /**
+     * LDAP role search matching.
+     */
+    roleSearchMatching: pulumi.Input<string>;
+    /**
+     * LDAP role search subtree.
+     */
+    roleSearchSubtree: pulumi.Input<boolean>;
+    /**
+     * LDAP service account password.
+     */
+    serviceAccountPassword: pulumi.Input<string>;
+    /**
+     * LDAP service account username.
+     */
+    serviceAccountUsername: pulumi.Input<string>;
+    /**
+     * LDAP user base.
+     */
+    userBase: pulumi.Input<string>;
+    /**
+     * LDAP user role name.
+     */
+    userRoleName: pulumi.Input<string>;
+    /**
+     * LDAP user search matching.
+     */
+    userSearchMatching: pulumi.Input<string>;
+    /**
+     * LDAP user search subtree.
+     */
+    userSearchSubtree: pulumi.Input<boolean>;
+}
+
+export interface AwsMqBrokerLogs {
+    /**
+     * Enable audit logging (not applicable for RabbitMQ).
+     */
+    audit?: pulumi.Input<boolean>;
+    /**
+     * Enable general logging.
+     */
+    general: pulumi.Input<boolean>;
+}
+
+export interface AwsMqBrokerMaintenanceWindow {
+    /**
+     * Day of week for maintenance window.
+     */
+    dayOfWeek: pulumi.Input<string>;
+    /**
+     * Time of day for maintenance window. 24 hours format
+     */
+    timeOfDay: pulumi.Input<string>;
+    /**
+     * Time zone for maintenance window.
+     */
+    timeZone: pulumi.Input<string>;
+}
+
+export interface AwsMqBrokerUser {
+    /**
+     * Defaults to `false`.
+     */
+    consoleAccess?: pulumi.Input<boolean>;
+    /**
+     * Groups to which the user belongs.
+     */
+    groups?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The password.
+     */
+    password: pulumi.Input<string>;
+    /**
+     * Defaults to `false`.
+     */
+    replicationUser?: pulumi.Input<boolean>;
+    /**
+     * The username.
+     */
+    userName: pulumi.Input<string>;
+}
+
 export interface AwsMwaaEnvironmentLastUpdated {
     createdAt?: pulumi.Input<string>;
     errors?: pulumi.Input<pulumi.Input<inputs.AwsMwaaEnvironmentLastUpdatedError>[]>;
@@ -1390,6 +1769,15 @@ export interface AwsSqsQueueDeadLetterQueueConfiguration {
 export interface AwsTargetGroupAttributesAttribute {
     key?: pulumi.Input<string>;
     value?: pulumi.Input<string>;
+}
+
+export interface AwsTargetGroupTargetRegisterTarget {
+    availabilityZone?: pulumi.Input<string>;
+    /**
+     * The ID of the target. If the target type of the target group is INSTANCE, this is an instance ID. If the target type is IP , this is an IP address. If the target type is LAMBDA, this is the ARN of the Lambda function. If the target type is ALB, this is the ARN of the Application Load Balancer.
+     */
+    id: pulumi.Input<string>;
+    port?: pulumi.Input<number>;
 }
 
 export interface AwsTimestreamwriteDatabaseAllTag {
@@ -2086,7 +2474,7 @@ export interface DuploServiceLbconfigsLbconfig {
      */
     allowGlobalAccess?: pulumi.Input<boolean>;
     /**
-     * The number of seconds to wait for the backend to send a response. Must be at least 1. Applicable only for GCP.
+     * The number of seconds to wait for the backend to send a response. Must be at least 1. Applicable only for GCP. Enable setIngressHealthCheck when using this field
      */
     backendConfigTimeoutSec?: pulumi.Input<number>;
     /**
@@ -2109,6 +2497,12 @@ export interface DuploServiceLbconfigsLbconfig {
      * The DNS name of the cloud load balancer (if applicable).
      */
     dnsName?: pulumi.Input<string>;
+    /**
+     * Allocate Elastic IP to load balancer, which is configured under plan configuration.
+     *
+     * Note: This field can only be set for non internal lbtype NLB(6)
+     */
+    eipAllocations?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The frontend port associated with this load balancer configuration. Required if `lbType` is not `7`.
      */
@@ -2341,11 +2735,11 @@ export interface EcsServiceLoadBalancer {
      */
     externalPort: pulumi.Input<number>;
     /**
-     * Health check configuration for this load balancer.
+     * Health check configuration for this load balancer. Not applicable for NLB
      */
     healthCheckConfig?: pulumi.Input<inputs.EcsServiceLoadBalancerHealthCheckConfig>;
     /**
-     * The health check URL to associate with this load balancer configuration.
+     * The health check URL to associate with this load balancer configuration. Not applicable for NLB
      */
     healthCheckUrl?: pulumi.Input<string>;
     /**
@@ -2371,6 +2765,7 @@ export interface EcsServiceLoadBalancer {
      *    - `0` : ELB (Classic Load Balancer)
      *    - `1` : ALB (Application Load Balancer)
      *    - `2` : Health-check Only (No Load Balancer)
+     *    - `6` : NLB (Network Load Balancer)
      */
     lbType: pulumi.Input<number>;
     /**
@@ -2403,6 +2798,10 @@ export interface EcsServiceLoadBalancer {
 export interface EcsServiceLoadBalancerHealthCheckConfig {
     grpcSuccessCode?: pulumi.Input<string>;
     healthCheckIntervalSeconds?: pulumi.Input<number>;
+    /**
+     * The port the load balancer uses when performing health checks on targets. If not specified, it will be treated as the traffic port.
+     */
+    healthCheckPort?: pulumi.Input<number>;
     healthCheckTimeoutSeconds?: pulumi.Input<number>;
     healthyThresholdCount?: pulumi.Input<number>;
     httpSuccessCode?: pulumi.Input<string>;
@@ -2498,6 +2897,44 @@ export interface GcpCloudFunctionHttpsTrigger {
      * The URL of the HTTPS trigger
      */
     url?: pulumi.Input<string>;
+}
+
+export interface GcpCloudTaskAppEngine {
+    /**
+     * The body of the HTTP request. This field is optional and can be used to send additional data in the request should be base64 encoded.
+     */
+    body: pulumi.Input<string>;
+    /**
+     * A map of HTTP headers to include in the request. Each key is a header name, and each value is the corresponding header value.
+     */
+    headers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The HTTP method to use for the request. Must be one of: `POST`, `PUT`, `PATCH`.
+     */
+    method: pulumi.Input<string>;
+    /**
+     * Specify the relative URL path to which the HTTP request will be sent when the Cloud Tasks queue triggers the App Engine target.
+     */
+    relativeUri: pulumi.Input<string>;
+}
+
+export interface GcpCloudTaskHttpTarget {
+    /**
+     * The body of the HTTP request. This field is required and must be base64 string.
+     */
+    body?: pulumi.Input<string>;
+    /**
+     * A map of HTTP headers to include in the request. Each key is a header name, and each value is the corresponding header value.
+     */
+    headers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The HTTP method to use for the request. Must be one of: `POST`, `PUT`, `DELETE`, `PATCH`, `HEAD`.
+     */
+    method: pulumi.Input<string>;
+    /**
+     * Specify the endpoint URL to which the HTTP request will be sent when the Cloud Tasks queue triggers the HTTP target.
+     */
+    url: pulumi.Input<string>;
 }
 
 export interface GcpInfraMaintenanceWindowExclusion {
@@ -2632,6 +3069,148 @@ export interface GcpNodePoolUpgradeSettingBlueGreenSettingStandardRolloutPolicy 
     batchSoakDuration?: pulumi.Input<string>;
 }
 
+export interface GcpPubsubSubscriptionBigQuery {
+    /**
+     * When true and use*topic*schema or use*table*schema is true, any fields that are a part of the topic schema or message schema that are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription's backlog Defaults to `false`.
+     */
+    dropUnknownFields?: pulumi.Input<boolean>;
+    /**
+     * The service account to use to write to BigQuery. If not specified, the Pub/Sub service agent, service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+     */
+    serviceAccountEmail?: pulumi.Input<string>;
+    /**
+     * An output-only field that indicates whether or not the subscription can receive messages.
+     */
+    state?: pulumi.Input<string>;
+    /**
+     * The name of the table to which to write data.
+     */
+    table: pulumi.Input<string>;
+    /**
+     * When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to additional columns in the table. Defaults to `false`.
+     */
+    useTableSchema?: pulumi.Input<boolean>;
+    /**
+     * When true, use the topic's schema as the columns to write to in BigQuery, if it exists. Only one of use*topic*schema and use*table*schema can be set. Defaults to `false`.
+     */
+    useTopicSchema?: pulumi.Input<boolean>;
+    /**
+     * When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output. Defaults to `false`.
+     */
+    writeMetadata?: pulumi.Input<boolean>;
+}
+
+export interface GcpPubsubSubscriptionCloudStorageConfig {
+    avroConfig?: pulumi.Input<inputs.GcpPubsubSubscriptionCloudStorageConfigAvroConfig>;
+    /**
+     * User-provided name for the Cloud Storage bucket. The bucket must be created by the user. The bucket name must be without any prefix like 'gs://'.
+     */
+    bucket: pulumi.Input<string>;
+    /**
+     * User-provided format string specifying how to represent datetimes in Cloud Storage filenames
+     */
+    filenameDatetimeFormat?: pulumi.Input<string>;
+    /**
+     * User-provided prefix for Cloud Storage filename.
+     */
+    filenamePrefix?: pulumi.Input<string>;
+    /**
+     * User-provided suffix for Cloud Storage filename. Must not end in '/'.
+     */
+    filenameSuffix?: pulumi.Input<string>;
+    /**
+     * The maximum bytes that can be written to a Cloud Storage file before a new file is created. Min 1 KB, max 10 GiB. The maxBytes limit may be exceeded in cases where messages are larger than the limit.
+     */
+    maxBytes?: pulumi.Input<number>;
+    /**
+     * The maximum duration that can elapse before a new Cloud Storage file is created. Min 1 minute, max 10 minutes, default 5 minutes. May not exceed the subscription's acknowledgement deadline Defaults to `300s`.
+     */
+    maxDuration?: pulumi.Input<string>;
+    /**
+     * The maximum messages that can be written to a Cloud Storage file before a new file is created. Min 1000 messages. Defaults to `1000`.
+     */
+    maxMessages?: pulumi.Input<number>;
+    /**
+     * The service account to use to write to BigQuery. If not specified, the Pub/Sub service agent, service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+     */
+    serviceAccountEmail?: pulumi.Input<string>;
+    /**
+     * An output-only field that indicates whether or not the subscription can receive messages.
+     */
+    state?: pulumi.Input<string>;
+}
+
+export interface GcpPubsubSubscriptionCloudStorageConfigAvroConfig {
+    /**
+     * When true, the output Cloud Storage file will be serialized using the topic schema, if it exists. Defaults to `false`.
+     */
+    useTopicSchema?: pulumi.Input<boolean>;
+    /**
+     * When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output. Defaults to `false`.
+     */
+    writeMetadata?: pulumi.Input<boolean>;
+}
+
+export interface GcpPubsubSubscriptionDeadLetterPolicy {
+    /**
+     * The name of the topic to which dead letter messages should be published.
+     */
+    deadLetterTopic?: pulumi.Input<string>;
+    /**
+     * The maximum number of delivery attempts for any message. The value must be between 5 and 100. The number of delivery attempts is defined as 1 + (the sum of number of NACKs and number of times the acknowledgement deadline has been exceeded for the message) Defaults to `5`.
+     */
+    maxDeliveryAttempts?: pulumi.Input<number>;
+}
+
+export interface GcpPubsubSubscriptionExpirationPolicy {
+    /**
+     * Specifies the 'time-to-live' duration for an associated resource. The resource expires if it is not active for a period of ttl. If ttl is empty string, the associated resource never expires.  A duration in seconds with up to nine fractional digits, terminated by 's'. Example - '3.5s'.
+     */
+    ttl: pulumi.Input<string>;
+}
+
+export interface GcpPubsubSubscriptionPushConfig {
+    attributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * When set, the payload to the push endpoint is not wrapped
+     */
+    noWrapper?: pulumi.Input<inputs.GcpPubsubSubscriptionPushConfigNoWrapper>;
+    oidcToken?: pulumi.Input<inputs.GcpPubsubSubscriptionPushConfigOidcToken>;
+    /**
+     * URL to which the Pub/Sub system should send messages for a push subscription. When a message is published to the topic, Pub/Sub will automatically send the message as an HTTP POST request to this specified endpoint.
+     */
+    pushEndpoint: pulumi.Input<string>;
+}
+
+export interface GcpPubsubSubscriptionPushConfigNoWrapper {
+    /**
+     * When true, writes the Pub/Sub message metadata to x-goog-pubsub-\n\n:\n\n headers of the HTTP request. Writes the Pub/Sub message attributes to \n\n:\n\n headers of the HTTP request.
+     */
+    writeMetadata: pulumi.Input<boolean>;
+}
+
+export interface GcpPubsubSubscriptionPushConfigOidcToken {
+    /**
+     * Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string. Defaults to `false`.
+     */
+    audience?: pulumi.Input<string>;
+    /**
+     * Service account email to be used for generating the OIDC token.
+     */
+    serviceAccountEmail: pulumi.Input<string>;
+}
+
+export interface GcpPubsubSubscriptionRetryPolicy {
+    /**
+     * The maximum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 600 seconds. Defaults to `600s`.
+     */
+    maximumBackoff?: pulumi.Input<string>;
+    /**
+     * The minimum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 10 seconds Defaults to `10s`.
+     */
+    minimumBackoff?: pulumi.Input<string>;
+}
+
 export interface GcpSchedulerJobAppEngineTarget {
     /**
      * The HTTP request body to send.
@@ -2755,6 +3334,17 @@ export interface GcpSqlDatabaseInstanceDatabaseFlag {
      * The value of the database flag.
      */
     value: pulumi.Input<string>;
+}
+
+export interface GcpSqlDatabaseInstanceIpConfiguration {
+    /**
+     * Whether SSL is required for the database instance. Applicable for server database
+     */
+    requireSsl?: pulumi.Input<boolean>;
+    /**
+     * SSL mode for the database instance. Valid values are `ALLOW_UNENCRYPTED_AND_ENCRYPTED`, `ENCRYPTED_ONLY`, `TRUSTED_CLIENT_CERTIFICATE_REQUIRED`
+     */
+    sslMode?: pulumi.Input<string>;
 }
 
 export interface GcpStorageBucketV2DefaultEncryption {
@@ -3245,6 +3835,45 @@ export interface K8IngressTl {
      * The name of the secret used to terminate TLS traffic on port 443. This field is optional, enabling TLS routing based solely on the SNI hostname. If the SNI host in a listener conflicts with the 'Host' header in an IngressRule, the SNI host is used for termination, while the 'Host' header value is used for routing.
      */
     secretName: pulumi.Input<string>;
+}
+
+export interface K8OciRepositorySpec {
+    /**
+     * The interval associated to oci repository Defaults to `5m0s`.
+     */
+    interval?: pulumi.Input<string>;
+    /**
+     * The media type of oci repository to be attached. Accepted media type is
+     * 'application/vnd.cncf.helm.config.v1+json
+     * application/vnd.cncf.helm.chart.content.v1.tar+gzip
+     * application/vnd.oci.image.layer.v1.tar+gzip
+     * application/vnd.oci.image.config.v1.+json
+     * any other mediatype can be specified other than above ones
+     */
+    mediaType?: pulumi.Input<string>;
+    /**
+     * The operation of oci repository to be attached
+     */
+    operation?: pulumi.Input<string>;
+    /**
+     * Select the `dockerconfigjson` secret created from Kubernetes Secret to authenticate to OCI registry.
+     */
+    privateRegistrySecret?: pulumi.Input<string>;
+    /**
+     * The ref of oci repository to be attached
+     */
+    ref?: pulumi.Input<inputs.K8OciRepositorySpecRef>;
+    /**
+     * The url of oci repository to be attached
+     */
+    url: pulumi.Input<string>;
+}
+
+export interface K8OciRepositorySpecRef {
+    /**
+     * The tag of oci repository to be attached Defaults to `latest`.
+     */
+    tag?: pulumi.Input<string>;
 }
 
 export interface K8PersistentVolumeClaimSpec {
@@ -9942,6 +10571,17 @@ export interface RdsInstancePerformanceInsights {
     retentionPeriod?: pulumi.Input<number>;
 }
 
+export interface RdsInstanceStorageAutoscaling {
+    /**
+     * Whether to enable storage autoscaling for the RDS instance. When enabled, the storage size can automatically increase up to the specified max_allocated_storage.
+     */
+    enable?: pulumi.Input<boolean>;
+    /**
+     * The upper limit, in gibibytes (GiB), to which Amazon RDS can automatically scale the storage of the DB instance when autoscaling is enabled.
+     */
+    maxAllocatedStorage?: pulumi.Input<number>;
+}
+
 export interface RdsInstanceV2ScalingConfiguration {
     /**
      * Specifies max scaling capacity.
@@ -10022,6 +10662,40 @@ export interface S3BucketTag {
     value: pulumi.Input<string>;
 }
 
+export interface S3EventNotificationEvent {
+    /**
+     * The configuration ID of the S3 event notification.
+     */
+    configurationId?: pulumi.Input<string>;
+    /**
+     * The ARN of the specified destination type.
+     */
+    destinationArn: pulumi.Input<string>;
+    /**
+     * The fully qualified duplo name of specified destination type.
+     */
+    destinationName?: pulumi.Input<string>;
+    /**
+     * The type of destination where event notification to be published.
+     */
+    destinationType: pulumi.Input<string>;
+    /**
+     * Event types:
+     * 		's3:TestEvent'\n\n
+     * 		's3:ObjectCreated:*'\n\n
+     * 		's3:ObjectCreated:Put'\n\n
+     * 		's3:ObjectCreated:Post'\n\n
+     * 		's3:ObjectCreated:Copy'\n\n
+     * 		's3:ObjectCreated:CompleteMultipartUpload'\n\n
+     * 		's3:ObjectRemoved:*'\n\n
+     * 		's3:ObjectRemoved:Delete'\n\n
+     * 		's3:ObjectRemoved:DeleteMarkerCreated'\n\n
+     * 		's3:ObjectRestore:*'\n\n
+     * 		's3:ObjectRestore:Post'\n\n
+     */
+    eventTypes: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface TenantConfigMetadata {
     key: pulumi.Input<string>;
     value: pulumi.Input<string>;
@@ -10035,7 +10709,7 @@ export interface TenantConfigSetting {
 export interface TenantKmsKm {
     arn: pulumi.Input<string>;
     /**
-     * The ID of this resource.
+     * The ID of the KMS key.
      */
     id: pulumi.Input<string>;
     name: pulumi.Input<string>;
@@ -10043,6 +10717,9 @@ export interface TenantKmsKm {
 
 export interface TenantKmsUnspecifiedKmsKey {
     arn?: pulumi.Input<string>;
+    /**
+     * The ID of the KMS key.
+     */
     id?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
 }

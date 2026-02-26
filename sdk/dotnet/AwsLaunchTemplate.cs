@@ -64,6 +64,32 @@ namespace DuploCloud.Pulumi
     ///         },
     ///     });
     /// 
+    ///     var template = new Pulumi.AwsLaunchTemplate("template", new()
+    ///     {
+    ///         TenantId = myapp.TenantId,
+    ///         Name = "launch-template-name",
+    ///         VersionDescription = "launch template block device mapping",
+    ///         Version = "3",
+    ///         InstanceRequirements = new Pulumi.Inputs.AwsLaunchTemplateInstanceRequirementsArgs
+    ///         {
+    ///             AllowedInstanceTypes = new[]
+    ///             {
+    ///                 "t3a.*",
+    ///                 "c5.*",
+    ///             },
+    ///             VcpuCount = new Pulumi.Inputs.AwsLaunchTemplateInstanceRequirementsVcpuCountArgs
+    ///             {
+    ///                 Min = 0,
+    ///                 Max = 2,
+    ///             },
+    ///             MemoryMib = new Pulumi.Inputs.AwsLaunchTemplateInstanceRequirementsMemoryMibArgs
+    ///             {
+    ///                 Min = 4096,
+    ///                 Max = 5120,
+    ///             },
+    ///         },
+    ///     });
+    /// 
     /// });
     /// ```
     /// 
@@ -103,10 +129,16 @@ namespace DuploCloud.Pulumi
         public Output<string> DefaultVersion { get; private set; } = null!;
 
         /// <summary>
+        /// Whether to manage instance requirements instead of a specific instance type
+        /// </summary>
+        [Output("instanceRequirements")]
+        public Output<Outputs.AwsLaunchTemplateInstanceRequirements?> InstanceRequirements { get; private set; } = null!;
+
+        /// <summary>
         /// Asg instance type to be used to update the version from the current version
         /// </summary>
         [Output("instanceType")]
-        public Output<string> InstanceType { get; private set; } = null!;
+        public Output<string?> InstanceType { get; private set; } = null!;
 
         /// <summary>
         /// The latest launch template version
@@ -207,6 +239,12 @@ namespace DuploCloud.Pulumi
         }
 
         /// <summary>
+        /// Whether to manage instance requirements instead of a specific instance type
+        /// </summary>
+        [Input("instanceRequirements")]
+        public Input<Inputs.AwsLaunchTemplateInstanceRequirementsArgs>? InstanceRequirements { get; set; }
+
+        /// <summary>
         /// Asg instance type to be used to update the version from the current version
         /// </summary>
         [Input("instanceType")]
@@ -267,6 +305,12 @@ namespace DuploCloud.Pulumi
         /// </summary>
         [Input("defaultVersion")]
         public Input<string>? DefaultVersion { get; set; }
+
+        /// <summary>
+        /// Whether to manage instance requirements instead of a specific instance type
+        /// </summary>
+        [Input("instanceRequirements")]
+        public Input<Inputs.AwsLaunchTemplateInstanceRequirementsGetArgs>? InstanceRequirements { get; set; }
 
         /// <summary>
         /// Asg instance type to be used to update the version from the current version

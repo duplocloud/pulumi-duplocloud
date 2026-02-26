@@ -6844,6 +6844,3436 @@ func (o AwsCloudfrontDistributionRestrictionsGeoRestrictionPtrOutput) Restrictio
 	}).(pulumi.StringPtrOutput)
 }
 
+type AwsCloudfrontDistributionV2CustomErrorResponse struct {
+	ErrorCachingMinTtl *int    `pulumi:"errorCachingMinTtl"`
+	ErrorCode          int     `pulumi:"errorCode"`
+	ResponseCode       *int    `pulumi:"responseCode"`
+	ResponsePagePath   *string `pulumi:"responsePagePath"`
+}
+
+// AwsCloudfrontDistributionV2CustomErrorResponseInput is an input type that accepts AwsCloudfrontDistributionV2CustomErrorResponseArgs and AwsCloudfrontDistributionV2CustomErrorResponseOutput values.
+// You can construct a concrete instance of `AwsCloudfrontDistributionV2CustomErrorResponseInput` via:
+//
+//	AwsCloudfrontDistributionV2CustomErrorResponseArgs{...}
+type AwsCloudfrontDistributionV2CustomErrorResponseInput interface {
+	pulumi.Input
+
+	ToAwsCloudfrontDistributionV2CustomErrorResponseOutput() AwsCloudfrontDistributionV2CustomErrorResponseOutput
+	ToAwsCloudfrontDistributionV2CustomErrorResponseOutputWithContext(context.Context) AwsCloudfrontDistributionV2CustomErrorResponseOutput
+}
+
+type AwsCloudfrontDistributionV2CustomErrorResponseArgs struct {
+	ErrorCachingMinTtl pulumi.IntPtrInput    `pulumi:"errorCachingMinTtl"`
+	ErrorCode          pulumi.IntInput       `pulumi:"errorCode"`
+	ResponseCode       pulumi.IntPtrInput    `pulumi:"responseCode"`
+	ResponsePagePath   pulumi.StringPtrInput `pulumi:"responsePagePath"`
+}
+
+func (AwsCloudfrontDistributionV2CustomErrorResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsCloudfrontDistributionV2CustomErrorResponse)(nil)).Elem()
+}
+
+func (i AwsCloudfrontDistributionV2CustomErrorResponseArgs) ToAwsCloudfrontDistributionV2CustomErrorResponseOutput() AwsCloudfrontDistributionV2CustomErrorResponseOutput {
+	return i.ToAwsCloudfrontDistributionV2CustomErrorResponseOutputWithContext(context.Background())
+}
+
+func (i AwsCloudfrontDistributionV2CustomErrorResponseArgs) ToAwsCloudfrontDistributionV2CustomErrorResponseOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2CustomErrorResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCloudfrontDistributionV2CustomErrorResponseOutput)
+}
+
+// AwsCloudfrontDistributionV2CustomErrorResponseArrayInput is an input type that accepts AwsCloudfrontDistributionV2CustomErrorResponseArray and AwsCloudfrontDistributionV2CustomErrorResponseArrayOutput values.
+// You can construct a concrete instance of `AwsCloudfrontDistributionV2CustomErrorResponseArrayInput` via:
+//
+//	AwsCloudfrontDistributionV2CustomErrorResponseArray{ AwsCloudfrontDistributionV2CustomErrorResponseArgs{...} }
+type AwsCloudfrontDistributionV2CustomErrorResponseArrayInput interface {
+	pulumi.Input
+
+	ToAwsCloudfrontDistributionV2CustomErrorResponseArrayOutput() AwsCloudfrontDistributionV2CustomErrorResponseArrayOutput
+	ToAwsCloudfrontDistributionV2CustomErrorResponseArrayOutputWithContext(context.Context) AwsCloudfrontDistributionV2CustomErrorResponseArrayOutput
+}
+
+type AwsCloudfrontDistributionV2CustomErrorResponseArray []AwsCloudfrontDistributionV2CustomErrorResponseInput
+
+func (AwsCloudfrontDistributionV2CustomErrorResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AwsCloudfrontDistributionV2CustomErrorResponse)(nil)).Elem()
+}
+
+func (i AwsCloudfrontDistributionV2CustomErrorResponseArray) ToAwsCloudfrontDistributionV2CustomErrorResponseArrayOutput() AwsCloudfrontDistributionV2CustomErrorResponseArrayOutput {
+	return i.ToAwsCloudfrontDistributionV2CustomErrorResponseArrayOutputWithContext(context.Background())
+}
+
+func (i AwsCloudfrontDistributionV2CustomErrorResponseArray) ToAwsCloudfrontDistributionV2CustomErrorResponseArrayOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2CustomErrorResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCloudfrontDistributionV2CustomErrorResponseArrayOutput)
+}
+
+type AwsCloudfrontDistributionV2CustomErrorResponseOutput struct{ *pulumi.OutputState }
+
+func (AwsCloudfrontDistributionV2CustomErrorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsCloudfrontDistributionV2CustomErrorResponse)(nil)).Elem()
+}
+
+func (o AwsCloudfrontDistributionV2CustomErrorResponseOutput) ToAwsCloudfrontDistributionV2CustomErrorResponseOutput() AwsCloudfrontDistributionV2CustomErrorResponseOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2CustomErrorResponseOutput) ToAwsCloudfrontDistributionV2CustomErrorResponseOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2CustomErrorResponseOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2CustomErrorResponseOutput) ErrorCachingMinTtl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2CustomErrorResponse) *int { return v.ErrorCachingMinTtl }).(pulumi.IntPtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2CustomErrorResponseOutput) ErrorCode() pulumi.IntOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2CustomErrorResponse) int { return v.ErrorCode }).(pulumi.IntOutput)
+}
+
+func (o AwsCloudfrontDistributionV2CustomErrorResponseOutput) ResponseCode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2CustomErrorResponse) *int { return v.ResponseCode }).(pulumi.IntPtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2CustomErrorResponseOutput) ResponsePagePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2CustomErrorResponse) *string { return v.ResponsePagePath }).(pulumi.StringPtrOutput)
+}
+
+type AwsCloudfrontDistributionV2CustomErrorResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AwsCloudfrontDistributionV2CustomErrorResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AwsCloudfrontDistributionV2CustomErrorResponse)(nil)).Elem()
+}
+
+func (o AwsCloudfrontDistributionV2CustomErrorResponseArrayOutput) ToAwsCloudfrontDistributionV2CustomErrorResponseArrayOutput() AwsCloudfrontDistributionV2CustomErrorResponseArrayOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2CustomErrorResponseArrayOutput) ToAwsCloudfrontDistributionV2CustomErrorResponseArrayOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2CustomErrorResponseArrayOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2CustomErrorResponseArrayOutput) Index(i pulumi.IntInput) AwsCloudfrontDistributionV2CustomErrorResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AwsCloudfrontDistributionV2CustomErrorResponse {
+		return vs[0].([]AwsCloudfrontDistributionV2CustomErrorResponse)[vs[1].(int)]
+	}).(AwsCloudfrontDistributionV2CustomErrorResponseOutput)
+}
+
+type AwsCloudfrontDistributionV2DefaultCacheBehavior struct {
+	AllowedMethods []string `pulumi:"allowedMethods"`
+	// \n\n
+	// | Policy name                                                                                                                                                                                  | Policy Id                            |
+	// |----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------|
+	// | Amplify                                                | 2e54312d-136d-493c-8eb9-b001f22f67d2 |
+	// | CachingDisabled                               | 4135ea2d-6df8-44a3-9df3-4b5a84be39ad |
+	// | CachingOptimized                                    | 658327ea-f89d-4fab-a63d-7e88639e58f6 |
+	// | CachingOptimizedForUncompressedObjects | b2884449-e4de-46a7-ac36-70bc7f1ddd6d |
+	// | Elemental-MediaPackage                            | 08627262-05a9-4f76-9ded-b50ca2e3a84f |
+	// \n\n
+	CachePolicyId *string  `pulumi:"cachePolicyId"`
+	CachedMethods []string `pulumi:"cachedMethods"`
+	// Defaults to `false`.
+	Compress *bool `pulumi:"compress"`
+	// default time to live: Not required when cache*policy*id is set
+	DefaultTtl                 *int                                                                       `pulumi:"defaultTtl"`
+	FieldLevelEncryptionId     *string                                                                    `pulumi:"fieldLevelEncryptionId"`
+	ForwardedValues            *AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValues            `pulumi:"forwardedValues"`
+	FunctionAssociations       []AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociation       `pulumi:"functionAssociations"`
+	LambdaFunctionAssociations []AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociation `pulumi:"lambdaFunctionAssociations"`
+	// Maximum time to live: Not required when cache*policy*id is set
+	MaxTtl *int `pulumi:"maxTtl"`
+	// Minimum time to live: Not required when cache*policy*id is set Defaults to `0`.
+	MinTtl                  *int     `pulumi:"minTtl"`
+	OriginRequestPolicyId   *string  `pulumi:"originRequestPolicyId"`
+	RealtimeLogConfigArn    *string  `pulumi:"realtimeLogConfigArn"`
+	ResponseHeadersPolicyId *string  `pulumi:"responseHeadersPolicyId"`
+	SmoothStreaming         *bool    `pulumi:"smoothStreaming"`
+	TargetOriginId          string   `pulumi:"targetOriginId"`
+	TrustedKeyGroups        []string `pulumi:"trustedKeyGroups"`
+	TrustedSigners          []string `pulumi:"trustedSigners"`
+	ViewerProtocolPolicy    string   `pulumi:"viewerProtocolPolicy"`
+}
+
+// AwsCloudfrontDistributionV2DefaultCacheBehaviorInput is an input type that accepts AwsCloudfrontDistributionV2DefaultCacheBehaviorArgs and AwsCloudfrontDistributionV2DefaultCacheBehaviorOutput values.
+// You can construct a concrete instance of `AwsCloudfrontDistributionV2DefaultCacheBehaviorInput` via:
+//
+//	AwsCloudfrontDistributionV2DefaultCacheBehaviorArgs{...}
+type AwsCloudfrontDistributionV2DefaultCacheBehaviorInput interface {
+	pulumi.Input
+
+	ToAwsCloudfrontDistributionV2DefaultCacheBehaviorOutput() AwsCloudfrontDistributionV2DefaultCacheBehaviorOutput
+	ToAwsCloudfrontDistributionV2DefaultCacheBehaviorOutputWithContext(context.Context) AwsCloudfrontDistributionV2DefaultCacheBehaviorOutput
+}
+
+type AwsCloudfrontDistributionV2DefaultCacheBehaviorArgs struct {
+	AllowedMethods pulumi.StringArrayInput `pulumi:"allowedMethods"`
+	// \n\n
+	// | Policy name                                                                                                                                                                                  | Policy Id                            |
+	// |----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------|
+	// | Amplify                                                | 2e54312d-136d-493c-8eb9-b001f22f67d2 |
+	// | CachingDisabled                               | 4135ea2d-6df8-44a3-9df3-4b5a84be39ad |
+	// | CachingOptimized                                    | 658327ea-f89d-4fab-a63d-7e88639e58f6 |
+	// | CachingOptimizedForUncompressedObjects | b2884449-e4de-46a7-ac36-70bc7f1ddd6d |
+	// | Elemental-MediaPackage                            | 08627262-05a9-4f76-9ded-b50ca2e3a84f |
+	// \n\n
+	CachePolicyId pulumi.StringPtrInput   `pulumi:"cachePolicyId"`
+	CachedMethods pulumi.StringArrayInput `pulumi:"cachedMethods"`
+	// Defaults to `false`.
+	Compress pulumi.BoolPtrInput `pulumi:"compress"`
+	// default time to live: Not required when cache*policy*id is set
+	DefaultTtl                 pulumi.IntPtrInput                                                                 `pulumi:"defaultTtl"`
+	FieldLevelEncryptionId     pulumi.StringPtrInput                                                              `pulumi:"fieldLevelEncryptionId"`
+	ForwardedValues            AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesPtrInput             `pulumi:"forwardedValues"`
+	FunctionAssociations       AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationArrayInput       `pulumi:"functionAssociations"`
+	LambdaFunctionAssociations AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationArrayInput `pulumi:"lambdaFunctionAssociations"`
+	// Maximum time to live: Not required when cache*policy*id is set
+	MaxTtl pulumi.IntPtrInput `pulumi:"maxTtl"`
+	// Minimum time to live: Not required when cache*policy*id is set Defaults to `0`.
+	MinTtl                  pulumi.IntPtrInput      `pulumi:"minTtl"`
+	OriginRequestPolicyId   pulumi.StringPtrInput   `pulumi:"originRequestPolicyId"`
+	RealtimeLogConfigArn    pulumi.StringPtrInput   `pulumi:"realtimeLogConfigArn"`
+	ResponseHeadersPolicyId pulumi.StringPtrInput   `pulumi:"responseHeadersPolicyId"`
+	SmoothStreaming         pulumi.BoolPtrInput     `pulumi:"smoothStreaming"`
+	TargetOriginId          pulumi.StringInput      `pulumi:"targetOriginId"`
+	TrustedKeyGroups        pulumi.StringArrayInput `pulumi:"trustedKeyGroups"`
+	TrustedSigners          pulumi.StringArrayInput `pulumi:"trustedSigners"`
+	ViewerProtocolPolicy    pulumi.StringInput      `pulumi:"viewerProtocolPolicy"`
+}
+
+func (AwsCloudfrontDistributionV2DefaultCacheBehaviorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsCloudfrontDistributionV2DefaultCacheBehavior)(nil)).Elem()
+}
+
+func (i AwsCloudfrontDistributionV2DefaultCacheBehaviorArgs) ToAwsCloudfrontDistributionV2DefaultCacheBehaviorOutput() AwsCloudfrontDistributionV2DefaultCacheBehaviorOutput {
+	return i.ToAwsCloudfrontDistributionV2DefaultCacheBehaviorOutputWithContext(context.Background())
+}
+
+func (i AwsCloudfrontDistributionV2DefaultCacheBehaviorArgs) ToAwsCloudfrontDistributionV2DefaultCacheBehaviorOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2DefaultCacheBehaviorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCloudfrontDistributionV2DefaultCacheBehaviorOutput)
+}
+
+func (i AwsCloudfrontDistributionV2DefaultCacheBehaviorArgs) ToAwsCloudfrontDistributionV2DefaultCacheBehaviorPtrOutput() AwsCloudfrontDistributionV2DefaultCacheBehaviorPtrOutput {
+	return i.ToAwsCloudfrontDistributionV2DefaultCacheBehaviorPtrOutputWithContext(context.Background())
+}
+
+func (i AwsCloudfrontDistributionV2DefaultCacheBehaviorArgs) ToAwsCloudfrontDistributionV2DefaultCacheBehaviorPtrOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2DefaultCacheBehaviorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCloudfrontDistributionV2DefaultCacheBehaviorOutput).ToAwsCloudfrontDistributionV2DefaultCacheBehaviorPtrOutputWithContext(ctx)
+}
+
+// AwsCloudfrontDistributionV2DefaultCacheBehaviorPtrInput is an input type that accepts AwsCloudfrontDistributionV2DefaultCacheBehaviorArgs, AwsCloudfrontDistributionV2DefaultCacheBehaviorPtr and AwsCloudfrontDistributionV2DefaultCacheBehaviorPtrOutput values.
+// You can construct a concrete instance of `AwsCloudfrontDistributionV2DefaultCacheBehaviorPtrInput` via:
+//
+//	        AwsCloudfrontDistributionV2DefaultCacheBehaviorArgs{...}
+//
+//	or:
+//
+//	        nil
+type AwsCloudfrontDistributionV2DefaultCacheBehaviorPtrInput interface {
+	pulumi.Input
+
+	ToAwsCloudfrontDistributionV2DefaultCacheBehaviorPtrOutput() AwsCloudfrontDistributionV2DefaultCacheBehaviorPtrOutput
+	ToAwsCloudfrontDistributionV2DefaultCacheBehaviorPtrOutputWithContext(context.Context) AwsCloudfrontDistributionV2DefaultCacheBehaviorPtrOutput
+}
+
+type awsCloudfrontDistributionV2DefaultCacheBehaviorPtrType AwsCloudfrontDistributionV2DefaultCacheBehaviorArgs
+
+func AwsCloudfrontDistributionV2DefaultCacheBehaviorPtr(v *AwsCloudfrontDistributionV2DefaultCacheBehaviorArgs) AwsCloudfrontDistributionV2DefaultCacheBehaviorPtrInput {
+	return (*awsCloudfrontDistributionV2DefaultCacheBehaviorPtrType)(v)
+}
+
+func (*awsCloudfrontDistributionV2DefaultCacheBehaviorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsCloudfrontDistributionV2DefaultCacheBehavior)(nil)).Elem()
+}
+
+func (i *awsCloudfrontDistributionV2DefaultCacheBehaviorPtrType) ToAwsCloudfrontDistributionV2DefaultCacheBehaviorPtrOutput() AwsCloudfrontDistributionV2DefaultCacheBehaviorPtrOutput {
+	return i.ToAwsCloudfrontDistributionV2DefaultCacheBehaviorPtrOutputWithContext(context.Background())
+}
+
+func (i *awsCloudfrontDistributionV2DefaultCacheBehaviorPtrType) ToAwsCloudfrontDistributionV2DefaultCacheBehaviorPtrOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2DefaultCacheBehaviorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCloudfrontDistributionV2DefaultCacheBehaviorPtrOutput)
+}
+
+type AwsCloudfrontDistributionV2DefaultCacheBehaviorOutput struct{ *pulumi.OutputState }
+
+func (AwsCloudfrontDistributionV2DefaultCacheBehaviorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsCloudfrontDistributionV2DefaultCacheBehavior)(nil)).Elem()
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorOutput) ToAwsCloudfrontDistributionV2DefaultCacheBehaviorOutput() AwsCloudfrontDistributionV2DefaultCacheBehaviorOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorOutput) ToAwsCloudfrontDistributionV2DefaultCacheBehaviorOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2DefaultCacheBehaviorOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorOutput) ToAwsCloudfrontDistributionV2DefaultCacheBehaviorPtrOutput() AwsCloudfrontDistributionV2DefaultCacheBehaviorPtrOutput {
+	return o.ToAwsCloudfrontDistributionV2DefaultCacheBehaviorPtrOutputWithContext(context.Background())
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorOutput) ToAwsCloudfrontDistributionV2DefaultCacheBehaviorPtrOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2DefaultCacheBehaviorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsCloudfrontDistributionV2DefaultCacheBehavior) *AwsCloudfrontDistributionV2DefaultCacheBehavior {
+		return &v
+	}).(AwsCloudfrontDistributionV2DefaultCacheBehaviorPtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorOutput) AllowedMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2DefaultCacheBehavior) []string { return v.AllowedMethods }).(pulumi.StringArrayOutput)
+}
+
+// \n\n
+// | Policy name                                                                                                                                                                                  | Policy Id                            |
+// |----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------|
+// | Amplify                                                | 2e54312d-136d-493c-8eb9-b001f22f67d2 |
+// | CachingDisabled                               | 4135ea2d-6df8-44a3-9df3-4b5a84be39ad |
+// | CachingOptimized                                    | 658327ea-f89d-4fab-a63d-7e88639e58f6 |
+// | CachingOptimizedForUncompressedObjects | b2884449-e4de-46a7-ac36-70bc7f1ddd6d |
+// | Elemental-MediaPackage                            | 08627262-05a9-4f76-9ded-b50ca2e3a84f |
+// \n\n
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorOutput) CachePolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2DefaultCacheBehavior) *string { return v.CachePolicyId }).(pulumi.StringPtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorOutput) CachedMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2DefaultCacheBehavior) []string { return v.CachedMethods }).(pulumi.StringArrayOutput)
+}
+
+// Defaults to `false`.
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorOutput) Compress() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2DefaultCacheBehavior) *bool { return v.Compress }).(pulumi.BoolPtrOutput)
+}
+
+// default time to live: Not required when cache*policy*id is set
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorOutput) DefaultTtl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2DefaultCacheBehavior) *int { return v.DefaultTtl }).(pulumi.IntPtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorOutput) FieldLevelEncryptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2DefaultCacheBehavior) *string { return v.FieldLevelEncryptionId }).(pulumi.StringPtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorOutput) ForwardedValues() AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesPtrOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2DefaultCacheBehavior) *AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValues {
+		return v.ForwardedValues
+	}).(AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesPtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorOutput) FunctionAssociations() AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationArrayOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2DefaultCacheBehavior) []AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociation {
+		return v.FunctionAssociations
+	}).(AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationArrayOutput)
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorOutput) LambdaFunctionAssociations() AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationArrayOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2DefaultCacheBehavior) []AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociation {
+		return v.LambdaFunctionAssociations
+	}).(AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationArrayOutput)
+}
+
+// Maximum time to live: Not required when cache*policy*id is set
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorOutput) MaxTtl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2DefaultCacheBehavior) *int { return v.MaxTtl }).(pulumi.IntPtrOutput)
+}
+
+// Minimum time to live: Not required when cache*policy*id is set Defaults to `0`.
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorOutput) MinTtl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2DefaultCacheBehavior) *int { return v.MinTtl }).(pulumi.IntPtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorOutput) OriginRequestPolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2DefaultCacheBehavior) *string { return v.OriginRequestPolicyId }).(pulumi.StringPtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorOutput) RealtimeLogConfigArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2DefaultCacheBehavior) *string { return v.RealtimeLogConfigArn }).(pulumi.StringPtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorOutput) ResponseHeadersPolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2DefaultCacheBehavior) *string { return v.ResponseHeadersPolicyId }).(pulumi.StringPtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorOutput) SmoothStreaming() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2DefaultCacheBehavior) *bool { return v.SmoothStreaming }).(pulumi.BoolPtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorOutput) TargetOriginId() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2DefaultCacheBehavior) string { return v.TargetOriginId }).(pulumi.StringOutput)
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorOutput) TrustedKeyGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2DefaultCacheBehavior) []string { return v.TrustedKeyGroups }).(pulumi.StringArrayOutput)
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorOutput) TrustedSigners() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2DefaultCacheBehavior) []string { return v.TrustedSigners }).(pulumi.StringArrayOutput)
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorOutput) ViewerProtocolPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2DefaultCacheBehavior) string { return v.ViewerProtocolPolicy }).(pulumi.StringOutput)
+}
+
+type AwsCloudfrontDistributionV2DefaultCacheBehaviorPtrOutput struct{ *pulumi.OutputState }
+
+func (AwsCloudfrontDistributionV2DefaultCacheBehaviorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsCloudfrontDistributionV2DefaultCacheBehavior)(nil)).Elem()
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorPtrOutput) ToAwsCloudfrontDistributionV2DefaultCacheBehaviorPtrOutput() AwsCloudfrontDistributionV2DefaultCacheBehaviorPtrOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorPtrOutput) ToAwsCloudfrontDistributionV2DefaultCacheBehaviorPtrOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2DefaultCacheBehaviorPtrOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorPtrOutput) Elem() AwsCloudfrontDistributionV2DefaultCacheBehaviorOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2DefaultCacheBehavior) AwsCloudfrontDistributionV2DefaultCacheBehavior {
+		if v != nil {
+			return *v
+		}
+		var ret AwsCloudfrontDistributionV2DefaultCacheBehavior
+		return ret
+	}).(AwsCloudfrontDistributionV2DefaultCacheBehaviorOutput)
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorPtrOutput) AllowedMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2DefaultCacheBehavior) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedMethods
+	}).(pulumi.StringArrayOutput)
+}
+
+// \n\n
+// | Policy name                                                                                                                                                                                  | Policy Id                            |
+// |----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------|
+// | Amplify                                                | 2e54312d-136d-493c-8eb9-b001f22f67d2 |
+// | CachingDisabled                               | 4135ea2d-6df8-44a3-9df3-4b5a84be39ad |
+// | CachingOptimized                                    | 658327ea-f89d-4fab-a63d-7e88639e58f6 |
+// | CachingOptimizedForUncompressedObjects | b2884449-e4de-46a7-ac36-70bc7f1ddd6d |
+// | Elemental-MediaPackage                            | 08627262-05a9-4f76-9ded-b50ca2e3a84f |
+// \n\n
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorPtrOutput) CachePolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2DefaultCacheBehavior) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CachePolicyId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorPtrOutput) CachedMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2DefaultCacheBehavior) []string {
+		if v == nil {
+			return nil
+		}
+		return v.CachedMethods
+	}).(pulumi.StringArrayOutput)
+}
+
+// Defaults to `false`.
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorPtrOutput) Compress() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2DefaultCacheBehavior) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Compress
+	}).(pulumi.BoolPtrOutput)
+}
+
+// default time to live: Not required when cache*policy*id is set
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorPtrOutput) DefaultTtl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2DefaultCacheBehavior) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultTtl
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorPtrOutput) FieldLevelEncryptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2DefaultCacheBehavior) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FieldLevelEncryptionId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorPtrOutput) ForwardedValues() AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesPtrOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2DefaultCacheBehavior) *AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValues {
+		if v == nil {
+			return nil
+		}
+		return v.ForwardedValues
+	}).(AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesPtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorPtrOutput) FunctionAssociations() AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationArrayOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2DefaultCacheBehavior) []AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociation {
+		if v == nil {
+			return nil
+		}
+		return v.FunctionAssociations
+	}).(AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationArrayOutput)
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorPtrOutput) LambdaFunctionAssociations() AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationArrayOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2DefaultCacheBehavior) []AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociation {
+		if v == nil {
+			return nil
+		}
+		return v.LambdaFunctionAssociations
+	}).(AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationArrayOutput)
+}
+
+// Maximum time to live: Not required when cache*policy*id is set
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorPtrOutput) MaxTtl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2DefaultCacheBehavior) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxTtl
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minimum time to live: Not required when cache*policy*id is set Defaults to `0`.
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorPtrOutput) MinTtl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2DefaultCacheBehavior) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinTtl
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorPtrOutput) OriginRequestPolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2DefaultCacheBehavior) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OriginRequestPolicyId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorPtrOutput) RealtimeLogConfigArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2DefaultCacheBehavior) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RealtimeLogConfigArn
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorPtrOutput) ResponseHeadersPolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2DefaultCacheBehavior) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResponseHeadersPolicyId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorPtrOutput) SmoothStreaming() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2DefaultCacheBehavior) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SmoothStreaming
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorPtrOutput) TargetOriginId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2DefaultCacheBehavior) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TargetOriginId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorPtrOutput) TrustedKeyGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2DefaultCacheBehavior) []string {
+		if v == nil {
+			return nil
+		}
+		return v.TrustedKeyGroups
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorPtrOutput) TrustedSigners() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2DefaultCacheBehavior) []string {
+		if v == nil {
+			return nil
+		}
+		return v.TrustedSigners
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorPtrOutput) ViewerProtocolPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2DefaultCacheBehavior) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ViewerProtocolPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+type AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValues struct {
+	Cookies AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookies `pulumi:"cookies"`
+	// headers: Not required when cache*policy*id is set
+	Headers     []string `pulumi:"headers"`
+	QueryString bool     `pulumi:"queryString"`
+	// query*string*cache*keys: Not required when cache*policy_id is set
+	QueryStringCacheKeys []string `pulumi:"queryStringCacheKeys"`
+}
+
+// AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesInput is an input type that accepts AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesArgs and AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesOutput values.
+// You can construct a concrete instance of `AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesInput` via:
+//
+//	AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesArgs{...}
+type AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesInput interface {
+	pulumi.Input
+
+	ToAwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesOutput() AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesOutput
+	ToAwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesOutputWithContext(context.Context) AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesOutput
+}
+
+type AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesArgs struct {
+	Cookies AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesInput `pulumi:"cookies"`
+	// headers: Not required when cache*policy*id is set
+	Headers     pulumi.StringArrayInput `pulumi:"headers"`
+	QueryString pulumi.BoolInput        `pulumi:"queryString"`
+	// query*string*cache*keys: Not required when cache*policy_id is set
+	QueryStringCacheKeys pulumi.StringArrayInput `pulumi:"queryStringCacheKeys"`
+}
+
+func (AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValues)(nil)).Elem()
+}
+
+func (i AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesArgs) ToAwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesOutput() AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesOutput {
+	return i.ToAwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesOutputWithContext(context.Background())
+}
+
+func (i AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesArgs) ToAwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesOutput)
+}
+
+func (i AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesArgs) ToAwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesPtrOutput() AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesPtrOutput {
+	return i.ToAwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesPtrOutputWithContext(context.Background())
+}
+
+func (i AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesArgs) ToAwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesPtrOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesOutput).ToAwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesPtrOutputWithContext(ctx)
+}
+
+// AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesPtrInput is an input type that accepts AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesArgs, AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesPtr and AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesPtrOutput values.
+// You can construct a concrete instance of `AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesPtrInput` via:
+//
+//	        AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesArgs{...}
+//
+//	or:
+//
+//	        nil
+type AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesPtrInput interface {
+	pulumi.Input
+
+	ToAwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesPtrOutput() AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesPtrOutput
+	ToAwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesPtrOutputWithContext(context.Context) AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesPtrOutput
+}
+
+type awsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesPtrType AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesArgs
+
+func AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesPtr(v *AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesArgs) AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesPtrInput {
+	return (*awsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesPtrType)(v)
+}
+
+func (*awsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValues)(nil)).Elem()
+}
+
+func (i *awsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesPtrType) ToAwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesPtrOutput() AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesPtrOutput {
+	return i.ToAwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesPtrOutputWithContext(context.Background())
+}
+
+func (i *awsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesPtrType) ToAwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesPtrOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesPtrOutput)
+}
+
+type AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesOutput struct{ *pulumi.OutputState }
+
+func (AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValues)(nil)).Elem()
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesOutput) ToAwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesOutput() AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesOutput) ToAwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesOutput) ToAwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesPtrOutput() AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesPtrOutput {
+	return o.ToAwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesPtrOutputWithContext(context.Background())
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesOutput) ToAwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesPtrOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValues) *AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValues {
+		return &v
+	}).(AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesPtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesOutput) Cookies() AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValues) AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookies {
+		return v.Cookies
+	}).(AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesOutput)
+}
+
+// headers: Not required when cache*policy*id is set
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesOutput) Headers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValues) []string { return v.Headers }).(pulumi.StringArrayOutput)
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesOutput) QueryString() pulumi.BoolOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValues) bool { return v.QueryString }).(pulumi.BoolOutput)
+}
+
+// query*string*cache*keys: Not required when cache*policy_id is set
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesOutput) QueryStringCacheKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValues) []string {
+		return v.QueryStringCacheKeys
+	}).(pulumi.StringArrayOutput)
+}
+
+type AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesPtrOutput struct{ *pulumi.OutputState }
+
+func (AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValues)(nil)).Elem()
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesPtrOutput) ToAwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesPtrOutput() AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesPtrOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesPtrOutput) ToAwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesPtrOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesPtrOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesPtrOutput) Elem() AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValues) AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValues {
+		if v != nil {
+			return *v
+		}
+		var ret AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValues
+		return ret
+	}).(AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesOutput)
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesPtrOutput) Cookies() AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesPtrOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValues) *AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookies {
+		if v == nil {
+			return nil
+		}
+		return &v.Cookies
+	}).(AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesPtrOutput)
+}
+
+// headers: Not required when cache*policy*id is set
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesPtrOutput) Headers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValues) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Headers
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesPtrOutput) QueryString() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValues) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.QueryString
+	}).(pulumi.BoolPtrOutput)
+}
+
+// query*string*cache*keys: Not required when cache*policy_id is set
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesPtrOutput) QueryStringCacheKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValues) []string {
+		if v == nil {
+			return nil
+		}
+		return v.QueryStringCacheKeys
+	}).(pulumi.StringArrayOutput)
+}
+
+type AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookies struct {
+	Forward          string   `pulumi:"forward"`
+	WhitelistedNames []string `pulumi:"whitelistedNames"`
+}
+
+// AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesInput is an input type that accepts AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesArgs and AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesOutput values.
+// You can construct a concrete instance of `AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesInput` via:
+//
+//	AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesArgs{...}
+type AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesInput interface {
+	pulumi.Input
+
+	ToAwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesOutput() AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesOutput
+	ToAwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesOutputWithContext(context.Context) AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesOutput
+}
+
+type AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesArgs struct {
+	Forward          pulumi.StringInput      `pulumi:"forward"`
+	WhitelistedNames pulumi.StringArrayInput `pulumi:"whitelistedNames"`
+}
+
+func (AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookies)(nil)).Elem()
+}
+
+func (i AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesArgs) ToAwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesOutput() AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesOutput {
+	return i.ToAwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesOutputWithContext(context.Background())
+}
+
+func (i AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesArgs) ToAwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesOutput)
+}
+
+func (i AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesArgs) ToAwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesPtrOutput() AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesPtrOutput {
+	return i.ToAwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesPtrOutputWithContext(context.Background())
+}
+
+func (i AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesArgs) ToAwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesPtrOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesOutput).ToAwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesPtrOutputWithContext(ctx)
+}
+
+// AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesPtrInput is an input type that accepts AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesArgs, AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesPtr and AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesPtrOutput values.
+// You can construct a concrete instance of `AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesPtrInput` via:
+//
+//	        AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesPtrInput interface {
+	pulumi.Input
+
+	ToAwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesPtrOutput() AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesPtrOutput
+	ToAwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesPtrOutputWithContext(context.Context) AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesPtrOutput
+}
+
+type awsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesPtrType AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesArgs
+
+func AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesPtr(v *AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesArgs) AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesPtrInput {
+	return (*awsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesPtrType)(v)
+}
+
+func (*awsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookies)(nil)).Elem()
+}
+
+func (i *awsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesPtrType) ToAwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesPtrOutput() AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesPtrOutput {
+	return i.ToAwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesPtrOutputWithContext(context.Background())
+}
+
+func (i *awsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesPtrType) ToAwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesPtrOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesPtrOutput)
+}
+
+type AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesOutput struct{ *pulumi.OutputState }
+
+func (AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookies)(nil)).Elem()
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesOutput) ToAwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesOutput() AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesOutput) ToAwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesOutput) ToAwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesPtrOutput() AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesPtrOutput {
+	return o.ToAwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesPtrOutputWithContext(context.Background())
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesOutput) ToAwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesPtrOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookies) *AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookies {
+		return &v
+	}).(AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesPtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesOutput) Forward() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookies) string { return v.Forward }).(pulumi.StringOutput)
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesOutput) WhitelistedNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookies) []string {
+		return v.WhitelistedNames
+	}).(pulumi.StringArrayOutput)
+}
+
+type AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesPtrOutput struct{ *pulumi.OutputState }
+
+func (AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookies)(nil)).Elem()
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesPtrOutput) ToAwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesPtrOutput() AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesPtrOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesPtrOutput) ToAwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesPtrOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesPtrOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesPtrOutput) Elem() AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookies) AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookies {
+		if v != nil {
+			return *v
+		}
+		var ret AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookies
+		return ret
+	}).(AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesOutput)
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesPtrOutput) Forward() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookies) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Forward
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesPtrOutput) WhitelistedNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookies) []string {
+		if v == nil {
+			return nil
+		}
+		return v.WhitelistedNames
+	}).(pulumi.StringArrayOutput)
+}
+
+type AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociation struct {
+	EventType   string `pulumi:"eventType"`
+	FunctionArn string `pulumi:"functionArn"`
+}
+
+// AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationInput is an input type that accepts AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationArgs and AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationOutput values.
+// You can construct a concrete instance of `AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationInput` via:
+//
+//	AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationArgs{...}
+type AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationInput interface {
+	pulumi.Input
+
+	ToAwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationOutput() AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationOutput
+	ToAwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationOutputWithContext(context.Context) AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationOutput
+}
+
+type AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationArgs struct {
+	EventType   pulumi.StringInput `pulumi:"eventType"`
+	FunctionArn pulumi.StringInput `pulumi:"functionArn"`
+}
+
+func (AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociation)(nil)).Elem()
+}
+
+func (i AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationArgs) ToAwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationOutput() AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationOutput {
+	return i.ToAwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationOutputWithContext(context.Background())
+}
+
+func (i AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationArgs) ToAwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationOutput)
+}
+
+// AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationArrayInput is an input type that accepts AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationArray and AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationArrayOutput values.
+// You can construct a concrete instance of `AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationArrayInput` via:
+//
+//	AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationArray{ AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationArgs{...} }
+type AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationArrayInput interface {
+	pulumi.Input
+
+	ToAwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationArrayOutput() AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationArrayOutput
+	ToAwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationArrayOutputWithContext(context.Context) AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationArrayOutput
+}
+
+type AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationArray []AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationInput
+
+func (AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociation)(nil)).Elem()
+}
+
+func (i AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationArray) ToAwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationArrayOutput() AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationArrayOutput {
+	return i.ToAwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationArrayOutputWithContext(context.Background())
+}
+
+func (i AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationArray) ToAwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationArrayOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationArrayOutput)
+}
+
+type AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationOutput struct{ *pulumi.OutputState }
+
+func (AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociation)(nil)).Elem()
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationOutput) ToAwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationOutput() AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationOutput) ToAwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationOutput) EventType() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociation) string { return v.EventType }).(pulumi.StringOutput)
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationOutput) FunctionArn() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociation) string {
+		return v.FunctionArn
+	}).(pulumi.StringOutput)
+}
+
+type AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationArrayOutput struct{ *pulumi.OutputState }
+
+func (AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociation)(nil)).Elem()
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationArrayOutput) ToAwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationArrayOutput() AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationArrayOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationArrayOutput) ToAwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationArrayOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationArrayOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationArrayOutput) Index(i pulumi.IntInput) AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociation {
+		return vs[0].([]AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociation)[vs[1].(int)]
+	}).(AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationOutput)
+}
+
+type AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociation struct {
+	EventType string `pulumi:"eventType"`
+	// Defaults to `false`.
+	IncludeBody *bool  `pulumi:"includeBody"`
+	LambdaArn   string `pulumi:"lambdaArn"`
+}
+
+// AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationInput is an input type that accepts AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationArgs and AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationOutput values.
+// You can construct a concrete instance of `AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationInput` via:
+//
+//	AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationArgs{...}
+type AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationInput interface {
+	pulumi.Input
+
+	ToAwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationOutput() AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationOutput
+	ToAwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationOutputWithContext(context.Context) AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationOutput
+}
+
+type AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationArgs struct {
+	EventType pulumi.StringInput `pulumi:"eventType"`
+	// Defaults to `false`.
+	IncludeBody pulumi.BoolPtrInput `pulumi:"includeBody"`
+	LambdaArn   pulumi.StringInput  `pulumi:"lambdaArn"`
+}
+
+func (AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociation)(nil)).Elem()
+}
+
+func (i AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationArgs) ToAwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationOutput() AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationOutput {
+	return i.ToAwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationOutputWithContext(context.Background())
+}
+
+func (i AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationArgs) ToAwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationOutput)
+}
+
+// AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationArrayInput is an input type that accepts AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationArray and AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationArrayOutput values.
+// You can construct a concrete instance of `AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationArrayInput` via:
+//
+//	AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationArray{ AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationArgs{...} }
+type AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationArrayInput interface {
+	pulumi.Input
+
+	ToAwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationArrayOutput() AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationArrayOutput
+	ToAwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationArrayOutputWithContext(context.Context) AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationArrayOutput
+}
+
+type AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationArray []AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationInput
+
+func (AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociation)(nil)).Elem()
+}
+
+func (i AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationArray) ToAwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationArrayOutput() AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationArrayOutput {
+	return i.ToAwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationArrayOutputWithContext(context.Background())
+}
+
+func (i AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationArray) ToAwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationArrayOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationArrayOutput)
+}
+
+type AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationOutput struct{ *pulumi.OutputState }
+
+func (AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociation)(nil)).Elem()
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationOutput) ToAwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationOutput() AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationOutput) ToAwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationOutput) EventType() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociation) string {
+		return v.EventType
+	}).(pulumi.StringOutput)
+}
+
+// Defaults to `false`.
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationOutput) IncludeBody() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociation) *bool {
+		return v.IncludeBody
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationOutput) LambdaArn() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociation) string {
+		return v.LambdaArn
+	}).(pulumi.StringOutput)
+}
+
+type AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationArrayOutput struct{ *pulumi.OutputState }
+
+func (AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociation)(nil)).Elem()
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationArrayOutput) ToAwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationArrayOutput() AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationArrayOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationArrayOutput) ToAwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationArrayOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationArrayOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationArrayOutput) Index(i pulumi.IntInput) AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociation {
+		return vs[0].([]AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociation)[vs[1].(int)]
+	}).(AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationOutput)
+}
+
+type AwsCloudfrontDistributionV2LoggingConfig struct {
+	Bucket string `pulumi:"bucket"`
+	// Defaults to `false`.
+	IncludeCookies *bool `pulumi:"includeCookies"`
+	// Defaults to ``.
+	Prefix *string `pulumi:"prefix"`
+}
+
+// AwsCloudfrontDistributionV2LoggingConfigInput is an input type that accepts AwsCloudfrontDistributionV2LoggingConfigArgs and AwsCloudfrontDistributionV2LoggingConfigOutput values.
+// You can construct a concrete instance of `AwsCloudfrontDistributionV2LoggingConfigInput` via:
+//
+//	AwsCloudfrontDistributionV2LoggingConfigArgs{...}
+type AwsCloudfrontDistributionV2LoggingConfigInput interface {
+	pulumi.Input
+
+	ToAwsCloudfrontDistributionV2LoggingConfigOutput() AwsCloudfrontDistributionV2LoggingConfigOutput
+	ToAwsCloudfrontDistributionV2LoggingConfigOutputWithContext(context.Context) AwsCloudfrontDistributionV2LoggingConfigOutput
+}
+
+type AwsCloudfrontDistributionV2LoggingConfigArgs struct {
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// Defaults to `false`.
+	IncludeCookies pulumi.BoolPtrInput `pulumi:"includeCookies"`
+	// Defaults to ``.
+	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
+}
+
+func (AwsCloudfrontDistributionV2LoggingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsCloudfrontDistributionV2LoggingConfig)(nil)).Elem()
+}
+
+func (i AwsCloudfrontDistributionV2LoggingConfigArgs) ToAwsCloudfrontDistributionV2LoggingConfigOutput() AwsCloudfrontDistributionV2LoggingConfigOutput {
+	return i.ToAwsCloudfrontDistributionV2LoggingConfigOutputWithContext(context.Background())
+}
+
+func (i AwsCloudfrontDistributionV2LoggingConfigArgs) ToAwsCloudfrontDistributionV2LoggingConfigOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2LoggingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCloudfrontDistributionV2LoggingConfigOutput)
+}
+
+func (i AwsCloudfrontDistributionV2LoggingConfigArgs) ToAwsCloudfrontDistributionV2LoggingConfigPtrOutput() AwsCloudfrontDistributionV2LoggingConfigPtrOutput {
+	return i.ToAwsCloudfrontDistributionV2LoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AwsCloudfrontDistributionV2LoggingConfigArgs) ToAwsCloudfrontDistributionV2LoggingConfigPtrOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2LoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCloudfrontDistributionV2LoggingConfigOutput).ToAwsCloudfrontDistributionV2LoggingConfigPtrOutputWithContext(ctx)
+}
+
+// AwsCloudfrontDistributionV2LoggingConfigPtrInput is an input type that accepts AwsCloudfrontDistributionV2LoggingConfigArgs, AwsCloudfrontDistributionV2LoggingConfigPtr and AwsCloudfrontDistributionV2LoggingConfigPtrOutput values.
+// You can construct a concrete instance of `AwsCloudfrontDistributionV2LoggingConfigPtrInput` via:
+//
+//	        AwsCloudfrontDistributionV2LoggingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AwsCloudfrontDistributionV2LoggingConfigPtrInput interface {
+	pulumi.Input
+
+	ToAwsCloudfrontDistributionV2LoggingConfigPtrOutput() AwsCloudfrontDistributionV2LoggingConfigPtrOutput
+	ToAwsCloudfrontDistributionV2LoggingConfigPtrOutputWithContext(context.Context) AwsCloudfrontDistributionV2LoggingConfigPtrOutput
+}
+
+type awsCloudfrontDistributionV2LoggingConfigPtrType AwsCloudfrontDistributionV2LoggingConfigArgs
+
+func AwsCloudfrontDistributionV2LoggingConfigPtr(v *AwsCloudfrontDistributionV2LoggingConfigArgs) AwsCloudfrontDistributionV2LoggingConfigPtrInput {
+	return (*awsCloudfrontDistributionV2LoggingConfigPtrType)(v)
+}
+
+func (*awsCloudfrontDistributionV2LoggingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsCloudfrontDistributionV2LoggingConfig)(nil)).Elem()
+}
+
+func (i *awsCloudfrontDistributionV2LoggingConfigPtrType) ToAwsCloudfrontDistributionV2LoggingConfigPtrOutput() AwsCloudfrontDistributionV2LoggingConfigPtrOutput {
+	return i.ToAwsCloudfrontDistributionV2LoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *awsCloudfrontDistributionV2LoggingConfigPtrType) ToAwsCloudfrontDistributionV2LoggingConfigPtrOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2LoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCloudfrontDistributionV2LoggingConfigPtrOutput)
+}
+
+type AwsCloudfrontDistributionV2LoggingConfigOutput struct{ *pulumi.OutputState }
+
+func (AwsCloudfrontDistributionV2LoggingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsCloudfrontDistributionV2LoggingConfig)(nil)).Elem()
+}
+
+func (o AwsCloudfrontDistributionV2LoggingConfigOutput) ToAwsCloudfrontDistributionV2LoggingConfigOutput() AwsCloudfrontDistributionV2LoggingConfigOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2LoggingConfigOutput) ToAwsCloudfrontDistributionV2LoggingConfigOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2LoggingConfigOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2LoggingConfigOutput) ToAwsCloudfrontDistributionV2LoggingConfigPtrOutput() AwsCloudfrontDistributionV2LoggingConfigPtrOutput {
+	return o.ToAwsCloudfrontDistributionV2LoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AwsCloudfrontDistributionV2LoggingConfigOutput) ToAwsCloudfrontDistributionV2LoggingConfigPtrOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2LoggingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsCloudfrontDistributionV2LoggingConfig) *AwsCloudfrontDistributionV2LoggingConfig {
+		return &v
+	}).(AwsCloudfrontDistributionV2LoggingConfigPtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2LoggingConfigOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2LoggingConfig) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// Defaults to `false`.
+func (o AwsCloudfrontDistributionV2LoggingConfigOutput) IncludeCookies() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2LoggingConfig) *bool { return v.IncludeCookies }).(pulumi.BoolPtrOutput)
+}
+
+// Defaults to “.
+func (o AwsCloudfrontDistributionV2LoggingConfigOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2LoggingConfig) *string { return v.Prefix }).(pulumi.StringPtrOutput)
+}
+
+type AwsCloudfrontDistributionV2LoggingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AwsCloudfrontDistributionV2LoggingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsCloudfrontDistributionV2LoggingConfig)(nil)).Elem()
+}
+
+func (o AwsCloudfrontDistributionV2LoggingConfigPtrOutput) ToAwsCloudfrontDistributionV2LoggingConfigPtrOutput() AwsCloudfrontDistributionV2LoggingConfigPtrOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2LoggingConfigPtrOutput) ToAwsCloudfrontDistributionV2LoggingConfigPtrOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2LoggingConfigPtrOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2LoggingConfigPtrOutput) Elem() AwsCloudfrontDistributionV2LoggingConfigOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2LoggingConfig) AwsCloudfrontDistributionV2LoggingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AwsCloudfrontDistributionV2LoggingConfig
+		return ret
+	}).(AwsCloudfrontDistributionV2LoggingConfigOutput)
+}
+
+func (o AwsCloudfrontDistributionV2LoggingConfigPtrOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2LoggingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Bucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defaults to `false`.
+func (o AwsCloudfrontDistributionV2LoggingConfigPtrOutput) IncludeCookies() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2LoggingConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeCookies
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Defaults to “.
+func (o AwsCloudfrontDistributionV2LoggingConfigPtrOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2LoggingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Prefix
+	}).(pulumi.StringPtrOutput)
+}
+
+type AwsCloudfrontDistributionV2OrderedCacheBehavior struct {
+	AllowedMethods []string `pulumi:"allowedMethods"`
+	CachePolicyId  *string  `pulumi:"cachePolicyId"`
+	CachedMethods  []string `pulumi:"cachedMethods"`
+	// Defaults to `false`.
+	Compress                   *bool                                                                      `pulumi:"compress"`
+	DefaultTtl                 *int                                                                       `pulumi:"defaultTtl"`
+	FieldLevelEncryptionId     *string                                                                    `pulumi:"fieldLevelEncryptionId"`
+	ForwardedValues            *AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValues            `pulumi:"forwardedValues"`
+	FunctionAssociations       []AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociation       `pulumi:"functionAssociations"`
+	LambdaFunctionAssociations []AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociation `pulumi:"lambdaFunctionAssociations"`
+	MaxTtl                     *int                                                                       `pulumi:"maxTtl"`
+	// Defaults to `0`.
+	MinTtl                  *int     `pulumi:"minTtl"`
+	OriginRequestPolicyId   *string  `pulumi:"originRequestPolicyId"`
+	PathPattern             string   `pulumi:"pathPattern"`
+	RealtimeLogConfigArn    *string  `pulumi:"realtimeLogConfigArn"`
+	ResponseHeadersPolicyId *string  `pulumi:"responseHeadersPolicyId"`
+	SmoothStreaming         *bool    `pulumi:"smoothStreaming"`
+	TargetOriginId          string   `pulumi:"targetOriginId"`
+	TrustedKeyGroups        []string `pulumi:"trustedKeyGroups"`
+	TrustedSigners          []string `pulumi:"trustedSigners"`
+	ViewerProtocolPolicy    string   `pulumi:"viewerProtocolPolicy"`
+}
+
+// AwsCloudfrontDistributionV2OrderedCacheBehaviorInput is an input type that accepts AwsCloudfrontDistributionV2OrderedCacheBehaviorArgs and AwsCloudfrontDistributionV2OrderedCacheBehaviorOutput values.
+// You can construct a concrete instance of `AwsCloudfrontDistributionV2OrderedCacheBehaviorInput` via:
+//
+//	AwsCloudfrontDistributionV2OrderedCacheBehaviorArgs{...}
+type AwsCloudfrontDistributionV2OrderedCacheBehaviorInput interface {
+	pulumi.Input
+
+	ToAwsCloudfrontDistributionV2OrderedCacheBehaviorOutput() AwsCloudfrontDistributionV2OrderedCacheBehaviorOutput
+	ToAwsCloudfrontDistributionV2OrderedCacheBehaviorOutputWithContext(context.Context) AwsCloudfrontDistributionV2OrderedCacheBehaviorOutput
+}
+
+type AwsCloudfrontDistributionV2OrderedCacheBehaviorArgs struct {
+	AllowedMethods pulumi.StringArrayInput `pulumi:"allowedMethods"`
+	CachePolicyId  pulumi.StringPtrInput   `pulumi:"cachePolicyId"`
+	CachedMethods  pulumi.StringArrayInput `pulumi:"cachedMethods"`
+	// Defaults to `false`.
+	Compress                   pulumi.BoolPtrInput                                                                `pulumi:"compress"`
+	DefaultTtl                 pulumi.IntPtrInput                                                                 `pulumi:"defaultTtl"`
+	FieldLevelEncryptionId     pulumi.StringPtrInput                                                              `pulumi:"fieldLevelEncryptionId"`
+	ForwardedValues            AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesPtrInput             `pulumi:"forwardedValues"`
+	FunctionAssociations       AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationArrayInput       `pulumi:"functionAssociations"`
+	LambdaFunctionAssociations AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationArrayInput `pulumi:"lambdaFunctionAssociations"`
+	MaxTtl                     pulumi.IntPtrInput                                                                 `pulumi:"maxTtl"`
+	// Defaults to `0`.
+	MinTtl                  pulumi.IntPtrInput      `pulumi:"minTtl"`
+	OriginRequestPolicyId   pulumi.StringPtrInput   `pulumi:"originRequestPolicyId"`
+	PathPattern             pulumi.StringInput      `pulumi:"pathPattern"`
+	RealtimeLogConfigArn    pulumi.StringPtrInput   `pulumi:"realtimeLogConfigArn"`
+	ResponseHeadersPolicyId pulumi.StringPtrInput   `pulumi:"responseHeadersPolicyId"`
+	SmoothStreaming         pulumi.BoolPtrInput     `pulumi:"smoothStreaming"`
+	TargetOriginId          pulumi.StringInput      `pulumi:"targetOriginId"`
+	TrustedKeyGroups        pulumi.StringArrayInput `pulumi:"trustedKeyGroups"`
+	TrustedSigners          pulumi.StringArrayInput `pulumi:"trustedSigners"`
+	ViewerProtocolPolicy    pulumi.StringInput      `pulumi:"viewerProtocolPolicy"`
+}
+
+func (AwsCloudfrontDistributionV2OrderedCacheBehaviorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsCloudfrontDistributionV2OrderedCacheBehavior)(nil)).Elem()
+}
+
+func (i AwsCloudfrontDistributionV2OrderedCacheBehaviorArgs) ToAwsCloudfrontDistributionV2OrderedCacheBehaviorOutput() AwsCloudfrontDistributionV2OrderedCacheBehaviorOutput {
+	return i.ToAwsCloudfrontDistributionV2OrderedCacheBehaviorOutputWithContext(context.Background())
+}
+
+func (i AwsCloudfrontDistributionV2OrderedCacheBehaviorArgs) ToAwsCloudfrontDistributionV2OrderedCacheBehaviorOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2OrderedCacheBehaviorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCloudfrontDistributionV2OrderedCacheBehaviorOutput)
+}
+
+// AwsCloudfrontDistributionV2OrderedCacheBehaviorArrayInput is an input type that accepts AwsCloudfrontDistributionV2OrderedCacheBehaviorArray and AwsCloudfrontDistributionV2OrderedCacheBehaviorArrayOutput values.
+// You can construct a concrete instance of `AwsCloudfrontDistributionV2OrderedCacheBehaviorArrayInput` via:
+//
+//	AwsCloudfrontDistributionV2OrderedCacheBehaviorArray{ AwsCloudfrontDistributionV2OrderedCacheBehaviorArgs{...} }
+type AwsCloudfrontDistributionV2OrderedCacheBehaviorArrayInput interface {
+	pulumi.Input
+
+	ToAwsCloudfrontDistributionV2OrderedCacheBehaviorArrayOutput() AwsCloudfrontDistributionV2OrderedCacheBehaviorArrayOutput
+	ToAwsCloudfrontDistributionV2OrderedCacheBehaviorArrayOutputWithContext(context.Context) AwsCloudfrontDistributionV2OrderedCacheBehaviorArrayOutput
+}
+
+type AwsCloudfrontDistributionV2OrderedCacheBehaviorArray []AwsCloudfrontDistributionV2OrderedCacheBehaviorInput
+
+func (AwsCloudfrontDistributionV2OrderedCacheBehaviorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AwsCloudfrontDistributionV2OrderedCacheBehavior)(nil)).Elem()
+}
+
+func (i AwsCloudfrontDistributionV2OrderedCacheBehaviorArray) ToAwsCloudfrontDistributionV2OrderedCacheBehaviorArrayOutput() AwsCloudfrontDistributionV2OrderedCacheBehaviorArrayOutput {
+	return i.ToAwsCloudfrontDistributionV2OrderedCacheBehaviorArrayOutputWithContext(context.Background())
+}
+
+func (i AwsCloudfrontDistributionV2OrderedCacheBehaviorArray) ToAwsCloudfrontDistributionV2OrderedCacheBehaviorArrayOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2OrderedCacheBehaviorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCloudfrontDistributionV2OrderedCacheBehaviorArrayOutput)
+}
+
+type AwsCloudfrontDistributionV2OrderedCacheBehaviorOutput struct{ *pulumi.OutputState }
+
+func (AwsCloudfrontDistributionV2OrderedCacheBehaviorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsCloudfrontDistributionV2OrderedCacheBehavior)(nil)).Elem()
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorOutput) ToAwsCloudfrontDistributionV2OrderedCacheBehaviorOutput() AwsCloudfrontDistributionV2OrderedCacheBehaviorOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorOutput) ToAwsCloudfrontDistributionV2OrderedCacheBehaviorOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2OrderedCacheBehaviorOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorOutput) AllowedMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2OrderedCacheBehavior) []string { return v.AllowedMethods }).(pulumi.StringArrayOutput)
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorOutput) CachePolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2OrderedCacheBehavior) *string { return v.CachePolicyId }).(pulumi.StringPtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorOutput) CachedMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2OrderedCacheBehavior) []string { return v.CachedMethods }).(pulumi.StringArrayOutput)
+}
+
+// Defaults to `false`.
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorOutput) Compress() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2OrderedCacheBehavior) *bool { return v.Compress }).(pulumi.BoolPtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorOutput) DefaultTtl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2OrderedCacheBehavior) *int { return v.DefaultTtl }).(pulumi.IntPtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorOutput) FieldLevelEncryptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2OrderedCacheBehavior) *string { return v.FieldLevelEncryptionId }).(pulumi.StringPtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorOutput) ForwardedValues() AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesPtrOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2OrderedCacheBehavior) *AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValues {
+		return v.ForwardedValues
+	}).(AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesPtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorOutput) FunctionAssociations() AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationArrayOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2OrderedCacheBehavior) []AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociation {
+		return v.FunctionAssociations
+	}).(AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationArrayOutput)
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorOutput) LambdaFunctionAssociations() AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationArrayOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2OrderedCacheBehavior) []AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociation {
+		return v.LambdaFunctionAssociations
+	}).(AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationArrayOutput)
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorOutput) MaxTtl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2OrderedCacheBehavior) *int { return v.MaxTtl }).(pulumi.IntPtrOutput)
+}
+
+// Defaults to `0`.
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorOutput) MinTtl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2OrderedCacheBehavior) *int { return v.MinTtl }).(pulumi.IntPtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorOutput) OriginRequestPolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2OrderedCacheBehavior) *string { return v.OriginRequestPolicyId }).(pulumi.StringPtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorOutput) PathPattern() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2OrderedCacheBehavior) string { return v.PathPattern }).(pulumi.StringOutput)
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorOutput) RealtimeLogConfigArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2OrderedCacheBehavior) *string { return v.RealtimeLogConfigArn }).(pulumi.StringPtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorOutput) ResponseHeadersPolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2OrderedCacheBehavior) *string { return v.ResponseHeadersPolicyId }).(pulumi.StringPtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorOutput) SmoothStreaming() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2OrderedCacheBehavior) *bool { return v.SmoothStreaming }).(pulumi.BoolPtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorOutput) TargetOriginId() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2OrderedCacheBehavior) string { return v.TargetOriginId }).(pulumi.StringOutput)
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorOutput) TrustedKeyGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2OrderedCacheBehavior) []string { return v.TrustedKeyGroups }).(pulumi.StringArrayOutput)
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorOutput) TrustedSigners() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2OrderedCacheBehavior) []string { return v.TrustedSigners }).(pulumi.StringArrayOutput)
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorOutput) ViewerProtocolPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2OrderedCacheBehavior) string { return v.ViewerProtocolPolicy }).(pulumi.StringOutput)
+}
+
+type AwsCloudfrontDistributionV2OrderedCacheBehaviorArrayOutput struct{ *pulumi.OutputState }
+
+func (AwsCloudfrontDistributionV2OrderedCacheBehaviorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AwsCloudfrontDistributionV2OrderedCacheBehavior)(nil)).Elem()
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorArrayOutput) ToAwsCloudfrontDistributionV2OrderedCacheBehaviorArrayOutput() AwsCloudfrontDistributionV2OrderedCacheBehaviorArrayOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorArrayOutput) ToAwsCloudfrontDistributionV2OrderedCacheBehaviorArrayOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2OrderedCacheBehaviorArrayOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorArrayOutput) Index(i pulumi.IntInput) AwsCloudfrontDistributionV2OrderedCacheBehaviorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AwsCloudfrontDistributionV2OrderedCacheBehavior {
+		return vs[0].([]AwsCloudfrontDistributionV2OrderedCacheBehavior)[vs[1].(int)]
+	}).(AwsCloudfrontDistributionV2OrderedCacheBehaviorOutput)
+}
+
+type AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValues struct {
+	Cookies              AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookies `pulumi:"cookies"`
+	Headers              []string                                                              `pulumi:"headers"`
+	QueryString          bool                                                                  `pulumi:"queryString"`
+	QueryStringCacheKeys []string                                                              `pulumi:"queryStringCacheKeys"`
+}
+
+// AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesInput is an input type that accepts AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesArgs and AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesOutput values.
+// You can construct a concrete instance of `AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesInput` via:
+//
+//	AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesArgs{...}
+type AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesInput interface {
+	pulumi.Input
+
+	ToAwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesOutput() AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesOutput
+	ToAwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesOutputWithContext(context.Context) AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesOutput
+}
+
+type AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesArgs struct {
+	Cookies              AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesInput `pulumi:"cookies"`
+	Headers              pulumi.StringArrayInput                                                    `pulumi:"headers"`
+	QueryString          pulumi.BoolInput                                                           `pulumi:"queryString"`
+	QueryStringCacheKeys pulumi.StringArrayInput                                                    `pulumi:"queryStringCacheKeys"`
+}
+
+func (AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValues)(nil)).Elem()
+}
+
+func (i AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesArgs) ToAwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesOutput() AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesOutput {
+	return i.ToAwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesOutputWithContext(context.Background())
+}
+
+func (i AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesArgs) ToAwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesOutput)
+}
+
+func (i AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesArgs) ToAwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesPtrOutput() AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesPtrOutput {
+	return i.ToAwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesPtrOutputWithContext(context.Background())
+}
+
+func (i AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesArgs) ToAwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesPtrOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesOutput).ToAwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesPtrOutputWithContext(ctx)
+}
+
+// AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesPtrInput is an input type that accepts AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesArgs, AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesPtr and AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesPtrOutput values.
+// You can construct a concrete instance of `AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesPtrInput` via:
+//
+//	        AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesArgs{...}
+//
+//	or:
+//
+//	        nil
+type AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesPtrInput interface {
+	pulumi.Input
+
+	ToAwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesPtrOutput() AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesPtrOutput
+	ToAwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesPtrOutputWithContext(context.Context) AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesPtrOutput
+}
+
+type awsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesPtrType AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesArgs
+
+func AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesPtr(v *AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesArgs) AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesPtrInput {
+	return (*awsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesPtrType)(v)
+}
+
+func (*awsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValues)(nil)).Elem()
+}
+
+func (i *awsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesPtrType) ToAwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesPtrOutput() AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesPtrOutput {
+	return i.ToAwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesPtrOutputWithContext(context.Background())
+}
+
+func (i *awsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesPtrType) ToAwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesPtrOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesPtrOutput)
+}
+
+type AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesOutput struct{ *pulumi.OutputState }
+
+func (AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValues)(nil)).Elem()
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesOutput) ToAwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesOutput() AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesOutput) ToAwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesOutput) ToAwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesPtrOutput() AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesPtrOutput {
+	return o.ToAwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesPtrOutputWithContext(context.Background())
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesOutput) ToAwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesPtrOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValues) *AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValues {
+		return &v
+	}).(AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesPtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesOutput) Cookies() AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValues) AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookies {
+		return v.Cookies
+	}).(AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesOutput)
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesOutput) Headers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValues) []string { return v.Headers }).(pulumi.StringArrayOutput)
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesOutput) QueryString() pulumi.BoolOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValues) bool { return v.QueryString }).(pulumi.BoolOutput)
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesOutput) QueryStringCacheKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValues) []string {
+		return v.QueryStringCacheKeys
+	}).(pulumi.StringArrayOutput)
+}
+
+type AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesPtrOutput struct{ *pulumi.OutputState }
+
+func (AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValues)(nil)).Elem()
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesPtrOutput) ToAwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesPtrOutput() AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesPtrOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesPtrOutput) ToAwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesPtrOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesPtrOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesPtrOutput) Elem() AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValues) AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValues {
+		if v != nil {
+			return *v
+		}
+		var ret AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValues
+		return ret
+	}).(AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesOutput)
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesPtrOutput) Cookies() AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesPtrOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValues) *AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookies {
+		if v == nil {
+			return nil
+		}
+		return &v.Cookies
+	}).(AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesPtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesPtrOutput) Headers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValues) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Headers
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesPtrOutput) QueryString() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValues) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.QueryString
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesPtrOutput) QueryStringCacheKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValues) []string {
+		if v == nil {
+			return nil
+		}
+		return v.QueryStringCacheKeys
+	}).(pulumi.StringArrayOutput)
+}
+
+type AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookies struct {
+	Forward          string   `pulumi:"forward"`
+	WhitelistedNames []string `pulumi:"whitelistedNames"`
+}
+
+// AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesInput is an input type that accepts AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesArgs and AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesOutput values.
+// You can construct a concrete instance of `AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesInput` via:
+//
+//	AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesArgs{...}
+type AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesInput interface {
+	pulumi.Input
+
+	ToAwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesOutput() AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesOutput
+	ToAwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesOutputWithContext(context.Context) AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesOutput
+}
+
+type AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesArgs struct {
+	Forward          pulumi.StringInput      `pulumi:"forward"`
+	WhitelistedNames pulumi.StringArrayInput `pulumi:"whitelistedNames"`
+}
+
+func (AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookies)(nil)).Elem()
+}
+
+func (i AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesArgs) ToAwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesOutput() AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesOutput {
+	return i.ToAwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesOutputWithContext(context.Background())
+}
+
+func (i AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesArgs) ToAwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesOutput)
+}
+
+func (i AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesArgs) ToAwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesPtrOutput() AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesPtrOutput {
+	return i.ToAwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesPtrOutputWithContext(context.Background())
+}
+
+func (i AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesArgs) ToAwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesPtrOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesOutput).ToAwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesPtrOutputWithContext(ctx)
+}
+
+// AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesPtrInput is an input type that accepts AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesArgs, AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesPtr and AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesPtrOutput values.
+// You can construct a concrete instance of `AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesPtrInput` via:
+//
+//	        AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesPtrInput interface {
+	pulumi.Input
+
+	ToAwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesPtrOutput() AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesPtrOutput
+	ToAwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesPtrOutputWithContext(context.Context) AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesPtrOutput
+}
+
+type awsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesPtrType AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesArgs
+
+func AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesPtr(v *AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesArgs) AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesPtrInput {
+	return (*awsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesPtrType)(v)
+}
+
+func (*awsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookies)(nil)).Elem()
+}
+
+func (i *awsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesPtrType) ToAwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesPtrOutput() AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesPtrOutput {
+	return i.ToAwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesPtrOutputWithContext(context.Background())
+}
+
+func (i *awsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesPtrType) ToAwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesPtrOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesPtrOutput)
+}
+
+type AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesOutput struct{ *pulumi.OutputState }
+
+func (AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookies)(nil)).Elem()
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesOutput) ToAwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesOutput() AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesOutput) ToAwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesOutput) ToAwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesPtrOutput() AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesPtrOutput {
+	return o.ToAwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesPtrOutputWithContext(context.Background())
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesOutput) ToAwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesPtrOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookies) *AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookies {
+		return &v
+	}).(AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesPtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesOutput) Forward() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookies) string { return v.Forward }).(pulumi.StringOutput)
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesOutput) WhitelistedNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookies) []string {
+		return v.WhitelistedNames
+	}).(pulumi.StringArrayOutput)
+}
+
+type AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesPtrOutput struct{ *pulumi.OutputState }
+
+func (AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookies)(nil)).Elem()
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesPtrOutput) ToAwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesPtrOutput() AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesPtrOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesPtrOutput) ToAwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesPtrOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesPtrOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesPtrOutput) Elem() AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookies) AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookies {
+		if v != nil {
+			return *v
+		}
+		var ret AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookies
+		return ret
+	}).(AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesOutput)
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesPtrOutput) Forward() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookies) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Forward
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesPtrOutput) WhitelistedNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookies) []string {
+		if v == nil {
+			return nil
+		}
+		return v.WhitelistedNames
+	}).(pulumi.StringArrayOutput)
+}
+
+type AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociation struct {
+	EventType   string `pulumi:"eventType"`
+	FunctionArn string `pulumi:"functionArn"`
+}
+
+// AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationInput is an input type that accepts AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationArgs and AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationOutput values.
+// You can construct a concrete instance of `AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationInput` via:
+//
+//	AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationArgs{...}
+type AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationInput interface {
+	pulumi.Input
+
+	ToAwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationOutput() AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationOutput
+	ToAwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationOutputWithContext(context.Context) AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationOutput
+}
+
+type AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationArgs struct {
+	EventType   pulumi.StringInput `pulumi:"eventType"`
+	FunctionArn pulumi.StringInput `pulumi:"functionArn"`
+}
+
+func (AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociation)(nil)).Elem()
+}
+
+func (i AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationArgs) ToAwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationOutput() AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationOutput {
+	return i.ToAwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationOutputWithContext(context.Background())
+}
+
+func (i AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationArgs) ToAwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationOutput)
+}
+
+// AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationArrayInput is an input type that accepts AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationArray and AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationArrayOutput values.
+// You can construct a concrete instance of `AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationArrayInput` via:
+//
+//	AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationArray{ AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationArgs{...} }
+type AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationArrayInput interface {
+	pulumi.Input
+
+	ToAwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationArrayOutput() AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationArrayOutput
+	ToAwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationArrayOutputWithContext(context.Context) AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationArrayOutput
+}
+
+type AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationArray []AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationInput
+
+func (AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociation)(nil)).Elem()
+}
+
+func (i AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationArray) ToAwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationArrayOutput() AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationArrayOutput {
+	return i.ToAwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationArrayOutputWithContext(context.Background())
+}
+
+func (i AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationArray) ToAwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationArrayOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationArrayOutput)
+}
+
+type AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationOutput struct{ *pulumi.OutputState }
+
+func (AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociation)(nil)).Elem()
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationOutput) ToAwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationOutput() AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationOutput) ToAwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationOutput) EventType() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociation) string { return v.EventType }).(pulumi.StringOutput)
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationOutput) FunctionArn() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociation) string {
+		return v.FunctionArn
+	}).(pulumi.StringOutput)
+}
+
+type AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationArrayOutput struct{ *pulumi.OutputState }
+
+func (AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociation)(nil)).Elem()
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationArrayOutput) ToAwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationArrayOutput() AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationArrayOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationArrayOutput) ToAwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationArrayOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationArrayOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationArrayOutput) Index(i pulumi.IntInput) AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociation {
+		return vs[0].([]AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociation)[vs[1].(int)]
+	}).(AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationOutput)
+}
+
+type AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociation struct {
+	EventType string `pulumi:"eventType"`
+	// Defaults to `false`.
+	IncludeBody *bool  `pulumi:"includeBody"`
+	LambdaArn   string `pulumi:"lambdaArn"`
+}
+
+// AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationInput is an input type that accepts AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationArgs and AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationOutput values.
+// You can construct a concrete instance of `AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationInput` via:
+//
+//	AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationArgs{...}
+type AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationInput interface {
+	pulumi.Input
+
+	ToAwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationOutput() AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationOutput
+	ToAwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationOutputWithContext(context.Context) AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationOutput
+}
+
+type AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationArgs struct {
+	EventType pulumi.StringInput `pulumi:"eventType"`
+	// Defaults to `false`.
+	IncludeBody pulumi.BoolPtrInput `pulumi:"includeBody"`
+	LambdaArn   pulumi.StringInput  `pulumi:"lambdaArn"`
+}
+
+func (AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociation)(nil)).Elem()
+}
+
+func (i AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationArgs) ToAwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationOutput() AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationOutput {
+	return i.ToAwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationOutputWithContext(context.Background())
+}
+
+func (i AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationArgs) ToAwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationOutput)
+}
+
+// AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationArrayInput is an input type that accepts AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationArray and AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationArrayOutput values.
+// You can construct a concrete instance of `AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationArrayInput` via:
+//
+//	AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationArray{ AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationArgs{...} }
+type AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationArrayInput interface {
+	pulumi.Input
+
+	ToAwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationArrayOutput() AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationArrayOutput
+	ToAwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationArrayOutputWithContext(context.Context) AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationArrayOutput
+}
+
+type AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationArray []AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationInput
+
+func (AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociation)(nil)).Elem()
+}
+
+func (i AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationArray) ToAwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationArrayOutput() AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationArrayOutput {
+	return i.ToAwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationArrayOutputWithContext(context.Background())
+}
+
+func (i AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationArray) ToAwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationArrayOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationArrayOutput)
+}
+
+type AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationOutput struct{ *pulumi.OutputState }
+
+func (AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociation)(nil)).Elem()
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationOutput) ToAwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationOutput() AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationOutput) ToAwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationOutput) EventType() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociation) string {
+		return v.EventType
+	}).(pulumi.StringOutput)
+}
+
+// Defaults to `false`.
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationOutput) IncludeBody() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociation) *bool {
+		return v.IncludeBody
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationOutput) LambdaArn() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociation) string {
+		return v.LambdaArn
+	}).(pulumi.StringOutput)
+}
+
+type AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationArrayOutput struct{ *pulumi.OutputState }
+
+func (AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociation)(nil)).Elem()
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationArrayOutput) ToAwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationArrayOutput() AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationArrayOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationArrayOutput) ToAwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationArrayOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationArrayOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationArrayOutput) Index(i pulumi.IntInput) AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociation {
+		return vs[0].([]AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociation)[vs[1].(int)]
+	}).(AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationOutput)
+}
+
+type AwsCloudfrontDistributionV2Origin struct {
+	// Defaults to `3`.
+	ConnectionAttempts *int `pulumi:"connectionAttempts"`
+	// Defaults to `10`.
+	ConnectionTimeout  *int                                                 `pulumi:"connectionTimeout"`
+	CustomHeaders      []AwsCloudfrontDistributionV2OriginCustomHeader      `pulumi:"customHeaders"`
+	CustomOriginConfig *AwsCloudfrontDistributionV2OriginCustomOriginConfig `pulumi:"customOriginConfig"`
+	DomainName         string                                               `pulumi:"domainName"`
+	OriginId           string                                               `pulumi:"originId"`
+	// Defaults to ``.
+	OriginPath   *string                                        `pulumi:"originPath"`
+	OriginShield *AwsCloudfrontDistributionV2OriginOriginShield `pulumi:"originShield"`
+}
+
+// AwsCloudfrontDistributionV2OriginInput is an input type that accepts AwsCloudfrontDistributionV2OriginArgs and AwsCloudfrontDistributionV2OriginOutput values.
+// You can construct a concrete instance of `AwsCloudfrontDistributionV2OriginInput` via:
+//
+//	AwsCloudfrontDistributionV2OriginArgs{...}
+type AwsCloudfrontDistributionV2OriginInput interface {
+	pulumi.Input
+
+	ToAwsCloudfrontDistributionV2OriginOutput() AwsCloudfrontDistributionV2OriginOutput
+	ToAwsCloudfrontDistributionV2OriginOutputWithContext(context.Context) AwsCloudfrontDistributionV2OriginOutput
+}
+
+type AwsCloudfrontDistributionV2OriginArgs struct {
+	// Defaults to `3`.
+	ConnectionAttempts pulumi.IntPtrInput `pulumi:"connectionAttempts"`
+	// Defaults to `10`.
+	ConnectionTimeout  pulumi.IntPtrInput                                          `pulumi:"connectionTimeout"`
+	CustomHeaders      AwsCloudfrontDistributionV2OriginCustomHeaderArrayInput     `pulumi:"customHeaders"`
+	CustomOriginConfig AwsCloudfrontDistributionV2OriginCustomOriginConfigPtrInput `pulumi:"customOriginConfig"`
+	DomainName         pulumi.StringInput                                          `pulumi:"domainName"`
+	OriginId           pulumi.StringInput                                          `pulumi:"originId"`
+	// Defaults to ``.
+	OriginPath   pulumi.StringPtrInput                                 `pulumi:"originPath"`
+	OriginShield AwsCloudfrontDistributionV2OriginOriginShieldPtrInput `pulumi:"originShield"`
+}
+
+func (AwsCloudfrontDistributionV2OriginArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsCloudfrontDistributionV2Origin)(nil)).Elem()
+}
+
+func (i AwsCloudfrontDistributionV2OriginArgs) ToAwsCloudfrontDistributionV2OriginOutput() AwsCloudfrontDistributionV2OriginOutput {
+	return i.ToAwsCloudfrontDistributionV2OriginOutputWithContext(context.Background())
+}
+
+func (i AwsCloudfrontDistributionV2OriginArgs) ToAwsCloudfrontDistributionV2OriginOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2OriginOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCloudfrontDistributionV2OriginOutput)
+}
+
+// AwsCloudfrontDistributionV2OriginArrayInput is an input type that accepts AwsCloudfrontDistributionV2OriginArray and AwsCloudfrontDistributionV2OriginArrayOutput values.
+// You can construct a concrete instance of `AwsCloudfrontDistributionV2OriginArrayInput` via:
+//
+//	AwsCloudfrontDistributionV2OriginArray{ AwsCloudfrontDistributionV2OriginArgs{...} }
+type AwsCloudfrontDistributionV2OriginArrayInput interface {
+	pulumi.Input
+
+	ToAwsCloudfrontDistributionV2OriginArrayOutput() AwsCloudfrontDistributionV2OriginArrayOutput
+	ToAwsCloudfrontDistributionV2OriginArrayOutputWithContext(context.Context) AwsCloudfrontDistributionV2OriginArrayOutput
+}
+
+type AwsCloudfrontDistributionV2OriginArray []AwsCloudfrontDistributionV2OriginInput
+
+func (AwsCloudfrontDistributionV2OriginArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AwsCloudfrontDistributionV2Origin)(nil)).Elem()
+}
+
+func (i AwsCloudfrontDistributionV2OriginArray) ToAwsCloudfrontDistributionV2OriginArrayOutput() AwsCloudfrontDistributionV2OriginArrayOutput {
+	return i.ToAwsCloudfrontDistributionV2OriginArrayOutputWithContext(context.Background())
+}
+
+func (i AwsCloudfrontDistributionV2OriginArray) ToAwsCloudfrontDistributionV2OriginArrayOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2OriginArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCloudfrontDistributionV2OriginArrayOutput)
+}
+
+type AwsCloudfrontDistributionV2OriginOutput struct{ *pulumi.OutputState }
+
+func (AwsCloudfrontDistributionV2OriginOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsCloudfrontDistributionV2Origin)(nil)).Elem()
+}
+
+func (o AwsCloudfrontDistributionV2OriginOutput) ToAwsCloudfrontDistributionV2OriginOutput() AwsCloudfrontDistributionV2OriginOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2OriginOutput) ToAwsCloudfrontDistributionV2OriginOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2OriginOutput {
+	return o
+}
+
+// Defaults to `3`.
+func (o AwsCloudfrontDistributionV2OriginOutput) ConnectionAttempts() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2Origin) *int { return v.ConnectionAttempts }).(pulumi.IntPtrOutput)
+}
+
+// Defaults to `10`.
+func (o AwsCloudfrontDistributionV2OriginOutput) ConnectionTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2Origin) *int { return v.ConnectionTimeout }).(pulumi.IntPtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2OriginOutput) CustomHeaders() AwsCloudfrontDistributionV2OriginCustomHeaderArrayOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2Origin) []AwsCloudfrontDistributionV2OriginCustomHeader {
+		return v.CustomHeaders
+	}).(AwsCloudfrontDistributionV2OriginCustomHeaderArrayOutput)
+}
+
+func (o AwsCloudfrontDistributionV2OriginOutput) CustomOriginConfig() AwsCloudfrontDistributionV2OriginCustomOriginConfigPtrOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2Origin) *AwsCloudfrontDistributionV2OriginCustomOriginConfig {
+		return v.CustomOriginConfig
+	}).(AwsCloudfrontDistributionV2OriginCustomOriginConfigPtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2OriginOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2Origin) string { return v.DomainName }).(pulumi.StringOutput)
+}
+
+func (o AwsCloudfrontDistributionV2OriginOutput) OriginId() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2Origin) string { return v.OriginId }).(pulumi.StringOutput)
+}
+
+// Defaults to “.
+func (o AwsCloudfrontDistributionV2OriginOutput) OriginPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2Origin) *string { return v.OriginPath }).(pulumi.StringPtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2OriginOutput) OriginShield() AwsCloudfrontDistributionV2OriginOriginShieldPtrOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2Origin) *AwsCloudfrontDistributionV2OriginOriginShield {
+		return v.OriginShield
+	}).(AwsCloudfrontDistributionV2OriginOriginShieldPtrOutput)
+}
+
+type AwsCloudfrontDistributionV2OriginArrayOutput struct{ *pulumi.OutputState }
+
+func (AwsCloudfrontDistributionV2OriginArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AwsCloudfrontDistributionV2Origin)(nil)).Elem()
+}
+
+func (o AwsCloudfrontDistributionV2OriginArrayOutput) ToAwsCloudfrontDistributionV2OriginArrayOutput() AwsCloudfrontDistributionV2OriginArrayOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2OriginArrayOutput) ToAwsCloudfrontDistributionV2OriginArrayOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2OriginArrayOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2OriginArrayOutput) Index(i pulumi.IntInput) AwsCloudfrontDistributionV2OriginOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AwsCloudfrontDistributionV2Origin {
+		return vs[0].([]AwsCloudfrontDistributionV2Origin)[vs[1].(int)]
+	}).(AwsCloudfrontDistributionV2OriginOutput)
+}
+
+type AwsCloudfrontDistributionV2OriginCustomHeader struct {
+	Name  string `pulumi:"name"`
+	Value string `pulumi:"value"`
+}
+
+// AwsCloudfrontDistributionV2OriginCustomHeaderInput is an input type that accepts AwsCloudfrontDistributionV2OriginCustomHeaderArgs and AwsCloudfrontDistributionV2OriginCustomHeaderOutput values.
+// You can construct a concrete instance of `AwsCloudfrontDistributionV2OriginCustomHeaderInput` via:
+//
+//	AwsCloudfrontDistributionV2OriginCustomHeaderArgs{...}
+type AwsCloudfrontDistributionV2OriginCustomHeaderInput interface {
+	pulumi.Input
+
+	ToAwsCloudfrontDistributionV2OriginCustomHeaderOutput() AwsCloudfrontDistributionV2OriginCustomHeaderOutput
+	ToAwsCloudfrontDistributionV2OriginCustomHeaderOutputWithContext(context.Context) AwsCloudfrontDistributionV2OriginCustomHeaderOutput
+}
+
+type AwsCloudfrontDistributionV2OriginCustomHeaderArgs struct {
+	Name  pulumi.StringInput `pulumi:"name"`
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (AwsCloudfrontDistributionV2OriginCustomHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsCloudfrontDistributionV2OriginCustomHeader)(nil)).Elem()
+}
+
+func (i AwsCloudfrontDistributionV2OriginCustomHeaderArgs) ToAwsCloudfrontDistributionV2OriginCustomHeaderOutput() AwsCloudfrontDistributionV2OriginCustomHeaderOutput {
+	return i.ToAwsCloudfrontDistributionV2OriginCustomHeaderOutputWithContext(context.Background())
+}
+
+func (i AwsCloudfrontDistributionV2OriginCustomHeaderArgs) ToAwsCloudfrontDistributionV2OriginCustomHeaderOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2OriginCustomHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCloudfrontDistributionV2OriginCustomHeaderOutput)
+}
+
+// AwsCloudfrontDistributionV2OriginCustomHeaderArrayInput is an input type that accepts AwsCloudfrontDistributionV2OriginCustomHeaderArray and AwsCloudfrontDistributionV2OriginCustomHeaderArrayOutput values.
+// You can construct a concrete instance of `AwsCloudfrontDistributionV2OriginCustomHeaderArrayInput` via:
+//
+//	AwsCloudfrontDistributionV2OriginCustomHeaderArray{ AwsCloudfrontDistributionV2OriginCustomHeaderArgs{...} }
+type AwsCloudfrontDistributionV2OriginCustomHeaderArrayInput interface {
+	pulumi.Input
+
+	ToAwsCloudfrontDistributionV2OriginCustomHeaderArrayOutput() AwsCloudfrontDistributionV2OriginCustomHeaderArrayOutput
+	ToAwsCloudfrontDistributionV2OriginCustomHeaderArrayOutputWithContext(context.Context) AwsCloudfrontDistributionV2OriginCustomHeaderArrayOutput
+}
+
+type AwsCloudfrontDistributionV2OriginCustomHeaderArray []AwsCloudfrontDistributionV2OriginCustomHeaderInput
+
+func (AwsCloudfrontDistributionV2OriginCustomHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AwsCloudfrontDistributionV2OriginCustomHeader)(nil)).Elem()
+}
+
+func (i AwsCloudfrontDistributionV2OriginCustomHeaderArray) ToAwsCloudfrontDistributionV2OriginCustomHeaderArrayOutput() AwsCloudfrontDistributionV2OriginCustomHeaderArrayOutput {
+	return i.ToAwsCloudfrontDistributionV2OriginCustomHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i AwsCloudfrontDistributionV2OriginCustomHeaderArray) ToAwsCloudfrontDistributionV2OriginCustomHeaderArrayOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2OriginCustomHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCloudfrontDistributionV2OriginCustomHeaderArrayOutput)
+}
+
+type AwsCloudfrontDistributionV2OriginCustomHeaderOutput struct{ *pulumi.OutputState }
+
+func (AwsCloudfrontDistributionV2OriginCustomHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsCloudfrontDistributionV2OriginCustomHeader)(nil)).Elem()
+}
+
+func (o AwsCloudfrontDistributionV2OriginCustomHeaderOutput) ToAwsCloudfrontDistributionV2OriginCustomHeaderOutput() AwsCloudfrontDistributionV2OriginCustomHeaderOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2OriginCustomHeaderOutput) ToAwsCloudfrontDistributionV2OriginCustomHeaderOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2OriginCustomHeaderOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2OriginCustomHeaderOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2OriginCustomHeader) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o AwsCloudfrontDistributionV2OriginCustomHeaderOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2OriginCustomHeader) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type AwsCloudfrontDistributionV2OriginCustomHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (AwsCloudfrontDistributionV2OriginCustomHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AwsCloudfrontDistributionV2OriginCustomHeader)(nil)).Elem()
+}
+
+func (o AwsCloudfrontDistributionV2OriginCustomHeaderArrayOutput) ToAwsCloudfrontDistributionV2OriginCustomHeaderArrayOutput() AwsCloudfrontDistributionV2OriginCustomHeaderArrayOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2OriginCustomHeaderArrayOutput) ToAwsCloudfrontDistributionV2OriginCustomHeaderArrayOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2OriginCustomHeaderArrayOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2OriginCustomHeaderArrayOutput) Index(i pulumi.IntInput) AwsCloudfrontDistributionV2OriginCustomHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AwsCloudfrontDistributionV2OriginCustomHeader {
+		return vs[0].([]AwsCloudfrontDistributionV2OriginCustomHeader)[vs[1].(int)]
+	}).(AwsCloudfrontDistributionV2OriginCustomHeaderOutput)
+}
+
+type AwsCloudfrontDistributionV2OriginCustomOriginConfig struct {
+	// Defaults to `80`.
+	HttpPort *int `pulumi:"httpPort"`
+	// Defaults to `443`.
+	HttpsPort *int `pulumi:"httpsPort"`
+	// Defaults to `5`.
+	OriginKeepaliveTimeout *int   `pulumi:"originKeepaliveTimeout"`
+	OriginProtocolPolicy   string `pulumi:"originProtocolPolicy"`
+	// Defaults to `30`.
+	OriginReadTimeout  *int     `pulumi:"originReadTimeout"`
+	OriginSslProtocols []string `pulumi:"originSslProtocols"`
+}
+
+// AwsCloudfrontDistributionV2OriginCustomOriginConfigInput is an input type that accepts AwsCloudfrontDistributionV2OriginCustomOriginConfigArgs and AwsCloudfrontDistributionV2OriginCustomOriginConfigOutput values.
+// You can construct a concrete instance of `AwsCloudfrontDistributionV2OriginCustomOriginConfigInput` via:
+//
+//	AwsCloudfrontDistributionV2OriginCustomOriginConfigArgs{...}
+type AwsCloudfrontDistributionV2OriginCustomOriginConfigInput interface {
+	pulumi.Input
+
+	ToAwsCloudfrontDistributionV2OriginCustomOriginConfigOutput() AwsCloudfrontDistributionV2OriginCustomOriginConfigOutput
+	ToAwsCloudfrontDistributionV2OriginCustomOriginConfigOutputWithContext(context.Context) AwsCloudfrontDistributionV2OriginCustomOriginConfigOutput
+}
+
+type AwsCloudfrontDistributionV2OriginCustomOriginConfigArgs struct {
+	// Defaults to `80`.
+	HttpPort pulumi.IntPtrInput `pulumi:"httpPort"`
+	// Defaults to `443`.
+	HttpsPort pulumi.IntPtrInput `pulumi:"httpsPort"`
+	// Defaults to `5`.
+	OriginKeepaliveTimeout pulumi.IntPtrInput `pulumi:"originKeepaliveTimeout"`
+	OriginProtocolPolicy   pulumi.StringInput `pulumi:"originProtocolPolicy"`
+	// Defaults to `30`.
+	OriginReadTimeout  pulumi.IntPtrInput      `pulumi:"originReadTimeout"`
+	OriginSslProtocols pulumi.StringArrayInput `pulumi:"originSslProtocols"`
+}
+
+func (AwsCloudfrontDistributionV2OriginCustomOriginConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsCloudfrontDistributionV2OriginCustomOriginConfig)(nil)).Elem()
+}
+
+func (i AwsCloudfrontDistributionV2OriginCustomOriginConfigArgs) ToAwsCloudfrontDistributionV2OriginCustomOriginConfigOutput() AwsCloudfrontDistributionV2OriginCustomOriginConfigOutput {
+	return i.ToAwsCloudfrontDistributionV2OriginCustomOriginConfigOutputWithContext(context.Background())
+}
+
+func (i AwsCloudfrontDistributionV2OriginCustomOriginConfigArgs) ToAwsCloudfrontDistributionV2OriginCustomOriginConfigOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2OriginCustomOriginConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCloudfrontDistributionV2OriginCustomOriginConfigOutput)
+}
+
+func (i AwsCloudfrontDistributionV2OriginCustomOriginConfigArgs) ToAwsCloudfrontDistributionV2OriginCustomOriginConfigPtrOutput() AwsCloudfrontDistributionV2OriginCustomOriginConfigPtrOutput {
+	return i.ToAwsCloudfrontDistributionV2OriginCustomOriginConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AwsCloudfrontDistributionV2OriginCustomOriginConfigArgs) ToAwsCloudfrontDistributionV2OriginCustomOriginConfigPtrOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2OriginCustomOriginConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCloudfrontDistributionV2OriginCustomOriginConfigOutput).ToAwsCloudfrontDistributionV2OriginCustomOriginConfigPtrOutputWithContext(ctx)
+}
+
+// AwsCloudfrontDistributionV2OriginCustomOriginConfigPtrInput is an input type that accepts AwsCloudfrontDistributionV2OriginCustomOriginConfigArgs, AwsCloudfrontDistributionV2OriginCustomOriginConfigPtr and AwsCloudfrontDistributionV2OriginCustomOriginConfigPtrOutput values.
+// You can construct a concrete instance of `AwsCloudfrontDistributionV2OriginCustomOriginConfigPtrInput` via:
+//
+//	        AwsCloudfrontDistributionV2OriginCustomOriginConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AwsCloudfrontDistributionV2OriginCustomOriginConfigPtrInput interface {
+	pulumi.Input
+
+	ToAwsCloudfrontDistributionV2OriginCustomOriginConfigPtrOutput() AwsCloudfrontDistributionV2OriginCustomOriginConfigPtrOutput
+	ToAwsCloudfrontDistributionV2OriginCustomOriginConfigPtrOutputWithContext(context.Context) AwsCloudfrontDistributionV2OriginCustomOriginConfigPtrOutput
+}
+
+type awsCloudfrontDistributionV2OriginCustomOriginConfigPtrType AwsCloudfrontDistributionV2OriginCustomOriginConfigArgs
+
+func AwsCloudfrontDistributionV2OriginCustomOriginConfigPtr(v *AwsCloudfrontDistributionV2OriginCustomOriginConfigArgs) AwsCloudfrontDistributionV2OriginCustomOriginConfigPtrInput {
+	return (*awsCloudfrontDistributionV2OriginCustomOriginConfigPtrType)(v)
+}
+
+func (*awsCloudfrontDistributionV2OriginCustomOriginConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsCloudfrontDistributionV2OriginCustomOriginConfig)(nil)).Elem()
+}
+
+func (i *awsCloudfrontDistributionV2OriginCustomOriginConfigPtrType) ToAwsCloudfrontDistributionV2OriginCustomOriginConfigPtrOutput() AwsCloudfrontDistributionV2OriginCustomOriginConfigPtrOutput {
+	return i.ToAwsCloudfrontDistributionV2OriginCustomOriginConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *awsCloudfrontDistributionV2OriginCustomOriginConfigPtrType) ToAwsCloudfrontDistributionV2OriginCustomOriginConfigPtrOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2OriginCustomOriginConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCloudfrontDistributionV2OriginCustomOriginConfigPtrOutput)
+}
+
+type AwsCloudfrontDistributionV2OriginCustomOriginConfigOutput struct{ *pulumi.OutputState }
+
+func (AwsCloudfrontDistributionV2OriginCustomOriginConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsCloudfrontDistributionV2OriginCustomOriginConfig)(nil)).Elem()
+}
+
+func (o AwsCloudfrontDistributionV2OriginCustomOriginConfigOutput) ToAwsCloudfrontDistributionV2OriginCustomOriginConfigOutput() AwsCloudfrontDistributionV2OriginCustomOriginConfigOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2OriginCustomOriginConfigOutput) ToAwsCloudfrontDistributionV2OriginCustomOriginConfigOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2OriginCustomOriginConfigOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2OriginCustomOriginConfigOutput) ToAwsCloudfrontDistributionV2OriginCustomOriginConfigPtrOutput() AwsCloudfrontDistributionV2OriginCustomOriginConfigPtrOutput {
+	return o.ToAwsCloudfrontDistributionV2OriginCustomOriginConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AwsCloudfrontDistributionV2OriginCustomOriginConfigOutput) ToAwsCloudfrontDistributionV2OriginCustomOriginConfigPtrOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2OriginCustomOriginConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsCloudfrontDistributionV2OriginCustomOriginConfig) *AwsCloudfrontDistributionV2OriginCustomOriginConfig {
+		return &v
+	}).(AwsCloudfrontDistributionV2OriginCustomOriginConfigPtrOutput)
+}
+
+// Defaults to `80`.
+func (o AwsCloudfrontDistributionV2OriginCustomOriginConfigOutput) HttpPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2OriginCustomOriginConfig) *int { return v.HttpPort }).(pulumi.IntPtrOutput)
+}
+
+// Defaults to `443`.
+func (o AwsCloudfrontDistributionV2OriginCustomOriginConfigOutput) HttpsPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2OriginCustomOriginConfig) *int { return v.HttpsPort }).(pulumi.IntPtrOutput)
+}
+
+// Defaults to `5`.
+func (o AwsCloudfrontDistributionV2OriginCustomOriginConfigOutput) OriginKeepaliveTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2OriginCustomOriginConfig) *int { return v.OriginKeepaliveTimeout }).(pulumi.IntPtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2OriginCustomOriginConfigOutput) OriginProtocolPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2OriginCustomOriginConfig) string { return v.OriginProtocolPolicy }).(pulumi.StringOutput)
+}
+
+// Defaults to `30`.
+func (o AwsCloudfrontDistributionV2OriginCustomOriginConfigOutput) OriginReadTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2OriginCustomOriginConfig) *int { return v.OriginReadTimeout }).(pulumi.IntPtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2OriginCustomOriginConfigOutput) OriginSslProtocols() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2OriginCustomOriginConfig) []string { return v.OriginSslProtocols }).(pulumi.StringArrayOutput)
+}
+
+type AwsCloudfrontDistributionV2OriginCustomOriginConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AwsCloudfrontDistributionV2OriginCustomOriginConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsCloudfrontDistributionV2OriginCustomOriginConfig)(nil)).Elem()
+}
+
+func (o AwsCloudfrontDistributionV2OriginCustomOriginConfigPtrOutput) ToAwsCloudfrontDistributionV2OriginCustomOriginConfigPtrOutput() AwsCloudfrontDistributionV2OriginCustomOriginConfigPtrOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2OriginCustomOriginConfigPtrOutput) ToAwsCloudfrontDistributionV2OriginCustomOriginConfigPtrOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2OriginCustomOriginConfigPtrOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2OriginCustomOriginConfigPtrOutput) Elem() AwsCloudfrontDistributionV2OriginCustomOriginConfigOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2OriginCustomOriginConfig) AwsCloudfrontDistributionV2OriginCustomOriginConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AwsCloudfrontDistributionV2OriginCustomOriginConfig
+		return ret
+	}).(AwsCloudfrontDistributionV2OriginCustomOriginConfigOutput)
+}
+
+// Defaults to `80`.
+func (o AwsCloudfrontDistributionV2OriginCustomOriginConfigPtrOutput) HttpPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2OriginCustomOriginConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.HttpPort
+	}).(pulumi.IntPtrOutput)
+}
+
+// Defaults to `443`.
+func (o AwsCloudfrontDistributionV2OriginCustomOriginConfigPtrOutput) HttpsPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2OriginCustomOriginConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.HttpsPort
+	}).(pulumi.IntPtrOutput)
+}
+
+// Defaults to `5`.
+func (o AwsCloudfrontDistributionV2OriginCustomOriginConfigPtrOutput) OriginKeepaliveTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2OriginCustomOriginConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.OriginKeepaliveTimeout
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2OriginCustomOriginConfigPtrOutput) OriginProtocolPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2OriginCustomOriginConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.OriginProtocolPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defaults to `30`.
+func (o AwsCloudfrontDistributionV2OriginCustomOriginConfigPtrOutput) OriginReadTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2OriginCustomOriginConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.OriginReadTimeout
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2OriginCustomOriginConfigPtrOutput) OriginSslProtocols() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2OriginCustomOriginConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.OriginSslProtocols
+	}).(pulumi.StringArrayOutput)
+}
+
+type AwsCloudfrontDistributionV2OriginGroup struct {
+	FailoverCriteria AwsCloudfrontDistributionV2OriginGroupFailoverCriteria `pulumi:"failoverCriteria"`
+	Members          []AwsCloudfrontDistributionV2OriginGroupMember         `pulumi:"members"`
+	OriginId         string                                                 `pulumi:"originId"`
+}
+
+// AwsCloudfrontDistributionV2OriginGroupInput is an input type that accepts AwsCloudfrontDistributionV2OriginGroupArgs and AwsCloudfrontDistributionV2OriginGroupOutput values.
+// You can construct a concrete instance of `AwsCloudfrontDistributionV2OriginGroupInput` via:
+//
+//	AwsCloudfrontDistributionV2OriginGroupArgs{...}
+type AwsCloudfrontDistributionV2OriginGroupInput interface {
+	pulumi.Input
+
+	ToAwsCloudfrontDistributionV2OriginGroupOutput() AwsCloudfrontDistributionV2OriginGroupOutput
+	ToAwsCloudfrontDistributionV2OriginGroupOutputWithContext(context.Context) AwsCloudfrontDistributionV2OriginGroupOutput
+}
+
+type AwsCloudfrontDistributionV2OriginGroupArgs struct {
+	FailoverCriteria AwsCloudfrontDistributionV2OriginGroupFailoverCriteriaInput `pulumi:"failoverCriteria"`
+	Members          AwsCloudfrontDistributionV2OriginGroupMemberArrayInput      `pulumi:"members"`
+	OriginId         pulumi.StringInput                                          `pulumi:"originId"`
+}
+
+func (AwsCloudfrontDistributionV2OriginGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsCloudfrontDistributionV2OriginGroup)(nil)).Elem()
+}
+
+func (i AwsCloudfrontDistributionV2OriginGroupArgs) ToAwsCloudfrontDistributionV2OriginGroupOutput() AwsCloudfrontDistributionV2OriginGroupOutput {
+	return i.ToAwsCloudfrontDistributionV2OriginGroupOutputWithContext(context.Background())
+}
+
+func (i AwsCloudfrontDistributionV2OriginGroupArgs) ToAwsCloudfrontDistributionV2OriginGroupOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2OriginGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCloudfrontDistributionV2OriginGroupOutput)
+}
+
+// AwsCloudfrontDistributionV2OriginGroupArrayInput is an input type that accepts AwsCloudfrontDistributionV2OriginGroupArray and AwsCloudfrontDistributionV2OriginGroupArrayOutput values.
+// You can construct a concrete instance of `AwsCloudfrontDistributionV2OriginGroupArrayInput` via:
+//
+//	AwsCloudfrontDistributionV2OriginGroupArray{ AwsCloudfrontDistributionV2OriginGroupArgs{...} }
+type AwsCloudfrontDistributionV2OriginGroupArrayInput interface {
+	pulumi.Input
+
+	ToAwsCloudfrontDistributionV2OriginGroupArrayOutput() AwsCloudfrontDistributionV2OriginGroupArrayOutput
+	ToAwsCloudfrontDistributionV2OriginGroupArrayOutputWithContext(context.Context) AwsCloudfrontDistributionV2OriginGroupArrayOutput
+}
+
+type AwsCloudfrontDistributionV2OriginGroupArray []AwsCloudfrontDistributionV2OriginGroupInput
+
+func (AwsCloudfrontDistributionV2OriginGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AwsCloudfrontDistributionV2OriginGroup)(nil)).Elem()
+}
+
+func (i AwsCloudfrontDistributionV2OriginGroupArray) ToAwsCloudfrontDistributionV2OriginGroupArrayOutput() AwsCloudfrontDistributionV2OriginGroupArrayOutput {
+	return i.ToAwsCloudfrontDistributionV2OriginGroupArrayOutputWithContext(context.Background())
+}
+
+func (i AwsCloudfrontDistributionV2OriginGroupArray) ToAwsCloudfrontDistributionV2OriginGroupArrayOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2OriginGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCloudfrontDistributionV2OriginGroupArrayOutput)
+}
+
+type AwsCloudfrontDistributionV2OriginGroupOutput struct{ *pulumi.OutputState }
+
+func (AwsCloudfrontDistributionV2OriginGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsCloudfrontDistributionV2OriginGroup)(nil)).Elem()
+}
+
+func (o AwsCloudfrontDistributionV2OriginGroupOutput) ToAwsCloudfrontDistributionV2OriginGroupOutput() AwsCloudfrontDistributionV2OriginGroupOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2OriginGroupOutput) ToAwsCloudfrontDistributionV2OriginGroupOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2OriginGroupOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2OriginGroupOutput) FailoverCriteria() AwsCloudfrontDistributionV2OriginGroupFailoverCriteriaOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2OriginGroup) AwsCloudfrontDistributionV2OriginGroupFailoverCriteria {
+		return v.FailoverCriteria
+	}).(AwsCloudfrontDistributionV2OriginGroupFailoverCriteriaOutput)
+}
+
+func (o AwsCloudfrontDistributionV2OriginGroupOutput) Members() AwsCloudfrontDistributionV2OriginGroupMemberArrayOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2OriginGroup) []AwsCloudfrontDistributionV2OriginGroupMember {
+		return v.Members
+	}).(AwsCloudfrontDistributionV2OriginGroupMemberArrayOutput)
+}
+
+func (o AwsCloudfrontDistributionV2OriginGroupOutput) OriginId() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2OriginGroup) string { return v.OriginId }).(pulumi.StringOutput)
+}
+
+type AwsCloudfrontDistributionV2OriginGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (AwsCloudfrontDistributionV2OriginGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AwsCloudfrontDistributionV2OriginGroup)(nil)).Elem()
+}
+
+func (o AwsCloudfrontDistributionV2OriginGroupArrayOutput) ToAwsCloudfrontDistributionV2OriginGroupArrayOutput() AwsCloudfrontDistributionV2OriginGroupArrayOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2OriginGroupArrayOutput) ToAwsCloudfrontDistributionV2OriginGroupArrayOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2OriginGroupArrayOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2OriginGroupArrayOutput) Index(i pulumi.IntInput) AwsCloudfrontDistributionV2OriginGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AwsCloudfrontDistributionV2OriginGroup {
+		return vs[0].([]AwsCloudfrontDistributionV2OriginGroup)[vs[1].(int)]
+	}).(AwsCloudfrontDistributionV2OriginGroupOutput)
+}
+
+type AwsCloudfrontDistributionV2OriginGroupFailoverCriteria struct {
+	StatusCodes []int `pulumi:"statusCodes"`
+}
+
+// AwsCloudfrontDistributionV2OriginGroupFailoverCriteriaInput is an input type that accepts AwsCloudfrontDistributionV2OriginGroupFailoverCriteriaArgs and AwsCloudfrontDistributionV2OriginGroupFailoverCriteriaOutput values.
+// You can construct a concrete instance of `AwsCloudfrontDistributionV2OriginGroupFailoverCriteriaInput` via:
+//
+//	AwsCloudfrontDistributionV2OriginGroupFailoverCriteriaArgs{...}
+type AwsCloudfrontDistributionV2OriginGroupFailoverCriteriaInput interface {
+	pulumi.Input
+
+	ToAwsCloudfrontDistributionV2OriginGroupFailoverCriteriaOutput() AwsCloudfrontDistributionV2OriginGroupFailoverCriteriaOutput
+	ToAwsCloudfrontDistributionV2OriginGroupFailoverCriteriaOutputWithContext(context.Context) AwsCloudfrontDistributionV2OriginGroupFailoverCriteriaOutput
+}
+
+type AwsCloudfrontDistributionV2OriginGroupFailoverCriteriaArgs struct {
+	StatusCodes pulumi.IntArrayInput `pulumi:"statusCodes"`
+}
+
+func (AwsCloudfrontDistributionV2OriginGroupFailoverCriteriaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsCloudfrontDistributionV2OriginGroupFailoverCriteria)(nil)).Elem()
+}
+
+func (i AwsCloudfrontDistributionV2OriginGroupFailoverCriteriaArgs) ToAwsCloudfrontDistributionV2OriginGroupFailoverCriteriaOutput() AwsCloudfrontDistributionV2OriginGroupFailoverCriteriaOutput {
+	return i.ToAwsCloudfrontDistributionV2OriginGroupFailoverCriteriaOutputWithContext(context.Background())
+}
+
+func (i AwsCloudfrontDistributionV2OriginGroupFailoverCriteriaArgs) ToAwsCloudfrontDistributionV2OriginGroupFailoverCriteriaOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2OriginGroupFailoverCriteriaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCloudfrontDistributionV2OriginGroupFailoverCriteriaOutput)
+}
+
+type AwsCloudfrontDistributionV2OriginGroupFailoverCriteriaOutput struct{ *pulumi.OutputState }
+
+func (AwsCloudfrontDistributionV2OriginGroupFailoverCriteriaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsCloudfrontDistributionV2OriginGroupFailoverCriteria)(nil)).Elem()
+}
+
+func (o AwsCloudfrontDistributionV2OriginGroupFailoverCriteriaOutput) ToAwsCloudfrontDistributionV2OriginGroupFailoverCriteriaOutput() AwsCloudfrontDistributionV2OriginGroupFailoverCriteriaOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2OriginGroupFailoverCriteriaOutput) ToAwsCloudfrontDistributionV2OriginGroupFailoverCriteriaOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2OriginGroupFailoverCriteriaOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2OriginGroupFailoverCriteriaOutput) StatusCodes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2OriginGroupFailoverCriteria) []int { return v.StatusCodes }).(pulumi.IntArrayOutput)
+}
+
+type AwsCloudfrontDistributionV2OriginGroupMember struct {
+	OriginId string `pulumi:"originId"`
+}
+
+// AwsCloudfrontDistributionV2OriginGroupMemberInput is an input type that accepts AwsCloudfrontDistributionV2OriginGroupMemberArgs and AwsCloudfrontDistributionV2OriginGroupMemberOutput values.
+// You can construct a concrete instance of `AwsCloudfrontDistributionV2OriginGroupMemberInput` via:
+//
+//	AwsCloudfrontDistributionV2OriginGroupMemberArgs{...}
+type AwsCloudfrontDistributionV2OriginGroupMemberInput interface {
+	pulumi.Input
+
+	ToAwsCloudfrontDistributionV2OriginGroupMemberOutput() AwsCloudfrontDistributionV2OriginGroupMemberOutput
+	ToAwsCloudfrontDistributionV2OriginGroupMemberOutputWithContext(context.Context) AwsCloudfrontDistributionV2OriginGroupMemberOutput
+}
+
+type AwsCloudfrontDistributionV2OriginGroupMemberArgs struct {
+	OriginId pulumi.StringInput `pulumi:"originId"`
+}
+
+func (AwsCloudfrontDistributionV2OriginGroupMemberArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsCloudfrontDistributionV2OriginGroupMember)(nil)).Elem()
+}
+
+func (i AwsCloudfrontDistributionV2OriginGroupMemberArgs) ToAwsCloudfrontDistributionV2OriginGroupMemberOutput() AwsCloudfrontDistributionV2OriginGroupMemberOutput {
+	return i.ToAwsCloudfrontDistributionV2OriginGroupMemberOutputWithContext(context.Background())
+}
+
+func (i AwsCloudfrontDistributionV2OriginGroupMemberArgs) ToAwsCloudfrontDistributionV2OriginGroupMemberOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2OriginGroupMemberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCloudfrontDistributionV2OriginGroupMemberOutput)
+}
+
+// AwsCloudfrontDistributionV2OriginGroupMemberArrayInput is an input type that accepts AwsCloudfrontDistributionV2OriginGroupMemberArray and AwsCloudfrontDistributionV2OriginGroupMemberArrayOutput values.
+// You can construct a concrete instance of `AwsCloudfrontDistributionV2OriginGroupMemberArrayInput` via:
+//
+//	AwsCloudfrontDistributionV2OriginGroupMemberArray{ AwsCloudfrontDistributionV2OriginGroupMemberArgs{...} }
+type AwsCloudfrontDistributionV2OriginGroupMemberArrayInput interface {
+	pulumi.Input
+
+	ToAwsCloudfrontDistributionV2OriginGroupMemberArrayOutput() AwsCloudfrontDistributionV2OriginGroupMemberArrayOutput
+	ToAwsCloudfrontDistributionV2OriginGroupMemberArrayOutputWithContext(context.Context) AwsCloudfrontDistributionV2OriginGroupMemberArrayOutput
+}
+
+type AwsCloudfrontDistributionV2OriginGroupMemberArray []AwsCloudfrontDistributionV2OriginGroupMemberInput
+
+func (AwsCloudfrontDistributionV2OriginGroupMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AwsCloudfrontDistributionV2OriginGroupMember)(nil)).Elem()
+}
+
+func (i AwsCloudfrontDistributionV2OriginGroupMemberArray) ToAwsCloudfrontDistributionV2OriginGroupMemberArrayOutput() AwsCloudfrontDistributionV2OriginGroupMemberArrayOutput {
+	return i.ToAwsCloudfrontDistributionV2OriginGroupMemberArrayOutputWithContext(context.Background())
+}
+
+func (i AwsCloudfrontDistributionV2OriginGroupMemberArray) ToAwsCloudfrontDistributionV2OriginGroupMemberArrayOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2OriginGroupMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCloudfrontDistributionV2OriginGroupMemberArrayOutput)
+}
+
+type AwsCloudfrontDistributionV2OriginGroupMemberOutput struct{ *pulumi.OutputState }
+
+func (AwsCloudfrontDistributionV2OriginGroupMemberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsCloudfrontDistributionV2OriginGroupMember)(nil)).Elem()
+}
+
+func (o AwsCloudfrontDistributionV2OriginGroupMemberOutput) ToAwsCloudfrontDistributionV2OriginGroupMemberOutput() AwsCloudfrontDistributionV2OriginGroupMemberOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2OriginGroupMemberOutput) ToAwsCloudfrontDistributionV2OriginGroupMemberOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2OriginGroupMemberOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2OriginGroupMemberOutput) OriginId() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2OriginGroupMember) string { return v.OriginId }).(pulumi.StringOutput)
+}
+
+type AwsCloudfrontDistributionV2OriginGroupMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (AwsCloudfrontDistributionV2OriginGroupMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AwsCloudfrontDistributionV2OriginGroupMember)(nil)).Elem()
+}
+
+func (o AwsCloudfrontDistributionV2OriginGroupMemberArrayOutput) ToAwsCloudfrontDistributionV2OriginGroupMemberArrayOutput() AwsCloudfrontDistributionV2OriginGroupMemberArrayOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2OriginGroupMemberArrayOutput) ToAwsCloudfrontDistributionV2OriginGroupMemberArrayOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2OriginGroupMemberArrayOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2OriginGroupMemberArrayOutput) Index(i pulumi.IntInput) AwsCloudfrontDistributionV2OriginGroupMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AwsCloudfrontDistributionV2OriginGroupMember {
+		return vs[0].([]AwsCloudfrontDistributionV2OriginGroupMember)[vs[1].(int)]
+	}).(AwsCloudfrontDistributionV2OriginGroupMemberOutput)
+}
+
+type AwsCloudfrontDistributionV2OriginOriginShield struct {
+	Enabled            bool   `pulumi:"enabled"`
+	OriginShieldRegion string `pulumi:"originShieldRegion"`
+}
+
+// AwsCloudfrontDistributionV2OriginOriginShieldInput is an input type that accepts AwsCloudfrontDistributionV2OriginOriginShieldArgs and AwsCloudfrontDistributionV2OriginOriginShieldOutput values.
+// You can construct a concrete instance of `AwsCloudfrontDistributionV2OriginOriginShieldInput` via:
+//
+//	AwsCloudfrontDistributionV2OriginOriginShieldArgs{...}
+type AwsCloudfrontDistributionV2OriginOriginShieldInput interface {
+	pulumi.Input
+
+	ToAwsCloudfrontDistributionV2OriginOriginShieldOutput() AwsCloudfrontDistributionV2OriginOriginShieldOutput
+	ToAwsCloudfrontDistributionV2OriginOriginShieldOutputWithContext(context.Context) AwsCloudfrontDistributionV2OriginOriginShieldOutput
+}
+
+type AwsCloudfrontDistributionV2OriginOriginShieldArgs struct {
+	Enabled            pulumi.BoolInput   `pulumi:"enabled"`
+	OriginShieldRegion pulumi.StringInput `pulumi:"originShieldRegion"`
+}
+
+func (AwsCloudfrontDistributionV2OriginOriginShieldArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsCloudfrontDistributionV2OriginOriginShield)(nil)).Elem()
+}
+
+func (i AwsCloudfrontDistributionV2OriginOriginShieldArgs) ToAwsCloudfrontDistributionV2OriginOriginShieldOutput() AwsCloudfrontDistributionV2OriginOriginShieldOutput {
+	return i.ToAwsCloudfrontDistributionV2OriginOriginShieldOutputWithContext(context.Background())
+}
+
+func (i AwsCloudfrontDistributionV2OriginOriginShieldArgs) ToAwsCloudfrontDistributionV2OriginOriginShieldOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2OriginOriginShieldOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCloudfrontDistributionV2OriginOriginShieldOutput)
+}
+
+func (i AwsCloudfrontDistributionV2OriginOriginShieldArgs) ToAwsCloudfrontDistributionV2OriginOriginShieldPtrOutput() AwsCloudfrontDistributionV2OriginOriginShieldPtrOutput {
+	return i.ToAwsCloudfrontDistributionV2OriginOriginShieldPtrOutputWithContext(context.Background())
+}
+
+func (i AwsCloudfrontDistributionV2OriginOriginShieldArgs) ToAwsCloudfrontDistributionV2OriginOriginShieldPtrOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2OriginOriginShieldPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCloudfrontDistributionV2OriginOriginShieldOutput).ToAwsCloudfrontDistributionV2OriginOriginShieldPtrOutputWithContext(ctx)
+}
+
+// AwsCloudfrontDistributionV2OriginOriginShieldPtrInput is an input type that accepts AwsCloudfrontDistributionV2OriginOriginShieldArgs, AwsCloudfrontDistributionV2OriginOriginShieldPtr and AwsCloudfrontDistributionV2OriginOriginShieldPtrOutput values.
+// You can construct a concrete instance of `AwsCloudfrontDistributionV2OriginOriginShieldPtrInput` via:
+//
+//	        AwsCloudfrontDistributionV2OriginOriginShieldArgs{...}
+//
+//	or:
+//
+//	        nil
+type AwsCloudfrontDistributionV2OriginOriginShieldPtrInput interface {
+	pulumi.Input
+
+	ToAwsCloudfrontDistributionV2OriginOriginShieldPtrOutput() AwsCloudfrontDistributionV2OriginOriginShieldPtrOutput
+	ToAwsCloudfrontDistributionV2OriginOriginShieldPtrOutputWithContext(context.Context) AwsCloudfrontDistributionV2OriginOriginShieldPtrOutput
+}
+
+type awsCloudfrontDistributionV2OriginOriginShieldPtrType AwsCloudfrontDistributionV2OriginOriginShieldArgs
+
+func AwsCloudfrontDistributionV2OriginOriginShieldPtr(v *AwsCloudfrontDistributionV2OriginOriginShieldArgs) AwsCloudfrontDistributionV2OriginOriginShieldPtrInput {
+	return (*awsCloudfrontDistributionV2OriginOriginShieldPtrType)(v)
+}
+
+func (*awsCloudfrontDistributionV2OriginOriginShieldPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsCloudfrontDistributionV2OriginOriginShield)(nil)).Elem()
+}
+
+func (i *awsCloudfrontDistributionV2OriginOriginShieldPtrType) ToAwsCloudfrontDistributionV2OriginOriginShieldPtrOutput() AwsCloudfrontDistributionV2OriginOriginShieldPtrOutput {
+	return i.ToAwsCloudfrontDistributionV2OriginOriginShieldPtrOutputWithContext(context.Background())
+}
+
+func (i *awsCloudfrontDistributionV2OriginOriginShieldPtrType) ToAwsCloudfrontDistributionV2OriginOriginShieldPtrOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2OriginOriginShieldPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCloudfrontDistributionV2OriginOriginShieldPtrOutput)
+}
+
+type AwsCloudfrontDistributionV2OriginOriginShieldOutput struct{ *pulumi.OutputState }
+
+func (AwsCloudfrontDistributionV2OriginOriginShieldOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsCloudfrontDistributionV2OriginOriginShield)(nil)).Elem()
+}
+
+func (o AwsCloudfrontDistributionV2OriginOriginShieldOutput) ToAwsCloudfrontDistributionV2OriginOriginShieldOutput() AwsCloudfrontDistributionV2OriginOriginShieldOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2OriginOriginShieldOutput) ToAwsCloudfrontDistributionV2OriginOriginShieldOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2OriginOriginShieldOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2OriginOriginShieldOutput) ToAwsCloudfrontDistributionV2OriginOriginShieldPtrOutput() AwsCloudfrontDistributionV2OriginOriginShieldPtrOutput {
+	return o.ToAwsCloudfrontDistributionV2OriginOriginShieldPtrOutputWithContext(context.Background())
+}
+
+func (o AwsCloudfrontDistributionV2OriginOriginShieldOutput) ToAwsCloudfrontDistributionV2OriginOriginShieldPtrOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2OriginOriginShieldPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsCloudfrontDistributionV2OriginOriginShield) *AwsCloudfrontDistributionV2OriginOriginShield {
+		return &v
+	}).(AwsCloudfrontDistributionV2OriginOriginShieldPtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2OriginOriginShieldOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2OriginOriginShield) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o AwsCloudfrontDistributionV2OriginOriginShieldOutput) OriginShieldRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2OriginOriginShield) string { return v.OriginShieldRegion }).(pulumi.StringOutput)
+}
+
+type AwsCloudfrontDistributionV2OriginOriginShieldPtrOutput struct{ *pulumi.OutputState }
+
+func (AwsCloudfrontDistributionV2OriginOriginShieldPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsCloudfrontDistributionV2OriginOriginShield)(nil)).Elem()
+}
+
+func (o AwsCloudfrontDistributionV2OriginOriginShieldPtrOutput) ToAwsCloudfrontDistributionV2OriginOriginShieldPtrOutput() AwsCloudfrontDistributionV2OriginOriginShieldPtrOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2OriginOriginShieldPtrOutput) ToAwsCloudfrontDistributionV2OriginOriginShieldPtrOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2OriginOriginShieldPtrOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2OriginOriginShieldPtrOutput) Elem() AwsCloudfrontDistributionV2OriginOriginShieldOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2OriginOriginShield) AwsCloudfrontDistributionV2OriginOriginShield {
+		if v != nil {
+			return *v
+		}
+		var ret AwsCloudfrontDistributionV2OriginOriginShield
+		return ret
+	}).(AwsCloudfrontDistributionV2OriginOriginShieldOutput)
+}
+
+func (o AwsCloudfrontDistributionV2OriginOriginShieldPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2OriginOriginShield) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2OriginOriginShieldPtrOutput) OriginShieldRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2OriginOriginShield) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.OriginShieldRegion
+	}).(pulumi.StringPtrOutput)
+}
+
+type AwsCloudfrontDistributionV2Restrictions struct {
+	GeoRestriction AwsCloudfrontDistributionV2RestrictionsGeoRestriction `pulumi:"geoRestriction"`
+}
+
+// AwsCloudfrontDistributionV2RestrictionsInput is an input type that accepts AwsCloudfrontDistributionV2RestrictionsArgs and AwsCloudfrontDistributionV2RestrictionsOutput values.
+// You can construct a concrete instance of `AwsCloudfrontDistributionV2RestrictionsInput` via:
+//
+//	AwsCloudfrontDistributionV2RestrictionsArgs{...}
+type AwsCloudfrontDistributionV2RestrictionsInput interface {
+	pulumi.Input
+
+	ToAwsCloudfrontDistributionV2RestrictionsOutput() AwsCloudfrontDistributionV2RestrictionsOutput
+	ToAwsCloudfrontDistributionV2RestrictionsOutputWithContext(context.Context) AwsCloudfrontDistributionV2RestrictionsOutput
+}
+
+type AwsCloudfrontDistributionV2RestrictionsArgs struct {
+	GeoRestriction AwsCloudfrontDistributionV2RestrictionsGeoRestrictionInput `pulumi:"geoRestriction"`
+}
+
+func (AwsCloudfrontDistributionV2RestrictionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsCloudfrontDistributionV2Restrictions)(nil)).Elem()
+}
+
+func (i AwsCloudfrontDistributionV2RestrictionsArgs) ToAwsCloudfrontDistributionV2RestrictionsOutput() AwsCloudfrontDistributionV2RestrictionsOutput {
+	return i.ToAwsCloudfrontDistributionV2RestrictionsOutputWithContext(context.Background())
+}
+
+func (i AwsCloudfrontDistributionV2RestrictionsArgs) ToAwsCloudfrontDistributionV2RestrictionsOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2RestrictionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCloudfrontDistributionV2RestrictionsOutput)
+}
+
+func (i AwsCloudfrontDistributionV2RestrictionsArgs) ToAwsCloudfrontDistributionV2RestrictionsPtrOutput() AwsCloudfrontDistributionV2RestrictionsPtrOutput {
+	return i.ToAwsCloudfrontDistributionV2RestrictionsPtrOutputWithContext(context.Background())
+}
+
+func (i AwsCloudfrontDistributionV2RestrictionsArgs) ToAwsCloudfrontDistributionV2RestrictionsPtrOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2RestrictionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCloudfrontDistributionV2RestrictionsOutput).ToAwsCloudfrontDistributionV2RestrictionsPtrOutputWithContext(ctx)
+}
+
+// AwsCloudfrontDistributionV2RestrictionsPtrInput is an input type that accepts AwsCloudfrontDistributionV2RestrictionsArgs, AwsCloudfrontDistributionV2RestrictionsPtr and AwsCloudfrontDistributionV2RestrictionsPtrOutput values.
+// You can construct a concrete instance of `AwsCloudfrontDistributionV2RestrictionsPtrInput` via:
+//
+//	        AwsCloudfrontDistributionV2RestrictionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AwsCloudfrontDistributionV2RestrictionsPtrInput interface {
+	pulumi.Input
+
+	ToAwsCloudfrontDistributionV2RestrictionsPtrOutput() AwsCloudfrontDistributionV2RestrictionsPtrOutput
+	ToAwsCloudfrontDistributionV2RestrictionsPtrOutputWithContext(context.Context) AwsCloudfrontDistributionV2RestrictionsPtrOutput
+}
+
+type awsCloudfrontDistributionV2RestrictionsPtrType AwsCloudfrontDistributionV2RestrictionsArgs
+
+func AwsCloudfrontDistributionV2RestrictionsPtr(v *AwsCloudfrontDistributionV2RestrictionsArgs) AwsCloudfrontDistributionV2RestrictionsPtrInput {
+	return (*awsCloudfrontDistributionV2RestrictionsPtrType)(v)
+}
+
+func (*awsCloudfrontDistributionV2RestrictionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsCloudfrontDistributionV2Restrictions)(nil)).Elem()
+}
+
+func (i *awsCloudfrontDistributionV2RestrictionsPtrType) ToAwsCloudfrontDistributionV2RestrictionsPtrOutput() AwsCloudfrontDistributionV2RestrictionsPtrOutput {
+	return i.ToAwsCloudfrontDistributionV2RestrictionsPtrOutputWithContext(context.Background())
+}
+
+func (i *awsCloudfrontDistributionV2RestrictionsPtrType) ToAwsCloudfrontDistributionV2RestrictionsPtrOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2RestrictionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCloudfrontDistributionV2RestrictionsPtrOutput)
+}
+
+type AwsCloudfrontDistributionV2RestrictionsOutput struct{ *pulumi.OutputState }
+
+func (AwsCloudfrontDistributionV2RestrictionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsCloudfrontDistributionV2Restrictions)(nil)).Elem()
+}
+
+func (o AwsCloudfrontDistributionV2RestrictionsOutput) ToAwsCloudfrontDistributionV2RestrictionsOutput() AwsCloudfrontDistributionV2RestrictionsOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2RestrictionsOutput) ToAwsCloudfrontDistributionV2RestrictionsOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2RestrictionsOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2RestrictionsOutput) ToAwsCloudfrontDistributionV2RestrictionsPtrOutput() AwsCloudfrontDistributionV2RestrictionsPtrOutput {
+	return o.ToAwsCloudfrontDistributionV2RestrictionsPtrOutputWithContext(context.Background())
+}
+
+func (o AwsCloudfrontDistributionV2RestrictionsOutput) ToAwsCloudfrontDistributionV2RestrictionsPtrOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2RestrictionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsCloudfrontDistributionV2Restrictions) *AwsCloudfrontDistributionV2Restrictions {
+		return &v
+	}).(AwsCloudfrontDistributionV2RestrictionsPtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2RestrictionsOutput) GeoRestriction() AwsCloudfrontDistributionV2RestrictionsGeoRestrictionOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2Restrictions) AwsCloudfrontDistributionV2RestrictionsGeoRestriction {
+		return v.GeoRestriction
+	}).(AwsCloudfrontDistributionV2RestrictionsGeoRestrictionOutput)
+}
+
+type AwsCloudfrontDistributionV2RestrictionsPtrOutput struct{ *pulumi.OutputState }
+
+func (AwsCloudfrontDistributionV2RestrictionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsCloudfrontDistributionV2Restrictions)(nil)).Elem()
+}
+
+func (o AwsCloudfrontDistributionV2RestrictionsPtrOutput) ToAwsCloudfrontDistributionV2RestrictionsPtrOutput() AwsCloudfrontDistributionV2RestrictionsPtrOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2RestrictionsPtrOutput) ToAwsCloudfrontDistributionV2RestrictionsPtrOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2RestrictionsPtrOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2RestrictionsPtrOutput) Elem() AwsCloudfrontDistributionV2RestrictionsOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2Restrictions) AwsCloudfrontDistributionV2Restrictions {
+		if v != nil {
+			return *v
+		}
+		var ret AwsCloudfrontDistributionV2Restrictions
+		return ret
+	}).(AwsCloudfrontDistributionV2RestrictionsOutput)
+}
+
+func (o AwsCloudfrontDistributionV2RestrictionsPtrOutput) GeoRestriction() AwsCloudfrontDistributionV2RestrictionsGeoRestrictionPtrOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2Restrictions) *AwsCloudfrontDistributionV2RestrictionsGeoRestriction {
+		if v == nil {
+			return nil
+		}
+		return &v.GeoRestriction
+	}).(AwsCloudfrontDistributionV2RestrictionsGeoRestrictionPtrOutput)
+}
+
+type AwsCloudfrontDistributionV2RestrictionsGeoRestriction struct {
+	Locations       []string `pulumi:"locations"`
+	RestrictionType string   `pulumi:"restrictionType"`
+}
+
+// AwsCloudfrontDistributionV2RestrictionsGeoRestrictionInput is an input type that accepts AwsCloudfrontDistributionV2RestrictionsGeoRestrictionArgs and AwsCloudfrontDistributionV2RestrictionsGeoRestrictionOutput values.
+// You can construct a concrete instance of `AwsCloudfrontDistributionV2RestrictionsGeoRestrictionInput` via:
+//
+//	AwsCloudfrontDistributionV2RestrictionsGeoRestrictionArgs{...}
+type AwsCloudfrontDistributionV2RestrictionsGeoRestrictionInput interface {
+	pulumi.Input
+
+	ToAwsCloudfrontDistributionV2RestrictionsGeoRestrictionOutput() AwsCloudfrontDistributionV2RestrictionsGeoRestrictionOutput
+	ToAwsCloudfrontDistributionV2RestrictionsGeoRestrictionOutputWithContext(context.Context) AwsCloudfrontDistributionV2RestrictionsGeoRestrictionOutput
+}
+
+type AwsCloudfrontDistributionV2RestrictionsGeoRestrictionArgs struct {
+	Locations       pulumi.StringArrayInput `pulumi:"locations"`
+	RestrictionType pulumi.StringInput      `pulumi:"restrictionType"`
+}
+
+func (AwsCloudfrontDistributionV2RestrictionsGeoRestrictionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsCloudfrontDistributionV2RestrictionsGeoRestriction)(nil)).Elem()
+}
+
+func (i AwsCloudfrontDistributionV2RestrictionsGeoRestrictionArgs) ToAwsCloudfrontDistributionV2RestrictionsGeoRestrictionOutput() AwsCloudfrontDistributionV2RestrictionsGeoRestrictionOutput {
+	return i.ToAwsCloudfrontDistributionV2RestrictionsGeoRestrictionOutputWithContext(context.Background())
+}
+
+func (i AwsCloudfrontDistributionV2RestrictionsGeoRestrictionArgs) ToAwsCloudfrontDistributionV2RestrictionsGeoRestrictionOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2RestrictionsGeoRestrictionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCloudfrontDistributionV2RestrictionsGeoRestrictionOutput)
+}
+
+func (i AwsCloudfrontDistributionV2RestrictionsGeoRestrictionArgs) ToAwsCloudfrontDistributionV2RestrictionsGeoRestrictionPtrOutput() AwsCloudfrontDistributionV2RestrictionsGeoRestrictionPtrOutput {
+	return i.ToAwsCloudfrontDistributionV2RestrictionsGeoRestrictionPtrOutputWithContext(context.Background())
+}
+
+func (i AwsCloudfrontDistributionV2RestrictionsGeoRestrictionArgs) ToAwsCloudfrontDistributionV2RestrictionsGeoRestrictionPtrOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2RestrictionsGeoRestrictionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCloudfrontDistributionV2RestrictionsGeoRestrictionOutput).ToAwsCloudfrontDistributionV2RestrictionsGeoRestrictionPtrOutputWithContext(ctx)
+}
+
+// AwsCloudfrontDistributionV2RestrictionsGeoRestrictionPtrInput is an input type that accepts AwsCloudfrontDistributionV2RestrictionsGeoRestrictionArgs, AwsCloudfrontDistributionV2RestrictionsGeoRestrictionPtr and AwsCloudfrontDistributionV2RestrictionsGeoRestrictionPtrOutput values.
+// You can construct a concrete instance of `AwsCloudfrontDistributionV2RestrictionsGeoRestrictionPtrInput` via:
+//
+//	        AwsCloudfrontDistributionV2RestrictionsGeoRestrictionArgs{...}
+//
+//	or:
+//
+//	        nil
+type AwsCloudfrontDistributionV2RestrictionsGeoRestrictionPtrInput interface {
+	pulumi.Input
+
+	ToAwsCloudfrontDistributionV2RestrictionsGeoRestrictionPtrOutput() AwsCloudfrontDistributionV2RestrictionsGeoRestrictionPtrOutput
+	ToAwsCloudfrontDistributionV2RestrictionsGeoRestrictionPtrOutputWithContext(context.Context) AwsCloudfrontDistributionV2RestrictionsGeoRestrictionPtrOutput
+}
+
+type awsCloudfrontDistributionV2RestrictionsGeoRestrictionPtrType AwsCloudfrontDistributionV2RestrictionsGeoRestrictionArgs
+
+func AwsCloudfrontDistributionV2RestrictionsGeoRestrictionPtr(v *AwsCloudfrontDistributionV2RestrictionsGeoRestrictionArgs) AwsCloudfrontDistributionV2RestrictionsGeoRestrictionPtrInput {
+	return (*awsCloudfrontDistributionV2RestrictionsGeoRestrictionPtrType)(v)
+}
+
+func (*awsCloudfrontDistributionV2RestrictionsGeoRestrictionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsCloudfrontDistributionV2RestrictionsGeoRestriction)(nil)).Elem()
+}
+
+func (i *awsCloudfrontDistributionV2RestrictionsGeoRestrictionPtrType) ToAwsCloudfrontDistributionV2RestrictionsGeoRestrictionPtrOutput() AwsCloudfrontDistributionV2RestrictionsGeoRestrictionPtrOutput {
+	return i.ToAwsCloudfrontDistributionV2RestrictionsGeoRestrictionPtrOutputWithContext(context.Background())
+}
+
+func (i *awsCloudfrontDistributionV2RestrictionsGeoRestrictionPtrType) ToAwsCloudfrontDistributionV2RestrictionsGeoRestrictionPtrOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2RestrictionsGeoRestrictionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCloudfrontDistributionV2RestrictionsGeoRestrictionPtrOutput)
+}
+
+type AwsCloudfrontDistributionV2RestrictionsGeoRestrictionOutput struct{ *pulumi.OutputState }
+
+func (AwsCloudfrontDistributionV2RestrictionsGeoRestrictionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsCloudfrontDistributionV2RestrictionsGeoRestriction)(nil)).Elem()
+}
+
+func (o AwsCloudfrontDistributionV2RestrictionsGeoRestrictionOutput) ToAwsCloudfrontDistributionV2RestrictionsGeoRestrictionOutput() AwsCloudfrontDistributionV2RestrictionsGeoRestrictionOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2RestrictionsGeoRestrictionOutput) ToAwsCloudfrontDistributionV2RestrictionsGeoRestrictionOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2RestrictionsGeoRestrictionOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2RestrictionsGeoRestrictionOutput) ToAwsCloudfrontDistributionV2RestrictionsGeoRestrictionPtrOutput() AwsCloudfrontDistributionV2RestrictionsGeoRestrictionPtrOutput {
+	return o.ToAwsCloudfrontDistributionV2RestrictionsGeoRestrictionPtrOutputWithContext(context.Background())
+}
+
+func (o AwsCloudfrontDistributionV2RestrictionsGeoRestrictionOutput) ToAwsCloudfrontDistributionV2RestrictionsGeoRestrictionPtrOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2RestrictionsGeoRestrictionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsCloudfrontDistributionV2RestrictionsGeoRestriction) *AwsCloudfrontDistributionV2RestrictionsGeoRestriction {
+		return &v
+	}).(AwsCloudfrontDistributionV2RestrictionsGeoRestrictionPtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2RestrictionsGeoRestrictionOutput) Locations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2RestrictionsGeoRestriction) []string { return v.Locations }).(pulumi.StringArrayOutput)
+}
+
+func (o AwsCloudfrontDistributionV2RestrictionsGeoRestrictionOutput) RestrictionType() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2RestrictionsGeoRestriction) string { return v.RestrictionType }).(pulumi.StringOutput)
+}
+
+type AwsCloudfrontDistributionV2RestrictionsGeoRestrictionPtrOutput struct{ *pulumi.OutputState }
+
+func (AwsCloudfrontDistributionV2RestrictionsGeoRestrictionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsCloudfrontDistributionV2RestrictionsGeoRestriction)(nil)).Elem()
+}
+
+func (o AwsCloudfrontDistributionV2RestrictionsGeoRestrictionPtrOutput) ToAwsCloudfrontDistributionV2RestrictionsGeoRestrictionPtrOutput() AwsCloudfrontDistributionV2RestrictionsGeoRestrictionPtrOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2RestrictionsGeoRestrictionPtrOutput) ToAwsCloudfrontDistributionV2RestrictionsGeoRestrictionPtrOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2RestrictionsGeoRestrictionPtrOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2RestrictionsGeoRestrictionPtrOutput) Elem() AwsCloudfrontDistributionV2RestrictionsGeoRestrictionOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2RestrictionsGeoRestriction) AwsCloudfrontDistributionV2RestrictionsGeoRestriction {
+		if v != nil {
+			return *v
+		}
+		var ret AwsCloudfrontDistributionV2RestrictionsGeoRestriction
+		return ret
+	}).(AwsCloudfrontDistributionV2RestrictionsGeoRestrictionOutput)
+}
+
+func (o AwsCloudfrontDistributionV2RestrictionsGeoRestrictionPtrOutput) Locations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2RestrictionsGeoRestriction) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Locations
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o AwsCloudfrontDistributionV2RestrictionsGeoRestrictionPtrOutput) RestrictionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2RestrictionsGeoRestriction) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RestrictionType
+	}).(pulumi.StringPtrOutput)
+}
+
+type AwsCloudfrontDistributionV2ViewerCertificate struct {
+	AcmCertificateArn            *string `pulumi:"acmCertificateArn"`
+	CloudfrontDefaultCertificate *bool   `pulumi:"cloudfrontDefaultCertificate"`
+	IamCertificateId             *string `pulumi:"iamCertificateId"`
+	// Defaults to `TLSv1.2_2021`.
+	MinimumProtocolVersion *string `pulumi:"minimumProtocolVersion"`
+	// Defaults to `sni-only`.
+	SslSupportMethod *string `pulumi:"sslSupportMethod"`
+}
+
+// AwsCloudfrontDistributionV2ViewerCertificateInput is an input type that accepts AwsCloudfrontDistributionV2ViewerCertificateArgs and AwsCloudfrontDistributionV2ViewerCertificateOutput values.
+// You can construct a concrete instance of `AwsCloudfrontDistributionV2ViewerCertificateInput` via:
+//
+//	AwsCloudfrontDistributionV2ViewerCertificateArgs{...}
+type AwsCloudfrontDistributionV2ViewerCertificateInput interface {
+	pulumi.Input
+
+	ToAwsCloudfrontDistributionV2ViewerCertificateOutput() AwsCloudfrontDistributionV2ViewerCertificateOutput
+	ToAwsCloudfrontDistributionV2ViewerCertificateOutputWithContext(context.Context) AwsCloudfrontDistributionV2ViewerCertificateOutput
+}
+
+type AwsCloudfrontDistributionV2ViewerCertificateArgs struct {
+	AcmCertificateArn            pulumi.StringPtrInput `pulumi:"acmCertificateArn"`
+	CloudfrontDefaultCertificate pulumi.BoolPtrInput   `pulumi:"cloudfrontDefaultCertificate"`
+	IamCertificateId             pulumi.StringPtrInput `pulumi:"iamCertificateId"`
+	// Defaults to `TLSv1.2_2021`.
+	MinimumProtocolVersion pulumi.StringPtrInput `pulumi:"minimumProtocolVersion"`
+	// Defaults to `sni-only`.
+	SslSupportMethod pulumi.StringPtrInput `pulumi:"sslSupportMethod"`
+}
+
+func (AwsCloudfrontDistributionV2ViewerCertificateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsCloudfrontDistributionV2ViewerCertificate)(nil)).Elem()
+}
+
+func (i AwsCloudfrontDistributionV2ViewerCertificateArgs) ToAwsCloudfrontDistributionV2ViewerCertificateOutput() AwsCloudfrontDistributionV2ViewerCertificateOutput {
+	return i.ToAwsCloudfrontDistributionV2ViewerCertificateOutputWithContext(context.Background())
+}
+
+func (i AwsCloudfrontDistributionV2ViewerCertificateArgs) ToAwsCloudfrontDistributionV2ViewerCertificateOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2ViewerCertificateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCloudfrontDistributionV2ViewerCertificateOutput)
+}
+
+func (i AwsCloudfrontDistributionV2ViewerCertificateArgs) ToAwsCloudfrontDistributionV2ViewerCertificatePtrOutput() AwsCloudfrontDistributionV2ViewerCertificatePtrOutput {
+	return i.ToAwsCloudfrontDistributionV2ViewerCertificatePtrOutputWithContext(context.Background())
+}
+
+func (i AwsCloudfrontDistributionV2ViewerCertificateArgs) ToAwsCloudfrontDistributionV2ViewerCertificatePtrOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2ViewerCertificatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCloudfrontDistributionV2ViewerCertificateOutput).ToAwsCloudfrontDistributionV2ViewerCertificatePtrOutputWithContext(ctx)
+}
+
+// AwsCloudfrontDistributionV2ViewerCertificatePtrInput is an input type that accepts AwsCloudfrontDistributionV2ViewerCertificateArgs, AwsCloudfrontDistributionV2ViewerCertificatePtr and AwsCloudfrontDistributionV2ViewerCertificatePtrOutput values.
+// You can construct a concrete instance of `AwsCloudfrontDistributionV2ViewerCertificatePtrInput` via:
+//
+//	        AwsCloudfrontDistributionV2ViewerCertificateArgs{...}
+//
+//	or:
+//
+//	        nil
+type AwsCloudfrontDistributionV2ViewerCertificatePtrInput interface {
+	pulumi.Input
+
+	ToAwsCloudfrontDistributionV2ViewerCertificatePtrOutput() AwsCloudfrontDistributionV2ViewerCertificatePtrOutput
+	ToAwsCloudfrontDistributionV2ViewerCertificatePtrOutputWithContext(context.Context) AwsCloudfrontDistributionV2ViewerCertificatePtrOutput
+}
+
+type awsCloudfrontDistributionV2ViewerCertificatePtrType AwsCloudfrontDistributionV2ViewerCertificateArgs
+
+func AwsCloudfrontDistributionV2ViewerCertificatePtr(v *AwsCloudfrontDistributionV2ViewerCertificateArgs) AwsCloudfrontDistributionV2ViewerCertificatePtrInput {
+	return (*awsCloudfrontDistributionV2ViewerCertificatePtrType)(v)
+}
+
+func (*awsCloudfrontDistributionV2ViewerCertificatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsCloudfrontDistributionV2ViewerCertificate)(nil)).Elem()
+}
+
+func (i *awsCloudfrontDistributionV2ViewerCertificatePtrType) ToAwsCloudfrontDistributionV2ViewerCertificatePtrOutput() AwsCloudfrontDistributionV2ViewerCertificatePtrOutput {
+	return i.ToAwsCloudfrontDistributionV2ViewerCertificatePtrOutputWithContext(context.Background())
+}
+
+func (i *awsCloudfrontDistributionV2ViewerCertificatePtrType) ToAwsCloudfrontDistributionV2ViewerCertificatePtrOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2ViewerCertificatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCloudfrontDistributionV2ViewerCertificatePtrOutput)
+}
+
+type AwsCloudfrontDistributionV2ViewerCertificateOutput struct{ *pulumi.OutputState }
+
+func (AwsCloudfrontDistributionV2ViewerCertificateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsCloudfrontDistributionV2ViewerCertificate)(nil)).Elem()
+}
+
+func (o AwsCloudfrontDistributionV2ViewerCertificateOutput) ToAwsCloudfrontDistributionV2ViewerCertificateOutput() AwsCloudfrontDistributionV2ViewerCertificateOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2ViewerCertificateOutput) ToAwsCloudfrontDistributionV2ViewerCertificateOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2ViewerCertificateOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2ViewerCertificateOutput) ToAwsCloudfrontDistributionV2ViewerCertificatePtrOutput() AwsCloudfrontDistributionV2ViewerCertificatePtrOutput {
+	return o.ToAwsCloudfrontDistributionV2ViewerCertificatePtrOutputWithContext(context.Background())
+}
+
+func (o AwsCloudfrontDistributionV2ViewerCertificateOutput) ToAwsCloudfrontDistributionV2ViewerCertificatePtrOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2ViewerCertificatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsCloudfrontDistributionV2ViewerCertificate) *AwsCloudfrontDistributionV2ViewerCertificate {
+		return &v
+	}).(AwsCloudfrontDistributionV2ViewerCertificatePtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2ViewerCertificateOutput) AcmCertificateArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2ViewerCertificate) *string { return v.AcmCertificateArn }).(pulumi.StringPtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2ViewerCertificateOutput) CloudfrontDefaultCertificate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2ViewerCertificate) *bool { return v.CloudfrontDefaultCertificate }).(pulumi.BoolPtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2ViewerCertificateOutput) IamCertificateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2ViewerCertificate) *string { return v.IamCertificateId }).(pulumi.StringPtrOutput)
+}
+
+// Defaults to `TLSv1.2_2021`.
+func (o AwsCloudfrontDistributionV2ViewerCertificateOutput) MinimumProtocolVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2ViewerCertificate) *string { return v.MinimumProtocolVersion }).(pulumi.StringPtrOutput)
+}
+
+// Defaults to `sni-only`.
+func (o AwsCloudfrontDistributionV2ViewerCertificateOutput) SslSupportMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsCloudfrontDistributionV2ViewerCertificate) *string { return v.SslSupportMethod }).(pulumi.StringPtrOutput)
+}
+
+type AwsCloudfrontDistributionV2ViewerCertificatePtrOutput struct{ *pulumi.OutputState }
+
+func (AwsCloudfrontDistributionV2ViewerCertificatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsCloudfrontDistributionV2ViewerCertificate)(nil)).Elem()
+}
+
+func (o AwsCloudfrontDistributionV2ViewerCertificatePtrOutput) ToAwsCloudfrontDistributionV2ViewerCertificatePtrOutput() AwsCloudfrontDistributionV2ViewerCertificatePtrOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2ViewerCertificatePtrOutput) ToAwsCloudfrontDistributionV2ViewerCertificatePtrOutputWithContext(ctx context.Context) AwsCloudfrontDistributionV2ViewerCertificatePtrOutput {
+	return o
+}
+
+func (o AwsCloudfrontDistributionV2ViewerCertificatePtrOutput) Elem() AwsCloudfrontDistributionV2ViewerCertificateOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2ViewerCertificate) AwsCloudfrontDistributionV2ViewerCertificate {
+		if v != nil {
+			return *v
+		}
+		var ret AwsCloudfrontDistributionV2ViewerCertificate
+		return ret
+	}).(AwsCloudfrontDistributionV2ViewerCertificateOutput)
+}
+
+func (o AwsCloudfrontDistributionV2ViewerCertificatePtrOutput) AcmCertificateArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2ViewerCertificate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AcmCertificateArn
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2ViewerCertificatePtrOutput) CloudfrontDefaultCertificate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2ViewerCertificate) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CloudfrontDefaultCertificate
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o AwsCloudfrontDistributionV2ViewerCertificatePtrOutput) IamCertificateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2ViewerCertificate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IamCertificateId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defaults to `TLSv1.2_2021`.
+func (o AwsCloudfrontDistributionV2ViewerCertificatePtrOutput) MinimumProtocolVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2ViewerCertificate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MinimumProtocolVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defaults to `sni-only`.
+func (o AwsCloudfrontDistributionV2ViewerCertificatePtrOutput) SslSupportMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistributionV2ViewerCertificate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslSupportMethod
+	}).(pulumi.StringPtrOutput)
+}
+
 type AwsCloudfrontDistributionViewerCertificate struct {
 	AcmCertificateArn            *string `pulumi:"acmCertificateArn"`
 	CloudfrontDefaultCertificate *bool   `pulumi:"cloudfrontDefaultCertificate"`
@@ -11700,6 +15130,477 @@ func (o AwsLaunchTemplateBlockDeviceMappingEbsPtrOutput) VolumeType() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+type AwsLaunchTemplateInstanceRequirements struct {
+	AllowedInstanceTypes []string `pulumi:"allowedInstanceTypes"`
+	// Block describing the minimum and maximum amount of memory (MiB). It is a required field when allowed*instance*types is set
+	MemoryMib *AwsLaunchTemplateInstanceRequirementsMemoryMib `pulumi:"memoryMib"`
+	// Block describing the minimum and maximum number of vCPUs. It is a required field when allowed*instance*types is set
+	VcpuCount *AwsLaunchTemplateInstanceRequirementsVcpuCount `pulumi:"vcpuCount"`
+}
+
+// AwsLaunchTemplateInstanceRequirementsInput is an input type that accepts AwsLaunchTemplateInstanceRequirementsArgs and AwsLaunchTemplateInstanceRequirementsOutput values.
+// You can construct a concrete instance of `AwsLaunchTemplateInstanceRequirementsInput` via:
+//
+//	AwsLaunchTemplateInstanceRequirementsArgs{...}
+type AwsLaunchTemplateInstanceRequirementsInput interface {
+	pulumi.Input
+
+	ToAwsLaunchTemplateInstanceRequirementsOutput() AwsLaunchTemplateInstanceRequirementsOutput
+	ToAwsLaunchTemplateInstanceRequirementsOutputWithContext(context.Context) AwsLaunchTemplateInstanceRequirementsOutput
+}
+
+type AwsLaunchTemplateInstanceRequirementsArgs struct {
+	AllowedInstanceTypes pulumi.StringArrayInput `pulumi:"allowedInstanceTypes"`
+	// Block describing the minimum and maximum amount of memory (MiB). It is a required field when allowed*instance*types is set
+	MemoryMib AwsLaunchTemplateInstanceRequirementsMemoryMibPtrInput `pulumi:"memoryMib"`
+	// Block describing the minimum and maximum number of vCPUs. It is a required field when allowed*instance*types is set
+	VcpuCount AwsLaunchTemplateInstanceRequirementsVcpuCountPtrInput `pulumi:"vcpuCount"`
+}
+
+func (AwsLaunchTemplateInstanceRequirementsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsLaunchTemplateInstanceRequirements)(nil)).Elem()
+}
+
+func (i AwsLaunchTemplateInstanceRequirementsArgs) ToAwsLaunchTemplateInstanceRequirementsOutput() AwsLaunchTemplateInstanceRequirementsOutput {
+	return i.ToAwsLaunchTemplateInstanceRequirementsOutputWithContext(context.Background())
+}
+
+func (i AwsLaunchTemplateInstanceRequirementsArgs) ToAwsLaunchTemplateInstanceRequirementsOutputWithContext(ctx context.Context) AwsLaunchTemplateInstanceRequirementsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsLaunchTemplateInstanceRequirementsOutput)
+}
+
+func (i AwsLaunchTemplateInstanceRequirementsArgs) ToAwsLaunchTemplateInstanceRequirementsPtrOutput() AwsLaunchTemplateInstanceRequirementsPtrOutput {
+	return i.ToAwsLaunchTemplateInstanceRequirementsPtrOutputWithContext(context.Background())
+}
+
+func (i AwsLaunchTemplateInstanceRequirementsArgs) ToAwsLaunchTemplateInstanceRequirementsPtrOutputWithContext(ctx context.Context) AwsLaunchTemplateInstanceRequirementsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsLaunchTemplateInstanceRequirementsOutput).ToAwsLaunchTemplateInstanceRequirementsPtrOutputWithContext(ctx)
+}
+
+// AwsLaunchTemplateInstanceRequirementsPtrInput is an input type that accepts AwsLaunchTemplateInstanceRequirementsArgs, AwsLaunchTemplateInstanceRequirementsPtr and AwsLaunchTemplateInstanceRequirementsPtrOutput values.
+// You can construct a concrete instance of `AwsLaunchTemplateInstanceRequirementsPtrInput` via:
+//
+//	        AwsLaunchTemplateInstanceRequirementsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AwsLaunchTemplateInstanceRequirementsPtrInput interface {
+	pulumi.Input
+
+	ToAwsLaunchTemplateInstanceRequirementsPtrOutput() AwsLaunchTemplateInstanceRequirementsPtrOutput
+	ToAwsLaunchTemplateInstanceRequirementsPtrOutputWithContext(context.Context) AwsLaunchTemplateInstanceRequirementsPtrOutput
+}
+
+type awsLaunchTemplateInstanceRequirementsPtrType AwsLaunchTemplateInstanceRequirementsArgs
+
+func AwsLaunchTemplateInstanceRequirementsPtr(v *AwsLaunchTemplateInstanceRequirementsArgs) AwsLaunchTemplateInstanceRequirementsPtrInput {
+	return (*awsLaunchTemplateInstanceRequirementsPtrType)(v)
+}
+
+func (*awsLaunchTemplateInstanceRequirementsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsLaunchTemplateInstanceRequirements)(nil)).Elem()
+}
+
+func (i *awsLaunchTemplateInstanceRequirementsPtrType) ToAwsLaunchTemplateInstanceRequirementsPtrOutput() AwsLaunchTemplateInstanceRequirementsPtrOutput {
+	return i.ToAwsLaunchTemplateInstanceRequirementsPtrOutputWithContext(context.Background())
+}
+
+func (i *awsLaunchTemplateInstanceRequirementsPtrType) ToAwsLaunchTemplateInstanceRequirementsPtrOutputWithContext(ctx context.Context) AwsLaunchTemplateInstanceRequirementsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsLaunchTemplateInstanceRequirementsPtrOutput)
+}
+
+type AwsLaunchTemplateInstanceRequirementsOutput struct{ *pulumi.OutputState }
+
+func (AwsLaunchTemplateInstanceRequirementsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsLaunchTemplateInstanceRequirements)(nil)).Elem()
+}
+
+func (o AwsLaunchTemplateInstanceRequirementsOutput) ToAwsLaunchTemplateInstanceRequirementsOutput() AwsLaunchTemplateInstanceRequirementsOutput {
+	return o
+}
+
+func (o AwsLaunchTemplateInstanceRequirementsOutput) ToAwsLaunchTemplateInstanceRequirementsOutputWithContext(ctx context.Context) AwsLaunchTemplateInstanceRequirementsOutput {
+	return o
+}
+
+func (o AwsLaunchTemplateInstanceRequirementsOutput) ToAwsLaunchTemplateInstanceRequirementsPtrOutput() AwsLaunchTemplateInstanceRequirementsPtrOutput {
+	return o.ToAwsLaunchTemplateInstanceRequirementsPtrOutputWithContext(context.Background())
+}
+
+func (o AwsLaunchTemplateInstanceRequirementsOutput) ToAwsLaunchTemplateInstanceRequirementsPtrOutputWithContext(ctx context.Context) AwsLaunchTemplateInstanceRequirementsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsLaunchTemplateInstanceRequirements) *AwsLaunchTemplateInstanceRequirements {
+		return &v
+	}).(AwsLaunchTemplateInstanceRequirementsPtrOutput)
+}
+
+func (o AwsLaunchTemplateInstanceRequirementsOutput) AllowedInstanceTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AwsLaunchTemplateInstanceRequirements) []string { return v.AllowedInstanceTypes }).(pulumi.StringArrayOutput)
+}
+
+// Block describing the minimum and maximum amount of memory (MiB). It is a required field when allowed*instance*types is set
+func (o AwsLaunchTemplateInstanceRequirementsOutput) MemoryMib() AwsLaunchTemplateInstanceRequirementsMemoryMibPtrOutput {
+	return o.ApplyT(func(v AwsLaunchTemplateInstanceRequirements) *AwsLaunchTemplateInstanceRequirementsMemoryMib {
+		return v.MemoryMib
+	}).(AwsLaunchTemplateInstanceRequirementsMemoryMibPtrOutput)
+}
+
+// Block describing the minimum and maximum number of vCPUs. It is a required field when allowed*instance*types is set
+func (o AwsLaunchTemplateInstanceRequirementsOutput) VcpuCount() AwsLaunchTemplateInstanceRequirementsVcpuCountPtrOutput {
+	return o.ApplyT(func(v AwsLaunchTemplateInstanceRequirements) *AwsLaunchTemplateInstanceRequirementsVcpuCount {
+		return v.VcpuCount
+	}).(AwsLaunchTemplateInstanceRequirementsVcpuCountPtrOutput)
+}
+
+type AwsLaunchTemplateInstanceRequirementsPtrOutput struct{ *pulumi.OutputState }
+
+func (AwsLaunchTemplateInstanceRequirementsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsLaunchTemplateInstanceRequirements)(nil)).Elem()
+}
+
+func (o AwsLaunchTemplateInstanceRequirementsPtrOutput) ToAwsLaunchTemplateInstanceRequirementsPtrOutput() AwsLaunchTemplateInstanceRequirementsPtrOutput {
+	return o
+}
+
+func (o AwsLaunchTemplateInstanceRequirementsPtrOutput) ToAwsLaunchTemplateInstanceRequirementsPtrOutputWithContext(ctx context.Context) AwsLaunchTemplateInstanceRequirementsPtrOutput {
+	return o
+}
+
+func (o AwsLaunchTemplateInstanceRequirementsPtrOutput) Elem() AwsLaunchTemplateInstanceRequirementsOutput {
+	return o.ApplyT(func(v *AwsLaunchTemplateInstanceRequirements) AwsLaunchTemplateInstanceRequirements {
+		if v != nil {
+			return *v
+		}
+		var ret AwsLaunchTemplateInstanceRequirements
+		return ret
+	}).(AwsLaunchTemplateInstanceRequirementsOutput)
+}
+
+func (o AwsLaunchTemplateInstanceRequirementsPtrOutput) AllowedInstanceTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AwsLaunchTemplateInstanceRequirements) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedInstanceTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Block describing the minimum and maximum amount of memory (MiB). It is a required field when allowed*instance*types is set
+func (o AwsLaunchTemplateInstanceRequirementsPtrOutput) MemoryMib() AwsLaunchTemplateInstanceRequirementsMemoryMibPtrOutput {
+	return o.ApplyT(func(v *AwsLaunchTemplateInstanceRequirements) *AwsLaunchTemplateInstanceRequirementsMemoryMib {
+		if v == nil {
+			return nil
+		}
+		return v.MemoryMib
+	}).(AwsLaunchTemplateInstanceRequirementsMemoryMibPtrOutput)
+}
+
+// Block describing the minimum and maximum number of vCPUs. It is a required field when allowed*instance*types is set
+func (o AwsLaunchTemplateInstanceRequirementsPtrOutput) VcpuCount() AwsLaunchTemplateInstanceRequirementsVcpuCountPtrOutput {
+	return o.ApplyT(func(v *AwsLaunchTemplateInstanceRequirements) *AwsLaunchTemplateInstanceRequirementsVcpuCount {
+		if v == nil {
+			return nil
+		}
+		return v.VcpuCount
+	}).(AwsLaunchTemplateInstanceRequirementsVcpuCountPtrOutput)
+}
+
+type AwsLaunchTemplateInstanceRequirementsMemoryMib struct {
+	Max int `pulumi:"max"`
+	Min int `pulumi:"min"`
+}
+
+// AwsLaunchTemplateInstanceRequirementsMemoryMibInput is an input type that accepts AwsLaunchTemplateInstanceRequirementsMemoryMibArgs and AwsLaunchTemplateInstanceRequirementsMemoryMibOutput values.
+// You can construct a concrete instance of `AwsLaunchTemplateInstanceRequirementsMemoryMibInput` via:
+//
+//	AwsLaunchTemplateInstanceRequirementsMemoryMibArgs{...}
+type AwsLaunchTemplateInstanceRequirementsMemoryMibInput interface {
+	pulumi.Input
+
+	ToAwsLaunchTemplateInstanceRequirementsMemoryMibOutput() AwsLaunchTemplateInstanceRequirementsMemoryMibOutput
+	ToAwsLaunchTemplateInstanceRequirementsMemoryMibOutputWithContext(context.Context) AwsLaunchTemplateInstanceRequirementsMemoryMibOutput
+}
+
+type AwsLaunchTemplateInstanceRequirementsMemoryMibArgs struct {
+	Max pulumi.IntInput `pulumi:"max"`
+	Min pulumi.IntInput `pulumi:"min"`
+}
+
+func (AwsLaunchTemplateInstanceRequirementsMemoryMibArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsLaunchTemplateInstanceRequirementsMemoryMib)(nil)).Elem()
+}
+
+func (i AwsLaunchTemplateInstanceRequirementsMemoryMibArgs) ToAwsLaunchTemplateInstanceRequirementsMemoryMibOutput() AwsLaunchTemplateInstanceRequirementsMemoryMibOutput {
+	return i.ToAwsLaunchTemplateInstanceRequirementsMemoryMibOutputWithContext(context.Background())
+}
+
+func (i AwsLaunchTemplateInstanceRequirementsMemoryMibArgs) ToAwsLaunchTemplateInstanceRequirementsMemoryMibOutputWithContext(ctx context.Context) AwsLaunchTemplateInstanceRequirementsMemoryMibOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsLaunchTemplateInstanceRequirementsMemoryMibOutput)
+}
+
+func (i AwsLaunchTemplateInstanceRequirementsMemoryMibArgs) ToAwsLaunchTemplateInstanceRequirementsMemoryMibPtrOutput() AwsLaunchTemplateInstanceRequirementsMemoryMibPtrOutput {
+	return i.ToAwsLaunchTemplateInstanceRequirementsMemoryMibPtrOutputWithContext(context.Background())
+}
+
+func (i AwsLaunchTemplateInstanceRequirementsMemoryMibArgs) ToAwsLaunchTemplateInstanceRequirementsMemoryMibPtrOutputWithContext(ctx context.Context) AwsLaunchTemplateInstanceRequirementsMemoryMibPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsLaunchTemplateInstanceRequirementsMemoryMibOutput).ToAwsLaunchTemplateInstanceRequirementsMemoryMibPtrOutputWithContext(ctx)
+}
+
+// AwsLaunchTemplateInstanceRequirementsMemoryMibPtrInput is an input type that accepts AwsLaunchTemplateInstanceRequirementsMemoryMibArgs, AwsLaunchTemplateInstanceRequirementsMemoryMibPtr and AwsLaunchTemplateInstanceRequirementsMemoryMibPtrOutput values.
+// You can construct a concrete instance of `AwsLaunchTemplateInstanceRequirementsMemoryMibPtrInput` via:
+//
+//	        AwsLaunchTemplateInstanceRequirementsMemoryMibArgs{...}
+//
+//	or:
+//
+//	        nil
+type AwsLaunchTemplateInstanceRequirementsMemoryMibPtrInput interface {
+	pulumi.Input
+
+	ToAwsLaunchTemplateInstanceRequirementsMemoryMibPtrOutput() AwsLaunchTemplateInstanceRequirementsMemoryMibPtrOutput
+	ToAwsLaunchTemplateInstanceRequirementsMemoryMibPtrOutputWithContext(context.Context) AwsLaunchTemplateInstanceRequirementsMemoryMibPtrOutput
+}
+
+type awsLaunchTemplateInstanceRequirementsMemoryMibPtrType AwsLaunchTemplateInstanceRequirementsMemoryMibArgs
+
+func AwsLaunchTemplateInstanceRequirementsMemoryMibPtr(v *AwsLaunchTemplateInstanceRequirementsMemoryMibArgs) AwsLaunchTemplateInstanceRequirementsMemoryMibPtrInput {
+	return (*awsLaunchTemplateInstanceRequirementsMemoryMibPtrType)(v)
+}
+
+func (*awsLaunchTemplateInstanceRequirementsMemoryMibPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsLaunchTemplateInstanceRequirementsMemoryMib)(nil)).Elem()
+}
+
+func (i *awsLaunchTemplateInstanceRequirementsMemoryMibPtrType) ToAwsLaunchTemplateInstanceRequirementsMemoryMibPtrOutput() AwsLaunchTemplateInstanceRequirementsMemoryMibPtrOutput {
+	return i.ToAwsLaunchTemplateInstanceRequirementsMemoryMibPtrOutputWithContext(context.Background())
+}
+
+func (i *awsLaunchTemplateInstanceRequirementsMemoryMibPtrType) ToAwsLaunchTemplateInstanceRequirementsMemoryMibPtrOutputWithContext(ctx context.Context) AwsLaunchTemplateInstanceRequirementsMemoryMibPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsLaunchTemplateInstanceRequirementsMemoryMibPtrOutput)
+}
+
+type AwsLaunchTemplateInstanceRequirementsMemoryMibOutput struct{ *pulumi.OutputState }
+
+func (AwsLaunchTemplateInstanceRequirementsMemoryMibOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsLaunchTemplateInstanceRequirementsMemoryMib)(nil)).Elem()
+}
+
+func (o AwsLaunchTemplateInstanceRequirementsMemoryMibOutput) ToAwsLaunchTemplateInstanceRequirementsMemoryMibOutput() AwsLaunchTemplateInstanceRequirementsMemoryMibOutput {
+	return o
+}
+
+func (o AwsLaunchTemplateInstanceRequirementsMemoryMibOutput) ToAwsLaunchTemplateInstanceRequirementsMemoryMibOutputWithContext(ctx context.Context) AwsLaunchTemplateInstanceRequirementsMemoryMibOutput {
+	return o
+}
+
+func (o AwsLaunchTemplateInstanceRequirementsMemoryMibOutput) ToAwsLaunchTemplateInstanceRequirementsMemoryMibPtrOutput() AwsLaunchTemplateInstanceRequirementsMemoryMibPtrOutput {
+	return o.ToAwsLaunchTemplateInstanceRequirementsMemoryMibPtrOutputWithContext(context.Background())
+}
+
+func (o AwsLaunchTemplateInstanceRequirementsMemoryMibOutput) ToAwsLaunchTemplateInstanceRequirementsMemoryMibPtrOutputWithContext(ctx context.Context) AwsLaunchTemplateInstanceRequirementsMemoryMibPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsLaunchTemplateInstanceRequirementsMemoryMib) *AwsLaunchTemplateInstanceRequirementsMemoryMib {
+		return &v
+	}).(AwsLaunchTemplateInstanceRequirementsMemoryMibPtrOutput)
+}
+
+func (o AwsLaunchTemplateInstanceRequirementsMemoryMibOutput) Max() pulumi.IntOutput {
+	return o.ApplyT(func(v AwsLaunchTemplateInstanceRequirementsMemoryMib) int { return v.Max }).(pulumi.IntOutput)
+}
+
+func (o AwsLaunchTemplateInstanceRequirementsMemoryMibOutput) Min() pulumi.IntOutput {
+	return o.ApplyT(func(v AwsLaunchTemplateInstanceRequirementsMemoryMib) int { return v.Min }).(pulumi.IntOutput)
+}
+
+type AwsLaunchTemplateInstanceRequirementsMemoryMibPtrOutput struct{ *pulumi.OutputState }
+
+func (AwsLaunchTemplateInstanceRequirementsMemoryMibPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsLaunchTemplateInstanceRequirementsMemoryMib)(nil)).Elem()
+}
+
+func (o AwsLaunchTemplateInstanceRequirementsMemoryMibPtrOutput) ToAwsLaunchTemplateInstanceRequirementsMemoryMibPtrOutput() AwsLaunchTemplateInstanceRequirementsMemoryMibPtrOutput {
+	return o
+}
+
+func (o AwsLaunchTemplateInstanceRequirementsMemoryMibPtrOutput) ToAwsLaunchTemplateInstanceRequirementsMemoryMibPtrOutputWithContext(ctx context.Context) AwsLaunchTemplateInstanceRequirementsMemoryMibPtrOutput {
+	return o
+}
+
+func (o AwsLaunchTemplateInstanceRequirementsMemoryMibPtrOutput) Elem() AwsLaunchTemplateInstanceRequirementsMemoryMibOutput {
+	return o.ApplyT(func(v *AwsLaunchTemplateInstanceRequirementsMemoryMib) AwsLaunchTemplateInstanceRequirementsMemoryMib {
+		if v != nil {
+			return *v
+		}
+		var ret AwsLaunchTemplateInstanceRequirementsMemoryMib
+		return ret
+	}).(AwsLaunchTemplateInstanceRequirementsMemoryMibOutput)
+}
+
+func (o AwsLaunchTemplateInstanceRequirementsMemoryMibPtrOutput) Max() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AwsLaunchTemplateInstanceRequirementsMemoryMib) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Max
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o AwsLaunchTemplateInstanceRequirementsMemoryMibPtrOutput) Min() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AwsLaunchTemplateInstanceRequirementsMemoryMib) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Min
+	}).(pulumi.IntPtrOutput)
+}
+
+type AwsLaunchTemplateInstanceRequirementsVcpuCount struct {
+	Max int `pulumi:"max"`
+	Min int `pulumi:"min"`
+}
+
+// AwsLaunchTemplateInstanceRequirementsVcpuCountInput is an input type that accepts AwsLaunchTemplateInstanceRequirementsVcpuCountArgs and AwsLaunchTemplateInstanceRequirementsVcpuCountOutput values.
+// You can construct a concrete instance of `AwsLaunchTemplateInstanceRequirementsVcpuCountInput` via:
+//
+//	AwsLaunchTemplateInstanceRequirementsVcpuCountArgs{...}
+type AwsLaunchTemplateInstanceRequirementsVcpuCountInput interface {
+	pulumi.Input
+
+	ToAwsLaunchTemplateInstanceRequirementsVcpuCountOutput() AwsLaunchTemplateInstanceRequirementsVcpuCountOutput
+	ToAwsLaunchTemplateInstanceRequirementsVcpuCountOutputWithContext(context.Context) AwsLaunchTemplateInstanceRequirementsVcpuCountOutput
+}
+
+type AwsLaunchTemplateInstanceRequirementsVcpuCountArgs struct {
+	Max pulumi.IntInput `pulumi:"max"`
+	Min pulumi.IntInput `pulumi:"min"`
+}
+
+func (AwsLaunchTemplateInstanceRequirementsVcpuCountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsLaunchTemplateInstanceRequirementsVcpuCount)(nil)).Elem()
+}
+
+func (i AwsLaunchTemplateInstanceRequirementsVcpuCountArgs) ToAwsLaunchTemplateInstanceRequirementsVcpuCountOutput() AwsLaunchTemplateInstanceRequirementsVcpuCountOutput {
+	return i.ToAwsLaunchTemplateInstanceRequirementsVcpuCountOutputWithContext(context.Background())
+}
+
+func (i AwsLaunchTemplateInstanceRequirementsVcpuCountArgs) ToAwsLaunchTemplateInstanceRequirementsVcpuCountOutputWithContext(ctx context.Context) AwsLaunchTemplateInstanceRequirementsVcpuCountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsLaunchTemplateInstanceRequirementsVcpuCountOutput)
+}
+
+func (i AwsLaunchTemplateInstanceRequirementsVcpuCountArgs) ToAwsLaunchTemplateInstanceRequirementsVcpuCountPtrOutput() AwsLaunchTemplateInstanceRequirementsVcpuCountPtrOutput {
+	return i.ToAwsLaunchTemplateInstanceRequirementsVcpuCountPtrOutputWithContext(context.Background())
+}
+
+func (i AwsLaunchTemplateInstanceRequirementsVcpuCountArgs) ToAwsLaunchTemplateInstanceRequirementsVcpuCountPtrOutputWithContext(ctx context.Context) AwsLaunchTemplateInstanceRequirementsVcpuCountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsLaunchTemplateInstanceRequirementsVcpuCountOutput).ToAwsLaunchTemplateInstanceRequirementsVcpuCountPtrOutputWithContext(ctx)
+}
+
+// AwsLaunchTemplateInstanceRequirementsVcpuCountPtrInput is an input type that accepts AwsLaunchTemplateInstanceRequirementsVcpuCountArgs, AwsLaunchTemplateInstanceRequirementsVcpuCountPtr and AwsLaunchTemplateInstanceRequirementsVcpuCountPtrOutput values.
+// You can construct a concrete instance of `AwsLaunchTemplateInstanceRequirementsVcpuCountPtrInput` via:
+//
+//	        AwsLaunchTemplateInstanceRequirementsVcpuCountArgs{...}
+//
+//	or:
+//
+//	        nil
+type AwsLaunchTemplateInstanceRequirementsVcpuCountPtrInput interface {
+	pulumi.Input
+
+	ToAwsLaunchTemplateInstanceRequirementsVcpuCountPtrOutput() AwsLaunchTemplateInstanceRequirementsVcpuCountPtrOutput
+	ToAwsLaunchTemplateInstanceRequirementsVcpuCountPtrOutputWithContext(context.Context) AwsLaunchTemplateInstanceRequirementsVcpuCountPtrOutput
+}
+
+type awsLaunchTemplateInstanceRequirementsVcpuCountPtrType AwsLaunchTemplateInstanceRequirementsVcpuCountArgs
+
+func AwsLaunchTemplateInstanceRequirementsVcpuCountPtr(v *AwsLaunchTemplateInstanceRequirementsVcpuCountArgs) AwsLaunchTemplateInstanceRequirementsVcpuCountPtrInput {
+	return (*awsLaunchTemplateInstanceRequirementsVcpuCountPtrType)(v)
+}
+
+func (*awsLaunchTemplateInstanceRequirementsVcpuCountPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsLaunchTemplateInstanceRequirementsVcpuCount)(nil)).Elem()
+}
+
+func (i *awsLaunchTemplateInstanceRequirementsVcpuCountPtrType) ToAwsLaunchTemplateInstanceRequirementsVcpuCountPtrOutput() AwsLaunchTemplateInstanceRequirementsVcpuCountPtrOutput {
+	return i.ToAwsLaunchTemplateInstanceRequirementsVcpuCountPtrOutputWithContext(context.Background())
+}
+
+func (i *awsLaunchTemplateInstanceRequirementsVcpuCountPtrType) ToAwsLaunchTemplateInstanceRequirementsVcpuCountPtrOutputWithContext(ctx context.Context) AwsLaunchTemplateInstanceRequirementsVcpuCountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsLaunchTemplateInstanceRequirementsVcpuCountPtrOutput)
+}
+
+type AwsLaunchTemplateInstanceRequirementsVcpuCountOutput struct{ *pulumi.OutputState }
+
+func (AwsLaunchTemplateInstanceRequirementsVcpuCountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsLaunchTemplateInstanceRequirementsVcpuCount)(nil)).Elem()
+}
+
+func (o AwsLaunchTemplateInstanceRequirementsVcpuCountOutput) ToAwsLaunchTemplateInstanceRequirementsVcpuCountOutput() AwsLaunchTemplateInstanceRequirementsVcpuCountOutput {
+	return o
+}
+
+func (o AwsLaunchTemplateInstanceRequirementsVcpuCountOutput) ToAwsLaunchTemplateInstanceRequirementsVcpuCountOutputWithContext(ctx context.Context) AwsLaunchTemplateInstanceRequirementsVcpuCountOutput {
+	return o
+}
+
+func (o AwsLaunchTemplateInstanceRequirementsVcpuCountOutput) ToAwsLaunchTemplateInstanceRequirementsVcpuCountPtrOutput() AwsLaunchTemplateInstanceRequirementsVcpuCountPtrOutput {
+	return o.ToAwsLaunchTemplateInstanceRequirementsVcpuCountPtrOutputWithContext(context.Background())
+}
+
+func (o AwsLaunchTemplateInstanceRequirementsVcpuCountOutput) ToAwsLaunchTemplateInstanceRequirementsVcpuCountPtrOutputWithContext(ctx context.Context) AwsLaunchTemplateInstanceRequirementsVcpuCountPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsLaunchTemplateInstanceRequirementsVcpuCount) *AwsLaunchTemplateInstanceRequirementsVcpuCount {
+		return &v
+	}).(AwsLaunchTemplateInstanceRequirementsVcpuCountPtrOutput)
+}
+
+func (o AwsLaunchTemplateInstanceRequirementsVcpuCountOutput) Max() pulumi.IntOutput {
+	return o.ApplyT(func(v AwsLaunchTemplateInstanceRequirementsVcpuCount) int { return v.Max }).(pulumi.IntOutput)
+}
+
+func (o AwsLaunchTemplateInstanceRequirementsVcpuCountOutput) Min() pulumi.IntOutput {
+	return o.ApplyT(func(v AwsLaunchTemplateInstanceRequirementsVcpuCount) int { return v.Min }).(pulumi.IntOutput)
+}
+
+type AwsLaunchTemplateInstanceRequirementsVcpuCountPtrOutput struct{ *pulumi.OutputState }
+
+func (AwsLaunchTemplateInstanceRequirementsVcpuCountPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsLaunchTemplateInstanceRequirementsVcpuCount)(nil)).Elem()
+}
+
+func (o AwsLaunchTemplateInstanceRequirementsVcpuCountPtrOutput) ToAwsLaunchTemplateInstanceRequirementsVcpuCountPtrOutput() AwsLaunchTemplateInstanceRequirementsVcpuCountPtrOutput {
+	return o
+}
+
+func (o AwsLaunchTemplateInstanceRequirementsVcpuCountPtrOutput) ToAwsLaunchTemplateInstanceRequirementsVcpuCountPtrOutputWithContext(ctx context.Context) AwsLaunchTemplateInstanceRequirementsVcpuCountPtrOutput {
+	return o
+}
+
+func (o AwsLaunchTemplateInstanceRequirementsVcpuCountPtrOutput) Elem() AwsLaunchTemplateInstanceRequirementsVcpuCountOutput {
+	return o.ApplyT(func(v *AwsLaunchTemplateInstanceRequirementsVcpuCount) AwsLaunchTemplateInstanceRequirementsVcpuCount {
+		if v != nil {
+			return *v
+		}
+		var ret AwsLaunchTemplateInstanceRequirementsVcpuCount
+		return ret
+	}).(AwsLaunchTemplateInstanceRequirementsVcpuCountOutput)
+}
+
+func (o AwsLaunchTemplateInstanceRequirementsVcpuCountPtrOutput) Max() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AwsLaunchTemplateInstanceRequirementsVcpuCount) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Max
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o AwsLaunchTemplateInstanceRequirementsVcpuCountPtrOutput) Min() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AwsLaunchTemplateInstanceRequirementsVcpuCount) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Min
+	}).(pulumi.IntPtrOutput)
+}
+
 type AwsLbListenerRuleAction struct {
 	// Information for creating an authenticate action using Cognito. Required if `type` is `authenticate-cognito`.
 	AuthenticateCognito *AwsLbListenerRuleActionAuthenticateCognito `pulumi:"authenticateCognito"`
@@ -15443,6 +19344,1109 @@ func (o AwsLoadBalancerTagArrayOutput) Index(i pulumi.IntInput) AwsLoadBalancerT
 	}).(AwsLoadBalancerTagOutput)
 }
 
+type AwsMqBrokerConfiguration struct {
+	// Configuration ID.
+	Id string `pulumi:"id"`
+	// Configuration revision.
+	Revision int `pulumi:"revision"`
+}
+
+// AwsMqBrokerConfigurationInput is an input type that accepts AwsMqBrokerConfigurationArgs and AwsMqBrokerConfigurationOutput values.
+// You can construct a concrete instance of `AwsMqBrokerConfigurationInput` via:
+//
+//	AwsMqBrokerConfigurationArgs{...}
+type AwsMqBrokerConfigurationInput interface {
+	pulumi.Input
+
+	ToAwsMqBrokerConfigurationOutput() AwsMqBrokerConfigurationOutput
+	ToAwsMqBrokerConfigurationOutputWithContext(context.Context) AwsMqBrokerConfigurationOutput
+}
+
+type AwsMqBrokerConfigurationArgs struct {
+	// Configuration ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Configuration revision.
+	Revision pulumi.IntInput `pulumi:"revision"`
+}
+
+func (AwsMqBrokerConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsMqBrokerConfiguration)(nil)).Elem()
+}
+
+func (i AwsMqBrokerConfigurationArgs) ToAwsMqBrokerConfigurationOutput() AwsMqBrokerConfigurationOutput {
+	return i.ToAwsMqBrokerConfigurationOutputWithContext(context.Background())
+}
+
+func (i AwsMqBrokerConfigurationArgs) ToAwsMqBrokerConfigurationOutputWithContext(ctx context.Context) AwsMqBrokerConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsMqBrokerConfigurationOutput)
+}
+
+func (i AwsMqBrokerConfigurationArgs) ToAwsMqBrokerConfigurationPtrOutput() AwsMqBrokerConfigurationPtrOutput {
+	return i.ToAwsMqBrokerConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i AwsMqBrokerConfigurationArgs) ToAwsMqBrokerConfigurationPtrOutputWithContext(ctx context.Context) AwsMqBrokerConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsMqBrokerConfigurationOutput).ToAwsMqBrokerConfigurationPtrOutputWithContext(ctx)
+}
+
+// AwsMqBrokerConfigurationPtrInput is an input type that accepts AwsMqBrokerConfigurationArgs, AwsMqBrokerConfigurationPtr and AwsMqBrokerConfigurationPtrOutput values.
+// You can construct a concrete instance of `AwsMqBrokerConfigurationPtrInput` via:
+//
+//	        AwsMqBrokerConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type AwsMqBrokerConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToAwsMqBrokerConfigurationPtrOutput() AwsMqBrokerConfigurationPtrOutput
+	ToAwsMqBrokerConfigurationPtrOutputWithContext(context.Context) AwsMqBrokerConfigurationPtrOutput
+}
+
+type awsMqBrokerConfigurationPtrType AwsMqBrokerConfigurationArgs
+
+func AwsMqBrokerConfigurationPtr(v *AwsMqBrokerConfigurationArgs) AwsMqBrokerConfigurationPtrInput {
+	return (*awsMqBrokerConfigurationPtrType)(v)
+}
+
+func (*awsMqBrokerConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsMqBrokerConfiguration)(nil)).Elem()
+}
+
+func (i *awsMqBrokerConfigurationPtrType) ToAwsMqBrokerConfigurationPtrOutput() AwsMqBrokerConfigurationPtrOutput {
+	return i.ToAwsMqBrokerConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *awsMqBrokerConfigurationPtrType) ToAwsMqBrokerConfigurationPtrOutputWithContext(ctx context.Context) AwsMqBrokerConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsMqBrokerConfigurationPtrOutput)
+}
+
+type AwsMqBrokerConfigurationOutput struct{ *pulumi.OutputState }
+
+func (AwsMqBrokerConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsMqBrokerConfiguration)(nil)).Elem()
+}
+
+func (o AwsMqBrokerConfigurationOutput) ToAwsMqBrokerConfigurationOutput() AwsMqBrokerConfigurationOutput {
+	return o
+}
+
+func (o AwsMqBrokerConfigurationOutput) ToAwsMqBrokerConfigurationOutputWithContext(ctx context.Context) AwsMqBrokerConfigurationOutput {
+	return o
+}
+
+func (o AwsMqBrokerConfigurationOutput) ToAwsMqBrokerConfigurationPtrOutput() AwsMqBrokerConfigurationPtrOutput {
+	return o.ToAwsMqBrokerConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o AwsMqBrokerConfigurationOutput) ToAwsMqBrokerConfigurationPtrOutputWithContext(ctx context.Context) AwsMqBrokerConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsMqBrokerConfiguration) *AwsMqBrokerConfiguration {
+		return &v
+	}).(AwsMqBrokerConfigurationPtrOutput)
+}
+
+// Configuration ID.
+func (o AwsMqBrokerConfigurationOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsMqBrokerConfiguration) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Configuration revision.
+func (o AwsMqBrokerConfigurationOutput) Revision() pulumi.IntOutput {
+	return o.ApplyT(func(v AwsMqBrokerConfiguration) int { return v.Revision }).(pulumi.IntOutput)
+}
+
+type AwsMqBrokerConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (AwsMqBrokerConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsMqBrokerConfiguration)(nil)).Elem()
+}
+
+func (o AwsMqBrokerConfigurationPtrOutput) ToAwsMqBrokerConfigurationPtrOutput() AwsMqBrokerConfigurationPtrOutput {
+	return o
+}
+
+func (o AwsMqBrokerConfigurationPtrOutput) ToAwsMqBrokerConfigurationPtrOutputWithContext(ctx context.Context) AwsMqBrokerConfigurationPtrOutput {
+	return o
+}
+
+func (o AwsMqBrokerConfigurationPtrOutput) Elem() AwsMqBrokerConfigurationOutput {
+	return o.ApplyT(func(v *AwsMqBrokerConfiguration) AwsMqBrokerConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret AwsMqBrokerConfiguration
+		return ret
+	}).(AwsMqBrokerConfigurationOutput)
+}
+
+// Configuration ID.
+func (o AwsMqBrokerConfigurationPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsMqBrokerConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration revision.
+func (o AwsMqBrokerConfigurationPtrOutput) Revision() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AwsMqBrokerConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Revision
+	}).(pulumi.IntPtrOutput)
+}
+
+type AwsMqBrokerEncryptionOptions struct {
+	// KMS Key ID for encryption.
+	KmsKeyId *string `pulumi:"kmsKeyId"`
+	// Whether to use AWS owned key. Defaults to `true`.
+	UseAwsOwnedKey *bool `pulumi:"useAwsOwnedKey"`
+}
+
+// AwsMqBrokerEncryptionOptionsInput is an input type that accepts AwsMqBrokerEncryptionOptionsArgs and AwsMqBrokerEncryptionOptionsOutput values.
+// You can construct a concrete instance of `AwsMqBrokerEncryptionOptionsInput` via:
+//
+//	AwsMqBrokerEncryptionOptionsArgs{...}
+type AwsMqBrokerEncryptionOptionsInput interface {
+	pulumi.Input
+
+	ToAwsMqBrokerEncryptionOptionsOutput() AwsMqBrokerEncryptionOptionsOutput
+	ToAwsMqBrokerEncryptionOptionsOutputWithContext(context.Context) AwsMqBrokerEncryptionOptionsOutput
+}
+
+type AwsMqBrokerEncryptionOptionsArgs struct {
+	// KMS Key ID for encryption.
+	KmsKeyId pulumi.StringPtrInput `pulumi:"kmsKeyId"`
+	// Whether to use AWS owned key. Defaults to `true`.
+	UseAwsOwnedKey pulumi.BoolPtrInput `pulumi:"useAwsOwnedKey"`
+}
+
+func (AwsMqBrokerEncryptionOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsMqBrokerEncryptionOptions)(nil)).Elem()
+}
+
+func (i AwsMqBrokerEncryptionOptionsArgs) ToAwsMqBrokerEncryptionOptionsOutput() AwsMqBrokerEncryptionOptionsOutput {
+	return i.ToAwsMqBrokerEncryptionOptionsOutputWithContext(context.Background())
+}
+
+func (i AwsMqBrokerEncryptionOptionsArgs) ToAwsMqBrokerEncryptionOptionsOutputWithContext(ctx context.Context) AwsMqBrokerEncryptionOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsMqBrokerEncryptionOptionsOutput)
+}
+
+func (i AwsMqBrokerEncryptionOptionsArgs) ToAwsMqBrokerEncryptionOptionsPtrOutput() AwsMqBrokerEncryptionOptionsPtrOutput {
+	return i.ToAwsMqBrokerEncryptionOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i AwsMqBrokerEncryptionOptionsArgs) ToAwsMqBrokerEncryptionOptionsPtrOutputWithContext(ctx context.Context) AwsMqBrokerEncryptionOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsMqBrokerEncryptionOptionsOutput).ToAwsMqBrokerEncryptionOptionsPtrOutputWithContext(ctx)
+}
+
+// AwsMqBrokerEncryptionOptionsPtrInput is an input type that accepts AwsMqBrokerEncryptionOptionsArgs, AwsMqBrokerEncryptionOptionsPtr and AwsMqBrokerEncryptionOptionsPtrOutput values.
+// You can construct a concrete instance of `AwsMqBrokerEncryptionOptionsPtrInput` via:
+//
+//	        AwsMqBrokerEncryptionOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AwsMqBrokerEncryptionOptionsPtrInput interface {
+	pulumi.Input
+
+	ToAwsMqBrokerEncryptionOptionsPtrOutput() AwsMqBrokerEncryptionOptionsPtrOutput
+	ToAwsMqBrokerEncryptionOptionsPtrOutputWithContext(context.Context) AwsMqBrokerEncryptionOptionsPtrOutput
+}
+
+type awsMqBrokerEncryptionOptionsPtrType AwsMqBrokerEncryptionOptionsArgs
+
+func AwsMqBrokerEncryptionOptionsPtr(v *AwsMqBrokerEncryptionOptionsArgs) AwsMqBrokerEncryptionOptionsPtrInput {
+	return (*awsMqBrokerEncryptionOptionsPtrType)(v)
+}
+
+func (*awsMqBrokerEncryptionOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsMqBrokerEncryptionOptions)(nil)).Elem()
+}
+
+func (i *awsMqBrokerEncryptionOptionsPtrType) ToAwsMqBrokerEncryptionOptionsPtrOutput() AwsMqBrokerEncryptionOptionsPtrOutput {
+	return i.ToAwsMqBrokerEncryptionOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *awsMqBrokerEncryptionOptionsPtrType) ToAwsMqBrokerEncryptionOptionsPtrOutputWithContext(ctx context.Context) AwsMqBrokerEncryptionOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsMqBrokerEncryptionOptionsPtrOutput)
+}
+
+type AwsMqBrokerEncryptionOptionsOutput struct{ *pulumi.OutputState }
+
+func (AwsMqBrokerEncryptionOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsMqBrokerEncryptionOptions)(nil)).Elem()
+}
+
+func (o AwsMqBrokerEncryptionOptionsOutput) ToAwsMqBrokerEncryptionOptionsOutput() AwsMqBrokerEncryptionOptionsOutput {
+	return o
+}
+
+func (o AwsMqBrokerEncryptionOptionsOutput) ToAwsMqBrokerEncryptionOptionsOutputWithContext(ctx context.Context) AwsMqBrokerEncryptionOptionsOutput {
+	return o
+}
+
+func (o AwsMqBrokerEncryptionOptionsOutput) ToAwsMqBrokerEncryptionOptionsPtrOutput() AwsMqBrokerEncryptionOptionsPtrOutput {
+	return o.ToAwsMqBrokerEncryptionOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o AwsMqBrokerEncryptionOptionsOutput) ToAwsMqBrokerEncryptionOptionsPtrOutputWithContext(ctx context.Context) AwsMqBrokerEncryptionOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsMqBrokerEncryptionOptions) *AwsMqBrokerEncryptionOptions {
+		return &v
+	}).(AwsMqBrokerEncryptionOptionsPtrOutput)
+}
+
+// KMS Key ID for encryption.
+func (o AwsMqBrokerEncryptionOptionsOutput) KmsKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsMqBrokerEncryptionOptions) *string { return v.KmsKeyId }).(pulumi.StringPtrOutput)
+}
+
+// Whether to use AWS owned key. Defaults to `true`.
+func (o AwsMqBrokerEncryptionOptionsOutput) UseAwsOwnedKey() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AwsMqBrokerEncryptionOptions) *bool { return v.UseAwsOwnedKey }).(pulumi.BoolPtrOutput)
+}
+
+type AwsMqBrokerEncryptionOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (AwsMqBrokerEncryptionOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsMqBrokerEncryptionOptions)(nil)).Elem()
+}
+
+func (o AwsMqBrokerEncryptionOptionsPtrOutput) ToAwsMqBrokerEncryptionOptionsPtrOutput() AwsMqBrokerEncryptionOptionsPtrOutput {
+	return o
+}
+
+func (o AwsMqBrokerEncryptionOptionsPtrOutput) ToAwsMqBrokerEncryptionOptionsPtrOutputWithContext(ctx context.Context) AwsMqBrokerEncryptionOptionsPtrOutput {
+	return o
+}
+
+func (o AwsMqBrokerEncryptionOptionsPtrOutput) Elem() AwsMqBrokerEncryptionOptionsOutput {
+	return o.ApplyT(func(v *AwsMqBrokerEncryptionOptions) AwsMqBrokerEncryptionOptions {
+		if v != nil {
+			return *v
+		}
+		var ret AwsMqBrokerEncryptionOptions
+		return ret
+	}).(AwsMqBrokerEncryptionOptionsOutput)
+}
+
+// KMS Key ID for encryption.
+func (o AwsMqBrokerEncryptionOptionsPtrOutput) KmsKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsMqBrokerEncryptionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKeyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to use AWS owned key. Defaults to `true`.
+func (o AwsMqBrokerEncryptionOptionsPtrOutput) UseAwsOwnedKey() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AwsMqBrokerEncryptionOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseAwsOwnedKey
+	}).(pulumi.BoolPtrOutput)
+}
+
+type AwsMqBrokerLdapServerMetadata struct {
+	// List of LDAP hosts.
+	Hosts []string `pulumi:"hosts"`
+	// LDAP role base.
+	RoleBase string `pulumi:"roleBase"`
+	// LDAP role name.
+	RoleName string `pulumi:"roleName"`
+	// LDAP role search matching.
+	RoleSearchMatching string `pulumi:"roleSearchMatching"`
+	// LDAP role search subtree.
+	RoleSearchSubtree bool `pulumi:"roleSearchSubtree"`
+	// LDAP service account password.
+	ServiceAccountPassword string `pulumi:"serviceAccountPassword"`
+	// LDAP service account username.
+	ServiceAccountUsername string `pulumi:"serviceAccountUsername"`
+	// LDAP user base.
+	UserBase string `pulumi:"userBase"`
+	// LDAP user role name.
+	UserRoleName string `pulumi:"userRoleName"`
+	// LDAP user search matching.
+	UserSearchMatching string `pulumi:"userSearchMatching"`
+	// LDAP user search subtree.
+	UserSearchSubtree bool `pulumi:"userSearchSubtree"`
+}
+
+// AwsMqBrokerLdapServerMetadataInput is an input type that accepts AwsMqBrokerLdapServerMetadataArgs and AwsMqBrokerLdapServerMetadataOutput values.
+// You can construct a concrete instance of `AwsMqBrokerLdapServerMetadataInput` via:
+//
+//	AwsMqBrokerLdapServerMetadataArgs{...}
+type AwsMqBrokerLdapServerMetadataInput interface {
+	pulumi.Input
+
+	ToAwsMqBrokerLdapServerMetadataOutput() AwsMqBrokerLdapServerMetadataOutput
+	ToAwsMqBrokerLdapServerMetadataOutputWithContext(context.Context) AwsMqBrokerLdapServerMetadataOutput
+}
+
+type AwsMqBrokerLdapServerMetadataArgs struct {
+	// List of LDAP hosts.
+	Hosts pulumi.StringArrayInput `pulumi:"hosts"`
+	// LDAP role base.
+	RoleBase pulumi.StringInput `pulumi:"roleBase"`
+	// LDAP role name.
+	RoleName pulumi.StringInput `pulumi:"roleName"`
+	// LDAP role search matching.
+	RoleSearchMatching pulumi.StringInput `pulumi:"roleSearchMatching"`
+	// LDAP role search subtree.
+	RoleSearchSubtree pulumi.BoolInput `pulumi:"roleSearchSubtree"`
+	// LDAP service account password.
+	ServiceAccountPassword pulumi.StringInput `pulumi:"serviceAccountPassword"`
+	// LDAP service account username.
+	ServiceAccountUsername pulumi.StringInput `pulumi:"serviceAccountUsername"`
+	// LDAP user base.
+	UserBase pulumi.StringInput `pulumi:"userBase"`
+	// LDAP user role name.
+	UserRoleName pulumi.StringInput `pulumi:"userRoleName"`
+	// LDAP user search matching.
+	UserSearchMatching pulumi.StringInput `pulumi:"userSearchMatching"`
+	// LDAP user search subtree.
+	UserSearchSubtree pulumi.BoolInput `pulumi:"userSearchSubtree"`
+}
+
+func (AwsMqBrokerLdapServerMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsMqBrokerLdapServerMetadata)(nil)).Elem()
+}
+
+func (i AwsMqBrokerLdapServerMetadataArgs) ToAwsMqBrokerLdapServerMetadataOutput() AwsMqBrokerLdapServerMetadataOutput {
+	return i.ToAwsMqBrokerLdapServerMetadataOutputWithContext(context.Background())
+}
+
+func (i AwsMqBrokerLdapServerMetadataArgs) ToAwsMqBrokerLdapServerMetadataOutputWithContext(ctx context.Context) AwsMqBrokerLdapServerMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsMqBrokerLdapServerMetadataOutput)
+}
+
+func (i AwsMqBrokerLdapServerMetadataArgs) ToAwsMqBrokerLdapServerMetadataPtrOutput() AwsMqBrokerLdapServerMetadataPtrOutput {
+	return i.ToAwsMqBrokerLdapServerMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i AwsMqBrokerLdapServerMetadataArgs) ToAwsMqBrokerLdapServerMetadataPtrOutputWithContext(ctx context.Context) AwsMqBrokerLdapServerMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsMqBrokerLdapServerMetadataOutput).ToAwsMqBrokerLdapServerMetadataPtrOutputWithContext(ctx)
+}
+
+// AwsMqBrokerLdapServerMetadataPtrInput is an input type that accepts AwsMqBrokerLdapServerMetadataArgs, AwsMqBrokerLdapServerMetadataPtr and AwsMqBrokerLdapServerMetadataPtrOutput values.
+// You can construct a concrete instance of `AwsMqBrokerLdapServerMetadataPtrInput` via:
+//
+//	        AwsMqBrokerLdapServerMetadataArgs{...}
+//
+//	or:
+//
+//	        nil
+type AwsMqBrokerLdapServerMetadataPtrInput interface {
+	pulumi.Input
+
+	ToAwsMqBrokerLdapServerMetadataPtrOutput() AwsMqBrokerLdapServerMetadataPtrOutput
+	ToAwsMqBrokerLdapServerMetadataPtrOutputWithContext(context.Context) AwsMqBrokerLdapServerMetadataPtrOutput
+}
+
+type awsMqBrokerLdapServerMetadataPtrType AwsMqBrokerLdapServerMetadataArgs
+
+func AwsMqBrokerLdapServerMetadataPtr(v *AwsMqBrokerLdapServerMetadataArgs) AwsMqBrokerLdapServerMetadataPtrInput {
+	return (*awsMqBrokerLdapServerMetadataPtrType)(v)
+}
+
+func (*awsMqBrokerLdapServerMetadataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsMqBrokerLdapServerMetadata)(nil)).Elem()
+}
+
+func (i *awsMqBrokerLdapServerMetadataPtrType) ToAwsMqBrokerLdapServerMetadataPtrOutput() AwsMqBrokerLdapServerMetadataPtrOutput {
+	return i.ToAwsMqBrokerLdapServerMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i *awsMqBrokerLdapServerMetadataPtrType) ToAwsMqBrokerLdapServerMetadataPtrOutputWithContext(ctx context.Context) AwsMqBrokerLdapServerMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsMqBrokerLdapServerMetadataPtrOutput)
+}
+
+type AwsMqBrokerLdapServerMetadataOutput struct{ *pulumi.OutputState }
+
+func (AwsMqBrokerLdapServerMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsMqBrokerLdapServerMetadata)(nil)).Elem()
+}
+
+func (o AwsMqBrokerLdapServerMetadataOutput) ToAwsMqBrokerLdapServerMetadataOutput() AwsMqBrokerLdapServerMetadataOutput {
+	return o
+}
+
+func (o AwsMqBrokerLdapServerMetadataOutput) ToAwsMqBrokerLdapServerMetadataOutputWithContext(ctx context.Context) AwsMqBrokerLdapServerMetadataOutput {
+	return o
+}
+
+func (o AwsMqBrokerLdapServerMetadataOutput) ToAwsMqBrokerLdapServerMetadataPtrOutput() AwsMqBrokerLdapServerMetadataPtrOutput {
+	return o.ToAwsMqBrokerLdapServerMetadataPtrOutputWithContext(context.Background())
+}
+
+func (o AwsMqBrokerLdapServerMetadataOutput) ToAwsMqBrokerLdapServerMetadataPtrOutputWithContext(ctx context.Context) AwsMqBrokerLdapServerMetadataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsMqBrokerLdapServerMetadata) *AwsMqBrokerLdapServerMetadata {
+		return &v
+	}).(AwsMqBrokerLdapServerMetadataPtrOutput)
+}
+
+// List of LDAP hosts.
+func (o AwsMqBrokerLdapServerMetadataOutput) Hosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AwsMqBrokerLdapServerMetadata) []string { return v.Hosts }).(pulumi.StringArrayOutput)
+}
+
+// LDAP role base.
+func (o AwsMqBrokerLdapServerMetadataOutput) RoleBase() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsMqBrokerLdapServerMetadata) string { return v.RoleBase }).(pulumi.StringOutput)
+}
+
+// LDAP role name.
+func (o AwsMqBrokerLdapServerMetadataOutput) RoleName() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsMqBrokerLdapServerMetadata) string { return v.RoleName }).(pulumi.StringOutput)
+}
+
+// LDAP role search matching.
+func (o AwsMqBrokerLdapServerMetadataOutput) RoleSearchMatching() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsMqBrokerLdapServerMetadata) string { return v.RoleSearchMatching }).(pulumi.StringOutput)
+}
+
+// LDAP role search subtree.
+func (o AwsMqBrokerLdapServerMetadataOutput) RoleSearchSubtree() pulumi.BoolOutput {
+	return o.ApplyT(func(v AwsMqBrokerLdapServerMetadata) bool { return v.RoleSearchSubtree }).(pulumi.BoolOutput)
+}
+
+// LDAP service account password.
+func (o AwsMqBrokerLdapServerMetadataOutput) ServiceAccountPassword() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsMqBrokerLdapServerMetadata) string { return v.ServiceAccountPassword }).(pulumi.StringOutput)
+}
+
+// LDAP service account username.
+func (o AwsMqBrokerLdapServerMetadataOutput) ServiceAccountUsername() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsMqBrokerLdapServerMetadata) string { return v.ServiceAccountUsername }).(pulumi.StringOutput)
+}
+
+// LDAP user base.
+func (o AwsMqBrokerLdapServerMetadataOutput) UserBase() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsMqBrokerLdapServerMetadata) string { return v.UserBase }).(pulumi.StringOutput)
+}
+
+// LDAP user role name.
+func (o AwsMqBrokerLdapServerMetadataOutput) UserRoleName() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsMqBrokerLdapServerMetadata) string { return v.UserRoleName }).(pulumi.StringOutput)
+}
+
+// LDAP user search matching.
+func (o AwsMqBrokerLdapServerMetadataOutput) UserSearchMatching() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsMqBrokerLdapServerMetadata) string { return v.UserSearchMatching }).(pulumi.StringOutput)
+}
+
+// LDAP user search subtree.
+func (o AwsMqBrokerLdapServerMetadataOutput) UserSearchSubtree() pulumi.BoolOutput {
+	return o.ApplyT(func(v AwsMqBrokerLdapServerMetadata) bool { return v.UserSearchSubtree }).(pulumi.BoolOutput)
+}
+
+type AwsMqBrokerLdapServerMetadataPtrOutput struct{ *pulumi.OutputState }
+
+func (AwsMqBrokerLdapServerMetadataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsMqBrokerLdapServerMetadata)(nil)).Elem()
+}
+
+func (o AwsMqBrokerLdapServerMetadataPtrOutput) ToAwsMqBrokerLdapServerMetadataPtrOutput() AwsMqBrokerLdapServerMetadataPtrOutput {
+	return o
+}
+
+func (o AwsMqBrokerLdapServerMetadataPtrOutput) ToAwsMqBrokerLdapServerMetadataPtrOutputWithContext(ctx context.Context) AwsMqBrokerLdapServerMetadataPtrOutput {
+	return o
+}
+
+func (o AwsMqBrokerLdapServerMetadataPtrOutput) Elem() AwsMqBrokerLdapServerMetadataOutput {
+	return o.ApplyT(func(v *AwsMqBrokerLdapServerMetadata) AwsMqBrokerLdapServerMetadata {
+		if v != nil {
+			return *v
+		}
+		var ret AwsMqBrokerLdapServerMetadata
+		return ret
+	}).(AwsMqBrokerLdapServerMetadataOutput)
+}
+
+// List of LDAP hosts.
+func (o AwsMqBrokerLdapServerMetadataPtrOutput) Hosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AwsMqBrokerLdapServerMetadata) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Hosts
+	}).(pulumi.StringArrayOutput)
+}
+
+// LDAP role base.
+func (o AwsMqBrokerLdapServerMetadataPtrOutput) RoleBase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsMqBrokerLdapServerMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RoleBase
+	}).(pulumi.StringPtrOutput)
+}
+
+// LDAP role name.
+func (o AwsMqBrokerLdapServerMetadataPtrOutput) RoleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsMqBrokerLdapServerMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RoleName
+	}).(pulumi.StringPtrOutput)
+}
+
+// LDAP role search matching.
+func (o AwsMqBrokerLdapServerMetadataPtrOutput) RoleSearchMatching() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsMqBrokerLdapServerMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RoleSearchMatching
+	}).(pulumi.StringPtrOutput)
+}
+
+// LDAP role search subtree.
+func (o AwsMqBrokerLdapServerMetadataPtrOutput) RoleSearchSubtree() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AwsMqBrokerLdapServerMetadata) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.RoleSearchSubtree
+	}).(pulumi.BoolPtrOutput)
+}
+
+// LDAP service account password.
+func (o AwsMqBrokerLdapServerMetadataPtrOutput) ServiceAccountPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsMqBrokerLdapServerMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServiceAccountPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// LDAP service account username.
+func (o AwsMqBrokerLdapServerMetadataPtrOutput) ServiceAccountUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsMqBrokerLdapServerMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServiceAccountUsername
+	}).(pulumi.StringPtrOutput)
+}
+
+// LDAP user base.
+func (o AwsMqBrokerLdapServerMetadataPtrOutput) UserBase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsMqBrokerLdapServerMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.UserBase
+	}).(pulumi.StringPtrOutput)
+}
+
+// LDAP user role name.
+func (o AwsMqBrokerLdapServerMetadataPtrOutput) UserRoleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsMqBrokerLdapServerMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.UserRoleName
+	}).(pulumi.StringPtrOutput)
+}
+
+// LDAP user search matching.
+func (o AwsMqBrokerLdapServerMetadataPtrOutput) UserSearchMatching() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsMqBrokerLdapServerMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.UserSearchMatching
+	}).(pulumi.StringPtrOutput)
+}
+
+// LDAP user search subtree.
+func (o AwsMqBrokerLdapServerMetadataPtrOutput) UserSearchSubtree() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AwsMqBrokerLdapServerMetadata) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.UserSearchSubtree
+	}).(pulumi.BoolPtrOutput)
+}
+
+type AwsMqBrokerLogs struct {
+	// Enable audit logging (not applicable for RabbitMQ).
+	Audit *bool `pulumi:"audit"`
+	// Enable general logging.
+	General bool `pulumi:"general"`
+}
+
+// AwsMqBrokerLogsInput is an input type that accepts AwsMqBrokerLogsArgs and AwsMqBrokerLogsOutput values.
+// You can construct a concrete instance of `AwsMqBrokerLogsInput` via:
+//
+//	AwsMqBrokerLogsArgs{...}
+type AwsMqBrokerLogsInput interface {
+	pulumi.Input
+
+	ToAwsMqBrokerLogsOutput() AwsMqBrokerLogsOutput
+	ToAwsMqBrokerLogsOutputWithContext(context.Context) AwsMqBrokerLogsOutput
+}
+
+type AwsMqBrokerLogsArgs struct {
+	// Enable audit logging (not applicable for RabbitMQ).
+	Audit pulumi.BoolPtrInput `pulumi:"audit"`
+	// Enable general logging.
+	General pulumi.BoolInput `pulumi:"general"`
+}
+
+func (AwsMqBrokerLogsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsMqBrokerLogs)(nil)).Elem()
+}
+
+func (i AwsMqBrokerLogsArgs) ToAwsMqBrokerLogsOutput() AwsMqBrokerLogsOutput {
+	return i.ToAwsMqBrokerLogsOutputWithContext(context.Background())
+}
+
+func (i AwsMqBrokerLogsArgs) ToAwsMqBrokerLogsOutputWithContext(ctx context.Context) AwsMqBrokerLogsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsMqBrokerLogsOutput)
+}
+
+func (i AwsMqBrokerLogsArgs) ToAwsMqBrokerLogsPtrOutput() AwsMqBrokerLogsPtrOutput {
+	return i.ToAwsMqBrokerLogsPtrOutputWithContext(context.Background())
+}
+
+func (i AwsMqBrokerLogsArgs) ToAwsMqBrokerLogsPtrOutputWithContext(ctx context.Context) AwsMqBrokerLogsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsMqBrokerLogsOutput).ToAwsMqBrokerLogsPtrOutputWithContext(ctx)
+}
+
+// AwsMqBrokerLogsPtrInput is an input type that accepts AwsMqBrokerLogsArgs, AwsMqBrokerLogsPtr and AwsMqBrokerLogsPtrOutput values.
+// You can construct a concrete instance of `AwsMqBrokerLogsPtrInput` via:
+//
+//	        AwsMqBrokerLogsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AwsMqBrokerLogsPtrInput interface {
+	pulumi.Input
+
+	ToAwsMqBrokerLogsPtrOutput() AwsMqBrokerLogsPtrOutput
+	ToAwsMqBrokerLogsPtrOutputWithContext(context.Context) AwsMqBrokerLogsPtrOutput
+}
+
+type awsMqBrokerLogsPtrType AwsMqBrokerLogsArgs
+
+func AwsMqBrokerLogsPtr(v *AwsMqBrokerLogsArgs) AwsMqBrokerLogsPtrInput {
+	return (*awsMqBrokerLogsPtrType)(v)
+}
+
+func (*awsMqBrokerLogsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsMqBrokerLogs)(nil)).Elem()
+}
+
+func (i *awsMqBrokerLogsPtrType) ToAwsMqBrokerLogsPtrOutput() AwsMqBrokerLogsPtrOutput {
+	return i.ToAwsMqBrokerLogsPtrOutputWithContext(context.Background())
+}
+
+func (i *awsMqBrokerLogsPtrType) ToAwsMqBrokerLogsPtrOutputWithContext(ctx context.Context) AwsMqBrokerLogsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsMqBrokerLogsPtrOutput)
+}
+
+type AwsMqBrokerLogsOutput struct{ *pulumi.OutputState }
+
+func (AwsMqBrokerLogsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsMqBrokerLogs)(nil)).Elem()
+}
+
+func (o AwsMqBrokerLogsOutput) ToAwsMqBrokerLogsOutput() AwsMqBrokerLogsOutput {
+	return o
+}
+
+func (o AwsMqBrokerLogsOutput) ToAwsMqBrokerLogsOutputWithContext(ctx context.Context) AwsMqBrokerLogsOutput {
+	return o
+}
+
+func (o AwsMqBrokerLogsOutput) ToAwsMqBrokerLogsPtrOutput() AwsMqBrokerLogsPtrOutput {
+	return o.ToAwsMqBrokerLogsPtrOutputWithContext(context.Background())
+}
+
+func (o AwsMqBrokerLogsOutput) ToAwsMqBrokerLogsPtrOutputWithContext(ctx context.Context) AwsMqBrokerLogsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsMqBrokerLogs) *AwsMqBrokerLogs {
+		return &v
+	}).(AwsMqBrokerLogsPtrOutput)
+}
+
+// Enable audit logging (not applicable for RabbitMQ).
+func (o AwsMqBrokerLogsOutput) Audit() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AwsMqBrokerLogs) *bool { return v.Audit }).(pulumi.BoolPtrOutput)
+}
+
+// Enable general logging.
+func (o AwsMqBrokerLogsOutput) General() pulumi.BoolOutput {
+	return o.ApplyT(func(v AwsMqBrokerLogs) bool { return v.General }).(pulumi.BoolOutput)
+}
+
+type AwsMqBrokerLogsPtrOutput struct{ *pulumi.OutputState }
+
+func (AwsMqBrokerLogsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsMqBrokerLogs)(nil)).Elem()
+}
+
+func (o AwsMqBrokerLogsPtrOutput) ToAwsMqBrokerLogsPtrOutput() AwsMqBrokerLogsPtrOutput {
+	return o
+}
+
+func (o AwsMqBrokerLogsPtrOutput) ToAwsMqBrokerLogsPtrOutputWithContext(ctx context.Context) AwsMqBrokerLogsPtrOutput {
+	return o
+}
+
+func (o AwsMqBrokerLogsPtrOutput) Elem() AwsMqBrokerLogsOutput {
+	return o.ApplyT(func(v *AwsMqBrokerLogs) AwsMqBrokerLogs {
+		if v != nil {
+			return *v
+		}
+		var ret AwsMqBrokerLogs
+		return ret
+	}).(AwsMqBrokerLogsOutput)
+}
+
+// Enable audit logging (not applicable for RabbitMQ).
+func (o AwsMqBrokerLogsPtrOutput) Audit() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AwsMqBrokerLogs) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Audit
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enable general logging.
+func (o AwsMqBrokerLogsPtrOutput) General() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AwsMqBrokerLogs) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.General
+	}).(pulumi.BoolPtrOutput)
+}
+
+type AwsMqBrokerMaintenanceWindow struct {
+	// Day of week for maintenance window.
+	DayOfWeek string `pulumi:"dayOfWeek"`
+	// Time of day for maintenance window. 24 hours format
+	TimeOfDay string `pulumi:"timeOfDay"`
+	// Time zone for maintenance window.
+	TimeZone string `pulumi:"timeZone"`
+}
+
+// AwsMqBrokerMaintenanceWindowInput is an input type that accepts AwsMqBrokerMaintenanceWindowArgs and AwsMqBrokerMaintenanceWindowOutput values.
+// You can construct a concrete instance of `AwsMqBrokerMaintenanceWindowInput` via:
+//
+//	AwsMqBrokerMaintenanceWindowArgs{...}
+type AwsMqBrokerMaintenanceWindowInput interface {
+	pulumi.Input
+
+	ToAwsMqBrokerMaintenanceWindowOutput() AwsMqBrokerMaintenanceWindowOutput
+	ToAwsMqBrokerMaintenanceWindowOutputWithContext(context.Context) AwsMqBrokerMaintenanceWindowOutput
+}
+
+type AwsMqBrokerMaintenanceWindowArgs struct {
+	// Day of week for maintenance window.
+	DayOfWeek pulumi.StringInput `pulumi:"dayOfWeek"`
+	// Time of day for maintenance window. 24 hours format
+	TimeOfDay pulumi.StringInput `pulumi:"timeOfDay"`
+	// Time zone for maintenance window.
+	TimeZone pulumi.StringInput `pulumi:"timeZone"`
+}
+
+func (AwsMqBrokerMaintenanceWindowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsMqBrokerMaintenanceWindow)(nil)).Elem()
+}
+
+func (i AwsMqBrokerMaintenanceWindowArgs) ToAwsMqBrokerMaintenanceWindowOutput() AwsMqBrokerMaintenanceWindowOutput {
+	return i.ToAwsMqBrokerMaintenanceWindowOutputWithContext(context.Background())
+}
+
+func (i AwsMqBrokerMaintenanceWindowArgs) ToAwsMqBrokerMaintenanceWindowOutputWithContext(ctx context.Context) AwsMqBrokerMaintenanceWindowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsMqBrokerMaintenanceWindowOutput)
+}
+
+func (i AwsMqBrokerMaintenanceWindowArgs) ToAwsMqBrokerMaintenanceWindowPtrOutput() AwsMqBrokerMaintenanceWindowPtrOutput {
+	return i.ToAwsMqBrokerMaintenanceWindowPtrOutputWithContext(context.Background())
+}
+
+func (i AwsMqBrokerMaintenanceWindowArgs) ToAwsMqBrokerMaintenanceWindowPtrOutputWithContext(ctx context.Context) AwsMqBrokerMaintenanceWindowPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsMqBrokerMaintenanceWindowOutput).ToAwsMqBrokerMaintenanceWindowPtrOutputWithContext(ctx)
+}
+
+// AwsMqBrokerMaintenanceWindowPtrInput is an input type that accepts AwsMqBrokerMaintenanceWindowArgs, AwsMqBrokerMaintenanceWindowPtr and AwsMqBrokerMaintenanceWindowPtrOutput values.
+// You can construct a concrete instance of `AwsMqBrokerMaintenanceWindowPtrInput` via:
+//
+//	        AwsMqBrokerMaintenanceWindowArgs{...}
+//
+//	or:
+//
+//	        nil
+type AwsMqBrokerMaintenanceWindowPtrInput interface {
+	pulumi.Input
+
+	ToAwsMqBrokerMaintenanceWindowPtrOutput() AwsMqBrokerMaintenanceWindowPtrOutput
+	ToAwsMqBrokerMaintenanceWindowPtrOutputWithContext(context.Context) AwsMqBrokerMaintenanceWindowPtrOutput
+}
+
+type awsMqBrokerMaintenanceWindowPtrType AwsMqBrokerMaintenanceWindowArgs
+
+func AwsMqBrokerMaintenanceWindowPtr(v *AwsMqBrokerMaintenanceWindowArgs) AwsMqBrokerMaintenanceWindowPtrInput {
+	return (*awsMqBrokerMaintenanceWindowPtrType)(v)
+}
+
+func (*awsMqBrokerMaintenanceWindowPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsMqBrokerMaintenanceWindow)(nil)).Elem()
+}
+
+func (i *awsMqBrokerMaintenanceWindowPtrType) ToAwsMqBrokerMaintenanceWindowPtrOutput() AwsMqBrokerMaintenanceWindowPtrOutput {
+	return i.ToAwsMqBrokerMaintenanceWindowPtrOutputWithContext(context.Background())
+}
+
+func (i *awsMqBrokerMaintenanceWindowPtrType) ToAwsMqBrokerMaintenanceWindowPtrOutputWithContext(ctx context.Context) AwsMqBrokerMaintenanceWindowPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsMqBrokerMaintenanceWindowPtrOutput)
+}
+
+type AwsMqBrokerMaintenanceWindowOutput struct{ *pulumi.OutputState }
+
+func (AwsMqBrokerMaintenanceWindowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsMqBrokerMaintenanceWindow)(nil)).Elem()
+}
+
+func (o AwsMqBrokerMaintenanceWindowOutput) ToAwsMqBrokerMaintenanceWindowOutput() AwsMqBrokerMaintenanceWindowOutput {
+	return o
+}
+
+func (o AwsMqBrokerMaintenanceWindowOutput) ToAwsMqBrokerMaintenanceWindowOutputWithContext(ctx context.Context) AwsMqBrokerMaintenanceWindowOutput {
+	return o
+}
+
+func (o AwsMqBrokerMaintenanceWindowOutput) ToAwsMqBrokerMaintenanceWindowPtrOutput() AwsMqBrokerMaintenanceWindowPtrOutput {
+	return o.ToAwsMqBrokerMaintenanceWindowPtrOutputWithContext(context.Background())
+}
+
+func (o AwsMqBrokerMaintenanceWindowOutput) ToAwsMqBrokerMaintenanceWindowPtrOutputWithContext(ctx context.Context) AwsMqBrokerMaintenanceWindowPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsMqBrokerMaintenanceWindow) *AwsMqBrokerMaintenanceWindow {
+		return &v
+	}).(AwsMqBrokerMaintenanceWindowPtrOutput)
+}
+
+// Day of week for maintenance window.
+func (o AwsMqBrokerMaintenanceWindowOutput) DayOfWeek() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsMqBrokerMaintenanceWindow) string { return v.DayOfWeek }).(pulumi.StringOutput)
+}
+
+// Time of day for maintenance window. 24 hours format
+func (o AwsMqBrokerMaintenanceWindowOutput) TimeOfDay() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsMqBrokerMaintenanceWindow) string { return v.TimeOfDay }).(pulumi.StringOutput)
+}
+
+// Time zone for maintenance window.
+func (o AwsMqBrokerMaintenanceWindowOutput) TimeZone() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsMqBrokerMaintenanceWindow) string { return v.TimeZone }).(pulumi.StringOutput)
+}
+
+type AwsMqBrokerMaintenanceWindowPtrOutput struct{ *pulumi.OutputState }
+
+func (AwsMqBrokerMaintenanceWindowPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsMqBrokerMaintenanceWindow)(nil)).Elem()
+}
+
+func (o AwsMqBrokerMaintenanceWindowPtrOutput) ToAwsMqBrokerMaintenanceWindowPtrOutput() AwsMqBrokerMaintenanceWindowPtrOutput {
+	return o
+}
+
+func (o AwsMqBrokerMaintenanceWindowPtrOutput) ToAwsMqBrokerMaintenanceWindowPtrOutputWithContext(ctx context.Context) AwsMqBrokerMaintenanceWindowPtrOutput {
+	return o
+}
+
+func (o AwsMqBrokerMaintenanceWindowPtrOutput) Elem() AwsMqBrokerMaintenanceWindowOutput {
+	return o.ApplyT(func(v *AwsMqBrokerMaintenanceWindow) AwsMqBrokerMaintenanceWindow {
+		if v != nil {
+			return *v
+		}
+		var ret AwsMqBrokerMaintenanceWindow
+		return ret
+	}).(AwsMqBrokerMaintenanceWindowOutput)
+}
+
+// Day of week for maintenance window.
+func (o AwsMqBrokerMaintenanceWindowPtrOutput) DayOfWeek() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsMqBrokerMaintenanceWindow) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DayOfWeek
+	}).(pulumi.StringPtrOutput)
+}
+
+// Time of day for maintenance window. 24 hours format
+func (o AwsMqBrokerMaintenanceWindowPtrOutput) TimeOfDay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsMqBrokerMaintenanceWindow) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TimeOfDay
+	}).(pulumi.StringPtrOutput)
+}
+
+// Time zone for maintenance window.
+func (o AwsMqBrokerMaintenanceWindowPtrOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsMqBrokerMaintenanceWindow) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TimeZone
+	}).(pulumi.StringPtrOutput)
+}
+
+type AwsMqBrokerUser struct {
+	// Defaults to `false`.
+	ConsoleAccess *bool `pulumi:"consoleAccess"`
+	// Groups to which the user belongs.
+	Groups []string `pulumi:"groups"`
+	// The password.
+	Password string `pulumi:"password"`
+	// Defaults to `false`.
+	ReplicationUser *bool `pulumi:"replicationUser"`
+	// The username.
+	UserName string `pulumi:"userName"`
+}
+
+// AwsMqBrokerUserInput is an input type that accepts AwsMqBrokerUserArgs and AwsMqBrokerUserOutput values.
+// You can construct a concrete instance of `AwsMqBrokerUserInput` via:
+//
+//	AwsMqBrokerUserArgs{...}
+type AwsMqBrokerUserInput interface {
+	pulumi.Input
+
+	ToAwsMqBrokerUserOutput() AwsMqBrokerUserOutput
+	ToAwsMqBrokerUserOutputWithContext(context.Context) AwsMqBrokerUserOutput
+}
+
+type AwsMqBrokerUserArgs struct {
+	// Defaults to `false`.
+	ConsoleAccess pulumi.BoolPtrInput `pulumi:"consoleAccess"`
+	// Groups to which the user belongs.
+	Groups pulumi.StringArrayInput `pulumi:"groups"`
+	// The password.
+	Password pulumi.StringInput `pulumi:"password"`
+	// Defaults to `false`.
+	ReplicationUser pulumi.BoolPtrInput `pulumi:"replicationUser"`
+	// The username.
+	UserName pulumi.StringInput `pulumi:"userName"`
+}
+
+func (AwsMqBrokerUserArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsMqBrokerUser)(nil)).Elem()
+}
+
+func (i AwsMqBrokerUserArgs) ToAwsMqBrokerUserOutput() AwsMqBrokerUserOutput {
+	return i.ToAwsMqBrokerUserOutputWithContext(context.Background())
+}
+
+func (i AwsMqBrokerUserArgs) ToAwsMqBrokerUserOutputWithContext(ctx context.Context) AwsMqBrokerUserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsMqBrokerUserOutput)
+}
+
+// AwsMqBrokerUserArrayInput is an input type that accepts AwsMqBrokerUserArray and AwsMqBrokerUserArrayOutput values.
+// You can construct a concrete instance of `AwsMqBrokerUserArrayInput` via:
+//
+//	AwsMqBrokerUserArray{ AwsMqBrokerUserArgs{...} }
+type AwsMqBrokerUserArrayInput interface {
+	pulumi.Input
+
+	ToAwsMqBrokerUserArrayOutput() AwsMqBrokerUserArrayOutput
+	ToAwsMqBrokerUserArrayOutputWithContext(context.Context) AwsMqBrokerUserArrayOutput
+}
+
+type AwsMqBrokerUserArray []AwsMqBrokerUserInput
+
+func (AwsMqBrokerUserArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AwsMqBrokerUser)(nil)).Elem()
+}
+
+func (i AwsMqBrokerUserArray) ToAwsMqBrokerUserArrayOutput() AwsMqBrokerUserArrayOutput {
+	return i.ToAwsMqBrokerUserArrayOutputWithContext(context.Background())
+}
+
+func (i AwsMqBrokerUserArray) ToAwsMqBrokerUserArrayOutputWithContext(ctx context.Context) AwsMqBrokerUserArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsMqBrokerUserArrayOutput)
+}
+
+type AwsMqBrokerUserOutput struct{ *pulumi.OutputState }
+
+func (AwsMqBrokerUserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsMqBrokerUser)(nil)).Elem()
+}
+
+func (o AwsMqBrokerUserOutput) ToAwsMqBrokerUserOutput() AwsMqBrokerUserOutput {
+	return o
+}
+
+func (o AwsMqBrokerUserOutput) ToAwsMqBrokerUserOutputWithContext(ctx context.Context) AwsMqBrokerUserOutput {
+	return o
+}
+
+// Defaults to `false`.
+func (o AwsMqBrokerUserOutput) ConsoleAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AwsMqBrokerUser) *bool { return v.ConsoleAccess }).(pulumi.BoolPtrOutput)
+}
+
+// Groups to which the user belongs.
+func (o AwsMqBrokerUserOutput) Groups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AwsMqBrokerUser) []string { return v.Groups }).(pulumi.StringArrayOutput)
+}
+
+// The password.
+func (o AwsMqBrokerUserOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsMqBrokerUser) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// Defaults to `false`.
+func (o AwsMqBrokerUserOutput) ReplicationUser() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AwsMqBrokerUser) *bool { return v.ReplicationUser }).(pulumi.BoolPtrOutput)
+}
+
+// The username.
+func (o AwsMqBrokerUserOutput) UserName() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsMqBrokerUser) string { return v.UserName }).(pulumi.StringOutput)
+}
+
+type AwsMqBrokerUserArrayOutput struct{ *pulumi.OutputState }
+
+func (AwsMqBrokerUserArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AwsMqBrokerUser)(nil)).Elem()
+}
+
+func (o AwsMqBrokerUserArrayOutput) ToAwsMqBrokerUserArrayOutput() AwsMqBrokerUserArrayOutput {
+	return o
+}
+
+func (o AwsMqBrokerUserArrayOutput) ToAwsMqBrokerUserArrayOutputWithContext(ctx context.Context) AwsMqBrokerUserArrayOutput {
+	return o
+}
+
+func (o AwsMqBrokerUserArrayOutput) Index(i pulumi.IntInput) AwsMqBrokerUserOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AwsMqBrokerUser {
+		return vs[0].([]AwsMqBrokerUser)[vs[1].(int)]
+	}).(AwsMqBrokerUserOutput)
+}
+
 type AwsMwaaEnvironmentLastUpdated struct {
 	CreatedAt *string                              `pulumi:"createdAt"`
 	Errors    []AwsMwaaEnvironmentLastUpdatedError `pulumi:"errors"`
@@ -16846,6 +21850,115 @@ func (o AwsTargetGroupAttributesAttributeArrayOutput) Index(i pulumi.IntInput) A
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AwsTargetGroupAttributesAttribute {
 		return vs[0].([]AwsTargetGroupAttributesAttribute)[vs[1].(int)]
 	}).(AwsTargetGroupAttributesAttributeOutput)
+}
+
+type AwsTargetGroupTargetRegisterTarget struct {
+	AvailabilityZone *string `pulumi:"availabilityZone"`
+	// The ID of the target. If the target type of the target group is INSTANCE, this is an instance ID. If the target type is IP , this is an IP address. If the target type is LAMBDA, this is the ARN of the Lambda function. If the target type is ALB, this is the ARN of the Application Load Balancer.
+	Id   string `pulumi:"id"`
+	Port *int   `pulumi:"port"`
+}
+
+// AwsTargetGroupTargetRegisterTargetInput is an input type that accepts AwsTargetGroupTargetRegisterTargetArgs and AwsTargetGroupTargetRegisterTargetOutput values.
+// You can construct a concrete instance of `AwsTargetGroupTargetRegisterTargetInput` via:
+//
+//	AwsTargetGroupTargetRegisterTargetArgs{...}
+type AwsTargetGroupTargetRegisterTargetInput interface {
+	pulumi.Input
+
+	ToAwsTargetGroupTargetRegisterTargetOutput() AwsTargetGroupTargetRegisterTargetOutput
+	ToAwsTargetGroupTargetRegisterTargetOutputWithContext(context.Context) AwsTargetGroupTargetRegisterTargetOutput
+}
+
+type AwsTargetGroupTargetRegisterTargetArgs struct {
+	AvailabilityZone pulumi.StringPtrInput `pulumi:"availabilityZone"`
+	// The ID of the target. If the target type of the target group is INSTANCE, this is an instance ID. If the target type is IP , this is an IP address. If the target type is LAMBDA, this is the ARN of the Lambda function. If the target type is ALB, this is the ARN of the Application Load Balancer.
+	Id   pulumi.StringInput `pulumi:"id"`
+	Port pulumi.IntPtrInput `pulumi:"port"`
+}
+
+func (AwsTargetGroupTargetRegisterTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsTargetGroupTargetRegisterTarget)(nil)).Elem()
+}
+
+func (i AwsTargetGroupTargetRegisterTargetArgs) ToAwsTargetGroupTargetRegisterTargetOutput() AwsTargetGroupTargetRegisterTargetOutput {
+	return i.ToAwsTargetGroupTargetRegisterTargetOutputWithContext(context.Background())
+}
+
+func (i AwsTargetGroupTargetRegisterTargetArgs) ToAwsTargetGroupTargetRegisterTargetOutputWithContext(ctx context.Context) AwsTargetGroupTargetRegisterTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsTargetGroupTargetRegisterTargetOutput)
+}
+
+// AwsTargetGroupTargetRegisterTargetArrayInput is an input type that accepts AwsTargetGroupTargetRegisterTargetArray and AwsTargetGroupTargetRegisterTargetArrayOutput values.
+// You can construct a concrete instance of `AwsTargetGroupTargetRegisterTargetArrayInput` via:
+//
+//	AwsTargetGroupTargetRegisterTargetArray{ AwsTargetGroupTargetRegisterTargetArgs{...} }
+type AwsTargetGroupTargetRegisterTargetArrayInput interface {
+	pulumi.Input
+
+	ToAwsTargetGroupTargetRegisterTargetArrayOutput() AwsTargetGroupTargetRegisterTargetArrayOutput
+	ToAwsTargetGroupTargetRegisterTargetArrayOutputWithContext(context.Context) AwsTargetGroupTargetRegisterTargetArrayOutput
+}
+
+type AwsTargetGroupTargetRegisterTargetArray []AwsTargetGroupTargetRegisterTargetInput
+
+func (AwsTargetGroupTargetRegisterTargetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AwsTargetGroupTargetRegisterTarget)(nil)).Elem()
+}
+
+func (i AwsTargetGroupTargetRegisterTargetArray) ToAwsTargetGroupTargetRegisterTargetArrayOutput() AwsTargetGroupTargetRegisterTargetArrayOutput {
+	return i.ToAwsTargetGroupTargetRegisterTargetArrayOutputWithContext(context.Background())
+}
+
+func (i AwsTargetGroupTargetRegisterTargetArray) ToAwsTargetGroupTargetRegisterTargetArrayOutputWithContext(ctx context.Context) AwsTargetGroupTargetRegisterTargetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsTargetGroupTargetRegisterTargetArrayOutput)
+}
+
+type AwsTargetGroupTargetRegisterTargetOutput struct{ *pulumi.OutputState }
+
+func (AwsTargetGroupTargetRegisterTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsTargetGroupTargetRegisterTarget)(nil)).Elem()
+}
+
+func (o AwsTargetGroupTargetRegisterTargetOutput) ToAwsTargetGroupTargetRegisterTargetOutput() AwsTargetGroupTargetRegisterTargetOutput {
+	return o
+}
+
+func (o AwsTargetGroupTargetRegisterTargetOutput) ToAwsTargetGroupTargetRegisterTargetOutputWithContext(ctx context.Context) AwsTargetGroupTargetRegisterTargetOutput {
+	return o
+}
+
+func (o AwsTargetGroupTargetRegisterTargetOutput) AvailabilityZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsTargetGroupTargetRegisterTarget) *string { return v.AvailabilityZone }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the target. If the target type of the target group is INSTANCE, this is an instance ID. If the target type is IP , this is an IP address. If the target type is LAMBDA, this is the ARN of the Lambda function. If the target type is ALB, this is the ARN of the Application Load Balancer.
+func (o AwsTargetGroupTargetRegisterTargetOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsTargetGroupTargetRegisterTarget) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o AwsTargetGroupTargetRegisterTargetOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AwsTargetGroupTargetRegisterTarget) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+type AwsTargetGroupTargetRegisterTargetArrayOutput struct{ *pulumi.OutputState }
+
+func (AwsTargetGroupTargetRegisterTargetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AwsTargetGroupTargetRegisterTarget)(nil)).Elem()
+}
+
+func (o AwsTargetGroupTargetRegisterTargetArrayOutput) ToAwsTargetGroupTargetRegisterTargetArrayOutput() AwsTargetGroupTargetRegisterTargetArrayOutput {
+	return o
+}
+
+func (o AwsTargetGroupTargetRegisterTargetArrayOutput) ToAwsTargetGroupTargetRegisterTargetArrayOutputWithContext(ctx context.Context) AwsTargetGroupTargetRegisterTargetArrayOutput {
+	return o
+}
+
+func (o AwsTargetGroupTargetRegisterTargetArrayOutput) Index(i pulumi.IntInput) AwsTargetGroupTargetRegisterTargetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AwsTargetGroupTargetRegisterTarget {
+		return vs[0].([]AwsTargetGroupTargetRegisterTarget)[vs[1].(int)]
+	}).(AwsTargetGroupTargetRegisterTargetOutput)
 }
 
 type AwsTimestreamwriteDatabaseAllTag struct {
@@ -24768,7 +29881,7 @@ func (o DuploServiceInitContainerDockerImageArrayOutput) Index(i pulumi.IntInput
 type DuploServiceLbconfigsLbconfig struct {
 	// Applicable for internal lb.
 	AllowGlobalAccess *bool `pulumi:"allowGlobalAccess"`
-	// The number of seconds to wait for the backend to send a response. Must be at least 1. Applicable only for GCP.
+	// The number of seconds to wait for the backend to send a response. Must be at least 1. Applicable only for GCP. Enable setIngressHealthCheck when using this field
 	BackendConfigTimeoutSec *int `pulumi:"backendConfigTimeoutSec"`
 	// Is used for communication between the load balancer and the target instances. This field is used to set protocol version for ALB load balancer. Only applicable when protocol is HTTP or HTTPS. The protocol version. Specify GRPC to send requests to targets using gRPC. Specify HTTP2 to send requests to targets using HTTP/2. The default is HTTP1, which sends requests to targets using HTTP/1.1
 	BackendProtocolVersion *string `pulumi:"backendProtocolVersion"`
@@ -24780,6 +29893,10 @@ type DuploServiceLbconfigsLbconfig struct {
 	CustomCidrs []string `pulumi:"customCidrs"`
 	// The DNS name of the cloud load balancer (if applicable).
 	DnsName *string `pulumi:"dnsName"`
+	// Allocate Elastic IP to load balancer, which is configured under plan configuration.
+	//
+	// Note: This field can only be set for non internal lbtype NLB(6)
+	EipAllocations []string `pulumi:"eipAllocations"`
 	// The frontend port associated with this load balancer configuration. Required if `lbType` is not `7`.
 	ExternalPort *int `pulumi:"externalPort"`
 	// Only for K8S Node Port (`lbType = 4`) or load balancers in Kubernetes.  Set the kubernetes service `externalTrafficPolicy` attribute.
@@ -24853,7 +29970,7 @@ type DuploServiceLbconfigsLbconfigInput interface {
 type DuploServiceLbconfigsLbconfigArgs struct {
 	// Applicable for internal lb.
 	AllowGlobalAccess pulumi.BoolPtrInput `pulumi:"allowGlobalAccess"`
-	// The number of seconds to wait for the backend to send a response. Must be at least 1. Applicable only for GCP.
+	// The number of seconds to wait for the backend to send a response. Must be at least 1. Applicable only for GCP. Enable setIngressHealthCheck when using this field
 	BackendConfigTimeoutSec pulumi.IntPtrInput `pulumi:"backendConfigTimeoutSec"`
 	// Is used for communication between the load balancer and the target instances. This field is used to set protocol version for ALB load balancer. Only applicable when protocol is HTTP or HTTPS. The protocol version. Specify GRPC to send requests to targets using gRPC. Specify HTTP2 to send requests to targets using HTTP/2. The default is HTTP1, which sends requests to targets using HTTP/1.1
 	BackendProtocolVersion pulumi.StringPtrInput `pulumi:"backendProtocolVersion"`
@@ -24865,6 +29982,10 @@ type DuploServiceLbconfigsLbconfigArgs struct {
 	CustomCidrs pulumi.StringArrayInput `pulumi:"customCidrs"`
 	// The DNS name of the cloud load balancer (if applicable).
 	DnsName pulumi.StringPtrInput `pulumi:"dnsName"`
+	// Allocate Elastic IP to load balancer, which is configured under plan configuration.
+	//
+	// Note: This field can only be set for non internal lbtype NLB(6)
+	EipAllocations pulumi.StringArrayInput `pulumi:"eipAllocations"`
 	// The frontend port associated with this load balancer configuration. Required if `lbType` is not `7`.
 	ExternalPort pulumi.IntPtrInput `pulumi:"externalPort"`
 	// Only for K8S Node Port (`lbType = 4`) or load balancers in Kubernetes.  Set the kubernetes service `externalTrafficPolicy` attribute.
@@ -24980,7 +30101,7 @@ func (o DuploServiceLbconfigsLbconfigOutput) AllowGlobalAccess() pulumi.BoolPtrO
 	return o.ApplyT(func(v DuploServiceLbconfigsLbconfig) *bool { return v.AllowGlobalAccess }).(pulumi.BoolPtrOutput)
 }
 
-// The number of seconds to wait for the backend to send a response. Must be at least 1. Applicable only for GCP.
+// The number of seconds to wait for the backend to send a response. Must be at least 1. Applicable only for GCP. Enable setIngressHealthCheck when using this field
 func (o DuploServiceLbconfigsLbconfigOutput) BackendConfigTimeoutSec() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DuploServiceLbconfigsLbconfig) *int { return v.BackendConfigTimeoutSec }).(pulumi.IntPtrOutput)
 }
@@ -25008,6 +30129,13 @@ func (o DuploServiceLbconfigsLbconfigOutput) CustomCidrs() pulumi.StringArrayOut
 // The DNS name of the cloud load balancer (if applicable).
 func (o DuploServiceLbconfigsLbconfigOutput) DnsName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DuploServiceLbconfigsLbconfig) *string { return v.DnsName }).(pulumi.StringPtrOutput)
+}
+
+// Allocate Elastic IP to load balancer, which is configured under plan configuration.
+//
+// Note: This field can only be set for non internal lbtype NLB(6)
+func (o DuploServiceLbconfigsLbconfigOutput) EipAllocations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DuploServiceLbconfigsLbconfig) []string { return v.EipAllocations }).(pulumi.StringArrayOutput)
 }
 
 // The frontend port associated with this load balancer configuration. Required if `lbType` is not `7`.
@@ -26168,9 +31296,9 @@ type EcsServiceLoadBalancer struct {
 	EnableAccessLogs *bool `pulumi:"enableAccessLogs"`
 	// The frontend port associated with this load balancer configuration.
 	ExternalPort int `pulumi:"externalPort"`
-	// Health check configuration for this load balancer.
+	// Health check configuration for this load balancer. Not applicable for NLB
 	HealthCheckConfig *EcsServiceLoadBalancerHealthCheckConfig `pulumi:"healthCheckConfig"`
-	// The health check URL to associate with this load balancer configuration.
+	// The health check URL to associate with this load balancer configuration. Not applicable for NLB
 	HealthCheckUrl *string `pulumi:"healthCheckUrl"`
 	// Whether or not the load balancer should redirect HTTP to HTTPS.
 	HttpToHttpsRedirect *bool `pulumi:"httpToHttpsRedirect"`
@@ -26186,6 +31314,7 @@ type EcsServiceLoadBalancer struct {
 	//    - `0` : ELB (Classic Load Balancer)
 	//    - `1` : ALB (Application Load Balancer)
 	//    - `2` : Health-check Only (No Load Balancer)
+	//    - `6` : NLB (Network Load Balancer)
 	LbType int `pulumi:"lbType"`
 	// The load balancer ARN.
 	LoadBalancerArn *string `pulumi:"loadBalancerArn"`
@@ -26228,9 +31357,9 @@ type EcsServiceLoadBalancerArgs struct {
 	EnableAccessLogs pulumi.BoolPtrInput `pulumi:"enableAccessLogs"`
 	// The frontend port associated with this load balancer configuration.
 	ExternalPort pulumi.IntInput `pulumi:"externalPort"`
-	// Health check configuration for this load balancer.
+	// Health check configuration for this load balancer. Not applicable for NLB
 	HealthCheckConfig EcsServiceLoadBalancerHealthCheckConfigPtrInput `pulumi:"healthCheckConfig"`
-	// The health check URL to associate with this load balancer configuration.
+	// The health check URL to associate with this load balancer configuration. Not applicable for NLB
 	HealthCheckUrl pulumi.StringPtrInput `pulumi:"healthCheckUrl"`
 	// Whether or not the load balancer should redirect HTTP to HTTPS.
 	HttpToHttpsRedirect pulumi.BoolPtrInput `pulumi:"httpToHttpsRedirect"`
@@ -26246,6 +31375,7 @@ type EcsServiceLoadBalancerArgs struct {
 	//    - `0` : ELB (Classic Load Balancer)
 	//    - `1` : ALB (Application Load Balancer)
 	//    - `2` : Health-check Only (No Load Balancer)
+	//    - `6` : NLB (Network Load Balancer)
 	LbType pulumi.IntInput `pulumi:"lbType"`
 	// The load balancer ARN.
 	LoadBalancerArn pulumi.StringPtrInput `pulumi:"loadBalancerArn"`
@@ -26345,12 +31475,12 @@ func (o EcsServiceLoadBalancerOutput) ExternalPort() pulumi.IntOutput {
 	return o.ApplyT(func(v EcsServiceLoadBalancer) int { return v.ExternalPort }).(pulumi.IntOutput)
 }
 
-// Health check configuration for this load balancer.
+// Health check configuration for this load balancer. Not applicable for NLB
 func (o EcsServiceLoadBalancerOutput) HealthCheckConfig() EcsServiceLoadBalancerHealthCheckConfigPtrOutput {
 	return o.ApplyT(func(v EcsServiceLoadBalancer) *EcsServiceLoadBalancerHealthCheckConfig { return v.HealthCheckConfig }).(EcsServiceLoadBalancerHealthCheckConfigPtrOutput)
 }
 
-// The health check URL to associate with this load balancer configuration.
+// The health check URL to associate with this load balancer configuration. Not applicable for NLB
 func (o EcsServiceLoadBalancerOutput) HealthCheckUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EcsServiceLoadBalancer) *string { return v.HealthCheckUrl }).(pulumi.StringPtrOutput)
 }
@@ -26381,6 +31511,7 @@ func (o EcsServiceLoadBalancerOutput) IsInternal() pulumi.BoolPtrOutput {
 //   - `0` : ELB (Classic Load Balancer)
 //   - `1` : ALB (Application Load Balancer)
 //   - `2` : Health-check Only (No Load Balancer)
+//   - `6` : NLB (Network Load Balancer)
 func (o EcsServiceLoadBalancerOutput) LbType() pulumi.IntOutput {
 	return o.ApplyT(func(v EcsServiceLoadBalancer) int { return v.LbType }).(pulumi.IntOutput)
 }
@@ -26442,10 +31573,12 @@ func (o EcsServiceLoadBalancerArrayOutput) Index(i pulumi.IntInput) EcsServiceLo
 type EcsServiceLoadBalancerHealthCheckConfig struct {
 	GrpcSuccessCode            *string `pulumi:"grpcSuccessCode"`
 	HealthCheckIntervalSeconds *int    `pulumi:"healthCheckIntervalSeconds"`
-	HealthCheckTimeoutSeconds  *int    `pulumi:"healthCheckTimeoutSeconds"`
-	HealthyThresholdCount      *int    `pulumi:"healthyThresholdCount"`
-	HttpSuccessCode            *string `pulumi:"httpSuccessCode"`
-	UnhealthyThresholdCount    *int    `pulumi:"unhealthyThresholdCount"`
+	// The port the load balancer uses when performing health checks on targets. If not specified, it will be treated as the traffic port.
+	HealthCheckPort           *int    `pulumi:"healthCheckPort"`
+	HealthCheckTimeoutSeconds *int    `pulumi:"healthCheckTimeoutSeconds"`
+	HealthyThresholdCount     *int    `pulumi:"healthyThresholdCount"`
+	HttpSuccessCode           *string `pulumi:"httpSuccessCode"`
+	UnhealthyThresholdCount   *int    `pulumi:"unhealthyThresholdCount"`
 }
 
 // EcsServiceLoadBalancerHealthCheckConfigInput is an input type that accepts EcsServiceLoadBalancerHealthCheckConfigArgs and EcsServiceLoadBalancerHealthCheckConfigOutput values.
@@ -26462,10 +31595,12 @@ type EcsServiceLoadBalancerHealthCheckConfigInput interface {
 type EcsServiceLoadBalancerHealthCheckConfigArgs struct {
 	GrpcSuccessCode            pulumi.StringPtrInput `pulumi:"grpcSuccessCode"`
 	HealthCheckIntervalSeconds pulumi.IntPtrInput    `pulumi:"healthCheckIntervalSeconds"`
-	HealthCheckTimeoutSeconds  pulumi.IntPtrInput    `pulumi:"healthCheckTimeoutSeconds"`
-	HealthyThresholdCount      pulumi.IntPtrInput    `pulumi:"healthyThresholdCount"`
-	HttpSuccessCode            pulumi.StringPtrInput `pulumi:"httpSuccessCode"`
-	UnhealthyThresholdCount    pulumi.IntPtrInput    `pulumi:"unhealthyThresholdCount"`
+	// The port the load balancer uses when performing health checks on targets. If not specified, it will be treated as the traffic port.
+	HealthCheckPort           pulumi.IntPtrInput    `pulumi:"healthCheckPort"`
+	HealthCheckTimeoutSeconds pulumi.IntPtrInput    `pulumi:"healthCheckTimeoutSeconds"`
+	HealthyThresholdCount     pulumi.IntPtrInput    `pulumi:"healthyThresholdCount"`
+	HttpSuccessCode           pulumi.StringPtrInput `pulumi:"httpSuccessCode"`
+	UnhealthyThresholdCount   pulumi.IntPtrInput    `pulumi:"unhealthyThresholdCount"`
 }
 
 func (EcsServiceLoadBalancerHealthCheckConfigArgs) ElementType() reflect.Type {
@@ -26553,6 +31688,11 @@ func (o EcsServiceLoadBalancerHealthCheckConfigOutput) HealthCheckIntervalSecond
 	return o.ApplyT(func(v EcsServiceLoadBalancerHealthCheckConfig) *int { return v.HealthCheckIntervalSeconds }).(pulumi.IntPtrOutput)
 }
 
+// The port the load balancer uses when performing health checks on targets. If not specified, it will be treated as the traffic port.
+func (o EcsServiceLoadBalancerHealthCheckConfigOutput) HealthCheckPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EcsServiceLoadBalancerHealthCheckConfig) *int { return v.HealthCheckPort }).(pulumi.IntPtrOutput)
+}
+
 func (o EcsServiceLoadBalancerHealthCheckConfigOutput) HealthCheckTimeoutSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v EcsServiceLoadBalancerHealthCheckConfig) *int { return v.HealthCheckTimeoutSeconds }).(pulumi.IntPtrOutput)
 }
@@ -26608,6 +31748,16 @@ func (o EcsServiceLoadBalancerHealthCheckConfigPtrOutput) HealthCheckIntervalSec
 			return nil
 		}
 		return v.HealthCheckIntervalSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The port the load balancer uses when performing health checks on targets. If not specified, it will be treated as the traffic port.
+func (o EcsServiceLoadBalancerHealthCheckConfigPtrOutput) HealthCheckPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EcsServiceLoadBalancerHealthCheckConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.HealthCheckPort
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -27923,6 +33073,394 @@ func (o GcpCloudFunctionHttpsTriggerPtrOutput) Url() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
+type GcpCloudTaskAppEngine struct {
+	// The body of the HTTP request. This field is optional and can be used to send additional data in the request should be base64 encoded.
+	Body string `pulumi:"body"`
+	// A map of HTTP headers to include in the request. Each key is a header name, and each value is the corresponding header value.
+	Headers map[string]string `pulumi:"headers"`
+	// The HTTP method to use for the request. Must be one of: `POST`, `PUT`, `PATCH`.
+	Method string `pulumi:"method"`
+	// Specify the relative URL path to which the HTTP request will be sent when the Cloud Tasks queue triggers the App Engine target.
+	RelativeUri string `pulumi:"relativeUri"`
+}
+
+// GcpCloudTaskAppEngineInput is an input type that accepts GcpCloudTaskAppEngineArgs and GcpCloudTaskAppEngineOutput values.
+// You can construct a concrete instance of `GcpCloudTaskAppEngineInput` via:
+//
+//	GcpCloudTaskAppEngineArgs{...}
+type GcpCloudTaskAppEngineInput interface {
+	pulumi.Input
+
+	ToGcpCloudTaskAppEngineOutput() GcpCloudTaskAppEngineOutput
+	ToGcpCloudTaskAppEngineOutputWithContext(context.Context) GcpCloudTaskAppEngineOutput
+}
+
+type GcpCloudTaskAppEngineArgs struct {
+	// The body of the HTTP request. This field is optional and can be used to send additional data in the request should be base64 encoded.
+	Body pulumi.StringInput `pulumi:"body"`
+	// A map of HTTP headers to include in the request. Each key is a header name, and each value is the corresponding header value.
+	Headers pulumi.StringMapInput `pulumi:"headers"`
+	// The HTTP method to use for the request. Must be one of: `POST`, `PUT`, `PATCH`.
+	Method pulumi.StringInput `pulumi:"method"`
+	// Specify the relative URL path to which the HTTP request will be sent when the Cloud Tasks queue triggers the App Engine target.
+	RelativeUri pulumi.StringInput `pulumi:"relativeUri"`
+}
+
+func (GcpCloudTaskAppEngineArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpCloudTaskAppEngine)(nil)).Elem()
+}
+
+func (i GcpCloudTaskAppEngineArgs) ToGcpCloudTaskAppEngineOutput() GcpCloudTaskAppEngineOutput {
+	return i.ToGcpCloudTaskAppEngineOutputWithContext(context.Background())
+}
+
+func (i GcpCloudTaskAppEngineArgs) ToGcpCloudTaskAppEngineOutputWithContext(ctx context.Context) GcpCloudTaskAppEngineOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpCloudTaskAppEngineOutput)
+}
+
+func (i GcpCloudTaskAppEngineArgs) ToGcpCloudTaskAppEnginePtrOutput() GcpCloudTaskAppEnginePtrOutput {
+	return i.ToGcpCloudTaskAppEnginePtrOutputWithContext(context.Background())
+}
+
+func (i GcpCloudTaskAppEngineArgs) ToGcpCloudTaskAppEnginePtrOutputWithContext(ctx context.Context) GcpCloudTaskAppEnginePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpCloudTaskAppEngineOutput).ToGcpCloudTaskAppEnginePtrOutputWithContext(ctx)
+}
+
+// GcpCloudTaskAppEnginePtrInput is an input type that accepts GcpCloudTaskAppEngineArgs, GcpCloudTaskAppEnginePtr and GcpCloudTaskAppEnginePtrOutput values.
+// You can construct a concrete instance of `GcpCloudTaskAppEnginePtrInput` via:
+//
+//	        GcpCloudTaskAppEngineArgs{...}
+//
+//	or:
+//
+//	        nil
+type GcpCloudTaskAppEnginePtrInput interface {
+	pulumi.Input
+
+	ToGcpCloudTaskAppEnginePtrOutput() GcpCloudTaskAppEnginePtrOutput
+	ToGcpCloudTaskAppEnginePtrOutputWithContext(context.Context) GcpCloudTaskAppEnginePtrOutput
+}
+
+type gcpCloudTaskAppEnginePtrType GcpCloudTaskAppEngineArgs
+
+func GcpCloudTaskAppEnginePtr(v *GcpCloudTaskAppEngineArgs) GcpCloudTaskAppEnginePtrInput {
+	return (*gcpCloudTaskAppEnginePtrType)(v)
+}
+
+func (*gcpCloudTaskAppEnginePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcpCloudTaskAppEngine)(nil)).Elem()
+}
+
+func (i *gcpCloudTaskAppEnginePtrType) ToGcpCloudTaskAppEnginePtrOutput() GcpCloudTaskAppEnginePtrOutput {
+	return i.ToGcpCloudTaskAppEnginePtrOutputWithContext(context.Background())
+}
+
+func (i *gcpCloudTaskAppEnginePtrType) ToGcpCloudTaskAppEnginePtrOutputWithContext(ctx context.Context) GcpCloudTaskAppEnginePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpCloudTaskAppEnginePtrOutput)
+}
+
+type GcpCloudTaskAppEngineOutput struct{ *pulumi.OutputState }
+
+func (GcpCloudTaskAppEngineOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpCloudTaskAppEngine)(nil)).Elem()
+}
+
+func (o GcpCloudTaskAppEngineOutput) ToGcpCloudTaskAppEngineOutput() GcpCloudTaskAppEngineOutput {
+	return o
+}
+
+func (o GcpCloudTaskAppEngineOutput) ToGcpCloudTaskAppEngineOutputWithContext(ctx context.Context) GcpCloudTaskAppEngineOutput {
+	return o
+}
+
+func (o GcpCloudTaskAppEngineOutput) ToGcpCloudTaskAppEnginePtrOutput() GcpCloudTaskAppEnginePtrOutput {
+	return o.ToGcpCloudTaskAppEnginePtrOutputWithContext(context.Background())
+}
+
+func (o GcpCloudTaskAppEngineOutput) ToGcpCloudTaskAppEnginePtrOutputWithContext(ctx context.Context) GcpCloudTaskAppEnginePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GcpCloudTaskAppEngine) *GcpCloudTaskAppEngine {
+		return &v
+	}).(GcpCloudTaskAppEnginePtrOutput)
+}
+
+// The body of the HTTP request. This field is optional and can be used to send additional data in the request should be base64 encoded.
+func (o GcpCloudTaskAppEngineOutput) Body() pulumi.StringOutput {
+	return o.ApplyT(func(v GcpCloudTaskAppEngine) string { return v.Body }).(pulumi.StringOutput)
+}
+
+// A map of HTTP headers to include in the request. Each key is a header name, and each value is the corresponding header value.
+func (o GcpCloudTaskAppEngineOutput) Headers() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GcpCloudTaskAppEngine) map[string]string { return v.Headers }).(pulumi.StringMapOutput)
+}
+
+// The HTTP method to use for the request. Must be one of: `POST`, `PUT`, `PATCH`.
+func (o GcpCloudTaskAppEngineOutput) Method() pulumi.StringOutput {
+	return o.ApplyT(func(v GcpCloudTaskAppEngine) string { return v.Method }).(pulumi.StringOutput)
+}
+
+// Specify the relative URL path to which the HTTP request will be sent when the Cloud Tasks queue triggers the App Engine target.
+func (o GcpCloudTaskAppEngineOutput) RelativeUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GcpCloudTaskAppEngine) string { return v.RelativeUri }).(pulumi.StringOutput)
+}
+
+type GcpCloudTaskAppEnginePtrOutput struct{ *pulumi.OutputState }
+
+func (GcpCloudTaskAppEnginePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcpCloudTaskAppEngine)(nil)).Elem()
+}
+
+func (o GcpCloudTaskAppEnginePtrOutput) ToGcpCloudTaskAppEnginePtrOutput() GcpCloudTaskAppEnginePtrOutput {
+	return o
+}
+
+func (o GcpCloudTaskAppEnginePtrOutput) ToGcpCloudTaskAppEnginePtrOutputWithContext(ctx context.Context) GcpCloudTaskAppEnginePtrOutput {
+	return o
+}
+
+func (o GcpCloudTaskAppEnginePtrOutput) Elem() GcpCloudTaskAppEngineOutput {
+	return o.ApplyT(func(v *GcpCloudTaskAppEngine) GcpCloudTaskAppEngine {
+		if v != nil {
+			return *v
+		}
+		var ret GcpCloudTaskAppEngine
+		return ret
+	}).(GcpCloudTaskAppEngineOutput)
+}
+
+// The body of the HTTP request. This field is optional and can be used to send additional data in the request should be base64 encoded.
+func (o GcpCloudTaskAppEnginePtrOutput) Body() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpCloudTaskAppEngine) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Body
+	}).(pulumi.StringPtrOutput)
+}
+
+// A map of HTTP headers to include in the request. Each key is a header name, and each value is the corresponding header value.
+func (o GcpCloudTaskAppEnginePtrOutput) Headers() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GcpCloudTaskAppEngine) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Headers
+	}).(pulumi.StringMapOutput)
+}
+
+// The HTTP method to use for the request. Must be one of: `POST`, `PUT`, `PATCH`.
+func (o GcpCloudTaskAppEnginePtrOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpCloudTaskAppEngine) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Method
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specify the relative URL path to which the HTTP request will be sent when the Cloud Tasks queue triggers the App Engine target.
+func (o GcpCloudTaskAppEnginePtrOutput) RelativeUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpCloudTaskAppEngine) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RelativeUri
+	}).(pulumi.StringPtrOutput)
+}
+
+type GcpCloudTaskHttpTarget struct {
+	// The body of the HTTP request. This field is required and must be base64 string.
+	Body *string `pulumi:"body"`
+	// A map of HTTP headers to include in the request. Each key is a header name, and each value is the corresponding header value.
+	Headers map[string]string `pulumi:"headers"`
+	// The HTTP method to use for the request. Must be one of: `POST`, `PUT`, `DELETE`, `PATCH`, `HEAD`.
+	Method string `pulumi:"method"`
+	// Specify the endpoint URL to which the HTTP request will be sent when the Cloud Tasks queue triggers the HTTP target.
+	Url string `pulumi:"url"`
+}
+
+// GcpCloudTaskHttpTargetInput is an input type that accepts GcpCloudTaskHttpTargetArgs and GcpCloudTaskHttpTargetOutput values.
+// You can construct a concrete instance of `GcpCloudTaskHttpTargetInput` via:
+//
+//	GcpCloudTaskHttpTargetArgs{...}
+type GcpCloudTaskHttpTargetInput interface {
+	pulumi.Input
+
+	ToGcpCloudTaskHttpTargetOutput() GcpCloudTaskHttpTargetOutput
+	ToGcpCloudTaskHttpTargetOutputWithContext(context.Context) GcpCloudTaskHttpTargetOutput
+}
+
+type GcpCloudTaskHttpTargetArgs struct {
+	// The body of the HTTP request. This field is required and must be base64 string.
+	Body pulumi.StringPtrInput `pulumi:"body"`
+	// A map of HTTP headers to include in the request. Each key is a header name, and each value is the corresponding header value.
+	Headers pulumi.StringMapInput `pulumi:"headers"`
+	// The HTTP method to use for the request. Must be one of: `POST`, `PUT`, `DELETE`, `PATCH`, `HEAD`.
+	Method pulumi.StringInput `pulumi:"method"`
+	// Specify the endpoint URL to which the HTTP request will be sent when the Cloud Tasks queue triggers the HTTP target.
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (GcpCloudTaskHttpTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpCloudTaskHttpTarget)(nil)).Elem()
+}
+
+func (i GcpCloudTaskHttpTargetArgs) ToGcpCloudTaskHttpTargetOutput() GcpCloudTaskHttpTargetOutput {
+	return i.ToGcpCloudTaskHttpTargetOutputWithContext(context.Background())
+}
+
+func (i GcpCloudTaskHttpTargetArgs) ToGcpCloudTaskHttpTargetOutputWithContext(ctx context.Context) GcpCloudTaskHttpTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpCloudTaskHttpTargetOutput)
+}
+
+func (i GcpCloudTaskHttpTargetArgs) ToGcpCloudTaskHttpTargetPtrOutput() GcpCloudTaskHttpTargetPtrOutput {
+	return i.ToGcpCloudTaskHttpTargetPtrOutputWithContext(context.Background())
+}
+
+func (i GcpCloudTaskHttpTargetArgs) ToGcpCloudTaskHttpTargetPtrOutputWithContext(ctx context.Context) GcpCloudTaskHttpTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpCloudTaskHttpTargetOutput).ToGcpCloudTaskHttpTargetPtrOutputWithContext(ctx)
+}
+
+// GcpCloudTaskHttpTargetPtrInput is an input type that accepts GcpCloudTaskHttpTargetArgs, GcpCloudTaskHttpTargetPtr and GcpCloudTaskHttpTargetPtrOutput values.
+// You can construct a concrete instance of `GcpCloudTaskHttpTargetPtrInput` via:
+//
+//	        GcpCloudTaskHttpTargetArgs{...}
+//
+//	or:
+//
+//	        nil
+type GcpCloudTaskHttpTargetPtrInput interface {
+	pulumi.Input
+
+	ToGcpCloudTaskHttpTargetPtrOutput() GcpCloudTaskHttpTargetPtrOutput
+	ToGcpCloudTaskHttpTargetPtrOutputWithContext(context.Context) GcpCloudTaskHttpTargetPtrOutput
+}
+
+type gcpCloudTaskHttpTargetPtrType GcpCloudTaskHttpTargetArgs
+
+func GcpCloudTaskHttpTargetPtr(v *GcpCloudTaskHttpTargetArgs) GcpCloudTaskHttpTargetPtrInput {
+	return (*gcpCloudTaskHttpTargetPtrType)(v)
+}
+
+func (*gcpCloudTaskHttpTargetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcpCloudTaskHttpTarget)(nil)).Elem()
+}
+
+func (i *gcpCloudTaskHttpTargetPtrType) ToGcpCloudTaskHttpTargetPtrOutput() GcpCloudTaskHttpTargetPtrOutput {
+	return i.ToGcpCloudTaskHttpTargetPtrOutputWithContext(context.Background())
+}
+
+func (i *gcpCloudTaskHttpTargetPtrType) ToGcpCloudTaskHttpTargetPtrOutputWithContext(ctx context.Context) GcpCloudTaskHttpTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpCloudTaskHttpTargetPtrOutput)
+}
+
+type GcpCloudTaskHttpTargetOutput struct{ *pulumi.OutputState }
+
+func (GcpCloudTaskHttpTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpCloudTaskHttpTarget)(nil)).Elem()
+}
+
+func (o GcpCloudTaskHttpTargetOutput) ToGcpCloudTaskHttpTargetOutput() GcpCloudTaskHttpTargetOutput {
+	return o
+}
+
+func (o GcpCloudTaskHttpTargetOutput) ToGcpCloudTaskHttpTargetOutputWithContext(ctx context.Context) GcpCloudTaskHttpTargetOutput {
+	return o
+}
+
+func (o GcpCloudTaskHttpTargetOutput) ToGcpCloudTaskHttpTargetPtrOutput() GcpCloudTaskHttpTargetPtrOutput {
+	return o.ToGcpCloudTaskHttpTargetPtrOutputWithContext(context.Background())
+}
+
+func (o GcpCloudTaskHttpTargetOutput) ToGcpCloudTaskHttpTargetPtrOutputWithContext(ctx context.Context) GcpCloudTaskHttpTargetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GcpCloudTaskHttpTarget) *GcpCloudTaskHttpTarget {
+		return &v
+	}).(GcpCloudTaskHttpTargetPtrOutput)
+}
+
+// The body of the HTTP request. This field is required and must be base64 string.
+func (o GcpCloudTaskHttpTargetOutput) Body() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GcpCloudTaskHttpTarget) *string { return v.Body }).(pulumi.StringPtrOutput)
+}
+
+// A map of HTTP headers to include in the request. Each key is a header name, and each value is the corresponding header value.
+func (o GcpCloudTaskHttpTargetOutput) Headers() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GcpCloudTaskHttpTarget) map[string]string { return v.Headers }).(pulumi.StringMapOutput)
+}
+
+// The HTTP method to use for the request. Must be one of: `POST`, `PUT`, `DELETE`, `PATCH`, `HEAD`.
+func (o GcpCloudTaskHttpTargetOutput) Method() pulumi.StringOutput {
+	return o.ApplyT(func(v GcpCloudTaskHttpTarget) string { return v.Method }).(pulumi.StringOutput)
+}
+
+// Specify the endpoint URL to which the HTTP request will be sent when the Cloud Tasks queue triggers the HTTP target.
+func (o GcpCloudTaskHttpTargetOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GcpCloudTaskHttpTarget) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type GcpCloudTaskHttpTargetPtrOutput struct{ *pulumi.OutputState }
+
+func (GcpCloudTaskHttpTargetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcpCloudTaskHttpTarget)(nil)).Elem()
+}
+
+func (o GcpCloudTaskHttpTargetPtrOutput) ToGcpCloudTaskHttpTargetPtrOutput() GcpCloudTaskHttpTargetPtrOutput {
+	return o
+}
+
+func (o GcpCloudTaskHttpTargetPtrOutput) ToGcpCloudTaskHttpTargetPtrOutputWithContext(ctx context.Context) GcpCloudTaskHttpTargetPtrOutput {
+	return o
+}
+
+func (o GcpCloudTaskHttpTargetPtrOutput) Elem() GcpCloudTaskHttpTargetOutput {
+	return o.ApplyT(func(v *GcpCloudTaskHttpTarget) GcpCloudTaskHttpTarget {
+		if v != nil {
+			return *v
+		}
+		var ret GcpCloudTaskHttpTarget
+		return ret
+	}).(GcpCloudTaskHttpTargetOutput)
+}
+
+// The body of the HTTP request. This field is required and must be base64 string.
+func (o GcpCloudTaskHttpTargetPtrOutput) Body() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpCloudTaskHttpTarget) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Body
+	}).(pulumi.StringPtrOutput)
+}
+
+// A map of HTTP headers to include in the request. Each key is a header name, and each value is the corresponding header value.
+func (o GcpCloudTaskHttpTargetPtrOutput) Headers() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GcpCloudTaskHttpTarget) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Headers
+	}).(pulumi.StringMapOutput)
+}
+
+// The HTTP method to use for the request. Must be one of: `POST`, `PUT`, `DELETE`, `PATCH`, `HEAD`.
+func (o GcpCloudTaskHttpTargetPtrOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpCloudTaskHttpTarget) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Method
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specify the endpoint URL to which the HTTP request will be sent when the Cloud Tasks queue triggers the HTTP target.
+func (o GcpCloudTaskHttpTargetPtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpCloudTaskHttpTarget) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Url
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -29403,6 +34941,1647 @@ func (o GcpNodePoolUpgradeSettingBlueGreenSettingStandardRolloutPolicyArrayOutpu
 	}).(GcpNodePoolUpgradeSettingBlueGreenSettingStandardRolloutPolicyOutput)
 }
 
+type GcpPubsubSubscriptionBigQuery struct {
+	// When true and use*topic*schema or use*table*schema is true, any fields that are a part of the topic schema or message schema that are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription's backlog Defaults to `false`.
+	DropUnknownFields *bool `pulumi:"dropUnknownFields"`
+	// The service account to use to write to BigQuery. If not specified, the Pub/Sub service agent, service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
+	// An output-only field that indicates whether or not the subscription can receive messages.
+	State *string `pulumi:"state"`
+	// The name of the table to which to write data.
+	Table string `pulumi:"table"`
+	// When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to additional columns in the table. Defaults to `false`.
+	UseTableSchema *bool `pulumi:"useTableSchema"`
+	// When true, use the topic's schema as the columns to write to in BigQuery, if it exists. Only one of use*topic*schema and use*table*schema can be set. Defaults to `false`.
+	UseTopicSchema *bool `pulumi:"useTopicSchema"`
+	// When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output. Defaults to `false`.
+	WriteMetadata *bool `pulumi:"writeMetadata"`
+}
+
+// GcpPubsubSubscriptionBigQueryInput is an input type that accepts GcpPubsubSubscriptionBigQueryArgs and GcpPubsubSubscriptionBigQueryOutput values.
+// You can construct a concrete instance of `GcpPubsubSubscriptionBigQueryInput` via:
+//
+//	GcpPubsubSubscriptionBigQueryArgs{...}
+type GcpPubsubSubscriptionBigQueryInput interface {
+	pulumi.Input
+
+	ToGcpPubsubSubscriptionBigQueryOutput() GcpPubsubSubscriptionBigQueryOutput
+	ToGcpPubsubSubscriptionBigQueryOutputWithContext(context.Context) GcpPubsubSubscriptionBigQueryOutput
+}
+
+type GcpPubsubSubscriptionBigQueryArgs struct {
+	// When true and use*topic*schema or use*table*schema is true, any fields that are a part of the topic schema or message schema that are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription's backlog Defaults to `false`.
+	DropUnknownFields pulumi.BoolPtrInput `pulumi:"dropUnknownFields"`
+	// The service account to use to write to BigQuery. If not specified, the Pub/Sub service agent, service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+	ServiceAccountEmail pulumi.StringPtrInput `pulumi:"serviceAccountEmail"`
+	// An output-only field that indicates whether or not the subscription can receive messages.
+	State pulumi.StringPtrInput `pulumi:"state"`
+	// The name of the table to which to write data.
+	Table pulumi.StringInput `pulumi:"table"`
+	// When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to additional columns in the table. Defaults to `false`.
+	UseTableSchema pulumi.BoolPtrInput `pulumi:"useTableSchema"`
+	// When true, use the topic's schema as the columns to write to in BigQuery, if it exists. Only one of use*topic*schema and use*table*schema can be set. Defaults to `false`.
+	UseTopicSchema pulumi.BoolPtrInput `pulumi:"useTopicSchema"`
+	// When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output. Defaults to `false`.
+	WriteMetadata pulumi.BoolPtrInput `pulumi:"writeMetadata"`
+}
+
+func (GcpPubsubSubscriptionBigQueryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpPubsubSubscriptionBigQuery)(nil)).Elem()
+}
+
+func (i GcpPubsubSubscriptionBigQueryArgs) ToGcpPubsubSubscriptionBigQueryOutput() GcpPubsubSubscriptionBigQueryOutput {
+	return i.ToGcpPubsubSubscriptionBigQueryOutputWithContext(context.Background())
+}
+
+func (i GcpPubsubSubscriptionBigQueryArgs) ToGcpPubsubSubscriptionBigQueryOutputWithContext(ctx context.Context) GcpPubsubSubscriptionBigQueryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpPubsubSubscriptionBigQueryOutput)
+}
+
+func (i GcpPubsubSubscriptionBigQueryArgs) ToGcpPubsubSubscriptionBigQueryPtrOutput() GcpPubsubSubscriptionBigQueryPtrOutput {
+	return i.ToGcpPubsubSubscriptionBigQueryPtrOutputWithContext(context.Background())
+}
+
+func (i GcpPubsubSubscriptionBigQueryArgs) ToGcpPubsubSubscriptionBigQueryPtrOutputWithContext(ctx context.Context) GcpPubsubSubscriptionBigQueryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpPubsubSubscriptionBigQueryOutput).ToGcpPubsubSubscriptionBigQueryPtrOutputWithContext(ctx)
+}
+
+// GcpPubsubSubscriptionBigQueryPtrInput is an input type that accepts GcpPubsubSubscriptionBigQueryArgs, GcpPubsubSubscriptionBigQueryPtr and GcpPubsubSubscriptionBigQueryPtrOutput values.
+// You can construct a concrete instance of `GcpPubsubSubscriptionBigQueryPtrInput` via:
+//
+//	        GcpPubsubSubscriptionBigQueryArgs{...}
+//
+//	or:
+//
+//	        nil
+type GcpPubsubSubscriptionBigQueryPtrInput interface {
+	pulumi.Input
+
+	ToGcpPubsubSubscriptionBigQueryPtrOutput() GcpPubsubSubscriptionBigQueryPtrOutput
+	ToGcpPubsubSubscriptionBigQueryPtrOutputWithContext(context.Context) GcpPubsubSubscriptionBigQueryPtrOutput
+}
+
+type gcpPubsubSubscriptionBigQueryPtrType GcpPubsubSubscriptionBigQueryArgs
+
+func GcpPubsubSubscriptionBigQueryPtr(v *GcpPubsubSubscriptionBigQueryArgs) GcpPubsubSubscriptionBigQueryPtrInput {
+	return (*gcpPubsubSubscriptionBigQueryPtrType)(v)
+}
+
+func (*gcpPubsubSubscriptionBigQueryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcpPubsubSubscriptionBigQuery)(nil)).Elem()
+}
+
+func (i *gcpPubsubSubscriptionBigQueryPtrType) ToGcpPubsubSubscriptionBigQueryPtrOutput() GcpPubsubSubscriptionBigQueryPtrOutput {
+	return i.ToGcpPubsubSubscriptionBigQueryPtrOutputWithContext(context.Background())
+}
+
+func (i *gcpPubsubSubscriptionBigQueryPtrType) ToGcpPubsubSubscriptionBigQueryPtrOutputWithContext(ctx context.Context) GcpPubsubSubscriptionBigQueryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpPubsubSubscriptionBigQueryPtrOutput)
+}
+
+type GcpPubsubSubscriptionBigQueryOutput struct{ *pulumi.OutputState }
+
+func (GcpPubsubSubscriptionBigQueryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpPubsubSubscriptionBigQuery)(nil)).Elem()
+}
+
+func (o GcpPubsubSubscriptionBigQueryOutput) ToGcpPubsubSubscriptionBigQueryOutput() GcpPubsubSubscriptionBigQueryOutput {
+	return o
+}
+
+func (o GcpPubsubSubscriptionBigQueryOutput) ToGcpPubsubSubscriptionBigQueryOutputWithContext(ctx context.Context) GcpPubsubSubscriptionBigQueryOutput {
+	return o
+}
+
+func (o GcpPubsubSubscriptionBigQueryOutput) ToGcpPubsubSubscriptionBigQueryPtrOutput() GcpPubsubSubscriptionBigQueryPtrOutput {
+	return o.ToGcpPubsubSubscriptionBigQueryPtrOutputWithContext(context.Background())
+}
+
+func (o GcpPubsubSubscriptionBigQueryOutput) ToGcpPubsubSubscriptionBigQueryPtrOutputWithContext(ctx context.Context) GcpPubsubSubscriptionBigQueryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GcpPubsubSubscriptionBigQuery) *GcpPubsubSubscriptionBigQuery {
+		return &v
+	}).(GcpPubsubSubscriptionBigQueryPtrOutput)
+}
+
+// When true and use*topic*schema or use*table*schema is true, any fields that are a part of the topic schema or message schema that are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription's backlog Defaults to `false`.
+func (o GcpPubsubSubscriptionBigQueryOutput) DropUnknownFields() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GcpPubsubSubscriptionBigQuery) *bool { return v.DropUnknownFields }).(pulumi.BoolPtrOutput)
+}
+
+// The service account to use to write to BigQuery. If not specified, the Pub/Sub service agent, service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+func (o GcpPubsubSubscriptionBigQueryOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GcpPubsubSubscriptionBigQuery) *string { return v.ServiceAccountEmail }).(pulumi.StringPtrOutput)
+}
+
+// An output-only field that indicates whether or not the subscription can receive messages.
+func (o GcpPubsubSubscriptionBigQueryOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GcpPubsubSubscriptionBigQuery) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// The name of the table to which to write data.
+func (o GcpPubsubSubscriptionBigQueryOutput) Table() pulumi.StringOutput {
+	return o.ApplyT(func(v GcpPubsubSubscriptionBigQuery) string { return v.Table }).(pulumi.StringOutput)
+}
+
+// When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to additional columns in the table. Defaults to `false`.
+func (o GcpPubsubSubscriptionBigQueryOutput) UseTableSchema() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GcpPubsubSubscriptionBigQuery) *bool { return v.UseTableSchema }).(pulumi.BoolPtrOutput)
+}
+
+// When true, use the topic's schema as the columns to write to in BigQuery, if it exists. Only one of use*topic*schema and use*table*schema can be set. Defaults to `false`.
+func (o GcpPubsubSubscriptionBigQueryOutput) UseTopicSchema() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GcpPubsubSubscriptionBigQuery) *bool { return v.UseTopicSchema }).(pulumi.BoolPtrOutput)
+}
+
+// When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output. Defaults to `false`.
+func (o GcpPubsubSubscriptionBigQueryOutput) WriteMetadata() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GcpPubsubSubscriptionBigQuery) *bool { return v.WriteMetadata }).(pulumi.BoolPtrOutput)
+}
+
+type GcpPubsubSubscriptionBigQueryPtrOutput struct{ *pulumi.OutputState }
+
+func (GcpPubsubSubscriptionBigQueryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcpPubsubSubscriptionBigQuery)(nil)).Elem()
+}
+
+func (o GcpPubsubSubscriptionBigQueryPtrOutput) ToGcpPubsubSubscriptionBigQueryPtrOutput() GcpPubsubSubscriptionBigQueryPtrOutput {
+	return o
+}
+
+func (o GcpPubsubSubscriptionBigQueryPtrOutput) ToGcpPubsubSubscriptionBigQueryPtrOutputWithContext(ctx context.Context) GcpPubsubSubscriptionBigQueryPtrOutput {
+	return o
+}
+
+func (o GcpPubsubSubscriptionBigQueryPtrOutput) Elem() GcpPubsubSubscriptionBigQueryOutput {
+	return o.ApplyT(func(v *GcpPubsubSubscriptionBigQuery) GcpPubsubSubscriptionBigQuery {
+		if v != nil {
+			return *v
+		}
+		var ret GcpPubsubSubscriptionBigQuery
+		return ret
+	}).(GcpPubsubSubscriptionBigQueryOutput)
+}
+
+// When true and use*topic*schema or use*table*schema is true, any fields that are a part of the topic schema or message schema that are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription's backlog Defaults to `false`.
+func (o GcpPubsubSubscriptionBigQueryPtrOutput) DropUnknownFields() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GcpPubsubSubscriptionBigQuery) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DropUnknownFields
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The service account to use to write to BigQuery. If not specified, the Pub/Sub service agent, service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+func (o GcpPubsubSubscriptionBigQueryPtrOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpPubsubSubscriptionBigQuery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+// An output-only field that indicates whether or not the subscription can receive messages.
+func (o GcpPubsubSubscriptionBigQueryPtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpPubsubSubscriptionBigQuery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.State
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the table to which to write data.
+func (o GcpPubsubSubscriptionBigQueryPtrOutput) Table() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpPubsubSubscriptionBigQuery) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Table
+	}).(pulumi.StringPtrOutput)
+}
+
+// When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to additional columns in the table. Defaults to `false`.
+func (o GcpPubsubSubscriptionBigQueryPtrOutput) UseTableSchema() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GcpPubsubSubscriptionBigQuery) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseTableSchema
+	}).(pulumi.BoolPtrOutput)
+}
+
+// When true, use the topic's schema as the columns to write to in BigQuery, if it exists. Only one of use*topic*schema and use*table*schema can be set. Defaults to `false`.
+func (o GcpPubsubSubscriptionBigQueryPtrOutput) UseTopicSchema() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GcpPubsubSubscriptionBigQuery) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseTopicSchema
+	}).(pulumi.BoolPtrOutput)
+}
+
+// When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output. Defaults to `false`.
+func (o GcpPubsubSubscriptionBigQueryPtrOutput) WriteMetadata() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GcpPubsubSubscriptionBigQuery) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.WriteMetadata
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GcpPubsubSubscriptionCloudStorageConfig struct {
+	AvroConfig *GcpPubsubSubscriptionCloudStorageConfigAvroConfig `pulumi:"avroConfig"`
+	// User-provided name for the Cloud Storage bucket. The bucket must be created by the user. The bucket name must be without any prefix like 'gs://'.
+	Bucket string `pulumi:"bucket"`
+	// User-provided format string specifying how to represent datetimes in Cloud Storage filenames
+	FilenameDatetimeFormat *string `pulumi:"filenameDatetimeFormat"`
+	// User-provided prefix for Cloud Storage filename.
+	FilenamePrefix *string `pulumi:"filenamePrefix"`
+	// User-provided suffix for Cloud Storage filename. Must not end in '/'.
+	FilenameSuffix *string `pulumi:"filenameSuffix"`
+	// The maximum bytes that can be written to a Cloud Storage file before a new file is created. Min 1 KB, max 10 GiB. The maxBytes limit may be exceeded in cases where messages are larger than the limit.
+	MaxBytes *int `pulumi:"maxBytes"`
+	// The maximum duration that can elapse before a new Cloud Storage file is created. Min 1 minute, max 10 minutes, default 5 minutes. May not exceed the subscription's acknowledgement deadline Defaults to `300s`.
+	MaxDuration *string `pulumi:"maxDuration"`
+	// The maximum messages that can be written to a Cloud Storage file before a new file is created. Min 1000 messages. Defaults to `1000`.
+	MaxMessages *int `pulumi:"maxMessages"`
+	// The service account to use to write to BigQuery. If not specified, the Pub/Sub service agent, service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
+	// An output-only field that indicates whether or not the subscription can receive messages.
+	State *string `pulumi:"state"`
+}
+
+// GcpPubsubSubscriptionCloudStorageConfigInput is an input type that accepts GcpPubsubSubscriptionCloudStorageConfigArgs and GcpPubsubSubscriptionCloudStorageConfigOutput values.
+// You can construct a concrete instance of `GcpPubsubSubscriptionCloudStorageConfigInput` via:
+//
+//	GcpPubsubSubscriptionCloudStorageConfigArgs{...}
+type GcpPubsubSubscriptionCloudStorageConfigInput interface {
+	pulumi.Input
+
+	ToGcpPubsubSubscriptionCloudStorageConfigOutput() GcpPubsubSubscriptionCloudStorageConfigOutput
+	ToGcpPubsubSubscriptionCloudStorageConfigOutputWithContext(context.Context) GcpPubsubSubscriptionCloudStorageConfigOutput
+}
+
+type GcpPubsubSubscriptionCloudStorageConfigArgs struct {
+	AvroConfig GcpPubsubSubscriptionCloudStorageConfigAvroConfigPtrInput `pulumi:"avroConfig"`
+	// User-provided name for the Cloud Storage bucket. The bucket must be created by the user. The bucket name must be without any prefix like 'gs://'.
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// User-provided format string specifying how to represent datetimes in Cloud Storage filenames
+	FilenameDatetimeFormat pulumi.StringPtrInput `pulumi:"filenameDatetimeFormat"`
+	// User-provided prefix for Cloud Storage filename.
+	FilenamePrefix pulumi.StringPtrInput `pulumi:"filenamePrefix"`
+	// User-provided suffix for Cloud Storage filename. Must not end in '/'.
+	FilenameSuffix pulumi.StringPtrInput `pulumi:"filenameSuffix"`
+	// The maximum bytes that can be written to a Cloud Storage file before a new file is created. Min 1 KB, max 10 GiB. The maxBytes limit may be exceeded in cases where messages are larger than the limit.
+	MaxBytes pulumi.IntPtrInput `pulumi:"maxBytes"`
+	// The maximum duration that can elapse before a new Cloud Storage file is created. Min 1 minute, max 10 minutes, default 5 minutes. May not exceed the subscription's acknowledgement deadline Defaults to `300s`.
+	MaxDuration pulumi.StringPtrInput `pulumi:"maxDuration"`
+	// The maximum messages that can be written to a Cloud Storage file before a new file is created. Min 1000 messages. Defaults to `1000`.
+	MaxMessages pulumi.IntPtrInput `pulumi:"maxMessages"`
+	// The service account to use to write to BigQuery. If not specified, the Pub/Sub service agent, service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+	ServiceAccountEmail pulumi.StringPtrInput `pulumi:"serviceAccountEmail"`
+	// An output-only field that indicates whether or not the subscription can receive messages.
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (GcpPubsubSubscriptionCloudStorageConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpPubsubSubscriptionCloudStorageConfig)(nil)).Elem()
+}
+
+func (i GcpPubsubSubscriptionCloudStorageConfigArgs) ToGcpPubsubSubscriptionCloudStorageConfigOutput() GcpPubsubSubscriptionCloudStorageConfigOutput {
+	return i.ToGcpPubsubSubscriptionCloudStorageConfigOutputWithContext(context.Background())
+}
+
+func (i GcpPubsubSubscriptionCloudStorageConfigArgs) ToGcpPubsubSubscriptionCloudStorageConfigOutputWithContext(ctx context.Context) GcpPubsubSubscriptionCloudStorageConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpPubsubSubscriptionCloudStorageConfigOutput)
+}
+
+func (i GcpPubsubSubscriptionCloudStorageConfigArgs) ToGcpPubsubSubscriptionCloudStorageConfigPtrOutput() GcpPubsubSubscriptionCloudStorageConfigPtrOutput {
+	return i.ToGcpPubsubSubscriptionCloudStorageConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GcpPubsubSubscriptionCloudStorageConfigArgs) ToGcpPubsubSubscriptionCloudStorageConfigPtrOutputWithContext(ctx context.Context) GcpPubsubSubscriptionCloudStorageConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpPubsubSubscriptionCloudStorageConfigOutput).ToGcpPubsubSubscriptionCloudStorageConfigPtrOutputWithContext(ctx)
+}
+
+// GcpPubsubSubscriptionCloudStorageConfigPtrInput is an input type that accepts GcpPubsubSubscriptionCloudStorageConfigArgs, GcpPubsubSubscriptionCloudStorageConfigPtr and GcpPubsubSubscriptionCloudStorageConfigPtrOutput values.
+// You can construct a concrete instance of `GcpPubsubSubscriptionCloudStorageConfigPtrInput` via:
+//
+//	        GcpPubsubSubscriptionCloudStorageConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GcpPubsubSubscriptionCloudStorageConfigPtrInput interface {
+	pulumi.Input
+
+	ToGcpPubsubSubscriptionCloudStorageConfigPtrOutput() GcpPubsubSubscriptionCloudStorageConfigPtrOutput
+	ToGcpPubsubSubscriptionCloudStorageConfigPtrOutputWithContext(context.Context) GcpPubsubSubscriptionCloudStorageConfigPtrOutput
+}
+
+type gcpPubsubSubscriptionCloudStorageConfigPtrType GcpPubsubSubscriptionCloudStorageConfigArgs
+
+func GcpPubsubSubscriptionCloudStorageConfigPtr(v *GcpPubsubSubscriptionCloudStorageConfigArgs) GcpPubsubSubscriptionCloudStorageConfigPtrInput {
+	return (*gcpPubsubSubscriptionCloudStorageConfigPtrType)(v)
+}
+
+func (*gcpPubsubSubscriptionCloudStorageConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcpPubsubSubscriptionCloudStorageConfig)(nil)).Elem()
+}
+
+func (i *gcpPubsubSubscriptionCloudStorageConfigPtrType) ToGcpPubsubSubscriptionCloudStorageConfigPtrOutput() GcpPubsubSubscriptionCloudStorageConfigPtrOutput {
+	return i.ToGcpPubsubSubscriptionCloudStorageConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *gcpPubsubSubscriptionCloudStorageConfigPtrType) ToGcpPubsubSubscriptionCloudStorageConfigPtrOutputWithContext(ctx context.Context) GcpPubsubSubscriptionCloudStorageConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpPubsubSubscriptionCloudStorageConfigPtrOutput)
+}
+
+type GcpPubsubSubscriptionCloudStorageConfigOutput struct{ *pulumi.OutputState }
+
+func (GcpPubsubSubscriptionCloudStorageConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpPubsubSubscriptionCloudStorageConfig)(nil)).Elem()
+}
+
+func (o GcpPubsubSubscriptionCloudStorageConfigOutput) ToGcpPubsubSubscriptionCloudStorageConfigOutput() GcpPubsubSubscriptionCloudStorageConfigOutput {
+	return o
+}
+
+func (o GcpPubsubSubscriptionCloudStorageConfigOutput) ToGcpPubsubSubscriptionCloudStorageConfigOutputWithContext(ctx context.Context) GcpPubsubSubscriptionCloudStorageConfigOutput {
+	return o
+}
+
+func (o GcpPubsubSubscriptionCloudStorageConfigOutput) ToGcpPubsubSubscriptionCloudStorageConfigPtrOutput() GcpPubsubSubscriptionCloudStorageConfigPtrOutput {
+	return o.ToGcpPubsubSubscriptionCloudStorageConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GcpPubsubSubscriptionCloudStorageConfigOutput) ToGcpPubsubSubscriptionCloudStorageConfigPtrOutputWithContext(ctx context.Context) GcpPubsubSubscriptionCloudStorageConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GcpPubsubSubscriptionCloudStorageConfig) *GcpPubsubSubscriptionCloudStorageConfig {
+		return &v
+	}).(GcpPubsubSubscriptionCloudStorageConfigPtrOutput)
+}
+
+func (o GcpPubsubSubscriptionCloudStorageConfigOutput) AvroConfig() GcpPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput {
+	return o.ApplyT(func(v GcpPubsubSubscriptionCloudStorageConfig) *GcpPubsubSubscriptionCloudStorageConfigAvroConfig {
+		return v.AvroConfig
+	}).(GcpPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput)
+}
+
+// User-provided name for the Cloud Storage bucket. The bucket must be created by the user. The bucket name must be without any prefix like 'gs://'.
+func (o GcpPubsubSubscriptionCloudStorageConfigOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v GcpPubsubSubscriptionCloudStorageConfig) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// User-provided format string specifying how to represent datetimes in Cloud Storage filenames
+func (o GcpPubsubSubscriptionCloudStorageConfigOutput) FilenameDatetimeFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GcpPubsubSubscriptionCloudStorageConfig) *string { return v.FilenameDatetimeFormat }).(pulumi.StringPtrOutput)
+}
+
+// User-provided prefix for Cloud Storage filename.
+func (o GcpPubsubSubscriptionCloudStorageConfigOutput) FilenamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GcpPubsubSubscriptionCloudStorageConfig) *string { return v.FilenamePrefix }).(pulumi.StringPtrOutput)
+}
+
+// User-provided suffix for Cloud Storage filename. Must not end in '/'.
+func (o GcpPubsubSubscriptionCloudStorageConfigOutput) FilenameSuffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GcpPubsubSubscriptionCloudStorageConfig) *string { return v.FilenameSuffix }).(pulumi.StringPtrOutput)
+}
+
+// The maximum bytes that can be written to a Cloud Storage file before a new file is created. Min 1 KB, max 10 GiB. The maxBytes limit may be exceeded in cases where messages are larger than the limit.
+func (o GcpPubsubSubscriptionCloudStorageConfigOutput) MaxBytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GcpPubsubSubscriptionCloudStorageConfig) *int { return v.MaxBytes }).(pulumi.IntPtrOutput)
+}
+
+// The maximum duration that can elapse before a new Cloud Storage file is created. Min 1 minute, max 10 minutes, default 5 minutes. May not exceed the subscription's acknowledgement deadline Defaults to `300s`.
+func (o GcpPubsubSubscriptionCloudStorageConfigOutput) MaxDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GcpPubsubSubscriptionCloudStorageConfig) *string { return v.MaxDuration }).(pulumi.StringPtrOutput)
+}
+
+// The maximum messages that can be written to a Cloud Storage file before a new file is created. Min 1000 messages. Defaults to `1000`.
+func (o GcpPubsubSubscriptionCloudStorageConfigOutput) MaxMessages() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GcpPubsubSubscriptionCloudStorageConfig) *int { return v.MaxMessages }).(pulumi.IntPtrOutput)
+}
+
+// The service account to use to write to BigQuery. If not specified, the Pub/Sub service agent, service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+func (o GcpPubsubSubscriptionCloudStorageConfigOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GcpPubsubSubscriptionCloudStorageConfig) *string { return v.ServiceAccountEmail }).(pulumi.StringPtrOutput)
+}
+
+// An output-only field that indicates whether or not the subscription can receive messages.
+func (o GcpPubsubSubscriptionCloudStorageConfigOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GcpPubsubSubscriptionCloudStorageConfig) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type GcpPubsubSubscriptionCloudStorageConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GcpPubsubSubscriptionCloudStorageConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcpPubsubSubscriptionCloudStorageConfig)(nil)).Elem()
+}
+
+func (o GcpPubsubSubscriptionCloudStorageConfigPtrOutput) ToGcpPubsubSubscriptionCloudStorageConfigPtrOutput() GcpPubsubSubscriptionCloudStorageConfigPtrOutput {
+	return o
+}
+
+func (o GcpPubsubSubscriptionCloudStorageConfigPtrOutput) ToGcpPubsubSubscriptionCloudStorageConfigPtrOutputWithContext(ctx context.Context) GcpPubsubSubscriptionCloudStorageConfigPtrOutput {
+	return o
+}
+
+func (o GcpPubsubSubscriptionCloudStorageConfigPtrOutput) Elem() GcpPubsubSubscriptionCloudStorageConfigOutput {
+	return o.ApplyT(func(v *GcpPubsubSubscriptionCloudStorageConfig) GcpPubsubSubscriptionCloudStorageConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GcpPubsubSubscriptionCloudStorageConfig
+		return ret
+	}).(GcpPubsubSubscriptionCloudStorageConfigOutput)
+}
+
+func (o GcpPubsubSubscriptionCloudStorageConfigPtrOutput) AvroConfig() GcpPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput {
+	return o.ApplyT(func(v *GcpPubsubSubscriptionCloudStorageConfig) *GcpPubsubSubscriptionCloudStorageConfigAvroConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AvroConfig
+	}).(GcpPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput)
+}
+
+// User-provided name for the Cloud Storage bucket. The bucket must be created by the user. The bucket name must be without any prefix like 'gs://'.
+func (o GcpPubsubSubscriptionCloudStorageConfigPtrOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpPubsubSubscriptionCloudStorageConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Bucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// User-provided format string specifying how to represent datetimes in Cloud Storage filenames
+func (o GcpPubsubSubscriptionCloudStorageConfigPtrOutput) FilenameDatetimeFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpPubsubSubscriptionCloudStorageConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FilenameDatetimeFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// User-provided prefix for Cloud Storage filename.
+func (o GcpPubsubSubscriptionCloudStorageConfigPtrOutput) FilenamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpPubsubSubscriptionCloudStorageConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FilenamePrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// User-provided suffix for Cloud Storage filename. Must not end in '/'.
+func (o GcpPubsubSubscriptionCloudStorageConfigPtrOutput) FilenameSuffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpPubsubSubscriptionCloudStorageConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FilenameSuffix
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum bytes that can be written to a Cloud Storage file before a new file is created. Min 1 KB, max 10 GiB. The maxBytes limit may be exceeded in cases where messages are larger than the limit.
+func (o GcpPubsubSubscriptionCloudStorageConfigPtrOutput) MaxBytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GcpPubsubSubscriptionCloudStorageConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxBytes
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum duration that can elapse before a new Cloud Storage file is created. Min 1 minute, max 10 minutes, default 5 minutes. May not exceed the subscription's acknowledgement deadline Defaults to `300s`.
+func (o GcpPubsubSubscriptionCloudStorageConfigPtrOutput) MaxDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpPubsubSubscriptionCloudStorageConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum messages that can be written to a Cloud Storage file before a new file is created. Min 1000 messages. Defaults to `1000`.
+func (o GcpPubsubSubscriptionCloudStorageConfigPtrOutput) MaxMessages() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GcpPubsubSubscriptionCloudStorageConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxMessages
+	}).(pulumi.IntPtrOutput)
+}
+
+// The service account to use to write to BigQuery. If not specified, the Pub/Sub service agent, service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+func (o GcpPubsubSubscriptionCloudStorageConfigPtrOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpPubsubSubscriptionCloudStorageConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+// An output-only field that indicates whether or not the subscription can receive messages.
+func (o GcpPubsubSubscriptionCloudStorageConfigPtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpPubsubSubscriptionCloudStorageConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.State
+	}).(pulumi.StringPtrOutput)
+}
+
+type GcpPubsubSubscriptionCloudStorageConfigAvroConfig struct {
+	// When true, the output Cloud Storage file will be serialized using the topic schema, if it exists. Defaults to `false`.
+	UseTopicSchema *bool `pulumi:"useTopicSchema"`
+	// When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output. Defaults to `false`.
+	WriteMetadata *bool `pulumi:"writeMetadata"`
+}
+
+// GcpPubsubSubscriptionCloudStorageConfigAvroConfigInput is an input type that accepts GcpPubsubSubscriptionCloudStorageConfigAvroConfigArgs and GcpPubsubSubscriptionCloudStorageConfigAvroConfigOutput values.
+// You can construct a concrete instance of `GcpPubsubSubscriptionCloudStorageConfigAvroConfigInput` via:
+//
+//	GcpPubsubSubscriptionCloudStorageConfigAvroConfigArgs{...}
+type GcpPubsubSubscriptionCloudStorageConfigAvroConfigInput interface {
+	pulumi.Input
+
+	ToGcpPubsubSubscriptionCloudStorageConfigAvroConfigOutput() GcpPubsubSubscriptionCloudStorageConfigAvroConfigOutput
+	ToGcpPubsubSubscriptionCloudStorageConfigAvroConfigOutputWithContext(context.Context) GcpPubsubSubscriptionCloudStorageConfigAvroConfigOutput
+}
+
+type GcpPubsubSubscriptionCloudStorageConfigAvroConfigArgs struct {
+	// When true, the output Cloud Storage file will be serialized using the topic schema, if it exists. Defaults to `false`.
+	UseTopicSchema pulumi.BoolPtrInput `pulumi:"useTopicSchema"`
+	// When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output. Defaults to `false`.
+	WriteMetadata pulumi.BoolPtrInput `pulumi:"writeMetadata"`
+}
+
+func (GcpPubsubSubscriptionCloudStorageConfigAvroConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpPubsubSubscriptionCloudStorageConfigAvroConfig)(nil)).Elem()
+}
+
+func (i GcpPubsubSubscriptionCloudStorageConfigAvroConfigArgs) ToGcpPubsubSubscriptionCloudStorageConfigAvroConfigOutput() GcpPubsubSubscriptionCloudStorageConfigAvroConfigOutput {
+	return i.ToGcpPubsubSubscriptionCloudStorageConfigAvroConfigOutputWithContext(context.Background())
+}
+
+func (i GcpPubsubSubscriptionCloudStorageConfigAvroConfigArgs) ToGcpPubsubSubscriptionCloudStorageConfigAvroConfigOutputWithContext(ctx context.Context) GcpPubsubSubscriptionCloudStorageConfigAvroConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpPubsubSubscriptionCloudStorageConfigAvroConfigOutput)
+}
+
+func (i GcpPubsubSubscriptionCloudStorageConfigAvroConfigArgs) ToGcpPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput() GcpPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput {
+	return i.ToGcpPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GcpPubsubSubscriptionCloudStorageConfigAvroConfigArgs) ToGcpPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutputWithContext(ctx context.Context) GcpPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpPubsubSubscriptionCloudStorageConfigAvroConfigOutput).ToGcpPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutputWithContext(ctx)
+}
+
+// GcpPubsubSubscriptionCloudStorageConfigAvroConfigPtrInput is an input type that accepts GcpPubsubSubscriptionCloudStorageConfigAvroConfigArgs, GcpPubsubSubscriptionCloudStorageConfigAvroConfigPtr and GcpPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput values.
+// You can construct a concrete instance of `GcpPubsubSubscriptionCloudStorageConfigAvroConfigPtrInput` via:
+//
+//	        GcpPubsubSubscriptionCloudStorageConfigAvroConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GcpPubsubSubscriptionCloudStorageConfigAvroConfigPtrInput interface {
+	pulumi.Input
+
+	ToGcpPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput() GcpPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput
+	ToGcpPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutputWithContext(context.Context) GcpPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput
+}
+
+type gcpPubsubSubscriptionCloudStorageConfigAvroConfigPtrType GcpPubsubSubscriptionCloudStorageConfigAvroConfigArgs
+
+func GcpPubsubSubscriptionCloudStorageConfigAvroConfigPtr(v *GcpPubsubSubscriptionCloudStorageConfigAvroConfigArgs) GcpPubsubSubscriptionCloudStorageConfigAvroConfigPtrInput {
+	return (*gcpPubsubSubscriptionCloudStorageConfigAvroConfigPtrType)(v)
+}
+
+func (*gcpPubsubSubscriptionCloudStorageConfigAvroConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcpPubsubSubscriptionCloudStorageConfigAvroConfig)(nil)).Elem()
+}
+
+func (i *gcpPubsubSubscriptionCloudStorageConfigAvroConfigPtrType) ToGcpPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput() GcpPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput {
+	return i.ToGcpPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *gcpPubsubSubscriptionCloudStorageConfigAvroConfigPtrType) ToGcpPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutputWithContext(ctx context.Context) GcpPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput)
+}
+
+type GcpPubsubSubscriptionCloudStorageConfigAvroConfigOutput struct{ *pulumi.OutputState }
+
+func (GcpPubsubSubscriptionCloudStorageConfigAvroConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpPubsubSubscriptionCloudStorageConfigAvroConfig)(nil)).Elem()
+}
+
+func (o GcpPubsubSubscriptionCloudStorageConfigAvroConfigOutput) ToGcpPubsubSubscriptionCloudStorageConfigAvroConfigOutput() GcpPubsubSubscriptionCloudStorageConfigAvroConfigOutput {
+	return o
+}
+
+func (o GcpPubsubSubscriptionCloudStorageConfigAvroConfigOutput) ToGcpPubsubSubscriptionCloudStorageConfigAvroConfigOutputWithContext(ctx context.Context) GcpPubsubSubscriptionCloudStorageConfigAvroConfigOutput {
+	return o
+}
+
+func (o GcpPubsubSubscriptionCloudStorageConfigAvroConfigOutput) ToGcpPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput() GcpPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput {
+	return o.ToGcpPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GcpPubsubSubscriptionCloudStorageConfigAvroConfigOutput) ToGcpPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutputWithContext(ctx context.Context) GcpPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GcpPubsubSubscriptionCloudStorageConfigAvroConfig) *GcpPubsubSubscriptionCloudStorageConfigAvroConfig {
+		return &v
+	}).(GcpPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput)
+}
+
+// When true, the output Cloud Storage file will be serialized using the topic schema, if it exists. Defaults to `false`.
+func (o GcpPubsubSubscriptionCloudStorageConfigAvroConfigOutput) UseTopicSchema() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GcpPubsubSubscriptionCloudStorageConfigAvroConfig) *bool { return v.UseTopicSchema }).(pulumi.BoolPtrOutput)
+}
+
+// When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output. Defaults to `false`.
+func (o GcpPubsubSubscriptionCloudStorageConfigAvroConfigOutput) WriteMetadata() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GcpPubsubSubscriptionCloudStorageConfigAvroConfig) *bool { return v.WriteMetadata }).(pulumi.BoolPtrOutput)
+}
+
+type GcpPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GcpPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcpPubsubSubscriptionCloudStorageConfigAvroConfig)(nil)).Elem()
+}
+
+func (o GcpPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput) ToGcpPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput() GcpPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput {
+	return o
+}
+
+func (o GcpPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput) ToGcpPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutputWithContext(ctx context.Context) GcpPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput {
+	return o
+}
+
+func (o GcpPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput) Elem() GcpPubsubSubscriptionCloudStorageConfigAvroConfigOutput {
+	return o.ApplyT(func(v *GcpPubsubSubscriptionCloudStorageConfigAvroConfig) GcpPubsubSubscriptionCloudStorageConfigAvroConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GcpPubsubSubscriptionCloudStorageConfigAvroConfig
+		return ret
+	}).(GcpPubsubSubscriptionCloudStorageConfigAvroConfigOutput)
+}
+
+// When true, the output Cloud Storage file will be serialized using the topic schema, if it exists. Defaults to `false`.
+func (o GcpPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput) UseTopicSchema() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GcpPubsubSubscriptionCloudStorageConfigAvroConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseTopicSchema
+	}).(pulumi.BoolPtrOutput)
+}
+
+// When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output. Defaults to `false`.
+func (o GcpPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput) WriteMetadata() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GcpPubsubSubscriptionCloudStorageConfigAvroConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.WriteMetadata
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GcpPubsubSubscriptionDeadLetterPolicy struct {
+	// The name of the topic to which dead letter messages should be published.
+	DeadLetterTopic *string `pulumi:"deadLetterTopic"`
+	// The maximum number of delivery attempts for any message. The value must be between 5 and 100. The number of delivery attempts is defined as 1 + (the sum of number of NACKs and number of times the acknowledgement deadline has been exceeded for the message) Defaults to `5`.
+	MaxDeliveryAttempts *int `pulumi:"maxDeliveryAttempts"`
+}
+
+// GcpPubsubSubscriptionDeadLetterPolicyInput is an input type that accepts GcpPubsubSubscriptionDeadLetterPolicyArgs and GcpPubsubSubscriptionDeadLetterPolicyOutput values.
+// You can construct a concrete instance of `GcpPubsubSubscriptionDeadLetterPolicyInput` via:
+//
+//	GcpPubsubSubscriptionDeadLetterPolicyArgs{...}
+type GcpPubsubSubscriptionDeadLetterPolicyInput interface {
+	pulumi.Input
+
+	ToGcpPubsubSubscriptionDeadLetterPolicyOutput() GcpPubsubSubscriptionDeadLetterPolicyOutput
+	ToGcpPubsubSubscriptionDeadLetterPolicyOutputWithContext(context.Context) GcpPubsubSubscriptionDeadLetterPolicyOutput
+}
+
+type GcpPubsubSubscriptionDeadLetterPolicyArgs struct {
+	// The name of the topic to which dead letter messages should be published.
+	DeadLetterTopic pulumi.StringPtrInput `pulumi:"deadLetterTopic"`
+	// The maximum number of delivery attempts for any message. The value must be between 5 and 100. The number of delivery attempts is defined as 1 + (the sum of number of NACKs and number of times the acknowledgement deadline has been exceeded for the message) Defaults to `5`.
+	MaxDeliveryAttempts pulumi.IntPtrInput `pulumi:"maxDeliveryAttempts"`
+}
+
+func (GcpPubsubSubscriptionDeadLetterPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpPubsubSubscriptionDeadLetterPolicy)(nil)).Elem()
+}
+
+func (i GcpPubsubSubscriptionDeadLetterPolicyArgs) ToGcpPubsubSubscriptionDeadLetterPolicyOutput() GcpPubsubSubscriptionDeadLetterPolicyOutput {
+	return i.ToGcpPubsubSubscriptionDeadLetterPolicyOutputWithContext(context.Background())
+}
+
+func (i GcpPubsubSubscriptionDeadLetterPolicyArgs) ToGcpPubsubSubscriptionDeadLetterPolicyOutputWithContext(ctx context.Context) GcpPubsubSubscriptionDeadLetterPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpPubsubSubscriptionDeadLetterPolicyOutput)
+}
+
+func (i GcpPubsubSubscriptionDeadLetterPolicyArgs) ToGcpPubsubSubscriptionDeadLetterPolicyPtrOutput() GcpPubsubSubscriptionDeadLetterPolicyPtrOutput {
+	return i.ToGcpPubsubSubscriptionDeadLetterPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i GcpPubsubSubscriptionDeadLetterPolicyArgs) ToGcpPubsubSubscriptionDeadLetterPolicyPtrOutputWithContext(ctx context.Context) GcpPubsubSubscriptionDeadLetterPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpPubsubSubscriptionDeadLetterPolicyOutput).ToGcpPubsubSubscriptionDeadLetterPolicyPtrOutputWithContext(ctx)
+}
+
+// GcpPubsubSubscriptionDeadLetterPolicyPtrInput is an input type that accepts GcpPubsubSubscriptionDeadLetterPolicyArgs, GcpPubsubSubscriptionDeadLetterPolicyPtr and GcpPubsubSubscriptionDeadLetterPolicyPtrOutput values.
+// You can construct a concrete instance of `GcpPubsubSubscriptionDeadLetterPolicyPtrInput` via:
+//
+//	        GcpPubsubSubscriptionDeadLetterPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type GcpPubsubSubscriptionDeadLetterPolicyPtrInput interface {
+	pulumi.Input
+
+	ToGcpPubsubSubscriptionDeadLetterPolicyPtrOutput() GcpPubsubSubscriptionDeadLetterPolicyPtrOutput
+	ToGcpPubsubSubscriptionDeadLetterPolicyPtrOutputWithContext(context.Context) GcpPubsubSubscriptionDeadLetterPolicyPtrOutput
+}
+
+type gcpPubsubSubscriptionDeadLetterPolicyPtrType GcpPubsubSubscriptionDeadLetterPolicyArgs
+
+func GcpPubsubSubscriptionDeadLetterPolicyPtr(v *GcpPubsubSubscriptionDeadLetterPolicyArgs) GcpPubsubSubscriptionDeadLetterPolicyPtrInput {
+	return (*gcpPubsubSubscriptionDeadLetterPolicyPtrType)(v)
+}
+
+func (*gcpPubsubSubscriptionDeadLetterPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcpPubsubSubscriptionDeadLetterPolicy)(nil)).Elem()
+}
+
+func (i *gcpPubsubSubscriptionDeadLetterPolicyPtrType) ToGcpPubsubSubscriptionDeadLetterPolicyPtrOutput() GcpPubsubSubscriptionDeadLetterPolicyPtrOutput {
+	return i.ToGcpPubsubSubscriptionDeadLetterPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *gcpPubsubSubscriptionDeadLetterPolicyPtrType) ToGcpPubsubSubscriptionDeadLetterPolicyPtrOutputWithContext(ctx context.Context) GcpPubsubSubscriptionDeadLetterPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpPubsubSubscriptionDeadLetterPolicyPtrOutput)
+}
+
+type GcpPubsubSubscriptionDeadLetterPolicyOutput struct{ *pulumi.OutputState }
+
+func (GcpPubsubSubscriptionDeadLetterPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpPubsubSubscriptionDeadLetterPolicy)(nil)).Elem()
+}
+
+func (o GcpPubsubSubscriptionDeadLetterPolicyOutput) ToGcpPubsubSubscriptionDeadLetterPolicyOutput() GcpPubsubSubscriptionDeadLetterPolicyOutput {
+	return o
+}
+
+func (o GcpPubsubSubscriptionDeadLetterPolicyOutput) ToGcpPubsubSubscriptionDeadLetterPolicyOutputWithContext(ctx context.Context) GcpPubsubSubscriptionDeadLetterPolicyOutput {
+	return o
+}
+
+func (o GcpPubsubSubscriptionDeadLetterPolicyOutput) ToGcpPubsubSubscriptionDeadLetterPolicyPtrOutput() GcpPubsubSubscriptionDeadLetterPolicyPtrOutput {
+	return o.ToGcpPubsubSubscriptionDeadLetterPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o GcpPubsubSubscriptionDeadLetterPolicyOutput) ToGcpPubsubSubscriptionDeadLetterPolicyPtrOutputWithContext(ctx context.Context) GcpPubsubSubscriptionDeadLetterPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GcpPubsubSubscriptionDeadLetterPolicy) *GcpPubsubSubscriptionDeadLetterPolicy {
+		return &v
+	}).(GcpPubsubSubscriptionDeadLetterPolicyPtrOutput)
+}
+
+// The name of the topic to which dead letter messages should be published.
+func (o GcpPubsubSubscriptionDeadLetterPolicyOutput) DeadLetterTopic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GcpPubsubSubscriptionDeadLetterPolicy) *string { return v.DeadLetterTopic }).(pulumi.StringPtrOutput)
+}
+
+// The maximum number of delivery attempts for any message. The value must be between 5 and 100. The number of delivery attempts is defined as 1 + (the sum of number of NACKs and number of times the acknowledgement deadline has been exceeded for the message) Defaults to `5`.
+func (o GcpPubsubSubscriptionDeadLetterPolicyOutput) MaxDeliveryAttempts() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GcpPubsubSubscriptionDeadLetterPolicy) *int { return v.MaxDeliveryAttempts }).(pulumi.IntPtrOutput)
+}
+
+type GcpPubsubSubscriptionDeadLetterPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (GcpPubsubSubscriptionDeadLetterPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcpPubsubSubscriptionDeadLetterPolicy)(nil)).Elem()
+}
+
+func (o GcpPubsubSubscriptionDeadLetterPolicyPtrOutput) ToGcpPubsubSubscriptionDeadLetterPolicyPtrOutput() GcpPubsubSubscriptionDeadLetterPolicyPtrOutput {
+	return o
+}
+
+func (o GcpPubsubSubscriptionDeadLetterPolicyPtrOutput) ToGcpPubsubSubscriptionDeadLetterPolicyPtrOutputWithContext(ctx context.Context) GcpPubsubSubscriptionDeadLetterPolicyPtrOutput {
+	return o
+}
+
+func (o GcpPubsubSubscriptionDeadLetterPolicyPtrOutput) Elem() GcpPubsubSubscriptionDeadLetterPolicyOutput {
+	return o.ApplyT(func(v *GcpPubsubSubscriptionDeadLetterPolicy) GcpPubsubSubscriptionDeadLetterPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret GcpPubsubSubscriptionDeadLetterPolicy
+		return ret
+	}).(GcpPubsubSubscriptionDeadLetterPolicyOutput)
+}
+
+// The name of the topic to which dead letter messages should be published.
+func (o GcpPubsubSubscriptionDeadLetterPolicyPtrOutput) DeadLetterTopic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpPubsubSubscriptionDeadLetterPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeadLetterTopic
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum number of delivery attempts for any message. The value must be between 5 and 100. The number of delivery attempts is defined as 1 + (the sum of number of NACKs and number of times the acknowledgement deadline has been exceeded for the message) Defaults to `5`.
+func (o GcpPubsubSubscriptionDeadLetterPolicyPtrOutput) MaxDeliveryAttempts() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GcpPubsubSubscriptionDeadLetterPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxDeliveryAttempts
+	}).(pulumi.IntPtrOutput)
+}
+
+type GcpPubsubSubscriptionExpirationPolicy struct {
+	// Specifies the 'time-to-live' duration for an associated resource. The resource expires if it is not active for a period of ttl. If ttl is empty string, the associated resource never expires.  A duration in seconds with up to nine fractional digits, terminated by 's'. Example - '3.5s'.
+	Ttl string `pulumi:"ttl"`
+}
+
+// GcpPubsubSubscriptionExpirationPolicyInput is an input type that accepts GcpPubsubSubscriptionExpirationPolicyArgs and GcpPubsubSubscriptionExpirationPolicyOutput values.
+// You can construct a concrete instance of `GcpPubsubSubscriptionExpirationPolicyInput` via:
+//
+//	GcpPubsubSubscriptionExpirationPolicyArgs{...}
+type GcpPubsubSubscriptionExpirationPolicyInput interface {
+	pulumi.Input
+
+	ToGcpPubsubSubscriptionExpirationPolicyOutput() GcpPubsubSubscriptionExpirationPolicyOutput
+	ToGcpPubsubSubscriptionExpirationPolicyOutputWithContext(context.Context) GcpPubsubSubscriptionExpirationPolicyOutput
+}
+
+type GcpPubsubSubscriptionExpirationPolicyArgs struct {
+	// Specifies the 'time-to-live' duration for an associated resource. The resource expires if it is not active for a period of ttl. If ttl is empty string, the associated resource never expires.  A duration in seconds with up to nine fractional digits, terminated by 's'. Example - '3.5s'.
+	Ttl pulumi.StringInput `pulumi:"ttl"`
+}
+
+func (GcpPubsubSubscriptionExpirationPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpPubsubSubscriptionExpirationPolicy)(nil)).Elem()
+}
+
+func (i GcpPubsubSubscriptionExpirationPolicyArgs) ToGcpPubsubSubscriptionExpirationPolicyOutput() GcpPubsubSubscriptionExpirationPolicyOutput {
+	return i.ToGcpPubsubSubscriptionExpirationPolicyOutputWithContext(context.Background())
+}
+
+func (i GcpPubsubSubscriptionExpirationPolicyArgs) ToGcpPubsubSubscriptionExpirationPolicyOutputWithContext(ctx context.Context) GcpPubsubSubscriptionExpirationPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpPubsubSubscriptionExpirationPolicyOutput)
+}
+
+func (i GcpPubsubSubscriptionExpirationPolicyArgs) ToGcpPubsubSubscriptionExpirationPolicyPtrOutput() GcpPubsubSubscriptionExpirationPolicyPtrOutput {
+	return i.ToGcpPubsubSubscriptionExpirationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i GcpPubsubSubscriptionExpirationPolicyArgs) ToGcpPubsubSubscriptionExpirationPolicyPtrOutputWithContext(ctx context.Context) GcpPubsubSubscriptionExpirationPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpPubsubSubscriptionExpirationPolicyOutput).ToGcpPubsubSubscriptionExpirationPolicyPtrOutputWithContext(ctx)
+}
+
+// GcpPubsubSubscriptionExpirationPolicyPtrInput is an input type that accepts GcpPubsubSubscriptionExpirationPolicyArgs, GcpPubsubSubscriptionExpirationPolicyPtr and GcpPubsubSubscriptionExpirationPolicyPtrOutput values.
+// You can construct a concrete instance of `GcpPubsubSubscriptionExpirationPolicyPtrInput` via:
+//
+//	        GcpPubsubSubscriptionExpirationPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type GcpPubsubSubscriptionExpirationPolicyPtrInput interface {
+	pulumi.Input
+
+	ToGcpPubsubSubscriptionExpirationPolicyPtrOutput() GcpPubsubSubscriptionExpirationPolicyPtrOutput
+	ToGcpPubsubSubscriptionExpirationPolicyPtrOutputWithContext(context.Context) GcpPubsubSubscriptionExpirationPolicyPtrOutput
+}
+
+type gcpPubsubSubscriptionExpirationPolicyPtrType GcpPubsubSubscriptionExpirationPolicyArgs
+
+func GcpPubsubSubscriptionExpirationPolicyPtr(v *GcpPubsubSubscriptionExpirationPolicyArgs) GcpPubsubSubscriptionExpirationPolicyPtrInput {
+	return (*gcpPubsubSubscriptionExpirationPolicyPtrType)(v)
+}
+
+func (*gcpPubsubSubscriptionExpirationPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcpPubsubSubscriptionExpirationPolicy)(nil)).Elem()
+}
+
+func (i *gcpPubsubSubscriptionExpirationPolicyPtrType) ToGcpPubsubSubscriptionExpirationPolicyPtrOutput() GcpPubsubSubscriptionExpirationPolicyPtrOutput {
+	return i.ToGcpPubsubSubscriptionExpirationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *gcpPubsubSubscriptionExpirationPolicyPtrType) ToGcpPubsubSubscriptionExpirationPolicyPtrOutputWithContext(ctx context.Context) GcpPubsubSubscriptionExpirationPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpPubsubSubscriptionExpirationPolicyPtrOutput)
+}
+
+type GcpPubsubSubscriptionExpirationPolicyOutput struct{ *pulumi.OutputState }
+
+func (GcpPubsubSubscriptionExpirationPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpPubsubSubscriptionExpirationPolicy)(nil)).Elem()
+}
+
+func (o GcpPubsubSubscriptionExpirationPolicyOutput) ToGcpPubsubSubscriptionExpirationPolicyOutput() GcpPubsubSubscriptionExpirationPolicyOutput {
+	return o
+}
+
+func (o GcpPubsubSubscriptionExpirationPolicyOutput) ToGcpPubsubSubscriptionExpirationPolicyOutputWithContext(ctx context.Context) GcpPubsubSubscriptionExpirationPolicyOutput {
+	return o
+}
+
+func (o GcpPubsubSubscriptionExpirationPolicyOutput) ToGcpPubsubSubscriptionExpirationPolicyPtrOutput() GcpPubsubSubscriptionExpirationPolicyPtrOutput {
+	return o.ToGcpPubsubSubscriptionExpirationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o GcpPubsubSubscriptionExpirationPolicyOutput) ToGcpPubsubSubscriptionExpirationPolicyPtrOutputWithContext(ctx context.Context) GcpPubsubSubscriptionExpirationPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GcpPubsubSubscriptionExpirationPolicy) *GcpPubsubSubscriptionExpirationPolicy {
+		return &v
+	}).(GcpPubsubSubscriptionExpirationPolicyPtrOutput)
+}
+
+// Specifies the 'time-to-live' duration for an associated resource. The resource expires if it is not active for a period of ttl. If ttl is empty string, the associated resource never expires.  A duration in seconds with up to nine fractional digits, terminated by 's'. Example - '3.5s'.
+func (o GcpPubsubSubscriptionExpirationPolicyOutput) Ttl() pulumi.StringOutput {
+	return o.ApplyT(func(v GcpPubsubSubscriptionExpirationPolicy) string { return v.Ttl }).(pulumi.StringOutput)
+}
+
+type GcpPubsubSubscriptionExpirationPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (GcpPubsubSubscriptionExpirationPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcpPubsubSubscriptionExpirationPolicy)(nil)).Elem()
+}
+
+func (o GcpPubsubSubscriptionExpirationPolicyPtrOutput) ToGcpPubsubSubscriptionExpirationPolicyPtrOutput() GcpPubsubSubscriptionExpirationPolicyPtrOutput {
+	return o
+}
+
+func (o GcpPubsubSubscriptionExpirationPolicyPtrOutput) ToGcpPubsubSubscriptionExpirationPolicyPtrOutputWithContext(ctx context.Context) GcpPubsubSubscriptionExpirationPolicyPtrOutput {
+	return o
+}
+
+func (o GcpPubsubSubscriptionExpirationPolicyPtrOutput) Elem() GcpPubsubSubscriptionExpirationPolicyOutput {
+	return o.ApplyT(func(v *GcpPubsubSubscriptionExpirationPolicy) GcpPubsubSubscriptionExpirationPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret GcpPubsubSubscriptionExpirationPolicy
+		return ret
+	}).(GcpPubsubSubscriptionExpirationPolicyOutput)
+}
+
+// Specifies the 'time-to-live' duration for an associated resource. The resource expires if it is not active for a period of ttl. If ttl is empty string, the associated resource never expires.  A duration in seconds with up to nine fractional digits, terminated by 's'. Example - '3.5s'.
+func (o GcpPubsubSubscriptionExpirationPolicyPtrOutput) Ttl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpPubsubSubscriptionExpirationPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Ttl
+	}).(pulumi.StringPtrOutput)
+}
+
+type GcpPubsubSubscriptionPushConfig struct {
+	Attributes map[string]string `pulumi:"attributes"`
+	// When set, the payload to the push endpoint is not wrapped
+	NoWrapper *GcpPubsubSubscriptionPushConfigNoWrapper `pulumi:"noWrapper"`
+	OidcToken *GcpPubsubSubscriptionPushConfigOidcToken `pulumi:"oidcToken"`
+	// URL to which the Pub/Sub system should send messages for a push subscription. When a message is published to the topic, Pub/Sub will automatically send the message as an HTTP POST request to this specified endpoint.
+	PushEndpoint string `pulumi:"pushEndpoint"`
+}
+
+// GcpPubsubSubscriptionPushConfigInput is an input type that accepts GcpPubsubSubscriptionPushConfigArgs and GcpPubsubSubscriptionPushConfigOutput values.
+// You can construct a concrete instance of `GcpPubsubSubscriptionPushConfigInput` via:
+//
+//	GcpPubsubSubscriptionPushConfigArgs{...}
+type GcpPubsubSubscriptionPushConfigInput interface {
+	pulumi.Input
+
+	ToGcpPubsubSubscriptionPushConfigOutput() GcpPubsubSubscriptionPushConfigOutput
+	ToGcpPubsubSubscriptionPushConfigOutputWithContext(context.Context) GcpPubsubSubscriptionPushConfigOutput
+}
+
+type GcpPubsubSubscriptionPushConfigArgs struct {
+	Attributes pulumi.StringMapInput `pulumi:"attributes"`
+	// When set, the payload to the push endpoint is not wrapped
+	NoWrapper GcpPubsubSubscriptionPushConfigNoWrapperPtrInput `pulumi:"noWrapper"`
+	OidcToken GcpPubsubSubscriptionPushConfigOidcTokenPtrInput `pulumi:"oidcToken"`
+	// URL to which the Pub/Sub system should send messages for a push subscription. When a message is published to the topic, Pub/Sub will automatically send the message as an HTTP POST request to this specified endpoint.
+	PushEndpoint pulumi.StringInput `pulumi:"pushEndpoint"`
+}
+
+func (GcpPubsubSubscriptionPushConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpPubsubSubscriptionPushConfig)(nil)).Elem()
+}
+
+func (i GcpPubsubSubscriptionPushConfigArgs) ToGcpPubsubSubscriptionPushConfigOutput() GcpPubsubSubscriptionPushConfigOutput {
+	return i.ToGcpPubsubSubscriptionPushConfigOutputWithContext(context.Background())
+}
+
+func (i GcpPubsubSubscriptionPushConfigArgs) ToGcpPubsubSubscriptionPushConfigOutputWithContext(ctx context.Context) GcpPubsubSubscriptionPushConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpPubsubSubscriptionPushConfigOutput)
+}
+
+func (i GcpPubsubSubscriptionPushConfigArgs) ToGcpPubsubSubscriptionPushConfigPtrOutput() GcpPubsubSubscriptionPushConfigPtrOutput {
+	return i.ToGcpPubsubSubscriptionPushConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GcpPubsubSubscriptionPushConfigArgs) ToGcpPubsubSubscriptionPushConfigPtrOutputWithContext(ctx context.Context) GcpPubsubSubscriptionPushConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpPubsubSubscriptionPushConfigOutput).ToGcpPubsubSubscriptionPushConfigPtrOutputWithContext(ctx)
+}
+
+// GcpPubsubSubscriptionPushConfigPtrInput is an input type that accepts GcpPubsubSubscriptionPushConfigArgs, GcpPubsubSubscriptionPushConfigPtr and GcpPubsubSubscriptionPushConfigPtrOutput values.
+// You can construct a concrete instance of `GcpPubsubSubscriptionPushConfigPtrInput` via:
+//
+//	        GcpPubsubSubscriptionPushConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GcpPubsubSubscriptionPushConfigPtrInput interface {
+	pulumi.Input
+
+	ToGcpPubsubSubscriptionPushConfigPtrOutput() GcpPubsubSubscriptionPushConfigPtrOutput
+	ToGcpPubsubSubscriptionPushConfigPtrOutputWithContext(context.Context) GcpPubsubSubscriptionPushConfigPtrOutput
+}
+
+type gcpPubsubSubscriptionPushConfigPtrType GcpPubsubSubscriptionPushConfigArgs
+
+func GcpPubsubSubscriptionPushConfigPtr(v *GcpPubsubSubscriptionPushConfigArgs) GcpPubsubSubscriptionPushConfigPtrInput {
+	return (*gcpPubsubSubscriptionPushConfigPtrType)(v)
+}
+
+func (*gcpPubsubSubscriptionPushConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcpPubsubSubscriptionPushConfig)(nil)).Elem()
+}
+
+func (i *gcpPubsubSubscriptionPushConfigPtrType) ToGcpPubsubSubscriptionPushConfigPtrOutput() GcpPubsubSubscriptionPushConfigPtrOutput {
+	return i.ToGcpPubsubSubscriptionPushConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *gcpPubsubSubscriptionPushConfigPtrType) ToGcpPubsubSubscriptionPushConfigPtrOutputWithContext(ctx context.Context) GcpPubsubSubscriptionPushConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpPubsubSubscriptionPushConfigPtrOutput)
+}
+
+type GcpPubsubSubscriptionPushConfigOutput struct{ *pulumi.OutputState }
+
+func (GcpPubsubSubscriptionPushConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpPubsubSubscriptionPushConfig)(nil)).Elem()
+}
+
+func (o GcpPubsubSubscriptionPushConfigOutput) ToGcpPubsubSubscriptionPushConfigOutput() GcpPubsubSubscriptionPushConfigOutput {
+	return o
+}
+
+func (o GcpPubsubSubscriptionPushConfigOutput) ToGcpPubsubSubscriptionPushConfigOutputWithContext(ctx context.Context) GcpPubsubSubscriptionPushConfigOutput {
+	return o
+}
+
+func (o GcpPubsubSubscriptionPushConfigOutput) ToGcpPubsubSubscriptionPushConfigPtrOutput() GcpPubsubSubscriptionPushConfigPtrOutput {
+	return o.ToGcpPubsubSubscriptionPushConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GcpPubsubSubscriptionPushConfigOutput) ToGcpPubsubSubscriptionPushConfigPtrOutputWithContext(ctx context.Context) GcpPubsubSubscriptionPushConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GcpPubsubSubscriptionPushConfig) *GcpPubsubSubscriptionPushConfig {
+		return &v
+	}).(GcpPubsubSubscriptionPushConfigPtrOutput)
+}
+
+func (o GcpPubsubSubscriptionPushConfigOutput) Attributes() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GcpPubsubSubscriptionPushConfig) map[string]string { return v.Attributes }).(pulumi.StringMapOutput)
+}
+
+// When set, the payload to the push endpoint is not wrapped
+func (o GcpPubsubSubscriptionPushConfigOutput) NoWrapper() GcpPubsubSubscriptionPushConfigNoWrapperPtrOutput {
+	return o.ApplyT(func(v GcpPubsubSubscriptionPushConfig) *GcpPubsubSubscriptionPushConfigNoWrapper { return v.NoWrapper }).(GcpPubsubSubscriptionPushConfigNoWrapperPtrOutput)
+}
+
+func (o GcpPubsubSubscriptionPushConfigOutput) OidcToken() GcpPubsubSubscriptionPushConfigOidcTokenPtrOutput {
+	return o.ApplyT(func(v GcpPubsubSubscriptionPushConfig) *GcpPubsubSubscriptionPushConfigOidcToken { return v.OidcToken }).(GcpPubsubSubscriptionPushConfigOidcTokenPtrOutput)
+}
+
+// URL to which the Pub/Sub system should send messages for a push subscription. When a message is published to the topic, Pub/Sub will automatically send the message as an HTTP POST request to this specified endpoint.
+func (o GcpPubsubSubscriptionPushConfigOutput) PushEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GcpPubsubSubscriptionPushConfig) string { return v.PushEndpoint }).(pulumi.StringOutput)
+}
+
+type GcpPubsubSubscriptionPushConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GcpPubsubSubscriptionPushConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcpPubsubSubscriptionPushConfig)(nil)).Elem()
+}
+
+func (o GcpPubsubSubscriptionPushConfigPtrOutput) ToGcpPubsubSubscriptionPushConfigPtrOutput() GcpPubsubSubscriptionPushConfigPtrOutput {
+	return o
+}
+
+func (o GcpPubsubSubscriptionPushConfigPtrOutput) ToGcpPubsubSubscriptionPushConfigPtrOutputWithContext(ctx context.Context) GcpPubsubSubscriptionPushConfigPtrOutput {
+	return o
+}
+
+func (o GcpPubsubSubscriptionPushConfigPtrOutput) Elem() GcpPubsubSubscriptionPushConfigOutput {
+	return o.ApplyT(func(v *GcpPubsubSubscriptionPushConfig) GcpPubsubSubscriptionPushConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GcpPubsubSubscriptionPushConfig
+		return ret
+	}).(GcpPubsubSubscriptionPushConfigOutput)
+}
+
+func (o GcpPubsubSubscriptionPushConfigPtrOutput) Attributes() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GcpPubsubSubscriptionPushConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Attributes
+	}).(pulumi.StringMapOutput)
+}
+
+// When set, the payload to the push endpoint is not wrapped
+func (o GcpPubsubSubscriptionPushConfigPtrOutput) NoWrapper() GcpPubsubSubscriptionPushConfigNoWrapperPtrOutput {
+	return o.ApplyT(func(v *GcpPubsubSubscriptionPushConfig) *GcpPubsubSubscriptionPushConfigNoWrapper {
+		if v == nil {
+			return nil
+		}
+		return v.NoWrapper
+	}).(GcpPubsubSubscriptionPushConfigNoWrapperPtrOutput)
+}
+
+func (o GcpPubsubSubscriptionPushConfigPtrOutput) OidcToken() GcpPubsubSubscriptionPushConfigOidcTokenPtrOutput {
+	return o.ApplyT(func(v *GcpPubsubSubscriptionPushConfig) *GcpPubsubSubscriptionPushConfigOidcToken {
+		if v == nil {
+			return nil
+		}
+		return v.OidcToken
+	}).(GcpPubsubSubscriptionPushConfigOidcTokenPtrOutput)
+}
+
+// URL to which the Pub/Sub system should send messages for a push subscription. When a message is published to the topic, Pub/Sub will automatically send the message as an HTTP POST request to this specified endpoint.
+func (o GcpPubsubSubscriptionPushConfigPtrOutput) PushEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpPubsubSubscriptionPushConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PushEndpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+type GcpPubsubSubscriptionPushConfigNoWrapper struct {
+	// When true, writes the Pub/Sub message metadata to x-goog-pubsub-\n\n:\n\n headers of the HTTP request. Writes the Pub/Sub message attributes to \n\n:\n\n headers of the HTTP request.
+	WriteMetadata bool `pulumi:"writeMetadata"`
+}
+
+// GcpPubsubSubscriptionPushConfigNoWrapperInput is an input type that accepts GcpPubsubSubscriptionPushConfigNoWrapperArgs and GcpPubsubSubscriptionPushConfigNoWrapperOutput values.
+// You can construct a concrete instance of `GcpPubsubSubscriptionPushConfigNoWrapperInput` via:
+//
+//	GcpPubsubSubscriptionPushConfigNoWrapperArgs{...}
+type GcpPubsubSubscriptionPushConfigNoWrapperInput interface {
+	pulumi.Input
+
+	ToGcpPubsubSubscriptionPushConfigNoWrapperOutput() GcpPubsubSubscriptionPushConfigNoWrapperOutput
+	ToGcpPubsubSubscriptionPushConfigNoWrapperOutputWithContext(context.Context) GcpPubsubSubscriptionPushConfigNoWrapperOutput
+}
+
+type GcpPubsubSubscriptionPushConfigNoWrapperArgs struct {
+	// When true, writes the Pub/Sub message metadata to x-goog-pubsub-\n\n:\n\n headers of the HTTP request. Writes the Pub/Sub message attributes to \n\n:\n\n headers of the HTTP request.
+	WriteMetadata pulumi.BoolInput `pulumi:"writeMetadata"`
+}
+
+func (GcpPubsubSubscriptionPushConfigNoWrapperArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpPubsubSubscriptionPushConfigNoWrapper)(nil)).Elem()
+}
+
+func (i GcpPubsubSubscriptionPushConfigNoWrapperArgs) ToGcpPubsubSubscriptionPushConfigNoWrapperOutput() GcpPubsubSubscriptionPushConfigNoWrapperOutput {
+	return i.ToGcpPubsubSubscriptionPushConfigNoWrapperOutputWithContext(context.Background())
+}
+
+func (i GcpPubsubSubscriptionPushConfigNoWrapperArgs) ToGcpPubsubSubscriptionPushConfigNoWrapperOutputWithContext(ctx context.Context) GcpPubsubSubscriptionPushConfigNoWrapperOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpPubsubSubscriptionPushConfigNoWrapperOutput)
+}
+
+func (i GcpPubsubSubscriptionPushConfigNoWrapperArgs) ToGcpPubsubSubscriptionPushConfigNoWrapperPtrOutput() GcpPubsubSubscriptionPushConfigNoWrapperPtrOutput {
+	return i.ToGcpPubsubSubscriptionPushConfigNoWrapperPtrOutputWithContext(context.Background())
+}
+
+func (i GcpPubsubSubscriptionPushConfigNoWrapperArgs) ToGcpPubsubSubscriptionPushConfigNoWrapperPtrOutputWithContext(ctx context.Context) GcpPubsubSubscriptionPushConfigNoWrapperPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpPubsubSubscriptionPushConfigNoWrapperOutput).ToGcpPubsubSubscriptionPushConfigNoWrapperPtrOutputWithContext(ctx)
+}
+
+// GcpPubsubSubscriptionPushConfigNoWrapperPtrInput is an input type that accepts GcpPubsubSubscriptionPushConfigNoWrapperArgs, GcpPubsubSubscriptionPushConfigNoWrapperPtr and GcpPubsubSubscriptionPushConfigNoWrapperPtrOutput values.
+// You can construct a concrete instance of `GcpPubsubSubscriptionPushConfigNoWrapperPtrInput` via:
+//
+//	        GcpPubsubSubscriptionPushConfigNoWrapperArgs{...}
+//
+//	or:
+//
+//	        nil
+type GcpPubsubSubscriptionPushConfigNoWrapperPtrInput interface {
+	pulumi.Input
+
+	ToGcpPubsubSubscriptionPushConfigNoWrapperPtrOutput() GcpPubsubSubscriptionPushConfigNoWrapperPtrOutput
+	ToGcpPubsubSubscriptionPushConfigNoWrapperPtrOutputWithContext(context.Context) GcpPubsubSubscriptionPushConfigNoWrapperPtrOutput
+}
+
+type gcpPubsubSubscriptionPushConfigNoWrapperPtrType GcpPubsubSubscriptionPushConfigNoWrapperArgs
+
+func GcpPubsubSubscriptionPushConfigNoWrapperPtr(v *GcpPubsubSubscriptionPushConfigNoWrapperArgs) GcpPubsubSubscriptionPushConfigNoWrapperPtrInput {
+	return (*gcpPubsubSubscriptionPushConfigNoWrapperPtrType)(v)
+}
+
+func (*gcpPubsubSubscriptionPushConfigNoWrapperPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcpPubsubSubscriptionPushConfigNoWrapper)(nil)).Elem()
+}
+
+func (i *gcpPubsubSubscriptionPushConfigNoWrapperPtrType) ToGcpPubsubSubscriptionPushConfigNoWrapperPtrOutput() GcpPubsubSubscriptionPushConfigNoWrapperPtrOutput {
+	return i.ToGcpPubsubSubscriptionPushConfigNoWrapperPtrOutputWithContext(context.Background())
+}
+
+func (i *gcpPubsubSubscriptionPushConfigNoWrapperPtrType) ToGcpPubsubSubscriptionPushConfigNoWrapperPtrOutputWithContext(ctx context.Context) GcpPubsubSubscriptionPushConfigNoWrapperPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpPubsubSubscriptionPushConfigNoWrapperPtrOutput)
+}
+
+type GcpPubsubSubscriptionPushConfigNoWrapperOutput struct{ *pulumi.OutputState }
+
+func (GcpPubsubSubscriptionPushConfigNoWrapperOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpPubsubSubscriptionPushConfigNoWrapper)(nil)).Elem()
+}
+
+func (o GcpPubsubSubscriptionPushConfigNoWrapperOutput) ToGcpPubsubSubscriptionPushConfigNoWrapperOutput() GcpPubsubSubscriptionPushConfigNoWrapperOutput {
+	return o
+}
+
+func (o GcpPubsubSubscriptionPushConfigNoWrapperOutput) ToGcpPubsubSubscriptionPushConfigNoWrapperOutputWithContext(ctx context.Context) GcpPubsubSubscriptionPushConfigNoWrapperOutput {
+	return o
+}
+
+func (o GcpPubsubSubscriptionPushConfigNoWrapperOutput) ToGcpPubsubSubscriptionPushConfigNoWrapperPtrOutput() GcpPubsubSubscriptionPushConfigNoWrapperPtrOutput {
+	return o.ToGcpPubsubSubscriptionPushConfigNoWrapperPtrOutputWithContext(context.Background())
+}
+
+func (o GcpPubsubSubscriptionPushConfigNoWrapperOutput) ToGcpPubsubSubscriptionPushConfigNoWrapperPtrOutputWithContext(ctx context.Context) GcpPubsubSubscriptionPushConfigNoWrapperPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GcpPubsubSubscriptionPushConfigNoWrapper) *GcpPubsubSubscriptionPushConfigNoWrapper {
+		return &v
+	}).(GcpPubsubSubscriptionPushConfigNoWrapperPtrOutput)
+}
+
+// When true, writes the Pub/Sub message metadata to x-goog-pubsub-\n\n:\n\n headers of the HTTP request. Writes the Pub/Sub message attributes to \n\n:\n\n headers of the HTTP request.
+func (o GcpPubsubSubscriptionPushConfigNoWrapperOutput) WriteMetadata() pulumi.BoolOutput {
+	return o.ApplyT(func(v GcpPubsubSubscriptionPushConfigNoWrapper) bool { return v.WriteMetadata }).(pulumi.BoolOutput)
+}
+
+type GcpPubsubSubscriptionPushConfigNoWrapperPtrOutput struct{ *pulumi.OutputState }
+
+func (GcpPubsubSubscriptionPushConfigNoWrapperPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcpPubsubSubscriptionPushConfigNoWrapper)(nil)).Elem()
+}
+
+func (o GcpPubsubSubscriptionPushConfigNoWrapperPtrOutput) ToGcpPubsubSubscriptionPushConfigNoWrapperPtrOutput() GcpPubsubSubscriptionPushConfigNoWrapperPtrOutput {
+	return o
+}
+
+func (o GcpPubsubSubscriptionPushConfigNoWrapperPtrOutput) ToGcpPubsubSubscriptionPushConfigNoWrapperPtrOutputWithContext(ctx context.Context) GcpPubsubSubscriptionPushConfigNoWrapperPtrOutput {
+	return o
+}
+
+func (o GcpPubsubSubscriptionPushConfigNoWrapperPtrOutput) Elem() GcpPubsubSubscriptionPushConfigNoWrapperOutput {
+	return o.ApplyT(func(v *GcpPubsubSubscriptionPushConfigNoWrapper) GcpPubsubSubscriptionPushConfigNoWrapper {
+		if v != nil {
+			return *v
+		}
+		var ret GcpPubsubSubscriptionPushConfigNoWrapper
+		return ret
+	}).(GcpPubsubSubscriptionPushConfigNoWrapperOutput)
+}
+
+// When true, writes the Pub/Sub message metadata to x-goog-pubsub-\n\n:\n\n headers of the HTTP request. Writes the Pub/Sub message attributes to \n\n:\n\n headers of the HTTP request.
+func (o GcpPubsubSubscriptionPushConfigNoWrapperPtrOutput) WriteMetadata() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GcpPubsubSubscriptionPushConfigNoWrapper) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.WriteMetadata
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GcpPubsubSubscriptionPushConfigOidcToken struct {
+	// Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string. Defaults to `false`.
+	Audience *string `pulumi:"audience"`
+	// Service account email to be used for generating the OIDC token.
+	ServiceAccountEmail string `pulumi:"serviceAccountEmail"`
+}
+
+// GcpPubsubSubscriptionPushConfigOidcTokenInput is an input type that accepts GcpPubsubSubscriptionPushConfigOidcTokenArgs and GcpPubsubSubscriptionPushConfigOidcTokenOutput values.
+// You can construct a concrete instance of `GcpPubsubSubscriptionPushConfigOidcTokenInput` via:
+//
+//	GcpPubsubSubscriptionPushConfigOidcTokenArgs{...}
+type GcpPubsubSubscriptionPushConfigOidcTokenInput interface {
+	pulumi.Input
+
+	ToGcpPubsubSubscriptionPushConfigOidcTokenOutput() GcpPubsubSubscriptionPushConfigOidcTokenOutput
+	ToGcpPubsubSubscriptionPushConfigOidcTokenOutputWithContext(context.Context) GcpPubsubSubscriptionPushConfigOidcTokenOutput
+}
+
+type GcpPubsubSubscriptionPushConfigOidcTokenArgs struct {
+	// Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string. Defaults to `false`.
+	Audience pulumi.StringPtrInput `pulumi:"audience"`
+	// Service account email to be used for generating the OIDC token.
+	ServiceAccountEmail pulumi.StringInput `pulumi:"serviceAccountEmail"`
+}
+
+func (GcpPubsubSubscriptionPushConfigOidcTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpPubsubSubscriptionPushConfigOidcToken)(nil)).Elem()
+}
+
+func (i GcpPubsubSubscriptionPushConfigOidcTokenArgs) ToGcpPubsubSubscriptionPushConfigOidcTokenOutput() GcpPubsubSubscriptionPushConfigOidcTokenOutput {
+	return i.ToGcpPubsubSubscriptionPushConfigOidcTokenOutputWithContext(context.Background())
+}
+
+func (i GcpPubsubSubscriptionPushConfigOidcTokenArgs) ToGcpPubsubSubscriptionPushConfigOidcTokenOutputWithContext(ctx context.Context) GcpPubsubSubscriptionPushConfigOidcTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpPubsubSubscriptionPushConfigOidcTokenOutput)
+}
+
+func (i GcpPubsubSubscriptionPushConfigOidcTokenArgs) ToGcpPubsubSubscriptionPushConfigOidcTokenPtrOutput() GcpPubsubSubscriptionPushConfigOidcTokenPtrOutput {
+	return i.ToGcpPubsubSubscriptionPushConfigOidcTokenPtrOutputWithContext(context.Background())
+}
+
+func (i GcpPubsubSubscriptionPushConfigOidcTokenArgs) ToGcpPubsubSubscriptionPushConfigOidcTokenPtrOutputWithContext(ctx context.Context) GcpPubsubSubscriptionPushConfigOidcTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpPubsubSubscriptionPushConfigOidcTokenOutput).ToGcpPubsubSubscriptionPushConfigOidcTokenPtrOutputWithContext(ctx)
+}
+
+// GcpPubsubSubscriptionPushConfigOidcTokenPtrInput is an input type that accepts GcpPubsubSubscriptionPushConfigOidcTokenArgs, GcpPubsubSubscriptionPushConfigOidcTokenPtr and GcpPubsubSubscriptionPushConfigOidcTokenPtrOutput values.
+// You can construct a concrete instance of `GcpPubsubSubscriptionPushConfigOidcTokenPtrInput` via:
+//
+//	        GcpPubsubSubscriptionPushConfigOidcTokenArgs{...}
+//
+//	or:
+//
+//	        nil
+type GcpPubsubSubscriptionPushConfigOidcTokenPtrInput interface {
+	pulumi.Input
+
+	ToGcpPubsubSubscriptionPushConfigOidcTokenPtrOutput() GcpPubsubSubscriptionPushConfigOidcTokenPtrOutput
+	ToGcpPubsubSubscriptionPushConfigOidcTokenPtrOutputWithContext(context.Context) GcpPubsubSubscriptionPushConfigOidcTokenPtrOutput
+}
+
+type gcpPubsubSubscriptionPushConfigOidcTokenPtrType GcpPubsubSubscriptionPushConfigOidcTokenArgs
+
+func GcpPubsubSubscriptionPushConfigOidcTokenPtr(v *GcpPubsubSubscriptionPushConfigOidcTokenArgs) GcpPubsubSubscriptionPushConfigOidcTokenPtrInput {
+	return (*gcpPubsubSubscriptionPushConfigOidcTokenPtrType)(v)
+}
+
+func (*gcpPubsubSubscriptionPushConfigOidcTokenPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcpPubsubSubscriptionPushConfigOidcToken)(nil)).Elem()
+}
+
+func (i *gcpPubsubSubscriptionPushConfigOidcTokenPtrType) ToGcpPubsubSubscriptionPushConfigOidcTokenPtrOutput() GcpPubsubSubscriptionPushConfigOidcTokenPtrOutput {
+	return i.ToGcpPubsubSubscriptionPushConfigOidcTokenPtrOutputWithContext(context.Background())
+}
+
+func (i *gcpPubsubSubscriptionPushConfigOidcTokenPtrType) ToGcpPubsubSubscriptionPushConfigOidcTokenPtrOutputWithContext(ctx context.Context) GcpPubsubSubscriptionPushConfigOidcTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpPubsubSubscriptionPushConfigOidcTokenPtrOutput)
+}
+
+type GcpPubsubSubscriptionPushConfigOidcTokenOutput struct{ *pulumi.OutputState }
+
+func (GcpPubsubSubscriptionPushConfigOidcTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpPubsubSubscriptionPushConfigOidcToken)(nil)).Elem()
+}
+
+func (o GcpPubsubSubscriptionPushConfigOidcTokenOutput) ToGcpPubsubSubscriptionPushConfigOidcTokenOutput() GcpPubsubSubscriptionPushConfigOidcTokenOutput {
+	return o
+}
+
+func (o GcpPubsubSubscriptionPushConfigOidcTokenOutput) ToGcpPubsubSubscriptionPushConfigOidcTokenOutputWithContext(ctx context.Context) GcpPubsubSubscriptionPushConfigOidcTokenOutput {
+	return o
+}
+
+func (o GcpPubsubSubscriptionPushConfigOidcTokenOutput) ToGcpPubsubSubscriptionPushConfigOidcTokenPtrOutput() GcpPubsubSubscriptionPushConfigOidcTokenPtrOutput {
+	return o.ToGcpPubsubSubscriptionPushConfigOidcTokenPtrOutputWithContext(context.Background())
+}
+
+func (o GcpPubsubSubscriptionPushConfigOidcTokenOutput) ToGcpPubsubSubscriptionPushConfigOidcTokenPtrOutputWithContext(ctx context.Context) GcpPubsubSubscriptionPushConfigOidcTokenPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GcpPubsubSubscriptionPushConfigOidcToken) *GcpPubsubSubscriptionPushConfigOidcToken {
+		return &v
+	}).(GcpPubsubSubscriptionPushConfigOidcTokenPtrOutput)
+}
+
+// Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string. Defaults to `false`.
+func (o GcpPubsubSubscriptionPushConfigOidcTokenOutput) Audience() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GcpPubsubSubscriptionPushConfigOidcToken) *string { return v.Audience }).(pulumi.StringPtrOutput)
+}
+
+// Service account email to be used for generating the OIDC token.
+func (o GcpPubsubSubscriptionPushConfigOidcTokenOutput) ServiceAccountEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GcpPubsubSubscriptionPushConfigOidcToken) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
+}
+
+type GcpPubsubSubscriptionPushConfigOidcTokenPtrOutput struct{ *pulumi.OutputState }
+
+func (GcpPubsubSubscriptionPushConfigOidcTokenPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcpPubsubSubscriptionPushConfigOidcToken)(nil)).Elem()
+}
+
+func (o GcpPubsubSubscriptionPushConfigOidcTokenPtrOutput) ToGcpPubsubSubscriptionPushConfigOidcTokenPtrOutput() GcpPubsubSubscriptionPushConfigOidcTokenPtrOutput {
+	return o
+}
+
+func (o GcpPubsubSubscriptionPushConfigOidcTokenPtrOutput) ToGcpPubsubSubscriptionPushConfigOidcTokenPtrOutputWithContext(ctx context.Context) GcpPubsubSubscriptionPushConfigOidcTokenPtrOutput {
+	return o
+}
+
+func (o GcpPubsubSubscriptionPushConfigOidcTokenPtrOutput) Elem() GcpPubsubSubscriptionPushConfigOidcTokenOutput {
+	return o.ApplyT(func(v *GcpPubsubSubscriptionPushConfigOidcToken) GcpPubsubSubscriptionPushConfigOidcToken {
+		if v != nil {
+			return *v
+		}
+		var ret GcpPubsubSubscriptionPushConfigOidcToken
+		return ret
+	}).(GcpPubsubSubscriptionPushConfigOidcTokenOutput)
+}
+
+// Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string. Defaults to `false`.
+func (o GcpPubsubSubscriptionPushConfigOidcTokenPtrOutput) Audience() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpPubsubSubscriptionPushConfigOidcToken) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Audience
+	}).(pulumi.StringPtrOutput)
+}
+
+// Service account email to be used for generating the OIDC token.
+func (o GcpPubsubSubscriptionPushConfigOidcTokenPtrOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpPubsubSubscriptionPushConfigOidcToken) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServiceAccountEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+type GcpPubsubSubscriptionRetryPolicy struct {
+	// The maximum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 600 seconds. Defaults to `600s`.
+	MaximumBackoff *string `pulumi:"maximumBackoff"`
+	// The minimum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 10 seconds Defaults to `10s`.
+	MinimumBackoff *string `pulumi:"minimumBackoff"`
+}
+
+// GcpPubsubSubscriptionRetryPolicyInput is an input type that accepts GcpPubsubSubscriptionRetryPolicyArgs and GcpPubsubSubscriptionRetryPolicyOutput values.
+// You can construct a concrete instance of `GcpPubsubSubscriptionRetryPolicyInput` via:
+//
+//	GcpPubsubSubscriptionRetryPolicyArgs{...}
+type GcpPubsubSubscriptionRetryPolicyInput interface {
+	pulumi.Input
+
+	ToGcpPubsubSubscriptionRetryPolicyOutput() GcpPubsubSubscriptionRetryPolicyOutput
+	ToGcpPubsubSubscriptionRetryPolicyOutputWithContext(context.Context) GcpPubsubSubscriptionRetryPolicyOutput
+}
+
+type GcpPubsubSubscriptionRetryPolicyArgs struct {
+	// The maximum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 600 seconds. Defaults to `600s`.
+	MaximumBackoff pulumi.StringPtrInput `pulumi:"maximumBackoff"`
+	// The minimum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 10 seconds Defaults to `10s`.
+	MinimumBackoff pulumi.StringPtrInput `pulumi:"minimumBackoff"`
+}
+
+func (GcpPubsubSubscriptionRetryPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpPubsubSubscriptionRetryPolicy)(nil)).Elem()
+}
+
+func (i GcpPubsubSubscriptionRetryPolicyArgs) ToGcpPubsubSubscriptionRetryPolicyOutput() GcpPubsubSubscriptionRetryPolicyOutput {
+	return i.ToGcpPubsubSubscriptionRetryPolicyOutputWithContext(context.Background())
+}
+
+func (i GcpPubsubSubscriptionRetryPolicyArgs) ToGcpPubsubSubscriptionRetryPolicyOutputWithContext(ctx context.Context) GcpPubsubSubscriptionRetryPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpPubsubSubscriptionRetryPolicyOutput)
+}
+
+func (i GcpPubsubSubscriptionRetryPolicyArgs) ToGcpPubsubSubscriptionRetryPolicyPtrOutput() GcpPubsubSubscriptionRetryPolicyPtrOutput {
+	return i.ToGcpPubsubSubscriptionRetryPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i GcpPubsubSubscriptionRetryPolicyArgs) ToGcpPubsubSubscriptionRetryPolicyPtrOutputWithContext(ctx context.Context) GcpPubsubSubscriptionRetryPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpPubsubSubscriptionRetryPolicyOutput).ToGcpPubsubSubscriptionRetryPolicyPtrOutputWithContext(ctx)
+}
+
+// GcpPubsubSubscriptionRetryPolicyPtrInput is an input type that accepts GcpPubsubSubscriptionRetryPolicyArgs, GcpPubsubSubscriptionRetryPolicyPtr and GcpPubsubSubscriptionRetryPolicyPtrOutput values.
+// You can construct a concrete instance of `GcpPubsubSubscriptionRetryPolicyPtrInput` via:
+//
+//	        GcpPubsubSubscriptionRetryPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type GcpPubsubSubscriptionRetryPolicyPtrInput interface {
+	pulumi.Input
+
+	ToGcpPubsubSubscriptionRetryPolicyPtrOutput() GcpPubsubSubscriptionRetryPolicyPtrOutput
+	ToGcpPubsubSubscriptionRetryPolicyPtrOutputWithContext(context.Context) GcpPubsubSubscriptionRetryPolicyPtrOutput
+}
+
+type gcpPubsubSubscriptionRetryPolicyPtrType GcpPubsubSubscriptionRetryPolicyArgs
+
+func GcpPubsubSubscriptionRetryPolicyPtr(v *GcpPubsubSubscriptionRetryPolicyArgs) GcpPubsubSubscriptionRetryPolicyPtrInput {
+	return (*gcpPubsubSubscriptionRetryPolicyPtrType)(v)
+}
+
+func (*gcpPubsubSubscriptionRetryPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcpPubsubSubscriptionRetryPolicy)(nil)).Elem()
+}
+
+func (i *gcpPubsubSubscriptionRetryPolicyPtrType) ToGcpPubsubSubscriptionRetryPolicyPtrOutput() GcpPubsubSubscriptionRetryPolicyPtrOutput {
+	return i.ToGcpPubsubSubscriptionRetryPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *gcpPubsubSubscriptionRetryPolicyPtrType) ToGcpPubsubSubscriptionRetryPolicyPtrOutputWithContext(ctx context.Context) GcpPubsubSubscriptionRetryPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpPubsubSubscriptionRetryPolicyPtrOutput)
+}
+
+type GcpPubsubSubscriptionRetryPolicyOutput struct{ *pulumi.OutputState }
+
+func (GcpPubsubSubscriptionRetryPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpPubsubSubscriptionRetryPolicy)(nil)).Elem()
+}
+
+func (o GcpPubsubSubscriptionRetryPolicyOutput) ToGcpPubsubSubscriptionRetryPolicyOutput() GcpPubsubSubscriptionRetryPolicyOutput {
+	return o
+}
+
+func (o GcpPubsubSubscriptionRetryPolicyOutput) ToGcpPubsubSubscriptionRetryPolicyOutputWithContext(ctx context.Context) GcpPubsubSubscriptionRetryPolicyOutput {
+	return o
+}
+
+func (o GcpPubsubSubscriptionRetryPolicyOutput) ToGcpPubsubSubscriptionRetryPolicyPtrOutput() GcpPubsubSubscriptionRetryPolicyPtrOutput {
+	return o.ToGcpPubsubSubscriptionRetryPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o GcpPubsubSubscriptionRetryPolicyOutput) ToGcpPubsubSubscriptionRetryPolicyPtrOutputWithContext(ctx context.Context) GcpPubsubSubscriptionRetryPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GcpPubsubSubscriptionRetryPolicy) *GcpPubsubSubscriptionRetryPolicy {
+		return &v
+	}).(GcpPubsubSubscriptionRetryPolicyPtrOutput)
+}
+
+// The maximum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 600 seconds. Defaults to `600s`.
+func (o GcpPubsubSubscriptionRetryPolicyOutput) MaximumBackoff() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GcpPubsubSubscriptionRetryPolicy) *string { return v.MaximumBackoff }).(pulumi.StringPtrOutput)
+}
+
+// The minimum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 10 seconds Defaults to `10s`.
+func (o GcpPubsubSubscriptionRetryPolicyOutput) MinimumBackoff() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GcpPubsubSubscriptionRetryPolicy) *string { return v.MinimumBackoff }).(pulumi.StringPtrOutput)
+}
+
+type GcpPubsubSubscriptionRetryPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (GcpPubsubSubscriptionRetryPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcpPubsubSubscriptionRetryPolicy)(nil)).Elem()
+}
+
+func (o GcpPubsubSubscriptionRetryPolicyPtrOutput) ToGcpPubsubSubscriptionRetryPolicyPtrOutput() GcpPubsubSubscriptionRetryPolicyPtrOutput {
+	return o
+}
+
+func (o GcpPubsubSubscriptionRetryPolicyPtrOutput) ToGcpPubsubSubscriptionRetryPolicyPtrOutputWithContext(ctx context.Context) GcpPubsubSubscriptionRetryPolicyPtrOutput {
+	return o
+}
+
+func (o GcpPubsubSubscriptionRetryPolicyPtrOutput) Elem() GcpPubsubSubscriptionRetryPolicyOutput {
+	return o.ApplyT(func(v *GcpPubsubSubscriptionRetryPolicy) GcpPubsubSubscriptionRetryPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret GcpPubsubSubscriptionRetryPolicy
+		return ret
+	}).(GcpPubsubSubscriptionRetryPolicyOutput)
+}
+
+// The maximum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 600 seconds. Defaults to `600s`.
+func (o GcpPubsubSubscriptionRetryPolicyPtrOutput) MaximumBackoff() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpPubsubSubscriptionRetryPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaximumBackoff
+	}).(pulumi.StringPtrOutput)
+}
+
+// The minimum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 10 seconds Defaults to `10s`.
+func (o GcpPubsubSubscriptionRetryPolicyPtrOutput) MinimumBackoff() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpPubsubSubscriptionRetryPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MinimumBackoff
+	}).(pulumi.StringPtrOutput)
+}
+
 type GcpSchedulerJobAppEngineTarget struct {
 	// The HTTP request body to send.
 	Body *string `pulumi:"body"`
@@ -30671,6 +37850,162 @@ func (o GcpSqlDatabaseInstanceDatabaseFlagArrayOutput) Index(i pulumi.IntInput) 
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GcpSqlDatabaseInstanceDatabaseFlag {
 		return vs[0].([]GcpSqlDatabaseInstanceDatabaseFlag)[vs[1].(int)]
 	}).(GcpSqlDatabaseInstanceDatabaseFlagOutput)
+}
+
+type GcpSqlDatabaseInstanceIpConfiguration struct {
+	// Whether SSL is required for the database instance. Applicable for server database
+	RequireSsl *bool `pulumi:"requireSsl"`
+	// SSL mode for the database instance. Valid values are `ALLOW_UNENCRYPTED_AND_ENCRYPTED`, `ENCRYPTED_ONLY`, `TRUSTED_CLIENT_CERTIFICATE_REQUIRED`
+	SslMode *string `pulumi:"sslMode"`
+}
+
+// GcpSqlDatabaseInstanceIpConfigurationInput is an input type that accepts GcpSqlDatabaseInstanceIpConfigurationArgs and GcpSqlDatabaseInstanceIpConfigurationOutput values.
+// You can construct a concrete instance of `GcpSqlDatabaseInstanceIpConfigurationInput` via:
+//
+//	GcpSqlDatabaseInstanceIpConfigurationArgs{...}
+type GcpSqlDatabaseInstanceIpConfigurationInput interface {
+	pulumi.Input
+
+	ToGcpSqlDatabaseInstanceIpConfigurationOutput() GcpSqlDatabaseInstanceIpConfigurationOutput
+	ToGcpSqlDatabaseInstanceIpConfigurationOutputWithContext(context.Context) GcpSqlDatabaseInstanceIpConfigurationOutput
+}
+
+type GcpSqlDatabaseInstanceIpConfigurationArgs struct {
+	// Whether SSL is required for the database instance. Applicable for server database
+	RequireSsl pulumi.BoolPtrInput `pulumi:"requireSsl"`
+	// SSL mode for the database instance. Valid values are `ALLOW_UNENCRYPTED_AND_ENCRYPTED`, `ENCRYPTED_ONLY`, `TRUSTED_CLIENT_CERTIFICATE_REQUIRED`
+	SslMode pulumi.StringPtrInput `pulumi:"sslMode"`
+}
+
+func (GcpSqlDatabaseInstanceIpConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpSqlDatabaseInstanceIpConfiguration)(nil)).Elem()
+}
+
+func (i GcpSqlDatabaseInstanceIpConfigurationArgs) ToGcpSqlDatabaseInstanceIpConfigurationOutput() GcpSqlDatabaseInstanceIpConfigurationOutput {
+	return i.ToGcpSqlDatabaseInstanceIpConfigurationOutputWithContext(context.Background())
+}
+
+func (i GcpSqlDatabaseInstanceIpConfigurationArgs) ToGcpSqlDatabaseInstanceIpConfigurationOutputWithContext(ctx context.Context) GcpSqlDatabaseInstanceIpConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpSqlDatabaseInstanceIpConfigurationOutput)
+}
+
+func (i GcpSqlDatabaseInstanceIpConfigurationArgs) ToGcpSqlDatabaseInstanceIpConfigurationPtrOutput() GcpSqlDatabaseInstanceIpConfigurationPtrOutput {
+	return i.ToGcpSqlDatabaseInstanceIpConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i GcpSqlDatabaseInstanceIpConfigurationArgs) ToGcpSqlDatabaseInstanceIpConfigurationPtrOutputWithContext(ctx context.Context) GcpSqlDatabaseInstanceIpConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpSqlDatabaseInstanceIpConfigurationOutput).ToGcpSqlDatabaseInstanceIpConfigurationPtrOutputWithContext(ctx)
+}
+
+// GcpSqlDatabaseInstanceIpConfigurationPtrInput is an input type that accepts GcpSqlDatabaseInstanceIpConfigurationArgs, GcpSqlDatabaseInstanceIpConfigurationPtr and GcpSqlDatabaseInstanceIpConfigurationPtrOutput values.
+// You can construct a concrete instance of `GcpSqlDatabaseInstanceIpConfigurationPtrInput` via:
+//
+//	        GcpSqlDatabaseInstanceIpConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type GcpSqlDatabaseInstanceIpConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToGcpSqlDatabaseInstanceIpConfigurationPtrOutput() GcpSqlDatabaseInstanceIpConfigurationPtrOutput
+	ToGcpSqlDatabaseInstanceIpConfigurationPtrOutputWithContext(context.Context) GcpSqlDatabaseInstanceIpConfigurationPtrOutput
+}
+
+type gcpSqlDatabaseInstanceIpConfigurationPtrType GcpSqlDatabaseInstanceIpConfigurationArgs
+
+func GcpSqlDatabaseInstanceIpConfigurationPtr(v *GcpSqlDatabaseInstanceIpConfigurationArgs) GcpSqlDatabaseInstanceIpConfigurationPtrInput {
+	return (*gcpSqlDatabaseInstanceIpConfigurationPtrType)(v)
+}
+
+func (*gcpSqlDatabaseInstanceIpConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcpSqlDatabaseInstanceIpConfiguration)(nil)).Elem()
+}
+
+func (i *gcpSqlDatabaseInstanceIpConfigurationPtrType) ToGcpSqlDatabaseInstanceIpConfigurationPtrOutput() GcpSqlDatabaseInstanceIpConfigurationPtrOutput {
+	return i.ToGcpSqlDatabaseInstanceIpConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *gcpSqlDatabaseInstanceIpConfigurationPtrType) ToGcpSqlDatabaseInstanceIpConfigurationPtrOutputWithContext(ctx context.Context) GcpSqlDatabaseInstanceIpConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpSqlDatabaseInstanceIpConfigurationPtrOutput)
+}
+
+type GcpSqlDatabaseInstanceIpConfigurationOutput struct{ *pulumi.OutputState }
+
+func (GcpSqlDatabaseInstanceIpConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpSqlDatabaseInstanceIpConfiguration)(nil)).Elem()
+}
+
+func (o GcpSqlDatabaseInstanceIpConfigurationOutput) ToGcpSqlDatabaseInstanceIpConfigurationOutput() GcpSqlDatabaseInstanceIpConfigurationOutput {
+	return o
+}
+
+func (o GcpSqlDatabaseInstanceIpConfigurationOutput) ToGcpSqlDatabaseInstanceIpConfigurationOutputWithContext(ctx context.Context) GcpSqlDatabaseInstanceIpConfigurationOutput {
+	return o
+}
+
+func (o GcpSqlDatabaseInstanceIpConfigurationOutput) ToGcpSqlDatabaseInstanceIpConfigurationPtrOutput() GcpSqlDatabaseInstanceIpConfigurationPtrOutput {
+	return o.ToGcpSqlDatabaseInstanceIpConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o GcpSqlDatabaseInstanceIpConfigurationOutput) ToGcpSqlDatabaseInstanceIpConfigurationPtrOutputWithContext(ctx context.Context) GcpSqlDatabaseInstanceIpConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GcpSqlDatabaseInstanceIpConfiguration) *GcpSqlDatabaseInstanceIpConfiguration {
+		return &v
+	}).(GcpSqlDatabaseInstanceIpConfigurationPtrOutput)
+}
+
+// Whether SSL is required for the database instance. Applicable for server database
+func (o GcpSqlDatabaseInstanceIpConfigurationOutput) RequireSsl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GcpSqlDatabaseInstanceIpConfiguration) *bool { return v.RequireSsl }).(pulumi.BoolPtrOutput)
+}
+
+// SSL mode for the database instance. Valid values are `ALLOW_UNENCRYPTED_AND_ENCRYPTED`, `ENCRYPTED_ONLY`, `TRUSTED_CLIENT_CERTIFICATE_REQUIRED`
+func (o GcpSqlDatabaseInstanceIpConfigurationOutput) SslMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GcpSqlDatabaseInstanceIpConfiguration) *string { return v.SslMode }).(pulumi.StringPtrOutput)
+}
+
+type GcpSqlDatabaseInstanceIpConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (GcpSqlDatabaseInstanceIpConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcpSqlDatabaseInstanceIpConfiguration)(nil)).Elem()
+}
+
+func (o GcpSqlDatabaseInstanceIpConfigurationPtrOutput) ToGcpSqlDatabaseInstanceIpConfigurationPtrOutput() GcpSqlDatabaseInstanceIpConfigurationPtrOutput {
+	return o
+}
+
+func (o GcpSqlDatabaseInstanceIpConfigurationPtrOutput) ToGcpSqlDatabaseInstanceIpConfigurationPtrOutputWithContext(ctx context.Context) GcpSqlDatabaseInstanceIpConfigurationPtrOutput {
+	return o
+}
+
+func (o GcpSqlDatabaseInstanceIpConfigurationPtrOutput) Elem() GcpSqlDatabaseInstanceIpConfigurationOutput {
+	return o.ApplyT(func(v *GcpSqlDatabaseInstanceIpConfiguration) GcpSqlDatabaseInstanceIpConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret GcpSqlDatabaseInstanceIpConfiguration
+		return ret
+	}).(GcpSqlDatabaseInstanceIpConfigurationOutput)
+}
+
+// Whether SSL is required for the database instance. Applicable for server database
+func (o GcpSqlDatabaseInstanceIpConfigurationPtrOutput) RequireSsl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GcpSqlDatabaseInstanceIpConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RequireSsl
+	}).(pulumi.BoolPtrOutput)
+}
+
+// SSL mode for the database instance. Valid values are `ALLOW_UNENCRYPTED_AND_ENCRYPTED`, `ENCRYPTED_ONLY`, `TRUSTED_CLIENT_CERTIFICATE_REQUIRED`
+func (o GcpSqlDatabaseInstanceIpConfigurationPtrOutput) SslMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpSqlDatabaseInstanceIpConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslMode
+	}).(pulumi.StringPtrOutput)
 }
 
 type GcpStorageBucketV2DefaultEncryption struct {
@@ -33107,6 +40442,395 @@ func (o K8IngressTlArrayOutput) Index(i pulumi.IntInput) K8IngressTlOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) K8IngressTl {
 		return vs[0].([]K8IngressTl)[vs[1].(int)]
 	}).(K8IngressTlOutput)
+}
+
+type K8OciRepositorySpec struct {
+	// The interval associated to oci repository Defaults to `5m0s`.
+	Interval *string `pulumi:"interval"`
+	// The media type of oci repository to be attached. Accepted media type is
+	// 'application/vnd.cncf.helm.config.v1+json
+	// application/vnd.cncf.helm.chart.content.v1.tar+gzip
+	// application/vnd.oci.image.layer.v1.tar+gzip
+	// application/vnd.oci.image.config.v1.+json
+	// any other mediatype can be specified other than above ones
+	MediaType *string `pulumi:"mediaType"`
+	// The operation of oci repository to be attached
+	Operation *string `pulumi:"operation"`
+	// Select the `dockerconfigjson` secret created from Kubernetes Secret to authenticate to OCI registry.
+	PrivateRegistrySecret *string `pulumi:"privateRegistrySecret"`
+	// The ref of oci repository to be attached
+	Ref *K8OciRepositorySpecRef `pulumi:"ref"`
+	// The url of oci repository to be attached
+	Url string `pulumi:"url"`
+}
+
+// K8OciRepositorySpecInput is an input type that accepts K8OciRepositorySpecArgs and K8OciRepositorySpecOutput values.
+// You can construct a concrete instance of `K8OciRepositorySpecInput` via:
+//
+//	K8OciRepositorySpecArgs{...}
+type K8OciRepositorySpecInput interface {
+	pulumi.Input
+
+	ToK8OciRepositorySpecOutput() K8OciRepositorySpecOutput
+	ToK8OciRepositorySpecOutputWithContext(context.Context) K8OciRepositorySpecOutput
+}
+
+type K8OciRepositorySpecArgs struct {
+	// The interval associated to oci repository Defaults to `5m0s`.
+	Interval pulumi.StringPtrInput `pulumi:"interval"`
+	// The media type of oci repository to be attached. Accepted media type is
+	// 'application/vnd.cncf.helm.config.v1+json
+	// application/vnd.cncf.helm.chart.content.v1.tar+gzip
+	// application/vnd.oci.image.layer.v1.tar+gzip
+	// application/vnd.oci.image.config.v1.+json
+	// any other mediatype can be specified other than above ones
+	MediaType pulumi.StringPtrInput `pulumi:"mediaType"`
+	// The operation of oci repository to be attached
+	Operation pulumi.StringPtrInput `pulumi:"operation"`
+	// Select the `dockerconfigjson` secret created from Kubernetes Secret to authenticate to OCI registry.
+	PrivateRegistrySecret pulumi.StringPtrInput `pulumi:"privateRegistrySecret"`
+	// The ref of oci repository to be attached
+	Ref K8OciRepositorySpecRefPtrInput `pulumi:"ref"`
+	// The url of oci repository to be attached
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (K8OciRepositorySpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8OciRepositorySpec)(nil)).Elem()
+}
+
+func (i K8OciRepositorySpecArgs) ToK8OciRepositorySpecOutput() K8OciRepositorySpecOutput {
+	return i.ToK8OciRepositorySpecOutputWithContext(context.Background())
+}
+
+func (i K8OciRepositorySpecArgs) ToK8OciRepositorySpecOutputWithContext(ctx context.Context) K8OciRepositorySpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8OciRepositorySpecOutput)
+}
+
+func (i K8OciRepositorySpecArgs) ToK8OciRepositorySpecPtrOutput() K8OciRepositorySpecPtrOutput {
+	return i.ToK8OciRepositorySpecPtrOutputWithContext(context.Background())
+}
+
+func (i K8OciRepositorySpecArgs) ToK8OciRepositorySpecPtrOutputWithContext(ctx context.Context) K8OciRepositorySpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8OciRepositorySpecOutput).ToK8OciRepositorySpecPtrOutputWithContext(ctx)
+}
+
+// K8OciRepositorySpecPtrInput is an input type that accepts K8OciRepositorySpecArgs, K8OciRepositorySpecPtr and K8OciRepositorySpecPtrOutput values.
+// You can construct a concrete instance of `K8OciRepositorySpecPtrInput` via:
+//
+//	        K8OciRepositorySpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type K8OciRepositorySpecPtrInput interface {
+	pulumi.Input
+
+	ToK8OciRepositorySpecPtrOutput() K8OciRepositorySpecPtrOutput
+	ToK8OciRepositorySpecPtrOutputWithContext(context.Context) K8OciRepositorySpecPtrOutput
+}
+
+type k8ociRepositorySpecPtrType K8OciRepositorySpecArgs
+
+func K8OciRepositorySpecPtr(v *K8OciRepositorySpecArgs) K8OciRepositorySpecPtrInput {
+	return (*k8ociRepositorySpecPtrType)(v)
+}
+
+func (*k8ociRepositorySpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**K8OciRepositorySpec)(nil)).Elem()
+}
+
+func (i *k8ociRepositorySpecPtrType) ToK8OciRepositorySpecPtrOutput() K8OciRepositorySpecPtrOutput {
+	return i.ToK8OciRepositorySpecPtrOutputWithContext(context.Background())
+}
+
+func (i *k8ociRepositorySpecPtrType) ToK8OciRepositorySpecPtrOutputWithContext(ctx context.Context) K8OciRepositorySpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8OciRepositorySpecPtrOutput)
+}
+
+type K8OciRepositorySpecOutput struct{ *pulumi.OutputState }
+
+func (K8OciRepositorySpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8OciRepositorySpec)(nil)).Elem()
+}
+
+func (o K8OciRepositorySpecOutput) ToK8OciRepositorySpecOutput() K8OciRepositorySpecOutput {
+	return o
+}
+
+func (o K8OciRepositorySpecOutput) ToK8OciRepositorySpecOutputWithContext(ctx context.Context) K8OciRepositorySpecOutput {
+	return o
+}
+
+func (o K8OciRepositorySpecOutput) ToK8OciRepositorySpecPtrOutput() K8OciRepositorySpecPtrOutput {
+	return o.ToK8OciRepositorySpecPtrOutputWithContext(context.Background())
+}
+
+func (o K8OciRepositorySpecOutput) ToK8OciRepositorySpecPtrOutputWithContext(ctx context.Context) K8OciRepositorySpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v K8OciRepositorySpec) *K8OciRepositorySpec {
+		return &v
+	}).(K8OciRepositorySpecPtrOutput)
+}
+
+// The interval associated to oci repository Defaults to `5m0s`.
+func (o K8OciRepositorySpecOutput) Interval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v K8OciRepositorySpec) *string { return v.Interval }).(pulumi.StringPtrOutput)
+}
+
+// The media type of oci repository to be attached. Accepted media type is
+// 'application/vnd.cncf.helm.config.v1+json
+// application/vnd.cncf.helm.chart.content.v1.tar+gzip
+// application/vnd.oci.image.layer.v1.tar+gzip
+// application/vnd.oci.image.config.v1.+json
+// any other mediatype can be specified other than above ones
+func (o K8OciRepositorySpecOutput) MediaType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v K8OciRepositorySpec) *string { return v.MediaType }).(pulumi.StringPtrOutput)
+}
+
+// The operation of oci repository to be attached
+func (o K8OciRepositorySpecOutput) Operation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v K8OciRepositorySpec) *string { return v.Operation }).(pulumi.StringPtrOutput)
+}
+
+// Select the `dockerconfigjson` secret created from Kubernetes Secret to authenticate to OCI registry.
+func (o K8OciRepositorySpecOutput) PrivateRegistrySecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v K8OciRepositorySpec) *string { return v.PrivateRegistrySecret }).(pulumi.StringPtrOutput)
+}
+
+// The ref of oci repository to be attached
+func (o K8OciRepositorySpecOutput) Ref() K8OciRepositorySpecRefPtrOutput {
+	return o.ApplyT(func(v K8OciRepositorySpec) *K8OciRepositorySpecRef { return v.Ref }).(K8OciRepositorySpecRefPtrOutput)
+}
+
+// The url of oci repository to be attached
+func (o K8OciRepositorySpecOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v K8OciRepositorySpec) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type K8OciRepositorySpecPtrOutput struct{ *pulumi.OutputState }
+
+func (K8OciRepositorySpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**K8OciRepositorySpec)(nil)).Elem()
+}
+
+func (o K8OciRepositorySpecPtrOutput) ToK8OciRepositorySpecPtrOutput() K8OciRepositorySpecPtrOutput {
+	return o
+}
+
+func (o K8OciRepositorySpecPtrOutput) ToK8OciRepositorySpecPtrOutputWithContext(ctx context.Context) K8OciRepositorySpecPtrOutput {
+	return o
+}
+
+func (o K8OciRepositorySpecPtrOutput) Elem() K8OciRepositorySpecOutput {
+	return o.ApplyT(func(v *K8OciRepositorySpec) K8OciRepositorySpec {
+		if v != nil {
+			return *v
+		}
+		var ret K8OciRepositorySpec
+		return ret
+	}).(K8OciRepositorySpecOutput)
+}
+
+// The interval associated to oci repository Defaults to `5m0s`.
+func (o K8OciRepositorySpecPtrOutput) Interval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *K8OciRepositorySpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Interval
+	}).(pulumi.StringPtrOutput)
+}
+
+// The media type of oci repository to be attached. Accepted media type is
+// 'application/vnd.cncf.helm.config.v1+json
+// application/vnd.cncf.helm.chart.content.v1.tar+gzip
+// application/vnd.oci.image.layer.v1.tar+gzip
+// application/vnd.oci.image.config.v1.+json
+// any other mediatype can be specified other than above ones
+func (o K8OciRepositorySpecPtrOutput) MediaType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *K8OciRepositorySpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MediaType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The operation of oci repository to be attached
+func (o K8OciRepositorySpecPtrOutput) Operation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *K8OciRepositorySpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Operation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Select the `dockerconfigjson` secret created from Kubernetes Secret to authenticate to OCI registry.
+func (o K8OciRepositorySpecPtrOutput) PrivateRegistrySecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *K8OciRepositorySpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateRegistrySecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ref of oci repository to be attached
+func (o K8OciRepositorySpecPtrOutput) Ref() K8OciRepositorySpecRefPtrOutput {
+	return o.ApplyT(func(v *K8OciRepositorySpec) *K8OciRepositorySpecRef {
+		if v == nil {
+			return nil
+		}
+		return v.Ref
+	}).(K8OciRepositorySpecRefPtrOutput)
+}
+
+// The url of oci repository to be attached
+func (o K8OciRepositorySpecPtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *K8OciRepositorySpec) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
+type K8OciRepositorySpecRef struct {
+	// The tag of oci repository to be attached Defaults to `latest`.
+	Tag *string `pulumi:"tag"`
+}
+
+// K8OciRepositorySpecRefInput is an input type that accepts K8OciRepositorySpecRefArgs and K8OciRepositorySpecRefOutput values.
+// You can construct a concrete instance of `K8OciRepositorySpecRefInput` via:
+//
+//	K8OciRepositorySpecRefArgs{...}
+type K8OciRepositorySpecRefInput interface {
+	pulumi.Input
+
+	ToK8OciRepositorySpecRefOutput() K8OciRepositorySpecRefOutput
+	ToK8OciRepositorySpecRefOutputWithContext(context.Context) K8OciRepositorySpecRefOutput
+}
+
+type K8OciRepositorySpecRefArgs struct {
+	// The tag of oci repository to be attached Defaults to `latest`.
+	Tag pulumi.StringPtrInput `pulumi:"tag"`
+}
+
+func (K8OciRepositorySpecRefArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8OciRepositorySpecRef)(nil)).Elem()
+}
+
+func (i K8OciRepositorySpecRefArgs) ToK8OciRepositorySpecRefOutput() K8OciRepositorySpecRefOutput {
+	return i.ToK8OciRepositorySpecRefOutputWithContext(context.Background())
+}
+
+func (i K8OciRepositorySpecRefArgs) ToK8OciRepositorySpecRefOutputWithContext(ctx context.Context) K8OciRepositorySpecRefOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8OciRepositorySpecRefOutput)
+}
+
+func (i K8OciRepositorySpecRefArgs) ToK8OciRepositorySpecRefPtrOutput() K8OciRepositorySpecRefPtrOutput {
+	return i.ToK8OciRepositorySpecRefPtrOutputWithContext(context.Background())
+}
+
+func (i K8OciRepositorySpecRefArgs) ToK8OciRepositorySpecRefPtrOutputWithContext(ctx context.Context) K8OciRepositorySpecRefPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8OciRepositorySpecRefOutput).ToK8OciRepositorySpecRefPtrOutputWithContext(ctx)
+}
+
+// K8OciRepositorySpecRefPtrInput is an input type that accepts K8OciRepositorySpecRefArgs, K8OciRepositorySpecRefPtr and K8OciRepositorySpecRefPtrOutput values.
+// You can construct a concrete instance of `K8OciRepositorySpecRefPtrInput` via:
+//
+//	        K8OciRepositorySpecRefArgs{...}
+//
+//	or:
+//
+//	        nil
+type K8OciRepositorySpecRefPtrInput interface {
+	pulumi.Input
+
+	ToK8OciRepositorySpecRefPtrOutput() K8OciRepositorySpecRefPtrOutput
+	ToK8OciRepositorySpecRefPtrOutputWithContext(context.Context) K8OciRepositorySpecRefPtrOutput
+}
+
+type k8ociRepositorySpecRefPtrType K8OciRepositorySpecRefArgs
+
+func K8OciRepositorySpecRefPtr(v *K8OciRepositorySpecRefArgs) K8OciRepositorySpecRefPtrInput {
+	return (*k8ociRepositorySpecRefPtrType)(v)
+}
+
+func (*k8ociRepositorySpecRefPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**K8OciRepositorySpecRef)(nil)).Elem()
+}
+
+func (i *k8ociRepositorySpecRefPtrType) ToK8OciRepositorySpecRefPtrOutput() K8OciRepositorySpecRefPtrOutput {
+	return i.ToK8OciRepositorySpecRefPtrOutputWithContext(context.Background())
+}
+
+func (i *k8ociRepositorySpecRefPtrType) ToK8OciRepositorySpecRefPtrOutputWithContext(ctx context.Context) K8OciRepositorySpecRefPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8OciRepositorySpecRefPtrOutput)
+}
+
+type K8OciRepositorySpecRefOutput struct{ *pulumi.OutputState }
+
+func (K8OciRepositorySpecRefOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8OciRepositorySpecRef)(nil)).Elem()
+}
+
+func (o K8OciRepositorySpecRefOutput) ToK8OciRepositorySpecRefOutput() K8OciRepositorySpecRefOutput {
+	return o
+}
+
+func (o K8OciRepositorySpecRefOutput) ToK8OciRepositorySpecRefOutputWithContext(ctx context.Context) K8OciRepositorySpecRefOutput {
+	return o
+}
+
+func (o K8OciRepositorySpecRefOutput) ToK8OciRepositorySpecRefPtrOutput() K8OciRepositorySpecRefPtrOutput {
+	return o.ToK8OciRepositorySpecRefPtrOutputWithContext(context.Background())
+}
+
+func (o K8OciRepositorySpecRefOutput) ToK8OciRepositorySpecRefPtrOutputWithContext(ctx context.Context) K8OciRepositorySpecRefPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v K8OciRepositorySpecRef) *K8OciRepositorySpecRef {
+		return &v
+	}).(K8OciRepositorySpecRefPtrOutput)
+}
+
+// The tag of oci repository to be attached Defaults to `latest`.
+func (o K8OciRepositorySpecRefOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v K8OciRepositorySpecRef) *string { return v.Tag }).(pulumi.StringPtrOutput)
+}
+
+type K8OciRepositorySpecRefPtrOutput struct{ *pulumi.OutputState }
+
+func (K8OciRepositorySpecRefPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**K8OciRepositorySpecRef)(nil)).Elem()
+}
+
+func (o K8OciRepositorySpecRefPtrOutput) ToK8OciRepositorySpecRefPtrOutput() K8OciRepositorySpecRefPtrOutput {
+	return o
+}
+
+func (o K8OciRepositorySpecRefPtrOutput) ToK8OciRepositorySpecRefPtrOutputWithContext(ctx context.Context) K8OciRepositorySpecRefPtrOutput {
+	return o
+}
+
+func (o K8OciRepositorySpecRefPtrOutput) Elem() K8OciRepositorySpecRefOutput {
+	return o.ApplyT(func(v *K8OciRepositorySpecRef) K8OciRepositorySpecRef {
+		if v != nil {
+			return *v
+		}
+		var ret K8OciRepositorySpecRef
+		return ret
+	}).(K8OciRepositorySpecRefOutput)
+}
+
+// The tag of oci repository to be attached Defaults to `latest`.
+func (o K8OciRepositorySpecRefPtrOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *K8OciRepositorySpecRef) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Tag
+	}).(pulumi.StringPtrOutput)
 }
 
 type K8PersistentVolumeClaimSpec struct {
@@ -69496,7195 +77220,6 @@ func (o K8sJobSpecTemplateSpecContainerEnvFromArrayOutput) Index(i pulumi.IntInp
 	}).(K8sJobSpecTemplateSpecContainerEnvFromOutput)
 }
 
-type K8sJobSpecTemplateSpecContainerEnvFromConfigMapRef struct {
-	// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-	Name string `pulumi:"name"`
-	// Specify whether the ConfigMap must be defined
-	Optional *bool `pulumi:"optional"`
-}
-
-// K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefInput is an input type that accepts K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefArgs and K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefArgs{...}
-type K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerEnvFromConfigMapRefOutput() K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefOutput
-	ToK8sJobSpecTemplateSpecContainerEnvFromConfigMapRefOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefOutput
-}
-
-type K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefArgs struct {
-	// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-	Name pulumi.StringInput `pulumi:"name"`
-	// Specify whether the ConfigMap must be defined
-	Optional pulumi.BoolPtrInput `pulumi:"optional"`
-}
-
-func (K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerEnvFromConfigMapRef)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefArgs) ToK8sJobSpecTemplateSpecContainerEnvFromConfigMapRefOutput() K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerEnvFromConfigMapRefOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefArgs) ToK8sJobSpecTemplateSpecContainerEnvFromConfigMapRefOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefOutput)
-}
-
-func (i K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefArgs) ToK8sJobSpecTemplateSpecContainerEnvFromConfigMapRefPtrOutput() K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefPtrOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerEnvFromConfigMapRefPtrOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefArgs) ToK8sJobSpecTemplateSpecContainerEnvFromConfigMapRefPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefOutput).ToK8sJobSpecTemplateSpecContainerEnvFromConfigMapRefPtrOutputWithContext(ctx)
-}
-
-// K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefPtrInput is an input type that accepts K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefArgs, K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefPtr and K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefPtrOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefPtrInput` via:
-//
-//	        K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefArgs{...}
-//
-//	or:
-//
-//	        nil
-type K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefPtrInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerEnvFromConfigMapRefPtrOutput() K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefPtrOutput
-	ToK8sJobSpecTemplateSpecContainerEnvFromConfigMapRefPtrOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefPtrOutput
-}
-
-type k8sJobSpecTemplateSpecContainerEnvFromConfigMapRefPtrType K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefArgs
-
-func K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefPtr(v *K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefArgs) K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefPtrInput {
-	return (*k8sJobSpecTemplateSpecContainerEnvFromConfigMapRefPtrType)(v)
-}
-
-func (*k8sJobSpecTemplateSpecContainerEnvFromConfigMapRefPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecContainerEnvFromConfigMapRef)(nil)).Elem()
-}
-
-func (i *k8sJobSpecTemplateSpecContainerEnvFromConfigMapRefPtrType) ToK8sJobSpecTemplateSpecContainerEnvFromConfigMapRefPtrOutput() K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefPtrOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerEnvFromConfigMapRefPtrOutputWithContext(context.Background())
-}
-
-func (i *k8sJobSpecTemplateSpecContainerEnvFromConfigMapRefPtrType) ToK8sJobSpecTemplateSpecContainerEnvFromConfigMapRefPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerEnvFromConfigMapRef)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefOutput) ToK8sJobSpecTemplateSpecContainerEnvFromConfigMapRefOutput() K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefOutput) ToK8sJobSpecTemplateSpecContainerEnvFromConfigMapRefOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefOutput) ToK8sJobSpecTemplateSpecContainerEnvFromConfigMapRefPtrOutput() K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefPtrOutput {
-	return o.ToK8sJobSpecTemplateSpecContainerEnvFromConfigMapRefPtrOutputWithContext(context.Background())
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefOutput) ToK8sJobSpecTemplateSpecContainerEnvFromConfigMapRefPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v K8sJobSpecTemplateSpecContainerEnvFromConfigMapRef) *K8sJobSpecTemplateSpecContainerEnvFromConfigMapRef {
-		return &v
-	}).(K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefPtrOutput)
-}
-
-// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-func (o K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerEnvFromConfigMapRef) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Specify whether the ConfigMap must be defined
-func (o K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefOutput) Optional() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerEnvFromConfigMapRef) *bool { return v.Optional }).(pulumi.BoolPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefPtrOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecContainerEnvFromConfigMapRef)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefPtrOutput) ToK8sJobSpecTemplateSpecContainerEnvFromConfigMapRefPtrOutput() K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefPtrOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefPtrOutput) ToK8sJobSpecTemplateSpecContainerEnvFromConfigMapRefPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefPtrOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefPtrOutput) Elem() K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerEnvFromConfigMapRef) K8sJobSpecTemplateSpecContainerEnvFromConfigMapRef {
-		if v != nil {
-			return *v
-		}
-		var ret K8sJobSpecTemplateSpecContainerEnvFromConfigMapRef
-		return ret
-	}).(K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefOutput)
-}
-
-// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-func (o K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerEnvFromConfigMapRef) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// Specify whether the ConfigMap must be defined
-func (o K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefPtrOutput) Optional() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerEnvFromConfigMapRef) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Optional
-	}).(pulumi.BoolPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerEnvFromSecretRef struct {
-	// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-	Name string `pulumi:"name"`
-	// Specify whether the Secret must be defined
-	Optional *bool `pulumi:"optional"`
-}
-
-// K8sJobSpecTemplateSpecContainerEnvFromSecretRefInput is an input type that accepts K8sJobSpecTemplateSpecContainerEnvFromSecretRefArgs and K8sJobSpecTemplateSpecContainerEnvFromSecretRefOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerEnvFromSecretRefInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerEnvFromSecretRefArgs{...}
-type K8sJobSpecTemplateSpecContainerEnvFromSecretRefInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerEnvFromSecretRefOutput() K8sJobSpecTemplateSpecContainerEnvFromSecretRefOutput
-	ToK8sJobSpecTemplateSpecContainerEnvFromSecretRefOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerEnvFromSecretRefOutput
-}
-
-type K8sJobSpecTemplateSpecContainerEnvFromSecretRefArgs struct {
-	// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-	Name pulumi.StringInput `pulumi:"name"`
-	// Specify whether the Secret must be defined
-	Optional pulumi.BoolPtrInput `pulumi:"optional"`
-}
-
-func (K8sJobSpecTemplateSpecContainerEnvFromSecretRefArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerEnvFromSecretRef)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerEnvFromSecretRefArgs) ToK8sJobSpecTemplateSpecContainerEnvFromSecretRefOutput() K8sJobSpecTemplateSpecContainerEnvFromSecretRefOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerEnvFromSecretRefOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerEnvFromSecretRefArgs) ToK8sJobSpecTemplateSpecContainerEnvFromSecretRefOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerEnvFromSecretRefOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerEnvFromSecretRefOutput)
-}
-
-func (i K8sJobSpecTemplateSpecContainerEnvFromSecretRefArgs) ToK8sJobSpecTemplateSpecContainerEnvFromSecretRefPtrOutput() K8sJobSpecTemplateSpecContainerEnvFromSecretRefPtrOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerEnvFromSecretRefPtrOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerEnvFromSecretRefArgs) ToK8sJobSpecTemplateSpecContainerEnvFromSecretRefPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerEnvFromSecretRefPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerEnvFromSecretRefOutput).ToK8sJobSpecTemplateSpecContainerEnvFromSecretRefPtrOutputWithContext(ctx)
-}
-
-// K8sJobSpecTemplateSpecContainerEnvFromSecretRefPtrInput is an input type that accepts K8sJobSpecTemplateSpecContainerEnvFromSecretRefArgs, K8sJobSpecTemplateSpecContainerEnvFromSecretRefPtr and K8sJobSpecTemplateSpecContainerEnvFromSecretRefPtrOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerEnvFromSecretRefPtrInput` via:
-//
-//	        K8sJobSpecTemplateSpecContainerEnvFromSecretRefArgs{...}
-//
-//	or:
-//
-//	        nil
-type K8sJobSpecTemplateSpecContainerEnvFromSecretRefPtrInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerEnvFromSecretRefPtrOutput() K8sJobSpecTemplateSpecContainerEnvFromSecretRefPtrOutput
-	ToK8sJobSpecTemplateSpecContainerEnvFromSecretRefPtrOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerEnvFromSecretRefPtrOutput
-}
-
-type k8sJobSpecTemplateSpecContainerEnvFromSecretRefPtrType K8sJobSpecTemplateSpecContainerEnvFromSecretRefArgs
-
-func K8sJobSpecTemplateSpecContainerEnvFromSecretRefPtr(v *K8sJobSpecTemplateSpecContainerEnvFromSecretRefArgs) K8sJobSpecTemplateSpecContainerEnvFromSecretRefPtrInput {
-	return (*k8sJobSpecTemplateSpecContainerEnvFromSecretRefPtrType)(v)
-}
-
-func (*k8sJobSpecTemplateSpecContainerEnvFromSecretRefPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecContainerEnvFromSecretRef)(nil)).Elem()
-}
-
-func (i *k8sJobSpecTemplateSpecContainerEnvFromSecretRefPtrType) ToK8sJobSpecTemplateSpecContainerEnvFromSecretRefPtrOutput() K8sJobSpecTemplateSpecContainerEnvFromSecretRefPtrOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerEnvFromSecretRefPtrOutputWithContext(context.Background())
-}
-
-func (i *k8sJobSpecTemplateSpecContainerEnvFromSecretRefPtrType) ToK8sJobSpecTemplateSpecContainerEnvFromSecretRefPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerEnvFromSecretRefPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerEnvFromSecretRefPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerEnvFromSecretRefOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerEnvFromSecretRefOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerEnvFromSecretRef)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvFromSecretRefOutput) ToK8sJobSpecTemplateSpecContainerEnvFromSecretRefOutput() K8sJobSpecTemplateSpecContainerEnvFromSecretRefOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvFromSecretRefOutput) ToK8sJobSpecTemplateSpecContainerEnvFromSecretRefOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerEnvFromSecretRefOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvFromSecretRefOutput) ToK8sJobSpecTemplateSpecContainerEnvFromSecretRefPtrOutput() K8sJobSpecTemplateSpecContainerEnvFromSecretRefPtrOutput {
-	return o.ToK8sJobSpecTemplateSpecContainerEnvFromSecretRefPtrOutputWithContext(context.Background())
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvFromSecretRefOutput) ToK8sJobSpecTemplateSpecContainerEnvFromSecretRefPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerEnvFromSecretRefPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v K8sJobSpecTemplateSpecContainerEnvFromSecretRef) *K8sJobSpecTemplateSpecContainerEnvFromSecretRef {
-		return &v
-	}).(K8sJobSpecTemplateSpecContainerEnvFromSecretRefPtrOutput)
-}
-
-// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-func (o K8sJobSpecTemplateSpecContainerEnvFromSecretRefOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerEnvFromSecretRef) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Specify whether the Secret must be defined
-func (o K8sJobSpecTemplateSpecContainerEnvFromSecretRefOutput) Optional() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerEnvFromSecretRef) *bool { return v.Optional }).(pulumi.BoolPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerEnvFromSecretRefPtrOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerEnvFromSecretRefPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecContainerEnvFromSecretRef)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvFromSecretRefPtrOutput) ToK8sJobSpecTemplateSpecContainerEnvFromSecretRefPtrOutput() K8sJobSpecTemplateSpecContainerEnvFromSecretRefPtrOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvFromSecretRefPtrOutput) ToK8sJobSpecTemplateSpecContainerEnvFromSecretRefPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerEnvFromSecretRefPtrOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvFromSecretRefPtrOutput) Elem() K8sJobSpecTemplateSpecContainerEnvFromSecretRefOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerEnvFromSecretRef) K8sJobSpecTemplateSpecContainerEnvFromSecretRef {
-		if v != nil {
-			return *v
-		}
-		var ret K8sJobSpecTemplateSpecContainerEnvFromSecretRef
-		return ret
-	}).(K8sJobSpecTemplateSpecContainerEnvFromSecretRefOutput)
-}
-
-// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-func (o K8sJobSpecTemplateSpecContainerEnvFromSecretRefPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerEnvFromSecretRef) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// Specify whether the Secret must be defined
-func (o K8sJobSpecTemplateSpecContainerEnvFromSecretRefPtrOutput) Optional() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerEnvFromSecretRef) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Optional
-	}).(pulumi.BoolPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerEnvValueFrom struct {
-	// Selects a key of a ConfigMap.
-	ConfigMapKeyRef *K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRef `pulumi:"configMapKeyRef"`
-	// Selects a field of the pod: supports metadata.name, metadata.namespace, metadata.labels, metadata.annotations, spec.nodeName, spec.serviceAccountName, status.podIP.
-	FieldRef *K8sJobSpecTemplateSpecContainerEnvValueFromFieldRef `pulumi:"fieldRef"`
-	// Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.
-	ResourceFieldRef *K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRef `pulumi:"resourceFieldRef"`
-	// Selects a key of a secret in the pod's namespace.
-	SecretKeyRef *K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRef `pulumi:"secretKeyRef"`
-}
-
-// K8sJobSpecTemplateSpecContainerEnvValueFromInput is an input type that accepts K8sJobSpecTemplateSpecContainerEnvValueFromArgs and K8sJobSpecTemplateSpecContainerEnvValueFromOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerEnvValueFromInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerEnvValueFromArgs{...}
-type K8sJobSpecTemplateSpecContainerEnvValueFromInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerEnvValueFromOutput() K8sJobSpecTemplateSpecContainerEnvValueFromOutput
-	ToK8sJobSpecTemplateSpecContainerEnvValueFromOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerEnvValueFromOutput
-}
-
-type K8sJobSpecTemplateSpecContainerEnvValueFromArgs struct {
-	// Selects a key of a ConfigMap.
-	ConfigMapKeyRef K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefPtrInput `pulumi:"configMapKeyRef"`
-	// Selects a field of the pod: supports metadata.name, metadata.namespace, metadata.labels, metadata.annotations, spec.nodeName, spec.serviceAccountName, status.podIP.
-	FieldRef K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrInput `pulumi:"fieldRef"`
-	// Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.
-	ResourceFieldRef K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrInput `pulumi:"resourceFieldRef"`
-	// Selects a key of a secret in the pod's namespace.
-	SecretKeyRef K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrInput `pulumi:"secretKeyRef"`
-}
-
-func (K8sJobSpecTemplateSpecContainerEnvValueFromArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerEnvValueFrom)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerEnvValueFromArgs) ToK8sJobSpecTemplateSpecContainerEnvValueFromOutput() K8sJobSpecTemplateSpecContainerEnvValueFromOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerEnvValueFromOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerEnvValueFromArgs) ToK8sJobSpecTemplateSpecContainerEnvValueFromOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerEnvValueFromOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerEnvValueFromOutput)
-}
-
-func (i K8sJobSpecTemplateSpecContainerEnvValueFromArgs) ToK8sJobSpecTemplateSpecContainerEnvValueFromPtrOutput() K8sJobSpecTemplateSpecContainerEnvValueFromPtrOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerEnvValueFromPtrOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerEnvValueFromArgs) ToK8sJobSpecTemplateSpecContainerEnvValueFromPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerEnvValueFromPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerEnvValueFromOutput).ToK8sJobSpecTemplateSpecContainerEnvValueFromPtrOutputWithContext(ctx)
-}
-
-// K8sJobSpecTemplateSpecContainerEnvValueFromPtrInput is an input type that accepts K8sJobSpecTemplateSpecContainerEnvValueFromArgs, K8sJobSpecTemplateSpecContainerEnvValueFromPtr and K8sJobSpecTemplateSpecContainerEnvValueFromPtrOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerEnvValueFromPtrInput` via:
-//
-//	        K8sJobSpecTemplateSpecContainerEnvValueFromArgs{...}
-//
-//	or:
-//
-//	        nil
-type K8sJobSpecTemplateSpecContainerEnvValueFromPtrInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerEnvValueFromPtrOutput() K8sJobSpecTemplateSpecContainerEnvValueFromPtrOutput
-	ToK8sJobSpecTemplateSpecContainerEnvValueFromPtrOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerEnvValueFromPtrOutput
-}
-
-type k8sJobSpecTemplateSpecContainerEnvValueFromPtrType K8sJobSpecTemplateSpecContainerEnvValueFromArgs
-
-func K8sJobSpecTemplateSpecContainerEnvValueFromPtr(v *K8sJobSpecTemplateSpecContainerEnvValueFromArgs) K8sJobSpecTemplateSpecContainerEnvValueFromPtrInput {
-	return (*k8sJobSpecTemplateSpecContainerEnvValueFromPtrType)(v)
-}
-
-func (*k8sJobSpecTemplateSpecContainerEnvValueFromPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecContainerEnvValueFrom)(nil)).Elem()
-}
-
-func (i *k8sJobSpecTemplateSpecContainerEnvValueFromPtrType) ToK8sJobSpecTemplateSpecContainerEnvValueFromPtrOutput() K8sJobSpecTemplateSpecContainerEnvValueFromPtrOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerEnvValueFromPtrOutputWithContext(context.Background())
-}
-
-func (i *k8sJobSpecTemplateSpecContainerEnvValueFromPtrType) ToK8sJobSpecTemplateSpecContainerEnvValueFromPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerEnvValueFromPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerEnvValueFromPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerEnvValueFromOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerEnvValueFromOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerEnvValueFrom)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromOutput) ToK8sJobSpecTemplateSpecContainerEnvValueFromOutput() K8sJobSpecTemplateSpecContainerEnvValueFromOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromOutput) ToK8sJobSpecTemplateSpecContainerEnvValueFromOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerEnvValueFromOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromOutput) ToK8sJobSpecTemplateSpecContainerEnvValueFromPtrOutput() K8sJobSpecTemplateSpecContainerEnvValueFromPtrOutput {
-	return o.ToK8sJobSpecTemplateSpecContainerEnvValueFromPtrOutputWithContext(context.Background())
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromOutput) ToK8sJobSpecTemplateSpecContainerEnvValueFromPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerEnvValueFromPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v K8sJobSpecTemplateSpecContainerEnvValueFrom) *K8sJobSpecTemplateSpecContainerEnvValueFrom {
-		return &v
-	}).(K8sJobSpecTemplateSpecContainerEnvValueFromPtrOutput)
-}
-
-// Selects a key of a ConfigMap.
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromOutput) ConfigMapKeyRef() K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerEnvValueFrom) *K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRef {
-		return v.ConfigMapKeyRef
-	}).(K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefPtrOutput)
-}
-
-// Selects a field of the pod: supports metadata.name, metadata.namespace, metadata.labels, metadata.annotations, spec.nodeName, spec.serviceAccountName, status.podIP.
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromOutput) FieldRef() K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerEnvValueFrom) *K8sJobSpecTemplateSpecContainerEnvValueFromFieldRef {
-		return v.FieldRef
-	}).(K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutput)
-}
-
-// Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromOutput) ResourceFieldRef() K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerEnvValueFrom) *K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRef {
-		return v.ResourceFieldRef
-	}).(K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput)
-}
-
-// Selects a key of a secret in the pod's namespace.
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromOutput) SecretKeyRef() K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerEnvValueFrom) *K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRef {
-		return v.SecretKeyRef
-	}).(K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerEnvValueFromPtrOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerEnvValueFromPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecContainerEnvValueFrom)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromPtrOutput) ToK8sJobSpecTemplateSpecContainerEnvValueFromPtrOutput() K8sJobSpecTemplateSpecContainerEnvValueFromPtrOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromPtrOutput) ToK8sJobSpecTemplateSpecContainerEnvValueFromPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerEnvValueFromPtrOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromPtrOutput) Elem() K8sJobSpecTemplateSpecContainerEnvValueFromOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerEnvValueFrom) K8sJobSpecTemplateSpecContainerEnvValueFrom {
-		if v != nil {
-			return *v
-		}
-		var ret K8sJobSpecTemplateSpecContainerEnvValueFrom
-		return ret
-	}).(K8sJobSpecTemplateSpecContainerEnvValueFromOutput)
-}
-
-// Selects a key of a ConfigMap.
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromPtrOutput) ConfigMapKeyRef() K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerEnvValueFrom) *K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRef {
-		if v == nil {
-			return nil
-		}
-		return v.ConfigMapKeyRef
-	}).(K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefPtrOutput)
-}
-
-// Selects a field of the pod: supports metadata.name, metadata.namespace, metadata.labels, metadata.annotations, spec.nodeName, spec.serviceAccountName, status.podIP.
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromPtrOutput) FieldRef() K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerEnvValueFrom) *K8sJobSpecTemplateSpecContainerEnvValueFromFieldRef {
-		if v == nil {
-			return nil
-		}
-		return v.FieldRef
-	}).(K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutput)
-}
-
-// Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromPtrOutput) ResourceFieldRef() K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerEnvValueFrom) *K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRef {
-		if v == nil {
-			return nil
-		}
-		return v.ResourceFieldRef
-	}).(K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput)
-}
-
-// Selects a key of a secret in the pod's namespace.
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromPtrOutput) SecretKeyRef() K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerEnvValueFrom) *K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRef {
-		if v == nil {
-			return nil
-		}
-		return v.SecretKeyRef
-	}).(K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRef struct {
-	// The key to select.
-	Key *string `pulumi:"key"`
-	// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-	Name *string `pulumi:"name"`
-	// Specify whether the ConfigMap or its key must be defined.
-	Optional *bool `pulumi:"optional"`
-}
-
-// K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefInput is an input type that accepts K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefArgs and K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefArgs{...}
-type K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefOutput() K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefOutput
-	ToK8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefOutput
-}
-
-type K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefArgs struct {
-	// The key to select.
-	Key pulumi.StringPtrInput `pulumi:"key"`
-	// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Specify whether the ConfigMap or its key must be defined.
-	Optional pulumi.BoolPtrInput `pulumi:"optional"`
-}
-
-func (K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRef)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefArgs) ToK8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefOutput() K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefArgs) ToK8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefOutput)
-}
-
-func (i K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefArgs) ToK8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefPtrOutput() K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefPtrOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefPtrOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefArgs) ToK8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefOutput).ToK8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefPtrOutputWithContext(ctx)
-}
-
-// K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefPtrInput is an input type that accepts K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefArgs, K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefPtr and K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefPtrOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefPtrInput` via:
-//
-//	        K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefArgs{...}
-//
-//	or:
-//
-//	        nil
-type K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefPtrInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefPtrOutput() K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefPtrOutput
-	ToK8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefPtrOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefPtrOutput
-}
-
-type k8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefPtrType K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefArgs
-
-func K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefPtr(v *K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefArgs) K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefPtrInput {
-	return (*k8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefPtrType)(v)
-}
-
-func (*k8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRef)(nil)).Elem()
-}
-
-func (i *k8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefPtrType) ToK8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefPtrOutput() K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefPtrOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefPtrOutputWithContext(context.Background())
-}
-
-func (i *k8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefPtrType) ToK8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRef)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefOutput) ToK8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefOutput() K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefOutput) ToK8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefOutput) ToK8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefPtrOutput() K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefPtrOutput {
-	return o.ToK8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefPtrOutputWithContext(context.Background())
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefOutput) ToK8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRef) *K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRef {
-		return &v
-	}).(K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefPtrOutput)
-}
-
-// The key to select.
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRef) *string { return v.Key }).(pulumi.StringPtrOutput)
-}
-
-// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRef) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// Specify whether the ConfigMap or its key must be defined.
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefOutput) Optional() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRef) *bool { return v.Optional }).(pulumi.BoolPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefPtrOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRef)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefPtrOutput) ToK8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefPtrOutput() K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefPtrOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefPtrOutput) ToK8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefPtrOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefPtrOutput) Elem() K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRef) K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRef {
-		if v != nil {
-			return *v
-		}
-		var ret K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRef
-		return ret
-	}).(K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefOutput)
-}
-
-// The key to select.
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefPtrOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRef) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Key
-	}).(pulumi.StringPtrOutput)
-}
-
-// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRef) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// Specify whether the ConfigMap or its key must be defined.
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefPtrOutput) Optional() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRef) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Optional
-	}).(pulumi.BoolPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerEnvValueFromFieldRef struct {
-	// Version of the schema the FieldPath is written in terms of, defaults to "v1". Defaults to `v1`.
-	ApiVersion *string `pulumi:"apiVersion"`
-	// Path of the field to select in the specified API version
-	FieldPath *string `pulumi:"fieldPath"`
-}
-
-// K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefInput is an input type that accepts K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefArgs and K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefArgs{...}
-type K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefOutput() K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefOutput
-	ToK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefOutput
-}
-
-type K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefArgs struct {
-	// Version of the schema the FieldPath is written in terms of, defaults to "v1". Defaults to `v1`.
-	ApiVersion pulumi.StringPtrInput `pulumi:"apiVersion"`
-	// Path of the field to select in the specified API version
-	FieldPath pulumi.StringPtrInput `pulumi:"fieldPath"`
-}
-
-func (K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerEnvValueFromFieldRef)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefArgs) ToK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefOutput() K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefArgs) ToK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefOutput)
-}
-
-func (i K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefArgs) ToK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutput() K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefArgs) ToK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefOutput).ToK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutputWithContext(ctx)
-}
-
-// K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrInput is an input type that accepts K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefArgs, K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtr and K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrInput` via:
-//
-//	        K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefArgs{...}
-//
-//	or:
-//
-//	        nil
-type K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutput() K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutput
-	ToK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutput
-}
-
-type k8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrType K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefArgs
-
-func K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtr(v *K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefArgs) K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrInput {
-	return (*k8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrType)(v)
-}
-
-func (*k8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecContainerEnvValueFromFieldRef)(nil)).Elem()
-}
-
-func (i *k8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrType) ToK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutput() K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutputWithContext(context.Background())
-}
-
-func (i *k8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrType) ToK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerEnvValueFromFieldRef)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefOutput) ToK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefOutput() K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefOutput) ToK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefOutput) ToK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutput() K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutput {
-	return o.ToK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutputWithContext(context.Background())
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefOutput) ToK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v K8sJobSpecTemplateSpecContainerEnvValueFromFieldRef) *K8sJobSpecTemplateSpecContainerEnvValueFromFieldRef {
-		return &v
-	}).(K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutput)
-}
-
-// Version of the schema the FieldPath is written in terms of, defaults to "v1". Defaults to `v1`.
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefOutput) ApiVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerEnvValueFromFieldRef) *string { return v.ApiVersion }).(pulumi.StringPtrOutput)
-}
-
-// Path of the field to select in the specified API version
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefOutput) FieldPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerEnvValueFromFieldRef) *string { return v.FieldPath }).(pulumi.StringPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecContainerEnvValueFromFieldRef)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutput) ToK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutput() K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutput) ToK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutput) Elem() K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerEnvValueFromFieldRef) K8sJobSpecTemplateSpecContainerEnvValueFromFieldRef {
-		if v != nil {
-			return *v
-		}
-		var ret K8sJobSpecTemplateSpecContainerEnvValueFromFieldRef
-		return ret
-	}).(K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefOutput)
-}
-
-// Version of the schema the FieldPath is written in terms of, defaults to "v1". Defaults to `v1`.
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutput) ApiVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerEnvValueFromFieldRef) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ApiVersion
-	}).(pulumi.StringPtrOutput)
-}
-
-// Path of the field to select in the specified API version
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutput) FieldPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerEnvValueFromFieldRef) *string {
-		if v == nil {
-			return nil
-		}
-		return v.FieldPath
-	}).(pulumi.StringPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRef struct {
-	ContainerName *string `pulumi:"containerName"`
-	// Defaults to `1`.
-	Divisor *string `pulumi:"divisor"`
-	// Resource to select
-	Resource string `pulumi:"resource"`
-}
-
-// K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefInput is an input type that accepts K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefArgs and K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefArgs{...}
-type K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefOutput() K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefOutput
-	ToK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefOutput
-}
-
-type K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefArgs struct {
-	ContainerName pulumi.StringPtrInput `pulumi:"containerName"`
-	// Defaults to `1`.
-	Divisor pulumi.StringPtrInput `pulumi:"divisor"`
-	// Resource to select
-	Resource pulumi.StringInput `pulumi:"resource"`
-}
-
-func (K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRef)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefArgs) ToK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefOutput() K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefArgs) ToK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefOutput)
-}
-
-func (i K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefArgs) ToK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput() K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefArgs) ToK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefOutput).ToK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutputWithContext(ctx)
-}
-
-// K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrInput is an input type that accepts K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefArgs, K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtr and K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrInput` via:
-//
-//	        K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefArgs{...}
-//
-//	or:
-//
-//	        nil
-type K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput() K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput
-	ToK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput
-}
-
-type k8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrType K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefArgs
-
-func K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtr(v *K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefArgs) K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrInput {
-	return (*k8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrType)(v)
-}
-
-func (*k8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRef)(nil)).Elem()
-}
-
-func (i *k8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrType) ToK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput() K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutputWithContext(context.Background())
-}
-
-func (i *k8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrType) ToK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRef)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefOutput) ToK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefOutput() K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefOutput) ToK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefOutput) ToK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput() K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput {
-	return o.ToK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutputWithContext(context.Background())
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefOutput) ToK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRef) *K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRef {
-		return &v
-	}).(K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput)
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefOutput) ContainerName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRef) *string { return v.ContainerName }).(pulumi.StringPtrOutput)
-}
-
-// Defaults to `1`.
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefOutput) Divisor() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRef) *string { return v.Divisor }).(pulumi.StringPtrOutput)
-}
-
-// Resource to select
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefOutput) Resource() pulumi.StringOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRef) string { return v.Resource }).(pulumi.StringOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRef)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput) ToK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput() K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput) ToK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput) Elem() K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRef) K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRef {
-		if v != nil {
-			return *v
-		}
-		var ret K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRef
-		return ret
-	}).(K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefOutput)
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput) ContainerName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRef) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ContainerName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Defaults to `1`.
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput) Divisor() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRef) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Divisor
-	}).(pulumi.StringPtrOutput)
-}
-
-// Resource to select
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput) Resource() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRef) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Resource
-	}).(pulumi.StringPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRef struct {
-	// The key of the secret to select from. Must be a valid secret key.
-	Key *string `pulumi:"key"`
-	// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-	Name *string `pulumi:"name"`
-	// Specify whether the Secret or its key must be defined.
-	Optional *bool `pulumi:"optional"`
-}
-
-// K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefInput is an input type that accepts K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefArgs and K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefArgs{...}
-type K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput() K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput
-	ToK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput
-}
-
-type K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefArgs struct {
-	// The key of the secret to select from. Must be a valid secret key.
-	Key pulumi.StringPtrInput `pulumi:"key"`
-	// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Specify whether the Secret or its key must be defined.
-	Optional pulumi.BoolPtrInput `pulumi:"optional"`
-}
-
-func (K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRef)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefArgs) ToK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput() K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefArgs) ToK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput)
-}
-
-func (i K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefArgs) ToK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput() K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefArgs) ToK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput).ToK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutputWithContext(ctx)
-}
-
-// K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrInput is an input type that accepts K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefArgs, K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtr and K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrInput` via:
-//
-//	        K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefArgs{...}
-//
-//	or:
-//
-//	        nil
-type K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput() K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput
-	ToK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput
-}
-
-type k8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrType K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefArgs
-
-func K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtr(v *K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefArgs) K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrInput {
-	return (*k8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrType)(v)
-}
-
-func (*k8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRef)(nil)).Elem()
-}
-
-func (i *k8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrType) ToK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput() K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutputWithContext(context.Background())
-}
-
-func (i *k8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrType) ToK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRef)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput) ToK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput() K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput) ToK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput) ToK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput() K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput {
-	return o.ToK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutputWithContext(context.Background())
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput) ToK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRef) *K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRef {
-		return &v
-	}).(K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput)
-}
-
-// The key of the secret to select from. Must be a valid secret key.
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRef) *string { return v.Key }).(pulumi.StringPtrOutput)
-}
-
-// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRef) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// Specify whether the Secret or its key must be defined.
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput) Optional() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRef) *bool { return v.Optional }).(pulumi.BoolPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRef)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput) ToK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput() K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput) ToK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput) Elem() K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRef) K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRef {
-		if v != nil {
-			return *v
-		}
-		var ret K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRef
-		return ret
-	}).(K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput)
-}
-
-// The key of the secret to select from. Must be a valid secret key.
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRef) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Key
-	}).(pulumi.StringPtrOutput)
-}
-
-// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRef) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// Specify whether the Secret or its key must be defined.
-func (o K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput) Optional() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRef) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Optional
-	}).(pulumi.BoolPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerLifecycle struct {
-	// post*start is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
-	PostStarts []K8sJobSpecTemplateSpecContainerLifecyclePostStart `pulumi:"postStarts"`
-	// pre*stop is called immediately before a container is terminated. The container is terminated after the handler completes. The reason for termination is passed to the handler. Regardless of the outcome of the handler, the container is eventually terminated. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
-	PreStops []K8sJobSpecTemplateSpecContainerLifecyclePreStop `pulumi:"preStops"`
-}
-
-// K8sJobSpecTemplateSpecContainerLifecycleInput is an input type that accepts K8sJobSpecTemplateSpecContainerLifecycleArgs and K8sJobSpecTemplateSpecContainerLifecycleOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerLifecycleInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerLifecycleArgs{...}
-type K8sJobSpecTemplateSpecContainerLifecycleInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerLifecycleOutput() K8sJobSpecTemplateSpecContainerLifecycleOutput
-	ToK8sJobSpecTemplateSpecContainerLifecycleOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerLifecycleOutput
-}
-
-type K8sJobSpecTemplateSpecContainerLifecycleArgs struct {
-	// post*start is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
-	PostStarts K8sJobSpecTemplateSpecContainerLifecyclePostStartArrayInput `pulumi:"postStarts"`
-	// pre*stop is called immediately before a container is terminated. The container is terminated after the handler completes. The reason for termination is passed to the handler. Regardless of the outcome of the handler, the container is eventually terminated. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
-	PreStops K8sJobSpecTemplateSpecContainerLifecyclePreStopArrayInput `pulumi:"preStops"`
-}
-
-func (K8sJobSpecTemplateSpecContainerLifecycleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLifecycle)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerLifecycleArgs) ToK8sJobSpecTemplateSpecContainerLifecycleOutput() K8sJobSpecTemplateSpecContainerLifecycleOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerLifecycleOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerLifecycleArgs) ToK8sJobSpecTemplateSpecContainerLifecycleOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLifecycleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerLifecycleOutput)
-}
-
-func (i K8sJobSpecTemplateSpecContainerLifecycleArgs) ToK8sJobSpecTemplateSpecContainerLifecyclePtrOutput() K8sJobSpecTemplateSpecContainerLifecyclePtrOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerLifecyclePtrOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerLifecycleArgs) ToK8sJobSpecTemplateSpecContainerLifecyclePtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLifecyclePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerLifecycleOutput).ToK8sJobSpecTemplateSpecContainerLifecyclePtrOutputWithContext(ctx)
-}
-
-// K8sJobSpecTemplateSpecContainerLifecyclePtrInput is an input type that accepts K8sJobSpecTemplateSpecContainerLifecycleArgs, K8sJobSpecTemplateSpecContainerLifecyclePtr and K8sJobSpecTemplateSpecContainerLifecyclePtrOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerLifecyclePtrInput` via:
-//
-//	        K8sJobSpecTemplateSpecContainerLifecycleArgs{...}
-//
-//	or:
-//
-//	        nil
-type K8sJobSpecTemplateSpecContainerLifecyclePtrInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerLifecyclePtrOutput() K8sJobSpecTemplateSpecContainerLifecyclePtrOutput
-	ToK8sJobSpecTemplateSpecContainerLifecyclePtrOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerLifecyclePtrOutput
-}
-
-type k8sJobSpecTemplateSpecContainerLifecyclePtrType K8sJobSpecTemplateSpecContainerLifecycleArgs
-
-func K8sJobSpecTemplateSpecContainerLifecyclePtr(v *K8sJobSpecTemplateSpecContainerLifecycleArgs) K8sJobSpecTemplateSpecContainerLifecyclePtrInput {
-	return (*k8sJobSpecTemplateSpecContainerLifecyclePtrType)(v)
-}
-
-func (*k8sJobSpecTemplateSpecContainerLifecyclePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecContainerLifecycle)(nil)).Elem()
-}
-
-func (i *k8sJobSpecTemplateSpecContainerLifecyclePtrType) ToK8sJobSpecTemplateSpecContainerLifecyclePtrOutput() K8sJobSpecTemplateSpecContainerLifecyclePtrOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerLifecyclePtrOutputWithContext(context.Background())
-}
-
-func (i *k8sJobSpecTemplateSpecContainerLifecyclePtrType) ToK8sJobSpecTemplateSpecContainerLifecyclePtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLifecyclePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerLifecyclePtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerLifecycleOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerLifecycleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLifecycle)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecycleOutput) ToK8sJobSpecTemplateSpecContainerLifecycleOutput() K8sJobSpecTemplateSpecContainerLifecycleOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecycleOutput) ToK8sJobSpecTemplateSpecContainerLifecycleOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLifecycleOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecycleOutput) ToK8sJobSpecTemplateSpecContainerLifecyclePtrOutput() K8sJobSpecTemplateSpecContainerLifecyclePtrOutput {
-	return o.ToK8sJobSpecTemplateSpecContainerLifecyclePtrOutputWithContext(context.Background())
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecycleOutput) ToK8sJobSpecTemplateSpecContainerLifecyclePtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLifecyclePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v K8sJobSpecTemplateSpecContainerLifecycle) *K8sJobSpecTemplateSpecContainerLifecycle {
-		return &v
-	}).(K8sJobSpecTemplateSpecContainerLifecyclePtrOutput)
-}
-
-// post*start is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
-func (o K8sJobSpecTemplateSpecContainerLifecycleOutput) PostStarts() K8sJobSpecTemplateSpecContainerLifecyclePostStartArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerLifecycle) []K8sJobSpecTemplateSpecContainerLifecyclePostStart {
-		return v.PostStarts
-	}).(K8sJobSpecTemplateSpecContainerLifecyclePostStartArrayOutput)
-}
-
-// pre*stop is called immediately before a container is terminated. The container is terminated after the handler completes. The reason for termination is passed to the handler. Regardless of the outcome of the handler, the container is eventually terminated. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
-func (o K8sJobSpecTemplateSpecContainerLifecycleOutput) PreStops() K8sJobSpecTemplateSpecContainerLifecyclePreStopArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerLifecycle) []K8sJobSpecTemplateSpecContainerLifecyclePreStop {
-		return v.PreStops
-	}).(K8sJobSpecTemplateSpecContainerLifecyclePreStopArrayOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerLifecyclePtrOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerLifecyclePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecContainerLifecycle)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePtrOutput) ToK8sJobSpecTemplateSpecContainerLifecyclePtrOutput() K8sJobSpecTemplateSpecContainerLifecyclePtrOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePtrOutput) ToK8sJobSpecTemplateSpecContainerLifecyclePtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLifecyclePtrOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePtrOutput) Elem() K8sJobSpecTemplateSpecContainerLifecycleOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerLifecycle) K8sJobSpecTemplateSpecContainerLifecycle {
-		if v != nil {
-			return *v
-		}
-		var ret K8sJobSpecTemplateSpecContainerLifecycle
-		return ret
-	}).(K8sJobSpecTemplateSpecContainerLifecycleOutput)
-}
-
-// post*start is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
-func (o K8sJobSpecTemplateSpecContainerLifecyclePtrOutput) PostStarts() K8sJobSpecTemplateSpecContainerLifecyclePostStartArrayOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerLifecycle) []K8sJobSpecTemplateSpecContainerLifecyclePostStart {
-		if v == nil {
-			return nil
-		}
-		return v.PostStarts
-	}).(K8sJobSpecTemplateSpecContainerLifecyclePostStartArrayOutput)
-}
-
-// pre*stop is called immediately before a container is terminated. The container is terminated after the handler completes. The reason for termination is passed to the handler. Regardless of the outcome of the handler, the container is eventually terminated. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
-func (o K8sJobSpecTemplateSpecContainerLifecyclePtrOutput) PreStops() K8sJobSpecTemplateSpecContainerLifecyclePreStopArrayOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerLifecycle) []K8sJobSpecTemplateSpecContainerLifecyclePreStop {
-		if v == nil {
-			return nil
-		}
-		return v.PreStops
-	}).(K8sJobSpecTemplateSpecContainerLifecyclePreStopArrayOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerLifecyclePostStart struct {
-	// exec specifies the action to take.
-	Exec *K8sJobSpecTemplateSpecContainerLifecyclePostStartExec `pulumi:"exec"`
-	// Specifies the http request to perform.
-	HttpGet *K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGet `pulumi:"httpGet"`
-	// TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
-	TcpSockets []K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocket `pulumi:"tcpSockets"`
-}
-
-// K8sJobSpecTemplateSpecContainerLifecyclePostStartInput is an input type that accepts K8sJobSpecTemplateSpecContainerLifecyclePostStartArgs and K8sJobSpecTemplateSpecContainerLifecyclePostStartOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerLifecyclePostStartInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerLifecyclePostStartArgs{...}
-type K8sJobSpecTemplateSpecContainerLifecyclePostStartInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerLifecyclePostStartOutput() K8sJobSpecTemplateSpecContainerLifecyclePostStartOutput
-	ToK8sJobSpecTemplateSpecContainerLifecyclePostStartOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerLifecyclePostStartOutput
-}
-
-type K8sJobSpecTemplateSpecContainerLifecyclePostStartArgs struct {
-	// exec specifies the action to take.
-	Exec K8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrInput `pulumi:"exec"`
-	// Specifies the http request to perform.
-	HttpGet K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrInput `pulumi:"httpGet"`
-	// TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
-	TcpSockets K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArrayInput `pulumi:"tcpSockets"`
-}
-
-func (K8sJobSpecTemplateSpecContainerLifecyclePostStartArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLifecyclePostStart)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerLifecyclePostStartArgs) ToK8sJobSpecTemplateSpecContainerLifecyclePostStartOutput() K8sJobSpecTemplateSpecContainerLifecyclePostStartOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerLifecyclePostStartOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerLifecyclePostStartArgs) ToK8sJobSpecTemplateSpecContainerLifecyclePostStartOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLifecyclePostStartOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerLifecyclePostStartOutput)
-}
-
-// K8sJobSpecTemplateSpecContainerLifecyclePostStartArrayInput is an input type that accepts K8sJobSpecTemplateSpecContainerLifecyclePostStartArray and K8sJobSpecTemplateSpecContainerLifecyclePostStartArrayOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerLifecyclePostStartArrayInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerLifecyclePostStartArray{ K8sJobSpecTemplateSpecContainerLifecyclePostStartArgs{...} }
-type K8sJobSpecTemplateSpecContainerLifecyclePostStartArrayInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerLifecyclePostStartArrayOutput() K8sJobSpecTemplateSpecContainerLifecyclePostStartArrayOutput
-	ToK8sJobSpecTemplateSpecContainerLifecyclePostStartArrayOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerLifecyclePostStartArrayOutput
-}
-
-type K8sJobSpecTemplateSpecContainerLifecyclePostStartArray []K8sJobSpecTemplateSpecContainerLifecyclePostStartInput
-
-func (K8sJobSpecTemplateSpecContainerLifecyclePostStartArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecContainerLifecyclePostStart)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerLifecyclePostStartArray) ToK8sJobSpecTemplateSpecContainerLifecyclePostStartArrayOutput() K8sJobSpecTemplateSpecContainerLifecyclePostStartArrayOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerLifecyclePostStartArrayOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerLifecyclePostStartArray) ToK8sJobSpecTemplateSpecContainerLifecyclePostStartArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLifecyclePostStartArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerLifecyclePostStartArrayOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerLifecyclePostStartOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerLifecyclePostStartOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLifecyclePostStart)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePostStartOutput) ToK8sJobSpecTemplateSpecContainerLifecyclePostStartOutput() K8sJobSpecTemplateSpecContainerLifecyclePostStartOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePostStartOutput) ToK8sJobSpecTemplateSpecContainerLifecyclePostStartOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLifecyclePostStartOutput {
-	return o
-}
-
-// exec specifies the action to take.
-func (o K8sJobSpecTemplateSpecContainerLifecyclePostStartOutput) Exec() K8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerLifecyclePostStart) *K8sJobSpecTemplateSpecContainerLifecyclePostStartExec {
-		return v.Exec
-	}).(K8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutput)
-}
-
-// Specifies the http request to perform.
-func (o K8sJobSpecTemplateSpecContainerLifecyclePostStartOutput) HttpGet() K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerLifecyclePostStart) *K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGet {
-		return v.HttpGet
-	}).(K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput)
-}
-
-// TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
-func (o K8sJobSpecTemplateSpecContainerLifecyclePostStartOutput) TcpSockets() K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerLifecyclePostStart) []K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocket {
-		return v.TcpSockets
-	}).(K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArrayOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerLifecyclePostStartArrayOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerLifecyclePostStartArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecContainerLifecyclePostStart)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePostStartArrayOutput) ToK8sJobSpecTemplateSpecContainerLifecyclePostStartArrayOutput() K8sJobSpecTemplateSpecContainerLifecyclePostStartArrayOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePostStartArrayOutput) ToK8sJobSpecTemplateSpecContainerLifecyclePostStartArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLifecyclePostStartArrayOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePostStartArrayOutput) Index(i pulumi.IntInput) K8sJobSpecTemplateSpecContainerLifecyclePostStartOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) K8sJobSpecTemplateSpecContainerLifecyclePostStart {
-		return vs[0].([]K8sJobSpecTemplateSpecContainerLifecyclePostStart)[vs[1].(int)]
-	}).(K8sJobSpecTemplateSpecContainerLifecyclePostStartOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerLifecyclePostStartExec struct {
-	// Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
-	Commands []string `pulumi:"commands"`
-}
-
-// K8sJobSpecTemplateSpecContainerLifecyclePostStartExecInput is an input type that accepts K8sJobSpecTemplateSpecContainerLifecyclePostStartExecArgs and K8sJobSpecTemplateSpecContainerLifecyclePostStartExecOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerLifecyclePostStartExecInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerLifecyclePostStartExecArgs{...}
-type K8sJobSpecTemplateSpecContainerLifecyclePostStartExecInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerLifecyclePostStartExecOutput() K8sJobSpecTemplateSpecContainerLifecyclePostStartExecOutput
-	ToK8sJobSpecTemplateSpecContainerLifecyclePostStartExecOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerLifecyclePostStartExecOutput
-}
-
-type K8sJobSpecTemplateSpecContainerLifecyclePostStartExecArgs struct {
-	// Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
-	Commands pulumi.StringArrayInput `pulumi:"commands"`
-}
-
-func (K8sJobSpecTemplateSpecContainerLifecyclePostStartExecArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLifecyclePostStartExec)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerLifecyclePostStartExecArgs) ToK8sJobSpecTemplateSpecContainerLifecyclePostStartExecOutput() K8sJobSpecTemplateSpecContainerLifecyclePostStartExecOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerLifecyclePostStartExecOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerLifecyclePostStartExecArgs) ToK8sJobSpecTemplateSpecContainerLifecyclePostStartExecOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLifecyclePostStartExecOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerLifecyclePostStartExecOutput)
-}
-
-func (i K8sJobSpecTemplateSpecContainerLifecyclePostStartExecArgs) ToK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutput() K8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerLifecyclePostStartExecArgs) ToK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerLifecyclePostStartExecOutput).ToK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutputWithContext(ctx)
-}
-
-// K8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrInput is an input type that accepts K8sJobSpecTemplateSpecContainerLifecyclePostStartExecArgs, K8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtr and K8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrInput` via:
-//
-//	        K8sJobSpecTemplateSpecContainerLifecyclePostStartExecArgs{...}
-//
-//	or:
-//
-//	        nil
-type K8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutput() K8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutput
-	ToK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutput
-}
-
-type k8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrType K8sJobSpecTemplateSpecContainerLifecyclePostStartExecArgs
-
-func K8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtr(v *K8sJobSpecTemplateSpecContainerLifecyclePostStartExecArgs) K8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrInput {
-	return (*k8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrType)(v)
-}
-
-func (*k8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecContainerLifecyclePostStartExec)(nil)).Elem()
-}
-
-func (i *k8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrType) ToK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutput() K8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutputWithContext(context.Background())
-}
-
-func (i *k8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrType) ToK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerLifecyclePostStartExecOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerLifecyclePostStartExecOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLifecyclePostStartExec)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePostStartExecOutput) ToK8sJobSpecTemplateSpecContainerLifecyclePostStartExecOutput() K8sJobSpecTemplateSpecContainerLifecyclePostStartExecOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePostStartExecOutput) ToK8sJobSpecTemplateSpecContainerLifecyclePostStartExecOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLifecyclePostStartExecOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePostStartExecOutput) ToK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutput() K8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutput {
-	return o.ToK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutputWithContext(context.Background())
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePostStartExecOutput) ToK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v K8sJobSpecTemplateSpecContainerLifecyclePostStartExec) *K8sJobSpecTemplateSpecContainerLifecyclePostStartExec {
-		return &v
-	}).(K8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutput)
-}
-
-// Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
-func (o K8sJobSpecTemplateSpecContainerLifecyclePostStartExecOutput) Commands() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerLifecyclePostStartExec) []string { return v.Commands }).(pulumi.StringArrayOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecContainerLifecyclePostStartExec)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutput) ToK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutput() K8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutput) ToK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutput) Elem() K8sJobSpecTemplateSpecContainerLifecyclePostStartExecOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerLifecyclePostStartExec) K8sJobSpecTemplateSpecContainerLifecyclePostStartExec {
-		if v != nil {
-			return *v
-		}
-		var ret K8sJobSpecTemplateSpecContainerLifecyclePostStartExec
-		return ret
-	}).(K8sJobSpecTemplateSpecContainerLifecyclePostStartExecOutput)
-}
-
-// Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
-func (o K8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutput) Commands() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerLifecyclePostStartExec) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Commands
-	}).(pulumi.StringArrayOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGet struct {
-	// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
-	Host *string `pulumi:"host"`
-	// Scheme to use for connecting to the host.
-	HttpHeaders []K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeader `pulumi:"httpHeaders"`
-	// Path to access on the HTTP server.
-	Path *string `pulumi:"path"`
-	// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
-	Port *string `pulumi:"port"`
-	// Scheme to use for connecting to the host. Defaults to `HTTP`.
-	Scheme *string `pulumi:"scheme"`
-}
-
-// K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetInput is an input type that accepts K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetArgs and K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetArgs{...}
-type K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutput() K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutput
-	ToK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutput
-}
-
-type K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetArgs struct {
-	// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
-	Host pulumi.StringPtrInput `pulumi:"host"`
-	// Scheme to use for connecting to the host.
-	HttpHeaders K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayInput `pulumi:"httpHeaders"`
-	// Path to access on the HTTP server.
-	Path pulumi.StringPtrInput `pulumi:"path"`
-	// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
-	Port pulumi.StringPtrInput `pulumi:"port"`
-	// Scheme to use for connecting to the host. Defaults to `HTTP`.
-	Scheme pulumi.StringPtrInput `pulumi:"scheme"`
-}
-
-func (K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGet)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetArgs) ToK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutput() K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetArgs) ToK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutput)
-}
-
-func (i K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetArgs) ToK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput() K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetArgs) ToK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutput).ToK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutputWithContext(ctx)
-}
-
-// K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrInput is an input type that accepts K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetArgs, K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtr and K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrInput` via:
-//
-//	        K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetArgs{...}
-//
-//	or:
-//
-//	        nil
-type K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput() K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput
-	ToK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput
-}
-
-type k8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrType K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetArgs
-
-func K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtr(v *K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetArgs) K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrInput {
-	return (*k8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrType)(v)
-}
-
-func (*k8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGet)(nil)).Elem()
-}
-
-func (i *k8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrType) ToK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput() K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutputWithContext(context.Background())
-}
-
-func (i *k8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrType) ToK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGet)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutput) ToK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutput() K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutput) ToK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutput) ToK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput() K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput {
-	return o.ToK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutputWithContext(context.Background())
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutput) ToK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGet) *K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGet {
-		return &v
-	}).(K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput)
-}
-
-// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
-func (o K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGet) *string { return v.Host }).(pulumi.StringPtrOutput)
-}
-
-// Scheme to use for connecting to the host.
-func (o K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutput) HttpHeaders() K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGet) []K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeader {
-		return v.HttpHeaders
-	}).(K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayOutput)
-}
-
-// Path to access on the HTTP server.
-func (o K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGet) *string { return v.Path }).(pulumi.StringPtrOutput)
-}
-
-// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
-func (o K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutput) Port() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGet) *string { return v.Port }).(pulumi.StringPtrOutput)
-}
-
-// Scheme to use for connecting to the host. Defaults to `HTTP`.
-func (o K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutput) Scheme() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGet) *string { return v.Scheme }).(pulumi.StringPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGet)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput) ToK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput() K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput) ToK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput) Elem() K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGet) K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGet {
-		if v != nil {
-			return *v
-		}
-		var ret K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGet
-		return ret
-	}).(K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutput)
-}
-
-// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
-func (o K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGet) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Host
-	}).(pulumi.StringPtrOutput)
-}
-
-// Scheme to use for connecting to the host.
-func (o K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput) HttpHeaders() K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGet) []K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeader {
-		if v == nil {
-			return nil
-		}
-		return v.HttpHeaders
-	}).(K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayOutput)
-}
-
-// Path to access on the HTTP server.
-func (o K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGet) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Path
-	}).(pulumi.StringPtrOutput)
-}
-
-// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
-func (o K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput) Port() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGet) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Port
-	}).(pulumi.StringPtrOutput)
-}
-
-// Scheme to use for connecting to the host. Defaults to `HTTP`.
-func (o K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput) Scheme() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGet) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Scheme
-	}).(pulumi.StringPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeader struct {
-	// The header field name
-	Name *string `pulumi:"name"`
-	// The header field value
-	Value *string `pulumi:"value"`
-}
-
-// K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderInput is an input type that accepts K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArgs and K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArgs{...}
-type K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderOutput() K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderOutput
-	ToK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderOutput
-}
-
-type K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArgs struct {
-	// The header field name
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The header field value
-	Value pulumi.StringPtrInput `pulumi:"value"`
-}
-
-func (K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeader)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArgs) ToK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderOutput() K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArgs) ToK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderOutput)
-}
-
-// K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayInput is an input type that accepts K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArray and K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArray{ K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArgs{...} }
-type K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayOutput() K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayOutput
-	ToK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayOutput
-}
-
-type K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArray []K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderInput
-
-func (K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeader)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArray) ToK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayOutput() K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArray) ToK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeader)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderOutput) ToK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderOutput() K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderOutput) ToK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderOutput {
-	return o
-}
-
-// The header field name
-func (o K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeader) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// The header field value
-func (o K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeader) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeader)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayOutput) ToK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayOutput() K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayOutput) ToK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayOutput) Index(i pulumi.IntInput) K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeader {
-		return vs[0].([]K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeader)[vs[1].(int)]
-	}).(K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocket struct {
-	// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
-	Port string `pulumi:"port"`
-}
-
-// K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketInput is an input type that accepts K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArgs and K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArgs{...}
-type K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketOutput() K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketOutput
-	ToK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketOutput
-}
-
-type K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArgs struct {
-	// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
-	Port pulumi.StringInput `pulumi:"port"`
-}
-
-func (K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocket)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArgs) ToK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketOutput() K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArgs) ToK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketOutput)
-}
-
-// K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArrayInput is an input type that accepts K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArray and K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArrayOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArrayInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArray{ K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArgs{...} }
-type K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArrayInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArrayOutput() K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArrayOutput
-	ToK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArrayOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArrayOutput
-}
-
-type K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArray []K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketInput
-
-func (K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocket)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArray) ToK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArrayOutput() K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArrayOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArrayOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArray) ToK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArrayOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocket)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketOutput) ToK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketOutput() K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketOutput) ToK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketOutput {
-	return o
-}
-
-// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
-func (o K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketOutput) Port() pulumi.StringOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocket) string { return v.Port }).(pulumi.StringOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArrayOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocket)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArrayOutput) ToK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArrayOutput() K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArrayOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArrayOutput) ToK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArrayOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArrayOutput) Index(i pulumi.IntInput) K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocket {
-		return vs[0].([]K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocket)[vs[1].(int)]
-	}).(K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerLifecyclePreStop struct {
-	// exec specifies the action to take.
-	Exec *K8sJobSpecTemplateSpecContainerLifecyclePreStopExec `pulumi:"exec"`
-	// Specifies the http request to perform.
-	HttpGet *K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGet `pulumi:"httpGet"`
-	// TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
-	TcpSockets []K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocket `pulumi:"tcpSockets"`
-}
-
-// K8sJobSpecTemplateSpecContainerLifecyclePreStopInput is an input type that accepts K8sJobSpecTemplateSpecContainerLifecyclePreStopArgs and K8sJobSpecTemplateSpecContainerLifecyclePreStopOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerLifecyclePreStopInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerLifecyclePreStopArgs{...}
-type K8sJobSpecTemplateSpecContainerLifecyclePreStopInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerLifecyclePreStopOutput() K8sJobSpecTemplateSpecContainerLifecyclePreStopOutput
-	ToK8sJobSpecTemplateSpecContainerLifecyclePreStopOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerLifecyclePreStopOutput
-}
-
-type K8sJobSpecTemplateSpecContainerLifecyclePreStopArgs struct {
-	// exec specifies the action to take.
-	Exec K8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrInput `pulumi:"exec"`
-	// Specifies the http request to perform.
-	HttpGet K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrInput `pulumi:"httpGet"`
-	// TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
-	TcpSockets K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArrayInput `pulumi:"tcpSockets"`
-}
-
-func (K8sJobSpecTemplateSpecContainerLifecyclePreStopArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLifecyclePreStop)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerLifecyclePreStopArgs) ToK8sJobSpecTemplateSpecContainerLifecyclePreStopOutput() K8sJobSpecTemplateSpecContainerLifecyclePreStopOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerLifecyclePreStopOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerLifecyclePreStopArgs) ToK8sJobSpecTemplateSpecContainerLifecyclePreStopOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLifecyclePreStopOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerLifecyclePreStopOutput)
-}
-
-// K8sJobSpecTemplateSpecContainerLifecyclePreStopArrayInput is an input type that accepts K8sJobSpecTemplateSpecContainerLifecyclePreStopArray and K8sJobSpecTemplateSpecContainerLifecyclePreStopArrayOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerLifecyclePreStopArrayInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerLifecyclePreStopArray{ K8sJobSpecTemplateSpecContainerLifecyclePreStopArgs{...} }
-type K8sJobSpecTemplateSpecContainerLifecyclePreStopArrayInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerLifecyclePreStopArrayOutput() K8sJobSpecTemplateSpecContainerLifecyclePreStopArrayOutput
-	ToK8sJobSpecTemplateSpecContainerLifecyclePreStopArrayOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerLifecyclePreStopArrayOutput
-}
-
-type K8sJobSpecTemplateSpecContainerLifecyclePreStopArray []K8sJobSpecTemplateSpecContainerLifecyclePreStopInput
-
-func (K8sJobSpecTemplateSpecContainerLifecyclePreStopArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecContainerLifecyclePreStop)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerLifecyclePreStopArray) ToK8sJobSpecTemplateSpecContainerLifecyclePreStopArrayOutput() K8sJobSpecTemplateSpecContainerLifecyclePreStopArrayOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerLifecyclePreStopArrayOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerLifecyclePreStopArray) ToK8sJobSpecTemplateSpecContainerLifecyclePreStopArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLifecyclePreStopArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerLifecyclePreStopArrayOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerLifecyclePreStopOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerLifecyclePreStopOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLifecyclePreStop)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePreStopOutput) ToK8sJobSpecTemplateSpecContainerLifecyclePreStopOutput() K8sJobSpecTemplateSpecContainerLifecyclePreStopOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePreStopOutput) ToK8sJobSpecTemplateSpecContainerLifecyclePreStopOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLifecyclePreStopOutput {
-	return o
-}
-
-// exec specifies the action to take.
-func (o K8sJobSpecTemplateSpecContainerLifecyclePreStopOutput) Exec() K8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerLifecyclePreStop) *K8sJobSpecTemplateSpecContainerLifecyclePreStopExec {
-		return v.Exec
-	}).(K8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutput)
-}
-
-// Specifies the http request to perform.
-func (o K8sJobSpecTemplateSpecContainerLifecyclePreStopOutput) HttpGet() K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerLifecyclePreStop) *K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGet {
-		return v.HttpGet
-	}).(K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput)
-}
-
-// TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
-func (o K8sJobSpecTemplateSpecContainerLifecyclePreStopOutput) TcpSockets() K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerLifecyclePreStop) []K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocket {
-		return v.TcpSockets
-	}).(K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArrayOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerLifecyclePreStopArrayOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerLifecyclePreStopArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecContainerLifecyclePreStop)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePreStopArrayOutput) ToK8sJobSpecTemplateSpecContainerLifecyclePreStopArrayOutput() K8sJobSpecTemplateSpecContainerLifecyclePreStopArrayOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePreStopArrayOutput) ToK8sJobSpecTemplateSpecContainerLifecyclePreStopArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLifecyclePreStopArrayOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePreStopArrayOutput) Index(i pulumi.IntInput) K8sJobSpecTemplateSpecContainerLifecyclePreStopOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) K8sJobSpecTemplateSpecContainerLifecyclePreStop {
-		return vs[0].([]K8sJobSpecTemplateSpecContainerLifecyclePreStop)[vs[1].(int)]
-	}).(K8sJobSpecTemplateSpecContainerLifecyclePreStopOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerLifecyclePreStopExec struct {
-	// Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
-	Commands []string `pulumi:"commands"`
-}
-
-// K8sJobSpecTemplateSpecContainerLifecyclePreStopExecInput is an input type that accepts K8sJobSpecTemplateSpecContainerLifecyclePreStopExecArgs and K8sJobSpecTemplateSpecContainerLifecyclePreStopExecOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerLifecyclePreStopExecInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerLifecyclePreStopExecArgs{...}
-type K8sJobSpecTemplateSpecContainerLifecyclePreStopExecInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerLifecyclePreStopExecOutput() K8sJobSpecTemplateSpecContainerLifecyclePreStopExecOutput
-	ToK8sJobSpecTemplateSpecContainerLifecyclePreStopExecOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerLifecyclePreStopExecOutput
-}
-
-type K8sJobSpecTemplateSpecContainerLifecyclePreStopExecArgs struct {
-	// Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
-	Commands pulumi.StringArrayInput `pulumi:"commands"`
-}
-
-func (K8sJobSpecTemplateSpecContainerLifecyclePreStopExecArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLifecyclePreStopExec)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerLifecyclePreStopExecArgs) ToK8sJobSpecTemplateSpecContainerLifecyclePreStopExecOutput() K8sJobSpecTemplateSpecContainerLifecyclePreStopExecOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerLifecyclePreStopExecOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerLifecyclePreStopExecArgs) ToK8sJobSpecTemplateSpecContainerLifecyclePreStopExecOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLifecyclePreStopExecOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerLifecyclePreStopExecOutput)
-}
-
-func (i K8sJobSpecTemplateSpecContainerLifecyclePreStopExecArgs) ToK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutput() K8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerLifecyclePreStopExecArgs) ToK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerLifecyclePreStopExecOutput).ToK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutputWithContext(ctx)
-}
-
-// K8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrInput is an input type that accepts K8sJobSpecTemplateSpecContainerLifecyclePreStopExecArgs, K8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtr and K8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrInput` via:
-//
-//	        K8sJobSpecTemplateSpecContainerLifecyclePreStopExecArgs{...}
-//
-//	or:
-//
-//	        nil
-type K8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutput() K8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutput
-	ToK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutput
-}
-
-type k8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrType K8sJobSpecTemplateSpecContainerLifecyclePreStopExecArgs
-
-func K8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtr(v *K8sJobSpecTemplateSpecContainerLifecyclePreStopExecArgs) K8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrInput {
-	return (*k8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrType)(v)
-}
-
-func (*k8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecContainerLifecyclePreStopExec)(nil)).Elem()
-}
-
-func (i *k8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrType) ToK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutput() K8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutputWithContext(context.Background())
-}
-
-func (i *k8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrType) ToK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerLifecyclePreStopExecOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerLifecyclePreStopExecOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLifecyclePreStopExec)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePreStopExecOutput) ToK8sJobSpecTemplateSpecContainerLifecyclePreStopExecOutput() K8sJobSpecTemplateSpecContainerLifecyclePreStopExecOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePreStopExecOutput) ToK8sJobSpecTemplateSpecContainerLifecyclePreStopExecOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLifecyclePreStopExecOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePreStopExecOutput) ToK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutput() K8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutput {
-	return o.ToK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutputWithContext(context.Background())
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePreStopExecOutput) ToK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v K8sJobSpecTemplateSpecContainerLifecyclePreStopExec) *K8sJobSpecTemplateSpecContainerLifecyclePreStopExec {
-		return &v
-	}).(K8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutput)
-}
-
-// Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
-func (o K8sJobSpecTemplateSpecContainerLifecyclePreStopExecOutput) Commands() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerLifecyclePreStopExec) []string { return v.Commands }).(pulumi.StringArrayOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecContainerLifecyclePreStopExec)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutput) ToK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutput() K8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutput) ToK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutput) Elem() K8sJobSpecTemplateSpecContainerLifecyclePreStopExecOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerLifecyclePreStopExec) K8sJobSpecTemplateSpecContainerLifecyclePreStopExec {
-		if v != nil {
-			return *v
-		}
-		var ret K8sJobSpecTemplateSpecContainerLifecyclePreStopExec
-		return ret
-	}).(K8sJobSpecTemplateSpecContainerLifecyclePreStopExecOutput)
-}
-
-// Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
-func (o K8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutput) Commands() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerLifecyclePreStopExec) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Commands
-	}).(pulumi.StringArrayOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGet struct {
-	// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
-	Host *string `pulumi:"host"`
-	// Scheme to use for connecting to the host.
-	HttpHeaders []K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeader `pulumi:"httpHeaders"`
-	// Path to access on the HTTP server.
-	Path *string `pulumi:"path"`
-	// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
-	Port *string `pulumi:"port"`
-	// Scheme to use for connecting to the host. Defaults to `HTTP`.
-	Scheme *string `pulumi:"scheme"`
-}
-
-// K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetInput is an input type that accepts K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetArgs and K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetArgs{...}
-type K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutput() K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutput
-	ToK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutput
-}
-
-type K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetArgs struct {
-	// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
-	Host pulumi.StringPtrInput `pulumi:"host"`
-	// Scheme to use for connecting to the host.
-	HttpHeaders K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayInput `pulumi:"httpHeaders"`
-	// Path to access on the HTTP server.
-	Path pulumi.StringPtrInput `pulumi:"path"`
-	// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
-	Port pulumi.StringPtrInput `pulumi:"port"`
-	// Scheme to use for connecting to the host. Defaults to `HTTP`.
-	Scheme pulumi.StringPtrInput `pulumi:"scheme"`
-}
-
-func (K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGet)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetArgs) ToK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutput() K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetArgs) ToK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutput)
-}
-
-func (i K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetArgs) ToK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput() K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetArgs) ToK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutput).ToK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutputWithContext(ctx)
-}
-
-// K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrInput is an input type that accepts K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetArgs, K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtr and K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrInput` via:
-//
-//	        K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetArgs{...}
-//
-//	or:
-//
-//	        nil
-type K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput() K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput
-	ToK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput
-}
-
-type k8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrType K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetArgs
-
-func K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtr(v *K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetArgs) K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrInput {
-	return (*k8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrType)(v)
-}
-
-func (*k8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGet)(nil)).Elem()
-}
-
-func (i *k8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrType) ToK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput() K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutputWithContext(context.Background())
-}
-
-func (i *k8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrType) ToK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGet)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutput) ToK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutput() K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutput) ToK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutput) ToK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput() K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput {
-	return o.ToK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutputWithContext(context.Background())
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutput) ToK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGet) *K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGet {
-		return &v
-	}).(K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput)
-}
-
-// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
-func (o K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGet) *string { return v.Host }).(pulumi.StringPtrOutput)
-}
-
-// Scheme to use for connecting to the host.
-func (o K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutput) HttpHeaders() K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGet) []K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeader {
-		return v.HttpHeaders
-	}).(K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayOutput)
-}
-
-// Path to access on the HTTP server.
-func (o K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGet) *string { return v.Path }).(pulumi.StringPtrOutput)
-}
-
-// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
-func (o K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutput) Port() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGet) *string { return v.Port }).(pulumi.StringPtrOutput)
-}
-
-// Scheme to use for connecting to the host. Defaults to `HTTP`.
-func (o K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutput) Scheme() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGet) *string { return v.Scheme }).(pulumi.StringPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGet)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput) ToK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput() K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput) ToK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput) Elem() K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGet) K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGet {
-		if v != nil {
-			return *v
-		}
-		var ret K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGet
-		return ret
-	}).(K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutput)
-}
-
-// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
-func (o K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGet) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Host
-	}).(pulumi.StringPtrOutput)
-}
-
-// Scheme to use for connecting to the host.
-func (o K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput) HttpHeaders() K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGet) []K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeader {
-		if v == nil {
-			return nil
-		}
-		return v.HttpHeaders
-	}).(K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayOutput)
-}
-
-// Path to access on the HTTP server.
-func (o K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGet) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Path
-	}).(pulumi.StringPtrOutput)
-}
-
-// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
-func (o K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput) Port() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGet) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Port
-	}).(pulumi.StringPtrOutput)
-}
-
-// Scheme to use for connecting to the host. Defaults to `HTTP`.
-func (o K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput) Scheme() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGet) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Scheme
-	}).(pulumi.StringPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeader struct {
-	// The header field name
-	Name *string `pulumi:"name"`
-	// The header field value
-	Value *string `pulumi:"value"`
-}
-
-// K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderInput is an input type that accepts K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArgs and K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArgs{...}
-type K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderOutput() K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderOutput
-	ToK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderOutput
-}
-
-type K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArgs struct {
-	// The header field name
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The header field value
-	Value pulumi.StringPtrInput `pulumi:"value"`
-}
-
-func (K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeader)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArgs) ToK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderOutput() K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArgs) ToK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderOutput)
-}
-
-// K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayInput is an input type that accepts K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArray and K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArray{ K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArgs{...} }
-type K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayOutput() K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayOutput
-	ToK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayOutput
-}
-
-type K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArray []K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderInput
-
-func (K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeader)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArray) ToK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayOutput() K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArray) ToK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeader)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderOutput) ToK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderOutput() K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderOutput) ToK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderOutput {
-	return o
-}
-
-// The header field name
-func (o K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeader) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// The header field value
-func (o K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeader) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeader)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayOutput) ToK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayOutput() K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayOutput) ToK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayOutput) Index(i pulumi.IntInput) K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeader {
-		return vs[0].([]K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeader)[vs[1].(int)]
-	}).(K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocket struct {
-	// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
-	Port string `pulumi:"port"`
-}
-
-// K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketInput is an input type that accepts K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArgs and K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArgs{...}
-type K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketOutput() K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketOutput
-	ToK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketOutput
-}
-
-type K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArgs struct {
-	// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
-	Port pulumi.StringInput `pulumi:"port"`
-}
-
-func (K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocket)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArgs) ToK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketOutput() K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArgs) ToK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketOutput)
-}
-
-// K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArrayInput is an input type that accepts K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArray and K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArrayOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArrayInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArray{ K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArgs{...} }
-type K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArrayInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArrayOutput() K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArrayOutput
-	ToK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArrayOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArrayOutput
-}
-
-type K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArray []K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketInput
-
-func (K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocket)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArray) ToK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArrayOutput() K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArrayOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArrayOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArray) ToK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArrayOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocket)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketOutput) ToK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketOutput() K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketOutput) ToK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketOutput {
-	return o
-}
-
-// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
-func (o K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketOutput) Port() pulumi.StringOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocket) string { return v.Port }).(pulumi.StringOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArrayOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocket)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArrayOutput) ToK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArrayOutput() K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArrayOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArrayOutput) ToK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArrayOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArrayOutput) Index(i pulumi.IntInput) K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocket {
-		return vs[0].([]K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocket)[vs[1].(int)]
-	}).(K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerLivenessProbe struct {
-	// exec specifies the action to take.
-	Exec *K8sJobSpecTemplateSpecContainerLivenessProbeExec `pulumi:"exec"`
-	// Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to `3`.
-	FailureThreshold *int `pulumi:"failureThreshold"`
-	// GRPC specifies an action involving a GRPC port.
-	Grpcs []K8sJobSpecTemplateSpecContainerLivenessProbeGrpc `pulumi:"grpcs"`
-	// Specifies the http request to perform.
-	HttpGet *K8sJobSpecTemplateSpecContainerLivenessProbeHttpGet `pulumi:"httpGet"`
-	// Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
-	InitialDelaySeconds *int `pulumi:"initialDelaySeconds"`
-	// How often (in seconds) to perform the probe Defaults to `10`.
-	PeriodSeconds *int `pulumi:"periodSeconds"`
-	// Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to `1`.
-	SuccessThreshold *int `pulumi:"successThreshold"`
-	// TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
-	TcpSockets []K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocket `pulumi:"tcpSockets"`
-	// Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes Defaults to `1`.
-	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
-}
-
-// K8sJobSpecTemplateSpecContainerLivenessProbeInput is an input type that accepts K8sJobSpecTemplateSpecContainerLivenessProbeArgs and K8sJobSpecTemplateSpecContainerLivenessProbeOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerLivenessProbeInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerLivenessProbeArgs{...}
-type K8sJobSpecTemplateSpecContainerLivenessProbeInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerLivenessProbeOutput() K8sJobSpecTemplateSpecContainerLivenessProbeOutput
-	ToK8sJobSpecTemplateSpecContainerLivenessProbeOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerLivenessProbeOutput
-}
-
-type K8sJobSpecTemplateSpecContainerLivenessProbeArgs struct {
-	// exec specifies the action to take.
-	Exec K8sJobSpecTemplateSpecContainerLivenessProbeExecPtrInput `pulumi:"exec"`
-	// Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to `3`.
-	FailureThreshold pulumi.IntPtrInput `pulumi:"failureThreshold"`
-	// GRPC specifies an action involving a GRPC port.
-	Grpcs K8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayInput `pulumi:"grpcs"`
-	// Specifies the http request to perform.
-	HttpGet K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrInput `pulumi:"httpGet"`
-	// Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
-	InitialDelaySeconds pulumi.IntPtrInput `pulumi:"initialDelaySeconds"`
-	// How often (in seconds) to perform the probe Defaults to `10`.
-	PeriodSeconds pulumi.IntPtrInput `pulumi:"periodSeconds"`
-	// Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to `1`.
-	SuccessThreshold pulumi.IntPtrInput `pulumi:"successThreshold"`
-	// TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
-	TcpSockets K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayInput `pulumi:"tcpSockets"`
-	// Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes Defaults to `1`.
-	TimeoutSeconds pulumi.IntPtrInput `pulumi:"timeoutSeconds"`
-}
-
-func (K8sJobSpecTemplateSpecContainerLivenessProbeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLivenessProbe)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerLivenessProbeArgs) ToK8sJobSpecTemplateSpecContainerLivenessProbeOutput() K8sJobSpecTemplateSpecContainerLivenessProbeOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerLivenessProbeOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerLivenessProbeArgs) ToK8sJobSpecTemplateSpecContainerLivenessProbeOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLivenessProbeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerLivenessProbeOutput)
-}
-
-func (i K8sJobSpecTemplateSpecContainerLivenessProbeArgs) ToK8sJobSpecTemplateSpecContainerLivenessProbePtrOutput() K8sJobSpecTemplateSpecContainerLivenessProbePtrOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerLivenessProbePtrOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerLivenessProbeArgs) ToK8sJobSpecTemplateSpecContainerLivenessProbePtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLivenessProbePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerLivenessProbeOutput).ToK8sJobSpecTemplateSpecContainerLivenessProbePtrOutputWithContext(ctx)
-}
-
-// K8sJobSpecTemplateSpecContainerLivenessProbePtrInput is an input type that accepts K8sJobSpecTemplateSpecContainerLivenessProbeArgs, K8sJobSpecTemplateSpecContainerLivenessProbePtr and K8sJobSpecTemplateSpecContainerLivenessProbePtrOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerLivenessProbePtrInput` via:
-//
-//	        K8sJobSpecTemplateSpecContainerLivenessProbeArgs{...}
-//
-//	or:
-//
-//	        nil
-type K8sJobSpecTemplateSpecContainerLivenessProbePtrInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerLivenessProbePtrOutput() K8sJobSpecTemplateSpecContainerLivenessProbePtrOutput
-	ToK8sJobSpecTemplateSpecContainerLivenessProbePtrOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerLivenessProbePtrOutput
-}
-
-type k8sJobSpecTemplateSpecContainerLivenessProbePtrType K8sJobSpecTemplateSpecContainerLivenessProbeArgs
-
-func K8sJobSpecTemplateSpecContainerLivenessProbePtr(v *K8sJobSpecTemplateSpecContainerLivenessProbeArgs) K8sJobSpecTemplateSpecContainerLivenessProbePtrInput {
-	return (*k8sJobSpecTemplateSpecContainerLivenessProbePtrType)(v)
-}
-
-func (*k8sJobSpecTemplateSpecContainerLivenessProbePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecContainerLivenessProbe)(nil)).Elem()
-}
-
-func (i *k8sJobSpecTemplateSpecContainerLivenessProbePtrType) ToK8sJobSpecTemplateSpecContainerLivenessProbePtrOutput() K8sJobSpecTemplateSpecContainerLivenessProbePtrOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerLivenessProbePtrOutputWithContext(context.Background())
-}
-
-func (i *k8sJobSpecTemplateSpecContainerLivenessProbePtrType) ToK8sJobSpecTemplateSpecContainerLivenessProbePtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLivenessProbePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerLivenessProbePtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerLivenessProbeOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerLivenessProbeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLivenessProbe)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeOutput) ToK8sJobSpecTemplateSpecContainerLivenessProbeOutput() K8sJobSpecTemplateSpecContainerLivenessProbeOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeOutput) ToK8sJobSpecTemplateSpecContainerLivenessProbeOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLivenessProbeOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeOutput) ToK8sJobSpecTemplateSpecContainerLivenessProbePtrOutput() K8sJobSpecTemplateSpecContainerLivenessProbePtrOutput {
-	return o.ToK8sJobSpecTemplateSpecContainerLivenessProbePtrOutputWithContext(context.Background())
-}
-
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeOutput) ToK8sJobSpecTemplateSpecContainerLivenessProbePtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLivenessProbePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v K8sJobSpecTemplateSpecContainerLivenessProbe) *K8sJobSpecTemplateSpecContainerLivenessProbe {
-		return &v
-	}).(K8sJobSpecTemplateSpecContainerLivenessProbePtrOutput)
-}
-
-// exec specifies the action to take.
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeOutput) Exec() K8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerLivenessProbe) *K8sJobSpecTemplateSpecContainerLivenessProbeExec {
-		return v.Exec
-	}).(K8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutput)
-}
-
-// Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to `3`.
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeOutput) FailureThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerLivenessProbe) *int { return v.FailureThreshold }).(pulumi.IntPtrOutput)
-}
-
-// GRPC specifies an action involving a GRPC port.
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeOutput) Grpcs() K8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerLivenessProbe) []K8sJobSpecTemplateSpecContainerLivenessProbeGrpc {
-		return v.Grpcs
-	}).(K8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayOutput)
-}
-
-// Specifies the http request to perform.
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeOutput) HttpGet() K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerLivenessProbe) *K8sJobSpecTemplateSpecContainerLivenessProbeHttpGet {
-		return v.HttpGet
-	}).(K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput)
-}
-
-// Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerLivenessProbe) *int { return v.InitialDelaySeconds }).(pulumi.IntPtrOutput)
-}
-
-// How often (in seconds) to perform the probe Defaults to `10`.
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeOutput) PeriodSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerLivenessProbe) *int { return v.PeriodSeconds }).(pulumi.IntPtrOutput)
-}
-
-// Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to `1`.
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeOutput) SuccessThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerLivenessProbe) *int { return v.SuccessThreshold }).(pulumi.IntPtrOutput)
-}
-
-// TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeOutput) TcpSockets() K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerLivenessProbe) []K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocket {
-		return v.TcpSockets
-	}).(K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayOutput)
-}
-
-// Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes Defaults to `1`.
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeOutput) TimeoutSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerLivenessProbe) *int { return v.TimeoutSeconds }).(pulumi.IntPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerLivenessProbePtrOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerLivenessProbePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecContainerLivenessProbe)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerLivenessProbePtrOutput) ToK8sJobSpecTemplateSpecContainerLivenessProbePtrOutput() K8sJobSpecTemplateSpecContainerLivenessProbePtrOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLivenessProbePtrOutput) ToK8sJobSpecTemplateSpecContainerLivenessProbePtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLivenessProbePtrOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLivenessProbePtrOutput) Elem() K8sJobSpecTemplateSpecContainerLivenessProbeOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerLivenessProbe) K8sJobSpecTemplateSpecContainerLivenessProbe {
-		if v != nil {
-			return *v
-		}
-		var ret K8sJobSpecTemplateSpecContainerLivenessProbe
-		return ret
-	}).(K8sJobSpecTemplateSpecContainerLivenessProbeOutput)
-}
-
-// exec specifies the action to take.
-func (o K8sJobSpecTemplateSpecContainerLivenessProbePtrOutput) Exec() K8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerLivenessProbe) *K8sJobSpecTemplateSpecContainerLivenessProbeExec {
-		if v == nil {
-			return nil
-		}
-		return v.Exec
-	}).(K8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutput)
-}
-
-// Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to `3`.
-func (o K8sJobSpecTemplateSpecContainerLivenessProbePtrOutput) FailureThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerLivenessProbe) *int {
-		if v == nil {
-			return nil
-		}
-		return v.FailureThreshold
-	}).(pulumi.IntPtrOutput)
-}
-
-// GRPC specifies an action involving a GRPC port.
-func (o K8sJobSpecTemplateSpecContainerLivenessProbePtrOutput) Grpcs() K8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerLivenessProbe) []K8sJobSpecTemplateSpecContainerLivenessProbeGrpc {
-		if v == nil {
-			return nil
-		}
-		return v.Grpcs
-	}).(K8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayOutput)
-}
-
-// Specifies the http request to perform.
-func (o K8sJobSpecTemplateSpecContainerLivenessProbePtrOutput) HttpGet() K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerLivenessProbe) *K8sJobSpecTemplateSpecContainerLivenessProbeHttpGet {
-		if v == nil {
-			return nil
-		}
-		return v.HttpGet
-	}).(K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput)
-}
-
-// Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
-func (o K8sJobSpecTemplateSpecContainerLivenessProbePtrOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerLivenessProbe) *int {
-		if v == nil {
-			return nil
-		}
-		return v.InitialDelaySeconds
-	}).(pulumi.IntPtrOutput)
-}
-
-// How often (in seconds) to perform the probe Defaults to `10`.
-func (o K8sJobSpecTemplateSpecContainerLivenessProbePtrOutput) PeriodSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerLivenessProbe) *int {
-		if v == nil {
-			return nil
-		}
-		return v.PeriodSeconds
-	}).(pulumi.IntPtrOutput)
-}
-
-// Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to `1`.
-func (o K8sJobSpecTemplateSpecContainerLivenessProbePtrOutput) SuccessThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerLivenessProbe) *int {
-		if v == nil {
-			return nil
-		}
-		return v.SuccessThreshold
-	}).(pulumi.IntPtrOutput)
-}
-
-// TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
-func (o K8sJobSpecTemplateSpecContainerLivenessProbePtrOutput) TcpSockets() K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerLivenessProbe) []K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocket {
-		if v == nil {
-			return nil
-		}
-		return v.TcpSockets
-	}).(K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayOutput)
-}
-
-// Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes Defaults to `1`.
-func (o K8sJobSpecTemplateSpecContainerLivenessProbePtrOutput) TimeoutSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerLivenessProbe) *int {
-		if v == nil {
-			return nil
-		}
-		return v.TimeoutSeconds
-	}).(pulumi.IntPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerLivenessProbeExec struct {
-	// Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
-	Commands []string `pulumi:"commands"`
-}
-
-// K8sJobSpecTemplateSpecContainerLivenessProbeExecInput is an input type that accepts K8sJobSpecTemplateSpecContainerLivenessProbeExecArgs and K8sJobSpecTemplateSpecContainerLivenessProbeExecOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerLivenessProbeExecInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerLivenessProbeExecArgs{...}
-type K8sJobSpecTemplateSpecContainerLivenessProbeExecInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerLivenessProbeExecOutput() K8sJobSpecTemplateSpecContainerLivenessProbeExecOutput
-	ToK8sJobSpecTemplateSpecContainerLivenessProbeExecOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerLivenessProbeExecOutput
-}
-
-type K8sJobSpecTemplateSpecContainerLivenessProbeExecArgs struct {
-	// Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
-	Commands pulumi.StringArrayInput `pulumi:"commands"`
-}
-
-func (K8sJobSpecTemplateSpecContainerLivenessProbeExecArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLivenessProbeExec)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerLivenessProbeExecArgs) ToK8sJobSpecTemplateSpecContainerLivenessProbeExecOutput() K8sJobSpecTemplateSpecContainerLivenessProbeExecOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerLivenessProbeExecOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerLivenessProbeExecArgs) ToK8sJobSpecTemplateSpecContainerLivenessProbeExecOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLivenessProbeExecOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerLivenessProbeExecOutput)
-}
-
-func (i K8sJobSpecTemplateSpecContainerLivenessProbeExecArgs) ToK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutput() K8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerLivenessProbeExecArgs) ToK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerLivenessProbeExecOutput).ToK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutputWithContext(ctx)
-}
-
-// K8sJobSpecTemplateSpecContainerLivenessProbeExecPtrInput is an input type that accepts K8sJobSpecTemplateSpecContainerLivenessProbeExecArgs, K8sJobSpecTemplateSpecContainerLivenessProbeExecPtr and K8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerLivenessProbeExecPtrInput` via:
-//
-//	        K8sJobSpecTemplateSpecContainerLivenessProbeExecArgs{...}
-//
-//	or:
-//
-//	        nil
-type K8sJobSpecTemplateSpecContainerLivenessProbeExecPtrInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutput() K8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutput
-	ToK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutput
-}
-
-type k8sJobSpecTemplateSpecContainerLivenessProbeExecPtrType K8sJobSpecTemplateSpecContainerLivenessProbeExecArgs
-
-func K8sJobSpecTemplateSpecContainerLivenessProbeExecPtr(v *K8sJobSpecTemplateSpecContainerLivenessProbeExecArgs) K8sJobSpecTemplateSpecContainerLivenessProbeExecPtrInput {
-	return (*k8sJobSpecTemplateSpecContainerLivenessProbeExecPtrType)(v)
-}
-
-func (*k8sJobSpecTemplateSpecContainerLivenessProbeExecPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecContainerLivenessProbeExec)(nil)).Elem()
-}
-
-func (i *k8sJobSpecTemplateSpecContainerLivenessProbeExecPtrType) ToK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutput() K8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutputWithContext(context.Background())
-}
-
-func (i *k8sJobSpecTemplateSpecContainerLivenessProbeExecPtrType) ToK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerLivenessProbeExecOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerLivenessProbeExecOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLivenessProbeExec)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeExecOutput) ToK8sJobSpecTemplateSpecContainerLivenessProbeExecOutput() K8sJobSpecTemplateSpecContainerLivenessProbeExecOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeExecOutput) ToK8sJobSpecTemplateSpecContainerLivenessProbeExecOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLivenessProbeExecOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeExecOutput) ToK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutput() K8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutput {
-	return o.ToK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutputWithContext(context.Background())
-}
-
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeExecOutput) ToK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v K8sJobSpecTemplateSpecContainerLivenessProbeExec) *K8sJobSpecTemplateSpecContainerLivenessProbeExec {
-		return &v
-	}).(K8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutput)
-}
-
-// Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeExecOutput) Commands() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerLivenessProbeExec) []string { return v.Commands }).(pulumi.StringArrayOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecContainerLivenessProbeExec)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutput) ToK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutput() K8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutput) ToK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutput) Elem() K8sJobSpecTemplateSpecContainerLivenessProbeExecOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerLivenessProbeExec) K8sJobSpecTemplateSpecContainerLivenessProbeExec {
-		if v != nil {
-			return *v
-		}
-		var ret K8sJobSpecTemplateSpecContainerLivenessProbeExec
-		return ret
-	}).(K8sJobSpecTemplateSpecContainerLivenessProbeExecOutput)
-}
-
-// Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutput) Commands() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerLivenessProbeExec) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Commands
-	}).(pulumi.StringArrayOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerLivenessProbeGrpc struct {
-	// Number of the port to access on the container. Number must be in the range 1 to 65535.
-	Port int `pulumi:"port"`
-	// Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
-	Service *string `pulumi:"service"`
-}
-
-// K8sJobSpecTemplateSpecContainerLivenessProbeGrpcInput is an input type that accepts K8sJobSpecTemplateSpecContainerLivenessProbeGrpcArgs and K8sJobSpecTemplateSpecContainerLivenessProbeGrpcOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerLivenessProbeGrpcInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerLivenessProbeGrpcArgs{...}
-type K8sJobSpecTemplateSpecContainerLivenessProbeGrpcInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerLivenessProbeGrpcOutput() K8sJobSpecTemplateSpecContainerLivenessProbeGrpcOutput
-	ToK8sJobSpecTemplateSpecContainerLivenessProbeGrpcOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerLivenessProbeGrpcOutput
-}
-
-type K8sJobSpecTemplateSpecContainerLivenessProbeGrpcArgs struct {
-	// Number of the port to access on the container. Number must be in the range 1 to 65535.
-	Port pulumi.IntInput `pulumi:"port"`
-	// Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
-	Service pulumi.StringPtrInput `pulumi:"service"`
-}
-
-func (K8sJobSpecTemplateSpecContainerLivenessProbeGrpcArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLivenessProbeGrpc)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerLivenessProbeGrpcArgs) ToK8sJobSpecTemplateSpecContainerLivenessProbeGrpcOutput() K8sJobSpecTemplateSpecContainerLivenessProbeGrpcOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerLivenessProbeGrpcOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerLivenessProbeGrpcArgs) ToK8sJobSpecTemplateSpecContainerLivenessProbeGrpcOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLivenessProbeGrpcOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerLivenessProbeGrpcOutput)
-}
-
-// K8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayInput is an input type that accepts K8sJobSpecTemplateSpecContainerLivenessProbeGrpcArray and K8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerLivenessProbeGrpcArray{ K8sJobSpecTemplateSpecContainerLivenessProbeGrpcArgs{...} }
-type K8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayOutput() K8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayOutput
-	ToK8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayOutput
-}
-
-type K8sJobSpecTemplateSpecContainerLivenessProbeGrpcArray []K8sJobSpecTemplateSpecContainerLivenessProbeGrpcInput
-
-func (K8sJobSpecTemplateSpecContainerLivenessProbeGrpcArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecContainerLivenessProbeGrpc)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerLivenessProbeGrpcArray) ToK8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayOutput() K8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerLivenessProbeGrpcArray) ToK8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerLivenessProbeGrpcOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerLivenessProbeGrpcOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLivenessProbeGrpc)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeGrpcOutput) ToK8sJobSpecTemplateSpecContainerLivenessProbeGrpcOutput() K8sJobSpecTemplateSpecContainerLivenessProbeGrpcOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeGrpcOutput) ToK8sJobSpecTemplateSpecContainerLivenessProbeGrpcOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLivenessProbeGrpcOutput {
-	return o
-}
-
-// Number of the port to access on the container. Number must be in the range 1 to 65535.
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeGrpcOutput) Port() pulumi.IntOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerLivenessProbeGrpc) int { return v.Port }).(pulumi.IntOutput)
-}
-
-// Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeGrpcOutput) Service() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerLivenessProbeGrpc) *string { return v.Service }).(pulumi.StringPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecContainerLivenessProbeGrpc)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayOutput) ToK8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayOutput() K8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayOutput) ToK8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayOutput) Index(i pulumi.IntInput) K8sJobSpecTemplateSpecContainerLivenessProbeGrpcOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) K8sJobSpecTemplateSpecContainerLivenessProbeGrpc {
-		return vs[0].([]K8sJobSpecTemplateSpecContainerLivenessProbeGrpc)[vs[1].(int)]
-	}).(K8sJobSpecTemplateSpecContainerLivenessProbeGrpcOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerLivenessProbeHttpGet struct {
-	// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
-	Host *string `pulumi:"host"`
-	// Scheme to use for connecting to the host.
-	HttpHeaders []K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeader `pulumi:"httpHeaders"`
-	// Path to access on the HTTP server.
-	Path *string `pulumi:"path"`
-	// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
-	Port *string `pulumi:"port"`
-	// Scheme to use for connecting to the host. Defaults to `HTTP`.
-	Scheme *string `pulumi:"scheme"`
-}
-
-// K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetInput is an input type that accepts K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetArgs and K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetArgs{...}
-type K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutput() K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutput
-	ToK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutput
-}
-
-type K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetArgs struct {
-	// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
-	Host pulumi.StringPtrInput `pulumi:"host"`
-	// Scheme to use for connecting to the host.
-	HttpHeaders K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayInput `pulumi:"httpHeaders"`
-	// Path to access on the HTTP server.
-	Path pulumi.StringPtrInput `pulumi:"path"`
-	// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
-	Port pulumi.StringPtrInput `pulumi:"port"`
-	// Scheme to use for connecting to the host. Defaults to `HTTP`.
-	Scheme pulumi.StringPtrInput `pulumi:"scheme"`
-}
-
-func (K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLivenessProbeHttpGet)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetArgs) ToK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutput() K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetArgs) ToK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutput)
-}
-
-func (i K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetArgs) ToK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput() K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetArgs) ToK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutput).ToK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutputWithContext(ctx)
-}
-
-// K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrInput is an input type that accepts K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetArgs, K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtr and K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrInput` via:
-//
-//	        K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetArgs{...}
-//
-//	or:
-//
-//	        nil
-type K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput() K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput
-	ToK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput
-}
-
-type k8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrType K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetArgs
-
-func K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtr(v *K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetArgs) K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrInput {
-	return (*k8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrType)(v)
-}
-
-func (*k8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecContainerLivenessProbeHttpGet)(nil)).Elem()
-}
-
-func (i *k8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrType) ToK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput() K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutputWithContext(context.Background())
-}
-
-func (i *k8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrType) ToK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLivenessProbeHttpGet)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutput) ToK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutput() K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutput) ToK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutput) ToK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput() K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput {
-	return o.ToK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutputWithContext(context.Background())
-}
-
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutput) ToK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v K8sJobSpecTemplateSpecContainerLivenessProbeHttpGet) *K8sJobSpecTemplateSpecContainerLivenessProbeHttpGet {
-		return &v
-	}).(K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput)
-}
-
-// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerLivenessProbeHttpGet) *string { return v.Host }).(pulumi.StringPtrOutput)
-}
-
-// Scheme to use for connecting to the host.
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutput) HttpHeaders() K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerLivenessProbeHttpGet) []K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeader {
-		return v.HttpHeaders
-	}).(K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayOutput)
-}
-
-// Path to access on the HTTP server.
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerLivenessProbeHttpGet) *string { return v.Path }).(pulumi.StringPtrOutput)
-}
-
-// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutput) Port() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerLivenessProbeHttpGet) *string { return v.Port }).(pulumi.StringPtrOutput)
-}
-
-// Scheme to use for connecting to the host. Defaults to `HTTP`.
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutput) Scheme() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerLivenessProbeHttpGet) *string { return v.Scheme }).(pulumi.StringPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecContainerLivenessProbeHttpGet)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput) ToK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput() K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput) ToK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput) Elem() K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerLivenessProbeHttpGet) K8sJobSpecTemplateSpecContainerLivenessProbeHttpGet {
-		if v != nil {
-			return *v
-		}
-		var ret K8sJobSpecTemplateSpecContainerLivenessProbeHttpGet
-		return ret
-	}).(K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutput)
-}
-
-// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerLivenessProbeHttpGet) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Host
-	}).(pulumi.StringPtrOutput)
-}
-
-// Scheme to use for connecting to the host.
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput) HttpHeaders() K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerLivenessProbeHttpGet) []K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeader {
-		if v == nil {
-			return nil
-		}
-		return v.HttpHeaders
-	}).(K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayOutput)
-}
-
-// Path to access on the HTTP server.
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerLivenessProbeHttpGet) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Path
-	}).(pulumi.StringPtrOutput)
-}
-
-// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput) Port() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerLivenessProbeHttpGet) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Port
-	}).(pulumi.StringPtrOutput)
-}
-
-// Scheme to use for connecting to the host. Defaults to `HTTP`.
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput) Scheme() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerLivenessProbeHttpGet) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Scheme
-	}).(pulumi.StringPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeader struct {
-	// The header field name
-	Name *string `pulumi:"name"`
-	// The header field value
-	Value *string `pulumi:"value"`
-}
-
-// K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderInput is an input type that accepts K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArgs and K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArgs{...}
-type K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderOutput() K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderOutput
-	ToK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderOutput
-}
-
-type K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArgs struct {
-	// The header field name
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The header field value
-	Value pulumi.StringPtrInput `pulumi:"value"`
-}
-
-func (K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeader)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArgs) ToK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderOutput() K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArgs) ToK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderOutput)
-}
-
-// K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayInput is an input type that accepts K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArray and K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArray{ K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArgs{...} }
-type K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayOutput() K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayOutput
-	ToK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayOutput
-}
-
-type K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArray []K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderInput
-
-func (K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeader)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArray) ToK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayOutput() K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArray) ToK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeader)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderOutput) ToK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderOutput() K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderOutput) ToK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderOutput {
-	return o
-}
-
-// The header field name
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeader) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// The header field value
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeader) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeader)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayOutput) ToK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayOutput() K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayOutput) ToK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayOutput) Index(i pulumi.IntInput) K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeader {
-		return vs[0].([]K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeader)[vs[1].(int)]
-	}).(K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocket struct {
-	// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
-	Port string `pulumi:"port"`
-}
-
-// K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketInput is an input type that accepts K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArgs and K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArgs{...}
-type K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketOutput() K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketOutput
-	ToK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketOutput
-}
-
-type K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArgs struct {
-	// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
-	Port pulumi.StringInput `pulumi:"port"`
-}
-
-func (K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocket)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArgs) ToK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketOutput() K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArgs) ToK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketOutput)
-}
-
-// K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayInput is an input type that accepts K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArray and K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArray{ K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArgs{...} }
-type K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayOutput() K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayOutput
-	ToK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayOutput
-}
-
-type K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArray []K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketInput
-
-func (K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocket)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArray) ToK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayOutput() K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArray) ToK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocket)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketOutput) ToK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketOutput() K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketOutput) ToK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketOutput {
-	return o
-}
-
-// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketOutput) Port() pulumi.StringOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocket) string { return v.Port }).(pulumi.StringOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocket)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayOutput) ToK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayOutput() K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayOutput) ToK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayOutput) Index(i pulumi.IntInput) K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocket {
-		return vs[0].([]K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocket)[vs[1].(int)]
-	}).(K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerPort struct {
-	// Number of port to expose on the pod's IP address. This must be a valid port number, 0 < x < 65536.
-	ContainerPort int `pulumi:"containerPort"`
-	// What host IP to bind the external port to.
-	HostIp *string `pulumi:"hostIp"`
-	// Number of port to expose on the host. If specified, this must be a valid port number, 0 < x < 65536. If HostNetwork is specified, this must match ContainerPort. Most containers do not need this.
-	HostPort *int `pulumi:"hostPort"`
-	// If specified, this must be an IANA*SVC*NAME and unique within the pod. Each named port in a pod must have a unique name. Name for the port that can be referred to by services
-	Name *string `pulumi:"name"`
-	// Protocol for port. Must be UDP or TCP. Defaults to "TCP". Defaults to `TCP`.
-	Protocol *string `pulumi:"protocol"`
-}
-
-// K8sJobSpecTemplateSpecContainerPortInput is an input type that accepts K8sJobSpecTemplateSpecContainerPortArgs and K8sJobSpecTemplateSpecContainerPortOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerPortInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerPortArgs{...}
-type K8sJobSpecTemplateSpecContainerPortInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerPortOutput() K8sJobSpecTemplateSpecContainerPortOutput
-	ToK8sJobSpecTemplateSpecContainerPortOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerPortOutput
-}
-
-type K8sJobSpecTemplateSpecContainerPortArgs struct {
-	// Number of port to expose on the pod's IP address. This must be a valid port number, 0 < x < 65536.
-	ContainerPort pulumi.IntInput `pulumi:"containerPort"`
-	// What host IP to bind the external port to.
-	HostIp pulumi.StringPtrInput `pulumi:"hostIp"`
-	// Number of port to expose on the host. If specified, this must be a valid port number, 0 < x < 65536. If HostNetwork is specified, this must match ContainerPort. Most containers do not need this.
-	HostPort pulumi.IntPtrInput `pulumi:"hostPort"`
-	// If specified, this must be an IANA*SVC*NAME and unique within the pod. Each named port in a pod must have a unique name. Name for the port that can be referred to by services
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Protocol for port. Must be UDP or TCP. Defaults to "TCP". Defaults to `TCP`.
-	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
-}
-
-func (K8sJobSpecTemplateSpecContainerPortArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerPort)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerPortArgs) ToK8sJobSpecTemplateSpecContainerPortOutput() K8sJobSpecTemplateSpecContainerPortOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerPortOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerPortArgs) ToK8sJobSpecTemplateSpecContainerPortOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerPortOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerPortOutput)
-}
-
-// K8sJobSpecTemplateSpecContainerPortArrayInput is an input type that accepts K8sJobSpecTemplateSpecContainerPortArray and K8sJobSpecTemplateSpecContainerPortArrayOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerPortArrayInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerPortArray{ K8sJobSpecTemplateSpecContainerPortArgs{...} }
-type K8sJobSpecTemplateSpecContainerPortArrayInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerPortArrayOutput() K8sJobSpecTemplateSpecContainerPortArrayOutput
-	ToK8sJobSpecTemplateSpecContainerPortArrayOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerPortArrayOutput
-}
-
-type K8sJobSpecTemplateSpecContainerPortArray []K8sJobSpecTemplateSpecContainerPortInput
-
-func (K8sJobSpecTemplateSpecContainerPortArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecContainerPort)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerPortArray) ToK8sJobSpecTemplateSpecContainerPortArrayOutput() K8sJobSpecTemplateSpecContainerPortArrayOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerPortArrayOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerPortArray) ToK8sJobSpecTemplateSpecContainerPortArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerPortArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerPortArrayOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerPortOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerPortOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerPort)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerPortOutput) ToK8sJobSpecTemplateSpecContainerPortOutput() K8sJobSpecTemplateSpecContainerPortOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerPortOutput) ToK8sJobSpecTemplateSpecContainerPortOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerPortOutput {
-	return o
-}
-
-// Number of port to expose on the pod's IP address. This must be a valid port number, 0 < x < 65536.
-func (o K8sJobSpecTemplateSpecContainerPortOutput) ContainerPort() pulumi.IntOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerPort) int { return v.ContainerPort }).(pulumi.IntOutput)
-}
-
-// What host IP to bind the external port to.
-func (o K8sJobSpecTemplateSpecContainerPortOutput) HostIp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerPort) *string { return v.HostIp }).(pulumi.StringPtrOutput)
-}
-
-// Number of port to expose on the host. If specified, this must be a valid port number, 0 < x < 65536. If HostNetwork is specified, this must match ContainerPort. Most containers do not need this.
-func (o K8sJobSpecTemplateSpecContainerPortOutput) HostPort() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerPort) *int { return v.HostPort }).(pulumi.IntPtrOutput)
-}
-
-// If specified, this must be an IANA*SVC*NAME and unique within the pod. Each named port in a pod must have a unique name. Name for the port that can be referred to by services
-func (o K8sJobSpecTemplateSpecContainerPortOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerPort) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// Protocol for port. Must be UDP or TCP. Defaults to "TCP". Defaults to `TCP`.
-func (o K8sJobSpecTemplateSpecContainerPortOutput) Protocol() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerPort) *string { return v.Protocol }).(pulumi.StringPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerPortArrayOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerPortArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecContainerPort)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerPortArrayOutput) ToK8sJobSpecTemplateSpecContainerPortArrayOutput() K8sJobSpecTemplateSpecContainerPortArrayOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerPortArrayOutput) ToK8sJobSpecTemplateSpecContainerPortArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerPortArrayOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerPortArrayOutput) Index(i pulumi.IntInput) K8sJobSpecTemplateSpecContainerPortOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) K8sJobSpecTemplateSpecContainerPort {
-		return vs[0].([]K8sJobSpecTemplateSpecContainerPort)[vs[1].(int)]
-	}).(K8sJobSpecTemplateSpecContainerPortOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerReadinessProbe struct {
-	// exec specifies the action to take.
-	Exec *K8sJobSpecTemplateSpecContainerReadinessProbeExec `pulumi:"exec"`
-	// Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to `3`.
-	FailureThreshold *int `pulumi:"failureThreshold"`
-	// GRPC specifies an action involving a GRPC port.
-	Grpcs []K8sJobSpecTemplateSpecContainerReadinessProbeGrpc `pulumi:"grpcs"`
-	// Specifies the http request to perform.
-	HttpGet *K8sJobSpecTemplateSpecContainerReadinessProbeHttpGet `pulumi:"httpGet"`
-	// Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
-	InitialDelaySeconds *int `pulumi:"initialDelaySeconds"`
-	// How often (in seconds) to perform the probe Defaults to `10`.
-	PeriodSeconds *int `pulumi:"periodSeconds"`
-	// Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to `1`.
-	SuccessThreshold *int `pulumi:"successThreshold"`
-	// TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
-	TcpSockets []K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocket `pulumi:"tcpSockets"`
-	// Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes Defaults to `1`.
-	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
-}
-
-// K8sJobSpecTemplateSpecContainerReadinessProbeInput is an input type that accepts K8sJobSpecTemplateSpecContainerReadinessProbeArgs and K8sJobSpecTemplateSpecContainerReadinessProbeOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerReadinessProbeInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerReadinessProbeArgs{...}
-type K8sJobSpecTemplateSpecContainerReadinessProbeInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerReadinessProbeOutput() K8sJobSpecTemplateSpecContainerReadinessProbeOutput
-	ToK8sJobSpecTemplateSpecContainerReadinessProbeOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerReadinessProbeOutput
-}
-
-type K8sJobSpecTemplateSpecContainerReadinessProbeArgs struct {
-	// exec specifies the action to take.
-	Exec K8sJobSpecTemplateSpecContainerReadinessProbeExecPtrInput `pulumi:"exec"`
-	// Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to `3`.
-	FailureThreshold pulumi.IntPtrInput `pulumi:"failureThreshold"`
-	// GRPC specifies an action involving a GRPC port.
-	Grpcs K8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayInput `pulumi:"grpcs"`
-	// Specifies the http request to perform.
-	HttpGet K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrInput `pulumi:"httpGet"`
-	// Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
-	InitialDelaySeconds pulumi.IntPtrInput `pulumi:"initialDelaySeconds"`
-	// How often (in seconds) to perform the probe Defaults to `10`.
-	PeriodSeconds pulumi.IntPtrInput `pulumi:"periodSeconds"`
-	// Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to `1`.
-	SuccessThreshold pulumi.IntPtrInput `pulumi:"successThreshold"`
-	// TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
-	TcpSockets K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayInput `pulumi:"tcpSockets"`
-	// Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes Defaults to `1`.
-	TimeoutSeconds pulumi.IntPtrInput `pulumi:"timeoutSeconds"`
-}
-
-func (K8sJobSpecTemplateSpecContainerReadinessProbeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerReadinessProbe)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerReadinessProbeArgs) ToK8sJobSpecTemplateSpecContainerReadinessProbeOutput() K8sJobSpecTemplateSpecContainerReadinessProbeOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerReadinessProbeOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerReadinessProbeArgs) ToK8sJobSpecTemplateSpecContainerReadinessProbeOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerReadinessProbeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerReadinessProbeOutput)
-}
-
-func (i K8sJobSpecTemplateSpecContainerReadinessProbeArgs) ToK8sJobSpecTemplateSpecContainerReadinessProbePtrOutput() K8sJobSpecTemplateSpecContainerReadinessProbePtrOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerReadinessProbePtrOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerReadinessProbeArgs) ToK8sJobSpecTemplateSpecContainerReadinessProbePtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerReadinessProbePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerReadinessProbeOutput).ToK8sJobSpecTemplateSpecContainerReadinessProbePtrOutputWithContext(ctx)
-}
-
-// K8sJobSpecTemplateSpecContainerReadinessProbePtrInput is an input type that accepts K8sJobSpecTemplateSpecContainerReadinessProbeArgs, K8sJobSpecTemplateSpecContainerReadinessProbePtr and K8sJobSpecTemplateSpecContainerReadinessProbePtrOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerReadinessProbePtrInput` via:
-//
-//	        K8sJobSpecTemplateSpecContainerReadinessProbeArgs{...}
-//
-//	or:
-//
-//	        nil
-type K8sJobSpecTemplateSpecContainerReadinessProbePtrInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerReadinessProbePtrOutput() K8sJobSpecTemplateSpecContainerReadinessProbePtrOutput
-	ToK8sJobSpecTemplateSpecContainerReadinessProbePtrOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerReadinessProbePtrOutput
-}
-
-type k8sJobSpecTemplateSpecContainerReadinessProbePtrType K8sJobSpecTemplateSpecContainerReadinessProbeArgs
-
-func K8sJobSpecTemplateSpecContainerReadinessProbePtr(v *K8sJobSpecTemplateSpecContainerReadinessProbeArgs) K8sJobSpecTemplateSpecContainerReadinessProbePtrInput {
-	return (*k8sJobSpecTemplateSpecContainerReadinessProbePtrType)(v)
-}
-
-func (*k8sJobSpecTemplateSpecContainerReadinessProbePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecContainerReadinessProbe)(nil)).Elem()
-}
-
-func (i *k8sJobSpecTemplateSpecContainerReadinessProbePtrType) ToK8sJobSpecTemplateSpecContainerReadinessProbePtrOutput() K8sJobSpecTemplateSpecContainerReadinessProbePtrOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerReadinessProbePtrOutputWithContext(context.Background())
-}
-
-func (i *k8sJobSpecTemplateSpecContainerReadinessProbePtrType) ToK8sJobSpecTemplateSpecContainerReadinessProbePtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerReadinessProbePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerReadinessProbePtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerReadinessProbeOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerReadinessProbeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerReadinessProbe)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeOutput) ToK8sJobSpecTemplateSpecContainerReadinessProbeOutput() K8sJobSpecTemplateSpecContainerReadinessProbeOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeOutput) ToK8sJobSpecTemplateSpecContainerReadinessProbeOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerReadinessProbeOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeOutput) ToK8sJobSpecTemplateSpecContainerReadinessProbePtrOutput() K8sJobSpecTemplateSpecContainerReadinessProbePtrOutput {
-	return o.ToK8sJobSpecTemplateSpecContainerReadinessProbePtrOutputWithContext(context.Background())
-}
-
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeOutput) ToK8sJobSpecTemplateSpecContainerReadinessProbePtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerReadinessProbePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v K8sJobSpecTemplateSpecContainerReadinessProbe) *K8sJobSpecTemplateSpecContainerReadinessProbe {
-		return &v
-	}).(K8sJobSpecTemplateSpecContainerReadinessProbePtrOutput)
-}
-
-// exec specifies the action to take.
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeOutput) Exec() K8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerReadinessProbe) *K8sJobSpecTemplateSpecContainerReadinessProbeExec {
-		return v.Exec
-	}).(K8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutput)
-}
-
-// Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to `3`.
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeOutput) FailureThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerReadinessProbe) *int { return v.FailureThreshold }).(pulumi.IntPtrOutput)
-}
-
-// GRPC specifies an action involving a GRPC port.
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeOutput) Grpcs() K8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerReadinessProbe) []K8sJobSpecTemplateSpecContainerReadinessProbeGrpc {
-		return v.Grpcs
-	}).(K8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayOutput)
-}
-
-// Specifies the http request to perform.
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeOutput) HttpGet() K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerReadinessProbe) *K8sJobSpecTemplateSpecContainerReadinessProbeHttpGet {
-		return v.HttpGet
-	}).(K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput)
-}
-
-// Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerReadinessProbe) *int { return v.InitialDelaySeconds }).(pulumi.IntPtrOutput)
-}
-
-// How often (in seconds) to perform the probe Defaults to `10`.
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeOutput) PeriodSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerReadinessProbe) *int { return v.PeriodSeconds }).(pulumi.IntPtrOutput)
-}
-
-// Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to `1`.
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeOutput) SuccessThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerReadinessProbe) *int { return v.SuccessThreshold }).(pulumi.IntPtrOutput)
-}
-
-// TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeOutput) TcpSockets() K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerReadinessProbe) []K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocket {
-		return v.TcpSockets
-	}).(K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayOutput)
-}
-
-// Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes Defaults to `1`.
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeOutput) TimeoutSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerReadinessProbe) *int { return v.TimeoutSeconds }).(pulumi.IntPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerReadinessProbePtrOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerReadinessProbePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecContainerReadinessProbe)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerReadinessProbePtrOutput) ToK8sJobSpecTemplateSpecContainerReadinessProbePtrOutput() K8sJobSpecTemplateSpecContainerReadinessProbePtrOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerReadinessProbePtrOutput) ToK8sJobSpecTemplateSpecContainerReadinessProbePtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerReadinessProbePtrOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerReadinessProbePtrOutput) Elem() K8sJobSpecTemplateSpecContainerReadinessProbeOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerReadinessProbe) K8sJobSpecTemplateSpecContainerReadinessProbe {
-		if v != nil {
-			return *v
-		}
-		var ret K8sJobSpecTemplateSpecContainerReadinessProbe
-		return ret
-	}).(K8sJobSpecTemplateSpecContainerReadinessProbeOutput)
-}
-
-// exec specifies the action to take.
-func (o K8sJobSpecTemplateSpecContainerReadinessProbePtrOutput) Exec() K8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerReadinessProbe) *K8sJobSpecTemplateSpecContainerReadinessProbeExec {
-		if v == nil {
-			return nil
-		}
-		return v.Exec
-	}).(K8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutput)
-}
-
-// Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to `3`.
-func (o K8sJobSpecTemplateSpecContainerReadinessProbePtrOutput) FailureThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerReadinessProbe) *int {
-		if v == nil {
-			return nil
-		}
-		return v.FailureThreshold
-	}).(pulumi.IntPtrOutput)
-}
-
-// GRPC specifies an action involving a GRPC port.
-func (o K8sJobSpecTemplateSpecContainerReadinessProbePtrOutput) Grpcs() K8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerReadinessProbe) []K8sJobSpecTemplateSpecContainerReadinessProbeGrpc {
-		if v == nil {
-			return nil
-		}
-		return v.Grpcs
-	}).(K8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayOutput)
-}
-
-// Specifies the http request to perform.
-func (o K8sJobSpecTemplateSpecContainerReadinessProbePtrOutput) HttpGet() K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerReadinessProbe) *K8sJobSpecTemplateSpecContainerReadinessProbeHttpGet {
-		if v == nil {
-			return nil
-		}
-		return v.HttpGet
-	}).(K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput)
-}
-
-// Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
-func (o K8sJobSpecTemplateSpecContainerReadinessProbePtrOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerReadinessProbe) *int {
-		if v == nil {
-			return nil
-		}
-		return v.InitialDelaySeconds
-	}).(pulumi.IntPtrOutput)
-}
-
-// How often (in seconds) to perform the probe Defaults to `10`.
-func (o K8sJobSpecTemplateSpecContainerReadinessProbePtrOutput) PeriodSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerReadinessProbe) *int {
-		if v == nil {
-			return nil
-		}
-		return v.PeriodSeconds
-	}).(pulumi.IntPtrOutput)
-}
-
-// Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to `1`.
-func (o K8sJobSpecTemplateSpecContainerReadinessProbePtrOutput) SuccessThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerReadinessProbe) *int {
-		if v == nil {
-			return nil
-		}
-		return v.SuccessThreshold
-	}).(pulumi.IntPtrOutput)
-}
-
-// TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
-func (o K8sJobSpecTemplateSpecContainerReadinessProbePtrOutput) TcpSockets() K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerReadinessProbe) []K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocket {
-		if v == nil {
-			return nil
-		}
-		return v.TcpSockets
-	}).(K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayOutput)
-}
-
-// Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes Defaults to `1`.
-func (o K8sJobSpecTemplateSpecContainerReadinessProbePtrOutput) TimeoutSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerReadinessProbe) *int {
-		if v == nil {
-			return nil
-		}
-		return v.TimeoutSeconds
-	}).(pulumi.IntPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerReadinessProbeExec struct {
-	// Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
-	Commands []string `pulumi:"commands"`
-}
-
-// K8sJobSpecTemplateSpecContainerReadinessProbeExecInput is an input type that accepts K8sJobSpecTemplateSpecContainerReadinessProbeExecArgs and K8sJobSpecTemplateSpecContainerReadinessProbeExecOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerReadinessProbeExecInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerReadinessProbeExecArgs{...}
-type K8sJobSpecTemplateSpecContainerReadinessProbeExecInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerReadinessProbeExecOutput() K8sJobSpecTemplateSpecContainerReadinessProbeExecOutput
-	ToK8sJobSpecTemplateSpecContainerReadinessProbeExecOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerReadinessProbeExecOutput
-}
-
-type K8sJobSpecTemplateSpecContainerReadinessProbeExecArgs struct {
-	// Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
-	Commands pulumi.StringArrayInput `pulumi:"commands"`
-}
-
-func (K8sJobSpecTemplateSpecContainerReadinessProbeExecArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerReadinessProbeExec)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerReadinessProbeExecArgs) ToK8sJobSpecTemplateSpecContainerReadinessProbeExecOutput() K8sJobSpecTemplateSpecContainerReadinessProbeExecOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerReadinessProbeExecOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerReadinessProbeExecArgs) ToK8sJobSpecTemplateSpecContainerReadinessProbeExecOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerReadinessProbeExecOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerReadinessProbeExecOutput)
-}
-
-func (i K8sJobSpecTemplateSpecContainerReadinessProbeExecArgs) ToK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutput() K8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerReadinessProbeExecArgs) ToK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerReadinessProbeExecOutput).ToK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutputWithContext(ctx)
-}
-
-// K8sJobSpecTemplateSpecContainerReadinessProbeExecPtrInput is an input type that accepts K8sJobSpecTemplateSpecContainerReadinessProbeExecArgs, K8sJobSpecTemplateSpecContainerReadinessProbeExecPtr and K8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerReadinessProbeExecPtrInput` via:
-//
-//	        K8sJobSpecTemplateSpecContainerReadinessProbeExecArgs{...}
-//
-//	or:
-//
-//	        nil
-type K8sJobSpecTemplateSpecContainerReadinessProbeExecPtrInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutput() K8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutput
-	ToK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutput
-}
-
-type k8sJobSpecTemplateSpecContainerReadinessProbeExecPtrType K8sJobSpecTemplateSpecContainerReadinessProbeExecArgs
-
-func K8sJobSpecTemplateSpecContainerReadinessProbeExecPtr(v *K8sJobSpecTemplateSpecContainerReadinessProbeExecArgs) K8sJobSpecTemplateSpecContainerReadinessProbeExecPtrInput {
-	return (*k8sJobSpecTemplateSpecContainerReadinessProbeExecPtrType)(v)
-}
-
-func (*k8sJobSpecTemplateSpecContainerReadinessProbeExecPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecContainerReadinessProbeExec)(nil)).Elem()
-}
-
-func (i *k8sJobSpecTemplateSpecContainerReadinessProbeExecPtrType) ToK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutput() K8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutputWithContext(context.Background())
-}
-
-func (i *k8sJobSpecTemplateSpecContainerReadinessProbeExecPtrType) ToK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerReadinessProbeExecOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerReadinessProbeExecOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerReadinessProbeExec)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeExecOutput) ToK8sJobSpecTemplateSpecContainerReadinessProbeExecOutput() K8sJobSpecTemplateSpecContainerReadinessProbeExecOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeExecOutput) ToK8sJobSpecTemplateSpecContainerReadinessProbeExecOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerReadinessProbeExecOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeExecOutput) ToK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutput() K8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutput {
-	return o.ToK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutputWithContext(context.Background())
-}
-
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeExecOutput) ToK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v K8sJobSpecTemplateSpecContainerReadinessProbeExec) *K8sJobSpecTemplateSpecContainerReadinessProbeExec {
-		return &v
-	}).(K8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutput)
-}
-
-// Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeExecOutput) Commands() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerReadinessProbeExec) []string { return v.Commands }).(pulumi.StringArrayOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecContainerReadinessProbeExec)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutput) ToK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutput() K8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutput) ToK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutput) Elem() K8sJobSpecTemplateSpecContainerReadinessProbeExecOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerReadinessProbeExec) K8sJobSpecTemplateSpecContainerReadinessProbeExec {
-		if v != nil {
-			return *v
-		}
-		var ret K8sJobSpecTemplateSpecContainerReadinessProbeExec
-		return ret
-	}).(K8sJobSpecTemplateSpecContainerReadinessProbeExecOutput)
-}
-
-// Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutput) Commands() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerReadinessProbeExec) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Commands
-	}).(pulumi.StringArrayOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerReadinessProbeGrpc struct {
-	// Number of the port to access on the container. Number must be in the range 1 to 65535.
-	Port int `pulumi:"port"`
-	// Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
-	Service *string `pulumi:"service"`
-}
-
-// K8sJobSpecTemplateSpecContainerReadinessProbeGrpcInput is an input type that accepts K8sJobSpecTemplateSpecContainerReadinessProbeGrpcArgs and K8sJobSpecTemplateSpecContainerReadinessProbeGrpcOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerReadinessProbeGrpcInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerReadinessProbeGrpcArgs{...}
-type K8sJobSpecTemplateSpecContainerReadinessProbeGrpcInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerReadinessProbeGrpcOutput() K8sJobSpecTemplateSpecContainerReadinessProbeGrpcOutput
-	ToK8sJobSpecTemplateSpecContainerReadinessProbeGrpcOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerReadinessProbeGrpcOutput
-}
-
-type K8sJobSpecTemplateSpecContainerReadinessProbeGrpcArgs struct {
-	// Number of the port to access on the container. Number must be in the range 1 to 65535.
-	Port pulumi.IntInput `pulumi:"port"`
-	// Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
-	Service pulumi.StringPtrInput `pulumi:"service"`
-}
-
-func (K8sJobSpecTemplateSpecContainerReadinessProbeGrpcArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerReadinessProbeGrpc)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerReadinessProbeGrpcArgs) ToK8sJobSpecTemplateSpecContainerReadinessProbeGrpcOutput() K8sJobSpecTemplateSpecContainerReadinessProbeGrpcOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerReadinessProbeGrpcOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerReadinessProbeGrpcArgs) ToK8sJobSpecTemplateSpecContainerReadinessProbeGrpcOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerReadinessProbeGrpcOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerReadinessProbeGrpcOutput)
-}
-
-// K8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayInput is an input type that accepts K8sJobSpecTemplateSpecContainerReadinessProbeGrpcArray and K8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerReadinessProbeGrpcArray{ K8sJobSpecTemplateSpecContainerReadinessProbeGrpcArgs{...} }
-type K8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayOutput() K8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayOutput
-	ToK8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayOutput
-}
-
-type K8sJobSpecTemplateSpecContainerReadinessProbeGrpcArray []K8sJobSpecTemplateSpecContainerReadinessProbeGrpcInput
-
-func (K8sJobSpecTemplateSpecContainerReadinessProbeGrpcArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecContainerReadinessProbeGrpc)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerReadinessProbeGrpcArray) ToK8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayOutput() K8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerReadinessProbeGrpcArray) ToK8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerReadinessProbeGrpcOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerReadinessProbeGrpcOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerReadinessProbeGrpc)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeGrpcOutput) ToK8sJobSpecTemplateSpecContainerReadinessProbeGrpcOutput() K8sJobSpecTemplateSpecContainerReadinessProbeGrpcOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeGrpcOutput) ToK8sJobSpecTemplateSpecContainerReadinessProbeGrpcOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerReadinessProbeGrpcOutput {
-	return o
-}
-
-// Number of the port to access on the container. Number must be in the range 1 to 65535.
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeGrpcOutput) Port() pulumi.IntOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerReadinessProbeGrpc) int { return v.Port }).(pulumi.IntOutput)
-}
-
-// Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeGrpcOutput) Service() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerReadinessProbeGrpc) *string { return v.Service }).(pulumi.StringPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecContainerReadinessProbeGrpc)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayOutput) ToK8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayOutput() K8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayOutput) ToK8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayOutput) Index(i pulumi.IntInput) K8sJobSpecTemplateSpecContainerReadinessProbeGrpcOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) K8sJobSpecTemplateSpecContainerReadinessProbeGrpc {
-		return vs[0].([]K8sJobSpecTemplateSpecContainerReadinessProbeGrpc)[vs[1].(int)]
-	}).(K8sJobSpecTemplateSpecContainerReadinessProbeGrpcOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerReadinessProbeHttpGet struct {
-	// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
-	Host *string `pulumi:"host"`
-	// Scheme to use for connecting to the host.
-	HttpHeaders []K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeader `pulumi:"httpHeaders"`
-	// Path to access on the HTTP server.
-	Path *string `pulumi:"path"`
-	// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
-	Port *string `pulumi:"port"`
-	// Scheme to use for connecting to the host. Defaults to `HTTP`.
-	Scheme *string `pulumi:"scheme"`
-}
-
-// K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetInput is an input type that accepts K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetArgs and K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetArgs{...}
-type K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutput() K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutput
-	ToK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutput
-}
-
-type K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetArgs struct {
-	// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
-	Host pulumi.StringPtrInput `pulumi:"host"`
-	// Scheme to use for connecting to the host.
-	HttpHeaders K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayInput `pulumi:"httpHeaders"`
-	// Path to access on the HTTP server.
-	Path pulumi.StringPtrInput `pulumi:"path"`
-	// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
-	Port pulumi.StringPtrInput `pulumi:"port"`
-	// Scheme to use for connecting to the host. Defaults to `HTTP`.
-	Scheme pulumi.StringPtrInput `pulumi:"scheme"`
-}
-
-func (K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerReadinessProbeHttpGet)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetArgs) ToK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutput() K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetArgs) ToK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutput)
-}
-
-func (i K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetArgs) ToK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput() K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetArgs) ToK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutput).ToK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutputWithContext(ctx)
-}
-
-// K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrInput is an input type that accepts K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetArgs, K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtr and K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrInput` via:
-//
-//	        K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetArgs{...}
-//
-//	or:
-//
-//	        nil
-type K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput() K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput
-	ToK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput
-}
-
-type k8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrType K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetArgs
-
-func K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtr(v *K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetArgs) K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrInput {
-	return (*k8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrType)(v)
-}
-
-func (*k8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecContainerReadinessProbeHttpGet)(nil)).Elem()
-}
-
-func (i *k8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrType) ToK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput() K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutputWithContext(context.Background())
-}
-
-func (i *k8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrType) ToK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerReadinessProbeHttpGet)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutput) ToK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutput() K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutput) ToK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutput) ToK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput() K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput {
-	return o.ToK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutputWithContext(context.Background())
-}
-
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutput) ToK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v K8sJobSpecTemplateSpecContainerReadinessProbeHttpGet) *K8sJobSpecTemplateSpecContainerReadinessProbeHttpGet {
-		return &v
-	}).(K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput)
-}
-
-// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerReadinessProbeHttpGet) *string { return v.Host }).(pulumi.StringPtrOutput)
-}
-
-// Scheme to use for connecting to the host.
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutput) HttpHeaders() K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerReadinessProbeHttpGet) []K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeader {
-		return v.HttpHeaders
-	}).(K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayOutput)
-}
-
-// Path to access on the HTTP server.
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerReadinessProbeHttpGet) *string { return v.Path }).(pulumi.StringPtrOutput)
-}
-
-// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutput) Port() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerReadinessProbeHttpGet) *string { return v.Port }).(pulumi.StringPtrOutput)
-}
-
-// Scheme to use for connecting to the host. Defaults to `HTTP`.
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutput) Scheme() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerReadinessProbeHttpGet) *string { return v.Scheme }).(pulumi.StringPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecContainerReadinessProbeHttpGet)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput) ToK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput() K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput) ToK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput) Elem() K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerReadinessProbeHttpGet) K8sJobSpecTemplateSpecContainerReadinessProbeHttpGet {
-		if v != nil {
-			return *v
-		}
-		var ret K8sJobSpecTemplateSpecContainerReadinessProbeHttpGet
-		return ret
-	}).(K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutput)
-}
-
-// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerReadinessProbeHttpGet) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Host
-	}).(pulumi.StringPtrOutput)
-}
-
-// Scheme to use for connecting to the host.
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput) HttpHeaders() K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerReadinessProbeHttpGet) []K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeader {
-		if v == nil {
-			return nil
-		}
-		return v.HttpHeaders
-	}).(K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayOutput)
-}
-
-// Path to access on the HTTP server.
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerReadinessProbeHttpGet) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Path
-	}).(pulumi.StringPtrOutput)
-}
-
-// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput) Port() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerReadinessProbeHttpGet) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Port
-	}).(pulumi.StringPtrOutput)
-}
-
-// Scheme to use for connecting to the host. Defaults to `HTTP`.
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput) Scheme() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerReadinessProbeHttpGet) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Scheme
-	}).(pulumi.StringPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeader struct {
-	// The header field name
-	Name *string `pulumi:"name"`
-	// The header field value
-	Value *string `pulumi:"value"`
-}
-
-// K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderInput is an input type that accepts K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArgs and K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArgs{...}
-type K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderOutput() K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderOutput
-	ToK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderOutput
-}
-
-type K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArgs struct {
-	// The header field name
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The header field value
-	Value pulumi.StringPtrInput `pulumi:"value"`
-}
-
-func (K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeader)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArgs) ToK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderOutput() K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArgs) ToK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderOutput)
-}
-
-// K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayInput is an input type that accepts K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArray and K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArray{ K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArgs{...} }
-type K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayOutput() K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayOutput
-	ToK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayOutput
-}
-
-type K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArray []K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderInput
-
-func (K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeader)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArray) ToK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayOutput() K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArray) ToK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeader)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderOutput) ToK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderOutput() K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderOutput) ToK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderOutput {
-	return o
-}
-
-// The header field name
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeader) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// The header field value
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeader) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeader)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayOutput) ToK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayOutput() K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayOutput) ToK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayOutput) Index(i pulumi.IntInput) K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeader {
-		return vs[0].([]K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeader)[vs[1].(int)]
-	}).(K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocket struct {
-	// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
-	Port string `pulumi:"port"`
-}
-
-// K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketInput is an input type that accepts K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArgs and K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArgs{...}
-type K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketOutput() K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketOutput
-	ToK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketOutput
-}
-
-type K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArgs struct {
-	// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
-	Port pulumi.StringInput `pulumi:"port"`
-}
-
-func (K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocket)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArgs) ToK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketOutput() K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArgs) ToK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketOutput)
-}
-
-// K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayInput is an input type that accepts K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArray and K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArray{ K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArgs{...} }
-type K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayOutput() K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayOutput
-	ToK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayOutput
-}
-
-type K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArray []K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketInput
-
-func (K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocket)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArray) ToK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayOutput() K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArray) ToK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocket)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketOutput) ToK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketOutput() K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketOutput) ToK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketOutput {
-	return o
-}
-
-// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketOutput) Port() pulumi.StringOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocket) string { return v.Port }).(pulumi.StringOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocket)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayOutput) ToK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayOutput() K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayOutput) ToK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayOutput) Index(i pulumi.IntInput) K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocket {
-		return vs[0].([]K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocket)[vs[1].(int)]
-	}).(K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerResources struct {
-	// Describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
-	Limits map[string]string `pulumi:"limits"`
-	// Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
-	Requests map[string]string `pulumi:"requests"`
-}
-
-// K8sJobSpecTemplateSpecContainerResourcesInput is an input type that accepts K8sJobSpecTemplateSpecContainerResourcesArgs and K8sJobSpecTemplateSpecContainerResourcesOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerResourcesInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerResourcesArgs{...}
-type K8sJobSpecTemplateSpecContainerResourcesInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerResourcesOutput() K8sJobSpecTemplateSpecContainerResourcesOutput
-	ToK8sJobSpecTemplateSpecContainerResourcesOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerResourcesOutput
-}
-
-type K8sJobSpecTemplateSpecContainerResourcesArgs struct {
-	// Describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
-	Limits pulumi.StringMapInput `pulumi:"limits"`
-	// Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
-	Requests pulumi.StringMapInput `pulumi:"requests"`
-}
-
-func (K8sJobSpecTemplateSpecContainerResourcesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerResources)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerResourcesArgs) ToK8sJobSpecTemplateSpecContainerResourcesOutput() K8sJobSpecTemplateSpecContainerResourcesOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerResourcesOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerResourcesArgs) ToK8sJobSpecTemplateSpecContainerResourcesOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerResourcesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerResourcesOutput)
-}
-
-func (i K8sJobSpecTemplateSpecContainerResourcesArgs) ToK8sJobSpecTemplateSpecContainerResourcesPtrOutput() K8sJobSpecTemplateSpecContainerResourcesPtrOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerResourcesPtrOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerResourcesArgs) ToK8sJobSpecTemplateSpecContainerResourcesPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerResourcesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerResourcesOutput).ToK8sJobSpecTemplateSpecContainerResourcesPtrOutputWithContext(ctx)
-}
-
-// K8sJobSpecTemplateSpecContainerResourcesPtrInput is an input type that accepts K8sJobSpecTemplateSpecContainerResourcesArgs, K8sJobSpecTemplateSpecContainerResourcesPtr and K8sJobSpecTemplateSpecContainerResourcesPtrOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerResourcesPtrInput` via:
-//
-//	        K8sJobSpecTemplateSpecContainerResourcesArgs{...}
-//
-//	or:
-//
-//	        nil
-type K8sJobSpecTemplateSpecContainerResourcesPtrInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerResourcesPtrOutput() K8sJobSpecTemplateSpecContainerResourcesPtrOutput
-	ToK8sJobSpecTemplateSpecContainerResourcesPtrOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerResourcesPtrOutput
-}
-
-type k8sJobSpecTemplateSpecContainerResourcesPtrType K8sJobSpecTemplateSpecContainerResourcesArgs
-
-func K8sJobSpecTemplateSpecContainerResourcesPtr(v *K8sJobSpecTemplateSpecContainerResourcesArgs) K8sJobSpecTemplateSpecContainerResourcesPtrInput {
-	return (*k8sJobSpecTemplateSpecContainerResourcesPtrType)(v)
-}
-
-func (*k8sJobSpecTemplateSpecContainerResourcesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecContainerResources)(nil)).Elem()
-}
-
-func (i *k8sJobSpecTemplateSpecContainerResourcesPtrType) ToK8sJobSpecTemplateSpecContainerResourcesPtrOutput() K8sJobSpecTemplateSpecContainerResourcesPtrOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerResourcesPtrOutputWithContext(context.Background())
-}
-
-func (i *k8sJobSpecTemplateSpecContainerResourcesPtrType) ToK8sJobSpecTemplateSpecContainerResourcesPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerResourcesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerResourcesPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerResourcesOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerResourcesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerResources)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerResourcesOutput) ToK8sJobSpecTemplateSpecContainerResourcesOutput() K8sJobSpecTemplateSpecContainerResourcesOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerResourcesOutput) ToK8sJobSpecTemplateSpecContainerResourcesOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerResourcesOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerResourcesOutput) ToK8sJobSpecTemplateSpecContainerResourcesPtrOutput() K8sJobSpecTemplateSpecContainerResourcesPtrOutput {
-	return o.ToK8sJobSpecTemplateSpecContainerResourcesPtrOutputWithContext(context.Background())
-}
-
-func (o K8sJobSpecTemplateSpecContainerResourcesOutput) ToK8sJobSpecTemplateSpecContainerResourcesPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerResourcesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v K8sJobSpecTemplateSpecContainerResources) *K8sJobSpecTemplateSpecContainerResources {
-		return &v
-	}).(K8sJobSpecTemplateSpecContainerResourcesPtrOutput)
-}
-
-// Describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
-func (o K8sJobSpecTemplateSpecContainerResourcesOutput) Limits() pulumi.StringMapOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerResources) map[string]string { return v.Limits }).(pulumi.StringMapOutput)
-}
-
-// Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
-func (o K8sJobSpecTemplateSpecContainerResourcesOutput) Requests() pulumi.StringMapOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerResources) map[string]string { return v.Requests }).(pulumi.StringMapOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerResourcesPtrOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerResourcesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecContainerResources)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerResourcesPtrOutput) ToK8sJobSpecTemplateSpecContainerResourcesPtrOutput() K8sJobSpecTemplateSpecContainerResourcesPtrOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerResourcesPtrOutput) ToK8sJobSpecTemplateSpecContainerResourcesPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerResourcesPtrOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerResourcesPtrOutput) Elem() K8sJobSpecTemplateSpecContainerResourcesOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerResources) K8sJobSpecTemplateSpecContainerResources {
-		if v != nil {
-			return *v
-		}
-		var ret K8sJobSpecTemplateSpecContainerResources
-		return ret
-	}).(K8sJobSpecTemplateSpecContainerResourcesOutput)
-}
-
-// Describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
-func (o K8sJobSpecTemplateSpecContainerResourcesPtrOutput) Limits() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerResources) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Limits
-	}).(pulumi.StringMapOutput)
-}
-
-// Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
-func (o K8sJobSpecTemplateSpecContainerResourcesPtrOutput) Requests() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerResources) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Requests
-	}).(pulumi.StringMapOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerSecurityContext struct {
-	// AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the no*new*privs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP*SYS*ADMIN Defaults to `true`.
-	AllowPrivilegeEscalation *bool `pulumi:"allowPrivilegeEscalation"`
-	// The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime.
-	Capabilities *K8sJobSpecTemplateSpecContainerSecurityContextCapabilities `pulumi:"capabilities"`
-	// Run container in privileged mode. Processes in privileged containers are essentially equivalent to root on the host. Defaults to false. Defaults to `false`.
-	Privileged *bool `pulumi:"privileged"`
-	// Whether this container has a read-only root filesystem. Default is false. Defaults to `false`.
-	ReadOnlyRootFilesystem *bool `pulumi:"readOnlyRootFilesystem"`
-	// The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
-	RunAsGroup *string `pulumi:"runAsGroup"`
-	// Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
-	RunAsNonRoot *bool `pulumi:"runAsNonRoot"`
-	// The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
-	RunAsUser *string `pulumi:"runAsUser"`
-	// The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
-	SeLinuxOptions *K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptions `pulumi:"seLinuxOptions"`
-	// The seccomp options to use by the containers in this pod. Note that this field cannot be set when spec.os.name is windows.
-	SeccompProfile *K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfile `pulumi:"seccompProfile"`
-}
-
-// K8sJobSpecTemplateSpecContainerSecurityContextInput is an input type that accepts K8sJobSpecTemplateSpecContainerSecurityContextArgs and K8sJobSpecTemplateSpecContainerSecurityContextOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerSecurityContextInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerSecurityContextArgs{...}
-type K8sJobSpecTemplateSpecContainerSecurityContextInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerSecurityContextOutput() K8sJobSpecTemplateSpecContainerSecurityContextOutput
-	ToK8sJobSpecTemplateSpecContainerSecurityContextOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerSecurityContextOutput
-}
-
-type K8sJobSpecTemplateSpecContainerSecurityContextArgs struct {
-	// AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the no*new*privs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP*SYS*ADMIN Defaults to `true`.
-	AllowPrivilegeEscalation pulumi.BoolPtrInput `pulumi:"allowPrivilegeEscalation"`
-	// The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime.
-	Capabilities K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrInput `pulumi:"capabilities"`
-	// Run container in privileged mode. Processes in privileged containers are essentially equivalent to root on the host. Defaults to false. Defaults to `false`.
-	Privileged pulumi.BoolPtrInput `pulumi:"privileged"`
-	// Whether this container has a read-only root filesystem. Default is false. Defaults to `false`.
-	ReadOnlyRootFilesystem pulumi.BoolPtrInput `pulumi:"readOnlyRootFilesystem"`
-	// The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
-	RunAsGroup pulumi.StringPtrInput `pulumi:"runAsGroup"`
-	// Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
-	RunAsNonRoot pulumi.BoolPtrInput `pulumi:"runAsNonRoot"`
-	// The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
-	RunAsUser pulumi.StringPtrInput `pulumi:"runAsUser"`
-	// The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
-	SeLinuxOptions K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrInput `pulumi:"seLinuxOptions"`
-	// The seccomp options to use by the containers in this pod. Note that this field cannot be set when spec.os.name is windows.
-	SeccompProfile K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrInput `pulumi:"seccompProfile"`
-}
-
-func (K8sJobSpecTemplateSpecContainerSecurityContextArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerSecurityContext)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerSecurityContextArgs) ToK8sJobSpecTemplateSpecContainerSecurityContextOutput() K8sJobSpecTemplateSpecContainerSecurityContextOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerSecurityContextOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerSecurityContextArgs) ToK8sJobSpecTemplateSpecContainerSecurityContextOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerSecurityContextOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerSecurityContextOutput)
-}
-
-func (i K8sJobSpecTemplateSpecContainerSecurityContextArgs) ToK8sJobSpecTemplateSpecContainerSecurityContextPtrOutput() K8sJobSpecTemplateSpecContainerSecurityContextPtrOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerSecurityContextPtrOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerSecurityContextArgs) ToK8sJobSpecTemplateSpecContainerSecurityContextPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerSecurityContextPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerSecurityContextOutput).ToK8sJobSpecTemplateSpecContainerSecurityContextPtrOutputWithContext(ctx)
-}
-
-// K8sJobSpecTemplateSpecContainerSecurityContextPtrInput is an input type that accepts K8sJobSpecTemplateSpecContainerSecurityContextArgs, K8sJobSpecTemplateSpecContainerSecurityContextPtr and K8sJobSpecTemplateSpecContainerSecurityContextPtrOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerSecurityContextPtrInput` via:
-//
-//	        K8sJobSpecTemplateSpecContainerSecurityContextArgs{...}
-//
-//	or:
-//
-//	        nil
-type K8sJobSpecTemplateSpecContainerSecurityContextPtrInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerSecurityContextPtrOutput() K8sJobSpecTemplateSpecContainerSecurityContextPtrOutput
-	ToK8sJobSpecTemplateSpecContainerSecurityContextPtrOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerSecurityContextPtrOutput
-}
-
-type k8sJobSpecTemplateSpecContainerSecurityContextPtrType K8sJobSpecTemplateSpecContainerSecurityContextArgs
-
-func K8sJobSpecTemplateSpecContainerSecurityContextPtr(v *K8sJobSpecTemplateSpecContainerSecurityContextArgs) K8sJobSpecTemplateSpecContainerSecurityContextPtrInput {
-	return (*k8sJobSpecTemplateSpecContainerSecurityContextPtrType)(v)
-}
-
-func (*k8sJobSpecTemplateSpecContainerSecurityContextPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecContainerSecurityContext)(nil)).Elem()
-}
-
-func (i *k8sJobSpecTemplateSpecContainerSecurityContextPtrType) ToK8sJobSpecTemplateSpecContainerSecurityContextPtrOutput() K8sJobSpecTemplateSpecContainerSecurityContextPtrOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerSecurityContextPtrOutputWithContext(context.Background())
-}
-
-func (i *k8sJobSpecTemplateSpecContainerSecurityContextPtrType) ToK8sJobSpecTemplateSpecContainerSecurityContextPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerSecurityContextPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerSecurityContextPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerSecurityContextOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerSecurityContextOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerSecurityContext)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerSecurityContextOutput) ToK8sJobSpecTemplateSpecContainerSecurityContextOutput() K8sJobSpecTemplateSpecContainerSecurityContextOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerSecurityContextOutput) ToK8sJobSpecTemplateSpecContainerSecurityContextOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerSecurityContextOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerSecurityContextOutput) ToK8sJobSpecTemplateSpecContainerSecurityContextPtrOutput() K8sJobSpecTemplateSpecContainerSecurityContextPtrOutput {
-	return o.ToK8sJobSpecTemplateSpecContainerSecurityContextPtrOutputWithContext(context.Background())
-}
-
-func (o K8sJobSpecTemplateSpecContainerSecurityContextOutput) ToK8sJobSpecTemplateSpecContainerSecurityContextPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerSecurityContextPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v K8sJobSpecTemplateSpecContainerSecurityContext) *K8sJobSpecTemplateSpecContainerSecurityContext {
-		return &v
-	}).(K8sJobSpecTemplateSpecContainerSecurityContextPtrOutput)
-}
-
-// AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the no*new*privs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP*SYS*ADMIN Defaults to `true`.
-func (o K8sJobSpecTemplateSpecContainerSecurityContextOutput) AllowPrivilegeEscalation() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerSecurityContext) *bool { return v.AllowPrivilegeEscalation }).(pulumi.BoolPtrOutput)
-}
-
-// The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime.
-func (o K8sJobSpecTemplateSpecContainerSecurityContextOutput) Capabilities() K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerSecurityContext) *K8sJobSpecTemplateSpecContainerSecurityContextCapabilities {
-		return v.Capabilities
-	}).(K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput)
-}
-
-// Run container in privileged mode. Processes in privileged containers are essentially equivalent to root on the host. Defaults to false. Defaults to `false`.
-func (o K8sJobSpecTemplateSpecContainerSecurityContextOutput) Privileged() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerSecurityContext) *bool { return v.Privileged }).(pulumi.BoolPtrOutput)
-}
-
-// Whether this container has a read-only root filesystem. Default is false. Defaults to `false`.
-func (o K8sJobSpecTemplateSpecContainerSecurityContextOutput) ReadOnlyRootFilesystem() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerSecurityContext) *bool { return v.ReadOnlyRootFilesystem }).(pulumi.BoolPtrOutput)
-}
-
-// The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
-func (o K8sJobSpecTemplateSpecContainerSecurityContextOutput) RunAsGroup() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerSecurityContext) *string { return v.RunAsGroup }).(pulumi.StringPtrOutput)
-}
-
-// Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
-func (o K8sJobSpecTemplateSpecContainerSecurityContextOutput) RunAsNonRoot() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerSecurityContext) *bool { return v.RunAsNonRoot }).(pulumi.BoolPtrOutput)
-}
-
-// The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
-func (o K8sJobSpecTemplateSpecContainerSecurityContextOutput) RunAsUser() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerSecurityContext) *string { return v.RunAsUser }).(pulumi.StringPtrOutput)
-}
-
-// The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
-func (o K8sJobSpecTemplateSpecContainerSecurityContextOutput) SeLinuxOptions() K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerSecurityContext) *K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptions {
-		return v.SeLinuxOptions
-	}).(K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput)
-}
-
-// The seccomp options to use by the containers in this pod. Note that this field cannot be set when spec.os.name is windows.
-func (o K8sJobSpecTemplateSpecContainerSecurityContextOutput) SeccompProfile() K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerSecurityContext) *K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfile {
-		return v.SeccompProfile
-	}).(K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerSecurityContextPtrOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerSecurityContextPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecContainerSecurityContext)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerSecurityContextPtrOutput) ToK8sJobSpecTemplateSpecContainerSecurityContextPtrOutput() K8sJobSpecTemplateSpecContainerSecurityContextPtrOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerSecurityContextPtrOutput) ToK8sJobSpecTemplateSpecContainerSecurityContextPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerSecurityContextPtrOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerSecurityContextPtrOutput) Elem() K8sJobSpecTemplateSpecContainerSecurityContextOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerSecurityContext) K8sJobSpecTemplateSpecContainerSecurityContext {
-		if v != nil {
-			return *v
-		}
-		var ret K8sJobSpecTemplateSpecContainerSecurityContext
-		return ret
-	}).(K8sJobSpecTemplateSpecContainerSecurityContextOutput)
-}
-
-// AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the no*new*privs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP*SYS*ADMIN Defaults to `true`.
-func (o K8sJobSpecTemplateSpecContainerSecurityContextPtrOutput) AllowPrivilegeEscalation() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerSecurityContext) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.AllowPrivilegeEscalation
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime.
-func (o K8sJobSpecTemplateSpecContainerSecurityContextPtrOutput) Capabilities() K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerSecurityContext) *K8sJobSpecTemplateSpecContainerSecurityContextCapabilities {
-		if v == nil {
-			return nil
-		}
-		return v.Capabilities
-	}).(K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput)
-}
-
-// Run container in privileged mode. Processes in privileged containers are essentially equivalent to root on the host. Defaults to false. Defaults to `false`.
-func (o K8sJobSpecTemplateSpecContainerSecurityContextPtrOutput) Privileged() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerSecurityContext) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Privileged
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Whether this container has a read-only root filesystem. Default is false. Defaults to `false`.
-func (o K8sJobSpecTemplateSpecContainerSecurityContextPtrOutput) ReadOnlyRootFilesystem() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerSecurityContext) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.ReadOnlyRootFilesystem
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
-func (o K8sJobSpecTemplateSpecContainerSecurityContextPtrOutput) RunAsGroup() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerSecurityContext) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RunAsGroup
-	}).(pulumi.StringPtrOutput)
-}
-
-// Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
-func (o K8sJobSpecTemplateSpecContainerSecurityContextPtrOutput) RunAsNonRoot() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerSecurityContext) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.RunAsNonRoot
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
-func (o K8sJobSpecTemplateSpecContainerSecurityContextPtrOutput) RunAsUser() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerSecurityContext) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RunAsUser
-	}).(pulumi.StringPtrOutput)
-}
-
-// The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
-func (o K8sJobSpecTemplateSpecContainerSecurityContextPtrOutput) SeLinuxOptions() K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerSecurityContext) *K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptions {
-		if v == nil {
-			return nil
-		}
-		return v.SeLinuxOptions
-	}).(K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput)
-}
-
-// The seccomp options to use by the containers in this pod. Note that this field cannot be set when spec.os.name is windows.
-func (o K8sJobSpecTemplateSpecContainerSecurityContextPtrOutput) SeccompProfile() K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerSecurityContext) *K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfile {
-		if v == nil {
-			return nil
-		}
-		return v.SeccompProfile
-	}).(K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerSecurityContextCapabilities struct {
-	// Added capabilities
-	Adds []string `pulumi:"adds"`
-	// Removed capabilities
-	Drops []string `pulumi:"drops"`
-}
-
-// K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesInput is an input type that accepts K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesArgs and K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesArgs{...}
-type K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesOutput() K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesOutput
-	ToK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesOutput
-}
-
-type K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesArgs struct {
-	// Added capabilities
-	Adds pulumi.StringArrayInput `pulumi:"adds"`
-	// Removed capabilities
-	Drops pulumi.StringArrayInput `pulumi:"drops"`
-}
-
-func (K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerSecurityContextCapabilities)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesArgs) ToK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesOutput() K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesArgs) ToK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesOutput)
-}
-
-func (i K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesArgs) ToK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput() K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesArgs) ToK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesOutput).ToK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutputWithContext(ctx)
-}
-
-// K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrInput is an input type that accepts K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesArgs, K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtr and K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrInput` via:
-//
-//	        K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesArgs{...}
-//
-//	or:
-//
-//	        nil
-type K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput() K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput
-	ToK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput
-}
-
-type k8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrType K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesArgs
-
-func K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtr(v *K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesArgs) K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrInput {
-	return (*k8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrType)(v)
-}
-
-func (*k8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecContainerSecurityContextCapabilities)(nil)).Elem()
-}
-
-func (i *k8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrType) ToK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput() K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutputWithContext(context.Background())
-}
-
-func (i *k8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrType) ToK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerSecurityContextCapabilities)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesOutput) ToK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesOutput() K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesOutput) ToK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesOutput) ToK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput() K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput {
-	return o.ToK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutputWithContext(context.Background())
-}
-
-func (o K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesOutput) ToK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v K8sJobSpecTemplateSpecContainerSecurityContextCapabilities) *K8sJobSpecTemplateSpecContainerSecurityContextCapabilities {
-		return &v
-	}).(K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput)
-}
-
-// Added capabilities
-func (o K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesOutput) Adds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerSecurityContextCapabilities) []string { return v.Adds }).(pulumi.StringArrayOutput)
-}
-
-// Removed capabilities
-func (o K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesOutput) Drops() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerSecurityContextCapabilities) []string { return v.Drops }).(pulumi.StringArrayOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecContainerSecurityContextCapabilities)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput) ToK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput() K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput) ToK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput) Elem() K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerSecurityContextCapabilities) K8sJobSpecTemplateSpecContainerSecurityContextCapabilities {
-		if v != nil {
-			return *v
-		}
-		var ret K8sJobSpecTemplateSpecContainerSecurityContextCapabilities
-		return ret
-	}).(K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesOutput)
-}
-
-// Added capabilities
-func (o K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput) Adds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerSecurityContextCapabilities) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Adds
-	}).(pulumi.StringArrayOutput)
-}
-
-// Removed capabilities
-func (o K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput) Drops() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerSecurityContextCapabilities) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Drops
-	}).(pulumi.StringArrayOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptions struct {
-	// Level is SELinux level label that applies to the container.
-	Level *string `pulumi:"level"`
-	// Role is a SELinux role label that applies to the container.
-	Role *string `pulumi:"role"`
-	// Type is a SELinux type label that applies to the container.
-	Type *string `pulumi:"type"`
-	// User is a SELinux user label that applies to the container.
-	User *string `pulumi:"user"`
-}
-
-// K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsInput is an input type that accepts K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsArgs and K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsArgs{...}
-type K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsOutput() K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsOutput
-	ToK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsOutput
-}
-
-type K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsArgs struct {
-	// Level is SELinux level label that applies to the container.
-	Level pulumi.StringPtrInput `pulumi:"level"`
-	// Role is a SELinux role label that applies to the container.
-	Role pulumi.StringPtrInput `pulumi:"role"`
-	// Type is a SELinux type label that applies to the container.
-	Type pulumi.StringPtrInput `pulumi:"type"`
-	// User is a SELinux user label that applies to the container.
-	User pulumi.StringPtrInput `pulumi:"user"`
-}
-
-func (K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptions)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsArgs) ToK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsOutput() K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsArgs) ToK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsOutput)
-}
-
-func (i K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsArgs) ToK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput() K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsArgs) ToK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsOutput).ToK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutputWithContext(ctx)
-}
-
-// K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrInput is an input type that accepts K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsArgs, K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtr and K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrInput` via:
-//
-//	        K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsArgs{...}
-//
-//	or:
-//
-//	        nil
-type K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput() K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput
-	ToK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput
-}
-
-type k8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrType K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsArgs
-
-func K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtr(v *K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsArgs) K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrInput {
-	return (*k8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrType)(v)
-}
-
-func (*k8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptions)(nil)).Elem()
-}
-
-func (i *k8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrType) ToK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput() K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutputWithContext(context.Background())
-}
-
-func (i *k8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrType) ToK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptions)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsOutput) ToK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsOutput() K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsOutput) ToK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsOutput) ToK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput() K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput {
-	return o.ToK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutputWithContext(context.Background())
-}
-
-func (o K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsOutput) ToK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptions) *K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptions {
-		return &v
-	}).(K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput)
-}
-
-// Level is SELinux level label that applies to the container.
-func (o K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsOutput) Level() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptions) *string { return v.Level }).(pulumi.StringPtrOutput)
-}
-
-// Role is a SELinux role label that applies to the container.
-func (o K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsOutput) Role() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptions) *string { return v.Role }).(pulumi.StringPtrOutput)
-}
-
-// Type is a SELinux type label that applies to the container.
-func (o K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptions) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-// User is a SELinux user label that applies to the container.
-func (o K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsOutput) User() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptions) *string { return v.User }).(pulumi.StringPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptions)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput) ToK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput() K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput) ToK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput) Elem() K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptions) K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptions {
-		if v != nil {
-			return *v
-		}
-		var ret K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptions
-		return ret
-	}).(K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsOutput)
-}
-
-// Level is SELinux level label that applies to the container.
-func (o K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput) Level() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptions) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Level
-	}).(pulumi.StringPtrOutput)
-}
-
-// Role is a SELinux role label that applies to the container.
-func (o K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput) Role() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptions) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Role
-	}).(pulumi.StringPtrOutput)
-}
-
-// Type is a SELinux type label that applies to the container.
-func (o K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptions) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-// User is a SELinux user label that applies to the container.
-func (o K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput) User() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptions) *string {
-		if v == nil {
-			return nil
-		}
-		return v.User
-	}).(pulumi.StringPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfile struct {
-	// Localhost Profile indicates a profile defined in a file on the node should be used. The profile must be preconfigured on the node to work. Defaults to ``.
-	LocalhostProfile *string `pulumi:"localhostProfile"`
-	// Type indicates which kind of seccomp profile will be applied. Valid options are: Localhost, RuntimeDefault, Unconfined. Defaults to `Unconfined`.
-	Type *string `pulumi:"type"`
-}
-
-// K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileInput is an input type that accepts K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileArgs and K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileArgs{...}
-type K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileOutput() K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileOutput
-	ToK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileOutput
-}
-
-type K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileArgs struct {
-	// Localhost Profile indicates a profile defined in a file on the node should be used. The profile must be preconfigured on the node to work. Defaults to ``.
-	LocalhostProfile pulumi.StringPtrInput `pulumi:"localhostProfile"`
-	// Type indicates which kind of seccomp profile will be applied. Valid options are: Localhost, RuntimeDefault, Unconfined. Defaults to `Unconfined`.
-	Type pulumi.StringPtrInput `pulumi:"type"`
-}
-
-func (K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfile)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileArgs) ToK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileOutput() K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileArgs) ToK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileOutput)
-}
-
-func (i K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileArgs) ToK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput() K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileArgs) ToK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileOutput).ToK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutputWithContext(ctx)
-}
-
-// K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrInput is an input type that accepts K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileArgs, K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtr and K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrInput` via:
-//
-//	        K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileArgs{...}
-//
-//	or:
-//
-//	        nil
-type K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput() K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput
-	ToK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput
-}
-
-type k8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrType K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileArgs
-
-func K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtr(v *K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileArgs) K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrInput {
-	return (*k8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrType)(v)
-}
-
-func (*k8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfile)(nil)).Elem()
-}
-
-func (i *k8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrType) ToK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput() K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutputWithContext(context.Background())
-}
-
-func (i *k8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrType) ToK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfile)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileOutput) ToK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileOutput() K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileOutput) ToK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileOutput) ToK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput() K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput {
-	return o.ToK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutputWithContext(context.Background())
-}
-
-func (o K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileOutput) ToK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfile) *K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfile {
-		return &v
-	}).(K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput)
-}
-
-// Localhost Profile indicates a profile defined in a file on the node should be used. The profile must be preconfigured on the node to work. Defaults to “.
-func (o K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileOutput) LocalhostProfile() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfile) *string {
-		return v.LocalhostProfile
-	}).(pulumi.StringPtrOutput)
-}
-
-// Type indicates which kind of seccomp profile will be applied. Valid options are: Localhost, RuntimeDefault, Unconfined. Defaults to `Unconfined`.
-func (o K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfile) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfile)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput) ToK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput() K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput) ToK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput) Elem() K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfile) K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfile {
-		if v != nil {
-			return *v
-		}
-		var ret K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfile
-		return ret
-	}).(K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileOutput)
-}
-
-// Localhost Profile indicates a profile defined in a file on the node should be used. The profile must be preconfigured on the node to work. Defaults to “.
-func (o K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput) LocalhostProfile() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfile) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LocalhostProfile
-	}).(pulumi.StringPtrOutput)
-}
-
-// Type indicates which kind of seccomp profile will be applied. Valid options are: Localhost, RuntimeDefault, Unconfined. Defaults to `Unconfined`.
-func (o K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfile) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerStartupProbe struct {
-	// exec specifies the action to take.
-	Exec *K8sJobSpecTemplateSpecContainerStartupProbeExec `pulumi:"exec"`
-	// Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to `3`.
-	FailureThreshold *int `pulumi:"failureThreshold"`
-	// GRPC specifies an action involving a GRPC port.
-	Grpcs []K8sJobSpecTemplateSpecContainerStartupProbeGrpc `pulumi:"grpcs"`
-	// Specifies the http request to perform.
-	HttpGet *K8sJobSpecTemplateSpecContainerStartupProbeHttpGet `pulumi:"httpGet"`
-	// Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
-	InitialDelaySeconds *int `pulumi:"initialDelaySeconds"`
-	// How often (in seconds) to perform the probe Defaults to `10`.
-	PeriodSeconds *int `pulumi:"periodSeconds"`
-	// Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to `1`.
-	SuccessThreshold *int `pulumi:"successThreshold"`
-	// TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
-	TcpSockets []K8sJobSpecTemplateSpecContainerStartupProbeTcpSocket `pulumi:"tcpSockets"`
-	// Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes Defaults to `1`.
-	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
-}
-
-// K8sJobSpecTemplateSpecContainerStartupProbeInput is an input type that accepts K8sJobSpecTemplateSpecContainerStartupProbeArgs and K8sJobSpecTemplateSpecContainerStartupProbeOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerStartupProbeInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerStartupProbeArgs{...}
-type K8sJobSpecTemplateSpecContainerStartupProbeInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerStartupProbeOutput() K8sJobSpecTemplateSpecContainerStartupProbeOutput
-	ToK8sJobSpecTemplateSpecContainerStartupProbeOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerStartupProbeOutput
-}
-
-type K8sJobSpecTemplateSpecContainerStartupProbeArgs struct {
-	// exec specifies the action to take.
-	Exec K8sJobSpecTemplateSpecContainerStartupProbeExecPtrInput `pulumi:"exec"`
-	// Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to `3`.
-	FailureThreshold pulumi.IntPtrInput `pulumi:"failureThreshold"`
-	// GRPC specifies an action involving a GRPC port.
-	Grpcs K8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayInput `pulumi:"grpcs"`
-	// Specifies the http request to perform.
-	HttpGet K8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrInput `pulumi:"httpGet"`
-	// Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
-	InitialDelaySeconds pulumi.IntPtrInput `pulumi:"initialDelaySeconds"`
-	// How often (in seconds) to perform the probe Defaults to `10`.
-	PeriodSeconds pulumi.IntPtrInput `pulumi:"periodSeconds"`
-	// Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to `1`.
-	SuccessThreshold pulumi.IntPtrInput `pulumi:"successThreshold"`
-	// TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
-	TcpSockets K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayInput `pulumi:"tcpSockets"`
-	// Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes Defaults to `1`.
-	TimeoutSeconds pulumi.IntPtrInput `pulumi:"timeoutSeconds"`
-}
-
-func (K8sJobSpecTemplateSpecContainerStartupProbeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerStartupProbe)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerStartupProbeArgs) ToK8sJobSpecTemplateSpecContainerStartupProbeOutput() K8sJobSpecTemplateSpecContainerStartupProbeOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerStartupProbeOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerStartupProbeArgs) ToK8sJobSpecTemplateSpecContainerStartupProbeOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerStartupProbeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerStartupProbeOutput)
-}
-
-func (i K8sJobSpecTemplateSpecContainerStartupProbeArgs) ToK8sJobSpecTemplateSpecContainerStartupProbePtrOutput() K8sJobSpecTemplateSpecContainerStartupProbePtrOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerStartupProbePtrOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerStartupProbeArgs) ToK8sJobSpecTemplateSpecContainerStartupProbePtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerStartupProbePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerStartupProbeOutput).ToK8sJobSpecTemplateSpecContainerStartupProbePtrOutputWithContext(ctx)
-}
-
-// K8sJobSpecTemplateSpecContainerStartupProbePtrInput is an input type that accepts K8sJobSpecTemplateSpecContainerStartupProbeArgs, K8sJobSpecTemplateSpecContainerStartupProbePtr and K8sJobSpecTemplateSpecContainerStartupProbePtrOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerStartupProbePtrInput` via:
-//
-//	        K8sJobSpecTemplateSpecContainerStartupProbeArgs{...}
-//
-//	or:
-//
-//	        nil
-type K8sJobSpecTemplateSpecContainerStartupProbePtrInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerStartupProbePtrOutput() K8sJobSpecTemplateSpecContainerStartupProbePtrOutput
-	ToK8sJobSpecTemplateSpecContainerStartupProbePtrOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerStartupProbePtrOutput
-}
-
-type k8sJobSpecTemplateSpecContainerStartupProbePtrType K8sJobSpecTemplateSpecContainerStartupProbeArgs
-
-func K8sJobSpecTemplateSpecContainerStartupProbePtr(v *K8sJobSpecTemplateSpecContainerStartupProbeArgs) K8sJobSpecTemplateSpecContainerStartupProbePtrInput {
-	return (*k8sJobSpecTemplateSpecContainerStartupProbePtrType)(v)
-}
-
-func (*k8sJobSpecTemplateSpecContainerStartupProbePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecContainerStartupProbe)(nil)).Elem()
-}
-
-func (i *k8sJobSpecTemplateSpecContainerStartupProbePtrType) ToK8sJobSpecTemplateSpecContainerStartupProbePtrOutput() K8sJobSpecTemplateSpecContainerStartupProbePtrOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerStartupProbePtrOutputWithContext(context.Background())
-}
-
-func (i *k8sJobSpecTemplateSpecContainerStartupProbePtrType) ToK8sJobSpecTemplateSpecContainerStartupProbePtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerStartupProbePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerStartupProbePtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerStartupProbeOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerStartupProbeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerStartupProbe)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerStartupProbeOutput) ToK8sJobSpecTemplateSpecContainerStartupProbeOutput() K8sJobSpecTemplateSpecContainerStartupProbeOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerStartupProbeOutput) ToK8sJobSpecTemplateSpecContainerStartupProbeOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerStartupProbeOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerStartupProbeOutput) ToK8sJobSpecTemplateSpecContainerStartupProbePtrOutput() K8sJobSpecTemplateSpecContainerStartupProbePtrOutput {
-	return o.ToK8sJobSpecTemplateSpecContainerStartupProbePtrOutputWithContext(context.Background())
-}
-
-func (o K8sJobSpecTemplateSpecContainerStartupProbeOutput) ToK8sJobSpecTemplateSpecContainerStartupProbePtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerStartupProbePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v K8sJobSpecTemplateSpecContainerStartupProbe) *K8sJobSpecTemplateSpecContainerStartupProbe {
-		return &v
-	}).(K8sJobSpecTemplateSpecContainerStartupProbePtrOutput)
-}
-
-// exec specifies the action to take.
-func (o K8sJobSpecTemplateSpecContainerStartupProbeOutput) Exec() K8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerStartupProbe) *K8sJobSpecTemplateSpecContainerStartupProbeExec {
-		return v.Exec
-	}).(K8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutput)
-}
-
-// Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to `3`.
-func (o K8sJobSpecTemplateSpecContainerStartupProbeOutput) FailureThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerStartupProbe) *int { return v.FailureThreshold }).(pulumi.IntPtrOutput)
-}
-
-// GRPC specifies an action involving a GRPC port.
-func (o K8sJobSpecTemplateSpecContainerStartupProbeOutput) Grpcs() K8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerStartupProbe) []K8sJobSpecTemplateSpecContainerStartupProbeGrpc {
-		return v.Grpcs
-	}).(K8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayOutput)
-}
-
-// Specifies the http request to perform.
-func (o K8sJobSpecTemplateSpecContainerStartupProbeOutput) HttpGet() K8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerStartupProbe) *K8sJobSpecTemplateSpecContainerStartupProbeHttpGet {
-		return v.HttpGet
-	}).(K8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput)
-}
-
-// Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
-func (o K8sJobSpecTemplateSpecContainerStartupProbeOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerStartupProbe) *int { return v.InitialDelaySeconds }).(pulumi.IntPtrOutput)
-}
-
-// How often (in seconds) to perform the probe Defaults to `10`.
-func (o K8sJobSpecTemplateSpecContainerStartupProbeOutput) PeriodSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerStartupProbe) *int { return v.PeriodSeconds }).(pulumi.IntPtrOutput)
-}
-
-// Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to `1`.
-func (o K8sJobSpecTemplateSpecContainerStartupProbeOutput) SuccessThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerStartupProbe) *int { return v.SuccessThreshold }).(pulumi.IntPtrOutput)
-}
-
-// TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
-func (o K8sJobSpecTemplateSpecContainerStartupProbeOutput) TcpSockets() K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerStartupProbe) []K8sJobSpecTemplateSpecContainerStartupProbeTcpSocket {
-		return v.TcpSockets
-	}).(K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayOutput)
-}
-
-// Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes Defaults to `1`.
-func (o K8sJobSpecTemplateSpecContainerStartupProbeOutput) TimeoutSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerStartupProbe) *int { return v.TimeoutSeconds }).(pulumi.IntPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerStartupProbePtrOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerStartupProbePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecContainerStartupProbe)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerStartupProbePtrOutput) ToK8sJobSpecTemplateSpecContainerStartupProbePtrOutput() K8sJobSpecTemplateSpecContainerStartupProbePtrOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerStartupProbePtrOutput) ToK8sJobSpecTemplateSpecContainerStartupProbePtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerStartupProbePtrOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerStartupProbePtrOutput) Elem() K8sJobSpecTemplateSpecContainerStartupProbeOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerStartupProbe) K8sJobSpecTemplateSpecContainerStartupProbe {
-		if v != nil {
-			return *v
-		}
-		var ret K8sJobSpecTemplateSpecContainerStartupProbe
-		return ret
-	}).(K8sJobSpecTemplateSpecContainerStartupProbeOutput)
-}
-
-// exec specifies the action to take.
-func (o K8sJobSpecTemplateSpecContainerStartupProbePtrOutput) Exec() K8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerStartupProbe) *K8sJobSpecTemplateSpecContainerStartupProbeExec {
-		if v == nil {
-			return nil
-		}
-		return v.Exec
-	}).(K8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutput)
-}
-
-// Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to `3`.
-func (o K8sJobSpecTemplateSpecContainerStartupProbePtrOutput) FailureThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerStartupProbe) *int {
-		if v == nil {
-			return nil
-		}
-		return v.FailureThreshold
-	}).(pulumi.IntPtrOutput)
-}
-
-// GRPC specifies an action involving a GRPC port.
-func (o K8sJobSpecTemplateSpecContainerStartupProbePtrOutput) Grpcs() K8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerStartupProbe) []K8sJobSpecTemplateSpecContainerStartupProbeGrpc {
-		if v == nil {
-			return nil
-		}
-		return v.Grpcs
-	}).(K8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayOutput)
-}
-
-// Specifies the http request to perform.
-func (o K8sJobSpecTemplateSpecContainerStartupProbePtrOutput) HttpGet() K8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerStartupProbe) *K8sJobSpecTemplateSpecContainerStartupProbeHttpGet {
-		if v == nil {
-			return nil
-		}
-		return v.HttpGet
-	}).(K8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput)
-}
-
-// Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
-func (o K8sJobSpecTemplateSpecContainerStartupProbePtrOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerStartupProbe) *int {
-		if v == nil {
-			return nil
-		}
-		return v.InitialDelaySeconds
-	}).(pulumi.IntPtrOutput)
-}
-
-// How often (in seconds) to perform the probe Defaults to `10`.
-func (o K8sJobSpecTemplateSpecContainerStartupProbePtrOutput) PeriodSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerStartupProbe) *int {
-		if v == nil {
-			return nil
-		}
-		return v.PeriodSeconds
-	}).(pulumi.IntPtrOutput)
-}
-
-// Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to `1`.
-func (o K8sJobSpecTemplateSpecContainerStartupProbePtrOutput) SuccessThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerStartupProbe) *int {
-		if v == nil {
-			return nil
-		}
-		return v.SuccessThreshold
-	}).(pulumi.IntPtrOutput)
-}
-
-// TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
-func (o K8sJobSpecTemplateSpecContainerStartupProbePtrOutput) TcpSockets() K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerStartupProbe) []K8sJobSpecTemplateSpecContainerStartupProbeTcpSocket {
-		if v == nil {
-			return nil
-		}
-		return v.TcpSockets
-	}).(K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayOutput)
-}
-
-// Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes Defaults to `1`.
-func (o K8sJobSpecTemplateSpecContainerStartupProbePtrOutput) TimeoutSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerStartupProbe) *int {
-		if v == nil {
-			return nil
-		}
-		return v.TimeoutSeconds
-	}).(pulumi.IntPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerStartupProbeExec struct {
-	// Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
-	Commands []string `pulumi:"commands"`
-}
-
-// K8sJobSpecTemplateSpecContainerStartupProbeExecInput is an input type that accepts K8sJobSpecTemplateSpecContainerStartupProbeExecArgs and K8sJobSpecTemplateSpecContainerStartupProbeExecOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerStartupProbeExecInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerStartupProbeExecArgs{...}
-type K8sJobSpecTemplateSpecContainerStartupProbeExecInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerStartupProbeExecOutput() K8sJobSpecTemplateSpecContainerStartupProbeExecOutput
-	ToK8sJobSpecTemplateSpecContainerStartupProbeExecOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerStartupProbeExecOutput
-}
-
-type K8sJobSpecTemplateSpecContainerStartupProbeExecArgs struct {
-	// Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
-	Commands pulumi.StringArrayInput `pulumi:"commands"`
-}
-
-func (K8sJobSpecTemplateSpecContainerStartupProbeExecArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerStartupProbeExec)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerStartupProbeExecArgs) ToK8sJobSpecTemplateSpecContainerStartupProbeExecOutput() K8sJobSpecTemplateSpecContainerStartupProbeExecOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerStartupProbeExecOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerStartupProbeExecArgs) ToK8sJobSpecTemplateSpecContainerStartupProbeExecOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerStartupProbeExecOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerStartupProbeExecOutput)
-}
-
-func (i K8sJobSpecTemplateSpecContainerStartupProbeExecArgs) ToK8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutput() K8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerStartupProbeExecArgs) ToK8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerStartupProbeExecOutput).ToK8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutputWithContext(ctx)
-}
-
-// K8sJobSpecTemplateSpecContainerStartupProbeExecPtrInput is an input type that accepts K8sJobSpecTemplateSpecContainerStartupProbeExecArgs, K8sJobSpecTemplateSpecContainerStartupProbeExecPtr and K8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerStartupProbeExecPtrInput` via:
-//
-//	        K8sJobSpecTemplateSpecContainerStartupProbeExecArgs{...}
-//
-//	or:
-//
-//	        nil
-type K8sJobSpecTemplateSpecContainerStartupProbeExecPtrInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutput() K8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutput
-	ToK8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutput
-}
-
-type k8sJobSpecTemplateSpecContainerStartupProbeExecPtrType K8sJobSpecTemplateSpecContainerStartupProbeExecArgs
-
-func K8sJobSpecTemplateSpecContainerStartupProbeExecPtr(v *K8sJobSpecTemplateSpecContainerStartupProbeExecArgs) K8sJobSpecTemplateSpecContainerStartupProbeExecPtrInput {
-	return (*k8sJobSpecTemplateSpecContainerStartupProbeExecPtrType)(v)
-}
-
-func (*k8sJobSpecTemplateSpecContainerStartupProbeExecPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecContainerStartupProbeExec)(nil)).Elem()
-}
-
-func (i *k8sJobSpecTemplateSpecContainerStartupProbeExecPtrType) ToK8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutput() K8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutputWithContext(context.Background())
-}
-
-func (i *k8sJobSpecTemplateSpecContainerStartupProbeExecPtrType) ToK8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerStartupProbeExecOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerStartupProbeExecOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerStartupProbeExec)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerStartupProbeExecOutput) ToK8sJobSpecTemplateSpecContainerStartupProbeExecOutput() K8sJobSpecTemplateSpecContainerStartupProbeExecOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerStartupProbeExecOutput) ToK8sJobSpecTemplateSpecContainerStartupProbeExecOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerStartupProbeExecOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerStartupProbeExecOutput) ToK8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutput() K8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutput {
-	return o.ToK8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutputWithContext(context.Background())
-}
-
-func (o K8sJobSpecTemplateSpecContainerStartupProbeExecOutput) ToK8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v K8sJobSpecTemplateSpecContainerStartupProbeExec) *K8sJobSpecTemplateSpecContainerStartupProbeExec {
-		return &v
-	}).(K8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutput)
-}
-
-// Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
-func (o K8sJobSpecTemplateSpecContainerStartupProbeExecOutput) Commands() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerStartupProbeExec) []string { return v.Commands }).(pulumi.StringArrayOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecContainerStartupProbeExec)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutput) ToK8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutput() K8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutput) ToK8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutput) Elem() K8sJobSpecTemplateSpecContainerStartupProbeExecOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerStartupProbeExec) K8sJobSpecTemplateSpecContainerStartupProbeExec {
-		if v != nil {
-			return *v
-		}
-		var ret K8sJobSpecTemplateSpecContainerStartupProbeExec
-		return ret
-	}).(K8sJobSpecTemplateSpecContainerStartupProbeExecOutput)
-}
-
-// Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
-func (o K8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutput) Commands() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerStartupProbeExec) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Commands
-	}).(pulumi.StringArrayOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerStartupProbeGrpc struct {
-	// Number of the port to access on the container. Number must be in the range 1 to 65535.
-	Port int `pulumi:"port"`
-	// Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
-	Service *string `pulumi:"service"`
-}
-
-// K8sJobSpecTemplateSpecContainerStartupProbeGrpcInput is an input type that accepts K8sJobSpecTemplateSpecContainerStartupProbeGrpcArgs and K8sJobSpecTemplateSpecContainerStartupProbeGrpcOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerStartupProbeGrpcInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerStartupProbeGrpcArgs{...}
-type K8sJobSpecTemplateSpecContainerStartupProbeGrpcInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerStartupProbeGrpcOutput() K8sJobSpecTemplateSpecContainerStartupProbeGrpcOutput
-	ToK8sJobSpecTemplateSpecContainerStartupProbeGrpcOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerStartupProbeGrpcOutput
-}
-
-type K8sJobSpecTemplateSpecContainerStartupProbeGrpcArgs struct {
-	// Number of the port to access on the container. Number must be in the range 1 to 65535.
-	Port pulumi.IntInput `pulumi:"port"`
-	// Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
-	Service pulumi.StringPtrInput `pulumi:"service"`
-}
-
-func (K8sJobSpecTemplateSpecContainerStartupProbeGrpcArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerStartupProbeGrpc)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerStartupProbeGrpcArgs) ToK8sJobSpecTemplateSpecContainerStartupProbeGrpcOutput() K8sJobSpecTemplateSpecContainerStartupProbeGrpcOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerStartupProbeGrpcOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerStartupProbeGrpcArgs) ToK8sJobSpecTemplateSpecContainerStartupProbeGrpcOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerStartupProbeGrpcOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerStartupProbeGrpcOutput)
-}
-
-// K8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayInput is an input type that accepts K8sJobSpecTemplateSpecContainerStartupProbeGrpcArray and K8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerStartupProbeGrpcArray{ K8sJobSpecTemplateSpecContainerStartupProbeGrpcArgs{...} }
-type K8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayOutput() K8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayOutput
-	ToK8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayOutput
-}
-
-type K8sJobSpecTemplateSpecContainerStartupProbeGrpcArray []K8sJobSpecTemplateSpecContainerStartupProbeGrpcInput
-
-func (K8sJobSpecTemplateSpecContainerStartupProbeGrpcArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecContainerStartupProbeGrpc)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerStartupProbeGrpcArray) ToK8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayOutput() K8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerStartupProbeGrpcArray) ToK8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerStartupProbeGrpcOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerStartupProbeGrpcOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerStartupProbeGrpc)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerStartupProbeGrpcOutput) ToK8sJobSpecTemplateSpecContainerStartupProbeGrpcOutput() K8sJobSpecTemplateSpecContainerStartupProbeGrpcOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerStartupProbeGrpcOutput) ToK8sJobSpecTemplateSpecContainerStartupProbeGrpcOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerStartupProbeGrpcOutput {
-	return o
-}
-
-// Number of the port to access on the container. Number must be in the range 1 to 65535.
-func (o K8sJobSpecTemplateSpecContainerStartupProbeGrpcOutput) Port() pulumi.IntOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerStartupProbeGrpc) int { return v.Port }).(pulumi.IntOutput)
-}
-
-// Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
-func (o K8sJobSpecTemplateSpecContainerStartupProbeGrpcOutput) Service() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerStartupProbeGrpc) *string { return v.Service }).(pulumi.StringPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecContainerStartupProbeGrpc)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayOutput) ToK8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayOutput() K8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayOutput) ToK8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayOutput) Index(i pulumi.IntInput) K8sJobSpecTemplateSpecContainerStartupProbeGrpcOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) K8sJobSpecTemplateSpecContainerStartupProbeGrpc {
-		return vs[0].([]K8sJobSpecTemplateSpecContainerStartupProbeGrpc)[vs[1].(int)]
-	}).(K8sJobSpecTemplateSpecContainerStartupProbeGrpcOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerStartupProbeHttpGet struct {
-	// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
-	Host *string `pulumi:"host"`
-	// Scheme to use for connecting to the host.
-	HttpHeaders []K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeader `pulumi:"httpHeaders"`
-	// Path to access on the HTTP server.
-	Path *string `pulumi:"path"`
-	// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
-	Port *string `pulumi:"port"`
-	// Scheme to use for connecting to the host. Defaults to `HTTP`.
-	Scheme *string `pulumi:"scheme"`
-}
-
-// K8sJobSpecTemplateSpecContainerStartupProbeHttpGetInput is an input type that accepts K8sJobSpecTemplateSpecContainerStartupProbeHttpGetArgs and K8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerStartupProbeHttpGetInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerStartupProbeHttpGetArgs{...}
-type K8sJobSpecTemplateSpecContainerStartupProbeHttpGetInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutput() K8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutput
-	ToK8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutput
-}
-
-type K8sJobSpecTemplateSpecContainerStartupProbeHttpGetArgs struct {
-	// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
-	Host pulumi.StringPtrInput `pulumi:"host"`
-	// Scheme to use for connecting to the host.
-	HttpHeaders K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayInput `pulumi:"httpHeaders"`
-	// Path to access on the HTTP server.
-	Path pulumi.StringPtrInput `pulumi:"path"`
-	// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
-	Port pulumi.StringPtrInput `pulumi:"port"`
-	// Scheme to use for connecting to the host. Defaults to `HTTP`.
-	Scheme pulumi.StringPtrInput `pulumi:"scheme"`
-}
-
-func (K8sJobSpecTemplateSpecContainerStartupProbeHttpGetArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerStartupProbeHttpGet)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerStartupProbeHttpGetArgs) ToK8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutput() K8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerStartupProbeHttpGetArgs) ToK8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutput)
-}
-
-func (i K8sJobSpecTemplateSpecContainerStartupProbeHttpGetArgs) ToK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput() K8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerStartupProbeHttpGetArgs) ToK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutput).ToK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutputWithContext(ctx)
-}
-
-// K8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrInput is an input type that accepts K8sJobSpecTemplateSpecContainerStartupProbeHttpGetArgs, K8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtr and K8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrInput` via:
-//
-//	        K8sJobSpecTemplateSpecContainerStartupProbeHttpGetArgs{...}
-//
-//	or:
-//
-//	        nil
-type K8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput() K8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput
-	ToK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput
-}
-
-type k8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrType K8sJobSpecTemplateSpecContainerStartupProbeHttpGetArgs
-
-func K8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtr(v *K8sJobSpecTemplateSpecContainerStartupProbeHttpGetArgs) K8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrInput {
-	return (*k8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrType)(v)
-}
-
-func (*k8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecContainerStartupProbeHttpGet)(nil)).Elem()
-}
-
-func (i *k8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrType) ToK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput() K8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutputWithContext(context.Background())
-}
-
-func (i *k8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrType) ToK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerStartupProbeHttpGet)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutput) ToK8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutput() K8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutput) ToK8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutput) ToK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput() K8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput {
-	return o.ToK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutputWithContext(context.Background())
-}
-
-func (o K8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutput) ToK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v K8sJobSpecTemplateSpecContainerStartupProbeHttpGet) *K8sJobSpecTemplateSpecContainerStartupProbeHttpGet {
-		return &v
-	}).(K8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput)
-}
-
-// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
-func (o K8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerStartupProbeHttpGet) *string { return v.Host }).(pulumi.StringPtrOutput)
-}
-
-// Scheme to use for connecting to the host.
-func (o K8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutput) HttpHeaders() K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerStartupProbeHttpGet) []K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeader {
-		return v.HttpHeaders
-	}).(K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput)
-}
-
-// Path to access on the HTTP server.
-func (o K8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerStartupProbeHttpGet) *string { return v.Path }).(pulumi.StringPtrOutput)
-}
-
-// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
-func (o K8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutput) Port() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerStartupProbeHttpGet) *string { return v.Port }).(pulumi.StringPtrOutput)
-}
-
-// Scheme to use for connecting to the host. Defaults to `HTTP`.
-func (o K8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutput) Scheme() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerStartupProbeHttpGet) *string { return v.Scheme }).(pulumi.StringPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecContainerStartupProbeHttpGet)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput) ToK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput() K8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput) ToK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput) Elem() K8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerStartupProbeHttpGet) K8sJobSpecTemplateSpecContainerStartupProbeHttpGet {
-		if v != nil {
-			return *v
-		}
-		var ret K8sJobSpecTemplateSpecContainerStartupProbeHttpGet
-		return ret
-	}).(K8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutput)
-}
-
-// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
-func (o K8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerStartupProbeHttpGet) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Host
-	}).(pulumi.StringPtrOutput)
-}
-
-// Scheme to use for connecting to the host.
-func (o K8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput) HttpHeaders() K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerStartupProbeHttpGet) []K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeader {
-		if v == nil {
-			return nil
-		}
-		return v.HttpHeaders
-	}).(K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput)
-}
-
-// Path to access on the HTTP server.
-func (o K8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerStartupProbeHttpGet) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Path
-	}).(pulumi.StringPtrOutput)
-}
-
-// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
-func (o K8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput) Port() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerStartupProbeHttpGet) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Port
-	}).(pulumi.StringPtrOutput)
-}
-
-// Scheme to use for connecting to the host. Defaults to `HTTP`.
-func (o K8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput) Scheme() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecContainerStartupProbeHttpGet) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Scheme
-	}).(pulumi.StringPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeader struct {
-	// The header field name
-	Name *string `pulumi:"name"`
-	// The header field value
-	Value *string `pulumi:"value"`
-}
-
-// K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderInput is an input type that accepts K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArgs and K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArgs{...}
-type K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput() K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput
-	ToK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput
-}
-
-type K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArgs struct {
-	// The header field name
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The header field value
-	Value pulumi.StringPtrInput `pulumi:"value"`
-}
-
-func (K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeader)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArgs) ToK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput() K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArgs) ToK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput)
-}
-
-// K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayInput is an input type that accepts K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArray and K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArray{ K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArgs{...} }
-type K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput() K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput
-	ToK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput
-}
-
-type K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArray []K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderInput
-
-func (K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeader)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArray) ToK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput() K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArray) ToK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeader)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput) ToK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput() K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput) ToK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput {
-	return o
-}
-
-// The header field name
-func (o K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeader) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// The header field value
-func (o K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeader) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeader)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput) ToK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput() K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput) ToK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput) Index(i pulumi.IntInput) K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeader {
-		return vs[0].([]K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeader)[vs[1].(int)]
-	}).(K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerStartupProbeTcpSocket struct {
-	// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
-	Port string `pulumi:"port"`
-}
-
-// K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketInput is an input type that accepts K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArgs and K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArgs{...}
-type K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketOutput() K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketOutput
-	ToK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketOutput
-}
-
-type K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArgs struct {
-	// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
-	Port pulumi.StringInput `pulumi:"port"`
-}
-
-func (K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerStartupProbeTcpSocket)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArgs) ToK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketOutput() K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArgs) ToK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketOutput)
-}
-
-// K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayInput is an input type that accepts K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArray and K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArray{ K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArgs{...} }
-type K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayOutput() K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayOutput
-	ToK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayOutput
-}
-
-type K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArray []K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketInput
-
-func (K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecContainerStartupProbeTcpSocket)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArray) ToK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayOutput() K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArray) ToK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerStartupProbeTcpSocket)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketOutput) ToK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketOutput() K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketOutput) ToK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketOutput {
-	return o
-}
-
-// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
-func (o K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketOutput) Port() pulumi.StringOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerStartupProbeTcpSocket) string { return v.Port }).(pulumi.StringOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecContainerStartupProbeTcpSocket)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayOutput) ToK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayOutput() K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayOutput) ToK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayOutput) Index(i pulumi.IntInput) K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) K8sJobSpecTemplateSpecContainerStartupProbeTcpSocket {
-		return vs[0].([]K8sJobSpecTemplateSpecContainerStartupProbeTcpSocket)[vs[1].(int)]
-	}).(K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerVolumeMount struct {
-	// Path within the container at which the volume should be mounted. Must not contain ':'.
-	MountPath string `pulumi:"mountPath"`
-	// Mount propagation mode. mountPropagation determines how mounts are propagated from the host to container and the other way around. Valid values are None (default), HostToContainer and Bidirectional. Defaults to `None`.
-	MountPropagation *string `pulumi:"mountPropagation"`
-	// This must match the Name of a Volume.
-	Name string `pulumi:"name"`
-	// Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false. Defaults to `false`.
-	ReadOnly *bool `pulumi:"readOnly"`
-	// Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
-	SubPath *string `pulumi:"subPath"`
-}
-
-// K8sJobSpecTemplateSpecContainerVolumeMountInput is an input type that accepts K8sJobSpecTemplateSpecContainerVolumeMountArgs and K8sJobSpecTemplateSpecContainerVolumeMountOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerVolumeMountInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerVolumeMountArgs{...}
-type K8sJobSpecTemplateSpecContainerVolumeMountInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerVolumeMountOutput() K8sJobSpecTemplateSpecContainerVolumeMountOutput
-	ToK8sJobSpecTemplateSpecContainerVolumeMountOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerVolumeMountOutput
-}
-
-type K8sJobSpecTemplateSpecContainerVolumeMountArgs struct {
-	// Path within the container at which the volume should be mounted. Must not contain ':'.
-	MountPath pulumi.StringInput `pulumi:"mountPath"`
-	// Mount propagation mode. mountPropagation determines how mounts are propagated from the host to container and the other way around. Valid values are None (default), HostToContainer and Bidirectional. Defaults to `None`.
-	MountPropagation pulumi.StringPtrInput `pulumi:"mountPropagation"`
-	// This must match the Name of a Volume.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false. Defaults to `false`.
-	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
-	// Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
-	SubPath pulumi.StringPtrInput `pulumi:"subPath"`
-}
-
-func (K8sJobSpecTemplateSpecContainerVolumeMountArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerVolumeMount)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerVolumeMountArgs) ToK8sJobSpecTemplateSpecContainerVolumeMountOutput() K8sJobSpecTemplateSpecContainerVolumeMountOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerVolumeMountOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerVolumeMountArgs) ToK8sJobSpecTemplateSpecContainerVolumeMountOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerVolumeMountOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerVolumeMountOutput)
-}
-
-// K8sJobSpecTemplateSpecContainerVolumeMountArrayInput is an input type that accepts K8sJobSpecTemplateSpecContainerVolumeMountArray and K8sJobSpecTemplateSpecContainerVolumeMountArrayOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerVolumeMountArrayInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerVolumeMountArray{ K8sJobSpecTemplateSpecContainerVolumeMountArgs{...} }
-type K8sJobSpecTemplateSpecContainerVolumeMountArrayInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerVolumeMountArrayOutput() K8sJobSpecTemplateSpecContainerVolumeMountArrayOutput
-	ToK8sJobSpecTemplateSpecContainerVolumeMountArrayOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerVolumeMountArrayOutput
-}
-
-type K8sJobSpecTemplateSpecContainerVolumeMountArray []K8sJobSpecTemplateSpecContainerVolumeMountInput
-
-func (K8sJobSpecTemplateSpecContainerVolumeMountArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecContainerVolumeMount)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerVolumeMountArray) ToK8sJobSpecTemplateSpecContainerVolumeMountArrayOutput() K8sJobSpecTemplateSpecContainerVolumeMountArrayOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerVolumeMountArrayOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerVolumeMountArray) ToK8sJobSpecTemplateSpecContainerVolumeMountArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerVolumeMountArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerVolumeMountArrayOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerVolumeMountOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerVolumeMountOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerVolumeMount)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerVolumeMountOutput) ToK8sJobSpecTemplateSpecContainerVolumeMountOutput() K8sJobSpecTemplateSpecContainerVolumeMountOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerVolumeMountOutput) ToK8sJobSpecTemplateSpecContainerVolumeMountOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerVolumeMountOutput {
-	return o
-}
-
-// Path within the container at which the volume should be mounted. Must not contain ':'.
-func (o K8sJobSpecTemplateSpecContainerVolumeMountOutput) MountPath() pulumi.StringOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerVolumeMount) string { return v.MountPath }).(pulumi.StringOutput)
-}
-
-// Mount propagation mode. mountPropagation determines how mounts are propagated from the host to container and the other way around. Valid values are None (default), HostToContainer and Bidirectional. Defaults to `None`.
-func (o K8sJobSpecTemplateSpecContainerVolumeMountOutput) MountPropagation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerVolumeMount) *string { return v.MountPropagation }).(pulumi.StringPtrOutput)
-}
-
-// This must match the Name of a Volume.
-func (o K8sJobSpecTemplateSpecContainerVolumeMountOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerVolumeMount) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false. Defaults to `false`.
-func (o K8sJobSpecTemplateSpecContainerVolumeMountOutput) ReadOnly() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerVolumeMount) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
-}
-
-// Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
-func (o K8sJobSpecTemplateSpecContainerVolumeMountOutput) SubPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerVolumeMount) *string { return v.SubPath }).(pulumi.StringPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerVolumeMountArrayOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerVolumeMountArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecContainerVolumeMount)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerVolumeMountArrayOutput) ToK8sJobSpecTemplateSpecContainerVolumeMountArrayOutput() K8sJobSpecTemplateSpecContainerVolumeMountArrayOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerVolumeMountArrayOutput) ToK8sJobSpecTemplateSpecContainerVolumeMountArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerVolumeMountArrayOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerVolumeMountArrayOutput) Index(i pulumi.IntInput) K8sJobSpecTemplateSpecContainerVolumeMountOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) K8sJobSpecTemplateSpecContainerVolumeMount {
-		return vs[0].([]K8sJobSpecTemplateSpecContainerVolumeMount)[vs[1].(int)]
-	}).(K8sJobSpecTemplateSpecContainerVolumeMountOutput)
-}
-
-type K8sJobSpecTemplateSpecDnsConfig struct {
-	// A list of DNS name server IP addresses. This will be appended to the base nameservers generated from DNSPolicy. Duplicated nameservers will be removed.
-	Nameservers []string `pulumi:"nameservers"`
-	// A list of DNS resolver options. This will be merged with the base options generated from DNSPolicy. Duplicated entries will be removed. Resolution options given in Options will override those that appear in the base DNSPolicy.
-	Options []K8sJobSpecTemplateSpecDnsConfigOption `pulumi:"options"`
-	// A list of DNS search domains for host-name lookup. This will be appended to the base search paths generated from DNSPolicy. Duplicated search paths will be removed.
-	Searches []string `pulumi:"searches"`
-}
-
-// K8sJobSpecTemplateSpecDnsConfigInput is an input type that accepts K8sJobSpecTemplateSpecDnsConfigArgs and K8sJobSpecTemplateSpecDnsConfigOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecDnsConfigInput` via:
-//
-//	K8sJobSpecTemplateSpecDnsConfigArgs{...}
-type K8sJobSpecTemplateSpecDnsConfigInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecDnsConfigOutput() K8sJobSpecTemplateSpecDnsConfigOutput
-	ToK8sJobSpecTemplateSpecDnsConfigOutputWithContext(context.Context) K8sJobSpecTemplateSpecDnsConfigOutput
-}
-
-type K8sJobSpecTemplateSpecDnsConfigArgs struct {
-	// A list of DNS name server IP addresses. This will be appended to the base nameservers generated from DNSPolicy. Duplicated nameservers will be removed.
-	Nameservers pulumi.StringArrayInput `pulumi:"nameservers"`
-	// A list of DNS resolver options. This will be merged with the base options generated from DNSPolicy. Duplicated entries will be removed. Resolution options given in Options will override those that appear in the base DNSPolicy.
-	Options K8sJobSpecTemplateSpecDnsConfigOptionArrayInput `pulumi:"options"`
-	// A list of DNS search domains for host-name lookup. This will be appended to the base search paths generated from DNSPolicy. Duplicated search paths will be removed.
-	Searches pulumi.StringArrayInput `pulumi:"searches"`
-}
-
-func (K8sJobSpecTemplateSpecDnsConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecDnsConfig)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecDnsConfigArgs) ToK8sJobSpecTemplateSpecDnsConfigOutput() K8sJobSpecTemplateSpecDnsConfigOutput {
-	return i.ToK8sJobSpecTemplateSpecDnsConfigOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecDnsConfigArgs) ToK8sJobSpecTemplateSpecDnsConfigOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecDnsConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecDnsConfigOutput)
-}
-
-func (i K8sJobSpecTemplateSpecDnsConfigArgs) ToK8sJobSpecTemplateSpecDnsConfigPtrOutput() K8sJobSpecTemplateSpecDnsConfigPtrOutput {
-	return i.ToK8sJobSpecTemplateSpecDnsConfigPtrOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecDnsConfigArgs) ToK8sJobSpecTemplateSpecDnsConfigPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecDnsConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecDnsConfigOutput).ToK8sJobSpecTemplateSpecDnsConfigPtrOutputWithContext(ctx)
-}
-
-// K8sJobSpecTemplateSpecDnsConfigPtrInput is an input type that accepts K8sJobSpecTemplateSpecDnsConfigArgs, K8sJobSpecTemplateSpecDnsConfigPtr and K8sJobSpecTemplateSpecDnsConfigPtrOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecDnsConfigPtrInput` via:
-//
-//	        K8sJobSpecTemplateSpecDnsConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type K8sJobSpecTemplateSpecDnsConfigPtrInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecDnsConfigPtrOutput() K8sJobSpecTemplateSpecDnsConfigPtrOutput
-	ToK8sJobSpecTemplateSpecDnsConfigPtrOutputWithContext(context.Context) K8sJobSpecTemplateSpecDnsConfigPtrOutput
-}
-
-type k8sJobSpecTemplateSpecDnsConfigPtrType K8sJobSpecTemplateSpecDnsConfigArgs
-
-func K8sJobSpecTemplateSpecDnsConfigPtr(v *K8sJobSpecTemplateSpecDnsConfigArgs) K8sJobSpecTemplateSpecDnsConfigPtrInput {
-	return (*k8sJobSpecTemplateSpecDnsConfigPtrType)(v)
-}
-
-func (*k8sJobSpecTemplateSpecDnsConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecDnsConfig)(nil)).Elem()
-}
-
-func (i *k8sJobSpecTemplateSpecDnsConfigPtrType) ToK8sJobSpecTemplateSpecDnsConfigPtrOutput() K8sJobSpecTemplateSpecDnsConfigPtrOutput {
-	return i.ToK8sJobSpecTemplateSpecDnsConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *k8sJobSpecTemplateSpecDnsConfigPtrType) ToK8sJobSpecTemplateSpecDnsConfigPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecDnsConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecDnsConfigPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecDnsConfigOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecDnsConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecDnsConfig)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecDnsConfigOutput) ToK8sJobSpecTemplateSpecDnsConfigOutput() K8sJobSpecTemplateSpecDnsConfigOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecDnsConfigOutput) ToK8sJobSpecTemplateSpecDnsConfigOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecDnsConfigOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecDnsConfigOutput) ToK8sJobSpecTemplateSpecDnsConfigPtrOutput() K8sJobSpecTemplateSpecDnsConfigPtrOutput {
-	return o.ToK8sJobSpecTemplateSpecDnsConfigPtrOutputWithContext(context.Background())
-}
-
-func (o K8sJobSpecTemplateSpecDnsConfigOutput) ToK8sJobSpecTemplateSpecDnsConfigPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecDnsConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v K8sJobSpecTemplateSpecDnsConfig) *K8sJobSpecTemplateSpecDnsConfig {
-		return &v
-	}).(K8sJobSpecTemplateSpecDnsConfigPtrOutput)
-}
-
-// A list of DNS name server IP addresses. This will be appended to the base nameservers generated from DNSPolicy. Duplicated nameservers will be removed.
-func (o K8sJobSpecTemplateSpecDnsConfigOutput) Nameservers() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecDnsConfig) []string { return v.Nameservers }).(pulumi.StringArrayOutput)
-}
-
-// A list of DNS resolver options. This will be merged with the base options generated from DNSPolicy. Duplicated entries will be removed. Resolution options given in Options will override those that appear in the base DNSPolicy.
-func (o K8sJobSpecTemplateSpecDnsConfigOutput) Options() K8sJobSpecTemplateSpecDnsConfigOptionArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecDnsConfig) []K8sJobSpecTemplateSpecDnsConfigOption { return v.Options }).(K8sJobSpecTemplateSpecDnsConfigOptionArrayOutput)
-}
-
-// A list of DNS search domains for host-name lookup. This will be appended to the base search paths generated from DNSPolicy. Duplicated search paths will be removed.
-func (o K8sJobSpecTemplateSpecDnsConfigOutput) Searches() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecDnsConfig) []string { return v.Searches }).(pulumi.StringArrayOutput)
-}
-
-type K8sJobSpecTemplateSpecDnsConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecDnsConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecDnsConfig)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecDnsConfigPtrOutput) ToK8sJobSpecTemplateSpecDnsConfigPtrOutput() K8sJobSpecTemplateSpecDnsConfigPtrOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecDnsConfigPtrOutput) ToK8sJobSpecTemplateSpecDnsConfigPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecDnsConfigPtrOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecDnsConfigPtrOutput) Elem() K8sJobSpecTemplateSpecDnsConfigOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecDnsConfig) K8sJobSpecTemplateSpecDnsConfig {
-		if v != nil {
-			return *v
-		}
-		var ret K8sJobSpecTemplateSpecDnsConfig
-		return ret
-	}).(K8sJobSpecTemplateSpecDnsConfigOutput)
-}
-
-// A list of DNS name server IP addresses. This will be appended to the base nameservers generated from DNSPolicy. Duplicated nameservers will be removed.
-func (o K8sJobSpecTemplateSpecDnsConfigPtrOutput) Nameservers() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecDnsConfig) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Nameservers
-	}).(pulumi.StringArrayOutput)
-}
-
-// A list of DNS resolver options. This will be merged with the base options generated from DNSPolicy. Duplicated entries will be removed. Resolution options given in Options will override those that appear in the base DNSPolicy.
-func (o K8sJobSpecTemplateSpecDnsConfigPtrOutput) Options() K8sJobSpecTemplateSpecDnsConfigOptionArrayOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecDnsConfig) []K8sJobSpecTemplateSpecDnsConfigOption {
-		if v == nil {
-			return nil
-		}
-		return v.Options
-	}).(K8sJobSpecTemplateSpecDnsConfigOptionArrayOutput)
-}
-
-// A list of DNS search domains for host-name lookup. This will be appended to the base search paths generated from DNSPolicy. Duplicated search paths will be removed.
-func (o K8sJobSpecTemplateSpecDnsConfigPtrOutput) Searches() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecDnsConfig) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Searches
-	}).(pulumi.StringArrayOutput)
-}
-
-type K8sJobSpecTemplateSpecDnsConfigOption struct {
-	// Name of the option.
-	Name string `pulumi:"name"`
-	// Value of the option. Optional: Defaults to empty.
-	Value *string `pulumi:"value"`
-}
-
-// K8sJobSpecTemplateSpecDnsConfigOptionInput is an input type that accepts K8sJobSpecTemplateSpecDnsConfigOptionArgs and K8sJobSpecTemplateSpecDnsConfigOptionOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecDnsConfigOptionInput` via:
-//
-//	K8sJobSpecTemplateSpecDnsConfigOptionArgs{...}
-type K8sJobSpecTemplateSpecDnsConfigOptionInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecDnsConfigOptionOutput() K8sJobSpecTemplateSpecDnsConfigOptionOutput
-	ToK8sJobSpecTemplateSpecDnsConfigOptionOutputWithContext(context.Context) K8sJobSpecTemplateSpecDnsConfigOptionOutput
-}
-
-type K8sJobSpecTemplateSpecDnsConfigOptionArgs struct {
-	// Name of the option.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Value of the option. Optional: Defaults to empty.
-	Value pulumi.StringPtrInput `pulumi:"value"`
-}
-
-func (K8sJobSpecTemplateSpecDnsConfigOptionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecDnsConfigOption)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecDnsConfigOptionArgs) ToK8sJobSpecTemplateSpecDnsConfigOptionOutput() K8sJobSpecTemplateSpecDnsConfigOptionOutput {
-	return i.ToK8sJobSpecTemplateSpecDnsConfigOptionOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecDnsConfigOptionArgs) ToK8sJobSpecTemplateSpecDnsConfigOptionOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecDnsConfigOptionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecDnsConfigOptionOutput)
-}
-
-// K8sJobSpecTemplateSpecDnsConfigOptionArrayInput is an input type that accepts K8sJobSpecTemplateSpecDnsConfigOptionArray and K8sJobSpecTemplateSpecDnsConfigOptionArrayOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecDnsConfigOptionArrayInput` via:
-//
-//	K8sJobSpecTemplateSpecDnsConfigOptionArray{ K8sJobSpecTemplateSpecDnsConfigOptionArgs{...} }
-type K8sJobSpecTemplateSpecDnsConfigOptionArrayInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecDnsConfigOptionArrayOutput() K8sJobSpecTemplateSpecDnsConfigOptionArrayOutput
-	ToK8sJobSpecTemplateSpecDnsConfigOptionArrayOutputWithContext(context.Context) K8sJobSpecTemplateSpecDnsConfigOptionArrayOutput
-}
-
-type K8sJobSpecTemplateSpecDnsConfigOptionArray []K8sJobSpecTemplateSpecDnsConfigOptionInput
-
-func (K8sJobSpecTemplateSpecDnsConfigOptionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecDnsConfigOption)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecDnsConfigOptionArray) ToK8sJobSpecTemplateSpecDnsConfigOptionArrayOutput() K8sJobSpecTemplateSpecDnsConfigOptionArrayOutput {
-	return i.ToK8sJobSpecTemplateSpecDnsConfigOptionArrayOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecDnsConfigOptionArray) ToK8sJobSpecTemplateSpecDnsConfigOptionArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecDnsConfigOptionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecDnsConfigOptionArrayOutput)
-}
-
-type K8sJobSpecTemplateSpecDnsConfigOptionOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecDnsConfigOptionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecDnsConfigOption)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecDnsConfigOptionOutput) ToK8sJobSpecTemplateSpecDnsConfigOptionOutput() K8sJobSpecTemplateSpecDnsConfigOptionOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecDnsConfigOptionOutput) ToK8sJobSpecTemplateSpecDnsConfigOptionOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecDnsConfigOptionOutput {
-	return o
-}
-
-// Name of the option.
-func (o K8sJobSpecTemplateSpecDnsConfigOptionOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecDnsConfigOption) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Value of the option. Optional: Defaults to empty.
-func (o K8sJobSpecTemplateSpecDnsConfigOptionOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecDnsConfigOption) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecDnsConfigOptionArrayOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecDnsConfigOptionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecDnsConfigOption)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecDnsConfigOptionArrayOutput) ToK8sJobSpecTemplateSpecDnsConfigOptionArrayOutput() K8sJobSpecTemplateSpecDnsConfigOptionArrayOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecDnsConfigOptionArrayOutput) ToK8sJobSpecTemplateSpecDnsConfigOptionArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecDnsConfigOptionArrayOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecDnsConfigOptionArrayOutput) Index(i pulumi.IntInput) K8sJobSpecTemplateSpecDnsConfigOptionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) K8sJobSpecTemplateSpecDnsConfigOption {
-		return vs[0].([]K8sJobSpecTemplateSpecDnsConfigOption)[vs[1].(int)]
-	}).(K8sJobSpecTemplateSpecDnsConfigOptionOutput)
-}
-
-type K8sJobSpecTemplateSpecHostAlias struct {
-	// Hostnames for the IP address.
-	Hostnames []string `pulumi:"hostnames"`
-	// IP address of the host file entry.
-	Ip string `pulumi:"ip"`
-}
-
-// K8sJobSpecTemplateSpecHostAliasInput is an input type that accepts K8sJobSpecTemplateSpecHostAliasArgs and K8sJobSpecTemplateSpecHostAliasOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecHostAliasInput` via:
-//
-//	K8sJobSpecTemplateSpecHostAliasArgs{...}
-type K8sJobSpecTemplateSpecHostAliasInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecHostAliasOutput() K8sJobSpecTemplateSpecHostAliasOutput
-	ToK8sJobSpecTemplateSpecHostAliasOutputWithContext(context.Context) K8sJobSpecTemplateSpecHostAliasOutput
-}
-
-type K8sJobSpecTemplateSpecHostAliasArgs struct {
-	// Hostnames for the IP address.
-	Hostnames pulumi.StringArrayInput `pulumi:"hostnames"`
-	// IP address of the host file entry.
-	Ip pulumi.StringInput `pulumi:"ip"`
-}
-
-func (K8sJobSpecTemplateSpecHostAliasArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecHostAlias)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecHostAliasArgs) ToK8sJobSpecTemplateSpecHostAliasOutput() K8sJobSpecTemplateSpecHostAliasOutput {
-	return i.ToK8sJobSpecTemplateSpecHostAliasOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecHostAliasArgs) ToK8sJobSpecTemplateSpecHostAliasOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecHostAliasOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecHostAliasOutput)
-}
-
-// K8sJobSpecTemplateSpecHostAliasArrayInput is an input type that accepts K8sJobSpecTemplateSpecHostAliasArray and K8sJobSpecTemplateSpecHostAliasArrayOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecHostAliasArrayInput` via:
-//
-//	K8sJobSpecTemplateSpecHostAliasArray{ K8sJobSpecTemplateSpecHostAliasArgs{...} }
-type K8sJobSpecTemplateSpecHostAliasArrayInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecHostAliasArrayOutput() K8sJobSpecTemplateSpecHostAliasArrayOutput
-	ToK8sJobSpecTemplateSpecHostAliasArrayOutputWithContext(context.Context) K8sJobSpecTemplateSpecHostAliasArrayOutput
-}
-
-type K8sJobSpecTemplateSpecHostAliasArray []K8sJobSpecTemplateSpecHostAliasInput
-
-func (K8sJobSpecTemplateSpecHostAliasArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecHostAlias)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecHostAliasArray) ToK8sJobSpecTemplateSpecHostAliasArrayOutput() K8sJobSpecTemplateSpecHostAliasArrayOutput {
-	return i.ToK8sJobSpecTemplateSpecHostAliasArrayOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecHostAliasArray) ToK8sJobSpecTemplateSpecHostAliasArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecHostAliasArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecHostAliasArrayOutput)
-}
-
-type K8sJobSpecTemplateSpecHostAliasOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecHostAliasOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecHostAlias)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecHostAliasOutput) ToK8sJobSpecTemplateSpecHostAliasOutput() K8sJobSpecTemplateSpecHostAliasOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecHostAliasOutput) ToK8sJobSpecTemplateSpecHostAliasOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecHostAliasOutput {
-	return o
-}
-
-// Hostnames for the IP address.
-func (o K8sJobSpecTemplateSpecHostAliasOutput) Hostnames() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecHostAlias) []string { return v.Hostnames }).(pulumi.StringArrayOutput)
-}
-
-// IP address of the host file entry.
-func (o K8sJobSpecTemplateSpecHostAliasOutput) Ip() pulumi.StringOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecHostAlias) string { return v.Ip }).(pulumi.StringOutput)
-}
-
-type K8sJobSpecTemplateSpecHostAliasArrayOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecHostAliasArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecHostAlias)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecHostAliasArrayOutput) ToK8sJobSpecTemplateSpecHostAliasArrayOutput() K8sJobSpecTemplateSpecHostAliasArrayOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecHostAliasArrayOutput) ToK8sJobSpecTemplateSpecHostAliasArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecHostAliasArrayOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecHostAliasArrayOutput) Index(i pulumi.IntInput) K8sJobSpecTemplateSpecHostAliasOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) K8sJobSpecTemplateSpecHostAlias {
-		return vs[0].([]K8sJobSpecTemplateSpecHostAlias)[vs[1].(int)]
-	}).(K8sJobSpecTemplateSpecHostAliasOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AsgProfileMetadataInput)(nil)).Elem(), AsgProfileMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AsgProfileMetadataArrayInput)(nil)).Elem(), AsgProfileMetadataArray{})
@@ -76773,6 +77308,49 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsCloudfrontDistributionRestrictionsPtrInput)(nil)).Elem(), AwsCloudfrontDistributionRestrictionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsCloudfrontDistributionRestrictionsGeoRestrictionInput)(nil)).Elem(), AwsCloudfrontDistributionRestrictionsGeoRestrictionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsCloudfrontDistributionRestrictionsGeoRestrictionPtrInput)(nil)).Elem(), AwsCloudfrontDistributionRestrictionsGeoRestrictionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsCloudfrontDistributionV2CustomErrorResponseInput)(nil)).Elem(), AwsCloudfrontDistributionV2CustomErrorResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsCloudfrontDistributionV2CustomErrorResponseArrayInput)(nil)).Elem(), AwsCloudfrontDistributionV2CustomErrorResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsCloudfrontDistributionV2DefaultCacheBehaviorInput)(nil)).Elem(), AwsCloudfrontDistributionV2DefaultCacheBehaviorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsCloudfrontDistributionV2DefaultCacheBehaviorPtrInput)(nil)).Elem(), AwsCloudfrontDistributionV2DefaultCacheBehaviorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesInput)(nil)).Elem(), AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesPtrInput)(nil)).Elem(), AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesInput)(nil)).Elem(), AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesPtrInput)(nil)).Elem(), AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationInput)(nil)).Elem(), AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationArrayInput)(nil)).Elem(), AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationInput)(nil)).Elem(), AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationArrayInput)(nil)).Elem(), AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsCloudfrontDistributionV2LoggingConfigInput)(nil)).Elem(), AwsCloudfrontDistributionV2LoggingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsCloudfrontDistributionV2LoggingConfigPtrInput)(nil)).Elem(), AwsCloudfrontDistributionV2LoggingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsCloudfrontDistributionV2OrderedCacheBehaviorInput)(nil)).Elem(), AwsCloudfrontDistributionV2OrderedCacheBehaviorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsCloudfrontDistributionV2OrderedCacheBehaviorArrayInput)(nil)).Elem(), AwsCloudfrontDistributionV2OrderedCacheBehaviorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesInput)(nil)).Elem(), AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesPtrInput)(nil)).Elem(), AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesInput)(nil)).Elem(), AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesPtrInput)(nil)).Elem(), AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationInput)(nil)).Elem(), AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationArrayInput)(nil)).Elem(), AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationInput)(nil)).Elem(), AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationArrayInput)(nil)).Elem(), AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsCloudfrontDistributionV2OriginInput)(nil)).Elem(), AwsCloudfrontDistributionV2OriginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsCloudfrontDistributionV2OriginArrayInput)(nil)).Elem(), AwsCloudfrontDistributionV2OriginArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsCloudfrontDistributionV2OriginCustomHeaderInput)(nil)).Elem(), AwsCloudfrontDistributionV2OriginCustomHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsCloudfrontDistributionV2OriginCustomHeaderArrayInput)(nil)).Elem(), AwsCloudfrontDistributionV2OriginCustomHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsCloudfrontDistributionV2OriginCustomOriginConfigInput)(nil)).Elem(), AwsCloudfrontDistributionV2OriginCustomOriginConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsCloudfrontDistributionV2OriginCustomOriginConfigPtrInput)(nil)).Elem(), AwsCloudfrontDistributionV2OriginCustomOriginConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsCloudfrontDistributionV2OriginGroupInput)(nil)).Elem(), AwsCloudfrontDistributionV2OriginGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsCloudfrontDistributionV2OriginGroupArrayInput)(nil)).Elem(), AwsCloudfrontDistributionV2OriginGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsCloudfrontDistributionV2OriginGroupFailoverCriteriaInput)(nil)).Elem(), AwsCloudfrontDistributionV2OriginGroupFailoverCriteriaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsCloudfrontDistributionV2OriginGroupMemberInput)(nil)).Elem(), AwsCloudfrontDistributionV2OriginGroupMemberArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsCloudfrontDistributionV2OriginGroupMemberArrayInput)(nil)).Elem(), AwsCloudfrontDistributionV2OriginGroupMemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsCloudfrontDistributionV2OriginOriginShieldInput)(nil)).Elem(), AwsCloudfrontDistributionV2OriginOriginShieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsCloudfrontDistributionV2OriginOriginShieldPtrInput)(nil)).Elem(), AwsCloudfrontDistributionV2OriginOriginShieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsCloudfrontDistributionV2RestrictionsInput)(nil)).Elem(), AwsCloudfrontDistributionV2RestrictionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsCloudfrontDistributionV2RestrictionsPtrInput)(nil)).Elem(), AwsCloudfrontDistributionV2RestrictionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsCloudfrontDistributionV2RestrictionsGeoRestrictionInput)(nil)).Elem(), AwsCloudfrontDistributionV2RestrictionsGeoRestrictionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsCloudfrontDistributionV2RestrictionsGeoRestrictionPtrInput)(nil)).Elem(), AwsCloudfrontDistributionV2RestrictionsGeoRestrictionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsCloudfrontDistributionV2ViewerCertificateInput)(nil)).Elem(), AwsCloudfrontDistributionV2ViewerCertificateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsCloudfrontDistributionV2ViewerCertificatePtrInput)(nil)).Elem(), AwsCloudfrontDistributionV2ViewerCertificateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsCloudfrontDistributionViewerCertificateInput)(nil)).Elem(), AwsCloudfrontDistributionViewerCertificateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsCloudfrontDistributionViewerCertificatePtrInput)(nil)).Elem(), AwsCloudfrontDistributionViewerCertificateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsCloudwatchEventRuleTagInput)(nil)).Elem(), AwsCloudwatchEventRuleTagArgs{})
@@ -76845,6 +77423,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsLaunchTemplateBlockDeviceMappingArrayInput)(nil)).Elem(), AwsLaunchTemplateBlockDeviceMappingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsLaunchTemplateBlockDeviceMappingEbsInput)(nil)).Elem(), AwsLaunchTemplateBlockDeviceMappingEbsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsLaunchTemplateBlockDeviceMappingEbsPtrInput)(nil)).Elem(), AwsLaunchTemplateBlockDeviceMappingEbsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsLaunchTemplateInstanceRequirementsInput)(nil)).Elem(), AwsLaunchTemplateInstanceRequirementsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsLaunchTemplateInstanceRequirementsPtrInput)(nil)).Elem(), AwsLaunchTemplateInstanceRequirementsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsLaunchTemplateInstanceRequirementsMemoryMibInput)(nil)).Elem(), AwsLaunchTemplateInstanceRequirementsMemoryMibArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsLaunchTemplateInstanceRequirementsMemoryMibPtrInput)(nil)).Elem(), AwsLaunchTemplateInstanceRequirementsMemoryMibArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsLaunchTemplateInstanceRequirementsVcpuCountInput)(nil)).Elem(), AwsLaunchTemplateInstanceRequirementsVcpuCountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsLaunchTemplateInstanceRequirementsVcpuCountPtrInput)(nil)).Elem(), AwsLaunchTemplateInstanceRequirementsVcpuCountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsLbListenerRuleActionInput)(nil)).Elem(), AwsLbListenerRuleActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsLbListenerRuleActionArrayInput)(nil)).Elem(), AwsLbListenerRuleActionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsLbListenerRuleActionAuthenticateCognitoInput)(nil)).Elem(), AwsLbListenerRuleActionAuthenticateCognitoArgs{})
@@ -76891,6 +77475,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsLoadBalancerListenerDefaultActionRedirectPtrInput)(nil)).Elem(), AwsLoadBalancerListenerDefaultActionRedirectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsLoadBalancerTagInput)(nil)).Elem(), AwsLoadBalancerTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsLoadBalancerTagArrayInput)(nil)).Elem(), AwsLoadBalancerTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsMqBrokerConfigurationInput)(nil)).Elem(), AwsMqBrokerConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsMqBrokerConfigurationPtrInput)(nil)).Elem(), AwsMqBrokerConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsMqBrokerEncryptionOptionsInput)(nil)).Elem(), AwsMqBrokerEncryptionOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsMqBrokerEncryptionOptionsPtrInput)(nil)).Elem(), AwsMqBrokerEncryptionOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsMqBrokerLdapServerMetadataInput)(nil)).Elem(), AwsMqBrokerLdapServerMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsMqBrokerLdapServerMetadataPtrInput)(nil)).Elem(), AwsMqBrokerLdapServerMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsMqBrokerLogsInput)(nil)).Elem(), AwsMqBrokerLogsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsMqBrokerLogsPtrInput)(nil)).Elem(), AwsMqBrokerLogsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsMqBrokerMaintenanceWindowInput)(nil)).Elem(), AwsMqBrokerMaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsMqBrokerMaintenanceWindowPtrInput)(nil)).Elem(), AwsMqBrokerMaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsMqBrokerUserInput)(nil)).Elem(), AwsMqBrokerUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsMqBrokerUserArrayInput)(nil)).Elem(), AwsMqBrokerUserArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsMwaaEnvironmentLastUpdatedInput)(nil)).Elem(), AwsMwaaEnvironmentLastUpdatedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsMwaaEnvironmentLastUpdatedArrayInput)(nil)).Elem(), AwsMwaaEnvironmentLastUpdatedArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsMwaaEnvironmentLastUpdatedErrorInput)(nil)).Elem(), AwsMwaaEnvironmentLastUpdatedErrorArgs{})
@@ -76911,6 +77507,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsSqsQueueDeadLetterQueueConfigurationPtrInput)(nil)).Elem(), AwsSqsQueueDeadLetterQueueConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsTargetGroupAttributesAttributeInput)(nil)).Elem(), AwsTargetGroupAttributesAttributeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsTargetGroupAttributesAttributeArrayInput)(nil)).Elem(), AwsTargetGroupAttributesAttributeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsTargetGroupTargetRegisterTargetInput)(nil)).Elem(), AwsTargetGroupTargetRegisterTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsTargetGroupTargetRegisterTargetArrayInput)(nil)).Elem(), AwsTargetGroupTargetRegisterTargetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsTimestreamwriteDatabaseAllTagInput)(nil)).Elem(), AwsTimestreamwriteDatabaseAllTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsTimestreamwriteDatabaseAllTagArrayInput)(nil)).Elem(), AwsTimestreamwriteDatabaseAllTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsTimestreamwriteDatabaseTagInput)(nil)).Elem(), AwsTimestreamwriteDatabaseTagArgs{})
@@ -77057,6 +77655,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpCloudFunctionEventTriggerPtrInput)(nil)).Elem(), GcpCloudFunctionEventTriggerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpCloudFunctionHttpsTriggerInput)(nil)).Elem(), GcpCloudFunctionHttpsTriggerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpCloudFunctionHttpsTriggerPtrInput)(nil)).Elem(), GcpCloudFunctionHttpsTriggerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpCloudTaskAppEngineInput)(nil)).Elem(), GcpCloudTaskAppEngineArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpCloudTaskAppEnginePtrInput)(nil)).Elem(), GcpCloudTaskAppEngineArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpCloudTaskHttpTargetInput)(nil)).Elem(), GcpCloudTaskHttpTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpCloudTaskHttpTargetPtrInput)(nil)).Elem(), GcpCloudTaskHttpTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpInfraMaintenanceWindowExclusionInput)(nil)).Elem(), GcpInfraMaintenanceWindowExclusionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpInfraMaintenanceWindowExclusionArrayInput)(nil)).Elem(), GcpInfraMaintenanceWindowExclusionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpInfraMaintenanceWindowRecurringWindowInput)(nil)).Elem(), GcpInfraMaintenanceWindowRecurringWindowArgs{})
@@ -77081,6 +77683,24 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpNodePoolUpgradeSettingBlueGreenSettingArrayInput)(nil)).Elem(), GcpNodePoolUpgradeSettingBlueGreenSettingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpNodePoolUpgradeSettingBlueGreenSettingStandardRolloutPolicyInput)(nil)).Elem(), GcpNodePoolUpgradeSettingBlueGreenSettingStandardRolloutPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpNodePoolUpgradeSettingBlueGreenSettingStandardRolloutPolicyArrayInput)(nil)).Elem(), GcpNodePoolUpgradeSettingBlueGreenSettingStandardRolloutPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpPubsubSubscriptionBigQueryInput)(nil)).Elem(), GcpPubsubSubscriptionBigQueryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpPubsubSubscriptionBigQueryPtrInput)(nil)).Elem(), GcpPubsubSubscriptionBigQueryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpPubsubSubscriptionCloudStorageConfigInput)(nil)).Elem(), GcpPubsubSubscriptionCloudStorageConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpPubsubSubscriptionCloudStorageConfigPtrInput)(nil)).Elem(), GcpPubsubSubscriptionCloudStorageConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpPubsubSubscriptionCloudStorageConfigAvroConfigInput)(nil)).Elem(), GcpPubsubSubscriptionCloudStorageConfigAvroConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpPubsubSubscriptionCloudStorageConfigAvroConfigPtrInput)(nil)).Elem(), GcpPubsubSubscriptionCloudStorageConfigAvroConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpPubsubSubscriptionDeadLetterPolicyInput)(nil)).Elem(), GcpPubsubSubscriptionDeadLetterPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpPubsubSubscriptionDeadLetterPolicyPtrInput)(nil)).Elem(), GcpPubsubSubscriptionDeadLetterPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpPubsubSubscriptionExpirationPolicyInput)(nil)).Elem(), GcpPubsubSubscriptionExpirationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpPubsubSubscriptionExpirationPolicyPtrInput)(nil)).Elem(), GcpPubsubSubscriptionExpirationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpPubsubSubscriptionPushConfigInput)(nil)).Elem(), GcpPubsubSubscriptionPushConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpPubsubSubscriptionPushConfigPtrInput)(nil)).Elem(), GcpPubsubSubscriptionPushConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpPubsubSubscriptionPushConfigNoWrapperInput)(nil)).Elem(), GcpPubsubSubscriptionPushConfigNoWrapperArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpPubsubSubscriptionPushConfigNoWrapperPtrInput)(nil)).Elem(), GcpPubsubSubscriptionPushConfigNoWrapperArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpPubsubSubscriptionPushConfigOidcTokenInput)(nil)).Elem(), GcpPubsubSubscriptionPushConfigOidcTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpPubsubSubscriptionPushConfigOidcTokenPtrInput)(nil)).Elem(), GcpPubsubSubscriptionPushConfigOidcTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpPubsubSubscriptionRetryPolicyInput)(nil)).Elem(), GcpPubsubSubscriptionRetryPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpPubsubSubscriptionRetryPolicyPtrInput)(nil)).Elem(), GcpPubsubSubscriptionRetryPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpSchedulerJobAppEngineTargetInput)(nil)).Elem(), GcpSchedulerJobAppEngineTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpSchedulerJobAppEngineTargetPtrInput)(nil)).Elem(), GcpSchedulerJobAppEngineTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpSchedulerJobAppEngineTargetRoutingInput)(nil)).Elem(), GcpSchedulerJobAppEngineTargetRoutingArgs{})
@@ -77095,6 +77715,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpSchedulerJobPubsubTargetPtrInput)(nil)).Elem(), GcpSchedulerJobPubsubTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpSqlDatabaseInstanceDatabaseFlagInput)(nil)).Elem(), GcpSqlDatabaseInstanceDatabaseFlagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpSqlDatabaseInstanceDatabaseFlagArrayInput)(nil)).Elem(), GcpSqlDatabaseInstanceDatabaseFlagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpSqlDatabaseInstanceIpConfigurationInput)(nil)).Elem(), GcpSqlDatabaseInstanceIpConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpSqlDatabaseInstanceIpConfigurationPtrInput)(nil)).Elem(), GcpSqlDatabaseInstanceIpConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpStorageBucketV2DefaultEncryptionInput)(nil)).Elem(), GcpStorageBucketV2DefaultEncryptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpStorageBucketV2DefaultEncryptionPtrInput)(nil)).Elem(), GcpStorageBucketV2DefaultEncryptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpTenantSecurityRulePortsAndProtocolInput)(nil)).Elem(), GcpTenantSecurityRulePortsAndProtocolArgs{})
@@ -77133,6 +77755,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*K8IngressRuleArrayInput)(nil)).Elem(), K8IngressRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*K8IngressTlInput)(nil)).Elem(), K8IngressTlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*K8IngressTlArrayInput)(nil)).Elem(), K8IngressTlArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*K8OciRepositorySpecInput)(nil)).Elem(), K8OciRepositorySpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*K8OciRepositorySpecPtrInput)(nil)).Elem(), K8OciRepositorySpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*K8OciRepositorySpecRefInput)(nil)).Elem(), K8OciRepositorySpecRefArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*K8OciRepositorySpecRefPtrInput)(nil)).Elem(), K8OciRepositorySpecRefArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*K8PersistentVolumeClaimSpecInput)(nil)).Elem(), K8PersistentVolumeClaimSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*K8PersistentVolumeClaimSpecPtrInput)(nil)).Elem(), K8PersistentVolumeClaimSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*K8PersistentVolumeClaimSpecResourcesInput)(nil)).Elem(), K8PersistentVolumeClaimSpecResourcesArgs{})
@@ -77582,98 +78208,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerEnvArrayInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerEnvArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerEnvFromInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerEnvFromArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerEnvFromArrayInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerEnvFromArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefPtrInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerEnvFromSecretRefInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerEnvFromSecretRefArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerEnvFromSecretRefPtrInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerEnvFromSecretRefArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerEnvValueFromInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerEnvValueFromArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerEnvValueFromPtrInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerEnvValueFromArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefPtrInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLifecycleInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerLifecycleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLifecyclePtrInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerLifecycleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLifecyclePostStartInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerLifecyclePostStartArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLifecyclePostStartArrayInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerLifecyclePostStartArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLifecyclePostStartExecInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerLifecyclePostStartExecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerLifecyclePostStartExecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArrayInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLifecyclePreStopInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerLifecyclePreStopArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLifecyclePreStopArrayInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerLifecyclePreStopArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLifecyclePreStopExecInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerLifecyclePreStopExecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerLifecyclePreStopExecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArrayInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLivenessProbeInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerLivenessProbeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLivenessProbePtrInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerLivenessProbeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLivenessProbeExecInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerLivenessProbeExecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLivenessProbeExecPtrInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerLivenessProbeExecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLivenessProbeGrpcInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerLivenessProbeGrpcArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerLivenessProbeGrpcArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerPortInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerPortArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerPortArrayInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerPortArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerReadinessProbeInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerReadinessProbeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerReadinessProbePtrInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerReadinessProbeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerReadinessProbeExecInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerReadinessProbeExecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerReadinessProbeExecPtrInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerReadinessProbeExecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerReadinessProbeGrpcInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerReadinessProbeGrpcArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerReadinessProbeGrpcArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerResourcesInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerResourcesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerResourcesPtrInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerResourcesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerSecurityContextInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerSecurityContextArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerSecurityContextPtrInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerSecurityContextArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerStartupProbeInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerStartupProbeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerStartupProbePtrInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerStartupProbeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerStartupProbeExecInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerStartupProbeExecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerStartupProbeExecPtrInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerStartupProbeExecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerStartupProbeGrpcInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerStartupProbeGrpcArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerStartupProbeGrpcArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerStartupProbeHttpGetInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerStartupProbeHttpGetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerStartupProbeHttpGetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerVolumeMountInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerVolumeMountArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerVolumeMountArrayInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerVolumeMountArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecDnsConfigInput)(nil)).Elem(), K8sJobSpecTemplateSpecDnsConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecDnsConfigPtrInput)(nil)).Elem(), K8sJobSpecTemplateSpecDnsConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecDnsConfigOptionInput)(nil)).Elem(), K8sJobSpecTemplateSpecDnsConfigOptionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecDnsConfigOptionArrayInput)(nil)).Elem(), K8sJobSpecTemplateSpecDnsConfigOptionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecHostAliasInput)(nil)).Elem(), K8sJobSpecTemplateSpecHostAliasArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecHostAliasArrayInput)(nil)).Elem(), K8sJobSpecTemplateSpecHostAliasArray{})
 	pulumi.RegisterOutputType(AsgProfileMetadataOutput{})
 	pulumi.RegisterOutputType(AsgProfileMetadataArrayOutput{})
 	pulumi.RegisterOutputType(AsgProfileMinionTagOutput{})
@@ -77761,6 +78295,49 @@ func init() {
 	pulumi.RegisterOutputType(AwsCloudfrontDistributionRestrictionsPtrOutput{})
 	pulumi.RegisterOutputType(AwsCloudfrontDistributionRestrictionsGeoRestrictionOutput{})
 	pulumi.RegisterOutputType(AwsCloudfrontDistributionRestrictionsGeoRestrictionPtrOutput{})
+	pulumi.RegisterOutputType(AwsCloudfrontDistributionV2CustomErrorResponseOutput{})
+	pulumi.RegisterOutputType(AwsCloudfrontDistributionV2CustomErrorResponseArrayOutput{})
+	pulumi.RegisterOutputType(AwsCloudfrontDistributionV2DefaultCacheBehaviorOutput{})
+	pulumi.RegisterOutputType(AwsCloudfrontDistributionV2DefaultCacheBehaviorPtrOutput{})
+	pulumi.RegisterOutputType(AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesOutput{})
+	pulumi.RegisterOutputType(AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesPtrOutput{})
+	pulumi.RegisterOutputType(AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesOutput{})
+	pulumi.RegisterOutputType(AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesPtrOutput{})
+	pulumi.RegisterOutputType(AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationOutput{})
+	pulumi.RegisterOutputType(AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationArrayOutput{})
+	pulumi.RegisterOutputType(AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationOutput{})
+	pulumi.RegisterOutputType(AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationArrayOutput{})
+	pulumi.RegisterOutputType(AwsCloudfrontDistributionV2LoggingConfigOutput{})
+	pulumi.RegisterOutputType(AwsCloudfrontDistributionV2LoggingConfigPtrOutput{})
+	pulumi.RegisterOutputType(AwsCloudfrontDistributionV2OrderedCacheBehaviorOutput{})
+	pulumi.RegisterOutputType(AwsCloudfrontDistributionV2OrderedCacheBehaviorArrayOutput{})
+	pulumi.RegisterOutputType(AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesOutput{})
+	pulumi.RegisterOutputType(AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesPtrOutput{})
+	pulumi.RegisterOutputType(AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesOutput{})
+	pulumi.RegisterOutputType(AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesPtrOutput{})
+	pulumi.RegisterOutputType(AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationOutput{})
+	pulumi.RegisterOutputType(AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationArrayOutput{})
+	pulumi.RegisterOutputType(AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationOutput{})
+	pulumi.RegisterOutputType(AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationArrayOutput{})
+	pulumi.RegisterOutputType(AwsCloudfrontDistributionV2OriginOutput{})
+	pulumi.RegisterOutputType(AwsCloudfrontDistributionV2OriginArrayOutput{})
+	pulumi.RegisterOutputType(AwsCloudfrontDistributionV2OriginCustomHeaderOutput{})
+	pulumi.RegisterOutputType(AwsCloudfrontDistributionV2OriginCustomHeaderArrayOutput{})
+	pulumi.RegisterOutputType(AwsCloudfrontDistributionV2OriginCustomOriginConfigOutput{})
+	pulumi.RegisterOutputType(AwsCloudfrontDistributionV2OriginCustomOriginConfigPtrOutput{})
+	pulumi.RegisterOutputType(AwsCloudfrontDistributionV2OriginGroupOutput{})
+	pulumi.RegisterOutputType(AwsCloudfrontDistributionV2OriginGroupArrayOutput{})
+	pulumi.RegisterOutputType(AwsCloudfrontDistributionV2OriginGroupFailoverCriteriaOutput{})
+	pulumi.RegisterOutputType(AwsCloudfrontDistributionV2OriginGroupMemberOutput{})
+	pulumi.RegisterOutputType(AwsCloudfrontDistributionV2OriginGroupMemberArrayOutput{})
+	pulumi.RegisterOutputType(AwsCloudfrontDistributionV2OriginOriginShieldOutput{})
+	pulumi.RegisterOutputType(AwsCloudfrontDistributionV2OriginOriginShieldPtrOutput{})
+	pulumi.RegisterOutputType(AwsCloudfrontDistributionV2RestrictionsOutput{})
+	pulumi.RegisterOutputType(AwsCloudfrontDistributionV2RestrictionsPtrOutput{})
+	pulumi.RegisterOutputType(AwsCloudfrontDistributionV2RestrictionsGeoRestrictionOutput{})
+	pulumi.RegisterOutputType(AwsCloudfrontDistributionV2RestrictionsGeoRestrictionPtrOutput{})
+	pulumi.RegisterOutputType(AwsCloudfrontDistributionV2ViewerCertificateOutput{})
+	pulumi.RegisterOutputType(AwsCloudfrontDistributionV2ViewerCertificatePtrOutput{})
 	pulumi.RegisterOutputType(AwsCloudfrontDistributionViewerCertificateOutput{})
 	pulumi.RegisterOutputType(AwsCloudfrontDistributionViewerCertificatePtrOutput{})
 	pulumi.RegisterOutputType(AwsCloudwatchEventRuleTagOutput{})
@@ -77833,6 +78410,12 @@ func init() {
 	pulumi.RegisterOutputType(AwsLaunchTemplateBlockDeviceMappingArrayOutput{})
 	pulumi.RegisterOutputType(AwsLaunchTemplateBlockDeviceMappingEbsOutput{})
 	pulumi.RegisterOutputType(AwsLaunchTemplateBlockDeviceMappingEbsPtrOutput{})
+	pulumi.RegisterOutputType(AwsLaunchTemplateInstanceRequirementsOutput{})
+	pulumi.RegisterOutputType(AwsLaunchTemplateInstanceRequirementsPtrOutput{})
+	pulumi.RegisterOutputType(AwsLaunchTemplateInstanceRequirementsMemoryMibOutput{})
+	pulumi.RegisterOutputType(AwsLaunchTemplateInstanceRequirementsMemoryMibPtrOutput{})
+	pulumi.RegisterOutputType(AwsLaunchTemplateInstanceRequirementsVcpuCountOutput{})
+	pulumi.RegisterOutputType(AwsLaunchTemplateInstanceRequirementsVcpuCountPtrOutput{})
 	pulumi.RegisterOutputType(AwsLbListenerRuleActionOutput{})
 	pulumi.RegisterOutputType(AwsLbListenerRuleActionArrayOutput{})
 	pulumi.RegisterOutputType(AwsLbListenerRuleActionAuthenticateCognitoOutput{})
@@ -77879,6 +78462,18 @@ func init() {
 	pulumi.RegisterOutputType(AwsLoadBalancerListenerDefaultActionRedirectPtrOutput{})
 	pulumi.RegisterOutputType(AwsLoadBalancerTagOutput{})
 	pulumi.RegisterOutputType(AwsLoadBalancerTagArrayOutput{})
+	pulumi.RegisterOutputType(AwsMqBrokerConfigurationOutput{})
+	pulumi.RegisterOutputType(AwsMqBrokerConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(AwsMqBrokerEncryptionOptionsOutput{})
+	pulumi.RegisterOutputType(AwsMqBrokerEncryptionOptionsPtrOutput{})
+	pulumi.RegisterOutputType(AwsMqBrokerLdapServerMetadataOutput{})
+	pulumi.RegisterOutputType(AwsMqBrokerLdapServerMetadataPtrOutput{})
+	pulumi.RegisterOutputType(AwsMqBrokerLogsOutput{})
+	pulumi.RegisterOutputType(AwsMqBrokerLogsPtrOutput{})
+	pulumi.RegisterOutputType(AwsMqBrokerMaintenanceWindowOutput{})
+	pulumi.RegisterOutputType(AwsMqBrokerMaintenanceWindowPtrOutput{})
+	pulumi.RegisterOutputType(AwsMqBrokerUserOutput{})
+	pulumi.RegisterOutputType(AwsMqBrokerUserArrayOutput{})
 	pulumi.RegisterOutputType(AwsMwaaEnvironmentLastUpdatedOutput{})
 	pulumi.RegisterOutputType(AwsMwaaEnvironmentLastUpdatedArrayOutput{})
 	pulumi.RegisterOutputType(AwsMwaaEnvironmentLastUpdatedErrorOutput{})
@@ -77899,6 +78494,8 @@ func init() {
 	pulumi.RegisterOutputType(AwsSqsQueueDeadLetterQueueConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(AwsTargetGroupAttributesAttributeOutput{})
 	pulumi.RegisterOutputType(AwsTargetGroupAttributesAttributeArrayOutput{})
+	pulumi.RegisterOutputType(AwsTargetGroupTargetRegisterTargetOutput{})
+	pulumi.RegisterOutputType(AwsTargetGroupTargetRegisterTargetArrayOutput{})
 	pulumi.RegisterOutputType(AwsTimestreamwriteDatabaseAllTagOutput{})
 	pulumi.RegisterOutputType(AwsTimestreamwriteDatabaseAllTagArrayOutput{})
 	pulumi.RegisterOutputType(AwsTimestreamwriteDatabaseTagOutput{})
@@ -78045,6 +78642,10 @@ func init() {
 	pulumi.RegisterOutputType(GcpCloudFunctionEventTriggerPtrOutput{})
 	pulumi.RegisterOutputType(GcpCloudFunctionHttpsTriggerOutput{})
 	pulumi.RegisterOutputType(GcpCloudFunctionHttpsTriggerPtrOutput{})
+	pulumi.RegisterOutputType(GcpCloudTaskAppEngineOutput{})
+	pulumi.RegisterOutputType(GcpCloudTaskAppEnginePtrOutput{})
+	pulumi.RegisterOutputType(GcpCloudTaskHttpTargetOutput{})
+	pulumi.RegisterOutputType(GcpCloudTaskHttpTargetPtrOutput{})
 	pulumi.RegisterOutputType(GcpInfraMaintenanceWindowExclusionOutput{})
 	pulumi.RegisterOutputType(GcpInfraMaintenanceWindowExclusionArrayOutput{})
 	pulumi.RegisterOutputType(GcpInfraMaintenanceWindowRecurringWindowOutput{})
@@ -78069,6 +78670,24 @@ func init() {
 	pulumi.RegisterOutputType(GcpNodePoolUpgradeSettingBlueGreenSettingArrayOutput{})
 	pulumi.RegisterOutputType(GcpNodePoolUpgradeSettingBlueGreenSettingStandardRolloutPolicyOutput{})
 	pulumi.RegisterOutputType(GcpNodePoolUpgradeSettingBlueGreenSettingStandardRolloutPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GcpPubsubSubscriptionBigQueryOutput{})
+	pulumi.RegisterOutputType(GcpPubsubSubscriptionBigQueryPtrOutput{})
+	pulumi.RegisterOutputType(GcpPubsubSubscriptionCloudStorageConfigOutput{})
+	pulumi.RegisterOutputType(GcpPubsubSubscriptionCloudStorageConfigPtrOutput{})
+	pulumi.RegisterOutputType(GcpPubsubSubscriptionCloudStorageConfigAvroConfigOutput{})
+	pulumi.RegisterOutputType(GcpPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput{})
+	pulumi.RegisterOutputType(GcpPubsubSubscriptionDeadLetterPolicyOutput{})
+	pulumi.RegisterOutputType(GcpPubsubSubscriptionDeadLetterPolicyPtrOutput{})
+	pulumi.RegisterOutputType(GcpPubsubSubscriptionExpirationPolicyOutput{})
+	pulumi.RegisterOutputType(GcpPubsubSubscriptionExpirationPolicyPtrOutput{})
+	pulumi.RegisterOutputType(GcpPubsubSubscriptionPushConfigOutput{})
+	pulumi.RegisterOutputType(GcpPubsubSubscriptionPushConfigPtrOutput{})
+	pulumi.RegisterOutputType(GcpPubsubSubscriptionPushConfigNoWrapperOutput{})
+	pulumi.RegisterOutputType(GcpPubsubSubscriptionPushConfigNoWrapperPtrOutput{})
+	pulumi.RegisterOutputType(GcpPubsubSubscriptionPushConfigOidcTokenOutput{})
+	pulumi.RegisterOutputType(GcpPubsubSubscriptionPushConfigOidcTokenPtrOutput{})
+	pulumi.RegisterOutputType(GcpPubsubSubscriptionRetryPolicyOutput{})
+	pulumi.RegisterOutputType(GcpPubsubSubscriptionRetryPolicyPtrOutput{})
 	pulumi.RegisterOutputType(GcpSchedulerJobAppEngineTargetOutput{})
 	pulumi.RegisterOutputType(GcpSchedulerJobAppEngineTargetPtrOutput{})
 	pulumi.RegisterOutputType(GcpSchedulerJobAppEngineTargetRoutingOutput{})
@@ -78083,6 +78702,8 @@ func init() {
 	pulumi.RegisterOutputType(GcpSchedulerJobPubsubTargetPtrOutput{})
 	pulumi.RegisterOutputType(GcpSqlDatabaseInstanceDatabaseFlagOutput{})
 	pulumi.RegisterOutputType(GcpSqlDatabaseInstanceDatabaseFlagArrayOutput{})
+	pulumi.RegisterOutputType(GcpSqlDatabaseInstanceIpConfigurationOutput{})
+	pulumi.RegisterOutputType(GcpSqlDatabaseInstanceIpConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(GcpStorageBucketV2DefaultEncryptionOutput{})
 	pulumi.RegisterOutputType(GcpStorageBucketV2DefaultEncryptionPtrOutput{})
 	pulumi.RegisterOutputType(GcpTenantSecurityRulePortsAndProtocolOutput{})
@@ -78121,6 +78742,10 @@ func init() {
 	pulumi.RegisterOutputType(K8IngressRuleArrayOutput{})
 	pulumi.RegisterOutputType(K8IngressTlOutput{})
 	pulumi.RegisterOutputType(K8IngressTlArrayOutput{})
+	pulumi.RegisterOutputType(K8OciRepositorySpecOutput{})
+	pulumi.RegisterOutputType(K8OciRepositorySpecPtrOutput{})
+	pulumi.RegisterOutputType(K8OciRepositorySpecRefOutput{})
+	pulumi.RegisterOutputType(K8OciRepositorySpecRefPtrOutput{})
 	pulumi.RegisterOutputType(K8PersistentVolumeClaimSpecOutput{})
 	pulumi.RegisterOutputType(K8PersistentVolumeClaimSpecPtrOutput{})
 	pulumi.RegisterOutputType(K8PersistentVolumeClaimSpecResourcesOutput{})
@@ -78570,96 +79195,4 @@ func init() {
 	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerEnvArrayOutput{})
 	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerEnvFromOutput{})
 	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerEnvFromArrayOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefPtrOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerEnvFromSecretRefOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerEnvFromSecretRefPtrOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerEnvValueFromOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerEnvValueFromPtrOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefPtrOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerLifecycleOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerLifecyclePtrOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerLifecyclePostStartOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerLifecyclePostStartArrayOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerLifecyclePostStartExecOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArrayOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerLifecyclePreStopOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerLifecyclePreStopArrayOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerLifecyclePreStopExecOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArrayOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerLivenessProbeOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerLivenessProbePtrOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerLivenessProbeExecOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerLivenessProbeGrpcOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerPortOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerPortArrayOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerReadinessProbeOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerReadinessProbePtrOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerReadinessProbeExecOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerReadinessProbeGrpcOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerResourcesOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerResourcesPtrOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerSecurityContextOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerSecurityContextPtrOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerStartupProbeOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerStartupProbePtrOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerStartupProbeExecOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerStartupProbeGrpcOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerVolumeMountOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerVolumeMountArrayOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecDnsConfigOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecDnsConfigPtrOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecDnsConfigOptionOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecDnsConfigOptionArrayOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecHostAliasOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecHostAliasArrayOutput{})
 }

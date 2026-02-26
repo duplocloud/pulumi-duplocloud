@@ -80,10 +80,14 @@ type TenantSecret struct {
 	Arn pulumi.StringOutput `pulumi:"arn"`
 	// The plaintext secret data. You can use the `jsonencode()` function to store JSON data in this field.
 	Data pulumi.StringOutput `pulumi:"data"`
+	// Config to bypass retention window before permanently deleting secret on AWS (FYI: field is managed localy in TF provider, importing the resource will not hold defined value)
+	ForceDeleteOnDestroy pulumi.BoolPtrOutput `pulumi:"forceDeleteOnDestroy"`
 	// The full name of the secret.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The short name of the secret. You can get the fullname from the `name` attribute after creation.
 	NameSuffix pulumi.StringOutput `pulumi:"nameSuffix"`
+	// Retention period secret remains recoverable/not fully deleted before AWS permanently deletes it (FYI: field is managed localy in TF provider, importing the resource will not hold defined value)
+	RetentionWindowInDaysOnDestroy pulumi.IntPtrOutput `pulumi:"retentionWindowInDaysOnDestroy"`
 	// Whether or not rotation is enabled for this secret.
 	RotationEnabled pulumi.BoolOutput `pulumi:"rotationEnabled"`
 	// A list of tags for this secret.
@@ -144,10 +148,14 @@ type tenantSecretState struct {
 	Arn *string `pulumi:"arn"`
 	// The plaintext secret data. You can use the `jsonencode()` function to store JSON data in this field.
 	Data *string `pulumi:"data"`
+	// Config to bypass retention window before permanently deleting secret on AWS (FYI: field is managed localy in TF provider, importing the resource will not hold defined value)
+	ForceDeleteOnDestroy *bool `pulumi:"forceDeleteOnDestroy"`
 	// The full name of the secret.
 	Name *string `pulumi:"name"`
 	// The short name of the secret. You can get the fullname from the `name` attribute after creation.
 	NameSuffix *string `pulumi:"nameSuffix"`
+	// Retention period secret remains recoverable/not fully deleted before AWS permanently deletes it (FYI: field is managed localy in TF provider, importing the resource will not hold defined value)
+	RetentionWindowInDaysOnDestroy *int `pulumi:"retentionWindowInDaysOnDestroy"`
 	// Whether or not rotation is enabled for this secret.
 	RotationEnabled *bool `pulumi:"rotationEnabled"`
 	// A list of tags for this secret.
@@ -163,10 +171,14 @@ type TenantSecretState struct {
 	Arn pulumi.StringPtrInput
 	// The plaintext secret data. You can use the `jsonencode()` function to store JSON data in this field.
 	Data pulumi.StringPtrInput
+	// Config to bypass retention window before permanently deleting secret on AWS (FYI: field is managed localy in TF provider, importing the resource will not hold defined value)
+	ForceDeleteOnDestroy pulumi.BoolPtrInput
 	// The full name of the secret.
 	Name pulumi.StringPtrInput
 	// The short name of the secret. You can get the fullname from the `name` attribute after creation.
 	NameSuffix pulumi.StringPtrInput
+	// Retention period secret remains recoverable/not fully deleted before AWS permanently deletes it (FYI: field is managed localy in TF provider, importing the resource will not hold defined value)
+	RetentionWindowInDaysOnDestroy pulumi.IntPtrInput
 	// Whether or not rotation is enabled for this secret.
 	RotationEnabled pulumi.BoolPtrInput
 	// A list of tags for this secret.
@@ -184,8 +196,12 @@ func (TenantSecretState) ElementType() reflect.Type {
 type tenantSecretArgs struct {
 	// The plaintext secret data. You can use the `jsonencode()` function to store JSON data in this field.
 	Data string `pulumi:"data"`
+	// Config to bypass retention window before permanently deleting secret on AWS (FYI: field is managed localy in TF provider, importing the resource will not hold defined value)
+	ForceDeleteOnDestroy *bool `pulumi:"forceDeleteOnDestroy"`
 	// The short name of the secret. You can get the fullname from the `name` attribute after creation.
 	NameSuffix string `pulumi:"nameSuffix"`
+	// Retention period secret remains recoverable/not fully deleted before AWS permanently deletes it (FYI: field is managed localy in TF provider, importing the resource will not hold defined value)
+	RetentionWindowInDaysOnDestroy *int `pulumi:"retentionWindowInDaysOnDestroy"`
 	// The GUID of the tenant that the secret will be created in.
 	TenantId string `pulumi:"tenantId"`
 }
@@ -194,8 +210,12 @@ type tenantSecretArgs struct {
 type TenantSecretArgs struct {
 	// The plaintext secret data. You can use the `jsonencode()` function to store JSON data in this field.
 	Data pulumi.StringInput
+	// Config to bypass retention window before permanently deleting secret on AWS (FYI: field is managed localy in TF provider, importing the resource will not hold defined value)
+	ForceDeleteOnDestroy pulumi.BoolPtrInput
 	// The short name of the secret. You can get the fullname from the `name` attribute after creation.
 	NameSuffix pulumi.StringInput
+	// Retention period secret remains recoverable/not fully deleted before AWS permanently deletes it (FYI: field is managed localy in TF provider, importing the resource will not hold defined value)
+	RetentionWindowInDaysOnDestroy pulumi.IntPtrInput
 	// The GUID of the tenant that the secret will be created in.
 	TenantId pulumi.StringInput
 }
@@ -297,6 +317,11 @@ func (o TenantSecretOutput) Data() pulumi.StringOutput {
 	return o.ApplyT(func(v *TenantSecret) pulumi.StringOutput { return v.Data }).(pulumi.StringOutput)
 }
 
+// Config to bypass retention window before permanently deleting secret on AWS (FYI: field is managed localy in TF provider, importing the resource will not hold defined value)
+func (o TenantSecretOutput) ForceDeleteOnDestroy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TenantSecret) pulumi.BoolPtrOutput { return v.ForceDeleteOnDestroy }).(pulumi.BoolPtrOutput)
+}
+
 // The full name of the secret.
 func (o TenantSecretOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TenantSecret) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -305,6 +330,11 @@ func (o TenantSecretOutput) Name() pulumi.StringOutput {
 // The short name of the secret. You can get the fullname from the `name` attribute after creation.
 func (o TenantSecretOutput) NameSuffix() pulumi.StringOutput {
 	return o.ApplyT(func(v *TenantSecret) pulumi.StringOutput { return v.NameSuffix }).(pulumi.StringOutput)
+}
+
+// Retention period secret remains recoverable/not fully deleted before AWS permanently deletes it (FYI: field is managed localy in TF provider, importing the resource will not hold defined value)
+func (o TenantSecretOutput) RetentionWindowInDaysOnDestroy() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TenantSecret) pulumi.IntPtrOutput { return v.RetentionWindowInDaysOnDestroy }).(pulumi.IntPtrOutput)
 }
 
 // Whether or not rotation is enabled for this secret.

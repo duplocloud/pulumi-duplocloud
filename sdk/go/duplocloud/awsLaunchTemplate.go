@@ -69,6 +69,29 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			_, err = duplocloud.NewAwsLaunchTemplate(ctx, "template", &duplocloud.AwsLaunchTemplateArgs{
+//				TenantId:           myapp.TenantId,
+//				Name:               pulumi.String("launch-template-name"),
+//				VersionDescription: pulumi.String("launch template block device mapping"),
+//				Version:            pulumi.String("3"),
+//				InstanceRequirements: &duplocloud.AwsLaunchTemplateInstanceRequirementsArgs{
+//					AllowedInstanceTypes: pulumi.StringArray{
+//						pulumi.String("t3a.*"),
+//						pulumi.String("c5.*"),
+//					},
+//					VcpuCount: &duplocloud.AwsLaunchTemplateInstanceRequirementsVcpuCountArgs{
+//						Min: pulumi.Int(0),
+//						Max: pulumi.Int(2),
+//					},
+//					MemoryMib: &duplocloud.AwsLaunchTemplateInstanceRequirementsMemoryMibArgs{
+//						Min: pulumi.Int(4096),
+//						Max: pulumi.Int(5120),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			return nil
 //		})
 //	}
@@ -97,8 +120,10 @@ type AwsLaunchTemplate struct {
 	BlockDeviceMappings AwsLaunchTemplateBlockDeviceMappingArrayOutput `pulumi:"blockDeviceMappings"`
 	// The current default version of the launch template.
 	DefaultVersion pulumi.StringOutput `pulumi:"defaultVersion"`
+	// Whether to manage instance requirements instead of a specific instance type
+	InstanceRequirements AwsLaunchTemplateInstanceRequirementsPtrOutput `pulumi:"instanceRequirements"`
 	// Asg instance type to be used to update the version from the current version
-	InstanceType pulumi.StringOutput `pulumi:"instanceType"`
+	InstanceType pulumi.StringPtrOutput `pulumi:"instanceType"`
 	// The latest launch template version
 	LatestVersion pulumi.StringOutput `pulumi:"latestVersion"`
 	// The fullname of the asg group
@@ -151,6 +176,8 @@ type awsLaunchTemplateState struct {
 	BlockDeviceMappings []AwsLaunchTemplateBlockDeviceMapping `pulumi:"blockDeviceMappings"`
 	// The current default version of the launch template.
 	DefaultVersion *string `pulumi:"defaultVersion"`
+	// Whether to manage instance requirements instead of a specific instance type
+	InstanceRequirements *AwsLaunchTemplateInstanceRequirements `pulumi:"instanceRequirements"`
 	// Asg instance type to be used to update the version from the current version
 	InstanceType *string `pulumi:"instanceType"`
 	// The latest launch template version
@@ -173,6 +200,8 @@ type AwsLaunchTemplateState struct {
 	BlockDeviceMappings AwsLaunchTemplateBlockDeviceMappingArrayInput
 	// The current default version of the launch template.
 	DefaultVersion pulumi.StringPtrInput
+	// Whether to manage instance requirements instead of a specific instance type
+	InstanceRequirements AwsLaunchTemplateInstanceRequirementsPtrInput
 	// Asg instance type to be used to update the version from the current version
 	InstanceType pulumi.StringPtrInput
 	// The latest launch template version
@@ -197,6 +226,8 @@ type awsLaunchTemplateArgs struct {
 	Ami *string `pulumi:"ami"`
 	// Configure additional volumes of the instance besides specified by the AMI
 	BlockDeviceMappings []AwsLaunchTemplateBlockDeviceMapping `pulumi:"blockDeviceMappings"`
+	// Whether to manage instance requirements instead of a specific instance type
+	InstanceRequirements *AwsLaunchTemplateInstanceRequirements `pulumi:"instanceRequirements"`
 	// Asg instance type to be used to update the version from the current version
 	InstanceType *string `pulumi:"instanceType"`
 	// The fullname of the asg group
@@ -215,6 +246,8 @@ type AwsLaunchTemplateArgs struct {
 	Ami pulumi.StringPtrInput
 	// Configure additional volumes of the instance besides specified by the AMI
 	BlockDeviceMappings AwsLaunchTemplateBlockDeviceMappingArrayInput
+	// Whether to manage instance requirements instead of a specific instance type
+	InstanceRequirements AwsLaunchTemplateInstanceRequirementsPtrInput
 	// Asg instance type to be used to update the version from the current version
 	InstanceType pulumi.StringPtrInput
 	// The fullname of the asg group
@@ -331,9 +364,16 @@ func (o AwsLaunchTemplateOutput) DefaultVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *AwsLaunchTemplate) pulumi.StringOutput { return v.DefaultVersion }).(pulumi.StringOutput)
 }
 
+// Whether to manage instance requirements instead of a specific instance type
+func (o AwsLaunchTemplateOutput) InstanceRequirements() AwsLaunchTemplateInstanceRequirementsPtrOutput {
+	return o.ApplyT(func(v *AwsLaunchTemplate) AwsLaunchTemplateInstanceRequirementsPtrOutput {
+		return v.InstanceRequirements
+	}).(AwsLaunchTemplateInstanceRequirementsPtrOutput)
+}
+
 // Asg instance type to be used to update the version from the current version
-func (o AwsLaunchTemplateOutput) InstanceType() pulumi.StringOutput {
-	return o.ApplyT(func(v *AwsLaunchTemplate) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)
+func (o AwsLaunchTemplateOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsLaunchTemplate) pulumi.StringPtrOutput { return v.InstanceType }).(pulumi.StringPtrOutput)
 }
 
 // The latest launch template version
