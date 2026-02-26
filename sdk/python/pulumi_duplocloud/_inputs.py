@@ -103,6 +103,50 @@ __all__ = [
     'AwsCloudfrontDistributionRestrictionsArgsDict',
     'AwsCloudfrontDistributionRestrictionsGeoRestrictionArgs',
     'AwsCloudfrontDistributionRestrictionsGeoRestrictionArgsDict',
+    'AwsCloudfrontDistributionV2CustomErrorResponseArgs',
+    'AwsCloudfrontDistributionV2CustomErrorResponseArgsDict',
+    'AwsCloudfrontDistributionV2DefaultCacheBehaviorArgs',
+    'AwsCloudfrontDistributionV2DefaultCacheBehaviorArgsDict',
+    'AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesArgs',
+    'AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesArgsDict',
+    'AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesArgs',
+    'AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesArgsDict',
+    'AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationArgs',
+    'AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationArgsDict',
+    'AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationArgs',
+    'AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationArgsDict',
+    'AwsCloudfrontDistributionV2LoggingConfigArgs',
+    'AwsCloudfrontDistributionV2LoggingConfigArgsDict',
+    'AwsCloudfrontDistributionV2OrderedCacheBehaviorArgs',
+    'AwsCloudfrontDistributionV2OrderedCacheBehaviorArgsDict',
+    'AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesArgs',
+    'AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesArgsDict',
+    'AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesArgs',
+    'AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesArgsDict',
+    'AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationArgs',
+    'AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationArgsDict',
+    'AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationArgs',
+    'AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationArgsDict',
+    'AwsCloudfrontDistributionV2OriginArgs',
+    'AwsCloudfrontDistributionV2OriginArgsDict',
+    'AwsCloudfrontDistributionV2OriginCustomHeaderArgs',
+    'AwsCloudfrontDistributionV2OriginCustomHeaderArgsDict',
+    'AwsCloudfrontDistributionV2OriginCustomOriginConfigArgs',
+    'AwsCloudfrontDistributionV2OriginCustomOriginConfigArgsDict',
+    'AwsCloudfrontDistributionV2OriginGroupArgs',
+    'AwsCloudfrontDistributionV2OriginGroupArgsDict',
+    'AwsCloudfrontDistributionV2OriginGroupFailoverCriteriaArgs',
+    'AwsCloudfrontDistributionV2OriginGroupFailoverCriteriaArgsDict',
+    'AwsCloudfrontDistributionV2OriginGroupMemberArgs',
+    'AwsCloudfrontDistributionV2OriginGroupMemberArgsDict',
+    'AwsCloudfrontDistributionV2OriginOriginShieldArgs',
+    'AwsCloudfrontDistributionV2OriginOriginShieldArgsDict',
+    'AwsCloudfrontDistributionV2RestrictionsArgs',
+    'AwsCloudfrontDistributionV2RestrictionsArgsDict',
+    'AwsCloudfrontDistributionV2RestrictionsGeoRestrictionArgs',
+    'AwsCloudfrontDistributionV2RestrictionsGeoRestrictionArgsDict',
+    'AwsCloudfrontDistributionV2ViewerCertificateArgs',
+    'AwsCloudfrontDistributionV2ViewerCertificateArgsDict',
     'AwsCloudfrontDistributionViewerCertificateArgs',
     'AwsCloudfrontDistributionViewerCertificateArgsDict',
     'AwsCloudwatchEventRuleTagArgs',
@@ -175,6 +219,12 @@ __all__ = [
     'AwsLaunchTemplateBlockDeviceMappingArgsDict',
     'AwsLaunchTemplateBlockDeviceMappingEbsArgs',
     'AwsLaunchTemplateBlockDeviceMappingEbsArgsDict',
+    'AwsLaunchTemplateInstanceRequirementsArgs',
+    'AwsLaunchTemplateInstanceRequirementsArgsDict',
+    'AwsLaunchTemplateInstanceRequirementsMemoryMibArgs',
+    'AwsLaunchTemplateInstanceRequirementsMemoryMibArgsDict',
+    'AwsLaunchTemplateInstanceRequirementsVcpuCountArgs',
+    'AwsLaunchTemplateInstanceRequirementsVcpuCountArgsDict',
     'AwsLbListenerRuleActionArgs',
     'AwsLbListenerRuleActionArgsDict',
     'AwsLbListenerRuleActionAuthenticateCognitoArgs',
@@ -221,6 +271,18 @@ __all__ = [
     'AwsLoadBalancerListenerDefaultActionRedirectArgsDict',
     'AwsLoadBalancerTagArgs',
     'AwsLoadBalancerTagArgsDict',
+    'AwsMqBrokerConfigurationArgs',
+    'AwsMqBrokerConfigurationArgsDict',
+    'AwsMqBrokerEncryptionOptionsArgs',
+    'AwsMqBrokerEncryptionOptionsArgsDict',
+    'AwsMqBrokerLdapServerMetadataArgs',
+    'AwsMqBrokerLdapServerMetadataArgsDict',
+    'AwsMqBrokerLogsArgs',
+    'AwsMqBrokerLogsArgsDict',
+    'AwsMqBrokerMaintenanceWindowArgs',
+    'AwsMqBrokerMaintenanceWindowArgsDict',
+    'AwsMqBrokerUserArgs',
+    'AwsMqBrokerUserArgsDict',
     'AwsMwaaEnvironmentLastUpdatedArgs',
     'AwsMwaaEnvironmentLastUpdatedArgsDict',
     'AwsMwaaEnvironmentLastUpdatedErrorArgs',
@@ -241,6 +303,8 @@ __all__ = [
     'AwsSqsQueueDeadLetterQueueConfigurationArgsDict',
     'AwsTargetGroupAttributesAttributeArgs',
     'AwsTargetGroupAttributesAttributeArgsDict',
+    'AwsTargetGroupTargetRegisterTargetArgs',
+    'AwsTargetGroupTargetRegisterTargetArgsDict',
     'AwsTimestreamwriteDatabaseAllTagArgs',
     'AwsTimestreamwriteDatabaseAllTagArgsDict',
     'AwsTimestreamwriteDatabaseTagArgs',
@@ -387,6 +451,10 @@ __all__ = [
     'GcpCloudFunctionEventTriggerArgsDict',
     'GcpCloudFunctionHttpsTriggerArgs',
     'GcpCloudFunctionHttpsTriggerArgsDict',
+    'GcpCloudTaskAppEngineArgs',
+    'GcpCloudTaskAppEngineArgsDict',
+    'GcpCloudTaskHttpTargetArgs',
+    'GcpCloudTaskHttpTargetArgsDict',
     'GcpInfraMaintenanceWindowExclusionArgs',
     'GcpInfraMaintenanceWindowExclusionArgsDict',
     'GcpInfraMaintenanceWindowRecurringWindowArgs',
@@ -411,6 +479,24 @@ __all__ = [
     'GcpNodePoolUpgradeSettingBlueGreenSettingArgsDict',
     'GcpNodePoolUpgradeSettingBlueGreenSettingStandardRolloutPolicyArgs',
     'GcpNodePoolUpgradeSettingBlueGreenSettingStandardRolloutPolicyArgsDict',
+    'GcpPubsubSubscriptionBigQueryArgs',
+    'GcpPubsubSubscriptionBigQueryArgsDict',
+    'GcpPubsubSubscriptionCloudStorageConfigArgs',
+    'GcpPubsubSubscriptionCloudStorageConfigArgsDict',
+    'GcpPubsubSubscriptionCloudStorageConfigAvroConfigArgs',
+    'GcpPubsubSubscriptionCloudStorageConfigAvroConfigArgsDict',
+    'GcpPubsubSubscriptionDeadLetterPolicyArgs',
+    'GcpPubsubSubscriptionDeadLetterPolicyArgsDict',
+    'GcpPubsubSubscriptionExpirationPolicyArgs',
+    'GcpPubsubSubscriptionExpirationPolicyArgsDict',
+    'GcpPubsubSubscriptionPushConfigArgs',
+    'GcpPubsubSubscriptionPushConfigArgsDict',
+    'GcpPubsubSubscriptionPushConfigNoWrapperArgs',
+    'GcpPubsubSubscriptionPushConfigNoWrapperArgsDict',
+    'GcpPubsubSubscriptionPushConfigOidcTokenArgs',
+    'GcpPubsubSubscriptionPushConfigOidcTokenArgsDict',
+    'GcpPubsubSubscriptionRetryPolicyArgs',
+    'GcpPubsubSubscriptionRetryPolicyArgsDict',
     'GcpSchedulerJobAppEngineTargetArgs',
     'GcpSchedulerJobAppEngineTargetArgsDict',
     'GcpSchedulerJobAppEngineTargetRoutingArgs',
@@ -425,6 +511,8 @@ __all__ = [
     'GcpSchedulerJobPubsubTargetArgsDict',
     'GcpSqlDatabaseInstanceDatabaseFlagArgs',
     'GcpSqlDatabaseInstanceDatabaseFlagArgsDict',
+    'GcpSqlDatabaseInstanceIpConfigurationArgs',
+    'GcpSqlDatabaseInstanceIpConfigurationArgsDict',
     'GcpStorageBucketV2DefaultEncryptionArgs',
     'GcpStorageBucketV2DefaultEncryptionArgsDict',
     'GcpTenantSecurityRulePortsAndProtocolArgs',
@@ -463,6 +551,10 @@ __all__ = [
     'K8IngressRuleArgsDict',
     'K8IngressTlArgs',
     'K8IngressTlArgsDict',
+    'K8OciRepositorySpecArgs',
+    'K8OciRepositorySpecArgsDict',
+    'K8OciRepositorySpecRefArgs',
+    'K8OciRepositorySpecRefArgsDict',
     'K8PersistentVolumeClaimSpecArgs',
     'K8PersistentVolumeClaimSpecArgsDict',
     'K8PersistentVolumeClaimSpecResourcesArgs',
@@ -1265,6 +1357,8 @@ __all__ = [
     'PlanWafV2WafArgsDict',
     'RdsInstancePerformanceInsightsArgs',
     'RdsInstancePerformanceInsightsArgsDict',
+    'RdsInstanceStorageAutoscalingArgs',
+    'RdsInstanceStorageAutoscalingArgsDict',
     'RdsInstanceV2ScalingConfigurationArgs',
     'RdsInstanceV2ScalingConfigurationArgsDict',
     'RdsReadReplicaPerformanceInsightsArgs',
@@ -1277,6 +1371,8 @@ __all__ = [
     'S3BucketReplicationRuleArgsDict',
     'S3BucketTagArgs',
     'S3BucketTagArgsDict',
+    'S3EventNotificationEventArgs',
+    'S3EventNotificationEventArgsDict',
     'TenantConfigMetadataArgs',
     'TenantConfigMetadataArgsDict',
     'TenantConfigSettingArgs',
@@ -4657,6 +4753,1669 @@ class AwsCloudfrontDistributionRestrictionsGeoRestrictionArgs:
 
 
 if not MYPY:
+    class AwsCloudfrontDistributionV2CustomErrorResponseArgsDict(TypedDict):
+        error_code: pulumi.Input[int]
+        error_caching_min_ttl: NotRequired[pulumi.Input[int]]
+        response_code: NotRequired[pulumi.Input[int]]
+        response_page_path: NotRequired[pulumi.Input[str]]
+elif False:
+    AwsCloudfrontDistributionV2CustomErrorResponseArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AwsCloudfrontDistributionV2CustomErrorResponseArgs:
+    def __init__(__self__, *,
+                 error_code: pulumi.Input[int],
+                 error_caching_min_ttl: Optional[pulumi.Input[int]] = None,
+                 response_code: Optional[pulumi.Input[int]] = None,
+                 response_page_path: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "error_code", error_code)
+        if error_caching_min_ttl is not None:
+            pulumi.set(__self__, "error_caching_min_ttl", error_caching_min_ttl)
+        if response_code is not None:
+            pulumi.set(__self__, "response_code", response_code)
+        if response_page_path is not None:
+            pulumi.set(__self__, "response_page_path", response_page_path)
+
+    @property
+    @pulumi.getter(name="errorCode")
+    def error_code(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "error_code")
+
+    @error_code.setter
+    def error_code(self, value: pulumi.Input[int]):
+        pulumi.set(self, "error_code", value)
+
+    @property
+    @pulumi.getter(name="errorCachingMinTtl")
+    def error_caching_min_ttl(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "error_caching_min_ttl")
+
+    @error_caching_min_ttl.setter
+    def error_caching_min_ttl(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "error_caching_min_ttl", value)
+
+    @property
+    @pulumi.getter(name="responseCode")
+    def response_code(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "response_code")
+
+    @response_code.setter
+    def response_code(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "response_code", value)
+
+    @property
+    @pulumi.getter(name="responsePagePath")
+    def response_page_path(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "response_page_path")
+
+    @response_page_path.setter
+    def response_page_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "response_page_path", value)
+
+
+if not MYPY:
+    class AwsCloudfrontDistributionV2DefaultCacheBehaviorArgsDict(TypedDict):
+        allowed_methods: pulumi.Input[Sequence[pulumi.Input[str]]]
+        cached_methods: pulumi.Input[Sequence[pulumi.Input[str]]]
+        target_origin_id: pulumi.Input[str]
+        viewer_protocol_policy: pulumi.Input[str]
+        cache_policy_id: NotRequired[pulumi.Input[str]]
+        """
+        \\n\\n						
+        | Policy name                                                                                                                                                                                  | Policy Id                            |
+        |----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------|
+        | Amplify                                                | 2e54312d-136d-493c-8eb9-b001f22f67d2 |
+        | CachingDisabled                               | 4135ea2d-6df8-44a3-9df3-4b5a84be39ad |
+        | CachingOptimized                                    | 658327ea-f89d-4fab-a63d-7e88639e58f6 |
+        | CachingOptimizedForUncompressedObjects | b2884449-e4de-46a7-ac36-70bc7f1ddd6d |
+        | Elemental-MediaPackage                            | 08627262-05a9-4f76-9ded-b50ca2e3a84f |
+        \\n\\n
+        """
+        compress: NotRequired[pulumi.Input[bool]]
+        """
+        Defaults to `false`.
+        """
+        default_ttl: NotRequired[pulumi.Input[int]]
+        """
+        default time to live: Not required when cache*policy*id is set
+        """
+        field_level_encryption_id: NotRequired[pulumi.Input[str]]
+        forwarded_values: NotRequired[pulumi.Input['AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesArgsDict']]
+        function_associations: NotRequired[pulumi.Input[Sequence[pulumi.Input['AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationArgsDict']]]]
+        lambda_function_associations: NotRequired[pulumi.Input[Sequence[pulumi.Input['AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationArgsDict']]]]
+        max_ttl: NotRequired[pulumi.Input[int]]
+        """
+        Maximum time to live: Not required when cache*policy*id is set
+        """
+        min_ttl: NotRequired[pulumi.Input[int]]
+        """
+        Minimum time to live: Not required when cache*policy*id is set Defaults to `0`.
+        """
+        origin_request_policy_id: NotRequired[pulumi.Input[str]]
+        realtime_log_config_arn: NotRequired[pulumi.Input[str]]
+        response_headers_policy_id: NotRequired[pulumi.Input[str]]
+        smooth_streaming: NotRequired[pulumi.Input[bool]]
+        trusted_key_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        trusted_signers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+elif False:
+    AwsCloudfrontDistributionV2DefaultCacheBehaviorArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AwsCloudfrontDistributionV2DefaultCacheBehaviorArgs:
+    def __init__(__self__, *,
+                 allowed_methods: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 cached_methods: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 target_origin_id: pulumi.Input[str],
+                 viewer_protocol_policy: pulumi.Input[str],
+                 cache_policy_id: Optional[pulumi.Input[str]] = None,
+                 compress: Optional[pulumi.Input[bool]] = None,
+                 default_ttl: Optional[pulumi.Input[int]] = None,
+                 field_level_encryption_id: Optional[pulumi.Input[str]] = None,
+                 forwarded_values: Optional[pulumi.Input['AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesArgs']] = None,
+                 function_associations: Optional[pulumi.Input[Sequence[pulumi.Input['AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationArgs']]]] = None,
+                 lambda_function_associations: Optional[pulumi.Input[Sequence[pulumi.Input['AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationArgs']]]] = None,
+                 max_ttl: Optional[pulumi.Input[int]] = None,
+                 min_ttl: Optional[pulumi.Input[int]] = None,
+                 origin_request_policy_id: Optional[pulumi.Input[str]] = None,
+                 realtime_log_config_arn: Optional[pulumi.Input[str]] = None,
+                 response_headers_policy_id: Optional[pulumi.Input[str]] = None,
+                 smooth_streaming: Optional[pulumi.Input[bool]] = None,
+                 trusted_key_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 trusted_signers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] cache_policy_id: \\n\\n						
+               | Policy name                                                                                                                                                                                  | Policy Id                            |
+               |----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------|
+               | Amplify                                                | 2e54312d-136d-493c-8eb9-b001f22f67d2 |
+               | CachingDisabled                               | 4135ea2d-6df8-44a3-9df3-4b5a84be39ad |
+               | CachingOptimized                                    | 658327ea-f89d-4fab-a63d-7e88639e58f6 |
+               | CachingOptimizedForUncompressedObjects | b2884449-e4de-46a7-ac36-70bc7f1ddd6d |
+               | Elemental-MediaPackage                            | 08627262-05a9-4f76-9ded-b50ca2e3a84f |
+               \\n\\n
+        :param pulumi.Input[bool] compress: Defaults to `false`.
+        :param pulumi.Input[int] default_ttl: default time to live: Not required when cache*policy*id is set
+        :param pulumi.Input[int] max_ttl: Maximum time to live: Not required when cache*policy*id is set
+        :param pulumi.Input[int] min_ttl: Minimum time to live: Not required when cache*policy*id is set Defaults to `0`.
+        """
+        pulumi.set(__self__, "allowed_methods", allowed_methods)
+        pulumi.set(__self__, "cached_methods", cached_methods)
+        pulumi.set(__self__, "target_origin_id", target_origin_id)
+        pulumi.set(__self__, "viewer_protocol_policy", viewer_protocol_policy)
+        if cache_policy_id is not None:
+            pulumi.set(__self__, "cache_policy_id", cache_policy_id)
+        if compress is not None:
+            pulumi.set(__self__, "compress", compress)
+        if default_ttl is not None:
+            pulumi.set(__self__, "default_ttl", default_ttl)
+        if field_level_encryption_id is not None:
+            pulumi.set(__self__, "field_level_encryption_id", field_level_encryption_id)
+        if forwarded_values is not None:
+            pulumi.set(__self__, "forwarded_values", forwarded_values)
+        if function_associations is not None:
+            pulumi.set(__self__, "function_associations", function_associations)
+        if lambda_function_associations is not None:
+            pulumi.set(__self__, "lambda_function_associations", lambda_function_associations)
+        if max_ttl is not None:
+            pulumi.set(__self__, "max_ttl", max_ttl)
+        if min_ttl is not None:
+            pulumi.set(__self__, "min_ttl", min_ttl)
+        if origin_request_policy_id is not None:
+            pulumi.set(__self__, "origin_request_policy_id", origin_request_policy_id)
+        if realtime_log_config_arn is not None:
+            pulumi.set(__self__, "realtime_log_config_arn", realtime_log_config_arn)
+        if response_headers_policy_id is not None:
+            pulumi.set(__self__, "response_headers_policy_id", response_headers_policy_id)
+        if smooth_streaming is not None:
+            pulumi.set(__self__, "smooth_streaming", smooth_streaming)
+        if trusted_key_groups is not None:
+            pulumi.set(__self__, "trusted_key_groups", trusted_key_groups)
+        if trusted_signers is not None:
+            pulumi.set(__self__, "trusted_signers", trusted_signers)
+
+    @property
+    @pulumi.getter(name="allowedMethods")
+    def allowed_methods(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        return pulumi.get(self, "allowed_methods")
+
+    @allowed_methods.setter
+    def allowed_methods(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "allowed_methods", value)
+
+    @property
+    @pulumi.getter(name="cachedMethods")
+    def cached_methods(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        return pulumi.get(self, "cached_methods")
+
+    @cached_methods.setter
+    def cached_methods(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "cached_methods", value)
+
+    @property
+    @pulumi.getter(name="targetOriginId")
+    def target_origin_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "target_origin_id")
+
+    @target_origin_id.setter
+    def target_origin_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "target_origin_id", value)
+
+    @property
+    @pulumi.getter(name="viewerProtocolPolicy")
+    def viewer_protocol_policy(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "viewer_protocol_policy")
+
+    @viewer_protocol_policy.setter
+    def viewer_protocol_policy(self, value: pulumi.Input[str]):
+        pulumi.set(self, "viewer_protocol_policy", value)
+
+    @property
+    @pulumi.getter(name="cachePolicyId")
+    def cache_policy_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        \\n\\n						
+        | Policy name                                                                                                                                                                                  | Policy Id                            |
+        |----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------|
+        | Amplify                                                | 2e54312d-136d-493c-8eb9-b001f22f67d2 |
+        | CachingDisabled                               | 4135ea2d-6df8-44a3-9df3-4b5a84be39ad |
+        | CachingOptimized                                    | 658327ea-f89d-4fab-a63d-7e88639e58f6 |
+        | CachingOptimizedForUncompressedObjects | b2884449-e4de-46a7-ac36-70bc7f1ddd6d |
+        | Elemental-MediaPackage                            | 08627262-05a9-4f76-9ded-b50ca2e3a84f |
+        \\n\\n
+        """
+        return pulumi.get(self, "cache_policy_id")
+
+    @cache_policy_id.setter
+    def cache_policy_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cache_policy_id", value)
+
+    @property
+    @pulumi.getter
+    def compress(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Defaults to `false`.
+        """
+        return pulumi.get(self, "compress")
+
+    @compress.setter
+    def compress(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "compress", value)
+
+    @property
+    @pulumi.getter(name="defaultTtl")
+    def default_ttl(self) -> Optional[pulumi.Input[int]]:
+        """
+        default time to live: Not required when cache*policy*id is set
+        """
+        return pulumi.get(self, "default_ttl")
+
+    @default_ttl.setter
+    def default_ttl(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "default_ttl", value)
+
+    @property
+    @pulumi.getter(name="fieldLevelEncryptionId")
+    def field_level_encryption_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "field_level_encryption_id")
+
+    @field_level_encryption_id.setter
+    def field_level_encryption_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "field_level_encryption_id", value)
+
+    @property
+    @pulumi.getter(name="forwardedValues")
+    def forwarded_values(self) -> Optional[pulumi.Input['AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesArgs']]:
+        return pulumi.get(self, "forwarded_values")
+
+    @forwarded_values.setter
+    def forwarded_values(self, value: Optional[pulumi.Input['AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesArgs']]):
+        pulumi.set(self, "forwarded_values", value)
+
+    @property
+    @pulumi.getter(name="functionAssociations")
+    def function_associations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationArgs']]]]:
+        return pulumi.get(self, "function_associations")
+
+    @function_associations.setter
+    def function_associations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationArgs']]]]):
+        pulumi.set(self, "function_associations", value)
+
+    @property
+    @pulumi.getter(name="lambdaFunctionAssociations")
+    def lambda_function_associations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationArgs']]]]:
+        return pulumi.get(self, "lambda_function_associations")
+
+    @lambda_function_associations.setter
+    def lambda_function_associations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationArgs']]]]):
+        pulumi.set(self, "lambda_function_associations", value)
+
+    @property
+    @pulumi.getter(name="maxTtl")
+    def max_ttl(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum time to live: Not required when cache*policy*id is set
+        """
+        return pulumi.get(self, "max_ttl")
+
+    @max_ttl.setter
+    def max_ttl(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_ttl", value)
+
+    @property
+    @pulumi.getter(name="minTtl")
+    def min_ttl(self) -> Optional[pulumi.Input[int]]:
+        """
+        Minimum time to live: Not required when cache*policy*id is set Defaults to `0`.
+        """
+        return pulumi.get(self, "min_ttl")
+
+    @min_ttl.setter
+    def min_ttl(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_ttl", value)
+
+    @property
+    @pulumi.getter(name="originRequestPolicyId")
+    def origin_request_policy_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "origin_request_policy_id")
+
+    @origin_request_policy_id.setter
+    def origin_request_policy_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "origin_request_policy_id", value)
+
+    @property
+    @pulumi.getter(name="realtimeLogConfigArn")
+    def realtime_log_config_arn(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "realtime_log_config_arn")
+
+    @realtime_log_config_arn.setter
+    def realtime_log_config_arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "realtime_log_config_arn", value)
+
+    @property
+    @pulumi.getter(name="responseHeadersPolicyId")
+    def response_headers_policy_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "response_headers_policy_id")
+
+    @response_headers_policy_id.setter
+    def response_headers_policy_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "response_headers_policy_id", value)
+
+    @property
+    @pulumi.getter(name="smoothStreaming")
+    def smooth_streaming(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "smooth_streaming")
+
+    @smooth_streaming.setter
+    def smooth_streaming(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "smooth_streaming", value)
+
+    @property
+    @pulumi.getter(name="trustedKeyGroups")
+    def trusted_key_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "trusted_key_groups")
+
+    @trusted_key_groups.setter
+    def trusted_key_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "trusted_key_groups", value)
+
+    @property
+    @pulumi.getter(name="trustedSigners")
+    def trusted_signers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "trusted_signers")
+
+    @trusted_signers.setter
+    def trusted_signers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "trusted_signers", value)
+
+
+if not MYPY:
+    class AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesArgsDict(TypedDict):
+        cookies: pulumi.Input['AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesArgsDict']
+        query_string: pulumi.Input[bool]
+        headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        headers: Not required when cache*policy*id is set
+        """
+        query_string_cache_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        query*string*cache*keys: Not required when cache*policy_id is set
+        """
+elif False:
+    AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesArgs:
+    def __init__(__self__, *,
+                 cookies: pulumi.Input['AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesArgs'],
+                 query_string: pulumi.Input[bool],
+                 headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 query_string_cache_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] headers: headers: Not required when cache*policy*id is set
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] query_string_cache_keys: query*string*cache*keys: Not required when cache*policy_id is set
+        """
+        pulumi.set(__self__, "cookies", cookies)
+        pulumi.set(__self__, "query_string", query_string)
+        if headers is not None:
+            pulumi.set(__self__, "headers", headers)
+        if query_string_cache_keys is not None:
+            pulumi.set(__self__, "query_string_cache_keys", query_string_cache_keys)
+
+    @property
+    @pulumi.getter
+    def cookies(self) -> pulumi.Input['AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesArgs']:
+        return pulumi.get(self, "cookies")
+
+    @cookies.setter
+    def cookies(self, value: pulumi.Input['AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesArgs']):
+        pulumi.set(self, "cookies", value)
+
+    @property
+    @pulumi.getter(name="queryString")
+    def query_string(self) -> pulumi.Input[bool]:
+        return pulumi.get(self, "query_string")
+
+    @query_string.setter
+    def query_string(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "query_string", value)
+
+    @property
+    @pulumi.getter
+    def headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        headers: Not required when cache*policy*id is set
+        """
+        return pulumi.get(self, "headers")
+
+    @headers.setter
+    def headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "headers", value)
+
+    @property
+    @pulumi.getter(name="queryStringCacheKeys")
+    def query_string_cache_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        query*string*cache*keys: Not required when cache*policy_id is set
+        """
+        return pulumi.get(self, "query_string_cache_keys")
+
+    @query_string_cache_keys.setter
+    def query_string_cache_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "query_string_cache_keys", value)
+
+
+if not MYPY:
+    class AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesArgsDict(TypedDict):
+        forward: pulumi.Input[str]
+        whitelisted_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+elif False:
+    AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AwsCloudfrontDistributionV2DefaultCacheBehaviorForwardedValuesCookiesArgs:
+    def __init__(__self__, *,
+                 forward: pulumi.Input[str],
+                 whitelisted_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        pulumi.set(__self__, "forward", forward)
+        if whitelisted_names is not None:
+            pulumi.set(__self__, "whitelisted_names", whitelisted_names)
+
+    @property
+    @pulumi.getter
+    def forward(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "forward")
+
+    @forward.setter
+    def forward(self, value: pulumi.Input[str]):
+        pulumi.set(self, "forward", value)
+
+    @property
+    @pulumi.getter(name="whitelistedNames")
+    def whitelisted_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "whitelisted_names")
+
+    @whitelisted_names.setter
+    def whitelisted_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "whitelisted_names", value)
+
+
+if not MYPY:
+    class AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationArgsDict(TypedDict):
+        event_type: pulumi.Input[str]
+        function_arn: pulumi.Input[str]
+elif False:
+    AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AwsCloudfrontDistributionV2DefaultCacheBehaviorFunctionAssociationArgs:
+    def __init__(__self__, *,
+                 event_type: pulumi.Input[str],
+                 function_arn: pulumi.Input[str]):
+        pulumi.set(__self__, "event_type", event_type)
+        pulumi.set(__self__, "function_arn", function_arn)
+
+    @property
+    @pulumi.getter(name="eventType")
+    def event_type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "event_type")
+
+    @event_type.setter
+    def event_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "event_type", value)
+
+    @property
+    @pulumi.getter(name="functionArn")
+    def function_arn(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "function_arn")
+
+    @function_arn.setter
+    def function_arn(self, value: pulumi.Input[str]):
+        pulumi.set(self, "function_arn", value)
+
+
+if not MYPY:
+    class AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationArgsDict(TypedDict):
+        event_type: pulumi.Input[str]
+        lambda_arn: pulumi.Input[str]
+        include_body: NotRequired[pulumi.Input[bool]]
+        """
+        Defaults to `false`.
+        """
+elif False:
+    AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AwsCloudfrontDistributionV2DefaultCacheBehaviorLambdaFunctionAssociationArgs:
+    def __init__(__self__, *,
+                 event_type: pulumi.Input[str],
+                 lambda_arn: pulumi.Input[str],
+                 include_body: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] include_body: Defaults to `false`.
+        """
+        pulumi.set(__self__, "event_type", event_type)
+        pulumi.set(__self__, "lambda_arn", lambda_arn)
+        if include_body is not None:
+            pulumi.set(__self__, "include_body", include_body)
+
+    @property
+    @pulumi.getter(name="eventType")
+    def event_type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "event_type")
+
+    @event_type.setter
+    def event_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "event_type", value)
+
+    @property
+    @pulumi.getter(name="lambdaArn")
+    def lambda_arn(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "lambda_arn")
+
+    @lambda_arn.setter
+    def lambda_arn(self, value: pulumi.Input[str]):
+        pulumi.set(self, "lambda_arn", value)
+
+    @property
+    @pulumi.getter(name="includeBody")
+    def include_body(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Defaults to `false`.
+        """
+        return pulumi.get(self, "include_body")
+
+    @include_body.setter
+    def include_body(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "include_body", value)
+
+
+if not MYPY:
+    class AwsCloudfrontDistributionV2LoggingConfigArgsDict(TypedDict):
+        bucket: pulumi.Input[str]
+        include_cookies: NotRequired[pulumi.Input[bool]]
+        """
+        Defaults to `false`.
+        """
+        prefix: NotRequired[pulumi.Input[str]]
+        """
+        Defaults to ``.
+        """
+elif False:
+    AwsCloudfrontDistributionV2LoggingConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AwsCloudfrontDistributionV2LoggingConfigArgs:
+    def __init__(__self__, *,
+                 bucket: pulumi.Input[str],
+                 include_cookies: Optional[pulumi.Input[bool]] = None,
+                 prefix: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] include_cookies: Defaults to `false`.
+        :param pulumi.Input[str] prefix: Defaults to ``.
+        """
+        pulumi.set(__self__, "bucket", bucket)
+        if include_cookies is not None:
+            pulumi.set(__self__, "include_cookies", include_cookies)
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "bucket")
+
+    @bucket.setter
+    def bucket(self, value: pulumi.Input[str]):
+        pulumi.set(self, "bucket", value)
+
+    @property
+    @pulumi.getter(name="includeCookies")
+    def include_cookies(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Defaults to `false`.
+        """
+        return pulumi.get(self, "include_cookies")
+
+    @include_cookies.setter
+    def include_cookies(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "include_cookies", value)
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        Defaults to ``.
+        """
+        return pulumi.get(self, "prefix")
+
+    @prefix.setter
+    def prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "prefix", value)
+
+
+if not MYPY:
+    class AwsCloudfrontDistributionV2OrderedCacheBehaviorArgsDict(TypedDict):
+        allowed_methods: pulumi.Input[Sequence[pulumi.Input[str]]]
+        cached_methods: pulumi.Input[Sequence[pulumi.Input[str]]]
+        path_pattern: pulumi.Input[str]
+        target_origin_id: pulumi.Input[str]
+        viewer_protocol_policy: pulumi.Input[str]
+        cache_policy_id: NotRequired[pulumi.Input[str]]
+        compress: NotRequired[pulumi.Input[bool]]
+        """
+        Defaults to `false`.
+        """
+        default_ttl: NotRequired[pulumi.Input[int]]
+        field_level_encryption_id: NotRequired[pulumi.Input[str]]
+        forwarded_values: NotRequired[pulumi.Input['AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesArgsDict']]
+        function_associations: NotRequired[pulumi.Input[Sequence[pulumi.Input['AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationArgsDict']]]]
+        lambda_function_associations: NotRequired[pulumi.Input[Sequence[pulumi.Input['AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationArgsDict']]]]
+        max_ttl: NotRequired[pulumi.Input[int]]
+        min_ttl: NotRequired[pulumi.Input[int]]
+        """
+        Defaults to `0`.
+        """
+        origin_request_policy_id: NotRequired[pulumi.Input[str]]
+        realtime_log_config_arn: NotRequired[pulumi.Input[str]]
+        response_headers_policy_id: NotRequired[pulumi.Input[str]]
+        smooth_streaming: NotRequired[pulumi.Input[bool]]
+        trusted_key_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        trusted_signers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+elif False:
+    AwsCloudfrontDistributionV2OrderedCacheBehaviorArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AwsCloudfrontDistributionV2OrderedCacheBehaviorArgs:
+    def __init__(__self__, *,
+                 allowed_methods: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 cached_methods: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 path_pattern: pulumi.Input[str],
+                 target_origin_id: pulumi.Input[str],
+                 viewer_protocol_policy: pulumi.Input[str],
+                 cache_policy_id: Optional[pulumi.Input[str]] = None,
+                 compress: Optional[pulumi.Input[bool]] = None,
+                 default_ttl: Optional[pulumi.Input[int]] = None,
+                 field_level_encryption_id: Optional[pulumi.Input[str]] = None,
+                 forwarded_values: Optional[pulumi.Input['AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesArgs']] = None,
+                 function_associations: Optional[pulumi.Input[Sequence[pulumi.Input['AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationArgs']]]] = None,
+                 lambda_function_associations: Optional[pulumi.Input[Sequence[pulumi.Input['AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationArgs']]]] = None,
+                 max_ttl: Optional[pulumi.Input[int]] = None,
+                 min_ttl: Optional[pulumi.Input[int]] = None,
+                 origin_request_policy_id: Optional[pulumi.Input[str]] = None,
+                 realtime_log_config_arn: Optional[pulumi.Input[str]] = None,
+                 response_headers_policy_id: Optional[pulumi.Input[str]] = None,
+                 smooth_streaming: Optional[pulumi.Input[bool]] = None,
+                 trusted_key_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 trusted_signers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[bool] compress: Defaults to `false`.
+        :param pulumi.Input[int] min_ttl: Defaults to `0`.
+        """
+        pulumi.set(__self__, "allowed_methods", allowed_methods)
+        pulumi.set(__self__, "cached_methods", cached_methods)
+        pulumi.set(__self__, "path_pattern", path_pattern)
+        pulumi.set(__self__, "target_origin_id", target_origin_id)
+        pulumi.set(__self__, "viewer_protocol_policy", viewer_protocol_policy)
+        if cache_policy_id is not None:
+            pulumi.set(__self__, "cache_policy_id", cache_policy_id)
+        if compress is not None:
+            pulumi.set(__self__, "compress", compress)
+        if default_ttl is not None:
+            pulumi.set(__self__, "default_ttl", default_ttl)
+        if field_level_encryption_id is not None:
+            pulumi.set(__self__, "field_level_encryption_id", field_level_encryption_id)
+        if forwarded_values is not None:
+            pulumi.set(__self__, "forwarded_values", forwarded_values)
+        if function_associations is not None:
+            pulumi.set(__self__, "function_associations", function_associations)
+        if lambda_function_associations is not None:
+            pulumi.set(__self__, "lambda_function_associations", lambda_function_associations)
+        if max_ttl is not None:
+            pulumi.set(__self__, "max_ttl", max_ttl)
+        if min_ttl is not None:
+            pulumi.set(__self__, "min_ttl", min_ttl)
+        if origin_request_policy_id is not None:
+            pulumi.set(__self__, "origin_request_policy_id", origin_request_policy_id)
+        if realtime_log_config_arn is not None:
+            pulumi.set(__self__, "realtime_log_config_arn", realtime_log_config_arn)
+        if response_headers_policy_id is not None:
+            pulumi.set(__self__, "response_headers_policy_id", response_headers_policy_id)
+        if smooth_streaming is not None:
+            pulumi.set(__self__, "smooth_streaming", smooth_streaming)
+        if trusted_key_groups is not None:
+            pulumi.set(__self__, "trusted_key_groups", trusted_key_groups)
+        if trusted_signers is not None:
+            pulumi.set(__self__, "trusted_signers", trusted_signers)
+
+    @property
+    @pulumi.getter(name="allowedMethods")
+    def allowed_methods(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        return pulumi.get(self, "allowed_methods")
+
+    @allowed_methods.setter
+    def allowed_methods(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "allowed_methods", value)
+
+    @property
+    @pulumi.getter(name="cachedMethods")
+    def cached_methods(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        return pulumi.get(self, "cached_methods")
+
+    @cached_methods.setter
+    def cached_methods(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "cached_methods", value)
+
+    @property
+    @pulumi.getter(name="pathPattern")
+    def path_pattern(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "path_pattern")
+
+    @path_pattern.setter
+    def path_pattern(self, value: pulumi.Input[str]):
+        pulumi.set(self, "path_pattern", value)
+
+    @property
+    @pulumi.getter(name="targetOriginId")
+    def target_origin_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "target_origin_id")
+
+    @target_origin_id.setter
+    def target_origin_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "target_origin_id", value)
+
+    @property
+    @pulumi.getter(name="viewerProtocolPolicy")
+    def viewer_protocol_policy(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "viewer_protocol_policy")
+
+    @viewer_protocol_policy.setter
+    def viewer_protocol_policy(self, value: pulumi.Input[str]):
+        pulumi.set(self, "viewer_protocol_policy", value)
+
+    @property
+    @pulumi.getter(name="cachePolicyId")
+    def cache_policy_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "cache_policy_id")
+
+    @cache_policy_id.setter
+    def cache_policy_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cache_policy_id", value)
+
+    @property
+    @pulumi.getter
+    def compress(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Defaults to `false`.
+        """
+        return pulumi.get(self, "compress")
+
+    @compress.setter
+    def compress(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "compress", value)
+
+    @property
+    @pulumi.getter(name="defaultTtl")
+    def default_ttl(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "default_ttl")
+
+    @default_ttl.setter
+    def default_ttl(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "default_ttl", value)
+
+    @property
+    @pulumi.getter(name="fieldLevelEncryptionId")
+    def field_level_encryption_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "field_level_encryption_id")
+
+    @field_level_encryption_id.setter
+    def field_level_encryption_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "field_level_encryption_id", value)
+
+    @property
+    @pulumi.getter(name="forwardedValues")
+    def forwarded_values(self) -> Optional[pulumi.Input['AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesArgs']]:
+        return pulumi.get(self, "forwarded_values")
+
+    @forwarded_values.setter
+    def forwarded_values(self, value: Optional[pulumi.Input['AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesArgs']]):
+        pulumi.set(self, "forwarded_values", value)
+
+    @property
+    @pulumi.getter(name="functionAssociations")
+    def function_associations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationArgs']]]]:
+        return pulumi.get(self, "function_associations")
+
+    @function_associations.setter
+    def function_associations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationArgs']]]]):
+        pulumi.set(self, "function_associations", value)
+
+    @property
+    @pulumi.getter(name="lambdaFunctionAssociations")
+    def lambda_function_associations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationArgs']]]]:
+        return pulumi.get(self, "lambda_function_associations")
+
+    @lambda_function_associations.setter
+    def lambda_function_associations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationArgs']]]]):
+        pulumi.set(self, "lambda_function_associations", value)
+
+    @property
+    @pulumi.getter(name="maxTtl")
+    def max_ttl(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "max_ttl")
+
+    @max_ttl.setter
+    def max_ttl(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_ttl", value)
+
+    @property
+    @pulumi.getter(name="minTtl")
+    def min_ttl(self) -> Optional[pulumi.Input[int]]:
+        """
+        Defaults to `0`.
+        """
+        return pulumi.get(self, "min_ttl")
+
+    @min_ttl.setter
+    def min_ttl(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_ttl", value)
+
+    @property
+    @pulumi.getter(name="originRequestPolicyId")
+    def origin_request_policy_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "origin_request_policy_id")
+
+    @origin_request_policy_id.setter
+    def origin_request_policy_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "origin_request_policy_id", value)
+
+    @property
+    @pulumi.getter(name="realtimeLogConfigArn")
+    def realtime_log_config_arn(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "realtime_log_config_arn")
+
+    @realtime_log_config_arn.setter
+    def realtime_log_config_arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "realtime_log_config_arn", value)
+
+    @property
+    @pulumi.getter(name="responseHeadersPolicyId")
+    def response_headers_policy_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "response_headers_policy_id")
+
+    @response_headers_policy_id.setter
+    def response_headers_policy_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "response_headers_policy_id", value)
+
+    @property
+    @pulumi.getter(name="smoothStreaming")
+    def smooth_streaming(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "smooth_streaming")
+
+    @smooth_streaming.setter
+    def smooth_streaming(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "smooth_streaming", value)
+
+    @property
+    @pulumi.getter(name="trustedKeyGroups")
+    def trusted_key_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "trusted_key_groups")
+
+    @trusted_key_groups.setter
+    def trusted_key_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "trusted_key_groups", value)
+
+    @property
+    @pulumi.getter(name="trustedSigners")
+    def trusted_signers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "trusted_signers")
+
+    @trusted_signers.setter
+    def trusted_signers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "trusted_signers", value)
+
+
+if not MYPY:
+    class AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesArgsDict(TypedDict):
+        cookies: pulumi.Input['AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesArgsDict']
+        query_string: pulumi.Input[bool]
+        headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        query_string_cache_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+elif False:
+    AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesArgs:
+    def __init__(__self__, *,
+                 cookies: pulumi.Input['AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesArgs'],
+                 query_string: pulumi.Input[bool],
+                 headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 query_string_cache_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        pulumi.set(__self__, "cookies", cookies)
+        pulumi.set(__self__, "query_string", query_string)
+        if headers is not None:
+            pulumi.set(__self__, "headers", headers)
+        if query_string_cache_keys is not None:
+            pulumi.set(__self__, "query_string_cache_keys", query_string_cache_keys)
+
+    @property
+    @pulumi.getter
+    def cookies(self) -> pulumi.Input['AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesArgs']:
+        return pulumi.get(self, "cookies")
+
+    @cookies.setter
+    def cookies(self, value: pulumi.Input['AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesArgs']):
+        pulumi.set(self, "cookies", value)
+
+    @property
+    @pulumi.getter(name="queryString")
+    def query_string(self) -> pulumi.Input[bool]:
+        return pulumi.get(self, "query_string")
+
+    @query_string.setter
+    def query_string(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "query_string", value)
+
+    @property
+    @pulumi.getter
+    def headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "headers")
+
+    @headers.setter
+    def headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "headers", value)
+
+    @property
+    @pulumi.getter(name="queryStringCacheKeys")
+    def query_string_cache_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "query_string_cache_keys")
+
+    @query_string_cache_keys.setter
+    def query_string_cache_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "query_string_cache_keys", value)
+
+
+if not MYPY:
+    class AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesArgsDict(TypedDict):
+        forward: pulumi.Input[str]
+        whitelisted_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+elif False:
+    AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AwsCloudfrontDistributionV2OrderedCacheBehaviorForwardedValuesCookiesArgs:
+    def __init__(__self__, *,
+                 forward: pulumi.Input[str],
+                 whitelisted_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        pulumi.set(__self__, "forward", forward)
+        if whitelisted_names is not None:
+            pulumi.set(__self__, "whitelisted_names", whitelisted_names)
+
+    @property
+    @pulumi.getter
+    def forward(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "forward")
+
+    @forward.setter
+    def forward(self, value: pulumi.Input[str]):
+        pulumi.set(self, "forward", value)
+
+    @property
+    @pulumi.getter(name="whitelistedNames")
+    def whitelisted_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "whitelisted_names")
+
+    @whitelisted_names.setter
+    def whitelisted_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "whitelisted_names", value)
+
+
+if not MYPY:
+    class AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationArgsDict(TypedDict):
+        event_type: pulumi.Input[str]
+        function_arn: pulumi.Input[str]
+elif False:
+    AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AwsCloudfrontDistributionV2OrderedCacheBehaviorFunctionAssociationArgs:
+    def __init__(__self__, *,
+                 event_type: pulumi.Input[str],
+                 function_arn: pulumi.Input[str]):
+        pulumi.set(__self__, "event_type", event_type)
+        pulumi.set(__self__, "function_arn", function_arn)
+
+    @property
+    @pulumi.getter(name="eventType")
+    def event_type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "event_type")
+
+    @event_type.setter
+    def event_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "event_type", value)
+
+    @property
+    @pulumi.getter(name="functionArn")
+    def function_arn(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "function_arn")
+
+    @function_arn.setter
+    def function_arn(self, value: pulumi.Input[str]):
+        pulumi.set(self, "function_arn", value)
+
+
+if not MYPY:
+    class AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationArgsDict(TypedDict):
+        event_type: pulumi.Input[str]
+        lambda_arn: pulumi.Input[str]
+        include_body: NotRequired[pulumi.Input[bool]]
+        """
+        Defaults to `false`.
+        """
+elif False:
+    AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationArgs:
+    def __init__(__self__, *,
+                 event_type: pulumi.Input[str],
+                 lambda_arn: pulumi.Input[str],
+                 include_body: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] include_body: Defaults to `false`.
+        """
+        pulumi.set(__self__, "event_type", event_type)
+        pulumi.set(__self__, "lambda_arn", lambda_arn)
+        if include_body is not None:
+            pulumi.set(__self__, "include_body", include_body)
+
+    @property
+    @pulumi.getter(name="eventType")
+    def event_type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "event_type")
+
+    @event_type.setter
+    def event_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "event_type", value)
+
+    @property
+    @pulumi.getter(name="lambdaArn")
+    def lambda_arn(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "lambda_arn")
+
+    @lambda_arn.setter
+    def lambda_arn(self, value: pulumi.Input[str]):
+        pulumi.set(self, "lambda_arn", value)
+
+    @property
+    @pulumi.getter(name="includeBody")
+    def include_body(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Defaults to `false`.
+        """
+        return pulumi.get(self, "include_body")
+
+    @include_body.setter
+    def include_body(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "include_body", value)
+
+
+if not MYPY:
+    class AwsCloudfrontDistributionV2OriginArgsDict(TypedDict):
+        domain_name: pulumi.Input[str]
+        origin_id: pulumi.Input[str]
+        connection_attempts: NotRequired[pulumi.Input[int]]
+        """
+        Defaults to `3`.
+        """
+        connection_timeout: NotRequired[pulumi.Input[int]]
+        """
+        Defaults to `10`.
+        """
+        custom_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['AwsCloudfrontDistributionV2OriginCustomHeaderArgsDict']]]]
+        custom_origin_config: NotRequired[pulumi.Input['AwsCloudfrontDistributionV2OriginCustomOriginConfigArgsDict']]
+        origin_path: NotRequired[pulumi.Input[str]]
+        """
+        Defaults to ``.
+        """
+        origin_shield: NotRequired[pulumi.Input['AwsCloudfrontDistributionV2OriginOriginShieldArgsDict']]
+elif False:
+    AwsCloudfrontDistributionV2OriginArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AwsCloudfrontDistributionV2OriginArgs:
+    def __init__(__self__, *,
+                 domain_name: pulumi.Input[str],
+                 origin_id: pulumi.Input[str],
+                 connection_attempts: Optional[pulumi.Input[int]] = None,
+                 connection_timeout: Optional[pulumi.Input[int]] = None,
+                 custom_headers: Optional[pulumi.Input[Sequence[pulumi.Input['AwsCloudfrontDistributionV2OriginCustomHeaderArgs']]]] = None,
+                 custom_origin_config: Optional[pulumi.Input['AwsCloudfrontDistributionV2OriginCustomOriginConfigArgs']] = None,
+                 origin_path: Optional[pulumi.Input[str]] = None,
+                 origin_shield: Optional[pulumi.Input['AwsCloudfrontDistributionV2OriginOriginShieldArgs']] = None):
+        """
+        :param pulumi.Input[int] connection_attempts: Defaults to `3`.
+        :param pulumi.Input[int] connection_timeout: Defaults to `10`.
+        :param pulumi.Input[str] origin_path: Defaults to ``.
+        """
+        pulumi.set(__self__, "domain_name", domain_name)
+        pulumi.set(__self__, "origin_id", origin_id)
+        if connection_attempts is not None:
+            pulumi.set(__self__, "connection_attempts", connection_attempts)
+        if connection_timeout is not None:
+            pulumi.set(__self__, "connection_timeout", connection_timeout)
+        if custom_headers is not None:
+            pulumi.set(__self__, "custom_headers", custom_headers)
+        if custom_origin_config is not None:
+            pulumi.set(__self__, "custom_origin_config", custom_origin_config)
+        if origin_path is not None:
+            pulumi.set(__self__, "origin_path", origin_path)
+        if origin_shield is not None:
+            pulumi.set(__self__, "origin_shield", origin_shield)
+
+    @property
+    @pulumi.getter(name="domainName")
+    def domain_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "domain_name")
+
+    @domain_name.setter
+    def domain_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "domain_name", value)
+
+    @property
+    @pulumi.getter(name="originId")
+    def origin_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "origin_id")
+
+    @origin_id.setter
+    def origin_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "origin_id", value)
+
+    @property
+    @pulumi.getter(name="connectionAttempts")
+    def connection_attempts(self) -> Optional[pulumi.Input[int]]:
+        """
+        Defaults to `3`.
+        """
+        return pulumi.get(self, "connection_attempts")
+
+    @connection_attempts.setter
+    def connection_attempts(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "connection_attempts", value)
+
+    @property
+    @pulumi.getter(name="connectionTimeout")
+    def connection_timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        Defaults to `10`.
+        """
+        return pulumi.get(self, "connection_timeout")
+
+    @connection_timeout.setter
+    def connection_timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "connection_timeout", value)
+
+    @property
+    @pulumi.getter(name="customHeaders")
+    def custom_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AwsCloudfrontDistributionV2OriginCustomHeaderArgs']]]]:
+        return pulumi.get(self, "custom_headers")
+
+    @custom_headers.setter
+    def custom_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AwsCloudfrontDistributionV2OriginCustomHeaderArgs']]]]):
+        pulumi.set(self, "custom_headers", value)
+
+    @property
+    @pulumi.getter(name="customOriginConfig")
+    def custom_origin_config(self) -> Optional[pulumi.Input['AwsCloudfrontDistributionV2OriginCustomOriginConfigArgs']]:
+        return pulumi.get(self, "custom_origin_config")
+
+    @custom_origin_config.setter
+    def custom_origin_config(self, value: Optional[pulumi.Input['AwsCloudfrontDistributionV2OriginCustomOriginConfigArgs']]):
+        pulumi.set(self, "custom_origin_config", value)
+
+    @property
+    @pulumi.getter(name="originPath")
+    def origin_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Defaults to ``.
+        """
+        return pulumi.get(self, "origin_path")
+
+    @origin_path.setter
+    def origin_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "origin_path", value)
+
+    @property
+    @pulumi.getter(name="originShield")
+    def origin_shield(self) -> Optional[pulumi.Input['AwsCloudfrontDistributionV2OriginOriginShieldArgs']]:
+        return pulumi.get(self, "origin_shield")
+
+    @origin_shield.setter
+    def origin_shield(self, value: Optional[pulumi.Input['AwsCloudfrontDistributionV2OriginOriginShieldArgs']]):
+        pulumi.set(self, "origin_shield", value)
+
+
+if not MYPY:
+    class AwsCloudfrontDistributionV2OriginCustomHeaderArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        value: pulumi.Input[str]
+elif False:
+    AwsCloudfrontDistributionV2OriginCustomHeaderArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AwsCloudfrontDistributionV2OriginCustomHeaderArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 value: pulumi.Input[str]):
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class AwsCloudfrontDistributionV2OriginCustomOriginConfigArgsDict(TypedDict):
+        origin_protocol_policy: pulumi.Input[str]
+        origin_ssl_protocols: pulumi.Input[Sequence[pulumi.Input[str]]]
+        http_port: NotRequired[pulumi.Input[int]]
+        """
+        Defaults to `80`.
+        """
+        https_port: NotRequired[pulumi.Input[int]]
+        """
+        Defaults to `443`.
+        """
+        origin_keepalive_timeout: NotRequired[pulumi.Input[int]]
+        """
+        Defaults to `5`.
+        """
+        origin_read_timeout: NotRequired[pulumi.Input[int]]
+        """
+        Defaults to `30`.
+        """
+elif False:
+    AwsCloudfrontDistributionV2OriginCustomOriginConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AwsCloudfrontDistributionV2OriginCustomOriginConfigArgs:
+    def __init__(__self__, *,
+                 origin_protocol_policy: pulumi.Input[str],
+                 origin_ssl_protocols: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 http_port: Optional[pulumi.Input[int]] = None,
+                 https_port: Optional[pulumi.Input[int]] = None,
+                 origin_keepalive_timeout: Optional[pulumi.Input[int]] = None,
+                 origin_read_timeout: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] http_port: Defaults to `80`.
+        :param pulumi.Input[int] https_port: Defaults to `443`.
+        :param pulumi.Input[int] origin_keepalive_timeout: Defaults to `5`.
+        :param pulumi.Input[int] origin_read_timeout: Defaults to `30`.
+        """
+        pulumi.set(__self__, "origin_protocol_policy", origin_protocol_policy)
+        pulumi.set(__self__, "origin_ssl_protocols", origin_ssl_protocols)
+        if http_port is not None:
+            pulumi.set(__self__, "http_port", http_port)
+        if https_port is not None:
+            pulumi.set(__self__, "https_port", https_port)
+        if origin_keepalive_timeout is not None:
+            pulumi.set(__self__, "origin_keepalive_timeout", origin_keepalive_timeout)
+        if origin_read_timeout is not None:
+            pulumi.set(__self__, "origin_read_timeout", origin_read_timeout)
+
+    @property
+    @pulumi.getter(name="originProtocolPolicy")
+    def origin_protocol_policy(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "origin_protocol_policy")
+
+    @origin_protocol_policy.setter
+    def origin_protocol_policy(self, value: pulumi.Input[str]):
+        pulumi.set(self, "origin_protocol_policy", value)
+
+    @property
+    @pulumi.getter(name="originSslProtocols")
+    def origin_ssl_protocols(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        return pulumi.get(self, "origin_ssl_protocols")
+
+    @origin_ssl_protocols.setter
+    def origin_ssl_protocols(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "origin_ssl_protocols", value)
+
+    @property
+    @pulumi.getter(name="httpPort")
+    def http_port(self) -> Optional[pulumi.Input[int]]:
+        """
+        Defaults to `80`.
+        """
+        return pulumi.get(self, "http_port")
+
+    @http_port.setter
+    def http_port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "http_port", value)
+
+    @property
+    @pulumi.getter(name="httpsPort")
+    def https_port(self) -> Optional[pulumi.Input[int]]:
+        """
+        Defaults to `443`.
+        """
+        return pulumi.get(self, "https_port")
+
+    @https_port.setter
+    def https_port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "https_port", value)
+
+    @property
+    @pulumi.getter(name="originKeepaliveTimeout")
+    def origin_keepalive_timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        Defaults to `5`.
+        """
+        return pulumi.get(self, "origin_keepalive_timeout")
+
+    @origin_keepalive_timeout.setter
+    def origin_keepalive_timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "origin_keepalive_timeout", value)
+
+    @property
+    @pulumi.getter(name="originReadTimeout")
+    def origin_read_timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        Defaults to `30`.
+        """
+        return pulumi.get(self, "origin_read_timeout")
+
+    @origin_read_timeout.setter
+    def origin_read_timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "origin_read_timeout", value)
+
+
+if not MYPY:
+    class AwsCloudfrontDistributionV2OriginGroupArgsDict(TypedDict):
+        failover_criteria: pulumi.Input['AwsCloudfrontDistributionV2OriginGroupFailoverCriteriaArgsDict']
+        members: pulumi.Input[Sequence[pulumi.Input['AwsCloudfrontDistributionV2OriginGroupMemberArgsDict']]]
+        origin_id: pulumi.Input[str]
+elif False:
+    AwsCloudfrontDistributionV2OriginGroupArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AwsCloudfrontDistributionV2OriginGroupArgs:
+    def __init__(__self__, *,
+                 failover_criteria: pulumi.Input['AwsCloudfrontDistributionV2OriginGroupFailoverCriteriaArgs'],
+                 members: pulumi.Input[Sequence[pulumi.Input['AwsCloudfrontDistributionV2OriginGroupMemberArgs']]],
+                 origin_id: pulumi.Input[str]):
+        pulumi.set(__self__, "failover_criteria", failover_criteria)
+        pulumi.set(__self__, "members", members)
+        pulumi.set(__self__, "origin_id", origin_id)
+
+    @property
+    @pulumi.getter(name="failoverCriteria")
+    def failover_criteria(self) -> pulumi.Input['AwsCloudfrontDistributionV2OriginGroupFailoverCriteriaArgs']:
+        return pulumi.get(self, "failover_criteria")
+
+    @failover_criteria.setter
+    def failover_criteria(self, value: pulumi.Input['AwsCloudfrontDistributionV2OriginGroupFailoverCriteriaArgs']):
+        pulumi.set(self, "failover_criteria", value)
+
+    @property
+    @pulumi.getter
+    def members(self) -> pulumi.Input[Sequence[pulumi.Input['AwsCloudfrontDistributionV2OriginGroupMemberArgs']]]:
+        return pulumi.get(self, "members")
+
+    @members.setter
+    def members(self, value: pulumi.Input[Sequence[pulumi.Input['AwsCloudfrontDistributionV2OriginGroupMemberArgs']]]):
+        pulumi.set(self, "members", value)
+
+    @property
+    @pulumi.getter(name="originId")
+    def origin_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "origin_id")
+
+    @origin_id.setter
+    def origin_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "origin_id", value)
+
+
+if not MYPY:
+    class AwsCloudfrontDistributionV2OriginGroupFailoverCriteriaArgsDict(TypedDict):
+        status_codes: pulumi.Input[Sequence[pulumi.Input[int]]]
+elif False:
+    AwsCloudfrontDistributionV2OriginGroupFailoverCriteriaArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AwsCloudfrontDistributionV2OriginGroupFailoverCriteriaArgs:
+    def __init__(__self__, *,
+                 status_codes: pulumi.Input[Sequence[pulumi.Input[int]]]):
+        pulumi.set(__self__, "status_codes", status_codes)
+
+    @property
+    @pulumi.getter(name="statusCodes")
+    def status_codes(self) -> pulumi.Input[Sequence[pulumi.Input[int]]]:
+        return pulumi.get(self, "status_codes")
+
+    @status_codes.setter
+    def status_codes(self, value: pulumi.Input[Sequence[pulumi.Input[int]]]):
+        pulumi.set(self, "status_codes", value)
+
+
+if not MYPY:
+    class AwsCloudfrontDistributionV2OriginGroupMemberArgsDict(TypedDict):
+        origin_id: pulumi.Input[str]
+elif False:
+    AwsCloudfrontDistributionV2OriginGroupMemberArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AwsCloudfrontDistributionV2OriginGroupMemberArgs:
+    def __init__(__self__, *,
+                 origin_id: pulumi.Input[str]):
+        pulumi.set(__self__, "origin_id", origin_id)
+
+    @property
+    @pulumi.getter(name="originId")
+    def origin_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "origin_id")
+
+    @origin_id.setter
+    def origin_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "origin_id", value)
+
+
+if not MYPY:
+    class AwsCloudfrontDistributionV2OriginOriginShieldArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        origin_shield_region: pulumi.Input[str]
+elif False:
+    AwsCloudfrontDistributionV2OriginOriginShieldArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AwsCloudfrontDistributionV2OriginOriginShieldArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool],
+                 origin_shield_region: pulumi.Input[str]):
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "origin_shield_region", origin_shield_region)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="originShieldRegion")
+    def origin_shield_region(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "origin_shield_region")
+
+    @origin_shield_region.setter
+    def origin_shield_region(self, value: pulumi.Input[str]):
+        pulumi.set(self, "origin_shield_region", value)
+
+
+if not MYPY:
+    class AwsCloudfrontDistributionV2RestrictionsArgsDict(TypedDict):
+        geo_restriction: pulumi.Input['AwsCloudfrontDistributionV2RestrictionsGeoRestrictionArgsDict']
+elif False:
+    AwsCloudfrontDistributionV2RestrictionsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AwsCloudfrontDistributionV2RestrictionsArgs:
+    def __init__(__self__, *,
+                 geo_restriction: pulumi.Input['AwsCloudfrontDistributionV2RestrictionsGeoRestrictionArgs']):
+        pulumi.set(__self__, "geo_restriction", geo_restriction)
+
+    @property
+    @pulumi.getter(name="geoRestriction")
+    def geo_restriction(self) -> pulumi.Input['AwsCloudfrontDistributionV2RestrictionsGeoRestrictionArgs']:
+        return pulumi.get(self, "geo_restriction")
+
+    @geo_restriction.setter
+    def geo_restriction(self, value: pulumi.Input['AwsCloudfrontDistributionV2RestrictionsGeoRestrictionArgs']):
+        pulumi.set(self, "geo_restriction", value)
+
+
+if not MYPY:
+    class AwsCloudfrontDistributionV2RestrictionsGeoRestrictionArgsDict(TypedDict):
+        restriction_type: pulumi.Input[str]
+        locations: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+elif False:
+    AwsCloudfrontDistributionV2RestrictionsGeoRestrictionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AwsCloudfrontDistributionV2RestrictionsGeoRestrictionArgs:
+    def __init__(__self__, *,
+                 restriction_type: pulumi.Input[str],
+                 locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        pulumi.set(__self__, "restriction_type", restriction_type)
+        if locations is not None:
+            pulumi.set(__self__, "locations", locations)
+
+    @property
+    @pulumi.getter(name="restrictionType")
+    def restriction_type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "restriction_type")
+
+    @restriction_type.setter
+    def restriction_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "restriction_type", value)
+
+    @property
+    @pulumi.getter
+    def locations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "locations")
+
+    @locations.setter
+    def locations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "locations", value)
+
+
+if not MYPY:
+    class AwsCloudfrontDistributionV2ViewerCertificateArgsDict(TypedDict):
+        acm_certificate_arn: NotRequired[pulumi.Input[str]]
+        cloudfront_default_certificate: NotRequired[pulumi.Input[bool]]
+        iam_certificate_id: NotRequired[pulumi.Input[str]]
+        minimum_protocol_version: NotRequired[pulumi.Input[str]]
+        """
+        Defaults to `TLSv1.2_2021`.
+        """
+        ssl_support_method: NotRequired[pulumi.Input[str]]
+        """
+        Defaults to `sni-only`.
+        """
+elif False:
+    AwsCloudfrontDistributionV2ViewerCertificateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AwsCloudfrontDistributionV2ViewerCertificateArgs:
+    def __init__(__self__, *,
+                 acm_certificate_arn: Optional[pulumi.Input[str]] = None,
+                 cloudfront_default_certificate: Optional[pulumi.Input[bool]] = None,
+                 iam_certificate_id: Optional[pulumi.Input[str]] = None,
+                 minimum_protocol_version: Optional[pulumi.Input[str]] = None,
+                 ssl_support_method: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] minimum_protocol_version: Defaults to `TLSv1.2_2021`.
+        :param pulumi.Input[str] ssl_support_method: Defaults to `sni-only`.
+        """
+        if acm_certificate_arn is not None:
+            pulumi.set(__self__, "acm_certificate_arn", acm_certificate_arn)
+        if cloudfront_default_certificate is not None:
+            pulumi.set(__self__, "cloudfront_default_certificate", cloudfront_default_certificate)
+        if iam_certificate_id is not None:
+            pulumi.set(__self__, "iam_certificate_id", iam_certificate_id)
+        if minimum_protocol_version is not None:
+            pulumi.set(__self__, "minimum_protocol_version", minimum_protocol_version)
+        if ssl_support_method is not None:
+            pulumi.set(__self__, "ssl_support_method", ssl_support_method)
+
+    @property
+    @pulumi.getter(name="acmCertificateArn")
+    def acm_certificate_arn(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "acm_certificate_arn")
+
+    @acm_certificate_arn.setter
+    def acm_certificate_arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "acm_certificate_arn", value)
+
+    @property
+    @pulumi.getter(name="cloudfrontDefaultCertificate")
+    def cloudfront_default_certificate(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "cloudfront_default_certificate")
+
+    @cloudfront_default_certificate.setter
+    def cloudfront_default_certificate(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "cloudfront_default_certificate", value)
+
+    @property
+    @pulumi.getter(name="iamCertificateId")
+    def iam_certificate_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "iam_certificate_id")
+
+    @iam_certificate_id.setter
+    def iam_certificate_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "iam_certificate_id", value)
+
+    @property
+    @pulumi.getter(name="minimumProtocolVersion")
+    def minimum_protocol_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Defaults to `TLSv1.2_2021`.
+        """
+        return pulumi.get(self, "minimum_protocol_version")
+
+    @minimum_protocol_version.setter
+    def minimum_protocol_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "minimum_protocol_version", value)
+
+    @property
+    @pulumi.getter(name="sslSupportMethod")
+    def ssl_support_method(self) -> Optional[pulumi.Input[str]]:
+        """
+        Defaults to `sni-only`.
+        """
+        return pulumi.get(self, "ssl_support_method")
+
+    @ssl_support_method.setter
+    def ssl_support_method(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ssl_support_method", value)
+
+
+if not MYPY:
     class AwsCloudfrontDistributionViewerCertificateArgsDict(TypedDict):
         acm_certificate_arn: NotRequired[pulumi.Input[str]]
         cloudfront_default_certificate: NotRequired[pulumi.Input[bool]]
@@ -6959,6 +8718,139 @@ class AwsLaunchTemplateBlockDeviceMappingEbsArgs:
 
 
 if not MYPY:
+    class AwsLaunchTemplateInstanceRequirementsArgsDict(TypedDict):
+        allowed_instance_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        memory_mib: NotRequired[pulumi.Input['AwsLaunchTemplateInstanceRequirementsMemoryMibArgsDict']]
+        """
+        Block describing the minimum and maximum amount of memory (MiB). It is a required field when allowed*instance*types is set
+        """
+        vcpu_count: NotRequired[pulumi.Input['AwsLaunchTemplateInstanceRequirementsVcpuCountArgsDict']]
+        """
+        Block describing the minimum and maximum number of vCPUs. It is a required field when allowed*instance*types is set
+        """
+elif False:
+    AwsLaunchTemplateInstanceRequirementsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AwsLaunchTemplateInstanceRequirementsArgs:
+    def __init__(__self__, *,
+                 allowed_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 memory_mib: Optional[pulumi.Input['AwsLaunchTemplateInstanceRequirementsMemoryMibArgs']] = None,
+                 vcpu_count: Optional[pulumi.Input['AwsLaunchTemplateInstanceRequirementsVcpuCountArgs']] = None):
+        """
+        :param pulumi.Input['AwsLaunchTemplateInstanceRequirementsMemoryMibArgs'] memory_mib: Block describing the minimum and maximum amount of memory (MiB). It is a required field when allowed*instance*types is set
+        :param pulumi.Input['AwsLaunchTemplateInstanceRequirementsVcpuCountArgs'] vcpu_count: Block describing the minimum and maximum number of vCPUs. It is a required field when allowed*instance*types is set
+        """
+        if allowed_instance_types is not None:
+            pulumi.set(__self__, "allowed_instance_types", allowed_instance_types)
+        if memory_mib is not None:
+            pulumi.set(__self__, "memory_mib", memory_mib)
+        if vcpu_count is not None:
+            pulumi.set(__self__, "vcpu_count", vcpu_count)
+
+    @property
+    @pulumi.getter(name="allowedInstanceTypes")
+    def allowed_instance_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "allowed_instance_types")
+
+    @allowed_instance_types.setter
+    def allowed_instance_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowed_instance_types", value)
+
+    @property
+    @pulumi.getter(name="memoryMib")
+    def memory_mib(self) -> Optional[pulumi.Input['AwsLaunchTemplateInstanceRequirementsMemoryMibArgs']]:
+        """
+        Block describing the minimum and maximum amount of memory (MiB). It is a required field when allowed*instance*types is set
+        """
+        return pulumi.get(self, "memory_mib")
+
+    @memory_mib.setter
+    def memory_mib(self, value: Optional[pulumi.Input['AwsLaunchTemplateInstanceRequirementsMemoryMibArgs']]):
+        pulumi.set(self, "memory_mib", value)
+
+    @property
+    @pulumi.getter(name="vcpuCount")
+    def vcpu_count(self) -> Optional[pulumi.Input['AwsLaunchTemplateInstanceRequirementsVcpuCountArgs']]:
+        """
+        Block describing the minimum and maximum number of vCPUs. It is a required field when allowed*instance*types is set
+        """
+        return pulumi.get(self, "vcpu_count")
+
+    @vcpu_count.setter
+    def vcpu_count(self, value: Optional[pulumi.Input['AwsLaunchTemplateInstanceRequirementsVcpuCountArgs']]):
+        pulumi.set(self, "vcpu_count", value)
+
+
+if not MYPY:
+    class AwsLaunchTemplateInstanceRequirementsMemoryMibArgsDict(TypedDict):
+        max: pulumi.Input[int]
+        min: pulumi.Input[int]
+elif False:
+    AwsLaunchTemplateInstanceRequirementsMemoryMibArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AwsLaunchTemplateInstanceRequirementsMemoryMibArgs:
+    def __init__(__self__, *,
+                 max: pulumi.Input[int],
+                 min: pulumi.Input[int]):
+        pulumi.set(__self__, "max", max)
+        pulumi.set(__self__, "min", min)
+
+    @property
+    @pulumi.getter
+    def max(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "max")
+
+    @max.setter
+    def max(self, value: pulumi.Input[int]):
+        pulumi.set(self, "max", value)
+
+    @property
+    @pulumi.getter
+    def min(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "min")
+
+    @min.setter
+    def min(self, value: pulumi.Input[int]):
+        pulumi.set(self, "min", value)
+
+
+if not MYPY:
+    class AwsLaunchTemplateInstanceRequirementsVcpuCountArgsDict(TypedDict):
+        max: pulumi.Input[int]
+        min: pulumi.Input[int]
+elif False:
+    AwsLaunchTemplateInstanceRequirementsVcpuCountArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AwsLaunchTemplateInstanceRequirementsVcpuCountArgs:
+    def __init__(__self__, *,
+                 max: pulumi.Input[int],
+                 min: pulumi.Input[int]):
+        pulumi.set(__self__, "max", max)
+        pulumi.set(__self__, "min", min)
+
+    @property
+    @pulumi.getter
+    def max(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "max")
+
+    @max.setter
+    def max(self, value: pulumi.Input[int]):
+        pulumi.set(self, "max", value)
+
+    @property
+    @pulumi.getter
+    def min(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "min")
+
+    @min.setter
+    def min(self, value: pulumi.Input[int]):
+        pulumi.set(self, "min", value)
+
+
+if not MYPY:
     class AwsLbListenerRuleActionArgsDict(TypedDict):
         type: pulumi.Input[str]
         """
@@ -8720,6 +10612,559 @@ class AwsLoadBalancerTagArgs:
 
 
 if not MYPY:
+    class AwsMqBrokerConfigurationArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        Configuration ID.
+        """
+        revision: pulumi.Input[int]
+        """
+        Configuration revision.
+        """
+elif False:
+    AwsMqBrokerConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AwsMqBrokerConfigurationArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str],
+                 revision: pulumi.Input[int]):
+        """
+        :param pulumi.Input[str] id: Configuration ID.
+        :param pulumi.Input[int] revision: Configuration revision.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "revision", revision)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        Configuration ID.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def revision(self) -> pulumi.Input[int]:
+        """
+        Configuration revision.
+        """
+        return pulumi.get(self, "revision")
+
+    @revision.setter
+    def revision(self, value: pulumi.Input[int]):
+        pulumi.set(self, "revision", value)
+
+
+if not MYPY:
+    class AwsMqBrokerEncryptionOptionsArgsDict(TypedDict):
+        kms_key_id: NotRequired[pulumi.Input[str]]
+        """
+        KMS Key ID for encryption.
+        """
+        use_aws_owned_key: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to use AWS owned key. Defaults to `true`.
+        """
+elif False:
+    AwsMqBrokerEncryptionOptionsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AwsMqBrokerEncryptionOptionsArgs:
+    def __init__(__self__, *,
+                 kms_key_id: Optional[pulumi.Input[str]] = None,
+                 use_aws_owned_key: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] kms_key_id: KMS Key ID for encryption.
+        :param pulumi.Input[bool] use_aws_owned_key: Whether to use AWS owned key. Defaults to `true`.
+        """
+        if kms_key_id is not None:
+            pulumi.set(__self__, "kms_key_id", kms_key_id)
+        if use_aws_owned_key is not None:
+            pulumi.set(__self__, "use_aws_owned_key", use_aws_owned_key)
+
+    @property
+    @pulumi.getter(name="kmsKeyId")
+    def kms_key_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        KMS Key ID for encryption.
+        """
+        return pulumi.get(self, "kms_key_id")
+
+    @kms_key_id.setter
+    def kms_key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key_id", value)
+
+    @property
+    @pulumi.getter(name="useAwsOwnedKey")
+    def use_aws_owned_key(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to use AWS owned key. Defaults to `true`.
+        """
+        return pulumi.get(self, "use_aws_owned_key")
+
+    @use_aws_owned_key.setter
+    def use_aws_owned_key(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_aws_owned_key", value)
+
+
+if not MYPY:
+    class AwsMqBrokerLdapServerMetadataArgsDict(TypedDict):
+        hosts: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        List of LDAP hosts.
+        """
+        role_base: pulumi.Input[str]
+        """
+        LDAP role base.
+        """
+        role_name: pulumi.Input[str]
+        """
+        LDAP role name.
+        """
+        role_search_matching: pulumi.Input[str]
+        """
+        LDAP role search matching.
+        """
+        role_search_subtree: pulumi.Input[bool]
+        """
+        LDAP role search subtree.
+        """
+        service_account_password: pulumi.Input[str]
+        """
+        LDAP service account password.
+        """
+        service_account_username: pulumi.Input[str]
+        """
+        LDAP service account username.
+        """
+        user_base: pulumi.Input[str]
+        """
+        LDAP user base.
+        """
+        user_role_name: pulumi.Input[str]
+        """
+        LDAP user role name.
+        """
+        user_search_matching: pulumi.Input[str]
+        """
+        LDAP user search matching.
+        """
+        user_search_subtree: pulumi.Input[bool]
+        """
+        LDAP user search subtree.
+        """
+elif False:
+    AwsMqBrokerLdapServerMetadataArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AwsMqBrokerLdapServerMetadataArgs:
+    def __init__(__self__, *,
+                 hosts: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 role_base: pulumi.Input[str],
+                 role_name: pulumi.Input[str],
+                 role_search_matching: pulumi.Input[str],
+                 role_search_subtree: pulumi.Input[bool],
+                 service_account_password: pulumi.Input[str],
+                 service_account_username: pulumi.Input[str],
+                 user_base: pulumi.Input[str],
+                 user_role_name: pulumi.Input[str],
+                 user_search_matching: pulumi.Input[str],
+                 user_search_subtree: pulumi.Input[bool]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] hosts: List of LDAP hosts.
+        :param pulumi.Input[str] role_base: LDAP role base.
+        :param pulumi.Input[str] role_name: LDAP role name.
+        :param pulumi.Input[str] role_search_matching: LDAP role search matching.
+        :param pulumi.Input[bool] role_search_subtree: LDAP role search subtree.
+        :param pulumi.Input[str] service_account_password: LDAP service account password.
+        :param pulumi.Input[str] service_account_username: LDAP service account username.
+        :param pulumi.Input[str] user_base: LDAP user base.
+        :param pulumi.Input[str] user_role_name: LDAP user role name.
+        :param pulumi.Input[str] user_search_matching: LDAP user search matching.
+        :param pulumi.Input[bool] user_search_subtree: LDAP user search subtree.
+        """
+        pulumi.set(__self__, "hosts", hosts)
+        pulumi.set(__self__, "role_base", role_base)
+        pulumi.set(__self__, "role_name", role_name)
+        pulumi.set(__self__, "role_search_matching", role_search_matching)
+        pulumi.set(__self__, "role_search_subtree", role_search_subtree)
+        pulumi.set(__self__, "service_account_password", service_account_password)
+        pulumi.set(__self__, "service_account_username", service_account_username)
+        pulumi.set(__self__, "user_base", user_base)
+        pulumi.set(__self__, "user_role_name", user_role_name)
+        pulumi.set(__self__, "user_search_matching", user_search_matching)
+        pulumi.set(__self__, "user_search_subtree", user_search_subtree)
+
+    @property
+    @pulumi.getter
+    def hosts(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        List of LDAP hosts.
+        """
+        return pulumi.get(self, "hosts")
+
+    @hosts.setter
+    def hosts(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "hosts", value)
+
+    @property
+    @pulumi.getter(name="roleBase")
+    def role_base(self) -> pulumi.Input[str]:
+        """
+        LDAP role base.
+        """
+        return pulumi.get(self, "role_base")
+
+    @role_base.setter
+    def role_base(self, value: pulumi.Input[str]):
+        pulumi.set(self, "role_base", value)
+
+    @property
+    @pulumi.getter(name="roleName")
+    def role_name(self) -> pulumi.Input[str]:
+        """
+        LDAP role name.
+        """
+        return pulumi.get(self, "role_name")
+
+    @role_name.setter
+    def role_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "role_name", value)
+
+    @property
+    @pulumi.getter(name="roleSearchMatching")
+    def role_search_matching(self) -> pulumi.Input[str]:
+        """
+        LDAP role search matching.
+        """
+        return pulumi.get(self, "role_search_matching")
+
+    @role_search_matching.setter
+    def role_search_matching(self, value: pulumi.Input[str]):
+        pulumi.set(self, "role_search_matching", value)
+
+    @property
+    @pulumi.getter(name="roleSearchSubtree")
+    def role_search_subtree(self) -> pulumi.Input[bool]:
+        """
+        LDAP role search subtree.
+        """
+        return pulumi.get(self, "role_search_subtree")
+
+    @role_search_subtree.setter
+    def role_search_subtree(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "role_search_subtree", value)
+
+    @property
+    @pulumi.getter(name="serviceAccountPassword")
+    def service_account_password(self) -> pulumi.Input[str]:
+        """
+        LDAP service account password.
+        """
+        return pulumi.get(self, "service_account_password")
+
+    @service_account_password.setter
+    def service_account_password(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service_account_password", value)
+
+    @property
+    @pulumi.getter(name="serviceAccountUsername")
+    def service_account_username(self) -> pulumi.Input[str]:
+        """
+        LDAP service account username.
+        """
+        return pulumi.get(self, "service_account_username")
+
+    @service_account_username.setter
+    def service_account_username(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service_account_username", value)
+
+    @property
+    @pulumi.getter(name="userBase")
+    def user_base(self) -> pulumi.Input[str]:
+        """
+        LDAP user base.
+        """
+        return pulumi.get(self, "user_base")
+
+    @user_base.setter
+    def user_base(self, value: pulumi.Input[str]):
+        pulumi.set(self, "user_base", value)
+
+    @property
+    @pulumi.getter(name="userRoleName")
+    def user_role_name(self) -> pulumi.Input[str]:
+        """
+        LDAP user role name.
+        """
+        return pulumi.get(self, "user_role_name")
+
+    @user_role_name.setter
+    def user_role_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "user_role_name", value)
+
+    @property
+    @pulumi.getter(name="userSearchMatching")
+    def user_search_matching(self) -> pulumi.Input[str]:
+        """
+        LDAP user search matching.
+        """
+        return pulumi.get(self, "user_search_matching")
+
+    @user_search_matching.setter
+    def user_search_matching(self, value: pulumi.Input[str]):
+        pulumi.set(self, "user_search_matching", value)
+
+    @property
+    @pulumi.getter(name="userSearchSubtree")
+    def user_search_subtree(self) -> pulumi.Input[bool]:
+        """
+        LDAP user search subtree.
+        """
+        return pulumi.get(self, "user_search_subtree")
+
+    @user_search_subtree.setter
+    def user_search_subtree(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "user_search_subtree", value)
+
+
+if not MYPY:
+    class AwsMqBrokerLogsArgsDict(TypedDict):
+        general: pulumi.Input[bool]
+        """
+        Enable general logging.
+        """
+        audit: NotRequired[pulumi.Input[bool]]
+        """
+        Enable audit logging (not applicable for RabbitMQ).
+        """
+elif False:
+    AwsMqBrokerLogsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AwsMqBrokerLogsArgs:
+    def __init__(__self__, *,
+                 general: pulumi.Input[bool],
+                 audit: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] general: Enable general logging.
+        :param pulumi.Input[bool] audit: Enable audit logging (not applicable for RabbitMQ).
+        """
+        pulumi.set(__self__, "general", general)
+        if audit is not None:
+            pulumi.set(__self__, "audit", audit)
+
+    @property
+    @pulumi.getter
+    def general(self) -> pulumi.Input[bool]:
+        """
+        Enable general logging.
+        """
+        return pulumi.get(self, "general")
+
+    @general.setter
+    def general(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "general", value)
+
+    @property
+    @pulumi.getter
+    def audit(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable audit logging (not applicable for RabbitMQ).
+        """
+        return pulumi.get(self, "audit")
+
+    @audit.setter
+    def audit(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "audit", value)
+
+
+if not MYPY:
+    class AwsMqBrokerMaintenanceWindowArgsDict(TypedDict):
+        day_of_week: pulumi.Input[str]
+        """
+        Day of week for maintenance window.
+        """
+        time_of_day: pulumi.Input[str]
+        """
+        Time of day for maintenance window. 24 hours format
+        """
+        time_zone: pulumi.Input[str]
+        """
+        Time zone for maintenance window.
+        """
+elif False:
+    AwsMqBrokerMaintenanceWindowArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AwsMqBrokerMaintenanceWindowArgs:
+    def __init__(__self__, *,
+                 day_of_week: pulumi.Input[str],
+                 time_of_day: pulumi.Input[str],
+                 time_zone: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] day_of_week: Day of week for maintenance window.
+        :param pulumi.Input[str] time_of_day: Time of day for maintenance window. 24 hours format
+        :param pulumi.Input[str] time_zone: Time zone for maintenance window.
+        """
+        pulumi.set(__self__, "day_of_week", day_of_week)
+        pulumi.set(__self__, "time_of_day", time_of_day)
+        pulumi.set(__self__, "time_zone", time_zone)
+
+    @property
+    @pulumi.getter(name="dayOfWeek")
+    def day_of_week(self) -> pulumi.Input[str]:
+        """
+        Day of week for maintenance window.
+        """
+        return pulumi.get(self, "day_of_week")
+
+    @day_of_week.setter
+    def day_of_week(self, value: pulumi.Input[str]):
+        pulumi.set(self, "day_of_week", value)
+
+    @property
+    @pulumi.getter(name="timeOfDay")
+    def time_of_day(self) -> pulumi.Input[str]:
+        """
+        Time of day for maintenance window. 24 hours format
+        """
+        return pulumi.get(self, "time_of_day")
+
+    @time_of_day.setter
+    def time_of_day(self, value: pulumi.Input[str]):
+        pulumi.set(self, "time_of_day", value)
+
+    @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> pulumi.Input[str]:
+        """
+        Time zone for maintenance window.
+        """
+        return pulumi.get(self, "time_zone")
+
+    @time_zone.setter
+    def time_zone(self, value: pulumi.Input[str]):
+        pulumi.set(self, "time_zone", value)
+
+
+if not MYPY:
+    class AwsMqBrokerUserArgsDict(TypedDict):
+        password: pulumi.Input[str]
+        """
+        The password.
+        """
+        user_name: pulumi.Input[str]
+        """
+        The username.
+        """
+        console_access: NotRequired[pulumi.Input[bool]]
+        """
+        Defaults to `false`.
+        """
+        groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Groups to which the user belongs.
+        """
+        replication_user: NotRequired[pulumi.Input[bool]]
+        """
+        Defaults to `false`.
+        """
+elif False:
+    AwsMqBrokerUserArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AwsMqBrokerUserArgs:
+    def __init__(__self__, *,
+                 password: pulumi.Input[str],
+                 user_name: pulumi.Input[str],
+                 console_access: Optional[pulumi.Input[bool]] = None,
+                 groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 replication_user: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] password: The password.
+        :param pulumi.Input[str] user_name: The username.
+        :param pulumi.Input[bool] console_access: Defaults to `false`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] groups: Groups to which the user belongs.
+        :param pulumi.Input[bool] replication_user: Defaults to `false`.
+        """
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "user_name", user_name)
+        if console_access is not None:
+            pulumi.set(__self__, "console_access", console_access)
+        if groups is not None:
+            pulumi.set(__self__, "groups", groups)
+        if replication_user is not None:
+            pulumi.set(__self__, "replication_user", replication_user)
+
+    @property
+    @pulumi.getter
+    def password(self) -> pulumi.Input[str]:
+        """
+        The password.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: pulumi.Input[str]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter(name="userName")
+    def user_name(self) -> pulumi.Input[str]:
+        """
+        The username.
+        """
+        return pulumi.get(self, "user_name")
+
+    @user_name.setter
+    def user_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "user_name", value)
+
+    @property
+    @pulumi.getter(name="consoleAccess")
+    def console_access(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Defaults to `false`.
+        """
+        return pulumi.get(self, "console_access")
+
+    @console_access.setter
+    def console_access(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "console_access", value)
+
+    @property
+    @pulumi.getter
+    def groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Groups to which the user belongs.
+        """
+        return pulumi.get(self, "groups")
+
+    @groups.setter
+    def groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "groups", value)
+
+    @property
+    @pulumi.getter(name="replicationUser")
+    def replication_user(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Defaults to `false`.
+        """
+        return pulumi.get(self, "replication_user")
+
+    @replication_user.setter
+    def replication_user(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "replication_user", value)
+
+
+if not MYPY:
     class AwsMwaaEnvironmentLastUpdatedArgsDict(TypedDict):
         created_at: NotRequired[pulumi.Input[str]]
         errors: NotRequired[pulumi.Input[Sequence[pulumi.Input['AwsMwaaEnvironmentLastUpdatedErrorArgsDict']]]]
@@ -9143,6 +11588,63 @@ class AwsTargetGroupAttributesAttributeArgs:
     @value.setter
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class AwsTargetGroupTargetRegisterTargetArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The ID of the target. If the target type of the target group is INSTANCE, this is an instance ID. If the target type is IP , this is an IP address. If the target type is LAMBDA, this is the ARN of the Lambda function. If the target type is ALB, this is the ARN of the Application Load Balancer.
+        """
+        availability_zone: NotRequired[pulumi.Input[str]]
+        port: NotRequired[pulumi.Input[int]]
+elif False:
+    AwsTargetGroupTargetRegisterTargetArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AwsTargetGroupTargetRegisterTargetArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str],
+                 availability_zone: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] id: The ID of the target. If the target type of the target group is INSTANCE, this is an instance ID. If the target type is IP , this is an IP address. If the target type is LAMBDA, this is the ARN of the Lambda function. If the target type is ALB, this is the ARN of the Application Load Balancer.
+        """
+        pulumi.set(__self__, "id", id)
+        if availability_zone is not None:
+            pulumi.set(__self__, "availability_zone", availability_zone)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of the target. If the target type of the target group is INSTANCE, this is an instance ID. If the target type is IP , this is an IP address. If the target type is LAMBDA, this is the ARN of the Lambda function. If the target type is ALB, this is the ARN of the Application Load Balancer.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "availability_zone")
+
+    @availability_zone.setter
+    def availability_zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "availability_zone", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port", value)
 
 
 if not MYPY:
@@ -12752,7 +15254,7 @@ if not MYPY:
         """
         backend_config_timeout_sec: NotRequired[pulumi.Input[int]]
         """
-        The number of seconds to wait for the backend to send a response. Must be at least 1. Applicable only for GCP.
+        The number of seconds to wait for the backend to send a response. Must be at least 1. Applicable only for GCP. Enable set_ingress_health_check when using this field
         """
         backend_protocol_version: NotRequired[pulumi.Input[str]]
         """
@@ -12773,6 +15275,12 @@ if not MYPY:
         dns_name: NotRequired[pulumi.Input[str]]
         """
         The DNS name of the cloud load balancer (if applicable).
+        """
+        eip_allocations: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Allocate Elastic IP to load balancer, which is configured under plan configuration.
+
+        Note: This field can only be set for non internal lbtype NLB(6)
         """
         external_port: NotRequired[pulumi.Input[int]]
         """
@@ -12852,6 +15360,7 @@ class DuploServiceLbconfigsLbconfigArgs:
                  cloud_name: Optional[pulumi.Input[str]] = None,
                  custom_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dns_name: Optional[pulumi.Input[str]] = None,
+                 eip_allocations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  external_port: Optional[pulumi.Input[int]] = None,
                  external_traffic_policy: Optional[pulumi.Input[str]] = None,
                  extra_selector_labels: Optional[pulumi.Input[Sequence[pulumi.Input['DuploServiceLbconfigsLbconfigExtraSelectorLabelArgs']]]] = None,
@@ -12893,12 +15402,15 @@ class DuploServiceLbconfigsLbconfigArgs:
                	- `6 (NLB)` : TCP, UDP, TLS
                	- `7 (Target Group Only)` : HTTP, HTTPS, TCP, UDP, TLS
         :param pulumi.Input[bool] allow_global_access: Applicable for internal lb.
-        :param pulumi.Input[int] backend_config_timeout_sec: The number of seconds to wait for the backend to send a response. Must be at least 1. Applicable only for GCP.
+        :param pulumi.Input[int] backend_config_timeout_sec: The number of seconds to wait for the backend to send a response. Must be at least 1. Applicable only for GCP. Enable set_ingress_health_check when using this field
         :param pulumi.Input[str] backend_protocol_version: Is used for communication between the load balancer and the target instances. This field is used to set protocol version for ALB load balancer. Only applicable when protocol is HTTP or HTTPS. The protocol version. Specify GRPC to send requests to targets using gRPC. Specify HTTP2 to send requests to targets using HTTP/2. The default is HTTP1, which sends requests to targets using HTTP/1.1
         :param pulumi.Input[str] certificate_arn: The ARN of an ACM certificate to associate with this load balancer.  Only applicable for HTTPS.
         :param pulumi.Input[str] cloud_name: The name of the cloud load balancer (if applicable).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_cidrs: Specify CIDR Values. This is applicable only for Network Load Balancer if `lb_type` is `6`.
         :param pulumi.Input[str] dns_name: The DNS name of the cloud load balancer (if applicable).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] eip_allocations: Allocate Elastic IP to load balancer, which is configured under plan configuration.
+               
+               Note: This field can only be set for non internal lbtype NLB(6)
         :param pulumi.Input[int] external_port: The frontend port associated with this load balancer configuration. Required if `lb_type` is not `7`.
         :param pulumi.Input[str] external_traffic_policy: Only for K8S Node Port (`lb_type = 4`) or load balancers in Kubernetes.  Set the kubernetes service `externalTrafficPolicy` attribute.
         :param pulumi.Input[Sequence[pulumi.Input['DuploServiceLbconfigsLbconfigExtraSelectorLabelArgs']]] extra_selector_labels: Only for K8S services or load balancers in Kubernetes.  Sets an additional selector label to narrow which pods can receive traffic.
@@ -12932,6 +15444,8 @@ class DuploServiceLbconfigsLbconfigArgs:
             pulumi.set(__self__, "custom_cidrs", custom_cidrs)
         if dns_name is not None:
             pulumi.set(__self__, "dns_name", dns_name)
+        if eip_allocations is not None:
+            pulumi.set(__self__, "eip_allocations", eip_allocations)
         if external_port is not None:
             pulumi.set(__self__, "external_port", external_port)
         if external_traffic_policy is not None:
@@ -13038,7 +15552,7 @@ class DuploServiceLbconfigsLbconfigArgs:
     @pulumi.getter(name="backendConfigTimeoutSec")
     def backend_config_timeout_sec(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of seconds to wait for the backend to send a response. Must be at least 1. Applicable only for GCP.
+        The number of seconds to wait for the backend to send a response. Must be at least 1. Applicable only for GCP. Enable set_ingress_health_check when using this field
         """
         return pulumi.get(self, "backend_config_timeout_sec")
 
@@ -13105,6 +15619,20 @@ class DuploServiceLbconfigsLbconfigArgs:
     @dns_name.setter
     def dns_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "dns_name", value)
+
+    @property
+    @pulumi.getter(name="eipAllocations")
+    def eip_allocations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Allocate Elastic IP to load balancer, which is configured under plan configuration.
+
+        Note: This field can only be set for non internal lbtype NLB(6)
+        """
+        return pulumi.get(self, "eip_allocations")
+
+    @eip_allocations.setter
+    def eip_allocations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "eip_allocations", value)
 
     @property
     @pulumi.getter(name="externalPort")
@@ -13865,6 +16393,7 @@ if not MYPY:
            - `0` : ELB (Classic Load Balancer)
            - `1` : ALB (Application Load Balancer)
            - `2` : Health-check Only (No Load Balancer)
+           - `6` : NLB (Network Load Balancer)
         """
         port: pulumi.Input[str]
         """
@@ -13900,11 +16429,11 @@ if not MYPY:
         """
         health_check_config: NotRequired[pulumi.Input['EcsServiceLoadBalancerHealthCheckConfigArgsDict']]
         """
-        Health check configuration for this load balancer.
+        Health check configuration for this load balancer. Not applicable for NLB
         """
         health_check_url: NotRequired[pulumi.Input[str]]
         """
-        The health check URL to associate with this load balancer configuration.
+        The health check URL to associate with this load balancer configuration. Not applicable for NLB
         """
         http_to_https_redirect: NotRequired[pulumi.Input[bool]]
         """
@@ -13969,6 +16498,7 @@ class EcsServiceLoadBalancerArgs:
                   - `0` : ELB (Classic Load Balancer)
                   - `1` : ALB (Application Load Balancer)
                   - `2` : Health-check Only (No Load Balancer)
+                  - `6` : NLB (Network Load Balancer)
         :param pulumi.Input[str] port: The backend port associated with this load balancer configuration.
         :param pulumi.Input[str] protocol: The frontend protocol associated with this load balancer configuration.
         :param pulumi.Input[int] target_group_count: Number of Load Balancer target group to associate with the service.
@@ -13977,8 +16507,8 @@ class EcsServiceLoadBalancerArgs:
         :param pulumi.Input[str] certificate_arn: The ARN of an ACM certificate to associate with this load balancer.  Only applicable for HTTPS.
         :param pulumi.Input[bool] drop_invalid_headers: Whether or not to drop invalid HTTP headers received by the load balancer.
         :param pulumi.Input[bool] enable_access_logs: Whether or not to enable access logs.  When enabled, Duplo will send access logs to a centralized S3 bucket per plan
-        :param pulumi.Input['EcsServiceLoadBalancerHealthCheckConfigArgs'] health_check_config: Health check configuration for this load balancer.
-        :param pulumi.Input[str] health_check_url: The health check URL to associate with this load balancer configuration.
+        :param pulumi.Input['EcsServiceLoadBalancerHealthCheckConfigArgs'] health_check_config: Health check configuration for this load balancer. Not applicable for NLB
+        :param pulumi.Input[str] health_check_url: The health check URL to associate with this load balancer configuration. Not applicable for NLB
         :param pulumi.Input[bool] http_to_https_redirect: Whether or not the load balancer should redirect HTTP to HTTPS.
         :param pulumi.Input[int] idle_timeout: The time in seconds that the connection is allowed to be idle. Only valid for Load Balancers of type `application`.
         :param pulumi.Input[int] index: The load balancer Index.
@@ -14048,6 +16578,7 @@ class EcsServiceLoadBalancerArgs:
            - `0` : ELB (Classic Load Balancer)
            - `1` : ALB (Application Load Balancer)
            - `2` : Health-check Only (No Load Balancer)
+           - `6` : NLB (Network Load Balancer)
         """
         return pulumi.get(self, "lb_type")
 
@@ -14156,7 +16687,7 @@ class EcsServiceLoadBalancerArgs:
     @pulumi.getter(name="healthCheckConfig")
     def health_check_config(self) -> Optional[pulumi.Input['EcsServiceLoadBalancerHealthCheckConfigArgs']]:
         """
-        Health check configuration for this load balancer.
+        Health check configuration for this load balancer. Not applicable for NLB
         """
         return pulumi.get(self, "health_check_config")
 
@@ -14168,7 +16699,7 @@ class EcsServiceLoadBalancerArgs:
     @pulumi.getter(name="healthCheckUrl")
     def health_check_url(self) -> Optional[pulumi.Input[str]]:
         """
-        The health check URL to associate with this load balancer configuration.
+        The health check URL to associate with this load balancer configuration. Not applicable for NLB
         """
         return pulumi.get(self, "health_check_url")
 
@@ -14274,6 +16805,10 @@ if not MYPY:
     class EcsServiceLoadBalancerHealthCheckConfigArgsDict(TypedDict):
         grpc_success_code: NotRequired[pulumi.Input[str]]
         health_check_interval_seconds: NotRequired[pulumi.Input[int]]
+        health_check_port: NotRequired[pulumi.Input[int]]
+        """
+        The port the load balancer uses when performing health checks on targets. If not specified, it will be treated as the traffic port.
+        """
         health_check_timeout_seconds: NotRequired[pulumi.Input[int]]
         healthy_threshold_count: NotRequired[pulumi.Input[int]]
         http_success_code: NotRequired[pulumi.Input[str]]
@@ -14286,14 +16821,20 @@ class EcsServiceLoadBalancerHealthCheckConfigArgs:
     def __init__(__self__, *,
                  grpc_success_code: Optional[pulumi.Input[str]] = None,
                  health_check_interval_seconds: Optional[pulumi.Input[int]] = None,
+                 health_check_port: Optional[pulumi.Input[int]] = None,
                  health_check_timeout_seconds: Optional[pulumi.Input[int]] = None,
                  healthy_threshold_count: Optional[pulumi.Input[int]] = None,
                  http_success_code: Optional[pulumi.Input[str]] = None,
                  unhealthy_threshold_count: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] health_check_port: The port the load balancer uses when performing health checks on targets. If not specified, it will be treated as the traffic port.
+        """
         if grpc_success_code is not None:
             pulumi.set(__self__, "grpc_success_code", grpc_success_code)
         if health_check_interval_seconds is not None:
             pulumi.set(__self__, "health_check_interval_seconds", health_check_interval_seconds)
+        if health_check_port is not None:
+            pulumi.set(__self__, "health_check_port", health_check_port)
         if health_check_timeout_seconds is not None:
             pulumi.set(__self__, "health_check_timeout_seconds", health_check_timeout_seconds)
         if healthy_threshold_count is not None:
@@ -14320,6 +16861,18 @@ class EcsServiceLoadBalancerHealthCheckConfigArgs:
     @health_check_interval_seconds.setter
     def health_check_interval_seconds(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "health_check_interval_seconds", value)
+
+    @property
+    @pulumi.getter(name="healthCheckPort")
+    def health_check_port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port the load balancer uses when performing health checks on targets. If not specified, it will be treated as the traffic port.
+        """
+        return pulumi.get(self, "health_check_port")
+
+    @health_check_port.setter
+    def health_check_port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "health_check_port", value)
 
     @property
     @pulumi.getter(name="healthCheckTimeoutSeconds")
@@ -14833,6 +17386,185 @@ class GcpCloudFunctionHttpsTriggerArgs:
     @url.setter
     def url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "url", value)
+
+
+if not MYPY:
+    class GcpCloudTaskAppEngineArgsDict(TypedDict):
+        body: pulumi.Input[str]
+        """
+        The body of the HTTP request. This field is optional and can be used to send additional data in the request should be base64 encoded.
+        """
+        method: pulumi.Input[str]
+        """
+        The HTTP method to use for the request. Must be one of: `POST`, `PUT`, `PATCH`.
+        """
+        relative_uri: pulumi.Input[str]
+        """
+        Specify the relative URL path to which the HTTP request will be sent when the Cloud Tasks queue triggers the App Engine target.
+        """
+        headers: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        A map of HTTP headers to include in the request. Each key is a header name, and each value is the corresponding header value.
+        """
+elif False:
+    GcpCloudTaskAppEngineArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GcpCloudTaskAppEngineArgs:
+    def __init__(__self__, *,
+                 body: pulumi.Input[str],
+                 method: pulumi.Input[str],
+                 relative_uri: pulumi.Input[str],
+                 headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] body: The body of the HTTP request. This field is optional and can be used to send additional data in the request should be base64 encoded.
+        :param pulumi.Input[str] method: The HTTP method to use for the request. Must be one of: `POST`, `PUT`, `PATCH`.
+        :param pulumi.Input[str] relative_uri: Specify the relative URL path to which the HTTP request will be sent when the Cloud Tasks queue triggers the App Engine target.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] headers: A map of HTTP headers to include in the request. Each key is a header name, and each value is the corresponding header value.
+        """
+        pulumi.set(__self__, "body", body)
+        pulumi.set(__self__, "method", method)
+        pulumi.set(__self__, "relative_uri", relative_uri)
+        if headers is not None:
+            pulumi.set(__self__, "headers", headers)
+
+    @property
+    @pulumi.getter
+    def body(self) -> pulumi.Input[str]:
+        """
+        The body of the HTTP request. This field is optional and can be used to send additional data in the request should be base64 encoded.
+        """
+        return pulumi.get(self, "body")
+
+    @body.setter
+    def body(self, value: pulumi.Input[str]):
+        pulumi.set(self, "body", value)
+
+    @property
+    @pulumi.getter
+    def method(self) -> pulumi.Input[str]:
+        """
+        The HTTP method to use for the request. Must be one of: `POST`, `PUT`, `PATCH`.
+        """
+        return pulumi.get(self, "method")
+
+    @method.setter
+    def method(self, value: pulumi.Input[str]):
+        pulumi.set(self, "method", value)
+
+    @property
+    @pulumi.getter(name="relativeUri")
+    def relative_uri(self) -> pulumi.Input[str]:
+        """
+        Specify the relative URL path to which the HTTP request will be sent when the Cloud Tasks queue triggers the App Engine target.
+        """
+        return pulumi.get(self, "relative_uri")
+
+    @relative_uri.setter
+    def relative_uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "relative_uri", value)
+
+    @property
+    @pulumi.getter
+    def headers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A map of HTTP headers to include in the request. Each key is a header name, and each value is the corresponding header value.
+        """
+        return pulumi.get(self, "headers")
+
+    @headers.setter
+    def headers(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "headers", value)
+
+
+if not MYPY:
+    class GcpCloudTaskHttpTargetArgsDict(TypedDict):
+        method: pulumi.Input[str]
+        """
+        The HTTP method to use for the request. Must be one of: `POST`, `PUT`, `DELETE`, `PATCH`, `HEAD`.
+        """
+        url: pulumi.Input[str]
+        """
+        Specify the endpoint URL to which the HTTP request will be sent when the Cloud Tasks queue triggers the HTTP target.
+        """
+        body: NotRequired[pulumi.Input[str]]
+        """
+        The body of the HTTP request. This field is required and must be base64 string.
+        """
+        headers: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        A map of HTTP headers to include in the request. Each key is a header name, and each value is the corresponding header value.
+        """
+elif False:
+    GcpCloudTaskHttpTargetArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GcpCloudTaskHttpTargetArgs:
+    def __init__(__self__, *,
+                 method: pulumi.Input[str],
+                 url: pulumi.Input[str],
+                 body: Optional[pulumi.Input[str]] = None,
+                 headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] method: The HTTP method to use for the request. Must be one of: `POST`, `PUT`, `DELETE`, `PATCH`, `HEAD`.
+        :param pulumi.Input[str] url: Specify the endpoint URL to which the HTTP request will be sent when the Cloud Tasks queue triggers the HTTP target.
+        :param pulumi.Input[str] body: The body of the HTTP request. This field is required and must be base64 string.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] headers: A map of HTTP headers to include in the request. Each key is a header name, and each value is the corresponding header value.
+        """
+        pulumi.set(__self__, "method", method)
+        pulumi.set(__self__, "url", url)
+        if body is not None:
+            pulumi.set(__self__, "body", body)
+        if headers is not None:
+            pulumi.set(__self__, "headers", headers)
+
+    @property
+    @pulumi.getter
+    def method(self) -> pulumi.Input[str]:
+        """
+        The HTTP method to use for the request. Must be one of: `POST`, `PUT`, `DELETE`, `PATCH`, `HEAD`.
+        """
+        return pulumi.get(self, "method")
+
+    @method.setter
+    def method(self, value: pulumi.Input[str]):
+        pulumi.set(self, "method", value)
+
+    @property
+    @pulumi.getter
+    def url(self) -> pulumi.Input[str]:
+        """
+        Specify the endpoint URL to which the HTTP request will be sent when the Cloud Tasks queue triggers the HTTP target.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "url", value)
+
+    @property
+    @pulumi.getter
+    def body(self) -> Optional[pulumi.Input[str]]:
+        """
+        The body of the HTTP request. This field is required and must be base64 string.
+        """
+        return pulumi.get(self, "body")
+
+    @body.setter
+    def body(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "body", value)
+
+    @property
+    @pulumi.getter
+    def headers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A map of HTTP headers to include in the request. Each key is a header name, and each value is the corresponding header value.
+        """
+        return pulumi.get(self, "headers")
+
+    @headers.setter
+    def headers(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "headers", value)
 
 
 if not MYPY:
@@ -15538,6 +18270,707 @@ class GcpNodePoolUpgradeSettingBlueGreenSettingStandardRolloutPolicyArgs:
 
 
 if not MYPY:
+    class GcpPubsubSubscriptionBigQueryArgsDict(TypedDict):
+        table: pulumi.Input[str]
+        """
+        The name of the table to which to write data.
+        """
+        drop_unknown_fields: NotRequired[pulumi.Input[bool]]
+        """
+        When true and use*topic*schema or use*table*schema is true, any fields that are a part of the topic schema or message schema that are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription's backlog Defaults to `false`.
+        """
+        service_account_email: NotRequired[pulumi.Input[str]]
+        """
+        The service account to use to write to BigQuery. If not specified, the Pub/Sub service agent, service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        An output-only field that indicates whether or not the subscription can receive messages.
+        """
+        use_table_schema: NotRequired[pulumi.Input[bool]]
+        """
+        When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to additional columns in the table. Defaults to `false`.
+        """
+        use_topic_schema: NotRequired[pulumi.Input[bool]]
+        """
+        When true, use the topic's schema as the columns to write to in BigQuery, if it exists. Only one of use*topic*schema and use*table*schema can be set. Defaults to `false`.
+        """
+        write_metadata: NotRequired[pulumi.Input[bool]]
+        """
+        When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output. Defaults to `false`.
+        """
+elif False:
+    GcpPubsubSubscriptionBigQueryArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GcpPubsubSubscriptionBigQueryArgs:
+    def __init__(__self__, *,
+                 table: pulumi.Input[str],
+                 drop_unknown_fields: Optional[pulumi.Input[bool]] = None,
+                 service_account_email: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None,
+                 use_table_schema: Optional[pulumi.Input[bool]] = None,
+                 use_topic_schema: Optional[pulumi.Input[bool]] = None,
+                 write_metadata: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] table: The name of the table to which to write data.
+        :param pulumi.Input[bool] drop_unknown_fields: When true and use*topic*schema or use*table*schema is true, any fields that are a part of the topic schema or message schema that are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription's backlog Defaults to `false`.
+        :param pulumi.Input[str] service_account_email: The service account to use to write to BigQuery. If not specified, the Pub/Sub service agent, service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+        :param pulumi.Input[str] state: An output-only field that indicates whether or not the subscription can receive messages.
+        :param pulumi.Input[bool] use_table_schema: When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to additional columns in the table. Defaults to `false`.
+        :param pulumi.Input[bool] use_topic_schema: When true, use the topic's schema as the columns to write to in BigQuery, if it exists. Only one of use*topic*schema and use*table*schema can be set. Defaults to `false`.
+        :param pulumi.Input[bool] write_metadata: When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output. Defaults to `false`.
+        """
+        pulumi.set(__self__, "table", table)
+        if drop_unknown_fields is not None:
+            pulumi.set(__self__, "drop_unknown_fields", drop_unknown_fields)
+        if service_account_email is not None:
+            pulumi.set(__self__, "service_account_email", service_account_email)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if use_table_schema is not None:
+            pulumi.set(__self__, "use_table_schema", use_table_schema)
+        if use_topic_schema is not None:
+            pulumi.set(__self__, "use_topic_schema", use_topic_schema)
+        if write_metadata is not None:
+            pulumi.set(__self__, "write_metadata", write_metadata)
+
+    @property
+    @pulumi.getter
+    def table(self) -> pulumi.Input[str]:
+        """
+        The name of the table to which to write data.
+        """
+        return pulumi.get(self, "table")
+
+    @table.setter
+    def table(self, value: pulumi.Input[str]):
+        pulumi.set(self, "table", value)
+
+    @property
+    @pulumi.getter(name="dropUnknownFields")
+    def drop_unknown_fields(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When true and use*topic*schema or use*table*schema is true, any fields that are a part of the topic schema or message schema that are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription's backlog Defaults to `false`.
+        """
+        return pulumi.get(self, "drop_unknown_fields")
+
+    @drop_unknown_fields.setter
+    def drop_unknown_fields(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "drop_unknown_fields", value)
+
+    @property
+    @pulumi.getter(name="serviceAccountEmail")
+    def service_account_email(self) -> Optional[pulumi.Input[str]]:
+        """
+        The service account to use to write to BigQuery. If not specified, the Pub/Sub service agent, service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+        """
+        return pulumi.get(self, "service_account_email")
+
+    @service_account_email.setter
+    def service_account_email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_account_email", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        An output-only field that indicates whether or not the subscription can receive messages.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
+
+    @property
+    @pulumi.getter(name="useTableSchema")
+    def use_table_schema(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to additional columns in the table. Defaults to `false`.
+        """
+        return pulumi.get(self, "use_table_schema")
+
+    @use_table_schema.setter
+    def use_table_schema(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_table_schema", value)
+
+    @property
+    @pulumi.getter(name="useTopicSchema")
+    def use_topic_schema(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When true, use the topic's schema as the columns to write to in BigQuery, if it exists. Only one of use*topic*schema and use*table*schema can be set. Defaults to `false`.
+        """
+        return pulumi.get(self, "use_topic_schema")
+
+    @use_topic_schema.setter
+    def use_topic_schema(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_topic_schema", value)
+
+    @property
+    @pulumi.getter(name="writeMetadata")
+    def write_metadata(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output. Defaults to `false`.
+        """
+        return pulumi.get(self, "write_metadata")
+
+    @write_metadata.setter
+    def write_metadata(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "write_metadata", value)
+
+
+if not MYPY:
+    class GcpPubsubSubscriptionCloudStorageConfigArgsDict(TypedDict):
+        bucket: pulumi.Input[str]
+        """
+        User-provided name for the Cloud Storage bucket. The bucket must be created by the user. The bucket name must be without any prefix like 'gs://'.
+        """
+        avro_config: NotRequired[pulumi.Input['GcpPubsubSubscriptionCloudStorageConfigAvroConfigArgsDict']]
+        filename_datetime_format: NotRequired[pulumi.Input[str]]
+        """
+        User-provided format string specifying how to represent datetimes in Cloud Storage filenames
+        """
+        filename_prefix: NotRequired[pulumi.Input[str]]
+        """
+        User-provided prefix for Cloud Storage filename.
+        """
+        filename_suffix: NotRequired[pulumi.Input[str]]
+        """
+        User-provided suffix for Cloud Storage filename. Must not end in '/'.
+        """
+        max_bytes: NotRequired[pulumi.Input[int]]
+        """
+        The maximum bytes that can be written to a Cloud Storage file before a new file is created. Min 1 KB, max 10 GiB. The maxBytes limit may be exceeded in cases where messages are larger than the limit.
+        """
+        max_duration: NotRequired[pulumi.Input[str]]
+        """
+        The maximum duration that can elapse before a new Cloud Storage file is created. Min 1 minute, max 10 minutes, default 5 minutes. May not exceed the subscription's acknowledgement deadline Defaults to `300s`.
+        """
+        max_messages: NotRequired[pulumi.Input[int]]
+        """
+        The maximum messages that can be written to a Cloud Storage file before a new file is created. Min 1000 messages. Defaults to `1000`.
+        """
+        service_account_email: NotRequired[pulumi.Input[str]]
+        """
+        The service account to use to write to BigQuery. If not specified, the Pub/Sub service agent, service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        An output-only field that indicates whether or not the subscription can receive messages.
+        """
+elif False:
+    GcpPubsubSubscriptionCloudStorageConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GcpPubsubSubscriptionCloudStorageConfigArgs:
+    def __init__(__self__, *,
+                 bucket: pulumi.Input[str],
+                 avro_config: Optional[pulumi.Input['GcpPubsubSubscriptionCloudStorageConfigAvroConfigArgs']] = None,
+                 filename_datetime_format: Optional[pulumi.Input[str]] = None,
+                 filename_prefix: Optional[pulumi.Input[str]] = None,
+                 filename_suffix: Optional[pulumi.Input[str]] = None,
+                 max_bytes: Optional[pulumi.Input[int]] = None,
+                 max_duration: Optional[pulumi.Input[str]] = None,
+                 max_messages: Optional[pulumi.Input[int]] = None,
+                 service_account_email: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] bucket: User-provided name for the Cloud Storage bucket. The bucket must be created by the user. The bucket name must be without any prefix like 'gs://'.
+        :param pulumi.Input[str] filename_datetime_format: User-provided format string specifying how to represent datetimes in Cloud Storage filenames
+        :param pulumi.Input[str] filename_prefix: User-provided prefix for Cloud Storage filename.
+        :param pulumi.Input[str] filename_suffix: User-provided suffix for Cloud Storage filename. Must not end in '/'.
+        :param pulumi.Input[int] max_bytes: The maximum bytes that can be written to a Cloud Storage file before a new file is created. Min 1 KB, max 10 GiB. The maxBytes limit may be exceeded in cases where messages are larger than the limit.
+        :param pulumi.Input[str] max_duration: The maximum duration that can elapse before a new Cloud Storage file is created. Min 1 minute, max 10 minutes, default 5 minutes. May not exceed the subscription's acknowledgement deadline Defaults to `300s`.
+        :param pulumi.Input[int] max_messages: The maximum messages that can be written to a Cloud Storage file before a new file is created. Min 1000 messages. Defaults to `1000`.
+        :param pulumi.Input[str] service_account_email: The service account to use to write to BigQuery. If not specified, the Pub/Sub service agent, service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+        :param pulumi.Input[str] state: An output-only field that indicates whether or not the subscription can receive messages.
+        """
+        pulumi.set(__self__, "bucket", bucket)
+        if avro_config is not None:
+            pulumi.set(__self__, "avro_config", avro_config)
+        if filename_datetime_format is not None:
+            pulumi.set(__self__, "filename_datetime_format", filename_datetime_format)
+        if filename_prefix is not None:
+            pulumi.set(__self__, "filename_prefix", filename_prefix)
+        if filename_suffix is not None:
+            pulumi.set(__self__, "filename_suffix", filename_suffix)
+        if max_bytes is not None:
+            pulumi.set(__self__, "max_bytes", max_bytes)
+        if max_duration is not None:
+            pulumi.set(__self__, "max_duration", max_duration)
+        if max_messages is not None:
+            pulumi.set(__self__, "max_messages", max_messages)
+        if service_account_email is not None:
+            pulumi.set(__self__, "service_account_email", service_account_email)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> pulumi.Input[str]:
+        """
+        User-provided name for the Cloud Storage bucket. The bucket must be created by the user. The bucket name must be without any prefix like 'gs://'.
+        """
+        return pulumi.get(self, "bucket")
+
+    @bucket.setter
+    def bucket(self, value: pulumi.Input[str]):
+        pulumi.set(self, "bucket", value)
+
+    @property
+    @pulumi.getter(name="avroConfig")
+    def avro_config(self) -> Optional[pulumi.Input['GcpPubsubSubscriptionCloudStorageConfigAvroConfigArgs']]:
+        return pulumi.get(self, "avro_config")
+
+    @avro_config.setter
+    def avro_config(self, value: Optional[pulumi.Input['GcpPubsubSubscriptionCloudStorageConfigAvroConfigArgs']]):
+        pulumi.set(self, "avro_config", value)
+
+    @property
+    @pulumi.getter(name="filenameDatetimeFormat")
+    def filename_datetime_format(self) -> Optional[pulumi.Input[str]]:
+        """
+        User-provided format string specifying how to represent datetimes in Cloud Storage filenames
+        """
+        return pulumi.get(self, "filename_datetime_format")
+
+    @filename_datetime_format.setter
+    def filename_datetime_format(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "filename_datetime_format", value)
+
+    @property
+    @pulumi.getter(name="filenamePrefix")
+    def filename_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        User-provided prefix for Cloud Storage filename.
+        """
+        return pulumi.get(self, "filename_prefix")
+
+    @filename_prefix.setter
+    def filename_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "filename_prefix", value)
+
+    @property
+    @pulumi.getter(name="filenameSuffix")
+    def filename_suffix(self) -> Optional[pulumi.Input[str]]:
+        """
+        User-provided suffix for Cloud Storage filename. Must not end in '/'.
+        """
+        return pulumi.get(self, "filename_suffix")
+
+    @filename_suffix.setter
+    def filename_suffix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "filename_suffix", value)
+
+    @property
+    @pulumi.getter(name="maxBytes")
+    def max_bytes(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum bytes that can be written to a Cloud Storage file before a new file is created. Min 1 KB, max 10 GiB. The maxBytes limit may be exceeded in cases where messages are larger than the limit.
+        """
+        return pulumi.get(self, "max_bytes")
+
+    @max_bytes.setter
+    def max_bytes(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_bytes", value)
+
+    @property
+    @pulumi.getter(name="maxDuration")
+    def max_duration(self) -> Optional[pulumi.Input[str]]:
+        """
+        The maximum duration that can elapse before a new Cloud Storage file is created. Min 1 minute, max 10 minutes, default 5 minutes. May not exceed the subscription's acknowledgement deadline Defaults to `300s`.
+        """
+        return pulumi.get(self, "max_duration")
+
+    @max_duration.setter
+    def max_duration(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_duration", value)
+
+    @property
+    @pulumi.getter(name="maxMessages")
+    def max_messages(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum messages that can be written to a Cloud Storage file before a new file is created. Min 1000 messages. Defaults to `1000`.
+        """
+        return pulumi.get(self, "max_messages")
+
+    @max_messages.setter
+    def max_messages(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_messages", value)
+
+    @property
+    @pulumi.getter(name="serviceAccountEmail")
+    def service_account_email(self) -> Optional[pulumi.Input[str]]:
+        """
+        The service account to use to write to BigQuery. If not specified, the Pub/Sub service agent, service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+        """
+        return pulumi.get(self, "service_account_email")
+
+    @service_account_email.setter
+    def service_account_email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_account_email", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        An output-only field that indicates whether or not the subscription can receive messages.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
+
+
+if not MYPY:
+    class GcpPubsubSubscriptionCloudStorageConfigAvroConfigArgsDict(TypedDict):
+        use_topic_schema: NotRequired[pulumi.Input[bool]]
+        """
+        When true, the output Cloud Storage file will be serialized using the topic schema, if it exists. Defaults to `false`.
+        """
+        write_metadata: NotRequired[pulumi.Input[bool]]
+        """
+        When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output. Defaults to `false`.
+        """
+elif False:
+    GcpPubsubSubscriptionCloudStorageConfigAvroConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GcpPubsubSubscriptionCloudStorageConfigAvroConfigArgs:
+    def __init__(__self__, *,
+                 use_topic_schema: Optional[pulumi.Input[bool]] = None,
+                 write_metadata: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] use_topic_schema: When true, the output Cloud Storage file will be serialized using the topic schema, if it exists. Defaults to `false`.
+        :param pulumi.Input[bool] write_metadata: When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output. Defaults to `false`.
+        """
+        if use_topic_schema is not None:
+            pulumi.set(__self__, "use_topic_schema", use_topic_schema)
+        if write_metadata is not None:
+            pulumi.set(__self__, "write_metadata", write_metadata)
+
+    @property
+    @pulumi.getter(name="useTopicSchema")
+    def use_topic_schema(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When true, the output Cloud Storage file will be serialized using the topic schema, if it exists. Defaults to `false`.
+        """
+        return pulumi.get(self, "use_topic_schema")
+
+    @use_topic_schema.setter
+    def use_topic_schema(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_topic_schema", value)
+
+    @property
+    @pulumi.getter(name="writeMetadata")
+    def write_metadata(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output. Defaults to `false`.
+        """
+        return pulumi.get(self, "write_metadata")
+
+    @write_metadata.setter
+    def write_metadata(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "write_metadata", value)
+
+
+if not MYPY:
+    class GcpPubsubSubscriptionDeadLetterPolicyArgsDict(TypedDict):
+        dead_letter_topic: NotRequired[pulumi.Input[str]]
+        """
+        The name of the topic to which dead letter messages should be published.
+        """
+        max_delivery_attempts: NotRequired[pulumi.Input[int]]
+        """
+        The maximum number of delivery attempts for any message. The value must be between 5 and 100. The number of delivery attempts is defined as 1 + (the sum of number of NACKs and number of times the acknowledgement deadline has been exceeded for the message) Defaults to `5`.
+        """
+elif False:
+    GcpPubsubSubscriptionDeadLetterPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GcpPubsubSubscriptionDeadLetterPolicyArgs:
+    def __init__(__self__, *,
+                 dead_letter_topic: Optional[pulumi.Input[str]] = None,
+                 max_delivery_attempts: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] dead_letter_topic: The name of the topic to which dead letter messages should be published.
+        :param pulumi.Input[int] max_delivery_attempts: The maximum number of delivery attempts for any message. The value must be between 5 and 100. The number of delivery attempts is defined as 1 + (the sum of number of NACKs and number of times the acknowledgement deadline has been exceeded for the message) Defaults to `5`.
+        """
+        if dead_letter_topic is not None:
+            pulumi.set(__self__, "dead_letter_topic", dead_letter_topic)
+        if max_delivery_attempts is not None:
+            pulumi.set(__self__, "max_delivery_attempts", max_delivery_attempts)
+
+    @property
+    @pulumi.getter(name="deadLetterTopic")
+    def dead_letter_topic(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the topic to which dead letter messages should be published.
+        """
+        return pulumi.get(self, "dead_letter_topic")
+
+    @dead_letter_topic.setter
+    def dead_letter_topic(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dead_letter_topic", value)
+
+    @property
+    @pulumi.getter(name="maxDeliveryAttempts")
+    def max_delivery_attempts(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum number of delivery attempts for any message. The value must be between 5 and 100. The number of delivery attempts is defined as 1 + (the sum of number of NACKs and number of times the acknowledgement deadline has been exceeded for the message) Defaults to `5`.
+        """
+        return pulumi.get(self, "max_delivery_attempts")
+
+    @max_delivery_attempts.setter
+    def max_delivery_attempts(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_delivery_attempts", value)
+
+
+if not MYPY:
+    class GcpPubsubSubscriptionExpirationPolicyArgsDict(TypedDict):
+        ttl: pulumi.Input[str]
+        """
+        Specifies the 'time-to-live' duration for an associated resource. The resource expires if it is not active for a period of ttl. If ttl is empty string, the associated resource never expires.  A duration in seconds with up to nine fractional digits, terminated by 's'. Example - '3.5s'.
+        """
+elif False:
+    GcpPubsubSubscriptionExpirationPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GcpPubsubSubscriptionExpirationPolicyArgs:
+    def __init__(__self__, *,
+                 ttl: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] ttl: Specifies the 'time-to-live' duration for an associated resource. The resource expires if it is not active for a period of ttl. If ttl is empty string, the associated resource never expires.  A duration in seconds with up to nine fractional digits, terminated by 's'. Example - '3.5s'.
+        """
+        pulumi.set(__self__, "ttl", ttl)
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> pulumi.Input[str]:
+        """
+        Specifies the 'time-to-live' duration for an associated resource. The resource expires if it is not active for a period of ttl. If ttl is empty string, the associated resource never expires.  A duration in seconds with up to nine fractional digits, terminated by 's'. Example - '3.5s'.
+        """
+        return pulumi.get(self, "ttl")
+
+    @ttl.setter
+    def ttl(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ttl", value)
+
+
+if not MYPY:
+    class GcpPubsubSubscriptionPushConfigArgsDict(TypedDict):
+        push_endpoint: pulumi.Input[str]
+        """
+        URL to which the Pub/Sub system should send messages for a push subscription. When a message is published to the topic, Pub/Sub will automatically send the message as an HTTP POST request to this specified endpoint.
+        """
+        attributes: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        no_wrapper: NotRequired[pulumi.Input['GcpPubsubSubscriptionPushConfigNoWrapperArgsDict']]
+        """
+        When set, the payload to the push endpoint is not wrapped
+        """
+        oidc_token: NotRequired[pulumi.Input['GcpPubsubSubscriptionPushConfigOidcTokenArgsDict']]
+elif False:
+    GcpPubsubSubscriptionPushConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GcpPubsubSubscriptionPushConfigArgs:
+    def __init__(__self__, *,
+                 push_endpoint: pulumi.Input[str],
+                 attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 no_wrapper: Optional[pulumi.Input['GcpPubsubSubscriptionPushConfigNoWrapperArgs']] = None,
+                 oidc_token: Optional[pulumi.Input['GcpPubsubSubscriptionPushConfigOidcTokenArgs']] = None):
+        """
+        :param pulumi.Input[str] push_endpoint: URL to which the Pub/Sub system should send messages for a push subscription. When a message is published to the topic, Pub/Sub will automatically send the message as an HTTP POST request to this specified endpoint.
+        :param pulumi.Input['GcpPubsubSubscriptionPushConfigNoWrapperArgs'] no_wrapper: When set, the payload to the push endpoint is not wrapped
+        """
+        pulumi.set(__self__, "push_endpoint", push_endpoint)
+        if attributes is not None:
+            pulumi.set(__self__, "attributes", attributes)
+        if no_wrapper is not None:
+            pulumi.set(__self__, "no_wrapper", no_wrapper)
+        if oidc_token is not None:
+            pulumi.set(__self__, "oidc_token", oidc_token)
+
+    @property
+    @pulumi.getter(name="pushEndpoint")
+    def push_endpoint(self) -> pulumi.Input[str]:
+        """
+        URL to which the Pub/Sub system should send messages for a push subscription. When a message is published to the topic, Pub/Sub will automatically send the message as an HTTP POST request to this specified endpoint.
+        """
+        return pulumi.get(self, "push_endpoint")
+
+    @push_endpoint.setter
+    def push_endpoint(self, value: pulumi.Input[str]):
+        pulumi.set(self, "push_endpoint", value)
+
+    @property
+    @pulumi.getter
+    def attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        return pulumi.get(self, "attributes")
+
+    @attributes.setter
+    def attributes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "attributes", value)
+
+    @property
+    @pulumi.getter(name="noWrapper")
+    def no_wrapper(self) -> Optional[pulumi.Input['GcpPubsubSubscriptionPushConfigNoWrapperArgs']]:
+        """
+        When set, the payload to the push endpoint is not wrapped
+        """
+        return pulumi.get(self, "no_wrapper")
+
+    @no_wrapper.setter
+    def no_wrapper(self, value: Optional[pulumi.Input['GcpPubsubSubscriptionPushConfigNoWrapperArgs']]):
+        pulumi.set(self, "no_wrapper", value)
+
+    @property
+    @pulumi.getter(name="oidcToken")
+    def oidc_token(self) -> Optional[pulumi.Input['GcpPubsubSubscriptionPushConfigOidcTokenArgs']]:
+        return pulumi.get(self, "oidc_token")
+
+    @oidc_token.setter
+    def oidc_token(self, value: Optional[pulumi.Input['GcpPubsubSubscriptionPushConfigOidcTokenArgs']]):
+        pulumi.set(self, "oidc_token", value)
+
+
+if not MYPY:
+    class GcpPubsubSubscriptionPushConfigNoWrapperArgsDict(TypedDict):
+        write_metadata: pulumi.Input[bool]
+        """
+        When true, writes the Pub/Sub message metadata to x-goog-pubsub-\\n\\n:\\n\\n headers of the HTTP request. Writes the Pub/Sub message attributes to \\n\\n:\\n\\n headers of the HTTP request.
+        """
+elif False:
+    GcpPubsubSubscriptionPushConfigNoWrapperArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GcpPubsubSubscriptionPushConfigNoWrapperArgs:
+    def __init__(__self__, *,
+                 write_metadata: pulumi.Input[bool]):
+        """
+        :param pulumi.Input[bool] write_metadata: When true, writes the Pub/Sub message metadata to x-goog-pubsub-\\n\\n:\\n\\n headers of the HTTP request. Writes the Pub/Sub message attributes to \\n\\n:\\n\\n headers of the HTTP request.
+        """
+        pulumi.set(__self__, "write_metadata", write_metadata)
+
+    @property
+    @pulumi.getter(name="writeMetadata")
+    def write_metadata(self) -> pulumi.Input[bool]:
+        """
+        When true, writes the Pub/Sub message metadata to x-goog-pubsub-\\n\\n:\\n\\n headers of the HTTP request. Writes the Pub/Sub message attributes to \\n\\n:\\n\\n headers of the HTTP request.
+        """
+        return pulumi.get(self, "write_metadata")
+
+    @write_metadata.setter
+    def write_metadata(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "write_metadata", value)
+
+
+if not MYPY:
+    class GcpPubsubSubscriptionPushConfigOidcTokenArgsDict(TypedDict):
+        service_account_email: pulumi.Input[str]
+        """
+        Service account email to be used for generating the OIDC token.
+        """
+        audience: NotRequired[pulumi.Input[str]]
+        """
+        Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string. Defaults to `false`.
+        """
+elif False:
+    GcpPubsubSubscriptionPushConfigOidcTokenArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GcpPubsubSubscriptionPushConfigOidcTokenArgs:
+    def __init__(__self__, *,
+                 service_account_email: pulumi.Input[str],
+                 audience: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] service_account_email: Service account email to be used for generating the OIDC token.
+        :param pulumi.Input[str] audience: Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string. Defaults to `false`.
+        """
+        pulumi.set(__self__, "service_account_email", service_account_email)
+        if audience is not None:
+            pulumi.set(__self__, "audience", audience)
+
+    @property
+    @pulumi.getter(name="serviceAccountEmail")
+    def service_account_email(self) -> pulumi.Input[str]:
+        """
+        Service account email to be used for generating the OIDC token.
+        """
+        return pulumi.get(self, "service_account_email")
+
+    @service_account_email.setter
+    def service_account_email(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service_account_email", value)
+
+    @property
+    @pulumi.getter
+    def audience(self) -> Optional[pulumi.Input[str]]:
+        """
+        Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string. Defaults to `false`.
+        """
+        return pulumi.get(self, "audience")
+
+    @audience.setter
+    def audience(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "audience", value)
+
+
+if not MYPY:
+    class GcpPubsubSubscriptionRetryPolicyArgsDict(TypedDict):
+        maximum_backoff: NotRequired[pulumi.Input[str]]
+        """
+        The maximum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 600 seconds. Defaults to `600s`.
+        """
+        minimum_backoff: NotRequired[pulumi.Input[str]]
+        """
+        The minimum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 10 seconds Defaults to `10s`.
+        """
+elif False:
+    GcpPubsubSubscriptionRetryPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GcpPubsubSubscriptionRetryPolicyArgs:
+    def __init__(__self__, *,
+                 maximum_backoff: Optional[pulumi.Input[str]] = None,
+                 minimum_backoff: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] maximum_backoff: The maximum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 600 seconds. Defaults to `600s`.
+        :param pulumi.Input[str] minimum_backoff: The minimum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 10 seconds Defaults to `10s`.
+        """
+        if maximum_backoff is not None:
+            pulumi.set(__self__, "maximum_backoff", maximum_backoff)
+        if minimum_backoff is not None:
+            pulumi.set(__self__, "minimum_backoff", minimum_backoff)
+
+    @property
+    @pulumi.getter(name="maximumBackoff")
+    def maximum_backoff(self) -> Optional[pulumi.Input[str]]:
+        """
+        The maximum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 600 seconds. Defaults to `600s`.
+        """
+        return pulumi.get(self, "maximum_backoff")
+
+    @maximum_backoff.setter
+    def maximum_backoff(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "maximum_backoff", value)
+
+    @property
+    @pulumi.getter(name="minimumBackoff")
+    def minimum_backoff(self) -> Optional[pulumi.Input[str]]:
+        """
+        The minimum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 10 seconds Defaults to `10s`.
+        """
+        return pulumi.get(self, "minimum_backoff")
+
+    @minimum_backoff.setter
+    def minimum_backoff(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "minimum_backoff", value)
+
+
+if not MYPY:
     class GcpSchedulerJobAppEngineTargetArgsDict(TypedDict):
         method: pulumi.Input[str]
         """
@@ -16132,6 +19565,58 @@ class GcpSqlDatabaseInstanceDatabaseFlagArgs:
     @value.setter
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class GcpSqlDatabaseInstanceIpConfigurationArgsDict(TypedDict):
+        require_ssl: NotRequired[pulumi.Input[bool]]
+        """
+        Whether SSL is required for the database instance. Applicable for server database
+        """
+        ssl_mode: NotRequired[pulumi.Input[str]]
+        """
+        SSL mode for the database instance. Valid values are `ALLOW_UNENCRYPTED_AND_ENCRYPTED`, `ENCRYPTED_ONLY`, `TRUSTED_CLIENT_CERTIFICATE_REQUIRED`
+        """
+elif False:
+    GcpSqlDatabaseInstanceIpConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GcpSqlDatabaseInstanceIpConfigurationArgs:
+    def __init__(__self__, *,
+                 require_ssl: Optional[pulumi.Input[bool]] = None,
+                 ssl_mode: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] require_ssl: Whether SSL is required for the database instance. Applicable for server database
+        :param pulumi.Input[str] ssl_mode: SSL mode for the database instance. Valid values are `ALLOW_UNENCRYPTED_AND_ENCRYPTED`, `ENCRYPTED_ONLY`, `TRUSTED_CLIENT_CERTIFICATE_REQUIRED`
+        """
+        if require_ssl is not None:
+            pulumi.set(__self__, "require_ssl", require_ssl)
+        if ssl_mode is not None:
+            pulumi.set(__self__, "ssl_mode", ssl_mode)
+
+    @property
+    @pulumi.getter(name="requireSsl")
+    def require_ssl(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether SSL is required for the database instance. Applicable for server database
+        """
+        return pulumi.get(self, "require_ssl")
+
+    @require_ssl.setter
+    def require_ssl(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "require_ssl", value)
+
+    @property
+    @pulumi.getter(name="sslMode")
+    def ssl_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        SSL mode for the database instance. Valid values are `ALLOW_UNENCRYPTED_AND_ENCRYPTED`, `ENCRYPTED_ONLY`, `TRUSTED_CLIENT_CERTIFICATE_REQUIRED`
+        """
+        return pulumi.get(self, "ssl_mode")
+
+    @ssl_mode.setter
+    def ssl_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ssl_mode", value)
 
 
 if not MYPY:
@@ -17520,6 +21005,184 @@ class K8IngressTlArgs:
     @secret_name.setter
     def secret_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "secret_name", value)
+
+
+if not MYPY:
+    class K8OciRepositorySpecArgsDict(TypedDict):
+        url: pulumi.Input[str]
+        """
+        The url of oci repository to be attached
+        """
+        interval: NotRequired[pulumi.Input[str]]
+        """
+        The interval associated to oci repository Defaults to `5m0s`.
+        """
+        media_type: NotRequired[pulumi.Input[str]]
+        """
+        The media type of oci repository to be attached. Accepted media type is
+        'application/vnd.cncf.helm.config.v1+json
+        application/vnd.cncf.helm.chart.content.v1.tar+gzip
+        application/vnd.oci.image.layer.v1.tar+gzip
+        application/vnd.oci.image.config.v1.+json
+        any other mediatype can be specified other than above ones
+        """
+        operation: NotRequired[pulumi.Input[str]]
+        """
+        The operation of oci repository to be attached
+        """
+        private_registry_secret: NotRequired[pulumi.Input[str]]
+        """
+        Select the `dockerconfigjson` secret created from Kubernetes Secret to authenticate to OCI registry.
+        """
+        ref: NotRequired[pulumi.Input['K8OciRepositorySpecRefArgsDict']]
+        """
+        The ref of oci repository to be attached
+        """
+elif False:
+    K8OciRepositorySpecArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8OciRepositorySpecArgs:
+    def __init__(__self__, *,
+                 url: pulumi.Input[str],
+                 interval: Optional[pulumi.Input[str]] = None,
+                 media_type: Optional[pulumi.Input[str]] = None,
+                 operation: Optional[pulumi.Input[str]] = None,
+                 private_registry_secret: Optional[pulumi.Input[str]] = None,
+                 ref: Optional[pulumi.Input['K8OciRepositorySpecRefArgs']] = None):
+        """
+        :param pulumi.Input[str] url: The url of oci repository to be attached
+        :param pulumi.Input[str] interval: The interval associated to oci repository Defaults to `5m0s`.
+        :param pulumi.Input[str] media_type: The media type of oci repository to be attached. Accepted media type is
+               'application/vnd.cncf.helm.config.v1+json
+               application/vnd.cncf.helm.chart.content.v1.tar+gzip
+               application/vnd.oci.image.layer.v1.tar+gzip
+               application/vnd.oci.image.config.v1.+json
+               any other mediatype can be specified other than above ones
+        :param pulumi.Input[str] operation: The operation of oci repository to be attached
+        :param pulumi.Input[str] private_registry_secret: Select the `dockerconfigjson` secret created from Kubernetes Secret to authenticate to OCI registry.
+        :param pulumi.Input['K8OciRepositorySpecRefArgs'] ref: The ref of oci repository to be attached
+        """
+        pulumi.set(__self__, "url", url)
+        if interval is not None:
+            pulumi.set(__self__, "interval", interval)
+        if media_type is not None:
+            pulumi.set(__self__, "media_type", media_type)
+        if operation is not None:
+            pulumi.set(__self__, "operation", operation)
+        if private_registry_secret is not None:
+            pulumi.set(__self__, "private_registry_secret", private_registry_secret)
+        if ref is not None:
+            pulumi.set(__self__, "ref", ref)
+
+    @property
+    @pulumi.getter
+    def url(self) -> pulumi.Input[str]:
+        """
+        The url of oci repository to be attached
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "url", value)
+
+    @property
+    @pulumi.getter
+    def interval(self) -> Optional[pulumi.Input[str]]:
+        """
+        The interval associated to oci repository Defaults to `5m0s`.
+        """
+        return pulumi.get(self, "interval")
+
+    @interval.setter
+    def interval(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "interval", value)
+
+    @property
+    @pulumi.getter(name="mediaType")
+    def media_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The media type of oci repository to be attached. Accepted media type is
+        'application/vnd.cncf.helm.config.v1+json
+        application/vnd.cncf.helm.chart.content.v1.tar+gzip
+        application/vnd.oci.image.layer.v1.tar+gzip
+        application/vnd.oci.image.config.v1.+json
+        any other mediatype can be specified other than above ones
+        """
+        return pulumi.get(self, "media_type")
+
+    @media_type.setter
+    def media_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "media_type", value)
+
+    @property
+    @pulumi.getter
+    def operation(self) -> Optional[pulumi.Input[str]]:
+        """
+        The operation of oci repository to be attached
+        """
+        return pulumi.get(self, "operation")
+
+    @operation.setter
+    def operation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operation", value)
+
+    @property
+    @pulumi.getter(name="privateRegistrySecret")
+    def private_registry_secret(self) -> Optional[pulumi.Input[str]]:
+        """
+        Select the `dockerconfigjson` secret created from Kubernetes Secret to authenticate to OCI registry.
+        """
+        return pulumi.get(self, "private_registry_secret")
+
+    @private_registry_secret.setter
+    def private_registry_secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "private_registry_secret", value)
+
+    @property
+    @pulumi.getter
+    def ref(self) -> Optional[pulumi.Input['K8OciRepositorySpecRefArgs']]:
+        """
+        The ref of oci repository to be attached
+        """
+        return pulumi.get(self, "ref")
+
+    @ref.setter
+    def ref(self, value: Optional[pulumi.Input['K8OciRepositorySpecRefArgs']]):
+        pulumi.set(self, "ref", value)
+
+
+if not MYPY:
+    class K8OciRepositorySpecRefArgsDict(TypedDict):
+        tag: NotRequired[pulumi.Input[str]]
+        """
+        The tag of oci repository to be attached Defaults to `latest`.
+        """
+elif False:
+    K8OciRepositorySpecRefArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8OciRepositorySpecRefArgs:
+    def __init__(__self__, *,
+                 tag: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] tag: The tag of oci repository to be attached Defaults to `latest`.
+        """
+        if tag is not None:
+            pulumi.set(__self__, "tag", tag)
+
+    @property
+    @pulumi.getter
+    def tag(self) -> Optional[pulumi.Input[str]]:
+        """
+        The tag of oci repository to be attached Defaults to `latest`.
+        """
+        return pulumi.get(self, "tag")
+
+    @tag.setter
+    def tag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tag", value)
 
 
 if not MYPY:
@@ -50199,6 +53862,58 @@ class RdsInstancePerformanceInsightsArgs:
 
 
 if not MYPY:
+    class RdsInstanceStorageAutoscalingArgsDict(TypedDict):
+        enable: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to enable storage autoscaling for the RDS instance. When enabled, the storage size can automatically increase up to the specified max_allocated_storage.
+        """
+        max_allocated_storage: NotRequired[pulumi.Input[int]]
+        """
+        The upper limit, in gibibytes (GiB), to which Amazon RDS can automatically scale the storage of the DB instance when autoscaling is enabled.
+        """
+elif False:
+    RdsInstanceStorageAutoscalingArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RdsInstanceStorageAutoscalingArgs:
+    def __init__(__self__, *,
+                 enable: Optional[pulumi.Input[bool]] = None,
+                 max_allocated_storage: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[bool] enable: Whether to enable storage autoscaling for the RDS instance. When enabled, the storage size can automatically increase up to the specified max_allocated_storage.
+        :param pulumi.Input[int] max_allocated_storage: The upper limit, in gibibytes (GiB), to which Amazon RDS can automatically scale the storage of the DB instance when autoscaling is enabled.
+        """
+        if enable is not None:
+            pulumi.set(__self__, "enable", enable)
+        if max_allocated_storage is not None:
+            pulumi.set(__self__, "max_allocated_storage", max_allocated_storage)
+
+    @property
+    @pulumi.getter
+    def enable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable storage autoscaling for the RDS instance. When enabled, the storage size can automatically increase up to the specified max_allocated_storage.
+        """
+        return pulumi.get(self, "enable")
+
+    @enable.setter
+    def enable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable", value)
+
+    @property
+    @pulumi.getter(name="maxAllocatedStorage")
+    def max_allocated_storage(self) -> Optional[pulumi.Input[int]]:
+        """
+        The upper limit, in gibibytes (GiB), to which Amazon RDS can automatically scale the storage of the DB instance when autoscaling is enabled.
+        """
+        return pulumi.get(self, "max_allocated_storage")
+
+    @max_allocated_storage.setter
+    def max_allocated_storage(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_allocated_storage", value)
+
+
+if not MYPY:
     class RdsInstanceV2ScalingConfigurationArgsDict(TypedDict):
         max_capacity: pulumi.Input[float]
         """
@@ -50586,6 +54301,148 @@ class S3BucketTagArgs:
 
 
 if not MYPY:
+    class S3EventNotificationEventArgsDict(TypedDict):
+        destination_arn: pulumi.Input[str]
+        """
+        The ARN of the specified destination type.
+        """
+        destination_type: pulumi.Input[str]
+        """
+        The type of destination where event notification to be published.
+        """
+        event_types: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        Event types:
+        		's3:TestEvent'\\n\\n
+        		's3:ObjectCreated:*'\\n\\n
+        		's3:ObjectCreated:Put'\\n\\n
+        		's3:ObjectCreated:Post'\\n\\n
+        		's3:ObjectCreated:Copy'\\n\\n
+        		's3:ObjectCreated:CompleteMultipartUpload'\\n\\n
+        		's3:ObjectRemoved:*'\\n\\n
+        		's3:ObjectRemoved:Delete'\\n\\n
+        		's3:ObjectRemoved:DeleteMarkerCreated'\\n\\n
+        		's3:ObjectRestore:*'\\n\\n
+        		's3:ObjectRestore:Post'\\n\\n
+        """
+        configuration_id: NotRequired[pulumi.Input[str]]
+        """
+        The configuration ID of the S3 event notification.
+        """
+        destination_name: NotRequired[pulumi.Input[str]]
+        """
+        The fully qualified duplo name of specified destination type.
+        """
+elif False:
+    S3EventNotificationEventArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class S3EventNotificationEventArgs:
+    def __init__(__self__, *,
+                 destination_arn: pulumi.Input[str],
+                 destination_type: pulumi.Input[str],
+                 event_types: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 configuration_id: Optional[pulumi.Input[str]] = None,
+                 destination_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] destination_arn: The ARN of the specified destination type.
+        :param pulumi.Input[str] destination_type: The type of destination where event notification to be published.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] event_types: Event types:
+               		's3:TestEvent'\\n\\n
+               		's3:ObjectCreated:*'\\n\\n
+               		's3:ObjectCreated:Put'\\n\\n
+               		's3:ObjectCreated:Post'\\n\\n
+               		's3:ObjectCreated:Copy'\\n\\n
+               		's3:ObjectCreated:CompleteMultipartUpload'\\n\\n
+               		's3:ObjectRemoved:*'\\n\\n
+               		's3:ObjectRemoved:Delete'\\n\\n
+               		's3:ObjectRemoved:DeleteMarkerCreated'\\n\\n
+               		's3:ObjectRestore:*'\\n\\n
+               		's3:ObjectRestore:Post'\\n\\n
+        :param pulumi.Input[str] configuration_id: The configuration ID of the S3 event notification.
+        :param pulumi.Input[str] destination_name: The fully qualified duplo name of specified destination type.
+        """
+        pulumi.set(__self__, "destination_arn", destination_arn)
+        pulumi.set(__self__, "destination_type", destination_type)
+        pulumi.set(__self__, "event_types", event_types)
+        if configuration_id is not None:
+            pulumi.set(__self__, "configuration_id", configuration_id)
+        if destination_name is not None:
+            pulumi.set(__self__, "destination_name", destination_name)
+
+    @property
+    @pulumi.getter(name="destinationArn")
+    def destination_arn(self) -> pulumi.Input[str]:
+        """
+        The ARN of the specified destination type.
+        """
+        return pulumi.get(self, "destination_arn")
+
+    @destination_arn.setter
+    def destination_arn(self, value: pulumi.Input[str]):
+        pulumi.set(self, "destination_arn", value)
+
+    @property
+    @pulumi.getter(name="destinationType")
+    def destination_type(self) -> pulumi.Input[str]:
+        """
+        The type of destination where event notification to be published.
+        """
+        return pulumi.get(self, "destination_type")
+
+    @destination_type.setter
+    def destination_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "destination_type", value)
+
+    @property
+    @pulumi.getter(name="eventTypes")
+    def event_types(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Event types:
+        		's3:TestEvent'\\n\\n
+        		's3:ObjectCreated:*'\\n\\n
+        		's3:ObjectCreated:Put'\\n\\n
+        		's3:ObjectCreated:Post'\\n\\n
+        		's3:ObjectCreated:Copy'\\n\\n
+        		's3:ObjectCreated:CompleteMultipartUpload'\\n\\n
+        		's3:ObjectRemoved:*'\\n\\n
+        		's3:ObjectRemoved:Delete'\\n\\n
+        		's3:ObjectRemoved:DeleteMarkerCreated'\\n\\n
+        		's3:ObjectRestore:*'\\n\\n
+        		's3:ObjectRestore:Post'\\n\\n
+        """
+        return pulumi.get(self, "event_types")
+
+    @event_types.setter
+    def event_types(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "event_types", value)
+
+    @property
+    @pulumi.getter(name="configurationId")
+    def configuration_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The configuration ID of the S3 event notification.
+        """
+        return pulumi.get(self, "configuration_id")
+
+    @configuration_id.setter
+    def configuration_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "configuration_id", value)
+
+    @property
+    @pulumi.getter(name="destinationName")
+    def destination_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The fully qualified duplo name of specified destination type.
+        """
+        return pulumi.get(self, "destination_name")
+
+    @destination_name.setter
+    def destination_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "destination_name", value)
+
+
+if not MYPY:
     class TenantConfigMetadataArgsDict(TypedDict):
         key: pulumi.Input[str]
         value: pulumi.Input[str]
@@ -50658,7 +54515,7 @@ if not MYPY:
         arn: pulumi.Input[str]
         id: pulumi.Input[str]
         """
-        The ID of this resource.
+        The ID of the KMS key.
         """
         name: pulumi.Input[str]
 elif False:
@@ -50671,7 +54528,7 @@ class TenantKmsKmArgs:
                  id: pulumi.Input[str],
                  name: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] id: The ID of this resource.
+        :param pulumi.Input[str] id: The ID of the KMS key.
         """
         pulumi.set(__self__, "arn", arn)
         pulumi.set(__self__, "id", id)
@@ -50690,7 +54547,7 @@ class TenantKmsKmArgs:
     @pulumi.getter
     def id(self) -> pulumi.Input[str]:
         """
-        The ID of this resource.
+        The ID of the KMS key.
         """
         return pulumi.get(self, "id")
 
@@ -50712,6 +54569,9 @@ if not MYPY:
     class TenantKmsUnspecifiedKmsKeyArgsDict(TypedDict):
         arn: NotRequired[pulumi.Input[str]]
         id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the KMS key.
+        """
         name: NotRequired[pulumi.Input[str]]
 elif False:
     TenantKmsUnspecifiedKmsKeyArgsDict: TypeAlias = Mapping[str, Any]
@@ -50722,6 +54582,9 @@ class TenantKmsUnspecifiedKmsKeyArgs:
                  arn: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] id: The ID of the KMS key.
+        """
         if arn is not None:
             pulumi.set(__self__, "arn", arn)
         if id is not None:
@@ -50741,6 +54604,9 @@ class TenantKmsUnspecifiedKmsKeyArgs:
     @property
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the KMS key.
+        """
         return pulumi.get(self, "id")
 
     @id.setter

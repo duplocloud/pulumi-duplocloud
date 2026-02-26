@@ -33,7 +33,7 @@ class AwsLambdaFunctionEventConfigArgs:
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the lambda asynchronous invocation configuration will be created in.
         :param pulumi.Input['AwsLambdaFunctionEventConfigDestinationConfigArgs'] destination_config: A configuration block to specify event destinations
         :param pulumi.Input[int] max_event_age_in_seconds: The maximum age of a request that Lambda sends to a function for processing
-        :param pulumi.Input[int] max_retry_attempts: Maximum number of attempts a Lambda function may retry in case of error
+        :param pulumi.Input[int] max_retry_attempts: Maximum number of attempts a Lambda function may retry in case of error Defaults to `2`.
         :param pulumi.Input[str] qualifier: The qualifier for the lambda event invoke configuration
         """
         pulumi.set(__self__, "function_name", function_name)
@@ -99,7 +99,7 @@ class AwsLambdaFunctionEventConfigArgs:
     @pulumi.getter(name="maxRetryAttempts")
     def max_retry_attempts(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum number of attempts a Lambda function may retry in case of error
+        Maximum number of attempts a Lambda function may retry in case of error Defaults to `2`.
         """
         return pulumi.get(self, "max_retry_attempts")
 
@@ -134,7 +134,7 @@ class _AwsLambdaFunctionEventConfigState:
         :param pulumi.Input['AwsLambdaFunctionEventConfigDestinationConfigArgs'] destination_config: A configuration block to specify event destinations
         :param pulumi.Input[str] function_name: Name of Lambda function this configuration should apply to
         :param pulumi.Input[int] max_event_age_in_seconds: The maximum age of a request that Lambda sends to a function for processing
-        :param pulumi.Input[int] max_retry_attempts: Maximum number of attempts a Lambda function may retry in case of error
+        :param pulumi.Input[int] max_retry_attempts: Maximum number of attempts a Lambda function may retry in case of error Defaults to `2`.
         :param pulumi.Input[str] qualifier: The qualifier for the lambda event invoke configuration
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the lambda asynchronous invocation configuration will be created in.
         """
@@ -191,7 +191,7 @@ class _AwsLambdaFunctionEventConfigState:
     @pulumi.getter(name="maxRetryAttempts")
     def max_retry_attempts(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum number of attempts a Lambda function may retry in case of error
+        Maximum number of attempts a Lambda function may retry in case of error Defaults to `2`.
         """
         return pulumi.get(self, "max_retry_attempts")
 
@@ -313,7 +313,7 @@ class AwsLambdaFunctionEventConfig(pulumi.CustomResource):
         :param pulumi.Input[Union['AwsLambdaFunctionEventConfigDestinationConfigArgs', 'AwsLambdaFunctionEventConfigDestinationConfigArgsDict']] destination_config: A configuration block to specify event destinations
         :param pulumi.Input[str] function_name: Name of Lambda function this configuration should apply to
         :param pulumi.Input[int] max_event_age_in_seconds: The maximum age of a request that Lambda sends to a function for processing
-        :param pulumi.Input[int] max_retry_attempts: Maximum number of attempts a Lambda function may retry in case of error
+        :param pulumi.Input[int] max_retry_attempts: Maximum number of attempts a Lambda function may retry in case of error Defaults to `2`.
         :param pulumi.Input[str] qualifier: The qualifier for the lambda event invoke configuration
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the lambda asynchronous invocation configuration will be created in.
         """
@@ -461,7 +461,7 @@ class AwsLambdaFunctionEventConfig(pulumi.CustomResource):
         :param pulumi.Input[Union['AwsLambdaFunctionEventConfigDestinationConfigArgs', 'AwsLambdaFunctionEventConfigDestinationConfigArgsDict']] destination_config: A configuration block to specify event destinations
         :param pulumi.Input[str] function_name: Name of Lambda function this configuration should apply to
         :param pulumi.Input[int] max_event_age_in_seconds: The maximum age of a request that Lambda sends to a function for processing
-        :param pulumi.Input[int] max_retry_attempts: Maximum number of attempts a Lambda function may retry in case of error
+        :param pulumi.Input[int] max_retry_attempts: Maximum number of attempts a Lambda function may retry in case of error Defaults to `2`.
         :param pulumi.Input[str] qualifier: The qualifier for the lambda event invoke configuration
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the lambda asynchronous invocation configuration will be created in.
         """
@@ -505,7 +505,7 @@ class AwsLambdaFunctionEventConfig(pulumi.CustomResource):
     @pulumi.getter(name="maxRetryAttempts")
     def max_retry_attempts(self) -> pulumi.Output[Optional[int]]:
         """
-        Maximum number of attempts a Lambda function may retry in case of error
+        Maximum number of attempts a Lambda function may retry in case of error Defaults to `2`.
         """
         return pulumi.get(self, "max_retry_attempts")
 

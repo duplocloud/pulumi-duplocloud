@@ -43,8 +43,8 @@ class GcpHostArgs:
         :param pulumi.Input[str] zone: The zone that the machine should be created in
         :param pulumi.Input[int] accelerator_count: The number of the guest accelerator cards exposed to this instance.
         :param pulumi.Input[str] accelerator_type: The accelerator type resource to expose to this instance
-        :param pulumi.Input[int] agent_platform: The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
-               Windows
+        :param pulumi.Input[int] agent_platform: The numeric ID of the container agent pool that this host is added to. Should be one of: - `0` : Duplo Native container
+               agent - `7` : Linux container agent for Kubernetes
         :param pulumi.Input[bool] allocated_public_ip: Whether or not to allocate a public IP.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs assigned to the vm
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Configuration, metadata used when creating the host.<br>*Note: To configure OS disk size OsDiskSize can be specified as
@@ -175,8 +175,8 @@ class GcpHostArgs:
     @pulumi.getter(name="agentPlatform")
     def agent_platform(self) -> Optional[pulumi.Input[int]]:
         """
-        The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
-        Windows
+        The numeric ID of the container agent pool that this host is added to. Should be one of: - `0` : Duplo Native container
+        agent - `7` : Linux container agent for Kubernetes
         """
         return pulumi.get(self, "agent_platform")
 
@@ -273,8 +273,8 @@ class _GcpHostState:
         Input properties used for looking up and filtering GcpHost resources.
         :param pulumi.Input[int] accelerator_count: The number of the guest accelerator cards exposed to this instance.
         :param pulumi.Input[str] accelerator_type: The accelerator type resource to expose to this instance
-        :param pulumi.Input[int] agent_platform: The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
-               Windows
+        :param pulumi.Input[int] agent_platform: The numeric ID of the container agent pool that this host is added to. Should be one of: - `0` : Duplo Native container
+               agent - `7` : Linux container agent for Kubernetes
         :param pulumi.Input[bool] allocated_public_ip: Whether or not to allocate a public IP.
         :param pulumi.Input[str] capacity: The machine type to create
         :param pulumi.Input[str] friendly_name: The name of the vm.
@@ -362,8 +362,8 @@ class _GcpHostState:
     @pulumi.getter(name="agentPlatform")
     def agent_platform(self) -> Optional[pulumi.Input[int]]:
         """
-        The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
-        Windows
+        The numeric ID of the container agent pool that this host is added to. Should be one of: - `0` : Duplo Native container
+        agent - `7` : Linux container agent for Kubernetes
         """
         return pulumi.get(self, "agent_platform")
 
@@ -647,8 +647,8 @@ class GcpHost(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] accelerator_count: The number of the guest accelerator cards exposed to this instance.
         :param pulumi.Input[str] accelerator_type: The accelerator type resource to expose to this instance
-        :param pulumi.Input[int] agent_platform: The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
-               Windows
+        :param pulumi.Input[int] agent_platform: The numeric ID of the container agent pool that this host is added to. Should be one of: - `0` : Duplo Native container
+               agent - `7` : Linux container agent for Kubernetes
         :param pulumi.Input[bool] allocated_public_ip: Whether or not to allocate a public IP.
         :param pulumi.Input[str] capacity: The machine type to create
         :param pulumi.Input[str] friendly_name: The name of the vm.
@@ -826,8 +826,8 @@ class GcpHost(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] accelerator_count: The number of the guest accelerator cards exposed to this instance.
         :param pulumi.Input[str] accelerator_type: The accelerator type resource to expose to this instance
-        :param pulumi.Input[int] agent_platform: The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
-               Windows
+        :param pulumi.Input[int] agent_platform: The numeric ID of the container agent pool that this host is added to. Should be one of: - `0` : Duplo Native container
+               agent - `7` : Linux container agent for Kubernetes
         :param pulumi.Input[bool] allocated_public_ip: Whether or not to allocate a public IP.
         :param pulumi.Input[str] capacity: The machine type to create
         :param pulumi.Input[str] friendly_name: The name of the vm.
@@ -890,8 +890,8 @@ class GcpHost(pulumi.CustomResource):
     @pulumi.getter(name="agentPlatform")
     def agent_platform(self) -> pulumi.Output[Optional[int]]:
         """
-        The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
-        Windows
+        The numeric ID of the container agent pool that this host is added to. Should be one of: - `0` : Duplo Native container
+        agent - `7` : Linux container agent for Kubernetes
         """
         return pulumi.get(self, "agent_platform")
 

@@ -338,6 +338,7 @@ class _AwsLambdaFunctionState:
                  handler: Optional[pulumi.Input[str]] = None,
                  image_config: Optional[pulumi.Input['AwsLambdaFunctionImageConfigArgs']] = None,
                  image_uri: Optional[pulumi.Input[str]] = None,
+                 invoke_arn: Optional[pulumi.Input[str]] = None,
                  last_modified: Optional[pulumi.Input[str]] = None,
                  layers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  memory_size: Optional[pulumi.Input[int]] = None,
@@ -366,6 +367,7 @@ class _AwsLambdaFunctionState:
         :param pulumi.Input[str] handler: The [entrypoint](https://docs.aws.amazon.com/lambda/latest/dg/walkthrough-custom-events-create-test-function.html) of the lambda function in your code.
         :param pulumi.Input['AwsLambdaFunctionImageConfigArgs'] image_config: Configuration for the Lambda function's container image
         :param pulumi.Input[str] image_uri: The docker image that holds the lambda function's code. Used (and required) only when `package_type` is `"Image"`. The image must be in a private ECR.
+        :param pulumi.Input[str] invoke_arn: The ARN to be used for invoking the lambda function.
         :param pulumi.Input[str] last_modified: A timestamp string of lambda's last modification time.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] layers: List of Lambda Layer Version ARNs (maximum of 5) to attach to your Lambda Function.
         :param pulumi.Input[int] memory_size: The maximum amount of memory, in MB, that your lambda function is allowed to use at runtime. Defaults to `128`.
@@ -402,6 +404,8 @@ class _AwsLambdaFunctionState:
             pulumi.set(__self__, "image_config", image_config)
         if image_uri is not None:
             pulumi.set(__self__, "image_uri", image_uri)
+        if invoke_arn is not None:
+            pulumi.set(__self__, "invoke_arn", invoke_arn)
         if last_modified is not None:
             pulumi.set(__self__, "last_modified", last_modified)
         if layers is not None:
@@ -554,6 +558,18 @@ class _AwsLambdaFunctionState:
     @image_uri.setter
     def image_uri(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "image_uri", value)
+
+    @property
+    @pulumi.getter(name="invokeArn")
+    def invoke_arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ARN to be used for invoking the lambda function.
+        """
+        return pulumi.get(self, "invoke_arn")
+
+    @invoke_arn.setter
+    def invoke_arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "invoke_arn", value)
 
     @property
     @pulumi.getter(name="lastModified")
@@ -773,70 +789,6 @@ class AwsLambdaFunction(pulumi.CustomResource):
         """
         `AwsLambdaFunction` manages an AWS lambda function in Duplo.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_duplocloud as duplocloud
-
-        myapp = duplocloud.Tenant("myapp",
-            account_name="myapp",
-            plan_id="default")
-        myfunction = duplocloud.AwsLambdaFunction("myfunction",
-            tenant_id=this["tenantId"],
-            name="myfunction",
-            description="A description of my function",
-            runtime="java11",
-            handler="com.example.MyFunction::handleRequest",
-            s3_bucket="my-bucket-name",
-            s3_key="my-function.zip",
-            environment={
-                "variables": {
-                    "foo": "bar",
-                },
-            },
-            timeout=60,
-            memory_size=512)
-        thisfunction = duplocloud.AwsLambdaFunction("thisfunction",
-            tenant_id=this["tenantId"],
-            name="thisfunction",
-            description="A description of my function",
-            package_type="Image",
-            image_uri="dkr.ecr.us-west-2.amazonaws.com/myimage:latest",
-            image_config={
-                "commands": [
-                    "echo",
-                    "hello world",
-                ],
-                "entry_points": ["echo hello workd"],
-                "working_directory": "/tmp3",
-            },
-            tracing_config={
-                "mode": "PassThrough",
-            },
-            timeout=60,
-            memory_size=512)
-        edgefunction = duplocloud.AwsLambdaFunction("edgefunction",
-            tenant_id="c7163b39-43ca-4d44-81ce-9a323087039b",
-            name="edgefunction",
-            description="An example edge function",
-            package_type="Image",
-            image_uri="dkr.ecr.us-east-1.amazonaws.com/myimage:1.0",
-            image_config={
-                "commands": [
-                    "echo",
-                    "hello world",
-                ],
-                "entry_points": ["echo hello workd"],
-                "working_directory": "/tmp3",
-            },
-            tags={
-                "IsEdgeDeploy": "true",
-            },
-            timeout=5,
-            memory_size=128)
-        ```
-
         ## Import
 
         Example: Importing an existing AWS lambda function
@@ -880,70 +832,6 @@ class AwsLambdaFunction(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         `AwsLambdaFunction` manages an AWS lambda function in Duplo.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_duplocloud as duplocloud
-
-        myapp = duplocloud.Tenant("myapp",
-            account_name="myapp",
-            plan_id="default")
-        myfunction = duplocloud.AwsLambdaFunction("myfunction",
-            tenant_id=this["tenantId"],
-            name="myfunction",
-            description="A description of my function",
-            runtime="java11",
-            handler="com.example.MyFunction::handleRequest",
-            s3_bucket="my-bucket-name",
-            s3_key="my-function.zip",
-            environment={
-                "variables": {
-                    "foo": "bar",
-                },
-            },
-            timeout=60,
-            memory_size=512)
-        thisfunction = duplocloud.AwsLambdaFunction("thisfunction",
-            tenant_id=this["tenantId"],
-            name="thisfunction",
-            description="A description of my function",
-            package_type="Image",
-            image_uri="dkr.ecr.us-west-2.amazonaws.com/myimage:latest",
-            image_config={
-                "commands": [
-                    "echo",
-                    "hello world",
-                ],
-                "entry_points": ["echo hello workd"],
-                "working_directory": "/tmp3",
-            },
-            tracing_config={
-                "mode": "PassThrough",
-            },
-            timeout=60,
-            memory_size=512)
-        edgefunction = duplocloud.AwsLambdaFunction("edgefunction",
-            tenant_id="c7163b39-43ca-4d44-81ce-9a323087039b",
-            name="edgefunction",
-            description="An example edge function",
-            package_type="Image",
-            image_uri="dkr.ecr.us-east-1.amazonaws.com/myimage:1.0",
-            image_config={
-                "commands": [
-                    "echo",
-                    "hello world",
-                ],
-                "entry_points": ["echo hello workd"],
-                "working_directory": "/tmp3",
-            },
-            tags={
-                "IsEdgeDeploy": "true",
-            },
-            timeout=5,
-            memory_size=128)
-        ```
 
         ## Import
 
@@ -1025,6 +913,7 @@ class AwsLambdaFunction(pulumi.CustomResource):
             __props__.__dict__["tracing_config"] = tracing_config
             __props__.__dict__["arn"] = None
             __props__.__dict__["fullname"] = None
+            __props__.__dict__["invoke_arn"] = None
             __props__.__dict__["last_modified"] = None
             __props__.__dict__["role"] = None
             __props__.__dict__["source_code_hash"] = None
@@ -1050,6 +939,7 @@ class AwsLambdaFunction(pulumi.CustomResource):
             handler: Optional[pulumi.Input[str]] = None,
             image_config: Optional[pulumi.Input[Union['AwsLambdaFunctionImageConfigArgs', 'AwsLambdaFunctionImageConfigArgsDict']]] = None,
             image_uri: Optional[pulumi.Input[str]] = None,
+            invoke_arn: Optional[pulumi.Input[str]] = None,
             last_modified: Optional[pulumi.Input[str]] = None,
             layers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             memory_size: Optional[pulumi.Input[int]] = None,
@@ -1083,6 +973,7 @@ class AwsLambdaFunction(pulumi.CustomResource):
         :param pulumi.Input[str] handler: The [entrypoint](https://docs.aws.amazon.com/lambda/latest/dg/walkthrough-custom-events-create-test-function.html) of the lambda function in your code.
         :param pulumi.Input[Union['AwsLambdaFunctionImageConfigArgs', 'AwsLambdaFunctionImageConfigArgsDict']] image_config: Configuration for the Lambda function's container image
         :param pulumi.Input[str] image_uri: The docker image that holds the lambda function's code. Used (and required) only when `package_type` is `"Image"`. The image must be in a private ECR.
+        :param pulumi.Input[str] invoke_arn: The ARN to be used for invoking the lambda function.
         :param pulumi.Input[str] last_modified: A timestamp string of lambda's last modification time.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] layers: List of Lambda Layer Version ARNs (maximum of 5) to attach to your Lambda Function.
         :param pulumi.Input[int] memory_size: The maximum amount of memory, in MB, that your lambda function is allowed to use at runtime. Defaults to `128`.
@@ -1113,6 +1004,7 @@ class AwsLambdaFunction(pulumi.CustomResource):
         __props__.__dict__["handler"] = handler
         __props__.__dict__["image_config"] = image_config
         __props__.__dict__["image_uri"] = image_uri
+        __props__.__dict__["invoke_arn"] = invoke_arn
         __props__.__dict__["last_modified"] = last_modified
         __props__.__dict__["layers"] = layers
         __props__.__dict__["memory_size"] = memory_size
@@ -1210,6 +1102,14 @@ class AwsLambdaFunction(pulumi.CustomResource):
         The docker image that holds the lambda function's code. Used (and required) only when `package_type` is `"Image"`. The image must be in a private ECR.
         """
         return pulumi.get(self, "image_uri")
+
+    @property
+    @pulumi.getter(name="invokeArn")
+    def invoke_arn(self) -> pulumi.Output[str]:
+        """
+        The ARN to be used for invoking the lambda function.
+        """
+        return pulumi.get(self, "invoke_arn")
 
     @property
     @pulumi.getter(name="lastModified")

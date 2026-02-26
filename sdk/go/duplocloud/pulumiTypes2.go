@@ -13,6 +13,7555 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetK8sJobSpecTemplateSpecContainerLifecycle struct {
+	// post_start is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+	PostStarts []GetK8sJobSpecTemplateSpecContainerLifecyclePostStart `pulumi:"postStarts"`
+	// pre_stop is called immediately before a container is terminated. The container is terminated after the handler completes. The reason for termination is passed to the handler. Regardless of the outcome of the handler, the container is eventually terminated. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+	PreStops []GetK8sJobSpecTemplateSpecContainerLifecyclePreStop `pulumi:"preStops"`
+}
+
+// GetK8sJobSpecTemplateSpecContainerLifecycleInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerLifecycleArgs and GetK8sJobSpecTemplateSpecContainerLifecycleOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerLifecycleInput` via:
+//
+//	GetK8sJobSpecTemplateSpecContainerLifecycleArgs{...}
+type GetK8sJobSpecTemplateSpecContainerLifecycleInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerLifecycleOutput() GetK8sJobSpecTemplateSpecContainerLifecycleOutput
+	ToGetK8sJobSpecTemplateSpecContainerLifecycleOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerLifecycleOutput
+}
+
+type GetK8sJobSpecTemplateSpecContainerLifecycleArgs struct {
+	// post_start is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+	PostStarts GetK8sJobSpecTemplateSpecContainerLifecyclePostStartArrayInput `pulumi:"postStarts"`
+	// pre_stop is called immediately before a container is terminated. The container is terminated after the handler completes. The reason for termination is passed to the handler. Regardless of the outcome of the handler, the container is eventually terminated. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+	PreStops GetK8sJobSpecTemplateSpecContainerLifecyclePreStopArrayInput `pulumi:"preStops"`
+}
+
+func (GetK8sJobSpecTemplateSpecContainerLifecycleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLifecycle)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLifecycleArgs) ToGetK8sJobSpecTemplateSpecContainerLifecycleOutput() GetK8sJobSpecTemplateSpecContainerLifecycleOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerLifecycleOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLifecycleArgs) ToGetK8sJobSpecTemplateSpecContainerLifecycleOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLifecycleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerLifecycleOutput)
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLifecycleArgs) ToGetK8sJobSpecTemplateSpecContainerLifecyclePtrOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerLifecyclePtrOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLifecycleArgs) ToGetK8sJobSpecTemplateSpecContainerLifecyclePtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerLifecycleOutput).ToGetK8sJobSpecTemplateSpecContainerLifecyclePtrOutputWithContext(ctx)
+}
+
+// GetK8sJobSpecTemplateSpecContainerLifecyclePtrInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerLifecycleArgs, GetK8sJobSpecTemplateSpecContainerLifecyclePtr and GetK8sJobSpecTemplateSpecContainerLifecyclePtrOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerLifecyclePtrInput` via:
+//
+//	        GetK8sJobSpecTemplateSpecContainerLifecycleArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetK8sJobSpecTemplateSpecContainerLifecyclePtrInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerLifecyclePtrOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePtrOutput
+	ToGetK8sJobSpecTemplateSpecContainerLifecyclePtrOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePtrOutput
+}
+
+type getK8sJobSpecTemplateSpecContainerLifecyclePtrType GetK8sJobSpecTemplateSpecContainerLifecycleArgs
+
+func GetK8sJobSpecTemplateSpecContainerLifecyclePtr(v *GetK8sJobSpecTemplateSpecContainerLifecycleArgs) GetK8sJobSpecTemplateSpecContainerLifecyclePtrInput {
+	return (*getK8sJobSpecTemplateSpecContainerLifecyclePtrType)(v)
+}
+
+func (*getK8sJobSpecTemplateSpecContainerLifecyclePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecContainerLifecycle)(nil)).Elem()
+}
+
+func (i *getK8sJobSpecTemplateSpecContainerLifecyclePtrType) ToGetK8sJobSpecTemplateSpecContainerLifecyclePtrOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerLifecyclePtrOutputWithContext(context.Background())
+}
+
+func (i *getK8sJobSpecTemplateSpecContainerLifecyclePtrType) ToGetK8sJobSpecTemplateSpecContainerLifecyclePtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerLifecyclePtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerLifecycleOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerLifecycleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLifecycle)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecycleOutput) ToGetK8sJobSpecTemplateSpecContainerLifecycleOutput() GetK8sJobSpecTemplateSpecContainerLifecycleOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecycleOutput) ToGetK8sJobSpecTemplateSpecContainerLifecycleOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLifecycleOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecycleOutput) ToGetK8sJobSpecTemplateSpecContainerLifecyclePtrOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePtrOutput {
+	return o.ToGetK8sJobSpecTemplateSpecContainerLifecyclePtrOutputWithContext(context.Background())
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecycleOutput) ToGetK8sJobSpecTemplateSpecContainerLifecyclePtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetK8sJobSpecTemplateSpecContainerLifecycle) *GetK8sJobSpecTemplateSpecContainerLifecycle {
+		return &v
+	}).(GetK8sJobSpecTemplateSpecContainerLifecyclePtrOutput)
+}
+
+// post_start is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+func (o GetK8sJobSpecTemplateSpecContainerLifecycleOutput) PostStarts() GetK8sJobSpecTemplateSpecContainerLifecyclePostStartArrayOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerLifecycle) []GetK8sJobSpecTemplateSpecContainerLifecyclePostStart {
+		return v.PostStarts
+	}).(GetK8sJobSpecTemplateSpecContainerLifecyclePostStartArrayOutput)
+}
+
+// pre_stop is called immediately before a container is terminated. The container is terminated after the handler completes. The reason for termination is passed to the handler. Regardless of the outcome of the handler, the container is eventually terminated. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+func (o GetK8sJobSpecTemplateSpecContainerLifecycleOutput) PreStops() GetK8sJobSpecTemplateSpecContainerLifecyclePreStopArrayOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerLifecycle) []GetK8sJobSpecTemplateSpecContainerLifecyclePreStop {
+		return v.PreStops
+	}).(GetK8sJobSpecTemplateSpecContainerLifecyclePreStopArrayOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerLifecyclePtrOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerLifecyclePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecContainerLifecycle)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePtrOutput) ToGetK8sJobSpecTemplateSpecContainerLifecyclePtrOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePtrOutput) ToGetK8sJobSpecTemplateSpecContainerLifecyclePtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePtrOutput) Elem() GetK8sJobSpecTemplateSpecContainerLifecycleOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerLifecycle) GetK8sJobSpecTemplateSpecContainerLifecycle {
+		if v != nil {
+			return *v
+		}
+		var ret GetK8sJobSpecTemplateSpecContainerLifecycle
+		return ret
+	}).(GetK8sJobSpecTemplateSpecContainerLifecycleOutput)
+}
+
+// post_start is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePtrOutput) PostStarts() GetK8sJobSpecTemplateSpecContainerLifecyclePostStartArrayOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerLifecycle) []GetK8sJobSpecTemplateSpecContainerLifecyclePostStart {
+		if v == nil {
+			return nil
+		}
+		return v.PostStarts
+	}).(GetK8sJobSpecTemplateSpecContainerLifecyclePostStartArrayOutput)
+}
+
+// pre_stop is called immediately before a container is terminated. The container is terminated after the handler completes. The reason for termination is passed to the handler. Regardless of the outcome of the handler, the container is eventually terminated. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePtrOutput) PreStops() GetK8sJobSpecTemplateSpecContainerLifecyclePreStopArrayOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerLifecycle) []GetK8sJobSpecTemplateSpecContainerLifecyclePreStop {
+		if v == nil {
+			return nil
+		}
+		return v.PreStops
+	}).(GetK8sJobSpecTemplateSpecContainerLifecyclePreStopArrayOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerLifecyclePostStart struct {
+	// exec specifies the action to take.
+	Exec *GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExec `pulumi:"exec"`
+	// Specifies the http request to perform.
+	HttpGet *GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGet `pulumi:"httpGet"`
+	// TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+	TcpSockets []GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocket `pulumi:"tcpSockets"`
+}
+
+// GetK8sJobSpecTemplateSpecContainerLifecyclePostStartInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerLifecyclePostStartArgs and GetK8sJobSpecTemplateSpecContainerLifecyclePostStartOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerLifecyclePostStartInput` via:
+//
+//	GetK8sJobSpecTemplateSpecContainerLifecyclePostStartArgs{...}
+type GetK8sJobSpecTemplateSpecContainerLifecyclePostStartInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePostStartOutput
+	ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePostStartOutput
+}
+
+type GetK8sJobSpecTemplateSpecContainerLifecyclePostStartArgs struct {
+	// exec specifies the action to take.
+	Exec GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrInput `pulumi:"exec"`
+	// Specifies the http request to perform.
+	HttpGet GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrInput `pulumi:"httpGet"`
+	// TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+	TcpSockets GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArrayInput `pulumi:"tcpSockets"`
+}
+
+func (GetK8sJobSpecTemplateSpecContainerLifecyclePostStartArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLifecyclePostStart)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLifecyclePostStartArgs) ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePostStartOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLifecyclePostStartArgs) ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePostStartOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerLifecyclePostStartOutput)
+}
+
+// GetK8sJobSpecTemplateSpecContainerLifecyclePostStartArrayInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerLifecyclePostStartArray and GetK8sJobSpecTemplateSpecContainerLifecyclePostStartArrayOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerLifecyclePostStartArrayInput` via:
+//
+//	GetK8sJobSpecTemplateSpecContainerLifecyclePostStartArray{ GetK8sJobSpecTemplateSpecContainerLifecyclePostStartArgs{...} }
+type GetK8sJobSpecTemplateSpecContainerLifecyclePostStartArrayInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartArrayOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePostStartArrayOutput
+	ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartArrayOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePostStartArrayOutput
+}
+
+type GetK8sJobSpecTemplateSpecContainerLifecyclePostStartArray []GetK8sJobSpecTemplateSpecContainerLifecyclePostStartInput
+
+func (GetK8sJobSpecTemplateSpecContainerLifecyclePostStartArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetK8sJobSpecTemplateSpecContainerLifecyclePostStart)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLifecyclePostStartArray) ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartArrayOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePostStartArrayOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartArrayOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLifecyclePostStartArray) ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartArrayOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePostStartArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerLifecyclePostStartArrayOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerLifecyclePostStartOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerLifecyclePostStartOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLifecyclePostStart)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePostStartOutput) ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePostStartOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePostStartOutput) ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePostStartOutput {
+	return o
+}
+
+// exec specifies the action to take.
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePostStartOutput) Exec() GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerLifecyclePostStart) *GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExec {
+		return v.Exec
+	}).(GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutput)
+}
+
+// Specifies the http request to perform.
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePostStartOutput) HttpGet() GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerLifecyclePostStart) *GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGet {
+		return v.HttpGet
+	}).(GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput)
+}
+
+// TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePostStartOutput) TcpSockets() GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArrayOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerLifecyclePostStart) []GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocket {
+		return v.TcpSockets
+	}).(GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArrayOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerLifecyclePostStartArrayOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerLifecyclePostStartArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetK8sJobSpecTemplateSpecContainerLifecyclePostStart)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePostStartArrayOutput) ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartArrayOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePostStartArrayOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePostStartArrayOutput) ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartArrayOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePostStartArrayOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePostStartArrayOutput) Index(i pulumi.IntInput) GetK8sJobSpecTemplateSpecContainerLifecyclePostStartOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetK8sJobSpecTemplateSpecContainerLifecyclePostStart {
+		return vs[0].([]GetK8sJobSpecTemplateSpecContainerLifecyclePostStart)[vs[1].(int)]
+	}).(GetK8sJobSpecTemplateSpecContainerLifecyclePostStartOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExec struct {
+	// Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+	Commands []string `pulumi:"commands"`
+}
+
+// GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecArgs and GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecInput` via:
+//
+//	GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecArgs{...}
+type GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecOutput
+	ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecOutput
+}
+
+type GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecArgs struct {
+	// Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+	Commands pulumi.StringArrayInput `pulumi:"commands"`
+}
+
+func (GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExec)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecArgs) ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecArgs) ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecOutput)
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecArgs) ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecArgs) ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecOutput).ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutputWithContext(ctx)
+}
+
+// GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecArgs, GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtr and GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrInput` via:
+//
+//	        GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutput
+	ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutput
+}
+
+type getK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrType GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecArgs
+
+func GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtr(v *GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecArgs) GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrInput {
+	return (*getK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrType)(v)
+}
+
+func (*getK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExec)(nil)).Elem()
+}
+
+func (i *getK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrType) ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutputWithContext(context.Background())
+}
+
+func (i *getK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrType) ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExec)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecOutput) ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecOutput) ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecOutput) ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutput {
+	return o.ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutputWithContext(context.Background())
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecOutput) ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExec) *GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExec {
+		return &v
+	}).(GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutput)
+}
+
+// Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExec) []string { return v.Commands }).(pulumi.StringArrayOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExec)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutput) ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutput) ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutput) Elem() GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExec) GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExec {
+		if v != nil {
+			return *v
+		}
+		var ret GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExec
+		return ret
+	}).(GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecOutput)
+}
+
+// Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Commands
+	}).(pulumi.StringArrayOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGet struct {
+	// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+	Host *string `pulumi:"host"`
+	// Scheme to use for connecting to the host.
+	HttpHeaders []GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeader `pulumi:"httpHeaders"`
+	// Path to access on the HTTP server.
+	Path *string `pulumi:"path"`
+	// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+	Port *string `pulumi:"port"`
+	// Scheme to use for connecting to the host.
+	Scheme *string `pulumi:"scheme"`
+}
+
+// GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetArgs and GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetInput` via:
+//
+//	GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetArgs{...}
+type GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutput
+	ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutput
+}
+
+type GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetArgs struct {
+	// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// Scheme to use for connecting to the host.
+	HttpHeaders GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayInput `pulumi:"httpHeaders"`
+	// Path to access on the HTTP server.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+	Port pulumi.StringPtrInput `pulumi:"port"`
+	// Scheme to use for connecting to the host.
+	Scheme pulumi.StringPtrInput `pulumi:"scheme"`
+}
+
+func (GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGet)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetArgs) ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetArgs) ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutput)
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetArgs) ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetArgs) ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutput).ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutputWithContext(ctx)
+}
+
+// GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetArgs, GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtr and GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrInput` via:
+//
+//	        GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput
+	ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput
+}
+
+type getK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrType GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetArgs
+
+func GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtr(v *GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetArgs) GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrInput {
+	return (*getK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrType)(v)
+}
+
+func (*getK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGet)(nil)).Elem()
+}
+
+func (i *getK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrType) ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutputWithContext(context.Background())
+}
+
+func (i *getK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrType) ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGet)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutput) ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutput) ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutput) ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput {
+	return o.ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutputWithContext(context.Background())
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutput) ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGet) *GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGet {
+		return &v
+	}).(GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput)
+}
+
+// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGet) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+// Scheme to use for connecting to the host.
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutput) HttpHeaders() GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGet) []GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeader {
+		return v.HttpHeaders
+	}).(GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayOutput)
+}
+
+// Path to access on the HTTP server.
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGet) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGet) *string { return v.Port }).(pulumi.StringPtrOutput)
+}
+
+// Scheme to use for connecting to the host.
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutput) Scheme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGet) *string { return v.Scheme }).(pulumi.StringPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGet)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput) ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput) ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput) Elem() GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGet) GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGet {
+		if v != nil {
+			return *v
+		}
+		var ret GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGet
+		return ret
+	}).(GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutput)
+}
+
+// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// Scheme to use for connecting to the host.
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput) HttpHeaders() GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGet) []GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeader {
+		if v == nil {
+			return nil
+		}
+		return v.HttpHeaders
+	}).(GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayOutput)
+}
+
+// Path to access on the HTTP server.
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.StringPtrOutput)
+}
+
+// Scheme to use for connecting to the host.
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput) Scheme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Scheme
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeader struct {
+	// The header field name
+	Name *string `pulumi:"name"`
+	// The header field value
+	Value *string `pulumi:"value"`
+}
+
+// GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArgs and GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderInput` via:
+//
+//	GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArgs{...}
+type GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderOutput
+	ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderOutput
+}
+
+type GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArgs struct {
+	// The header field name
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The header field value
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArgs) ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArgs) ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderOutput)
+}
+
+// GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArray and GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayInput` via:
+//
+//	GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArray{ GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArgs{...} }
+type GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayOutput
+	ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayOutput
+}
+
+type GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArray []GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderInput
+
+func (GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArray) ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArray) ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderOutput) ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderOutput) ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderOutput {
+	return o
+}
+
+// The header field name
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeader) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The header field value
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeader) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayOutput) ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayOutput) ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayOutput) Index(i pulumi.IntInput) GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeader {
+		return vs[0].([]GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeader)[vs[1].(int)]
+	}).(GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocket struct {
+	// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+	Port string `pulumi:"port"`
+}
+
+// GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArgs and GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketInput` via:
+//
+//	GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArgs{...}
+type GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketOutput
+	ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketOutput
+}
+
+type GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArgs struct {
+	// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+	Port pulumi.StringInput `pulumi:"port"`
+}
+
+func (GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocket)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArgs) ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArgs) ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketOutput)
+}
+
+// GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArrayInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArray and GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArrayOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArrayInput` via:
+//
+//	GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArray{ GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArgs{...} }
+type GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArrayInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArrayOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArrayOutput
+	ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArrayOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArrayOutput
+}
+
+type GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArray []GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketInput
+
+func (GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocket)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArray) ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArrayOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArrayOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArrayOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArray) ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArrayOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArrayOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocket)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketOutput) ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketOutput) ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketOutput {
+	return o
+}
+
+// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketOutput) Port() pulumi.StringOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocket) string { return v.Port }).(pulumi.StringOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArrayOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocket)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArrayOutput) ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArrayOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArrayOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArrayOutput) ToGetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArrayOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArrayOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArrayOutput) Index(i pulumi.IntInput) GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocket {
+		return vs[0].([]GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocket)[vs[1].(int)]
+	}).(GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerLifecyclePreStop struct {
+	// exec specifies the action to take.
+	Exec *GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExec `pulumi:"exec"`
+	// Specifies the http request to perform.
+	HttpGet *GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGet `pulumi:"httpGet"`
+	// TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+	TcpSockets []GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocket `pulumi:"tcpSockets"`
+}
+
+// GetK8sJobSpecTemplateSpecContainerLifecyclePreStopInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerLifecyclePreStopArgs and GetK8sJobSpecTemplateSpecContainerLifecyclePreStopOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerLifecyclePreStopInput` via:
+//
+//	GetK8sJobSpecTemplateSpecContainerLifecyclePreStopArgs{...}
+type GetK8sJobSpecTemplateSpecContainerLifecyclePreStopInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePreStopOutput
+	ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePreStopOutput
+}
+
+type GetK8sJobSpecTemplateSpecContainerLifecyclePreStopArgs struct {
+	// exec specifies the action to take.
+	Exec GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrInput `pulumi:"exec"`
+	// Specifies the http request to perform.
+	HttpGet GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrInput `pulumi:"httpGet"`
+	// TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+	TcpSockets GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArrayInput `pulumi:"tcpSockets"`
+}
+
+func (GetK8sJobSpecTemplateSpecContainerLifecyclePreStopArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLifecyclePreStop)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLifecyclePreStopArgs) ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePreStopOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLifecyclePreStopArgs) ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePreStopOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerLifecyclePreStopOutput)
+}
+
+// GetK8sJobSpecTemplateSpecContainerLifecyclePreStopArrayInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerLifecyclePreStopArray and GetK8sJobSpecTemplateSpecContainerLifecyclePreStopArrayOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerLifecyclePreStopArrayInput` via:
+//
+//	GetK8sJobSpecTemplateSpecContainerLifecyclePreStopArray{ GetK8sJobSpecTemplateSpecContainerLifecyclePreStopArgs{...} }
+type GetK8sJobSpecTemplateSpecContainerLifecyclePreStopArrayInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopArrayOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePreStopArrayOutput
+	ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopArrayOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePreStopArrayOutput
+}
+
+type GetK8sJobSpecTemplateSpecContainerLifecyclePreStopArray []GetK8sJobSpecTemplateSpecContainerLifecyclePreStopInput
+
+func (GetK8sJobSpecTemplateSpecContainerLifecyclePreStopArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetK8sJobSpecTemplateSpecContainerLifecyclePreStop)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLifecyclePreStopArray) ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopArrayOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePreStopArrayOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopArrayOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLifecyclePreStopArray) ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopArrayOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePreStopArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerLifecyclePreStopArrayOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerLifecyclePreStopOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerLifecyclePreStopOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLifecyclePreStop)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePreStopOutput) ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePreStopOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePreStopOutput) ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePreStopOutput {
+	return o
+}
+
+// exec specifies the action to take.
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePreStopOutput) Exec() GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerLifecyclePreStop) *GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExec {
+		return v.Exec
+	}).(GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutput)
+}
+
+// Specifies the http request to perform.
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePreStopOutput) HttpGet() GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerLifecyclePreStop) *GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGet {
+		return v.HttpGet
+	}).(GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput)
+}
+
+// TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePreStopOutput) TcpSockets() GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArrayOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerLifecyclePreStop) []GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocket {
+		return v.TcpSockets
+	}).(GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArrayOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerLifecyclePreStopArrayOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerLifecyclePreStopArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetK8sJobSpecTemplateSpecContainerLifecyclePreStop)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePreStopArrayOutput) ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopArrayOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePreStopArrayOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePreStopArrayOutput) ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopArrayOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePreStopArrayOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePreStopArrayOutput) Index(i pulumi.IntInput) GetK8sJobSpecTemplateSpecContainerLifecyclePreStopOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetK8sJobSpecTemplateSpecContainerLifecyclePreStop {
+		return vs[0].([]GetK8sJobSpecTemplateSpecContainerLifecyclePreStop)[vs[1].(int)]
+	}).(GetK8sJobSpecTemplateSpecContainerLifecyclePreStopOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExec struct {
+	// Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+	Commands []string `pulumi:"commands"`
+}
+
+// GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecArgs and GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecInput` via:
+//
+//	GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecArgs{...}
+type GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecOutput
+	ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecOutput
+}
+
+type GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecArgs struct {
+	// Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+	Commands pulumi.StringArrayInput `pulumi:"commands"`
+}
+
+func (GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExec)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecArgs) ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecArgs) ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecOutput)
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecArgs) ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecArgs) ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecOutput).ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutputWithContext(ctx)
+}
+
+// GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecArgs, GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtr and GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrInput` via:
+//
+//	        GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutput
+	ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutput
+}
+
+type getK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrType GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecArgs
+
+func GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtr(v *GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecArgs) GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrInput {
+	return (*getK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrType)(v)
+}
+
+func (*getK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExec)(nil)).Elem()
+}
+
+func (i *getK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrType) ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutputWithContext(context.Background())
+}
+
+func (i *getK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrType) ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExec)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecOutput) ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecOutput) ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecOutput) ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutput {
+	return o.ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutputWithContext(context.Background())
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecOutput) ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExec) *GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExec {
+		return &v
+	}).(GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutput)
+}
+
+// Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExec) []string { return v.Commands }).(pulumi.StringArrayOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExec)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutput) ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutput) ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutput) Elem() GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExec) GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExec {
+		if v != nil {
+			return *v
+		}
+		var ret GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExec
+		return ret
+	}).(GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecOutput)
+}
+
+// Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Commands
+	}).(pulumi.StringArrayOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGet struct {
+	// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+	Host *string `pulumi:"host"`
+	// Scheme to use for connecting to the host.
+	HttpHeaders []GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeader `pulumi:"httpHeaders"`
+	// Path to access on the HTTP server.
+	Path *string `pulumi:"path"`
+	// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+	Port *string `pulumi:"port"`
+	// Scheme to use for connecting to the host.
+	Scheme *string `pulumi:"scheme"`
+}
+
+// GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetArgs and GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetInput` via:
+//
+//	GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetArgs{...}
+type GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutput
+	ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutput
+}
+
+type GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetArgs struct {
+	// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// Scheme to use for connecting to the host.
+	HttpHeaders GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayInput `pulumi:"httpHeaders"`
+	// Path to access on the HTTP server.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+	Port pulumi.StringPtrInput `pulumi:"port"`
+	// Scheme to use for connecting to the host.
+	Scheme pulumi.StringPtrInput `pulumi:"scheme"`
+}
+
+func (GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGet)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetArgs) ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetArgs) ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutput)
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetArgs) ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetArgs) ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutput).ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutputWithContext(ctx)
+}
+
+// GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetArgs, GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtr and GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrInput` via:
+//
+//	        GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput
+	ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput
+}
+
+type getK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrType GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetArgs
+
+func GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtr(v *GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetArgs) GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrInput {
+	return (*getK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrType)(v)
+}
+
+func (*getK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGet)(nil)).Elem()
+}
+
+func (i *getK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrType) ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutputWithContext(context.Background())
+}
+
+func (i *getK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrType) ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGet)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutput) ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutput) ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutput) ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput {
+	return o.ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutputWithContext(context.Background())
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutput) ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGet) *GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGet {
+		return &v
+	}).(GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput)
+}
+
+// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGet) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+// Scheme to use for connecting to the host.
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutput) HttpHeaders() GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGet) []GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeader {
+		return v.HttpHeaders
+	}).(GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayOutput)
+}
+
+// Path to access on the HTTP server.
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGet) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGet) *string { return v.Port }).(pulumi.StringPtrOutput)
+}
+
+// Scheme to use for connecting to the host.
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutput) Scheme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGet) *string { return v.Scheme }).(pulumi.StringPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGet)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput) ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput) ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput) Elem() GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGet) GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGet {
+		if v != nil {
+			return *v
+		}
+		var ret GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGet
+		return ret
+	}).(GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutput)
+}
+
+// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// Scheme to use for connecting to the host.
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput) HttpHeaders() GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGet) []GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeader {
+		if v == nil {
+			return nil
+		}
+		return v.HttpHeaders
+	}).(GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayOutput)
+}
+
+// Path to access on the HTTP server.
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.StringPtrOutput)
+}
+
+// Scheme to use for connecting to the host.
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput) Scheme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Scheme
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeader struct {
+	// The header field name
+	Name *string `pulumi:"name"`
+	// The header field value
+	Value *string `pulumi:"value"`
+}
+
+// GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArgs and GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderInput` via:
+//
+//	GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArgs{...}
+type GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderOutput
+	ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderOutput
+}
+
+type GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArgs struct {
+	// The header field name
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The header field value
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArgs) ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArgs) ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderOutput)
+}
+
+// GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArray and GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayInput` via:
+//
+//	GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArray{ GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArgs{...} }
+type GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayOutput
+	ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayOutput
+}
+
+type GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArray []GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderInput
+
+func (GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArray) ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArray) ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderOutput) ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderOutput) ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderOutput {
+	return o
+}
+
+// The header field name
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeader) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The header field value
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeader) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayOutput) ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayOutput) ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayOutput) Index(i pulumi.IntInput) GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeader {
+		return vs[0].([]GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeader)[vs[1].(int)]
+	}).(GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocket struct {
+	// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+	Port string `pulumi:"port"`
+}
+
+// GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArgs and GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketInput` via:
+//
+//	GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArgs{...}
+type GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketOutput
+	ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketOutput
+}
+
+type GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArgs struct {
+	// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+	Port pulumi.StringInput `pulumi:"port"`
+}
+
+func (GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocket)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArgs) ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArgs) ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketOutput)
+}
+
+// GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArrayInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArray and GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArrayOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArrayInput` via:
+//
+//	GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArray{ GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArgs{...} }
+type GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArrayInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArrayOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArrayOutput
+	ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArrayOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArrayOutput
+}
+
+type GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArray []GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketInput
+
+func (GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocket)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArray) ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArrayOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArrayOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArrayOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArray) ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArrayOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArrayOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocket)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketOutput) ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketOutput) ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketOutput {
+	return o
+}
+
+// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketOutput) Port() pulumi.StringOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocket) string { return v.Port }).(pulumi.StringOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArrayOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocket)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArrayOutput) ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArrayOutput() GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArrayOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArrayOutput) ToGetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArrayOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArrayOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArrayOutput) Index(i pulumi.IntInput) GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocket {
+		return vs[0].([]GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocket)[vs[1].(int)]
+	}).(GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerLivenessProbe struct {
+	// exec specifies the action to take.
+	Exec *GetK8sJobSpecTemplateSpecContainerLivenessProbeExec `pulumi:"exec"`
+	// Minimum consecutive failures for the probe to be considered failed after having succeeded.
+	FailureThreshold *int `pulumi:"failureThreshold"`
+	// GRPC specifies an action involving a GRPC port.
+	Grpcs []GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpc `pulumi:"grpcs"`
+	// Specifies the http request to perform.
+	HttpGet *GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGet `pulumi:"httpGet"`
+	// Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+	InitialDelaySeconds *int `pulumi:"initialDelaySeconds"`
+	// How often (in seconds) to perform the probe
+	PeriodSeconds *int `pulumi:"periodSeconds"`
+	// Minimum consecutive successes for the probe to be considered successful after having failed.
+	SuccessThreshold *int `pulumi:"successThreshold"`
+	// TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+	TcpSockets []GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocket `pulumi:"tcpSockets"`
+	// Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
+}
+
+// GetK8sJobSpecTemplateSpecContainerLivenessProbeInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerLivenessProbeArgs and GetK8sJobSpecTemplateSpecContainerLivenessProbeOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerLivenessProbeInput` via:
+//
+//	GetK8sJobSpecTemplateSpecContainerLivenessProbeArgs{...}
+type GetK8sJobSpecTemplateSpecContainerLivenessProbeInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerLivenessProbeOutput() GetK8sJobSpecTemplateSpecContainerLivenessProbeOutput
+	ToGetK8sJobSpecTemplateSpecContainerLivenessProbeOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerLivenessProbeOutput
+}
+
+type GetK8sJobSpecTemplateSpecContainerLivenessProbeArgs struct {
+	// exec specifies the action to take.
+	Exec GetK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrInput `pulumi:"exec"`
+	// Minimum consecutive failures for the probe to be considered failed after having succeeded.
+	FailureThreshold pulumi.IntPtrInput `pulumi:"failureThreshold"`
+	// GRPC specifies an action involving a GRPC port.
+	Grpcs GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayInput `pulumi:"grpcs"`
+	// Specifies the http request to perform.
+	HttpGet GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrInput `pulumi:"httpGet"`
+	// Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+	InitialDelaySeconds pulumi.IntPtrInput `pulumi:"initialDelaySeconds"`
+	// How often (in seconds) to perform the probe
+	PeriodSeconds pulumi.IntPtrInput `pulumi:"periodSeconds"`
+	// Minimum consecutive successes for the probe to be considered successful after having failed.
+	SuccessThreshold pulumi.IntPtrInput `pulumi:"successThreshold"`
+	// TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+	TcpSockets GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayInput `pulumi:"tcpSockets"`
+	// Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+	TimeoutSeconds pulumi.IntPtrInput `pulumi:"timeoutSeconds"`
+}
+
+func (GetK8sJobSpecTemplateSpecContainerLivenessProbeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLivenessProbe)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLivenessProbeArgs) ToGetK8sJobSpecTemplateSpecContainerLivenessProbeOutput() GetK8sJobSpecTemplateSpecContainerLivenessProbeOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerLivenessProbeOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLivenessProbeArgs) ToGetK8sJobSpecTemplateSpecContainerLivenessProbeOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLivenessProbeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerLivenessProbeOutput)
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLivenessProbeArgs) ToGetK8sJobSpecTemplateSpecContainerLivenessProbePtrOutput() GetK8sJobSpecTemplateSpecContainerLivenessProbePtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerLivenessProbePtrOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLivenessProbeArgs) ToGetK8sJobSpecTemplateSpecContainerLivenessProbePtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLivenessProbePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerLivenessProbeOutput).ToGetK8sJobSpecTemplateSpecContainerLivenessProbePtrOutputWithContext(ctx)
+}
+
+// GetK8sJobSpecTemplateSpecContainerLivenessProbePtrInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerLivenessProbeArgs, GetK8sJobSpecTemplateSpecContainerLivenessProbePtr and GetK8sJobSpecTemplateSpecContainerLivenessProbePtrOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerLivenessProbePtrInput` via:
+//
+//	        GetK8sJobSpecTemplateSpecContainerLivenessProbeArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetK8sJobSpecTemplateSpecContainerLivenessProbePtrInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerLivenessProbePtrOutput() GetK8sJobSpecTemplateSpecContainerLivenessProbePtrOutput
+	ToGetK8sJobSpecTemplateSpecContainerLivenessProbePtrOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerLivenessProbePtrOutput
+}
+
+type getK8sJobSpecTemplateSpecContainerLivenessProbePtrType GetK8sJobSpecTemplateSpecContainerLivenessProbeArgs
+
+func GetK8sJobSpecTemplateSpecContainerLivenessProbePtr(v *GetK8sJobSpecTemplateSpecContainerLivenessProbeArgs) GetK8sJobSpecTemplateSpecContainerLivenessProbePtrInput {
+	return (*getK8sJobSpecTemplateSpecContainerLivenessProbePtrType)(v)
+}
+
+func (*getK8sJobSpecTemplateSpecContainerLivenessProbePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecContainerLivenessProbe)(nil)).Elem()
+}
+
+func (i *getK8sJobSpecTemplateSpecContainerLivenessProbePtrType) ToGetK8sJobSpecTemplateSpecContainerLivenessProbePtrOutput() GetK8sJobSpecTemplateSpecContainerLivenessProbePtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerLivenessProbePtrOutputWithContext(context.Background())
+}
+
+func (i *getK8sJobSpecTemplateSpecContainerLivenessProbePtrType) ToGetK8sJobSpecTemplateSpecContainerLivenessProbePtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLivenessProbePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerLivenessProbePtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerLivenessProbeOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerLivenessProbeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLivenessProbe)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeOutput) ToGetK8sJobSpecTemplateSpecContainerLivenessProbeOutput() GetK8sJobSpecTemplateSpecContainerLivenessProbeOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeOutput) ToGetK8sJobSpecTemplateSpecContainerLivenessProbeOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLivenessProbeOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeOutput) ToGetK8sJobSpecTemplateSpecContainerLivenessProbePtrOutput() GetK8sJobSpecTemplateSpecContainerLivenessProbePtrOutput {
+	return o.ToGetK8sJobSpecTemplateSpecContainerLivenessProbePtrOutputWithContext(context.Background())
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeOutput) ToGetK8sJobSpecTemplateSpecContainerLivenessProbePtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLivenessProbePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetK8sJobSpecTemplateSpecContainerLivenessProbe) *GetK8sJobSpecTemplateSpecContainerLivenessProbe {
+		return &v
+	}).(GetK8sJobSpecTemplateSpecContainerLivenessProbePtrOutput)
+}
+
+// exec specifies the action to take.
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeOutput) Exec() GetK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerLivenessProbe) *GetK8sJobSpecTemplateSpecContainerLivenessProbeExec {
+		return v.Exec
+	}).(GetK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutput)
+}
+
+// Minimum consecutive failures for the probe to be considered failed after having succeeded.
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerLivenessProbe) *int { return v.FailureThreshold }).(pulumi.IntPtrOutput)
+}
+
+// GRPC specifies an action involving a GRPC port.
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeOutput) Grpcs() GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerLivenessProbe) []GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpc {
+		return v.Grpcs
+	}).(GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayOutput)
+}
+
+// Specifies the http request to perform.
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeOutput) HttpGet() GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerLivenessProbe) *GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGet {
+		return v.HttpGet
+	}).(GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput)
+}
+
+// Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerLivenessProbe) *int { return v.InitialDelaySeconds }).(pulumi.IntPtrOutput)
+}
+
+// How often (in seconds) to perform the probe
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeOutput) PeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerLivenessProbe) *int { return v.PeriodSeconds }).(pulumi.IntPtrOutput)
+}
+
+// Minimum consecutive successes for the probe to be considered successful after having failed.
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeOutput) SuccessThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerLivenessProbe) *int { return v.SuccessThreshold }).(pulumi.IntPtrOutput)
+}
+
+// TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeOutput) TcpSockets() GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerLivenessProbe) []GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocket {
+		return v.TcpSockets
+	}).(GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayOutput)
+}
+
+// Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerLivenessProbe) *int { return v.TimeoutSeconds }).(pulumi.IntPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerLivenessProbePtrOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerLivenessProbePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecContainerLivenessProbe)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbePtrOutput) ToGetK8sJobSpecTemplateSpecContainerLivenessProbePtrOutput() GetK8sJobSpecTemplateSpecContainerLivenessProbePtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbePtrOutput) ToGetK8sJobSpecTemplateSpecContainerLivenessProbePtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLivenessProbePtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbePtrOutput) Elem() GetK8sJobSpecTemplateSpecContainerLivenessProbeOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerLivenessProbe) GetK8sJobSpecTemplateSpecContainerLivenessProbe {
+		if v != nil {
+			return *v
+		}
+		var ret GetK8sJobSpecTemplateSpecContainerLivenessProbe
+		return ret
+	}).(GetK8sJobSpecTemplateSpecContainerLivenessProbeOutput)
+}
+
+// exec specifies the action to take.
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbePtrOutput) Exec() GetK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerLivenessProbe) *GetK8sJobSpecTemplateSpecContainerLivenessProbeExec {
+		if v == nil {
+			return nil
+		}
+		return v.Exec
+	}).(GetK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutput)
+}
+
+// Minimum consecutive failures for the probe to be considered failed after having succeeded.
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbePtrOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerLivenessProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FailureThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// GRPC specifies an action involving a GRPC port.
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbePtrOutput) Grpcs() GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerLivenessProbe) []GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpc {
+		if v == nil {
+			return nil
+		}
+		return v.Grpcs
+	}).(GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayOutput)
+}
+
+// Specifies the http request to perform.
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbePtrOutput) HttpGet() GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerLivenessProbe) *GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGet {
+		if v == nil {
+			return nil
+		}
+		return v.HttpGet
+	}).(GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput)
+}
+
+// Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbePtrOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerLivenessProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InitialDelaySeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// How often (in seconds) to perform the probe
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbePtrOutput) PeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerLivenessProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PeriodSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minimum consecutive successes for the probe to be considered successful after having failed.
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbePtrOutput) SuccessThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerLivenessProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SuccessThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbePtrOutput) TcpSockets() GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerLivenessProbe) []GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocket {
+		if v == nil {
+			return nil
+		}
+		return v.TcpSockets
+	}).(GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayOutput)
+}
+
+// Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbePtrOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerLivenessProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeoutSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerLivenessProbeExec struct {
+	// Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+	Commands []string `pulumi:"commands"`
+}
+
+// GetK8sJobSpecTemplateSpecContainerLivenessProbeExecInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerLivenessProbeExecArgs and GetK8sJobSpecTemplateSpecContainerLivenessProbeExecOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerLivenessProbeExecInput` via:
+//
+//	GetK8sJobSpecTemplateSpecContainerLivenessProbeExecArgs{...}
+type GetK8sJobSpecTemplateSpecContainerLivenessProbeExecInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerLivenessProbeExecOutput() GetK8sJobSpecTemplateSpecContainerLivenessProbeExecOutput
+	ToGetK8sJobSpecTemplateSpecContainerLivenessProbeExecOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerLivenessProbeExecOutput
+}
+
+type GetK8sJobSpecTemplateSpecContainerLivenessProbeExecArgs struct {
+	// Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+	Commands pulumi.StringArrayInput `pulumi:"commands"`
+}
+
+func (GetK8sJobSpecTemplateSpecContainerLivenessProbeExecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLivenessProbeExec)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLivenessProbeExecArgs) ToGetK8sJobSpecTemplateSpecContainerLivenessProbeExecOutput() GetK8sJobSpecTemplateSpecContainerLivenessProbeExecOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerLivenessProbeExecOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLivenessProbeExecArgs) ToGetK8sJobSpecTemplateSpecContainerLivenessProbeExecOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLivenessProbeExecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerLivenessProbeExecOutput)
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLivenessProbeExecArgs) ToGetK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutput() GetK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLivenessProbeExecArgs) ToGetK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerLivenessProbeExecOutput).ToGetK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutputWithContext(ctx)
+}
+
+// GetK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerLivenessProbeExecArgs, GetK8sJobSpecTemplateSpecContainerLivenessProbeExecPtr and GetK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrInput` via:
+//
+//	        GetK8sJobSpecTemplateSpecContainerLivenessProbeExecArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutput() GetK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutput
+	ToGetK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutput
+}
+
+type getK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrType GetK8sJobSpecTemplateSpecContainerLivenessProbeExecArgs
+
+func GetK8sJobSpecTemplateSpecContainerLivenessProbeExecPtr(v *GetK8sJobSpecTemplateSpecContainerLivenessProbeExecArgs) GetK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrInput {
+	return (*getK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrType)(v)
+}
+
+func (*getK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecContainerLivenessProbeExec)(nil)).Elem()
+}
+
+func (i *getK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrType) ToGetK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutput() GetK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutputWithContext(context.Background())
+}
+
+func (i *getK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrType) ToGetK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerLivenessProbeExecOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerLivenessProbeExecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLivenessProbeExec)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeExecOutput) ToGetK8sJobSpecTemplateSpecContainerLivenessProbeExecOutput() GetK8sJobSpecTemplateSpecContainerLivenessProbeExecOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeExecOutput) ToGetK8sJobSpecTemplateSpecContainerLivenessProbeExecOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLivenessProbeExecOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeExecOutput) ToGetK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutput() GetK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutput {
+	return o.ToGetK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutputWithContext(context.Background())
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeExecOutput) ToGetK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetK8sJobSpecTemplateSpecContainerLivenessProbeExec) *GetK8sJobSpecTemplateSpecContainerLivenessProbeExec {
+		return &v
+	}).(GetK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutput)
+}
+
+// Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeExecOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerLivenessProbeExec) []string { return v.Commands }).(pulumi.StringArrayOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecContainerLivenessProbeExec)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutput) ToGetK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutput() GetK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutput) ToGetK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutput) Elem() GetK8sJobSpecTemplateSpecContainerLivenessProbeExecOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerLivenessProbeExec) GetK8sJobSpecTemplateSpecContainerLivenessProbeExec {
+		if v != nil {
+			return *v
+		}
+		var ret GetK8sJobSpecTemplateSpecContainerLivenessProbeExec
+		return ret
+	}).(GetK8sJobSpecTemplateSpecContainerLivenessProbeExecOutput)
+}
+
+// Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerLivenessProbeExec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Commands
+	}).(pulumi.StringArrayOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpc struct {
+	// Number of the port to access on the container. Number must be in the range 1 to 65535.
+	Port int `pulumi:"port"`
+	// Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+	Service *string `pulumi:"service"`
+}
+
+// GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcArgs and GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcInput` via:
+//
+//	GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcArgs{...}
+type GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcOutput() GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcOutput
+	ToGetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcOutput
+}
+
+type GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcArgs struct {
+	// Number of the port to access on the container. Number must be in the range 1 to 65535.
+	Port pulumi.IntInput `pulumi:"port"`
+	// Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+	Service pulumi.StringPtrInput `pulumi:"service"`
+}
+
+func (GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpc)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcArgs) ToGetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcOutput() GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcArgs) ToGetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcOutput)
+}
+
+// GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcArray and GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayInput` via:
+//
+//	GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcArray{ GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcArgs{...} }
+type GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayOutput() GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayOutput
+	ToGetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayOutput
+}
+
+type GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcArray []GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcInput
+
+func (GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpc)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcArray) ToGetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayOutput() GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcArray) ToGetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpc)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcOutput) ToGetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcOutput() GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcOutput) ToGetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcOutput {
+	return o
+}
+
+// Number of the port to access on the container. Number must be in the range 1 to 65535.
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpc) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpc) *string { return v.Service }).(pulumi.StringPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpc)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayOutput) ToGetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayOutput() GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayOutput) ToGetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayOutput) Index(i pulumi.IntInput) GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpc {
+		return vs[0].([]GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpc)[vs[1].(int)]
+	}).(GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGet struct {
+	// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+	Host *string `pulumi:"host"`
+	// Scheme to use for connecting to the host.
+	HttpHeaders []GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeader `pulumi:"httpHeaders"`
+	// Path to access on the HTTP server.
+	Path *string `pulumi:"path"`
+	// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+	Port *string `pulumi:"port"`
+	// Scheme to use for connecting to the host.
+	Scheme *string `pulumi:"scheme"`
+}
+
+// GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetArgs and GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetInput` via:
+//
+//	GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetArgs{...}
+type GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutput() GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutput
+	ToGetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutput
+}
+
+type GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetArgs struct {
+	// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// Scheme to use for connecting to the host.
+	HttpHeaders GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayInput `pulumi:"httpHeaders"`
+	// Path to access on the HTTP server.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+	Port pulumi.StringPtrInput `pulumi:"port"`
+	// Scheme to use for connecting to the host.
+	Scheme pulumi.StringPtrInput `pulumi:"scheme"`
+}
+
+func (GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGet)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetArgs) ToGetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutput() GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetArgs) ToGetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutput)
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetArgs) ToGetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput() GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetArgs) ToGetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutput).ToGetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutputWithContext(ctx)
+}
+
+// GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetArgs, GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtr and GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrInput` via:
+//
+//	        GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput() GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput
+	ToGetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput
+}
+
+type getK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrType GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetArgs
+
+func GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtr(v *GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetArgs) GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrInput {
+	return (*getK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrType)(v)
+}
+
+func (*getK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGet)(nil)).Elem()
+}
+
+func (i *getK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrType) ToGetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput() GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutputWithContext(context.Background())
+}
+
+func (i *getK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrType) ToGetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGet)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutput) ToGetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutput() GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutput) ToGetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutput) ToGetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput() GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput {
+	return o.ToGetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutputWithContext(context.Background())
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutput) ToGetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGet) *GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGet {
+		return &v
+	}).(GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput)
+}
+
+// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGet) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+// Scheme to use for connecting to the host.
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutput) HttpHeaders() GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGet) []GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeader {
+		return v.HttpHeaders
+	}).(GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayOutput)
+}
+
+// Path to access on the HTTP server.
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGet) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGet) *string { return v.Port }).(pulumi.StringPtrOutput)
+}
+
+// Scheme to use for connecting to the host.
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutput) Scheme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGet) *string { return v.Scheme }).(pulumi.StringPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGet)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput) ToGetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput() GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput) ToGetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput) Elem() GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGet) GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGet {
+		if v != nil {
+			return *v
+		}
+		var ret GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGet
+		return ret
+	}).(GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutput)
+}
+
+// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// Scheme to use for connecting to the host.
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput) HttpHeaders() GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGet) []GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeader {
+		if v == nil {
+			return nil
+		}
+		return v.HttpHeaders
+	}).(GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayOutput)
+}
+
+// Path to access on the HTTP server.
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.StringPtrOutput)
+}
+
+// Scheme to use for connecting to the host.
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput) Scheme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Scheme
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeader struct {
+	// The header field name
+	Name *string `pulumi:"name"`
+	// The header field value
+	Value *string `pulumi:"value"`
+}
+
+// GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArgs and GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderInput` via:
+//
+//	GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArgs{...}
+type GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderOutput() GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderOutput
+	ToGetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderOutput
+}
+
+type GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArgs struct {
+	// The header field name
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The header field value
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArgs) ToGetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderOutput() GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArgs) ToGetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderOutput)
+}
+
+// GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArray and GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayInput` via:
+//
+//	GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArray{ GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArgs{...} }
+type GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayOutput() GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayOutput
+	ToGetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayOutput
+}
+
+type GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArray []GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderInput
+
+func (GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArray) ToGetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayOutput() GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArray) ToGetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderOutput) ToGetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderOutput() GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderOutput) ToGetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderOutput {
+	return o
+}
+
+// The header field name
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeader) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The header field value
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeader) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayOutput) ToGetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayOutput() GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayOutput) ToGetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayOutput) Index(i pulumi.IntInput) GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeader {
+		return vs[0].([]GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeader)[vs[1].(int)]
+	}).(GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocket struct {
+	// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+	Port string `pulumi:"port"`
+}
+
+// GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArgs and GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketInput` via:
+//
+//	GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArgs{...}
+type GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketOutput() GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketOutput
+	ToGetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketOutput
+}
+
+type GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArgs struct {
+	// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+	Port pulumi.StringInput `pulumi:"port"`
+}
+
+func (GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocket)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArgs) ToGetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketOutput() GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArgs) ToGetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketOutput)
+}
+
+// GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArray and GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayInput` via:
+//
+//	GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArray{ GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArgs{...} }
+type GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayOutput() GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayOutput
+	ToGetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayOutput
+}
+
+type GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArray []GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketInput
+
+func (GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocket)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArray) ToGetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayOutput() GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArray) ToGetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocket)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketOutput) ToGetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketOutput() GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketOutput) ToGetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketOutput {
+	return o
+}
+
+// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketOutput) Port() pulumi.StringOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocket) string { return v.Port }).(pulumi.StringOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocket)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayOutput) ToGetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayOutput() GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayOutput) ToGetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayOutput) Index(i pulumi.IntInput) GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocket {
+		return vs[0].([]GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocket)[vs[1].(int)]
+	}).(GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerPort struct {
+	// Number of port to expose on the pod's IP address. This must be a valid port number, 0 < x < 65536.
+	ContainerPort int `pulumi:"containerPort"`
+	// What host IP to bind the external port to.
+	HostIp *string `pulumi:"hostIp"`
+	// Number of port to expose on the host. If specified, this must be a valid port number, 0 < x < 65536. If HostNetwork is specified, this must match ContainerPort. Most containers do not need this.
+	HostPort *int `pulumi:"hostPort"`
+	// If specified, this must be an IANA_SVC_NAME and unique within the pod. Each named port in a pod must have a unique name. Name for the port that can be referred to by services
+	Name *string `pulumi:"name"`
+	// Protocol for port. Must be UDP or TCP. Defaults to "TCP".
+	Protocol *string `pulumi:"protocol"`
+}
+
+// GetK8sJobSpecTemplateSpecContainerPortInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerPortArgs and GetK8sJobSpecTemplateSpecContainerPortOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerPortInput` via:
+//
+//	GetK8sJobSpecTemplateSpecContainerPortArgs{...}
+type GetK8sJobSpecTemplateSpecContainerPortInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerPortOutput() GetK8sJobSpecTemplateSpecContainerPortOutput
+	ToGetK8sJobSpecTemplateSpecContainerPortOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerPortOutput
+}
+
+type GetK8sJobSpecTemplateSpecContainerPortArgs struct {
+	// Number of port to expose on the pod's IP address. This must be a valid port number, 0 < x < 65536.
+	ContainerPort pulumi.IntInput `pulumi:"containerPort"`
+	// What host IP to bind the external port to.
+	HostIp pulumi.StringPtrInput `pulumi:"hostIp"`
+	// Number of port to expose on the host. If specified, this must be a valid port number, 0 < x < 65536. If HostNetwork is specified, this must match ContainerPort. Most containers do not need this.
+	HostPort pulumi.IntPtrInput `pulumi:"hostPort"`
+	// If specified, this must be an IANA_SVC_NAME and unique within the pod. Each named port in a pod must have a unique name. Name for the port that can be referred to by services
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Protocol for port. Must be UDP or TCP. Defaults to "TCP".
+	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
+}
+
+func (GetK8sJobSpecTemplateSpecContainerPortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerPort)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerPortArgs) ToGetK8sJobSpecTemplateSpecContainerPortOutput() GetK8sJobSpecTemplateSpecContainerPortOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerPortOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerPortArgs) ToGetK8sJobSpecTemplateSpecContainerPortOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerPortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerPortOutput)
+}
+
+// GetK8sJobSpecTemplateSpecContainerPortArrayInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerPortArray and GetK8sJobSpecTemplateSpecContainerPortArrayOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerPortArrayInput` via:
+//
+//	GetK8sJobSpecTemplateSpecContainerPortArray{ GetK8sJobSpecTemplateSpecContainerPortArgs{...} }
+type GetK8sJobSpecTemplateSpecContainerPortArrayInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerPortArrayOutput() GetK8sJobSpecTemplateSpecContainerPortArrayOutput
+	ToGetK8sJobSpecTemplateSpecContainerPortArrayOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerPortArrayOutput
+}
+
+type GetK8sJobSpecTemplateSpecContainerPortArray []GetK8sJobSpecTemplateSpecContainerPortInput
+
+func (GetK8sJobSpecTemplateSpecContainerPortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetK8sJobSpecTemplateSpecContainerPort)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerPortArray) ToGetK8sJobSpecTemplateSpecContainerPortArrayOutput() GetK8sJobSpecTemplateSpecContainerPortArrayOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerPortArrayOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerPortArray) ToGetK8sJobSpecTemplateSpecContainerPortArrayOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerPortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerPortArrayOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerPortOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerPortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerPort)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerPortOutput) ToGetK8sJobSpecTemplateSpecContainerPortOutput() GetK8sJobSpecTemplateSpecContainerPortOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerPortOutput) ToGetK8sJobSpecTemplateSpecContainerPortOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerPortOutput {
+	return o
+}
+
+// Number of port to expose on the pod's IP address. This must be a valid port number, 0 < x < 65536.
+func (o GetK8sJobSpecTemplateSpecContainerPortOutput) ContainerPort() pulumi.IntOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerPort) int { return v.ContainerPort }).(pulumi.IntOutput)
+}
+
+// What host IP to bind the external port to.
+func (o GetK8sJobSpecTemplateSpecContainerPortOutput) HostIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerPort) *string { return v.HostIp }).(pulumi.StringPtrOutput)
+}
+
+// Number of port to expose on the host. If specified, this must be a valid port number, 0 < x < 65536. If HostNetwork is specified, this must match ContainerPort. Most containers do not need this.
+func (o GetK8sJobSpecTemplateSpecContainerPortOutput) HostPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerPort) *int { return v.HostPort }).(pulumi.IntPtrOutput)
+}
+
+// If specified, this must be an IANA_SVC_NAME and unique within the pod. Each named port in a pod must have a unique name. Name for the port that can be referred to by services
+func (o GetK8sJobSpecTemplateSpecContainerPortOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerPort) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Protocol for port. Must be UDP or TCP. Defaults to "TCP".
+func (o GetK8sJobSpecTemplateSpecContainerPortOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerPort) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerPortArrayOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerPortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetK8sJobSpecTemplateSpecContainerPort)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerPortArrayOutput) ToGetK8sJobSpecTemplateSpecContainerPortArrayOutput() GetK8sJobSpecTemplateSpecContainerPortArrayOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerPortArrayOutput) ToGetK8sJobSpecTemplateSpecContainerPortArrayOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerPortArrayOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerPortArrayOutput) Index(i pulumi.IntInput) GetK8sJobSpecTemplateSpecContainerPortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetK8sJobSpecTemplateSpecContainerPort {
+		return vs[0].([]GetK8sJobSpecTemplateSpecContainerPort)[vs[1].(int)]
+	}).(GetK8sJobSpecTemplateSpecContainerPortOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerReadinessProbe struct {
+	// exec specifies the action to take.
+	Exec *GetK8sJobSpecTemplateSpecContainerReadinessProbeExec `pulumi:"exec"`
+	// Minimum consecutive failures for the probe to be considered failed after having succeeded.
+	FailureThreshold *int `pulumi:"failureThreshold"`
+	// GRPC specifies an action involving a GRPC port.
+	Grpcs []GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpc `pulumi:"grpcs"`
+	// Specifies the http request to perform.
+	HttpGet *GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGet `pulumi:"httpGet"`
+	// Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+	InitialDelaySeconds *int `pulumi:"initialDelaySeconds"`
+	// How often (in seconds) to perform the probe
+	PeriodSeconds *int `pulumi:"periodSeconds"`
+	// Minimum consecutive successes for the probe to be considered successful after having failed.
+	SuccessThreshold *int `pulumi:"successThreshold"`
+	// TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+	TcpSockets []GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocket `pulumi:"tcpSockets"`
+	// Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
+}
+
+// GetK8sJobSpecTemplateSpecContainerReadinessProbeInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerReadinessProbeArgs and GetK8sJobSpecTemplateSpecContainerReadinessProbeOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerReadinessProbeInput` via:
+//
+//	GetK8sJobSpecTemplateSpecContainerReadinessProbeArgs{...}
+type GetK8sJobSpecTemplateSpecContainerReadinessProbeInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerReadinessProbeOutput() GetK8sJobSpecTemplateSpecContainerReadinessProbeOutput
+	ToGetK8sJobSpecTemplateSpecContainerReadinessProbeOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerReadinessProbeOutput
+}
+
+type GetK8sJobSpecTemplateSpecContainerReadinessProbeArgs struct {
+	// exec specifies the action to take.
+	Exec GetK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrInput `pulumi:"exec"`
+	// Minimum consecutive failures for the probe to be considered failed after having succeeded.
+	FailureThreshold pulumi.IntPtrInput `pulumi:"failureThreshold"`
+	// GRPC specifies an action involving a GRPC port.
+	Grpcs GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayInput `pulumi:"grpcs"`
+	// Specifies the http request to perform.
+	HttpGet GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrInput `pulumi:"httpGet"`
+	// Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+	InitialDelaySeconds pulumi.IntPtrInput `pulumi:"initialDelaySeconds"`
+	// How often (in seconds) to perform the probe
+	PeriodSeconds pulumi.IntPtrInput `pulumi:"periodSeconds"`
+	// Minimum consecutive successes for the probe to be considered successful after having failed.
+	SuccessThreshold pulumi.IntPtrInput `pulumi:"successThreshold"`
+	// TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+	TcpSockets GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayInput `pulumi:"tcpSockets"`
+	// Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+	TimeoutSeconds pulumi.IntPtrInput `pulumi:"timeoutSeconds"`
+}
+
+func (GetK8sJobSpecTemplateSpecContainerReadinessProbeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerReadinessProbe)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerReadinessProbeArgs) ToGetK8sJobSpecTemplateSpecContainerReadinessProbeOutput() GetK8sJobSpecTemplateSpecContainerReadinessProbeOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerReadinessProbeOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerReadinessProbeArgs) ToGetK8sJobSpecTemplateSpecContainerReadinessProbeOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerReadinessProbeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerReadinessProbeOutput)
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerReadinessProbeArgs) ToGetK8sJobSpecTemplateSpecContainerReadinessProbePtrOutput() GetK8sJobSpecTemplateSpecContainerReadinessProbePtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerReadinessProbePtrOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerReadinessProbeArgs) ToGetK8sJobSpecTemplateSpecContainerReadinessProbePtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerReadinessProbePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerReadinessProbeOutput).ToGetK8sJobSpecTemplateSpecContainerReadinessProbePtrOutputWithContext(ctx)
+}
+
+// GetK8sJobSpecTemplateSpecContainerReadinessProbePtrInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerReadinessProbeArgs, GetK8sJobSpecTemplateSpecContainerReadinessProbePtr and GetK8sJobSpecTemplateSpecContainerReadinessProbePtrOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerReadinessProbePtrInput` via:
+//
+//	        GetK8sJobSpecTemplateSpecContainerReadinessProbeArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetK8sJobSpecTemplateSpecContainerReadinessProbePtrInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerReadinessProbePtrOutput() GetK8sJobSpecTemplateSpecContainerReadinessProbePtrOutput
+	ToGetK8sJobSpecTemplateSpecContainerReadinessProbePtrOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerReadinessProbePtrOutput
+}
+
+type getK8sJobSpecTemplateSpecContainerReadinessProbePtrType GetK8sJobSpecTemplateSpecContainerReadinessProbeArgs
+
+func GetK8sJobSpecTemplateSpecContainerReadinessProbePtr(v *GetK8sJobSpecTemplateSpecContainerReadinessProbeArgs) GetK8sJobSpecTemplateSpecContainerReadinessProbePtrInput {
+	return (*getK8sJobSpecTemplateSpecContainerReadinessProbePtrType)(v)
+}
+
+func (*getK8sJobSpecTemplateSpecContainerReadinessProbePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecContainerReadinessProbe)(nil)).Elem()
+}
+
+func (i *getK8sJobSpecTemplateSpecContainerReadinessProbePtrType) ToGetK8sJobSpecTemplateSpecContainerReadinessProbePtrOutput() GetK8sJobSpecTemplateSpecContainerReadinessProbePtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerReadinessProbePtrOutputWithContext(context.Background())
+}
+
+func (i *getK8sJobSpecTemplateSpecContainerReadinessProbePtrType) ToGetK8sJobSpecTemplateSpecContainerReadinessProbePtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerReadinessProbePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerReadinessProbePtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerReadinessProbeOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerReadinessProbeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerReadinessProbe)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeOutput) ToGetK8sJobSpecTemplateSpecContainerReadinessProbeOutput() GetK8sJobSpecTemplateSpecContainerReadinessProbeOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeOutput) ToGetK8sJobSpecTemplateSpecContainerReadinessProbeOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerReadinessProbeOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeOutput) ToGetK8sJobSpecTemplateSpecContainerReadinessProbePtrOutput() GetK8sJobSpecTemplateSpecContainerReadinessProbePtrOutput {
+	return o.ToGetK8sJobSpecTemplateSpecContainerReadinessProbePtrOutputWithContext(context.Background())
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeOutput) ToGetK8sJobSpecTemplateSpecContainerReadinessProbePtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerReadinessProbePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetK8sJobSpecTemplateSpecContainerReadinessProbe) *GetK8sJobSpecTemplateSpecContainerReadinessProbe {
+		return &v
+	}).(GetK8sJobSpecTemplateSpecContainerReadinessProbePtrOutput)
+}
+
+// exec specifies the action to take.
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeOutput) Exec() GetK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerReadinessProbe) *GetK8sJobSpecTemplateSpecContainerReadinessProbeExec {
+		return v.Exec
+	}).(GetK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutput)
+}
+
+// Minimum consecutive failures for the probe to be considered failed after having succeeded.
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerReadinessProbe) *int { return v.FailureThreshold }).(pulumi.IntPtrOutput)
+}
+
+// GRPC specifies an action involving a GRPC port.
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeOutput) Grpcs() GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerReadinessProbe) []GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpc {
+		return v.Grpcs
+	}).(GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayOutput)
+}
+
+// Specifies the http request to perform.
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeOutput) HttpGet() GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerReadinessProbe) *GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGet {
+		return v.HttpGet
+	}).(GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput)
+}
+
+// Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerReadinessProbe) *int { return v.InitialDelaySeconds }).(pulumi.IntPtrOutput)
+}
+
+// How often (in seconds) to perform the probe
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeOutput) PeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerReadinessProbe) *int { return v.PeriodSeconds }).(pulumi.IntPtrOutput)
+}
+
+// Minimum consecutive successes for the probe to be considered successful after having failed.
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeOutput) SuccessThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerReadinessProbe) *int { return v.SuccessThreshold }).(pulumi.IntPtrOutput)
+}
+
+// TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeOutput) TcpSockets() GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerReadinessProbe) []GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocket {
+		return v.TcpSockets
+	}).(GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayOutput)
+}
+
+// Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerReadinessProbe) *int { return v.TimeoutSeconds }).(pulumi.IntPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerReadinessProbePtrOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerReadinessProbePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecContainerReadinessProbe)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbePtrOutput) ToGetK8sJobSpecTemplateSpecContainerReadinessProbePtrOutput() GetK8sJobSpecTemplateSpecContainerReadinessProbePtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbePtrOutput) ToGetK8sJobSpecTemplateSpecContainerReadinessProbePtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerReadinessProbePtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbePtrOutput) Elem() GetK8sJobSpecTemplateSpecContainerReadinessProbeOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerReadinessProbe) GetK8sJobSpecTemplateSpecContainerReadinessProbe {
+		if v != nil {
+			return *v
+		}
+		var ret GetK8sJobSpecTemplateSpecContainerReadinessProbe
+		return ret
+	}).(GetK8sJobSpecTemplateSpecContainerReadinessProbeOutput)
+}
+
+// exec specifies the action to take.
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbePtrOutput) Exec() GetK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerReadinessProbe) *GetK8sJobSpecTemplateSpecContainerReadinessProbeExec {
+		if v == nil {
+			return nil
+		}
+		return v.Exec
+	}).(GetK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutput)
+}
+
+// Minimum consecutive failures for the probe to be considered failed after having succeeded.
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbePtrOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerReadinessProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FailureThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// GRPC specifies an action involving a GRPC port.
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbePtrOutput) Grpcs() GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerReadinessProbe) []GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpc {
+		if v == nil {
+			return nil
+		}
+		return v.Grpcs
+	}).(GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayOutput)
+}
+
+// Specifies the http request to perform.
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbePtrOutput) HttpGet() GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerReadinessProbe) *GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGet {
+		if v == nil {
+			return nil
+		}
+		return v.HttpGet
+	}).(GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput)
+}
+
+// Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbePtrOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerReadinessProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InitialDelaySeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// How often (in seconds) to perform the probe
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbePtrOutput) PeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerReadinessProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PeriodSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minimum consecutive successes for the probe to be considered successful after having failed.
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbePtrOutput) SuccessThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerReadinessProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SuccessThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbePtrOutput) TcpSockets() GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerReadinessProbe) []GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocket {
+		if v == nil {
+			return nil
+		}
+		return v.TcpSockets
+	}).(GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayOutput)
+}
+
+// Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbePtrOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerReadinessProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeoutSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerReadinessProbeExec struct {
+	// Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+	Commands []string `pulumi:"commands"`
+}
+
+// GetK8sJobSpecTemplateSpecContainerReadinessProbeExecInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerReadinessProbeExecArgs and GetK8sJobSpecTemplateSpecContainerReadinessProbeExecOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerReadinessProbeExecInput` via:
+//
+//	GetK8sJobSpecTemplateSpecContainerReadinessProbeExecArgs{...}
+type GetK8sJobSpecTemplateSpecContainerReadinessProbeExecInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerReadinessProbeExecOutput() GetK8sJobSpecTemplateSpecContainerReadinessProbeExecOutput
+	ToGetK8sJobSpecTemplateSpecContainerReadinessProbeExecOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerReadinessProbeExecOutput
+}
+
+type GetK8sJobSpecTemplateSpecContainerReadinessProbeExecArgs struct {
+	// Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+	Commands pulumi.StringArrayInput `pulumi:"commands"`
+}
+
+func (GetK8sJobSpecTemplateSpecContainerReadinessProbeExecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerReadinessProbeExec)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerReadinessProbeExecArgs) ToGetK8sJobSpecTemplateSpecContainerReadinessProbeExecOutput() GetK8sJobSpecTemplateSpecContainerReadinessProbeExecOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerReadinessProbeExecOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerReadinessProbeExecArgs) ToGetK8sJobSpecTemplateSpecContainerReadinessProbeExecOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerReadinessProbeExecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerReadinessProbeExecOutput)
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerReadinessProbeExecArgs) ToGetK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutput() GetK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerReadinessProbeExecArgs) ToGetK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerReadinessProbeExecOutput).ToGetK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutputWithContext(ctx)
+}
+
+// GetK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerReadinessProbeExecArgs, GetK8sJobSpecTemplateSpecContainerReadinessProbeExecPtr and GetK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrInput` via:
+//
+//	        GetK8sJobSpecTemplateSpecContainerReadinessProbeExecArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutput() GetK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutput
+	ToGetK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutput
+}
+
+type getK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrType GetK8sJobSpecTemplateSpecContainerReadinessProbeExecArgs
+
+func GetK8sJobSpecTemplateSpecContainerReadinessProbeExecPtr(v *GetK8sJobSpecTemplateSpecContainerReadinessProbeExecArgs) GetK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrInput {
+	return (*getK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrType)(v)
+}
+
+func (*getK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecContainerReadinessProbeExec)(nil)).Elem()
+}
+
+func (i *getK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrType) ToGetK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutput() GetK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutputWithContext(context.Background())
+}
+
+func (i *getK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrType) ToGetK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerReadinessProbeExecOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerReadinessProbeExecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerReadinessProbeExec)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeExecOutput) ToGetK8sJobSpecTemplateSpecContainerReadinessProbeExecOutput() GetK8sJobSpecTemplateSpecContainerReadinessProbeExecOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeExecOutput) ToGetK8sJobSpecTemplateSpecContainerReadinessProbeExecOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerReadinessProbeExecOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeExecOutput) ToGetK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutput() GetK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutput {
+	return o.ToGetK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutputWithContext(context.Background())
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeExecOutput) ToGetK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetK8sJobSpecTemplateSpecContainerReadinessProbeExec) *GetK8sJobSpecTemplateSpecContainerReadinessProbeExec {
+		return &v
+	}).(GetK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutput)
+}
+
+// Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeExecOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerReadinessProbeExec) []string { return v.Commands }).(pulumi.StringArrayOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecContainerReadinessProbeExec)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutput) ToGetK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutput() GetK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutput) ToGetK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutput) Elem() GetK8sJobSpecTemplateSpecContainerReadinessProbeExecOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerReadinessProbeExec) GetK8sJobSpecTemplateSpecContainerReadinessProbeExec {
+		if v != nil {
+			return *v
+		}
+		var ret GetK8sJobSpecTemplateSpecContainerReadinessProbeExec
+		return ret
+	}).(GetK8sJobSpecTemplateSpecContainerReadinessProbeExecOutput)
+}
+
+// Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerReadinessProbeExec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Commands
+	}).(pulumi.StringArrayOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpc struct {
+	// Number of the port to access on the container. Number must be in the range 1 to 65535.
+	Port int `pulumi:"port"`
+	// Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+	Service *string `pulumi:"service"`
+}
+
+// GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcArgs and GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcInput` via:
+//
+//	GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcArgs{...}
+type GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcOutput() GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcOutput
+	ToGetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcOutput
+}
+
+type GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcArgs struct {
+	// Number of the port to access on the container. Number must be in the range 1 to 65535.
+	Port pulumi.IntInput `pulumi:"port"`
+	// Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+	Service pulumi.StringPtrInput `pulumi:"service"`
+}
+
+func (GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpc)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcArgs) ToGetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcOutput() GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcArgs) ToGetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcOutput)
+}
+
+// GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcArray and GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayInput` via:
+//
+//	GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcArray{ GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcArgs{...} }
+type GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayOutput() GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayOutput
+	ToGetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayOutput
+}
+
+type GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcArray []GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcInput
+
+func (GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpc)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcArray) ToGetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayOutput() GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcArray) ToGetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpc)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcOutput) ToGetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcOutput() GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcOutput) ToGetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcOutput {
+	return o
+}
+
+// Number of the port to access on the container. Number must be in the range 1 to 65535.
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpc) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpc) *string { return v.Service }).(pulumi.StringPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpc)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayOutput) ToGetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayOutput() GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayOutput) ToGetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayOutput) Index(i pulumi.IntInput) GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpc {
+		return vs[0].([]GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpc)[vs[1].(int)]
+	}).(GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGet struct {
+	// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+	Host *string `pulumi:"host"`
+	// Scheme to use for connecting to the host.
+	HttpHeaders []GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeader `pulumi:"httpHeaders"`
+	// Path to access on the HTTP server.
+	Path *string `pulumi:"path"`
+	// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+	Port *string `pulumi:"port"`
+	// Scheme to use for connecting to the host.
+	Scheme *string `pulumi:"scheme"`
+}
+
+// GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetArgs and GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetInput` via:
+//
+//	GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetArgs{...}
+type GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutput() GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutput
+	ToGetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutput
+}
+
+type GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetArgs struct {
+	// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// Scheme to use for connecting to the host.
+	HttpHeaders GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayInput `pulumi:"httpHeaders"`
+	// Path to access on the HTTP server.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+	Port pulumi.StringPtrInput `pulumi:"port"`
+	// Scheme to use for connecting to the host.
+	Scheme pulumi.StringPtrInput `pulumi:"scheme"`
+}
+
+func (GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGet)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetArgs) ToGetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutput() GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetArgs) ToGetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutput)
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetArgs) ToGetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput() GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetArgs) ToGetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutput).ToGetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutputWithContext(ctx)
+}
+
+// GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetArgs, GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtr and GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrInput` via:
+//
+//	        GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput() GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput
+	ToGetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput
+}
+
+type getK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrType GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetArgs
+
+func GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtr(v *GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetArgs) GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrInput {
+	return (*getK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrType)(v)
+}
+
+func (*getK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGet)(nil)).Elem()
+}
+
+func (i *getK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrType) ToGetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput() GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutputWithContext(context.Background())
+}
+
+func (i *getK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrType) ToGetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGet)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutput) ToGetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutput() GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutput) ToGetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutput) ToGetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput() GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput {
+	return o.ToGetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutputWithContext(context.Background())
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutput) ToGetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGet) *GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGet {
+		return &v
+	}).(GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput)
+}
+
+// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGet) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+// Scheme to use for connecting to the host.
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutput) HttpHeaders() GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGet) []GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeader {
+		return v.HttpHeaders
+	}).(GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayOutput)
+}
+
+// Path to access on the HTTP server.
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGet) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGet) *string { return v.Port }).(pulumi.StringPtrOutput)
+}
+
+// Scheme to use for connecting to the host.
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutput) Scheme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGet) *string { return v.Scheme }).(pulumi.StringPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGet)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput) ToGetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput() GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput) ToGetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput) Elem() GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGet) GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGet {
+		if v != nil {
+			return *v
+		}
+		var ret GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGet
+		return ret
+	}).(GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutput)
+}
+
+// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// Scheme to use for connecting to the host.
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput) HttpHeaders() GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGet) []GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeader {
+		if v == nil {
+			return nil
+		}
+		return v.HttpHeaders
+	}).(GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayOutput)
+}
+
+// Path to access on the HTTP server.
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.StringPtrOutput)
+}
+
+// Scheme to use for connecting to the host.
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput) Scheme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Scheme
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeader struct {
+	// The header field name
+	Name *string `pulumi:"name"`
+	// The header field value
+	Value *string `pulumi:"value"`
+}
+
+// GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArgs and GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderInput` via:
+//
+//	GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArgs{...}
+type GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderOutput() GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderOutput
+	ToGetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderOutput
+}
+
+type GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArgs struct {
+	// The header field name
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The header field value
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArgs) ToGetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderOutput() GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArgs) ToGetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderOutput)
+}
+
+// GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArray and GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayInput` via:
+//
+//	GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArray{ GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArgs{...} }
+type GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayOutput() GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayOutput
+	ToGetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayOutput
+}
+
+type GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArray []GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderInput
+
+func (GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArray) ToGetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayOutput() GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArray) ToGetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderOutput) ToGetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderOutput() GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderOutput) ToGetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderOutput {
+	return o
+}
+
+// The header field name
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeader) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The header field value
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeader) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayOutput) ToGetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayOutput() GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayOutput) ToGetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayOutput) Index(i pulumi.IntInput) GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeader {
+		return vs[0].([]GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeader)[vs[1].(int)]
+	}).(GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocket struct {
+	// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+	Port string `pulumi:"port"`
+}
+
+// GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArgs and GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketInput` via:
+//
+//	GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArgs{...}
+type GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketOutput() GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketOutput
+	ToGetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketOutput
+}
+
+type GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArgs struct {
+	// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+	Port pulumi.StringInput `pulumi:"port"`
+}
+
+func (GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocket)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArgs) ToGetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketOutput() GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArgs) ToGetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketOutput)
+}
+
+// GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArray and GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayInput` via:
+//
+//	GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArray{ GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArgs{...} }
+type GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayOutput() GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayOutput
+	ToGetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayOutput
+}
+
+type GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArray []GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketInput
+
+func (GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocket)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArray) ToGetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayOutput() GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArray) ToGetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocket)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketOutput) ToGetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketOutput() GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketOutput) ToGetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketOutput {
+	return o
+}
+
+// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketOutput) Port() pulumi.StringOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocket) string { return v.Port }).(pulumi.StringOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocket)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayOutput) ToGetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayOutput() GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayOutput) ToGetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayOutput) Index(i pulumi.IntInput) GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocket {
+		return vs[0].([]GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocket)[vs[1].(int)]
+	}).(GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerResources struct {
+	// Describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+	Limits map[string]string `pulumi:"limits"`
+	// Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
+	Requests map[string]string `pulumi:"requests"`
+}
+
+// GetK8sJobSpecTemplateSpecContainerResourcesInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerResourcesArgs and GetK8sJobSpecTemplateSpecContainerResourcesOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerResourcesInput` via:
+//
+//	GetK8sJobSpecTemplateSpecContainerResourcesArgs{...}
+type GetK8sJobSpecTemplateSpecContainerResourcesInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerResourcesOutput() GetK8sJobSpecTemplateSpecContainerResourcesOutput
+	ToGetK8sJobSpecTemplateSpecContainerResourcesOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerResourcesOutput
+}
+
+type GetK8sJobSpecTemplateSpecContainerResourcesArgs struct {
+	// Describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+	Limits pulumi.StringMapInput `pulumi:"limits"`
+	// Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
+	Requests pulumi.StringMapInput `pulumi:"requests"`
+}
+
+func (GetK8sJobSpecTemplateSpecContainerResourcesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerResources)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerResourcesArgs) ToGetK8sJobSpecTemplateSpecContainerResourcesOutput() GetK8sJobSpecTemplateSpecContainerResourcesOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerResourcesOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerResourcesArgs) ToGetK8sJobSpecTemplateSpecContainerResourcesOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerResourcesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerResourcesOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerResourcesOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerResourcesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerResources)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerResourcesOutput) ToGetK8sJobSpecTemplateSpecContainerResourcesOutput() GetK8sJobSpecTemplateSpecContainerResourcesOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerResourcesOutput) ToGetK8sJobSpecTemplateSpecContainerResourcesOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerResourcesOutput {
+	return o
+}
+
+// Describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+func (o GetK8sJobSpecTemplateSpecContainerResourcesOutput) Limits() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerResources) map[string]string { return v.Limits }).(pulumi.StringMapOutput)
+}
+
+// Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
+func (o GetK8sJobSpecTemplateSpecContainerResourcesOutput) Requests() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerResources) map[string]string { return v.Requests }).(pulumi.StringMapOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerSecurityContext struct {
+	// AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the noNewPrivs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP_SYS_ADMIN
+	AllowPrivilegeEscalation *bool `pulumi:"allowPrivilegeEscalation"`
+	// The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime.
+	Capabilities *GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilities `pulumi:"capabilities"`
+	// Run container in privileged mode. Processes in privileged containers are essentially equivalent to root on the host. Defaults to false.
+	Privileged *bool `pulumi:"privileged"`
+	// Whether this container has a read-only root filesystem. Default is false.
+	ReadOnlyRootFilesystem *bool `pulumi:"readOnlyRootFilesystem"`
+	// The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+	RunAsGroup *string `pulumi:"runAsGroup"`
+	// Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+	RunAsNonRoot *bool `pulumi:"runAsNonRoot"`
+	// The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+	RunAsUser *string `pulumi:"runAsUser"`
+	// The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+	SeLinuxOptions *GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptions `pulumi:"seLinuxOptions"`
+	// The seccomp options to use by the containers in this pod. Note that this field cannot be set when spec.os.name is windows.
+	SeccompProfile *GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfile `pulumi:"seccompProfile"`
+}
+
+// GetK8sJobSpecTemplateSpecContainerSecurityContextInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerSecurityContextArgs and GetK8sJobSpecTemplateSpecContainerSecurityContextOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerSecurityContextInput` via:
+//
+//	GetK8sJobSpecTemplateSpecContainerSecurityContextArgs{...}
+type GetK8sJobSpecTemplateSpecContainerSecurityContextInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerSecurityContextOutput() GetK8sJobSpecTemplateSpecContainerSecurityContextOutput
+	ToGetK8sJobSpecTemplateSpecContainerSecurityContextOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerSecurityContextOutput
+}
+
+type GetK8sJobSpecTemplateSpecContainerSecurityContextArgs struct {
+	// AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the noNewPrivs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP_SYS_ADMIN
+	AllowPrivilegeEscalation pulumi.BoolPtrInput `pulumi:"allowPrivilegeEscalation"`
+	// The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime.
+	Capabilities GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrInput `pulumi:"capabilities"`
+	// Run container in privileged mode. Processes in privileged containers are essentially equivalent to root on the host. Defaults to false.
+	Privileged pulumi.BoolPtrInput `pulumi:"privileged"`
+	// Whether this container has a read-only root filesystem. Default is false.
+	ReadOnlyRootFilesystem pulumi.BoolPtrInput `pulumi:"readOnlyRootFilesystem"`
+	// The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+	RunAsGroup pulumi.StringPtrInput `pulumi:"runAsGroup"`
+	// Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+	RunAsNonRoot pulumi.BoolPtrInput `pulumi:"runAsNonRoot"`
+	// The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+	RunAsUser pulumi.StringPtrInput `pulumi:"runAsUser"`
+	// The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+	SeLinuxOptions GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrInput `pulumi:"seLinuxOptions"`
+	// The seccomp options to use by the containers in this pod. Note that this field cannot be set when spec.os.name is windows.
+	SeccompProfile GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrInput `pulumi:"seccompProfile"`
+}
+
+func (GetK8sJobSpecTemplateSpecContainerSecurityContextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerSecurityContext)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerSecurityContextArgs) ToGetK8sJobSpecTemplateSpecContainerSecurityContextOutput() GetK8sJobSpecTemplateSpecContainerSecurityContextOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerSecurityContextOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerSecurityContextArgs) ToGetK8sJobSpecTemplateSpecContainerSecurityContextOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerSecurityContextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerSecurityContextOutput)
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerSecurityContextArgs) ToGetK8sJobSpecTemplateSpecContainerSecurityContextPtrOutput() GetK8sJobSpecTemplateSpecContainerSecurityContextPtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerSecurityContextPtrOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerSecurityContextArgs) ToGetK8sJobSpecTemplateSpecContainerSecurityContextPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerSecurityContextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerSecurityContextOutput).ToGetK8sJobSpecTemplateSpecContainerSecurityContextPtrOutputWithContext(ctx)
+}
+
+// GetK8sJobSpecTemplateSpecContainerSecurityContextPtrInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerSecurityContextArgs, GetK8sJobSpecTemplateSpecContainerSecurityContextPtr and GetK8sJobSpecTemplateSpecContainerSecurityContextPtrOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerSecurityContextPtrInput` via:
+//
+//	        GetK8sJobSpecTemplateSpecContainerSecurityContextArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetK8sJobSpecTemplateSpecContainerSecurityContextPtrInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerSecurityContextPtrOutput() GetK8sJobSpecTemplateSpecContainerSecurityContextPtrOutput
+	ToGetK8sJobSpecTemplateSpecContainerSecurityContextPtrOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerSecurityContextPtrOutput
+}
+
+type getK8sJobSpecTemplateSpecContainerSecurityContextPtrType GetK8sJobSpecTemplateSpecContainerSecurityContextArgs
+
+func GetK8sJobSpecTemplateSpecContainerSecurityContextPtr(v *GetK8sJobSpecTemplateSpecContainerSecurityContextArgs) GetK8sJobSpecTemplateSpecContainerSecurityContextPtrInput {
+	return (*getK8sJobSpecTemplateSpecContainerSecurityContextPtrType)(v)
+}
+
+func (*getK8sJobSpecTemplateSpecContainerSecurityContextPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecContainerSecurityContext)(nil)).Elem()
+}
+
+func (i *getK8sJobSpecTemplateSpecContainerSecurityContextPtrType) ToGetK8sJobSpecTemplateSpecContainerSecurityContextPtrOutput() GetK8sJobSpecTemplateSpecContainerSecurityContextPtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerSecurityContextPtrOutputWithContext(context.Background())
+}
+
+func (i *getK8sJobSpecTemplateSpecContainerSecurityContextPtrType) ToGetK8sJobSpecTemplateSpecContainerSecurityContextPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerSecurityContextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerSecurityContextPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerSecurityContextOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerSecurityContextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerSecurityContext)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextOutput) ToGetK8sJobSpecTemplateSpecContainerSecurityContextOutput() GetK8sJobSpecTemplateSpecContainerSecurityContextOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextOutput) ToGetK8sJobSpecTemplateSpecContainerSecurityContextOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerSecurityContextOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextOutput) ToGetK8sJobSpecTemplateSpecContainerSecurityContextPtrOutput() GetK8sJobSpecTemplateSpecContainerSecurityContextPtrOutput {
+	return o.ToGetK8sJobSpecTemplateSpecContainerSecurityContextPtrOutputWithContext(context.Background())
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextOutput) ToGetK8sJobSpecTemplateSpecContainerSecurityContextPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerSecurityContextPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetK8sJobSpecTemplateSpecContainerSecurityContext) *GetK8sJobSpecTemplateSpecContainerSecurityContext {
+		return &v
+	}).(GetK8sJobSpecTemplateSpecContainerSecurityContextPtrOutput)
+}
+
+// AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the noNewPrivs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP_SYS_ADMIN
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextOutput) AllowPrivilegeEscalation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerSecurityContext) *bool { return v.AllowPrivilegeEscalation }).(pulumi.BoolPtrOutput)
+}
+
+// The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime.
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextOutput) Capabilities() GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerSecurityContext) *GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilities {
+		return v.Capabilities
+	}).(GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput)
+}
+
+// Run container in privileged mode. Processes in privileged containers are essentially equivalent to root on the host. Defaults to false.
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextOutput) Privileged() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerSecurityContext) *bool { return v.Privileged }).(pulumi.BoolPtrOutput)
+}
+
+// Whether this container has a read-only root filesystem. Default is false.
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextOutput) ReadOnlyRootFilesystem() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerSecurityContext) *bool { return v.ReadOnlyRootFilesystem }).(pulumi.BoolPtrOutput)
+}
+
+// The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextOutput) RunAsGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerSecurityContext) *string { return v.RunAsGroup }).(pulumi.StringPtrOutput)
+}
+
+// Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextOutput) RunAsNonRoot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerSecurityContext) *bool { return v.RunAsNonRoot }).(pulumi.BoolPtrOutput)
+}
+
+// The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextOutput) RunAsUser() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerSecurityContext) *string { return v.RunAsUser }).(pulumi.StringPtrOutput)
+}
+
+// The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextOutput) SeLinuxOptions() GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerSecurityContext) *GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptions {
+		return v.SeLinuxOptions
+	}).(GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput)
+}
+
+// The seccomp options to use by the containers in this pod. Note that this field cannot be set when spec.os.name is windows.
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextOutput) SeccompProfile() GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerSecurityContext) *GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfile {
+		return v.SeccompProfile
+	}).(GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerSecurityContextPtrOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerSecurityContextPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecContainerSecurityContext)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextPtrOutput) ToGetK8sJobSpecTemplateSpecContainerSecurityContextPtrOutput() GetK8sJobSpecTemplateSpecContainerSecurityContextPtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextPtrOutput) ToGetK8sJobSpecTemplateSpecContainerSecurityContextPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerSecurityContextPtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextPtrOutput) Elem() GetK8sJobSpecTemplateSpecContainerSecurityContextOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerSecurityContext) GetK8sJobSpecTemplateSpecContainerSecurityContext {
+		if v != nil {
+			return *v
+		}
+		var ret GetK8sJobSpecTemplateSpecContainerSecurityContext
+		return ret
+	}).(GetK8sJobSpecTemplateSpecContainerSecurityContextOutput)
+}
+
+// AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the noNewPrivs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP_SYS_ADMIN
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextPtrOutput) AllowPrivilegeEscalation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerSecurityContext) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowPrivilegeEscalation
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime.
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextPtrOutput) Capabilities() GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerSecurityContext) *GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilities {
+		if v == nil {
+			return nil
+		}
+		return v.Capabilities
+	}).(GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput)
+}
+
+// Run container in privileged mode. Processes in privileged containers are essentially equivalent to root on the host. Defaults to false.
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextPtrOutput) Privileged() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerSecurityContext) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Privileged
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether this container has a read-only root filesystem. Default is false.
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextPtrOutput) ReadOnlyRootFilesystem() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerSecurityContext) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ReadOnlyRootFilesystem
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextPtrOutput) RunAsGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerSecurityContext) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RunAsGroup
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextPtrOutput) RunAsNonRoot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerSecurityContext) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RunAsNonRoot
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextPtrOutput) RunAsUser() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerSecurityContext) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RunAsUser
+	}).(pulumi.StringPtrOutput)
+}
+
+// The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextPtrOutput) SeLinuxOptions() GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerSecurityContext) *GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptions {
+		if v == nil {
+			return nil
+		}
+		return v.SeLinuxOptions
+	}).(GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput)
+}
+
+// The seccomp options to use by the containers in this pod. Note that this field cannot be set when spec.os.name is windows.
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextPtrOutput) SeccompProfile() GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerSecurityContext) *GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfile {
+		if v == nil {
+			return nil
+		}
+		return v.SeccompProfile
+	}).(GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilities struct {
+	// Added capabilities
+	Adds []string `pulumi:"adds"`
+	// Removed capabilities
+	Drops []string `pulumi:"drops"`
+}
+
+// GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesArgs and GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesInput` via:
+//
+//	GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesArgs{...}
+type GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesOutput() GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesOutput
+	ToGetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesOutput
+}
+
+type GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesArgs struct {
+	// Added capabilities
+	Adds pulumi.StringArrayInput `pulumi:"adds"`
+	// Removed capabilities
+	Drops pulumi.StringArrayInput `pulumi:"drops"`
+}
+
+func (GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilities)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesArgs) ToGetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesOutput() GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesArgs) ToGetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesOutput)
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesArgs) ToGetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput() GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesArgs) ToGetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesOutput).ToGetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutputWithContext(ctx)
+}
+
+// GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesArgs, GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtr and GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrInput` via:
+//
+//	        GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput() GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput
+	ToGetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput
+}
+
+type getK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrType GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesArgs
+
+func GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtr(v *GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesArgs) GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrInput {
+	return (*getK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrType)(v)
+}
+
+func (*getK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilities)(nil)).Elem()
+}
+
+func (i *getK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrType) ToGetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput() GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutputWithContext(context.Background())
+}
+
+func (i *getK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrType) ToGetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilities)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesOutput) ToGetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesOutput() GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesOutput) ToGetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesOutput) ToGetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput() GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput {
+	return o.ToGetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutputWithContext(context.Background())
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesOutput) ToGetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilities) *GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilities {
+		return &v
+	}).(GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput)
+}
+
+// Added capabilities
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesOutput) Adds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilities) []string { return v.Adds }).(pulumi.StringArrayOutput)
+}
+
+// Removed capabilities
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesOutput) Drops() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilities) []string { return v.Drops }).(pulumi.StringArrayOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilities)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput) ToGetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput() GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput) ToGetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput) Elem() GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilities) GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilities {
+		if v != nil {
+			return *v
+		}
+		var ret GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilities
+		return ret
+	}).(GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesOutput)
+}
+
+// Added capabilities
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput) Adds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilities) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Adds
+	}).(pulumi.StringArrayOutput)
+}
+
+// Removed capabilities
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput) Drops() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilities) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Drops
+	}).(pulumi.StringArrayOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptions struct {
+	// Level is SELinux level label that applies to the container.
+	Level *string `pulumi:"level"`
+	// Role is a SELinux role label that applies to the container.
+	Role *string `pulumi:"role"`
+	// Type is a SELinux type label that applies to the container.
+	Type *string `pulumi:"type"`
+	// User is a SELinux user label that applies to the container.
+	User *string `pulumi:"user"`
+}
+
+// GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsArgs and GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsInput` via:
+//
+//	GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsArgs{...}
+type GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsOutput() GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsOutput
+	ToGetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsOutput
+}
+
+type GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsArgs struct {
+	// Level is SELinux level label that applies to the container.
+	Level pulumi.StringPtrInput `pulumi:"level"`
+	// Role is a SELinux role label that applies to the container.
+	Role pulumi.StringPtrInput `pulumi:"role"`
+	// Type is a SELinux type label that applies to the container.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// User is a SELinux user label that applies to the container.
+	User pulumi.StringPtrInput `pulumi:"user"`
+}
+
+func (GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptions)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsArgs) ToGetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsOutput() GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsArgs) ToGetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsOutput)
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsArgs) ToGetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput() GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsArgs) ToGetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsOutput).ToGetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutputWithContext(ctx)
+}
+
+// GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsArgs, GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtr and GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrInput` via:
+//
+//	        GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput() GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput
+	ToGetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput
+}
+
+type getK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrType GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsArgs
+
+func GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtr(v *GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsArgs) GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrInput {
+	return (*getK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrType)(v)
+}
+
+func (*getK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptions)(nil)).Elem()
+}
+
+func (i *getK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrType) ToGetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput() GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *getK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrType) ToGetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptions)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsOutput) ToGetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsOutput() GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsOutput) ToGetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsOutput) ToGetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput() GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput {
+	return o.ToGetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsOutput) ToGetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptions) *GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptions {
+		return &v
+	}).(GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput)
+}
+
+// Level is SELinux level label that applies to the container.
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsOutput) Level() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptions) *string { return v.Level }).(pulumi.StringPtrOutput)
+}
+
+// Role is a SELinux role label that applies to the container.
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptions) *string { return v.Role }).(pulumi.StringPtrOutput)
+}
+
+// Type is a SELinux type label that applies to the container.
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptions) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// User is a SELinux user label that applies to the container.
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsOutput) User() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptions) *string { return v.User }).(pulumi.StringPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptions)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput) ToGetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput() GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput) ToGetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput) Elem() GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptions) GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptions {
+		if v != nil {
+			return *v
+		}
+		var ret GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptions
+		return ret
+	}).(GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsOutput)
+}
+
+// Level is SELinux level label that applies to the container.
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput) Level() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Level
+	}).(pulumi.StringPtrOutput)
+}
+
+// Role is a SELinux role label that applies to the container.
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Role
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type is a SELinux type label that applies to the container.
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// User is a SELinux user label that applies to the container.
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput) User() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.User
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfile struct {
+	// Localhost Profile indicates a profile defined in a file on the node should be used. The profile must be preconfigured on the node to work.
+	LocalhostProfile *string `pulumi:"localhostProfile"`
+	// Type indicates which kind of seccomp profile will be applied. Valid options are: Localhost, RuntimeDefault, Unconfined.
+	Type *string `pulumi:"type"`
+}
+
+// GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileArgs and GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileInput` via:
+//
+//	GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileArgs{...}
+type GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileOutput() GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileOutput
+	ToGetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileOutput
+}
+
+type GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileArgs struct {
+	// Localhost Profile indicates a profile defined in a file on the node should be used. The profile must be preconfigured on the node to work.
+	LocalhostProfile pulumi.StringPtrInput `pulumi:"localhostProfile"`
+	// Type indicates which kind of seccomp profile will be applied. Valid options are: Localhost, RuntimeDefault, Unconfined.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfile)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileArgs) ToGetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileOutput() GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileArgs) ToGetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileOutput)
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileArgs) ToGetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput() GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileArgs) ToGetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileOutput).ToGetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutputWithContext(ctx)
+}
+
+// GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileArgs, GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtr and GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrInput` via:
+//
+//	        GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput() GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput
+	ToGetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput
+}
+
+type getK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrType GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileArgs
+
+func GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtr(v *GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileArgs) GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrInput {
+	return (*getK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrType)(v)
+}
+
+func (*getK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfile)(nil)).Elem()
+}
+
+func (i *getK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrType) ToGetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput() GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *getK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrType) ToGetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfile)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileOutput) ToGetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileOutput() GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileOutput) ToGetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileOutput) ToGetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput() GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput {
+	return o.ToGetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutputWithContext(context.Background())
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileOutput) ToGetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfile) *GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfile {
+		return &v
+	}).(GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput)
+}
+
+// Localhost Profile indicates a profile defined in a file on the node should be used. The profile must be preconfigured on the node to work.
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileOutput) LocalhostProfile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfile) *string {
+		return v.LocalhostProfile
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type indicates which kind of seccomp profile will be applied. Valid options are: Localhost, RuntimeDefault, Unconfined.
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfile) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfile)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput) ToGetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput() GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput) ToGetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput) Elem() GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfile) GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfile {
+		if v != nil {
+			return *v
+		}
+		var ret GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfile
+		return ret
+	}).(GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileOutput)
+}
+
+// Localhost Profile indicates a profile defined in a file on the node should be used. The profile must be preconfigured on the node to work.
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput) LocalhostProfile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LocalhostProfile
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type indicates which kind of seccomp profile will be applied. Valid options are: Localhost, RuntimeDefault, Unconfined.
+func (o GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerStartupProbe struct {
+	// exec specifies the action to take.
+	Exec *GetK8sJobSpecTemplateSpecContainerStartupProbeExec `pulumi:"exec"`
+	// Minimum consecutive failures for the probe to be considered failed after having succeeded.
+	FailureThreshold *int `pulumi:"failureThreshold"`
+	// GRPC specifies an action involving a GRPC port.
+	Grpcs []GetK8sJobSpecTemplateSpecContainerStartupProbeGrpc `pulumi:"grpcs"`
+	// Specifies the http request to perform.
+	HttpGet *GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGet `pulumi:"httpGet"`
+	// Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+	InitialDelaySeconds *int `pulumi:"initialDelaySeconds"`
+	// How often (in seconds) to perform the probe
+	PeriodSeconds *int `pulumi:"periodSeconds"`
+	// Minimum consecutive successes for the probe to be considered successful after having failed.
+	SuccessThreshold *int `pulumi:"successThreshold"`
+	// TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+	TcpSockets []GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocket `pulumi:"tcpSockets"`
+	// Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
+}
+
+// GetK8sJobSpecTemplateSpecContainerStartupProbeInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerStartupProbeArgs and GetK8sJobSpecTemplateSpecContainerStartupProbeOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerStartupProbeInput` via:
+//
+//	GetK8sJobSpecTemplateSpecContainerStartupProbeArgs{...}
+type GetK8sJobSpecTemplateSpecContainerStartupProbeInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerStartupProbeOutput() GetK8sJobSpecTemplateSpecContainerStartupProbeOutput
+	ToGetK8sJobSpecTemplateSpecContainerStartupProbeOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerStartupProbeOutput
+}
+
+type GetK8sJobSpecTemplateSpecContainerStartupProbeArgs struct {
+	// exec specifies the action to take.
+	Exec GetK8sJobSpecTemplateSpecContainerStartupProbeExecPtrInput `pulumi:"exec"`
+	// Minimum consecutive failures for the probe to be considered failed after having succeeded.
+	FailureThreshold pulumi.IntPtrInput `pulumi:"failureThreshold"`
+	// GRPC specifies an action involving a GRPC port.
+	Grpcs GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayInput `pulumi:"grpcs"`
+	// Specifies the http request to perform.
+	HttpGet GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrInput `pulumi:"httpGet"`
+	// Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+	InitialDelaySeconds pulumi.IntPtrInput `pulumi:"initialDelaySeconds"`
+	// How often (in seconds) to perform the probe
+	PeriodSeconds pulumi.IntPtrInput `pulumi:"periodSeconds"`
+	// Minimum consecutive successes for the probe to be considered successful after having failed.
+	SuccessThreshold pulumi.IntPtrInput `pulumi:"successThreshold"`
+	// TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+	TcpSockets GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayInput `pulumi:"tcpSockets"`
+	// Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+	TimeoutSeconds pulumi.IntPtrInput `pulumi:"timeoutSeconds"`
+}
+
+func (GetK8sJobSpecTemplateSpecContainerStartupProbeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerStartupProbe)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerStartupProbeArgs) ToGetK8sJobSpecTemplateSpecContainerStartupProbeOutput() GetK8sJobSpecTemplateSpecContainerStartupProbeOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerStartupProbeOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerStartupProbeArgs) ToGetK8sJobSpecTemplateSpecContainerStartupProbeOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerStartupProbeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerStartupProbeOutput)
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerStartupProbeArgs) ToGetK8sJobSpecTemplateSpecContainerStartupProbePtrOutput() GetK8sJobSpecTemplateSpecContainerStartupProbePtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerStartupProbePtrOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerStartupProbeArgs) ToGetK8sJobSpecTemplateSpecContainerStartupProbePtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerStartupProbePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerStartupProbeOutput).ToGetK8sJobSpecTemplateSpecContainerStartupProbePtrOutputWithContext(ctx)
+}
+
+// GetK8sJobSpecTemplateSpecContainerStartupProbePtrInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerStartupProbeArgs, GetK8sJobSpecTemplateSpecContainerStartupProbePtr and GetK8sJobSpecTemplateSpecContainerStartupProbePtrOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerStartupProbePtrInput` via:
+//
+//	        GetK8sJobSpecTemplateSpecContainerStartupProbeArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetK8sJobSpecTemplateSpecContainerStartupProbePtrInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerStartupProbePtrOutput() GetK8sJobSpecTemplateSpecContainerStartupProbePtrOutput
+	ToGetK8sJobSpecTemplateSpecContainerStartupProbePtrOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerStartupProbePtrOutput
+}
+
+type getK8sJobSpecTemplateSpecContainerStartupProbePtrType GetK8sJobSpecTemplateSpecContainerStartupProbeArgs
+
+func GetK8sJobSpecTemplateSpecContainerStartupProbePtr(v *GetK8sJobSpecTemplateSpecContainerStartupProbeArgs) GetK8sJobSpecTemplateSpecContainerStartupProbePtrInput {
+	return (*getK8sJobSpecTemplateSpecContainerStartupProbePtrType)(v)
+}
+
+func (*getK8sJobSpecTemplateSpecContainerStartupProbePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecContainerStartupProbe)(nil)).Elem()
+}
+
+func (i *getK8sJobSpecTemplateSpecContainerStartupProbePtrType) ToGetK8sJobSpecTemplateSpecContainerStartupProbePtrOutput() GetK8sJobSpecTemplateSpecContainerStartupProbePtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerStartupProbePtrOutputWithContext(context.Background())
+}
+
+func (i *getK8sJobSpecTemplateSpecContainerStartupProbePtrType) ToGetK8sJobSpecTemplateSpecContainerStartupProbePtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerStartupProbePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerStartupProbePtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerStartupProbeOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerStartupProbeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerStartupProbe)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeOutput) ToGetK8sJobSpecTemplateSpecContainerStartupProbeOutput() GetK8sJobSpecTemplateSpecContainerStartupProbeOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeOutput) ToGetK8sJobSpecTemplateSpecContainerStartupProbeOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerStartupProbeOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeOutput) ToGetK8sJobSpecTemplateSpecContainerStartupProbePtrOutput() GetK8sJobSpecTemplateSpecContainerStartupProbePtrOutput {
+	return o.ToGetK8sJobSpecTemplateSpecContainerStartupProbePtrOutputWithContext(context.Background())
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeOutput) ToGetK8sJobSpecTemplateSpecContainerStartupProbePtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerStartupProbePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetK8sJobSpecTemplateSpecContainerStartupProbe) *GetK8sJobSpecTemplateSpecContainerStartupProbe {
+		return &v
+	}).(GetK8sJobSpecTemplateSpecContainerStartupProbePtrOutput)
+}
+
+// exec specifies the action to take.
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeOutput) Exec() GetK8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerStartupProbe) *GetK8sJobSpecTemplateSpecContainerStartupProbeExec {
+		return v.Exec
+	}).(GetK8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutput)
+}
+
+// Minimum consecutive failures for the probe to be considered failed after having succeeded.
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerStartupProbe) *int { return v.FailureThreshold }).(pulumi.IntPtrOutput)
+}
+
+// GRPC specifies an action involving a GRPC port.
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeOutput) Grpcs() GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerStartupProbe) []GetK8sJobSpecTemplateSpecContainerStartupProbeGrpc {
+		return v.Grpcs
+	}).(GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayOutput)
+}
+
+// Specifies the http request to perform.
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeOutput) HttpGet() GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerStartupProbe) *GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGet {
+		return v.HttpGet
+	}).(GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput)
+}
+
+// Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerStartupProbe) *int { return v.InitialDelaySeconds }).(pulumi.IntPtrOutput)
+}
+
+// How often (in seconds) to perform the probe
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeOutput) PeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerStartupProbe) *int { return v.PeriodSeconds }).(pulumi.IntPtrOutput)
+}
+
+// Minimum consecutive successes for the probe to be considered successful after having failed.
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeOutput) SuccessThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerStartupProbe) *int { return v.SuccessThreshold }).(pulumi.IntPtrOutput)
+}
+
+// TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeOutput) TcpSockets() GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerStartupProbe) []GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocket {
+		return v.TcpSockets
+	}).(GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayOutput)
+}
+
+// Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerStartupProbe) *int { return v.TimeoutSeconds }).(pulumi.IntPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerStartupProbePtrOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerStartupProbePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecContainerStartupProbe)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbePtrOutput) ToGetK8sJobSpecTemplateSpecContainerStartupProbePtrOutput() GetK8sJobSpecTemplateSpecContainerStartupProbePtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbePtrOutput) ToGetK8sJobSpecTemplateSpecContainerStartupProbePtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerStartupProbePtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbePtrOutput) Elem() GetK8sJobSpecTemplateSpecContainerStartupProbeOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerStartupProbe) GetK8sJobSpecTemplateSpecContainerStartupProbe {
+		if v != nil {
+			return *v
+		}
+		var ret GetK8sJobSpecTemplateSpecContainerStartupProbe
+		return ret
+	}).(GetK8sJobSpecTemplateSpecContainerStartupProbeOutput)
+}
+
+// exec specifies the action to take.
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbePtrOutput) Exec() GetK8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerStartupProbe) *GetK8sJobSpecTemplateSpecContainerStartupProbeExec {
+		if v == nil {
+			return nil
+		}
+		return v.Exec
+	}).(GetK8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutput)
+}
+
+// Minimum consecutive failures for the probe to be considered failed after having succeeded.
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbePtrOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerStartupProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FailureThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// GRPC specifies an action involving a GRPC port.
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbePtrOutput) Grpcs() GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerStartupProbe) []GetK8sJobSpecTemplateSpecContainerStartupProbeGrpc {
+		if v == nil {
+			return nil
+		}
+		return v.Grpcs
+	}).(GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayOutput)
+}
+
+// Specifies the http request to perform.
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbePtrOutput) HttpGet() GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerStartupProbe) *GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGet {
+		if v == nil {
+			return nil
+		}
+		return v.HttpGet
+	}).(GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput)
+}
+
+// Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbePtrOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerStartupProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InitialDelaySeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// How often (in seconds) to perform the probe
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbePtrOutput) PeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerStartupProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PeriodSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minimum consecutive successes for the probe to be considered successful after having failed.
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbePtrOutput) SuccessThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerStartupProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SuccessThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbePtrOutput) TcpSockets() GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerStartupProbe) []GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocket {
+		if v == nil {
+			return nil
+		}
+		return v.TcpSockets
+	}).(GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayOutput)
+}
+
+// Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbePtrOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerStartupProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeoutSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerStartupProbeExec struct {
+	// Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+	Commands []string `pulumi:"commands"`
+}
+
+// GetK8sJobSpecTemplateSpecContainerStartupProbeExecInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerStartupProbeExecArgs and GetK8sJobSpecTemplateSpecContainerStartupProbeExecOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerStartupProbeExecInput` via:
+//
+//	GetK8sJobSpecTemplateSpecContainerStartupProbeExecArgs{...}
+type GetK8sJobSpecTemplateSpecContainerStartupProbeExecInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerStartupProbeExecOutput() GetK8sJobSpecTemplateSpecContainerStartupProbeExecOutput
+	ToGetK8sJobSpecTemplateSpecContainerStartupProbeExecOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerStartupProbeExecOutput
+}
+
+type GetK8sJobSpecTemplateSpecContainerStartupProbeExecArgs struct {
+	// Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+	Commands pulumi.StringArrayInput `pulumi:"commands"`
+}
+
+func (GetK8sJobSpecTemplateSpecContainerStartupProbeExecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerStartupProbeExec)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerStartupProbeExecArgs) ToGetK8sJobSpecTemplateSpecContainerStartupProbeExecOutput() GetK8sJobSpecTemplateSpecContainerStartupProbeExecOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerStartupProbeExecOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerStartupProbeExecArgs) ToGetK8sJobSpecTemplateSpecContainerStartupProbeExecOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerStartupProbeExecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerStartupProbeExecOutput)
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerStartupProbeExecArgs) ToGetK8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutput() GetK8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerStartupProbeExecArgs) ToGetK8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerStartupProbeExecOutput).ToGetK8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutputWithContext(ctx)
+}
+
+// GetK8sJobSpecTemplateSpecContainerStartupProbeExecPtrInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerStartupProbeExecArgs, GetK8sJobSpecTemplateSpecContainerStartupProbeExecPtr and GetK8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerStartupProbeExecPtrInput` via:
+//
+//	        GetK8sJobSpecTemplateSpecContainerStartupProbeExecArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetK8sJobSpecTemplateSpecContainerStartupProbeExecPtrInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutput() GetK8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutput
+	ToGetK8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutput
+}
+
+type getK8sJobSpecTemplateSpecContainerStartupProbeExecPtrType GetK8sJobSpecTemplateSpecContainerStartupProbeExecArgs
+
+func GetK8sJobSpecTemplateSpecContainerStartupProbeExecPtr(v *GetK8sJobSpecTemplateSpecContainerStartupProbeExecArgs) GetK8sJobSpecTemplateSpecContainerStartupProbeExecPtrInput {
+	return (*getK8sJobSpecTemplateSpecContainerStartupProbeExecPtrType)(v)
+}
+
+func (*getK8sJobSpecTemplateSpecContainerStartupProbeExecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecContainerStartupProbeExec)(nil)).Elem()
+}
+
+func (i *getK8sJobSpecTemplateSpecContainerStartupProbeExecPtrType) ToGetK8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutput() GetK8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutputWithContext(context.Background())
+}
+
+func (i *getK8sJobSpecTemplateSpecContainerStartupProbeExecPtrType) ToGetK8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerStartupProbeExecOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerStartupProbeExecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerStartupProbeExec)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeExecOutput) ToGetK8sJobSpecTemplateSpecContainerStartupProbeExecOutput() GetK8sJobSpecTemplateSpecContainerStartupProbeExecOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeExecOutput) ToGetK8sJobSpecTemplateSpecContainerStartupProbeExecOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerStartupProbeExecOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeExecOutput) ToGetK8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutput() GetK8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutput {
+	return o.ToGetK8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutputWithContext(context.Background())
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeExecOutput) ToGetK8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetK8sJobSpecTemplateSpecContainerStartupProbeExec) *GetK8sJobSpecTemplateSpecContainerStartupProbeExec {
+		return &v
+	}).(GetK8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutput)
+}
+
+// Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeExecOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerStartupProbeExec) []string { return v.Commands }).(pulumi.StringArrayOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecContainerStartupProbeExec)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutput) ToGetK8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutput() GetK8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutput) ToGetK8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutput) Elem() GetK8sJobSpecTemplateSpecContainerStartupProbeExecOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerStartupProbeExec) GetK8sJobSpecTemplateSpecContainerStartupProbeExec {
+		if v != nil {
+			return *v
+		}
+		var ret GetK8sJobSpecTemplateSpecContainerStartupProbeExec
+		return ret
+	}).(GetK8sJobSpecTemplateSpecContainerStartupProbeExecOutput)
+}
+
+// Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerStartupProbeExec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Commands
+	}).(pulumi.StringArrayOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerStartupProbeGrpc struct {
+	// Number of the port to access on the container. Number must be in the range 1 to 65535.
+	Port int `pulumi:"port"`
+	// Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+	Service *string `pulumi:"service"`
+}
+
+// GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcArgs and GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcInput` via:
+//
+//	GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcArgs{...}
+type GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerStartupProbeGrpcOutput() GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcOutput
+	ToGetK8sJobSpecTemplateSpecContainerStartupProbeGrpcOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcOutput
+}
+
+type GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcArgs struct {
+	// Number of the port to access on the container. Number must be in the range 1 to 65535.
+	Port pulumi.IntInput `pulumi:"port"`
+	// Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+	Service pulumi.StringPtrInput `pulumi:"service"`
+}
+
+func (GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerStartupProbeGrpc)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcArgs) ToGetK8sJobSpecTemplateSpecContainerStartupProbeGrpcOutput() GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerStartupProbeGrpcOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcArgs) ToGetK8sJobSpecTemplateSpecContainerStartupProbeGrpcOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcOutput)
+}
+
+// GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcArray and GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayInput` via:
+//
+//	GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcArray{ GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcArgs{...} }
+type GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayOutput() GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayOutput
+	ToGetK8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayOutput
+}
+
+type GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcArray []GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcInput
+
+func (GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetK8sJobSpecTemplateSpecContainerStartupProbeGrpc)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcArray) ToGetK8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayOutput() GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcArray) ToGetK8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerStartupProbeGrpc)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcOutput) ToGetK8sJobSpecTemplateSpecContainerStartupProbeGrpcOutput() GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcOutput) ToGetK8sJobSpecTemplateSpecContainerStartupProbeGrpcOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcOutput {
+	return o
+}
+
+// Number of the port to access on the container. Number must be in the range 1 to 65535.
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerStartupProbeGrpc) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerStartupProbeGrpc) *string { return v.Service }).(pulumi.StringPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetK8sJobSpecTemplateSpecContainerStartupProbeGrpc)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayOutput) ToGetK8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayOutput() GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayOutput) ToGetK8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayOutput) Index(i pulumi.IntInput) GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetK8sJobSpecTemplateSpecContainerStartupProbeGrpc {
+		return vs[0].([]GetK8sJobSpecTemplateSpecContainerStartupProbeGrpc)[vs[1].(int)]
+	}).(GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGet struct {
+	// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+	Host *string `pulumi:"host"`
+	// Scheme to use for connecting to the host.
+	HttpHeaders []GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeader `pulumi:"httpHeaders"`
+	// Path to access on the HTTP server.
+	Path *string `pulumi:"path"`
+	// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+	Port *string `pulumi:"port"`
+	// Scheme to use for connecting to the host.
+	Scheme *string `pulumi:"scheme"`
+}
+
+// GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetArgs and GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetInput` via:
+//
+//	GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetArgs{...}
+type GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutput() GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutput
+	ToGetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutput
+}
+
+type GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetArgs struct {
+	// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// Scheme to use for connecting to the host.
+	HttpHeaders GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayInput `pulumi:"httpHeaders"`
+	// Path to access on the HTTP server.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+	Port pulumi.StringPtrInput `pulumi:"port"`
+	// Scheme to use for connecting to the host.
+	Scheme pulumi.StringPtrInput `pulumi:"scheme"`
+}
+
+func (GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGet)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetArgs) ToGetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutput() GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetArgs) ToGetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutput)
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetArgs) ToGetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput() GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetArgs) ToGetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutput).ToGetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutputWithContext(ctx)
+}
+
+// GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetArgs, GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtr and GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrInput` via:
+//
+//	        GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput() GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput
+	ToGetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput
+}
+
+type getK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrType GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetArgs
+
+func GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtr(v *GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetArgs) GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrInput {
+	return (*getK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrType)(v)
+}
+
+func (*getK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGet)(nil)).Elem()
+}
+
+func (i *getK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrType) ToGetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput() GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutputWithContext(context.Background())
+}
+
+func (i *getK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrType) ToGetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGet)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutput) ToGetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutput() GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutput) ToGetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutput) ToGetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput() GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput {
+	return o.ToGetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutputWithContext(context.Background())
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutput) ToGetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGet) *GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGet {
+		return &v
+	}).(GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput)
+}
+
+// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGet) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+// Scheme to use for connecting to the host.
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutput) HttpHeaders() GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGet) []GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeader {
+		return v.HttpHeaders
+	}).(GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput)
+}
+
+// Path to access on the HTTP server.
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGet) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGet) *string { return v.Port }).(pulumi.StringPtrOutput)
+}
+
+// Scheme to use for connecting to the host.
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutput) Scheme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGet) *string { return v.Scheme }).(pulumi.StringPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGet)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput) ToGetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput() GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput) ToGetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput) Elem() GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGet) GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGet {
+		if v != nil {
+			return *v
+		}
+		var ret GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGet
+		return ret
+	}).(GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutput)
+}
+
+// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// Scheme to use for connecting to the host.
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput) HttpHeaders() GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGet) []GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeader {
+		if v == nil {
+			return nil
+		}
+		return v.HttpHeaders
+	}).(GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput)
+}
+
+// Path to access on the HTTP server.
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.StringPtrOutput)
+}
+
+// Scheme to use for connecting to the host.
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput) Scheme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Scheme
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeader struct {
+	// The header field name
+	Name *string `pulumi:"name"`
+	// The header field value
+	Value *string `pulumi:"value"`
+}
+
+// GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArgs and GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderInput` via:
+//
+//	GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArgs{...}
+type GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput() GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput
+	ToGetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput
+}
+
+type GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArgs struct {
+	// The header field name
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The header field value
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArgs) ToGetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput() GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArgs) ToGetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput)
+}
+
+// GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArray and GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayInput` via:
+//
+//	GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArray{ GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArgs{...} }
+type GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput() GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput
+	ToGetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput
+}
+
+type GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArray []GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderInput
+
+func (GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArray) ToGetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput() GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArray) ToGetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput) ToGetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput() GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput) ToGetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput {
+	return o
+}
+
+// The header field name
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeader) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The header field value
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeader) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput) ToGetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput() GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput) ToGetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput) Index(i pulumi.IntInput) GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeader {
+		return vs[0].([]GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeader)[vs[1].(int)]
+	}).(GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocket struct {
+	// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+	Port string `pulumi:"port"`
+}
+
+// GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArgs and GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketInput` via:
+//
+//	GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArgs{...}
+type GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketOutput() GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketOutput
+	ToGetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketOutput
+}
+
+type GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArgs struct {
+	// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+	Port pulumi.StringInput `pulumi:"port"`
+}
+
+func (GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocket)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArgs) ToGetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketOutput() GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArgs) ToGetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketOutput)
+}
+
+// GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArray and GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayInput` via:
+//
+//	GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArray{ GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArgs{...} }
+type GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayOutput() GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayOutput
+	ToGetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayOutput
+}
+
+type GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArray []GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketInput
+
+func (GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocket)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArray) ToGetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayOutput() GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArray) ToGetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocket)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketOutput) ToGetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketOutput() GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketOutput) ToGetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketOutput {
+	return o
+}
+
+// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketOutput) Port() pulumi.StringOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocket) string { return v.Port }).(pulumi.StringOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocket)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayOutput) ToGetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayOutput() GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayOutput) ToGetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayOutput) Index(i pulumi.IntInput) GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocket {
+		return vs[0].([]GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocket)[vs[1].(int)]
+	}).(GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerVolumeMount struct {
+	// Path within the container at which the volume should be mounted. Must not contain ':'.
+	MountPath string `pulumi:"mountPath"`
+	// Mount propagation mode. mountPropagation determines how mounts are propagated from the host to container and the other way around. Valid values are None (default), HostToContainer and Bidirectional.
+	MountPropagation *string `pulumi:"mountPropagation"`
+	// This must match the Name of a Volume.
+	Name string `pulumi:"name"`
+	// Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false.
+	ReadOnly *bool `pulumi:"readOnly"`
+	// Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
+	SubPath *string `pulumi:"subPath"`
+}
+
+// GetK8sJobSpecTemplateSpecContainerVolumeMountInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerVolumeMountArgs and GetK8sJobSpecTemplateSpecContainerVolumeMountOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerVolumeMountInput` via:
+//
+//	GetK8sJobSpecTemplateSpecContainerVolumeMountArgs{...}
+type GetK8sJobSpecTemplateSpecContainerVolumeMountInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerVolumeMountOutput() GetK8sJobSpecTemplateSpecContainerVolumeMountOutput
+	ToGetK8sJobSpecTemplateSpecContainerVolumeMountOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerVolumeMountOutput
+}
+
+type GetK8sJobSpecTemplateSpecContainerVolumeMountArgs struct {
+	// Path within the container at which the volume should be mounted. Must not contain ':'.
+	MountPath pulumi.StringInput `pulumi:"mountPath"`
+	// Mount propagation mode. mountPropagation determines how mounts are propagated from the host to container and the other way around. Valid values are None (default), HostToContainer and Bidirectional.
+	MountPropagation pulumi.StringPtrInput `pulumi:"mountPropagation"`
+	// This must match the Name of a Volume.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false.
+	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
+	// Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
+	SubPath pulumi.StringPtrInput `pulumi:"subPath"`
+}
+
+func (GetK8sJobSpecTemplateSpecContainerVolumeMountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerVolumeMount)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerVolumeMountArgs) ToGetK8sJobSpecTemplateSpecContainerVolumeMountOutput() GetK8sJobSpecTemplateSpecContainerVolumeMountOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerVolumeMountOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerVolumeMountArgs) ToGetK8sJobSpecTemplateSpecContainerVolumeMountOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerVolumeMountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerVolumeMountOutput)
+}
+
+// GetK8sJobSpecTemplateSpecContainerVolumeMountArrayInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerVolumeMountArray and GetK8sJobSpecTemplateSpecContainerVolumeMountArrayOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerVolumeMountArrayInput` via:
+//
+//	GetK8sJobSpecTemplateSpecContainerVolumeMountArray{ GetK8sJobSpecTemplateSpecContainerVolumeMountArgs{...} }
+type GetK8sJobSpecTemplateSpecContainerVolumeMountArrayInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerVolumeMountArrayOutput() GetK8sJobSpecTemplateSpecContainerVolumeMountArrayOutput
+	ToGetK8sJobSpecTemplateSpecContainerVolumeMountArrayOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerVolumeMountArrayOutput
+}
+
+type GetK8sJobSpecTemplateSpecContainerVolumeMountArray []GetK8sJobSpecTemplateSpecContainerVolumeMountInput
+
+func (GetK8sJobSpecTemplateSpecContainerVolumeMountArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetK8sJobSpecTemplateSpecContainerVolumeMount)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerVolumeMountArray) ToGetK8sJobSpecTemplateSpecContainerVolumeMountArrayOutput() GetK8sJobSpecTemplateSpecContainerVolumeMountArrayOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerVolumeMountArrayOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerVolumeMountArray) ToGetK8sJobSpecTemplateSpecContainerVolumeMountArrayOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerVolumeMountArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerVolumeMountArrayOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerVolumeMountOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerVolumeMountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerVolumeMount)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerVolumeMountOutput) ToGetK8sJobSpecTemplateSpecContainerVolumeMountOutput() GetK8sJobSpecTemplateSpecContainerVolumeMountOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerVolumeMountOutput) ToGetK8sJobSpecTemplateSpecContainerVolumeMountOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerVolumeMountOutput {
+	return o
+}
+
+// Path within the container at which the volume should be mounted. Must not contain ':'.
+func (o GetK8sJobSpecTemplateSpecContainerVolumeMountOutput) MountPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerVolumeMount) string { return v.MountPath }).(pulumi.StringOutput)
+}
+
+// Mount propagation mode. mountPropagation determines how mounts are propagated from the host to container and the other way around. Valid values are None (default), HostToContainer and Bidirectional.
+func (o GetK8sJobSpecTemplateSpecContainerVolumeMountOutput) MountPropagation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerVolumeMount) *string { return v.MountPropagation }).(pulumi.StringPtrOutput)
+}
+
+// This must match the Name of a Volume.
+func (o GetK8sJobSpecTemplateSpecContainerVolumeMountOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerVolumeMount) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false.
+func (o GetK8sJobSpecTemplateSpecContainerVolumeMountOutput) ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerVolumeMount) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
+}
+
+// Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
+func (o GetK8sJobSpecTemplateSpecContainerVolumeMountOutput) SubPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerVolumeMount) *string { return v.SubPath }).(pulumi.StringPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerVolumeMountArrayOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerVolumeMountArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetK8sJobSpecTemplateSpecContainerVolumeMount)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerVolumeMountArrayOutput) ToGetK8sJobSpecTemplateSpecContainerVolumeMountArrayOutput() GetK8sJobSpecTemplateSpecContainerVolumeMountArrayOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerVolumeMountArrayOutput) ToGetK8sJobSpecTemplateSpecContainerVolumeMountArrayOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerVolumeMountArrayOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerVolumeMountArrayOutput) Index(i pulumi.IntInput) GetK8sJobSpecTemplateSpecContainerVolumeMountOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetK8sJobSpecTemplateSpecContainerVolumeMount {
+		return vs[0].([]GetK8sJobSpecTemplateSpecContainerVolumeMount)[vs[1].(int)]
+	}).(GetK8sJobSpecTemplateSpecContainerVolumeMountOutput)
+}
+
+type GetK8sJobSpecTemplateSpecDnsConfig struct {
+	// A list of DNS name server IP addresses. This will be appended to the base nameservers generated from DNSPolicy. Duplicated nameservers will be removed.
+	Nameservers []string `pulumi:"nameservers"`
+	// A list of DNS resolver options. This will be merged with the base options generated from DNSPolicy. Duplicated entries will be removed. Resolution options given in Options will override those that appear in the base DNSPolicy.
+	Options []GetK8sJobSpecTemplateSpecDnsConfigOption `pulumi:"options"`
+	// A list of DNS search domains for host-name lookup. This will be appended to the base search paths generated from DNSPolicy. Duplicated search paths will be removed.
+	Searches []string `pulumi:"searches"`
+}
+
+// GetK8sJobSpecTemplateSpecDnsConfigInput is an input type that accepts GetK8sJobSpecTemplateSpecDnsConfigArgs and GetK8sJobSpecTemplateSpecDnsConfigOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecDnsConfigInput` via:
+//
+//	GetK8sJobSpecTemplateSpecDnsConfigArgs{...}
+type GetK8sJobSpecTemplateSpecDnsConfigInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecDnsConfigOutput() GetK8sJobSpecTemplateSpecDnsConfigOutput
+	ToGetK8sJobSpecTemplateSpecDnsConfigOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecDnsConfigOutput
+}
+
+type GetK8sJobSpecTemplateSpecDnsConfigArgs struct {
+	// A list of DNS name server IP addresses. This will be appended to the base nameservers generated from DNSPolicy. Duplicated nameservers will be removed.
+	Nameservers pulumi.StringArrayInput `pulumi:"nameservers"`
+	// A list of DNS resolver options. This will be merged with the base options generated from DNSPolicy. Duplicated entries will be removed. Resolution options given in Options will override those that appear in the base DNSPolicy.
+	Options GetK8sJobSpecTemplateSpecDnsConfigOptionArrayInput `pulumi:"options"`
+	// A list of DNS search domains for host-name lookup. This will be appended to the base search paths generated from DNSPolicy. Duplicated search paths will be removed.
+	Searches pulumi.StringArrayInput `pulumi:"searches"`
+}
+
+func (GetK8sJobSpecTemplateSpecDnsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecDnsConfig)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecDnsConfigArgs) ToGetK8sJobSpecTemplateSpecDnsConfigOutput() GetK8sJobSpecTemplateSpecDnsConfigOutput {
+	return i.ToGetK8sJobSpecTemplateSpecDnsConfigOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecDnsConfigArgs) ToGetK8sJobSpecTemplateSpecDnsConfigOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecDnsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecDnsConfigOutput)
+}
+
+func (i GetK8sJobSpecTemplateSpecDnsConfigArgs) ToGetK8sJobSpecTemplateSpecDnsConfigPtrOutput() GetK8sJobSpecTemplateSpecDnsConfigPtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecDnsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecDnsConfigArgs) ToGetK8sJobSpecTemplateSpecDnsConfigPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecDnsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecDnsConfigOutput).ToGetK8sJobSpecTemplateSpecDnsConfigPtrOutputWithContext(ctx)
+}
+
+// GetK8sJobSpecTemplateSpecDnsConfigPtrInput is an input type that accepts GetK8sJobSpecTemplateSpecDnsConfigArgs, GetK8sJobSpecTemplateSpecDnsConfigPtr and GetK8sJobSpecTemplateSpecDnsConfigPtrOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecDnsConfigPtrInput` via:
+//
+//	        GetK8sJobSpecTemplateSpecDnsConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetK8sJobSpecTemplateSpecDnsConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecDnsConfigPtrOutput() GetK8sJobSpecTemplateSpecDnsConfigPtrOutput
+	ToGetK8sJobSpecTemplateSpecDnsConfigPtrOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecDnsConfigPtrOutput
+}
+
+type getK8sJobSpecTemplateSpecDnsConfigPtrType GetK8sJobSpecTemplateSpecDnsConfigArgs
+
+func GetK8sJobSpecTemplateSpecDnsConfigPtr(v *GetK8sJobSpecTemplateSpecDnsConfigArgs) GetK8sJobSpecTemplateSpecDnsConfigPtrInput {
+	return (*getK8sJobSpecTemplateSpecDnsConfigPtrType)(v)
+}
+
+func (*getK8sJobSpecTemplateSpecDnsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecDnsConfig)(nil)).Elem()
+}
+
+func (i *getK8sJobSpecTemplateSpecDnsConfigPtrType) ToGetK8sJobSpecTemplateSpecDnsConfigPtrOutput() GetK8sJobSpecTemplateSpecDnsConfigPtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecDnsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getK8sJobSpecTemplateSpecDnsConfigPtrType) ToGetK8sJobSpecTemplateSpecDnsConfigPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecDnsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecDnsConfigPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecDnsConfigOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecDnsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecDnsConfig)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecDnsConfigOutput) ToGetK8sJobSpecTemplateSpecDnsConfigOutput() GetK8sJobSpecTemplateSpecDnsConfigOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecDnsConfigOutput) ToGetK8sJobSpecTemplateSpecDnsConfigOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecDnsConfigOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecDnsConfigOutput) ToGetK8sJobSpecTemplateSpecDnsConfigPtrOutput() GetK8sJobSpecTemplateSpecDnsConfigPtrOutput {
+	return o.ToGetK8sJobSpecTemplateSpecDnsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetK8sJobSpecTemplateSpecDnsConfigOutput) ToGetK8sJobSpecTemplateSpecDnsConfigPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecDnsConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetK8sJobSpecTemplateSpecDnsConfig) *GetK8sJobSpecTemplateSpecDnsConfig {
+		return &v
+	}).(GetK8sJobSpecTemplateSpecDnsConfigPtrOutput)
+}
+
+// A list of DNS name server IP addresses. This will be appended to the base nameservers generated from DNSPolicy. Duplicated nameservers will be removed.
+func (o GetK8sJobSpecTemplateSpecDnsConfigOutput) Nameservers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecDnsConfig) []string { return v.Nameservers }).(pulumi.StringArrayOutput)
+}
+
+// A list of DNS resolver options. This will be merged with the base options generated from DNSPolicy. Duplicated entries will be removed. Resolution options given in Options will override those that appear in the base DNSPolicy.
+func (o GetK8sJobSpecTemplateSpecDnsConfigOutput) Options() GetK8sJobSpecTemplateSpecDnsConfigOptionArrayOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecDnsConfig) []GetK8sJobSpecTemplateSpecDnsConfigOption {
+		return v.Options
+	}).(GetK8sJobSpecTemplateSpecDnsConfigOptionArrayOutput)
+}
+
+// A list of DNS search domains for host-name lookup. This will be appended to the base search paths generated from DNSPolicy. Duplicated search paths will be removed.
+func (o GetK8sJobSpecTemplateSpecDnsConfigOutput) Searches() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecDnsConfig) []string { return v.Searches }).(pulumi.StringArrayOutput)
+}
+
+type GetK8sJobSpecTemplateSpecDnsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecDnsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecDnsConfig)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecDnsConfigPtrOutput) ToGetK8sJobSpecTemplateSpecDnsConfigPtrOutput() GetK8sJobSpecTemplateSpecDnsConfigPtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecDnsConfigPtrOutput) ToGetK8sJobSpecTemplateSpecDnsConfigPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecDnsConfigPtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecDnsConfigPtrOutput) Elem() GetK8sJobSpecTemplateSpecDnsConfigOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecDnsConfig) GetK8sJobSpecTemplateSpecDnsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetK8sJobSpecTemplateSpecDnsConfig
+		return ret
+	}).(GetK8sJobSpecTemplateSpecDnsConfigOutput)
+}
+
+// A list of DNS name server IP addresses. This will be appended to the base nameservers generated from DNSPolicy. Duplicated nameservers will be removed.
+func (o GetK8sJobSpecTemplateSpecDnsConfigPtrOutput) Nameservers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecDnsConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Nameservers
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of DNS resolver options. This will be merged with the base options generated from DNSPolicy. Duplicated entries will be removed. Resolution options given in Options will override those that appear in the base DNSPolicy.
+func (o GetK8sJobSpecTemplateSpecDnsConfigPtrOutput) Options() GetK8sJobSpecTemplateSpecDnsConfigOptionArrayOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecDnsConfig) []GetK8sJobSpecTemplateSpecDnsConfigOption {
+		if v == nil {
+			return nil
+		}
+		return v.Options
+	}).(GetK8sJobSpecTemplateSpecDnsConfigOptionArrayOutput)
+}
+
+// A list of DNS search domains for host-name lookup. This will be appended to the base search paths generated from DNSPolicy. Duplicated search paths will be removed.
+func (o GetK8sJobSpecTemplateSpecDnsConfigPtrOutput) Searches() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecDnsConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Searches
+	}).(pulumi.StringArrayOutput)
+}
+
+type GetK8sJobSpecTemplateSpecDnsConfigOption struct {
+	// Name of the option.
+	Name string `pulumi:"name"`
+	// Value of the option. Optional: Defaults to empty.
+	Value *string `pulumi:"value"`
+}
+
+// GetK8sJobSpecTemplateSpecDnsConfigOptionInput is an input type that accepts GetK8sJobSpecTemplateSpecDnsConfigOptionArgs and GetK8sJobSpecTemplateSpecDnsConfigOptionOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecDnsConfigOptionInput` via:
+//
+//	GetK8sJobSpecTemplateSpecDnsConfigOptionArgs{...}
+type GetK8sJobSpecTemplateSpecDnsConfigOptionInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecDnsConfigOptionOutput() GetK8sJobSpecTemplateSpecDnsConfigOptionOutput
+	ToGetK8sJobSpecTemplateSpecDnsConfigOptionOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecDnsConfigOptionOutput
+}
+
+type GetK8sJobSpecTemplateSpecDnsConfigOptionArgs struct {
+	// Name of the option.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Value of the option. Optional: Defaults to empty.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (GetK8sJobSpecTemplateSpecDnsConfigOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecDnsConfigOption)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecDnsConfigOptionArgs) ToGetK8sJobSpecTemplateSpecDnsConfigOptionOutput() GetK8sJobSpecTemplateSpecDnsConfigOptionOutput {
+	return i.ToGetK8sJobSpecTemplateSpecDnsConfigOptionOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecDnsConfigOptionArgs) ToGetK8sJobSpecTemplateSpecDnsConfigOptionOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecDnsConfigOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecDnsConfigOptionOutput)
+}
+
+// GetK8sJobSpecTemplateSpecDnsConfigOptionArrayInput is an input type that accepts GetK8sJobSpecTemplateSpecDnsConfigOptionArray and GetK8sJobSpecTemplateSpecDnsConfigOptionArrayOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecDnsConfigOptionArrayInput` via:
+//
+//	GetK8sJobSpecTemplateSpecDnsConfigOptionArray{ GetK8sJobSpecTemplateSpecDnsConfigOptionArgs{...} }
+type GetK8sJobSpecTemplateSpecDnsConfigOptionArrayInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecDnsConfigOptionArrayOutput() GetK8sJobSpecTemplateSpecDnsConfigOptionArrayOutput
+	ToGetK8sJobSpecTemplateSpecDnsConfigOptionArrayOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecDnsConfigOptionArrayOutput
+}
+
+type GetK8sJobSpecTemplateSpecDnsConfigOptionArray []GetK8sJobSpecTemplateSpecDnsConfigOptionInput
+
+func (GetK8sJobSpecTemplateSpecDnsConfigOptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetK8sJobSpecTemplateSpecDnsConfigOption)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecDnsConfigOptionArray) ToGetK8sJobSpecTemplateSpecDnsConfigOptionArrayOutput() GetK8sJobSpecTemplateSpecDnsConfigOptionArrayOutput {
+	return i.ToGetK8sJobSpecTemplateSpecDnsConfigOptionArrayOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecDnsConfigOptionArray) ToGetK8sJobSpecTemplateSpecDnsConfigOptionArrayOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecDnsConfigOptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecDnsConfigOptionArrayOutput)
+}
+
+type GetK8sJobSpecTemplateSpecDnsConfigOptionOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecDnsConfigOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecDnsConfigOption)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecDnsConfigOptionOutput) ToGetK8sJobSpecTemplateSpecDnsConfigOptionOutput() GetK8sJobSpecTemplateSpecDnsConfigOptionOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecDnsConfigOptionOutput) ToGetK8sJobSpecTemplateSpecDnsConfigOptionOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecDnsConfigOptionOutput {
+	return o
+}
+
+// Name of the option.
+func (o GetK8sJobSpecTemplateSpecDnsConfigOptionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecDnsConfigOption) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Value of the option. Optional: Defaults to empty.
+func (o GetK8sJobSpecTemplateSpecDnsConfigOptionOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecDnsConfigOption) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecDnsConfigOptionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecDnsConfigOptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetK8sJobSpecTemplateSpecDnsConfigOption)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecDnsConfigOptionArrayOutput) ToGetK8sJobSpecTemplateSpecDnsConfigOptionArrayOutput() GetK8sJobSpecTemplateSpecDnsConfigOptionArrayOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecDnsConfigOptionArrayOutput) ToGetK8sJobSpecTemplateSpecDnsConfigOptionArrayOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecDnsConfigOptionArrayOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecDnsConfigOptionArrayOutput) Index(i pulumi.IntInput) GetK8sJobSpecTemplateSpecDnsConfigOptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetK8sJobSpecTemplateSpecDnsConfigOption {
+		return vs[0].([]GetK8sJobSpecTemplateSpecDnsConfigOption)[vs[1].(int)]
+	}).(GetK8sJobSpecTemplateSpecDnsConfigOptionOutput)
+}
+
+type GetK8sJobSpecTemplateSpecHostAlias struct {
+	// Hostnames for the IP address.
+	Hostnames []string `pulumi:"hostnames"`
+	// IP address of the host file entry.
+	Ip string `pulumi:"ip"`
+}
+
+// GetK8sJobSpecTemplateSpecHostAliasInput is an input type that accepts GetK8sJobSpecTemplateSpecHostAliasArgs and GetK8sJobSpecTemplateSpecHostAliasOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecHostAliasInput` via:
+//
+//	GetK8sJobSpecTemplateSpecHostAliasArgs{...}
+type GetK8sJobSpecTemplateSpecHostAliasInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecHostAliasOutput() GetK8sJobSpecTemplateSpecHostAliasOutput
+	ToGetK8sJobSpecTemplateSpecHostAliasOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecHostAliasOutput
+}
+
+type GetK8sJobSpecTemplateSpecHostAliasArgs struct {
+	// Hostnames for the IP address.
+	Hostnames pulumi.StringArrayInput `pulumi:"hostnames"`
+	// IP address of the host file entry.
+	Ip pulumi.StringInput `pulumi:"ip"`
+}
+
+func (GetK8sJobSpecTemplateSpecHostAliasArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecHostAlias)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecHostAliasArgs) ToGetK8sJobSpecTemplateSpecHostAliasOutput() GetK8sJobSpecTemplateSpecHostAliasOutput {
+	return i.ToGetK8sJobSpecTemplateSpecHostAliasOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecHostAliasArgs) ToGetK8sJobSpecTemplateSpecHostAliasOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecHostAliasOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecHostAliasOutput)
+}
+
+// GetK8sJobSpecTemplateSpecHostAliasArrayInput is an input type that accepts GetK8sJobSpecTemplateSpecHostAliasArray and GetK8sJobSpecTemplateSpecHostAliasArrayOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecHostAliasArrayInput` via:
+//
+//	GetK8sJobSpecTemplateSpecHostAliasArray{ GetK8sJobSpecTemplateSpecHostAliasArgs{...} }
+type GetK8sJobSpecTemplateSpecHostAliasArrayInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecHostAliasArrayOutput() GetK8sJobSpecTemplateSpecHostAliasArrayOutput
+	ToGetK8sJobSpecTemplateSpecHostAliasArrayOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecHostAliasArrayOutput
+}
+
+type GetK8sJobSpecTemplateSpecHostAliasArray []GetK8sJobSpecTemplateSpecHostAliasInput
+
+func (GetK8sJobSpecTemplateSpecHostAliasArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetK8sJobSpecTemplateSpecHostAlias)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecHostAliasArray) ToGetK8sJobSpecTemplateSpecHostAliasArrayOutput() GetK8sJobSpecTemplateSpecHostAliasArrayOutput {
+	return i.ToGetK8sJobSpecTemplateSpecHostAliasArrayOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecHostAliasArray) ToGetK8sJobSpecTemplateSpecHostAliasArrayOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecHostAliasArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecHostAliasArrayOutput)
+}
+
+type GetK8sJobSpecTemplateSpecHostAliasOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecHostAliasOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecHostAlias)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecHostAliasOutput) ToGetK8sJobSpecTemplateSpecHostAliasOutput() GetK8sJobSpecTemplateSpecHostAliasOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecHostAliasOutput) ToGetK8sJobSpecTemplateSpecHostAliasOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecHostAliasOutput {
+	return o
+}
+
+// Hostnames for the IP address.
+func (o GetK8sJobSpecTemplateSpecHostAliasOutput) Hostnames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecHostAlias) []string { return v.Hostnames }).(pulumi.StringArrayOutput)
+}
+
+// IP address of the host file entry.
+func (o GetK8sJobSpecTemplateSpecHostAliasOutput) Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecHostAlias) string { return v.Ip }).(pulumi.StringOutput)
+}
+
+type GetK8sJobSpecTemplateSpecHostAliasArrayOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecHostAliasArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetK8sJobSpecTemplateSpecHostAlias)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecHostAliasArrayOutput) ToGetK8sJobSpecTemplateSpecHostAliasArrayOutput() GetK8sJobSpecTemplateSpecHostAliasArrayOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecHostAliasArrayOutput) ToGetK8sJobSpecTemplateSpecHostAliasArrayOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecHostAliasArrayOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecHostAliasArrayOutput) Index(i pulumi.IntInput) GetK8sJobSpecTemplateSpecHostAliasOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetK8sJobSpecTemplateSpecHostAlias {
+		return vs[0].([]GetK8sJobSpecTemplateSpecHostAlias)[vs[1].(int)]
+	}).(GetK8sJobSpecTemplateSpecHostAliasOutput)
+}
+
+type GetK8sJobSpecTemplateSpecImagePullSecret struct {
+	// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+	Name string `pulumi:"name"`
+}
+
+// GetK8sJobSpecTemplateSpecImagePullSecretInput is an input type that accepts GetK8sJobSpecTemplateSpecImagePullSecretArgs and GetK8sJobSpecTemplateSpecImagePullSecretOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecImagePullSecretInput` via:
+//
+//	GetK8sJobSpecTemplateSpecImagePullSecretArgs{...}
+type GetK8sJobSpecTemplateSpecImagePullSecretInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecImagePullSecretOutput() GetK8sJobSpecTemplateSpecImagePullSecretOutput
+	ToGetK8sJobSpecTemplateSpecImagePullSecretOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecImagePullSecretOutput
+}
+
+type GetK8sJobSpecTemplateSpecImagePullSecretArgs struct {
+	// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetK8sJobSpecTemplateSpecImagePullSecretArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecImagePullSecret)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecImagePullSecretArgs) ToGetK8sJobSpecTemplateSpecImagePullSecretOutput() GetK8sJobSpecTemplateSpecImagePullSecretOutput {
+	return i.ToGetK8sJobSpecTemplateSpecImagePullSecretOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecImagePullSecretArgs) ToGetK8sJobSpecTemplateSpecImagePullSecretOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecImagePullSecretOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecImagePullSecretOutput)
+}
+
+// GetK8sJobSpecTemplateSpecImagePullSecretArrayInput is an input type that accepts GetK8sJobSpecTemplateSpecImagePullSecretArray and GetK8sJobSpecTemplateSpecImagePullSecretArrayOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecImagePullSecretArrayInput` via:
+//
+//	GetK8sJobSpecTemplateSpecImagePullSecretArray{ GetK8sJobSpecTemplateSpecImagePullSecretArgs{...} }
+type GetK8sJobSpecTemplateSpecImagePullSecretArrayInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecImagePullSecretArrayOutput() GetK8sJobSpecTemplateSpecImagePullSecretArrayOutput
+	ToGetK8sJobSpecTemplateSpecImagePullSecretArrayOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecImagePullSecretArrayOutput
+}
+
+type GetK8sJobSpecTemplateSpecImagePullSecretArray []GetK8sJobSpecTemplateSpecImagePullSecretInput
+
+func (GetK8sJobSpecTemplateSpecImagePullSecretArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetK8sJobSpecTemplateSpecImagePullSecret)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecImagePullSecretArray) ToGetK8sJobSpecTemplateSpecImagePullSecretArrayOutput() GetK8sJobSpecTemplateSpecImagePullSecretArrayOutput {
+	return i.ToGetK8sJobSpecTemplateSpecImagePullSecretArrayOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecImagePullSecretArray) ToGetK8sJobSpecTemplateSpecImagePullSecretArrayOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecImagePullSecretArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecImagePullSecretArrayOutput)
+}
+
+type GetK8sJobSpecTemplateSpecImagePullSecretOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecImagePullSecretOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecImagePullSecret)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecImagePullSecretOutput) ToGetK8sJobSpecTemplateSpecImagePullSecretOutput() GetK8sJobSpecTemplateSpecImagePullSecretOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecImagePullSecretOutput) ToGetK8sJobSpecTemplateSpecImagePullSecretOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecImagePullSecretOutput {
+	return o
+}
+
+// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+func (o GetK8sJobSpecTemplateSpecImagePullSecretOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecImagePullSecret) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetK8sJobSpecTemplateSpecImagePullSecretArrayOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecImagePullSecretArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetK8sJobSpecTemplateSpecImagePullSecret)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecImagePullSecretArrayOutput) ToGetK8sJobSpecTemplateSpecImagePullSecretArrayOutput() GetK8sJobSpecTemplateSpecImagePullSecretArrayOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecImagePullSecretArrayOutput) ToGetK8sJobSpecTemplateSpecImagePullSecretArrayOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecImagePullSecretArrayOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecImagePullSecretArrayOutput) Index(i pulumi.IntInput) GetK8sJobSpecTemplateSpecImagePullSecretOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetK8sJobSpecTemplateSpecImagePullSecret {
+		return vs[0].([]GetK8sJobSpecTemplateSpecImagePullSecret)[vs[1].(int)]
+	}).(GetK8sJobSpecTemplateSpecImagePullSecretOutput)
+}
+
+type GetK8sJobSpecTemplateSpecInitContainer struct {
+	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+	Args []string `pulumi:"args"`
+	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+	Commands []string `pulumi:"commands"`
+	// List of sources to populate environment variables in the container. The keys defined within a source must be a C_IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated.
+	EnvFroms []GetK8sJobSpecTemplateSpecInitContainerEnvFrom `pulumi:"envFroms"`
+	// List of environment variables to set in the container. Cannot be updated.
+	Envs []GetK8sJobSpecTemplateSpecInitContainerEnv `pulumi:"envs"`
+	// Docker image name. More info: https://kubernetes.io/docs/concepts/containers/images/
+	Image *string `pulumi:"image"`
+	// Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/images/#updating-images
+	ImagePullPolicy string `pulumi:"imagePullPolicy"`
+	// Actions that the management system should take in response to container lifecycle events
+	Lifecycle *GetK8sJobSpecTemplateSpecInitContainerLifecycle `pulumi:"lifecycle"`
+	// Periodic probe of container liveness. Container will be restarted if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+	LivenessProbe *GetK8sJobSpecTemplateSpecInitContainerLivenessProbe `pulumi:"livenessProbe"`
+	// Name of the container specified as a DNS_LABEL. Each container in a pod must have a unique name (DNS_LABEL). Cannot be updated.
+	Name string `pulumi:"name"`
+	// List of ports to expose from the container. Exposing a port here gives the system additional information about the network connections a container uses, but is primarily informational. Not specifying a port here DOES NOT prevent that port from being exposed. Any port which is listening on the default "0.0.0.0" address inside a container will be accessible from the network. Cannot be updated.
+	Ports []GetK8sJobSpecTemplateSpecInitContainerPort `pulumi:"ports"`
+	// Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+	ReadinessProbe *GetK8sJobSpecTemplateSpecInitContainerReadinessProbe `pulumi:"readinessProbe"`
+	// Compute Resources required by this container. Cannot be updated. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+	Resources GetK8sJobSpecTemplateSpecInitContainerResources `pulumi:"resources"`
+	// Security options the pod should run with. More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+	SecurityContext *GetK8sJobSpecTemplateSpecInitContainerSecurityContext `pulumi:"securityContext"`
+	// StartupProbe indicates that the Pod has successfully initialized. If specified, no other probes are executed until this completes successfully. If this probe fails, the Pod will be restarted, just as if the livenessProbe failed. This can be used to provide different probe parameters at the beginning of a Pod's lifecycle, when it might take a long time to load data or warm a cache, than during steady-state operation. This cannot be updated. This is an alpha feature enabled by the StartupProbe feature flag. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	StartupProbe *GetK8sJobSpecTemplateSpecInitContainerStartupProbe `pulumi:"startupProbe"`
+	// Whether this container should allocate a buffer for stdin in the container runtime. If this is not set, reads from stdin in the container will always result in EOF.
+	Stdin *bool `pulumi:"stdin"`
+	// Whether the container runtime should close the stdin channel after it has been opened by a single attach. When stdin is true the stdin stream will remain open across multiple attach sessions. If stdinOnce is set to true, stdin is opened on container start, is empty until the first client attaches to stdin, and then remains open and accepts data until the client disconnects, at which time stdin is closed and remains closed until the container is restarted. If this flag is false, a container processes that reads from stdin will never receive an EOF.
+	StdinOnce *bool `pulumi:"stdinOnce"`
+	// Optional: Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Defaults to /dev/termination-log. Cannot be updated.
+	TerminationMessagePath *string `pulumi:"terminationMessagePath"`
+	// Optional: Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
+	TerminationMessagePolicy string `pulumi:"terminationMessagePolicy"`
+	// Whether this container should allocate a TTY for itself
+	Tty *bool `pulumi:"tty"`
+	// Pod volumes to mount into the container's filesystem. Cannot be updated.
+	VolumeMounts []GetK8sJobSpecTemplateSpecInitContainerVolumeMount `pulumi:"volumeMounts"`
+	// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image. Cannot be updated.
+	WorkingDir *string `pulumi:"workingDir"`
+}
+
+// GetK8sJobSpecTemplateSpecInitContainerInput is an input type that accepts GetK8sJobSpecTemplateSpecInitContainerArgs and GetK8sJobSpecTemplateSpecInitContainerOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecInitContainerInput` via:
+//
+//	GetK8sJobSpecTemplateSpecInitContainerArgs{...}
+type GetK8sJobSpecTemplateSpecInitContainerInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecInitContainerOutput() GetK8sJobSpecTemplateSpecInitContainerOutput
+	ToGetK8sJobSpecTemplateSpecInitContainerOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecInitContainerOutput
+}
+
+type GetK8sJobSpecTemplateSpecInitContainerArgs struct {
+	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+	Commands pulumi.StringArrayInput `pulumi:"commands"`
+	// List of sources to populate environment variables in the container. The keys defined within a source must be a C_IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated.
+	EnvFroms GetK8sJobSpecTemplateSpecInitContainerEnvFromArrayInput `pulumi:"envFroms"`
+	// List of environment variables to set in the container. Cannot be updated.
+	Envs GetK8sJobSpecTemplateSpecInitContainerEnvArrayInput `pulumi:"envs"`
+	// Docker image name. More info: https://kubernetes.io/docs/concepts/containers/images/
+	Image pulumi.StringPtrInput `pulumi:"image"`
+	// Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/images/#updating-images
+	ImagePullPolicy pulumi.StringInput `pulumi:"imagePullPolicy"`
+	// Actions that the management system should take in response to container lifecycle events
+	Lifecycle GetK8sJobSpecTemplateSpecInitContainerLifecyclePtrInput `pulumi:"lifecycle"`
+	// Periodic probe of container liveness. Container will be restarted if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+	LivenessProbe GetK8sJobSpecTemplateSpecInitContainerLivenessProbePtrInput `pulumi:"livenessProbe"`
+	// Name of the container specified as a DNS_LABEL. Each container in a pod must have a unique name (DNS_LABEL). Cannot be updated.
+	Name pulumi.StringInput `pulumi:"name"`
+	// List of ports to expose from the container. Exposing a port here gives the system additional information about the network connections a container uses, but is primarily informational. Not specifying a port here DOES NOT prevent that port from being exposed. Any port which is listening on the default "0.0.0.0" address inside a container will be accessible from the network. Cannot be updated.
+	Ports GetK8sJobSpecTemplateSpecInitContainerPortArrayInput `pulumi:"ports"`
+	// Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+	ReadinessProbe GetK8sJobSpecTemplateSpecInitContainerReadinessProbePtrInput `pulumi:"readinessProbe"`
+	// Compute Resources required by this container. Cannot be updated. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+	Resources GetK8sJobSpecTemplateSpecInitContainerResourcesInput `pulumi:"resources"`
+	// Security options the pod should run with. More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+	SecurityContext GetK8sJobSpecTemplateSpecInitContainerSecurityContextPtrInput `pulumi:"securityContext"`
+	// StartupProbe indicates that the Pod has successfully initialized. If specified, no other probes are executed until this completes successfully. If this probe fails, the Pod will be restarted, just as if the livenessProbe failed. This can be used to provide different probe parameters at the beginning of a Pod's lifecycle, when it might take a long time to load data or warm a cache, than during steady-state operation. This cannot be updated. This is an alpha feature enabled by the StartupProbe feature flag. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	StartupProbe GetK8sJobSpecTemplateSpecInitContainerStartupProbePtrInput `pulumi:"startupProbe"`
+	// Whether this container should allocate a buffer for stdin in the container runtime. If this is not set, reads from stdin in the container will always result in EOF.
+	Stdin pulumi.BoolPtrInput `pulumi:"stdin"`
+	// Whether the container runtime should close the stdin channel after it has been opened by a single attach. When stdin is true the stdin stream will remain open across multiple attach sessions. If stdinOnce is set to true, stdin is opened on container start, is empty until the first client attaches to stdin, and then remains open and accepts data until the client disconnects, at which time stdin is closed and remains closed until the container is restarted. If this flag is false, a container processes that reads from stdin will never receive an EOF.
+	StdinOnce pulumi.BoolPtrInput `pulumi:"stdinOnce"`
+	// Optional: Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Defaults to /dev/termination-log. Cannot be updated.
+	TerminationMessagePath pulumi.StringPtrInput `pulumi:"terminationMessagePath"`
+	// Optional: Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
+	TerminationMessagePolicy pulumi.StringInput `pulumi:"terminationMessagePolicy"`
+	// Whether this container should allocate a TTY for itself
+	Tty pulumi.BoolPtrInput `pulumi:"tty"`
+	// Pod volumes to mount into the container's filesystem. Cannot be updated.
+	VolumeMounts GetK8sJobSpecTemplateSpecInitContainerVolumeMountArrayInput `pulumi:"volumeMounts"`
+	// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image. Cannot be updated.
+	WorkingDir pulumi.StringPtrInput `pulumi:"workingDir"`
+}
+
+func (GetK8sJobSpecTemplateSpecInitContainerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecInitContainer)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecInitContainerArgs) ToGetK8sJobSpecTemplateSpecInitContainerOutput() GetK8sJobSpecTemplateSpecInitContainerOutput {
+	return i.ToGetK8sJobSpecTemplateSpecInitContainerOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecInitContainerArgs) ToGetK8sJobSpecTemplateSpecInitContainerOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecInitContainerOutput)
+}
+
+// GetK8sJobSpecTemplateSpecInitContainerArrayInput is an input type that accepts GetK8sJobSpecTemplateSpecInitContainerArray and GetK8sJobSpecTemplateSpecInitContainerArrayOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecInitContainerArrayInput` via:
+//
+//	GetK8sJobSpecTemplateSpecInitContainerArray{ GetK8sJobSpecTemplateSpecInitContainerArgs{...} }
+type GetK8sJobSpecTemplateSpecInitContainerArrayInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecInitContainerArrayOutput() GetK8sJobSpecTemplateSpecInitContainerArrayOutput
+	ToGetK8sJobSpecTemplateSpecInitContainerArrayOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecInitContainerArrayOutput
+}
+
+type GetK8sJobSpecTemplateSpecInitContainerArray []GetK8sJobSpecTemplateSpecInitContainerInput
+
+func (GetK8sJobSpecTemplateSpecInitContainerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetK8sJobSpecTemplateSpecInitContainer)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecInitContainerArray) ToGetK8sJobSpecTemplateSpecInitContainerArrayOutput() GetK8sJobSpecTemplateSpecInitContainerArrayOutput {
+	return i.ToGetK8sJobSpecTemplateSpecInitContainerArrayOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecInitContainerArray) ToGetK8sJobSpecTemplateSpecInitContainerArrayOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecInitContainerArrayOutput)
+}
+
+type GetK8sJobSpecTemplateSpecInitContainerOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecInitContainerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecInitContainer)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerOutput) ToGetK8sJobSpecTemplateSpecInitContainerOutput() GetK8sJobSpecTemplateSpecInitContainerOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerOutput) ToGetK8sJobSpecTemplateSpecInitContainerOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerOutput {
+	return o
+}
+
+// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+func (o GetK8sJobSpecTemplateSpecInitContainerOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecInitContainer) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+func (o GetK8sJobSpecTemplateSpecInitContainerOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecInitContainer) []string { return v.Commands }).(pulumi.StringArrayOutput)
+}
+
+// List of sources to populate environment variables in the container. The keys defined within a source must be a C_IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated.
+func (o GetK8sJobSpecTemplateSpecInitContainerOutput) EnvFroms() GetK8sJobSpecTemplateSpecInitContainerEnvFromArrayOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecInitContainer) []GetK8sJobSpecTemplateSpecInitContainerEnvFrom {
+		return v.EnvFroms
+	}).(GetK8sJobSpecTemplateSpecInitContainerEnvFromArrayOutput)
+}
+
+// List of environment variables to set in the container. Cannot be updated.
+func (o GetK8sJobSpecTemplateSpecInitContainerOutput) Envs() GetK8sJobSpecTemplateSpecInitContainerEnvArrayOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecInitContainer) []GetK8sJobSpecTemplateSpecInitContainerEnv {
+		return v.Envs
+	}).(GetK8sJobSpecTemplateSpecInitContainerEnvArrayOutput)
+}
+
+// Docker image name. More info: https://kubernetes.io/docs/concepts/containers/images/
+func (o GetK8sJobSpecTemplateSpecInitContainerOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecInitContainer) *string { return v.Image }).(pulumi.StringPtrOutput)
+}
+
+// Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/images/#updating-images
+func (o GetK8sJobSpecTemplateSpecInitContainerOutput) ImagePullPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecInitContainer) string { return v.ImagePullPolicy }).(pulumi.StringOutput)
+}
+
+// Actions that the management system should take in response to container lifecycle events
+func (o GetK8sJobSpecTemplateSpecInitContainerOutput) Lifecycle() GetK8sJobSpecTemplateSpecInitContainerLifecyclePtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecInitContainer) *GetK8sJobSpecTemplateSpecInitContainerLifecycle {
+		return v.Lifecycle
+	}).(GetK8sJobSpecTemplateSpecInitContainerLifecyclePtrOutput)
+}
+
+// Periodic probe of container liveness. Container will be restarted if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+func (o GetK8sJobSpecTemplateSpecInitContainerOutput) LivenessProbe() GetK8sJobSpecTemplateSpecInitContainerLivenessProbePtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecInitContainer) *GetK8sJobSpecTemplateSpecInitContainerLivenessProbe {
+		return v.LivenessProbe
+	}).(GetK8sJobSpecTemplateSpecInitContainerLivenessProbePtrOutput)
+}
+
+// Name of the container specified as a DNS_LABEL. Each container in a pod must have a unique name (DNS_LABEL). Cannot be updated.
+func (o GetK8sJobSpecTemplateSpecInitContainerOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecInitContainer) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// List of ports to expose from the container. Exposing a port here gives the system additional information about the network connections a container uses, but is primarily informational. Not specifying a port here DOES NOT prevent that port from being exposed. Any port which is listening on the default "0.0.0.0" address inside a container will be accessible from the network. Cannot be updated.
+func (o GetK8sJobSpecTemplateSpecInitContainerOutput) Ports() GetK8sJobSpecTemplateSpecInitContainerPortArrayOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecInitContainer) []GetK8sJobSpecTemplateSpecInitContainerPort {
+		return v.Ports
+	}).(GetK8sJobSpecTemplateSpecInitContainerPortArrayOutput)
+}
+
+// Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+func (o GetK8sJobSpecTemplateSpecInitContainerOutput) ReadinessProbe() GetK8sJobSpecTemplateSpecInitContainerReadinessProbePtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecInitContainer) *GetK8sJobSpecTemplateSpecInitContainerReadinessProbe {
+		return v.ReadinessProbe
+	}).(GetK8sJobSpecTemplateSpecInitContainerReadinessProbePtrOutput)
+}
+
+// Compute Resources required by this container. Cannot be updated. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+func (o GetK8sJobSpecTemplateSpecInitContainerOutput) Resources() GetK8sJobSpecTemplateSpecInitContainerResourcesOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecInitContainer) GetK8sJobSpecTemplateSpecInitContainerResources {
+		return v.Resources
+	}).(GetK8sJobSpecTemplateSpecInitContainerResourcesOutput)
+}
+
+// Security options the pod should run with. More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+func (o GetK8sJobSpecTemplateSpecInitContainerOutput) SecurityContext() GetK8sJobSpecTemplateSpecInitContainerSecurityContextPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecInitContainer) *GetK8sJobSpecTemplateSpecInitContainerSecurityContext {
+		return v.SecurityContext
+	}).(GetK8sJobSpecTemplateSpecInitContainerSecurityContextPtrOutput)
+}
+
+// StartupProbe indicates that the Pod has successfully initialized. If specified, no other probes are executed until this completes successfully. If this probe fails, the Pod will be restarted, just as if the livenessProbe failed. This can be used to provide different probe parameters at the beginning of a Pod's lifecycle, when it might take a long time to load data or warm a cache, than during steady-state operation. This cannot be updated. This is an alpha feature enabled by the StartupProbe feature flag. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+func (o GetK8sJobSpecTemplateSpecInitContainerOutput) StartupProbe() GetK8sJobSpecTemplateSpecInitContainerStartupProbePtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecInitContainer) *GetK8sJobSpecTemplateSpecInitContainerStartupProbe {
+		return v.StartupProbe
+	}).(GetK8sJobSpecTemplateSpecInitContainerStartupProbePtrOutput)
+}
+
+// Whether this container should allocate a buffer for stdin in the container runtime. If this is not set, reads from stdin in the container will always result in EOF.
+func (o GetK8sJobSpecTemplateSpecInitContainerOutput) Stdin() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecInitContainer) *bool { return v.Stdin }).(pulumi.BoolPtrOutput)
+}
+
+// Whether the container runtime should close the stdin channel after it has been opened by a single attach. When stdin is true the stdin stream will remain open across multiple attach sessions. If stdinOnce is set to true, stdin is opened on container start, is empty until the first client attaches to stdin, and then remains open and accepts data until the client disconnects, at which time stdin is closed and remains closed until the container is restarted. If this flag is false, a container processes that reads from stdin will never receive an EOF.
+func (o GetK8sJobSpecTemplateSpecInitContainerOutput) StdinOnce() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecInitContainer) *bool { return v.StdinOnce }).(pulumi.BoolPtrOutput)
+}
+
+// Optional: Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Defaults to /dev/termination-log. Cannot be updated.
+func (o GetK8sJobSpecTemplateSpecInitContainerOutput) TerminationMessagePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecInitContainer) *string { return v.TerminationMessagePath }).(pulumi.StringPtrOutput)
+}
+
+// Optional: Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
+func (o GetK8sJobSpecTemplateSpecInitContainerOutput) TerminationMessagePolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecInitContainer) string { return v.TerminationMessagePolicy }).(pulumi.StringOutput)
+}
+
+// Whether this container should allocate a TTY for itself
+func (o GetK8sJobSpecTemplateSpecInitContainerOutput) Tty() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecInitContainer) *bool { return v.Tty }).(pulumi.BoolPtrOutput)
+}
+
+// Pod volumes to mount into the container's filesystem. Cannot be updated.
+func (o GetK8sJobSpecTemplateSpecInitContainerOutput) VolumeMounts() GetK8sJobSpecTemplateSpecInitContainerVolumeMountArrayOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecInitContainer) []GetK8sJobSpecTemplateSpecInitContainerVolumeMount {
+		return v.VolumeMounts
+	}).(GetK8sJobSpecTemplateSpecInitContainerVolumeMountArrayOutput)
+}
+
+// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image. Cannot be updated.
+func (o GetK8sJobSpecTemplateSpecInitContainerOutput) WorkingDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecInitContainer) *string { return v.WorkingDir }).(pulumi.StringPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecInitContainerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecInitContainerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetK8sJobSpecTemplateSpecInitContainer)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerArrayOutput) ToGetK8sJobSpecTemplateSpecInitContainerArrayOutput() GetK8sJobSpecTemplateSpecInitContainerArrayOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerArrayOutput) ToGetK8sJobSpecTemplateSpecInitContainerArrayOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerArrayOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerArrayOutput) Index(i pulumi.IntInput) GetK8sJobSpecTemplateSpecInitContainerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetK8sJobSpecTemplateSpecInitContainer {
+		return vs[0].([]GetK8sJobSpecTemplateSpecInitContainer)[vs[1].(int)]
+	}).(GetK8sJobSpecTemplateSpecInitContainerOutput)
+}
+
+type GetK8sJobSpecTemplateSpecInitContainerEnv struct {
+	// Name of the environment variable. Must be a C_IDENTIFIER
+	Name string `pulumi:"name"`
+	// Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
+	Value *string `pulumi:"value"`
+	// Source for the environment variable's value
+	ValueFrom *GetK8sJobSpecTemplateSpecInitContainerEnvValueFrom `pulumi:"valueFrom"`
+}
+
+// GetK8sJobSpecTemplateSpecInitContainerEnvInput is an input type that accepts GetK8sJobSpecTemplateSpecInitContainerEnvArgs and GetK8sJobSpecTemplateSpecInitContainerEnvOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecInitContainerEnvInput` via:
+//
+//	GetK8sJobSpecTemplateSpecInitContainerEnvArgs{...}
+type GetK8sJobSpecTemplateSpecInitContainerEnvInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecInitContainerEnvOutput() GetK8sJobSpecTemplateSpecInitContainerEnvOutput
+	ToGetK8sJobSpecTemplateSpecInitContainerEnvOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvOutput
+}
+
+type GetK8sJobSpecTemplateSpecInitContainerEnvArgs struct {
+	// Name of the environment variable. Must be a C_IDENTIFIER
+	Name pulumi.StringInput `pulumi:"name"`
+	// Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
+	Value pulumi.StringPtrInput `pulumi:"value"`
+	// Source for the environment variable's value
+	ValueFrom GetK8sJobSpecTemplateSpecInitContainerEnvValueFromPtrInput `pulumi:"valueFrom"`
+}
+
+func (GetK8sJobSpecTemplateSpecInitContainerEnvArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecInitContainerEnv)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecInitContainerEnvArgs) ToGetK8sJobSpecTemplateSpecInitContainerEnvOutput() GetK8sJobSpecTemplateSpecInitContainerEnvOutput {
+	return i.ToGetK8sJobSpecTemplateSpecInitContainerEnvOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecInitContainerEnvArgs) ToGetK8sJobSpecTemplateSpecInitContainerEnvOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecInitContainerEnvOutput)
+}
+
+// GetK8sJobSpecTemplateSpecInitContainerEnvArrayInput is an input type that accepts GetK8sJobSpecTemplateSpecInitContainerEnvArray and GetK8sJobSpecTemplateSpecInitContainerEnvArrayOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecInitContainerEnvArrayInput` via:
+//
+//	GetK8sJobSpecTemplateSpecInitContainerEnvArray{ GetK8sJobSpecTemplateSpecInitContainerEnvArgs{...} }
+type GetK8sJobSpecTemplateSpecInitContainerEnvArrayInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecInitContainerEnvArrayOutput() GetK8sJobSpecTemplateSpecInitContainerEnvArrayOutput
+	ToGetK8sJobSpecTemplateSpecInitContainerEnvArrayOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvArrayOutput
+}
+
+type GetK8sJobSpecTemplateSpecInitContainerEnvArray []GetK8sJobSpecTemplateSpecInitContainerEnvInput
+
+func (GetK8sJobSpecTemplateSpecInitContainerEnvArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetK8sJobSpecTemplateSpecInitContainerEnv)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecInitContainerEnvArray) ToGetK8sJobSpecTemplateSpecInitContainerEnvArrayOutput() GetK8sJobSpecTemplateSpecInitContainerEnvArrayOutput {
+	return i.ToGetK8sJobSpecTemplateSpecInitContainerEnvArrayOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecInitContainerEnvArray) ToGetK8sJobSpecTemplateSpecInitContainerEnvArrayOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecInitContainerEnvArrayOutput)
+}
+
+type GetK8sJobSpecTemplateSpecInitContainerEnvOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecInitContainerEnvOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecInitContainerEnv)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvOutput) ToGetK8sJobSpecTemplateSpecInitContainerEnvOutput() GetK8sJobSpecTemplateSpecInitContainerEnvOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvOutput) ToGetK8sJobSpecTemplateSpecInitContainerEnvOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvOutput {
+	return o
+}
+
+// Name of the environment variable. Must be a C_IDENTIFIER
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecInitContainerEnv) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecInitContainerEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+// Source for the environment variable's value
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvOutput) ValueFrom() GetK8sJobSpecTemplateSpecInitContainerEnvValueFromPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecInitContainerEnv) *GetK8sJobSpecTemplateSpecInitContainerEnvValueFrom {
+		return v.ValueFrom
+	}).(GetK8sJobSpecTemplateSpecInitContainerEnvValueFromPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecInitContainerEnvArrayOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecInitContainerEnvArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetK8sJobSpecTemplateSpecInitContainerEnv)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvArrayOutput) ToGetK8sJobSpecTemplateSpecInitContainerEnvArrayOutput() GetK8sJobSpecTemplateSpecInitContainerEnvArrayOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvArrayOutput) ToGetK8sJobSpecTemplateSpecInitContainerEnvArrayOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvArrayOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvArrayOutput) Index(i pulumi.IntInput) GetK8sJobSpecTemplateSpecInitContainerEnvOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetK8sJobSpecTemplateSpecInitContainerEnv {
+		return vs[0].([]GetK8sJobSpecTemplateSpecInitContainerEnv)[vs[1].(int)]
+	}).(GetK8sJobSpecTemplateSpecInitContainerEnvOutput)
+}
+
+type GetK8sJobSpecTemplateSpecInitContainerEnvFrom struct {
+	// The ConfigMap to select from
+	ConfigMapRef *GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRef `pulumi:"configMapRef"`
+	// An optional identifer to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
+	Prefix *string `pulumi:"prefix"`
+	// The Secret to select from
+	SecretRef *GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRef `pulumi:"secretRef"`
+}
+
+// GetK8sJobSpecTemplateSpecInitContainerEnvFromInput is an input type that accepts GetK8sJobSpecTemplateSpecInitContainerEnvFromArgs and GetK8sJobSpecTemplateSpecInitContainerEnvFromOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecInitContainerEnvFromInput` via:
+//
+//	GetK8sJobSpecTemplateSpecInitContainerEnvFromArgs{...}
+type GetK8sJobSpecTemplateSpecInitContainerEnvFromInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecInitContainerEnvFromOutput() GetK8sJobSpecTemplateSpecInitContainerEnvFromOutput
+	ToGetK8sJobSpecTemplateSpecInitContainerEnvFromOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvFromOutput
+}
+
+type GetK8sJobSpecTemplateSpecInitContainerEnvFromArgs struct {
+	// The ConfigMap to select from
+	ConfigMapRef GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefPtrInput `pulumi:"configMapRef"`
+	// An optional identifer to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
+	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
+	// The Secret to select from
+	SecretRef GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefPtrInput `pulumi:"secretRef"`
+}
+
+func (GetK8sJobSpecTemplateSpecInitContainerEnvFromArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecInitContainerEnvFrom)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecInitContainerEnvFromArgs) ToGetK8sJobSpecTemplateSpecInitContainerEnvFromOutput() GetK8sJobSpecTemplateSpecInitContainerEnvFromOutput {
+	return i.ToGetK8sJobSpecTemplateSpecInitContainerEnvFromOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecInitContainerEnvFromArgs) ToGetK8sJobSpecTemplateSpecInitContainerEnvFromOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvFromOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecInitContainerEnvFromOutput)
+}
+
+// GetK8sJobSpecTemplateSpecInitContainerEnvFromArrayInput is an input type that accepts GetK8sJobSpecTemplateSpecInitContainerEnvFromArray and GetK8sJobSpecTemplateSpecInitContainerEnvFromArrayOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecInitContainerEnvFromArrayInput` via:
+//
+//	GetK8sJobSpecTemplateSpecInitContainerEnvFromArray{ GetK8sJobSpecTemplateSpecInitContainerEnvFromArgs{...} }
+type GetK8sJobSpecTemplateSpecInitContainerEnvFromArrayInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecInitContainerEnvFromArrayOutput() GetK8sJobSpecTemplateSpecInitContainerEnvFromArrayOutput
+	ToGetK8sJobSpecTemplateSpecInitContainerEnvFromArrayOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvFromArrayOutput
+}
+
+type GetK8sJobSpecTemplateSpecInitContainerEnvFromArray []GetK8sJobSpecTemplateSpecInitContainerEnvFromInput
+
+func (GetK8sJobSpecTemplateSpecInitContainerEnvFromArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetK8sJobSpecTemplateSpecInitContainerEnvFrom)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecInitContainerEnvFromArray) ToGetK8sJobSpecTemplateSpecInitContainerEnvFromArrayOutput() GetK8sJobSpecTemplateSpecInitContainerEnvFromArrayOutput {
+	return i.ToGetK8sJobSpecTemplateSpecInitContainerEnvFromArrayOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecInitContainerEnvFromArray) ToGetK8sJobSpecTemplateSpecInitContainerEnvFromArrayOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvFromArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecInitContainerEnvFromArrayOutput)
+}
+
+type GetK8sJobSpecTemplateSpecInitContainerEnvFromOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecInitContainerEnvFromOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecInitContainerEnvFrom)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvFromOutput) ToGetK8sJobSpecTemplateSpecInitContainerEnvFromOutput() GetK8sJobSpecTemplateSpecInitContainerEnvFromOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvFromOutput) ToGetK8sJobSpecTemplateSpecInitContainerEnvFromOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvFromOutput {
+	return o
+}
+
+// The ConfigMap to select from
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvFromOutput) ConfigMapRef() GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecInitContainerEnvFrom) *GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRef {
+		return v.ConfigMapRef
+	}).(GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefPtrOutput)
+}
+
+// An optional identifer to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvFromOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecInitContainerEnvFrom) *string { return v.Prefix }).(pulumi.StringPtrOutput)
+}
+
+// The Secret to select from
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvFromOutput) SecretRef() GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecInitContainerEnvFrom) *GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRef {
+		return v.SecretRef
+	}).(GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecInitContainerEnvFromArrayOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecInitContainerEnvFromArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetK8sJobSpecTemplateSpecInitContainerEnvFrom)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvFromArrayOutput) ToGetK8sJobSpecTemplateSpecInitContainerEnvFromArrayOutput() GetK8sJobSpecTemplateSpecInitContainerEnvFromArrayOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvFromArrayOutput) ToGetK8sJobSpecTemplateSpecInitContainerEnvFromArrayOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvFromArrayOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvFromArrayOutput) Index(i pulumi.IntInput) GetK8sJobSpecTemplateSpecInitContainerEnvFromOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetK8sJobSpecTemplateSpecInitContainerEnvFrom {
+		return vs[0].([]GetK8sJobSpecTemplateSpecInitContainerEnvFrom)[vs[1].(int)]
+	}).(GetK8sJobSpecTemplateSpecInitContainerEnvFromOutput)
+}
+
+type GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRef struct {
+	// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+	Name string `pulumi:"name"`
+	// Specify whether the ConfigMap must be defined
+	Optional *bool `pulumi:"optional"`
+}
+
+// GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefInput is an input type that accepts GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefArgs and GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefInput` via:
+//
+//	GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefArgs{...}
+type GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefOutput() GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefOutput
+	ToGetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefOutput
+}
+
+type GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefArgs struct {
+	// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+	Name pulumi.StringInput `pulumi:"name"`
+	// Specify whether the ConfigMap must be defined
+	Optional pulumi.BoolPtrInput `pulumi:"optional"`
+}
+
+func (GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRef)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefArgs) ToGetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefOutput() GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefOutput {
+	return i.ToGetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefArgs) ToGetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefOutput)
+}
+
+func (i GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefArgs) ToGetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefPtrOutput() GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefPtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefPtrOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefArgs) ToGetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefOutput).ToGetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefPtrOutputWithContext(ctx)
+}
+
+// GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefPtrInput is an input type that accepts GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefArgs, GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefPtr and GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefPtrOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefPtrInput` via:
+//
+//	        GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefPtrInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefPtrOutput() GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefPtrOutput
+	ToGetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefPtrOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefPtrOutput
+}
+
+type getK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefPtrType GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefArgs
+
+func GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefPtr(v *GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefArgs) GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefPtrInput {
+	return (*getK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefPtrType)(v)
+}
+
+func (*getK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRef)(nil)).Elem()
+}
+
+func (i *getK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefPtrType) ToGetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefPtrOutput() GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefPtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefPtrOutputWithContext(context.Background())
+}
+
+func (i *getK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefPtrType) ToGetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRef)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefOutput) ToGetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefOutput() GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefOutput) ToGetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefOutput) ToGetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefPtrOutput() GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefPtrOutput {
+	return o.ToGetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefPtrOutputWithContext(context.Background())
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefOutput) ToGetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRef) *GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRef {
+		return &v
+	}).(GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefPtrOutput)
+}
+
+// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRef) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Specify whether the ConfigMap must be defined
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefOutput) Optional() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRef) *bool { return v.Optional }).(pulumi.BoolPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefPtrOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRef)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefPtrOutput) ToGetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefPtrOutput() GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefPtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefPtrOutput) ToGetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefPtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefPtrOutput) Elem() GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRef) GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRef {
+		if v != nil {
+			return *v
+		}
+		var ret GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRef
+		return ret
+	}).(GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefOutput)
+}
+
+// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRef) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specify whether the ConfigMap must be defined
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefPtrOutput) Optional() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRef) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Optional
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRef struct {
+	// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+	Name string `pulumi:"name"`
+	// Specify whether the Secret must be defined
+	Optional *bool `pulumi:"optional"`
+}
+
+// GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefInput is an input type that accepts GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefArgs and GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefInput` via:
+//
+//	GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefArgs{...}
+type GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefOutput() GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefOutput
+	ToGetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefOutput
+}
+
+type GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefArgs struct {
+	// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+	Name pulumi.StringInput `pulumi:"name"`
+	// Specify whether the Secret must be defined
+	Optional pulumi.BoolPtrInput `pulumi:"optional"`
+}
+
+func (GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRef)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefArgs) ToGetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefOutput() GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefOutput {
+	return i.ToGetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefArgs) ToGetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefOutput)
+}
+
+func (i GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefArgs) ToGetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefPtrOutput() GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefPtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefPtrOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefArgs) ToGetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefOutput).ToGetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefPtrOutputWithContext(ctx)
+}
+
+// GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefPtrInput is an input type that accepts GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefArgs, GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefPtr and GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefPtrOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefPtrInput` via:
+//
+//	        GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefPtrInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefPtrOutput() GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefPtrOutput
+	ToGetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefPtrOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefPtrOutput
+}
+
+type getK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefPtrType GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefArgs
+
+func GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefPtr(v *GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefArgs) GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefPtrInput {
+	return (*getK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefPtrType)(v)
+}
+
+func (*getK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRef)(nil)).Elem()
+}
+
+func (i *getK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefPtrType) ToGetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefPtrOutput() GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefPtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefPtrOutputWithContext(context.Background())
+}
+
+func (i *getK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefPtrType) ToGetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRef)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefOutput) ToGetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefOutput() GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefOutput) ToGetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefOutput) ToGetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefPtrOutput() GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefPtrOutput {
+	return o.ToGetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefPtrOutputWithContext(context.Background())
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefOutput) ToGetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRef) *GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRef {
+		return &v
+	}).(GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefPtrOutput)
+}
+
+// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRef) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Specify whether the Secret must be defined
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefOutput) Optional() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRef) *bool { return v.Optional }).(pulumi.BoolPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefPtrOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRef)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefPtrOutput) ToGetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefPtrOutput() GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefPtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefPtrOutput) ToGetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefPtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefPtrOutput) Elem() GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRef) GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRef {
+		if v != nil {
+			return *v
+		}
+		var ret GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRef
+		return ret
+	}).(GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefOutput)
+}
+
+// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRef) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specify whether the Secret must be defined
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefPtrOutput) Optional() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRef) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Optional
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecInitContainerEnvValueFrom struct {
+	// Selects a key of a ConfigMap.
+	ConfigMapKeyRef *GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRef `pulumi:"configMapKeyRef"`
+	// Selects a field of the pod: supports metadata.name, metadata.namespace, metadata.labels, metadata.annotations, spec.nodeName, spec.serviceAccountName, status.podIP.
+	FieldRef *GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRef `pulumi:"fieldRef"`
+	// Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.
+	ResourceFieldRef *GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRef `pulumi:"resourceFieldRef"`
+	// Selects a key of a secret in the pod's namespace.
+	SecretKeyRef *GetK8sJobSpecTemplateSpecInitContainerEnvValueFromSecretKeyRef `pulumi:"secretKeyRef"`
+}
+
+// GetK8sJobSpecTemplateSpecInitContainerEnvValueFromInput is an input type that accepts GetK8sJobSpecTemplateSpecInitContainerEnvValueFromArgs and GetK8sJobSpecTemplateSpecInitContainerEnvValueFromOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecInitContainerEnvValueFromInput` via:
+//
+//	GetK8sJobSpecTemplateSpecInitContainerEnvValueFromArgs{...}
+type GetK8sJobSpecTemplateSpecInitContainerEnvValueFromInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromOutput() GetK8sJobSpecTemplateSpecInitContainerEnvValueFromOutput
+	ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvValueFromOutput
+}
+
+type GetK8sJobSpecTemplateSpecInitContainerEnvValueFromArgs struct {
+	// Selects a key of a ConfigMap.
+	ConfigMapKeyRef GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefPtrInput `pulumi:"configMapKeyRef"`
+	// Selects a field of the pod: supports metadata.name, metadata.namespace, metadata.labels, metadata.annotations, spec.nodeName, spec.serviceAccountName, status.podIP.
+	FieldRef GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefPtrInput `pulumi:"fieldRef"`
+	// Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.
+	ResourceFieldRef GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefPtrInput `pulumi:"resourceFieldRef"`
+	// Selects a key of a secret in the pod's namespace.
+	SecretKeyRef GetK8sJobSpecTemplateSpecInitContainerEnvValueFromSecretKeyRefPtrInput `pulumi:"secretKeyRef"`
+}
+
+func (GetK8sJobSpecTemplateSpecInitContainerEnvValueFromArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecInitContainerEnvValueFrom)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecInitContainerEnvValueFromArgs) ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromOutput() GetK8sJobSpecTemplateSpecInitContainerEnvValueFromOutput {
+	return i.ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecInitContainerEnvValueFromArgs) ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvValueFromOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecInitContainerEnvValueFromOutput)
+}
+
+func (i GetK8sJobSpecTemplateSpecInitContainerEnvValueFromArgs) ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromPtrOutput() GetK8sJobSpecTemplateSpecInitContainerEnvValueFromPtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromPtrOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecInitContainerEnvValueFromArgs) ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvValueFromPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecInitContainerEnvValueFromOutput).ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromPtrOutputWithContext(ctx)
+}
+
+// GetK8sJobSpecTemplateSpecInitContainerEnvValueFromPtrInput is an input type that accepts GetK8sJobSpecTemplateSpecInitContainerEnvValueFromArgs, GetK8sJobSpecTemplateSpecInitContainerEnvValueFromPtr and GetK8sJobSpecTemplateSpecInitContainerEnvValueFromPtrOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecInitContainerEnvValueFromPtrInput` via:
+//
+//	        GetK8sJobSpecTemplateSpecInitContainerEnvValueFromArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetK8sJobSpecTemplateSpecInitContainerEnvValueFromPtrInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromPtrOutput() GetK8sJobSpecTemplateSpecInitContainerEnvValueFromPtrOutput
+	ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromPtrOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvValueFromPtrOutput
+}
+
+type getK8sJobSpecTemplateSpecInitContainerEnvValueFromPtrType GetK8sJobSpecTemplateSpecInitContainerEnvValueFromArgs
+
+func GetK8sJobSpecTemplateSpecInitContainerEnvValueFromPtr(v *GetK8sJobSpecTemplateSpecInitContainerEnvValueFromArgs) GetK8sJobSpecTemplateSpecInitContainerEnvValueFromPtrInput {
+	return (*getK8sJobSpecTemplateSpecInitContainerEnvValueFromPtrType)(v)
+}
+
+func (*getK8sJobSpecTemplateSpecInitContainerEnvValueFromPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecInitContainerEnvValueFrom)(nil)).Elem()
+}
+
+func (i *getK8sJobSpecTemplateSpecInitContainerEnvValueFromPtrType) ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromPtrOutput() GetK8sJobSpecTemplateSpecInitContainerEnvValueFromPtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromPtrOutputWithContext(context.Background())
+}
+
+func (i *getK8sJobSpecTemplateSpecInitContainerEnvValueFromPtrType) ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvValueFromPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecInitContainerEnvValueFromPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecInitContainerEnvValueFromOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecInitContainerEnvValueFromOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecInitContainerEnvValueFrom)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvValueFromOutput) ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromOutput() GetK8sJobSpecTemplateSpecInitContainerEnvValueFromOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvValueFromOutput) ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvValueFromOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvValueFromOutput) ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromPtrOutput() GetK8sJobSpecTemplateSpecInitContainerEnvValueFromPtrOutput {
+	return o.ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromPtrOutputWithContext(context.Background())
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvValueFromOutput) ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvValueFromPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetK8sJobSpecTemplateSpecInitContainerEnvValueFrom) *GetK8sJobSpecTemplateSpecInitContainerEnvValueFrom {
+		return &v
+	}).(GetK8sJobSpecTemplateSpecInitContainerEnvValueFromPtrOutput)
+}
+
+// Selects a key of a ConfigMap.
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvValueFromOutput) ConfigMapKeyRef() GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecInitContainerEnvValueFrom) *GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRef {
+		return v.ConfigMapKeyRef
+	}).(GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefPtrOutput)
+}
+
+// Selects a field of the pod: supports metadata.name, metadata.namespace, metadata.labels, metadata.annotations, spec.nodeName, spec.serviceAccountName, status.podIP.
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvValueFromOutput) FieldRef() GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecInitContainerEnvValueFrom) *GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRef {
+		return v.FieldRef
+	}).(GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefPtrOutput)
+}
+
+// Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvValueFromOutput) ResourceFieldRef() GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecInitContainerEnvValueFrom) *GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRef {
+		return v.ResourceFieldRef
+	}).(GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefPtrOutput)
+}
+
+// Selects a key of a secret in the pod's namespace.
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvValueFromOutput) SecretKeyRef() GetK8sJobSpecTemplateSpecInitContainerEnvValueFromSecretKeyRefPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecInitContainerEnvValueFrom) *GetK8sJobSpecTemplateSpecInitContainerEnvValueFromSecretKeyRef {
+		return v.SecretKeyRef
+	}).(GetK8sJobSpecTemplateSpecInitContainerEnvValueFromSecretKeyRefPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecInitContainerEnvValueFromPtrOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecInitContainerEnvValueFromPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecInitContainerEnvValueFrom)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvValueFromPtrOutput) ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromPtrOutput() GetK8sJobSpecTemplateSpecInitContainerEnvValueFromPtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvValueFromPtrOutput) ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvValueFromPtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvValueFromPtrOutput) Elem() GetK8sJobSpecTemplateSpecInitContainerEnvValueFromOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecInitContainerEnvValueFrom) GetK8sJobSpecTemplateSpecInitContainerEnvValueFrom {
+		if v != nil {
+			return *v
+		}
+		var ret GetK8sJobSpecTemplateSpecInitContainerEnvValueFrom
+		return ret
+	}).(GetK8sJobSpecTemplateSpecInitContainerEnvValueFromOutput)
+}
+
+// Selects a key of a ConfigMap.
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvValueFromPtrOutput) ConfigMapKeyRef() GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecInitContainerEnvValueFrom) *GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRef {
+		if v == nil {
+			return nil
+		}
+		return v.ConfigMapKeyRef
+	}).(GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefPtrOutput)
+}
+
+// Selects a field of the pod: supports metadata.name, metadata.namespace, metadata.labels, metadata.annotations, spec.nodeName, spec.serviceAccountName, status.podIP.
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvValueFromPtrOutput) FieldRef() GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecInitContainerEnvValueFrom) *GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRef {
+		if v == nil {
+			return nil
+		}
+		return v.FieldRef
+	}).(GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefPtrOutput)
+}
+
+// Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvValueFromPtrOutput) ResourceFieldRef() GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecInitContainerEnvValueFrom) *GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRef {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceFieldRef
+	}).(GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefPtrOutput)
+}
+
+// Selects a key of a secret in the pod's namespace.
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvValueFromPtrOutput) SecretKeyRef() GetK8sJobSpecTemplateSpecInitContainerEnvValueFromSecretKeyRefPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecInitContainerEnvValueFrom) *GetK8sJobSpecTemplateSpecInitContainerEnvValueFromSecretKeyRef {
+		if v == nil {
+			return nil
+		}
+		return v.SecretKeyRef
+	}).(GetK8sJobSpecTemplateSpecInitContainerEnvValueFromSecretKeyRefPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRef struct {
+	// The key to select.
+	Key *string `pulumi:"key"`
+	// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+	Name *string `pulumi:"name"`
+	// Specify whether the ConfigMap or its key must be defined.
+	Optional *bool `pulumi:"optional"`
+}
+
+// GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefInput is an input type that accepts GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefArgs and GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefInput` via:
+//
+//	GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefArgs{...}
+type GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefOutput() GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefOutput
+	ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefOutput
+}
+
+type GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefArgs struct {
+	// The key to select.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Specify whether the ConfigMap or its key must be defined.
+	Optional pulumi.BoolPtrInput `pulumi:"optional"`
+}
+
+func (GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRef)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefArgs) ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefOutput() GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefOutput {
+	return i.ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefArgs) ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefOutput)
+}
+
+func (i GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefArgs) ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefPtrOutput() GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefPtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefPtrOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefArgs) ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefOutput).ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefPtrOutputWithContext(ctx)
+}
+
+// GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefPtrInput is an input type that accepts GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefArgs, GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefPtr and GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefPtrOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefPtrInput` via:
+//
+//	        GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefPtrInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefPtrOutput() GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefPtrOutput
+	ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefPtrOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefPtrOutput
+}
+
+type getK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefPtrType GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefArgs
+
+func GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefPtr(v *GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefArgs) GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefPtrInput {
+	return (*getK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefPtrType)(v)
+}
+
+func (*getK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRef)(nil)).Elem()
+}
+
+func (i *getK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefPtrType) ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefPtrOutput() GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefPtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefPtrOutputWithContext(context.Background())
+}
+
+func (i *getK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefPtrType) ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRef)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefOutput) ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefOutput() GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefOutput) ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefOutput) ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefPtrOutput() GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefPtrOutput {
+	return o.ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefPtrOutputWithContext(context.Background())
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefOutput) ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRef) *GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRef {
+		return &v
+	}).(GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefPtrOutput)
+}
+
+// The key to select.
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRef) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRef) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Specify whether the ConfigMap or its key must be defined.
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefOutput) Optional() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRef) *bool { return v.Optional }).(pulumi.BoolPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefPtrOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRef)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefPtrOutput) ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefPtrOutput() GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefPtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefPtrOutput) ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefPtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefPtrOutput) Elem() GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRef) GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRef {
+		if v != nil {
+			return *v
+		}
+		var ret GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRef
+		return ret
+	}).(GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefOutput)
+}
+
+// The key to select.
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRef) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRef) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specify whether the ConfigMap or its key must be defined.
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefPtrOutput) Optional() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRef) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Optional
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRef struct {
+	// Version of the schema the FieldPath is written in terms of, defaults to "v1".
+	ApiVersion *string `pulumi:"apiVersion"`
+	// Path of the field to select in the specified API version
+	FieldPath *string `pulumi:"fieldPath"`
+}
+
+// GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefInput is an input type that accepts GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefArgs and GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefInput` via:
+//
+//	GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefArgs{...}
+type GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefOutput() GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefOutput
+	ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefOutput
+}
+
+type GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefArgs struct {
+	// Version of the schema the FieldPath is written in terms of, defaults to "v1".
+	ApiVersion pulumi.StringPtrInput `pulumi:"apiVersion"`
+	// Path of the field to select in the specified API version
+	FieldPath pulumi.StringPtrInput `pulumi:"fieldPath"`
+}
+
+func (GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRef)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefArgs) ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefOutput() GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefOutput {
+	return i.ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefArgs) ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefOutput)
+}
+
+func (i GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefArgs) ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefPtrOutput() GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefPtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefPtrOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefArgs) ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefOutput).ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefPtrOutputWithContext(ctx)
+}
+
+// GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefPtrInput is an input type that accepts GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefArgs, GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefPtr and GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefPtrOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefPtrInput` via:
+//
+//	        GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefPtrInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefPtrOutput() GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefPtrOutput
+	ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefPtrOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefPtrOutput
+}
+
+type getK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefPtrType GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefArgs
+
+func GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefPtr(v *GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefArgs) GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefPtrInput {
+	return (*getK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefPtrType)(v)
+}
+
+func (*getK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRef)(nil)).Elem()
+}
+
+func (i *getK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefPtrType) ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefPtrOutput() GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefPtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefPtrOutputWithContext(context.Background())
+}
+
+func (i *getK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefPtrType) ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRef)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefOutput) ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefOutput() GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefOutput) ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefOutput) ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefPtrOutput() GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefPtrOutput {
+	return o.ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefPtrOutputWithContext(context.Background())
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefOutput) ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRef) *GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRef {
+		return &v
+	}).(GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefPtrOutput)
+}
+
+// Version of the schema the FieldPath is written in terms of, defaults to "v1".
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefOutput) ApiVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRef) *string { return v.ApiVersion }).(pulumi.StringPtrOutput)
+}
+
+// Path of the field to select in the specified API version
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefOutput) FieldPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRef) *string { return v.FieldPath }).(pulumi.StringPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefPtrOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRef)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefPtrOutput) ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefPtrOutput() GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefPtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefPtrOutput) ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefPtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefPtrOutput) Elem() GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRef) GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRef {
+		if v != nil {
+			return *v
+		}
+		var ret GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRef
+		return ret
+	}).(GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefOutput)
+}
+
+// Version of the schema the FieldPath is written in terms of, defaults to "v1".
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefPtrOutput) ApiVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRef) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Path of the field to select in the specified API version
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefPtrOutput) FieldPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRef) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FieldPath
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRef struct {
+	ContainerName *string `pulumi:"containerName"`
+	Divisor       *string `pulumi:"divisor"`
+	// Resource to select
+	Resource string `pulumi:"resource"`
+}
+
+// GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefInput is an input type that accepts GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefArgs and GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefInput` via:
+//
+//	GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefArgs{...}
+type GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefOutput() GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefOutput
+	ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefOutput
+}
+
+type GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefArgs struct {
+	ContainerName pulumi.StringPtrInput `pulumi:"containerName"`
+	Divisor       pulumi.StringPtrInput `pulumi:"divisor"`
+	// Resource to select
+	Resource pulumi.StringInput `pulumi:"resource"`
+}
+
+func (GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRef)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefArgs) ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefOutput() GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefOutput {
+	return i.ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefArgs) ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefOutput)
+}
+
+func (i GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefArgs) ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefPtrOutput() GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefPtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefPtrOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefArgs) ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefOutput).ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefPtrOutputWithContext(ctx)
+}
+
+// GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefPtrInput is an input type that accepts GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefArgs, GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefPtr and GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefPtrOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefPtrInput` via:
+//
+//	        GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefPtrInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefPtrOutput() GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefPtrOutput
+	ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefPtrOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefPtrOutput
+}
+
+type getK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefPtrType GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefArgs
+
+func GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefPtr(v *GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefArgs) GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefPtrInput {
+	return (*getK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefPtrType)(v)
+}
+
+func (*getK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRef)(nil)).Elem()
+}
+
+func (i *getK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefPtrType) ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefPtrOutput() GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefPtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefPtrOutputWithContext(context.Background())
+}
+
+func (i *getK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefPtrType) ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRef)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefOutput) ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefOutput() GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefOutput) ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefOutput) ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefPtrOutput() GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefPtrOutput {
+	return o.ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefPtrOutputWithContext(context.Background())
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefOutput) ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRef) *GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRef {
+		return &v
+	}).(GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefPtrOutput)
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefOutput) ContainerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRef) *string {
+		return v.ContainerName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefOutput) Divisor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRef) *string { return v.Divisor }).(pulumi.StringPtrOutput)
+}
+
+// Resource to select
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefOutput) Resource() pulumi.StringOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRef) string { return v.Resource }).(pulumi.StringOutput)
+}
+
+type GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefPtrOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRef)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefPtrOutput) ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefPtrOutput() GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefPtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefPtrOutput) ToGetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefPtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefPtrOutput) Elem() GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRef) GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRef {
+		if v != nil {
+			return *v
+		}
+		var ret GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRef
+		return ret
+	}).(GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefOutput)
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefPtrOutput) ContainerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRef) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContainerName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefPtrOutput) Divisor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRef) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Divisor
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource to select
+func (o GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefPtrOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRef) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Resource
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetK8sJobSpecTemplateSpecInitContainerEnvValueFromSecretKeyRef struct {
 	// The key of the secret to select from. Must be a valid secret key.
 	Key *string `pulumi:"key"`
@@ -20452,6 +28001,203 @@ func (o GetPlansDataWafInfoArrayOutput) Index(i pulumi.IntInput) GetPlansDataWaf
 	}).(GetPlansDataWafInfoOutput)
 }
 
+type GetS3BucketDefaultEncryption struct {
+	// Default encryption method.
+	Method string `pulumi:"method"`
+}
+
+// GetS3BucketDefaultEncryptionInput is an input type that accepts GetS3BucketDefaultEncryptionArgs and GetS3BucketDefaultEncryptionOutput values.
+// You can construct a concrete instance of `GetS3BucketDefaultEncryptionInput` via:
+//
+//	GetS3BucketDefaultEncryptionArgs{...}
+type GetS3BucketDefaultEncryptionInput interface {
+	pulumi.Input
+
+	ToGetS3BucketDefaultEncryptionOutput() GetS3BucketDefaultEncryptionOutput
+	ToGetS3BucketDefaultEncryptionOutputWithContext(context.Context) GetS3BucketDefaultEncryptionOutput
+}
+
+type GetS3BucketDefaultEncryptionArgs struct {
+	// Default encryption method.
+	Method pulumi.StringInput `pulumi:"method"`
+}
+
+func (GetS3BucketDefaultEncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetS3BucketDefaultEncryption)(nil)).Elem()
+}
+
+func (i GetS3BucketDefaultEncryptionArgs) ToGetS3BucketDefaultEncryptionOutput() GetS3BucketDefaultEncryptionOutput {
+	return i.ToGetS3BucketDefaultEncryptionOutputWithContext(context.Background())
+}
+
+func (i GetS3BucketDefaultEncryptionArgs) ToGetS3BucketDefaultEncryptionOutputWithContext(ctx context.Context) GetS3BucketDefaultEncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetS3BucketDefaultEncryptionOutput)
+}
+
+// GetS3BucketDefaultEncryptionArrayInput is an input type that accepts GetS3BucketDefaultEncryptionArray and GetS3BucketDefaultEncryptionArrayOutput values.
+// You can construct a concrete instance of `GetS3BucketDefaultEncryptionArrayInput` via:
+//
+//	GetS3BucketDefaultEncryptionArray{ GetS3BucketDefaultEncryptionArgs{...} }
+type GetS3BucketDefaultEncryptionArrayInput interface {
+	pulumi.Input
+
+	ToGetS3BucketDefaultEncryptionArrayOutput() GetS3BucketDefaultEncryptionArrayOutput
+	ToGetS3BucketDefaultEncryptionArrayOutputWithContext(context.Context) GetS3BucketDefaultEncryptionArrayOutput
+}
+
+type GetS3BucketDefaultEncryptionArray []GetS3BucketDefaultEncryptionInput
+
+func (GetS3BucketDefaultEncryptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetS3BucketDefaultEncryption)(nil)).Elem()
+}
+
+func (i GetS3BucketDefaultEncryptionArray) ToGetS3BucketDefaultEncryptionArrayOutput() GetS3BucketDefaultEncryptionArrayOutput {
+	return i.ToGetS3BucketDefaultEncryptionArrayOutputWithContext(context.Background())
+}
+
+func (i GetS3BucketDefaultEncryptionArray) ToGetS3BucketDefaultEncryptionArrayOutputWithContext(ctx context.Context) GetS3BucketDefaultEncryptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetS3BucketDefaultEncryptionArrayOutput)
+}
+
+type GetS3BucketDefaultEncryptionOutput struct{ *pulumi.OutputState }
+
+func (GetS3BucketDefaultEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetS3BucketDefaultEncryption)(nil)).Elem()
+}
+
+func (o GetS3BucketDefaultEncryptionOutput) ToGetS3BucketDefaultEncryptionOutput() GetS3BucketDefaultEncryptionOutput {
+	return o
+}
+
+func (o GetS3BucketDefaultEncryptionOutput) ToGetS3BucketDefaultEncryptionOutputWithContext(ctx context.Context) GetS3BucketDefaultEncryptionOutput {
+	return o
+}
+
+// Default encryption method.
+func (o GetS3BucketDefaultEncryptionOutput) Method() pulumi.StringOutput {
+	return o.ApplyT(func(v GetS3BucketDefaultEncryption) string { return v.Method }).(pulumi.StringOutput)
+}
+
+type GetS3BucketDefaultEncryptionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetS3BucketDefaultEncryptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetS3BucketDefaultEncryption)(nil)).Elem()
+}
+
+func (o GetS3BucketDefaultEncryptionArrayOutput) ToGetS3BucketDefaultEncryptionArrayOutput() GetS3BucketDefaultEncryptionArrayOutput {
+	return o
+}
+
+func (o GetS3BucketDefaultEncryptionArrayOutput) ToGetS3BucketDefaultEncryptionArrayOutputWithContext(ctx context.Context) GetS3BucketDefaultEncryptionArrayOutput {
+	return o
+}
+
+func (o GetS3BucketDefaultEncryptionArrayOutput) Index(i pulumi.IntInput) GetS3BucketDefaultEncryptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetS3BucketDefaultEncryption {
+		return vs[0].([]GetS3BucketDefaultEncryption)[vs[1].(int)]
+	}).(GetS3BucketDefaultEncryptionOutput)
+}
+
+type GetS3BucketTag struct {
+	Key   string `pulumi:"key"`
+	Value string `pulumi:"value"`
+}
+
+// GetS3BucketTagInput is an input type that accepts GetS3BucketTagArgs and GetS3BucketTagOutput values.
+// You can construct a concrete instance of `GetS3BucketTagInput` via:
+//
+//	GetS3BucketTagArgs{...}
+type GetS3BucketTagInput interface {
+	pulumi.Input
+
+	ToGetS3BucketTagOutput() GetS3BucketTagOutput
+	ToGetS3BucketTagOutputWithContext(context.Context) GetS3BucketTagOutput
+}
+
+type GetS3BucketTagArgs struct {
+	Key   pulumi.StringInput `pulumi:"key"`
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetS3BucketTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetS3BucketTag)(nil)).Elem()
+}
+
+func (i GetS3BucketTagArgs) ToGetS3BucketTagOutput() GetS3BucketTagOutput {
+	return i.ToGetS3BucketTagOutputWithContext(context.Background())
+}
+
+func (i GetS3BucketTagArgs) ToGetS3BucketTagOutputWithContext(ctx context.Context) GetS3BucketTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetS3BucketTagOutput)
+}
+
+// GetS3BucketTagArrayInput is an input type that accepts GetS3BucketTagArray and GetS3BucketTagArrayOutput values.
+// You can construct a concrete instance of `GetS3BucketTagArrayInput` via:
+//
+//	GetS3BucketTagArray{ GetS3BucketTagArgs{...} }
+type GetS3BucketTagArrayInput interface {
+	pulumi.Input
+
+	ToGetS3BucketTagArrayOutput() GetS3BucketTagArrayOutput
+	ToGetS3BucketTagArrayOutputWithContext(context.Context) GetS3BucketTagArrayOutput
+}
+
+type GetS3BucketTagArray []GetS3BucketTagInput
+
+func (GetS3BucketTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetS3BucketTag)(nil)).Elem()
+}
+
+func (i GetS3BucketTagArray) ToGetS3BucketTagArrayOutput() GetS3BucketTagArrayOutput {
+	return i.ToGetS3BucketTagArrayOutputWithContext(context.Background())
+}
+
+func (i GetS3BucketTagArray) ToGetS3BucketTagArrayOutputWithContext(ctx context.Context) GetS3BucketTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetS3BucketTagArrayOutput)
+}
+
+type GetS3BucketTagOutput struct{ *pulumi.OutputState }
+
+func (GetS3BucketTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetS3BucketTag)(nil)).Elem()
+}
+
+func (o GetS3BucketTagOutput) ToGetS3BucketTagOutput() GetS3BucketTagOutput {
+	return o
+}
+
+func (o GetS3BucketTagOutput) ToGetS3BucketTagOutputWithContext(ctx context.Context) GetS3BucketTagOutput {
+	return o
+}
+
+func (o GetS3BucketTagOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetS3BucketTag) string { return v.Key }).(pulumi.StringOutput)
+}
+
+func (o GetS3BucketTagOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetS3BucketTag) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetS3BucketTagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetS3BucketTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetS3BucketTag)(nil)).Elem()
+}
+
+func (o GetS3BucketTagArrayOutput) ToGetS3BucketTagArrayOutput() GetS3BucketTagArrayOutput {
+	return o
+}
+
+func (o GetS3BucketTagArrayOutput) ToGetS3BucketTagArrayOutputWithContext(ctx context.Context) GetS3BucketTagArrayOutput {
+	return o
+}
+
+func (o GetS3BucketTagArrayOutput) Index(i pulumi.IntInput) GetS3BucketTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetS3BucketTag {
+		return vs[0].([]GetS3BucketTag)[vs[1].(int)]
+	}).(GetS3BucketTagOutput)
+}
+
 type GetSystemFeaturesAppConfig struct {
 	Key   string `pulumi:"key"`
 	Type  string `pulumi:"type"`
@@ -21713,6 +29459,103 @@ func (o GetTenantsTenantTagArrayOutput) Index(i pulumi.IntInput) GetTenantsTenan
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLifecycleInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerLifecycleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLifecyclePtrInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerLifecycleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLifecyclePostStartInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerLifecyclePostStartArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLifecyclePostStartArrayInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerLifecyclePostStartArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArrayInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLifecyclePreStopInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerLifecyclePreStopArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLifecyclePreStopArrayInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerLifecyclePreStopArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArrayInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLivenessProbeInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerLivenessProbeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLivenessProbePtrInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerLivenessProbeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLivenessProbeExecInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerLivenessProbeExecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerLivenessProbeExecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerPortInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerPortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerPortArrayInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerPortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerReadinessProbeInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerReadinessProbeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerReadinessProbePtrInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerReadinessProbeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerReadinessProbeExecInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerReadinessProbeExecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerReadinessProbeExecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerResourcesInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerSecurityContextInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerSecurityContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerSecurityContextPtrInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerSecurityContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerStartupProbeInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerStartupProbeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerStartupProbePtrInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerStartupProbeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerStartupProbeExecInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerStartupProbeExecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerStartupProbeExecPtrInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerStartupProbeExecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerVolumeMountInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerVolumeMountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerVolumeMountArrayInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerVolumeMountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecDnsConfigInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecDnsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecDnsConfigPtrInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecDnsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecDnsConfigOptionInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecDnsConfigOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecDnsConfigOptionArrayInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecDnsConfigOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecHostAliasInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecHostAliasArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecHostAliasArrayInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecHostAliasArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecImagePullSecretInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecImagePullSecretArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecImagePullSecretArrayInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecImagePullSecretArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecInitContainerInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecInitContainerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecInitContainerArrayInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecInitContainerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecInitContainerEnvInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecInitContainerEnvArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecInitContainerEnvArrayInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecInitContainerEnvArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecInitContainerEnvFromInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecInitContainerEnvFromArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecInitContainerEnvFromArrayInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecInitContainerEnvFromArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefPtrInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefPtrInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecInitContainerEnvValueFromInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecInitContainerEnvValueFromArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecInitContainerEnvValueFromPtrInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecInitContainerEnvValueFromArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefPtrInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefPtrInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefPtrInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecInitContainerEnvValueFromSecretKeyRefInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecInitContainerEnvValueFromSecretKeyRefArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecInitContainerEnvValueFromSecretKeyRefPtrInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecInitContainerEnvValueFromSecretKeyRefArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecInitContainerLifecycleInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecInitContainerLifecycleArgs{})
@@ -21985,6 +29828,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPlansDataMetadataArrayInput)(nil)).Elem(), GetPlansDataMetadataArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPlansDataWafInfoInput)(nil)).Elem(), GetPlansDataWafInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPlansDataWafInfoArrayInput)(nil)).Elem(), GetPlansDataWafInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetS3BucketDefaultEncryptionInput)(nil)).Elem(), GetS3BucketDefaultEncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetS3BucketDefaultEncryptionArrayInput)(nil)).Elem(), GetS3BucketDefaultEncryptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetS3BucketTagInput)(nil)).Elem(), GetS3BucketTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetS3BucketTagArrayInput)(nil)).Elem(), GetS3BucketTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSystemFeaturesAppConfigInput)(nil)).Elem(), GetSystemFeaturesAppConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSystemFeaturesAppConfigArrayInput)(nil)).Elem(), GetSystemFeaturesAppConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSystemFeaturesEksVersionInput)(nil)).Elem(), GetSystemFeaturesEksVersionArgs{})
@@ -22009,6 +29856,103 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantsTenantPolicyArrayInput)(nil)).Elem(), GetTenantsTenantPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantsTenantTagInput)(nil)).Elem(), GetTenantsTenantTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantsTenantTagArrayInput)(nil)).Elem(), GetTenantsTenantTagArray{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerLifecycleOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerLifecyclePtrOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerLifecyclePostStartOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerLifecyclePostStartArrayOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerLifecyclePostStartExecPtrOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetPtrOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArrayOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerLifecyclePostStartTcpSocketArrayOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerLifecyclePreStopOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerLifecyclePreStopArrayOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerLifecyclePreStopExecPtrOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetPtrOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArrayOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerLifecyclePreStopTcpSocketArrayOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerLivenessProbeOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerLivenessProbePtrOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerLivenessProbeExecOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerLivenessProbeExecPtrOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerLivenessProbeGrpcArrayOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetPtrOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerLivenessProbeTcpSocketArrayOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerPortOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerPortArrayOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerReadinessProbeOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerReadinessProbePtrOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerReadinessProbeExecOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerReadinessProbeExecPtrOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerReadinessProbeGrpcArrayOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetPtrOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArrayOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerReadinessProbeTcpSocketArrayOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerResourcesOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerSecurityContextOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerSecurityContextPtrOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerSecurityContextCapabilitiesPtrOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerSecurityContextSeLinuxOptionsPtrOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfileOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerSecurityContextSeccompProfilePtrOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerStartupProbeOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerStartupProbePtrOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerStartupProbeExecOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerStartupProbeExecPtrOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerStartupProbeGrpcArrayOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetPtrOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerStartupProbeTcpSocketArrayOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerVolumeMountOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerVolumeMountArrayOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecDnsConfigOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecDnsConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecDnsConfigOptionOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecDnsConfigOptionArrayOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecHostAliasOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecHostAliasArrayOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecImagePullSecretOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecImagePullSecretArrayOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecInitContainerOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecInitContainerArrayOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecInitContainerEnvOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecInitContainerEnvArrayOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecInitContainerEnvFromOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecInitContainerEnvFromArrayOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecInitContainerEnvFromConfigMapRefPtrOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecInitContainerEnvFromSecretRefPtrOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecInitContainerEnvValueFromOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecInitContainerEnvValueFromPtrOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefPtrOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecInitContainerEnvValueFromFieldRefPtrOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefPtrOutput{})
 	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecInitContainerEnvValueFromSecretKeyRefOutput{})
 	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecInitContainerEnvValueFromSecretKeyRefPtrOutput{})
 	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecInitContainerLifecycleOutput{})
@@ -22281,6 +30225,10 @@ func init() {
 	pulumi.RegisterOutputType(GetPlansDataMetadataArrayOutput{})
 	pulumi.RegisterOutputType(GetPlansDataWafInfoOutput{})
 	pulumi.RegisterOutputType(GetPlansDataWafInfoArrayOutput{})
+	pulumi.RegisterOutputType(GetS3BucketDefaultEncryptionOutput{})
+	pulumi.RegisterOutputType(GetS3BucketDefaultEncryptionArrayOutput{})
+	pulumi.RegisterOutputType(GetS3BucketTagOutput{})
+	pulumi.RegisterOutputType(GetS3BucketTagArrayOutput{})
 	pulumi.RegisterOutputType(GetSystemFeaturesAppConfigOutput{})
 	pulumi.RegisterOutputType(GetSystemFeaturesAppConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetSystemFeaturesEksVersionOutput{})

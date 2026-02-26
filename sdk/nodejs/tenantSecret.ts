@@ -78,6 +78,10 @@ export class TenantSecret extends pulumi.CustomResource {
      */
     public readonly data!: pulumi.Output<string>;
     /**
+     * Config to bypass retention window before permanently deleting secret on AWS (FYI: field is managed localy in TF provider, importing the resource will not hold defined value)
+     */
+    public readonly forceDeleteOnDestroy!: pulumi.Output<boolean | undefined>;
+    /**
      * The full name of the secret.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
@@ -85,6 +89,10 @@ export class TenantSecret extends pulumi.CustomResource {
      * The short name of the secret. You can get the fullname from the `name` attribute after creation.
      */
     public readonly nameSuffix!: pulumi.Output<string>;
+    /**
+     * Retention period secret remains recoverable/not fully deleted before AWS permanently deletes it (FYI: field is managed localy in TF provider, importing the resource will not hold defined value)
+     */
+    public readonly retentionWindowInDaysOnDestroy!: pulumi.Output<number | undefined>;
     /**
      * Whether or not rotation is enabled for this secret.
      */
@@ -117,8 +125,10 @@ export class TenantSecret extends pulumi.CustomResource {
             const state = argsOrState as TenantSecretState | undefined;
             resourceInputs["arn"] = state ? state.arn : undefined;
             resourceInputs["data"] = state ? state.data : undefined;
+            resourceInputs["forceDeleteOnDestroy"] = state ? state.forceDeleteOnDestroy : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["nameSuffix"] = state ? state.nameSuffix : undefined;
+            resourceInputs["retentionWindowInDaysOnDestroy"] = state ? state.retentionWindowInDaysOnDestroy : undefined;
             resourceInputs["rotationEnabled"] = state ? state.rotationEnabled : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["tenantId"] = state ? state.tenantId : undefined;
@@ -135,7 +145,9 @@ export class TenantSecret extends pulumi.CustomResource {
                 throw new Error("Missing required property 'tenantId'");
             }
             resourceInputs["data"] = args?.data ? pulumi.secret(args.data) : undefined;
+            resourceInputs["forceDeleteOnDestroy"] = args ? args.forceDeleteOnDestroy : undefined;
             resourceInputs["nameSuffix"] = args ? args.nameSuffix : undefined;
+            resourceInputs["retentionWindowInDaysOnDestroy"] = args ? args.retentionWindowInDaysOnDestroy : undefined;
             resourceInputs["tenantId"] = args ? args.tenantId : undefined;
             resourceInputs["arn"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -163,6 +175,10 @@ export interface TenantSecretState {
      */
     data?: pulumi.Input<string>;
     /**
+     * Config to bypass retention window before permanently deleting secret on AWS (FYI: field is managed localy in TF provider, importing the resource will not hold defined value)
+     */
+    forceDeleteOnDestroy?: pulumi.Input<boolean>;
+    /**
      * The full name of the secret.
      */
     name?: pulumi.Input<string>;
@@ -170,6 +186,10 @@ export interface TenantSecretState {
      * The short name of the secret. You can get the fullname from the `name` attribute after creation.
      */
     nameSuffix?: pulumi.Input<string>;
+    /**
+     * Retention period secret remains recoverable/not fully deleted before AWS permanently deletes it (FYI: field is managed localy in TF provider, importing the resource will not hold defined value)
+     */
+    retentionWindowInDaysOnDestroy?: pulumi.Input<number>;
     /**
      * Whether or not rotation is enabled for this secret.
      */
@@ -197,9 +217,17 @@ export interface TenantSecretArgs {
      */
     data: pulumi.Input<string>;
     /**
+     * Config to bypass retention window before permanently deleting secret on AWS (FYI: field is managed localy in TF provider, importing the resource will not hold defined value)
+     */
+    forceDeleteOnDestroy?: pulumi.Input<boolean>;
+    /**
      * The short name of the secret. You can get the fullname from the `name` attribute after creation.
      */
     nameSuffix: pulumi.Input<string>;
+    /**
+     * Retention period secret remains recoverable/not fully deleted before AWS permanently deletes it (FYI: field is managed localy in TF provider, importing the resource will not hold defined value)
+     */
+    retentionWindowInDaysOnDestroy?: pulumi.Input<number>;
     /**
      * The GUID of the tenant that the secret will be created in.
      */

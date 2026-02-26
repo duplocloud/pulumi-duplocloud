@@ -65,6 +65,16 @@ export type AwsCloudfrontDistribution = import("./awsCloudfrontDistribution").Aw
 export const AwsCloudfrontDistribution: typeof import("./awsCloudfrontDistribution").AwsCloudfrontDistribution = null as any;
 utilities.lazyLoad(exports, ["AwsCloudfrontDistribution"], () => require("./awsCloudfrontDistribution"));
 
+export { AwsCloudfrontDistributionV2Args, AwsCloudfrontDistributionV2State } from "./awsCloudfrontDistributionV2";
+export type AwsCloudfrontDistributionV2 = import("./awsCloudfrontDistributionV2").AwsCloudfrontDistributionV2;
+export const AwsCloudfrontDistributionV2: typeof import("./awsCloudfrontDistributionV2").AwsCloudfrontDistributionV2 = null as any;
+utilities.lazyLoad(exports, ["AwsCloudfrontDistributionV2"], () => require("./awsCloudfrontDistributionV2"));
+
+export { AwsCloudfrontFunctionArgs, AwsCloudfrontFunctionState } from "./awsCloudfrontFunction";
+export type AwsCloudfrontFunction = import("./awsCloudfrontFunction").AwsCloudfrontFunction;
+export const AwsCloudfrontFunction: typeof import("./awsCloudfrontFunction").AwsCloudfrontFunction = null as any;
+utilities.lazyLoad(exports, ["AwsCloudfrontFunction"], () => require("./awsCloudfrontFunction"));
+
 export { AwsCloudwatchEventRuleArgs, AwsCloudwatchEventRuleState } from "./awsCloudwatchEventRule";
 export type AwsCloudwatchEventRule = import("./awsCloudwatchEventRule").AwsCloudwatchEventRule;
 export const AwsCloudwatchEventRule: typeof import("./awsCloudwatchEventRule").AwsCloudwatchEventRule = null as any;
@@ -165,6 +175,16 @@ export type AwsLoadBalancerListener = import("./awsLoadBalancerListener").AwsLoa
 export const AwsLoadBalancerListener: typeof import("./awsLoadBalancerListener").AwsLoadBalancerListener = null as any;
 utilities.lazyLoad(exports, ["AwsLoadBalancerListener"], () => require("./awsLoadBalancerListener"));
 
+export { AwsMqBrokerArgs, AwsMqBrokerState } from "./awsMqBroker";
+export type AwsMqBroker = import("./awsMqBroker").AwsMqBroker;
+export const AwsMqBroker: typeof import("./awsMqBroker").AwsMqBroker = null as any;
+utilities.lazyLoad(exports, ["AwsMqBroker"], () => require("./awsMqBroker"));
+
+export { AwsMqConfigArgs, AwsMqConfigState } from "./awsMqConfig";
+export type AwsMqConfig = import("./awsMqConfig").AwsMqConfig;
+export const AwsMqConfig: typeof import("./awsMqConfig").AwsMqConfig = null as any;
+utilities.lazyLoad(exports, ["AwsMqConfig"], () => require("./awsMqConfig"));
+
 export { AwsMwaaEnvironmentArgs, AwsMwaaEnvironmentState } from "./awsMwaaEnvironment";
 export type AwsMwaaEnvironment = import("./awsMwaaEnvironment").AwsMwaaEnvironment;
 export const AwsMwaaEnvironment: typeof import("./awsMwaaEnvironment").AwsMwaaEnvironment = null as any;
@@ -204,6 +224,11 @@ export { AwsTargetGroupAttributesArgs, AwsTargetGroupAttributesState } from "./a
 export type AwsTargetGroupAttributes = import("./awsTargetGroupAttributes").AwsTargetGroupAttributes;
 export const AwsTargetGroupAttributes: typeof import("./awsTargetGroupAttributes").AwsTargetGroupAttributes = null as any;
 utilities.lazyLoad(exports, ["AwsTargetGroupAttributes"], () => require("./awsTargetGroupAttributes"));
+
+export { AwsTargetGroupTargetRegisterArgs, AwsTargetGroupTargetRegisterState } from "./awsTargetGroupTargetRegister";
+export type AwsTargetGroupTargetRegister = import("./awsTargetGroupTargetRegister").AwsTargetGroupTargetRegister;
+export const AwsTargetGroupTargetRegister: typeof import("./awsTargetGroupTargetRegister").AwsTargetGroupTargetRegister = null as any;
+utilities.lazyLoad(exports, ["AwsTargetGroupTargetRegister"], () => require("./awsTargetGroupTargetRegister"));
 
 export { AwsTimestreamwriteDatabaseArgs, AwsTimestreamwriteDatabaseState } from "./awsTimestreamwriteDatabase";
 export type AwsTimestreamwriteDatabase = import("./awsTimestreamwriteDatabase").AwsTimestreamwriteDatabase;
@@ -279,11 +304,6 @@ export { AzureMssqldbRetentionBackupArgs, AzureMssqldbRetentionBackupState } fro
 export type AzureMssqldbRetentionBackup = import("./azureMssqldbRetentionBackup").AzureMssqldbRetentionBackup;
 export const AzureMssqldbRetentionBackup: typeof import("./azureMssqldbRetentionBackup").AzureMssqldbRetentionBackup = null as any;
 utilities.lazyLoad(exports, ["AzureMssqldbRetentionBackup"], () => require("./azureMssqldbRetentionBackup"));
-
-export { AzureMysqlDatabaseArgs, AzureMysqlDatabaseState } from "./azureMysqlDatabase";
-export type AzureMysqlDatabase = import("./azureMysqlDatabase").AzureMysqlDatabase;
-export const AzureMysqlDatabase: typeof import("./azureMysqlDatabase").AzureMysqlDatabase = null as any;
-utilities.lazyLoad(exports, ["AzureMysqlDatabase"], () => require("./azureMysqlDatabase"));
 
 export { AzureNetworkSecurityRuleArgs, AzureNetworkSecurityRuleState } from "./azureNetworkSecurityRule";
 export type AzureNetworkSecurityRule = import("./azureNetworkSecurityRule").AzureNetworkSecurityRule;
@@ -460,6 +480,16 @@ export type GcpCloudFunction = import("./gcpCloudFunction").GcpCloudFunction;
 export const GcpCloudFunction: typeof import("./gcpCloudFunction").GcpCloudFunction = null as any;
 utilities.lazyLoad(exports, ["GcpCloudFunction"], () => require("./gcpCloudFunction"));
 
+export { GcpCloudQueueArgs, GcpCloudQueueState } from "./gcpCloudQueue";
+export type GcpCloudQueue = import("./gcpCloudQueue").GcpCloudQueue;
+export const GcpCloudQueue: typeof import("./gcpCloudQueue").GcpCloudQueue = null as any;
+utilities.lazyLoad(exports, ["GcpCloudQueue"], () => require("./gcpCloudQueue"));
+
+export { GcpCloudTaskArgs, GcpCloudTaskState } from "./gcpCloudTask";
+export type GcpCloudTask = import("./gcpCloudTask").GcpCloudTask;
+export const GcpCloudTask: typeof import("./gcpCloudTask").GcpCloudTask = null as any;
+utilities.lazyLoad(exports, ["GcpCloudTask"], () => require("./gcpCloudTask"));
+
 export { GcpFirestoreArgs, GcpFirestoreState } from "./gcpFirestore";
 export type GcpFirestore = import("./gcpFirestore").GcpFirestore;
 export const GcpFirestore: typeof import("./gcpFirestore").GcpFirestore = null as any;
@@ -484,6 +514,11 @@ export { GcpNodePoolArgs, GcpNodePoolState } from "./gcpNodePool";
 export type GcpNodePool = import("./gcpNodePool").GcpNodePool;
 export const GcpNodePool: typeof import("./gcpNodePool").GcpNodePool = null as any;
 utilities.lazyLoad(exports, ["GcpNodePool"], () => require("./gcpNodePool"));
+
+export { GcpPubsubSubscriptionArgs, GcpPubsubSubscriptionState } from "./gcpPubsubSubscription";
+export type GcpPubsubSubscription = import("./gcpPubsubSubscription").GcpPubsubSubscription;
+export const GcpPubsubSubscription: typeof import("./gcpPubsubSubscription").GcpPubsubSubscription = null as any;
+utilities.lazyLoad(exports, ["GcpPubsubSubscription"], () => require("./gcpPubsubSubscription"));
 
 export { GcpPubsubTopicArgs, GcpPubsubTopicState } from "./gcpPubsubTopic";
 export type GcpPubsubTopic = import("./gcpPubsubTopic").GcpPubsubTopic;
@@ -549,6 +584,11 @@ export { GetAwsLbTargetGroupsArgs, GetAwsLbTargetGroupsResult, GetAwsLbTargetGro
 export const getAwsLbTargetGroups: typeof import("./getAwsLbTargetGroups").getAwsLbTargetGroups = null as any;
 export const getAwsLbTargetGroupsOutput: typeof import("./getAwsLbTargetGroups").getAwsLbTargetGroupsOutput = null as any;
 utilities.lazyLoad(exports, ["getAwsLbTargetGroups","getAwsLbTargetGroupsOutput"], () => require("./getAwsLbTargetGroups"));
+
+export { GetAwsSqsQueueArgs, GetAwsSqsQueueResult, GetAwsSqsQueueOutputArgs } from "./getAwsSqsQueue";
+export const getAwsSqsQueue: typeof import("./getAwsSqsQueue").getAwsSqsQueue = null as any;
+export const getAwsSqsQueueOutput: typeof import("./getAwsSqsQueue").getAwsSqsQueueOutput = null as any;
+utilities.lazyLoad(exports, ["getAwsSqsQueue","getAwsSqsQueueOutput"], () => require("./getAwsSqsQueue"));
 
 export { GetAwsSsmParameterArgs, GetAwsSsmParameterResult, GetAwsSsmParameterOutputArgs } from "./getAwsSsmParameter";
 export const getAwsSsmParameter: typeof import("./getAwsSsmParameter").getAwsSsmParameter = null as any;
@@ -810,6 +850,11 @@ export const getPlans: typeof import("./getPlans").getPlans = null as any;
 export const getPlansOutput: typeof import("./getPlans").getPlansOutput = null as any;
 utilities.lazyLoad(exports, ["getPlans","getPlansOutput"], () => require("./getPlans"));
 
+export { GetS3BucketArgs, GetS3BucketResult, GetS3BucketOutputArgs } from "./getS3Bucket";
+export const getS3Bucket: typeof import("./getS3Bucket").getS3Bucket = null as any;
+export const getS3BucketOutput: typeof import("./getS3Bucket").getS3BucketOutput = null as any;
+utilities.lazyLoad(exports, ["getS3Bucket","getS3BucketOutput"], () => require("./getS3Bucket"));
+
 export { GetSystemFeaturesResult } from "./getSystemFeatures";
 export const getSystemFeatures: typeof import("./getSystemFeatures").getSystemFeatures = null as any;
 export const getSystemFeaturesOutput: typeof import("./getSystemFeatures").getSystemFeaturesOutput = null as any;
@@ -920,6 +965,11 @@ export type K8Ingress = import("./k8ingress").K8Ingress;
 export const K8Ingress: typeof import("./k8ingress").K8Ingress = null as any;
 utilities.lazyLoad(exports, ["K8Ingress"], () => require("./k8ingress"));
 
+export { K8OciRepositoryArgs, K8OciRepositoryState } from "./k8ociRepository";
+export type K8OciRepository = import("./k8ociRepository").K8OciRepository;
+export const K8OciRepository: typeof import("./k8ociRepository").K8OciRepository = null as any;
+utilities.lazyLoad(exports, ["K8OciRepository"], () => require("./k8ociRepository"));
+
 export { K8PersistentVolumeClaimArgs, K8PersistentVolumeClaimState } from "./k8persistentVolumeClaim";
 export type K8PersistentVolumeClaim = import("./k8persistentVolumeClaim").K8PersistentVolumeClaim;
 export const K8PersistentVolumeClaim: typeof import("./k8persistentVolumeClaim").K8PersistentVolumeClaim = null as any;
@@ -1025,6 +1075,11 @@ export type S3BucketReplication = import("./s3bucketReplication").S3BucketReplic
 export const S3BucketReplication: typeof import("./s3bucketReplication").S3BucketReplication = null as any;
 utilities.lazyLoad(exports, ["S3BucketReplication"], () => require("./s3bucketReplication"));
 
+export { S3EventNotificationArgs, S3EventNotificationState } from "./s3eventNotification";
+export type S3EventNotification = import("./s3eventNotification").S3EventNotification;
+export const S3EventNotification: typeof import("./s3eventNotification").S3EventNotification = null as any;
+utilities.lazyLoad(exports, ["S3EventNotification"], () => require("./s3eventNotification"));
+
 export { TenantArgs, TenantState } from "./tenant";
 export type Tenant = import("./tenant").Tenant;
 export const Tenant: typeof import("./tenant").Tenant = null as any;
@@ -1123,6 +1178,10 @@ const _module = {
                 return new AwsBatchSchedulingPolicy(name, <any>undefined, { urn })
             case "duplocloud:index/awsCloudfrontDistribution:AwsCloudfrontDistribution":
                 return new AwsCloudfrontDistribution(name, <any>undefined, { urn })
+            case "duplocloud:index/awsCloudfrontDistributionV2:AwsCloudfrontDistributionV2":
+                return new AwsCloudfrontDistributionV2(name, <any>undefined, { urn })
+            case "duplocloud:index/awsCloudfrontFunction:AwsCloudfrontFunction":
+                return new AwsCloudfrontFunction(name, <any>undefined, { urn })
             case "duplocloud:index/awsCloudwatchEventRule:AwsCloudwatchEventRule":
                 return new AwsCloudwatchEventRule(name, <any>undefined, { urn })
             case "duplocloud:index/awsCloudwatchEventTarget:AwsCloudwatchEventTarget":
@@ -1163,6 +1222,10 @@ const _module = {
                 return new AwsLoadBalancer(name, <any>undefined, { urn })
             case "duplocloud:index/awsLoadBalancerListener:AwsLoadBalancerListener":
                 return new AwsLoadBalancerListener(name, <any>undefined, { urn })
+            case "duplocloud:index/awsMqBroker:AwsMqBroker":
+                return new AwsMqBroker(name, <any>undefined, { urn })
+            case "duplocloud:index/awsMqConfig:AwsMqConfig":
+                return new AwsMqConfig(name, <any>undefined, { urn })
             case "duplocloud:index/awsMwaaEnvironment:AwsMwaaEnvironment":
                 return new AwsMwaaEnvironment(name, <any>undefined, { urn })
             case "duplocloud:index/awsRdsGlobalSecondary:AwsRdsGlobalSecondary":
@@ -1179,6 +1242,8 @@ const _module = {
                 return new AwsTag(name, <any>undefined, { urn })
             case "duplocloud:index/awsTargetGroupAttributes:AwsTargetGroupAttributes":
                 return new AwsTargetGroupAttributes(name, <any>undefined, { urn })
+            case "duplocloud:index/awsTargetGroupTargetRegister:AwsTargetGroupTargetRegister":
+                return new AwsTargetGroupTargetRegister(name, <any>undefined, { urn })
             case "duplocloud:index/awsTimestreamwriteDatabase:AwsTimestreamwriteDatabase":
                 return new AwsTimestreamwriteDatabase(name, <any>undefined, { urn })
             case "duplocloud:index/awsTimestreamwriteTable:AwsTimestreamwriteTable":
@@ -1209,8 +1274,6 @@ const _module = {
                 return new AzureMssqlServer(name, <any>undefined, { urn })
             case "duplocloud:index/azureMssqldbRetentionBackup:AzureMssqldbRetentionBackup":
                 return new AzureMssqldbRetentionBackup(name, <any>undefined, { urn })
-            case "duplocloud:index/azureMysqlDatabase:AzureMysqlDatabase":
-                return new AzureMysqlDatabase(name, <any>undefined, { urn })
             case "duplocloud:index/azureNetworkSecurityRule:AzureNetworkSecurityRule":
                 return new AzureNetworkSecurityRule(name, <any>undefined, { urn })
             case "duplocloud:index/azurePostgresqlDatabase:AzurePostgresqlDatabase":
@@ -1281,6 +1344,10 @@ const _module = {
                 return new EmrCluster(name, <any>undefined, { urn })
             case "duplocloud:index/gcpCloudFunction:GcpCloudFunction":
                 return new GcpCloudFunction(name, <any>undefined, { urn })
+            case "duplocloud:index/gcpCloudQueue:GcpCloudQueue":
+                return new GcpCloudQueue(name, <any>undefined, { urn })
+            case "duplocloud:index/gcpCloudTask:GcpCloudTask":
+                return new GcpCloudTask(name, <any>undefined, { urn })
             case "duplocloud:index/gcpFirestore:GcpFirestore":
                 return new GcpFirestore(name, <any>undefined, { urn })
             case "duplocloud:index/gcpHost:GcpHost":
@@ -1291,6 +1358,8 @@ const _module = {
                 return new GcpInfraSecurityRule(name, <any>undefined, { urn })
             case "duplocloud:index/gcpNodePool:GcpNodePool":
                 return new GcpNodePool(name, <any>undefined, { urn })
+            case "duplocloud:index/gcpPubsubSubscription:GcpPubsubSubscription":
+                return new GcpPubsubSubscription(name, <any>undefined, { urn })
             case "duplocloud:index/gcpPubsubTopic:GcpPubsubTopic":
                 return new GcpPubsubTopic(name, <any>undefined, { urn })
             case "duplocloud:index/gcpRedisInstance:GcpRedisInstance":
@@ -1321,6 +1390,8 @@ const _module = {
                 return new K8HelmRepository(name, <any>undefined, { urn })
             case "duplocloud:index/k8Ingress:K8Ingress":
                 return new K8Ingress(name, <any>undefined, { urn })
+            case "duplocloud:index/k8OciRepository:K8OciRepository":
+                return new K8OciRepository(name, <any>undefined, { urn })
             case "duplocloud:index/k8PersistentVolumeClaim:K8PersistentVolumeClaim":
                 return new K8PersistentVolumeClaim(name, <any>undefined, { urn })
             case "duplocloud:index/k8Secret:K8Secret":
@@ -1361,6 +1432,8 @@ const _module = {
                 return new S3Bucket(name, <any>undefined, { urn })
             case "duplocloud:index/s3BucketReplication:S3BucketReplication":
                 return new S3BucketReplication(name, <any>undefined, { urn })
+            case "duplocloud:index/s3EventNotification:S3EventNotification":
+                return new S3EventNotification(name, <any>undefined, { urn })
             case "duplocloud:index/tenant:Tenant":
                 return new Tenant(name, <any>undefined, { urn })
             case "duplocloud:index/tenantAccessGrant:TenantAccessGrant":
@@ -1402,6 +1475,8 @@ pulumi.runtime.registerResourceModule("duplocloud", "index/awsBatchJobDefinition
 pulumi.runtime.registerResourceModule("duplocloud", "index/awsBatchJobQueue", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/awsBatchSchedulingPolicy", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/awsCloudfrontDistribution", _module)
+pulumi.runtime.registerResourceModule("duplocloud", "index/awsCloudfrontDistributionV2", _module)
+pulumi.runtime.registerResourceModule("duplocloud", "index/awsCloudfrontFunction", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/awsCloudwatchEventRule", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/awsCloudwatchEventTarget", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/awsCloudwatchMetricAlarm", _module)
@@ -1422,6 +1497,8 @@ pulumi.runtime.registerResourceModule("duplocloud", "index/awsLbListenerRule", _
 pulumi.runtime.registerResourceModule("duplocloud", "index/awsLbTargetGroup", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/awsLoadBalancer", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/awsLoadBalancerListener", _module)
+pulumi.runtime.registerResourceModule("duplocloud", "index/awsMqBroker", _module)
+pulumi.runtime.registerResourceModule("duplocloud", "index/awsMqConfig", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/awsMwaaEnvironment", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/awsRdsGlobalSecondary", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/awsRdsTag", _module)
@@ -1430,6 +1507,7 @@ pulumi.runtime.registerResourceModule("duplocloud", "index/awsSqsQueue", _module
 pulumi.runtime.registerResourceModule("duplocloud", "index/awsSsmParameter", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/awsTag", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/awsTargetGroupAttributes", _module)
+pulumi.runtime.registerResourceModule("duplocloud", "index/awsTargetGroupTargetRegister", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/awsTimestreamwriteDatabase", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/awsTimestreamwriteTable", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/azureAvailabilitySet", _module)
@@ -1445,7 +1523,6 @@ pulumi.runtime.registerResourceModule("duplocloud", "index/azureMssqlDatabase", 
 pulumi.runtime.registerResourceModule("duplocloud", "index/azureMssqlElasticpool", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/azureMssqlServer", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/azureMssqldbRetentionBackup", _module)
-pulumi.runtime.registerResourceModule("duplocloud", "index/azureMysqlDatabase", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/azureNetworkSecurityRule", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/azurePostgresqlDatabase", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/azurePostgresqlFlexibleDatabase", _module)
@@ -1481,11 +1558,14 @@ pulumi.runtime.registerResourceModule("duplocloud", "index/ecsService", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/ecsTaskDefinition", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/emrCluster", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/gcpCloudFunction", _module)
+pulumi.runtime.registerResourceModule("duplocloud", "index/gcpCloudQueue", _module)
+pulumi.runtime.registerResourceModule("duplocloud", "index/gcpCloudTask", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/gcpFirestore", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/gcpHost", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/gcpInfraMaintenanceWindow", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/gcpInfraSecurityRule", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/gcpNodePool", _module)
+pulumi.runtime.registerResourceModule("duplocloud", "index/gcpPubsubSubscription", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/gcpPubsubTopic", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/gcpRedisInstance", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/gcpSchedulerJob", _module)
@@ -1501,6 +1581,7 @@ pulumi.runtime.registerResourceModule("duplocloud", "index/k8ConfigMap", _module
 pulumi.runtime.registerResourceModule("duplocloud", "index/k8HelmRelease", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/k8HelmRepository", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/k8Ingress", _module)
+pulumi.runtime.registerResourceModule("duplocloud", "index/k8OciRepository", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/k8PersistentVolumeClaim", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/k8Secret", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/k8SecretProviderClass", _module)
@@ -1521,6 +1602,7 @@ pulumi.runtime.registerResourceModule("duplocloud", "index/rdsInstance", _module
 pulumi.runtime.registerResourceModule("duplocloud", "index/rdsReadReplica", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/s3Bucket", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/s3BucketReplication", _module)
+pulumi.runtime.registerResourceModule("duplocloud", "index/s3EventNotification", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/tenant", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/tenantAccessGrant", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/tenantCleanupTimers", _module)

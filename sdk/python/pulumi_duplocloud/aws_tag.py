@@ -182,7 +182,7 @@ class AwsTag(pulumi.CustomResource):
         # 
 
         ```sh
-        $ pulumi import duplocloud:index/awsTag:AwsTag custom *TENANT_ID*/*ARN*/*TAGKEY*
+        $ pulumi import duplocloud:index/awsTag:AwsTag custom *TENANT_ID*/*TAGKEY*/*ARN*
         ```
 
         :param str resource_name: The name of the resource.
@@ -214,7 +214,7 @@ class AwsTag(pulumi.CustomResource):
         # 
 
         ```sh
-        $ pulumi import duplocloud:index/awsTag:AwsTag custom *TENANT_ID*/*ARN*/*TAGKEY*
+        $ pulumi import duplocloud:index/awsTag:AwsTag custom *TENANT_ID*/*TAGKEY*/*ARN*
         ```
 
         :param str resource_name: The name of the resource.

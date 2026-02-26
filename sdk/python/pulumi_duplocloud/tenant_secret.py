@@ -23,16 +23,24 @@ class TenantSecretArgs:
     def __init__(__self__, *,
                  data: pulumi.Input[str],
                  name_suffix: pulumi.Input[str],
-                 tenant_id: pulumi.Input[str]):
+                 tenant_id: pulumi.Input[str],
+                 force_delete_on_destroy: Optional[pulumi.Input[bool]] = None,
+                 retention_window_in_days_on_destroy: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a TenantSecret resource.
         :param pulumi.Input[str] data: The plaintext secret data. You can use the `jsonencode()` function to store JSON data in this field.
         :param pulumi.Input[str] name_suffix: The short name of the secret. You can get the fullname from the `name` attribute after creation.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the secret will be created in.
+        :param pulumi.Input[bool] force_delete_on_destroy: Config to bypass retention window before permanently deleting secret on AWS (FYI: field is managed localy in TF provider, importing the resource will not hold defined value)
+        :param pulumi.Input[int] retention_window_in_days_on_destroy: Retention period secret remains recoverable/not fully deleted before AWS permanently deletes it (FYI: field is managed localy in TF provider, importing the resource will not hold defined value)
         """
         pulumi.set(__self__, "data", data)
         pulumi.set(__self__, "name_suffix", name_suffix)
         pulumi.set(__self__, "tenant_id", tenant_id)
+        if force_delete_on_destroy is not None:
+            pulumi.set(__self__, "force_delete_on_destroy", force_delete_on_destroy)
+        if retention_window_in_days_on_destroy is not None:
+            pulumi.set(__self__, "retention_window_in_days_on_destroy", retention_window_in_days_on_destroy)
 
     @property
     @pulumi.getter
@@ -70,14 +78,40 @@ class TenantSecretArgs:
     def tenant_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "tenant_id", value)
 
+    @property
+    @pulumi.getter(name="forceDeleteOnDestroy")
+    def force_delete_on_destroy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Config to bypass retention window before permanently deleting secret on AWS (FYI: field is managed localy in TF provider, importing the resource will not hold defined value)
+        """
+        return pulumi.get(self, "force_delete_on_destroy")
+
+    @force_delete_on_destroy.setter
+    def force_delete_on_destroy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_delete_on_destroy", value)
+
+    @property
+    @pulumi.getter(name="retentionWindowInDaysOnDestroy")
+    def retention_window_in_days_on_destroy(self) -> Optional[pulumi.Input[int]]:
+        """
+        Retention period secret remains recoverable/not fully deleted before AWS permanently deletes it (FYI: field is managed localy in TF provider, importing the resource will not hold defined value)
+        """
+        return pulumi.get(self, "retention_window_in_days_on_destroy")
+
+    @retention_window_in_days_on_destroy.setter
+    def retention_window_in_days_on_destroy(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "retention_window_in_days_on_destroy", value)
+
 
 @pulumi.input_type
 class _TenantSecretState:
     def __init__(__self__, *,
                  arn: Optional[pulumi.Input[str]] = None,
                  data: Optional[pulumi.Input[str]] = None,
+                 force_delete_on_destroy: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  name_suffix: Optional[pulumi.Input[str]] = None,
+                 retention_window_in_days_on_destroy: Optional[pulumi.Input[int]] = None,
                  rotation_enabled: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['TenantSecretTagArgs']]]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
@@ -86,8 +120,10 @@ class _TenantSecretState:
         Input properties used for looking up and filtering TenantSecret resources.
         :param pulumi.Input[str] arn: The ARN of the created secret.
         :param pulumi.Input[str] data: The plaintext secret data. You can use the `jsonencode()` function to store JSON data in this field.
+        :param pulumi.Input[bool] force_delete_on_destroy: Config to bypass retention window before permanently deleting secret on AWS (FYI: field is managed localy in TF provider, importing the resource will not hold defined value)
         :param pulumi.Input[str] name: The full name of the secret.
         :param pulumi.Input[str] name_suffix: The short name of the secret. You can get the fullname from the `name` attribute after creation.
+        :param pulumi.Input[int] retention_window_in_days_on_destroy: Retention period secret remains recoverable/not fully deleted before AWS permanently deletes it (FYI: field is managed localy in TF provider, importing the resource will not hold defined value)
         :param pulumi.Input[bool] rotation_enabled: Whether or not rotation is enabled for this secret.
         :param pulumi.Input[Sequence[pulumi.Input['TenantSecretTagArgs']]] tags: A list of tags for this secret.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the secret will be created in.
@@ -97,10 +133,14 @@ class _TenantSecretState:
             pulumi.set(__self__, "arn", arn)
         if data is not None:
             pulumi.set(__self__, "data", data)
+        if force_delete_on_destroy is not None:
+            pulumi.set(__self__, "force_delete_on_destroy", force_delete_on_destroy)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if name_suffix is not None:
             pulumi.set(__self__, "name_suffix", name_suffix)
+        if retention_window_in_days_on_destroy is not None:
+            pulumi.set(__self__, "retention_window_in_days_on_destroy", retention_window_in_days_on_destroy)
         if rotation_enabled is not None:
             pulumi.set(__self__, "rotation_enabled", rotation_enabled)
         if tags is not None:
@@ -135,6 +175,18 @@ class _TenantSecretState:
         pulumi.set(self, "data", value)
 
     @property
+    @pulumi.getter(name="forceDeleteOnDestroy")
+    def force_delete_on_destroy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Config to bypass retention window before permanently deleting secret on AWS (FYI: field is managed localy in TF provider, importing the resource will not hold defined value)
+        """
+        return pulumi.get(self, "force_delete_on_destroy")
+
+    @force_delete_on_destroy.setter
+    def force_delete_on_destroy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_delete_on_destroy", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -157,6 +209,18 @@ class _TenantSecretState:
     @name_suffix.setter
     def name_suffix(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name_suffix", value)
+
+    @property
+    @pulumi.getter(name="retentionWindowInDaysOnDestroy")
+    def retention_window_in_days_on_destroy(self) -> Optional[pulumi.Input[int]]:
+        """
+        Retention period secret remains recoverable/not fully deleted before AWS permanently deletes it (FYI: field is managed localy in TF provider, importing the resource will not hold defined value)
+        """
+        return pulumi.get(self, "retention_window_in_days_on_destroy")
+
+    @retention_window_in_days_on_destroy.setter
+    def retention_window_in_days_on_destroy(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "retention_window_in_days_on_destroy", value)
 
     @property
     @pulumi.getter(name="rotationEnabled")
@@ -213,7 +277,9 @@ class TenantSecret(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  data: Optional[pulumi.Input[str]] = None,
+                 force_delete_on_destroy: Optional[pulumi.Input[bool]] = None,
                  name_suffix: Optional[pulumi.Input[str]] = None,
+                 retention_window_in_days_on_destroy: Optional[pulumi.Input[int]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -252,7 +318,9 @@ class TenantSecret(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] data: The plaintext secret data. You can use the `jsonencode()` function to store JSON data in this field.
+        :param pulumi.Input[bool] force_delete_on_destroy: Config to bypass retention window before permanently deleting secret on AWS (FYI: field is managed localy in TF provider, importing the resource will not hold defined value)
         :param pulumi.Input[str] name_suffix: The short name of the secret. You can get the fullname from the `name` attribute after creation.
+        :param pulumi.Input[int] retention_window_in_days_on_destroy: Retention period secret remains recoverable/not fully deleted before AWS permanently deletes it (FYI: field is managed localy in TF provider, importing the resource will not hold defined value)
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the secret will be created in.
         """
         ...
@@ -310,7 +378,9 @@ class TenantSecret(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  data: Optional[pulumi.Input[str]] = None,
+                 force_delete_on_destroy: Optional[pulumi.Input[bool]] = None,
                  name_suffix: Optional[pulumi.Input[str]] = None,
+                 retention_window_in_days_on_destroy: Optional[pulumi.Input[int]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -324,9 +394,11 @@ class TenantSecret(pulumi.CustomResource):
             if data is None and not opts.urn:
                 raise TypeError("Missing required property 'data'")
             __props__.__dict__["data"] = None if data is None else pulumi.Output.secret(data)
+            __props__.__dict__["force_delete_on_destroy"] = force_delete_on_destroy
             if name_suffix is None and not opts.urn:
                 raise TypeError("Missing required property 'name_suffix'")
             __props__.__dict__["name_suffix"] = name_suffix
+            __props__.__dict__["retention_window_in_days_on_destroy"] = retention_window_in_days_on_destroy
             if tenant_id is None and not opts.urn:
                 raise TypeError("Missing required property 'tenant_id'")
             __props__.__dict__["tenant_id"] = tenant_id
@@ -349,8 +421,10 @@ class TenantSecret(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             arn: Optional[pulumi.Input[str]] = None,
             data: Optional[pulumi.Input[str]] = None,
+            force_delete_on_destroy: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             name_suffix: Optional[pulumi.Input[str]] = None,
+            retention_window_in_days_on_destroy: Optional[pulumi.Input[int]] = None,
             rotation_enabled: Optional[pulumi.Input[bool]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TenantSecretTagArgs', 'TenantSecretTagArgsDict']]]]] = None,
             tenant_id: Optional[pulumi.Input[str]] = None,
@@ -364,8 +438,10 @@ class TenantSecret(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] arn: The ARN of the created secret.
         :param pulumi.Input[str] data: The plaintext secret data. You can use the `jsonencode()` function to store JSON data in this field.
+        :param pulumi.Input[bool] force_delete_on_destroy: Config to bypass retention window before permanently deleting secret on AWS (FYI: field is managed localy in TF provider, importing the resource will not hold defined value)
         :param pulumi.Input[str] name: The full name of the secret.
         :param pulumi.Input[str] name_suffix: The short name of the secret. You can get the fullname from the `name` attribute after creation.
+        :param pulumi.Input[int] retention_window_in_days_on_destroy: Retention period secret remains recoverable/not fully deleted before AWS permanently deletes it (FYI: field is managed localy in TF provider, importing the resource will not hold defined value)
         :param pulumi.Input[bool] rotation_enabled: Whether or not rotation is enabled for this secret.
         :param pulumi.Input[Sequence[pulumi.Input[Union['TenantSecretTagArgs', 'TenantSecretTagArgsDict']]]] tags: A list of tags for this secret.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the secret will be created in.
@@ -377,8 +453,10 @@ class TenantSecret(pulumi.CustomResource):
 
         __props__.__dict__["arn"] = arn
         __props__.__dict__["data"] = data
+        __props__.__dict__["force_delete_on_destroy"] = force_delete_on_destroy
         __props__.__dict__["name"] = name
         __props__.__dict__["name_suffix"] = name_suffix
+        __props__.__dict__["retention_window_in_days_on_destroy"] = retention_window_in_days_on_destroy
         __props__.__dict__["rotation_enabled"] = rotation_enabled
         __props__.__dict__["tags"] = tags
         __props__.__dict__["tenant_id"] = tenant_id
@@ -402,6 +480,14 @@ class TenantSecret(pulumi.CustomResource):
         return pulumi.get(self, "data")
 
     @property
+    @pulumi.getter(name="forceDeleteOnDestroy")
+    def force_delete_on_destroy(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Config to bypass retention window before permanently deleting secret on AWS (FYI: field is managed localy in TF provider, importing the resource will not hold defined value)
+        """
+        return pulumi.get(self, "force_delete_on_destroy")
+
+    @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
@@ -416,6 +502,14 @@ class TenantSecret(pulumi.CustomResource):
         The short name of the secret. You can get the fullname from the `name` attribute after creation.
         """
         return pulumi.get(self, "name_suffix")
+
+    @property
+    @pulumi.getter(name="retentionWindowInDaysOnDestroy")
+    def retention_window_in_days_on_destroy(self) -> pulumi.Output[Optional[int]]:
+        """
+        Retention period secret remains recoverable/not fully deleted before AWS permanently deletes it (FYI: field is managed localy in TF provider, importing the resource will not hold defined value)
+        """
+        return pulumi.get(self, "retention_window_in_days_on_destroy")
 
     @property
     @pulumi.getter(name="rotationEnabled")

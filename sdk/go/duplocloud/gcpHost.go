@@ -84,8 +84,8 @@ type GcpHost struct {
 	AcceleratorCount pulumi.IntPtrOutput `pulumi:"acceleratorCount"`
 	// The accelerator type resource to expose to this instance
 	AcceleratorType pulumi.StringOutput `pulumi:"acceleratorType"`
-	// The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
-	// Windows
+	// The numeric ID of the container agent pool that this host is added to. Should be one of: - `0` : Duplo Native container
+	// agent - `7` : Linux container agent for Kubernetes
 	AgentPlatform pulumi.IntPtrOutput `pulumi:"agentPlatform"`
 	// Whether or not to allocate a public IP.
 	AllocatedPublicIp pulumi.BoolPtrOutput `pulumi:"allocatedPublicIp"`
@@ -173,8 +173,8 @@ type gcpHostState struct {
 	AcceleratorCount *int `pulumi:"acceleratorCount"`
 	// The accelerator type resource to expose to this instance
 	AcceleratorType *string `pulumi:"acceleratorType"`
-	// The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
-	// Windows
+	// The numeric ID of the container agent pool that this host is added to. Should be one of: - `0` : Duplo Native container
+	// agent - `7` : Linux container agent for Kubernetes
 	AgentPlatform *int `pulumi:"agentPlatform"`
 	// Whether or not to allocate a public IP.
 	AllocatedPublicIp *bool   `pulumi:"allocatedPublicIp"`
@@ -215,8 +215,8 @@ type GcpHostState struct {
 	AcceleratorCount pulumi.IntPtrInput
 	// The accelerator type resource to expose to this instance
 	AcceleratorType pulumi.StringPtrInput
-	// The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
-	// Windows
+	// The numeric ID of the container agent pool that this host is added to. Should be one of: - `0` : Duplo Native container
+	// agent - `7` : Linux container agent for Kubernetes
 	AgentPlatform pulumi.IntPtrInput
 	// Whether or not to allocate a public IP.
 	AllocatedPublicIp pulumi.BoolPtrInput
@@ -261,8 +261,8 @@ type gcpHostArgs struct {
 	AcceleratorCount *int `pulumi:"acceleratorCount"`
 	// The accelerator type resource to expose to this instance
 	AcceleratorType *string `pulumi:"acceleratorType"`
-	// The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
-	// Windows
+	// The numeric ID of the container agent pool that this host is added to. Should be one of: - `0` : Duplo Native container
+	// agent - `7` : Linux container agent for Kubernetes
 	AgentPlatform *int `pulumi:"agentPlatform"`
 	// Whether or not to allocate a public IP.
 	AllocatedPublicIp *bool `pulumi:"allocatedPublicIp"`
@@ -295,8 +295,8 @@ type GcpHostArgs struct {
 	AcceleratorCount pulumi.IntPtrInput
 	// The accelerator type resource to expose to this instance
 	AcceleratorType pulumi.StringPtrInput
-	// The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
-	// Windows
+	// The numeric ID of the container agent pool that this host is added to. Should be one of: - `0` : Duplo Native container
+	// agent - `7` : Linux container agent for Kubernetes
 	AgentPlatform pulumi.IntPtrInput
 	// Whether or not to allocate a public IP.
 	AllocatedPublicIp pulumi.BoolPtrInput
@@ -420,8 +420,8 @@ func (o GcpHostOutput) AcceleratorType() pulumi.StringOutput {
 	return o.ApplyT(func(v *GcpHost) pulumi.StringOutput { return v.AcceleratorType }).(pulumi.StringOutput)
 }
 
-// The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
-// Windows
+// The numeric ID of the container agent pool that this host is added to. Should be one of: - `0` : Duplo Native container
+// agent - `7` : Linux container agent for Kubernetes
 func (o GcpHostOutput) AgentPlatform() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GcpHost) pulumi.IntPtrOutput { return v.AgentPlatform }).(pulumi.IntPtrOutput)
 }

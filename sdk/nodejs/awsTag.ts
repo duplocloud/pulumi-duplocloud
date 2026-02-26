@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  * # 
  *
  * ```sh
- * $ pulumi import duplocloud:index/awsTag:AwsTag custom *TENANT_ID*&#47;*ARN*&#47;*TAGKEY*
+ * $ pulumi import duplocloud:index/awsTag:AwsTag custom *TENANT_ID*&#47;*TAGKEY*&#47;*ARN*
  * ```
  */
 export class AwsTag extends pulumi.CustomResource {

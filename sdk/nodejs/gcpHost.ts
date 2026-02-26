@@ -88,8 +88,8 @@ export class GcpHost extends pulumi.CustomResource {
      */
     public readonly acceleratorType!: pulumi.Output<string>;
     /**
-     * The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
-     * Windows
+     * The numeric ID of the container agent pool that this host is added to. Should be one of: - `0` : Duplo Native container
+     * agent - `7` : Linux container agent for Kubernetes
      */
     public readonly agentPlatform!: pulumi.Output<number | undefined>;
     /**
@@ -243,8 +243,8 @@ export interface GcpHostState {
      */
     acceleratorType?: pulumi.Input<string>;
     /**
-     * The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
-     * Windows
+     * The numeric ID of the container agent pool that this host is added to. Should be one of: - `0` : Duplo Native container
+     * agent - `7` : Linux container agent for Kubernetes
      */
     agentPlatform?: pulumi.Input<number>;
     /**
@@ -316,8 +316,8 @@ export interface GcpHostArgs {
      */
     acceleratorType?: pulumi.Input<string>;
     /**
-     * The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
-     * Windows
+     * The numeric ID of the container agent pool that this host is added to. Should be one of: - `0` : Duplo Native container
+     * agent - `7` : Linux container agent for Kubernetes
      */
     agentPlatform?: pulumi.Input<number>;
     /**

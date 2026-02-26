@@ -381,6 +381,13 @@ namespace DuploCloud.Pulumi
         public Output<ImmutableArray<Outputs.EcacheInstanceLogDeliveryConfiguration>> LogDeliveryConfigurations { get; private set; } = null!;
 
         /// <summary>
+        /// Enables Multi-AZ support for the ElastiCache instance. Multi-AZ is only applicable for Redis (cache_type=0) and Valkey
+        /// (cache_type=2). When enabled, automatic_failover_enabled must also be set to true.
+        /// </summary>
+        [Output("multiAzEnabled")]
+        public Output<bool?> MultiAzEnabled { get; private set; } = null!;
+
+        /// <summary>
         /// The short name of the elasticache instance.  Duplo will add a prefix to the name.  You can retrieve the full name from the `identifier` attribute.
         /// </summary>
         [Output("name")]
@@ -558,6 +565,13 @@ namespace DuploCloud.Pulumi
         }
 
         /// <summary>
+        /// Enables Multi-AZ support for the ElastiCache instance. Multi-AZ is only applicable for Redis (cache_type=0) and Valkey
+        /// (cache_type=2). When enabled, automatic_failover_enabled must also be set to true.
+        /// </summary>
+        [Input("multiAzEnabled")]
+        public Input<bool>? MultiAzEnabled { get; set; }
+
+        /// <summary>
         /// The short name of the elasticache instance.  Duplo will add a prefix to the name.  You can retrieve the full name from the `identifier` attribute.
         /// </summary>
         [Input("name")]
@@ -733,6 +747,13 @@ namespace DuploCloud.Pulumi
             get => _logDeliveryConfigurations ?? (_logDeliveryConfigurations = new InputList<Inputs.EcacheInstanceLogDeliveryConfigurationGetArgs>());
             set => _logDeliveryConfigurations = value;
         }
+
+        /// <summary>
+        /// Enables Multi-AZ support for the ElastiCache instance. Multi-AZ is only applicable for Redis (cache_type=0) and Valkey
+        /// (cache_type=2). When enabled, automatic_failover_enabled must also be set to true.
+        /// </summary>
+        [Input("multiAzEnabled")]
+        public Input<bool>? MultiAzEnabled { get; set; }
 
         /// <summary>
         /// The short name of the elasticache instance.  Duplo will add a prefix to the name.  You can retrieve the full name from the `identifier` attribute.

@@ -26,7 +26,7 @@ namespace DuploCloud.Pulumi
     /// # 
     /// 
     /// ```sh
-    /// $ pulumi import duplocloud:index/awsTag:AwsTag custom *TENANT_ID*/*ARN*/*TAGKEY*
+    /// $ pulumi import duplocloud:index/awsTag:AwsTag custom *TENANT_ID*/*TAGKEY*/*ARN*
     /// ```
     /// </summary>
     [PulumiResourceType("duplocloud:index/awsTag:AwsTag")]

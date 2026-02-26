@@ -19,7 +19,7 @@ namespace DuploCloud.Pulumi.Outputs
         /// </summary>
         public readonly bool? AllowGlobalAccess;
         /// <summary>
-        /// The number of seconds to wait for the backend to send a response. Must be at least 1. Applicable only for GCP.
+        /// The number of seconds to wait for the backend to send a response. Must be at least 1. Applicable only for GCP. Enable set_ingress_health_check when using this field
         /// </summary>
         public readonly int? BackendConfigTimeoutSec;
         /// <summary>
@@ -42,6 +42,12 @@ namespace DuploCloud.Pulumi.Outputs
         /// The DNS name of the cloud load balancer (if applicable).
         /// </summary>
         public readonly string? DnsName;
+        /// <summary>
+        /// Allocate Elastic IP to load balancer, which is configured under plan configuration.
+        /// 
+        /// Note: This field can only be set for non internal lbtype NLB(6)
+        /// </summary>
+        public readonly ImmutableArray<string> EipAllocations;
         /// <summary>
         /// The frontend port associated with this load balancer configuration. Required if `lb_type` is not `7`.
         /// </summary>
@@ -152,6 +158,8 @@ namespace DuploCloud.Pulumi.Outputs
 
             string? dnsName,
 
+            ImmutableArray<string> eipAllocations,
+
             int? externalPort,
 
             string? externalTrafficPolicy,
@@ -199,6 +207,7 @@ namespace DuploCloud.Pulumi.Outputs
             CloudName = cloudName;
             CustomCidrs = customCidrs;
             DnsName = dnsName;
+            EipAllocations = eipAllocations;
             ExternalPort = externalPort;
             ExternalTrafficPolicy = externalTrafficPolicy;
             ExtraSelectorLabels = extraSelectorLabels;

@@ -502,7 +502,7 @@ export class RdsInstance extends pulumi.CustomResource {
      */
     public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     /**
-     * Whether or not to enable the RDS IAM authentication. It can only be set during instance creation.
+     * Whether or not to enable the RDS IAM authentication. This setting can be modified after instance creation.
      */
     public readonly enableIamAuth!: pulumi.Output<boolean>;
     /**
@@ -573,7 +573,7 @@ export class RdsInstance extends pulumi.CustomResource {
     /**
      * A RDS parameter group name to apply to the RDS instance.
      */
-    public readonly parameterGroupName!: pulumi.Output<string | undefined>;
+    public readonly parameterGroupName!: pulumi.Output<string>;
     /**
      * Amazon RDS Performance Insights is a database performance tuning and monitoring feature that helps you quickly assess
      * the load on your database, and determine when and where to take action. Perfomance Insights get apply when enable is set
@@ -599,6 +599,7 @@ export class RdsInstance extends pulumi.CustomResource {
      * A database snapshot to initialize the RDS instance from, at launch.
      */
     public readonly snapshotId!: pulumi.Output<string | undefined>;
+    public readonly storageAutoscaling!: pulumi.Output<outputs.RdsInstanceStorageAutoscaling>;
     /**
      * Storage type to be used for RDS instance storage. |Storage Type | Performance | Throughput | Descritpion |
      * |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -676,6 +677,7 @@ export class RdsInstance extends pulumi.CustomResource {
             resourceInputs["size"] = state ? state.size : undefined;
             resourceInputs["skipFinalSnapshot"] = state ? state.skipFinalSnapshot : undefined;
             resourceInputs["snapshotId"] = state ? state.snapshotId : undefined;
+            resourceInputs["storageAutoscaling"] = state ? state.storageAutoscaling : undefined;
             resourceInputs["storageType"] = state ? state.storageType : undefined;
             resourceInputs["storeDetailsInSecretManager"] = state ? state.storeDetailsInSecretManager : undefined;
             resourceInputs["tenantId"] = state ? state.tenantId : undefined;
@@ -716,6 +718,7 @@ export class RdsInstance extends pulumi.CustomResource {
             resourceInputs["size"] = args ? args.size : undefined;
             resourceInputs["skipFinalSnapshot"] = args ? args.skipFinalSnapshot : undefined;
             resourceInputs["snapshotId"] = args ? args.snapshotId : undefined;
+            resourceInputs["storageAutoscaling"] = args ? args.storageAutoscaling : undefined;
             resourceInputs["storageType"] = args ? args.storageType : undefined;
             resourceInputs["storeDetailsInSecretManager"] = args ? args.storeDetailsInSecretManager : undefined;
             resourceInputs["tenantId"] = args ? args.tenantId : undefined;
@@ -782,7 +785,7 @@ export interface RdsInstanceState {
      */
     deletionProtection?: pulumi.Input<boolean>;
     /**
-     * Whether or not to enable the RDS IAM authentication. It can only be set during instance creation.
+     * Whether or not to enable the RDS IAM authentication. This setting can be modified after instance creation.
      */
     enableIamAuth?: pulumi.Input<boolean>;
     /**
@@ -879,6 +882,7 @@ export interface RdsInstanceState {
      * A database snapshot to initialize the RDS instance from, at launch.
      */
     snapshotId?: pulumi.Input<string>;
+    storageAutoscaling?: pulumi.Input<inputs.RdsInstanceStorageAutoscaling>;
     /**
      * Storage type to be used for RDS instance storage. |Storage Type | Performance | Throughput | Descritpion |
      * |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -951,7 +955,7 @@ export interface RdsInstanceArgs {
      */
     deletionProtection?: pulumi.Input<boolean>;
     /**
-     * Whether or not to enable the RDS IAM authentication. It can only be set during instance creation.
+     * Whether or not to enable the RDS IAM authentication. This setting can be modified after instance creation.
      */
     enableIamAuth?: pulumi.Input<boolean>;
     /**
@@ -1028,6 +1032,7 @@ export interface RdsInstanceArgs {
      * A database snapshot to initialize the RDS instance from, at launch.
      */
     snapshotId?: pulumi.Input<string>;
+    storageAutoscaling?: pulumi.Input<inputs.RdsInstanceStorageAutoscaling>;
     /**
      * Storage type to be used for RDS instance storage. |Storage Type | Performance | Throughput | Descritpion |
      * |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

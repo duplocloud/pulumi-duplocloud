@@ -71,7 +71,7 @@ export class AwsApiGatewayIntegration extends pulumi.CustomResource {
      */
     public /*out*/ readonly fullname!: pulumi.Output<string>;
     /**
-     * Name of the lambda function to be integrated with API gateway.
+     * Name of the lambda function or arn to be integrated with API gateway.
      */
     public readonly lambdaFunctionName!: pulumi.Output<string>;
     public /*out*/ readonly metadata!: pulumi.Output<string>;
@@ -130,7 +130,7 @@ export interface AwsApiGatewayIntegrationState {
      */
     fullname?: pulumi.Input<string>;
     /**
-     * Name of the lambda function to be integrated with API gateway.
+     * Name of the lambda function or arn to be integrated with API gateway.
      */
     lambdaFunctionName?: pulumi.Input<string>;
     metadata?: pulumi.Input<string>;
@@ -149,7 +149,7 @@ export interface AwsApiGatewayIntegrationState {
  */
 export interface AwsApiGatewayIntegrationArgs {
     /**
-     * Name of the lambda function to be integrated with API gateway.
+     * Name of the lambda function or arn to be integrated with API gateway.
      */
     lambdaFunctionName: pulumi.Input<string>;
     /**

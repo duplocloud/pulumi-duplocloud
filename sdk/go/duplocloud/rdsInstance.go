@@ -706,7 +706,7 @@ type RdsInstance struct {
 	// If the DB instance should have deletion protection enabled.The database can't be deleted when this value is set to
 	// `true`. This setting is not applicable for document db cluster instance.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
-	// Whether or not to enable the RDS IAM authentication. It can only be set during instance creation.
+	// Whether or not to enable the RDS IAM authentication. This setting can be modified after instance creation.
 	EnableIamAuth pulumi.BoolOutput `pulumi:"enableIamAuth"`
 	// Whether or not to enable the RDS instance logging. This setting is not applicable for document db cluster instance.
 	EnableLogging pulumi.BoolOutput `pulumi:"enableLogging"`
@@ -744,7 +744,7 @@ type RdsInstance struct {
 	// `identifier` attribute.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A RDS parameter group name to apply to the RDS instance.
-	ParameterGroupName pulumi.StringPtrOutput `pulumi:"parameterGroupName"`
+	ParameterGroupName pulumi.StringOutput `pulumi:"parameterGroupName"`
 	// Amazon RDS Performance Insights is a database performance tuning and monitoring feature that helps you quickly assess
 	// the load on your database, and determine when and where to take action. Perfomance Insights get apply when enable is set
 	// to true.
@@ -759,7 +759,8 @@ type RdsInstance struct {
 	// deleted.
 	SkipFinalSnapshot pulumi.BoolPtrOutput `pulumi:"skipFinalSnapshot"`
 	// A database snapshot to initialize the RDS instance from, at launch.
-	SnapshotId pulumi.StringPtrOutput `pulumi:"snapshotId"`
+	SnapshotId         pulumi.StringPtrOutput              `pulumi:"snapshotId"`
+	StorageAutoscaling RdsInstanceStorageAutoscalingOutput `pulumi:"storageAutoscaling"`
 	// Storage type to be used for RDS instance storage. |Storage Type | Performance | Throughput | Descritpion |
 	// |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	// | | gp2 | 3 IOPS/GB, up to 16K IOPS | Up to 250 MB/s | General-purpose databases, small to medium workloads. 'gp2'
@@ -853,7 +854,7 @@ type rdsInstanceState struct {
 	// If the DB instance should have deletion protection enabled.The database can't be deleted when this value is set to
 	// `true`. This setting is not applicable for document db cluster instance.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
-	// Whether or not to enable the RDS IAM authentication. It can only be set during instance creation.
+	// Whether or not to enable the RDS IAM authentication. This setting can be modified after instance creation.
 	EnableIamAuth *bool `pulumi:"enableIamAuth"`
 	// Whether or not to enable the RDS instance logging. This setting is not applicable for document db cluster instance.
 	EnableLogging *bool `pulumi:"enableLogging"`
@@ -906,7 +907,8 @@ type rdsInstanceState struct {
 	// deleted.
 	SkipFinalSnapshot *bool `pulumi:"skipFinalSnapshot"`
 	// A database snapshot to initialize the RDS instance from, at launch.
-	SnapshotId *string `pulumi:"snapshotId"`
+	SnapshotId         *string                        `pulumi:"snapshotId"`
+	StorageAutoscaling *RdsInstanceStorageAutoscaling `pulumi:"storageAutoscaling"`
 	// Storage type to be used for RDS instance storage. |Storage Type | Performance | Throughput | Descritpion |
 	// |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	// | | gp2 | 3 IOPS/GB, up to 16K IOPS | Up to 250 MB/s | General-purpose databases, small to medium workloads. 'gp2'
@@ -955,7 +957,7 @@ type RdsInstanceState struct {
 	// If the DB instance should have deletion protection enabled.The database can't be deleted when this value is set to
 	// `true`. This setting is not applicable for document db cluster instance.
 	DeletionProtection pulumi.BoolPtrInput
-	// Whether or not to enable the RDS IAM authentication. It can only be set during instance creation.
+	// Whether or not to enable the RDS IAM authentication. This setting can be modified after instance creation.
 	EnableIamAuth pulumi.BoolPtrInput
 	// Whether or not to enable the RDS instance logging. This setting is not applicable for document db cluster instance.
 	EnableLogging pulumi.BoolPtrInput
@@ -1008,7 +1010,8 @@ type RdsInstanceState struct {
 	// deleted.
 	SkipFinalSnapshot pulumi.BoolPtrInput
 	// A database snapshot to initialize the RDS instance from, at launch.
-	SnapshotId pulumi.StringPtrInput
+	SnapshotId         pulumi.StringPtrInput
+	StorageAutoscaling RdsInstanceStorageAutoscalingPtrInput
 	// Storage type to be used for RDS instance storage. |Storage Type | Performance | Throughput | Descritpion |
 	// |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	// | | gp2 | 3 IOPS/GB, up to 16K IOPS | Up to 250 MB/s | General-purpose databases, small to medium workloads. 'gp2'
@@ -1057,7 +1060,7 @@ type rdsInstanceArgs struct {
 	// If the DB instance should have deletion protection enabled.The database can't be deleted when this value is set to
 	// `true`. This setting is not applicable for document db cluster instance.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
-	// Whether or not to enable the RDS IAM authentication. It can only be set during instance creation.
+	// Whether or not to enable the RDS IAM authentication. This setting can be modified after instance creation.
 	EnableIamAuth *bool `pulumi:"enableIamAuth"`
 	// Whether or not to enable the RDS instance logging. This setting is not applicable for document db cluster instance.
 	EnableLogging *bool `pulumi:"enableLogging"`
@@ -1100,7 +1103,8 @@ type rdsInstanceArgs struct {
 	// deleted.
 	SkipFinalSnapshot *bool `pulumi:"skipFinalSnapshot"`
 	// A database snapshot to initialize the RDS instance from, at launch.
-	SnapshotId *string `pulumi:"snapshotId"`
+	SnapshotId         *string                        `pulumi:"snapshotId"`
+	StorageAutoscaling *RdsInstanceStorageAutoscaling `pulumi:"storageAutoscaling"`
 	// Storage type to be used for RDS instance storage. |Storage Type | Performance | Throughput | Descritpion |
 	// |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	// | | gp2 | 3 IOPS/GB, up to 16K IOPS | Up to 250 MB/s | General-purpose databases, small to medium workloads. 'gp2'
@@ -1146,7 +1150,7 @@ type RdsInstanceArgs struct {
 	// If the DB instance should have deletion protection enabled.The database can't be deleted when this value is set to
 	// `true`. This setting is not applicable for document db cluster instance.
 	DeletionProtection pulumi.BoolPtrInput
-	// Whether or not to enable the RDS IAM authentication. It can only be set during instance creation.
+	// Whether or not to enable the RDS IAM authentication. This setting can be modified after instance creation.
 	EnableIamAuth pulumi.BoolPtrInput
 	// Whether or not to enable the RDS instance logging. This setting is not applicable for document db cluster instance.
 	EnableLogging pulumi.BoolPtrInput
@@ -1189,7 +1193,8 @@ type RdsInstanceArgs struct {
 	// deleted.
 	SkipFinalSnapshot pulumi.BoolPtrInput
 	// A database snapshot to initialize the RDS instance from, at launch.
-	SnapshotId pulumi.StringPtrInput
+	SnapshotId         pulumi.StringPtrInput
+	StorageAutoscaling RdsInstanceStorageAutoscalingPtrInput
 	// Storage type to be used for RDS instance storage. |Storage Type | Performance | Throughput | Descritpion |
 	// |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	// | | gp2 | 3 IOPS/GB, up to 16K IOPS | Up to 250 MB/s | General-purpose databases, small to medium workloads. 'gp2'
@@ -1354,7 +1359,7 @@ func (o RdsInstanceOutput) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *RdsInstance) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }
 
-// Whether or not to enable the RDS IAM authentication. It can only be set during instance creation.
+// Whether or not to enable the RDS IAM authentication. This setting can be modified after instance creation.
 func (o RdsInstanceOutput) EnableIamAuth() pulumi.BoolOutput {
 	return o.ApplyT(func(v *RdsInstance) pulumi.BoolOutput { return v.EnableIamAuth }).(pulumi.BoolOutput)
 }
@@ -1440,8 +1445,8 @@ func (o RdsInstanceOutput) Name() pulumi.StringOutput {
 }
 
 // A RDS parameter group name to apply to the RDS instance.
-func (o RdsInstanceOutput) ParameterGroupName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RdsInstance) pulumi.StringPtrOutput { return v.ParameterGroupName }).(pulumi.StringPtrOutput)
+func (o RdsInstanceOutput) ParameterGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsInstance) pulumi.StringOutput { return v.ParameterGroupName }).(pulumi.StringOutput)
 }
 
 // Amazon RDS Performance Insights is a database performance tuning and monitoring feature that helps you quickly assess
@@ -1472,6 +1477,10 @@ func (o RdsInstanceOutput) SkipFinalSnapshot() pulumi.BoolPtrOutput {
 // A database snapshot to initialize the RDS instance from, at launch.
 func (o RdsInstanceOutput) SnapshotId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RdsInstance) pulumi.StringPtrOutput { return v.SnapshotId }).(pulumi.StringPtrOutput)
+}
+
+func (o RdsInstanceOutput) StorageAutoscaling() RdsInstanceStorageAutoscalingOutput {
+	return o.ApplyT(func(v *RdsInstance) RdsInstanceStorageAutoscalingOutput { return v.StorageAutoscaling }).(RdsInstanceStorageAutoscalingOutput)
 }
 
 // Storage type to be used for RDS instance storage. |Storage Type | Performance | Throughput | Descritpion |

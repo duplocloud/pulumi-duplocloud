@@ -13,101 +13,6 @@ namespace DuploCloud.Pulumi
     /// <summary>
     /// `duplocloud.AwsLambdaFunction` manages an AWS lambda function in Duplo.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Pulumi = DuploCloud.Pulumi;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var myapp = new Pulumi.Tenant("myapp", new()
-    ///     {
-    ///         AccountName = "myapp",
-    ///         PlanId = "default",
-    ///     });
-    /// 
-    ///     var myfunction = new Pulumi.AwsLambdaFunction("myfunction", new()
-    ///     {
-    ///         TenantId = @this.TenantId,
-    ///         Name = "myfunction",
-    ///         Description = "A description of my function",
-    ///         Runtime = "java11",
-    ///         Handler = "com.example.MyFunction::handleRequest",
-    ///         S3Bucket = "my-bucket-name",
-    ///         S3Key = "my-function.zip",
-    ///         Environment = new Pulumi.Inputs.AwsLambdaFunctionEnvironmentArgs
-    ///         {
-    ///             Variables = 
-    ///             {
-    ///                 { "foo", "bar" },
-    ///             },
-    ///         },
-    ///         Timeout = 60,
-    ///         MemorySize = 512,
-    ///     });
-    /// 
-    ///     var thisfunction = new Pulumi.AwsLambdaFunction("thisfunction", new()
-    ///     {
-    ///         TenantId = @this.TenantId,
-    ///         Name = "thisfunction",
-    ///         Description = "A description of my function",
-    ///         PackageType = "Image",
-    ///         ImageUri = "dkr.ecr.us-west-2.amazonaws.com/myimage:latest",
-    ///         ImageConfig = new Pulumi.Inputs.AwsLambdaFunctionImageConfigArgs
-    ///         {
-    ///             Commands = new[]
-    ///             {
-    ///                 "echo",
-    ///                 "hello world",
-    ///             },
-    ///             EntryPoints = new[]
-    ///             {
-    ///                 "echo hello workd",
-    ///             },
-    ///             WorkingDirectory = "/tmp3",
-    ///         },
-    ///         TracingConfig = new Pulumi.Inputs.AwsLambdaFunctionTracingConfigArgs
-    ///         {
-    ///             Mode = "PassThrough",
-    ///         },
-    ///         Timeout = 60,
-    ///         MemorySize = 512,
-    ///     });
-    /// 
-    ///     var edgefunction = new Pulumi.AwsLambdaFunction("edgefunction", new()
-    ///     {
-    ///         TenantId = "c7163b39-43ca-4d44-81ce-9a323087039b",
-    ///         Name = "edgefunction",
-    ///         Description = "An example edge function",
-    ///         PackageType = "Image",
-    ///         ImageUri = "dkr.ecr.us-east-1.amazonaws.com/myimage:1.0",
-    ///         ImageConfig = new Pulumi.Inputs.AwsLambdaFunctionImageConfigArgs
-    ///         {
-    ///             Commands = new[]
-    ///             {
-    ///                 "echo",
-    ///                 "hello world",
-    ///             },
-    ///             EntryPoints = new[]
-    ///             {
-    ///                 "echo hello workd",
-    ///             },
-    ///             WorkingDirectory = "/tmp3",
-    ///         },
-    ///         Tags = 
-    ///         {
-    ///             { "IsEdgeDeploy", "true" },
-    ///         },
-    ///         Timeout = 5,
-    ///         MemorySize = 128,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Example: Importing an existing AWS lambda function
@@ -184,6 +89,12 @@ namespace DuploCloud.Pulumi
         /// </summary>
         [Output("imageUri")]
         public Output<string?> ImageUri { get; private set; } = null!;
+
+        /// <summary>
+        /// The ARN to be used for invoking the lambda function.
+        /// </summary>
+        [Output("invokeArn")]
+        public Output<string> InvokeArn { get; private set; } = null!;
 
         /// <summary>
         /// A timestamp string of lambda's last modification time.
@@ -527,6 +438,12 @@ namespace DuploCloud.Pulumi
         /// </summary>
         [Input("imageUri")]
         public Input<string>? ImageUri { get; set; }
+
+        /// <summary>
+        /// The ARN to be used for invoking the lambda function.
+        /// </summary>
+        [Input("invokeArn")]
+        public Input<string>? InvokeArn { get; set; }
 
         /// <summary>
         /// A timestamp string of lambda's last modification time.

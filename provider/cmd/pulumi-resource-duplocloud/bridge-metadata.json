@@ -345,6 +345,185 @@
                     }
                 }
             },
+            "duplocloud_aws_cloudfront_distribution_v2": {
+                "current": "duplocloud:index/awsCloudfrontDistributionV2:AwsCloudfrontDistributionV2",
+                "fields": {
+                    "aliases": {
+                        "maxItemsOne": false
+                    },
+                    "cors_allowed_host_names": {
+                        "maxItemsOne": false
+                    },
+                    "custom_error_response": {
+                        "maxItemsOne": false
+                    },
+                    "default_cache_behavior": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "allowed_methods": {
+                                    "maxItemsOne": false
+                                },
+                                "cached_methods": {
+                                    "maxItemsOne": false
+                                },
+                                "forwarded_values": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "cookies": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "whitelisted_names": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "headers": {
+                                                "maxItemsOne": false
+                                            },
+                                            "query_string_cache_keys": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "function_association": {
+                                    "maxItemsOne": false
+                                },
+                                "lambda_function_association": {
+                                    "maxItemsOne": false
+                                },
+                                "trusted_key_groups": {
+                                    "maxItemsOne": false
+                                },
+                                "trusted_signers": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "logging_config": {
+                        "maxItemsOne": true
+                    },
+                    "ordered_cache_behavior": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "allowed_methods": {
+                                    "maxItemsOne": false
+                                },
+                                "cached_methods": {
+                                    "maxItemsOne": false
+                                },
+                                "forwarded_values": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "cookies": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "whitelisted_names": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "headers": {
+                                                "maxItemsOne": false
+                                            },
+                                            "query_string_cache_keys": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "function_association": {
+                                    "maxItemsOne": false
+                                },
+                                "lambda_function_association": {
+                                    "maxItemsOne": false
+                                },
+                                "trusted_key_groups": {
+                                    "maxItemsOne": false
+                                },
+                                "trusted_signers": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "origin": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "custom_header": {
+                                    "maxItemsOne": false
+                                },
+                                "custom_origin_config": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "origin_ssl_protocols": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "origin_shield": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "origin_group": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "failover_criteria": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "status_codes": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "member": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "restrictions": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "geo_restriction": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "locations": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "viewer_certificate": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "duplocloud_aws_cloudfront_function": {
+                "current": "duplocloud:index/awsCloudfrontFunction:AwsCloudfrontFunction"
+            },
             "duplocloud_aws_cloudwatch_event_rule": {
                 "current": "duplocloud:index/awsCloudwatchEventRule:AwsCloudwatchEventRule",
                 "fields": {
@@ -582,6 +761,22 @@
                                 }
                             }
                         }
+                    },
+                    "instance_requirements": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "allowed_instance_types": {
+                                    "maxItemsOne": false
+                                },
+                                "memory_mib": {
+                                    "maxItemsOne": true
+                                },
+                                "vcpu_count": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -728,6 +923,52 @@
                     }
                 }
             },
+            "duplocloud_aws_mq_broker": {
+                "current": "duplocloud:index/awsMqBroker:AwsMqBroker",
+                "fields": {
+                    "configuration": {
+                        "maxItemsOne": true
+                    },
+                    "encryption_options": {
+                        "maxItemsOne": true
+                    },
+                    "ldap_server_metadata": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "hosts": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "logs": {
+                        "maxItemsOne": true
+                    },
+                    "maintenance_window": {
+                        "maxItemsOne": true
+                    },
+                    "security_groups": {
+                        "maxItemsOne": false
+                    },
+                    "subnet_ids": {
+                        "maxItemsOne": false
+                    },
+                    "user": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "groups": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "duplocloud_aws_mq_config": {
+                "current": "duplocloud:index/awsMqConfig:AwsMqConfig"
+            },
             "duplocloud_aws_mwaa_environment": {
                 "current": "duplocloud:index/awsMwaaEnvironment:AwsMwaaEnvironment",
                 "fields": {
@@ -792,6 +1033,14 @@
                 "current": "duplocloud:index/awsTargetGroupAttributes:AwsTargetGroupAttributes",
                 "fields": {
                     "attribute": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "duplocloud_aws_target_group_target_register": {
+                "current": "duplocloud:index/awsTargetGroupTargetRegister:AwsTargetGroupTargetRegister",
+                "fields": {
+                    "targets": {
                         "maxItemsOne": false
                     }
                 }
@@ -951,9 +1200,6 @@
             },
             "duplocloud_azure_mssqldb_retention_backup": {
                 "current": "duplocloud:index/azureMssqldbRetentionBackup:AzureMssqldbRetentionBackup"
-            },
-            "duplocloud_azure_mysql_database": {
-                "current": "duplocloud:index/azureMysqlDatabase:AzureMysqlDatabase"
             },
             "duplocloud_azure_network_security_rule": {
                 "current": "duplocloud:index/azureNetworkSecurityRule:AzureNetworkSecurityRule"
@@ -1271,6 +1517,9 @@
                                 "custom_cidr": {
                                     "maxItemsOne": false
                                 },
+                                "eip_allocations": {
+                                    "maxItemsOne": false
+                                },
                                 "extra_selector_label": {
                                     "maxItemsOne": false
                                 },
@@ -1386,6 +1635,20 @@
                     }
                 }
             },
+            "duplocloud_gcp_cloud_queue": {
+                "current": "duplocloud:index/gcpCloudQueue:GcpCloudQueue"
+            },
+            "duplocloud_gcp_cloud_task": {
+                "current": "duplocloud:index/gcpCloudTask:GcpCloudTask",
+                "fields": {
+                    "app_engine": {
+                        "maxItemsOne": true
+                    },
+                    "http_target": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "duplocloud_gcp_firestore": {
                 "current": "duplocloud:index/gcpFirestore:GcpFirestore"
             },
@@ -1482,6 +1745,46 @@
                     }
                 }
             },
+            "duplocloud_gcp_pubsub_subscription": {
+                "current": "duplocloud:index/gcpPubsubSubscription:GcpPubsubSubscription",
+                "fields": {
+                    "big_query": {
+                        "maxItemsOne": true
+                    },
+                    "cloud_storage_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "avro_config": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "dead_letter_policy": {
+                        "maxItemsOne": true
+                    },
+                    "expiration_policy": {
+                        "maxItemsOne": true
+                    },
+                    "push_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "no_wrapper": {
+                                    "maxItemsOne": true
+                                },
+                                "oidc_token": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "retry_policy": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "duplocloud_gcp_pubsub_topic": {
                 "current": "duplocloud:index/gcpPubsubTopic:GcpPubsubTopic"
             },
@@ -1527,6 +1830,9 @@
                     },
                     "ip_address": {
                         "maxItemsOne": false
+                    },
+                    "ip_configuration": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -1700,6 +2006,21 @@
                             "fields": {
                                 "hosts": {
                                     "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "duplocloud_k8_oci_repository": {
+                "current": "duplocloud:index/k8OciRepository:K8OciRepository",
+                "fields": {
+                    "spec": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "ref": {
+                                    "maxItemsOne": true
                                 }
                             }
                         }
@@ -4079,6 +4400,9 @@
                     "performance_insights": {
                         "maxItemsOne": true
                     },
+                    "storage_autoscaling": {
+                        "maxItemsOne": true
+                    },
                     "v2_scaling_configuration": {
                         "maxItemsOne": true
                     }
@@ -4114,6 +4438,21 @@
                 "fields": {
                     "rules": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "duplocloud_s3_event_notification": {
+                "current": "duplocloud:index/s3EventNotification:S3EventNotification",
+                "fields": {
+                    "event": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "event_types": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -4293,6 +4632,14 @@
                     }
                 }
             },
+            "duplocloud_aws_sqs_queue": {
+                "current": "duplocloud:index/getAwsSqsQueue:getAwsSqsQueue",
+                "fields": {
+                    "dead_letter_queue_configuration": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "duplocloud_aws_ssm_parameter": {
                 "current": "duplocloud:index/getAwsSsmParameter:getAwsSsmParameter"
             },
@@ -4367,6 +4714,9 @@
                                     "elem": {
                                         "fields": {
                                             "custom_cidr": {
+                                                "maxItemsOne": false
+                                            },
+                                            "eip_allocations": {
                                                 "maxItemsOne": false
                                             },
                                             "extra_selector_label": {
@@ -7206,6 +7556,20 @@
                                 }
                             }
                         }
+                    }
+                }
+            },
+            "duplocloud_s3_bucket": {
+                "current": "duplocloud:index/getS3Bucket:getS3Bucket",
+                "fields": {
+                    "default_encryption": {
+                        "maxItemsOne": false
+                    },
+                    "managed_policies": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
                     }
                 }
             },

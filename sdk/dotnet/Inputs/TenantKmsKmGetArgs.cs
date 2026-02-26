@@ -17,7 +17,7 @@ namespace DuploCloud.Pulumi.Inputs
         public Input<string> Arn { get; set; } = null!;
 
         /// <summary>
-        /// The ID of this resource.
+        /// The ID of the KMS key.
         /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;

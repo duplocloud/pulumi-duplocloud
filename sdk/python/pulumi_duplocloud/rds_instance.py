@@ -47,6 +47,7 @@ class RdsInstanceArgs:
                  performance_insights: Optional[pulumi.Input['RdsInstancePerformanceInsightsArgs']] = None,
                  skip_final_snapshot: Optional[pulumi.Input[bool]] = None,
                  snapshot_id: Optional[pulumi.Input[str]] = None,
+                 storage_autoscaling: Optional[pulumi.Input['RdsInstanceStorageAutoscalingArgs']] = None,
                  storage_type: Optional[pulumi.Input[str]] = None,
                  store_details_in_secret_manager: Optional[pulumi.Input[bool]] = None,
                  v2_scaling_configuration: Optional[pulumi.Input['RdsInstanceV2ScalingConfigurationArgs']] = None):
@@ -69,7 +70,7 @@ class RdsInstanceArgs:
         :param pulumi.Input[str] db_subnet_group_name: Name of DB subnet group. DB instance will be created in the VPC associated with the DB subnet group.
         :param pulumi.Input[bool] deletion_protection: If the DB instance should have deletion protection enabled.The database can't be deleted when this value is set to
                `true`. This setting is not applicable for document db cluster instance.
-        :param pulumi.Input[bool] enable_iam_auth: Whether or not to enable the RDS IAM authentication. It can only be set during instance creation.
+        :param pulumi.Input[bool] enable_iam_auth: Whether or not to enable the RDS IAM authentication. This setting can be modified after instance creation.
         :param pulumi.Input[bool] enable_logging: Whether or not to enable the RDS instance logging. This setting is not applicable for document db cluster instance.
         :param pulumi.Input[bool] encrypt_storage: Whether or not to encrypt the RDS instance storage.
         :param pulumi.Input[str] engine_version: The database engine version to use the for the RDS instance. If you don't know the available engine versions for your
@@ -158,6 +159,8 @@ class RdsInstanceArgs:
             pulumi.set(__self__, "skip_final_snapshot", skip_final_snapshot)
         if snapshot_id is not None:
             pulumi.set(__self__, "snapshot_id", snapshot_id)
+        if storage_autoscaling is not None:
+            pulumi.set(__self__, "storage_autoscaling", storage_autoscaling)
         if storage_type is not None:
             pulumi.set(__self__, "storage_type", storage_type)
         if store_details_in_secret_manager is not None:
@@ -307,7 +310,7 @@ class RdsInstanceArgs:
     @pulumi.getter(name="enableIamAuth")
     def enable_iam_auth(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether or not to enable the RDS IAM authentication. It can only be set during instance creation.
+        Whether or not to enable the RDS IAM authentication. This setting can be modified after instance creation.
         """
         return pulumi.get(self, "enable_iam_auth")
 
@@ -490,6 +493,15 @@ class RdsInstanceArgs:
         pulumi.set(self, "snapshot_id", value)
 
     @property
+    @pulumi.getter(name="storageAutoscaling")
+    def storage_autoscaling(self) -> Optional[pulumi.Input['RdsInstanceStorageAutoscalingArgs']]:
+        return pulumi.get(self, "storage_autoscaling")
+
+    @storage_autoscaling.setter
+    def storage_autoscaling(self, value: Optional[pulumi.Input['RdsInstanceStorageAutoscalingArgs']]):
+        pulumi.set(self, "storage_autoscaling", value)
+
+    @property
     @pulumi.getter(name="storageType")
     def storage_type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -576,6 +588,7 @@ class _RdsInstanceState:
                  size: Optional[pulumi.Input[str]] = None,
                  skip_final_snapshot: Optional[pulumi.Input[bool]] = None,
                  snapshot_id: Optional[pulumi.Input[str]] = None,
+                 storage_autoscaling: Optional[pulumi.Input['RdsInstanceStorageAutoscalingArgs']] = None,
                  storage_type: Optional[pulumi.Input[str]] = None,
                  store_details_in_secret_manager: Optional[pulumi.Input[bool]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
@@ -594,7 +607,7 @@ class _RdsInstanceState:
         :param pulumi.Input[str] db_subnet_group_name: Name of DB subnet group. DB instance will be created in the VPC associated with the DB subnet group.
         :param pulumi.Input[bool] deletion_protection: If the DB instance should have deletion protection enabled.The database can't be deleted when this value is set to
                `true`. This setting is not applicable for document db cluster instance.
-        :param pulumi.Input[bool] enable_iam_auth: Whether or not to enable the RDS IAM authentication. It can only be set during instance creation.
+        :param pulumi.Input[bool] enable_iam_auth: Whether or not to enable the RDS IAM authentication. This setting can be modified after instance creation.
         :param pulumi.Input[bool] enable_logging: Whether or not to enable the RDS instance logging. This setting is not applicable for document db cluster instance.
         :param pulumi.Input[bool] encrypt_storage: Whether or not to encrypt the RDS instance storage.
         :param pulumi.Input[str] endpoint: The endpoint of the RDS instance.
@@ -710,6 +723,8 @@ class _RdsInstanceState:
             pulumi.set(__self__, "skip_final_snapshot", skip_final_snapshot)
         if snapshot_id is not None:
             pulumi.set(__self__, "snapshot_id", snapshot_id)
+        if storage_autoscaling is not None:
+            pulumi.set(__self__, "storage_autoscaling", storage_autoscaling)
         if storage_type is not None:
             pulumi.set(__self__, "storage_type", storage_type)
         if store_details_in_secret_manager is not None:
@@ -845,7 +860,7 @@ class _RdsInstanceState:
     @pulumi.getter(name="enableIamAuth")
     def enable_iam_auth(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether or not to enable the RDS IAM authentication. It can only be set during instance creation.
+        Whether or not to enable the RDS IAM authentication. This setting can be modified after instance creation.
         """
         return pulumi.get(self, "enable_iam_auth")
 
@@ -1116,6 +1131,15 @@ class _RdsInstanceState:
         pulumi.set(self, "snapshot_id", value)
 
     @property
+    @pulumi.getter(name="storageAutoscaling")
+    def storage_autoscaling(self) -> Optional[pulumi.Input['RdsInstanceStorageAutoscalingArgs']]:
+        return pulumi.get(self, "storage_autoscaling")
+
+    @storage_autoscaling.setter
+    def storage_autoscaling(self, value: Optional[pulumi.Input['RdsInstanceStorageAutoscalingArgs']]):
+        pulumi.set(self, "storage_autoscaling", value)
+
+    @property
     @pulumi.getter(name="storageType")
     def storage_type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1209,6 +1233,7 @@ class RdsInstance(pulumi.CustomResource):
                  size: Optional[pulumi.Input[str]] = None,
                  skip_final_snapshot: Optional[pulumi.Input[bool]] = None,
                  snapshot_id: Optional[pulumi.Input[str]] = None,
+                 storage_autoscaling: Optional[pulumi.Input[Union['RdsInstanceStorageAutoscalingArgs', 'RdsInstanceStorageAutoscalingArgsDict']]] = None,
                  storage_type: Optional[pulumi.Input[str]] = None,
                  store_details_in_secret_manager: Optional[pulumi.Input[bool]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
@@ -1606,7 +1631,7 @@ class RdsInstance(pulumi.CustomResource):
         :param pulumi.Input[str] db_subnet_group_name: Name of DB subnet group. DB instance will be created in the VPC associated with the DB subnet group.
         :param pulumi.Input[bool] deletion_protection: If the DB instance should have deletion protection enabled.The database can't be deleted when this value is set to
                `true`. This setting is not applicable for document db cluster instance.
-        :param pulumi.Input[bool] enable_iam_auth: Whether or not to enable the RDS IAM authentication. It can only be set during instance creation.
+        :param pulumi.Input[bool] enable_iam_auth: Whether or not to enable the RDS IAM authentication. This setting can be modified after instance creation.
         :param pulumi.Input[bool] enable_logging: Whether or not to enable the RDS instance logging. This setting is not applicable for document db cluster instance.
         :param pulumi.Input[bool] encrypt_storage: Whether or not to encrypt the RDS instance storage.
         :param pulumi.Input[int] engine: The numerical index of database engine to use the for the RDS instance. Should be one of: - `0` : MySQL - `1` :
@@ -2079,6 +2104,7 @@ class RdsInstance(pulumi.CustomResource):
                  size: Optional[pulumi.Input[str]] = None,
                  skip_final_snapshot: Optional[pulumi.Input[bool]] = None,
                  snapshot_id: Optional[pulumi.Input[str]] = None,
+                 storage_autoscaling: Optional[pulumi.Input[Union['RdsInstanceStorageAutoscalingArgs', 'RdsInstanceStorageAutoscalingArgsDict']]] = None,
                  storage_type: Optional[pulumi.Input[str]] = None,
                  store_details_in_secret_manager: Optional[pulumi.Input[bool]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
@@ -2121,6 +2147,7 @@ class RdsInstance(pulumi.CustomResource):
             __props__.__dict__["size"] = size
             __props__.__dict__["skip_final_snapshot"] = skip_final_snapshot
             __props__.__dict__["snapshot_id"] = snapshot_id
+            __props__.__dict__["storage_autoscaling"] = storage_autoscaling
             __props__.__dict__["storage_type"] = storage_type
             __props__.__dict__["store_details_in_secret_manager"] = store_details_in_secret_manager
             if tenant_id is None and not opts.urn:
@@ -2178,6 +2205,7 @@ class RdsInstance(pulumi.CustomResource):
             size: Optional[pulumi.Input[str]] = None,
             skip_final_snapshot: Optional[pulumi.Input[bool]] = None,
             snapshot_id: Optional[pulumi.Input[str]] = None,
+            storage_autoscaling: Optional[pulumi.Input[Union['RdsInstanceStorageAutoscalingArgs', 'RdsInstanceStorageAutoscalingArgsDict']]] = None,
             storage_type: Optional[pulumi.Input[str]] = None,
             store_details_in_secret_manager: Optional[pulumi.Input[bool]] = None,
             tenant_id: Optional[pulumi.Input[str]] = None,
@@ -2201,7 +2229,7 @@ class RdsInstance(pulumi.CustomResource):
         :param pulumi.Input[str] db_subnet_group_name: Name of DB subnet group. DB instance will be created in the VPC associated with the DB subnet group.
         :param pulumi.Input[bool] deletion_protection: If the DB instance should have deletion protection enabled.The database can't be deleted when this value is set to
                `true`. This setting is not applicable for document db cluster instance.
-        :param pulumi.Input[bool] enable_iam_auth: Whether or not to enable the RDS IAM authentication. It can only be set during instance creation.
+        :param pulumi.Input[bool] enable_iam_auth: Whether or not to enable the RDS IAM authentication. This setting can be modified after instance creation.
         :param pulumi.Input[bool] enable_logging: Whether or not to enable the RDS instance logging. This setting is not applicable for document db cluster instance.
         :param pulumi.Input[bool] encrypt_storage: Whether or not to encrypt the RDS instance storage.
         :param pulumi.Input[str] endpoint: The endpoint of the RDS instance.
@@ -2289,6 +2317,7 @@ class RdsInstance(pulumi.CustomResource):
         __props__.__dict__["size"] = size
         __props__.__dict__["skip_final_snapshot"] = skip_final_snapshot
         __props__.__dict__["snapshot_id"] = snapshot_id
+        __props__.__dict__["storage_autoscaling"] = storage_autoscaling
         __props__.__dict__["storage_type"] = storage_type
         __props__.__dict__["store_details_in_secret_manager"] = store_details_in_secret_manager
         __props__.__dict__["tenant_id"] = tenant_id
@@ -2381,7 +2410,7 @@ class RdsInstance(pulumi.CustomResource):
     @pulumi.getter(name="enableIamAuth")
     def enable_iam_auth(self) -> pulumi.Output[bool]:
         """
-        Whether or not to enable the RDS IAM authentication. It can only be set during instance creation.
+        Whether or not to enable the RDS IAM authentication. This setting can be modified after instance creation.
         """
         return pulumi.get(self, "enable_iam_auth")
 
@@ -2512,7 +2541,7 @@ class RdsInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="parameterGroupName")
-    def parameter_group_name(self) -> pulumi.Output[Optional[str]]:
+    def parameter_group_name(self) -> pulumi.Output[str]:
         """
         A RDS parameter group name to apply to the RDS instance.
         """
@@ -2562,6 +2591,11 @@ class RdsInstance(pulumi.CustomResource):
         A database snapshot to initialize the RDS instance from, at launch.
         """
         return pulumi.get(self, "snapshot_id")
+
+    @property
+    @pulumi.getter(name="storageAutoscaling")
+    def storage_autoscaling(self) -> pulumi.Output['outputs.RdsInstanceStorageAutoscaling']:
+        return pulumi.get(self, "storage_autoscaling")
 
     @property
     @pulumi.getter(name="storageType")

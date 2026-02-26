@@ -53,7 +53,9 @@ class AwsCloudfrontDistributionArgs:
         :param pulumi.Input[bool] is_ipv6_enabled: Defaults to `false`.
         :param pulumi.Input[str] name: Name of the distribution
         :param pulumi.Input[str] price_class: The price class for this distribution. One of `PriceClass_All`, `PriceClass_200`, `PriceClass_100` Defaults to `PriceClass_All`.
-        :param pulumi.Input[bool] use_origin_access_identity: Defaults to `true`.
+        :param pulumi.Input[bool] use_origin_access_identity: When field is set to false it adds the oai mentioned in origin.s3*origin*config.origin*access*identity.
+               		\\n\\n\\n\\n\\n\\nNote\\n\\n: For new cloudfront distributions, this field will work differently than for existing distributions.
+               		When use*origin*access_identity is set to true, Duplo will create an origin access control (OAC) and restrict the S3 origin access. On false it will be public\\n\\nFor migration from OAI to OAC can be done from duplo cloud portal. Defaults to `true`.
         :param pulumi.Input[bool] wait_for_deployment: Defaults to `true`.
         :param pulumi.Input[str] web_acl_id: A unique identifier that specifies the AWS WAF web ACL, if any, to associate with this distribution.
         """
@@ -293,7 +295,9 @@ class AwsCloudfrontDistributionArgs:
     @pulumi.getter(name="useOriginAccessIdentity")
     def use_origin_access_identity(self) -> Optional[pulumi.Input[bool]]:
         """
-        Defaults to `true`.
+        When field is set to false it adds the oai mentioned in origin.s3*origin*config.origin*access*identity.
+        		\\n\\n\\n\\n\\n\\nNote\\n\\n: For new cloudfront distributions, this field will work differently than for existing distributions.
+        		When use*origin*access_identity is set to true, Duplo will create an origin access control (OAC) and restrict the S3 origin access. On false it will be public\\n\\nFor migration from OAI to OAC can be done from duplo cloud portal. Defaults to `true`.
         """
         return pulumi.get(self, "use_origin_access_identity")
 
@@ -367,7 +371,9 @@ class _AwsCloudfrontDistributionState:
         :param pulumi.Input[str] price_class: The price class for this distribution. One of `PriceClass_All`, `PriceClass_200`, `PriceClass_100` Defaults to `PriceClass_All`.
         :param pulumi.Input[str] status: The current status of the distribution. `Deployed` if the distribution's information is fully propagated throughout the Amazon CloudFront system.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the aws cloudfront distribution will be created in.
-        :param pulumi.Input[bool] use_origin_access_identity: Defaults to `true`.
+        :param pulumi.Input[bool] use_origin_access_identity: When field is set to false it adds the oai mentioned in origin.s3*origin*config.origin*access*identity.
+               		\\n\\n\\n\\n\\n\\nNote\\n\\n: For new cloudfront distributions, this field will work differently than for existing distributions.
+               		When use*origin*access_identity is set to true, Duplo will create an origin access control (OAC) and restrict the S3 origin access. On false it will be public\\n\\nFor migration from OAI to OAC can be done from duplo cloud portal. Defaults to `true`.
         :param pulumi.Input[bool] wait_for_deployment: Defaults to `true`.
         :param pulumi.Input[str] web_acl_id: A unique identifier that specifies the AWS WAF web ACL, if any, to associate with this distribution.
         """
@@ -660,7 +666,9 @@ class _AwsCloudfrontDistributionState:
     @pulumi.getter(name="useOriginAccessIdentity")
     def use_origin_access_identity(self) -> Optional[pulumi.Input[bool]]:
         """
-        Defaults to `true`.
+        When field is set to false it adds the oai mentioned in origin.s3*origin*config.origin*access*identity.
+        		\\n\\n\\n\\n\\n\\nNote\\n\\n: For new cloudfront distributions, this field will work differently than for existing distributions.
+        		When use*origin*access_identity is set to true, Duplo will create an origin access control (OAC) and restrict the S3 origin access. On false it will be public\\n\\nFor migration from OAI to OAC can be done from duplo cloud portal. Defaults to `true`.
         """
         return pulumi.get(self, "use_origin_access_identity")
 
@@ -731,6 +739,8 @@ class AwsCloudfrontDistribution(pulumi.CustomResource):
                  __props__=None):
         """
         `AwsCloudfrontDistribution` manages an aws cloudfront distribution in Duplo.
+
+        NOTE: This resource has been deprecated in favor of `AwsCloudfrontDistributionV2` resource. No support will be provided for this resource going forward.
 
         ## Example Usage
 
@@ -840,7 +850,9 @@ class AwsCloudfrontDistribution(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the distribution
         :param pulumi.Input[str] price_class: The price class for this distribution. One of `PriceClass_All`, `PriceClass_200`, `PriceClass_100` Defaults to `PriceClass_All`.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the aws cloudfront distribution will be created in.
-        :param pulumi.Input[bool] use_origin_access_identity: Defaults to `true`.
+        :param pulumi.Input[bool] use_origin_access_identity: When field is set to false it adds the oai mentioned in origin.s3*origin*config.origin*access*identity.
+               		\\n\\n\\n\\n\\n\\nNote\\n\\n: For new cloudfront distributions, this field will work differently than for existing distributions.
+               		When use*origin*access_identity is set to true, Duplo will create an origin access control (OAC) and restrict the S3 origin access. On false it will be public\\n\\nFor migration from OAI to OAC can be done from duplo cloud portal. Defaults to `true`.
         :param pulumi.Input[bool] wait_for_deployment: Defaults to `true`.
         :param pulumi.Input[str] web_acl_id: A unique identifier that specifies the AWS WAF web ACL, if any, to associate with this distribution.
         """
@@ -852,6 +864,8 @@ class AwsCloudfrontDistribution(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         `AwsCloudfrontDistribution` manages an aws cloudfront distribution in Duplo.
+
+        NOTE: This resource has been deprecated in favor of `AwsCloudfrontDistributionV2` resource. No support will be provided for this resource going forward.
 
         ## Example Usage
 
@@ -1082,7 +1096,9 @@ class AwsCloudfrontDistribution(pulumi.CustomResource):
         :param pulumi.Input[str] price_class: The price class for this distribution. One of `PriceClass_All`, `PriceClass_200`, `PriceClass_100` Defaults to `PriceClass_All`.
         :param pulumi.Input[str] status: The current status of the distribution. `Deployed` if the distribution's information is fully propagated throughout the Amazon CloudFront system.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the aws cloudfront distribution will be created in.
-        :param pulumi.Input[bool] use_origin_access_identity: Defaults to `true`.
+        :param pulumi.Input[bool] use_origin_access_identity: When field is set to false it adds the oai mentioned in origin.s3*origin*config.origin*access*identity.
+               		\\n\\n\\n\\n\\n\\nNote\\n\\n: For new cloudfront distributions, this field will work differently than for existing distributions.
+               		When use*origin*access_identity is set to true, Duplo will create an origin access control (OAC) and restrict the S3 origin access. On false it will be public\\n\\nFor migration from OAI to OAC can be done from duplo cloud portal. Defaults to `true`.
         :param pulumi.Input[bool] wait_for_deployment: Defaults to `true`.
         :param pulumi.Input[str] web_acl_id: A unique identifier that specifies the AWS WAF web ACL, if any, to associate with this distribution.
         """
@@ -1263,7 +1279,9 @@ class AwsCloudfrontDistribution(pulumi.CustomResource):
     @pulumi.getter(name="useOriginAccessIdentity")
     def use_origin_access_identity(self) -> pulumi.Output[Optional[bool]]:
         """
-        Defaults to `true`.
+        When field is set to false it adds the oai mentioned in origin.s3*origin*config.origin*access*identity.
+        		\\n\\n\\n\\n\\n\\nNote\\n\\n: For new cloudfront distributions, this field will work differently than for existing distributions.
+        		When use*origin*access_identity is set to true, Duplo will create an origin access control (OAC) and restrict the S3 origin access. On false it will be public\\n\\nFor migration from OAI to OAC can be done from duplo cloud portal. Defaults to `true`.
         """
         return pulumi.get(self, "use_origin_access_identity")
 

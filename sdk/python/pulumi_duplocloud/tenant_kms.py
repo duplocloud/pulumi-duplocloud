@@ -155,7 +155,7 @@ class TenantKms(pulumi.CustomResource):
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        `TenantKms` manages the list of kms avaialble to a tenant in Duplo.
+        `TenantKms` manages the list of kms available to a tenant in Duplo.
 
         This resource allows you take control of individual tenant kms for a specific tenant.
 
@@ -207,7 +207,7 @@ class TenantKms(pulumi.CustomResource):
                  args: TenantKmsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        `TenantKms` manages the list of kms avaialble to a tenant in Duplo.
+        `TenantKms` manages the list of kms available to a tenant in Duplo.
 
         This resource allows you take control of individual tenant kms for a specific tenant.
 

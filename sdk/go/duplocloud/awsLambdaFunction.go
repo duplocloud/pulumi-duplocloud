@@ -14,102 +14,6 @@ import (
 
 // `AwsLambdaFunction` manages an AWS lambda function in Duplo.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/duplocloud/pulumi-duplocloud/sdk/go/duplocloud"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := duplocloud.NewTenant(ctx, "myapp", &duplocloud.TenantArgs{
-//				AccountName: pulumi.String("myapp"),
-//				PlanId:      pulumi.String("default"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = duplocloud.NewAwsLambdaFunction(ctx, "myfunction", &duplocloud.AwsLambdaFunctionArgs{
-//				TenantId:    pulumi.Any(this.TenantId),
-//				Name:        pulumi.String("myfunction"),
-//				Description: pulumi.String("A description of my function"),
-//				Runtime:     pulumi.String("java11"),
-//				Handler:     pulumi.String("com.example.MyFunction::handleRequest"),
-//				S3Bucket:    pulumi.String("my-bucket-name"),
-//				S3Key:       pulumi.String("my-function.zip"),
-//				Environment: &duplocloud.AwsLambdaFunctionEnvironmentArgs{
-//					Variables: pulumi.StringMap{
-//						"foo": pulumi.String("bar"),
-//					},
-//				},
-//				Timeout:    pulumi.Int(60),
-//				MemorySize: pulumi.Int(512),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = duplocloud.NewAwsLambdaFunction(ctx, "thisfunction", &duplocloud.AwsLambdaFunctionArgs{
-//				TenantId:    pulumi.Any(this.TenantId),
-//				Name:        pulumi.String("thisfunction"),
-//				Description: pulumi.String("A description of my function"),
-//				PackageType: pulumi.String("Image"),
-//				ImageUri:    pulumi.String("dkr.ecr.us-west-2.amazonaws.com/myimage:latest"),
-//				ImageConfig: &duplocloud.AwsLambdaFunctionImageConfigArgs{
-//					Commands: pulumi.StringArray{
-//						pulumi.String("echo"),
-//						pulumi.String("hello world"),
-//					},
-//					EntryPoints: pulumi.StringArray{
-//						pulumi.String("echo hello workd"),
-//					},
-//					WorkingDirectory: pulumi.String("/tmp3"),
-//				},
-//				TracingConfig: &duplocloud.AwsLambdaFunctionTracingConfigArgs{
-//					Mode: pulumi.String("PassThrough"),
-//				},
-//				Timeout:    pulumi.Int(60),
-//				MemorySize: pulumi.Int(512),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = duplocloud.NewAwsLambdaFunction(ctx, "edgefunction", &duplocloud.AwsLambdaFunctionArgs{
-//				TenantId:    pulumi.String("c7163b39-43ca-4d44-81ce-9a323087039b"),
-//				Name:        pulumi.String("edgefunction"),
-//				Description: pulumi.String("An example edge function"),
-//				PackageType: pulumi.String("Image"),
-//				ImageUri:    pulumi.String("dkr.ecr.us-east-1.amazonaws.com/myimage:1.0"),
-//				ImageConfig: &duplocloud.AwsLambdaFunctionImageConfigArgs{
-//					Commands: pulumi.StringArray{
-//						pulumi.String("echo"),
-//						pulumi.String("hello world"),
-//					},
-//					EntryPoints: pulumi.StringArray{
-//						pulumi.String("echo hello workd"),
-//					},
-//					WorkingDirectory: pulumi.String("/tmp3"),
-//				},
-//				Tags: pulumi.StringMap{
-//					"IsEdgeDeploy": pulumi.String("true"),
-//				},
-//				Timeout:    pulumi.Int(5),
-//				MemorySize: pulumi.Int(128),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Example: Importing an existing AWS lambda function
@@ -146,6 +50,8 @@ type AwsLambdaFunction struct {
 	ImageConfig AwsLambdaFunctionImageConfigPtrOutput `pulumi:"imageConfig"`
 	// The docker image that holds the lambda function's code. Used (and required) only when `packageType` is `"Image"`. The image must be in a private ECR.
 	ImageUri pulumi.StringPtrOutput `pulumi:"imageUri"`
+	// The ARN to be used for invoking the lambda function.
+	InvokeArn pulumi.StringOutput `pulumi:"invokeArn"`
 	// A timestamp string of lambda's last modification time.
 	LastModified pulumi.StringOutput `pulumi:"lastModified"`
 	// List of Lambda Layer Version ARNs (maximum of 5) to attach to your Lambda Function.
@@ -232,6 +138,8 @@ type awsLambdaFunctionState struct {
 	ImageConfig *AwsLambdaFunctionImageConfig `pulumi:"imageConfig"`
 	// The docker image that holds the lambda function's code. Used (and required) only when `packageType` is `"Image"`. The image must be in a private ECR.
 	ImageUri *string `pulumi:"imageUri"`
+	// The ARN to be used for invoking the lambda function.
+	InvokeArn *string `pulumi:"invokeArn"`
 	// A timestamp string of lambda's last modification time.
 	LastModified *string `pulumi:"lastModified"`
 	// List of Lambda Layer Version ARNs (maximum of 5) to attach to your Lambda Function.
@@ -286,6 +194,8 @@ type AwsLambdaFunctionState struct {
 	ImageConfig AwsLambdaFunctionImageConfigPtrInput
 	// The docker image that holds the lambda function's code. Used (and required) only when `packageType` is `"Image"`. The image must be in a private ECR.
 	ImageUri pulumi.StringPtrInput
+	// The ARN to be used for invoking the lambda function.
+	InvokeArn pulumi.StringPtrInput
 	// A timestamp string of lambda's last modification time.
 	LastModified pulumi.StringPtrInput
 	// List of Lambda Layer Version ARNs (maximum of 5) to attach to your Lambda Function.
@@ -539,6 +449,11 @@ func (o AwsLambdaFunctionOutput) ImageConfig() AwsLambdaFunctionImageConfigPtrOu
 // The docker image that holds the lambda function's code. Used (and required) only when `packageType` is `"Image"`. The image must be in a private ECR.
 func (o AwsLambdaFunctionOutput) ImageUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsLambdaFunction) pulumi.StringPtrOutput { return v.ImageUri }).(pulumi.StringPtrOutput)
+}
+
+// The ARN to be used for invoking the lambda function.
+func (o AwsLambdaFunctionOutput) InvokeArn() pulumi.StringOutput {
+	return o.ApplyT(func(v *AwsLambdaFunction) pulumi.StringOutput { return v.InvokeArn }).(pulumi.StringOutput)
 }
 
 // A timestamp string of lambda's last modification time.

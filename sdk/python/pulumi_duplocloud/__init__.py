@@ -17,6 +17,8 @@ from .aws_batch_job_definition import *
 from .aws_batch_job_queue import *
 from .aws_batch_scheduling_policy import *
 from .aws_cloudfront_distribution import *
+from .aws_cloudfront_distribution_v2 import *
+from .aws_cloudfront_function import *
 from .aws_cloudwatch_event_rule import *
 from .aws_cloudwatch_event_target import *
 from .aws_cloudwatch_metric_alarm import *
@@ -37,6 +39,8 @@ from .aws_lb_listener_rule import *
 from .aws_lb_target_group import *
 from .aws_load_balancer import *
 from .aws_load_balancer_listener import *
+from .aws_mq_broker import *
+from .aws_mq_config import *
 from .aws_mwaa_environment import *
 from .aws_rds_global_secondary import *
 from .aws_rds_tag import *
@@ -45,6 +49,7 @@ from .aws_sqs_queue import *
 from .aws_ssm_parameter import *
 from .aws_tag import *
 from .aws_target_group_attributes import *
+from .aws_target_group_target_register import *
 from .aws_timestreamwrite_database import *
 from .aws_timestreamwrite_table import *
 from .azure_availability_set import *
@@ -60,7 +65,6 @@ from .azure_mssql_database import *
 from .azure_mssql_elasticpool import *
 from .azure_mssql_server import *
 from .azure_mssqldb_retention_backup import *
-from .azure_mysql_database import *
 from .azure_network_security_rule import *
 from .azure_postgresql_database import *
 from .azure_postgresql_flexible_database import *
@@ -96,11 +100,14 @@ from .ecs_service import *
 from .ecs_task_definition import *
 from .emr_cluster import *
 from .gcp_cloud_function import *
+from .gcp_cloud_queue import *
+from .gcp_cloud_task import *
 from .gcp_firestore import *
 from .gcp_host import *
 from .gcp_infra_maintenance_window import *
 from .gcp_infra_security_rule import *
 from .gcp_node_pool import *
+from .gcp_pubsub_subscription import *
 from .gcp_pubsub_topic import *
 from .gcp_redis_instance import *
 from .gcp_scheduler_job import *
@@ -114,6 +121,7 @@ from .get_aws_account import *
 from .get_aws_launch_template import *
 from .get_aws_lb_listeners import *
 from .get_aws_lb_target_groups import *
+from .get_aws_sqs_queue import *
 from .get_aws_ssm_parameter import *
 from .get_aws_ssm_parameters import *
 from .get_azure_availability_set import *
@@ -166,6 +174,7 @@ from .get_plan_waf_v2 import *
 from .get_plan_wafs import *
 from .get_plan_wafs_v2 import *
 from .get_plans import *
+from .get_s3_bucket import *
 from .get_system_features import *
 from .get_tenant import *
 from .get_tenant_aws_credentials import *
@@ -188,6 +197,7 @@ from .k8_config_map import *
 from .k8_helm_release import *
 from .k8_helm_repository import *
 from .k8_ingress import *
+from .k8_oci_repository import *
 from .k8_persistent_volume_claim import *
 from .k8_secret import *
 from .k8_secret_provider_class import *
@@ -209,6 +219,7 @@ from .rds_instance import *
 from .rds_read_replica import *
 from .s3_bucket import *
 from .s3_bucket_replication import *
+from .s3_event_notification import *
 from .tenant import *
 from .tenant_access_grant import *
 from .tenant_cleanup_timers import *
@@ -328,6 +339,22 @@ _utilities.register(
   "fqn": "pulumi_duplocloud",
   "classes": {
    "duplocloud:index/awsCloudfrontDistribution:AwsCloudfrontDistribution": "AwsCloudfrontDistribution"
+  }
+ },
+ {
+  "pkg": "duplocloud",
+  "mod": "index/awsCloudfrontDistributionV2",
+  "fqn": "pulumi_duplocloud",
+  "classes": {
+   "duplocloud:index/awsCloudfrontDistributionV2:AwsCloudfrontDistributionV2": "AwsCloudfrontDistributionV2"
+  }
+ },
+ {
+  "pkg": "duplocloud",
+  "mod": "index/awsCloudfrontFunction",
+  "fqn": "pulumi_duplocloud",
+  "classes": {
+   "duplocloud:index/awsCloudfrontFunction:AwsCloudfrontFunction": "AwsCloudfrontFunction"
   }
  },
  {
@@ -492,6 +519,22 @@ _utilities.register(
  },
  {
   "pkg": "duplocloud",
+  "mod": "index/awsMqBroker",
+  "fqn": "pulumi_duplocloud",
+  "classes": {
+   "duplocloud:index/awsMqBroker:AwsMqBroker": "AwsMqBroker"
+  }
+ },
+ {
+  "pkg": "duplocloud",
+  "mod": "index/awsMqConfig",
+  "fqn": "pulumi_duplocloud",
+  "classes": {
+   "duplocloud:index/awsMqConfig:AwsMqConfig": "AwsMqConfig"
+  }
+ },
+ {
+  "pkg": "duplocloud",
   "mod": "index/awsMwaaEnvironment",
   "fqn": "pulumi_duplocloud",
   "classes": {
@@ -552,6 +595,14 @@ _utilities.register(
   "fqn": "pulumi_duplocloud",
   "classes": {
    "duplocloud:index/awsTargetGroupAttributes:AwsTargetGroupAttributes": "AwsTargetGroupAttributes"
+  }
+ },
+ {
+  "pkg": "duplocloud",
+  "mod": "index/awsTargetGroupTargetRegister",
+  "fqn": "pulumi_duplocloud",
+  "classes": {
+   "duplocloud:index/awsTargetGroupTargetRegister:AwsTargetGroupTargetRegister": "AwsTargetGroupTargetRegister"
   }
  },
  {
@@ -672,14 +723,6 @@ _utilities.register(
   "fqn": "pulumi_duplocloud",
   "classes": {
    "duplocloud:index/azureMssqldbRetentionBackup:AzureMssqldbRetentionBackup": "AzureMssqldbRetentionBackup"
-  }
- },
- {
-  "pkg": "duplocloud",
-  "mod": "index/azureMysqlDatabase",
-  "fqn": "pulumi_duplocloud",
-  "classes": {
-   "duplocloud:index/azureMysqlDatabase:AzureMysqlDatabase": "AzureMysqlDatabase"
   }
  },
  {
@@ -964,6 +1007,22 @@ _utilities.register(
  },
  {
   "pkg": "duplocloud",
+  "mod": "index/gcpCloudQueue",
+  "fqn": "pulumi_duplocloud",
+  "classes": {
+   "duplocloud:index/gcpCloudQueue:GcpCloudQueue": "GcpCloudQueue"
+  }
+ },
+ {
+  "pkg": "duplocloud",
+  "mod": "index/gcpCloudTask",
+  "fqn": "pulumi_duplocloud",
+  "classes": {
+   "duplocloud:index/gcpCloudTask:GcpCloudTask": "GcpCloudTask"
+  }
+ },
+ {
+  "pkg": "duplocloud",
   "mod": "index/gcpFirestore",
   "fqn": "pulumi_duplocloud",
   "classes": {
@@ -1000,6 +1059,14 @@ _utilities.register(
   "fqn": "pulumi_duplocloud",
   "classes": {
    "duplocloud:index/gcpNodePool:GcpNodePool": "GcpNodePool"
+  }
+ },
+ {
+  "pkg": "duplocloud",
+  "mod": "index/gcpPubsubSubscription",
+  "fqn": "pulumi_duplocloud",
+  "classes": {
+   "duplocloud:index/gcpPubsubSubscription:GcpPubsubSubscription": "GcpPubsubSubscription"
   }
  },
  {
@@ -1120,6 +1187,14 @@ _utilities.register(
   "fqn": "pulumi_duplocloud",
   "classes": {
    "duplocloud:index/k8Ingress:K8Ingress": "K8Ingress"
+  }
+ },
+ {
+  "pkg": "duplocloud",
+  "mod": "index/k8OciRepository",
+  "fqn": "pulumi_duplocloud",
+  "classes": {
+   "duplocloud:index/k8OciRepository:K8OciRepository": "K8OciRepository"
   }
  },
  {
@@ -1280,6 +1355,14 @@ _utilities.register(
   "fqn": "pulumi_duplocloud",
   "classes": {
    "duplocloud:index/s3BucketReplication:S3BucketReplication": "S3BucketReplication"
+  }
+ },
+ {
+  "pkg": "duplocloud",
+  "mod": "index/s3EventNotification",
+  "fqn": "pulumi_duplocloud",
+  "classes": {
+   "duplocloud:index/s3EventNotification:S3EventNotification": "S3EventNotification"
   }
  },
  {

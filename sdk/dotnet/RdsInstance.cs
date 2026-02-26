@@ -639,7 +639,7 @@ namespace DuploCloud.Pulumi
         public Output<bool?> DeletionProtection { get; private set; } = null!;
 
         /// <summary>
-        /// Whether or not to enable the RDS IAM authentication. It can only be set during instance creation.
+        /// Whether or not to enable the RDS IAM authentication. This setting can be modified after instance creation.
         /// </summary>
         [Output("enableIamAuth")]
         public Output<bool> EnableIamAuth { get; private set; } = null!;
@@ -743,7 +743,7 @@ namespace DuploCloud.Pulumi
         /// A RDS parameter group name to apply to the RDS instance.
         /// </summary>
         [Output("parameterGroupName")]
-        public Output<string?> ParameterGroupName { get; private set; } = null!;
+        public Output<string> ParameterGroupName { get; private set; } = null!;
 
         /// <summary>
         /// Amazon RDS Performance Insights is a database performance tuning and monitoring feature that helps you quickly assess
@@ -779,6 +779,9 @@ namespace DuploCloud.Pulumi
         /// </summary>
         [Output("snapshotId")]
         public Output<string?> SnapshotId { get; private set; } = null!;
+
+        [Output("storageAutoscaling")]
+        public Output<Outputs.RdsInstanceStorageAutoscaling> StorageAutoscaling { get; private set; } = null!;
 
         /// <summary>
         /// Storage type to be used for RDS instance storage. |Storage Type | Performance | Throughput | Descritpion |
@@ -921,7 +924,7 @@ namespace DuploCloud.Pulumi
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
-        /// Whether or not to enable the RDS IAM authentication. It can only be set during instance creation.
+        /// Whether or not to enable the RDS IAM authentication. This setting can be modified after instance creation.
         /// </summary>
         [Input("enableIamAuth")]
         public Input<bool>? EnableIamAuth { get; set; }
@@ -1042,6 +1045,9 @@ namespace DuploCloud.Pulumi
         [Input("snapshotId")]
         public Input<string>? SnapshotId { get; set; }
 
+        [Input("storageAutoscaling")]
+        public Input<Inputs.RdsInstanceStorageAutoscalingArgs>? StorageAutoscaling { get; set; }
+
         /// <summary>
         /// Storage type to be used for RDS instance storage. |Storage Type | Performance | Throughput | Descritpion |
         /// |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1152,7 +1158,7 @@ namespace DuploCloud.Pulumi
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
-        /// Whether or not to enable the RDS IAM authentication. It can only be set during instance creation.
+        /// Whether or not to enable the RDS IAM authentication. This setting can be modified after instance creation.
         /// </summary>
         [Input("enableIamAuth")]
         public Input<bool>? EnableIamAuth { get; set; }
@@ -1302,6 +1308,9 @@ namespace DuploCloud.Pulumi
         /// </summary>
         [Input("snapshotId")]
         public Input<string>? SnapshotId { get; set; }
+
+        [Input("storageAutoscaling")]
+        public Input<Inputs.RdsInstanceStorageAutoscalingGetArgs>? StorageAutoscaling { get; set; }
 
         /// <summary>
         /// Storage type to be used for RDS instance storage. |Storage Type | Performance | Throughput | Descritpion |

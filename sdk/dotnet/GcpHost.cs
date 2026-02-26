@@ -88,8 +88,8 @@ namespace DuploCloud.Pulumi
         public Output<string> AcceleratorType { get; private set; } = null!;
 
         /// <summary>
-        /// The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
-        /// Windows
+        /// The numeric ID of the container agent pool that this host is added to. Should be one of: - `0` : Duplo Native container
+        /// agent - `7` : Linux container agent for Kubernetes
         /// </summary>
         [Output("agentPlatform")]
         public Output<int?> AgentPlatform { get; private set; } = null!;
@@ -246,8 +246,8 @@ namespace DuploCloud.Pulumi
         public Input<string>? AcceleratorType { get; set; }
 
         /// <summary>
-        /// The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
-        /// Windows
+        /// The numeric ID of the container agent pool that this host is added to. Should be one of: - `0` : Duplo Native container
+        /// agent - `7` : Linux container agent for Kubernetes
         /// </summary>
         [Input("agentPlatform")]
         public Input<int>? AgentPlatform { get; set; }
@@ -356,8 +356,8 @@ namespace DuploCloud.Pulumi
         public Input<string>? AcceleratorType { get; set; }
 
         /// <summary>
-        /// The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
-        /// Windows
+        /// The numeric ID of the container agent pool that this host is added to. Should be one of: - `0` : Duplo Native container
+        /// agent - `7` : Linux container agent for Kubernetes
         /// </summary>
         [Input("agentPlatform")]
         public Input<int>? AgentPlatform { get; set; }

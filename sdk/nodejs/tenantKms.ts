@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * `duplocloud.TenantKms` manages the list of kms avaialble to a tenant in Duplo.
+ * `duplocloud.TenantKms` manages the list of kms available to a tenant in Duplo.
  *
  * This resource allows you take control of individual tenant kms for a specific tenant.
  *

@@ -82,7 +82,7 @@ type AwsLbTargetGroup struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Port to use to connect with the target. Valid values are either ports 1-65535.
 	Port pulumi.IntOutput `pulumi:"port"`
-	// Protocol to use to connect with the target. Not applicable when `targetType` is `lambda`. Defaults to `HTTP`.
+	// Protocol to use to connect with the target. Not applicable when `targetType` is `lambda`. For non-lambda target type it defaults to `HTTP`
 	Protocol pulumi.StringPtrOutput `pulumi:"protocol"`
 	// Only applicable when protocol is `HTTP` or `HTTPS`. The protocol version. Specify GRPC to send requests to targets using gRPC. Specify HTTP2 to send requests to targets using HTTP/2. The default is HTTP1, which sends requests to targets using HTTP/1.1
 	ProtocolVersion pulumi.StringOutput `pulumi:"protocolVersion"`
@@ -140,7 +140,7 @@ type awsLbTargetGroupState struct {
 	Name *string `pulumi:"name"`
 	// Port to use to connect with the target. Valid values are either ports 1-65535.
 	Port *int `pulumi:"port"`
-	// Protocol to use to connect with the target. Not applicable when `targetType` is `lambda`. Defaults to `HTTP`.
+	// Protocol to use to connect with the target. Not applicable when `targetType` is `lambda`. For non-lambda target type it defaults to `HTTP`
 	Protocol *string `pulumi:"protocol"`
 	// Only applicable when protocol is `HTTP` or `HTTPS`. The protocol version. Specify GRPC to send requests to targets using gRPC. Specify HTTP2 to send requests to targets using HTTP/2. The default is HTTP1, which sends requests to targets using HTTP/1.1
 	ProtocolVersion *string `pulumi:"protocolVersion"`
@@ -163,7 +163,7 @@ type AwsLbTargetGroupState struct {
 	Name pulumi.StringPtrInput
 	// Port to use to connect with the target. Valid values are either ports 1-65535.
 	Port pulumi.IntPtrInput
-	// Protocol to use to connect with the target. Not applicable when `targetType` is `lambda`. Defaults to `HTTP`.
+	// Protocol to use to connect with the target. Not applicable when `targetType` is `lambda`. For non-lambda target type it defaults to `HTTP`
 	Protocol pulumi.StringPtrInput
 	// Only applicable when protocol is `HTTP` or `HTTPS`. The protocol version. Specify GRPC to send requests to targets using gRPC. Specify HTTP2 to send requests to targets using HTTP/2. The default is HTTP1, which sends requests to targets using HTTP/1.1
 	ProtocolVersion pulumi.StringPtrInput
@@ -188,7 +188,7 @@ type awsLbTargetGroupArgs struct {
 	Name *string `pulumi:"name"`
 	// Port to use to connect with the target. Valid values are either ports 1-65535.
 	Port *int `pulumi:"port"`
-	// Protocol to use to connect with the target. Not applicable when `targetType` is `lambda`. Defaults to `HTTP`.
+	// Protocol to use to connect with the target. Not applicable when `targetType` is `lambda`. For non-lambda target type it defaults to `HTTP`
 	Protocol *string `pulumi:"protocol"`
 	// Only applicable when protocol is `HTTP` or `HTTPS`. The protocol version. Specify GRPC to send requests to targets using gRPC. Specify HTTP2 to send requests to targets using HTTP/2. The default is HTTP1, which sends requests to targets using HTTP/1.1
 	ProtocolVersion *string `pulumi:"protocolVersion"`
@@ -210,7 +210,7 @@ type AwsLbTargetGroupArgs struct {
 	Name pulumi.StringPtrInput
 	// Port to use to connect with the target. Valid values are either ports 1-65535.
 	Port pulumi.IntPtrInput
-	// Protocol to use to connect with the target. Not applicable when `targetType` is `lambda`. Defaults to `HTTP`.
+	// Protocol to use to connect with the target. Not applicable when `targetType` is `lambda`. For non-lambda target type it defaults to `HTTP`
 	Protocol pulumi.StringPtrInput
 	// Only applicable when protocol is `HTTP` or `HTTPS`. The protocol version. Specify GRPC to send requests to targets using gRPC. Specify HTTP2 to send requests to targets using HTTP/2. The default is HTTP1, which sends requests to targets using HTTP/1.1
 	ProtocolVersion pulumi.StringPtrInput
@@ -334,7 +334,7 @@ func (o AwsLbTargetGroupOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v *AwsLbTargetGroup) pulumi.IntOutput { return v.Port }).(pulumi.IntOutput)
 }
 
-// Protocol to use to connect with the target. Not applicable when `targetType` is `lambda`. Defaults to `HTTP`.
+// Protocol to use to connect with the target. Not applicable when `targetType` is `lambda`. For non-lambda target type it defaults to `HTTP`
 func (o AwsLbTargetGroupOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsLbTargetGroup) pulumi.StringPtrOutput { return v.Protocol }).(pulumi.StringPtrOutput)
 }

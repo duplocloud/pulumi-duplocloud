@@ -24,7 +24,7 @@ class AwsApiGatewayIntegrationArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AwsApiGatewayIntegration resource.
-        :param pulumi.Input[str] lambda_function_name: Name of the lambda function to be integrated with API gateway.
+        :param pulumi.Input[str] lambda_function_name: Name of the lambda function or arn to be integrated with API gateway.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the aws api gateway integration will be created in.
         :param pulumi.Input[str] name: The short name of the api gateway.  Duplo will add a prefix to the name.  You can retrieve the full name from the `fullname` attribute.
         """
@@ -37,7 +37,7 @@ class AwsApiGatewayIntegrationArgs:
     @pulumi.getter(name="lambdaFunctionName")
     def lambda_function_name(self) -> pulumi.Input[str]:
         """
-        Name of the lambda function to be integrated with API gateway.
+        Name of the lambda function or arn to be integrated with API gateway.
         """
         return pulumi.get(self, "lambda_function_name")
 
@@ -81,7 +81,7 @@ class _AwsApiGatewayIntegrationState:
         """
         Input properties used for looking up and filtering AwsApiGatewayIntegration resources.
         :param pulumi.Input[str] fullname: The full name of the api gateway.
-        :param pulumi.Input[str] lambda_function_name: Name of the lambda function to be integrated with API gateway.
+        :param pulumi.Input[str] lambda_function_name: Name of the lambda function or arn to be integrated with API gateway.
         :param pulumi.Input[str] name: The short name of the api gateway.  Duplo will add a prefix to the name.  You can retrieve the full name from the `fullname` attribute.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the aws api gateway integration will be created in.
         """
@@ -112,7 +112,7 @@ class _AwsApiGatewayIntegrationState:
     @pulumi.getter(name="lambdaFunctionName")
     def lambda_function_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the lambda function to be integrated with API gateway.
+        Name of the lambda function or arn to be integrated with API gateway.
         """
         return pulumi.get(self, "lambda_function_name")
 
@@ -197,7 +197,7 @@ class AwsApiGatewayIntegration(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] lambda_function_name: Name of the lambda function to be integrated with API gateway.
+        :param pulumi.Input[str] lambda_function_name: Name of the lambda function or arn to be integrated with API gateway.
         :param pulumi.Input[str] name: The short name of the api gateway.  Duplo will add a prefix to the name.  You can retrieve the full name from the `fullname` attribute.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the aws api gateway integration will be created in.
         """
@@ -298,7 +298,7 @@ class AwsApiGatewayIntegration(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] fullname: The full name of the api gateway.
-        :param pulumi.Input[str] lambda_function_name: Name of the lambda function to be integrated with API gateway.
+        :param pulumi.Input[str] lambda_function_name: Name of the lambda function or arn to be integrated with API gateway.
         :param pulumi.Input[str] name: The short name of the api gateway.  Duplo will add a prefix to the name.  You can retrieve the full name from the `fullname` attribute.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the aws api gateway integration will be created in.
         """
@@ -325,7 +325,7 @@ class AwsApiGatewayIntegration(pulumi.CustomResource):
     @pulumi.getter(name="lambdaFunctionName")
     def lambda_function_name(self) -> pulumi.Output[str]:
         """
-        Name of the lambda function to be integrated with API gateway.
+        Name of the lambda function or arn to be integrated with API gateway.
         """
         return pulumi.get(self, "lambda_function_name")
 

@@ -189,7 +189,7 @@ export class AwsHost extends pulumi.CustomResource {
     /**
      * Specify the labels to attach to the nodes.
      */
-    public readonly customNodeLabels!: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly customNodeLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The short name of the host.
      */

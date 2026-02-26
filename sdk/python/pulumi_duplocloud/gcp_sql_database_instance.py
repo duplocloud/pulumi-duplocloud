@@ -27,6 +27,7 @@ class GcpSqlDatabaseInstanceArgs:
                  database_flags: Optional[pulumi.Input[Sequence[pulumi.Input['GcpSqlDatabaseInstanceDatabaseFlagArgs']]]] = None,
                  disk_size: Optional[pulumi.Input[int]] = None,
                  edition: Optional[pulumi.Input[str]] = None,
+                 ip_configuration: Optional[pulumi.Input['GcpSqlDatabaseInstanceIpConfigurationArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  need_backup: Optional[pulumi.Input[bool]] = None,
@@ -36,15 +37,16 @@ class GcpSqlDatabaseInstanceArgs:
         The set of arguments for constructing a GcpSqlDatabaseInstance resource.
         :param pulumi.Input[str] database_version: The MySQL, PostgreSQL or SQL Server version to use.Supported values include `MYSQL_5_6`,`MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`,`POSTGRES_10`,`POSTGRES_11`,`POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`, `POSTGRES_15`,`POSTGRES_16`,`POSTGRES_17`, `SQLSERVER_2017_STANDARD`,`SQLSERVER_2017_ENTERPRISE`,`SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`,`SQLSERVER_2019_STANDARD`, `SQLSERVER_2019_ENTERPRISE`, `SQLSERVER_2019_EXPRESS`,`SQLSERVER_2019_WEB`,`SQLSERVER_2022_WEB`,`SQLSERVER_2022_EXPRESS`,`SQLSERVER_2022_ENTERPRISE`,`SQLSERVER_2022_STANDARD`.[Database Version Policies](https://cloud.google.com/sql/docs/db-versions) includes an up-to-date reference of supported versions.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the sql database will be created in.
-        :param pulumi.Input[str] tier: The machine type to use. See tiers for more details and supported versions. Postgres supports only shared-core machine types, and custom machine types such as `db-custom-2-13312`.See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
+        :param pulumi.Input[str] tier: The machine type to use. See tiers for more details and supported versions. Postgres supports only shared-core machine types, and custom machine types, format for custom machine type db-custom-{vCPU}-{memory-in-MB} example `db-custom-2-13312`.See the [Machine Type Documentation](https://cloud.google.com/compute/docs/machine-resource) to learn more about machine types.
         :param pulumi.Input[Sequence[pulumi.Input['GcpSqlDatabaseInstanceDatabaseFlagArgs']]] database_flags: List of database flags to be set on the database instance. Please refer to the [Database Flags Documentation](https://cloud.google.com/sql/docs/mysql/flags) for more details on available flags.
         :param pulumi.Input[int] disk_size: The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
         :param pulumi.Input[str] edition: Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS Defaults to `ENTERPRISE`.
+        :param pulumi.Input['GcpSqlDatabaseInstanceIpConfigurationArgs'] ip_configuration: IP configuration for the database instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Map of string keys and values that can be used to organize and categorize this resource.
         :param pulumi.Input[str] name: The short name of the sql database.  Duplo will add a prefix to the name.  You can retrieve the full name from the `fullname` attribute.
-        :param pulumi.Input[bool] need_backup: Flag to enable backup process on delete of database Defaults to `true`.
+        :param pulumi.Input[bool] need_backup: Flag to enable backup process on delete of database
         :param pulumi.Input[str] root_password: Provide root password for specific database versions.
-        :param pulumi.Input[bool] wait_until_ready: Whether or not to wait until sql database instance to be ready, after creation. Defaults to `true`.
+        :param pulumi.Input[bool] wait_until_ready: Whether or not to wait until sql database instance to be ready, after creation.
         """
         pulumi.set(__self__, "database_version", database_version)
         pulumi.set(__self__, "tenant_id", tenant_id)
@@ -55,6 +57,8 @@ class GcpSqlDatabaseInstanceArgs:
             pulumi.set(__self__, "disk_size", disk_size)
         if edition is not None:
             pulumi.set(__self__, "edition", edition)
+        if ip_configuration is not None:
+            pulumi.set(__self__, "ip_configuration", ip_configuration)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -94,7 +98,7 @@ class GcpSqlDatabaseInstanceArgs:
     @pulumi.getter
     def tier(self) -> pulumi.Input[str]:
         """
-        The machine type to use. See tiers for more details and supported versions. Postgres supports only shared-core machine types, and custom machine types such as `db-custom-2-13312`.See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
+        The machine type to use. See tiers for more details and supported versions. Postgres supports only shared-core machine types, and custom machine types, format for custom machine type db-custom-{vCPU}-{memory-in-MB} example `db-custom-2-13312`.See the [Machine Type Documentation](https://cloud.google.com/compute/docs/machine-resource) to learn more about machine types.
         """
         return pulumi.get(self, "tier")
 
@@ -139,6 +143,18 @@ class GcpSqlDatabaseInstanceArgs:
         pulumi.set(self, "edition", value)
 
     @property
+    @pulumi.getter(name="ipConfiguration")
+    def ip_configuration(self) -> Optional[pulumi.Input['GcpSqlDatabaseInstanceIpConfigurationArgs']]:
+        """
+        IP configuration for the database instance.
+        """
+        return pulumi.get(self, "ip_configuration")
+
+    @ip_configuration.setter
+    def ip_configuration(self, value: Optional[pulumi.Input['GcpSqlDatabaseInstanceIpConfigurationArgs']]):
+        pulumi.set(self, "ip_configuration", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -166,7 +182,7 @@ class GcpSqlDatabaseInstanceArgs:
     @pulumi.getter(name="needBackup")
     def need_backup(self) -> Optional[pulumi.Input[bool]]:
         """
-        Flag to enable backup process on delete of database Defaults to `true`.
+        Flag to enable backup process on delete of database
         """
         return pulumi.get(self, "need_backup")
 
@@ -190,7 +206,7 @@ class GcpSqlDatabaseInstanceArgs:
     @pulumi.getter(name="waitUntilReady")
     def wait_until_ready(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether or not to wait until sql database instance to be ready, after creation. Defaults to `true`.
+        Whether or not to wait until sql database instance to be ready, after creation.
         """
         return pulumi.get(self, "wait_until_ready")
 
@@ -209,6 +225,7 @@ class _GcpSqlDatabaseInstanceState:
                  edition: Optional[pulumi.Input[str]] = None,
                  fullname: Optional[pulumi.Input[str]] = None,
                  ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 ip_configuration: Optional[pulumi.Input['GcpSqlDatabaseInstanceIpConfigurationArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  need_backup: Optional[pulumi.Input[bool]] = None,
@@ -226,14 +243,15 @@ class _GcpSqlDatabaseInstanceState:
         :param pulumi.Input[str] edition: Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS Defaults to `ENTERPRISE`.
         :param pulumi.Input[str] fullname: The full name of the sql database.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_addresses: List of IP addresses of the database.
+        :param pulumi.Input['GcpSqlDatabaseInstanceIpConfigurationArgs'] ip_configuration: IP configuration for the database instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Map of string keys and values that can be used to organize and categorize this resource.
         :param pulumi.Input[str] name: The short name of the sql database.  Duplo will add a prefix to the name.  You can retrieve the full name from the `fullname` attribute.
-        :param pulumi.Input[bool] need_backup: Flag to enable backup process on delete of database Defaults to `true`.
+        :param pulumi.Input[bool] need_backup: Flag to enable backup process on delete of database
         :param pulumi.Input[str] root_password: Provide root password for specific database versions.
         :param pulumi.Input[str] self_link: The SelfLink of the sql database.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the sql database will be created in.
-        :param pulumi.Input[str] tier: The machine type to use. See tiers for more details and supported versions. Postgres supports only shared-core machine types, and custom machine types such as `db-custom-2-13312`.See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
-        :param pulumi.Input[bool] wait_until_ready: Whether or not to wait until sql database instance to be ready, after creation. Defaults to `true`.
+        :param pulumi.Input[str] tier: The machine type to use. See tiers for more details and supported versions. Postgres supports only shared-core machine types, and custom machine types, format for custom machine type db-custom-{vCPU}-{memory-in-MB} example `db-custom-2-13312`.See the [Machine Type Documentation](https://cloud.google.com/compute/docs/machine-resource) to learn more about machine types.
+        :param pulumi.Input[bool] wait_until_ready: Whether or not to wait until sql database instance to be ready, after creation.
         """
         if connection_name is not None:
             pulumi.set(__self__, "connection_name", connection_name)
@@ -249,6 +267,8 @@ class _GcpSqlDatabaseInstanceState:
             pulumi.set(__self__, "fullname", fullname)
         if ip_addresses is not None:
             pulumi.set(__self__, "ip_addresses", ip_addresses)
+        if ip_configuration is not None:
+            pulumi.set(__self__, "ip_configuration", ip_configuration)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -351,6 +371,18 @@ class _GcpSqlDatabaseInstanceState:
         pulumi.set(self, "ip_addresses", value)
 
     @property
+    @pulumi.getter(name="ipConfiguration")
+    def ip_configuration(self) -> Optional[pulumi.Input['GcpSqlDatabaseInstanceIpConfigurationArgs']]:
+        """
+        IP configuration for the database instance.
+        """
+        return pulumi.get(self, "ip_configuration")
+
+    @ip_configuration.setter
+    def ip_configuration(self, value: Optional[pulumi.Input['GcpSqlDatabaseInstanceIpConfigurationArgs']]):
+        pulumi.set(self, "ip_configuration", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -378,7 +410,7 @@ class _GcpSqlDatabaseInstanceState:
     @pulumi.getter(name="needBackup")
     def need_backup(self) -> Optional[pulumi.Input[bool]]:
         """
-        Flag to enable backup process on delete of database Defaults to `true`.
+        Flag to enable backup process on delete of database
         """
         return pulumi.get(self, "need_backup")
 
@@ -426,7 +458,7 @@ class _GcpSqlDatabaseInstanceState:
     @pulumi.getter
     def tier(self) -> Optional[pulumi.Input[str]]:
         """
-        The machine type to use. See tiers for more details and supported versions. Postgres supports only shared-core machine types, and custom machine types such as `db-custom-2-13312`.See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
+        The machine type to use. See tiers for more details and supported versions. Postgres supports only shared-core machine types, and custom machine types, format for custom machine type db-custom-{vCPU}-{memory-in-MB} example `db-custom-2-13312`.See the [Machine Type Documentation](https://cloud.google.com/compute/docs/machine-resource) to learn more about machine types.
         """
         return pulumi.get(self, "tier")
 
@@ -438,7 +470,7 @@ class _GcpSqlDatabaseInstanceState:
     @pulumi.getter(name="waitUntilReady")
     def wait_until_ready(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether or not to wait until sql database instance to be ready, after creation. Defaults to `true`.
+        Whether or not to wait until sql database instance to be ready, after creation.
         """
         return pulumi.get(self, "wait_until_ready")
 
@@ -456,6 +488,7 @@ class GcpSqlDatabaseInstance(pulumi.CustomResource):
                  database_version: Optional[pulumi.Input[str]] = None,
                  disk_size: Optional[pulumi.Input[int]] = None,
                  edition: Optional[pulumi.Input[str]] = None,
+                 ip_configuration: Optional[pulumi.Input[Union['GcpSqlDatabaseInstanceIpConfigurationArgs', 'GcpSqlDatabaseInstanceIpConfigurationArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  need_backup: Optional[pulumi.Input[bool]] = None,
@@ -466,36 +499,6 @@ class GcpSqlDatabaseInstance(pulumi.CustomResource):
                  __props__=None):
         """
         `GcpSqlDatabaseInstance` manages a GCP SQL Database Instance in Duplo.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_duplocloud as duplocloud
-
-        myapp = duplocloud.Tenant("myapp",
-            account_name="myapp",
-            plan_id="default")
-        sql_instance = duplocloud.GcpSqlDatabaseInstance("sql_instance",
-            tenant_id=myapp.tenant_id,
-            name="sqlinstances01",
-            database_version="MYSQL_8_0",
-            tier="db-n1-standard-1",
-            disk_size=17,
-            labels={
-                "managed-by": "duplocloud",
-                "created-by": "terraform",
-            })
-        # Backup configuration example
-        sql = duplocloud.GcpSqlDatabaseInstance("sql",
-            tenant_id=myapp.tenant_id,
-            name="mysqlbckp",
-            database_version="POSTGRES_14",
-            disk_size=10,
-            tier="db-f1-micro",
-            root_password="qwerty",
-            need_backup=True)
-        ```
 
         ## Import
 
@@ -517,13 +520,14 @@ class GcpSqlDatabaseInstance(pulumi.CustomResource):
         :param pulumi.Input[str] database_version: The MySQL, PostgreSQL or SQL Server version to use.Supported values include `MYSQL_5_6`,`MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`,`POSTGRES_10`,`POSTGRES_11`,`POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`, `POSTGRES_15`,`POSTGRES_16`,`POSTGRES_17`, `SQLSERVER_2017_STANDARD`,`SQLSERVER_2017_ENTERPRISE`,`SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`,`SQLSERVER_2019_STANDARD`, `SQLSERVER_2019_ENTERPRISE`, `SQLSERVER_2019_EXPRESS`,`SQLSERVER_2019_WEB`,`SQLSERVER_2022_WEB`,`SQLSERVER_2022_EXPRESS`,`SQLSERVER_2022_ENTERPRISE`,`SQLSERVER_2022_STANDARD`.[Database Version Policies](https://cloud.google.com/sql/docs/db-versions) includes an up-to-date reference of supported versions.
         :param pulumi.Input[int] disk_size: The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
         :param pulumi.Input[str] edition: Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS Defaults to `ENTERPRISE`.
+        :param pulumi.Input[Union['GcpSqlDatabaseInstanceIpConfigurationArgs', 'GcpSqlDatabaseInstanceIpConfigurationArgsDict']] ip_configuration: IP configuration for the database instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Map of string keys and values that can be used to organize and categorize this resource.
         :param pulumi.Input[str] name: The short name of the sql database.  Duplo will add a prefix to the name.  You can retrieve the full name from the `fullname` attribute.
-        :param pulumi.Input[bool] need_backup: Flag to enable backup process on delete of database Defaults to `true`.
+        :param pulumi.Input[bool] need_backup: Flag to enable backup process on delete of database
         :param pulumi.Input[str] root_password: Provide root password for specific database versions.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the sql database will be created in.
-        :param pulumi.Input[str] tier: The machine type to use. See tiers for more details and supported versions. Postgres supports only shared-core machine types, and custom machine types such as `db-custom-2-13312`.See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
-        :param pulumi.Input[bool] wait_until_ready: Whether or not to wait until sql database instance to be ready, after creation. Defaults to `true`.
+        :param pulumi.Input[str] tier: The machine type to use. See tiers for more details and supported versions. Postgres supports only shared-core machine types, and custom machine types, format for custom machine type db-custom-{vCPU}-{memory-in-MB} example `db-custom-2-13312`.See the [Machine Type Documentation](https://cloud.google.com/compute/docs/machine-resource) to learn more about machine types.
+        :param pulumi.Input[bool] wait_until_ready: Whether or not to wait until sql database instance to be ready, after creation.
         """
         ...
     @overload
@@ -533,36 +537,6 @@ class GcpSqlDatabaseInstance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         `GcpSqlDatabaseInstance` manages a GCP SQL Database Instance in Duplo.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_duplocloud as duplocloud
-
-        myapp = duplocloud.Tenant("myapp",
-            account_name="myapp",
-            plan_id="default")
-        sql_instance = duplocloud.GcpSqlDatabaseInstance("sql_instance",
-            tenant_id=myapp.tenant_id,
-            name="sqlinstances01",
-            database_version="MYSQL_8_0",
-            tier="db-n1-standard-1",
-            disk_size=17,
-            labels={
-                "managed-by": "duplocloud",
-                "created-by": "terraform",
-            })
-        # Backup configuration example
-        sql = duplocloud.GcpSqlDatabaseInstance("sql",
-            tenant_id=myapp.tenant_id,
-            name="mysqlbckp",
-            database_version="POSTGRES_14",
-            disk_size=10,
-            tier="db-f1-micro",
-            root_password="qwerty",
-            need_backup=True)
-        ```
 
         ## Import
 
@@ -597,6 +571,7 @@ class GcpSqlDatabaseInstance(pulumi.CustomResource):
                  database_version: Optional[pulumi.Input[str]] = None,
                  disk_size: Optional[pulumi.Input[int]] = None,
                  edition: Optional[pulumi.Input[str]] = None,
+                 ip_configuration: Optional[pulumi.Input[Union['GcpSqlDatabaseInstanceIpConfigurationArgs', 'GcpSqlDatabaseInstanceIpConfigurationArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  need_backup: Optional[pulumi.Input[bool]] = None,
@@ -619,6 +594,7 @@ class GcpSqlDatabaseInstance(pulumi.CustomResource):
             __props__.__dict__["database_version"] = database_version
             __props__.__dict__["disk_size"] = disk_size
             __props__.__dict__["edition"] = edition
+            __props__.__dict__["ip_configuration"] = ip_configuration
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             __props__.__dict__["need_backup"] = need_backup
@@ -651,6 +627,7 @@ class GcpSqlDatabaseInstance(pulumi.CustomResource):
             edition: Optional[pulumi.Input[str]] = None,
             fullname: Optional[pulumi.Input[str]] = None,
             ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            ip_configuration: Optional[pulumi.Input[Union['GcpSqlDatabaseInstanceIpConfigurationArgs', 'GcpSqlDatabaseInstanceIpConfigurationArgsDict']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             need_backup: Optional[pulumi.Input[bool]] = None,
@@ -673,14 +650,15 @@ class GcpSqlDatabaseInstance(pulumi.CustomResource):
         :param pulumi.Input[str] edition: Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS Defaults to `ENTERPRISE`.
         :param pulumi.Input[str] fullname: The full name of the sql database.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_addresses: List of IP addresses of the database.
+        :param pulumi.Input[Union['GcpSqlDatabaseInstanceIpConfigurationArgs', 'GcpSqlDatabaseInstanceIpConfigurationArgsDict']] ip_configuration: IP configuration for the database instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Map of string keys and values that can be used to organize and categorize this resource.
         :param pulumi.Input[str] name: The short name of the sql database.  Duplo will add a prefix to the name.  You can retrieve the full name from the `fullname` attribute.
-        :param pulumi.Input[bool] need_backup: Flag to enable backup process on delete of database Defaults to `true`.
+        :param pulumi.Input[bool] need_backup: Flag to enable backup process on delete of database
         :param pulumi.Input[str] root_password: Provide root password for specific database versions.
         :param pulumi.Input[str] self_link: The SelfLink of the sql database.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the sql database will be created in.
-        :param pulumi.Input[str] tier: The machine type to use. See tiers for more details and supported versions. Postgres supports only shared-core machine types, and custom machine types such as `db-custom-2-13312`.See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
-        :param pulumi.Input[bool] wait_until_ready: Whether or not to wait until sql database instance to be ready, after creation. Defaults to `true`.
+        :param pulumi.Input[str] tier: The machine type to use. See tiers for more details and supported versions. Postgres supports only shared-core machine types, and custom machine types, format for custom machine type db-custom-{vCPU}-{memory-in-MB} example `db-custom-2-13312`.See the [Machine Type Documentation](https://cloud.google.com/compute/docs/machine-resource) to learn more about machine types.
+        :param pulumi.Input[bool] wait_until_ready: Whether or not to wait until sql database instance to be ready, after creation.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -693,6 +671,7 @@ class GcpSqlDatabaseInstance(pulumi.CustomResource):
         __props__.__dict__["edition"] = edition
         __props__.__dict__["fullname"] = fullname
         __props__.__dict__["ip_addresses"] = ip_addresses
+        __props__.__dict__["ip_configuration"] = ip_configuration
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["need_backup"] = need_backup
@@ -760,6 +739,14 @@ class GcpSqlDatabaseInstance(pulumi.CustomResource):
         return pulumi.get(self, "ip_addresses")
 
     @property
+    @pulumi.getter(name="ipConfiguration")
+    def ip_configuration(self) -> pulumi.Output['outputs.GcpSqlDatabaseInstanceIpConfiguration']:
+        """
+        IP configuration for the database instance.
+        """
+        return pulumi.get(self, "ip_configuration")
+
+    @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
@@ -779,7 +766,7 @@ class GcpSqlDatabaseInstance(pulumi.CustomResource):
     @pulumi.getter(name="needBackup")
     def need_backup(self) -> pulumi.Output[Optional[bool]]:
         """
-        Flag to enable backup process on delete of database Defaults to `true`.
+        Flag to enable backup process on delete of database
         """
         return pulumi.get(self, "need_backup")
 
@@ -811,7 +798,7 @@ class GcpSqlDatabaseInstance(pulumi.CustomResource):
     @pulumi.getter
     def tier(self) -> pulumi.Output[str]:
         """
-        The machine type to use. See tiers for more details and supported versions. Postgres supports only shared-core machine types, and custom machine types such as `db-custom-2-13312`.See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
+        The machine type to use. See tiers for more details and supported versions. Postgres supports only shared-core machine types, and custom machine types, format for custom machine type db-custom-{vCPU}-{memory-in-MB} example `db-custom-2-13312`.See the [Machine Type Documentation](https://cloud.google.com/compute/docs/machine-resource) to learn more about machine types.
         """
         return pulumi.get(self, "tier")
 
@@ -819,7 +806,7 @@ class GcpSqlDatabaseInstance(pulumi.CustomResource):
     @pulumi.getter(name="waitUntilReady")
     def wait_until_ready(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether or not to wait until sql database instance to be ready, after creation. Defaults to `true`.
+        Whether or not to wait until sql database instance to be ready, after creation.
         """
         return pulumi.get(self, "wait_until_ready")
 

@@ -383,6 +383,9 @@ type EcacheInstance struct {
 	// The globally unique identifier for the key.
 	KmsKeyId                  pulumi.StringOutput                               `pulumi:"kmsKeyId"`
 	LogDeliveryConfigurations EcacheInstanceLogDeliveryConfigurationArrayOutput `pulumi:"logDeliveryConfigurations"`
+	// Enables Multi-AZ support for the ElastiCache instance. Multi-AZ is only applicable for Redis (cache_type=0) and Valkey
+	// (cache_type=2). When enabled, automaticFailoverEnabled must also be set to true.
+	MultiAzEnabled pulumi.BoolPtrOutput `pulumi:"multiAzEnabled"`
 	// The short name of the elasticache instance.  Duplo will add a prefix to the name.  You can retrieve the full name from the `identifier` attribute.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The number of shards to create. Applicable only if enableClusterMode is set to true
@@ -481,6 +484,9 @@ type ecacheInstanceState struct {
 	// The globally unique identifier for the key.
 	KmsKeyId                  *string                                  `pulumi:"kmsKeyId"`
 	LogDeliveryConfigurations []EcacheInstanceLogDeliveryConfiguration `pulumi:"logDeliveryConfigurations"`
+	// Enables Multi-AZ support for the ElastiCache instance. Multi-AZ is only applicable for Redis (cache_type=0) and Valkey
+	// (cache_type=2). When enabled, automaticFailoverEnabled must also be set to true.
+	MultiAzEnabled *bool `pulumi:"multiAzEnabled"`
 	// The short name of the elasticache instance.  Duplo will add a prefix to the name.  You can retrieve the full name from the `identifier` attribute.
 	Name *string `pulumi:"name"`
 	// The number of shards to create. Applicable only if enableClusterMode is set to true
@@ -544,6 +550,9 @@ type EcacheInstanceState struct {
 	// The globally unique identifier for the key.
 	KmsKeyId                  pulumi.StringPtrInput
 	LogDeliveryConfigurations EcacheInstanceLogDeliveryConfigurationArrayInput
+	// Enables Multi-AZ support for the ElastiCache instance. Multi-AZ is only applicable for Redis (cache_type=0) and Valkey
+	// (cache_type=2). When enabled, automaticFailoverEnabled must also be set to true.
+	MultiAzEnabled pulumi.BoolPtrInput
 	// The short name of the elasticache instance.  Duplo will add a prefix to the name.  You can retrieve the full name from the `identifier` attribute.
 	Name pulumi.StringPtrInput
 	// The number of shards to create. Applicable only if enableClusterMode is set to true
@@ -598,6 +607,9 @@ type ecacheInstanceArgs struct {
 	// The globally unique identifier for the key.
 	KmsKeyId                  *string                                  `pulumi:"kmsKeyId"`
 	LogDeliveryConfigurations []EcacheInstanceLogDeliveryConfiguration `pulumi:"logDeliveryConfigurations"`
+	// Enables Multi-AZ support for the ElastiCache instance. Multi-AZ is only applicable for Redis (cache_type=0) and Valkey
+	// (cache_type=2). When enabled, automaticFailoverEnabled must also be set to true.
+	MultiAzEnabled *bool `pulumi:"multiAzEnabled"`
 	// The short name of the elasticache instance.  Duplo will add a prefix to the name.  You can retrieve the full name from the `identifier` attribute.
 	Name *string `pulumi:"name"`
 	// The number of shards to create. Applicable only if enableClusterMode is set to true
@@ -647,6 +659,9 @@ type EcacheInstanceArgs struct {
 	// The globally unique identifier for the key.
 	KmsKeyId                  pulumi.StringPtrInput
 	LogDeliveryConfigurations EcacheInstanceLogDeliveryConfigurationArrayInput
+	// Enables Multi-AZ support for the ElastiCache instance. Multi-AZ is only applicable for Redis (cache_type=0) and Valkey
+	// (cache_type=2). When enabled, automaticFailoverEnabled must also be set to true.
+	MultiAzEnabled pulumi.BoolPtrInput
 	// The short name of the elasticache instance.  Duplo will add a prefix to the name.  You can retrieve the full name from the `identifier` attribute.
 	Name pulumi.StringPtrInput
 	// The number of shards to create. Applicable only if enableClusterMode is set to true
@@ -842,6 +857,12 @@ func (o EcacheInstanceOutput) LogDeliveryConfigurations() EcacheInstanceLogDeliv
 	return o.ApplyT(func(v *EcacheInstance) EcacheInstanceLogDeliveryConfigurationArrayOutput {
 		return v.LogDeliveryConfigurations
 	}).(EcacheInstanceLogDeliveryConfigurationArrayOutput)
+}
+
+// Enables Multi-AZ support for the ElastiCache instance. Multi-AZ is only applicable for Redis (cache_type=0) and Valkey
+// (cache_type=2). When enabled, automaticFailoverEnabled must also be set to true.
+func (o EcacheInstanceOutput) MultiAzEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EcacheInstance) pulumi.BoolPtrOutput { return v.MultiAzEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // The short name of the elasticache instance.  Duplo will add a prefix to the name.  You can retrieve the full name from the `identifier` attribute.

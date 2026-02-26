@@ -86,7 +86,7 @@ export class AsgProfile extends pulumi.CustomResource {
     /**
      * Specify the labels to attach to the nodes.
      */
-    public readonly customNodeLabels!: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly customNodeLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * List of metrics to collect for the ASG Specify one or more of the following
      * metrics.`GroupMinSize`,`GroupMaxSize`,`GroupDesiredCapacity`,`GroupInServiceInstances`,`GroupPendingInstances`,`GroupStandbyInstances`,`GroupTerminatingInstances`,`GroupTotalInstances`,`GroupInServiceCapacity`,`GroupPendingCapacity`,`GroupStandbyCapacity`,`GroupTerminatingCapacity`,`GroupTotalCapacity`,`WarmPoolDesiredCapacity`,`WarmPoolWarmedCapacity`,`WarmPoolPendingCapacity`,`WarmPoolTerminatingCapacity`,`WarmPoolTotalCapacity`,`GroupAndWarmPoolDesiredCapacity`,`GroupAndWarmPoolTotalCapacity`.
