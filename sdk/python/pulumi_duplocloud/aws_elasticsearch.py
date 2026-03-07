@@ -23,6 +23,7 @@ class AwsElasticsearchArgs:
     def __init__(__self__, *,
                  tenant_id: pulumi.Input[str],
                  cluster_config: Optional[pulumi.Input['AwsElasticsearchClusterConfigArgs']] = None,
+                 ebs_options: Optional[pulumi.Input[Sequence[pulumi.Input['AwsElasticsearchEbsOptionArgs']]]] = None,
                  elasticsearch_version: Optional[pulumi.Input[str]] = None,
                  enable_node_to_node_encryption: Optional[pulumi.Input[bool]] = None,
                  encrypt_at_rest: Optional[pulumi.Input['AwsElasticsearchEncryptAtRestArgs']] = None,
@@ -35,18 +36,21 @@ class AwsElasticsearchArgs:
         """
         The set of arguments for constructing a AwsElasticsearch resource.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the ElasticSearch instance will be created in.
-        :param pulumi.Input[str] elasticsearch_version: The version of the ElasticSearch instance. Defaults to `7.9`.
+        :param pulumi.Input[Sequence[pulumi.Input['AwsElasticsearchEbsOptionArgs']]] ebs_options: The EBS storage options for the ElasticSearch instance.
+        :param pulumi.Input[str] elasticsearch_version: The version of the ElasticSearch/OpenSearch instance. Accepts the short form (e.g. `7.9`) or the full prefixed form (e.g. `Elasticsearch_7.9`, `OpenSearch_2.15`). Defaults to `Elasticsearch_7.9`.
         :param pulumi.Input[bool] enable_node_to_node_encryption: Whether or not to use the enable node-to-node encryption for this ElasticSearch instance.
         :param pulumi.Input['AwsElasticsearchEncryptAtRestArgs'] encrypt_at_rest: The storage encryption settings for the ElasticSearch instance.
         :param pulumi.Input[str] name: The short name of the ElasticSearch instance.  Duplo will add a prefix to the name.  You can retrieve the full name from the `domain_name` attribute.
         :param pulumi.Input[bool] require_ssl: Whether or not to require SSL for accessing this ElasticSearch instance.
         :param pulumi.Input[int] selected_zone: The numerical index of the zone to launch this ElasticSearch instance in.
-        :param pulumi.Input[int] storage_size: The storage volume size, in GB, for the ElasticSearch instance.
+        :param pulumi.Input[int] storage_size: The storage volume size, in GB, for the ElasticSearch instance. storage*size has been deprecated, use ebs*options.volume_size
         :param pulumi.Input[bool] use_latest_tls_cipher: Whether or not to use the latest TLS cipher for this ElasticSearch instance. For govcloud environments this should be set to true
         """
         pulumi.set(__self__, "tenant_id", tenant_id)
         if cluster_config is not None:
             pulumi.set(__self__, "cluster_config", cluster_config)
+        if ebs_options is not None:
+            pulumi.set(__self__, "ebs_options", ebs_options)
         if elasticsearch_version is not None:
             pulumi.set(__self__, "elasticsearch_version", elasticsearch_version)
         if enable_node_to_node_encryption is not None:
@@ -59,6 +63,9 @@ class AwsElasticsearchArgs:
             pulumi.set(__self__, "require_ssl", require_ssl)
         if selected_zone is not None:
             pulumi.set(__self__, "selected_zone", selected_zone)
+        if storage_size is not None:
+            warnings.warn("""storage_size has been deprecated, use ebs_options.volume_size""", DeprecationWarning)
+            pulumi.log.warn("""storage_size is deprecated: storage_size has been deprecated, use ebs_options.volume_size""")
         if storage_size is not None:
             pulumi.set(__self__, "storage_size", storage_size)
         if use_latest_tls_cipher is not None:
@@ -88,10 +95,22 @@ class AwsElasticsearchArgs:
         pulumi.set(self, "cluster_config", value)
 
     @property
+    @pulumi.getter(name="ebsOptions")
+    def ebs_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AwsElasticsearchEbsOptionArgs']]]]:
+        """
+        The EBS storage options for the ElasticSearch instance.
+        """
+        return pulumi.get(self, "ebs_options")
+
+    @ebs_options.setter
+    def ebs_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AwsElasticsearchEbsOptionArgs']]]]):
+        pulumi.set(self, "ebs_options", value)
+
+    @property
     @pulumi.getter(name="elasticsearchVersion")
     def elasticsearch_version(self) -> Optional[pulumi.Input[str]]:
         """
-        The version of the ElasticSearch instance. Defaults to `7.9`.
+        The version of the ElasticSearch/OpenSearch instance. Accepts the short form (e.g. `7.9`) or the full prefixed form (e.g. `Elasticsearch_7.9`, `OpenSearch_2.15`). Defaults to `Elasticsearch_7.9`.
         """
         return pulumi.get(self, "elasticsearch_version")
 
@@ -161,9 +180,10 @@ class AwsElasticsearchArgs:
 
     @property
     @pulumi.getter(name="storageSize")
+    @_utilities.deprecated("""storage_size has been deprecated, use ebs_options.volume_size""")
     def storage_size(self) -> Optional[pulumi.Input[int]]:
         """
-        The storage volume size, in GB, for the ElasticSearch instance.
+        The storage volume size, in GB, for the ElasticSearch instance. storage*size has been deprecated, use ebs*options.volume_size
         """
         return pulumi.get(self, "storage_size")
 
@@ -220,14 +240,15 @@ class _AwsElasticsearchState:
         :param pulumi.Input[str] arn: The ARN of the ElasticSearch instance.
         :param pulumi.Input[str] domain_id: The domain ID of the ElasticSearch instance.
         :param pulumi.Input[str] domain_name: The full name of the ElasticSearch instance.
-        :param pulumi.Input[str] elasticsearch_version: The version of the ElasticSearch instance. Defaults to `7.9`.
+        :param pulumi.Input[Sequence[pulumi.Input['AwsElasticsearchEbsOptionArgs']]] ebs_options: The EBS storage options for the ElasticSearch instance.
+        :param pulumi.Input[str] elasticsearch_version: The version of the ElasticSearch/OpenSearch instance. Accepts the short form (e.g. `7.9`) or the full prefixed form (e.g. `Elasticsearch_7.9`, `OpenSearch_2.15`). Defaults to `Elasticsearch_7.9`.
         :param pulumi.Input[bool] enable_node_to_node_encryption: Whether or not to use the enable node-to-node encryption for this ElasticSearch instance.
         :param pulumi.Input['AwsElasticsearchEncryptAtRestArgs'] encrypt_at_rest: The storage encryption settings for the ElasticSearch instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] endpoints: The endpoints to use when connecting to the ElasticSearch instance.
         :param pulumi.Input[str] name: The short name of the ElasticSearch instance.  Duplo will add a prefix to the name.  You can retrieve the full name from the `domain_name` attribute.
         :param pulumi.Input[bool] require_ssl: Whether or not to require SSL for accessing this ElasticSearch instance.
         :param pulumi.Input[int] selected_zone: The numerical index of the zone to launch this ElasticSearch instance in.
-        :param pulumi.Input[int] storage_size: The storage volume size, in GB, for the ElasticSearch instance.
+        :param pulumi.Input[int] storage_size: The storage volume size, in GB, for the ElasticSearch instance. storage*size has been deprecated, use ebs*options.volume_size
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the ElasticSearch instance will be created in.
         :param pulumi.Input[bool] use_latest_tls_cipher: Whether or not to use the latest TLS cipher for this ElasticSearch instance. For govcloud environments this should be set to true
         """
@@ -261,6 +282,9 @@ class _AwsElasticsearchState:
             pulumi.set(__self__, "selected_zone", selected_zone)
         if snapshot_options is not None:
             pulumi.set(__self__, "snapshot_options", snapshot_options)
+        if storage_size is not None:
+            warnings.warn("""storage_size has been deprecated, use ebs_options.volume_size""", DeprecationWarning)
+            pulumi.log.warn("""storage_size is deprecated: storage_size has been deprecated, use ebs_options.volume_size""")
         if storage_size is not None:
             pulumi.set(__self__, "storage_size", storage_size)
         if tenant_id is not None:
@@ -336,6 +360,9 @@ class _AwsElasticsearchState:
     @property
     @pulumi.getter(name="ebsOptions")
     def ebs_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AwsElasticsearchEbsOptionArgs']]]]:
+        """
+        The EBS storage options for the ElasticSearch instance.
+        """
         return pulumi.get(self, "ebs_options")
 
     @ebs_options.setter
@@ -346,7 +373,7 @@ class _AwsElasticsearchState:
     @pulumi.getter(name="elasticsearchVersion")
     def elasticsearch_version(self) -> Optional[pulumi.Input[str]]:
         """
-        The version of the ElasticSearch instance. Defaults to `7.9`.
+        The version of the ElasticSearch/OpenSearch instance. Accepts the short form (e.g. `7.9`) or the full prefixed form (e.g. `Elasticsearch_7.9`, `OpenSearch_2.15`). Defaults to `Elasticsearch_7.9`.
         """
         return pulumi.get(self, "elasticsearch_version")
 
@@ -437,9 +464,10 @@ class _AwsElasticsearchState:
 
     @property
     @pulumi.getter(name="storageSize")
+    @_utilities.deprecated("""storage_size has been deprecated, use ebs_options.volume_size""")
     def storage_size(self) -> Optional[pulumi.Input[int]]:
         """
-        The storage volume size, in GB, for the ElasticSearch instance.
+        The storage volume size, in GB, for the ElasticSearch instance. storage*size has been deprecated, use ebs*options.volume_size
         """
         return pulumi.get(self, "storage_size")
 
@@ -487,6 +515,7 @@ class AwsElasticsearch(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_config: Optional[pulumi.Input[Union['AwsElasticsearchClusterConfigArgs', 'AwsElasticsearchClusterConfigArgsDict']]] = None,
+                 ebs_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AwsElasticsearchEbsOptionArgs', 'AwsElasticsearchEbsOptionArgsDict']]]]] = None,
                  elasticsearch_version: Optional[pulumi.Input[str]] = None,
                  enable_node_to_node_encryption: Optional[pulumi.Input[bool]] = None,
                  encrypt_at_rest: Optional[pulumi.Input[Union['AwsElasticsearchEncryptAtRestArgs', 'AwsElasticsearchEncryptAtRestArgsDict']]] = None,
@@ -521,6 +550,35 @@ class AwsElasticsearch(pulumi.CustomResource):
             enable_node_to_node_encryption=True,
             require_ssl=True,
             use_latest_tls_cipher=True)
+        essample = duplocloud.AwsElasticsearch("essample",
+            tenant_id=myapp.tenant_id,
+            name="essamp",
+            selected_zone=1,
+            elasticsearch_version="OpenSearch_2.3",
+            ebs_options=[{
+                "ebs_enabled": True,
+                "volume_type": "gp2",
+                "volume_size": 10,
+            }])
+        essample2 = duplocloud.AwsElasticsearch("essample2",
+            tenant_id=myapp.tenant_id,
+            name="essamp2",
+            selected_zone=1,
+            elasticsearch_version="OpenSearch_3.3",
+            cluster_config={
+                "instance_type": "or2.medium.search",
+                "dedicated_master_type": "or2.medium.search",
+                "dedicated_master_count": 3,
+            },
+            ebs_options=[{
+                "ebs_enabled": True,
+                "volume_type": "gp3",
+                "volume_size": 100,
+                "iops": 3000,
+            }],
+            encrypt_at_rest={
+                "kms_key_id": "<kms-arn>",
+            })
         ```
 
         ## Import
@@ -539,13 +597,14 @@ class AwsElasticsearch(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] elasticsearch_version: The version of the ElasticSearch instance. Defaults to `7.9`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AwsElasticsearchEbsOptionArgs', 'AwsElasticsearchEbsOptionArgsDict']]]] ebs_options: The EBS storage options for the ElasticSearch instance.
+        :param pulumi.Input[str] elasticsearch_version: The version of the ElasticSearch/OpenSearch instance. Accepts the short form (e.g. `7.9`) or the full prefixed form (e.g. `Elasticsearch_7.9`, `OpenSearch_2.15`). Defaults to `Elasticsearch_7.9`.
         :param pulumi.Input[bool] enable_node_to_node_encryption: Whether or not to use the enable node-to-node encryption for this ElasticSearch instance.
         :param pulumi.Input[Union['AwsElasticsearchEncryptAtRestArgs', 'AwsElasticsearchEncryptAtRestArgsDict']] encrypt_at_rest: The storage encryption settings for the ElasticSearch instance.
         :param pulumi.Input[str] name: The short name of the ElasticSearch instance.  Duplo will add a prefix to the name.  You can retrieve the full name from the `domain_name` attribute.
         :param pulumi.Input[bool] require_ssl: Whether or not to require SSL for accessing this ElasticSearch instance.
         :param pulumi.Input[int] selected_zone: The numerical index of the zone to launch this ElasticSearch instance in.
-        :param pulumi.Input[int] storage_size: The storage volume size, in GB, for the ElasticSearch instance.
+        :param pulumi.Input[int] storage_size: The storage volume size, in GB, for the ElasticSearch instance. storage*size has been deprecated, use ebs*options.volume_size
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the ElasticSearch instance will be created in.
         :param pulumi.Input[bool] use_latest_tls_cipher: Whether or not to use the latest TLS cipher for this ElasticSearch instance. For govcloud environments this should be set to true
         """
@@ -578,6 +637,35 @@ class AwsElasticsearch(pulumi.CustomResource):
             enable_node_to_node_encryption=True,
             require_ssl=True,
             use_latest_tls_cipher=True)
+        essample = duplocloud.AwsElasticsearch("essample",
+            tenant_id=myapp.tenant_id,
+            name="essamp",
+            selected_zone=1,
+            elasticsearch_version="OpenSearch_2.3",
+            ebs_options=[{
+                "ebs_enabled": True,
+                "volume_type": "gp2",
+                "volume_size": 10,
+            }])
+        essample2 = duplocloud.AwsElasticsearch("essample2",
+            tenant_id=myapp.tenant_id,
+            name="essamp2",
+            selected_zone=1,
+            elasticsearch_version="OpenSearch_3.3",
+            cluster_config={
+                "instance_type": "or2.medium.search",
+                "dedicated_master_type": "or2.medium.search",
+                "dedicated_master_count": 3,
+            },
+            ebs_options=[{
+                "ebs_enabled": True,
+                "volume_type": "gp3",
+                "volume_size": 100,
+                "iops": 3000,
+            }],
+            encrypt_at_rest={
+                "kms_key_id": "<kms-arn>",
+            })
         ```
 
         ## Import
@@ -610,6 +698,7 @@ class AwsElasticsearch(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_config: Optional[pulumi.Input[Union['AwsElasticsearchClusterConfigArgs', 'AwsElasticsearchClusterConfigArgsDict']]] = None,
+                 ebs_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AwsElasticsearchEbsOptionArgs', 'AwsElasticsearchEbsOptionArgsDict']]]]] = None,
                  elasticsearch_version: Optional[pulumi.Input[str]] = None,
                  enable_node_to_node_encryption: Optional[pulumi.Input[bool]] = None,
                  encrypt_at_rest: Optional[pulumi.Input[Union['AwsElasticsearchEncryptAtRestArgs', 'AwsElasticsearchEncryptAtRestArgsDict']]] = None,
@@ -630,6 +719,7 @@ class AwsElasticsearch(pulumi.CustomResource):
             __props__ = AwsElasticsearchArgs.__new__(AwsElasticsearchArgs)
 
             __props__.__dict__["cluster_config"] = cluster_config
+            __props__.__dict__["ebs_options"] = ebs_options
             __props__.__dict__["elasticsearch_version"] = elasticsearch_version
             __props__.__dict__["enable_node_to_node_encryption"] = enable_node_to_node_encryption
             __props__.__dict__["encrypt_at_rest"] = encrypt_at_rest
@@ -647,7 +737,6 @@ class AwsElasticsearch(pulumi.CustomResource):
             __props__.__dict__["arn"] = None
             __props__.__dict__["domain_id"] = None
             __props__.__dict__["domain_name"] = None
-            __props__.__dict__["ebs_options"] = None
             __props__.__dict__["endpoints"] = None
             __props__.__dict__["snapshot_options"] = None
         super(AwsElasticsearch, __self__).__init__(
@@ -689,14 +778,15 @@ class AwsElasticsearch(pulumi.CustomResource):
         :param pulumi.Input[str] arn: The ARN of the ElasticSearch instance.
         :param pulumi.Input[str] domain_id: The domain ID of the ElasticSearch instance.
         :param pulumi.Input[str] domain_name: The full name of the ElasticSearch instance.
-        :param pulumi.Input[str] elasticsearch_version: The version of the ElasticSearch instance. Defaults to `7.9`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AwsElasticsearchEbsOptionArgs', 'AwsElasticsearchEbsOptionArgsDict']]]] ebs_options: The EBS storage options for the ElasticSearch instance.
+        :param pulumi.Input[str] elasticsearch_version: The version of the ElasticSearch/OpenSearch instance. Accepts the short form (e.g. `7.9`) or the full prefixed form (e.g. `Elasticsearch_7.9`, `OpenSearch_2.15`). Defaults to `Elasticsearch_7.9`.
         :param pulumi.Input[bool] enable_node_to_node_encryption: Whether or not to use the enable node-to-node encryption for this ElasticSearch instance.
         :param pulumi.Input[Union['AwsElasticsearchEncryptAtRestArgs', 'AwsElasticsearchEncryptAtRestArgsDict']] encrypt_at_rest: The storage encryption settings for the ElasticSearch instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] endpoints: The endpoints to use when connecting to the ElasticSearch instance.
         :param pulumi.Input[str] name: The short name of the ElasticSearch instance.  Duplo will add a prefix to the name.  You can retrieve the full name from the `domain_name` attribute.
         :param pulumi.Input[bool] require_ssl: Whether or not to require SSL for accessing this ElasticSearch instance.
         :param pulumi.Input[int] selected_zone: The numerical index of the zone to launch this ElasticSearch instance in.
-        :param pulumi.Input[int] storage_size: The storage volume size, in GB, for the ElasticSearch instance.
+        :param pulumi.Input[int] storage_size: The storage volume size, in GB, for the ElasticSearch instance. storage*size has been deprecated, use ebs*options.volume_size
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the ElasticSearch instance will be created in.
         :param pulumi.Input[bool] use_latest_tls_cipher: Whether or not to use the latest TLS cipher for this ElasticSearch instance. For govcloud environments this should be set to true
         """
@@ -767,13 +857,16 @@ class AwsElasticsearch(pulumi.CustomResource):
     @property
     @pulumi.getter(name="ebsOptions")
     def ebs_options(self) -> pulumi.Output[Sequence['outputs.AwsElasticsearchEbsOption']]:
+        """
+        The EBS storage options for the ElasticSearch instance.
+        """
         return pulumi.get(self, "ebs_options")
 
     @property
     @pulumi.getter(name="elasticsearchVersion")
     def elasticsearch_version(self) -> pulumi.Output[Optional[str]]:
         """
-        The version of the ElasticSearch instance. Defaults to `7.9`.
+        The version of the ElasticSearch/OpenSearch instance. Accepts the short form (e.g. `7.9`) or the full prefixed form (e.g. `Elasticsearch_7.9`, `OpenSearch_2.15`). Defaults to `Elasticsearch_7.9`.
         """
         return pulumi.get(self, "elasticsearch_version")
 
@@ -832,9 +925,10 @@ class AwsElasticsearch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="storageSize")
-    def storage_size(self) -> pulumi.Output[Optional[int]]:
+    @_utilities.deprecated("""storage_size has been deprecated, use ebs_options.volume_size""")
+    def storage_size(self) -> pulumi.Output[int]:
         """
-        The storage volume size, in GB, for the ElasticSearch instance.
+        The storage volume size, in GB, for the ElasticSearch instance. storage*size has been deprecated, use ebs*options.volume_size
         """
         return pulumi.get(self, "storage_size")
 

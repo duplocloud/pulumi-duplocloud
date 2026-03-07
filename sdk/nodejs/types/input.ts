@@ -992,7 +992,7 @@ export interface AwsElasticsearchClusterConfig {
      */
     dedicatedMasterEnabled?: pulumi.Input<boolean>;
     /**
-     * Defaults to `t2.small.elasticsearch`.
+     * Defaults to `t2.small.search`.
      */
     dedicatedMasterType?: pulumi.Input<string>;
     /**
@@ -1000,7 +1000,7 @@ export interface AwsElasticsearchClusterConfig {
      */
     instanceCount?: pulumi.Input<number>;
     /**
-     * Defaults to `t2.small.elasticsearch`.
+     * Supported instance types for elasticsearch domain https://docs.aws.amazon.com/opensearch-service/latest/developerguide/supported-instance-types.html Defaults to `t2.small.search`.
      */
     instanceType?: pulumi.Input<string>;
     multiAzWithStandbyEnabled?: pulumi.Input<boolean>;
@@ -10606,6 +10606,17 @@ export interface RdsReadReplicaPerformanceInsights {
      * Specify retention period in Days. Valid values are 7, 731 (2 years) or a multiple of 31. For Document DB retention period is 7 Defaults to `7`.
      */
     retentionPeriod?: pulumi.Input<number>;
+}
+
+export interface RdsReadReplicaStorageAutoscaling {
+    /**
+     * Whether to enable storage autoscaling for the RDS instance. When enabled, the storage size can automatically increase up to the specified max*allocated*storage.
+     */
+    enable?: pulumi.Input<boolean>;
+    /**
+     * The upper limit, in gibibytes (GiB), to which Amazon RDS can automatically scale the storage of the DB instance when autoscaling is enabled.
+     */
+    maxAllocatedStorage?: pulumi.Input<number>;
 }
 
 export interface RdsReadReplicaV2ScalingConfiguration {

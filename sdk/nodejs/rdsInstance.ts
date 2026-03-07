@@ -460,7 +460,8 @@ export class RdsInstance extends pulumi.CustomResource {
     }
 
     /**
-     * (Required unless a `snapshotId` is provided) The allocated storage in gigabytes.
+     * (Required unless a `snapshotId` is provided) The allocated storage in gigabytes. **Note:** Allocated storage can only be
+     * modified after every 6 hours.
      */
     public readonly allocatedStorage!: pulumi.Output<number>;
     /**
@@ -468,7 +469,8 @@ export class RdsInstance extends pulumi.CustomResource {
      */
     public /*out*/ readonly arn!: pulumi.Output<string>;
     /**
-     * Enable or disable auto minor version upgrade
+     * Enable or disable auto minor version upgrade. This attribute is ignored for DocumentDB (engine 13) — AWS manages minor
+     * version upgrades for DocumentDB and this setting has no effect.
      */
     public readonly autoMinorVersionUpgrade!: pulumi.Output<boolean>;
     /**
@@ -743,7 +745,8 @@ export class RdsInstance extends pulumi.CustomResource {
  */
 export interface RdsInstanceState {
     /**
-     * (Required unless a `snapshotId` is provided) The allocated storage in gigabytes.
+     * (Required unless a `snapshotId` is provided) The allocated storage in gigabytes. **Note:** Allocated storage can only be
+     * modified after every 6 hours.
      */
     allocatedStorage?: pulumi.Input<number>;
     /**
@@ -751,7 +754,8 @@ export interface RdsInstanceState {
      */
     arn?: pulumi.Input<string>;
     /**
-     * Enable or disable auto minor version upgrade
+     * Enable or disable auto minor version upgrade. This attribute is ignored for DocumentDB (engine 13) — AWS manages minor
+     * version upgrades for DocumentDB and this setting has no effect.
      */
     autoMinorVersionUpgrade?: pulumi.Input<boolean>;
     /**
@@ -921,11 +925,13 @@ export interface RdsInstanceState {
  */
 export interface RdsInstanceArgs {
     /**
-     * (Required unless a `snapshotId` is provided) The allocated storage in gigabytes.
+     * (Required unless a `snapshotId` is provided) The allocated storage in gigabytes. **Note:** Allocated storage can only be
+     * modified after every 6 hours.
      */
     allocatedStorage?: pulumi.Input<number>;
     /**
-     * Enable or disable auto minor version upgrade
+     * Enable or disable auto minor version upgrade. This attribute is ignored for DocumentDB (engine 13) — AWS manages minor
+     * version upgrades for DocumentDB and this setting has no effect.
      */
     autoMinorVersionUpgrade?: pulumi.Input<boolean>;
     /**

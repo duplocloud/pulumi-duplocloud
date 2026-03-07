@@ -52,6 +52,11 @@ export class RdsReadReplica extends pulumi.CustomResource {
     }
 
     /**
+     * (Required unless a `snapshotId` is provided) The allocated storage in gigabytes. This can only be set during an update; it will inherit the writer's value during creation.
+     * **Note:** Allocated storage can only be modified after every 6 hours.
+     */
+    public readonly allocatedStorage!: pulumi.Output<number>;
+    /**
      * The ARN of the RDS read replica.
      */
     public /*out*/ readonly arn!: pulumi.Output<string>;
@@ -137,6 +142,10 @@ export class RdsReadReplica extends pulumi.CustomResource {
      */
     public readonly size!: pulumi.Output<string>;
     /**
+     * This can only be set during an update; it will inherit the writer's value during creation.
+     */
+    public readonly storageAutoscaling!: pulumi.Output<outputs.RdsReadReplicaStorageAutoscaling>;
+    /**
      * The GUID of the tenant that the RDS read replica will be created in.
      */
     public readonly tenantId!: pulumi.Output<string>;
@@ -158,6 +167,7 @@ export class RdsReadReplica extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RdsReadReplicaState | undefined;
+            resourceInputs["allocatedStorage"] = state ? state.allocatedStorage : undefined;
             resourceInputs["arn"] = state ? state.arn : undefined;
             resourceInputs["availabilityZone"] = state ? state.availabilityZone : undefined;
             resourceInputs["clusterIdentifier"] = state ? state.clusterIdentifier : undefined;
@@ -179,6 +189,7 @@ export class RdsReadReplica extends pulumi.CustomResource {
             resourceInputs["port"] = state ? state.port : undefined;
             resourceInputs["replicaStatus"] = state ? state.replicaStatus : undefined;
             resourceInputs["size"] = state ? state.size : undefined;
+            resourceInputs["storageAutoscaling"] = state ? state.storageAutoscaling : undefined;
             resourceInputs["tenantId"] = state ? state.tenantId : undefined;
             resourceInputs["v2ScalingConfiguration"] = state ? state.v2ScalingConfiguration : undefined;
         } else {
@@ -192,6 +203,7 @@ export class RdsReadReplica extends pulumi.CustomResource {
             if ((!args || args.tenantId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tenantId'");
             }
+            resourceInputs["allocatedStorage"] = args ? args.allocatedStorage : undefined;
             resourceInputs["availabilityZone"] = args ? args.availabilityZone : undefined;
             resourceInputs["clusterIdentifier"] = args ? args.clusterIdentifier : undefined;
             resourceInputs["engineType"] = args ? args.engineType : undefined;
@@ -201,6 +213,7 @@ export class RdsReadReplica extends pulumi.CustomResource {
             resourceInputs["parameterGroupName"] = args ? args.parameterGroupName : undefined;
             resourceInputs["performanceInsights"] = args ? args.performanceInsights : undefined;
             resourceInputs["size"] = args ? args.size : undefined;
+            resourceInputs["storageAutoscaling"] = args ? args.storageAutoscaling : undefined;
             resourceInputs["tenantId"] = args ? args.tenantId : undefined;
             resourceInputs["v2ScalingConfiguration"] = args ? args.v2ScalingConfiguration : undefined;
             resourceInputs["arn"] = undefined /*out*/;
@@ -225,6 +238,11 @@ export class RdsReadReplica extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RdsReadReplica resources.
  */
 export interface RdsReadReplicaState {
+    /**
+     * (Required unless a `snapshotId` is provided) The allocated storage in gigabytes. This can only be set during an update; it will inherit the writer's value during creation.
+     * **Note:** Allocated storage can only be modified after every 6 hours.
+     */
+    allocatedStorage?: pulumi.Input<number>;
     /**
      * The ARN of the RDS read replica.
      */
@@ -311,6 +329,10 @@ export interface RdsReadReplicaState {
      */
     size?: pulumi.Input<string>;
     /**
+     * This can only be set during an update; it will inherit the writer's value during creation.
+     */
+    storageAutoscaling?: pulumi.Input<inputs.RdsReadReplicaStorageAutoscaling>;
+    /**
      * The GUID of the tenant that the RDS read replica will be created in.
      */
     tenantId?: pulumi.Input<string>;
@@ -324,6 +346,11 @@ export interface RdsReadReplicaState {
  * The set of arguments for constructing a RdsReadReplica resource.
  */
 export interface RdsReadReplicaArgs {
+    /**
+     * (Required unless a `snapshotId` is provided) The allocated storage in gigabytes. This can only be set during an update; it will inherit the writer's value during creation.
+     * **Note:** Allocated storage can only be modified after every 6 hours.
+     */
+    allocatedStorage?: pulumi.Input<number>;
     /**
      * The AZ for the RDS instance.
      */
@@ -361,6 +388,10 @@ export interface RdsReadReplicaArgs {
      * See AWS documentation for the [available instance types](https://aws.amazon.com/rds/instance-types/).Size should be set as db.serverless if read replica instamce is created as serverless
      */
     size: pulumi.Input<string>;
+    /**
+     * This can only be set during an update; it will inherit the writer's value during creation.
+     */
+    storageAutoscaling?: pulumi.Input<inputs.RdsReadReplicaStorageAutoscaling>;
     /**
      * The GUID of the tenant that the RDS read replica will be created in.
      */

@@ -356,7 +356,7 @@ type EcacheInstance struct {
 	// Set a password for authenticating to the ElastiCache instance.  Only supported if `encryptionInTransit` is to to `true`.
 	AuthToken pulumi.StringPtrOutput `pulumi:"authToken"`
 	// Enables automatic failover.
-	AutomaticFailoverEnabled pulumi.BoolPtrOutput `pulumi:"automaticFailoverEnabled"`
+	AutomaticFailoverEnabled pulumi.BoolOutput `pulumi:"automaticFailoverEnabled"`
 	// The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache - `2` : Valkey
 	CacheType pulumi.IntPtrOutput `pulumi:"cacheType"`
 	// Flag to enable/disable redis/valkey cluster mode.
@@ -385,7 +385,7 @@ type EcacheInstance struct {
 	LogDeliveryConfigurations EcacheInstanceLogDeliveryConfigurationArrayOutput `pulumi:"logDeliveryConfigurations"`
 	// Enables Multi-AZ support for the ElastiCache instance. Multi-AZ is only applicable for Redis (cache_type=0) and Valkey
 	// (cache_type=2). When enabled, automaticFailoverEnabled must also be set to true.
-	MultiAzEnabled pulumi.BoolPtrOutput `pulumi:"multiAzEnabled"`
+	MultiAzEnabled pulumi.BoolOutput `pulumi:"multiAzEnabled"`
 	// The short name of the elasticache instance.  Duplo will add a prefix to the name.  You can retrieve the full name from the `identifier` attribute.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The number of shards to create. Applicable only if enableClusterMode is set to true
@@ -791,8 +791,8 @@ func (o EcacheInstanceOutput) AuthToken() pulumi.StringPtrOutput {
 }
 
 // Enables automatic failover.
-func (o EcacheInstanceOutput) AutomaticFailoverEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *EcacheInstance) pulumi.BoolPtrOutput { return v.AutomaticFailoverEnabled }).(pulumi.BoolPtrOutput)
+func (o EcacheInstanceOutput) AutomaticFailoverEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *EcacheInstance) pulumi.BoolOutput { return v.AutomaticFailoverEnabled }).(pulumi.BoolOutput)
 }
 
 // The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache - `2` : Valkey
@@ -861,8 +861,8 @@ func (o EcacheInstanceOutput) LogDeliveryConfigurations() EcacheInstanceLogDeliv
 
 // Enables Multi-AZ support for the ElastiCache instance. Multi-AZ is only applicable for Redis (cache_type=0) and Valkey
 // (cache_type=2). When enabled, automaticFailoverEnabled must also be set to true.
-func (o EcacheInstanceOutput) MultiAzEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *EcacheInstance) pulumi.BoolPtrOutput { return v.MultiAzEnabled }).(pulumi.BoolPtrOutput)
+func (o EcacheInstanceOutput) MultiAzEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *EcacheInstance) pulumi.BoolOutput { return v.MultiAzEnabled }).(pulumi.BoolOutput)
 }
 
 // The short name of the elasticache instance.  Duplo will add a prefix to the name.  You can retrieve the full name from the `identifier` attribute.

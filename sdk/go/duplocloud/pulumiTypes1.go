@@ -27450,6 +27450,162 @@ func (o RdsReadReplicaPerformanceInsightsPtrOutput) RetentionPeriod() pulumi.Int
 	}).(pulumi.IntPtrOutput)
 }
 
+type RdsReadReplicaStorageAutoscaling struct {
+	// Whether to enable storage autoscaling for the RDS instance. When enabled, the storage size can automatically increase up to the specified max*allocated*storage.
+	Enable *bool `pulumi:"enable"`
+	// The upper limit, in gibibytes (GiB), to which Amazon RDS can automatically scale the storage of the DB instance when autoscaling is enabled.
+	MaxAllocatedStorage *int `pulumi:"maxAllocatedStorage"`
+}
+
+// RdsReadReplicaStorageAutoscalingInput is an input type that accepts RdsReadReplicaStorageAutoscalingArgs and RdsReadReplicaStorageAutoscalingOutput values.
+// You can construct a concrete instance of `RdsReadReplicaStorageAutoscalingInput` via:
+//
+//	RdsReadReplicaStorageAutoscalingArgs{...}
+type RdsReadReplicaStorageAutoscalingInput interface {
+	pulumi.Input
+
+	ToRdsReadReplicaStorageAutoscalingOutput() RdsReadReplicaStorageAutoscalingOutput
+	ToRdsReadReplicaStorageAutoscalingOutputWithContext(context.Context) RdsReadReplicaStorageAutoscalingOutput
+}
+
+type RdsReadReplicaStorageAutoscalingArgs struct {
+	// Whether to enable storage autoscaling for the RDS instance. When enabled, the storage size can automatically increase up to the specified max*allocated*storage.
+	Enable pulumi.BoolPtrInput `pulumi:"enable"`
+	// The upper limit, in gibibytes (GiB), to which Amazon RDS can automatically scale the storage of the DB instance when autoscaling is enabled.
+	MaxAllocatedStorage pulumi.IntPtrInput `pulumi:"maxAllocatedStorage"`
+}
+
+func (RdsReadReplicaStorageAutoscalingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RdsReadReplicaStorageAutoscaling)(nil)).Elem()
+}
+
+func (i RdsReadReplicaStorageAutoscalingArgs) ToRdsReadReplicaStorageAutoscalingOutput() RdsReadReplicaStorageAutoscalingOutput {
+	return i.ToRdsReadReplicaStorageAutoscalingOutputWithContext(context.Background())
+}
+
+func (i RdsReadReplicaStorageAutoscalingArgs) ToRdsReadReplicaStorageAutoscalingOutputWithContext(ctx context.Context) RdsReadReplicaStorageAutoscalingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RdsReadReplicaStorageAutoscalingOutput)
+}
+
+func (i RdsReadReplicaStorageAutoscalingArgs) ToRdsReadReplicaStorageAutoscalingPtrOutput() RdsReadReplicaStorageAutoscalingPtrOutput {
+	return i.ToRdsReadReplicaStorageAutoscalingPtrOutputWithContext(context.Background())
+}
+
+func (i RdsReadReplicaStorageAutoscalingArgs) ToRdsReadReplicaStorageAutoscalingPtrOutputWithContext(ctx context.Context) RdsReadReplicaStorageAutoscalingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RdsReadReplicaStorageAutoscalingOutput).ToRdsReadReplicaStorageAutoscalingPtrOutputWithContext(ctx)
+}
+
+// RdsReadReplicaStorageAutoscalingPtrInput is an input type that accepts RdsReadReplicaStorageAutoscalingArgs, RdsReadReplicaStorageAutoscalingPtr and RdsReadReplicaStorageAutoscalingPtrOutput values.
+// You can construct a concrete instance of `RdsReadReplicaStorageAutoscalingPtrInput` via:
+//
+//	        RdsReadReplicaStorageAutoscalingArgs{...}
+//
+//	or:
+//
+//	        nil
+type RdsReadReplicaStorageAutoscalingPtrInput interface {
+	pulumi.Input
+
+	ToRdsReadReplicaStorageAutoscalingPtrOutput() RdsReadReplicaStorageAutoscalingPtrOutput
+	ToRdsReadReplicaStorageAutoscalingPtrOutputWithContext(context.Context) RdsReadReplicaStorageAutoscalingPtrOutput
+}
+
+type rdsReadReplicaStorageAutoscalingPtrType RdsReadReplicaStorageAutoscalingArgs
+
+func RdsReadReplicaStorageAutoscalingPtr(v *RdsReadReplicaStorageAutoscalingArgs) RdsReadReplicaStorageAutoscalingPtrInput {
+	return (*rdsReadReplicaStorageAutoscalingPtrType)(v)
+}
+
+func (*rdsReadReplicaStorageAutoscalingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RdsReadReplicaStorageAutoscaling)(nil)).Elem()
+}
+
+func (i *rdsReadReplicaStorageAutoscalingPtrType) ToRdsReadReplicaStorageAutoscalingPtrOutput() RdsReadReplicaStorageAutoscalingPtrOutput {
+	return i.ToRdsReadReplicaStorageAutoscalingPtrOutputWithContext(context.Background())
+}
+
+func (i *rdsReadReplicaStorageAutoscalingPtrType) ToRdsReadReplicaStorageAutoscalingPtrOutputWithContext(ctx context.Context) RdsReadReplicaStorageAutoscalingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RdsReadReplicaStorageAutoscalingPtrOutput)
+}
+
+type RdsReadReplicaStorageAutoscalingOutput struct{ *pulumi.OutputState }
+
+func (RdsReadReplicaStorageAutoscalingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RdsReadReplicaStorageAutoscaling)(nil)).Elem()
+}
+
+func (o RdsReadReplicaStorageAutoscalingOutput) ToRdsReadReplicaStorageAutoscalingOutput() RdsReadReplicaStorageAutoscalingOutput {
+	return o
+}
+
+func (o RdsReadReplicaStorageAutoscalingOutput) ToRdsReadReplicaStorageAutoscalingOutputWithContext(ctx context.Context) RdsReadReplicaStorageAutoscalingOutput {
+	return o
+}
+
+func (o RdsReadReplicaStorageAutoscalingOutput) ToRdsReadReplicaStorageAutoscalingPtrOutput() RdsReadReplicaStorageAutoscalingPtrOutput {
+	return o.ToRdsReadReplicaStorageAutoscalingPtrOutputWithContext(context.Background())
+}
+
+func (o RdsReadReplicaStorageAutoscalingOutput) ToRdsReadReplicaStorageAutoscalingPtrOutputWithContext(ctx context.Context) RdsReadReplicaStorageAutoscalingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RdsReadReplicaStorageAutoscaling) *RdsReadReplicaStorageAutoscaling {
+		return &v
+	}).(RdsReadReplicaStorageAutoscalingPtrOutput)
+}
+
+// Whether to enable storage autoscaling for the RDS instance. When enabled, the storage size can automatically increase up to the specified max*allocated*storage.
+func (o RdsReadReplicaStorageAutoscalingOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RdsReadReplicaStorageAutoscaling) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
+}
+
+// The upper limit, in gibibytes (GiB), to which Amazon RDS can automatically scale the storage of the DB instance when autoscaling is enabled.
+func (o RdsReadReplicaStorageAutoscalingOutput) MaxAllocatedStorage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RdsReadReplicaStorageAutoscaling) *int { return v.MaxAllocatedStorage }).(pulumi.IntPtrOutput)
+}
+
+type RdsReadReplicaStorageAutoscalingPtrOutput struct{ *pulumi.OutputState }
+
+func (RdsReadReplicaStorageAutoscalingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RdsReadReplicaStorageAutoscaling)(nil)).Elem()
+}
+
+func (o RdsReadReplicaStorageAutoscalingPtrOutput) ToRdsReadReplicaStorageAutoscalingPtrOutput() RdsReadReplicaStorageAutoscalingPtrOutput {
+	return o
+}
+
+func (o RdsReadReplicaStorageAutoscalingPtrOutput) ToRdsReadReplicaStorageAutoscalingPtrOutputWithContext(ctx context.Context) RdsReadReplicaStorageAutoscalingPtrOutput {
+	return o
+}
+
+func (o RdsReadReplicaStorageAutoscalingPtrOutput) Elem() RdsReadReplicaStorageAutoscalingOutput {
+	return o.ApplyT(func(v *RdsReadReplicaStorageAutoscaling) RdsReadReplicaStorageAutoscaling {
+		if v != nil {
+			return *v
+		}
+		var ret RdsReadReplicaStorageAutoscaling
+		return ret
+	}).(RdsReadReplicaStorageAutoscalingOutput)
+}
+
+// Whether to enable storage autoscaling for the RDS instance. When enabled, the storage size can automatically increase up to the specified max*allocated*storage.
+func (o RdsReadReplicaStorageAutoscalingPtrOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RdsReadReplicaStorageAutoscaling) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The upper limit, in gibibytes (GiB), to which Amazon RDS can automatically scale the storage of the DB instance when autoscaling is enabled.
+func (o RdsReadReplicaStorageAutoscalingPtrOutput) MaxAllocatedStorage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RdsReadReplicaStorageAutoscaling) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxAllocatedStorage
+	}).(pulumi.IntPtrOutput)
+}
+
 type RdsReadReplicaV2ScalingConfiguration struct {
 	// Specifies max scalling capacity.
 	MaxCapacity float64 `pulumi:"maxCapacity"`
@@ -75477,181 +75633,6 @@ func (o GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput)
 	}).(pulumi.StringPtrOutput)
 }
 
-type GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRef struct {
-	// The key of the secret to select from. Must be a valid secret key.
-	Key *string `pulumi:"key"`
-	// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-	Name *string `pulumi:"name"`
-	// Specify whether the Secret or its key must be defined.
-	Optional *bool `pulumi:"optional"`
-}
-
-// GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefArgs and GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput values.
-// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefInput` via:
-//
-//	GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefArgs{...}
-type GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefInput interface {
-	pulumi.Input
-
-	ToGetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput() GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput
-	ToGetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput
-}
-
-type GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefArgs struct {
-	// The key of the secret to select from. Must be a valid secret key.
-	Key pulumi.StringPtrInput `pulumi:"key"`
-	// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Specify whether the Secret or its key must be defined.
-	Optional pulumi.BoolPtrInput `pulumi:"optional"`
-}
-
-func (GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRef)(nil)).Elem()
-}
-
-func (i GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefArgs) ToGetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput() GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput {
-	return i.ToGetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutputWithContext(context.Background())
-}
-
-func (i GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefArgs) ToGetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput)
-}
-
-func (i GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefArgs) ToGetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput() GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput {
-	return i.ToGetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutputWithContext(context.Background())
-}
-
-func (i GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefArgs) ToGetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput).ToGetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutputWithContext(ctx)
-}
-
-// GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefArgs, GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtr and GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput values.
-// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrInput` via:
-//
-//	        GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrInput interface {
-	pulumi.Input
-
-	ToGetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput() GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput
-	ToGetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput
-}
-
-type getK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrType GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefArgs
-
-func GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtr(v *GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefArgs) GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrInput {
-	return (*getK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrType)(v)
-}
-
-func (*getK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRef)(nil)).Elem()
-}
-
-func (i *getK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrType) ToGetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput() GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput {
-	return i.ToGetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutputWithContext(context.Background())
-}
-
-func (i *getK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrType) ToGetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput)
-}
-
-type GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput struct{ *pulumi.OutputState }
-
-func (GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRef)(nil)).Elem()
-}
-
-func (o GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput) ToGetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput() GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput {
-	return o
-}
-
-func (o GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput) ToGetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput {
-	return o
-}
-
-func (o GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput) ToGetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput() GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput {
-	return o.ToGetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutputWithContext(context.Background())
-}
-
-func (o GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput) ToGetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRef) *GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRef {
-		return &v
-	}).(GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput)
-}
-
-// The key of the secret to select from. Must be a valid secret key.
-func (o GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRef) *string { return v.Key }).(pulumi.StringPtrOutput)
-}
-
-// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-func (o GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRef) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// Specify whether the Secret or its key must be defined.
-func (o GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput) Optional() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRef) *bool { return v.Optional }).(pulumi.BoolPtrOutput)
-}
-
-type GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput struct{ *pulumi.OutputState }
-
-func (GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRef)(nil)).Elem()
-}
-
-func (o GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput) ToGetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput() GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput {
-	return o
-}
-
-func (o GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput) ToGetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput {
-	return o
-}
-
-func (o GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput) Elem() GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput {
-	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRef) GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRef {
-		if v != nil {
-			return *v
-		}
-		var ret GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRef
-		return ret
-	}).(GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput)
-}
-
-// The key of the secret to select from. Must be a valid secret key.
-func (o GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRef) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Key
-	}).(pulumi.StringPtrOutput)
-}
-
-// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-func (o GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRef) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// Specify whether the Secret or its key must be defined.
-func (o GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput) Optional() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRef) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Optional
-	}).(pulumi.BoolPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefPtrInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefArgs{})
@@ -76000,6 +75981,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RdsInstanceV2ScalingConfigurationPtrInput)(nil)).Elem(), RdsInstanceV2ScalingConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RdsReadReplicaPerformanceInsightsInput)(nil)).Elem(), RdsReadReplicaPerformanceInsightsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RdsReadReplicaPerformanceInsightsPtrInput)(nil)).Elem(), RdsReadReplicaPerformanceInsightsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RdsReadReplicaStorageAutoscalingInput)(nil)).Elem(), RdsReadReplicaStorageAutoscalingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RdsReadReplicaStorageAutoscalingPtrInput)(nil)).Elem(), RdsReadReplicaStorageAutoscalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RdsReadReplicaV2ScalingConfigurationInput)(nil)).Elem(), RdsReadReplicaV2ScalingConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RdsReadReplicaV2ScalingConfigurationPtrInput)(nil)).Elem(), RdsReadReplicaV2ScalingConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*S3BucketDefaultEncryptionInput)(nil)).Elem(), S3BucketDefaultEncryptionArgs{})
@@ -76629,8 +76612,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefArgs{})
 	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefOutput{})
 	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefPtrOutput{})
 	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerEnvFromSecretRefOutput{})
@@ -76978,6 +76959,8 @@ func init() {
 	pulumi.RegisterOutputType(RdsInstanceV2ScalingConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(RdsReadReplicaPerformanceInsightsOutput{})
 	pulumi.RegisterOutputType(RdsReadReplicaPerformanceInsightsPtrOutput{})
+	pulumi.RegisterOutputType(RdsReadReplicaStorageAutoscalingOutput{})
+	pulumi.RegisterOutputType(RdsReadReplicaStorageAutoscalingPtrOutput{})
 	pulumi.RegisterOutputType(RdsReadReplicaV2ScalingConfigurationOutput{})
 	pulumi.RegisterOutputType(RdsReadReplicaV2ScalingConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(S3BucketDefaultEncryptionOutput{})
@@ -77607,6 +77590,4 @@ func init() {
 	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutput{})
 	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefOutput{})
 	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput{})
-	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput{})
-	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput{})
 }

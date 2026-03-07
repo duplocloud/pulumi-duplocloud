@@ -992,7 +992,7 @@ export interface AwsElasticsearchClusterConfig {
      */
     dedicatedMasterEnabled?: boolean;
     /**
-     * Defaults to `t2.small.elasticsearch`.
+     * Defaults to `t2.small.search`.
      */
     dedicatedMasterType?: string;
     /**
@@ -1000,7 +1000,7 @@ export interface AwsElasticsearchClusterConfig {
      */
     instanceCount?: number;
     /**
-     * Defaults to `t2.small.elasticsearch`.
+     * Supported instance types for elasticsearch domain https://docs.aws.amazon.com/opensearch-service/latest/developerguide/supported-instance-types.html Defaults to `t2.small.search`.
      */
     instanceType?: string;
     multiAzWithStandbyEnabled?: boolean;
@@ -18942,11 +18942,11 @@ export interface RdsInstanceStorageAutoscaling {
     /**
      * Whether to enable storage autoscaling for the RDS instance. When enabled, the storage size can automatically increase up to the specified max_allocated_storage.
      */
-    enable?: boolean;
+    enable: boolean;
     /**
      * The upper limit, in gibibytes (GiB), to which Amazon RDS can automatically scale the storage of the DB instance when autoscaling is enabled.
      */
-    maxAllocatedStorage?: number;
+    maxAllocatedStorage: number;
 }
 
 export interface RdsInstanceV2ScalingConfiguration {
@@ -18973,6 +18973,17 @@ export interface RdsReadReplicaPerformanceInsights {
      * Specify retention period in Days. Valid values are 7, 731 (2 years) or a multiple of 31. For Document DB retention period is 7 Defaults to `7`.
      */
     retentionPeriod?: number;
+}
+
+export interface RdsReadReplicaStorageAutoscaling {
+    /**
+     * Whether to enable storage autoscaling for the RDS instance. When enabled, the storage size can automatically increase up to the specified max*allocated*storage.
+     */
+    enable: boolean;
+    /**
+     * The upper limit, in gibibytes (GiB), to which Amazon RDS can automatically scale the storage of the DB instance when autoscaling is enabled.
+     */
+    maxAllocatedStorage?: number;
 }
 
 export interface RdsReadReplicaV2ScalingConfiguration {

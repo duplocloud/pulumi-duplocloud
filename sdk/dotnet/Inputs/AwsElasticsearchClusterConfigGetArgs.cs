@@ -29,7 +29,7 @@ namespace DuploCloud.Pulumi.Inputs
         public Input<bool>? DedicatedMasterEnabled { get; set; }
 
         /// <summary>
-        /// Defaults to `t2.small.elasticsearch`.
+        /// Defaults to `t2.small.search`.
         /// </summary>
         [Input("dedicatedMasterType")]
         public Input<string>? DedicatedMasterType { get; set; }
@@ -41,7 +41,7 @@ namespace DuploCloud.Pulumi.Inputs
         public Input<int>? InstanceCount { get; set; }
 
         /// <summary>
-        /// Defaults to `t2.small.elasticsearch`.
+        /// Supported instance types for elasticsearch domain https://docs.aws.amazon.com/opensearch-service/latest/developerguide/supported-instance-types.html Defaults to `t2.small.search`.
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }

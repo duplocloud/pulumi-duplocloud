@@ -12037,11 +12037,11 @@ type AwsElasticsearchClusterConfig struct {
 	DedicatedMasterCount *int `pulumi:"dedicatedMasterCount"`
 	// Defaults to `false`.
 	DedicatedMasterEnabled *bool `pulumi:"dedicatedMasterEnabled"`
-	// Defaults to `t2.small.elasticsearch`.
+	// Defaults to `t2.small.search`.
 	DedicatedMasterType *string `pulumi:"dedicatedMasterType"`
 	// Defaults to `1`.
 	InstanceCount *int `pulumi:"instanceCount"`
-	// Defaults to `t2.small.elasticsearch`.
+	// Supported instance types for elasticsearch domain https://docs.aws.amazon.com/opensearch-service/latest/developerguide/supported-instance-types.html Defaults to `t2.small.search`.
 	InstanceType              *string `pulumi:"instanceType"`
 	MultiAzWithStandbyEnabled *bool   `pulumi:"multiAzWithStandbyEnabled"`
 	WarmCount                 *int    `pulumi:"warmCount"`
@@ -12066,11 +12066,11 @@ type AwsElasticsearchClusterConfigArgs struct {
 	DedicatedMasterCount pulumi.IntPtrInput `pulumi:"dedicatedMasterCount"`
 	// Defaults to `false`.
 	DedicatedMasterEnabled pulumi.BoolPtrInput `pulumi:"dedicatedMasterEnabled"`
-	// Defaults to `t2.small.elasticsearch`.
+	// Defaults to `t2.small.search`.
 	DedicatedMasterType pulumi.StringPtrInput `pulumi:"dedicatedMasterType"`
 	// Defaults to `1`.
 	InstanceCount pulumi.IntPtrInput `pulumi:"instanceCount"`
-	// Defaults to `t2.small.elasticsearch`.
+	// Supported instance types for elasticsearch domain https://docs.aws.amazon.com/opensearch-service/latest/developerguide/supported-instance-types.html Defaults to `t2.small.search`.
 	InstanceType              pulumi.StringPtrInput `pulumi:"instanceType"`
 	MultiAzWithStandbyEnabled pulumi.BoolPtrInput   `pulumi:"multiAzWithStandbyEnabled"`
 	WarmCount                 pulumi.IntPtrInput    `pulumi:"warmCount"`
@@ -12171,7 +12171,7 @@ func (o AwsElasticsearchClusterConfigOutput) DedicatedMasterEnabled() pulumi.Boo
 	return o.ApplyT(func(v AwsElasticsearchClusterConfig) *bool { return v.DedicatedMasterEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Defaults to `t2.small.elasticsearch`.
+// Defaults to `t2.small.search`.
 func (o AwsElasticsearchClusterConfigOutput) DedicatedMasterType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AwsElasticsearchClusterConfig) *string { return v.DedicatedMasterType }).(pulumi.StringPtrOutput)
 }
@@ -12181,7 +12181,7 @@ func (o AwsElasticsearchClusterConfigOutput) InstanceCount() pulumi.IntPtrOutput
 	return o.ApplyT(func(v AwsElasticsearchClusterConfig) *int { return v.InstanceCount }).(pulumi.IntPtrOutput)
 }
 
-// Defaults to `t2.small.elasticsearch`.
+// Supported instance types for elasticsearch domain https://docs.aws.amazon.com/opensearch-service/latest/developerguide/supported-instance-types.html Defaults to `t2.small.search`.
 func (o AwsElasticsearchClusterConfigOutput) InstanceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AwsElasticsearchClusterConfig) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
 }
@@ -12255,7 +12255,7 @@ func (o AwsElasticsearchClusterConfigPtrOutput) DedicatedMasterEnabled() pulumi.
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Defaults to `t2.small.elasticsearch`.
+// Defaults to `t2.small.search`.
 func (o AwsElasticsearchClusterConfigPtrOutput) DedicatedMasterType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsElasticsearchClusterConfig) *string {
 		if v == nil {
@@ -12275,7 +12275,7 @@ func (o AwsElasticsearchClusterConfigPtrOutput) InstanceCount() pulumi.IntPtrOut
 	}).(pulumi.IntPtrOutput)
 }
 
-// Defaults to `t2.small.elasticsearch`.
+// Supported instance types for elasticsearch domain https://docs.aws.amazon.com/opensearch-service/latest/developerguide/supported-instance-types.html Defaults to `t2.small.search`.
 func (o AwsElasticsearchClusterConfigPtrOutput) InstanceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsElasticsearchClusterConfig) *string {
 		if v == nil {

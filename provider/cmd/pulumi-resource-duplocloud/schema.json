@@ -2335,7 +2335,7 @@
                 },
                 "dedicatedMasterType": {
                     "type": "string",
-                    "description": "Defaults to `t2.small.elasticsearch`.\n"
+                    "description": "Defaults to `t2.small.search`.\n"
                 },
                 "instanceCount": {
                     "type": "integer",
@@ -2343,7 +2343,7 @@
                 },
                 "instanceType": {
                     "type": "string",
-                    "description": "Defaults to `t2.small.elasticsearch`.\n"
+                    "description": "Supported instance types for elasticsearch domain https://docs.aws.amazon.com/opensearch-service/latest/developerguide/supported-instance-types.html Defaults to `t2.small.search`.\n"
                 },
                 "multiAzWithStandbyEnabled": {
                     "type": "boolean"
@@ -17113,7 +17113,15 @@
                     "description": "The upper limit, in gibibytes (GiB), to which Amazon RDS can automatically scale the storage of the DB instance when autoscaling is enabled.\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "enable",
+                        "maxAllocatedStorage"
+                    ]
+                }
+            }
         },
         "duplocloud:index/RdsInstanceV2ScalingConfiguration:RdsInstanceV2ScalingConfiguration": {
             "properties": {
@@ -17152,6 +17160,26 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "kmsKeyId"
+                    ]
+                }
+            }
+        },
+        "duplocloud:index/RdsReadReplicaStorageAutoscaling:RdsReadReplicaStorageAutoscaling": {
+            "properties": {
+                "enable": {
+                    "type": "boolean",
+                    "description": "Whether to enable storage autoscaling for the RDS instance. When enabled, the storage size can automatically increase up to the specified max*allocated*storage.\n"
+                },
+                "maxAllocatedStorage": {
+                    "type": "integer",
+                    "description": "The upper limit, in gibibytes (GiB), to which Amazon RDS can automatically scale the storage of the DB instance when autoscaling is enabled.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "enable"
                     ]
                 }
             }
@@ -36012,7 +36040,7 @@
             }
         },
         "duplocloud:index/awsElasticsearch:AwsElasticsearch": {
-            "description": "`duplocloud.AwsElasticsearch` manages an AWS ElasticSearch instance in Duplo.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as duplocloud from \"@duplocloud/pulumi\";\n\nconst myapp = new duplocloud.Tenant(\"myapp\", {\n    accountName: \"myapp\",\n    planId: \"default\",\n});\n// Minimal example\nconst sample = new duplocloud.AwsElasticsearch(\"sample\", {\n    tenantId: myapp.tenantId,\n    name: \"sample\",\n});\n// Example with hardened settings\nconst es_doc = new duplocloud.AwsElasticsearch(\"es-doc\", {\n    tenantId: myapp.tenantId,\n    name: \"es-doc\",\n    enableNodeToNodeEncryption: true,\n    requireSsl: true,\n    useLatestTlsCipher: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_duplocloud as duplocloud\n\nmyapp = duplocloud.Tenant(\"myapp\",\n    account_name=\"myapp\",\n    plan_id=\"default\")\n# Minimal example\nsample = duplocloud.AwsElasticsearch(\"sample\",\n    tenant_id=myapp.tenant_id,\n    name=\"sample\")\n# Example with hardened settings\nes_doc = duplocloud.AwsElasticsearch(\"es-doc\",\n    tenant_id=myapp.tenant_id,\n    name=\"es-doc\",\n    enable_node_to_node_encryption=True,\n    require_ssl=True,\n    use_latest_tls_cipher=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Pulumi = DuploCloud.Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myapp = new Pulumi.Tenant(\"myapp\", new()\n    {\n        AccountName = \"myapp\",\n        PlanId = \"default\",\n    });\n\n    // Minimal example\n    var sample = new Pulumi.AwsElasticsearch(\"sample\", new()\n    {\n        TenantId = myapp.TenantId,\n        Name = \"sample\",\n    });\n\n    // Example with hardened settings\n    var es_doc = new Pulumi.AwsElasticsearch(\"es-doc\", new()\n    {\n        TenantId = myapp.TenantId,\n        Name = \"es-doc\",\n        EnableNodeToNodeEncryption = true,\n        RequireSsl = true,\n        UseLatestTlsCipher = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/duplocloud/pulumi-duplocloud/sdk/go/duplocloud\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmyapp, err := duplocloud.NewTenant(ctx, \"myapp\", \u0026duplocloud.TenantArgs{\n\t\t\tAccountName: pulumi.String(\"myapp\"),\n\t\t\tPlanId:      pulumi.String(\"default\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Minimal example\n\t\t_, err = duplocloud.NewAwsElasticsearch(ctx, \"sample\", \u0026duplocloud.AwsElasticsearchArgs{\n\t\t\tTenantId: myapp.TenantId,\n\t\t\tName:     pulumi.String(\"sample\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Example with hardened settings\n\t\t_, err = duplocloud.NewAwsElasticsearch(ctx, \"es-doc\", \u0026duplocloud.AwsElasticsearchArgs{\n\t\t\tTenantId:                   myapp.TenantId,\n\t\t\tName:                       pulumi.String(\"es-doc\"),\n\t\t\tEnableNodeToNodeEncryption: pulumi.Bool(true),\n\t\t\tRequireSsl:                 pulumi.Bool(true),\n\t\t\tUseLatestTlsCipher:         pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.duplocloud.Tenant;\nimport com.pulumi.duplocloud.TenantArgs;\nimport com.pulumi.duplocloud.AwsElasticsearch;\nimport com.pulumi.duplocloud.AwsElasticsearchArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myapp = new Tenant(\"myapp\", TenantArgs.builder()\n            .accountName(\"myapp\")\n            .planId(\"default\")\n            .build());\n\n        // Minimal example\n        var sample = new AwsElasticsearch(\"sample\", AwsElasticsearchArgs.builder()\n            .tenantId(myapp.tenantId())\n            .name(\"sample\")\n            .build());\n\n        // Example with hardened settings\n        var es_doc = new AwsElasticsearch(\"es-doc\", AwsElasticsearchArgs.builder()\n            .tenantId(myapp.tenantId())\n            .name(\"es-doc\")\n            .enableNodeToNodeEncryption(true)\n            .requireSsl(true)\n            .useLatestTlsCipher(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myapp:\n    type: duplocloud:Tenant\n    properties:\n      accountName: myapp\n      planId: default\n  # Minimal example\n  sample:\n    type: duplocloud:AwsElasticsearch\n    properties:\n      tenantId: ${myapp.tenantId}\n      name: sample\n  # Example with hardened settings\n  es-doc:\n    type: duplocloud:AwsElasticsearch\n    properties:\n      tenantId: ${myapp.tenantId}\n      name: es-doc\n      enableNodeToNodeEncryption: true\n      requireSsl: true\n      useLatestTlsCipher: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nExample: Importing an existing AWS ElasticSearch cluster\n\n - *TENANT_ID* is the tenant GUID\n\n - *SHORT_NAME* is the short name of the AWS ElasticSearch cluster\n\n#\n\n```sh\n$ pulumi import duplocloud:index/awsElasticsearch:AwsElasticsearch mycluster *TENANT_ID*/*SHORT_NAME*\n```\n\n",
+            "description": "`duplocloud.AwsElasticsearch` manages an AWS ElasticSearch instance in Duplo.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as duplocloud from \"@duplocloud/pulumi\";\n\nconst myapp = new duplocloud.Tenant(\"myapp\", {\n    accountName: \"myapp\",\n    planId: \"default\",\n});\n// Minimal example\nconst sample = new duplocloud.AwsElasticsearch(\"sample\", {\n    tenantId: myapp.tenantId,\n    name: \"sample\",\n});\n// Example with hardened settings\nconst es_doc = new duplocloud.AwsElasticsearch(\"es-doc\", {\n    tenantId: myapp.tenantId,\n    name: \"es-doc\",\n    enableNodeToNodeEncryption: true,\n    requireSsl: true,\n    useLatestTlsCipher: true,\n});\nconst essample = new duplocloud.AwsElasticsearch(\"essample\", {\n    tenantId: myapp.tenantId,\n    name: \"essamp\",\n    selectedZone: 1,\n    elasticsearchVersion: \"OpenSearch_2.3\",\n    ebsOptions: [{\n        ebsEnabled: true,\n        volumeType: \"gp2\",\n        volumeSize: 10,\n    }],\n});\nconst essample2 = new duplocloud.AwsElasticsearch(\"essample2\", {\n    tenantId: myapp.tenantId,\n    name: \"essamp2\",\n    selectedZone: 1,\n    elasticsearchVersion: \"OpenSearch_3.3\",\n    clusterConfig: {\n        instanceType: \"or2.medium.search\",\n        dedicatedMasterType: \"or2.medium.search\",\n        dedicatedMasterCount: 3,\n    },\n    ebsOptions: [{\n        ebsEnabled: true,\n        volumeType: \"gp3\",\n        volumeSize: 100,\n        iops: 3000,\n    }],\n    encryptAtRest: {\n        kmsKeyId: \"\u003ckms-arn\u003e\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_duplocloud as duplocloud\n\nmyapp = duplocloud.Tenant(\"myapp\",\n    account_name=\"myapp\",\n    plan_id=\"default\")\n# Minimal example\nsample = duplocloud.AwsElasticsearch(\"sample\",\n    tenant_id=myapp.tenant_id,\n    name=\"sample\")\n# Example with hardened settings\nes_doc = duplocloud.AwsElasticsearch(\"es-doc\",\n    tenant_id=myapp.tenant_id,\n    name=\"es-doc\",\n    enable_node_to_node_encryption=True,\n    require_ssl=True,\n    use_latest_tls_cipher=True)\nessample = duplocloud.AwsElasticsearch(\"essample\",\n    tenant_id=myapp.tenant_id,\n    name=\"essamp\",\n    selected_zone=1,\n    elasticsearch_version=\"OpenSearch_2.3\",\n    ebs_options=[{\n        \"ebs_enabled\": True,\n        \"volume_type\": \"gp2\",\n        \"volume_size\": 10,\n    }])\nessample2 = duplocloud.AwsElasticsearch(\"essample2\",\n    tenant_id=myapp.tenant_id,\n    name=\"essamp2\",\n    selected_zone=1,\n    elasticsearch_version=\"OpenSearch_3.3\",\n    cluster_config={\n        \"instance_type\": \"or2.medium.search\",\n        \"dedicated_master_type\": \"or2.medium.search\",\n        \"dedicated_master_count\": 3,\n    },\n    ebs_options=[{\n        \"ebs_enabled\": True,\n        \"volume_type\": \"gp3\",\n        \"volume_size\": 100,\n        \"iops\": 3000,\n    }],\n    encrypt_at_rest={\n        \"kms_key_id\": \"\u003ckms-arn\u003e\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Pulumi = DuploCloud.Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myapp = new Pulumi.Tenant(\"myapp\", new()\n    {\n        AccountName = \"myapp\",\n        PlanId = \"default\",\n    });\n\n    // Minimal example\n    var sample = new Pulumi.AwsElasticsearch(\"sample\", new()\n    {\n        TenantId = myapp.TenantId,\n        Name = \"sample\",\n    });\n\n    // Example with hardened settings\n    var es_doc = new Pulumi.AwsElasticsearch(\"es-doc\", new()\n    {\n        TenantId = myapp.TenantId,\n        Name = \"es-doc\",\n        EnableNodeToNodeEncryption = true,\n        RequireSsl = true,\n        UseLatestTlsCipher = true,\n    });\n\n    var essample = new Pulumi.AwsElasticsearch(\"essample\", new()\n    {\n        TenantId = myapp.TenantId,\n        Name = \"essamp\",\n        SelectedZone = 1,\n        ElasticsearchVersion = \"OpenSearch_2.3\",\n        EbsOptions = new[]\n        {\n            new Pulumi.Inputs.AwsElasticsearchEbsOptionArgs\n            {\n                EbsEnabled = true,\n                VolumeType = \"gp2\",\n                VolumeSize = 10,\n            },\n        },\n    });\n\n    var essample2 = new Pulumi.AwsElasticsearch(\"essample2\", new()\n    {\n        TenantId = myapp.TenantId,\n        Name = \"essamp2\",\n        SelectedZone = 1,\n        ElasticsearchVersion = \"OpenSearch_3.3\",\n        ClusterConfig = new Pulumi.Inputs.AwsElasticsearchClusterConfigArgs\n        {\n            InstanceType = \"or2.medium.search\",\n            DedicatedMasterType = \"or2.medium.search\",\n            DedicatedMasterCount = 3,\n        },\n        EbsOptions = new[]\n        {\n            new Pulumi.Inputs.AwsElasticsearchEbsOptionArgs\n            {\n                EbsEnabled = true,\n                VolumeType = \"gp3\",\n                VolumeSize = 100,\n                Iops = 3000,\n            },\n        },\n        EncryptAtRest = new Pulumi.Inputs.AwsElasticsearchEncryptAtRestArgs\n        {\n            KmsKeyId = \"\u003ckms-arn\u003e\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/duplocloud/pulumi-duplocloud/sdk/go/duplocloud\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmyapp, err := duplocloud.NewTenant(ctx, \"myapp\", \u0026duplocloud.TenantArgs{\n\t\t\tAccountName: pulumi.String(\"myapp\"),\n\t\t\tPlanId:      pulumi.String(\"default\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Minimal example\n\t\t_, err = duplocloud.NewAwsElasticsearch(ctx, \"sample\", \u0026duplocloud.AwsElasticsearchArgs{\n\t\t\tTenantId: myapp.TenantId,\n\t\t\tName:     pulumi.String(\"sample\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Example with hardened settings\n\t\t_, err = duplocloud.NewAwsElasticsearch(ctx, \"es-doc\", \u0026duplocloud.AwsElasticsearchArgs{\n\t\t\tTenantId:                   myapp.TenantId,\n\t\t\tName:                       pulumi.String(\"es-doc\"),\n\t\t\tEnableNodeToNodeEncryption: pulumi.Bool(true),\n\t\t\tRequireSsl:                 pulumi.Bool(true),\n\t\t\tUseLatestTlsCipher:         pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = duplocloud.NewAwsElasticsearch(ctx, \"essample\", \u0026duplocloud.AwsElasticsearchArgs{\n\t\t\tTenantId:             myapp.TenantId,\n\t\t\tName:                 pulumi.String(\"essamp\"),\n\t\t\tSelectedZone:         pulumi.Int(1),\n\t\t\tElasticsearchVersion: pulumi.String(\"OpenSearch_2.3\"),\n\t\t\tEbsOptions: duplocloud.AwsElasticsearchEbsOptionArray{\n\t\t\t\t\u0026duplocloud.AwsElasticsearchEbsOptionArgs{\n\t\t\t\t\tEbsEnabled: pulumi.Bool(true),\n\t\t\t\t\tVolumeType: pulumi.String(\"gp2\"),\n\t\t\t\t\tVolumeSize: pulumi.Int(10),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = duplocloud.NewAwsElasticsearch(ctx, \"essample2\", \u0026duplocloud.AwsElasticsearchArgs{\n\t\t\tTenantId:             myapp.TenantId,\n\t\t\tName:                 pulumi.String(\"essamp2\"),\n\t\t\tSelectedZone:         pulumi.Int(1),\n\t\t\tElasticsearchVersion: pulumi.String(\"OpenSearch_3.3\"),\n\t\t\tClusterConfig: \u0026duplocloud.AwsElasticsearchClusterConfigArgs{\n\t\t\t\tInstanceType:         pulumi.String(\"or2.medium.search\"),\n\t\t\t\tDedicatedMasterType:  pulumi.String(\"or2.medium.search\"),\n\t\t\t\tDedicatedMasterCount: pulumi.Int(3),\n\t\t\t},\n\t\t\tEbsOptions: duplocloud.AwsElasticsearchEbsOptionArray{\n\t\t\t\t\u0026duplocloud.AwsElasticsearchEbsOptionArgs{\n\t\t\t\t\tEbsEnabled: pulumi.Bool(true),\n\t\t\t\t\tVolumeType: pulumi.String(\"gp3\"),\n\t\t\t\t\tVolumeSize: pulumi.Int(100),\n\t\t\t\t\tIops:       pulumi.Int(3000),\n\t\t\t\t},\n\t\t\t},\n\t\t\tEncryptAtRest: \u0026duplocloud.AwsElasticsearchEncryptAtRestArgs{\n\t\t\t\tKmsKeyId: pulumi.String(\"\u003ckms-arn\u003e\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.duplocloud.Tenant;\nimport com.pulumi.duplocloud.TenantArgs;\nimport com.pulumi.duplocloud.AwsElasticsearch;\nimport com.pulumi.duplocloud.AwsElasticsearchArgs;\nimport com.pulumi.duplocloud.inputs.AwsElasticsearchEbsOptionArgs;\nimport com.pulumi.duplocloud.inputs.AwsElasticsearchClusterConfigArgs;\nimport com.pulumi.duplocloud.inputs.AwsElasticsearchEncryptAtRestArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myapp = new Tenant(\"myapp\", TenantArgs.builder()\n            .accountName(\"myapp\")\n            .planId(\"default\")\n            .build());\n\n        // Minimal example\n        var sample = new AwsElasticsearch(\"sample\", AwsElasticsearchArgs.builder()\n            .tenantId(myapp.tenantId())\n            .name(\"sample\")\n            .build());\n\n        // Example with hardened settings\n        var es_doc = new AwsElasticsearch(\"es-doc\", AwsElasticsearchArgs.builder()\n            .tenantId(myapp.tenantId())\n            .name(\"es-doc\")\n            .enableNodeToNodeEncryption(true)\n            .requireSsl(true)\n            .useLatestTlsCipher(true)\n            .build());\n\n        var essample = new AwsElasticsearch(\"essample\", AwsElasticsearchArgs.builder()\n            .tenantId(myapp.tenantId())\n            .name(\"essamp\")\n            .selectedZone(1)\n            .elasticsearchVersion(\"OpenSearch_2.3\")\n            .ebsOptions(AwsElasticsearchEbsOptionArgs.builder()\n                .ebsEnabled(true)\n                .volumeType(\"gp2\")\n                .volumeSize(10)\n                .build())\n            .build());\n\n        var essample2 = new AwsElasticsearch(\"essample2\", AwsElasticsearchArgs.builder()\n            .tenantId(myapp.tenantId())\n            .name(\"essamp2\")\n            .selectedZone(1)\n            .elasticsearchVersion(\"OpenSearch_3.3\")\n            .clusterConfig(AwsElasticsearchClusterConfigArgs.builder()\n                .instanceType(\"or2.medium.search\")\n                .dedicatedMasterType(\"or2.medium.search\")\n                .dedicatedMasterCount(3)\n                .build())\n            .ebsOptions(AwsElasticsearchEbsOptionArgs.builder()\n                .ebsEnabled(true)\n                .volumeType(\"gp3\")\n                .volumeSize(100)\n                .iops(3000)\n                .build())\n            .encryptAtRest(AwsElasticsearchEncryptAtRestArgs.builder()\n                .kmsKeyId(\"\u003ckms-arn\u003e\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myapp:\n    type: duplocloud:Tenant\n    properties:\n      accountName: myapp\n      planId: default\n  # Minimal example\n  sample:\n    type: duplocloud:AwsElasticsearch\n    properties:\n      tenantId: ${myapp.tenantId}\n      name: sample\n  # Example with hardened settings\n  es-doc:\n    type: duplocloud:AwsElasticsearch\n    properties:\n      tenantId: ${myapp.tenantId}\n      name: es-doc\n      enableNodeToNodeEncryption: true\n      requireSsl: true\n      useLatestTlsCipher: true\n  essample:\n    type: duplocloud:AwsElasticsearch\n    properties:\n      tenantId: ${myapp.tenantId}\n      name: essamp\n      selectedZone: 1\n      elasticsearchVersion: OpenSearch_2.3\n      ebsOptions:\n        - ebsEnabled: true\n          volumeType: gp2\n          volumeSize: 10\n  essample2:\n    type: duplocloud:AwsElasticsearch\n    properties:\n      tenantId: ${myapp.tenantId}\n      name: essamp2\n      selectedZone: 1\n      elasticsearchVersion: OpenSearch_3.3\n      clusterConfig:\n        instanceType: or2.medium.search\n        dedicatedMasterType: or2.medium.search\n        dedicatedMasterCount: 3\n      ebsOptions:\n        - ebsEnabled: true\n          volumeType: gp3\n          volumeSize: 100\n          iops: 3000\n      encryptAtRest:\n        kmsKeyId: \u003ckms-arn\u003e\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nExample: Importing an existing AWS ElasticSearch cluster\n\n - *TENANT_ID* is the tenant GUID\n\n - *SHORT_NAME* is the short name of the AWS ElasticSearch cluster\n\n#\n\n```sh\n$ pulumi import duplocloud:index/awsElasticsearch:AwsElasticsearch mycluster *TENANT_ID*/*SHORT_NAME*\n```\n\n",
             "properties": {
                 "accessPolicies": {
                     "type": "string"
@@ -36042,11 +36070,12 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/duplocloud:index/AwsElasticsearchEbsOption:AwsElasticsearchEbsOption"
-                    }
+                    },
+                    "description": "The EBS storage options for the ElasticSearch instance.\n"
                 },
                 "elasticsearchVersion": {
                     "type": "string",
-                    "description": "The version of the ElasticSearch instance. Defaults to `7.9`.\n"
+                    "description": "The version of the ElasticSearch/OpenSearch instance. Accepts the short form (e.g. `7.9`) or the full prefixed form (e.g. `Elasticsearch_7.9`, `OpenSearch_2.15`). Defaults to `Elasticsearch_7.9`.\n"
                 },
                 "enableNodeToNodeEncryption": {
                     "type": "boolean",
@@ -36083,7 +36112,8 @@
                 },
                 "storageSize": {
                     "type": "integer",
-                    "description": "The storage volume size, in GB, for the ElasticSearch instance.\n"
+                    "description": "The storage volume size, in GB, for the ElasticSearch instance. storage*size has been deprecated, use ebs*options.volume_size\n",
+                    "deprecationMessage": "storage_size has been deprecated, use ebs_options.volume_size"
                 },
                 "tenantId": {
                     "type": "string",
@@ -36115,6 +36145,7 @@
                 "requireSsl",
                 "selectedZone",
                 "snapshotOptions",
+                "storageSize",
                 "tenantId",
                 "useLatestTlsCipher",
                 "vpcOptions"
@@ -36124,9 +36155,16 @@
                     "$ref": "#/types/duplocloud:index/AwsElasticsearchClusterConfig:AwsElasticsearchClusterConfig",
                     "willReplaceOnChanges": true
                 },
+                "ebsOptions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/duplocloud:index/AwsElasticsearchEbsOption:AwsElasticsearchEbsOption"
+                    },
+                    "description": "The EBS storage options for the ElasticSearch instance.\n"
+                },
                 "elasticsearchVersion": {
                     "type": "string",
-                    "description": "The version of the ElasticSearch instance. Defaults to `7.9`.\n",
+                    "description": "The version of the ElasticSearch/OpenSearch instance. Accepts the short form (e.g. `7.9`) or the full prefixed form (e.g. `Elasticsearch_7.9`, `OpenSearch_2.15`). Defaults to `Elasticsearch_7.9`.\n",
                     "willReplaceOnChanges": true
                 },
                 "enableNodeToNodeEncryption": {
@@ -36154,7 +36192,8 @@
                 },
                 "storageSize": {
                     "type": "integer",
-                    "description": "The storage volume size, in GB, for the ElasticSearch instance.\n"
+                    "description": "The storage volume size, in GB, for the ElasticSearch instance. storage*size has been deprecated, use ebs*options.volume_size\n",
+                    "deprecationMessage": "storage_size has been deprecated, use ebs_options.volume_size"
                 },
                 "tenantId": {
                     "type": "string",
@@ -36208,11 +36247,12 @@
                         "type": "array",
                         "items": {
                             "$ref": "#/types/duplocloud:index/AwsElasticsearchEbsOption:AwsElasticsearchEbsOption"
-                        }
+                        },
+                        "description": "The EBS storage options for the ElasticSearch instance.\n"
                     },
                     "elasticsearchVersion": {
                         "type": "string",
-                        "description": "The version of the ElasticSearch instance. Defaults to `7.9`.\n",
+                        "description": "The version of the ElasticSearch/OpenSearch instance. Accepts the short form (e.g. `7.9`) or the full prefixed form (e.g. `Elasticsearch_7.9`, `OpenSearch_2.15`). Defaults to `Elasticsearch_7.9`.\n",
                         "willReplaceOnChanges": true
                     },
                     "enableNodeToNodeEncryption": {
@@ -36253,7 +36293,8 @@
                     },
                     "storageSize": {
                         "type": "integer",
-                        "description": "The storage volume size, in GB, for the ElasticSearch instance.\n"
+                        "description": "The storage volume size, in GB, for the ElasticSearch instance. storage*size has been deprecated, use ebs*options.volume_size\n",
+                        "deprecationMessage": "storage_size has been deprecated, use ebs_options.volume_size"
                     },
                     "tenantId": {
                         "type": "string",
@@ -36725,7 +36766,7 @@
             }
         },
         "duplocloud:index/awsKafkaCluster:AwsKafkaCluster": {
-            "description": "`duplocloud.AwsKafkaCluster` manages an AWS MSK cluster in Duplo.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as duplocloud from \"@duplocloud/pulumi\";\n\nconst myapp = new duplocloud.Tenant(\"myapp\", {\n    accountName: \"myapp\",\n    planId: \"default\",\n});\nconst mycluster = new duplocloud.AwsKafkaCluster(\"mycluster\", {\n    tenantId: _this.tenantId,\n    name: \"mycluster\",\n    kafkaVersion: \"2.4.1.1\",\n    instanceType: \"kafka.m5.large\",\n    storageSize: 20,\n});\n```\n```python\nimport pulumi\nimport pulumi_duplocloud as duplocloud\n\nmyapp = duplocloud.Tenant(\"myapp\",\n    account_name=\"myapp\",\n    plan_id=\"default\")\nmycluster = duplocloud.AwsKafkaCluster(\"mycluster\",\n    tenant_id=this[\"tenantId\"],\n    name=\"mycluster\",\n    kafka_version=\"2.4.1.1\",\n    instance_type=\"kafka.m5.large\",\n    storage_size=20)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Pulumi = DuploCloud.Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myapp = new Pulumi.Tenant(\"myapp\", new()\n    {\n        AccountName = \"myapp\",\n        PlanId = \"default\",\n    });\n\n    var mycluster = new Pulumi.AwsKafkaCluster(\"mycluster\", new()\n    {\n        TenantId = @this.TenantId,\n        Name = \"mycluster\",\n        KafkaVersion = \"2.4.1.1\",\n        InstanceType = \"kafka.m5.large\",\n        StorageSize = 20,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/duplocloud/pulumi-duplocloud/sdk/go/duplocloud\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := duplocloud.NewTenant(ctx, \"myapp\", \u0026duplocloud.TenantArgs{\n\t\t\tAccountName: pulumi.String(\"myapp\"),\n\t\t\tPlanId:      pulumi.String(\"default\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = duplocloud.NewAwsKafkaCluster(ctx, \"mycluster\", \u0026duplocloud.AwsKafkaClusterArgs{\n\t\t\tTenantId:     pulumi.Any(this.TenantId),\n\t\t\tName:         pulumi.String(\"mycluster\"),\n\t\t\tKafkaVersion: pulumi.String(\"2.4.1.1\"),\n\t\t\tInstanceType: pulumi.String(\"kafka.m5.large\"),\n\t\t\tStorageSize:  pulumi.Int(20),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.duplocloud.Tenant;\nimport com.pulumi.duplocloud.TenantArgs;\nimport com.pulumi.duplocloud.AwsKafkaCluster;\nimport com.pulumi.duplocloud.AwsKafkaClusterArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myapp = new Tenant(\"myapp\", TenantArgs.builder()\n            .accountName(\"myapp\")\n            .planId(\"default\")\n            .build());\n\n        var mycluster = new AwsKafkaCluster(\"mycluster\", AwsKafkaClusterArgs.builder()\n            .tenantId(this_.tenantId())\n            .name(\"mycluster\")\n            .kafkaVersion(\"2.4.1.1\")\n            .instanceType(\"kafka.m5.large\")\n            .storageSize(20)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myapp:\n    type: duplocloud:Tenant\n    properties:\n      accountName: myapp\n      planId: default\n  mycluster:\n    type: duplocloud:AwsKafkaCluster\n    properties:\n      tenantId: ${this.tenantId}\n      name: mycluster\n      kafkaVersion: 2.4.1.1\n      instanceType: kafka.m5.large\n      storageSize: 20\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nExample: Importing an existing AWS Kafka cluster\n\n - *TENANT_ID* is the tenant GUID\n\n - *SHORT_NAME* is the short name of the AWS Kafka cluster\n\n#\n\n```sh\n$ pulumi import duplocloud:index/awsKafkaCluster:AwsKafkaCluster mycluster *TENANT_ID*/*SHORT_NAME*\n```\n\n",
+            "description": "`duplocloud.AwsKafkaCluster` manages an AWS MSK cluster in Duplo.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as duplocloud from \"@duplocloud/pulumi\";\n\nconst myapp = new duplocloud.Tenant(\"myapp\", {\n    accountName: \"myapp\",\n    planId: \"default\",\n});\nconst mycluster = new duplocloud.AwsKafkaCluster(\"mycluster\", {\n    tenantId: myapp.tenantId,\n    name: \"mycluster\",\n    kafkaVersion: \"3.5.1\",\n    instanceType: \"kafka.m5.large\",\n    storageSize: 20,\n});\nconst serverless = new duplocloud.AwsKafkaCluster(\"serverless\", {\n    tenantId: myapp.tenantId,\n    name: \"serverlesscluster\",\n    isServerless: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_duplocloud as duplocloud\n\nmyapp = duplocloud.Tenant(\"myapp\",\n    account_name=\"myapp\",\n    plan_id=\"default\")\nmycluster = duplocloud.AwsKafkaCluster(\"mycluster\",\n    tenant_id=myapp.tenant_id,\n    name=\"mycluster\",\n    kafka_version=\"3.5.1\",\n    instance_type=\"kafka.m5.large\",\n    storage_size=20)\nserverless = duplocloud.AwsKafkaCluster(\"serverless\",\n    tenant_id=myapp.tenant_id,\n    name=\"serverlesscluster\",\n    is_serverless=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Pulumi = DuploCloud.Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myapp = new Pulumi.Tenant(\"myapp\", new()\n    {\n        AccountName = \"myapp\",\n        PlanId = \"default\",\n    });\n\n    var mycluster = new Pulumi.AwsKafkaCluster(\"mycluster\", new()\n    {\n        TenantId = myapp.TenantId,\n        Name = \"mycluster\",\n        KafkaVersion = \"3.5.1\",\n        InstanceType = \"kafka.m5.large\",\n        StorageSize = 20,\n    });\n\n    var serverless = new Pulumi.AwsKafkaCluster(\"serverless\", new()\n    {\n        TenantId = myapp.TenantId,\n        Name = \"serverlesscluster\",\n        IsServerless = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/duplocloud/pulumi-duplocloud/sdk/go/duplocloud\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmyapp, err := duplocloud.NewTenant(ctx, \"myapp\", \u0026duplocloud.TenantArgs{\n\t\t\tAccountName: pulumi.String(\"myapp\"),\n\t\t\tPlanId:      pulumi.String(\"default\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = duplocloud.NewAwsKafkaCluster(ctx, \"mycluster\", \u0026duplocloud.AwsKafkaClusterArgs{\n\t\t\tTenantId:     myapp.TenantId,\n\t\t\tName:         pulumi.String(\"mycluster\"),\n\t\t\tKafkaVersion: pulumi.String(\"3.5.1\"),\n\t\t\tInstanceType: pulumi.String(\"kafka.m5.large\"),\n\t\t\tStorageSize:  pulumi.Int(20),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = duplocloud.NewAwsKafkaCluster(ctx, \"serverless\", \u0026duplocloud.AwsKafkaClusterArgs{\n\t\t\tTenantId:     myapp.TenantId,\n\t\t\tName:         pulumi.String(\"serverlesscluster\"),\n\t\t\tIsServerless: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.duplocloud.Tenant;\nimport com.pulumi.duplocloud.TenantArgs;\nimport com.pulumi.duplocloud.AwsKafkaCluster;\nimport com.pulumi.duplocloud.AwsKafkaClusterArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myapp = new Tenant(\"myapp\", TenantArgs.builder()\n            .accountName(\"myapp\")\n            .planId(\"default\")\n            .build());\n\n        var mycluster = new AwsKafkaCluster(\"mycluster\", AwsKafkaClusterArgs.builder()\n            .tenantId(myapp.tenantId())\n            .name(\"mycluster\")\n            .kafkaVersion(\"3.5.1\")\n            .instanceType(\"kafka.m5.large\")\n            .storageSize(20)\n            .build());\n\n        var serverless = new AwsKafkaCluster(\"serverless\", AwsKafkaClusterArgs.builder()\n            .tenantId(myapp.tenantId())\n            .name(\"serverlesscluster\")\n            .isServerless(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myapp:\n    type: duplocloud:Tenant\n    properties:\n      accountName: myapp\n      planId: default\n  mycluster:\n    type: duplocloud:AwsKafkaCluster\n    properties:\n      tenantId: ${myapp.tenantId}\n      name: mycluster\n      kafkaVersion: 3.5.1\n      instanceType: kafka.m5.large\n      storageSize: 20\n  serverless:\n    type: duplocloud:AwsKafkaCluster\n    properties:\n      tenantId: ${myapp.tenantId}\n      name: serverlesscluster\n      isServerless: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nExample: Importing an existing AWS Kafka cluster\n\n - *TENANT_ID* is the tenant GUID\n\n - *SHORT_NAME* is the short name of the AWS Kafka cluster\n\n#\n\n```sh\n$ pulumi import duplocloud:index/awsKafkaCluster:AwsKafkaCluster mycluster *TENANT_ID*/*SHORT_NAME*\n```\n\n",
             "properties": {
                 "arn": {
                     "type": "string",
@@ -36757,6 +36798,10 @@
                 "instanceType": {
                     "type": "string",
                     "description": "The Kafka node instance type to use.\nSee the [AWS documentation](https://docs.aws.amazon.com/msk/latest/developerguide/msk-create-cluster.html) for more information.\n"
+                },
+                "isServerless": {
+                    "type": "boolean",
+                    "description": "Enable to make the cluster serverless.  When enabled, the `instance_type`, `storage_size`, `kafka_version`, `configuration_arn`, `configuration_revision`, and `encryption_in_transit` parameters are not applicable. Defaults to `false`.\n"
                 },
                 "kafkaVersion": {
                     "type": "string",
@@ -36827,15 +36872,12 @@
                 "currentVersion",
                 "encryptionInTransit",
                 "fullname",
-                "instanceType",
-                "kafkaVersion",
                 "name",
                 "numberOfBrokerNodes",
                 "plaintextBootstrapBrokerString",
                 "plaintextZookeeperConnectString",
                 "securityGroups",
                 "state",
-                "storageSize",
                 "subnets",
                 "tags",
                 "tenantId",
@@ -36858,6 +36900,11 @@
                 "instanceType": {
                     "type": "string",
                     "description": "The Kafka node instance type to use.\nSee the [AWS documentation](https://docs.aws.amazon.com/msk/latest/developerguide/msk-create-cluster.html) for more information.\n",
+                    "willReplaceOnChanges": true
+                },
+                "isServerless": {
+                    "type": "boolean",
+                    "description": "Enable to make the cluster serverless.  When enabled, the `instance_type`, `storage_size`, `kafka_version`, `configuration_arn`, `configuration_revision`, and `encryption_in_transit` parameters are not applicable. Defaults to `false`.\n",
                     "willReplaceOnChanges": true
                 },
                 "kafkaVersion": {
@@ -36890,9 +36937,6 @@
                 }
             },
             "requiredInputs": [
-                "instanceType",
-                "kafkaVersion",
-                "storageSize",
                 "tenantId"
             ],
             "stateInputs": {
@@ -36928,6 +36972,11 @@
                     "instanceType": {
                         "type": "string",
                         "description": "The Kafka node instance type to use.\nSee the [AWS documentation](https://docs.aws.amazon.com/msk/latest/developerguide/msk-create-cluster.html) for more information.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "isServerless": {
+                        "type": "boolean",
+                        "description": "Enable to make the cluster serverless.  When enabled, the `instance_type`, `storage_size`, `kafka_version`, `configuration_arn`, `configuration_revision`, and `encryption_in_transit` parameters are not applicable. Defaults to `false`.\n",
                         "willReplaceOnChanges": true
                     },
                     "kafkaVersion": {
@@ -47532,6 +47581,7 @@
             "required": [
                 "actualEngineVersion",
                 "arn",
+                "automaticFailoverEnabled",
                 "endpoint",
                 "engineVersion",
                 "host",
@@ -47539,6 +47589,7 @@
                 "instanceStatus",
                 "isPrimary",
                 "kmsKeyId",
+                "multiAzEnabled",
                 "name",
                 "numberOfShards",
                 "parameterGroupName",
@@ -47558,8 +47609,7 @@
                 },
                 "automaticFailoverEnabled": {
                     "type": "boolean",
-                    "description": "Enables automatic failover.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Enables automatic failover.\n"
                 },
                 "cacheType": {
                     "type": "integer",
@@ -47600,8 +47650,7 @@
                 },
                 "multiAzEnabled": {
                     "type": "boolean",
-                    "description": "Enables Multi-AZ support for the ElastiCache instance. Multi-AZ is only applicable for Redis (cache_type=0) and Valkey\n(cache_type=2). When enabled, automatic_failover_enabled must also be set to true.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Enables Multi-AZ support for the ElastiCache instance. Multi-AZ is only applicable for Redis (cache_type=0) and Valkey\n(cache_type=2). When enabled, automatic_failover_enabled must also be set to true.\n"
                 },
                 "name": {
                     "type": "string",
@@ -47673,8 +47722,7 @@
                     },
                     "automaticFailoverEnabled": {
                         "type": "boolean",
-                        "description": "Enables automatic failover.\n",
-                        "willReplaceOnChanges": true
+                        "description": "Enables automatic failover.\n"
                     },
                     "cacheType": {
                         "type": "integer",
@@ -47735,8 +47783,7 @@
                     },
                     "multiAzEnabled": {
                         "type": "boolean",
-                        "description": "Enables Multi-AZ support for the ElastiCache instance. Multi-AZ is only applicable for Redis (cache_type=0) and Valkey\n(cache_type=2). When enabled, automatic_failover_enabled must also be set to true.\n",
-                        "willReplaceOnChanges": true
+                        "description": "Enables Multi-AZ support for the ElastiCache instance. Multi-AZ is only applicable for Redis (cache_type=0) and Valkey\n(cache_type=2). When enabled, automatic_failover_enabled must also be set to true.\n"
                     },
                     "name": {
                         "type": "string",
@@ -55248,7 +55295,7 @@
             "properties": {
                 "allocatedStorage": {
                     "type": "integer",
-                    "description": "(Required unless a `snapshot_id` is provided) The allocated storage in gigabytes.\n"
+                    "description": "(Required unless a `snapshot_id` is provided) The allocated storage in gigabytes. **Note:** Allocated storage can only\nbe modified after every 6 hours.\n"
                 },
                 "arn": {
                     "type": "string",
@@ -55256,7 +55303,7 @@
                 },
                 "autoMinorVersionUpgrade": {
                     "type": "boolean",
-                    "description": "Enable or disable auto minor version upgrade\n"
+                    "description": "Enable or disable auto minor version upgrade. This attribute is ignored for DocumentDB (engine 13) — AWS manages minor\nversion upgrades for DocumentDB and this setting has no effect.\n"
                 },
                 "availabilityZone": {
                     "type": "string",
@@ -55426,11 +55473,11 @@
             "inputProperties": {
                 "allocatedStorage": {
                     "type": "integer",
-                    "description": "(Required unless a `snapshot_id` is provided) The allocated storage in gigabytes.\n"
+                    "description": "(Required unless a `snapshot_id` is provided) The allocated storage in gigabytes. **Note:** Allocated storage can only\nbe modified after every 6 hours.\n"
                 },
                 "autoMinorVersionUpgrade": {
                     "type": "boolean",
-                    "description": "Enable or disable auto minor version upgrade\n"
+                    "description": "Enable or disable auto minor version upgrade. This attribute is ignored for DocumentDB (engine 13) — AWS manages minor\nversion upgrades for DocumentDB and this setting has no effect.\n"
                 },
                 "availabilityZone": {
                     "type": "string",
@@ -55566,7 +55613,7 @@
                 "properties": {
                     "allocatedStorage": {
                         "type": "integer",
-                        "description": "(Required unless a `snapshot_id` is provided) The allocated storage in gigabytes.\n"
+                        "description": "(Required unless a `snapshot_id` is provided) The allocated storage in gigabytes. **Note:** Allocated storage can only\nbe modified after every 6 hours.\n"
                     },
                     "arn": {
                         "type": "string",
@@ -55574,7 +55621,7 @@
                     },
                     "autoMinorVersionUpgrade": {
                         "type": "boolean",
-                        "description": "Enable or disable auto minor version upgrade\n"
+                        "description": "Enable or disable auto minor version upgrade. This attribute is ignored for DocumentDB (engine 13) — AWS manages minor\nversion upgrades for DocumentDB and this setting has no effect.\n"
                     },
                     "availabilityZone": {
                         "type": "string",
@@ -55730,6 +55777,10 @@
         "duplocloud:index/rdsReadReplica:RdsReadReplica": {
             "description": "`duplocloud.RdsReadReplica` manages an AWS RDS read replica in Duplo.\n\n## Import\n\nExample: Importing an existing RDS read replica\n\n - *TENANT_ID* is the tenant GUID\n\n - *SHORTNAME* is the short name of the database read replica (without the duplo prefix)\n\n#\n\n```sh\n$ pulumi import duplocloud:index/rdsReadReplica:RdsReadReplica read_replica v2/subscriptions/*TENANT_ID*/RDSDBInstance/*SHORTNAME*\n```\n\n",
             "properties": {
+                "allocatedStorage": {
+                    "type": "integer",
+                    "description": "(Required unless a `snapshot_id` is provided) The allocated storage in gigabytes. This can only be set during an update; it will inherit the writer's value during creation.\n**Note:** Allocated storage can only be modified after every 6 hours.\n"
+                },
                 "arn": {
                     "type": "string",
                     "description": "The ARN of the RDS read replica.\n"
@@ -55814,6 +55865,10 @@
                     "type": "string",
                     "description": "The type of the RDS read replica.\nSee AWS documentation for the [available instance types](https://aws.amazon.com/rds/instance-types/).Size should be set as db.serverless if read replica instamce is created as serverless\n"
                 },
+                "storageAutoscaling": {
+                    "$ref": "#/types/duplocloud:index/RdsReadReplicaStorageAutoscaling:RdsReadReplicaStorageAutoscaling",
+                    "description": "This can only be set during an update; it will inherit the writer's value during creation.\n"
+                },
                 "tenantId": {
                     "type": "string",
                     "description": "The GUID of the tenant that the RDS read replica will be created in.\n"
@@ -55824,6 +55879,7 @@
                 }
             },
             "required": [
+                "allocatedStorage",
                 "arn",
                 "availabilityZone",
                 "clusterIdentifier",
@@ -55843,9 +55899,14 @@
                 "port",
                 "replicaStatus",
                 "size",
+                "storageAutoscaling",
                 "tenantId"
             ],
             "inputProperties": {
+                "allocatedStorage": {
+                    "type": "integer",
+                    "description": "(Required unless a `snapshot_id` is provided) The allocated storage in gigabytes. This can only be set during an update; it will inherit the writer's value during creation.\n**Note:** Allocated storage can only be modified after every 6 hours.\n"
+                },
                 "availabilityZone": {
                     "type": "string",
                     "description": "The AZ for the RDS instance.\n",
@@ -55885,6 +55946,10 @@
                     "description": "The type of the RDS read replica.\nSee AWS documentation for the [available instance types](https://aws.amazon.com/rds/instance-types/).Size should be set as db.serverless if read replica instamce is created as serverless\n",
                     "willReplaceOnChanges": true
                 },
+                "storageAutoscaling": {
+                    "$ref": "#/types/duplocloud:index/RdsReadReplicaStorageAutoscaling:RdsReadReplicaStorageAutoscaling",
+                    "description": "This can only be set during an update; it will inherit the writer's value during creation.\n"
+                },
                 "tenantId": {
                     "type": "string",
                     "description": "The GUID of the tenant that the RDS read replica will be created in.\n",
@@ -55903,6 +55968,10 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering RdsReadReplica resources.\n",
                 "properties": {
+                    "allocatedStorage": {
+                        "type": "integer",
+                        "description": "(Required unless a `snapshot_id` is provided) The allocated storage in gigabytes. This can only be set during an update; it will inherit the writer's value during creation.\n**Note:** Allocated storage can only be modified after every 6 hours.\n"
+                    },
                     "arn": {
                         "type": "string",
                         "description": "The ARN of the RDS read replica.\n"
@@ -55989,6 +56058,10 @@
                         "type": "string",
                         "description": "The type of the RDS read replica.\nSee AWS documentation for the [available instance types](https://aws.amazon.com/rds/instance-types/).Size should be set as db.serverless if read replica instamce is created as serverless\n",
                         "willReplaceOnChanges": true
+                    },
+                    "storageAutoscaling": {
+                        "$ref": "#/types/duplocloud:index/RdsReadReplicaStorageAutoscaling:RdsReadReplicaStorageAutoscaling",
+                        "description": "This can only be set during an update; it will inherit the writer's value during creation.\n"
                     },
                     "tenantId": {
                         "type": "string",

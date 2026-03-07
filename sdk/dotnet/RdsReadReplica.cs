@@ -31,6 +31,13 @@ namespace DuploCloud.Pulumi
     public partial class RdsReadReplica : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// (Required unless a `snapshot_id` is provided) The allocated storage in gigabytes. This can only be set during an update; it will inherit the writer's value during creation.
+        /// **Note:** Allocated storage can only be modified after every 6 hours.
+        /// </summary>
+        [Output("allocatedStorage")]
+        public Output<int> AllocatedStorage { get; private set; } = null!;
+
+        /// <summary>
         /// The ARN of the RDS read replica.
         /// </summary>
         [Output("arn")]
@@ -158,6 +165,12 @@ namespace DuploCloud.Pulumi
         public Output<string> Size { get; private set; } = null!;
 
         /// <summary>
+        /// This can only be set during an update; it will inherit the writer's value during creation.
+        /// </summary>
+        [Output("storageAutoscaling")]
+        public Output<Outputs.RdsReadReplicaStorageAutoscaling> StorageAutoscaling { get; private set; } = null!;
+
+        /// <summary>
         /// The GUID of the tenant that the RDS read replica will be created in.
         /// </summary>
         [Output("tenantId")]
@@ -217,6 +230,13 @@ namespace DuploCloud.Pulumi
     public sealed class RdsReadReplicaArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Required unless a `snapshot_id` is provided) The allocated storage in gigabytes. This can only be set during an update; it will inherit the writer's value during creation.
+        /// **Note:** Allocated storage can only be modified after every 6 hours.
+        /// </summary>
+        [Input("allocatedStorage")]
+        public Input<int>? AllocatedStorage { get; set; }
+
+        /// <summary>
         /// The AZ for the RDS instance.
         /// </summary>
         [Input("availabilityZone")]
@@ -272,6 +292,12 @@ namespace DuploCloud.Pulumi
         public Input<string> Size { get; set; } = null!;
 
         /// <summary>
+        /// This can only be set during an update; it will inherit the writer's value during creation.
+        /// </summary>
+        [Input("storageAutoscaling")]
+        public Input<Inputs.RdsReadReplicaStorageAutoscalingArgs>? StorageAutoscaling { get; set; }
+
+        /// <summary>
         /// The GUID of the tenant that the RDS read replica will be created in.
         /// </summary>
         [Input("tenantId", required: true)]
@@ -291,6 +317,13 @@ namespace DuploCloud.Pulumi
 
     public sealed class RdsReadReplicaState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// (Required unless a `snapshot_id` is provided) The allocated storage in gigabytes. This can only be set during an update; it will inherit the writer's value during creation.
+        /// **Note:** Allocated storage can only be modified after every 6 hours.
+        /// </summary>
+        [Input("allocatedStorage")]
+        public Input<int>? AllocatedStorage { get; set; }
+
         /// <summary>
         /// The ARN of the RDS read replica.
         /// </summary>
@@ -417,6 +450,12 @@ namespace DuploCloud.Pulumi
         /// </summary>
         [Input("size")]
         public Input<string>? Size { get; set; }
+
+        /// <summary>
+        /// This can only be set during an update; it will inherit the writer's value during creation.
+        /// </summary>
+        [Input("storageAutoscaling")]
+        public Input<Inputs.RdsReadReplicaStorageAutoscalingGetArgs>? StorageAutoscaling { get; set; }
 
         /// <summary>
         /// The GUID of the tenant that the RDS read replica will be created in.

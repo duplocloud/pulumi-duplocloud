@@ -13,6 +13,181 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRef struct {
+	// The key of the secret to select from. Must be a valid secret key.
+	Key *string `pulumi:"key"`
+	// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+	Name *string `pulumi:"name"`
+	// Specify whether the Secret or its key must be defined.
+	Optional *bool `pulumi:"optional"`
+}
+
+// GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefArgs and GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefInput` via:
+//
+//	GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefArgs{...}
+type GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput() GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput
+	ToGetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput
+}
+
+type GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefArgs struct {
+	// The key of the secret to select from. Must be a valid secret key.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Specify whether the Secret or its key must be defined.
+	Optional pulumi.BoolPtrInput `pulumi:"optional"`
+}
+
+func (GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRef)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefArgs) ToGetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput() GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefArgs) ToGetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput)
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefArgs) ToGetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput() GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefArgs) ToGetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput).ToGetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutputWithContext(ctx)
+}
+
+// GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefArgs, GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtr and GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrInput` via:
+//
+//	        GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput() GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput
+	ToGetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput
+}
+
+type getK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrType GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefArgs
+
+func GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtr(v *GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefArgs) GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrInput {
+	return (*getK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrType)(v)
+}
+
+func (*getK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRef)(nil)).Elem()
+}
+
+func (i *getK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrType) ToGetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput() GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutputWithContext(context.Background())
+}
+
+func (i *getK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrType) ToGetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRef)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput) ToGetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput() GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput) ToGetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput) ToGetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput() GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput {
+	return o.ToGetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutputWithContext(context.Background())
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput) ToGetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRef) *GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRef {
+		return &v
+	}).(GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput)
+}
+
+// The key of the secret to select from. Must be a valid secret key.
+func (o GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRef) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+func (o GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRef) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Specify whether the Secret or its key must be defined.
+func (o GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput) Optional() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRef) *bool { return v.Optional }).(pulumi.BoolPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRef)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput) ToGetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput() GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput) ToGetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput) Elem() GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRef) GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRef {
+		if v != nil {
+			return *v
+		}
+		var ret GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRef
+		return ret
+	}).(GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput)
+}
+
+// The key of the secret to select from. Must be a valid secret key.
+func (o GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRef) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+func (o GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRef) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specify whether the Secret or its key must be defined.
+func (o GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput) Optional() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRef) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Optional
+	}).(pulumi.BoolPtrOutput)
+}
+
 type GetK8sJobSpecTemplateSpecContainerLifecycle struct {
 	// post_start is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
 	PostStarts []GetK8sJobSpecTemplateSpecContainerLifecyclePostStart `pulumi:"postStarts"`
@@ -29459,6 +29634,8 @@ func (o GetTenantsTenantTagArrayOutput) Index(i pulumi.IntInput) GetTenantsTenan
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLifecycleInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerLifecycleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLifecyclePtrInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerLifecycleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLifecyclePostStartInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerLifecyclePostStartArgs{})
@@ -29856,6 +30033,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantsTenantPolicyArrayInput)(nil)).Elem(), GetTenantsTenantPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantsTenantTagInput)(nil)).Elem(), GetTenantsTenantTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantsTenantTagArrayInput)(nil)).Elem(), GetTenantsTenantTagArray{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput{})
 	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerLifecycleOutput{})
 	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerLifecyclePtrOutput{})
 	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerLifecyclePostStartOutput{})

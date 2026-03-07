@@ -18,11 +18,16 @@ import * as utilities from "./utilities";
  *     planId: "default",
  * });
  * const mycluster = new duplocloud.AwsKafkaCluster("mycluster", {
- *     tenantId: _this.tenantId,
+ *     tenantId: myapp.tenantId,
  *     name: "mycluster",
- *     kafkaVersion: "2.4.1.1",
+ *     kafkaVersion: "3.5.1",
  *     instanceType: "kafka.m5.large",
  *     storageSize: 20,
+ * });
+ * const serverless = new duplocloud.AwsKafkaCluster("serverless", {
+ *     tenantId: myapp.tenantId,
+ *     name: "serverlesscluster",
+ *     isServerless: true,
  * });
  * ```
  *
@@ -97,11 +102,15 @@ export class AwsKafkaCluster extends pulumi.CustomResource {
      * The Kafka node instance type to use.
      * See the [AWS documentation](https://docs.aws.amazon.com/msk/latest/developerguide/msk-create-cluster.html) for more information.
      */
-    public readonly instanceType!: pulumi.Output<string>;
+    public readonly instanceType!: pulumi.Output<string | undefined>;
+    /**
+     * Enable to make the cluster serverless.  When enabled, the `instanceType`, `storageSize`, `kafkaVersion`, `configurationArn`, `configurationRevision`, and `encryptionInTransit` parameters are not applicable. Defaults to `false`.
+     */
+    public readonly isServerless!: pulumi.Output<boolean | undefined>;
     /**
      * The version of the Kafka cluster.
      */
-    public readonly kafkaVersion!: pulumi.Output<string>;
+    public readonly kafkaVersion!: pulumi.Output<string | undefined>;
     /**
      * The short name of the Kafka cluster.  Duplo will add a prefix to the name.  You can retrieve the full name from the `fullname` attribute.
      */
@@ -129,7 +138,7 @@ export class AwsKafkaCluster extends pulumi.CustomResource {
     /**
      * The size of the Kafka storage, in gigabytes.
      */
-    public readonly storageSize!: pulumi.Output<number>;
+    public readonly storageSize!: pulumi.Output<number | undefined>;
     /**
      * The list of subnets that the cluster will be launched in.
      */
@@ -169,6 +178,7 @@ export class AwsKafkaCluster extends pulumi.CustomResource {
             resourceInputs["encryptionInTransit"] = state ? state.encryptionInTransit : undefined;
             resourceInputs["fullname"] = state ? state.fullname : undefined;
             resourceInputs["instanceType"] = state ? state.instanceType : undefined;
+            resourceInputs["isServerless"] = state ? state.isServerless : undefined;
             resourceInputs["kafkaVersion"] = state ? state.kafkaVersion : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["numberOfBrokerNodes"] = state ? state.numberOfBrokerNodes : undefined;
@@ -184,15 +194,6 @@ export class AwsKafkaCluster extends pulumi.CustomResource {
             resourceInputs["tlsZookeeperConnectString"] = state ? state.tlsZookeeperConnectString : undefined;
         } else {
             const args = argsOrState as AwsKafkaClusterArgs | undefined;
-            if ((!args || args.instanceType === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'instanceType'");
-            }
-            if ((!args || args.kafkaVersion === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'kafkaVersion'");
-            }
-            if ((!args || args.storageSize === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'storageSize'");
-            }
             if ((!args || args.tenantId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tenantId'");
             }
@@ -200,6 +201,7 @@ export class AwsKafkaCluster extends pulumi.CustomResource {
             resourceInputs["configurationRevision"] = args ? args.configurationRevision : undefined;
             resourceInputs["encryptionInTransit"] = args ? args.encryptionInTransit : undefined;
             resourceInputs["instanceType"] = args ? args.instanceType : undefined;
+            resourceInputs["isServerless"] = args ? args.isServerless : undefined;
             resourceInputs["kafkaVersion"] = args ? args.kafkaVersion : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["storageSize"] = args ? args.storageSize : undefined;
@@ -257,6 +259,10 @@ export interface AwsKafkaClusterState {
      * See the [AWS documentation](https://docs.aws.amazon.com/msk/latest/developerguide/msk-create-cluster.html) for more information.
      */
     instanceType?: pulumi.Input<string>;
+    /**
+     * Enable to make the cluster serverless.  When enabled, the `instanceType`, `storageSize`, `kafkaVersion`, `configurationArn`, `configurationRevision`, and `encryptionInTransit` parameters are not applicable. Defaults to `false`.
+     */
+    isServerless?: pulumi.Input<boolean>;
     /**
      * The version of the Kafka cluster.
      */
@@ -328,11 +334,15 @@ export interface AwsKafkaClusterArgs {
      * The Kafka node instance type to use.
      * See the [AWS documentation](https://docs.aws.amazon.com/msk/latest/developerguide/msk-create-cluster.html) for more information.
      */
-    instanceType: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string>;
+    /**
+     * Enable to make the cluster serverless.  When enabled, the `instanceType`, `storageSize`, `kafkaVersion`, `configurationArn`, `configurationRevision`, and `encryptionInTransit` parameters are not applicable. Defaults to `false`.
+     */
+    isServerless?: pulumi.Input<boolean>;
     /**
      * The version of the Kafka cluster.
      */
-    kafkaVersion: pulumi.Input<string>;
+    kafkaVersion?: pulumi.Input<string>;
     /**
      * The short name of the Kafka cluster.  Duplo will add a prefix to the name.  You can retrieve the full name from the `fullname` attribute.
      */
@@ -340,7 +350,7 @@ export interface AwsKafkaClusterArgs {
     /**
      * The size of the Kafka storage, in gigabytes.
      */
-    storageSize: pulumi.Input<number>;
+    storageSize?: pulumi.Input<number>;
     /**
      * The list of subnets that the cluster will be launched in.
      */

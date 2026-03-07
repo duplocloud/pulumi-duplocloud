@@ -577,7 +577,8 @@ namespace DuploCloud.Pulumi
     public partial class RdsInstance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// (Required unless a `snapshot_id` is provided) The allocated storage in gigabytes.
+        /// (Required unless a `snapshot_id` is provided) The allocated storage in gigabytes. **Note:** Allocated storage can only
+        /// be modified after every 6 hours.
         /// </summary>
         [Output("allocatedStorage")]
         public Output<int> AllocatedStorage { get; private set; } = null!;
@@ -589,7 +590,8 @@ namespace DuploCloud.Pulumi
         public Output<string> Arn { get; private set; } = null!;
 
         /// <summary>
-        /// Enable or disable auto minor version upgrade
+        /// Enable or disable auto minor version upgrade. This attribute is ignored for DocumentDB (engine 13) — AWS manages minor
+        /// version upgrades for DocumentDB and this setting has no effect.
         /// </summary>
         [Output("autoMinorVersionUpgrade")]
         public Output<bool> AutoMinorVersionUpgrade { get; private set; } = null!;
@@ -874,13 +876,15 @@ namespace DuploCloud.Pulumi
     public sealed class RdsInstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Required unless a `snapshot_id` is provided) The allocated storage in gigabytes.
+        /// (Required unless a `snapshot_id` is provided) The allocated storage in gigabytes. **Note:** Allocated storage can only
+        /// be modified after every 6 hours.
         /// </summary>
         [Input("allocatedStorage")]
         public Input<int>? AllocatedStorage { get; set; }
 
         /// <summary>
-        /// Enable or disable auto minor version upgrade
+        /// Enable or disable auto minor version upgrade. This attribute is ignored for DocumentDB (engine 13) — AWS manages minor
+        /// version upgrades for DocumentDB and this setting has no effect.
         /// </summary>
         [Input("autoMinorVersionUpgrade")]
         public Input<bool>? AutoMinorVersionUpgrade { get; set; }
@@ -1096,7 +1100,8 @@ namespace DuploCloud.Pulumi
     public sealed class RdsInstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Required unless a `snapshot_id` is provided) The allocated storage in gigabytes.
+        /// (Required unless a `snapshot_id` is provided) The allocated storage in gigabytes. **Note:** Allocated storage can only
+        /// be modified after every 6 hours.
         /// </summary>
         [Input("allocatedStorage")]
         public Input<int>? AllocatedStorage { get; set; }
@@ -1108,7 +1113,8 @@ namespace DuploCloud.Pulumi
         public Input<string>? Arn { get; set; }
 
         /// <summary>
-        /// Enable or disable auto minor version upgrade
+        /// Enable or disable auto minor version upgrade. This attribute is ignored for DocumentDB (engine 13) — AWS manages minor
+        /// version upgrades for DocumentDB and this setting has no effect.
         /// </summary>
         [Input("autoMinorVersionUpgrade")]
         public Input<bool>? AutoMinorVersionUpgrade { get; set; }

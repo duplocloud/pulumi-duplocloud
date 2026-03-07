@@ -32,6 +32,37 @@ import * as utilities from "./utilities";
  *     requireSsl: true,
  *     useLatestTlsCipher: true,
  * });
+ * const essample = new duplocloud.AwsElasticsearch("essample", {
+ *     tenantId: myapp.tenantId,
+ *     name: "essamp",
+ *     selectedZone: 1,
+ *     elasticsearchVersion: "OpenSearch_2.3",
+ *     ebsOptions: [{
+ *         ebsEnabled: true,
+ *         volumeType: "gp2",
+ *         volumeSize: 10,
+ *     }],
+ * });
+ * const essample2 = new duplocloud.AwsElasticsearch("essample2", {
+ *     tenantId: myapp.tenantId,
+ *     name: "essamp2",
+ *     selectedZone: 1,
+ *     elasticsearchVersion: "OpenSearch_3.3",
+ *     clusterConfig: {
+ *         instanceType: "or2.medium.search",
+ *         dedicatedMasterType: "or2.medium.search",
+ *         dedicatedMasterCount: 3,
+ *     },
+ *     ebsOptions: [{
+ *         ebsEnabled: true,
+ *         volumeType: "gp3",
+ *         volumeSize: 100,
+ *         iops: 3000,
+ *     }],
+ *     encryptAtRest: {
+ *         kmsKeyId: "<kms-arn>",
+ *     },
+ * });
  * ```
  *
  * ## Import
@@ -91,9 +122,12 @@ export class AwsElasticsearch extends pulumi.CustomResource {
      * The full name of the ElasticSearch instance.
      */
     public /*out*/ readonly domainName!: pulumi.Output<string>;
-    public /*out*/ readonly ebsOptions!: pulumi.Output<outputs.AwsElasticsearchEbsOption[]>;
     /**
-     * The version of the ElasticSearch instance. Defaults to `7.9`.
+     * The EBS storage options for the ElasticSearch instance.
+     */
+    public readonly ebsOptions!: pulumi.Output<outputs.AwsElasticsearchEbsOption[]>;
+    /**
+     * The version of the ElasticSearch/OpenSearch instance. Accepts the short form (e.g. `7.9`) or the full prefixed form (e.g. `Elasticsearch_7.9`, `OpenSearch_2.15`). Defaults to `Elasticsearch_7.9`.
      */
     public readonly elasticsearchVersion!: pulumi.Output<string | undefined>;
     /**
@@ -122,9 +156,11 @@ export class AwsElasticsearch extends pulumi.CustomResource {
     public readonly selectedZone!: pulumi.Output<number>;
     public /*out*/ readonly snapshotOptions!: pulumi.Output<outputs.AwsElasticsearchSnapshotOption[]>;
     /**
-     * The storage volume size, in GB, for the ElasticSearch instance.
+     * The storage volume size, in GB, for the ElasticSearch instance. storage*size has been deprecated, use ebs*options.volume_size
+     *
+     * @deprecated storage_size has been deprecated, use ebs_options.volume_size
      */
-    public readonly storageSize!: pulumi.Output<number | undefined>;
+    public readonly storageSize!: pulumi.Output<number>;
     /**
      * The GUID of the tenant that the ElasticSearch instance will be created in.
      */
@@ -173,6 +209,7 @@ export class AwsElasticsearch extends pulumi.CustomResource {
                 throw new Error("Missing required property 'tenantId'");
             }
             resourceInputs["clusterConfig"] = args ? args.clusterConfig : undefined;
+            resourceInputs["ebsOptions"] = args ? args.ebsOptions : undefined;
             resourceInputs["elasticsearchVersion"] = args ? args.elasticsearchVersion : undefined;
             resourceInputs["enableNodeToNodeEncryption"] = args ? args.enableNodeToNodeEncryption : undefined;
             resourceInputs["encryptAtRest"] = args ? args.encryptAtRest : undefined;
@@ -188,7 +225,6 @@ export class AwsElasticsearch extends pulumi.CustomResource {
             resourceInputs["arn"] = undefined /*out*/;
             resourceInputs["domainId"] = undefined /*out*/;
             resourceInputs["domainName"] = undefined /*out*/;
-            resourceInputs["ebsOptions"] = undefined /*out*/;
             resourceInputs["endpoints"] = undefined /*out*/;
             resourceInputs["snapshotOptions"] = undefined /*out*/;
         }
@@ -216,9 +252,12 @@ export interface AwsElasticsearchState {
      * The full name of the ElasticSearch instance.
      */
     domainName?: pulumi.Input<string>;
+    /**
+     * The EBS storage options for the ElasticSearch instance.
+     */
     ebsOptions?: pulumi.Input<pulumi.Input<inputs.AwsElasticsearchEbsOption>[]>;
     /**
-     * The version of the ElasticSearch instance. Defaults to `7.9`.
+     * The version of the ElasticSearch/OpenSearch instance. Accepts the short form (e.g. `7.9`) or the full prefixed form (e.g. `Elasticsearch_7.9`, `OpenSearch_2.15`). Defaults to `Elasticsearch_7.9`.
      */
     elasticsearchVersion?: pulumi.Input<string>;
     /**
@@ -247,7 +286,9 @@ export interface AwsElasticsearchState {
     selectedZone?: pulumi.Input<number>;
     snapshotOptions?: pulumi.Input<pulumi.Input<inputs.AwsElasticsearchSnapshotOption>[]>;
     /**
-     * The storage volume size, in GB, for the ElasticSearch instance.
+     * The storage volume size, in GB, for the ElasticSearch instance. storage*size has been deprecated, use ebs*options.volume_size
+     *
+     * @deprecated storage_size has been deprecated, use ebs_options.volume_size
      */
     storageSize?: pulumi.Input<number>;
     /**
@@ -267,7 +308,11 @@ export interface AwsElasticsearchState {
 export interface AwsElasticsearchArgs {
     clusterConfig?: pulumi.Input<inputs.AwsElasticsearchClusterConfig>;
     /**
-     * The version of the ElasticSearch instance. Defaults to `7.9`.
+     * The EBS storage options for the ElasticSearch instance.
+     */
+    ebsOptions?: pulumi.Input<pulumi.Input<inputs.AwsElasticsearchEbsOption>[]>;
+    /**
+     * The version of the ElasticSearch/OpenSearch instance. Accepts the short form (e.g. `7.9`) or the full prefixed form (e.g. `Elasticsearch_7.9`, `OpenSearch_2.15`). Defaults to `Elasticsearch_7.9`.
      */
     elasticsearchVersion?: pulumi.Input<string>;
     /**
@@ -291,7 +336,9 @@ export interface AwsElasticsearchArgs {
      */
     selectedZone?: pulumi.Input<number>;
     /**
-     * The storage volume size, in GB, for the ElasticSearch instance.
+     * The storage volume size, in GB, for the ElasticSearch instance. storage*size has been deprecated, use ebs*options.volume_size
+     *
+     * @deprecated storage_size has been deprecated, use ebs_options.volume_size
      */
     storageSize?: pulumi.Input<number>;
     /**

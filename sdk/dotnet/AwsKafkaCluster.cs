@@ -31,11 +31,18 @@ namespace DuploCloud.Pulumi
     /// 
     ///     var mycluster = new Pulumi.AwsKafkaCluster("mycluster", new()
     ///     {
-    ///         TenantId = @this.TenantId,
+    ///         TenantId = myapp.TenantId,
     ///         Name = "mycluster",
-    ///         KafkaVersion = "2.4.1.1",
+    ///         KafkaVersion = "3.5.1",
     ///         InstanceType = "kafka.m5.large",
     ///         StorageSize = 20,
+    ///     });
+    /// 
+    ///     var serverless = new Pulumi.AwsKafkaCluster("serverless", new()
+    ///     {
+    ///         TenantId = myapp.TenantId,
+    ///         Name = "serverlesscluster",
+    ///         IsServerless = true,
     ///     });
     /// 
     /// });
@@ -102,13 +109,19 @@ namespace DuploCloud.Pulumi
         /// See the [AWS documentation](https://docs.aws.amazon.com/msk/latest/developerguide/msk-create-cluster.html) for more information.
         /// </summary>
         [Output("instanceType")]
-        public Output<string> InstanceType { get; private set; } = null!;
+        public Output<string?> InstanceType { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable to make the cluster serverless.  When enabled, the `instance_type`, `storage_size`, `kafka_version`, `configuration_arn`, `configuration_revision`, and `encryption_in_transit` parameters are not applicable. Defaults to `false`.
+        /// </summary>
+        [Output("isServerless")]
+        public Output<bool?> IsServerless { get; private set; } = null!;
 
         /// <summary>
         /// The version of the Kafka cluster.
         /// </summary>
         [Output("kafkaVersion")]
-        public Output<string> KafkaVersion { get; private set; } = null!;
+        public Output<string?> KafkaVersion { get; private set; } = null!;
 
         /// <summary>
         /// The short name of the Kafka cluster.  Duplo will add a prefix to the name.  You can retrieve the full name from the `fullname` attribute.
@@ -150,7 +163,7 @@ namespace DuploCloud.Pulumi
         /// The size of the Kafka storage, in gigabytes.
         /// </summary>
         [Output("storageSize")]
-        public Output<int> StorageSize { get; private set; } = null!;
+        public Output<int?> StorageSize { get; private set; } = null!;
 
         /// <summary>
         /// The list of subnets that the cluster will be launched in.
@@ -248,14 +261,20 @@ namespace DuploCloud.Pulumi
         /// The Kafka node instance type to use.
         /// See the [AWS documentation](https://docs.aws.amazon.com/msk/latest/developerguide/msk-create-cluster.html) for more information.
         /// </summary>
-        [Input("instanceType", required: true)]
-        public Input<string> InstanceType { get; set; } = null!;
+        [Input("instanceType")]
+        public Input<string>? InstanceType { get; set; }
+
+        /// <summary>
+        /// Enable to make the cluster serverless.  When enabled, the `instance_type`, `storage_size`, `kafka_version`, `configuration_arn`, `configuration_revision`, and `encryption_in_transit` parameters are not applicable. Defaults to `false`.
+        /// </summary>
+        [Input("isServerless")]
+        public Input<bool>? IsServerless { get; set; }
 
         /// <summary>
         /// The version of the Kafka cluster.
         /// </summary>
-        [Input("kafkaVersion", required: true)]
-        public Input<string> KafkaVersion { get; set; } = null!;
+        [Input("kafkaVersion")]
+        public Input<string>? KafkaVersion { get; set; }
 
         /// <summary>
         /// The short name of the Kafka cluster.  Duplo will add a prefix to the name.  You can retrieve the full name from the `fullname` attribute.
@@ -266,8 +285,8 @@ namespace DuploCloud.Pulumi
         /// <summary>
         /// The size of the Kafka storage, in gigabytes.
         /// </summary>
-        [Input("storageSize", required: true)]
-        public Input<int> StorageSize { get; set; } = null!;
+        [Input("storageSize")]
+        public Input<int>? StorageSize { get; set; }
 
         [Input("subnets")]
         private InputList<string>? _subnets;
@@ -340,6 +359,12 @@ namespace DuploCloud.Pulumi
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
+
+        /// <summary>
+        /// Enable to make the cluster serverless.  When enabled, the `instance_type`, `storage_size`, `kafka_version`, `configuration_arn`, `configuration_revision`, and `encryption_in_transit` parameters are not applicable. Defaults to `false`.
+        /// </summary>
+        [Input("isServerless")]
+        public Input<bool>? IsServerless { get; set; }
 
         /// <summary>
         /// The version of the Kafka cluster.
