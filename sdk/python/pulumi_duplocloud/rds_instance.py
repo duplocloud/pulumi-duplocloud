@@ -60,8 +60,10 @@ class RdsInstanceArgs:
                types](https://aws.amazon.com/rds/instance-types/).Size should be set as db.serverless if rds instamce is created as
                serverless
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the RDS instance will be created in.
-        :param pulumi.Input[int] allocated_storage: (Required unless a `snapshot_id` is provided) The allocated storage in gigabytes.
-        :param pulumi.Input[bool] auto_minor_version_upgrade: Enable or disable auto minor version upgrade
+        :param pulumi.Input[int] allocated_storage: (Required unless a `snapshot_id` is provided) The allocated storage in gigabytes. **Note:** Allocated storage can only
+               be modified after every 6 hours.
+        :param pulumi.Input[bool] auto_minor_version_upgrade: Enable or disable auto minor version upgrade. This attribute is ignored for DocumentDB (engine 13) — AWS manages minor
+               version upgrades for DocumentDB and this setting has no effect.
         :param pulumi.Input[str] availability_zone: Specify a valid Availability Zone for the RDS primary instance (when Multi-AZ is disabled) or for the Aurora writer
                instance. e.g. us-west-2a
         :param pulumi.Input[int] backup_retention_period: Specifies backup retention period between 1 and 35 day(s). Default backup retention period is 1 day.
@@ -212,7 +214,8 @@ class RdsInstanceArgs:
     @pulumi.getter(name="allocatedStorage")
     def allocated_storage(self) -> Optional[pulumi.Input[int]]:
         """
-        (Required unless a `snapshot_id` is provided) The allocated storage in gigabytes.
+        (Required unless a `snapshot_id` is provided) The allocated storage in gigabytes. **Note:** Allocated storage can only
+        be modified after every 6 hours.
         """
         return pulumi.get(self, "allocated_storage")
 
@@ -224,7 +227,8 @@ class RdsInstanceArgs:
     @pulumi.getter(name="autoMinorVersionUpgrade")
     def auto_minor_version_upgrade(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable or disable auto minor version upgrade
+        Enable or disable auto minor version upgrade. This attribute is ignored for DocumentDB (engine 13) — AWS manages minor
+        version upgrades for DocumentDB and this setting has no effect.
         """
         return pulumi.get(self, "auto_minor_version_upgrade")
 
@@ -595,9 +599,11 @@ class _RdsInstanceState:
                  v2_scaling_configuration: Optional[pulumi.Input['RdsInstanceV2ScalingConfigurationArgs']] = None):
         """
         Input properties used for looking up and filtering RdsInstance resources.
-        :param pulumi.Input[int] allocated_storage: (Required unless a `snapshot_id` is provided) The allocated storage in gigabytes.
+        :param pulumi.Input[int] allocated_storage: (Required unless a `snapshot_id` is provided) The allocated storage in gigabytes. **Note:** Allocated storage can only
+               be modified after every 6 hours.
         :param pulumi.Input[str] arn: The ARN of the RDS instance.
-        :param pulumi.Input[bool] auto_minor_version_upgrade: Enable or disable auto minor version upgrade
+        :param pulumi.Input[bool] auto_minor_version_upgrade: Enable or disable auto minor version upgrade. This attribute is ignored for DocumentDB (engine 13) — AWS manages minor
+               version upgrades for DocumentDB and this setting has no effect.
         :param pulumi.Input[str] availability_zone: Specify a valid Availability Zone for the RDS primary instance (when Multi-AZ is disabled) or for the Aurora writer
                instance. e.g. us-west-2a
         :param pulumi.Input[int] backup_retention_period: Specifies backup retention period between 1 and 35 day(s). Default backup retention period is 1 day.
@@ -738,7 +744,8 @@ class _RdsInstanceState:
     @pulumi.getter(name="allocatedStorage")
     def allocated_storage(self) -> Optional[pulumi.Input[int]]:
         """
-        (Required unless a `snapshot_id` is provided) The allocated storage in gigabytes.
+        (Required unless a `snapshot_id` is provided) The allocated storage in gigabytes. **Note:** Allocated storage can only
+        be modified after every 6 hours.
         """
         return pulumi.get(self, "allocated_storage")
 
@@ -762,7 +769,8 @@ class _RdsInstanceState:
     @pulumi.getter(name="autoMinorVersionUpgrade")
     def auto_minor_version_upgrade(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable or disable auto minor version upgrade
+        Enable or disable auto minor version upgrade. This attribute is ignored for DocumentDB (engine 13) — AWS manages minor
+        version upgrades for DocumentDB and this setting has no effect.
         """
         return pulumi.get(self, "auto_minor_version_upgrade")
 
@@ -1621,8 +1629,10 @@ class RdsInstance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] allocated_storage: (Required unless a `snapshot_id` is provided) The allocated storage in gigabytes.
-        :param pulumi.Input[bool] auto_minor_version_upgrade: Enable or disable auto minor version upgrade
+        :param pulumi.Input[int] allocated_storage: (Required unless a `snapshot_id` is provided) The allocated storage in gigabytes. **Note:** Allocated storage can only
+               be modified after every 6 hours.
+        :param pulumi.Input[bool] auto_minor_version_upgrade: Enable or disable auto minor version upgrade. This attribute is ignored for DocumentDB (engine 13) — AWS manages minor
+               version upgrades for DocumentDB and this setting has no effect.
         :param pulumi.Input[str] availability_zone: Specify a valid Availability Zone for the RDS primary instance (when Multi-AZ is disabled) or for the Aurora writer
                instance. e.g. us-west-2a
         :param pulumi.Input[int] backup_retention_period: Specifies backup retention period between 1 and 35 day(s). Default backup retention period is 1 day.
@@ -2217,9 +2227,11 @@ class RdsInstance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] allocated_storage: (Required unless a `snapshot_id` is provided) The allocated storage in gigabytes.
+        :param pulumi.Input[int] allocated_storage: (Required unless a `snapshot_id` is provided) The allocated storage in gigabytes. **Note:** Allocated storage can only
+               be modified after every 6 hours.
         :param pulumi.Input[str] arn: The ARN of the RDS instance.
-        :param pulumi.Input[bool] auto_minor_version_upgrade: Enable or disable auto minor version upgrade
+        :param pulumi.Input[bool] auto_minor_version_upgrade: Enable or disable auto minor version upgrade. This attribute is ignored for DocumentDB (engine 13) — AWS manages minor
+               version upgrades for DocumentDB and this setting has no effect.
         :param pulumi.Input[str] availability_zone: Specify a valid Availability Zone for the RDS primary instance (when Multi-AZ is disabled) or for the Aurora writer
                instance. e.g. us-west-2a
         :param pulumi.Input[int] backup_retention_period: Specifies backup retention period between 1 and 35 day(s). Default backup retention period is 1 day.
@@ -2328,7 +2340,8 @@ class RdsInstance(pulumi.CustomResource):
     @pulumi.getter(name="allocatedStorage")
     def allocated_storage(self) -> pulumi.Output[int]:
         """
-        (Required unless a `snapshot_id` is provided) The allocated storage in gigabytes.
+        (Required unless a `snapshot_id` is provided) The allocated storage in gigabytes. **Note:** Allocated storage can only
+        be modified after every 6 hours.
         """
         return pulumi.get(self, "allocated_storage")
 
@@ -2344,7 +2357,8 @@ class RdsInstance(pulumi.CustomResource):
     @pulumi.getter(name="autoMinorVersionUpgrade")
     def auto_minor_version_upgrade(self) -> pulumi.Output[bool]:
         """
-        Enable or disable auto minor version upgrade
+        Enable or disable auto minor version upgrade. This attribute is ignored for DocumentDB (engine 13) — AWS manages minor
+        version upgrades for DocumentDB and this setting has no effect.
         """
         return pulumi.get(self, "auto_minor_version_upgrade")
 

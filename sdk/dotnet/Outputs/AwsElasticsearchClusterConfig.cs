@@ -24,7 +24,7 @@ namespace DuploCloud.Pulumi.Outputs
         /// </summary>
         public readonly bool? DedicatedMasterEnabled;
         /// <summary>
-        /// Defaults to `t2.small.elasticsearch`.
+        /// Defaults to `t2.small.search`.
         /// </summary>
         public readonly string? DedicatedMasterType;
         /// <summary>
@@ -32,7 +32,7 @@ namespace DuploCloud.Pulumi.Outputs
         /// </summary>
         public readonly int? InstanceCount;
         /// <summary>
-        /// Defaults to `t2.small.elasticsearch`.
+        /// Supported instance types for elasticsearch domain https://docs.aws.amazon.com/opensearch-service/latest/developerguide/supported-instance-types.html Defaults to `t2.small.search`.
         /// </summary>
         public readonly string? InstanceType;
         public readonly bool? MultiAzWithStandbyEnabled;

@@ -46,6 +46,51 @@ namespace DuploCloud.Pulumi
     ///         UseLatestTlsCipher = true,
     ///     });
     /// 
+    ///     var essample = new Pulumi.AwsElasticsearch("essample", new()
+    ///     {
+    ///         TenantId = myapp.TenantId,
+    ///         Name = "essamp",
+    ///         SelectedZone = 1,
+    ///         ElasticsearchVersion = "OpenSearch_2.3",
+    ///         EbsOptions = new[]
+    ///         {
+    ///             new Pulumi.Inputs.AwsElasticsearchEbsOptionArgs
+    ///             {
+    ///                 EbsEnabled = true,
+    ///                 VolumeType = "gp2",
+    ///                 VolumeSize = 10,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var essample2 = new Pulumi.AwsElasticsearch("essample2", new()
+    ///     {
+    ///         TenantId = myapp.TenantId,
+    ///         Name = "essamp2",
+    ///         SelectedZone = 1,
+    ///         ElasticsearchVersion = "OpenSearch_3.3",
+    ///         ClusterConfig = new Pulumi.Inputs.AwsElasticsearchClusterConfigArgs
+    ///         {
+    ///             InstanceType = "or2.medium.search",
+    ///             DedicatedMasterType = "or2.medium.search",
+    ///             DedicatedMasterCount = 3,
+    ///         },
+    ///         EbsOptions = new[]
+    ///         {
+    ///             new Pulumi.Inputs.AwsElasticsearchEbsOptionArgs
+    ///             {
+    ///                 EbsEnabled = true,
+    ///                 VolumeType = "gp3",
+    ///                 VolumeSize = 100,
+    ///                 Iops = 3000,
+    ///             },
+    ///         },
+    ///         EncryptAtRest = new Pulumi.Inputs.AwsElasticsearchEncryptAtRestArgs
+    ///         {
+    ///             KmsKeyId = "&lt;kms-arn&gt;",
+    ///         },
+    ///     });
+    /// 
     /// });
     /// ```
     /// 
@@ -93,11 +138,14 @@ namespace DuploCloud.Pulumi
         [Output("domainName")]
         public Output<string> DomainName { get; private set; } = null!;
 
+        /// <summary>
+        /// The EBS storage options for the ElasticSearch instance.
+        /// </summary>
         [Output("ebsOptions")]
         public Output<ImmutableArray<Outputs.AwsElasticsearchEbsOption>> EbsOptions { get; private set; } = null!;
 
         /// <summary>
-        /// The version of the ElasticSearch instance. Defaults to `7.9`.
+        /// The version of the ElasticSearch/OpenSearch instance. Accepts the short form (e.g. `7.9`) or the full prefixed form (e.g. `Elasticsearch_7.9`, `OpenSearch_2.15`). Defaults to `Elasticsearch_7.9`.
         /// </summary>
         [Output("elasticsearchVersion")]
         public Output<string?> ElasticsearchVersion { get; private set; } = null!;
@@ -142,10 +190,10 @@ namespace DuploCloud.Pulumi
         public Output<ImmutableArray<Outputs.AwsElasticsearchSnapshotOption>> SnapshotOptions { get; private set; } = null!;
 
         /// <summary>
-        /// The storage volume size, in GB, for the ElasticSearch instance.
+        /// The storage volume size, in GB, for the ElasticSearch instance. storage*size has been deprecated, use ebs*options.volume_size
         /// </summary>
         [Output("storageSize")]
-        public Output<int?> StorageSize { get; private set; } = null!;
+        public Output<int> StorageSize { get; private set; } = null!;
 
         /// <summary>
         /// The GUID of the tenant that the ElasticSearch instance will be created in.
@@ -212,8 +260,20 @@ namespace DuploCloud.Pulumi
         [Input("clusterConfig")]
         public Input<Inputs.AwsElasticsearchClusterConfigArgs>? ClusterConfig { get; set; }
 
+        [Input("ebsOptions")]
+        private InputList<Inputs.AwsElasticsearchEbsOptionArgs>? _ebsOptions;
+
         /// <summary>
-        /// The version of the ElasticSearch instance. Defaults to `7.9`.
+        /// The EBS storage options for the ElasticSearch instance.
+        /// </summary>
+        public InputList<Inputs.AwsElasticsearchEbsOptionArgs> EbsOptions
+        {
+            get => _ebsOptions ?? (_ebsOptions = new InputList<Inputs.AwsElasticsearchEbsOptionArgs>());
+            set => _ebsOptions = value;
+        }
+
+        /// <summary>
+        /// The version of the ElasticSearch/OpenSearch instance. Accepts the short form (e.g. `7.9`) or the full prefixed form (e.g. `Elasticsearch_7.9`, `OpenSearch_2.15`). Defaults to `Elasticsearch_7.9`.
         /// </summary>
         [Input("elasticsearchVersion")]
         public Input<string>? ElasticsearchVersion { get; set; }
@@ -249,7 +309,7 @@ namespace DuploCloud.Pulumi
         public Input<int>? SelectedZone { get; set; }
 
         /// <summary>
-        /// The storage volume size, in GB, for the ElasticSearch instance.
+        /// The storage volume size, in GB, for the ElasticSearch instance. storage*size has been deprecated, use ebs*options.volume_size
         /// </summary>
         [Input("storageSize")]
         public Input<int>? StorageSize { get; set; }
@@ -316,6 +376,10 @@ namespace DuploCloud.Pulumi
 
         [Input("ebsOptions")]
         private InputList<Inputs.AwsElasticsearchEbsOptionGetArgs>? _ebsOptions;
+
+        /// <summary>
+        /// The EBS storage options for the ElasticSearch instance.
+        /// </summary>
         public InputList<Inputs.AwsElasticsearchEbsOptionGetArgs> EbsOptions
         {
             get => _ebsOptions ?? (_ebsOptions = new InputList<Inputs.AwsElasticsearchEbsOptionGetArgs>());
@@ -323,7 +387,7 @@ namespace DuploCloud.Pulumi
         }
 
         /// <summary>
-        /// The version of the ElasticSearch instance. Defaults to `7.9`.
+        /// The version of the ElasticSearch/OpenSearch instance. Accepts the short form (e.g. `7.9`) or the full prefixed form (e.g. `Elasticsearch_7.9`, `OpenSearch_2.15`). Defaults to `Elasticsearch_7.9`.
         /// </summary>
         [Input("elasticsearchVersion")]
         public Input<string>? ElasticsearchVersion { get; set; }
@@ -379,7 +443,7 @@ namespace DuploCloud.Pulumi
         }
 
         /// <summary>
-        /// The storage volume size, in GB, for the ElasticSearch instance.
+        /// The storage volume size, in GB, for the ElasticSearch instance. storage*size has been deprecated, use ebs*options.volume_size
         /// </summary>
         [Input("storageSize")]
         public Input<int>? StorageSize { get; set; }

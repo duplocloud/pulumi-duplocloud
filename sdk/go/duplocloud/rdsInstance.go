@@ -684,11 +684,13 @@ import (
 type RdsInstance struct {
 	pulumi.CustomResourceState
 
-	// (Required unless a `snapshotId` is provided) The allocated storage in gigabytes.
+	// (Required unless a `snapshotId` is provided) The allocated storage in gigabytes. **Note:** Allocated storage can only be
+	// modified after every 6 hours.
 	AllocatedStorage pulumi.IntOutput `pulumi:"allocatedStorage"`
 	// The ARN of the RDS instance.
 	Arn pulumi.StringOutput `pulumi:"arn"`
-	// Enable or disable auto minor version upgrade
+	// Enable or disable auto minor version upgrade. This attribute is ignored for DocumentDB (engine 13) — AWS manages minor
+	// version upgrades for DocumentDB and this setting has no effect.
 	AutoMinorVersionUpgrade pulumi.BoolOutput `pulumi:"autoMinorVersionUpgrade"`
 	// Specify a valid Availability Zone for the RDS primary instance (when Multi-AZ is disabled) or for the Aurora writer
 	// instance. e.g. us-west-2a
@@ -832,11 +834,13 @@ func GetRdsInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RdsInstance resources.
 type rdsInstanceState struct {
-	// (Required unless a `snapshotId` is provided) The allocated storage in gigabytes.
+	// (Required unless a `snapshotId` is provided) The allocated storage in gigabytes. **Note:** Allocated storage can only be
+	// modified after every 6 hours.
 	AllocatedStorage *int `pulumi:"allocatedStorage"`
 	// The ARN of the RDS instance.
 	Arn *string `pulumi:"arn"`
-	// Enable or disable auto minor version upgrade
+	// Enable or disable auto minor version upgrade. This attribute is ignored for DocumentDB (engine 13) — AWS manages minor
+	// version upgrades for DocumentDB and this setting has no effect.
 	AutoMinorVersionUpgrade *bool `pulumi:"autoMinorVersionUpgrade"`
 	// Specify a valid Availability Zone for the RDS primary instance (when Multi-AZ is disabled) or for the Aurora writer
 	// instance. e.g. us-west-2a
@@ -935,11 +939,13 @@ type rdsInstanceState struct {
 }
 
 type RdsInstanceState struct {
-	// (Required unless a `snapshotId` is provided) The allocated storage in gigabytes.
+	// (Required unless a `snapshotId` is provided) The allocated storage in gigabytes. **Note:** Allocated storage can only be
+	// modified after every 6 hours.
 	AllocatedStorage pulumi.IntPtrInput
 	// The ARN of the RDS instance.
 	Arn pulumi.StringPtrInput
-	// Enable or disable auto minor version upgrade
+	// Enable or disable auto minor version upgrade. This attribute is ignored for DocumentDB (engine 13) — AWS manages minor
+	// version upgrades for DocumentDB and this setting has no effect.
 	AutoMinorVersionUpgrade pulumi.BoolPtrInput
 	// Specify a valid Availability Zone for the RDS primary instance (when Multi-AZ is disabled) or for the Aurora writer
 	// instance. e.g. us-west-2a
@@ -1042,9 +1048,11 @@ func (RdsInstanceState) ElementType() reflect.Type {
 }
 
 type rdsInstanceArgs struct {
-	// (Required unless a `snapshotId` is provided) The allocated storage in gigabytes.
+	// (Required unless a `snapshotId` is provided) The allocated storage in gigabytes. **Note:** Allocated storage can only be
+	// modified after every 6 hours.
 	AllocatedStorage *int `pulumi:"allocatedStorage"`
-	// Enable or disable auto minor version upgrade
+	// Enable or disable auto minor version upgrade. This attribute is ignored for DocumentDB (engine 13) — AWS manages minor
+	// version upgrades for DocumentDB and this setting has no effect.
 	AutoMinorVersionUpgrade *bool `pulumi:"autoMinorVersionUpgrade"`
 	// Specify a valid Availability Zone for the RDS primary instance (when Multi-AZ is disabled) or for the Aurora writer
 	// instance. e.g. us-west-2a
@@ -1132,9 +1140,11 @@ type rdsInstanceArgs struct {
 
 // The set of arguments for constructing a RdsInstance resource.
 type RdsInstanceArgs struct {
-	// (Required unless a `snapshotId` is provided) The allocated storage in gigabytes.
+	// (Required unless a `snapshotId` is provided) The allocated storage in gigabytes. **Note:** Allocated storage can only be
+	// modified after every 6 hours.
 	AllocatedStorage pulumi.IntPtrInput
-	// Enable or disable auto minor version upgrade
+	// Enable or disable auto minor version upgrade. This attribute is ignored for DocumentDB (engine 13) — AWS manages minor
+	// version upgrades for DocumentDB and this setting has no effect.
 	AutoMinorVersionUpgrade pulumi.BoolPtrInput
 	// Specify a valid Availability Zone for the RDS primary instance (when Multi-AZ is disabled) or for the Aurora writer
 	// instance. e.g. us-west-2a
@@ -1307,7 +1317,8 @@ func (o RdsInstanceOutput) ToRdsInstanceOutputWithContext(ctx context.Context) R
 	return o
 }
 
-// (Required unless a `snapshotId` is provided) The allocated storage in gigabytes.
+// (Required unless a `snapshotId` is provided) The allocated storage in gigabytes. **Note:** Allocated storage can only be
+// modified after every 6 hours.
 func (o RdsInstanceOutput) AllocatedStorage() pulumi.IntOutput {
 	return o.ApplyT(func(v *RdsInstance) pulumi.IntOutput { return v.AllocatedStorage }).(pulumi.IntOutput)
 }
@@ -1317,7 +1328,8 @@ func (o RdsInstanceOutput) Arn() pulumi.StringOutput {
 	return o.ApplyT(func(v *RdsInstance) pulumi.StringOutput { return v.Arn }).(pulumi.StringOutput)
 }
 
-// Enable or disable auto minor version upgrade
+// Enable or disable auto minor version upgrade. This attribute is ignored for DocumentDB (engine 13) — AWS manages minor
+// version upgrades for DocumentDB and this setting has no effect.
 func (o RdsInstanceOutput) AutoMinorVersionUpgrade() pulumi.BoolOutput {
 	return o.ApplyT(func(v *RdsInstance) pulumi.BoolOutput { return v.AutoMinorVersionUpgrade }).(pulumi.BoolOutput)
 }

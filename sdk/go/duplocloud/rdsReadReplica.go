@@ -30,6 +30,9 @@ import (
 type RdsReadReplica struct {
 	pulumi.CustomResourceState
 
+	// (Required unless a `snapshotId` is provided) The allocated storage in gigabytes. This can only be set during an update; it will inherit the writer's value during creation.
+	// **Note:** Allocated storage can only be modified after every 6 hours.
+	AllocatedStorage pulumi.IntOutput `pulumi:"allocatedStorage"`
 	// The ARN of the RDS read replica.
 	Arn pulumi.StringOutput `pulumi:"arn"`
 	// The AZ for the RDS instance.
@@ -73,6 +76,8 @@ type RdsReadReplica struct {
 	// The type of the RDS read replica.
 	// See AWS documentation for the [available instance types](https://aws.amazon.com/rds/instance-types/).Size should be set as db.serverless if read replica instamce is created as serverless
 	Size pulumi.StringOutput `pulumi:"size"`
+	// This can only be set during an update; it will inherit the writer's value during creation.
+	StorageAutoscaling RdsReadReplicaStorageAutoscalingOutput `pulumi:"storageAutoscaling"`
 	// The GUID of the tenant that the RDS read replica will be created in.
 	TenantId pulumi.StringOutput `pulumi:"tenantId"`
 	// Serverless v2*scaling*configuration min and max scalling capacity. Required during creating a servless read replica.
@@ -118,6 +123,9 @@ func GetRdsReadReplica(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RdsReadReplica resources.
 type rdsReadReplicaState struct {
+	// (Required unless a `snapshotId` is provided) The allocated storage in gigabytes. This can only be set during an update; it will inherit the writer's value during creation.
+	// **Note:** Allocated storage can only be modified after every 6 hours.
+	AllocatedStorage *int `pulumi:"allocatedStorage"`
 	// The ARN of the RDS read replica.
 	Arn *string `pulumi:"arn"`
 	// The AZ for the RDS instance.
@@ -161,6 +169,8 @@ type rdsReadReplicaState struct {
 	// The type of the RDS read replica.
 	// See AWS documentation for the [available instance types](https://aws.amazon.com/rds/instance-types/).Size should be set as db.serverless if read replica instamce is created as serverless
 	Size *string `pulumi:"size"`
+	// This can only be set during an update; it will inherit the writer's value during creation.
+	StorageAutoscaling *RdsReadReplicaStorageAutoscaling `pulumi:"storageAutoscaling"`
 	// The GUID of the tenant that the RDS read replica will be created in.
 	TenantId *string `pulumi:"tenantId"`
 	// Serverless v2*scaling*configuration min and max scalling capacity. Required during creating a servless read replica.
@@ -168,6 +178,9 @@ type rdsReadReplicaState struct {
 }
 
 type RdsReadReplicaState struct {
+	// (Required unless a `snapshotId` is provided) The allocated storage in gigabytes. This can only be set during an update; it will inherit the writer's value during creation.
+	// **Note:** Allocated storage can only be modified after every 6 hours.
+	AllocatedStorage pulumi.IntPtrInput
 	// The ARN of the RDS read replica.
 	Arn pulumi.StringPtrInput
 	// The AZ for the RDS instance.
@@ -211,6 +224,8 @@ type RdsReadReplicaState struct {
 	// The type of the RDS read replica.
 	// See AWS documentation for the [available instance types](https://aws.amazon.com/rds/instance-types/).Size should be set as db.serverless if read replica instamce is created as serverless
 	Size pulumi.StringPtrInput
+	// This can only be set during an update; it will inherit the writer's value during creation.
+	StorageAutoscaling RdsReadReplicaStorageAutoscalingPtrInput
 	// The GUID of the tenant that the RDS read replica will be created in.
 	TenantId pulumi.StringPtrInput
 	// Serverless v2*scaling*configuration min and max scalling capacity. Required during creating a servless read replica.
@@ -222,6 +237,9 @@ func (RdsReadReplicaState) ElementType() reflect.Type {
 }
 
 type rdsReadReplicaArgs struct {
+	// (Required unless a `snapshotId` is provided) The allocated storage in gigabytes. This can only be set during an update; it will inherit the writer's value during creation.
+	// **Note:** Allocated storage can only be modified after every 6 hours.
+	AllocatedStorage *int `pulumi:"allocatedStorage"`
 	// The AZ for the RDS instance.
 	AvailabilityZone *string `pulumi:"availabilityZone"`
 	// The full name of the RDS Cluster.
@@ -241,6 +259,8 @@ type rdsReadReplicaArgs struct {
 	// The type of the RDS read replica.
 	// See AWS documentation for the [available instance types](https://aws.amazon.com/rds/instance-types/).Size should be set as db.serverless if read replica instamce is created as serverless
 	Size string `pulumi:"size"`
+	// This can only be set during an update; it will inherit the writer's value during creation.
+	StorageAutoscaling *RdsReadReplicaStorageAutoscaling `pulumi:"storageAutoscaling"`
 	// The GUID of the tenant that the RDS read replica will be created in.
 	TenantId string `pulumi:"tenantId"`
 	// Serverless v2*scaling*configuration min and max scalling capacity. Required during creating a servless read replica.
@@ -249,6 +269,9 @@ type rdsReadReplicaArgs struct {
 
 // The set of arguments for constructing a RdsReadReplica resource.
 type RdsReadReplicaArgs struct {
+	// (Required unless a `snapshotId` is provided) The allocated storage in gigabytes. This can only be set during an update; it will inherit the writer's value during creation.
+	// **Note:** Allocated storage can only be modified after every 6 hours.
+	AllocatedStorage pulumi.IntPtrInput
 	// The AZ for the RDS instance.
 	AvailabilityZone pulumi.StringPtrInput
 	// The full name of the RDS Cluster.
@@ -268,6 +291,8 @@ type RdsReadReplicaArgs struct {
 	// The type of the RDS read replica.
 	// See AWS documentation for the [available instance types](https://aws.amazon.com/rds/instance-types/).Size should be set as db.serverless if read replica instamce is created as serverless
 	Size pulumi.StringInput
+	// This can only be set during an update; it will inherit the writer's value during creation.
+	StorageAutoscaling RdsReadReplicaStorageAutoscalingPtrInput
 	// The GUID of the tenant that the RDS read replica will be created in.
 	TenantId pulumi.StringInput
 	// Serverless v2*scaling*configuration min and max scalling capacity. Required during creating a servless read replica.
@@ -359,6 +384,12 @@ func (o RdsReadReplicaOutput) ToRdsReadReplicaOutput() RdsReadReplicaOutput {
 
 func (o RdsReadReplicaOutput) ToRdsReadReplicaOutputWithContext(ctx context.Context) RdsReadReplicaOutput {
 	return o
+}
+
+// (Required unless a `snapshotId` is provided) The allocated storage in gigabytes. This can only be set during an update; it will inherit the writer's value during creation.
+// **Note:** Allocated storage can only be modified after every 6 hours.
+func (o RdsReadReplicaOutput) AllocatedStorage() pulumi.IntOutput {
+	return o.ApplyT(func(v *RdsReadReplica) pulumi.IntOutput { return v.AllocatedStorage }).(pulumi.IntOutput)
 }
 
 // The ARN of the RDS read replica.
@@ -465,6 +496,11 @@ func (o RdsReadReplicaOutput) ReplicaStatus() pulumi.StringOutput {
 // See AWS documentation for the [available instance types](https://aws.amazon.com/rds/instance-types/).Size should be set as db.serverless if read replica instamce is created as serverless
 func (o RdsReadReplicaOutput) Size() pulumi.StringOutput {
 	return o.ApplyT(func(v *RdsReadReplica) pulumi.StringOutput { return v.Size }).(pulumi.StringOutput)
+}
+
+// This can only be set during an update; it will inherit the writer's value during creation.
+func (o RdsReadReplicaOutput) StorageAutoscaling() RdsReadReplicaStorageAutoscalingOutput {
+	return o.ApplyT(func(v *RdsReadReplica) RdsReadReplicaStorageAutoscalingOutput { return v.StorageAutoscaling }).(RdsReadReplicaStorageAutoscalingOutput)
 }
 
 // The GUID of the tenant that the RDS read replica will be created in.

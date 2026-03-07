@@ -1463,7 +1463,7 @@ class EcacheInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="automaticFailoverEnabled")
-    def automatic_failover_enabled(self) -> pulumi.Output[Optional[bool]]:
+    def automatic_failover_enabled(self) -> pulumi.Output[bool]:
         """
         Enables automatic failover.
         """
@@ -1567,7 +1567,7 @@ class EcacheInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="multiAzEnabled")
-    def multi_az_enabled(self) -> pulumi.Output[Optional[bool]]:
+    def multi_az_enabled(self) -> pulumi.Output[bool]:
         """
         Enables Multi-AZ support for the ElastiCache instance. Multi-AZ is only applicable for Redis (cache_type=0) and Valkey
         (cache_type=2). When enabled, automatic_failover_enabled must also be set to true.

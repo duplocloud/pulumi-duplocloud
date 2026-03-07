@@ -19,31 +19,30 @@ __all__ = ['AwsKafkaClusterArgs', 'AwsKafkaCluster']
 @pulumi.input_type
 class AwsKafkaClusterArgs:
     def __init__(__self__, *,
-                 instance_type: pulumi.Input[str],
-                 kafka_version: pulumi.Input[str],
-                 storage_size: pulumi.Input[int],
                  tenant_id: pulumi.Input[str],
                  configuration_arn: Optional[pulumi.Input[str]] = None,
                  configuration_revision: Optional[pulumi.Input[int]] = None,
                  encryption_in_transit: Optional[pulumi.Input[str]] = None,
+                 instance_type: Optional[pulumi.Input[str]] = None,
+                 is_serverless: Optional[pulumi.Input[bool]] = None,
+                 kafka_version: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 storage_size: Optional[pulumi.Input[int]] = None,
                  subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a AwsKafkaCluster resource.
-        :param pulumi.Input[str] instance_type: The Kafka node instance type to use.
-               See the [AWS documentation](https://docs.aws.amazon.com/msk/latest/developerguide/msk-create-cluster.html) for more information.
-        :param pulumi.Input[str] kafka_version: The version of the Kafka cluster.
-        :param pulumi.Input[int] storage_size: The size of the Kafka storage, in gigabytes.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the Kafka cluster will be created in.
         :param pulumi.Input[str] configuration_arn: An ARN of a Kafka configuration to apply to the cluster.
         :param pulumi.Input[int] configuration_revision: An revision of a Kafka configuration to apply to the cluster.
         :param pulumi.Input[str] encryption_in_transit: Encryption setting for data in transit between clients and brokers. Valid values: `TLS`, `TLS_PLAINTEXT`, and `PLAINTEXT`
+        :param pulumi.Input[str] instance_type: The Kafka node instance type to use.
+               See the [AWS documentation](https://docs.aws.amazon.com/msk/latest/developerguide/msk-create-cluster.html) for more information.
+        :param pulumi.Input[bool] is_serverless: Enable to make the cluster serverless.  When enabled, the `instance_type`, `storage_size`, `kafka_version`, `configuration_arn`, `configuration_revision`, and `encryption_in_transit` parameters are not applicable. Defaults to `false`.
+        :param pulumi.Input[str] kafka_version: The version of the Kafka cluster.
         :param pulumi.Input[str] name: The short name of the Kafka cluster.  Duplo will add a prefix to the name.  You can retrieve the full name from the `fullname` attribute.
+        :param pulumi.Input[int] storage_size: The size of the Kafka storage, in gigabytes.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnets: The list of subnets that the cluster will be launched in.
         """
-        pulumi.set(__self__, "instance_type", instance_type)
-        pulumi.set(__self__, "kafka_version", kafka_version)
-        pulumi.set(__self__, "storage_size", storage_size)
         pulumi.set(__self__, "tenant_id", tenant_id)
         if configuration_arn is not None:
             pulumi.set(__self__, "configuration_arn", configuration_arn)
@@ -51,47 +50,18 @@ class AwsKafkaClusterArgs:
             pulumi.set(__self__, "configuration_revision", configuration_revision)
         if encryption_in_transit is not None:
             pulumi.set(__self__, "encryption_in_transit", encryption_in_transit)
+        if instance_type is not None:
+            pulumi.set(__self__, "instance_type", instance_type)
+        if is_serverless is not None:
+            pulumi.set(__self__, "is_serverless", is_serverless)
+        if kafka_version is not None:
+            pulumi.set(__self__, "kafka_version", kafka_version)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if storage_size is not None:
+            pulumi.set(__self__, "storage_size", storage_size)
         if subnets is not None:
             pulumi.set(__self__, "subnets", subnets)
-
-    @property
-    @pulumi.getter(name="instanceType")
-    def instance_type(self) -> pulumi.Input[str]:
-        """
-        The Kafka node instance type to use.
-        See the [AWS documentation](https://docs.aws.amazon.com/msk/latest/developerguide/msk-create-cluster.html) for more information.
-        """
-        return pulumi.get(self, "instance_type")
-
-    @instance_type.setter
-    def instance_type(self, value: pulumi.Input[str]):
-        pulumi.set(self, "instance_type", value)
-
-    @property
-    @pulumi.getter(name="kafkaVersion")
-    def kafka_version(self) -> pulumi.Input[str]:
-        """
-        The version of the Kafka cluster.
-        """
-        return pulumi.get(self, "kafka_version")
-
-    @kafka_version.setter
-    def kafka_version(self, value: pulumi.Input[str]):
-        pulumi.set(self, "kafka_version", value)
-
-    @property
-    @pulumi.getter(name="storageSize")
-    def storage_size(self) -> pulumi.Input[int]:
-        """
-        The size of the Kafka storage, in gigabytes.
-        """
-        return pulumi.get(self, "storage_size")
-
-    @storage_size.setter
-    def storage_size(self, value: pulumi.Input[int]):
-        pulumi.set(self, "storage_size", value)
 
     @property
     @pulumi.getter(name="tenantId")
@@ -142,6 +112,43 @@ class AwsKafkaClusterArgs:
         pulumi.set(self, "encryption_in_transit", value)
 
     @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Kafka node instance type to use.
+        See the [AWS documentation](https://docs.aws.amazon.com/msk/latest/developerguide/msk-create-cluster.html) for more information.
+        """
+        return pulumi.get(self, "instance_type")
+
+    @instance_type.setter
+    def instance_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_type", value)
+
+    @property
+    @pulumi.getter(name="isServerless")
+    def is_serverless(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable to make the cluster serverless.  When enabled, the `instance_type`, `storage_size`, `kafka_version`, `configuration_arn`, `configuration_revision`, and `encryption_in_transit` parameters are not applicable. Defaults to `false`.
+        """
+        return pulumi.get(self, "is_serverless")
+
+    @is_serverless.setter
+    def is_serverless(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_serverless", value)
+
+    @property
+    @pulumi.getter(name="kafkaVersion")
+    def kafka_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version of the Kafka cluster.
+        """
+        return pulumi.get(self, "kafka_version")
+
+    @kafka_version.setter
+    def kafka_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kafka_version", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -152,6 +159,18 @@ class AwsKafkaClusterArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="storageSize")
+    def storage_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The size of the Kafka storage, in gigabytes.
+        """
+        return pulumi.get(self, "storage_size")
+
+    @storage_size.setter
+    def storage_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "storage_size", value)
 
     @property
     @pulumi.getter
@@ -177,6 +196,7 @@ class _AwsKafkaClusterState:
                  encryption_in_transit: Optional[pulumi.Input[str]] = None,
                  fullname: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
+                 is_serverless: Optional[pulumi.Input[bool]] = None,
                  kafka_version: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  number_of_broker_nodes: Optional[pulumi.Input[int]] = None,
@@ -200,6 +220,7 @@ class _AwsKafkaClusterState:
         :param pulumi.Input[str] fullname: The full name of the Kakfa cluster.
         :param pulumi.Input[str] instance_type: The Kafka node instance type to use.
                See the [AWS documentation](https://docs.aws.amazon.com/msk/latest/developerguide/msk-create-cluster.html) for more information.
+        :param pulumi.Input[bool] is_serverless: Enable to make the cluster serverless.  When enabled, the `instance_type`, `storage_size`, `kafka_version`, `configuration_arn`, `configuration_revision`, and `encryption_in_transit` parameters are not applicable. Defaults to `false`.
         :param pulumi.Input[str] kafka_version: The version of the Kafka cluster.
         :param pulumi.Input[str] name: The short name of the Kafka cluster.  Duplo will add a prefix to the name.  You can retrieve the full name from the `fullname` attribute.
         :param pulumi.Input[int] number_of_broker_nodes: The desired total number of broker nodes in the kafka cluster.
@@ -229,6 +250,8 @@ class _AwsKafkaClusterState:
             pulumi.set(__self__, "fullname", fullname)
         if instance_type is not None:
             pulumi.set(__self__, "instance_type", instance_type)
+        if is_serverless is not None:
+            pulumi.set(__self__, "is_serverless", is_serverless)
         if kafka_version is not None:
             pulumi.set(__self__, "kafka_version", kafka_version)
         if name is not None:
@@ -349,6 +372,18 @@ class _AwsKafkaClusterState:
     @instance_type.setter
     def instance_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "instance_type", value)
+
+    @property
+    @pulumi.getter(name="isServerless")
+    def is_serverless(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable to make the cluster serverless.  When enabled, the `instance_type`, `storage_size`, `kafka_version`, `configuration_arn`, `configuration_revision`, and `encryption_in_transit` parameters are not applicable. Defaults to `false`.
+        """
+        return pulumi.get(self, "is_serverless")
+
+    @is_serverless.setter
+    def is_serverless(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_serverless", value)
 
     @property
     @pulumi.getter(name="kafkaVersion")
@@ -513,6 +548,7 @@ class AwsKafkaCluster(pulumi.CustomResource):
                  configuration_revision: Optional[pulumi.Input[int]] = None,
                  encryption_in_transit: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
+                 is_serverless: Optional[pulumi.Input[bool]] = None,
                  kafka_version: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  storage_size: Optional[pulumi.Input[int]] = None,
@@ -532,11 +568,15 @@ class AwsKafkaCluster(pulumi.CustomResource):
             account_name="myapp",
             plan_id="default")
         mycluster = duplocloud.AwsKafkaCluster("mycluster",
-            tenant_id=this["tenantId"],
+            tenant_id=myapp.tenant_id,
             name="mycluster",
-            kafka_version="2.4.1.1",
+            kafka_version="3.5.1",
             instance_type="kafka.m5.large",
             storage_size=20)
+        serverless = duplocloud.AwsKafkaCluster("serverless",
+            tenant_id=myapp.tenant_id,
+            name="serverlesscluster",
+            is_serverless=True)
         ```
 
         ## Import
@@ -560,6 +600,7 @@ class AwsKafkaCluster(pulumi.CustomResource):
         :param pulumi.Input[str] encryption_in_transit: Encryption setting for data in transit between clients and brokers. Valid values: `TLS`, `TLS_PLAINTEXT`, and `PLAINTEXT`
         :param pulumi.Input[str] instance_type: The Kafka node instance type to use.
                See the [AWS documentation](https://docs.aws.amazon.com/msk/latest/developerguide/msk-create-cluster.html) for more information.
+        :param pulumi.Input[bool] is_serverless: Enable to make the cluster serverless.  When enabled, the `instance_type`, `storage_size`, `kafka_version`, `configuration_arn`, `configuration_revision`, and `encryption_in_transit` parameters are not applicable. Defaults to `false`.
         :param pulumi.Input[str] kafka_version: The version of the Kafka cluster.
         :param pulumi.Input[str] name: The short name of the Kafka cluster.  Duplo will add a prefix to the name.  You can retrieve the full name from the `fullname` attribute.
         :param pulumi.Input[int] storage_size: The size of the Kafka storage, in gigabytes.
@@ -585,11 +626,15 @@ class AwsKafkaCluster(pulumi.CustomResource):
             account_name="myapp",
             plan_id="default")
         mycluster = duplocloud.AwsKafkaCluster("mycluster",
-            tenant_id=this["tenantId"],
+            tenant_id=myapp.tenant_id,
             name="mycluster",
-            kafka_version="2.4.1.1",
+            kafka_version="3.5.1",
             instance_type="kafka.m5.large",
             storage_size=20)
+        serverless = duplocloud.AwsKafkaCluster("serverless",
+            tenant_id=myapp.tenant_id,
+            name="serverlesscluster",
+            is_serverless=True)
         ```
 
         ## Import
@@ -625,6 +670,7 @@ class AwsKafkaCluster(pulumi.CustomResource):
                  configuration_revision: Optional[pulumi.Input[int]] = None,
                  encryption_in_transit: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
+                 is_serverless: Optional[pulumi.Input[bool]] = None,
                  kafka_version: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  storage_size: Optional[pulumi.Input[int]] = None,
@@ -642,15 +688,10 @@ class AwsKafkaCluster(pulumi.CustomResource):
             __props__.__dict__["configuration_arn"] = configuration_arn
             __props__.__dict__["configuration_revision"] = configuration_revision
             __props__.__dict__["encryption_in_transit"] = encryption_in_transit
-            if instance_type is None and not opts.urn:
-                raise TypeError("Missing required property 'instance_type'")
             __props__.__dict__["instance_type"] = instance_type
-            if kafka_version is None and not opts.urn:
-                raise TypeError("Missing required property 'kafka_version'")
+            __props__.__dict__["is_serverless"] = is_serverless
             __props__.__dict__["kafka_version"] = kafka_version
             __props__.__dict__["name"] = name
-            if storage_size is None and not opts.urn:
-                raise TypeError("Missing required property 'storage_size'")
             __props__.__dict__["storage_size"] = storage_size
             __props__.__dict__["subnets"] = subnets
             if tenant_id is None and not opts.urn:
@@ -686,6 +727,7 @@ class AwsKafkaCluster(pulumi.CustomResource):
             encryption_in_transit: Optional[pulumi.Input[str]] = None,
             fullname: Optional[pulumi.Input[str]] = None,
             instance_type: Optional[pulumi.Input[str]] = None,
+            is_serverless: Optional[pulumi.Input[bool]] = None,
             kafka_version: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             number_of_broker_nodes: Optional[pulumi.Input[int]] = None,
@@ -714,6 +756,7 @@ class AwsKafkaCluster(pulumi.CustomResource):
         :param pulumi.Input[str] fullname: The full name of the Kakfa cluster.
         :param pulumi.Input[str] instance_type: The Kafka node instance type to use.
                See the [AWS documentation](https://docs.aws.amazon.com/msk/latest/developerguide/msk-create-cluster.html) for more information.
+        :param pulumi.Input[bool] is_serverless: Enable to make the cluster serverless.  When enabled, the `instance_type`, `storage_size`, `kafka_version`, `configuration_arn`, `configuration_revision`, and `encryption_in_transit` parameters are not applicable. Defaults to `false`.
         :param pulumi.Input[str] kafka_version: The version of the Kafka cluster.
         :param pulumi.Input[str] name: The short name of the Kafka cluster.  Duplo will add a prefix to the name.  You can retrieve the full name from the `fullname` attribute.
         :param pulumi.Input[int] number_of_broker_nodes: The desired total number of broker nodes in the kafka cluster.
@@ -739,6 +782,7 @@ class AwsKafkaCluster(pulumi.CustomResource):
         __props__.__dict__["encryption_in_transit"] = encryption_in_transit
         __props__.__dict__["fullname"] = fullname
         __props__.__dict__["instance_type"] = instance_type
+        __props__.__dict__["is_serverless"] = is_serverless
         __props__.__dict__["kafka_version"] = kafka_version
         __props__.__dict__["name"] = name
         __props__.__dict__["number_of_broker_nodes"] = number_of_broker_nodes
@@ -809,7 +853,7 @@ class AwsKafkaCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> pulumi.Output[str]:
+    def instance_type(self) -> pulumi.Output[Optional[str]]:
         """
         The Kafka node instance type to use.
         See the [AWS documentation](https://docs.aws.amazon.com/msk/latest/developerguide/msk-create-cluster.html) for more information.
@@ -817,8 +861,16 @@ class AwsKafkaCluster(pulumi.CustomResource):
         return pulumi.get(self, "instance_type")
 
     @property
+    @pulumi.getter(name="isServerless")
+    def is_serverless(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Enable to make the cluster serverless.  When enabled, the `instance_type`, `storage_size`, `kafka_version`, `configuration_arn`, `configuration_revision`, and `encryption_in_transit` parameters are not applicable. Defaults to `false`.
+        """
+        return pulumi.get(self, "is_serverless")
+
+    @property
     @pulumi.getter(name="kafkaVersion")
-    def kafka_version(self) -> pulumi.Output[str]:
+    def kafka_version(self) -> pulumi.Output[Optional[str]]:
         """
         The version of the Kafka cluster.
         """
@@ -874,7 +926,7 @@ class AwsKafkaCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="storageSize")
-    def storage_size(self) -> pulumi.Output[int]:
+    def storage_size(self) -> pulumi.Output[Optional[int]]:
         """
         The size of the Kafka storage, in gigabytes.
         """

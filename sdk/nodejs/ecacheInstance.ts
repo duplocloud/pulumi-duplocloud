@@ -249,7 +249,7 @@ export class EcacheInstance extends pulumi.CustomResource {
     /**
      * Enables automatic failover.
      */
-    public readonly automaticFailoverEnabled!: pulumi.Output<boolean | undefined>;
+    public readonly automaticFailoverEnabled!: pulumi.Output<boolean>;
     /**
      * The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache - `2` : Valkey
      */
@@ -302,7 +302,7 @@ export class EcacheInstance extends pulumi.CustomResource {
      * Enables Multi-AZ support for the ElastiCache instance. Multi-AZ is only applicable for Redis (cache_type=0) and Valkey
      * (cache_type=2). When enabled, automaticFailoverEnabled must also be set to true.
      */
-    public readonly multiAzEnabled!: pulumi.Output<boolean | undefined>;
+    public readonly multiAzEnabled!: pulumi.Output<boolean>;
     /**
      * The short name of the elasticache instance.  Duplo will add a prefix to the name.  You can retrieve the full name from the `identifier` attribute.
      */

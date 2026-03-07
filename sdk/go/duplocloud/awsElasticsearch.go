@@ -54,6 +54,47 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			_, err = duplocloud.NewAwsElasticsearch(ctx, "essample", &duplocloud.AwsElasticsearchArgs{
+//				TenantId:             myapp.TenantId,
+//				Name:                 pulumi.String("essamp"),
+//				SelectedZone:         pulumi.Int(1),
+//				ElasticsearchVersion: pulumi.String("OpenSearch_2.3"),
+//				EbsOptions: duplocloud.AwsElasticsearchEbsOptionArray{
+//					&duplocloud.AwsElasticsearchEbsOptionArgs{
+//						EbsEnabled: pulumi.Bool(true),
+//						VolumeType: pulumi.String("gp2"),
+//						VolumeSize: pulumi.Int(10),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = duplocloud.NewAwsElasticsearch(ctx, "essample2", &duplocloud.AwsElasticsearchArgs{
+//				TenantId:             myapp.TenantId,
+//				Name:                 pulumi.String("essamp2"),
+//				SelectedZone:         pulumi.Int(1),
+//				ElasticsearchVersion: pulumi.String("OpenSearch_3.3"),
+//				ClusterConfig: &duplocloud.AwsElasticsearchClusterConfigArgs{
+//					InstanceType:         pulumi.String("or2.medium.search"),
+//					DedicatedMasterType:  pulumi.String("or2.medium.search"),
+//					DedicatedMasterCount: pulumi.Int(3),
+//				},
+//				EbsOptions: duplocloud.AwsElasticsearchEbsOptionArray{
+//					&duplocloud.AwsElasticsearchEbsOptionArgs{
+//						EbsEnabled: pulumi.Bool(true),
+//						VolumeType: pulumi.String("gp3"),
+//						VolumeSize: pulumi.Int(100),
+//						Iops:       pulumi.Int(3000),
+//					},
+//				},
+//				EncryptAtRest: &duplocloud.AwsElasticsearchEncryptAtRestArgs{
+//					KmsKeyId: pulumi.String("<kms-arn>"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			return nil
 //		})
 //	}
@@ -84,9 +125,10 @@ type AwsElasticsearch struct {
 	// The domain ID of the ElasticSearch instance.
 	DomainId pulumi.StringOutput `pulumi:"domainId"`
 	// The full name of the ElasticSearch instance.
-	DomainName pulumi.StringOutput                  `pulumi:"domainName"`
+	DomainName pulumi.StringOutput `pulumi:"domainName"`
+	// The EBS storage options for the ElasticSearch instance.
 	EbsOptions AwsElasticsearchEbsOptionArrayOutput `pulumi:"ebsOptions"`
-	// The version of the ElasticSearch instance. Defaults to `7.9`.
+	// The version of the ElasticSearch/OpenSearch instance. Accepts the short form (e.g. `7.9`) or the full prefixed form (e.g. `Elasticsearch_7.9`, `OpenSearch_2.15`). Defaults to `Elasticsearch_7.9`.
 	ElasticsearchVersion pulumi.StringPtrOutput `pulumi:"elasticsearchVersion"`
 	// Whether or not to use the enable node-to-node encryption for this ElasticSearch instance.
 	EnableNodeToNodeEncryption pulumi.BoolOutput `pulumi:"enableNodeToNodeEncryption"`
@@ -101,8 +143,10 @@ type AwsElasticsearch struct {
 	// The numerical index of the zone to launch this ElasticSearch instance in.
 	SelectedZone    pulumi.IntOutput                          `pulumi:"selectedZone"`
 	SnapshotOptions AwsElasticsearchSnapshotOptionArrayOutput `pulumi:"snapshotOptions"`
-	// The storage volume size, in GB, for the ElasticSearch instance.
-	StorageSize pulumi.IntPtrOutput `pulumi:"storageSize"`
+	// The storage volume size, in GB, for the ElasticSearch instance. storage*size has been deprecated, use ebs*options.volume_size
+	//
+	// Deprecated: storage_size has been deprecated, use ebs_options.volume_size
+	StorageSize pulumi.IntOutput `pulumi:"storageSize"`
 	// The GUID of the tenant that the ElasticSearch instance will be created in.
 	TenantId pulumi.StringOutput `pulumi:"tenantId"`
 	// Whether or not to use the latest TLS cipher for this ElasticSearch instance. For govcloud environments this should be set to true
@@ -151,9 +195,10 @@ type awsElasticsearchState struct {
 	// The domain ID of the ElasticSearch instance.
 	DomainId *string `pulumi:"domainId"`
 	// The full name of the ElasticSearch instance.
-	DomainName *string                     `pulumi:"domainName"`
+	DomainName *string `pulumi:"domainName"`
+	// The EBS storage options for the ElasticSearch instance.
 	EbsOptions []AwsElasticsearchEbsOption `pulumi:"ebsOptions"`
-	// The version of the ElasticSearch instance. Defaults to `7.9`.
+	// The version of the ElasticSearch/OpenSearch instance. Accepts the short form (e.g. `7.9`) or the full prefixed form (e.g. `Elasticsearch_7.9`, `OpenSearch_2.15`). Defaults to `Elasticsearch_7.9`.
 	ElasticsearchVersion *string `pulumi:"elasticsearchVersion"`
 	// Whether or not to use the enable node-to-node encryption for this ElasticSearch instance.
 	EnableNodeToNodeEncryption *bool `pulumi:"enableNodeToNodeEncryption"`
@@ -168,7 +213,9 @@ type awsElasticsearchState struct {
 	// The numerical index of the zone to launch this ElasticSearch instance in.
 	SelectedZone    *int                             `pulumi:"selectedZone"`
 	SnapshotOptions []AwsElasticsearchSnapshotOption `pulumi:"snapshotOptions"`
-	// The storage volume size, in GB, for the ElasticSearch instance.
+	// The storage volume size, in GB, for the ElasticSearch instance. storage*size has been deprecated, use ebs*options.volume_size
+	//
+	// Deprecated: storage_size has been deprecated, use ebs_options.volume_size
 	StorageSize *int `pulumi:"storageSize"`
 	// The GUID of the tenant that the ElasticSearch instance will be created in.
 	TenantId *string `pulumi:"tenantId"`
@@ -187,8 +234,9 @@ type AwsElasticsearchState struct {
 	DomainId pulumi.StringPtrInput
 	// The full name of the ElasticSearch instance.
 	DomainName pulumi.StringPtrInput
+	// The EBS storage options for the ElasticSearch instance.
 	EbsOptions AwsElasticsearchEbsOptionArrayInput
-	// The version of the ElasticSearch instance. Defaults to `7.9`.
+	// The version of the ElasticSearch/OpenSearch instance. Accepts the short form (e.g. `7.9`) or the full prefixed form (e.g. `Elasticsearch_7.9`, `OpenSearch_2.15`). Defaults to `Elasticsearch_7.9`.
 	ElasticsearchVersion pulumi.StringPtrInput
 	// Whether or not to use the enable node-to-node encryption for this ElasticSearch instance.
 	EnableNodeToNodeEncryption pulumi.BoolPtrInput
@@ -203,7 +251,9 @@ type AwsElasticsearchState struct {
 	// The numerical index of the zone to launch this ElasticSearch instance in.
 	SelectedZone    pulumi.IntPtrInput
 	SnapshotOptions AwsElasticsearchSnapshotOptionArrayInput
-	// The storage volume size, in GB, for the ElasticSearch instance.
+	// The storage volume size, in GB, for the ElasticSearch instance. storage*size has been deprecated, use ebs*options.volume_size
+	//
+	// Deprecated: storage_size has been deprecated, use ebs_options.volume_size
 	StorageSize pulumi.IntPtrInput
 	// The GUID of the tenant that the ElasticSearch instance will be created in.
 	TenantId pulumi.StringPtrInput
@@ -218,7 +268,9 @@ func (AwsElasticsearchState) ElementType() reflect.Type {
 
 type awsElasticsearchArgs struct {
 	ClusterConfig *AwsElasticsearchClusterConfig `pulumi:"clusterConfig"`
-	// The version of the ElasticSearch instance. Defaults to `7.9`.
+	// The EBS storage options for the ElasticSearch instance.
+	EbsOptions []AwsElasticsearchEbsOption `pulumi:"ebsOptions"`
+	// The version of the ElasticSearch/OpenSearch instance. Accepts the short form (e.g. `7.9`) or the full prefixed form (e.g. `Elasticsearch_7.9`, `OpenSearch_2.15`). Defaults to `Elasticsearch_7.9`.
 	ElasticsearchVersion *string `pulumi:"elasticsearchVersion"`
 	// Whether or not to use the enable node-to-node encryption for this ElasticSearch instance.
 	EnableNodeToNodeEncryption *bool `pulumi:"enableNodeToNodeEncryption"`
@@ -230,7 +282,9 @@ type awsElasticsearchArgs struct {
 	RequireSsl *bool `pulumi:"requireSsl"`
 	// The numerical index of the zone to launch this ElasticSearch instance in.
 	SelectedZone *int `pulumi:"selectedZone"`
-	// The storage volume size, in GB, for the ElasticSearch instance.
+	// The storage volume size, in GB, for the ElasticSearch instance. storage*size has been deprecated, use ebs*options.volume_size
+	//
+	// Deprecated: storage_size has been deprecated, use ebs_options.volume_size
 	StorageSize *int `pulumi:"storageSize"`
 	// The GUID of the tenant that the ElasticSearch instance will be created in.
 	TenantId string `pulumi:"tenantId"`
@@ -242,7 +296,9 @@ type awsElasticsearchArgs struct {
 // The set of arguments for constructing a AwsElasticsearch resource.
 type AwsElasticsearchArgs struct {
 	ClusterConfig AwsElasticsearchClusterConfigPtrInput
-	// The version of the ElasticSearch instance. Defaults to `7.9`.
+	// The EBS storage options for the ElasticSearch instance.
+	EbsOptions AwsElasticsearchEbsOptionArrayInput
+	// The version of the ElasticSearch/OpenSearch instance. Accepts the short form (e.g. `7.9`) or the full prefixed form (e.g. `Elasticsearch_7.9`, `OpenSearch_2.15`). Defaults to `Elasticsearch_7.9`.
 	ElasticsearchVersion pulumi.StringPtrInput
 	// Whether or not to use the enable node-to-node encryption for this ElasticSearch instance.
 	EnableNodeToNodeEncryption pulumi.BoolPtrInput
@@ -254,7 +310,9 @@ type AwsElasticsearchArgs struct {
 	RequireSsl pulumi.BoolPtrInput
 	// The numerical index of the zone to launch this ElasticSearch instance in.
 	SelectedZone pulumi.IntPtrInput
-	// The storage volume size, in GB, for the ElasticSearch instance.
+	// The storage volume size, in GB, for the ElasticSearch instance. storage*size has been deprecated, use ebs*options.volume_size
+	//
+	// Deprecated: storage_size has been deprecated, use ebs_options.volume_size
 	StorageSize pulumi.IntPtrInput
 	// The GUID of the tenant that the ElasticSearch instance will be created in.
 	TenantId pulumi.StringInput
@@ -377,11 +435,12 @@ func (o AwsElasticsearchOutput) DomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AwsElasticsearch) pulumi.StringOutput { return v.DomainName }).(pulumi.StringOutput)
 }
 
+// The EBS storage options for the ElasticSearch instance.
 func (o AwsElasticsearchOutput) EbsOptions() AwsElasticsearchEbsOptionArrayOutput {
 	return o.ApplyT(func(v *AwsElasticsearch) AwsElasticsearchEbsOptionArrayOutput { return v.EbsOptions }).(AwsElasticsearchEbsOptionArrayOutput)
 }
 
-// The version of the ElasticSearch instance. Defaults to `7.9`.
+// The version of the ElasticSearch/OpenSearch instance. Accepts the short form (e.g. `7.9`) or the full prefixed form (e.g. `Elasticsearch_7.9`, `OpenSearch_2.15`). Defaults to `Elasticsearch_7.9`.
 func (o AwsElasticsearchOutput) ElasticsearchVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsElasticsearch) pulumi.StringPtrOutput { return v.ElasticsearchVersion }).(pulumi.StringPtrOutput)
 }
@@ -420,9 +479,11 @@ func (o AwsElasticsearchOutput) SnapshotOptions() AwsElasticsearchSnapshotOption
 	return o.ApplyT(func(v *AwsElasticsearch) AwsElasticsearchSnapshotOptionArrayOutput { return v.SnapshotOptions }).(AwsElasticsearchSnapshotOptionArrayOutput)
 }
 
-// The storage volume size, in GB, for the ElasticSearch instance.
-func (o AwsElasticsearchOutput) StorageSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *AwsElasticsearch) pulumi.IntPtrOutput { return v.StorageSize }).(pulumi.IntPtrOutput)
+// The storage volume size, in GB, for the ElasticSearch instance. storage*size has been deprecated, use ebs*options.volume_size
+//
+// Deprecated: storage_size has been deprecated, use ebs_options.volume_size
+func (o AwsElasticsearchOutput) StorageSize() pulumi.IntOutput {
+	return o.ApplyT(func(v *AwsElasticsearch) pulumi.IntOutput { return v.StorageSize }).(pulumi.IntOutput)
 }
 
 // The GUID of the tenant that the ElasticSearch instance will be created in.

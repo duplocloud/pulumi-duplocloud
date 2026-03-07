@@ -24,6 +24,7 @@ class RdsReadReplicaArgs:
                  cluster_identifier: pulumi.Input[str],
                  size: pulumi.Input[str],
                  tenant_id: pulumi.Input[str],
+                 allocated_storage: Optional[pulumi.Input[int]] = None,
                  availability_zone: Optional[pulumi.Input[str]] = None,
                  engine_type: Optional[pulumi.Input[int]] = None,
                  enhanced_monitoring: Optional[pulumi.Input[int]] = None,
@@ -31,6 +32,7 @@ class RdsReadReplicaArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  parameter_group_name: Optional[pulumi.Input[str]] = None,
                  performance_insights: Optional[pulumi.Input['RdsReadReplicaPerformanceInsightsArgs']] = None,
+                 storage_autoscaling: Optional[pulumi.Input['RdsReadReplicaStorageAutoscalingArgs']] = None,
                  v2_scaling_configuration: Optional[pulumi.Input['RdsReadReplicaV2ScalingConfigurationArgs']] = None):
         """
         The set of arguments for constructing a RdsReadReplica resource.
@@ -38,6 +40,8 @@ class RdsReadReplicaArgs:
         :param pulumi.Input[str] size: The type of the RDS read replica.
                See AWS documentation for the [available instance types](https://aws.amazon.com/rds/instance-types/).Size should be set as db.serverless if read replica instamce is created as serverless
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the RDS read replica will be created in.
+        :param pulumi.Input[int] allocated_storage: (Required unless a `snapshot_id` is provided) The allocated storage in gigabytes. This can only be set during an update; it will inherit the writer's value during creation.
+               **Note:** Allocated storage can only be modified after every 6 hours.
         :param pulumi.Input[str] availability_zone: The AZ for the RDS instance.
         :param pulumi.Input[int] engine_type: Engine type required to validate applicable parameter group setting for different instance. Should be referred from writer
         :param pulumi.Input[int] enhanced_monitoring: Interval to capture metrics in real time for the operating system (OS) that your Amazon RDS DB instance runs on.
@@ -45,11 +49,14 @@ class RdsReadReplicaArgs:
         :param pulumi.Input[str] name: The short name of the RDS read replica.  Duplo will add a prefix to the name.  You can retrieve the full name from the `identifier` attribute.
         :param pulumi.Input[str] parameter_group_name: A RDS parameter group name to apply to the RDS instance.
         :param pulumi.Input['RdsReadReplicaPerformanceInsightsArgs'] performance_insights: Amazon RDS Performance Insights is a database performance tuning and monitoring feature that helps you quickly assess the load on your database, and determine when and where to take action. Perfomance Insights get apply when enable is set to true.
+        :param pulumi.Input['RdsReadReplicaStorageAutoscalingArgs'] storage_autoscaling: This can only be set during an update; it will inherit the writer's value during creation.
         :param pulumi.Input['RdsReadReplicaV2ScalingConfigurationArgs'] v2_scaling_configuration: Serverless v2*scaling*configuration min and max scalling capacity. Required during creating a servless read replica.
         """
         pulumi.set(__self__, "cluster_identifier", cluster_identifier)
         pulumi.set(__self__, "size", size)
         pulumi.set(__self__, "tenant_id", tenant_id)
+        if allocated_storage is not None:
+            pulumi.set(__self__, "allocated_storage", allocated_storage)
         if availability_zone is not None:
             pulumi.set(__self__, "availability_zone", availability_zone)
         if engine_type is not None:
@@ -64,6 +71,8 @@ class RdsReadReplicaArgs:
             pulumi.set(__self__, "parameter_group_name", parameter_group_name)
         if performance_insights is not None:
             pulumi.set(__self__, "performance_insights", performance_insights)
+        if storage_autoscaling is not None:
+            pulumi.set(__self__, "storage_autoscaling", storage_autoscaling)
         if v2_scaling_configuration is not None:
             pulumi.set(__self__, "v2_scaling_configuration", v2_scaling_configuration)
 
@@ -103,6 +112,19 @@ class RdsReadReplicaArgs:
     @tenant_id.setter
     def tenant_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "tenant_id", value)
+
+    @property
+    @pulumi.getter(name="allocatedStorage")
+    def allocated_storage(self) -> Optional[pulumi.Input[int]]:
+        """
+        (Required unless a `snapshot_id` is provided) The allocated storage in gigabytes. This can only be set during an update; it will inherit the writer's value during creation.
+        **Note:** Allocated storage can only be modified after every 6 hours.
+        """
+        return pulumi.get(self, "allocated_storage")
+
+    @allocated_storage.setter
+    def allocated_storage(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "allocated_storage", value)
 
     @property
     @pulumi.getter(name="availabilityZone")
@@ -189,6 +211,18 @@ class RdsReadReplicaArgs:
         pulumi.set(self, "performance_insights", value)
 
     @property
+    @pulumi.getter(name="storageAutoscaling")
+    def storage_autoscaling(self) -> Optional[pulumi.Input['RdsReadReplicaStorageAutoscalingArgs']]:
+        """
+        This can only be set during an update; it will inherit the writer's value during creation.
+        """
+        return pulumi.get(self, "storage_autoscaling")
+
+    @storage_autoscaling.setter
+    def storage_autoscaling(self, value: Optional[pulumi.Input['RdsReadReplicaStorageAutoscalingArgs']]):
+        pulumi.set(self, "storage_autoscaling", value)
+
+    @property
     @pulumi.getter(name="v2ScalingConfiguration")
     def v2_scaling_configuration(self) -> Optional[pulumi.Input['RdsReadReplicaV2ScalingConfigurationArgs']]:
         """
@@ -204,6 +238,7 @@ class RdsReadReplicaArgs:
 @pulumi.input_type
 class _RdsReadReplicaState:
     def __init__(__self__, *,
+                 allocated_storage: Optional[pulumi.Input[int]] = None,
                  arn: Optional[pulumi.Input[str]] = None,
                  availability_zone: Optional[pulumi.Input[str]] = None,
                  cluster_identifier: Optional[pulumi.Input[str]] = None,
@@ -225,10 +260,13 @@ class _RdsReadReplicaState:
                  port: Optional[pulumi.Input[int]] = None,
                  replica_status: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[str]] = None,
+                 storage_autoscaling: Optional[pulumi.Input['RdsReadReplicaStorageAutoscalingArgs']] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  v2_scaling_configuration: Optional[pulumi.Input['RdsReadReplicaV2ScalingConfigurationArgs']] = None):
         """
         Input properties used for looking up and filtering RdsReadReplica resources.
+        :param pulumi.Input[int] allocated_storage: (Required unless a `snapshot_id` is provided) The allocated storage in gigabytes. This can only be set during an update; it will inherit the writer's value during creation.
+               **Note:** Allocated storage can only be modified after every 6 hours.
         :param pulumi.Input[str] arn: The ARN of the RDS read replica.
         :param pulumi.Input[str] availability_zone: The AZ for the RDS instance.
         :param pulumi.Input[str] cluster_identifier: The full name of the RDS Cluster.
@@ -251,9 +289,12 @@ class _RdsReadReplicaState:
         :param pulumi.Input[str] replica_status: The current status of the RDS read replica.
         :param pulumi.Input[str] size: The type of the RDS read replica.
                See AWS documentation for the [available instance types](https://aws.amazon.com/rds/instance-types/).Size should be set as db.serverless if read replica instamce is created as serverless
+        :param pulumi.Input['RdsReadReplicaStorageAutoscalingArgs'] storage_autoscaling: This can only be set during an update; it will inherit the writer's value during creation.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the RDS read replica will be created in.
         :param pulumi.Input['RdsReadReplicaV2ScalingConfigurationArgs'] v2_scaling_configuration: Serverless v2*scaling*configuration min and max scalling capacity. Required during creating a servless read replica.
         """
+        if allocated_storage is not None:
+            pulumi.set(__self__, "allocated_storage", allocated_storage)
         if arn is not None:
             pulumi.set(__self__, "arn", arn)
         if availability_zone is not None:
@@ -296,10 +337,25 @@ class _RdsReadReplicaState:
             pulumi.set(__self__, "replica_status", replica_status)
         if size is not None:
             pulumi.set(__self__, "size", size)
+        if storage_autoscaling is not None:
+            pulumi.set(__self__, "storage_autoscaling", storage_autoscaling)
         if tenant_id is not None:
             pulumi.set(__self__, "tenant_id", tenant_id)
         if v2_scaling_configuration is not None:
             pulumi.set(__self__, "v2_scaling_configuration", v2_scaling_configuration)
+
+    @property
+    @pulumi.getter(name="allocatedStorage")
+    def allocated_storage(self) -> Optional[pulumi.Input[int]]:
+        """
+        (Required unless a `snapshot_id` is provided) The allocated storage in gigabytes. This can only be set during an update; it will inherit the writer's value during creation.
+        **Note:** Allocated storage can only be modified after every 6 hours.
+        """
+        return pulumi.get(self, "allocated_storage")
+
+    @allocated_storage.setter
+    def allocated_storage(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "allocated_storage", value)
 
     @property
     @pulumi.getter
@@ -555,6 +611,18 @@ class _RdsReadReplicaState:
         pulumi.set(self, "size", value)
 
     @property
+    @pulumi.getter(name="storageAutoscaling")
+    def storage_autoscaling(self) -> Optional[pulumi.Input['RdsReadReplicaStorageAutoscalingArgs']]:
+        """
+        This can only be set during an update; it will inherit the writer's value during creation.
+        """
+        return pulumi.get(self, "storage_autoscaling")
+
+    @storage_autoscaling.setter
+    def storage_autoscaling(self, value: Optional[pulumi.Input['RdsReadReplicaStorageAutoscalingArgs']]):
+        pulumi.set(self, "storage_autoscaling", value)
+
+    @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -584,6 +652,7 @@ class RdsReadReplica(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 allocated_storage: Optional[pulumi.Input[int]] = None,
                  availability_zone: Optional[pulumi.Input[str]] = None,
                  cluster_identifier: Optional[pulumi.Input[str]] = None,
                  engine_type: Optional[pulumi.Input[int]] = None,
@@ -593,6 +662,7 @@ class RdsReadReplica(pulumi.CustomResource):
                  parameter_group_name: Optional[pulumi.Input[str]] = None,
                  performance_insights: Optional[pulumi.Input[Union['RdsReadReplicaPerformanceInsightsArgs', 'RdsReadReplicaPerformanceInsightsArgsDict']]] = None,
                  size: Optional[pulumi.Input[str]] = None,
+                 storage_autoscaling: Optional[pulumi.Input[Union['RdsReadReplicaStorageAutoscalingArgs', 'RdsReadReplicaStorageAutoscalingArgsDict']]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  v2_scaling_configuration: Optional[pulumi.Input[Union['RdsReadReplicaV2ScalingConfigurationArgs', 'RdsReadReplicaV2ScalingConfigurationArgsDict']]] = None,
                  __props__=None):
@@ -615,6 +685,8 @@ class RdsReadReplica(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[int] allocated_storage: (Required unless a `snapshot_id` is provided) The allocated storage in gigabytes. This can only be set during an update; it will inherit the writer's value during creation.
+               **Note:** Allocated storage can only be modified after every 6 hours.
         :param pulumi.Input[str] availability_zone: The AZ for the RDS instance.
         :param pulumi.Input[str] cluster_identifier: The full name of the RDS Cluster.
         :param pulumi.Input[int] engine_type: Engine type required to validate applicable parameter group setting for different instance. Should be referred from writer
@@ -625,6 +697,7 @@ class RdsReadReplica(pulumi.CustomResource):
         :param pulumi.Input[Union['RdsReadReplicaPerformanceInsightsArgs', 'RdsReadReplicaPerformanceInsightsArgsDict']] performance_insights: Amazon RDS Performance Insights is a database performance tuning and monitoring feature that helps you quickly assess the load on your database, and determine when and where to take action. Perfomance Insights get apply when enable is set to true.
         :param pulumi.Input[str] size: The type of the RDS read replica.
                See AWS documentation for the [available instance types](https://aws.amazon.com/rds/instance-types/).Size should be set as db.serverless if read replica instamce is created as serverless
+        :param pulumi.Input[Union['RdsReadReplicaStorageAutoscalingArgs', 'RdsReadReplicaStorageAutoscalingArgsDict']] storage_autoscaling: This can only be set during an update; it will inherit the writer's value during creation.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the RDS read replica will be created in.
         :param pulumi.Input[Union['RdsReadReplicaV2ScalingConfigurationArgs', 'RdsReadReplicaV2ScalingConfigurationArgsDict']] v2_scaling_configuration: Serverless v2*scaling*configuration min and max scalling capacity. Required during creating a servless read replica.
         """
@@ -666,6 +739,7 @@ class RdsReadReplica(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 allocated_storage: Optional[pulumi.Input[int]] = None,
                  availability_zone: Optional[pulumi.Input[str]] = None,
                  cluster_identifier: Optional[pulumi.Input[str]] = None,
                  engine_type: Optional[pulumi.Input[int]] = None,
@@ -675,6 +749,7 @@ class RdsReadReplica(pulumi.CustomResource):
                  parameter_group_name: Optional[pulumi.Input[str]] = None,
                  performance_insights: Optional[pulumi.Input[Union['RdsReadReplicaPerformanceInsightsArgs', 'RdsReadReplicaPerformanceInsightsArgsDict']]] = None,
                  size: Optional[pulumi.Input[str]] = None,
+                 storage_autoscaling: Optional[pulumi.Input[Union['RdsReadReplicaStorageAutoscalingArgs', 'RdsReadReplicaStorageAutoscalingArgsDict']]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  v2_scaling_configuration: Optional[pulumi.Input[Union['RdsReadReplicaV2ScalingConfigurationArgs', 'RdsReadReplicaV2ScalingConfigurationArgsDict']]] = None,
                  __props__=None):
@@ -686,6 +761,7 @@ class RdsReadReplica(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RdsReadReplicaArgs.__new__(RdsReadReplicaArgs)
 
+            __props__.__dict__["allocated_storage"] = allocated_storage
             __props__.__dict__["availability_zone"] = availability_zone
             if cluster_identifier is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_identifier'")
@@ -699,6 +775,7 @@ class RdsReadReplica(pulumi.CustomResource):
             if size is None and not opts.urn:
                 raise TypeError("Missing required property 'size'")
             __props__.__dict__["size"] = size
+            __props__.__dict__["storage_autoscaling"] = storage_autoscaling
             if tenant_id is None and not opts.urn:
                 raise TypeError("Missing required property 'tenant_id'")
             __props__.__dict__["tenant_id"] = tenant_id
@@ -725,6 +802,7 @@ class RdsReadReplica(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            allocated_storage: Optional[pulumi.Input[int]] = None,
             arn: Optional[pulumi.Input[str]] = None,
             availability_zone: Optional[pulumi.Input[str]] = None,
             cluster_identifier: Optional[pulumi.Input[str]] = None,
@@ -746,6 +824,7 @@ class RdsReadReplica(pulumi.CustomResource):
             port: Optional[pulumi.Input[int]] = None,
             replica_status: Optional[pulumi.Input[str]] = None,
             size: Optional[pulumi.Input[str]] = None,
+            storage_autoscaling: Optional[pulumi.Input[Union['RdsReadReplicaStorageAutoscalingArgs', 'RdsReadReplicaStorageAutoscalingArgsDict']]] = None,
             tenant_id: Optional[pulumi.Input[str]] = None,
             v2_scaling_configuration: Optional[pulumi.Input[Union['RdsReadReplicaV2ScalingConfigurationArgs', 'RdsReadReplicaV2ScalingConfigurationArgsDict']]] = None) -> 'RdsReadReplica':
         """
@@ -755,6 +834,8 @@ class RdsReadReplica(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[int] allocated_storage: (Required unless a `snapshot_id` is provided) The allocated storage in gigabytes. This can only be set during an update; it will inherit the writer's value during creation.
+               **Note:** Allocated storage can only be modified after every 6 hours.
         :param pulumi.Input[str] arn: The ARN of the RDS read replica.
         :param pulumi.Input[str] availability_zone: The AZ for the RDS instance.
         :param pulumi.Input[str] cluster_identifier: The full name of the RDS Cluster.
@@ -777,6 +858,7 @@ class RdsReadReplica(pulumi.CustomResource):
         :param pulumi.Input[str] replica_status: The current status of the RDS read replica.
         :param pulumi.Input[str] size: The type of the RDS read replica.
                See AWS documentation for the [available instance types](https://aws.amazon.com/rds/instance-types/).Size should be set as db.serverless if read replica instamce is created as serverless
+        :param pulumi.Input[Union['RdsReadReplicaStorageAutoscalingArgs', 'RdsReadReplicaStorageAutoscalingArgsDict']] storage_autoscaling: This can only be set during an update; it will inherit the writer's value during creation.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the RDS read replica will be created in.
         :param pulumi.Input[Union['RdsReadReplicaV2ScalingConfigurationArgs', 'RdsReadReplicaV2ScalingConfigurationArgsDict']] v2_scaling_configuration: Serverless v2*scaling*configuration min and max scalling capacity. Required during creating a servless read replica.
         """
@@ -784,6 +866,7 @@ class RdsReadReplica(pulumi.CustomResource):
 
         __props__ = _RdsReadReplicaState.__new__(_RdsReadReplicaState)
 
+        __props__.__dict__["allocated_storage"] = allocated_storage
         __props__.__dict__["arn"] = arn
         __props__.__dict__["availability_zone"] = availability_zone
         __props__.__dict__["cluster_identifier"] = cluster_identifier
@@ -805,9 +888,19 @@ class RdsReadReplica(pulumi.CustomResource):
         __props__.__dict__["port"] = port
         __props__.__dict__["replica_status"] = replica_status
         __props__.__dict__["size"] = size
+        __props__.__dict__["storage_autoscaling"] = storage_autoscaling
         __props__.__dict__["tenant_id"] = tenant_id
         __props__.__dict__["v2_scaling_configuration"] = v2_scaling_configuration
         return RdsReadReplica(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="allocatedStorage")
+    def allocated_storage(self) -> pulumi.Output[int]:
+        """
+        (Required unless a `snapshot_id` is provided) The allocated storage in gigabytes. This can only be set during an update; it will inherit the writer's value during creation.
+        **Note:** Allocated storage can only be modified after every 6 hours.
+        """
+        return pulumi.get(self, "allocated_storage")
 
     @property
     @pulumi.getter
@@ -977,6 +1070,14 @@ class RdsReadReplica(pulumi.CustomResource):
         See AWS documentation for the [available instance types](https://aws.amazon.com/rds/instance-types/).Size should be set as db.serverless if read replica instamce is created as serverless
         """
         return pulumi.get(self, "size")
+
+    @property
+    @pulumi.getter(name="storageAutoscaling")
+    def storage_autoscaling(self) -> pulumi.Output['outputs.RdsReadReplicaStorageAutoscaling']:
+        """
+        This can only be set during an update; it will inherit the writer's value during creation.
+        """
+        return pulumi.get(self, "storage_autoscaling")
 
     @property
     @pulumi.getter(name="tenantId")

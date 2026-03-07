@@ -306,7 +306,7 @@ namespace DuploCloud.Pulumi
         /// Enables automatic failover.
         /// </summary>
         [Output("automaticFailoverEnabled")]
-        public Output<bool?> AutomaticFailoverEnabled { get; private set; } = null!;
+        public Output<bool> AutomaticFailoverEnabled { get; private set; } = null!;
 
         /// <summary>
         /// The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache - `2` : Valkey
@@ -385,7 +385,7 @@ namespace DuploCloud.Pulumi
         /// (cache_type=2). When enabled, automatic_failover_enabled must also be set to true.
         /// </summary>
         [Output("multiAzEnabled")]
-        public Output<bool?> MultiAzEnabled { get; private set; } = null!;
+        public Output<bool> MultiAzEnabled { get; private set; } = null!;
 
         /// <summary>
         /// The short name of the elasticache instance.  Duplo will add a prefix to the name.  You can retrieve the full name from the `identifier` attribute.

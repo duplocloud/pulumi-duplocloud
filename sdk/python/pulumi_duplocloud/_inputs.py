@@ -1363,6 +1363,8 @@ __all__ = [
     'RdsInstanceV2ScalingConfigurationArgsDict',
     'RdsReadReplicaPerformanceInsightsArgs',
     'RdsReadReplicaPerformanceInsightsArgsDict',
+    'RdsReadReplicaStorageAutoscalingArgs',
+    'RdsReadReplicaStorageAutoscalingArgsDict',
     'RdsReadReplicaV2ScalingConfigurationArgs',
     'RdsReadReplicaV2ScalingConfigurationArgsDict',
     'S3BucketDefaultEncryptionArgs',
@@ -7332,7 +7334,7 @@ if not MYPY:
         """
         dedicated_master_type: NotRequired[pulumi.Input[str]]
         """
-        Defaults to `t2.small.elasticsearch`.
+        Defaults to `t2.small.search`.
         """
         instance_count: NotRequired[pulumi.Input[int]]
         """
@@ -7340,7 +7342,7 @@ if not MYPY:
         """
         instance_type: NotRequired[pulumi.Input[str]]
         """
-        Defaults to `t2.small.elasticsearch`.
+        Supported instance types for elasticsearch domain https://docs.aws.amazon.com/opensearch-service/latest/developerguide/supported-instance-types.html Defaults to `t2.small.search`.
         """
         multi_az_with_standby_enabled: NotRequired[pulumi.Input[bool]]
         warm_count: NotRequired[pulumi.Input[int]]
@@ -7365,9 +7367,9 @@ class AwsElasticsearchClusterConfigArgs:
         """
         :param pulumi.Input[int] dedicated_master_count: Defaults to `0`.
         :param pulumi.Input[bool] dedicated_master_enabled: Defaults to `false`.
-        :param pulumi.Input[str] dedicated_master_type: Defaults to `t2.small.elasticsearch`.
+        :param pulumi.Input[str] dedicated_master_type: Defaults to `t2.small.search`.
         :param pulumi.Input[int] instance_count: Defaults to `1`.
-        :param pulumi.Input[str] instance_type: Defaults to `t2.small.elasticsearch`.
+        :param pulumi.Input[str] instance_type: Supported instance types for elasticsearch domain https://docs.aws.amazon.com/opensearch-service/latest/developerguide/supported-instance-types.html Defaults to `t2.small.search`.
         """
         if cold_storage_options is not None:
             pulumi.set(__self__, "cold_storage_options", cold_storage_options)
@@ -7427,7 +7429,7 @@ class AwsElasticsearchClusterConfigArgs:
     @pulumi.getter(name="dedicatedMasterType")
     def dedicated_master_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Defaults to `t2.small.elasticsearch`.
+        Defaults to `t2.small.search`.
         """
         return pulumi.get(self, "dedicated_master_type")
 
@@ -7451,7 +7453,7 @@ class AwsElasticsearchClusterConfigArgs:
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Defaults to `t2.small.elasticsearch`.
+        Supported instance types for elasticsearch domain https://docs.aws.amazon.com/opensearch-service/latest/developerguide/supported-instance-types.html Defaults to `t2.small.search`.
         """
         return pulumi.get(self, "instance_type")
 
@@ -54033,6 +54035,58 @@ class RdsReadReplicaPerformanceInsightsArgs:
     @retention_period.setter
     def retention_period(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "retention_period", value)
+
+
+if not MYPY:
+    class RdsReadReplicaStorageAutoscalingArgsDict(TypedDict):
+        enable: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to enable storage autoscaling for the RDS instance. When enabled, the storage size can automatically increase up to the specified max*allocated*storage.
+        """
+        max_allocated_storage: NotRequired[pulumi.Input[int]]
+        """
+        The upper limit, in gibibytes (GiB), to which Amazon RDS can automatically scale the storage of the DB instance when autoscaling is enabled.
+        """
+elif False:
+    RdsReadReplicaStorageAutoscalingArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RdsReadReplicaStorageAutoscalingArgs:
+    def __init__(__self__, *,
+                 enable: Optional[pulumi.Input[bool]] = None,
+                 max_allocated_storage: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[bool] enable: Whether to enable storage autoscaling for the RDS instance. When enabled, the storage size can automatically increase up to the specified max*allocated*storage.
+        :param pulumi.Input[int] max_allocated_storage: The upper limit, in gibibytes (GiB), to which Amazon RDS can automatically scale the storage of the DB instance when autoscaling is enabled.
+        """
+        if enable is not None:
+            pulumi.set(__self__, "enable", enable)
+        if max_allocated_storage is not None:
+            pulumi.set(__self__, "max_allocated_storage", max_allocated_storage)
+
+    @property
+    @pulumi.getter
+    def enable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable storage autoscaling for the RDS instance. When enabled, the storage size can automatically increase up to the specified max*allocated*storage.
+        """
+        return pulumi.get(self, "enable")
+
+    @enable.setter
+    def enable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable", value)
+
+    @property
+    @pulumi.getter(name="maxAllocatedStorage")
+    def max_allocated_storage(self) -> Optional[pulumi.Input[int]]:
+        """
+        The upper limit, in gibibytes (GiB), to which Amazon RDS can automatically scale the storage of the DB instance when autoscaling is enabled.
+        """
+        return pulumi.get(self, "max_allocated_storage")
+
+    @max_allocated_storage.setter
+    def max_allocated_storage(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_allocated_storage", value)
 
 
 if not MYPY:

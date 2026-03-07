@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := duplocloud.NewTenant(ctx, "myapp", &duplocloud.TenantArgs{
+//			myapp, err := duplocloud.NewTenant(ctx, "myapp", &duplocloud.TenantArgs{
 //				AccountName: pulumi.String("myapp"),
 //				PlanId:      pulumi.String("default"),
 //			})
@@ -36,11 +36,19 @@ import (
 //				return err
 //			}
 //			_, err = duplocloud.NewAwsKafkaCluster(ctx, "mycluster", &duplocloud.AwsKafkaClusterArgs{
-//				TenantId:     pulumi.Any(this.TenantId),
+//				TenantId:     myapp.TenantId,
 //				Name:         pulumi.String("mycluster"),
-//				KafkaVersion: pulumi.String("2.4.1.1"),
+//				KafkaVersion: pulumi.String("3.5.1"),
 //				InstanceType: pulumi.String("kafka.m5.large"),
 //				StorageSize:  pulumi.Int(20),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = duplocloud.NewAwsKafkaCluster(ctx, "serverless", &duplocloud.AwsKafkaClusterArgs{
+//				TenantId:     myapp.TenantId,
+//				Name:         pulumi.String("serverlesscluster"),
+//				IsServerless: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -82,9 +90,11 @@ type AwsKafkaCluster struct {
 	Fullname pulumi.StringOutput `pulumi:"fullname"`
 	// The Kafka node instance type to use.
 	// See the [AWS documentation](https://docs.aws.amazon.com/msk/latest/developerguide/msk-create-cluster.html) for more information.
-	InstanceType pulumi.StringOutput `pulumi:"instanceType"`
+	InstanceType pulumi.StringPtrOutput `pulumi:"instanceType"`
+	// Enable to make the cluster serverless.  When enabled, the `instanceType`, `storageSize`, `kafkaVersion`, `configurationArn`, `configurationRevision`, and `encryptionInTransit` parameters are not applicable. Defaults to `false`.
+	IsServerless pulumi.BoolPtrOutput `pulumi:"isServerless"`
 	// The version of the Kafka cluster.
-	KafkaVersion pulumi.StringOutput `pulumi:"kafkaVersion"`
+	KafkaVersion pulumi.StringPtrOutput `pulumi:"kafkaVersion"`
 	// The short name of the Kafka cluster.  Duplo will add a prefix to the name.  You can retrieve the full name from the `fullname` attribute.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The desired total number of broker nodes in the kafka cluster.
@@ -98,7 +108,7 @@ type AwsKafkaCluster struct {
 	// The current state of the cluster.
 	State pulumi.StringOutput `pulumi:"state"`
 	// The size of the Kafka storage, in gigabytes.
-	StorageSize pulumi.IntOutput `pulumi:"storageSize"`
+	StorageSize pulumi.IntPtrOutput `pulumi:"storageSize"`
 	// The list of subnets that the cluster will be launched in.
 	Subnets pulumi.StringArrayOutput `pulumi:"subnets"`
 	Tags    pulumi.StringMapOutput   `pulumi:"tags"`
@@ -117,15 +127,6 @@ func NewAwsKafkaCluster(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.InstanceType == nil {
-		return nil, errors.New("invalid value for required argument 'InstanceType'")
-	}
-	if args.KafkaVersion == nil {
-		return nil, errors.New("invalid value for required argument 'KafkaVersion'")
-	}
-	if args.StorageSize == nil {
-		return nil, errors.New("invalid value for required argument 'StorageSize'")
-	}
 	if args.TenantId == nil {
 		return nil, errors.New("invalid value for required argument 'TenantId'")
 	}
@@ -168,6 +169,8 @@ type awsKafkaClusterState struct {
 	// The Kafka node instance type to use.
 	// See the [AWS documentation](https://docs.aws.amazon.com/msk/latest/developerguide/msk-create-cluster.html) for more information.
 	InstanceType *string `pulumi:"instanceType"`
+	// Enable to make the cluster serverless.  When enabled, the `instanceType`, `storageSize`, `kafkaVersion`, `configurationArn`, `configurationRevision`, and `encryptionInTransit` parameters are not applicable. Defaults to `false`.
+	IsServerless *bool `pulumi:"isServerless"`
 	// The version of the Kafka cluster.
 	KafkaVersion *string `pulumi:"kafkaVersion"`
 	// The short name of the Kafka cluster.  Duplo will add a prefix to the name.  You can retrieve the full name from the `fullname` attribute.
@@ -212,6 +215,8 @@ type AwsKafkaClusterState struct {
 	// The Kafka node instance type to use.
 	// See the [AWS documentation](https://docs.aws.amazon.com/msk/latest/developerguide/msk-create-cluster.html) for more information.
 	InstanceType pulumi.StringPtrInput
+	// Enable to make the cluster serverless.  When enabled, the `instanceType`, `storageSize`, `kafkaVersion`, `configurationArn`, `configurationRevision`, and `encryptionInTransit` parameters are not applicable. Defaults to `false`.
+	IsServerless pulumi.BoolPtrInput
 	// The version of the Kafka cluster.
 	KafkaVersion pulumi.StringPtrInput
 	// The short name of the Kafka cluster.  Duplo will add a prefix to the name.  You can retrieve the full name from the `fullname` attribute.
@@ -252,13 +257,15 @@ type awsKafkaClusterArgs struct {
 	EncryptionInTransit *string `pulumi:"encryptionInTransit"`
 	// The Kafka node instance type to use.
 	// See the [AWS documentation](https://docs.aws.amazon.com/msk/latest/developerguide/msk-create-cluster.html) for more information.
-	InstanceType string `pulumi:"instanceType"`
+	InstanceType *string `pulumi:"instanceType"`
+	// Enable to make the cluster serverless.  When enabled, the `instanceType`, `storageSize`, `kafkaVersion`, `configurationArn`, `configurationRevision`, and `encryptionInTransit` parameters are not applicable. Defaults to `false`.
+	IsServerless *bool `pulumi:"isServerless"`
 	// The version of the Kafka cluster.
-	KafkaVersion string `pulumi:"kafkaVersion"`
+	KafkaVersion *string `pulumi:"kafkaVersion"`
 	// The short name of the Kafka cluster.  Duplo will add a prefix to the name.  You can retrieve the full name from the `fullname` attribute.
 	Name *string `pulumi:"name"`
 	// The size of the Kafka storage, in gigabytes.
-	StorageSize int `pulumi:"storageSize"`
+	StorageSize *int `pulumi:"storageSize"`
 	// The list of subnets that the cluster will be launched in.
 	Subnets []string `pulumi:"subnets"`
 	// The GUID of the tenant that the Kafka cluster will be created in.
@@ -275,13 +282,15 @@ type AwsKafkaClusterArgs struct {
 	EncryptionInTransit pulumi.StringPtrInput
 	// The Kafka node instance type to use.
 	// See the [AWS documentation](https://docs.aws.amazon.com/msk/latest/developerguide/msk-create-cluster.html) for more information.
-	InstanceType pulumi.StringInput
+	InstanceType pulumi.StringPtrInput
+	// Enable to make the cluster serverless.  When enabled, the `instanceType`, `storageSize`, `kafkaVersion`, `configurationArn`, `configurationRevision`, and `encryptionInTransit` parameters are not applicable. Defaults to `false`.
+	IsServerless pulumi.BoolPtrInput
 	// The version of the Kafka cluster.
-	KafkaVersion pulumi.StringInput
+	KafkaVersion pulumi.StringPtrInput
 	// The short name of the Kafka cluster.  Duplo will add a prefix to the name.  You can retrieve the full name from the `fullname` attribute.
 	Name pulumi.StringPtrInput
 	// The size of the Kafka storage, in gigabytes.
-	StorageSize pulumi.IntInput
+	StorageSize pulumi.IntPtrInput
 	// The list of subnets that the cluster will be launched in.
 	Subnets pulumi.StringArrayInput
 	// The GUID of the tenant that the Kafka cluster will be created in.
@@ -411,13 +420,18 @@ func (o AwsKafkaClusterOutput) Fullname() pulumi.StringOutput {
 
 // The Kafka node instance type to use.
 // See the [AWS documentation](https://docs.aws.amazon.com/msk/latest/developerguide/msk-create-cluster.html) for more information.
-func (o AwsKafkaClusterOutput) InstanceType() pulumi.StringOutput {
-	return o.ApplyT(func(v *AwsKafkaCluster) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)
+func (o AwsKafkaClusterOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsKafkaCluster) pulumi.StringPtrOutput { return v.InstanceType }).(pulumi.StringPtrOutput)
+}
+
+// Enable to make the cluster serverless.  When enabled, the `instanceType`, `storageSize`, `kafkaVersion`, `configurationArn`, `configurationRevision`, and `encryptionInTransit` parameters are not applicable. Defaults to `false`.
+func (o AwsKafkaClusterOutput) IsServerless() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AwsKafkaCluster) pulumi.BoolPtrOutput { return v.IsServerless }).(pulumi.BoolPtrOutput)
 }
 
 // The version of the Kafka cluster.
-func (o AwsKafkaClusterOutput) KafkaVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *AwsKafkaCluster) pulumi.StringOutput { return v.KafkaVersion }).(pulumi.StringOutput)
+func (o AwsKafkaClusterOutput) KafkaVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsKafkaCluster) pulumi.StringPtrOutput { return v.KafkaVersion }).(pulumi.StringPtrOutput)
 }
 
 // The short name of the Kafka cluster.  Duplo will add a prefix to the name.  You can retrieve the full name from the `fullname` attribute.
@@ -451,8 +465,8 @@ func (o AwsKafkaClusterOutput) State() pulumi.StringOutput {
 }
 
 // The size of the Kafka storage, in gigabytes.
-func (o AwsKafkaClusterOutput) StorageSize() pulumi.IntOutput {
-	return o.ApplyT(func(v *AwsKafkaCluster) pulumi.IntOutput { return v.StorageSize }).(pulumi.IntOutput)
+func (o AwsKafkaClusterOutput) StorageSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AwsKafkaCluster) pulumi.IntPtrOutput { return v.StorageSize }).(pulumi.IntPtrOutput)
 }
 
 // The list of subnets that the cluster will be launched in.
