@@ -148,6 +148,18 @@ namespace DuploCloud.Pulumi
         public Output<string> PlaintextZookeeperConnectString { get; private set; } = null!;
 
         /// <summary>
+        /// Enable SASL/IAM client authentication. Applies to both provisioned and serverless clusters. **Note:** In-place updates of this property are not currently supported. To change this setting, update it directly in AWS and run `pulumi import` to sync the state. For serverless clusters, SASL/IAM is always enabled and cannot be disabled.
+        /// </summary>
+        [Output("saslIam")]
+        public Output<bool> SaslIam { get; private set; } = null!;
+
+        /// <summary>
+        /// The bootstrap broker connect string for SASL/IAM authenticated connections.
+        /// </summary>
+        [Output("saslIamBootstrapBrokerString")]
+        public Output<string> SaslIamBootstrapBrokerString { get; private set; } = null!;
+
+        /// <summary>
         /// The list of security groups used by the cluster.
         /// </summary>
         [Output("securityGroups")]
@@ -283,6 +295,12 @@ namespace DuploCloud.Pulumi
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Enable SASL/IAM client authentication. Applies to both provisioned and serverless clusters. **Note:** In-place updates of this property are not currently supported. To change this setting, update it directly in AWS and run `pulumi import` to sync the state. For serverless clusters, SASL/IAM is always enabled and cannot be disabled.
+        /// </summary>
+        [Input("saslIam")]
+        public Input<bool>? SaslIam { get; set; }
+
+        /// <summary>
         /// The size of the Kafka storage, in gigabytes.
         /// </summary>
         [Input("storageSize")]
@@ -395,6 +413,18 @@ namespace DuploCloud.Pulumi
         /// </summary>
         [Input("plaintextZookeeperConnectString")]
         public Input<string>? PlaintextZookeeperConnectString { get; set; }
+
+        /// <summary>
+        /// Enable SASL/IAM client authentication. Applies to both provisioned and serverless clusters. **Note:** In-place updates of this property are not currently supported. To change this setting, update it directly in AWS and run `pulumi import` to sync the state. For serverless clusters, SASL/IAM is always enabled and cannot be disabled.
+        /// </summary>
+        [Input("saslIam")]
+        public Input<bool>? SaslIam { get; set; }
+
+        /// <summary>
+        /// The bootstrap broker connect string for SASL/IAM authenticated connections.
+        /// </summary>
+        [Input("saslIamBootstrapBrokerString")]
+        public Input<string>? SaslIamBootstrapBrokerString { get; set; }
 
         [Input("securityGroups")]
         private InputList<string>? _securityGroups;
