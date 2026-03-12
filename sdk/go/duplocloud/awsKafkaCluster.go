@@ -103,6 +103,10 @@ type AwsKafkaCluster struct {
 	PlaintextBootstrapBrokerString pulumi.StringOutput `pulumi:"plaintextBootstrapBrokerString"`
 	// The Zookeeper connect string for plaintext (unencrypted) connections.
 	PlaintextZookeeperConnectString pulumi.StringOutput `pulumi:"plaintextZookeeperConnectString"`
+	// Enable SASL/IAM client authentication. Applies to both provisioned and serverless clusters. **Note:** In-place updates of this property are not currently supported. To change this setting, update it directly in AWS and run `pulumi import` to sync the state. For serverless clusters, SASL/IAM is always enabled and cannot be disabled.
+	SaslIam pulumi.BoolOutput `pulumi:"saslIam"`
+	// The bootstrap broker connect string for SASL/IAM authenticated connections.
+	SaslIamBootstrapBrokerString pulumi.StringOutput `pulumi:"saslIamBootstrapBrokerString"`
 	// The list of security groups used by the cluster.
 	SecurityGroups pulumi.StringArrayOutput `pulumi:"securityGroups"`
 	// The current state of the cluster.
@@ -181,6 +185,10 @@ type awsKafkaClusterState struct {
 	PlaintextBootstrapBrokerString *string `pulumi:"plaintextBootstrapBrokerString"`
 	// The Zookeeper connect string for plaintext (unencrypted) connections.
 	PlaintextZookeeperConnectString *string `pulumi:"plaintextZookeeperConnectString"`
+	// Enable SASL/IAM client authentication. Applies to both provisioned and serverless clusters. **Note:** In-place updates of this property are not currently supported. To change this setting, update it directly in AWS and run `pulumi import` to sync the state. For serverless clusters, SASL/IAM is always enabled and cannot be disabled.
+	SaslIam *bool `pulumi:"saslIam"`
+	// The bootstrap broker connect string for SASL/IAM authenticated connections.
+	SaslIamBootstrapBrokerString *string `pulumi:"saslIamBootstrapBrokerString"`
 	// The list of security groups used by the cluster.
 	SecurityGroups []string `pulumi:"securityGroups"`
 	// The current state of the cluster.
@@ -227,6 +235,10 @@ type AwsKafkaClusterState struct {
 	PlaintextBootstrapBrokerString pulumi.StringPtrInput
 	// The Zookeeper connect string for plaintext (unencrypted) connections.
 	PlaintextZookeeperConnectString pulumi.StringPtrInput
+	// Enable SASL/IAM client authentication. Applies to both provisioned and serverless clusters. **Note:** In-place updates of this property are not currently supported. To change this setting, update it directly in AWS and run `pulumi import` to sync the state. For serverless clusters, SASL/IAM is always enabled and cannot be disabled.
+	SaslIam pulumi.BoolPtrInput
+	// The bootstrap broker connect string for SASL/IAM authenticated connections.
+	SaslIamBootstrapBrokerString pulumi.StringPtrInput
 	// The list of security groups used by the cluster.
 	SecurityGroups pulumi.StringArrayInput
 	// The current state of the cluster.
@@ -264,6 +276,8 @@ type awsKafkaClusterArgs struct {
 	KafkaVersion *string `pulumi:"kafkaVersion"`
 	// The short name of the Kafka cluster.  Duplo will add a prefix to the name.  You can retrieve the full name from the `fullname` attribute.
 	Name *string `pulumi:"name"`
+	// Enable SASL/IAM client authentication. Applies to both provisioned and serverless clusters. **Note:** In-place updates of this property are not currently supported. To change this setting, update it directly in AWS and run `pulumi import` to sync the state. For serverless clusters, SASL/IAM is always enabled and cannot be disabled.
+	SaslIam *bool `pulumi:"saslIam"`
 	// The size of the Kafka storage, in gigabytes.
 	StorageSize *int `pulumi:"storageSize"`
 	// The list of subnets that the cluster will be launched in.
@@ -289,6 +303,8 @@ type AwsKafkaClusterArgs struct {
 	KafkaVersion pulumi.StringPtrInput
 	// The short name of the Kafka cluster.  Duplo will add a prefix to the name.  You can retrieve the full name from the `fullname` attribute.
 	Name pulumi.StringPtrInput
+	// Enable SASL/IAM client authentication. Applies to both provisioned and serverless clusters. **Note:** In-place updates of this property are not currently supported. To change this setting, update it directly in AWS and run `pulumi import` to sync the state. For serverless clusters, SASL/IAM is always enabled and cannot be disabled.
+	SaslIam pulumi.BoolPtrInput
 	// The size of the Kafka storage, in gigabytes.
 	StorageSize pulumi.IntPtrInput
 	// The list of subnets that the cluster will be launched in.
@@ -452,6 +468,16 @@ func (o AwsKafkaClusterOutput) PlaintextBootstrapBrokerString() pulumi.StringOut
 // The Zookeeper connect string for plaintext (unencrypted) connections.
 func (o AwsKafkaClusterOutput) PlaintextZookeeperConnectString() pulumi.StringOutput {
 	return o.ApplyT(func(v *AwsKafkaCluster) pulumi.StringOutput { return v.PlaintextZookeeperConnectString }).(pulumi.StringOutput)
+}
+
+// Enable SASL/IAM client authentication. Applies to both provisioned and serverless clusters. **Note:** In-place updates of this property are not currently supported. To change this setting, update it directly in AWS and run `pulumi import` to sync the state. For serverless clusters, SASL/IAM is always enabled and cannot be disabled.
+func (o AwsKafkaClusterOutput) SaslIam() pulumi.BoolOutput {
+	return o.ApplyT(func(v *AwsKafkaCluster) pulumi.BoolOutput { return v.SaslIam }).(pulumi.BoolOutput)
+}
+
+// The bootstrap broker connect string for SASL/IAM authenticated connections.
+func (o AwsKafkaClusterOutput) SaslIamBootstrapBrokerString() pulumi.StringOutput {
+	return o.ApplyT(func(v *AwsKafkaCluster) pulumi.StringOutput { return v.SaslIamBootstrapBrokerString }).(pulumi.StringOutput)
 }
 
 // The list of security groups used by the cluster.

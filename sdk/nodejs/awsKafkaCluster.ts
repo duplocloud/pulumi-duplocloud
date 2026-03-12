@@ -128,6 +128,14 @@ export class AwsKafkaCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly plaintextZookeeperConnectString!: pulumi.Output<string>;
     /**
+     * Enable SASL/IAM client authentication. Applies to both provisioned and serverless clusters. **Note:** In-place updates of this property are not currently supported. To change this setting, update it directly in AWS and run `pulumi import` to sync the state. For serverless clusters, SASL/IAM is always enabled and cannot be disabled.
+     */
+    public readonly saslIam!: pulumi.Output<boolean>;
+    /**
+     * The bootstrap broker connect string for SASL/IAM authenticated connections.
+     */
+    public /*out*/ readonly saslIamBootstrapBrokerString!: pulumi.Output<string>;
+    /**
      * The list of security groups used by the cluster.
      */
     public /*out*/ readonly securityGroups!: pulumi.Output<string[]>;
@@ -184,6 +192,8 @@ export class AwsKafkaCluster extends pulumi.CustomResource {
             resourceInputs["numberOfBrokerNodes"] = state ? state.numberOfBrokerNodes : undefined;
             resourceInputs["plaintextBootstrapBrokerString"] = state ? state.plaintextBootstrapBrokerString : undefined;
             resourceInputs["plaintextZookeeperConnectString"] = state ? state.plaintextZookeeperConnectString : undefined;
+            resourceInputs["saslIam"] = state ? state.saslIam : undefined;
+            resourceInputs["saslIamBootstrapBrokerString"] = state ? state.saslIamBootstrapBrokerString : undefined;
             resourceInputs["securityGroups"] = state ? state.securityGroups : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["storageSize"] = state ? state.storageSize : undefined;
@@ -204,6 +214,7 @@ export class AwsKafkaCluster extends pulumi.CustomResource {
             resourceInputs["isServerless"] = args ? args.isServerless : undefined;
             resourceInputs["kafkaVersion"] = args ? args.kafkaVersion : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["saslIam"] = args ? args.saslIam : undefined;
             resourceInputs["storageSize"] = args ? args.storageSize : undefined;
             resourceInputs["subnets"] = args ? args.subnets : undefined;
             resourceInputs["tenantId"] = args ? args.tenantId : undefined;
@@ -214,6 +225,7 @@ export class AwsKafkaCluster extends pulumi.CustomResource {
             resourceInputs["numberOfBrokerNodes"] = undefined /*out*/;
             resourceInputs["plaintextBootstrapBrokerString"] = undefined /*out*/;
             resourceInputs["plaintextZookeeperConnectString"] = undefined /*out*/;
+            resourceInputs["saslIamBootstrapBrokerString"] = undefined /*out*/;
             resourceInputs["securityGroups"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["tags"] = undefined /*out*/;
@@ -284,6 +296,14 @@ export interface AwsKafkaClusterState {
      */
     plaintextZookeeperConnectString?: pulumi.Input<string>;
     /**
+     * Enable SASL/IAM client authentication. Applies to both provisioned and serverless clusters. **Note:** In-place updates of this property are not currently supported. To change this setting, update it directly in AWS and run `pulumi import` to sync the state. For serverless clusters, SASL/IAM is always enabled and cannot be disabled.
+     */
+    saslIam?: pulumi.Input<boolean>;
+    /**
+     * The bootstrap broker connect string for SASL/IAM authenticated connections.
+     */
+    saslIamBootstrapBrokerString?: pulumi.Input<string>;
+    /**
      * The list of security groups used by the cluster.
      */
     securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
@@ -347,6 +367,10 @@ export interface AwsKafkaClusterArgs {
      * The short name of the Kafka cluster.  Duplo will add a prefix to the name.  You can retrieve the full name from the `fullname` attribute.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Enable SASL/IAM client authentication. Applies to both provisioned and serverless clusters. **Note:** In-place updates of this property are not currently supported. To change this setting, update it directly in AWS and run `pulumi import` to sync the state. For serverless clusters, SASL/IAM is always enabled and cannot be disabled.
+     */
+    saslIam?: pulumi.Input<boolean>;
     /**
      * The size of the Kafka storage, in gigabytes.
      */

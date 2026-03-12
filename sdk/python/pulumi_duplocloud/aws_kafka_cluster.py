@@ -27,6 +27,7 @@ class AwsKafkaClusterArgs:
                  is_serverless: Optional[pulumi.Input[bool]] = None,
                  kafka_version: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 sasl_iam: Optional[pulumi.Input[bool]] = None,
                  storage_size: Optional[pulumi.Input[int]] = None,
                  subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -40,6 +41,7 @@ class AwsKafkaClusterArgs:
         :param pulumi.Input[bool] is_serverless: Enable to make the cluster serverless.  When enabled, the `instance_type`, `storage_size`, `kafka_version`, `configuration_arn`, `configuration_revision`, and `encryption_in_transit` parameters are not applicable. Defaults to `false`.
         :param pulumi.Input[str] kafka_version: The version of the Kafka cluster.
         :param pulumi.Input[str] name: The short name of the Kafka cluster.  Duplo will add a prefix to the name.  You can retrieve the full name from the `fullname` attribute.
+        :param pulumi.Input[bool] sasl_iam: Enable SASL/IAM client authentication. Applies to both provisioned and serverless clusters. **Note:** In-place updates of this property are not currently supported. To change this setting, update it directly in AWS and run `pulumi import` to sync the state. For serverless clusters, SASL/IAM is always enabled and cannot be disabled.
         :param pulumi.Input[int] storage_size: The size of the Kafka storage, in gigabytes.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnets: The list of subnets that the cluster will be launched in.
         """
@@ -58,6 +60,8 @@ class AwsKafkaClusterArgs:
             pulumi.set(__self__, "kafka_version", kafka_version)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if sasl_iam is not None:
+            pulumi.set(__self__, "sasl_iam", sasl_iam)
         if storage_size is not None:
             pulumi.set(__self__, "storage_size", storage_size)
         if subnets is not None:
@@ -161,6 +165,18 @@ class AwsKafkaClusterArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="saslIam")
+    def sasl_iam(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable SASL/IAM client authentication. Applies to both provisioned and serverless clusters. **Note:** In-place updates of this property are not currently supported. To change this setting, update it directly in AWS and run `pulumi import` to sync the state. For serverless clusters, SASL/IAM is always enabled and cannot be disabled.
+        """
+        return pulumi.get(self, "sasl_iam")
+
+    @sasl_iam.setter
+    def sasl_iam(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "sasl_iam", value)
+
+    @property
     @pulumi.getter(name="storageSize")
     def storage_size(self) -> Optional[pulumi.Input[int]]:
         """
@@ -202,6 +218,8 @@ class _AwsKafkaClusterState:
                  number_of_broker_nodes: Optional[pulumi.Input[int]] = None,
                  plaintext_bootstrap_broker_string: Optional[pulumi.Input[str]] = None,
                  plaintext_zookeeper_connect_string: Optional[pulumi.Input[str]] = None,
+                 sasl_iam: Optional[pulumi.Input[bool]] = None,
+                 sasl_iam_bootstrap_broker_string: Optional[pulumi.Input[str]] = None,
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  storage_size: Optional[pulumi.Input[int]] = None,
@@ -226,6 +244,8 @@ class _AwsKafkaClusterState:
         :param pulumi.Input[int] number_of_broker_nodes: The desired total number of broker nodes in the kafka cluster.
         :param pulumi.Input[str] plaintext_bootstrap_broker_string: The bootstrap broker connect string for plaintext (unencrypted) connections.
         :param pulumi.Input[str] plaintext_zookeeper_connect_string: The Zookeeper connect string for plaintext (unencrypted) connections.
+        :param pulumi.Input[bool] sasl_iam: Enable SASL/IAM client authentication. Applies to both provisioned and serverless clusters. **Note:** In-place updates of this property are not currently supported. To change this setting, update it directly in AWS and run `pulumi import` to sync the state. For serverless clusters, SASL/IAM is always enabled and cannot be disabled.
+        :param pulumi.Input[str] sasl_iam_bootstrap_broker_string: The bootstrap broker connect string for SASL/IAM authenticated connections.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: The list of security groups used by the cluster.
         :param pulumi.Input[str] state: The current state of the cluster.
         :param pulumi.Input[int] storage_size: The size of the Kafka storage, in gigabytes.
@@ -262,6 +282,10 @@ class _AwsKafkaClusterState:
             pulumi.set(__self__, "plaintext_bootstrap_broker_string", plaintext_bootstrap_broker_string)
         if plaintext_zookeeper_connect_string is not None:
             pulumi.set(__self__, "plaintext_zookeeper_connect_string", plaintext_zookeeper_connect_string)
+        if sasl_iam is not None:
+            pulumi.set(__self__, "sasl_iam", sasl_iam)
+        if sasl_iam_bootstrap_broker_string is not None:
+            pulumi.set(__self__, "sasl_iam_bootstrap_broker_string", sasl_iam_bootstrap_broker_string)
         if security_groups is not None:
             pulumi.set(__self__, "security_groups", security_groups)
         if state is not None:
@@ -446,6 +470,30 @@ class _AwsKafkaClusterState:
         pulumi.set(self, "plaintext_zookeeper_connect_string", value)
 
     @property
+    @pulumi.getter(name="saslIam")
+    def sasl_iam(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable SASL/IAM client authentication. Applies to both provisioned and serverless clusters. **Note:** In-place updates of this property are not currently supported. To change this setting, update it directly in AWS and run `pulumi import` to sync the state. For serverless clusters, SASL/IAM is always enabled and cannot be disabled.
+        """
+        return pulumi.get(self, "sasl_iam")
+
+    @sasl_iam.setter
+    def sasl_iam(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "sasl_iam", value)
+
+    @property
+    @pulumi.getter(name="saslIamBootstrapBrokerString")
+    def sasl_iam_bootstrap_broker_string(self) -> Optional[pulumi.Input[str]]:
+        """
+        The bootstrap broker connect string for SASL/IAM authenticated connections.
+        """
+        return pulumi.get(self, "sasl_iam_bootstrap_broker_string")
+
+    @sasl_iam_bootstrap_broker_string.setter
+    def sasl_iam_bootstrap_broker_string(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sasl_iam_bootstrap_broker_string", value)
+
+    @property
     @pulumi.getter(name="securityGroups")
     def security_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -551,6 +599,7 @@ class AwsKafkaCluster(pulumi.CustomResource):
                  is_serverless: Optional[pulumi.Input[bool]] = None,
                  kafka_version: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 sasl_iam: Optional[pulumi.Input[bool]] = None,
                  storage_size: Optional[pulumi.Input[int]] = None,
                  subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
@@ -603,6 +652,7 @@ class AwsKafkaCluster(pulumi.CustomResource):
         :param pulumi.Input[bool] is_serverless: Enable to make the cluster serverless.  When enabled, the `instance_type`, `storage_size`, `kafka_version`, `configuration_arn`, `configuration_revision`, and `encryption_in_transit` parameters are not applicable. Defaults to `false`.
         :param pulumi.Input[str] kafka_version: The version of the Kafka cluster.
         :param pulumi.Input[str] name: The short name of the Kafka cluster.  Duplo will add a prefix to the name.  You can retrieve the full name from the `fullname` attribute.
+        :param pulumi.Input[bool] sasl_iam: Enable SASL/IAM client authentication. Applies to both provisioned and serverless clusters. **Note:** In-place updates of this property are not currently supported. To change this setting, update it directly in AWS and run `pulumi import` to sync the state. For serverless clusters, SASL/IAM is always enabled and cannot be disabled.
         :param pulumi.Input[int] storage_size: The size of the Kafka storage, in gigabytes.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnets: The list of subnets that the cluster will be launched in.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the Kafka cluster will be created in.
@@ -673,6 +723,7 @@ class AwsKafkaCluster(pulumi.CustomResource):
                  is_serverless: Optional[pulumi.Input[bool]] = None,
                  kafka_version: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 sasl_iam: Optional[pulumi.Input[bool]] = None,
                  storage_size: Optional[pulumi.Input[int]] = None,
                  subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
@@ -692,6 +743,7 @@ class AwsKafkaCluster(pulumi.CustomResource):
             __props__.__dict__["is_serverless"] = is_serverless
             __props__.__dict__["kafka_version"] = kafka_version
             __props__.__dict__["name"] = name
+            __props__.__dict__["sasl_iam"] = sasl_iam
             __props__.__dict__["storage_size"] = storage_size
             __props__.__dict__["subnets"] = subnets
             if tenant_id is None and not opts.urn:
@@ -704,6 +756,7 @@ class AwsKafkaCluster(pulumi.CustomResource):
             __props__.__dict__["number_of_broker_nodes"] = None
             __props__.__dict__["plaintext_bootstrap_broker_string"] = None
             __props__.__dict__["plaintext_zookeeper_connect_string"] = None
+            __props__.__dict__["sasl_iam_bootstrap_broker_string"] = None
             __props__.__dict__["security_groups"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["tags"] = None
@@ -733,6 +786,8 @@ class AwsKafkaCluster(pulumi.CustomResource):
             number_of_broker_nodes: Optional[pulumi.Input[int]] = None,
             plaintext_bootstrap_broker_string: Optional[pulumi.Input[str]] = None,
             plaintext_zookeeper_connect_string: Optional[pulumi.Input[str]] = None,
+            sasl_iam: Optional[pulumi.Input[bool]] = None,
+            sasl_iam_bootstrap_broker_string: Optional[pulumi.Input[str]] = None,
             security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             state: Optional[pulumi.Input[str]] = None,
             storage_size: Optional[pulumi.Input[int]] = None,
@@ -762,6 +817,8 @@ class AwsKafkaCluster(pulumi.CustomResource):
         :param pulumi.Input[int] number_of_broker_nodes: The desired total number of broker nodes in the kafka cluster.
         :param pulumi.Input[str] plaintext_bootstrap_broker_string: The bootstrap broker connect string for plaintext (unencrypted) connections.
         :param pulumi.Input[str] plaintext_zookeeper_connect_string: The Zookeeper connect string for plaintext (unencrypted) connections.
+        :param pulumi.Input[bool] sasl_iam: Enable SASL/IAM client authentication. Applies to both provisioned and serverless clusters. **Note:** In-place updates of this property are not currently supported. To change this setting, update it directly in AWS and run `pulumi import` to sync the state. For serverless clusters, SASL/IAM is always enabled and cannot be disabled.
+        :param pulumi.Input[str] sasl_iam_bootstrap_broker_string: The bootstrap broker connect string for SASL/IAM authenticated connections.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: The list of security groups used by the cluster.
         :param pulumi.Input[str] state: The current state of the cluster.
         :param pulumi.Input[int] storage_size: The size of the Kafka storage, in gigabytes.
@@ -788,6 +845,8 @@ class AwsKafkaCluster(pulumi.CustomResource):
         __props__.__dict__["number_of_broker_nodes"] = number_of_broker_nodes
         __props__.__dict__["plaintext_bootstrap_broker_string"] = plaintext_bootstrap_broker_string
         __props__.__dict__["plaintext_zookeeper_connect_string"] = plaintext_zookeeper_connect_string
+        __props__.__dict__["sasl_iam"] = sasl_iam
+        __props__.__dict__["sasl_iam_bootstrap_broker_string"] = sasl_iam_bootstrap_broker_string
         __props__.__dict__["security_groups"] = security_groups
         __props__.__dict__["state"] = state
         __props__.__dict__["storage_size"] = storage_size
@@ -907,6 +966,22 @@ class AwsKafkaCluster(pulumi.CustomResource):
         The Zookeeper connect string for plaintext (unencrypted) connections.
         """
         return pulumi.get(self, "plaintext_zookeeper_connect_string")
+
+    @property
+    @pulumi.getter(name="saslIam")
+    def sasl_iam(self) -> pulumi.Output[bool]:
+        """
+        Enable SASL/IAM client authentication. Applies to both provisioned and serverless clusters. **Note:** In-place updates of this property are not currently supported. To change this setting, update it directly in AWS and run `pulumi import` to sync the state. For serverless clusters, SASL/IAM is always enabled and cannot be disabled.
+        """
+        return pulumi.get(self, "sasl_iam")
+
+    @property
+    @pulumi.getter(name="saslIamBootstrapBrokerString")
+    def sasl_iam_bootstrap_broker_string(self) -> pulumi.Output[str]:
+        """
+        The bootstrap broker connect string for SASL/IAM authenticated connections.
+        """
+        return pulumi.get(self, "sasl_iam_bootstrap_broker_string")
 
     @property
     @pulumi.getter(name="securityGroups")
