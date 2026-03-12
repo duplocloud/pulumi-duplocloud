@@ -36823,6 +36823,14 @@
                     "type": "string",
                     "description": "The Zookeeper connect string for plaintext (unencrypted) connections.\n"
                 },
+                "saslIam": {
+                    "type": "boolean",
+                    "description": "Enable SASL/IAM client authentication. Applies to both provisioned and serverless clusters. **Note:** In-place updates of this property are not currently supported. To change this setting, update it directly in AWS and run `pulumi import` to sync the state. For serverless clusters, SASL/IAM is always enabled and cannot be disabled.\n"
+                },
+                "saslIamBootstrapBrokerString": {
+                    "type": "string",
+                    "description": "The bootstrap broker connect string for SASL/IAM authenticated connections.\n"
+                },
                 "securityGroups": {
                     "type": "array",
                     "items": {
@@ -36876,6 +36884,8 @@
                 "numberOfBrokerNodes",
                 "plaintextBootstrapBrokerString",
                 "plaintextZookeeperConnectString",
+                "saslIam",
+                "saslIamBootstrapBrokerString",
                 "securityGroups",
                 "state",
                 "subnets",
@@ -36916,6 +36926,10 @@
                     "type": "string",
                     "description": "The short name of the Kafka cluster.  Duplo will add a prefix to the name.  You can retrieve the full name from the `fullname` attribute.\n",
                     "willReplaceOnChanges": true
+                },
+                "saslIam": {
+                    "type": "boolean",
+                    "description": "Enable SASL/IAM client authentication. Applies to both provisioned and serverless clusters. **Note:** In-place updates of this property are not currently supported. To change this setting, update it directly in AWS and run `pulumi import` to sync the state. For serverless clusters, SASL/IAM is always enabled and cannot be disabled.\n"
                 },
                 "storageSize": {
                     "type": "integer",
@@ -37000,6 +37014,14 @@
                     "plaintextZookeeperConnectString": {
                         "type": "string",
                         "description": "The Zookeeper connect string for plaintext (unencrypted) connections.\n"
+                    },
+                    "saslIam": {
+                        "type": "boolean",
+                        "description": "Enable SASL/IAM client authentication. Applies to both provisioned and serverless clusters. **Note:** In-place updates of this property are not currently supported. To change this setting, update it directly in AWS and run `pulumi import` to sync the state. For serverless clusters, SASL/IAM is always enabled and cannot be disabled.\n"
+                    },
+                    "saslIamBootstrapBrokerString": {
+                        "type": "string",
+                        "description": "The bootstrap broker connect string for SASL/IAM authenticated connections.\n"
                     },
                     "securityGroups": {
                         "type": "array",
