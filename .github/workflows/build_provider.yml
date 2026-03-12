@@ -38,11 +38,14 @@ jobs:
           persist-credentials: false
       # Without ldid cross-compiling Node binaries on a Linux worker intended to work on darwin-arm64 fails to sign the
       # binaries properly and they do not work as expected. See https://github.com/pulumi/pulumi-awsx/issues/1490
-      - uses: MOZGIII/install-ldid-action@v1
-        with:
-          tag: v2.1.5-procursus2
-        env:
-          GITHUB_TOKEN: ${{ secrets.PULUMI_GPAT }}
+      - name: Install ldid
+        run: |
+          mkdir -p /tmp/ldid
+          cd /tmp/ldid
+          git clone https://github.com/MOZGIII/ldid.git .
+          git checkout v2.1.5-procursus2
+          make
+          sudo cp ldid /usr/local/bin/
       - name: Setup tools
         uses: ./.github/actions/setup-tools
         with:
