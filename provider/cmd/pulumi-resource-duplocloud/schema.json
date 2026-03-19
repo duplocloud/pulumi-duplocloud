@@ -47667,8 +47667,7 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/duplocloud:index/EcacheInstanceLogDeliveryConfiguration:EcacheInstanceLogDeliveryConfiguration"
-                    },
-                    "willReplaceOnChanges": true
+                    }
                 },
                 "multiAzEnabled": {
                     "type": "boolean",
@@ -47690,8 +47689,7 @@
                 },
                 "replicas": {
                     "type": "integer",
-                    "description": "The number of replicas to create. Supported number of replicas is 1 to 6\n",
-                    "willReplaceOnChanges": true
+                    "description": "The number of replicas to create. Supported number of replicas is 1 to 6\n"
                 },
                 "size": {
                     "type": "string",
@@ -47800,8 +47798,7 @@
                         "type": "array",
                         "items": {
                             "$ref": "#/types/duplocloud:index/EcacheInstanceLogDeliveryConfiguration:EcacheInstanceLogDeliveryConfiguration"
-                        },
-                        "willReplaceOnChanges": true
+                        }
                     },
                     "multiAzEnabled": {
                         "type": "boolean",
@@ -47827,8 +47824,7 @@
                     },
                     "replicas": {
                         "type": "integer",
-                        "description": "The number of replicas to create. Supported number of replicas is 1 to 6\n",
-                        "willReplaceOnChanges": true
+                        "description": "The number of replicas to create. Supported number of replicas is 1 to 6\n"
                     },
                     "size": {
                         "type": "string",
