@@ -81,6 +81,21 @@
         }
     },
     "types": {
+        "duplocloud:index/AsgProfileCustomDataTag:AsgProfileCustomDataTag": {
+            "properties": {
+                "key": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "key",
+                "value"
+            ]
+        },
         "duplocloud:index/AsgProfileMetadata:AsgProfileMetadata": {
             "properties": {
                 "key": {
@@ -504,6 +519,7 @@
                         "ec2KeyPair",
                         "instanceRole",
                         "maxVcpus",
+                        "minVcpus",
                         "securityGroupIds",
                         "subnets",
                         "tags",
@@ -17475,6 +17491,13 @@
                     "type": "integer",
                     "description": "The numeric ID of the cloud provider to launch the host in.\n"
                 },
+                "customDataTags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/duplocloud:index/getAsgProfilesAsgProfileCustomDataTag:getAsgProfilesAsgProfileCustomDataTag"
+                    },
+                    "description": "A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value.\n\n**Note:** When importing an ASG created using the minion_tags block, from v0.12.6 onwards, need to add a custom_data_tags block by replacing the minion_tags block with the same key and value as the minion_tags block to avoid drift.\n"
+                },
                 "customNodeLabels": {
                     "type": "object",
                     "additionalProperties": {
@@ -17549,7 +17572,8 @@
                     "items": {
                         "$ref": "#/types/duplocloud:index/getAsgProfilesAsgProfileMinionTag:getAsgProfilesAsgProfileMinionTag"
                     },
-                    "description": "A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value.\n"
+                    "description": "A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value.\n",
+                    "deprecationMessage": "minion_tags is deprecated and will be removed in a future release. Use custom_data_tags instead."
                 },
                 "networkInterfaces": {
                     "type": "array",
@@ -17616,6 +17640,7 @@
                 "base64UserData",
                 "canScaleFromZero",
                 "capacity",
+                "customDataTags",
                 "customNodeLabels",
                 "friendlyName",
                 "fullname",
@@ -17635,6 +17660,26 @@
                 "userAccount",
                 "volumes",
                 "zones"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "duplocloud:index/getAsgProfilesAsgProfileCustomDataTag:getAsgProfilesAsgProfileCustomDataTag": {
+            "properties": {
+                "key": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "key",
+                "value"
             ],
             "language": {
                 "nodejs": {
@@ -32201,6 +32246,13 @@
                     "type": "integer",
                     "description": "The numeric ID of the cloud provider to launch the host in.\n"
                 },
+                "customDataTags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/duplocloud:index/AsgProfileCustomDataTag:AsgProfileCustomDataTag"
+                    },
+                    "description": "A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value. **Note:**\nWhen importing an ASG created using the minion_tags block, from v0.12.6 onwards, need to add a custom_data_tags block by\nreplacing the minion_tags block with the same key and value as the minion_tags block to avoid drift.\n"
+                },
                 "customNodeLabels": {
                     "type": "object",
                     "additionalProperties": {
@@ -32275,7 +32327,8 @@
                     "items": {
                         "$ref": "#/types/duplocloud:index/AsgProfileMinionTag:AsgProfileMinionTag"
                     },
-                    "description": "A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value.\n"
+                    "description": "A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value.\n",
+                    "deprecationMessage": "minion_tags is deprecated and will be removed in a future release. Use custom_data_tags instead."
                 },
                 "networkInterfaces": {
                     "type": "array",
@@ -32331,7 +32384,7 @@
                 "zone": {
                     "type": "string",
                     "description": "The availability zone to launch the host in is expressed as a numeric value ranging from 0 to 3.\n",
-                    "deprecationMessage": "For environments on the July 2024 release or earlier, use zone. For environments on releases after July 2024, use zones, as zone has been deprecated."
+                    "deprecationMessage": "For environments on the July 2024 release or earlier, use zone. For environments on releases after July 2024, use zones, as zone has been deprecated and is non-functional on change."
                 },
                 "zones": {
                     "type": "array",
@@ -32346,6 +32399,7 @@
                 "base64UserData",
                 "canScaleFromZero",
                 "capacity",
+                "customDataTags",
                 "customNodeLabels",
                 "friendlyName",
                 "fullname",
@@ -32395,6 +32449,13 @@
                     "type": "integer",
                     "description": "The numeric ID of the cloud provider to launch the host in.\n",
                     "willReplaceOnChanges": true
+                },
+                "customDataTags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/duplocloud:index/AsgProfileCustomDataTag:AsgProfileCustomDataTag"
+                    },
+                    "description": "A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value. **Note:**\nWhen importing an ASG created using the minion_tags block, from v0.12.6 onwards, need to add a custom_data_tags block by\nreplacing the minion_tags block with the same key and value as the minion_tags block to avoid drift.\n"
                 },
                 "customNodeLabels": {
                     "type": "object",
@@ -32472,6 +32533,7 @@
                         "$ref": "#/types/duplocloud:index/AsgProfileMinionTag:AsgProfileMinionTag"
                     },
                     "description": "A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value.\n",
+                    "deprecationMessage": "minion_tags is deprecated and will be removed in a future release. Use custom_data_tags instead.",
                     "willReplaceOnChanges": true
                 },
                 "networkInterfaces": {
@@ -32531,8 +32593,7 @@
                 "zone": {
                     "type": "string",
                     "description": "The availability zone to launch the host in is expressed as a numeric value ranging from 0 to 3.\n",
-                    "deprecationMessage": "For environments on the July 2024 release or earlier, use zone. For environments on releases after July 2024, use zones, as zone has been deprecated.",
-                    "willReplaceOnChanges": true
+                    "deprecationMessage": "For environments on the July 2024 release or earlier, use zone. For environments on releases after July 2024, use zones, as zone has been deprecated and is non-functional on change."
                 },
                 "zones": {
                     "type": "array",
@@ -32584,6 +32645,13 @@
                         "type": "integer",
                         "description": "The numeric ID of the cloud provider to launch the host in.\n",
                         "willReplaceOnChanges": true
+                    },
+                    "customDataTags": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/duplocloud:index/AsgProfileCustomDataTag:AsgProfileCustomDataTag"
+                        },
+                        "description": "A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value. **Note:**\nWhen importing an ASG created using the minion_tags block, from v0.12.6 onwards, need to add a custom_data_tags block by\nreplacing the minion_tags block with the same key and value as the minion_tags block to avoid drift.\n"
                     },
                     "customNodeLabels": {
                         "type": "object",
@@ -32669,6 +32737,7 @@
                             "$ref": "#/types/duplocloud:index/AsgProfileMinionTag:AsgProfileMinionTag"
                         },
                         "description": "A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value.\n",
+                        "deprecationMessage": "minion_tags is deprecated and will be removed in a future release. Use custom_data_tags instead.",
                         "willReplaceOnChanges": true
                     },
                     "networkInterfaces": {
@@ -32732,8 +32801,7 @@
                     "zone": {
                         "type": "string",
                         "description": "The availability zone to launch the host in is expressed as a numeric value ranging from 0 to 3.\n",
-                        "deprecationMessage": "For environments on the July 2024 release or earlier, use zone. For environments on releases after July 2024, use zones, as zone has been deprecated.",
-                        "willReplaceOnChanges": true
+                        "deprecationMessage": "For environments on the July 2024 release or earlier, use zone. For environments on releases after July 2024, use zones, as zone has been deprecated and is non-functional on change."
                     },
                     "zones": {
                         "type": "array",
@@ -37686,7 +37754,7 @@
                 },
                 "defaultVersion": {
                     "type": "string",
-                    "description": "The current default version of the launch template.\n"
+                    "description": "The default version of the launch template at creation time. Use the data source for the current value.\n"
                 },
                 "instanceRequirements": {
                     "$ref": "#/types/duplocloud:index/AwsLaunchTemplateInstanceRequirements:AwsLaunchTemplateInstanceRequirements",
@@ -37789,7 +37857,7 @@
                     },
                     "defaultVersion": {
                         "type": "string",
-                        "description": "The current default version of the launch template.\n"
+                        "description": "The default version of the launch template at creation time. Use the data source for the current value.\n"
                     },
                     "instanceRequirements": {
                         "$ref": "#/types/duplocloud:index/AwsLaunchTemplateInstanceRequirements:AwsLaunchTemplateInstanceRequirements",
@@ -40115,11 +40183,11 @@
             }
         },
         "duplocloud:index/awsTag:AwsTag": {
-            "description": "`duplocloud.AwsTag` manages an AWS custom tag for resources in Duplo.\n\n## Import\n\nExample: Importing an existing custom tag for an AWS resource\n\n - *TENANT_ID* is the tenant GUID\n\n - *ARN* The resource arn.\n\n - *TAGKEY* Key of the tag\n\n#\n\n```sh\n$ pulumi import duplocloud:index/awsTag:AwsTag custom *TENANT_ID*/*TAGKEY*/*ARN*\n```\n\n",
+            "description": "`duplocloud.AwsTag` manages an AWS custom tag for resources in Duplo.\n\n\u003e **Note:** AWS Auto Scaling Group (ASG) resources are **not supported** by this resource. The underlying bulk tagging API does not support ASG ARNs. To tag ASG resources, use the `minion_tags` attribute in `duplocloud.AsgProfile` instead.\n\n## Import\n\nExample: Importing an existing custom tag for an AWS resource\n\n - *TENANT_ID* is the tenant GUID\n\n - *ARN* The resource arn.\n\n - *TAGKEY* Key of the tag\n\n#\n\n```sh\n$ pulumi import duplocloud:index/awsTag:AwsTag custom *TENANT_ID*/*TAGKEY*/*ARN*\n```\n\n",
             "properties": {
                 "arn": {
                     "type": "string",
-                    "description": "The resource arn of which custom tag need to be created.\n"
+                    "description": "The resource ARN of which custom tag need to be created. **Note:** ASG (Auto Scaling Group) ARNs are not supported.\n"
                 },
                 "key": {
                     "type": "string",
@@ -40143,7 +40211,7 @@
             "inputProperties": {
                 "arn": {
                     "type": "string",
-                    "description": "The resource arn of which custom tag need to be created.\n",
+                    "description": "The resource ARN of which custom tag need to be created. **Note:** ASG (Auto Scaling Group) ARNs are not supported.\n",
                     "willReplaceOnChanges": true
                 },
                 "key": {
@@ -40172,7 +40240,7 @@
                 "properties": {
                     "arn": {
                         "type": "string",
-                        "description": "The resource arn of which custom tag need to be created.\n",
+                        "description": "The resource ARN of which custom tag need to be created. **Note:** ASG (Auto Scaling Group) ARNs are not supported.\n",
                         "willReplaceOnChanges": true
                     },
                     "key": {
@@ -44601,6 +44669,10 @@
         "duplocloud:index/azureStorageAccount:AzureStorageAccount": {
             "description": "`duplocloud.AzureStorageAccount` manages an Azure storage account in Duplo.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as duplocloud from \"@duplocloud/pulumi\";\n\nconst myapp = new duplocloud.Tenant(\"myapp\", {\n    accountName: \"myapp\",\n    planId: \"default\",\n});\nconst myappAzureStorageAccount = new duplocloud.AzureStorageAccount(\"myapp\", {\n    tenantId: myapp.tenantId,\n    name: \"storagacctest\",\n});\n```\n```python\nimport pulumi\nimport pulumi_duplocloud as duplocloud\n\nmyapp = duplocloud.Tenant(\"myapp\",\n    account_name=\"myapp\",\n    plan_id=\"default\")\nmyapp_azure_storage_account = duplocloud.AzureStorageAccount(\"myapp\",\n    tenant_id=myapp.tenant_id,\n    name=\"storagacctest\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Pulumi = DuploCloud.Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myapp = new Pulumi.Tenant(\"myapp\", new()\n    {\n        AccountName = \"myapp\",\n        PlanId = \"default\",\n    });\n\n    var myappAzureStorageAccount = new Pulumi.AzureStorageAccount(\"myapp\", new()\n    {\n        TenantId = myapp.TenantId,\n        Name = \"storagacctest\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/duplocloud/pulumi-duplocloud/sdk/go/duplocloud\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmyapp, err := duplocloud.NewTenant(ctx, \"myapp\", \u0026duplocloud.TenantArgs{\n\t\t\tAccountName: pulumi.String(\"myapp\"),\n\t\t\tPlanId:      pulumi.String(\"default\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = duplocloud.NewAzureStorageAccount(ctx, \"myapp\", \u0026duplocloud.AzureStorageAccountArgs{\n\t\t\tTenantId: myapp.TenantId,\n\t\t\tName:     pulumi.String(\"storagacctest\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.duplocloud.Tenant;\nimport com.pulumi.duplocloud.TenantArgs;\nimport com.pulumi.duplocloud.AzureStorageAccount;\nimport com.pulumi.duplocloud.AzureStorageAccountArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myapp = new Tenant(\"myapp\", TenantArgs.builder()\n            .accountName(\"myapp\")\n            .planId(\"default\")\n            .build());\n\n        var myappAzureStorageAccount = new AzureStorageAccount(\"myappAzureStorageAccount\", AzureStorageAccountArgs.builder()\n            .tenantId(myapp.tenantId())\n            .name(\"storagacctest\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myapp:\n    type: duplocloud:Tenant\n    properties:\n      accountName: myapp\n      planId: default\n  myappAzureStorageAccount:\n    type: duplocloud:AzureStorageAccount\n    name: myapp\n    properties:\n      tenantId: ${myapp.tenantId}\n      name: storagacctest\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nExample: Importing an existing Azure storage account\n\n - *TENANT_ID* is the tenant GUID\n\n - *SHORT_NAME* is the short name of the Azure storage account\n\n#\n\n```sh\n$ pulumi import duplocloud:index/azureStorageAccount:AzureStorageAccount mystorageaccount *TENANT_ID*/*SHORT_NAME*\n```\n\n",
             "properties": {
+                "allowBlobPublicAccess": {
+                    "type": "boolean",
+                    "description": "Whether or not to allow public access to all blobs or containers in the storage account. Defaults to `false`.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Specifies the name of the storage account. Changing this forces a new resource to be created. This must be unique across the entire Azure service, not just within the resource group.\n"
@@ -44619,6 +44691,11 @@
                 "tenantId"
             ],
             "inputProperties": {
+                "allowBlobPublicAccess": {
+                    "type": "boolean",
+                    "description": "Whether or not to allow public access to all blobs or containers in the storage account. Defaults to `false`.\n",
+                    "willReplaceOnChanges": true
+                },
                 "name": {
                     "type": "string",
                     "description": "Specifies the name of the storage account. Changing this forces a new resource to be created. This must be unique across the entire Azure service, not just within the resource group.\n",
@@ -44640,6 +44717,11 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering AzureStorageAccount resources.\n",
                 "properties": {
+                    "allowBlobPublicAccess": {
+                        "type": "boolean",
+                        "description": "Whether or not to allow public access to all blobs or containers in the storage account. Defaults to `false`.\n",
+                        "willReplaceOnChanges": true
+                    },
                     "name": {
                         "type": "string",
                         "description": "Specifies the name of the storage account. Changing this forces a new resource to be created. This must be unique across the entire Azure service, not just within the resource group.\n",
@@ -47163,8 +47245,7 @@
                 "loadBalancerArn",
                 "loadBalancerName",
                 "replicationControllerName",
-                "tenantId",
-                "webaclid"
+                "tenantId"
             ],
             "inputProperties": {
                 "dnsPrfx": {
@@ -47655,8 +47736,7 @@
                 },
                 "engineVersion": {
                     "type": "string",
-                    "description": "The engine version of the elastic instance. See AWS documentation for the [available Redis and Valkey instance\ntypes](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/supported-engine-versions.html) or the [available\nMemcached instance\ntypes](https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/supported-engine-versions-mc.html).\n",
-                    "willReplaceOnChanges": true
+                    "description": "The engine version of the elastic instance. See AWS documentation for the [available Redis and Valkey instance\ntypes](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/supported-engine-versions.html) or the [available\nMemcached instance\ntypes](https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/supported-engine-versions-mc.html).\n"
                 },
                 "kmsKeyId": {
                     "type": "string",
@@ -47684,8 +47764,7 @@
                 },
                 "parameterGroupName": {
                     "type": "string",
-                    "description": "The REDIS/Valkey parameter group to supply.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The REDIS/Valkey parameter group to supply.\n"
                 },
                 "replicas": {
                     "type": "integer",
@@ -47693,8 +47772,7 @@
                 },
                 "size": {
                     "type": "string",
-                    "description": "The instance type of the elasticache instance.\nSee AWS documentation for the [available instance types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html).\n",
-                    "willReplaceOnChanges": true
+                    "description": "The instance type of the elasticache instance.\nSee AWS documentation for the [available instance types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html).\n"
                 },
                 "snapshotArns": {
                     "type": "array",
@@ -47770,8 +47848,7 @@
                     },
                     "engineVersion": {
                         "type": "string",
-                        "description": "The engine version of the elastic instance. See AWS documentation for the [available Redis and Valkey instance\ntypes](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/supported-engine-versions.html) or the [available\nMemcached instance\ntypes](https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/supported-engine-versions-mc.html).\n",
-                        "willReplaceOnChanges": true
+                        "description": "The engine version of the elastic instance. See AWS documentation for the [available Redis and Valkey instance\ntypes](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/supported-engine-versions.html) or the [available\nMemcached instance\ntypes](https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/supported-engine-versions-mc.html).\n"
                     },
                     "host": {
                         "type": "string",
@@ -47815,8 +47892,7 @@
                     },
                     "parameterGroupName": {
                         "type": "string",
-                        "description": "The REDIS/Valkey parameter group to supply.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The REDIS/Valkey parameter group to supply.\n"
                     },
                     "port": {
                         "type": "integer",
@@ -47828,8 +47904,7 @@
                     },
                     "size": {
                         "type": "string",
-                        "description": "The instance type of the elasticache instance.\nSee AWS documentation for the [available instance types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html).\n",
-                        "willReplaceOnChanges": true
+                        "description": "The instance type of the elasticache instance.\nSee AWS documentation for the [available instance types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html).\n"
                     },
                     "snapshotArns": {
                         "type": "array",
@@ -55803,6 +55878,10 @@
                     "type": "string",
                     "description": "The ARN of the RDS read replica.\n"
                 },
+                "autoMinorVersionUpgrade": {
+                    "type": "boolean",
+                    "description": "Enable or disable auto minor version upgrade\n"
+                },
                 "availabilityZone": {
                     "type": "string",
                     "description": "The AZ for the RDS instance.\n"
@@ -55899,6 +55978,7 @@
             "required": [
                 "allocatedStorage",
                 "arn",
+                "autoMinorVersionUpgrade",
                 "availabilityZone",
                 "clusterIdentifier",
                 "clusterParameterGroupName",
@@ -55924,6 +56004,10 @@
                 "allocatedStorage": {
                     "type": "integer",
                     "description": "(Required unless a `snapshot_id` is provided) The allocated storage in gigabytes. This can only be set during an update; it will inherit the writer's value during creation.\n**Note:** Allocated storage can only be modified after every 6 hours.\n"
+                },
+                "autoMinorVersionUpgrade": {
+                    "type": "boolean",
+                    "description": "Enable or disable auto minor version upgrade\n"
                 },
                 "availabilityZone": {
                     "type": "string",
@@ -55993,6 +56077,10 @@
                     "arn": {
                         "type": "string",
                         "description": "The ARN of the RDS read replica.\n"
+                    },
+                    "autoMinorVersionUpgrade": {
+                        "type": "boolean",
+                        "description": "Enable or disable auto minor version upgrade\n"
                     },
                     "availabilityZone": {
                         "type": "string",
@@ -57565,6 +57653,187 @@
                     "username": {
                         "type": "string",
                         "description": "The unique user name or the email.\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "duplocloud:index/valkeyServerless:ValkeyServerless": {
+            "description": "`duplocloud.ValkeyServerless` used to manage Serverless Valkey within a DuploCloud-managed environment.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as duplocloud from \"@duplocloud/pulumi\";\n\nconst myapp = new duplocloud.Tenant(\"myapp\", {\n    accountName: \"myapp\",\n    planId: \"default\",\n});\nconst valkey = new duplocloud.ValkeyServerless(\"valkey\", {\n    tenantId: myapp.tenantId,\n    name: \"valkey-sl\",\n    description: \"my serverless valkey\",\n    snapshotRetentionLimit: 1,\n    engineVersion: \"7\",\n    kmsKeyId: \"kms-keyid-arn\",\n});\n```\n```python\nimport pulumi\nimport pulumi_duplocloud as duplocloud\n\nmyapp = duplocloud.Tenant(\"myapp\",\n    account_name=\"myapp\",\n    plan_id=\"default\")\nvalkey = duplocloud.ValkeyServerless(\"valkey\",\n    tenant_id=myapp.tenant_id,\n    name=\"valkey-sl\",\n    description=\"my serverless valkey\",\n    snapshot_retention_limit=1,\n    engine_version=\"7\",\n    kms_key_id=\"kms-keyid-arn\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Pulumi = DuploCloud.Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myapp = new Pulumi.Tenant(\"myapp\", new()\n    {\n        AccountName = \"myapp\",\n        PlanId = \"default\",\n    });\n\n    var valkey = new Pulumi.ValkeyServerless(\"valkey\", new()\n    {\n        TenantId = myapp.TenantId,\n        Name = \"valkey-sl\",\n        Description = \"my serverless valkey\",\n        SnapshotRetentionLimit = 1,\n        EngineVersion = \"7\",\n        KmsKeyId = \"kms-keyid-arn\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/duplocloud/pulumi-duplocloud/sdk/go/duplocloud\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmyapp, err := duplocloud.NewTenant(ctx, \"myapp\", \u0026duplocloud.TenantArgs{\n\t\t\tAccountName: pulumi.String(\"myapp\"),\n\t\t\tPlanId:      pulumi.String(\"default\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = duplocloud.NewValkeyServerless(ctx, \"valkey\", \u0026duplocloud.ValkeyServerlessArgs{\n\t\t\tTenantId:               myapp.TenantId,\n\t\t\tName:                   pulumi.String(\"valkey-sl\"),\n\t\t\tDescription:            pulumi.String(\"my serverless valkey\"),\n\t\t\tSnapshotRetentionLimit: pulumi.Int(1),\n\t\t\tEngineVersion:          pulumi.String(\"7\"),\n\t\t\tKmsKeyId:               pulumi.String(\"kms-keyid-arn\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.duplocloud.Tenant;\nimport com.pulumi.duplocloud.TenantArgs;\nimport com.pulumi.duplocloud.ValkeyServerless;\nimport com.pulumi.duplocloud.ValkeyServerlessArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myapp = new Tenant(\"myapp\", TenantArgs.builder()\n            .accountName(\"myapp\")\n            .planId(\"default\")\n            .build());\n\n        var valkey = new ValkeyServerless(\"valkey\", ValkeyServerlessArgs.builder()\n            .tenantId(myapp.tenantId())\n            .name(\"valkey-sl\")\n            .description(\"my serverless valkey\")\n            .snapshotRetentionLimit(1)\n            .engineVersion(\"7\")\n            .kmsKeyId(\"kms-keyid-arn\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myapp:\n    type: duplocloud:Tenant\n    properties:\n      accountName: myapp\n      planId: default\n  valkey:\n    type: duplocloud:ValkeyServerless\n    properties:\n      tenantId: ${myapp.tenantId}\n      name: valkey-sl\n      description: my serverless valkey\n      snapshotRetentionLimit: 1\n      engineVersion: '7'\n      kmsKeyId: kms-keyid-arn\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nExample: Importing an existing AWS ElastiCache Serverless Valkey\n\n - *TENANT_ID* is the tenant GUID\n\n - *SHORT_NAME* is the short name of the AWS Valkey\n\n#\n\n```sh\n$ pulumi import duplocloud:index/valkeyServerless:ValkeyServerless valkey *TENANT_ID*/valkey/serverless/*SHORT_NAME*\n```\n\n",
+            "properties": {
+                "actualVersion": {
+                    "type": "string"
+                },
+                "arn": {
+                    "type": "string",
+                    "description": "The arn of serverless valkey\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description for serverless valkey\n"
+                },
+                "endpoint": {
+                    "type": "string",
+                    "description": "The endpoint of the serverless valkey.\n"
+                },
+                "engineVersion": {
+                    "type": "string",
+                    "description": "The major version of the valkey serverless engine.\n"
+                },
+                "fullname": {
+                    "type": "string",
+                    "description": "The full name of the elasticache instance.\n"
+                },
+                "kmsKeyId": {
+                    "type": "string",
+                    "description": "The globally unique identifier for the key.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The short name of the serverless valkey.\n"
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "The listening port of the elasticache instance.\n"
+                },
+                "securityGroupIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "subnet ids allocated to serverless valkey\n"
+                },
+                "snapshotRetentionLimit": {
+                    "type": "integer",
+                    "description": "Specify retention limit in days. Accepted values - 1-35.\n"
+                },
+                "subnetIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "subnet ids allocated to serverless valkey\n"
+                },
+                "tenantId": {
+                    "type": "string",
+                    "description": "The GUID of the tenant that the elasticache instance will be created in.\n"
+                }
+            },
+            "required": [
+                "actualVersion",
+                "arn",
+                "endpoint",
+                "engineVersion",
+                "fullname",
+                "kmsKeyId",
+                "name",
+                "port",
+                "securityGroupIds",
+                "snapshotRetentionLimit",
+                "subnetIds",
+                "tenantId"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "The description for serverless valkey\n",
+                    "willReplaceOnChanges": true
+                },
+                "engineVersion": {
+                    "type": "string",
+                    "description": "The major version of the valkey serverless engine.\n",
+                    "willReplaceOnChanges": true
+                },
+                "kmsKeyId": {
+                    "type": "string",
+                    "description": "The globally unique identifier for the key.\n",
+                    "willReplaceOnChanges": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The short name of the serverless valkey.\n",
+                    "willReplaceOnChanges": true
+                },
+                "snapshotRetentionLimit": {
+                    "type": "integer",
+                    "description": "Specify retention limit in days. Accepted values - 1-35.\n",
+                    "willReplaceOnChanges": true
+                },
+                "tenantId": {
+                    "type": "string",
+                    "description": "The GUID of the tenant that the elasticache instance will be created in.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "engineVersion",
+                "tenantId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ValkeyServerless resources.\n",
+                "properties": {
+                    "actualVersion": {
+                        "type": "string"
+                    },
+                    "arn": {
+                        "type": "string",
+                        "description": "The arn of serverless valkey\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description for serverless valkey\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "endpoint": {
+                        "type": "string",
+                        "description": "The endpoint of the serverless valkey.\n"
+                    },
+                    "engineVersion": {
+                        "type": "string",
+                        "description": "The major version of the valkey serverless engine.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "fullname": {
+                        "type": "string",
+                        "description": "The full name of the elasticache instance.\n"
+                    },
+                    "kmsKeyId": {
+                        "type": "string",
+                        "description": "The globally unique identifier for the key.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The short name of the serverless valkey.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "port": {
+                        "type": "integer",
+                        "description": "The listening port of the elasticache instance.\n"
+                    },
+                    "securityGroupIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "subnet ids allocated to serverless valkey\n"
+                    },
+                    "snapshotRetentionLimit": {
+                        "type": "integer",
+                        "description": "Specify retention limit in days. Accepted values - 1-35.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "subnetIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "subnet ids allocated to serverless valkey\n"
+                    },
+                    "tenantId": {
+                        "type": "string",
+                        "description": "The GUID of the tenant that the elasticache instance will be created in.\n",
                         "willReplaceOnChanges": true
                     }
                 },
