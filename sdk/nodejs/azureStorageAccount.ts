@@ -66,6 +66,10 @@ export class AzureStorageAccount extends pulumi.CustomResource {
     }
 
     /**
+     * Whether or not to allow public access to all blobs or containers in the storage account. Defaults to `false`.
+     */
+    public readonly allowBlobPublicAccess!: pulumi.Output<boolean | undefined>;
+    /**
      * Specifies the name of the storage account. Changing this forces a new resource to be created. This must be unique across the entire Azure service, not just within the resource group.
      */
     public readonly name!: pulumi.Output<string>;
@@ -91,6 +95,7 @@ export class AzureStorageAccount extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AzureStorageAccountState | undefined;
+            resourceInputs["allowBlobPublicAccess"] = state ? state.allowBlobPublicAccess : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["tenantId"] = state ? state.tenantId : undefined;
             resourceInputs["waitUntilReady"] = state ? state.waitUntilReady : undefined;
@@ -99,6 +104,7 @@ export class AzureStorageAccount extends pulumi.CustomResource {
             if ((!args || args.tenantId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tenantId'");
             }
+            resourceInputs["allowBlobPublicAccess"] = args ? args.allowBlobPublicAccess : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["tenantId"] = args ? args.tenantId : undefined;
             resourceInputs["waitUntilReady"] = args ? args.waitUntilReady : undefined;
@@ -112,6 +118,10 @@ export class AzureStorageAccount extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AzureStorageAccount resources.
  */
 export interface AzureStorageAccountState {
+    /**
+     * Whether or not to allow public access to all blobs or containers in the storage account. Defaults to `false`.
+     */
+    allowBlobPublicAccess?: pulumi.Input<boolean>;
     /**
      * Specifies the name of the storage account. Changing this forces a new resource to be created. This must be unique across the entire Azure service, not just within the resource group.
      */
@@ -130,6 +140,10 @@ export interface AzureStorageAccountState {
  * The set of arguments for constructing a AzureStorageAccount resource.
  */
 export interface AzureStorageAccountArgs {
+    /**
+     * Whether or not to allow public access to all blobs or containers in the storage account. Defaults to `false`.
+     */
+    allowBlobPublicAccess?: pulumi.Input<boolean>;
     /**
      * Specifies the name of the storage account. Changing this forces a new resource to be created. This must be unique across the entire Azure service, not just within the resource group.
      */

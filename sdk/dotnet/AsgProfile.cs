@@ -77,6 +77,14 @@ namespace DuploCloud.Pulumi
         public Output<int?> Cloud { get; private set; } = null!;
 
         /// <summary>
+        /// A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value. **Note:**
+        /// When importing an ASG created using the minion_tags block, from v0.12.6 onwards, need to add a custom_data_tags block by
+        /// replacing the minion_tags block with the same key and value as the minion_tags block to avoid drift.
+        /// </summary>
+        [Output("customDataTags")]
+        public Output<ImmutableArray<Outputs.AsgProfileCustomDataTag>> CustomDataTags { get; private set; } = null!;
+
+        /// <summary>
         /// Specify the labels to attach to the nodes.
         /// </summary>
         [Output("customNodeLabels")]
@@ -323,6 +331,20 @@ namespace DuploCloud.Pulumi
         [Input("cloud")]
         public Input<int>? Cloud { get; set; }
 
+        [Input("customDataTags")]
+        private InputList<Inputs.AsgProfileCustomDataTagArgs>? _customDataTags;
+
+        /// <summary>
+        /// A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value. **Note:**
+        /// When importing an ASG created using the minion_tags block, from v0.12.6 onwards, need to add a custom_data_tags block by
+        /// replacing the minion_tags block with the same key and value as the minion_tags block to avoid drift.
+        /// </summary>
+        public InputList<Inputs.AsgProfileCustomDataTagArgs> CustomDataTags
+        {
+            get => _customDataTags ?? (_customDataTags = new InputList<Inputs.AsgProfileCustomDataTagArgs>());
+            set => _customDataTags = value;
+        }
+
         [Input("customNodeLabels")]
         private InputMap<string>? _customNodeLabels;
 
@@ -425,6 +447,7 @@ namespace DuploCloud.Pulumi
         /// <summary>
         /// A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value.
         /// </summary>
+        [Obsolete(@"minion_tags is deprecated and will be removed in a future release. Use custom_data_tags instead.")]
         public InputList<Inputs.AsgProfileMinionTagArgs> MinionTags
         {
             get => _minionTags ?? (_minionTags = new InputList<Inputs.AsgProfileMinionTagArgs>());
@@ -575,6 +598,20 @@ namespace DuploCloud.Pulumi
         [Input("cloud")]
         public Input<int>? Cloud { get; set; }
 
+        [Input("customDataTags")]
+        private InputList<Inputs.AsgProfileCustomDataTagGetArgs>? _customDataTags;
+
+        /// <summary>
+        /// A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value. **Note:**
+        /// When importing an ASG created using the minion_tags block, from v0.12.6 onwards, need to add a custom_data_tags block by
+        /// replacing the minion_tags block with the same key and value as the minion_tags block to avoid drift.
+        /// </summary>
+        public InputList<Inputs.AsgProfileCustomDataTagGetArgs> CustomDataTags
+        {
+            get => _customDataTags ?? (_customDataTags = new InputList<Inputs.AsgProfileCustomDataTagGetArgs>());
+            set => _customDataTags = value;
+        }
+
         [Input("customNodeLabels")]
         private InputMap<string>? _customNodeLabels;
 
@@ -686,6 +723,7 @@ namespace DuploCloud.Pulumi
         /// <summary>
         /// A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value.
         /// </summary>
+        [Obsolete(@"minion_tags is deprecated and will be removed in a future release. Use custom_data_tags instead.")]
         public InputList<Inputs.AsgProfileMinionTagGetArgs> MinionTags
         {
             get => _minionTags ?? (_minionTags = new InputList<Inputs.AsgProfileMinionTagGetArgs>());

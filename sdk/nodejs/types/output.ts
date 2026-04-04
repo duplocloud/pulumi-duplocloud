@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface AsgProfileCustomDataTag {
+    key: string;
+    value: string;
+}
+
 export interface AsgProfileMetadata {
     key: string;
     value: string;
@@ -227,7 +232,7 @@ export interface AwsBatchComputeEnvironmentComputeResources {
     /**
      * The minimum number of EC2 vCPUs that an environment should maintain. For `EC2` or `SPOT` compute environments, if the parameter is not explicitly defined, a `0` default value will be set. This parameter isn't applicable to jobs running on Fargate resources, and shouldn't be specified.
      */
-    minVcpus?: number;
+    minVcpus: number;
     /**
      * A list of EC2 security group that are associated with instances launched in the compute environment. This parameter is required for Fargate compute environments.
      */
@@ -3400,6 +3405,12 @@ export interface GetAsgProfilesAsgProfile {
      */
     cloud?: number;
     /**
+     * A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value.
+     *
+     * **Note:** When importing an ASG created using the minionTags block, from v0.12.6 onwards, need to add a customDataTags block by replacing the minionTags block with the same key and value as the minionTags block to avoid drift.
+     */
+    customDataTags: outputs.GetAsgProfilesAsgProfileCustomDataTag[];
+    /**
      * Specify the labels to attach to the nodes.
      */
     customNodeLabels: {[key: string]: string};
@@ -3457,6 +3468,8 @@ export interface GetAsgProfilesAsgProfile {
     minInstanceCount: number;
     /**
      * A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value.
+     *
+     * @deprecated minion_tags is deprecated and will be removed in a future release. Use customDataTags instead.
      */
     minionTags: outputs.GetAsgProfilesAsgProfileMinionTag[];
     /**
@@ -3500,6 +3513,11 @@ export interface GetAsgProfilesAsgProfile {
      * The multi availability zone to launch the asg in, expressed as a number and starting at 0
      */
     zones: number[];
+}
+
+export interface GetAsgProfilesAsgProfileCustomDataTag {
+    key: string;
+    value: string;
 }
 
 export interface GetAsgProfilesAsgProfileMetadata {

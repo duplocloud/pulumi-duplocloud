@@ -246,6 +246,7 @@
         "types/output.ts",
         "user.ts",
         "userTenantAccess.ts",
-        "utilities.ts"
+        "utilities.ts",
+        "valkeyServerless.ts"
     ]
 }

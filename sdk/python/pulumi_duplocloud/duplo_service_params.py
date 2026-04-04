@@ -631,7 +631,7 @@ class DuploServiceParams(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def webaclid(self) -> pulumi.Output[str]:
+    def webaclid(self) -> pulumi.Output[Optional[str]]:
         """
         The ARN of a web application firewall to associate this load balancer.
         """

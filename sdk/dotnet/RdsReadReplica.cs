@@ -44,6 +44,12 @@ namespace DuploCloud.Pulumi
         public Output<string> Arn { get; private set; } = null!;
 
         /// <summary>
+        /// Enable or disable auto minor version upgrade
+        /// </summary>
+        [Output("autoMinorVersionUpgrade")]
+        public Output<bool> AutoMinorVersionUpgrade { get; private set; } = null!;
+
+        /// <summary>
         /// The AZ for the RDS instance.
         /// </summary>
         [Output("availabilityZone")]
@@ -237,6 +243,12 @@ namespace DuploCloud.Pulumi
         public Input<int>? AllocatedStorage { get; set; }
 
         /// <summary>
+        /// Enable or disable auto minor version upgrade
+        /// </summary>
+        [Input("autoMinorVersionUpgrade")]
+        public Input<bool>? AutoMinorVersionUpgrade { get; set; }
+
+        /// <summary>
         /// The AZ for the RDS instance.
         /// </summary>
         [Input("availabilityZone")]
@@ -329,6 +341,12 @@ namespace DuploCloud.Pulumi
         /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
+
+        /// <summary>
+        /// Enable or disable auto minor version upgrade
+        /// </summary>
+        [Input("autoMinorVersionUpgrade")]
+        public Input<bool>? AutoMinorVersionUpgrade { get; set; }
 
         /// <summary>
         /// The AZ for the RDS instance.

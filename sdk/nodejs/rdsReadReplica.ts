@@ -61,6 +61,10 @@ export class RdsReadReplica extends pulumi.CustomResource {
      */
     public /*out*/ readonly arn!: pulumi.Output<string>;
     /**
+     * Enable or disable auto minor version upgrade
+     */
+    public readonly autoMinorVersionUpgrade!: pulumi.Output<boolean>;
+    /**
      * The AZ for the RDS instance.
      */
     public readonly availabilityZone!: pulumi.Output<string>;
@@ -169,6 +173,7 @@ export class RdsReadReplica extends pulumi.CustomResource {
             const state = argsOrState as RdsReadReplicaState | undefined;
             resourceInputs["allocatedStorage"] = state ? state.allocatedStorage : undefined;
             resourceInputs["arn"] = state ? state.arn : undefined;
+            resourceInputs["autoMinorVersionUpgrade"] = state ? state.autoMinorVersionUpgrade : undefined;
             resourceInputs["availabilityZone"] = state ? state.availabilityZone : undefined;
             resourceInputs["clusterIdentifier"] = state ? state.clusterIdentifier : undefined;
             resourceInputs["clusterParameterGroupName"] = state ? state.clusterParameterGroupName : undefined;
@@ -204,6 +209,7 @@ export class RdsReadReplica extends pulumi.CustomResource {
                 throw new Error("Missing required property 'tenantId'");
             }
             resourceInputs["allocatedStorage"] = args ? args.allocatedStorage : undefined;
+            resourceInputs["autoMinorVersionUpgrade"] = args ? args.autoMinorVersionUpgrade : undefined;
             resourceInputs["availabilityZone"] = args ? args.availabilityZone : undefined;
             resourceInputs["clusterIdentifier"] = args ? args.clusterIdentifier : undefined;
             resourceInputs["engineType"] = args ? args.engineType : undefined;
@@ -247,6 +253,10 @@ export interface RdsReadReplicaState {
      * The ARN of the RDS read replica.
      */
     arn?: pulumi.Input<string>;
+    /**
+     * Enable or disable auto minor version upgrade
+     */
+    autoMinorVersionUpgrade?: pulumi.Input<boolean>;
     /**
      * The AZ for the RDS instance.
      */
@@ -351,6 +361,10 @@ export interface RdsReadReplicaArgs {
      * **Note:** Allocated storage can only be modified after every 6 hours.
      */
     allocatedStorage?: pulumi.Input<number>;
+    /**
+     * Enable or disable auto minor version upgrade
+     */
+    autoMinorVersionUpgrade?: pulumi.Input<boolean>;
     /**
      * The AZ for the RDS instance.
      */

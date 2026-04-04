@@ -171,7 +171,7 @@ class _AwsLaunchTemplateState:
         Input properties used for looking up and filtering AwsLaunchTemplate resources.
         :param pulumi.Input[str] ami: Asg ami to be used to update the version from the current version
         :param pulumi.Input[Sequence[pulumi.Input['AwsLaunchTemplateBlockDeviceMappingArgs']]] block_device_mappings: Configure additional volumes of the instance besides specified by the AMI
-        :param pulumi.Input[str] default_version: The current default version of the launch template.
+        :param pulumi.Input[str] default_version: The default version of the launch template at creation time. Use the data source for the current value.
         :param pulumi.Input['AwsLaunchTemplateInstanceRequirementsArgs'] instance_requirements: Whether to manage instance requirements instead of a specific instance type
         :param pulumi.Input[str] instance_type: Asg instance type to be used to update the version from the current version
         :param pulumi.Input[str] latest_version: The latest launch template version
@@ -231,7 +231,7 @@ class _AwsLaunchTemplateState:
     @pulumi.getter(name="defaultVersion")
     def default_version(self) -> Optional[pulumi.Input[str]]:
         """
-        The current default version of the launch template.
+        The default version of the launch template at creation time. Use the data source for the current value.
         """
         return pulumi.get(self, "default_version")
 
@@ -581,7 +581,7 @@ class AwsLaunchTemplate(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ami: Asg ami to be used to update the version from the current version
         :param pulumi.Input[Sequence[pulumi.Input[Union['AwsLaunchTemplateBlockDeviceMappingArgs', 'AwsLaunchTemplateBlockDeviceMappingArgsDict']]]] block_device_mappings: Configure additional volumes of the instance besides specified by the AMI
-        :param pulumi.Input[str] default_version: The current default version of the launch template.
+        :param pulumi.Input[str] default_version: The default version of the launch template at creation time. Use the data source for the current value.
         :param pulumi.Input[Union['AwsLaunchTemplateInstanceRequirementsArgs', 'AwsLaunchTemplateInstanceRequirementsArgsDict']] instance_requirements: Whether to manage instance requirements instead of a specific instance type
         :param pulumi.Input[str] instance_type: Asg instance type to be used to update the version from the current version
         :param pulumi.Input[str] latest_version: The latest launch template version
@@ -627,7 +627,7 @@ class AwsLaunchTemplate(pulumi.CustomResource):
     @pulumi.getter(name="defaultVersion")
     def default_version(self) -> pulumi.Output[str]:
         """
-        The current default version of the launch template.
+        The default version of the launch template at creation time. Use the data source for the current value.
         """
         return pulumi.get(self, "default_version")
 

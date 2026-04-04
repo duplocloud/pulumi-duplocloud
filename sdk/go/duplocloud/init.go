@@ -325,6 +325,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &User{}
 	case "duplocloud:index/userTenantAccess:UserTenantAccess":
 		r = &UserTenantAccess{}
+	case "duplocloud:index/valkeyServerless:ValkeyServerless":
+		r = &ValkeyServerless{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -1114,6 +1116,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"duplocloud",
 		"index/userTenantAccess",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"duplocloud",
+		"index/valkeyServerless",
 		&module{version},
 	)
 	pulumi.RegisterResourcePackage(

@@ -25,7 +25,7 @@ class AwsTagArgs:
                  value: pulumi.Input[str]):
         """
         The set of arguments for constructing a AwsTag resource.
-        :param pulumi.Input[str] arn: The resource arn of which custom tag need to be created.
+        :param pulumi.Input[str] arn: The resource ARN of which custom tag need to be created. **Note:** ASG (Auto Scaling Group) ARNs are not supported.
         :param pulumi.Input[str] key: The tag name.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the custom tag for a resource will be created in.
         :param pulumi.Input[str] value: The value of the tag.
@@ -39,7 +39,7 @@ class AwsTagArgs:
     @pulumi.getter
     def arn(self) -> pulumi.Input[str]:
         """
-        The resource arn of which custom tag need to be created.
+        The resource ARN of which custom tag need to be created. **Note:** ASG (Auto Scaling Group) ARNs are not supported.
         """
         return pulumi.get(self, "arn")
 
@@ -93,7 +93,7 @@ class _AwsTagState:
                  value: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AwsTag resources.
-        :param pulumi.Input[str] arn: The resource arn of which custom tag need to be created.
+        :param pulumi.Input[str] arn: The resource ARN of which custom tag need to be created. **Note:** ASG (Auto Scaling Group) ARNs are not supported.
         :param pulumi.Input[str] key: The tag name.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the custom tag for a resource will be created in.
         :param pulumi.Input[str] value: The value of the tag.
@@ -111,7 +111,7 @@ class _AwsTagState:
     @pulumi.getter
     def arn(self) -> Optional[pulumi.Input[str]]:
         """
-        The resource arn of which custom tag need to be created.
+        The resource ARN of which custom tag need to be created. **Note:** ASG (Auto Scaling Group) ARNs are not supported.
         """
         return pulumi.get(self, "arn")
 
@@ -169,6 +169,8 @@ class AwsTag(pulumi.CustomResource):
         """
         `AwsTag` manages an AWS custom tag for resources in Duplo.
 
+        > **Note:** AWS Auto Scaling Group (ASG) resources are **not supported** by this resource. The underlying bulk tagging API does not support ASG ARNs. To tag ASG resources, use the `minion_tags` attribute in `AsgProfile` instead.
+
         ## Import
 
         Example: Importing an existing custom tag for an AWS resource
@@ -187,7 +189,7 @@ class AwsTag(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] arn: The resource arn of which custom tag need to be created.
+        :param pulumi.Input[str] arn: The resource ARN of which custom tag need to be created. **Note:** ASG (Auto Scaling Group) ARNs are not supported.
         :param pulumi.Input[str] key: The tag name.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the custom tag for a resource will be created in.
         :param pulumi.Input[str] value: The value of the tag.
@@ -200,6 +202,8 @@ class AwsTag(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         `AwsTag` manages an AWS custom tag for resources in Duplo.
+
+        > **Note:** AWS Auto Scaling Group (ASG) resources are **not supported** by this resource. The underlying bulk tagging API does not support ASG ARNs. To tag ASG resources, use the `minion_tags` attribute in `AsgProfile` instead.
 
         ## Import
 
@@ -278,7 +282,7 @@ class AwsTag(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] arn: The resource arn of which custom tag need to be created.
+        :param pulumi.Input[str] arn: The resource ARN of which custom tag need to be created. **Note:** ASG (Auto Scaling Group) ARNs are not supported.
         :param pulumi.Input[str] key: The tag name.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the custom tag for a resource will be created in.
         :param pulumi.Input[str] value: The value of the tag.
@@ -297,7 +301,7 @@ class AwsTag(pulumi.CustomResource):
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
         """
-        The resource arn of which custom tag need to be created.
+        The resource ARN of which custom tag need to be created. **Note:** ASG (Auto Scaling Group) ARNs are not supported.
         """
         return pulumi.get(self, "arn")
 

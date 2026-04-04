@@ -16,6 +16,7 @@ from . import _utilities
 from . import outputs
 
 __all__ = [
+    'AsgProfileCustomDataTag',
     'AsgProfileMetadata',
     'AsgProfileMinionTag',
     'AsgProfileNetworkInterface',
@@ -704,6 +705,7 @@ __all__ = [
     'TenantSecretTag',
     'TenantTag',
     'GetAsgProfilesAsgProfileResult',
+    'GetAsgProfilesAsgProfileCustomDataTagResult',
     'GetAsgProfilesAsgProfileMetadataResult',
     'GetAsgProfilesAsgProfileMinionTagResult',
     'GetAsgProfilesAsgProfileNetworkInterfaceResult',
@@ -1218,6 +1220,25 @@ __all__ = [
     'GetTenantsTenantPolicyResult',
     'GetTenantsTenantTagResult',
 ]
+
+@pulumi.output_type
+class AsgProfileCustomDataTag(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 value: str):
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        return pulumi.get(self, "value")
+
 
 @pulumi.output_type
 class AsgProfileMetadata(dict):
@@ -41833,6 +41854,7 @@ class GetAsgProfilesAsgProfileResult(dict):
                  base64_user_data: str,
                  can_scale_from_zero: bool,
                  capacity: str,
+                 custom_data_tags: Sequence['outputs.GetAsgProfilesAsgProfileCustomDataTagResult'],
                  custom_node_labels: Mapping[str, str],
                  friendly_name: str,
                  fullname: str,
@@ -41869,6 +41891,9 @@ class GetAsgProfilesAsgProfileResult(dict):
         :param str base64_user_data: Base64 encoded EC2 user data to associated with the host.
         :param bool can_scale_from_zero: Whether or not ASG should leverage duplocloud's scale from 0 feature
         :param str capacity: The AWS EC2 instance type.
+        :param Sequence['GetAsgProfilesAsgProfileCustomDataTagArgs'] custom_data_tags: A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value.
+               
+               **Note:** When importing an ASG created using the minion_tags block, from v0.12.6 onwards, need to add a custom_data_tags block by replacing the minion_tags block with the same key and value as the minion_tags block to avoid drift.
         :param Mapping[str, str] custom_node_labels: Specify the labels to attach to the nodes.
         :param str friendly_name: The short name of the host.
         :param str fullname: The full name of the ASG profile.
@@ -41909,6 +41934,7 @@ class GetAsgProfilesAsgProfileResult(dict):
         pulumi.set(__self__, "base64_user_data", base64_user_data)
         pulumi.set(__self__, "can_scale_from_zero", can_scale_from_zero)
         pulumi.set(__self__, "capacity", capacity)
+        pulumi.set(__self__, "custom_data_tags", custom_data_tags)
         pulumi.set(__self__, "custom_node_labels", custom_node_labels)
         pulumi.set(__self__, "friendly_name", friendly_name)
         pulumi.set(__self__, "fullname", fullname)
@@ -41984,6 +42010,16 @@ class GetAsgProfilesAsgProfileResult(dict):
         The AWS EC2 instance type.
         """
         return pulumi.get(self, "capacity")
+
+    @property
+    @pulumi.getter(name="customDataTags")
+    def custom_data_tags(self) -> Sequence['outputs.GetAsgProfilesAsgProfileCustomDataTagResult']:
+        """
+        A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value.
+
+        **Note:** When importing an ASG created using the minion_tags block, from v0.12.6 onwards, need to add a custom_data_tags block by replacing the minion_tags block with the same key and value as the minion_tags block to avoid drift.
+        """
+        return pulumi.get(self, "custom_data_tags")
 
     @property
     @pulumi.getter(name="customNodeLabels")
@@ -42076,6 +42112,7 @@ class GetAsgProfilesAsgProfileResult(dict):
 
     @property
     @pulumi.getter(name="minionTags")
+    @_utilities.deprecated("""minion_tags is deprecated and will be removed in a future release. Use custom_data_tags instead.""")
     def minion_tags(self) -> Sequence['outputs.GetAsgProfilesAsgProfileMinionTagResult']:
         """
         A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value.
@@ -42226,6 +42263,25 @@ class GetAsgProfilesAsgProfileResult(dict):
         Whether or not to wait until ASG instances to be healthy, after creation.
         """
         return pulumi.get(self, "wait_for_capacity")
+
+
+@pulumi.output_type
+class GetAsgProfilesAsgProfileCustomDataTagResult(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 value: str):
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type

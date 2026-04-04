@@ -48,6 +48,10 @@ type AsgProfile struct {
 	Capacity pulumi.StringOutput `pulumi:"capacity"`
 	// The numeric ID of the cloud provider to launch the host in.
 	Cloud pulumi.IntPtrOutput `pulumi:"cloud"`
+	// A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value. **Note:**
+	// When importing an ASG created using the minionTags block, from v0.12.6 onwards, need to add a customDataTags block by
+	// replacing the minionTags block with the same key and value as the minionTags block to avoid drift.
+	CustomDataTags AsgProfileCustomDataTagArrayOutput `pulumi:"customDataTags"`
 	// Specify the labels to attach to the nodes.
 	CustomNodeLabels pulumi.StringMapOutput `pulumi:"customNodeLabels"`
 	// List of metrics to collect for the ASG Specify one or more of the following
@@ -80,6 +84,8 @@ type AsgProfile struct {
 	// The minimum size of the Auto Scaling Group.
 	MinInstanceCount pulumi.IntOutput `pulumi:"minInstanceCount"`
 	// A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value.
+	//
+	// Deprecated: minion_tags is deprecated and will be removed in a future release. Use customDataTags instead.
 	MinionTags AsgProfileMinionTagArrayOutput `pulumi:"minionTags"`
 	// An optional list of custom network interface configurations to use when creating the host.
 	NetworkInterfaces AsgProfileNetworkInterfaceArrayOutput `pulumi:"networkInterfaces"`
@@ -102,7 +108,7 @@ type AsgProfile struct {
 	WaitForCapacity pulumi.BoolPtrOutput `pulumi:"waitForCapacity"`
 	// The availability zone to launch the host in is expressed as a numeric value ranging from 0 to 3.
 	//
-	// Deprecated: For environments on the July 2024 release or earlier, use zone. For environments on releases after July 2024, use zones, as zone has been deprecated.
+	// Deprecated: For environments on the July 2024 release or earlier, use zone. For environments on releases after July 2024, use zones, as zone has been deprecated and is non-functional on change.
 	Zone pulumi.StringPtrOutput `pulumi:"zone"`
 	// The multi availability zone to launch the asg in, expressed as a number and starting at 0 - Zone A to 3 - Zone D, based
 	// on the infra setup
@@ -166,6 +172,10 @@ type asgProfileState struct {
 	Capacity *string `pulumi:"capacity"`
 	// The numeric ID of the cloud provider to launch the host in.
 	Cloud *int `pulumi:"cloud"`
+	// A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value. **Note:**
+	// When importing an ASG created using the minionTags block, from v0.12.6 onwards, need to add a customDataTags block by
+	// replacing the minionTags block with the same key and value as the minionTags block to avoid drift.
+	CustomDataTags []AsgProfileCustomDataTag `pulumi:"customDataTags"`
 	// Specify the labels to attach to the nodes.
 	CustomNodeLabels map[string]string `pulumi:"customNodeLabels"`
 	// List of metrics to collect for the ASG Specify one or more of the following
@@ -198,6 +208,8 @@ type asgProfileState struct {
 	// The minimum size of the Auto Scaling Group.
 	MinInstanceCount *int `pulumi:"minInstanceCount"`
 	// A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value.
+	//
+	// Deprecated: minion_tags is deprecated and will be removed in a future release. Use customDataTags instead.
 	MinionTags []AsgProfileMinionTag `pulumi:"minionTags"`
 	// An optional list of custom network interface configurations to use when creating the host.
 	NetworkInterfaces []AsgProfileNetworkInterface `pulumi:"networkInterfaces"`
@@ -220,7 +232,7 @@ type asgProfileState struct {
 	WaitForCapacity *bool `pulumi:"waitForCapacity"`
 	// The availability zone to launch the host in is expressed as a numeric value ranging from 0 to 3.
 	//
-	// Deprecated: For environments on the July 2024 release or earlier, use zone. For environments on releases after July 2024, use zones, as zone has been deprecated.
+	// Deprecated: For environments on the July 2024 release or earlier, use zone. For environments on releases after July 2024, use zones, as zone has been deprecated and is non-functional on change.
 	Zone *string `pulumi:"zone"`
 	// The multi availability zone to launch the asg in, expressed as a number and starting at 0 - Zone A to 3 - Zone D, based
 	// on the infra setup
@@ -243,6 +255,10 @@ type AsgProfileState struct {
 	Capacity pulumi.StringPtrInput
 	// The numeric ID of the cloud provider to launch the host in.
 	Cloud pulumi.IntPtrInput
+	// A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value. **Note:**
+	// When importing an ASG created using the minionTags block, from v0.12.6 onwards, need to add a customDataTags block by
+	// replacing the minionTags block with the same key and value as the minionTags block to avoid drift.
+	CustomDataTags AsgProfileCustomDataTagArrayInput
 	// Specify the labels to attach to the nodes.
 	CustomNodeLabels pulumi.StringMapInput
 	// List of metrics to collect for the ASG Specify one or more of the following
@@ -275,6 +291,8 @@ type AsgProfileState struct {
 	// The minimum size of the Auto Scaling Group.
 	MinInstanceCount pulumi.IntPtrInput
 	// A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value.
+	//
+	// Deprecated: minion_tags is deprecated and will be removed in a future release. Use customDataTags instead.
 	MinionTags AsgProfileMinionTagArrayInput
 	// An optional list of custom network interface configurations to use when creating the host.
 	NetworkInterfaces AsgProfileNetworkInterfaceArrayInput
@@ -297,7 +315,7 @@ type AsgProfileState struct {
 	WaitForCapacity pulumi.BoolPtrInput
 	// The availability zone to launch the host in is expressed as a numeric value ranging from 0 to 3.
 	//
-	// Deprecated: For environments on the July 2024 release or earlier, use zone. For environments on releases after July 2024, use zones, as zone has been deprecated.
+	// Deprecated: For environments on the July 2024 release or earlier, use zone. For environments on releases after July 2024, use zones, as zone has been deprecated and is non-functional on change.
 	Zone pulumi.StringPtrInput
 	// The multi availability zone to launch the asg in, expressed as a number and starting at 0 - Zone A to 3 - Zone D, based
 	// on the infra setup
@@ -322,6 +340,10 @@ type asgProfileArgs struct {
 	Capacity string `pulumi:"capacity"`
 	// The numeric ID of the cloud provider to launch the host in.
 	Cloud *int `pulumi:"cloud"`
+	// A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value. **Note:**
+	// When importing an ASG created using the minionTags block, from v0.12.6 onwards, need to add a customDataTags block by
+	// replacing the minionTags block with the same key and value as the minionTags block to avoid drift.
+	CustomDataTags []AsgProfileCustomDataTag `pulumi:"customDataTags"`
 	// Specify the labels to attach to the nodes.
 	CustomNodeLabels map[string]string `pulumi:"customNodeLabels"`
 	// List of metrics to collect for the ASG Specify one or more of the following
@@ -351,6 +373,8 @@ type asgProfileArgs struct {
 	// The minimum size of the Auto Scaling Group.
 	MinInstanceCount *int `pulumi:"minInstanceCount"`
 	// A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value.
+	//
+	// Deprecated: minion_tags is deprecated and will be removed in a future release. Use customDataTags instead.
 	MinionTags []AsgProfileMinionTag `pulumi:"minionTags"`
 	// An optional list of custom network interface configurations to use when creating the host.
 	NetworkInterfaces []AsgProfileNetworkInterface `pulumi:"networkInterfaces"`
@@ -371,7 +395,7 @@ type asgProfileArgs struct {
 	WaitForCapacity *bool `pulumi:"waitForCapacity"`
 	// The availability zone to launch the host in is expressed as a numeric value ranging from 0 to 3.
 	//
-	// Deprecated: For environments on the July 2024 release or earlier, use zone. For environments on releases after July 2024, use zones, as zone has been deprecated.
+	// Deprecated: For environments on the July 2024 release or earlier, use zone. For environments on releases after July 2024, use zones, as zone has been deprecated and is non-functional on change.
 	Zone *string `pulumi:"zone"`
 	// The multi availability zone to launch the asg in, expressed as a number and starting at 0 - Zone A to 3 - Zone D, based
 	// on the infra setup
@@ -393,6 +417,10 @@ type AsgProfileArgs struct {
 	Capacity pulumi.StringInput
 	// The numeric ID of the cloud provider to launch the host in.
 	Cloud pulumi.IntPtrInput
+	// A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value. **Note:**
+	// When importing an ASG created using the minionTags block, from v0.12.6 onwards, need to add a customDataTags block by
+	// replacing the minionTags block with the same key and value as the minionTags block to avoid drift.
+	CustomDataTags AsgProfileCustomDataTagArrayInput
 	// Specify the labels to attach to the nodes.
 	CustomNodeLabels pulumi.StringMapInput
 	// List of metrics to collect for the ASG Specify one or more of the following
@@ -422,6 +450,8 @@ type AsgProfileArgs struct {
 	// The minimum size of the Auto Scaling Group.
 	MinInstanceCount pulumi.IntPtrInput
 	// A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value.
+	//
+	// Deprecated: minion_tags is deprecated and will be removed in a future release. Use customDataTags instead.
 	MinionTags AsgProfileMinionTagArrayInput
 	// An optional list of custom network interface configurations to use when creating the host.
 	NetworkInterfaces AsgProfileNetworkInterfaceArrayInput
@@ -442,7 +472,7 @@ type AsgProfileArgs struct {
 	WaitForCapacity pulumi.BoolPtrInput
 	// The availability zone to launch the host in is expressed as a numeric value ranging from 0 to 3.
 	//
-	// Deprecated: For environments on the July 2024 release or earlier, use zone. For environments on releases after July 2024, use zones, as zone has been deprecated.
+	// Deprecated: For environments on the July 2024 release or earlier, use zone. For environments on releases after July 2024, use zones, as zone has been deprecated and is non-functional on change.
 	Zone pulumi.StringPtrInput
 	// The multi availability zone to launch the asg in, expressed as a number and starting at 0 - Zone A to 3 - Zone D, based
 	// on the infra setup
@@ -572,6 +602,13 @@ func (o AsgProfileOutput) Cloud() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AsgProfile) pulumi.IntPtrOutput { return v.Cloud }).(pulumi.IntPtrOutput)
 }
 
+// A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value. **Note:**
+// When importing an ASG created using the minionTags block, from v0.12.6 onwards, need to add a customDataTags block by
+// replacing the minionTags block with the same key and value as the minionTags block to avoid drift.
+func (o AsgProfileOutput) CustomDataTags() AsgProfileCustomDataTagArrayOutput {
+	return o.ApplyT(func(v *AsgProfile) AsgProfileCustomDataTagArrayOutput { return v.CustomDataTags }).(AsgProfileCustomDataTagArrayOutput)
+}
+
 // Specify the labels to attach to the nodes.
 func (o AsgProfileOutput) CustomNodeLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AsgProfile) pulumi.StringMapOutput { return v.CustomNodeLabels }).(pulumi.StringMapOutput)
@@ -652,6 +689,8 @@ func (o AsgProfileOutput) MinInstanceCount() pulumi.IntOutput {
 }
 
 // A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value.
+//
+// Deprecated: minion_tags is deprecated and will be removed in a future release. Use customDataTags instead.
 func (o AsgProfileOutput) MinionTags() AsgProfileMinionTagArrayOutput {
 	return o.ApplyT(func(v *AsgProfile) AsgProfileMinionTagArrayOutput { return v.MinionTags }).(AsgProfileMinionTagArrayOutput)
 }
@@ -707,7 +746,7 @@ func (o AsgProfileOutput) WaitForCapacity() pulumi.BoolPtrOutput {
 
 // The availability zone to launch the host in is expressed as a numeric value ranging from 0 to 3.
 //
-// Deprecated: For environments on the July 2024 release or earlier, use zone. For environments on releases after July 2024, use zones, as zone has been deprecated.
+// Deprecated: For environments on the July 2024 release or earlier, use zone. For environments on releases after July 2024, use zones, as zone has been deprecated and is non-functional on change.
 func (o AsgProfileOutput) Zone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AsgProfile) pulumi.StringPtrOutput { return v.Zone }).(pulumi.StringPtrOutput)
 }

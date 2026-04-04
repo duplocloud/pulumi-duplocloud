@@ -10,6 +10,9 @@
             "duplocloud_asg_profile": {
                 "current": "duplocloud:index/asgProfile:AsgProfile",
                 "fields": {
+                    "custom_data_tags": {
+                        "maxItemsOne": false
+                    },
                     "enabled_metrics": {
                         "maxItemsOne": false
                     },
@@ -4534,6 +4537,17 @@
             },
             "duplocloud_user_tenant_access": {
                 "current": "duplocloud:index/userTenantAccess:UserTenantAccess"
+            },
+            "duplocloud_valkey_serverless": {
+                "current": "duplocloud:index/valkeyServerless:ValkeyServerless",
+                "fields": {
+                    "security_group_ids": {
+                        "maxItemsOne": false
+                    },
+                    "subnet_ids": {
+                        "maxItemsOne": false
+                    }
+                }
             }
         },
         "datasources": {
@@ -4547,6 +4561,9 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "custom_data_tags": {
+                                    "maxItemsOne": false
+                                },
                                 "enabled_metrics": {
                                     "maxItemsOne": false
                                 },

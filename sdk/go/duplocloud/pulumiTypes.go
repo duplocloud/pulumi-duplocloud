@@ -13,6 +13,106 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type AsgProfileCustomDataTag struct {
+	Key   string `pulumi:"key"`
+	Value string `pulumi:"value"`
+}
+
+// AsgProfileCustomDataTagInput is an input type that accepts AsgProfileCustomDataTagArgs and AsgProfileCustomDataTagOutput values.
+// You can construct a concrete instance of `AsgProfileCustomDataTagInput` via:
+//
+//	AsgProfileCustomDataTagArgs{...}
+type AsgProfileCustomDataTagInput interface {
+	pulumi.Input
+
+	ToAsgProfileCustomDataTagOutput() AsgProfileCustomDataTagOutput
+	ToAsgProfileCustomDataTagOutputWithContext(context.Context) AsgProfileCustomDataTagOutput
+}
+
+type AsgProfileCustomDataTagArgs struct {
+	Key   pulumi.StringInput `pulumi:"key"`
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (AsgProfileCustomDataTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AsgProfileCustomDataTag)(nil)).Elem()
+}
+
+func (i AsgProfileCustomDataTagArgs) ToAsgProfileCustomDataTagOutput() AsgProfileCustomDataTagOutput {
+	return i.ToAsgProfileCustomDataTagOutputWithContext(context.Background())
+}
+
+func (i AsgProfileCustomDataTagArgs) ToAsgProfileCustomDataTagOutputWithContext(ctx context.Context) AsgProfileCustomDataTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AsgProfileCustomDataTagOutput)
+}
+
+// AsgProfileCustomDataTagArrayInput is an input type that accepts AsgProfileCustomDataTagArray and AsgProfileCustomDataTagArrayOutput values.
+// You can construct a concrete instance of `AsgProfileCustomDataTagArrayInput` via:
+//
+//	AsgProfileCustomDataTagArray{ AsgProfileCustomDataTagArgs{...} }
+type AsgProfileCustomDataTagArrayInput interface {
+	pulumi.Input
+
+	ToAsgProfileCustomDataTagArrayOutput() AsgProfileCustomDataTagArrayOutput
+	ToAsgProfileCustomDataTagArrayOutputWithContext(context.Context) AsgProfileCustomDataTagArrayOutput
+}
+
+type AsgProfileCustomDataTagArray []AsgProfileCustomDataTagInput
+
+func (AsgProfileCustomDataTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AsgProfileCustomDataTag)(nil)).Elem()
+}
+
+func (i AsgProfileCustomDataTagArray) ToAsgProfileCustomDataTagArrayOutput() AsgProfileCustomDataTagArrayOutput {
+	return i.ToAsgProfileCustomDataTagArrayOutputWithContext(context.Background())
+}
+
+func (i AsgProfileCustomDataTagArray) ToAsgProfileCustomDataTagArrayOutputWithContext(ctx context.Context) AsgProfileCustomDataTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AsgProfileCustomDataTagArrayOutput)
+}
+
+type AsgProfileCustomDataTagOutput struct{ *pulumi.OutputState }
+
+func (AsgProfileCustomDataTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AsgProfileCustomDataTag)(nil)).Elem()
+}
+
+func (o AsgProfileCustomDataTagOutput) ToAsgProfileCustomDataTagOutput() AsgProfileCustomDataTagOutput {
+	return o
+}
+
+func (o AsgProfileCustomDataTagOutput) ToAsgProfileCustomDataTagOutputWithContext(ctx context.Context) AsgProfileCustomDataTagOutput {
+	return o
+}
+
+func (o AsgProfileCustomDataTagOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v AsgProfileCustomDataTag) string { return v.Key }).(pulumi.StringOutput)
+}
+
+func (o AsgProfileCustomDataTagOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v AsgProfileCustomDataTag) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type AsgProfileCustomDataTagArrayOutput struct{ *pulumi.OutputState }
+
+func (AsgProfileCustomDataTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AsgProfileCustomDataTag)(nil)).Elem()
+}
+
+func (o AsgProfileCustomDataTagArrayOutput) ToAsgProfileCustomDataTagArrayOutput() AsgProfileCustomDataTagArrayOutput {
+	return o
+}
+
+func (o AsgProfileCustomDataTagArrayOutput) ToAsgProfileCustomDataTagArrayOutputWithContext(ctx context.Context) AsgProfileCustomDataTagArrayOutput {
+	return o
+}
+
+func (o AsgProfileCustomDataTagArrayOutput) Index(i pulumi.IntInput) AsgProfileCustomDataTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AsgProfileCustomDataTag {
+		return vs[0].([]AsgProfileCustomDataTag)[vs[1].(int)]
+	}).(AsgProfileCustomDataTagOutput)
+}
+
 type AsgProfileMetadata struct {
 	Key   string `pulumi:"key"`
 	Value string `pulumi:"value"`
@@ -77101,126 +77201,9 @@ func (o K8sJobSpecTemplateSpecContainerEnvArrayOutput) Index(i pulumi.IntInput) 
 	}).(K8sJobSpecTemplateSpecContainerEnvOutput)
 }
 
-type K8sJobSpecTemplateSpecContainerEnvFrom struct {
-	// The ConfigMap to select from
-	ConfigMapRef *K8sJobSpecTemplateSpecContainerEnvFromConfigMapRef `pulumi:"configMapRef"`
-	// An optional identifer to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
-	Prefix *string `pulumi:"prefix"`
-	// The Secret to select from
-	SecretRef *K8sJobSpecTemplateSpecContainerEnvFromSecretRef `pulumi:"secretRef"`
-}
-
-// K8sJobSpecTemplateSpecContainerEnvFromInput is an input type that accepts K8sJobSpecTemplateSpecContainerEnvFromArgs and K8sJobSpecTemplateSpecContainerEnvFromOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerEnvFromInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerEnvFromArgs{...}
-type K8sJobSpecTemplateSpecContainerEnvFromInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerEnvFromOutput() K8sJobSpecTemplateSpecContainerEnvFromOutput
-	ToK8sJobSpecTemplateSpecContainerEnvFromOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerEnvFromOutput
-}
-
-type K8sJobSpecTemplateSpecContainerEnvFromArgs struct {
-	// The ConfigMap to select from
-	ConfigMapRef K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefPtrInput `pulumi:"configMapRef"`
-	// An optional identifer to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
-	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
-	// The Secret to select from
-	SecretRef K8sJobSpecTemplateSpecContainerEnvFromSecretRefPtrInput `pulumi:"secretRef"`
-}
-
-func (K8sJobSpecTemplateSpecContainerEnvFromArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerEnvFrom)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerEnvFromArgs) ToK8sJobSpecTemplateSpecContainerEnvFromOutput() K8sJobSpecTemplateSpecContainerEnvFromOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerEnvFromOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerEnvFromArgs) ToK8sJobSpecTemplateSpecContainerEnvFromOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerEnvFromOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerEnvFromOutput)
-}
-
-// K8sJobSpecTemplateSpecContainerEnvFromArrayInput is an input type that accepts K8sJobSpecTemplateSpecContainerEnvFromArray and K8sJobSpecTemplateSpecContainerEnvFromArrayOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerEnvFromArrayInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerEnvFromArray{ K8sJobSpecTemplateSpecContainerEnvFromArgs{...} }
-type K8sJobSpecTemplateSpecContainerEnvFromArrayInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerEnvFromArrayOutput() K8sJobSpecTemplateSpecContainerEnvFromArrayOutput
-	ToK8sJobSpecTemplateSpecContainerEnvFromArrayOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerEnvFromArrayOutput
-}
-
-type K8sJobSpecTemplateSpecContainerEnvFromArray []K8sJobSpecTemplateSpecContainerEnvFromInput
-
-func (K8sJobSpecTemplateSpecContainerEnvFromArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecContainerEnvFrom)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerEnvFromArray) ToK8sJobSpecTemplateSpecContainerEnvFromArrayOutput() K8sJobSpecTemplateSpecContainerEnvFromArrayOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerEnvFromArrayOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerEnvFromArray) ToK8sJobSpecTemplateSpecContainerEnvFromArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerEnvFromArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerEnvFromArrayOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerEnvFromOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerEnvFromOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerEnvFrom)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvFromOutput) ToK8sJobSpecTemplateSpecContainerEnvFromOutput() K8sJobSpecTemplateSpecContainerEnvFromOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvFromOutput) ToK8sJobSpecTemplateSpecContainerEnvFromOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerEnvFromOutput {
-	return o
-}
-
-// The ConfigMap to select from
-func (o K8sJobSpecTemplateSpecContainerEnvFromOutput) ConfigMapRef() K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerEnvFrom) *K8sJobSpecTemplateSpecContainerEnvFromConfigMapRef {
-		return v.ConfigMapRef
-	}).(K8sJobSpecTemplateSpecContainerEnvFromConfigMapRefPtrOutput)
-}
-
-// An optional identifer to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
-func (o K8sJobSpecTemplateSpecContainerEnvFromOutput) Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerEnvFrom) *string { return v.Prefix }).(pulumi.StringPtrOutput)
-}
-
-// The Secret to select from
-func (o K8sJobSpecTemplateSpecContainerEnvFromOutput) SecretRef() K8sJobSpecTemplateSpecContainerEnvFromSecretRefPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerEnvFrom) *K8sJobSpecTemplateSpecContainerEnvFromSecretRef {
-		return v.SecretRef
-	}).(K8sJobSpecTemplateSpecContainerEnvFromSecretRefPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerEnvFromArrayOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerEnvFromArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecContainerEnvFrom)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvFromArrayOutput) ToK8sJobSpecTemplateSpecContainerEnvFromArrayOutput() K8sJobSpecTemplateSpecContainerEnvFromArrayOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvFromArrayOutput) ToK8sJobSpecTemplateSpecContainerEnvFromArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerEnvFromArrayOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvFromArrayOutput) Index(i pulumi.IntInput) K8sJobSpecTemplateSpecContainerEnvFromOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) K8sJobSpecTemplateSpecContainerEnvFrom {
-		return vs[0].([]K8sJobSpecTemplateSpecContainerEnvFrom)[vs[1].(int)]
-	}).(K8sJobSpecTemplateSpecContainerEnvFromOutput)
-}
-
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AsgProfileCustomDataTagInput)(nil)).Elem(), AsgProfileCustomDataTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AsgProfileCustomDataTagArrayInput)(nil)).Elem(), AsgProfileCustomDataTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AsgProfileMetadataInput)(nil)).Elem(), AsgProfileMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AsgProfileMetadataArrayInput)(nil)).Elem(), AsgProfileMetadataArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AsgProfileMinionTagInput)(nil)).Elem(), AsgProfileMinionTagArgs{})
@@ -78206,8 +78189,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerArrayInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerEnvInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerEnvArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerEnvArrayInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerEnvArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerEnvFromInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerEnvFromArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerEnvFromArrayInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerEnvFromArray{})
+	pulumi.RegisterOutputType(AsgProfileCustomDataTagOutput{})
+	pulumi.RegisterOutputType(AsgProfileCustomDataTagArrayOutput{})
 	pulumi.RegisterOutputType(AsgProfileMetadataOutput{})
 	pulumi.RegisterOutputType(AsgProfileMetadataArrayOutput{})
 	pulumi.RegisterOutputType(AsgProfileMinionTagOutput{})
@@ -79193,6 +79176,4 @@ func init() {
 	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerArrayOutput{})
 	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerEnvOutput{})
 	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerEnvArrayOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerEnvFromOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerEnvFromArrayOutput{})
 }

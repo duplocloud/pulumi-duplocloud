@@ -84,6 +84,12 @@ export class AsgProfile extends pulumi.CustomResource {
      */
     public readonly cloud!: pulumi.Output<number | undefined>;
     /**
+     * A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value. **Note:**
+     * When importing an ASG created using the minionTags block, from v0.12.6 onwards, need to add a customDataTags block by
+     * replacing the minionTags block with the same key and value as the minionTags block to avoid drift.
+     */
+    public readonly customDataTags!: pulumi.Output<outputs.AsgProfileCustomDataTag[]>;
+    /**
      * Specify the labels to attach to the nodes.
      */
     public readonly customNodeLabels!: pulumi.Output<{[key: string]: string}>;
@@ -140,6 +146,8 @@ export class AsgProfile extends pulumi.CustomResource {
     public readonly minInstanceCount!: pulumi.Output<number>;
     /**
      * A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value.
+     *
+     * @deprecated minion_tags is deprecated and will be removed in a future release. Use customDataTags instead.
      */
     public readonly minionTags!: pulumi.Output<outputs.AsgProfileMinionTag[]>;
     /**
@@ -182,7 +190,7 @@ export class AsgProfile extends pulumi.CustomResource {
     /**
      * The availability zone to launch the host in is expressed as a numeric value ranging from 0 to 3.
      *
-     * @deprecated For environments on the July 2024 release or earlier, use zone. For environments on releases after July 2024, use zones, as zone has been deprecated.
+     * @deprecated For environments on the July 2024 release or earlier, use zone. For environments on releases after July 2024, use zones, as zone has been deprecated and is non-functional on change.
      */
     public readonly zone!: pulumi.Output<string | undefined>;
     /**
@@ -211,6 +219,7 @@ export class AsgProfile extends pulumi.CustomResource {
             resourceInputs["canScaleFromZero"] = state ? state.canScaleFromZero : undefined;
             resourceInputs["capacity"] = state ? state.capacity : undefined;
             resourceInputs["cloud"] = state ? state.cloud : undefined;
+            resourceInputs["customDataTags"] = state ? state.customDataTags : undefined;
             resourceInputs["customNodeLabels"] = state ? state.customNodeLabels : undefined;
             resourceInputs["enabledMetrics"] = state ? state.enabledMetrics : undefined;
             resourceInputs["encryptDisk"] = state ? state.encryptDisk : undefined;
@@ -260,6 +269,7 @@ export class AsgProfile extends pulumi.CustomResource {
             resourceInputs["canScaleFromZero"] = args ? args.canScaleFromZero : undefined;
             resourceInputs["capacity"] = args ? args.capacity : undefined;
             resourceInputs["cloud"] = args ? args.cloud : undefined;
+            resourceInputs["customDataTags"] = args ? args.customDataTags : undefined;
             resourceInputs["customNodeLabels"] = args ? args.customNodeLabels : undefined;
             resourceInputs["enabledMetrics"] = args ? args.enabledMetrics : undefined;
             resourceInputs["encryptDisk"] = args ? args.encryptDisk : undefined;
@@ -330,6 +340,12 @@ export interface AsgProfileState {
      */
     cloud?: pulumi.Input<number>;
     /**
+     * A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value. **Note:**
+     * When importing an ASG created using the minionTags block, from v0.12.6 onwards, need to add a customDataTags block by
+     * replacing the minionTags block with the same key and value as the minionTags block to avoid drift.
+     */
+    customDataTags?: pulumi.Input<pulumi.Input<inputs.AsgProfileCustomDataTag>[]>;
+    /**
      * Specify the labels to attach to the nodes.
      */
     customNodeLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -386,6 +402,8 @@ export interface AsgProfileState {
     minInstanceCount?: pulumi.Input<number>;
     /**
      * A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value.
+     *
+     * @deprecated minion_tags is deprecated and will be removed in a future release. Use customDataTags instead.
      */
     minionTags?: pulumi.Input<pulumi.Input<inputs.AsgProfileMinionTag>[]>;
     /**
@@ -428,7 +446,7 @@ export interface AsgProfileState {
     /**
      * The availability zone to launch the host in is expressed as a numeric value ranging from 0 to 3.
      *
-     * @deprecated For environments on the July 2024 release or earlier, use zone. For environments on releases after July 2024, use zones, as zone has been deprecated.
+     * @deprecated For environments on the July 2024 release or earlier, use zone. For environments on releases after July 2024, use zones, as zone has been deprecated and is non-functional on change.
      */
     zone?: pulumi.Input<string>;
     /**
@@ -467,6 +485,12 @@ export interface AsgProfileArgs {
      * The numeric ID of the cloud provider to launch the host in.
      */
     cloud?: pulumi.Input<number>;
+    /**
+     * A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value. **Note:**
+     * When importing an ASG created using the minionTags block, from v0.12.6 onwards, need to add a customDataTags block by
+     * replacing the minionTags block with the same key and value as the minionTags block to avoid drift.
+     */
+    customDataTags?: pulumi.Input<pulumi.Input<inputs.AsgProfileCustomDataTag>[]>;
     /**
      * Specify the labels to attach to the nodes.
      */
@@ -519,6 +543,8 @@ export interface AsgProfileArgs {
     minInstanceCount?: pulumi.Input<number>;
     /**
      * A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value.
+     *
+     * @deprecated minion_tags is deprecated and will be removed in a future release. Use customDataTags instead.
      */
     minionTags?: pulumi.Input<pulumi.Input<inputs.AsgProfileMinionTag>[]>;
     /**
@@ -557,7 +583,7 @@ export interface AsgProfileArgs {
     /**
      * The availability zone to launch the host in is expressed as a numeric value ranging from 0 to 3.
      *
-     * @deprecated For environments on the July 2024 release or earlier, use zone. For environments on releases after July 2024, use zones, as zone has been deprecated.
+     * @deprecated For environments on the July 2024 release or earlier, use zone. For environments on releases after July 2024, use zones, as zone has been deprecated and is non-functional on change.
      */
     zone?: pulumi.Input<string>;
     /**

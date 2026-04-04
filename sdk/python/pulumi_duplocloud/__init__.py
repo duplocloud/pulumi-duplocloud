@@ -232,6 +232,7 @@ from .tenant_secret import *
 from .tenant_tag import *
 from .user import *
 from .user_tenant_access import *
+from .valkey_serverless import *
 from ._inputs import *
 from . import outputs
 
@@ -1459,6 +1460,14 @@ _utilities.register(
   "fqn": "pulumi_duplocloud",
   "classes": {
    "duplocloud:index/userTenantAccess:UserTenantAccess": "UserTenantAccess"
+  }
+ },
+ {
+  "pkg": "duplocloud",
+  "mod": "index/valkeyServerless",
+  "fqn": "pulumi_duplocloud",
+  "classes": {
+   "duplocloud:index/valkeyServerless:ValkeyServerless": "ValkeyServerless"
   }
  }
 ]

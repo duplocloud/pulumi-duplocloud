@@ -25,6 +25,7 @@ class RdsReadReplicaArgs:
                  size: pulumi.Input[str],
                  tenant_id: pulumi.Input[str],
                  allocated_storage: Optional[pulumi.Input[int]] = None,
+                 auto_minor_version_upgrade: Optional[pulumi.Input[bool]] = None,
                  availability_zone: Optional[pulumi.Input[str]] = None,
                  engine_type: Optional[pulumi.Input[int]] = None,
                  enhanced_monitoring: Optional[pulumi.Input[int]] = None,
@@ -42,6 +43,7 @@ class RdsReadReplicaArgs:
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the RDS read replica will be created in.
         :param pulumi.Input[int] allocated_storage: (Required unless a `snapshot_id` is provided) The allocated storage in gigabytes. This can only be set during an update; it will inherit the writer's value during creation.
                **Note:** Allocated storage can only be modified after every 6 hours.
+        :param pulumi.Input[bool] auto_minor_version_upgrade: Enable or disable auto minor version upgrade
         :param pulumi.Input[str] availability_zone: The AZ for the RDS instance.
         :param pulumi.Input[int] engine_type: Engine type required to validate applicable parameter group setting for different instance. Should be referred from writer
         :param pulumi.Input[int] enhanced_monitoring: Interval to capture metrics in real time for the operating system (OS) that your Amazon RDS DB instance runs on.
@@ -57,6 +59,8 @@ class RdsReadReplicaArgs:
         pulumi.set(__self__, "tenant_id", tenant_id)
         if allocated_storage is not None:
             pulumi.set(__self__, "allocated_storage", allocated_storage)
+        if auto_minor_version_upgrade is not None:
+            pulumi.set(__self__, "auto_minor_version_upgrade", auto_minor_version_upgrade)
         if availability_zone is not None:
             pulumi.set(__self__, "availability_zone", availability_zone)
         if engine_type is not None:
@@ -125,6 +129,18 @@ class RdsReadReplicaArgs:
     @allocated_storage.setter
     def allocated_storage(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "allocated_storage", value)
+
+    @property
+    @pulumi.getter(name="autoMinorVersionUpgrade")
+    def auto_minor_version_upgrade(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable or disable auto minor version upgrade
+        """
+        return pulumi.get(self, "auto_minor_version_upgrade")
+
+    @auto_minor_version_upgrade.setter
+    def auto_minor_version_upgrade(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_minor_version_upgrade", value)
 
     @property
     @pulumi.getter(name="availabilityZone")
@@ -240,6 +256,7 @@ class _RdsReadReplicaState:
     def __init__(__self__, *,
                  allocated_storage: Optional[pulumi.Input[int]] = None,
                  arn: Optional[pulumi.Input[str]] = None,
+                 auto_minor_version_upgrade: Optional[pulumi.Input[bool]] = None,
                  availability_zone: Optional[pulumi.Input[str]] = None,
                  cluster_identifier: Optional[pulumi.Input[str]] = None,
                  cluster_parameter_group_name: Optional[pulumi.Input[str]] = None,
@@ -268,6 +285,7 @@ class _RdsReadReplicaState:
         :param pulumi.Input[int] allocated_storage: (Required unless a `snapshot_id` is provided) The allocated storage in gigabytes. This can only be set during an update; it will inherit the writer's value during creation.
                **Note:** Allocated storage can only be modified after every 6 hours.
         :param pulumi.Input[str] arn: The ARN of the RDS read replica.
+        :param pulumi.Input[bool] auto_minor_version_upgrade: Enable or disable auto minor version upgrade
         :param pulumi.Input[str] availability_zone: The AZ for the RDS instance.
         :param pulumi.Input[str] cluster_identifier: The full name of the RDS Cluster.
         :param pulumi.Input[str] cluster_parameter_group_name: Parameter group associated with this instance's DB Cluster.
@@ -297,6 +315,8 @@ class _RdsReadReplicaState:
             pulumi.set(__self__, "allocated_storage", allocated_storage)
         if arn is not None:
             pulumi.set(__self__, "arn", arn)
+        if auto_minor_version_upgrade is not None:
+            pulumi.set(__self__, "auto_minor_version_upgrade", auto_minor_version_upgrade)
         if availability_zone is not None:
             pulumi.set(__self__, "availability_zone", availability_zone)
         if cluster_identifier is not None:
@@ -368,6 +388,18 @@ class _RdsReadReplicaState:
     @arn.setter
     def arn(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "arn", value)
+
+    @property
+    @pulumi.getter(name="autoMinorVersionUpgrade")
+    def auto_minor_version_upgrade(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable or disable auto minor version upgrade
+        """
+        return pulumi.get(self, "auto_minor_version_upgrade")
+
+    @auto_minor_version_upgrade.setter
+    def auto_minor_version_upgrade(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_minor_version_upgrade", value)
 
     @property
     @pulumi.getter(name="availabilityZone")
@@ -653,6 +685,7 @@ class RdsReadReplica(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allocated_storage: Optional[pulumi.Input[int]] = None,
+                 auto_minor_version_upgrade: Optional[pulumi.Input[bool]] = None,
                  availability_zone: Optional[pulumi.Input[str]] = None,
                  cluster_identifier: Optional[pulumi.Input[str]] = None,
                  engine_type: Optional[pulumi.Input[int]] = None,
@@ -687,6 +720,7 @@ class RdsReadReplica(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] allocated_storage: (Required unless a `snapshot_id` is provided) The allocated storage in gigabytes. This can only be set during an update; it will inherit the writer's value during creation.
                **Note:** Allocated storage can only be modified after every 6 hours.
+        :param pulumi.Input[bool] auto_minor_version_upgrade: Enable or disable auto minor version upgrade
         :param pulumi.Input[str] availability_zone: The AZ for the RDS instance.
         :param pulumi.Input[str] cluster_identifier: The full name of the RDS Cluster.
         :param pulumi.Input[int] engine_type: Engine type required to validate applicable parameter group setting for different instance. Should be referred from writer
@@ -740,6 +774,7 @@ class RdsReadReplica(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allocated_storage: Optional[pulumi.Input[int]] = None,
+                 auto_minor_version_upgrade: Optional[pulumi.Input[bool]] = None,
                  availability_zone: Optional[pulumi.Input[str]] = None,
                  cluster_identifier: Optional[pulumi.Input[str]] = None,
                  engine_type: Optional[pulumi.Input[int]] = None,
@@ -762,6 +797,7 @@ class RdsReadReplica(pulumi.CustomResource):
             __props__ = RdsReadReplicaArgs.__new__(RdsReadReplicaArgs)
 
             __props__.__dict__["allocated_storage"] = allocated_storage
+            __props__.__dict__["auto_minor_version_upgrade"] = auto_minor_version_upgrade
             __props__.__dict__["availability_zone"] = availability_zone
             if cluster_identifier is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_identifier'")
@@ -804,6 +840,7 @@ class RdsReadReplica(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             allocated_storage: Optional[pulumi.Input[int]] = None,
             arn: Optional[pulumi.Input[str]] = None,
+            auto_minor_version_upgrade: Optional[pulumi.Input[bool]] = None,
             availability_zone: Optional[pulumi.Input[str]] = None,
             cluster_identifier: Optional[pulumi.Input[str]] = None,
             cluster_parameter_group_name: Optional[pulumi.Input[str]] = None,
@@ -837,6 +874,7 @@ class RdsReadReplica(pulumi.CustomResource):
         :param pulumi.Input[int] allocated_storage: (Required unless a `snapshot_id` is provided) The allocated storage in gigabytes. This can only be set during an update; it will inherit the writer's value during creation.
                **Note:** Allocated storage can only be modified after every 6 hours.
         :param pulumi.Input[str] arn: The ARN of the RDS read replica.
+        :param pulumi.Input[bool] auto_minor_version_upgrade: Enable or disable auto minor version upgrade
         :param pulumi.Input[str] availability_zone: The AZ for the RDS instance.
         :param pulumi.Input[str] cluster_identifier: The full name of the RDS Cluster.
         :param pulumi.Input[str] cluster_parameter_group_name: Parameter group associated with this instance's DB Cluster.
@@ -868,6 +906,7 @@ class RdsReadReplica(pulumi.CustomResource):
 
         __props__.__dict__["allocated_storage"] = allocated_storage
         __props__.__dict__["arn"] = arn
+        __props__.__dict__["auto_minor_version_upgrade"] = auto_minor_version_upgrade
         __props__.__dict__["availability_zone"] = availability_zone
         __props__.__dict__["cluster_identifier"] = cluster_identifier
         __props__.__dict__["cluster_parameter_group_name"] = cluster_parameter_group_name
@@ -909,6 +948,14 @@ class RdsReadReplica(pulumi.CustomResource):
         The ARN of the RDS read replica.
         """
         return pulumi.get(self, "arn")
+
+    @property
+    @pulumi.getter(name="autoMinorVersionUpgrade")
+    def auto_minor_version_upgrade(self) -> pulumi.Output[bool]:
+        """
+        Enable or disable auto minor version upgrade
+        """
+        return pulumi.get(self, "auto_minor_version_upgrade")
 
     @property
     @pulumi.getter(name="availabilityZone")

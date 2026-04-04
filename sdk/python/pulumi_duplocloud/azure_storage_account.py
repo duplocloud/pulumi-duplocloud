@@ -20,15 +20,19 @@ __all__ = ['AzureStorageAccountArgs', 'AzureStorageAccount']
 class AzureStorageAccountArgs:
     def __init__(__self__, *,
                  tenant_id: pulumi.Input[str],
+                 allow_blob_public_access: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  wait_until_ready: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a AzureStorageAccount resource.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the storage account will be created in.
+        :param pulumi.Input[bool] allow_blob_public_access: Whether or not to allow public access to all blobs or containers in the storage account. Defaults to `false`.
         :param pulumi.Input[str] name: Specifies the name of the storage account. Changing this forces a new resource to be created. This must be unique across the entire Azure service, not just within the resource group.
         :param pulumi.Input[bool] wait_until_ready: Whether or not to wait until azure storage account to be ready, after creation. Defaults to `true`.
         """
         pulumi.set(__self__, "tenant_id", tenant_id)
+        if allow_blob_public_access is not None:
+            pulumi.set(__self__, "allow_blob_public_access", allow_blob_public_access)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if wait_until_ready is not None:
@@ -45,6 +49,18 @@ class AzureStorageAccountArgs:
     @tenant_id.setter
     def tenant_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "tenant_id", value)
+
+    @property
+    @pulumi.getter(name="allowBlobPublicAccess")
+    def allow_blob_public_access(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not to allow public access to all blobs or containers in the storage account. Defaults to `false`.
+        """
+        return pulumi.get(self, "allow_blob_public_access")
+
+    @allow_blob_public_access.setter
+    def allow_blob_public_access(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_blob_public_access", value)
 
     @property
     @pulumi.getter
@@ -74,21 +90,37 @@ class AzureStorageAccountArgs:
 @pulumi.input_type
 class _AzureStorageAccountState:
     def __init__(__self__, *,
+                 allow_blob_public_access: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  wait_until_ready: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering AzureStorageAccount resources.
+        :param pulumi.Input[bool] allow_blob_public_access: Whether or not to allow public access to all blobs or containers in the storage account. Defaults to `false`.
         :param pulumi.Input[str] name: Specifies the name of the storage account. Changing this forces a new resource to be created. This must be unique across the entire Azure service, not just within the resource group.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the storage account will be created in.
         :param pulumi.Input[bool] wait_until_ready: Whether or not to wait until azure storage account to be ready, after creation. Defaults to `true`.
         """
+        if allow_blob_public_access is not None:
+            pulumi.set(__self__, "allow_blob_public_access", allow_blob_public_access)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if tenant_id is not None:
             pulumi.set(__self__, "tenant_id", tenant_id)
         if wait_until_ready is not None:
             pulumi.set(__self__, "wait_until_ready", wait_until_ready)
+
+    @property
+    @pulumi.getter(name="allowBlobPublicAccess")
+    def allow_blob_public_access(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not to allow public access to all blobs or containers in the storage account. Defaults to `false`.
+        """
+        return pulumi.get(self, "allow_blob_public_access")
+
+    @allow_blob_public_access.setter
+    def allow_blob_public_access(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_blob_public_access", value)
 
     @property
     @pulumi.getter
@@ -132,6 +164,7 @@ class AzureStorageAccount(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 allow_blob_public_access: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  wait_until_ready: Optional[pulumi.Input[bool]] = None,
@@ -169,6 +202,7 @@ class AzureStorageAccount(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] allow_blob_public_access: Whether or not to allow public access to all blobs or containers in the storage account. Defaults to `false`.
         :param pulumi.Input[str] name: Specifies the name of the storage account. Changing this forces a new resource to be created. This must be unique across the entire Azure service, not just within the resource group.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the storage account will be created in.
         :param pulumi.Input[bool] wait_until_ready: Whether or not to wait until azure storage account to be ready, after creation. Defaults to `true`.
@@ -225,6 +259,7 @@ class AzureStorageAccount(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 allow_blob_public_access: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  wait_until_ready: Optional[pulumi.Input[bool]] = None,
@@ -237,6 +272,7 @@ class AzureStorageAccount(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AzureStorageAccountArgs.__new__(AzureStorageAccountArgs)
 
+            __props__.__dict__["allow_blob_public_access"] = allow_blob_public_access
             __props__.__dict__["name"] = name
             if tenant_id is None and not opts.urn:
                 raise TypeError("Missing required property 'tenant_id'")
@@ -252,6 +288,7 @@ class AzureStorageAccount(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            allow_blob_public_access: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             tenant_id: Optional[pulumi.Input[str]] = None,
             wait_until_ready: Optional[pulumi.Input[bool]] = None) -> 'AzureStorageAccount':
@@ -262,6 +299,7 @@ class AzureStorageAccount(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] allow_blob_public_access: Whether or not to allow public access to all blobs or containers in the storage account. Defaults to `false`.
         :param pulumi.Input[str] name: Specifies the name of the storage account. Changing this forces a new resource to be created. This must be unique across the entire Azure service, not just within the resource group.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the storage account will be created in.
         :param pulumi.Input[bool] wait_until_ready: Whether or not to wait until azure storage account to be ready, after creation. Defaults to `true`.
@@ -270,10 +308,19 @@ class AzureStorageAccount(pulumi.CustomResource):
 
         __props__ = _AzureStorageAccountState.__new__(_AzureStorageAccountState)
 
+        __props__.__dict__["allow_blob_public_access"] = allow_blob_public_access
         __props__.__dict__["name"] = name
         __props__.__dict__["tenant_id"] = tenant_id
         __props__.__dict__["wait_until_ready"] = wait_until_ready
         return AzureStorageAccount(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="allowBlobPublicAccess")
+    def allow_blob_public_access(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether or not to allow public access to all blobs or containers in the storage account. Defaults to `false`.
+        """
+        return pulumi.get(self, "allow_blob_public_access")
 
     @property
     @pulumi.getter

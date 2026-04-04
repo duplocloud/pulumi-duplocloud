@@ -64,6 +64,8 @@ import (
 type AzureStorageAccount struct {
 	pulumi.CustomResourceState
 
+	// Whether or not to allow public access to all blobs or containers in the storage account. Defaults to `false`.
+	AllowBlobPublicAccess pulumi.BoolPtrOutput `pulumi:"allowBlobPublicAccess"`
 	// Specifies the name of the storage account. Changing this forces a new resource to be created. This must be unique across the entire Azure service, not just within the resource group.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The GUID of the tenant that the storage account will be created in.
@@ -105,6 +107,8 @@ func GetAzureStorageAccount(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AzureStorageAccount resources.
 type azureStorageAccountState struct {
+	// Whether or not to allow public access to all blobs or containers in the storage account. Defaults to `false`.
+	AllowBlobPublicAccess *bool `pulumi:"allowBlobPublicAccess"`
 	// Specifies the name of the storage account. Changing this forces a new resource to be created. This must be unique across the entire Azure service, not just within the resource group.
 	Name *string `pulumi:"name"`
 	// The GUID of the tenant that the storage account will be created in.
@@ -114,6 +118,8 @@ type azureStorageAccountState struct {
 }
 
 type AzureStorageAccountState struct {
+	// Whether or not to allow public access to all blobs or containers in the storage account. Defaults to `false`.
+	AllowBlobPublicAccess pulumi.BoolPtrInput
 	// Specifies the name of the storage account. Changing this forces a new resource to be created. This must be unique across the entire Azure service, not just within the resource group.
 	Name pulumi.StringPtrInput
 	// The GUID of the tenant that the storage account will be created in.
@@ -127,6 +133,8 @@ func (AzureStorageAccountState) ElementType() reflect.Type {
 }
 
 type azureStorageAccountArgs struct {
+	// Whether or not to allow public access to all blobs or containers in the storage account. Defaults to `false`.
+	AllowBlobPublicAccess *bool `pulumi:"allowBlobPublicAccess"`
 	// Specifies the name of the storage account. Changing this forces a new resource to be created. This must be unique across the entire Azure service, not just within the resource group.
 	Name *string `pulumi:"name"`
 	// The GUID of the tenant that the storage account will be created in.
@@ -137,6 +145,8 @@ type azureStorageAccountArgs struct {
 
 // The set of arguments for constructing a AzureStorageAccount resource.
 type AzureStorageAccountArgs struct {
+	// Whether or not to allow public access to all blobs or containers in the storage account. Defaults to `false`.
+	AllowBlobPublicAccess pulumi.BoolPtrInput
 	// Specifies the name of the storage account. Changing this forces a new resource to be created. This must be unique across the entire Azure service, not just within the resource group.
 	Name pulumi.StringPtrInput
 	// The GUID of the tenant that the storage account will be created in.
@@ -230,6 +240,11 @@ func (o AzureStorageAccountOutput) ToAzureStorageAccountOutput() AzureStorageAcc
 
 func (o AzureStorageAccountOutput) ToAzureStorageAccountOutputWithContext(ctx context.Context) AzureStorageAccountOutput {
 	return o
+}
+
+// Whether or not to allow public access to all blobs or containers in the storage account. Defaults to `false`.
+func (o AzureStorageAccountOutput) AllowBlobPublicAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AzureStorageAccount) pulumi.BoolPtrOutput { return v.AllowBlobPublicAccess }).(pulumi.BoolPtrOutput)
 }
 
 // Specifies the name of the storage account. Changing this forces a new resource to be created. This must be unique across the entire Azure service, not just within the resource group.
