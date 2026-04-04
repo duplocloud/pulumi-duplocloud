@@ -118,7 +118,7 @@ export class AwsLaunchTemplate extends pulumi.CustomResource {
      */
     public readonly blockDeviceMappings!: pulumi.Output<outputs.AwsLaunchTemplateBlockDeviceMapping[]>;
     /**
-     * The current default version of the launch template.
+     * The default version of the launch template at creation time. Use the data source for the current value.
      */
     public /*out*/ readonly defaultVersion!: pulumi.Output<string>;
     /**
@@ -210,7 +210,7 @@ export interface AwsLaunchTemplateState {
      */
     blockDeviceMappings?: pulumi.Input<pulumi.Input<inputs.AwsLaunchTemplateBlockDeviceMapping>[]>;
     /**
-     * The current default version of the launch template.
+     * The default version of the launch template at creation time. Use the data source for the current value.
      */
     defaultVersion?: pulumi.Input<string>;
     /**

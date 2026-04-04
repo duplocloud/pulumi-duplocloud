@@ -118,7 +118,7 @@ type AwsLaunchTemplate struct {
 	Ami pulumi.StringOutput `pulumi:"ami"`
 	// Configure additional volumes of the instance besides specified by the AMI
 	BlockDeviceMappings AwsLaunchTemplateBlockDeviceMappingArrayOutput `pulumi:"blockDeviceMappings"`
-	// The current default version of the launch template.
+	// The default version of the launch template at creation time. Use the data source for the current value.
 	DefaultVersion pulumi.StringOutput `pulumi:"defaultVersion"`
 	// Whether to manage instance requirements instead of a specific instance type
 	InstanceRequirements AwsLaunchTemplateInstanceRequirementsPtrOutput `pulumi:"instanceRequirements"`
@@ -174,7 +174,7 @@ type awsLaunchTemplateState struct {
 	Ami *string `pulumi:"ami"`
 	// Configure additional volumes of the instance besides specified by the AMI
 	BlockDeviceMappings []AwsLaunchTemplateBlockDeviceMapping `pulumi:"blockDeviceMappings"`
-	// The current default version of the launch template.
+	// The default version of the launch template at creation time. Use the data source for the current value.
 	DefaultVersion *string `pulumi:"defaultVersion"`
 	// Whether to manage instance requirements instead of a specific instance type
 	InstanceRequirements *AwsLaunchTemplateInstanceRequirements `pulumi:"instanceRequirements"`
@@ -198,7 +198,7 @@ type AwsLaunchTemplateState struct {
 	Ami pulumi.StringPtrInput
 	// Configure additional volumes of the instance besides specified by the AMI
 	BlockDeviceMappings AwsLaunchTemplateBlockDeviceMappingArrayInput
-	// The current default version of the launch template.
+	// The default version of the launch template at creation time. Use the data source for the current value.
 	DefaultVersion pulumi.StringPtrInput
 	// Whether to manage instance requirements instead of a specific instance type
 	InstanceRequirements AwsLaunchTemplateInstanceRequirementsPtrInput
@@ -359,7 +359,7 @@ func (o AwsLaunchTemplateOutput) BlockDeviceMappings() AwsLaunchTemplateBlockDev
 	}).(AwsLaunchTemplateBlockDeviceMappingArrayOutput)
 }
 
-// The current default version of the launch template.
+// The default version of the launch template at creation time. Use the data source for the current value.
 func (o AwsLaunchTemplateOutput) DefaultVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *AwsLaunchTemplate) pulumi.StringOutput { return v.DefaultVersion }).(pulumi.StringOutput)
 }

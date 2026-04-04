@@ -30,6 +30,7 @@ class AsgProfileArgs:
                  base64_user_data: Optional[pulumi.Input[str]] = None,
                  can_scale_from_zero: Optional[pulumi.Input[bool]] = None,
                  cloud: Optional[pulumi.Input[int]] = None,
+                 custom_data_tags: Optional[pulumi.Input[Sequence[pulumi.Input['AsgProfileCustomDataTagArgs']]]] = None,
                  custom_node_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  enabled_metrics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  encrypt_disk: Optional[pulumi.Input[bool]] = None,
@@ -65,6 +66,9 @@ class AsgProfileArgs:
         :param pulumi.Input[str] base64_user_data: Base64 encoded EC2 user data to associated with the host.
         :param pulumi.Input[bool] can_scale_from_zero: Whether or not ASG should leverage duplocloud's scale from 0 feature
         :param pulumi.Input[int] cloud: The numeric ID of the cloud provider to launch the host in.
+        :param pulumi.Input[Sequence[pulumi.Input['AsgProfileCustomDataTagArgs']]] custom_data_tags: A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value. **Note:**
+               When importing an ASG created using the minion_tags block, from v0.12.6 onwards, need to add a custom_data_tags block by
+               replacing the minion_tags block with the same key and value as the minion_tags block to avoid drift.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_node_labels: Specify the labels to attach to the nodes.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_metrics: List of metrics to collect for the ASG Specify one or more of the following
                metrics.`GroupMinSize`,`GroupMaxSize`,`GroupDesiredCapacity`,`GroupInServiceInstances`,`GroupPendingInstances`,`GroupStandbyInstances`,`GroupTerminatingInstances`,`GroupTotalInstances`,`GroupInServiceCapacity`,`GroupPendingCapacity`,`GroupStandbyCapacity`,`GroupTerminatingCapacity`,`GroupTotalCapacity`,`WarmPoolDesiredCapacity`,`WarmPoolWarmedCapacity`,`WarmPoolPendingCapacity`,`WarmPoolTerminatingCapacity`,`WarmPoolTotalCapacity`,`GroupAndWarmPoolDesiredCapacity`,`GroupAndWarmPoolTotalCapacity`.
@@ -103,6 +107,8 @@ class AsgProfileArgs:
             pulumi.set(__self__, "can_scale_from_zero", can_scale_from_zero)
         if cloud is not None:
             pulumi.set(__self__, "cloud", cloud)
+        if custom_data_tags is not None:
+            pulumi.set(__self__, "custom_data_tags", custom_data_tags)
         if custom_node_labels is not None:
             pulumi.set(__self__, "custom_node_labels", custom_node_labels)
         if enabled_metrics is not None:
@@ -128,6 +134,9 @@ class AsgProfileArgs:
         if min_instance_count is not None:
             pulumi.set(__self__, "min_instance_count", min_instance_count)
         if minion_tags is not None:
+            warnings.warn("""minion_tags is deprecated and will be removed in a future release. Use custom_data_tags instead.""", DeprecationWarning)
+            pulumi.log.warn("""minion_tags is deprecated: minion_tags is deprecated and will be removed in a future release. Use custom_data_tags instead.""")
+        if minion_tags is not None:
             pulumi.set(__self__, "minion_tags", minion_tags)
         if network_interfaces is not None:
             pulumi.set(__self__, "network_interfaces", network_interfaces)
@@ -146,8 +155,8 @@ class AsgProfileArgs:
         if wait_for_capacity is not None:
             pulumi.set(__self__, "wait_for_capacity", wait_for_capacity)
         if zone is not None:
-            warnings.warn("""For environments on the July 2024 release or earlier, use zone. For environments on releases after July 2024, use zones, as zone has been deprecated.""", DeprecationWarning)
-            pulumi.log.warn("""zone is deprecated: For environments on the July 2024 release or earlier, use zone. For environments on releases after July 2024, use zones, as zone has been deprecated.""")
+            warnings.warn("""For environments on the July 2024 release or earlier, use zone. For environments on releases after July 2024, use zones, as zone has been deprecated and is non-functional on change.""", DeprecationWarning)
+            pulumi.log.warn("""zone is deprecated: For environments on the July 2024 release or earlier, use zone. For environments on releases after July 2024, use zones, as zone has been deprecated and is non-functional on change.""")
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
         if zones is not None:
@@ -261,6 +270,20 @@ class AsgProfileArgs:
     @cloud.setter
     def cloud(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "cloud", value)
+
+    @property
+    @pulumi.getter(name="customDataTags")
+    def custom_data_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AsgProfileCustomDataTagArgs']]]]:
+        """
+        A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value. **Note:**
+        When importing an ASG created using the minion_tags block, from v0.12.6 onwards, need to add a custom_data_tags block by
+        replacing the minion_tags block with the same key and value as the minion_tags block to avoid drift.
+        """
+        return pulumi.get(self, "custom_data_tags")
+
+    @custom_data_tags.setter
+    def custom_data_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AsgProfileCustomDataTagArgs']]]]):
+        pulumi.set(self, "custom_data_tags", value)
 
     @property
     @pulumi.getter(name="customNodeLabels")
@@ -402,6 +425,7 @@ class AsgProfileArgs:
 
     @property
     @pulumi.getter(name="minionTags")
+    @_utilities.deprecated("""minion_tags is deprecated and will be removed in a future release. Use custom_data_tags instead.""")
     def minion_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AsgProfileMinionTagArgs']]]]:
         """
         A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value.
@@ -507,7 +531,7 @@ class AsgProfileArgs:
 
     @property
     @pulumi.getter
-    @_utilities.deprecated("""For environments on the July 2024 release or earlier, use zone. For environments on releases after July 2024, use zones, as zone has been deprecated.""")
+    @_utilities.deprecated("""For environments on the July 2024 release or earlier, use zone. For environments on releases after July 2024, use zones, as zone has been deprecated and is non-functional on change.""")
     def zone(self) -> Optional[pulumi.Input[str]]:
         """
         The availability zone to launch the host in is expressed as a numeric value ranging from 0 to 3.
@@ -542,6 +566,7 @@ class _AsgProfileState:
                  can_scale_from_zero: Optional[pulumi.Input[bool]] = None,
                  capacity: Optional[pulumi.Input[str]] = None,
                  cloud: Optional[pulumi.Input[int]] = None,
+                 custom_data_tags: Optional[pulumi.Input[Sequence[pulumi.Input['AsgProfileCustomDataTagArgs']]]] = None,
                  custom_node_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  enabled_metrics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  encrypt_disk: Optional[pulumi.Input[bool]] = None,
@@ -581,6 +606,9 @@ class _AsgProfileState:
         :param pulumi.Input[bool] can_scale_from_zero: Whether or not ASG should leverage duplocloud's scale from 0 feature
         :param pulumi.Input[str] capacity: The AWS EC2 instance type.
         :param pulumi.Input[int] cloud: The numeric ID of the cloud provider to launch the host in.
+        :param pulumi.Input[Sequence[pulumi.Input['AsgProfileCustomDataTagArgs']]] custom_data_tags: A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value. **Note:**
+               When importing an ASG created using the minion_tags block, from v0.12.6 onwards, need to add a custom_data_tags block by
+               replacing the minion_tags block with the same key and value as the minion_tags block to avoid drift.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_node_labels: Specify the labels to attach to the nodes.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_metrics: List of metrics to collect for the ASG Specify one or more of the following
                metrics.`GroupMinSize`,`GroupMaxSize`,`GroupDesiredCapacity`,`GroupInServiceInstances`,`GroupPendingInstances`,`GroupStandbyInstances`,`GroupTerminatingInstances`,`GroupTotalInstances`,`GroupInServiceCapacity`,`GroupPendingCapacity`,`GroupStandbyCapacity`,`GroupTerminatingCapacity`,`GroupTotalCapacity`,`WarmPoolDesiredCapacity`,`WarmPoolWarmedCapacity`,`WarmPoolPendingCapacity`,`WarmPoolTerminatingCapacity`,`WarmPoolTotalCapacity`,`GroupAndWarmPoolDesiredCapacity`,`GroupAndWarmPoolTotalCapacity`.
@@ -624,6 +652,8 @@ class _AsgProfileState:
             pulumi.set(__self__, "capacity", capacity)
         if cloud is not None:
             pulumi.set(__self__, "cloud", cloud)
+        if custom_data_tags is not None:
+            pulumi.set(__self__, "custom_data_tags", custom_data_tags)
         if custom_node_labels is not None:
             pulumi.set(__self__, "custom_node_labels", custom_node_labels)
         if enabled_metrics is not None:
@@ -657,6 +687,9 @@ class _AsgProfileState:
         if min_instance_count is not None:
             pulumi.set(__self__, "min_instance_count", min_instance_count)
         if minion_tags is not None:
+            warnings.warn("""minion_tags is deprecated and will be removed in a future release. Use custom_data_tags instead.""", DeprecationWarning)
+            pulumi.log.warn("""minion_tags is deprecated: minion_tags is deprecated and will be removed in a future release. Use custom_data_tags instead.""")
+        if minion_tags is not None:
             pulumi.set(__self__, "minion_tags", minion_tags)
         if network_interfaces is not None:
             pulumi.set(__self__, "network_interfaces", network_interfaces)
@@ -679,8 +712,8 @@ class _AsgProfileState:
         if wait_for_capacity is not None:
             pulumi.set(__self__, "wait_for_capacity", wait_for_capacity)
         if zone is not None:
-            warnings.warn("""For environments on the July 2024 release or earlier, use zone. For environments on releases after July 2024, use zones, as zone has been deprecated.""", DeprecationWarning)
-            pulumi.log.warn("""zone is deprecated: For environments on the July 2024 release or earlier, use zone. For environments on releases after July 2024, use zones, as zone has been deprecated.""")
+            warnings.warn("""For environments on the July 2024 release or earlier, use zone. For environments on releases after July 2024, use zones, as zone has been deprecated and is non-functional on change.""", DeprecationWarning)
+            pulumi.log.warn("""zone is deprecated: For environments on the July 2024 release or earlier, use zone. For environments on releases after July 2024, use zones, as zone has been deprecated and is non-functional on change.""")
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
         if zones is not None:
@@ -770,6 +803,20 @@ class _AsgProfileState:
     @cloud.setter
     def cloud(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "cloud", value)
+
+    @property
+    @pulumi.getter(name="customDataTags")
+    def custom_data_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AsgProfileCustomDataTagArgs']]]]:
+        """
+        A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value. **Note:**
+        When importing an ASG created using the minion_tags block, from v0.12.6 onwards, need to add a custom_data_tags block by
+        replacing the minion_tags block with the same key and value as the minion_tags block to avoid drift.
+        """
+        return pulumi.get(self, "custom_data_tags")
+
+    @custom_data_tags.setter
+    def custom_data_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AsgProfileCustomDataTagArgs']]]]):
+        pulumi.set(self, "custom_data_tags", value)
 
     @property
     @pulumi.getter(name="customNodeLabels")
@@ -956,6 +1003,7 @@ class _AsgProfileState:
 
     @property
     @pulumi.getter(name="minionTags")
+    @_utilities.deprecated("""minion_tags is deprecated and will be removed in a future release. Use custom_data_tags instead.""")
     def minion_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AsgProfileMinionTagArgs']]]]:
         """
         A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value.
@@ -1085,7 +1133,7 @@ class _AsgProfileState:
 
     @property
     @pulumi.getter
-    @_utilities.deprecated("""For environments on the July 2024 release or earlier, use zone. For environments on releases after July 2024, use zones, as zone has been deprecated.""")
+    @_utilities.deprecated("""For environments on the July 2024 release or earlier, use zone. For environments on releases after July 2024, use zones, as zone has been deprecated and is non-functional on change.""")
     def zone(self) -> Optional[pulumi.Input[str]]:
         """
         The availability zone to launch the host in is expressed as a numeric value ranging from 0 to 3.
@@ -1121,6 +1169,7 @@ class AsgProfile(pulumi.CustomResource):
                  can_scale_from_zero: Optional[pulumi.Input[bool]] = None,
                  capacity: Optional[pulumi.Input[str]] = None,
                  cloud: Optional[pulumi.Input[int]] = None,
+                 custom_data_tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AsgProfileCustomDataTagArgs', 'AsgProfileCustomDataTagArgsDict']]]]] = None,
                  custom_node_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  enabled_metrics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  encrypt_disk: Optional[pulumi.Input[bool]] = None,
@@ -1177,6 +1226,9 @@ class AsgProfile(pulumi.CustomResource):
         :param pulumi.Input[bool] can_scale_from_zero: Whether or not ASG should leverage duplocloud's scale from 0 feature
         :param pulumi.Input[str] capacity: The AWS EC2 instance type.
         :param pulumi.Input[int] cloud: The numeric ID of the cloud provider to launch the host in.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AsgProfileCustomDataTagArgs', 'AsgProfileCustomDataTagArgsDict']]]] custom_data_tags: A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value. **Note:**
+               When importing an ASG created using the minion_tags block, from v0.12.6 onwards, need to add a custom_data_tags block by
+               replacing the minion_tags block with the same key and value as the minion_tags block to avoid drift.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_node_labels: Specify the labels to attach to the nodes.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_metrics: List of metrics to collect for the ASG Specify one or more of the following
                metrics.`GroupMinSize`,`GroupMaxSize`,`GroupDesiredCapacity`,`GroupInServiceInstances`,`GroupPendingInstances`,`GroupStandbyInstances`,`GroupTerminatingInstances`,`GroupTotalInstances`,`GroupInServiceCapacity`,`GroupPendingCapacity`,`GroupStandbyCapacity`,`GroupTerminatingCapacity`,`GroupTotalCapacity`,`WarmPoolDesiredCapacity`,`WarmPoolWarmedCapacity`,`WarmPoolPendingCapacity`,`WarmPoolTerminatingCapacity`,`WarmPoolTotalCapacity`,`GroupAndWarmPoolDesiredCapacity`,`GroupAndWarmPoolTotalCapacity`.
@@ -1251,6 +1303,7 @@ class AsgProfile(pulumi.CustomResource):
                  can_scale_from_zero: Optional[pulumi.Input[bool]] = None,
                  capacity: Optional[pulumi.Input[str]] = None,
                  cloud: Optional[pulumi.Input[int]] = None,
+                 custom_data_tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AsgProfileCustomDataTagArgs', 'AsgProfileCustomDataTagArgsDict']]]]] = None,
                  custom_node_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  enabled_metrics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  encrypt_disk: Optional[pulumi.Input[bool]] = None,
@@ -1294,6 +1347,7 @@ class AsgProfile(pulumi.CustomResource):
                 raise TypeError("Missing required property 'capacity'")
             __props__.__dict__["capacity"] = capacity
             __props__.__dict__["cloud"] = cloud
+            __props__.__dict__["custom_data_tags"] = custom_data_tags
             __props__.__dict__["custom_node_labels"] = custom_node_labels
             __props__.__dict__["enabled_metrics"] = enabled_metrics
             __props__.__dict__["encrypt_disk"] = encrypt_disk
@@ -1347,6 +1401,7 @@ class AsgProfile(pulumi.CustomResource):
             can_scale_from_zero: Optional[pulumi.Input[bool]] = None,
             capacity: Optional[pulumi.Input[str]] = None,
             cloud: Optional[pulumi.Input[int]] = None,
+            custom_data_tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AsgProfileCustomDataTagArgs', 'AsgProfileCustomDataTagArgsDict']]]]] = None,
             custom_node_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             enabled_metrics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             encrypt_disk: Optional[pulumi.Input[bool]] = None,
@@ -1391,6 +1446,9 @@ class AsgProfile(pulumi.CustomResource):
         :param pulumi.Input[bool] can_scale_from_zero: Whether or not ASG should leverage duplocloud's scale from 0 feature
         :param pulumi.Input[str] capacity: The AWS EC2 instance type.
         :param pulumi.Input[int] cloud: The numeric ID of the cloud provider to launch the host in.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AsgProfileCustomDataTagArgs', 'AsgProfileCustomDataTagArgsDict']]]] custom_data_tags: A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value. **Note:**
+               When importing an ASG created using the minion_tags block, from v0.12.6 onwards, need to add a custom_data_tags block by
+               replacing the minion_tags block with the same key and value as the minion_tags block to avoid drift.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_node_labels: Specify the labels to attach to the nodes.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_metrics: List of metrics to collect for the ASG Specify one or more of the following
                metrics.`GroupMinSize`,`GroupMaxSize`,`GroupDesiredCapacity`,`GroupInServiceInstances`,`GroupPendingInstances`,`GroupStandbyInstances`,`GroupTerminatingInstances`,`GroupTotalInstances`,`GroupInServiceCapacity`,`GroupPendingCapacity`,`GroupStandbyCapacity`,`GroupTerminatingCapacity`,`GroupTotalCapacity`,`WarmPoolDesiredCapacity`,`WarmPoolWarmedCapacity`,`WarmPoolPendingCapacity`,`WarmPoolTerminatingCapacity`,`WarmPoolTotalCapacity`,`GroupAndWarmPoolDesiredCapacity`,`GroupAndWarmPoolTotalCapacity`.
@@ -1431,6 +1489,7 @@ class AsgProfile(pulumi.CustomResource):
         __props__.__dict__["can_scale_from_zero"] = can_scale_from_zero
         __props__.__dict__["capacity"] = capacity
         __props__.__dict__["cloud"] = cloud
+        __props__.__dict__["custom_data_tags"] = custom_data_tags
         __props__.__dict__["custom_node_labels"] = custom_node_labels
         __props__.__dict__["enabled_metrics"] = enabled_metrics
         __props__.__dict__["encrypt_disk"] = encrypt_disk
@@ -1518,6 +1577,16 @@ class AsgProfile(pulumi.CustomResource):
         The numeric ID of the cloud provider to launch the host in.
         """
         return pulumi.get(self, "cloud")
+
+    @property
+    @pulumi.getter(name="customDataTags")
+    def custom_data_tags(self) -> pulumi.Output[Sequence['outputs.AsgProfileCustomDataTag']]:
+        """
+        A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value. **Note:**
+        When importing an ASG created using the minion_tags block, from v0.12.6 onwards, need to add a custom_data_tags block by
+        replacing the minion_tags block with the same key and value as the minion_tags block to avoid drift.
+        """
+        return pulumi.get(self, "custom_data_tags")
 
     @property
     @pulumi.getter(name="customNodeLabels")
@@ -1640,6 +1709,7 @@ class AsgProfile(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="minionTags")
+    @_utilities.deprecated("""minion_tags is deprecated and will be removed in a future release. Use custom_data_tags instead.""")
     def minion_tags(self) -> pulumi.Output[Sequence['outputs.AsgProfileMinionTag']]:
         """
         A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value.
@@ -1725,7 +1795,7 @@ class AsgProfile(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    @_utilities.deprecated("""For environments on the July 2024 release or earlier, use zone. For environments on releases after July 2024, use zones, as zone has been deprecated.""")
+    @_utilities.deprecated("""For environments on the July 2024 release or earlier, use zone. For environments on releases after July 2024, use zones, as zone has been deprecated and is non-functional on change.""")
     def zone(self) -> pulumi.Output[Optional[str]]:
         """
         The availability zone to launch the host in is expressed as a numeric value ranging from 0 to 3.

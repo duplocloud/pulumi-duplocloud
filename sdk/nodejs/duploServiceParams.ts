@@ -129,7 +129,7 @@ export class DuploServiceParams extends pulumi.CustomResource {
     /**
      * The ARN of a web application firewall to associate this load balancer.
      */
-    public readonly webaclid!: pulumi.Output<string>;
+    public readonly webaclid!: pulumi.Output<string | undefined>;
 
     /**
      * Create a DuploServiceParams resource with the given unique name, arguments, and options.

@@ -13,6 +13,329 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRef struct {
+	// Version of the schema the FieldPath is written in terms of, defaults to "v1".
+	ApiVersion *string `pulumi:"apiVersion"`
+	// Path of the field to select in the specified API version
+	FieldPath *string `pulumi:"fieldPath"`
+}
+
+// GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefArgs and GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefInput` via:
+//
+//	GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefArgs{...}
+type GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefOutput() GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefOutput
+	ToGetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefOutput
+}
+
+type GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefArgs struct {
+	// Version of the schema the FieldPath is written in terms of, defaults to "v1".
+	ApiVersion pulumi.StringPtrInput `pulumi:"apiVersion"`
+	// Path of the field to select in the specified API version
+	FieldPath pulumi.StringPtrInput `pulumi:"fieldPath"`
+}
+
+func (GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRef)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefArgs) ToGetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefOutput() GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefArgs) ToGetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefOutput)
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefArgs) ToGetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutput() GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefArgs) ToGetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefOutput).ToGetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutputWithContext(ctx)
+}
+
+// GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefArgs, GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtr and GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrInput` via:
+//
+//	        GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutput() GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutput
+	ToGetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutput
+}
+
+type getK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrType GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefArgs
+
+func GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtr(v *GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefArgs) GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrInput {
+	return (*getK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrType)(v)
+}
+
+func (*getK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRef)(nil)).Elem()
+}
+
+func (i *getK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrType) ToGetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutput() GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutputWithContext(context.Background())
+}
+
+func (i *getK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrType) ToGetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRef)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefOutput) ToGetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefOutput() GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefOutput) ToGetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefOutput) ToGetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutput() GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutput {
+	return o.ToGetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutputWithContext(context.Background())
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefOutput) ToGetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRef) *GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRef {
+		return &v
+	}).(GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutput)
+}
+
+// Version of the schema the FieldPath is written in terms of, defaults to "v1".
+func (o GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefOutput) ApiVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRef) *string { return v.ApiVersion }).(pulumi.StringPtrOutput)
+}
+
+// Path of the field to select in the specified API version
+func (o GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefOutput) FieldPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRef) *string { return v.FieldPath }).(pulumi.StringPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRef)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutput) ToGetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutput() GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutput) ToGetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutput) Elem() GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRef) GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRef {
+		if v != nil {
+			return *v
+		}
+		var ret GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRef
+		return ret
+	}).(GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefOutput)
+}
+
+// Version of the schema the FieldPath is written in terms of, defaults to "v1".
+func (o GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutput) ApiVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRef) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Path of the field to select in the specified API version
+func (o GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutput) FieldPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRef) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FieldPath
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRef struct {
+	ContainerName *string `pulumi:"containerName"`
+	Divisor       *string `pulumi:"divisor"`
+	// Resource to select
+	Resource string `pulumi:"resource"`
+}
+
+// GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefArgs and GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefInput` via:
+//
+//	GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefArgs{...}
+type GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefOutput() GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefOutput
+	ToGetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefOutput
+}
+
+type GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefArgs struct {
+	ContainerName pulumi.StringPtrInput `pulumi:"containerName"`
+	Divisor       pulumi.StringPtrInput `pulumi:"divisor"`
+	// Resource to select
+	Resource pulumi.StringInput `pulumi:"resource"`
+}
+
+func (GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRef)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefArgs) ToGetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefOutput() GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefArgs) ToGetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefOutput)
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefArgs) ToGetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput() GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefArgs) ToGetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefOutput).ToGetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutputWithContext(ctx)
+}
+
+// GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrInput is an input type that accepts GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefArgs, GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtr and GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrInput` via:
+//
+//	        GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput() GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput
+	ToGetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput
+}
+
+type getK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrType GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefArgs
+
+func GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtr(v *GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefArgs) GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrInput {
+	return (*getK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrType)(v)
+}
+
+func (*getK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRef)(nil)).Elem()
+}
+
+func (i *getK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrType) ToGetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput() GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutputWithContext(context.Background())
+}
+
+func (i *getK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrType) ToGetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRef)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefOutput) ToGetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefOutput() GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefOutput) ToGetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefOutput) ToGetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput() GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput {
+	return o.ToGetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutputWithContext(context.Background())
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefOutput) ToGetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRef) *GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRef {
+		return &v
+	}).(GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput)
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefOutput) ContainerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRef) *string { return v.ContainerName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefOutput) Divisor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRef) *string { return v.Divisor }).(pulumi.StringPtrOutput)
+}
+
+// Resource to select
+func (o GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefOutput) Resource() pulumi.StringOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRef) string { return v.Resource }).(pulumi.StringOutput)
+}
+
+type GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRef)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput) ToGetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput() GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput) ToGetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput) Elem() GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRef) GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRef {
+		if v != nil {
+			return *v
+		}
+		var ret GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRef
+		return ret
+	}).(GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefOutput)
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput) ContainerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRef) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContainerName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput) Divisor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRef) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Divisor
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource to select
+func (o GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRef) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Resource
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRef struct {
 	// The key of the secret to select from. Must be a valid secret key.
 	Key *string `pulumi:"key"`
@@ -29634,6 +29957,10 @@ func (o GetTenantsTenantTagArrayOutput) Index(i pulumi.IntInput) GetTenantsTenan
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecContainerLifecycleInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecContainerLifecycleArgs{})
@@ -30033,6 +30360,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantsTenantPolicyArrayInput)(nil)).Elem(), GetTenantsTenantPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantsTenantTagInput)(nil)).Elem(), GetTenantsTenantTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantsTenantTagArrayInput)(nil)).Elem(), GetTenantsTenantTagArray{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerEnvValueFromFieldRefPtrOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerEnvValueFromResourceFieldRefPtrOutput{})
 	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefOutput{})
 	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput{})
 	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecContainerLifecycleOutput{})

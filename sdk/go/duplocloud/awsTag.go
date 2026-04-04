@@ -14,6 +14,8 @@ import (
 
 // `AwsTag` manages an AWS custom tag for resources in Duplo.
 //
+// > **Note:** AWS Auto Scaling Group (ASG) resources are **not supported** by this resource. The underlying bulk tagging API does not support ASG ARNs. To tag ASG resources, use the `minionTags` attribute in `AsgProfile` instead.
+//
 // ## Import
 //
 // Example: Importing an existing custom tag for an AWS resource
@@ -32,7 +34,7 @@ import (
 type AwsTag struct {
 	pulumi.CustomResourceState
 
-	// The resource arn of which custom tag need to be created.
+	// The resource ARN of which custom tag need to be created. **Note:** ASG (Auto Scaling Group) ARNs are not supported.
 	Arn pulumi.StringOutput `pulumi:"arn"`
 	// The tag name.
 	Key pulumi.StringOutput `pulumi:"key"`
@@ -84,7 +86,7 @@ func GetAwsTag(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AwsTag resources.
 type awsTagState struct {
-	// The resource arn of which custom tag need to be created.
+	// The resource ARN of which custom tag need to be created. **Note:** ASG (Auto Scaling Group) ARNs are not supported.
 	Arn *string `pulumi:"arn"`
 	// The tag name.
 	Key *string `pulumi:"key"`
@@ -95,7 +97,7 @@ type awsTagState struct {
 }
 
 type AwsTagState struct {
-	// The resource arn of which custom tag need to be created.
+	// The resource ARN of which custom tag need to be created. **Note:** ASG (Auto Scaling Group) ARNs are not supported.
 	Arn pulumi.StringPtrInput
 	// The tag name.
 	Key pulumi.StringPtrInput
@@ -110,7 +112,7 @@ func (AwsTagState) ElementType() reflect.Type {
 }
 
 type awsTagArgs struct {
-	// The resource arn of which custom tag need to be created.
+	// The resource ARN of which custom tag need to be created. **Note:** ASG (Auto Scaling Group) ARNs are not supported.
 	Arn string `pulumi:"arn"`
 	// The tag name.
 	Key string `pulumi:"key"`
@@ -122,7 +124,7 @@ type awsTagArgs struct {
 
 // The set of arguments for constructing a AwsTag resource.
 type AwsTagArgs struct {
-	// The resource arn of which custom tag need to be created.
+	// The resource ARN of which custom tag need to be created. **Note:** ASG (Auto Scaling Group) ARNs are not supported.
 	Arn pulumi.StringInput
 	// The tag name.
 	Key pulumi.StringInput
@@ -219,7 +221,7 @@ func (o AwsTagOutput) ToAwsTagOutputWithContext(ctx context.Context) AwsTagOutpu
 	return o
 }
 
-// The resource arn of which custom tag need to be created.
+// The resource ARN of which custom tag need to be created. **Note:** ASG (Auto Scaling Group) ARNs are not supported.
 func (o AwsTagOutput) Arn() pulumi.StringOutput {
 	return o.ApplyT(func(v *AwsTag) pulumi.StringOutput { return v.Arn }).(pulumi.StringOutput)
 }

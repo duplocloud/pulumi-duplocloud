@@ -116,7 +116,7 @@ type DuploServiceParams struct {
 	// The GUID of the tenant that hosts the duplo service.
 	TenantId pulumi.StringOutput `pulumi:"tenantId"`
 	// The ARN of a web application firewall to associate this load balancer.
-	Webaclid pulumi.StringOutput `pulumi:"webaclid"`
+	Webaclid pulumi.StringPtrOutput `pulumi:"webaclid"`
 }
 
 // NewDuploServiceParams registers a new resource with the given unique name, arguments, and options.
@@ -376,8 +376,8 @@ func (o DuploServiceParamsOutput) TenantId() pulumi.StringOutput {
 }
 
 // The ARN of a web application firewall to associate this load balancer.
-func (o DuploServiceParamsOutput) Webaclid() pulumi.StringOutput {
-	return o.ApplyT(func(v *DuploServiceParams) pulumi.StringOutput { return v.Webaclid }).(pulumi.StringOutput)
+func (o DuploServiceParamsOutput) Webaclid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DuploServiceParams) pulumi.StringPtrOutput { return v.Webaclid }).(pulumi.StringPtrOutput)
 }
 
 type DuploServiceParamsArrayOutput struct{ *pulumi.OutputState }

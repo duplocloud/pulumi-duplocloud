@@ -48,6 +48,12 @@ namespace DuploCloud.Pulumi.Outputs
         /// </summary>
         public readonly int? Cloud;
         /// <summary>
+        /// A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value.
+        /// 
+        /// **Note:** When importing an ASG created using the minion_tags block, from v0.12.6 onwards, need to add a custom_data_tags block by replacing the minion_tags block with the same key and value as the minion_tags block to avoid drift.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetAsgProfilesAsgProfileCustomDataTagResult> CustomDataTags;
+        /// <summary>
         /// Specify the labels to attach to the nodes.
         /// </summary>
         public readonly ImmutableDictionary<string, string> CustomNodeLabels;
@@ -165,6 +171,8 @@ namespace DuploCloud.Pulumi.Outputs
 
             int? cloud,
 
+            ImmutableArray<Outputs.GetAsgProfilesAsgProfileCustomDataTagResult> customDataTags,
+
             ImmutableDictionary<string, string> customNodeLabels,
 
             ImmutableArray<string> enabledMetrics,
@@ -228,6 +236,7 @@ namespace DuploCloud.Pulumi.Outputs
             CanScaleFromZero = canScaleFromZero;
             Capacity = capacity;
             Cloud = cloud;
+            CustomDataTags = customDataTags;
             CustomNodeLabels = customNodeLabels;
             EnabledMetrics = enabledMetrics;
             EncryptDisk = encryptDisk;

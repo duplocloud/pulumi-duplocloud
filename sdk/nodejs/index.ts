@@ -1140,6 +1140,11 @@ export type UserTenantAccess = import("./userTenantAccess").UserTenantAccess;
 export const UserTenantAccess: typeof import("./userTenantAccess").UserTenantAccess = null as any;
 utilities.lazyLoad(exports, ["UserTenantAccess"], () => require("./userTenantAccess"));
 
+export { ValkeyServerlessArgs, ValkeyServerlessState } from "./valkeyServerless";
+export type ValkeyServerless = import("./valkeyServerless").ValkeyServerless;
+export const ValkeyServerless: typeof import("./valkeyServerless").ValkeyServerless = null as any;
+utilities.lazyLoad(exports, ["ValkeyServerless"], () => require("./valkeyServerless"));
+
 
 // Export sub-modules:
 import * as config from "./config";
@@ -1458,6 +1463,8 @@ const _module = {
                 return new User(name, <any>undefined, { urn })
             case "duplocloud:index/userTenantAccess:UserTenantAccess":
                 return new UserTenantAccess(name, <any>undefined, { urn })
+            case "duplocloud:index/valkeyServerless:ValkeyServerless":
+                return new ValkeyServerless(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -1615,6 +1622,7 @@ pulumi.runtime.registerResourceModule("duplocloud", "index/tenantSecret", _modul
 pulumi.runtime.registerResourceModule("duplocloud", "index/tenantTag", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/user", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/userTenantAccess", _module)
+pulumi.runtime.registerResourceModule("duplocloud", "index/valkeyServerless", _module)
 pulumi.runtime.registerResourcePackage("duplocloud", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

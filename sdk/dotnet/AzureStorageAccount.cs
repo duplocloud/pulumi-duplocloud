@@ -56,6 +56,12 @@ namespace DuploCloud.Pulumi
     public partial class AzureStorageAccount : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Whether or not to allow public access to all blobs or containers in the storage account. Defaults to `false`.
+        /// </summary>
+        [Output("allowBlobPublicAccess")]
+        public Output<bool?> AllowBlobPublicAccess { get; private set; } = null!;
+
+        /// <summary>
         /// Specifies the name of the storage account. Changing this forces a new resource to be created. This must be unique across the entire Azure service, not just within the resource group.
         /// </summary>
         [Output("name")]
@@ -121,6 +127,12 @@ namespace DuploCloud.Pulumi
     public sealed class AzureStorageAccountArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Whether or not to allow public access to all blobs or containers in the storage account. Defaults to `false`.
+        /// </summary>
+        [Input("allowBlobPublicAccess")]
+        public Input<bool>? AllowBlobPublicAccess { get; set; }
+
+        /// <summary>
         /// Specifies the name of the storage account. Changing this forces a new resource to be created. This must be unique across the entire Azure service, not just within the resource group.
         /// </summary>
         [Input("name")]
@@ -146,6 +158,12 @@ namespace DuploCloud.Pulumi
 
     public sealed class AzureStorageAccountState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether or not to allow public access to all blobs or containers in the storage account. Defaults to `false`.
+        /// </summary>
+        [Input("allowBlobPublicAccess")]
+        public Input<bool>? AllowBlobPublicAccess { get; set; }
+
         /// <summary>
         /// Specifies the name of the storage account. Changing this forces a new resource to be created. This must be unique across the entire Azure service, not just within the resource group.
         /// </summary>

@@ -123,7 +123,7 @@ namespace DuploCloud.Pulumi
         public Output<ImmutableArray<Outputs.AwsLaunchTemplateBlockDeviceMapping>> BlockDeviceMappings { get; private set; } = null!;
 
         /// <summary>
-        /// The current default version of the launch template.
+        /// The default version of the launch template at creation time. Use the data source for the current value.
         /// </summary>
         [Output("defaultVersion")]
         public Output<string> DefaultVersion { get; private set; } = null!;
@@ -301,7 +301,7 @@ namespace DuploCloud.Pulumi
         }
 
         /// <summary>
-        /// The current default version of the launch template.
+        /// The default version of the launch template at creation time. Use the data source for the current value.
         /// </summary>
         [Input("defaultVersion")]
         public Input<string>? DefaultVersion { get; set; }

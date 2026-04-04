@@ -146,7 +146,7 @@ namespace DuploCloud.Pulumi
         /// The ARN of a web application firewall to associate this load balancer.
         /// </summary>
         [Output("webaclid")]
-        public Output<string> Webaclid { get; private set; } = null!;
+        public Output<string?> Webaclid { get; private set; } = null!;
 
 
         /// <summary>

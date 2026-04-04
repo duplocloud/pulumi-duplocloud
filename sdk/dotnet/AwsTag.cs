@@ -13,6 +13,8 @@ namespace DuploCloud.Pulumi
     /// <summary>
     /// `duplocloud.AwsTag` manages an AWS custom tag for resources in Duplo.
     /// 
+    /// &gt; **Note:** AWS Auto Scaling Group (ASG) resources are **not supported** by this resource. The underlying bulk tagging API does not support ASG ARNs. To tag ASG resources, use the `minion_tags` attribute in `duplocloud.AsgProfile` instead.
+    /// 
     /// ## Import
     /// 
     /// Example: Importing an existing custom tag for an AWS resource
@@ -33,7 +35,7 @@ namespace DuploCloud.Pulumi
     public partial class AwsTag : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The resource arn of which custom tag need to be created.
+        /// The resource ARN of which custom tag need to be created. **Note:** ASG (Auto Scaling Group) ARNs are not supported.
         /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
@@ -104,7 +106,7 @@ namespace DuploCloud.Pulumi
     public sealed class AwsTagArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The resource arn of which custom tag need to be created.
+        /// The resource ARN of which custom tag need to be created. **Note:** ASG (Auto Scaling Group) ARNs are not supported.
         /// </summary>
         [Input("arn", required: true)]
         public Input<string> Arn { get; set; } = null!;
@@ -136,7 +138,7 @@ namespace DuploCloud.Pulumi
     public sealed class AwsTagState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The resource arn of which custom tag need to be created.
+        /// The resource ARN of which custom tag need to be created. **Note:** ASG (Auto Scaling Group) ARNs are not supported.
         /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }

@@ -35,6 +35,8 @@ type RdsReadReplica struct {
 	AllocatedStorage pulumi.IntOutput `pulumi:"allocatedStorage"`
 	// The ARN of the RDS read replica.
 	Arn pulumi.StringOutput `pulumi:"arn"`
+	// Enable or disable auto minor version upgrade
+	AutoMinorVersionUpgrade pulumi.BoolOutput `pulumi:"autoMinorVersionUpgrade"`
 	// The AZ for the RDS instance.
 	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
 	// The full name of the RDS Cluster.
@@ -128,6 +130,8 @@ type rdsReadReplicaState struct {
 	AllocatedStorage *int `pulumi:"allocatedStorage"`
 	// The ARN of the RDS read replica.
 	Arn *string `pulumi:"arn"`
+	// Enable or disable auto minor version upgrade
+	AutoMinorVersionUpgrade *bool `pulumi:"autoMinorVersionUpgrade"`
 	// The AZ for the RDS instance.
 	AvailabilityZone *string `pulumi:"availabilityZone"`
 	// The full name of the RDS Cluster.
@@ -183,6 +187,8 @@ type RdsReadReplicaState struct {
 	AllocatedStorage pulumi.IntPtrInput
 	// The ARN of the RDS read replica.
 	Arn pulumi.StringPtrInput
+	// Enable or disable auto minor version upgrade
+	AutoMinorVersionUpgrade pulumi.BoolPtrInput
 	// The AZ for the RDS instance.
 	AvailabilityZone pulumi.StringPtrInput
 	// The full name of the RDS Cluster.
@@ -240,6 +246,8 @@ type rdsReadReplicaArgs struct {
 	// (Required unless a `snapshotId` is provided) The allocated storage in gigabytes. This can only be set during an update; it will inherit the writer's value during creation.
 	// **Note:** Allocated storage can only be modified after every 6 hours.
 	AllocatedStorage *int `pulumi:"allocatedStorage"`
+	// Enable or disable auto minor version upgrade
+	AutoMinorVersionUpgrade *bool `pulumi:"autoMinorVersionUpgrade"`
 	// The AZ for the RDS instance.
 	AvailabilityZone *string `pulumi:"availabilityZone"`
 	// The full name of the RDS Cluster.
@@ -272,6 +280,8 @@ type RdsReadReplicaArgs struct {
 	// (Required unless a `snapshotId` is provided) The allocated storage in gigabytes. This can only be set during an update; it will inherit the writer's value during creation.
 	// **Note:** Allocated storage can only be modified after every 6 hours.
 	AllocatedStorage pulumi.IntPtrInput
+	// Enable or disable auto minor version upgrade
+	AutoMinorVersionUpgrade pulumi.BoolPtrInput
 	// The AZ for the RDS instance.
 	AvailabilityZone pulumi.StringPtrInput
 	// The full name of the RDS Cluster.
@@ -395,6 +405,11 @@ func (o RdsReadReplicaOutput) AllocatedStorage() pulumi.IntOutput {
 // The ARN of the RDS read replica.
 func (o RdsReadReplicaOutput) Arn() pulumi.StringOutput {
 	return o.ApplyT(func(v *RdsReadReplica) pulumi.StringOutput { return v.Arn }).(pulumi.StringOutput)
+}
+
+// Enable or disable auto minor version upgrade
+func (o RdsReadReplicaOutput) AutoMinorVersionUpgrade() pulumi.BoolOutput {
+	return o.ApplyT(func(v *RdsReadReplica) pulumi.BoolOutput { return v.AutoMinorVersionUpgrade }).(pulumi.BoolOutput)
 }
 
 // The AZ for the RDS instance.
