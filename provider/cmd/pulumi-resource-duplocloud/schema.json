@@ -52054,6 +52054,20 @@
                     "description": "A list of configuration settings to apply on creation, expressed as key / value pairs.\n",
                     "deprecationMessage": "The custom_data argument is only applied on creation, and is deprecated in favor of the settings argument."
                 },
+                "customPrivateSubnetCidrs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Custom CIDR blocks for private subnets. When specified, overrides the automatic subnet sizing from subnet_cidr.\n"
+                },
+                "customPublicSubnetCidrs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Custom CIDR blocks for public subnets. When specified, overrides the automatic subnet sizing from subnet_cidr.\n"
+                },
                 "deleteUnspecifiedSettings": {
                     "type": "boolean",
                     "description": "Whether or not this resource should delete any settings not specified by this resource. **WARNING:** It is not\nrecommended to change the default value of `false`.\n"
@@ -52162,6 +52176,8 @@
                 "addressPrefix",
                 "allSettings",
                 "clusterIpCidr",
+                "customPrivateSubnetCidrs",
+                "customPublicSubnetCidrs",
                 "enableContainerInsights",
                 "enableEcsCluster",
                 "enableK8Cluster",
@@ -52213,6 +52229,22 @@
                     },
                     "description": "A list of configuration settings to apply on creation, expressed as key / value pairs.\n",
                     "deprecationMessage": "The custom_data argument is only applied on creation, and is deprecated in favor of the settings argument."
+                },
+                "customPrivateSubnetCidrs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Custom CIDR blocks for private subnets. When specified, overrides the automatic subnet sizing from subnet_cidr.\n",
+                    "willReplaceOnChanges": true
+                },
+                "customPublicSubnetCidrs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Custom CIDR blocks for public subnets. When specified, overrides the automatic subnet sizing from subnet_cidr.\n",
+                    "willReplaceOnChanges": true
                 },
                 "deleteUnspecifiedSettings": {
                     "type": "boolean",
@@ -52320,6 +52352,22 @@
                         },
                         "description": "A list of configuration settings to apply on creation, expressed as key / value pairs.\n",
                         "deprecationMessage": "The custom_data argument is only applied on creation, and is deprecated in favor of the settings argument."
+                    },
+                    "customPrivateSubnetCidrs": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Custom CIDR blocks for private subnets. When specified, overrides the automatic subnet sizing from subnet_cidr.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "customPublicSubnetCidrs": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Custom CIDR blocks for public subnets. When specified, overrides the automatic subnet sizing from subnet_cidr.\n",
+                        "willReplaceOnChanges": true
                     },
                     "deleteUnspecifiedSettings": {
                         "type": "boolean",

@@ -1886,6 +1886,12 @@
                     "custom_data": {
                         "maxItemsOne": false
                     },
+                    "custom_private_subnet_cidrs": {
+                        "maxItemsOne": false
+                    },
+                    "custom_public_subnet_cidrs": {
+                        "maxItemsOne": false
+                    },
                     "nat_ips": {
                         "maxItemsOne": false
                     },
