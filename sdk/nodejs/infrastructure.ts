@@ -300,6 +300,14 @@ export class Infrastructure extends pulumi.CustomResource {
      */
     public readonly customDatas!: pulumi.Output<outputs.InfrastructureCustomData[] | undefined>;
     /**
+     * Custom CIDR blocks for private subnets. When specified, overrides the automatic subnet sizing from subnet_cidr.
+     */
+    public readonly customPrivateSubnetCidrs!: pulumi.Output<string[]>;
+    /**
+     * Custom CIDR blocks for public subnets. When specified, overrides the automatic subnet sizing from subnet_cidr.
+     */
+    public readonly customPublicSubnetCidrs!: pulumi.Output<string[]>;
+    /**
      * Whether or not this resource should delete any settings not specified by this resource. **WARNING:** It is not
      * recommended to change the default value of `false`.
      */
@@ -405,6 +413,8 @@ export class Infrastructure extends pulumi.CustomResource {
             resourceInputs["cloud"] = state ? state.cloud : undefined;
             resourceInputs["clusterIpCidr"] = state ? state.clusterIpCidr : undefined;
             resourceInputs["customDatas"] = state ? state.customDatas : undefined;
+            resourceInputs["customPrivateSubnetCidrs"] = state ? state.customPrivateSubnetCidrs : undefined;
+            resourceInputs["customPublicSubnetCidrs"] = state ? state.customPublicSubnetCidrs : undefined;
             resourceInputs["deleteUnspecifiedSettings"] = state ? state.deleteUnspecifiedSettings : undefined;
             resourceInputs["enableContainerInsights"] = state ? state.enableContainerInsights : undefined;
             resourceInputs["enableEcsCluster"] = state ? state.enableEcsCluster : undefined;
@@ -446,6 +456,8 @@ export class Infrastructure extends pulumi.CustomResource {
             resourceInputs["cloud"] = args ? args.cloud : undefined;
             resourceInputs["clusterIpCidr"] = args ? args.clusterIpCidr : undefined;
             resourceInputs["customDatas"] = args ? args.customDatas : undefined;
+            resourceInputs["customPrivateSubnetCidrs"] = args ? args.customPrivateSubnetCidrs : undefined;
+            resourceInputs["customPublicSubnetCidrs"] = args ? args.customPublicSubnetCidrs : undefined;
             resourceInputs["deleteUnspecifiedSettings"] = args ? args.deleteUnspecifiedSettings : undefined;
             resourceInputs["enableContainerInsights"] = args ? args.enableContainerInsights : undefined;
             resourceInputs["enableEcsCluster"] = args ? args.enableEcsCluster : undefined;
@@ -509,6 +521,14 @@ export interface InfrastructureState {
      * @deprecated The customData argument is only applied on creation, and is deprecated in favor of the settings argument.
      */
     customDatas?: pulumi.Input<pulumi.Input<inputs.InfrastructureCustomData>[]>;
+    /**
+     * Custom CIDR blocks for private subnets. When specified, overrides the automatic subnet sizing from subnet_cidr.
+     */
+    customPrivateSubnetCidrs?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Custom CIDR blocks for public subnets. When specified, overrides the automatic subnet sizing from subnet_cidr.
+     */
+    customPublicSubnetCidrs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Whether or not this resource should delete any settings not specified by this resource. **WARNING:** It is not
      * recommended to change the default value of `false`.
@@ -627,6 +647,14 @@ export interface InfrastructureArgs {
      * @deprecated The customData argument is only applied on creation, and is deprecated in favor of the settings argument.
      */
     customDatas?: pulumi.Input<pulumi.Input<inputs.InfrastructureCustomData>[]>;
+    /**
+     * Custom CIDR blocks for private subnets. When specified, overrides the automatic subnet sizing from subnet_cidr.
+     */
+    customPrivateSubnetCidrs?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Custom CIDR blocks for public subnets. When specified, overrides the automatic subnet sizing from subnet_cidr.
+     */
+    customPublicSubnetCidrs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Whether or not this resource should delete any settings not specified by this resource. **WARNING:** It is not
      * recommended to change the default value of `false`.

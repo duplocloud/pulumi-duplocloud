@@ -395,6 +395,18 @@ namespace DuploCloud.Pulumi
         public Output<ImmutableArray<Outputs.InfrastructureCustomData>> CustomDatas { get; private set; } = null!;
 
         /// <summary>
+        /// Custom CIDR blocks for private subnets. When specified, overrides the automatic subnet sizing from subnet_cidr.
+        /// </summary>
+        [Output("customPrivateSubnetCidrs")]
+        public Output<ImmutableArray<string>> CustomPrivateSubnetCidrs { get; private set; } = null!;
+
+        /// <summary>
+        /// Custom CIDR blocks for public subnets. When specified, overrides the automatic subnet sizing from subnet_cidr.
+        /// </summary>
+        [Output("customPublicSubnetCidrs")]
+        public Output<ImmutableArray<string>> CustomPublicSubnetCidrs { get; private set; } = null!;
+
+        /// <summary>
         /// Whether or not this resource should delete any settings not specified by this resource. **WARNING:** It is not
         /// recommended to change the default value of `false`.
         /// </summary>
@@ -612,6 +624,30 @@ namespace DuploCloud.Pulumi
             set => _customDatas = value;
         }
 
+        [Input("customPrivateSubnetCidrs")]
+        private InputList<string>? _customPrivateSubnetCidrs;
+
+        /// <summary>
+        /// Custom CIDR blocks for private subnets. When specified, overrides the automatic subnet sizing from subnet_cidr.
+        /// </summary>
+        public InputList<string> CustomPrivateSubnetCidrs
+        {
+            get => _customPrivateSubnetCidrs ?? (_customPrivateSubnetCidrs = new InputList<string>());
+            set => _customPrivateSubnetCidrs = value;
+        }
+
+        [Input("customPublicSubnetCidrs")]
+        private InputList<string>? _customPublicSubnetCidrs;
+
+        /// <summary>
+        /// Custom CIDR blocks for public subnets. When specified, overrides the automatic subnet sizing from subnet_cidr.
+        /// </summary>
+        public InputList<string> CustomPublicSubnetCidrs
+        {
+            get => _customPublicSubnetCidrs ?? (_customPublicSubnetCidrs = new InputList<string>());
+            set => _customPublicSubnetCidrs = value;
+        }
+
         /// <summary>
         /// Whether or not this resource should delete any settings not specified by this resource. **WARNING:** It is not
         /// recommended to change the default value of `false`.
@@ -753,6 +789,30 @@ namespace DuploCloud.Pulumi
         {
             get => _customDatas ?? (_customDatas = new InputList<Inputs.InfrastructureCustomDataGetArgs>());
             set => _customDatas = value;
+        }
+
+        [Input("customPrivateSubnetCidrs")]
+        private InputList<string>? _customPrivateSubnetCidrs;
+
+        /// <summary>
+        /// Custom CIDR blocks for private subnets. When specified, overrides the automatic subnet sizing from subnet_cidr.
+        /// </summary>
+        public InputList<string> CustomPrivateSubnetCidrs
+        {
+            get => _customPrivateSubnetCidrs ?? (_customPrivateSubnetCidrs = new InputList<string>());
+            set => _customPrivateSubnetCidrs = value;
+        }
+
+        [Input("customPublicSubnetCidrs")]
+        private InputList<string>? _customPublicSubnetCidrs;
+
+        /// <summary>
+        /// Custom CIDR blocks for public subnets. When specified, overrides the automatic subnet sizing from subnet_cidr.
+        /// </summary>
+        public InputList<string> CustomPublicSubnetCidrs
+        {
+            get => _customPublicSubnetCidrs ?? (_customPublicSubnetCidrs = new InputList<string>());
+            set => _customPublicSubnetCidrs = value;
         }
 
         /// <summary>
