@@ -30,6 +30,8 @@ class InfrastructureArgs:
                  cloud: Optional[pulumi.Input[int]] = None,
                  cluster_ip_cidr: Optional[pulumi.Input[str]] = None,
                  custom_datas: Optional[pulumi.Input[Sequence[pulumi.Input['InfrastructureCustomDataArgs']]]] = None,
+                 custom_private_subnet_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 custom_public_subnet_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  delete_unspecified_settings: Optional[pulumi.Input[bool]] = None,
                  enable_container_insights: Optional[pulumi.Input[bool]] = None,
                  enable_ecs_cluster: Optional[pulumi.Input[bool]] = None,
@@ -51,6 +53,8 @@ class InfrastructureArgs:
                Google
         :param pulumi.Input[str] cluster_ip_cidr: cluster IP CIDR defines a private IP address range used for internal Kubernetes services.
         :param pulumi.Input[Sequence[pulumi.Input['InfrastructureCustomDataArgs']]] custom_datas: A list of configuration settings to apply on creation, expressed as key / value pairs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_private_subnet_cidrs: Custom CIDR blocks for private subnets. When specified, overrides the automatic subnet sizing from subnet_cidr.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_public_subnet_cidrs: Custom CIDR blocks for public subnets. When specified, overrides the automatic subnet sizing from subnet_cidr.
         :param pulumi.Input[bool] delete_unspecified_settings: Whether or not this resource should delete any settings not specified by this resource. **WARNING:** It is not
                recommended to change the default value of `false`.
         :param pulumi.Input[bool] enable_container_insights: Whether or not to enable container insights for an ECS cluster.
@@ -79,6 +83,10 @@ class InfrastructureArgs:
             pulumi.log.warn("""custom_datas is deprecated: The custom_data argument is only applied on creation, and is deprecated in favor of the settings argument.""")
         if custom_datas is not None:
             pulumi.set(__self__, "custom_datas", custom_datas)
+        if custom_private_subnet_cidrs is not None:
+            pulumi.set(__self__, "custom_private_subnet_cidrs", custom_private_subnet_cidrs)
+        if custom_public_subnet_cidrs is not None:
+            pulumi.set(__self__, "custom_public_subnet_cidrs", custom_public_subnet_cidrs)
         if delete_unspecified_settings is not None:
             pulumi.set(__self__, "delete_unspecified_settings", delete_unspecified_settings)
         if enable_container_insights is not None:
@@ -209,6 +217,30 @@ class InfrastructureArgs:
         pulumi.set(self, "custom_datas", value)
 
     @property
+    @pulumi.getter(name="customPrivateSubnetCidrs")
+    def custom_private_subnet_cidrs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Custom CIDR blocks for private subnets. When specified, overrides the automatic subnet sizing from subnet_cidr.
+        """
+        return pulumi.get(self, "custom_private_subnet_cidrs")
+
+    @custom_private_subnet_cidrs.setter
+    def custom_private_subnet_cidrs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "custom_private_subnet_cidrs", value)
+
+    @property
+    @pulumi.getter(name="customPublicSubnetCidrs")
+    def custom_public_subnet_cidrs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Custom CIDR blocks for public subnets. When specified, overrides the automatic subnet sizing from subnet_cidr.
+        """
+        return pulumi.get(self, "custom_public_subnet_cidrs")
+
+    @custom_public_subnet_cidrs.setter
+    def custom_public_subnet_cidrs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "custom_public_subnet_cidrs", value)
+
+    @property
     @pulumi.getter(name="deleteUnspecifiedSettings")
     def delete_unspecified_settings(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -328,6 +360,8 @@ class _InfrastructureState:
                  cloud: Optional[pulumi.Input[int]] = None,
                  cluster_ip_cidr: Optional[pulumi.Input[str]] = None,
                  custom_datas: Optional[pulumi.Input[Sequence[pulumi.Input['InfrastructureCustomDataArgs']]]] = None,
+                 custom_private_subnet_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 custom_public_subnet_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  delete_unspecified_settings: Optional[pulumi.Input[bool]] = None,
                  enable_container_insights: Optional[pulumi.Input[bool]] = None,
                  enable_ecs_cluster: Optional[pulumi.Input[bool]] = None,
@@ -359,6 +393,8 @@ class _InfrastructureState:
                Google
         :param pulumi.Input[str] cluster_ip_cidr: cluster IP CIDR defines a private IP address range used for internal Kubernetes services.
         :param pulumi.Input[Sequence[pulumi.Input['InfrastructureCustomDataArgs']]] custom_datas: A list of configuration settings to apply on creation, expressed as key / value pairs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_private_subnet_cidrs: Custom CIDR blocks for private subnets. When specified, overrides the automatic subnet sizing from subnet_cidr.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_public_subnet_cidrs: Custom CIDR blocks for public subnets. When specified, overrides the automatic subnet sizing from subnet_cidr.
         :param pulumi.Input[bool] delete_unspecified_settings: Whether or not this resource should delete any settings not specified by this resource. **WARNING:** It is not
                recommended to change the default value of `false`.
         :param pulumi.Input[bool] enable_container_insights: Whether or not to enable container insights for an ECS cluster.
@@ -399,6 +435,10 @@ class _InfrastructureState:
             pulumi.log.warn("""custom_datas is deprecated: The custom_data argument is only applied on creation, and is deprecated in favor of the settings argument.""")
         if custom_datas is not None:
             pulumi.set(__self__, "custom_datas", custom_datas)
+        if custom_private_subnet_cidrs is not None:
+            pulumi.set(__self__, "custom_private_subnet_cidrs", custom_private_subnet_cidrs)
+        if custom_public_subnet_cidrs is not None:
+            pulumi.set(__self__, "custom_public_subnet_cidrs", custom_public_subnet_cidrs)
         if delete_unspecified_settings is not None:
             pulumi.set(__self__, "delete_unspecified_settings", delete_unspecified_settings)
         if enable_container_insights is not None:
@@ -527,6 +567,30 @@ class _InfrastructureState:
     @custom_datas.setter
     def custom_datas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InfrastructureCustomDataArgs']]]]):
         pulumi.set(self, "custom_datas", value)
+
+    @property
+    @pulumi.getter(name="customPrivateSubnetCidrs")
+    def custom_private_subnet_cidrs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Custom CIDR blocks for private subnets. When specified, overrides the automatic subnet sizing from subnet_cidr.
+        """
+        return pulumi.get(self, "custom_private_subnet_cidrs")
+
+    @custom_private_subnet_cidrs.setter
+    def custom_private_subnet_cidrs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "custom_private_subnet_cidrs", value)
+
+    @property
+    @pulumi.getter(name="customPublicSubnetCidrs")
+    def custom_public_subnet_cidrs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Custom CIDR blocks for public subnets. When specified, overrides the automatic subnet sizing from subnet_cidr.
+        """
+        return pulumi.get(self, "custom_public_subnet_cidrs")
+
+    @custom_public_subnet_cidrs.setter
+    def custom_public_subnet_cidrs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "custom_public_subnet_cidrs", value)
 
     @property
     @pulumi.getter(name="deleteUnspecifiedSettings")
@@ -793,6 +857,8 @@ class Infrastructure(pulumi.CustomResource):
                  cloud: Optional[pulumi.Input[int]] = None,
                  cluster_ip_cidr: Optional[pulumi.Input[str]] = None,
                  custom_datas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InfrastructureCustomDataArgs', 'InfrastructureCustomDataArgsDict']]]]] = None,
+                 custom_private_subnet_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 custom_public_subnet_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  delete_unspecified_settings: Optional[pulumi.Input[bool]] = None,
                  enable_container_insights: Optional[pulumi.Input[bool]] = None,
                  enable_ecs_cluster: Optional[pulumi.Input[bool]] = None,
@@ -1037,6 +1103,8 @@ class Infrastructure(pulumi.CustomResource):
                Google
         :param pulumi.Input[str] cluster_ip_cidr: cluster IP CIDR defines a private IP address range used for internal Kubernetes services.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InfrastructureCustomDataArgs', 'InfrastructureCustomDataArgsDict']]]] custom_datas: A list of configuration settings to apply on creation, expressed as key / value pairs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_private_subnet_cidrs: Custom CIDR blocks for private subnets. When specified, overrides the automatic subnet sizing from subnet_cidr.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_public_subnet_cidrs: Custom CIDR blocks for public subnets. When specified, overrides the automatic subnet sizing from subnet_cidr.
         :param pulumi.Input[bool] delete_unspecified_settings: Whether or not this resource should delete any settings not specified by this resource. **WARNING:** It is not
                recommended to change the default value of `false`.
         :param pulumi.Input[bool] enable_container_insights: Whether or not to enable container insights for an ECS cluster.
@@ -1300,6 +1368,8 @@ class Infrastructure(pulumi.CustomResource):
                  cloud: Optional[pulumi.Input[int]] = None,
                  cluster_ip_cidr: Optional[pulumi.Input[str]] = None,
                  custom_datas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InfrastructureCustomDataArgs', 'InfrastructureCustomDataArgsDict']]]]] = None,
+                 custom_private_subnet_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 custom_public_subnet_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  delete_unspecified_settings: Optional[pulumi.Input[bool]] = None,
                  enable_container_insights: Optional[pulumi.Input[bool]] = None,
                  enable_ecs_cluster: Optional[pulumi.Input[bool]] = None,
@@ -1329,6 +1399,8 @@ class Infrastructure(pulumi.CustomResource):
             __props__.__dict__["cloud"] = cloud
             __props__.__dict__["cluster_ip_cidr"] = cluster_ip_cidr
             __props__.__dict__["custom_datas"] = custom_datas
+            __props__.__dict__["custom_private_subnet_cidrs"] = custom_private_subnet_cidrs
+            __props__.__dict__["custom_public_subnet_cidrs"] = custom_public_subnet_cidrs
             __props__.__dict__["delete_unspecified_settings"] = delete_unspecified_settings
             __props__.__dict__["enable_container_insights"] = enable_container_insights
             __props__.__dict__["enable_ecs_cluster"] = enable_ecs_cluster
@@ -1374,6 +1446,8 @@ class Infrastructure(pulumi.CustomResource):
             cloud: Optional[pulumi.Input[int]] = None,
             cluster_ip_cidr: Optional[pulumi.Input[str]] = None,
             custom_datas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InfrastructureCustomDataArgs', 'InfrastructureCustomDataArgsDict']]]]] = None,
+            custom_private_subnet_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            custom_public_subnet_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             delete_unspecified_settings: Optional[pulumi.Input[bool]] = None,
             enable_container_insights: Optional[pulumi.Input[bool]] = None,
             enable_ecs_cluster: Optional[pulumi.Input[bool]] = None,
@@ -1410,6 +1484,8 @@ class Infrastructure(pulumi.CustomResource):
                Google
         :param pulumi.Input[str] cluster_ip_cidr: cluster IP CIDR defines a private IP address range used for internal Kubernetes services.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InfrastructureCustomDataArgs', 'InfrastructureCustomDataArgsDict']]]] custom_datas: A list of configuration settings to apply on creation, expressed as key / value pairs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_private_subnet_cidrs: Custom CIDR blocks for private subnets. When specified, overrides the automatic subnet sizing from subnet_cidr.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_public_subnet_cidrs: Custom CIDR blocks for public subnets. When specified, overrides the automatic subnet sizing from subnet_cidr.
         :param pulumi.Input[bool] delete_unspecified_settings: Whether or not this resource should delete any settings not specified by this resource. **WARNING:** It is not
                recommended to change the default value of `false`.
         :param pulumi.Input[bool] enable_container_insights: Whether or not to enable container insights for an ECS cluster.
@@ -1444,6 +1520,8 @@ class Infrastructure(pulumi.CustomResource):
         __props__.__dict__["cloud"] = cloud
         __props__.__dict__["cluster_ip_cidr"] = cluster_ip_cidr
         __props__.__dict__["custom_datas"] = custom_datas
+        __props__.__dict__["custom_private_subnet_cidrs"] = custom_private_subnet_cidrs
+        __props__.__dict__["custom_public_subnet_cidrs"] = custom_public_subnet_cidrs
         __props__.__dict__["delete_unspecified_settings"] = delete_unspecified_settings
         __props__.__dict__["enable_container_insights"] = enable_container_insights
         __props__.__dict__["enable_ecs_cluster"] = enable_ecs_cluster
@@ -1524,6 +1602,22 @@ class Infrastructure(pulumi.CustomResource):
         A list of configuration settings to apply on creation, expressed as key / value pairs.
         """
         return pulumi.get(self, "custom_datas")
+
+    @property
+    @pulumi.getter(name="customPrivateSubnetCidrs")
+    def custom_private_subnet_cidrs(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Custom CIDR blocks for private subnets. When specified, overrides the automatic subnet sizing from subnet_cidr.
+        """
+        return pulumi.get(self, "custom_private_subnet_cidrs")
+
+    @property
+    @pulumi.getter(name="customPublicSubnetCidrs")
+    def custom_public_subnet_cidrs(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Custom CIDR blocks for public subnets. When specified, overrides the automatic subnet sizing from subnet_cidr.
+        """
+        return pulumi.get(self, "custom_public_subnet_cidrs")
 
     @property
     @pulumi.getter(name="deleteUnspecifiedSettings")

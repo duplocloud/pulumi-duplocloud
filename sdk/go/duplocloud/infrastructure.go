@@ -373,6 +373,10 @@ type Infrastructure struct {
 	//
 	// Deprecated: The customData argument is only applied on creation, and is deprecated in favor of the settings argument.
 	CustomDatas InfrastructureCustomDataArrayOutput `pulumi:"customDatas"`
+	// Custom CIDR blocks for private subnets. When specified, overrides the automatic subnet sizing from subnet_cidr.
+	CustomPrivateSubnetCidrs pulumi.StringArrayOutput `pulumi:"customPrivateSubnetCidrs"`
+	// Custom CIDR blocks for public subnets. When specified, overrides the automatic subnet sizing from subnet_cidr.
+	CustomPublicSubnetCidrs pulumi.StringArrayOutput `pulumi:"customPublicSubnetCidrs"`
 	// Whether or not this resource should delete any settings not specified by this resource. **WARNING:** It is not
 	// recommended to change the default value of `false`.
 	DeleteUnspecifiedSettings pulumi.BoolPtrOutput `pulumi:"deleteUnspecifiedSettings"`
@@ -477,6 +481,10 @@ type infrastructureState struct {
 	//
 	// Deprecated: The customData argument is only applied on creation, and is deprecated in favor of the settings argument.
 	CustomDatas []InfrastructureCustomData `pulumi:"customDatas"`
+	// Custom CIDR blocks for private subnets. When specified, overrides the automatic subnet sizing from subnet_cidr.
+	CustomPrivateSubnetCidrs []string `pulumi:"customPrivateSubnetCidrs"`
+	// Custom CIDR blocks for public subnets. When specified, overrides the automatic subnet sizing from subnet_cidr.
+	CustomPublicSubnetCidrs []string `pulumi:"customPublicSubnetCidrs"`
 	// Whether or not this resource should delete any settings not specified by this resource. **WARNING:** It is not
 	// recommended to change the default value of `false`.
 	DeleteUnspecifiedSettings *bool `pulumi:"deleteUnspecifiedSettings"`
@@ -540,6 +548,10 @@ type InfrastructureState struct {
 	//
 	// Deprecated: The customData argument is only applied on creation, and is deprecated in favor of the settings argument.
 	CustomDatas InfrastructureCustomDataArrayInput
+	// Custom CIDR blocks for private subnets. When specified, overrides the automatic subnet sizing from subnet_cidr.
+	CustomPrivateSubnetCidrs pulumi.StringArrayInput
+	// Custom CIDR blocks for public subnets. When specified, overrides the automatic subnet sizing from subnet_cidr.
+	CustomPublicSubnetCidrs pulumi.StringArrayInput
 	// Whether or not this resource should delete any settings not specified by this resource. **WARNING:** It is not
 	// recommended to change the default value of `false`.
 	DeleteUnspecifiedSettings pulumi.BoolPtrInput
@@ -605,6 +617,10 @@ type infrastructureArgs struct {
 	//
 	// Deprecated: The customData argument is only applied on creation, and is deprecated in favor of the settings argument.
 	CustomDatas []InfrastructureCustomData `pulumi:"customDatas"`
+	// Custom CIDR blocks for private subnets. When specified, overrides the automatic subnet sizing from subnet_cidr.
+	CustomPrivateSubnetCidrs []string `pulumi:"customPrivateSubnetCidrs"`
+	// Custom CIDR blocks for public subnets. When specified, overrides the automatic subnet sizing from subnet_cidr.
+	CustomPublicSubnetCidrs []string `pulumi:"customPublicSubnetCidrs"`
 	// Whether or not this resource should delete any settings not specified by this resource. **WARNING:** It is not
 	// recommended to change the default value of `false`.
 	DeleteUnspecifiedSettings *bool `pulumi:"deleteUnspecifiedSettings"`
@@ -649,6 +665,10 @@ type InfrastructureArgs struct {
 	//
 	// Deprecated: The customData argument is only applied on creation, and is deprecated in favor of the settings argument.
 	CustomDatas InfrastructureCustomDataArrayInput
+	// Custom CIDR blocks for private subnets. When specified, overrides the automatic subnet sizing from subnet_cidr.
+	CustomPrivateSubnetCidrs pulumi.StringArrayInput
+	// Custom CIDR blocks for public subnets. When specified, overrides the automatic subnet sizing from subnet_cidr.
+	CustomPublicSubnetCidrs pulumi.StringArrayInput
 	// Whether or not this resource should delete any settings not specified by this resource. **WARNING:** It is not
 	// recommended to change the default value of `false`.
 	DeleteUnspecifiedSettings pulumi.BoolPtrInput
@@ -799,6 +819,16 @@ func (o InfrastructureOutput) ClusterIpCidr() pulumi.StringOutput {
 // Deprecated: The customData argument is only applied on creation, and is deprecated in favor of the settings argument.
 func (o InfrastructureOutput) CustomDatas() InfrastructureCustomDataArrayOutput {
 	return o.ApplyT(func(v *Infrastructure) InfrastructureCustomDataArrayOutput { return v.CustomDatas }).(InfrastructureCustomDataArrayOutput)
+}
+
+// Custom CIDR blocks for private subnets. When specified, overrides the automatic subnet sizing from subnet_cidr.
+func (o InfrastructureOutput) CustomPrivateSubnetCidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Infrastructure) pulumi.StringArrayOutput { return v.CustomPrivateSubnetCidrs }).(pulumi.StringArrayOutput)
+}
+
+// Custom CIDR blocks for public subnets. When specified, overrides the automatic subnet sizing from subnet_cidr.
+func (o InfrastructureOutput) CustomPublicSubnetCidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Infrastructure) pulumi.StringArrayOutput { return v.CustomPublicSubnetCidrs }).(pulumi.StringArrayOutput)
 }
 
 // Whether or not this resource should delete any settings not specified by this resource. **WARNING:** It is not
