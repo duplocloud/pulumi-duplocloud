@@ -1,6 +1,6 @@
 {
   "resource": true,
   "name": "duplocloud",
-  "version": "0.0.1",
+  "version": "0.12.8",
   "server": "github://api.github.com/duplocloud/pulumi-duplocloud"
 }
