@@ -45,7 +45,7 @@ type AsgProfile struct {
 	// Whether or not ASG should leverage duplocloud's scale from 0 feature
 	CanScaleFromZero pulumi.BoolOutput `pulumi:"canScaleFromZero"`
 	// The AWS EC2 instance type.
-	Capacity pulumi.StringOutput `pulumi:"capacity"`
+	Capacity pulumi.StringPtrOutput `pulumi:"capacity"`
 	// The numeric ID of the cloud provider to launch the host in.
 	Cloud pulumi.IntPtrOutput `pulumi:"cloud"`
 	// A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value. **Note:**
@@ -87,6 +87,9 @@ type AsgProfile struct {
 	//
 	// Deprecated: minion_tags is deprecated and will be removed in a future release. Use customDataTags instead.
 	MinionTags AsgProfileMinionTagArrayOutput `pulumi:"minionTags"`
+	// Configuration block for a mixed instances policy. This allows an ASG to use multiple instance types and a mix of
+	// On-Demand and Spot instances.
+	MixedInstancesPolicy AsgProfileMixedInstancesPolicyPtrOutput `pulumi:"mixedInstancesPolicy"`
 	// An optional list of custom network interface configurations to use when creating the host.
 	NetworkInterfaces AsgProfileNetworkInterfaceArrayOutput `pulumi:"networkInterfaces"`
 	// Bootstrap an EKS host with Duplo's user data, prepending it to custom user data if also provided.
@@ -122,9 +125,6 @@ func NewAsgProfile(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Capacity == nil {
-		return nil, errors.New("invalid value for required argument 'Capacity'")
-	}
 	if args.FriendlyName == nil {
 		return nil, errors.New("invalid value for required argument 'FriendlyName'")
 	}
@@ -211,6 +211,9 @@ type asgProfileState struct {
 	//
 	// Deprecated: minion_tags is deprecated and will be removed in a future release. Use customDataTags instead.
 	MinionTags []AsgProfileMinionTag `pulumi:"minionTags"`
+	// Configuration block for a mixed instances policy. This allows an ASG to use multiple instance types and a mix of
+	// On-Demand and Spot instances.
+	MixedInstancesPolicy *AsgProfileMixedInstancesPolicy `pulumi:"mixedInstancesPolicy"`
 	// An optional list of custom network interface configurations to use when creating the host.
 	NetworkInterfaces []AsgProfileNetworkInterface `pulumi:"networkInterfaces"`
 	// Bootstrap an EKS host with Duplo's user data, prepending it to custom user data if also provided.
@@ -294,6 +297,9 @@ type AsgProfileState struct {
 	//
 	// Deprecated: minion_tags is deprecated and will be removed in a future release. Use customDataTags instead.
 	MinionTags AsgProfileMinionTagArrayInput
+	// Configuration block for a mixed instances policy. This allows an ASG to use multiple instance types and a mix of
+	// On-Demand and Spot instances.
+	MixedInstancesPolicy AsgProfileMixedInstancesPolicyPtrInput
 	// An optional list of custom network interface configurations to use when creating the host.
 	NetworkInterfaces AsgProfileNetworkInterfaceArrayInput
 	// Bootstrap an EKS host with Duplo's user data, prepending it to custom user data if also provided.
@@ -337,7 +343,7 @@ type asgProfileArgs struct {
 	// Whether or not ASG should leverage duplocloud's scale from 0 feature
 	CanScaleFromZero *bool `pulumi:"canScaleFromZero"`
 	// The AWS EC2 instance type.
-	Capacity string `pulumi:"capacity"`
+	Capacity *string `pulumi:"capacity"`
 	// The numeric ID of the cloud provider to launch the host in.
 	Cloud *int `pulumi:"cloud"`
 	// A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value. **Note:**
@@ -376,6 +382,9 @@ type asgProfileArgs struct {
 	//
 	// Deprecated: minion_tags is deprecated and will be removed in a future release. Use customDataTags instead.
 	MinionTags []AsgProfileMinionTag `pulumi:"minionTags"`
+	// Configuration block for a mixed instances policy. This allows an ASG to use multiple instance types and a mix of
+	// On-Demand and Spot instances.
+	MixedInstancesPolicy *AsgProfileMixedInstancesPolicy `pulumi:"mixedInstancesPolicy"`
 	// An optional list of custom network interface configurations to use when creating the host.
 	NetworkInterfaces []AsgProfileNetworkInterface `pulumi:"networkInterfaces"`
 	// Bootstrap an EKS host with Duplo's user data, prepending it to custom user data if also provided.
@@ -414,7 +423,7 @@ type AsgProfileArgs struct {
 	// Whether or not ASG should leverage duplocloud's scale from 0 feature
 	CanScaleFromZero pulumi.BoolPtrInput
 	// The AWS EC2 instance type.
-	Capacity pulumi.StringInput
+	Capacity pulumi.StringPtrInput
 	// The numeric ID of the cloud provider to launch the host in.
 	Cloud pulumi.IntPtrInput
 	// A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value. **Note:**
@@ -453,6 +462,9 @@ type AsgProfileArgs struct {
 	//
 	// Deprecated: minion_tags is deprecated and will be removed in a future release. Use customDataTags instead.
 	MinionTags AsgProfileMinionTagArrayInput
+	// Configuration block for a mixed instances policy. This allows an ASG to use multiple instance types and a mix of
+	// On-Demand and Spot instances.
+	MixedInstancesPolicy AsgProfileMixedInstancesPolicyPtrInput
 	// An optional list of custom network interface configurations to use when creating the host.
 	NetworkInterfaces AsgProfileNetworkInterfaceArrayInput
 	// Bootstrap an EKS host with Duplo's user data, prepending it to custom user data if also provided.
@@ -593,8 +605,8 @@ func (o AsgProfileOutput) CanScaleFromZero() pulumi.BoolOutput {
 }
 
 // The AWS EC2 instance type.
-func (o AsgProfileOutput) Capacity() pulumi.StringOutput {
-	return o.ApplyT(func(v *AsgProfile) pulumi.StringOutput { return v.Capacity }).(pulumi.StringOutput)
+func (o AsgProfileOutput) Capacity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AsgProfile) pulumi.StringPtrOutput { return v.Capacity }).(pulumi.StringPtrOutput)
 }
 
 // The numeric ID of the cloud provider to launch the host in.
@@ -693,6 +705,12 @@ func (o AsgProfileOutput) MinInstanceCount() pulumi.IntOutput {
 // Deprecated: minion_tags is deprecated and will be removed in a future release. Use customDataTags instead.
 func (o AsgProfileOutput) MinionTags() AsgProfileMinionTagArrayOutput {
 	return o.ApplyT(func(v *AsgProfile) AsgProfileMinionTagArrayOutput { return v.MinionTags }).(AsgProfileMinionTagArrayOutput)
+}
+
+// Configuration block for a mixed instances policy. This allows an ASG to use multiple instance types and a mix of
+// On-Demand and Spot instances.
+func (o AsgProfileOutput) MixedInstancesPolicy() AsgProfileMixedInstancesPolicyPtrOutput {
+	return o.ApplyT(func(v *AsgProfile) AsgProfileMixedInstancesPolicyPtrOutput { return v.MixedInstancesPolicy }).(AsgProfileMixedInstancesPolicyPtrOutput)
 }
 
 // An optional list of custom network interface configurations to use when creating the host.

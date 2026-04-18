@@ -42,7 +42,7 @@ namespace DuploCloud.Pulumi.Outputs
         /// <summary>
         /// The AWS EC2 instance type.
         /// </summary>
-        public readonly string Capacity;
+        public readonly string? Capacity;
         /// <summary>
         /// The numeric ID of the cloud provider to launch the host in.
         /// </summary>
@@ -114,6 +114,10 @@ namespace DuploCloud.Pulumi.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAsgProfilesAsgProfileMinionTagResult> MinionTags;
         /// <summary>
+        /// Configuration block for a mixed instances policy. This allows an ASG to use multiple instance types and a mix of On-Demand and Spot instances.
+        /// </summary>
+        public readonly Outputs.GetAsgProfilesAsgProfileMixedInstancesPolicyResult? MixedInstancesPolicy;
+        /// <summary>
         /// An optional list of custom network interface configurations to use when creating the host.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAsgProfilesAsgProfileNetworkInterfaceResult> NetworkInterfaces;
@@ -167,7 +171,7 @@ namespace DuploCloud.Pulumi.Outputs
 
             bool canScaleFromZero,
 
-            string capacity,
+            string? capacity,
 
             int? cloud,
 
@@ -206,6 +210,8 @@ namespace DuploCloud.Pulumi.Outputs
             int minInstanceCount,
 
             ImmutableArray<Outputs.GetAsgProfilesAsgProfileMinionTagResult> minionTags,
+
+            Outputs.GetAsgProfilesAsgProfileMixedInstancesPolicyResult? mixedInstancesPolicy,
 
             ImmutableArray<Outputs.GetAsgProfilesAsgProfileNetworkInterfaceResult> networkInterfaces,
 
@@ -254,6 +260,7 @@ namespace DuploCloud.Pulumi.Outputs
             Metadatas = metadatas;
             MinInstanceCount = minInstanceCount;
             MinionTags = minionTags;
+            MixedInstancesPolicy = mixedInstancesPolicy;
             NetworkInterfaces = networkInterfaces;
             PrependUserData = prependUserData;
             PublicIpAddress = publicIpAddress;

@@ -12,15 +12,18 @@ namespace DuploCloud.Pulumi.Outputs
 {
 
     [OutputType]
-    public sealed class AwsLaunchTemplateInstanceRequirements
+    public sealed class AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirements
     {
+        /// <summary>
+        /// List of allowed instance types (e.g. `m5.large`, `m5a.large`). Cannot be specified if `excluded_instance_types` is specified in the same launch template override.
+        /// </summary>
         public readonly ImmutableArray<string> AllowedInstanceTypes;
         /// <summary>
         /// List of CPU manufacturers (e.g. `intel`, `amd`, `amazon-web-services`).
         /// </summary>
         public readonly ImmutableArray<string> CpuManufacturers;
         /// <summary>
-        /// List of excluded instance types. Mutually exclusive with `allowed_instance_types`.
+        /// List of excluded instance types. Cannot be specified if `allowed_instance_types` is specified in the same launch template override.
         /// </summary>
         public readonly ImmutableArray<string> ExcludedInstanceTypes;
         /// <summary>
@@ -28,20 +31,20 @@ namespace DuploCloud.Pulumi.Outputs
         /// </summary>
         public readonly ImmutableArray<string> InstanceGenerations;
         /// <summary>
-        /// Block describing the minimum and maximum amount of memory (MiB). It is a required field when allowed*instance*types is set
+        /// Range of memory in MiB.
         /// </summary>
-        public readonly Outputs.AwsLaunchTemplateInstanceRequirementsMemoryMib? MemoryMib;
+        public readonly Outputs.AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMib MemoryMib;
         /// <summary>
         /// Price protection threshold as a percentage over the lowest price.
         /// </summary>
         public readonly int? SpotMaxPricePercentageOverLowestPrice;
         /// <summary>
-        /// Block describing the minimum and maximum number of vCPUs. It is a required field when allowed*instance*types is set
+        /// Range of vCPU counts.
         /// </summary>
-        public readonly Outputs.AwsLaunchTemplateInstanceRequirementsVcpuCount? VcpuCount;
+        public readonly Outputs.AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCount VcpuCount;
 
         [OutputConstructor]
-        private AwsLaunchTemplateInstanceRequirements(
+        private AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirements(
             ImmutableArray<string> allowedInstanceTypes,
 
             ImmutableArray<string> cpuManufacturers,
@@ -50,11 +53,11 @@ namespace DuploCloud.Pulumi.Outputs
 
             ImmutableArray<string> instanceGenerations,
 
-            Outputs.AwsLaunchTemplateInstanceRequirementsMemoryMib? memoryMib,
+            Outputs.AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMib memoryMib,
 
             int? spotMaxPricePercentageOverLowestPrice,
 
-            Outputs.AwsLaunchTemplateInstanceRequirementsVcpuCount? vcpuCount)
+            Outputs.AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCount vcpuCount)
         {
             AllowedInstanceTypes = allowedInstanceTypes;
             CpuManufacturers = cpuManufacturers;

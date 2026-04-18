@@ -11,10 +11,14 @@ using Pulumi;
 namespace DuploCloud.Pulumi.Inputs
 {
 
-    public sealed class AwsLaunchTemplateInstanceRequirementsArgs : global::Pulumi.ResourceArgs
+    public sealed class AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsArgs : global::Pulumi.ResourceArgs
     {
         [Input("allowedInstanceTypes")]
         private InputList<string>? _allowedInstanceTypes;
+
+        /// <summary>
+        /// List of allowed instance types (e.g. `m5.large`, `m5a.large`). Cannot be specified if `excluded_instance_types` is specified in the same launch template override.
+        /// </summary>
         public InputList<string> AllowedInstanceTypes
         {
             get => _allowedInstanceTypes ?? (_allowedInstanceTypes = new InputList<string>());
@@ -37,7 +41,7 @@ namespace DuploCloud.Pulumi.Inputs
         private InputList<string>? _excludedInstanceTypes;
 
         /// <summary>
-        /// List of excluded instance types. Mutually exclusive with `allowed_instance_types`.
+        /// List of excluded instance types. Cannot be specified if `allowed_instance_types` is specified in the same launch template override.
         /// </summary>
         public InputList<string> ExcludedInstanceTypes
         {
@@ -58,10 +62,10 @@ namespace DuploCloud.Pulumi.Inputs
         }
 
         /// <summary>
-        /// Block describing the minimum and maximum amount of memory (MiB). It is a required field when allowed*instance*types is set
+        /// Range of memory in MiB.
         /// </summary>
-        [Input("memoryMib")]
-        public Input<Inputs.AwsLaunchTemplateInstanceRequirementsMemoryMibArgs>? MemoryMib { get; set; }
+        [Input("memoryMib", required: true)]
+        public Input<Inputs.AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibArgs> MemoryMib { get; set; } = null!;
 
         /// <summary>
         /// Price protection threshold as a percentage over the lowest price.
@@ -70,14 +74,14 @@ namespace DuploCloud.Pulumi.Inputs
         public Input<int>? SpotMaxPricePercentageOverLowestPrice { get; set; }
 
         /// <summary>
-        /// Block describing the minimum and maximum number of vCPUs. It is a required field when allowed*instance*types is set
+        /// Range of vCPU counts.
         /// </summary>
-        [Input("vcpuCount")]
-        public Input<Inputs.AwsLaunchTemplateInstanceRequirementsVcpuCountArgs>? VcpuCount { get; set; }
+        [Input("vcpuCount", required: true)]
+        public Input<Inputs.AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountArgs> VcpuCount { get; set; } = null!;
 
-        public AwsLaunchTemplateInstanceRequirementsArgs()
+        public AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsArgs()
         {
         }
-        public static new AwsLaunchTemplateInstanceRequirementsArgs Empty => new AwsLaunchTemplateInstanceRequirementsArgs();
+        public static new AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsArgs Empty => new AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsArgs();
     }
 }

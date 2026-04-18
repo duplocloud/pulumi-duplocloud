@@ -850,6 +850,11 @@ export const getPlans: typeof import("./getPlans").getPlans = null as any;
 export const getPlansOutput: typeof import("./getPlans").getPlansOutput = null as any;
 utilities.lazyLoad(exports, ["getPlans","getPlansOutput"], () => require("./getPlans"));
 
+export { GetRdsInstanceArgs, GetRdsInstanceResult, GetRdsInstanceOutputArgs } from "./getRdsInstance";
+export const getRdsInstance: typeof import("./getRdsInstance").getRdsInstance = null as any;
+export const getRdsInstanceOutput: typeof import("./getRdsInstance").getRdsInstanceOutput = null as any;
+utilities.lazyLoad(exports, ["getRdsInstance","getRdsInstanceOutput"], () => require("./getRdsInstance"));
+
 export { GetS3BucketArgs, GetS3BucketResult, GetS3BucketOutputArgs } from "./getS3Bucket";
 export const getS3Bucket: typeof import("./getS3Bucket").getS3Bucket = null as any;
 export const getS3BucketOutput: typeof import("./getS3Bucket").getS3BucketOutput = null as any;

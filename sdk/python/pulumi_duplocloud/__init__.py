@@ -174,6 +174,7 @@ from .get_plan_waf_v2 import *
 from .get_plan_wafs import *
 from .get_plan_wafs_v2 import *
 from .get_plans import *
+from .get_rds_instance import *
 from .get_s3_bucket import *
 from .get_system_features import *
 from .get_tenant import *

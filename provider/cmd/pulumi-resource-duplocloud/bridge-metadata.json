@@ -22,6 +22,55 @@
                     "minion_tags": {
                         "maxItemsOne": false
                     },
+                    "mixed_instances_policy": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "instances_distribution": {
+                                    "maxItemsOne": true
+                                },
+                                "launch_template": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "override": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "instance_requirements": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "allowed_instance_types": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "cpu_manufacturers": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "excluded_instance_types": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "instance_generations": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "memory_mib": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "vcpu_count": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "network_interface": {
                         "maxItemsOne": false,
                         "elem": {
@@ -770,6 +819,15 @@
                         "elem": {
                             "fields": {
                                 "allowed_instance_types": {
+                                    "maxItemsOne": false
+                                },
+                                "cpu_manufacturers": {
+                                    "maxItemsOne": false
+                                },
+                                "excluded_instance_types": {
+                                    "maxItemsOne": false
+                                },
+                                "instance_generations": {
                                     "maxItemsOne": false
                                 },
                                 "memory_mib": {
@@ -4579,6 +4637,55 @@
                                 "minion_tags": {
                                     "maxItemsOne": false
                                 },
+                                "mixed_instances_policy": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "instances_distribution": {
+                                                "maxItemsOne": true
+                                            },
+                                            "launch_template": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "override": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "instance_requirements": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "allowed_instance_types": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "cpu_manufacturers": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "excluded_instance_types": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "instance_generations": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "memory_mib": {
+                                                                                    "maxItemsOne": true
+                                                                                },
+                                                                                "vcpu_count": {
+                                                                                    "maxItemsOne": true
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
                                 "network_interface": {
                                     "maxItemsOne": false,
                                     "elem": {
@@ -7582,6 +7689,20 @@
                                 }
                             }
                         }
+                    }
+                }
+            },
+            "duplocloud_rds_instance": {
+                "current": "duplocloud:index/getRdsInstance:getRdsInstance",
+                "fields": {
+                    "performance_insights": {
+                        "maxItemsOne": false
+                    },
+                    "storage_autoscaling": {
+                        "maxItemsOne": false
+                    },
+                    "v2_scaling_configuration": {
+                        "maxItemsOne": false
                     }
                 }
             },

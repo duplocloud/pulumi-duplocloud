@@ -68,7 +68,7 @@ namespace DuploCloud.Pulumi
         /// The AWS EC2 instance type.
         /// </summary>
         [Output("capacity")]
-        public Output<string> Capacity { get; private set; } = null!;
+        public Output<string?> Capacity { get; private set; } = null!;
 
         /// <summary>
         /// The numeric ID of the cloud provider to launch the host in.
@@ -176,6 +176,13 @@ namespace DuploCloud.Pulumi
         /// </summary>
         [Output("minionTags")]
         public Output<ImmutableArray<Outputs.AsgProfileMinionTag>> MinionTags { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration block for a mixed instances policy. This allows an ASG to use multiple instance types and a mix of
+        /// On-Demand and Spot instances.
+        /// </summary>
+        [Output("mixedInstancesPolicy")]
+        public Output<Outputs.AsgProfileMixedInstancesPolicy?> MixedInstancesPolicy { get; private set; } = null!;
 
         /// <summary>
         /// An optional list of custom network interface configurations to use when creating the host.
@@ -322,8 +329,8 @@ namespace DuploCloud.Pulumi
         /// <summary>
         /// The AWS EC2 instance type.
         /// </summary>
-        [Input("capacity", required: true)]
-        public Input<string> Capacity { get; set; } = null!;
+        [Input("capacity")]
+        public Input<string>? Capacity { get; set; }
 
         /// <summary>
         /// The numeric ID of the cloud provider to launch the host in.
@@ -453,6 +460,13 @@ namespace DuploCloud.Pulumi
             get => _minionTags ?? (_minionTags = new InputList<Inputs.AsgProfileMinionTagArgs>());
             set => _minionTags = value;
         }
+
+        /// <summary>
+        /// Configuration block for a mixed instances policy. This allows an ASG to use multiple instance types and a mix of
+        /// On-Demand and Spot instances.
+        /// </summary>
+        [Input("mixedInstancesPolicy")]
+        public Input<Inputs.AsgProfileMixedInstancesPolicyArgs>? MixedInstancesPolicy { get; set; }
 
         [Input("networkInterfaces")]
         private InputList<Inputs.AsgProfileNetworkInterfaceArgs>? _networkInterfaces;
@@ -729,6 +743,13 @@ namespace DuploCloud.Pulumi
             get => _minionTags ?? (_minionTags = new InputList<Inputs.AsgProfileMinionTagGetArgs>());
             set => _minionTags = value;
         }
+
+        /// <summary>
+        /// Configuration block for a mixed instances policy. This allows an ASG to use multiple instance types and a mix of
+        /// On-Demand and Spot instances.
+        /// </summary>
+        [Input("mixedInstancesPolicy")]
+        public Input<Inputs.AsgProfileMixedInstancesPolicyGetArgs>? MixedInstancesPolicy { get; set; }
 
         [Input("networkInterfaces")]
         private InputList<Inputs.AsgProfileNetworkInterfaceGetArgs>? _networkInterfaces;

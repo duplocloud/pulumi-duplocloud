@@ -78,7 +78,7 @@ export class AsgProfile extends pulumi.CustomResource {
     /**
      * The AWS EC2 instance type.
      */
-    public readonly capacity!: pulumi.Output<string>;
+    public readonly capacity!: pulumi.Output<string | undefined>;
     /**
      * The numeric ID of the cloud provider to launch the host in.
      */
@@ -150,6 +150,11 @@ export class AsgProfile extends pulumi.CustomResource {
      * @deprecated minion_tags is deprecated and will be removed in a future release. Use customDataTags instead.
      */
     public readonly minionTags!: pulumi.Output<outputs.AsgProfileMinionTag[]>;
+    /**
+     * Configuration block for a mixed instances policy. This allows an ASG to use multiple instance types and a mix of
+     * On-Demand and Spot instances.
+     */
+    public readonly mixedInstancesPolicy!: pulumi.Output<outputs.AsgProfileMixedInstancesPolicy | undefined>;
     /**
      * An optional list of custom network interface configurations to use when creating the host.
      */
@@ -237,6 +242,7 @@ export class AsgProfile extends pulumi.CustomResource {
             resourceInputs["metadatas"] = state ? state.metadatas : undefined;
             resourceInputs["minInstanceCount"] = state ? state.minInstanceCount : undefined;
             resourceInputs["minionTags"] = state ? state.minionTags : undefined;
+            resourceInputs["mixedInstancesPolicy"] = state ? state.mixedInstancesPolicy : undefined;
             resourceInputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
             resourceInputs["prependUserData"] = state ? state.prependUserData : undefined;
             resourceInputs["publicIpAddress"] = state ? state.publicIpAddress : undefined;
@@ -251,9 +257,6 @@ export class AsgProfile extends pulumi.CustomResource {
             resourceInputs["zones"] = state ? state.zones : undefined;
         } else {
             const args = argsOrState as AsgProfileArgs | undefined;
-            if ((!args || args.capacity === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'capacity'");
-            }
             if ((!args || args.friendlyName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'friendlyName'");
             }
@@ -285,6 +288,7 @@ export class AsgProfile extends pulumi.CustomResource {
             resourceInputs["metadatas"] = args ? args.metadatas : undefined;
             resourceInputs["minInstanceCount"] = args ? args.minInstanceCount : undefined;
             resourceInputs["minionTags"] = args ? args.minionTags : undefined;
+            resourceInputs["mixedInstancesPolicy"] = args ? args.mixedInstancesPolicy : undefined;
             resourceInputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
             resourceInputs["prependUserData"] = args ? args.prependUserData : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
@@ -407,6 +411,11 @@ export interface AsgProfileState {
      */
     minionTags?: pulumi.Input<pulumi.Input<inputs.AsgProfileMinionTag>[]>;
     /**
+     * Configuration block for a mixed instances policy. This allows an ASG to use multiple instance types and a mix of
+     * On-Demand and Spot instances.
+     */
+    mixedInstancesPolicy?: pulumi.Input<inputs.AsgProfileMixedInstancesPolicy>;
+    /**
      * An optional list of custom network interface configurations to use when creating the host.
      */
     networkInterfaces?: pulumi.Input<pulumi.Input<inputs.AsgProfileNetworkInterface>[]>;
@@ -480,7 +489,7 @@ export interface AsgProfileArgs {
     /**
      * The AWS EC2 instance type.
      */
-    capacity: pulumi.Input<string>;
+    capacity?: pulumi.Input<string>;
     /**
      * The numeric ID of the cloud provider to launch the host in.
      */
@@ -547,6 +556,11 @@ export interface AsgProfileArgs {
      * @deprecated minion_tags is deprecated and will be removed in a future release. Use customDataTags instead.
      */
     minionTags?: pulumi.Input<pulumi.Input<inputs.AsgProfileMinionTag>[]>;
+    /**
+     * Configuration block for a mixed instances policy. This allows an ASG to use multiple instance types and a mix of
+     * On-Demand and Spot instances.
+     */
+    mixedInstancesPolicy?: pulumi.Input<inputs.AsgProfileMixedInstancesPolicy>;
     /**
      * An optional list of custom network interface configurations to use when creating the host.
      */

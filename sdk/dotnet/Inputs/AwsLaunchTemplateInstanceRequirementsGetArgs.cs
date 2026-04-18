@@ -21,11 +21,53 @@ namespace DuploCloud.Pulumi.Inputs
             set => _allowedInstanceTypes = value;
         }
 
+        [Input("cpuManufacturers")]
+        private InputList<string>? _cpuManufacturers;
+
+        /// <summary>
+        /// List of CPU manufacturers (e.g. `intel`, `amd`, `amazon-web-services`).
+        /// </summary>
+        public InputList<string> CpuManufacturers
+        {
+            get => _cpuManufacturers ?? (_cpuManufacturers = new InputList<string>());
+            set => _cpuManufacturers = value;
+        }
+
+        [Input("excludedInstanceTypes")]
+        private InputList<string>? _excludedInstanceTypes;
+
+        /// <summary>
+        /// List of excluded instance types. Mutually exclusive with `allowed_instance_types`.
+        /// </summary>
+        public InputList<string> ExcludedInstanceTypes
+        {
+            get => _excludedInstanceTypes ?? (_excludedInstanceTypes = new InputList<string>());
+            set => _excludedInstanceTypes = value;
+        }
+
+        [Input("instanceGenerations")]
+        private InputList<string>? _instanceGenerations;
+
+        /// <summary>
+        /// List of instance generations (e.g. `current`, `previous`).
+        /// </summary>
+        public InputList<string> InstanceGenerations
+        {
+            get => _instanceGenerations ?? (_instanceGenerations = new InputList<string>());
+            set => _instanceGenerations = value;
+        }
+
         /// <summary>
         /// Block describing the minimum and maximum amount of memory (MiB). It is a required field when allowed*instance*types is set
         /// </summary>
         [Input("memoryMib")]
         public Input<Inputs.AwsLaunchTemplateInstanceRequirementsMemoryMibGetArgs>? MemoryMib { get; set; }
+
+        /// <summary>
+        /// Price protection threshold as a percentage over the lowest price.
+        /// </summary>
+        [Input("spotMaxPricePercentageOverLowestPrice")]
+        public Input<int>? SpotMaxPricePercentageOverLowestPrice { get; set; }
 
         /// <summary>
         /// Block describing the minimum and maximum number of vCPUs. It is a required field when allowed*instance*types is set

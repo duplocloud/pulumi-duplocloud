@@ -184,6 +184,7 @@
         "getPlanWafs.ts",
         "getPlanWafsV2.ts",
         "getPlans.ts",
+        "getRdsInstance.ts",
         "getS3Bucket.ts",
         "getSystemFeatures.ts",
         "getTenant.ts",

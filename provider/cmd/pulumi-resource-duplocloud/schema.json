@@ -126,6 +126,178 @@
                 "value"
             ]
         },
+        "duplocloud:index/AsgProfileMixedInstancesPolicy:AsgProfileMixedInstancesPolicy": {
+            "properties": {
+                "instancesDistribution": {
+                    "$ref": "#/types/duplocloud:index/AsgProfileMixedInstancesPolicyInstancesDistribution:AsgProfileMixedInstancesPolicyInstancesDistribution",
+                    "description": "Configuration for the distribution of On-Demand and Spot instances.\n"
+                },
+                "launchTemplate": {
+                    "$ref": "#/types/duplocloud:index/AsgProfileMixedInstancesPolicyLaunchTemplate:AsgProfileMixedInstancesPolicyLaunchTemplate",
+                    "description": "Launch template configuration with instance type overrides.\n"
+                }
+            },
+            "type": "object"
+        },
+        "duplocloud:index/AsgProfileMixedInstancesPolicyInstancesDistribution:AsgProfileMixedInstancesPolicyInstancesDistribution": {
+            "properties": {
+                "onDemandAllocationStrategy": {
+                    "type": "string",
+                    "description": "Strategy for allocating On-Demand instances (e.g. `prioritized`).\n"
+                },
+                "onDemandBaseCapacity": {
+                    "type": "integer",
+                    "description": "Minimum number of On-Demand instances in the group.\n"
+                },
+                "onDemandPercentageAboveBaseCapacity": {
+                    "type": "integer",
+                    "description": "Percentage of On-Demand instances above the base capacity (0-100).\n"
+                },
+                "spotAllocationStrategy": {
+                    "type": "string",
+                    "description": "Strategy for allocating Spot instances (e.g. `capacity-optimized`, `price-capacity-optimized`, `lowest-price`).\n"
+                },
+                "spotInstancePools": {
+                    "type": "integer",
+                    "description": "Number of Spot pools for allocation (only used with `lowest-price` strategy).\n"
+                },
+                "spotMaxPrice": {
+                    "type": "string",
+                    "description": "Maximum price per unit hour for Spot instances.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "onDemandAllocationStrategy"
+                    ]
+                }
+            }
+        },
+        "duplocloud:index/AsgProfileMixedInstancesPolicyLaunchTemplate:AsgProfileMixedInstancesPolicyLaunchTemplate": {
+            "properties": {
+                "overrides": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/duplocloud:index/AsgProfileMixedInstancesPolicyLaunchTemplateOverride:AsgProfileMixedInstancesPolicyLaunchTemplateOverride"
+                    },
+                    "description": "List of instance type overrides for the launch template.\n"
+                }
+            },
+            "type": "object"
+        },
+        "duplocloud:index/AsgProfileMixedInstancesPolicyLaunchTemplateOverride:AsgProfileMixedInstancesPolicyLaunchTemplateOverride": {
+            "properties": {
+                "instanceRequirements": {
+                    "$ref": "#/types/duplocloud:index/AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirements:AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirements",
+                    "description": "Instance requirements for flexible instance selection.\n"
+                },
+                "instanceType": {
+                    "type": "string",
+                    "description": "The instance type. Mutually exclusive with `instance_requirements`.\n"
+                },
+                "weightedCapacity": {
+                    "type": "string",
+                    "description": "The number of capacity units provided by the instance type.\n"
+                }
+            },
+            "type": "object"
+        },
+        "duplocloud:index/AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirements:AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirements": {
+            "properties": {
+                "allowedInstanceTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of allowed instance types (e.g. `m5.large`, `m5a.large`). Cannot be specified if `excluded_instance_types` is specified in the same launch template override.\n"
+                },
+                "cpuManufacturers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of CPU manufacturers (e.g. `intel`, `amd`, `amazon-web-services`).\n"
+                },
+                "excludedInstanceTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of excluded instance types. Cannot be specified if `allowed_instance_types` is specified in the same launch template override.\n"
+                },
+                "instanceGenerations": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of instance generations (e.g. `current`, `previous`).\n"
+                },
+                "memoryMib": {
+                    "$ref": "#/types/duplocloud:index/AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMib:AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMib",
+                    "description": "Range of memory in MiB.\n"
+                },
+                "spotMaxPricePercentageOverLowestPrice": {
+                    "type": "integer",
+                    "description": "Price protection threshold as a percentage over the lowest price.\n"
+                },
+                "vcpuCount": {
+                    "$ref": "#/types/duplocloud:index/AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCount:AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCount",
+                    "description": "Range of vCPU counts.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "memoryMib",
+                "vcpuCount"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "allowedInstanceTypes",
+                        "cpuManufacturers",
+                        "excludedInstanceTypes",
+                        "instanceGenerations",
+                        "memoryMib",
+                        "spotMaxPricePercentageOverLowestPrice",
+                        "vcpuCount"
+                    ]
+                }
+            }
+        },
+        "duplocloud:index/AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMib:AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMib": {
+            "properties": {
+                "max": {
+                    "type": "integer",
+                    "description": "Maximum memory in MiB.\n"
+                },
+                "min": {
+                    "type": "integer",
+                    "description": "Minimum memory in MiB.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "min"
+            ]
+        },
+        "duplocloud:index/AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCount:AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCount": {
+            "properties": {
+                "max": {
+                    "type": "integer",
+                    "description": "Maximum number of vCPUs.\n"
+                },
+                "min": {
+                    "type": "integer",
+                    "description": "Minimum number of vCPUs.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "min"
+            ]
+        },
         "duplocloud:index/AsgProfileNetworkInterface:AsgProfileNetworkInterface": {
             "properties": {
                 "associatePublicIp": {
@@ -2827,9 +2999,34 @@
                         "type": "string"
                     }
                 },
+                "cpuManufacturers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of CPU manufacturers (e.g. `intel`, `amd`, `amazon-web-services`).\n"
+                },
+                "excludedInstanceTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of excluded instance types. Mutually exclusive with `allowed_instance_types`.\n"
+                },
+                "instanceGenerations": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of instance generations (e.g. `current`, `previous`).\n"
+                },
                 "memoryMib": {
                     "$ref": "#/types/duplocloud:index/AwsLaunchTemplateInstanceRequirementsMemoryMib:AwsLaunchTemplateInstanceRequirementsMemoryMib",
                     "description": "Block describing the minimum and maximum amount of memory (MiB). It is a required field when allowed*instance*types is set\n"
+                },
+                "spotMaxPricePercentageOverLowestPrice": {
+                    "type": "integer",
+                    "description": "Price protection threshold as a percentage over the lowest price.\n"
                 },
                 "vcpuCount": {
                     "$ref": "#/types/duplocloud:index/AwsLaunchTemplateInstanceRequirementsVcpuCount:AwsLaunchTemplateInstanceRequirementsVcpuCount",
@@ -17575,6 +17772,10 @@
                     "description": "A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value.\n",
                     "deprecationMessage": "minion_tags is deprecated and will be removed in a future release. Use custom_data_tags instead."
                 },
+                "mixedInstancesPolicy": {
+                    "$ref": "#/types/duplocloud:index/getAsgProfilesAsgProfileMixedInstancesPolicy:getAsgProfilesAsgProfileMixedInstancesPolicy",
+                    "description": "Configuration block for a mixed instances policy. This allows an ASG to use multiple instance types and a mix of On-Demand and Spot instances.\n"
+                },
                 "networkInterfaces": {
                     "type": "array",
                     "items": {
@@ -17639,7 +17840,6 @@
                 "arn",
                 "base64UserData",
                 "canScaleFromZero",
-                "capacity",
                 "customDataTags",
                 "customNodeLabels",
                 "friendlyName",
@@ -17720,6 +17920,186 @@
             "required": [
                 "key",
                 "value"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "duplocloud:index/getAsgProfilesAsgProfileMixedInstancesPolicy:getAsgProfilesAsgProfileMixedInstancesPolicy": {
+            "properties": {
+                "instancesDistribution": {
+                    "$ref": "#/types/duplocloud:index/getAsgProfilesAsgProfileMixedInstancesPolicyInstancesDistribution:getAsgProfilesAsgProfileMixedInstancesPolicyInstancesDistribution",
+                    "description": "Configuration for the distribution of On-Demand and Spot instances.\n"
+                },
+                "launchTemplate": {
+                    "$ref": "#/types/duplocloud:index/getAsgProfilesAsgProfileMixedInstancesPolicyLaunchTemplate:getAsgProfilesAsgProfileMixedInstancesPolicyLaunchTemplate",
+                    "description": "Launch template configuration with instance type overrides.\n"
+                }
+            },
+            "type": "object"
+        },
+        "duplocloud:index/getAsgProfilesAsgProfileMixedInstancesPolicyInstancesDistribution:getAsgProfilesAsgProfileMixedInstancesPolicyInstancesDistribution": {
+            "properties": {
+                "onDemandAllocationStrategy": {
+                    "type": "string",
+                    "description": "Strategy for allocating On-Demand instances (e.g. `prioritized`).\n"
+                },
+                "onDemandBaseCapacity": {
+                    "type": "integer",
+                    "description": "Minimum number of On-Demand instances in the group.\n"
+                },
+                "onDemandPercentageAboveBaseCapacity": {
+                    "type": "integer",
+                    "description": "Percentage of On-Demand instances above the base capacity (0-100).\n"
+                },
+                "spotAllocationStrategy": {
+                    "type": "string",
+                    "description": "Strategy for allocating Spot instances (e.g. `capacity-optimized`, `price-capacity-optimized`, `lowest-price`).\n"
+                },
+                "spotInstancePools": {
+                    "type": "integer",
+                    "description": "Number of Spot pools for allocation (only used with `lowest-price` strategy).\n"
+                },
+                "spotMaxPrice": {
+                    "type": "string",
+                    "description": "Maximum price per unit hour for Spot instances.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "onDemandAllocationStrategy"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "duplocloud:index/getAsgProfilesAsgProfileMixedInstancesPolicyLaunchTemplate:getAsgProfilesAsgProfileMixedInstancesPolicyLaunchTemplate": {
+            "properties": {
+                "overrides": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/duplocloud:index/getAsgProfilesAsgProfileMixedInstancesPolicyLaunchTemplateOverride:getAsgProfilesAsgProfileMixedInstancesPolicyLaunchTemplateOverride"
+                    },
+                    "description": "List of instance type overrides for the launch template.\n"
+                }
+            },
+            "type": "object"
+        },
+        "duplocloud:index/getAsgProfilesAsgProfileMixedInstancesPolicyLaunchTemplateOverride:getAsgProfilesAsgProfileMixedInstancesPolicyLaunchTemplateOverride": {
+            "properties": {
+                "instanceRequirements": {
+                    "$ref": "#/types/duplocloud:index/getAsgProfilesAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirements:getAsgProfilesAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirements",
+                    "description": "Instance requirements for flexible instance selection.\n"
+                },
+                "instanceType": {
+                    "type": "string",
+                    "description": "The instance type. Mutually exclusive with `instance_requirements`.\n"
+                },
+                "weightedCapacity": {
+                    "type": "string",
+                    "description": "The number of capacity units provided by the instance type.\n"
+                }
+            },
+            "type": "object"
+        },
+        "duplocloud:index/getAsgProfilesAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirements:getAsgProfilesAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirements": {
+            "properties": {
+                "allowedInstanceTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of allowed instance types (e.g. `m5.large`, `m5a.large`). Cannot be specified if `excluded_instance_types` is specified in the same launch template override.\n"
+                },
+                "cpuManufacturers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of CPU manufacturers (e.g. `intel`, `amd`, `amazon-web-services`).\n"
+                },
+                "excludedInstanceTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of excluded instance types. Cannot be specified if `allowed_instance_types` is specified in the same launch template override.\n"
+                },
+                "instanceGenerations": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of instance generations (e.g. `current`, `previous`).\n"
+                },
+                "memoryMib": {
+                    "$ref": "#/types/duplocloud:index/getAsgProfilesAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMib:getAsgProfilesAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMib",
+                    "description": "Range of memory in MiB.\n"
+                },
+                "spotMaxPricePercentageOverLowestPrice": {
+                    "type": "integer",
+                    "description": "Price protection threshold as a percentage over the lowest price.\n"
+                },
+                "vcpuCount": {
+                    "$ref": "#/types/duplocloud:index/getAsgProfilesAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCount:getAsgProfilesAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCount",
+                    "description": "Range of vCPU counts.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "allowedInstanceTypes",
+                "cpuManufacturers",
+                "excludedInstanceTypes",
+                "instanceGenerations",
+                "memoryMib",
+                "spotMaxPricePercentageOverLowestPrice",
+                "vcpuCount"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "duplocloud:index/getAsgProfilesAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMib:getAsgProfilesAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMib": {
+            "properties": {
+                "max": {
+                    "type": "integer",
+                    "description": "Maximum memory in MiB.\n"
+                },
+                "min": {
+                    "type": "integer",
+                    "description": "Minimum memory in MiB.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "min"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "duplocloud:index/getAsgProfilesAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCount:getAsgProfilesAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCount": {
+            "properties": {
+                "max": {
+                    "type": "integer",
+                    "description": "Maximum number of vCPUs.\n"
+                },
+                "min": {
+                    "type": "integer",
+                    "description": "Minimum number of vCPUs.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "min"
             ],
             "language": {
                 "nodejs": {
@@ -31658,6 +32038,77 @@
                 }
             }
         },
+        "duplocloud:index/getRdsInstancePerformanceInsight:getRdsInstancePerformanceInsight": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether Performance Insights is enabled.\n"
+                },
+                "kmsKeyId": {
+                    "type": "string",
+                    "description": "ARN of the KMS key used to encrypt Performance Insights data.\n"
+                },
+                "retentionPeriod": {
+                    "type": "integer",
+                    "description": "Retention period in days.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled",
+                "kmsKeyId",
+                "retentionPeriod"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "duplocloud:index/getRdsInstanceStorageAutoscaling:getRdsInstanceStorageAutoscaling": {
+            "properties": {
+                "enable": {
+                    "type": "boolean",
+                    "description": "Whether storage autoscaling is enabled.\n"
+                },
+                "maxAllocatedStorage": {
+                    "type": "integer",
+                    "description": "The upper limit in GiB for storage autoscaling.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enable",
+                "maxAllocatedStorage"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "duplocloud:index/getRdsInstanceV2ScalingConfiguration:getRdsInstanceV2ScalingConfiguration": {
+            "properties": {
+                "maxCapacity": {
+                    "type": "number",
+                    "description": "Maximum scaling capacity.\n"
+                },
+                "minCapacity": {
+                    "type": "number",
+                    "description": "Minimum scaling capacity.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "maxCapacity",
+                "minCapacity"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "duplocloud:index/getS3BucketDefaultEncryption:getS3BucketDefaultEncryption": {
             "properties": {
                 "method": {
@@ -32330,6 +32781,10 @@
                     "description": "A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value.\n",
                     "deprecationMessage": "minion_tags is deprecated and will be removed in a future release. Use custom_data_tags instead."
                 },
+                "mixedInstancesPolicy": {
+                    "$ref": "#/types/duplocloud:index/AsgProfileMixedInstancesPolicy:AsgProfileMixedInstancesPolicy",
+                    "description": "Configuration block for a mixed instances policy. This allows an ASG to use multiple instance types and a mix of\nOn-Demand and Spot instances.\n"
+                },
                 "networkInterfaces": {
                     "type": "array",
                     "items": {
@@ -32398,7 +32853,6 @@
                 "arn",
                 "base64UserData",
                 "canScaleFromZero",
-                "capacity",
                 "customDataTags",
                 "customNodeLabels",
                 "friendlyName",
@@ -32536,6 +32990,10 @@
                     "deprecationMessage": "minion_tags is deprecated and will be removed in a future release. Use custom_data_tags instead.",
                     "willReplaceOnChanges": true
                 },
+                "mixedInstancesPolicy": {
+                    "$ref": "#/types/duplocloud:index/AsgProfileMixedInstancesPolicy:AsgProfileMixedInstancesPolicy",
+                    "description": "Configuration block for a mixed instances policy. This allows an ASG to use multiple instance types and a mix of\nOn-Demand and Spot instances.\n"
+                },
                 "networkInterfaces": {
                     "type": "array",
                     "items": {
@@ -32605,7 +33063,6 @@
                 }
             },
             "requiredInputs": [
-                "capacity",
                 "friendlyName",
                 "imageId",
                 "tenantId"
@@ -32739,6 +33196,10 @@
                         "description": "A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value.\n",
                         "deprecationMessage": "minion_tags is deprecated and will be removed in a future release. Use custom_data_tags instead.",
                         "willReplaceOnChanges": true
+                    },
+                    "mixedInstancesPolicy": {
+                        "$ref": "#/types/duplocloud:index/AsgProfileMixedInstancesPolicy:AsgProfileMixedInstancesPolicy",
+                        "description": "Configuration block for a mixed instances policy. This allows an ASG to use multiple instance types and a mix of\nOn-Demand and Spot instances.\n"
                     },
                     "networkInterfaces": {
                         "type": "array",
@@ -37739,7 +38200,7 @@
             }
         },
         "duplocloud:index/awsLaunchTemplate:AwsLaunchTemplate": {
-            "description": "duplocloud_aws_launch_template creates the new version over current launch template version\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as duplocloud from \"@duplocloud/pulumi\";\n\nconst myapp = new duplocloud.Tenant(\"myapp\", {\n    accountName: \"myapp\",\n    planId: \"default\",\n});\nconst lt = new duplocloud.AwsLaunchTemplate(\"lt\", {\n    tenantId: myapp.tenantId,\n    name: \"launch-template-name\",\n    instanceType: \"t3a.medium\",\n    version: \"1\",\n    versionDescription: \"launch template description\",\n    ami: \"ami-123test\",\n});\nconst name = new duplocloud.AwsLaunchTemplate(\"name\", {\n    tenantId: myapp.tenantId,\n    instanceType: \"t3a.small\",\n    name: \"launch-template-name\",\n    versionDescription: \"launch template block device mapping\",\n    version: \"2\",\n    blockDeviceMappings: [{\n        deviceName: \"/dev/xvda\",\n        ebs: {\n            volumeSize: 30,\n            volumeType: \"gp3\",\n            deleteOnTermination: true,\n            encrypted: false,\n            iops: 3000,\n        },\n        virtualName: \"ephemeral1\",\n    }],\n});\nconst template = new duplocloud.AwsLaunchTemplate(\"template\", {\n    tenantId: myapp.tenantId,\n    name: \"launch-template-name\",\n    versionDescription: \"launch template block device mapping\",\n    version: \"3\",\n    instanceRequirements: {\n        allowedInstanceTypes: [\n            \"t3a.*\",\n            \"c5.*\",\n        ],\n        vcpuCount: {\n            min: 0,\n            max: 2,\n        },\n        memoryMib: {\n            min: 4096,\n            max: 5120,\n        },\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_duplocloud as duplocloud\n\nmyapp = duplocloud.Tenant(\"myapp\",\n    account_name=\"myapp\",\n    plan_id=\"default\")\nlt = duplocloud.AwsLaunchTemplate(\"lt\",\n    tenant_id=myapp.tenant_id,\n    name=\"launch-template-name\",\n    instance_type=\"t3a.medium\",\n    version=\"1\",\n    version_description=\"launch template description\",\n    ami=\"ami-123test\")\nname = duplocloud.AwsLaunchTemplate(\"name\",\n    tenant_id=myapp.tenant_id,\n    instance_type=\"t3a.small\",\n    name=\"launch-template-name\",\n    version_description=\"launch template block device mapping\",\n    version=\"2\",\n    block_device_mappings=[{\n        \"device_name\": \"/dev/xvda\",\n        \"ebs\": {\n            \"volume_size\": 30,\n            \"volume_type\": \"gp3\",\n            \"delete_on_termination\": True,\n            \"encrypted\": False,\n            \"iops\": 3000,\n        },\n        \"virtual_name\": \"ephemeral1\",\n    }])\ntemplate = duplocloud.AwsLaunchTemplate(\"template\",\n    tenant_id=myapp.tenant_id,\n    name=\"launch-template-name\",\n    version_description=\"launch template block device mapping\",\n    version=\"3\",\n    instance_requirements={\n        \"allowed_instance_types\": [\n            \"t3a.*\",\n            \"c5.*\",\n        ],\n        \"vcpu_count\": {\n            \"min\": 0,\n            \"max\": 2,\n        },\n        \"memory_mib\": {\n            \"min\": 4096,\n            \"max\": 5120,\n        },\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Pulumi = DuploCloud.Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myapp = new Pulumi.Tenant(\"myapp\", new()\n    {\n        AccountName = \"myapp\",\n        PlanId = \"default\",\n    });\n\n    var lt = new Pulumi.AwsLaunchTemplate(\"lt\", new()\n    {\n        TenantId = myapp.TenantId,\n        Name = \"launch-template-name\",\n        InstanceType = \"t3a.medium\",\n        Version = \"1\",\n        VersionDescription = \"launch template description\",\n        Ami = \"ami-123test\",\n    });\n\n    var name = new Pulumi.AwsLaunchTemplate(\"name\", new()\n    {\n        TenantId = myapp.TenantId,\n        InstanceType = \"t3a.small\",\n        Name = \"launch-template-name\",\n        VersionDescription = \"launch template block device mapping\",\n        Version = \"2\",\n        BlockDeviceMappings = new[]\n        {\n            new Pulumi.Inputs.AwsLaunchTemplateBlockDeviceMappingArgs\n            {\n                DeviceName = \"/dev/xvda\",\n                Ebs = new Pulumi.Inputs.AwsLaunchTemplateBlockDeviceMappingEbsArgs\n                {\n                    VolumeSize = 30,\n                    VolumeType = \"gp3\",\n                    DeleteOnTermination = true,\n                    Encrypted = false,\n                    Iops = 3000,\n                },\n                VirtualName = \"ephemeral1\",\n            },\n        },\n    });\n\n    var template = new Pulumi.AwsLaunchTemplate(\"template\", new()\n    {\n        TenantId = myapp.TenantId,\n        Name = \"launch-template-name\",\n        VersionDescription = \"launch template block device mapping\",\n        Version = \"3\",\n        InstanceRequirements = new Pulumi.Inputs.AwsLaunchTemplateInstanceRequirementsArgs\n        {\n            AllowedInstanceTypes = new[]\n            {\n                \"t3a.*\",\n                \"c5.*\",\n            },\n            VcpuCount = new Pulumi.Inputs.AwsLaunchTemplateInstanceRequirementsVcpuCountArgs\n            {\n                Min = 0,\n                Max = 2,\n            },\n            MemoryMib = new Pulumi.Inputs.AwsLaunchTemplateInstanceRequirementsMemoryMibArgs\n            {\n                Min = 4096,\n                Max = 5120,\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/duplocloud/pulumi-duplocloud/sdk/go/duplocloud\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmyapp, err := duplocloud.NewTenant(ctx, \"myapp\", \u0026duplocloud.TenantArgs{\n\t\t\tAccountName: pulumi.String(\"myapp\"),\n\t\t\tPlanId:      pulumi.String(\"default\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = duplocloud.NewAwsLaunchTemplate(ctx, \"lt\", \u0026duplocloud.AwsLaunchTemplateArgs{\n\t\t\tTenantId:           myapp.TenantId,\n\t\t\tName:               pulumi.String(\"launch-template-name\"),\n\t\t\tInstanceType:       pulumi.String(\"t3a.medium\"),\n\t\t\tVersion:            pulumi.String(\"1\"),\n\t\t\tVersionDescription: pulumi.String(\"launch template description\"),\n\t\t\tAmi:                pulumi.String(\"ami-123test\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = duplocloud.NewAwsLaunchTemplate(ctx, \"name\", \u0026duplocloud.AwsLaunchTemplateArgs{\n\t\t\tTenantId:           myapp.TenantId,\n\t\t\tInstanceType:       pulumi.String(\"t3a.small\"),\n\t\t\tName:               pulumi.String(\"launch-template-name\"),\n\t\t\tVersionDescription: pulumi.String(\"launch template block device mapping\"),\n\t\t\tVersion:            pulumi.String(\"2\"),\n\t\t\tBlockDeviceMappings: duplocloud.AwsLaunchTemplateBlockDeviceMappingArray{\n\t\t\t\t\u0026duplocloud.AwsLaunchTemplateBlockDeviceMappingArgs{\n\t\t\t\t\tDeviceName: pulumi.String(\"/dev/xvda\"),\n\t\t\t\t\tEbs: \u0026duplocloud.AwsLaunchTemplateBlockDeviceMappingEbsArgs{\n\t\t\t\t\t\tVolumeSize:          pulumi.Int(30),\n\t\t\t\t\t\tVolumeType:          pulumi.String(\"gp3\"),\n\t\t\t\t\t\tDeleteOnTermination: pulumi.Bool(true),\n\t\t\t\t\t\tEncrypted:           pulumi.Bool(false),\n\t\t\t\t\t\tIops:                pulumi.Int(3000),\n\t\t\t\t\t},\n\t\t\t\t\tVirtualName: pulumi.String(\"ephemeral1\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = duplocloud.NewAwsLaunchTemplate(ctx, \"template\", \u0026duplocloud.AwsLaunchTemplateArgs{\n\t\t\tTenantId:           myapp.TenantId,\n\t\t\tName:               pulumi.String(\"launch-template-name\"),\n\t\t\tVersionDescription: pulumi.String(\"launch template block device mapping\"),\n\t\t\tVersion:            pulumi.String(\"3\"),\n\t\t\tInstanceRequirements: \u0026duplocloud.AwsLaunchTemplateInstanceRequirementsArgs{\n\t\t\t\tAllowedInstanceTypes: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"t3a.*\"),\n\t\t\t\t\tpulumi.String(\"c5.*\"),\n\t\t\t\t},\n\t\t\t\tVcpuCount: \u0026duplocloud.AwsLaunchTemplateInstanceRequirementsVcpuCountArgs{\n\t\t\t\t\tMin: pulumi.Int(0),\n\t\t\t\t\tMax: pulumi.Int(2),\n\t\t\t\t},\n\t\t\t\tMemoryMib: \u0026duplocloud.AwsLaunchTemplateInstanceRequirementsMemoryMibArgs{\n\t\t\t\t\tMin: pulumi.Int(4096),\n\t\t\t\t\tMax: pulumi.Int(5120),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.duplocloud.Tenant;\nimport com.pulumi.duplocloud.TenantArgs;\nimport com.pulumi.duplocloud.AwsLaunchTemplate;\nimport com.pulumi.duplocloud.AwsLaunchTemplateArgs;\nimport com.pulumi.duplocloud.inputs.AwsLaunchTemplateBlockDeviceMappingArgs;\nimport com.pulumi.duplocloud.inputs.AwsLaunchTemplateBlockDeviceMappingEbsArgs;\nimport com.pulumi.duplocloud.inputs.AwsLaunchTemplateInstanceRequirementsArgs;\nimport com.pulumi.duplocloud.inputs.AwsLaunchTemplateInstanceRequirementsVcpuCountArgs;\nimport com.pulumi.duplocloud.inputs.AwsLaunchTemplateInstanceRequirementsMemoryMibArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myapp = new Tenant(\"myapp\", TenantArgs.builder()\n            .accountName(\"myapp\")\n            .planId(\"default\")\n            .build());\n\n        var lt = new AwsLaunchTemplate(\"lt\", AwsLaunchTemplateArgs.builder()\n            .tenantId(myapp.tenantId())\n            .name(\"launch-template-name\")\n            .instanceType(\"t3a.medium\")\n            .version(\"1\")\n            .versionDescription(\"launch template description\")\n            .ami(\"ami-123test\")\n            .build());\n\n        var name = new AwsLaunchTemplate(\"name\", AwsLaunchTemplateArgs.builder()\n            .tenantId(myapp.tenantId())\n            .instanceType(\"t3a.small\")\n            .name(\"launch-template-name\")\n            .versionDescription(\"launch template block device mapping\")\n            .version(\"2\")\n            .blockDeviceMappings(AwsLaunchTemplateBlockDeviceMappingArgs.builder()\n                .deviceName(\"/dev/xvda\")\n                .ebs(AwsLaunchTemplateBlockDeviceMappingEbsArgs.builder()\n                    .volumeSize(30)\n                    .volumeType(\"gp3\")\n                    .deleteOnTermination(true)\n                    .encrypted(false)\n                    .iops(3000)\n                    .build())\n                .virtualName(\"ephemeral1\")\n                .build())\n            .build());\n\n        var template = new AwsLaunchTemplate(\"template\", AwsLaunchTemplateArgs.builder()\n            .tenantId(myapp.tenantId())\n            .name(\"launch-template-name\")\n            .versionDescription(\"launch template block device mapping\")\n            .version(\"3\")\n            .instanceRequirements(AwsLaunchTemplateInstanceRequirementsArgs.builder()\n                .allowedInstanceTypes(                \n                    \"t3a.*\",\n                    \"c5.*\")\n                .vcpuCount(AwsLaunchTemplateInstanceRequirementsVcpuCountArgs.builder()\n                    .min(0)\n                    .max(2)\n                    .build())\n                .memoryMib(AwsLaunchTemplateInstanceRequirementsMemoryMibArgs.builder()\n                    .min(4096)\n                    .max(5120)\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myapp:\n    type: duplocloud:Tenant\n    properties:\n      accountName: myapp\n      planId: default\n  lt:\n    type: duplocloud:AwsLaunchTemplate\n    properties:\n      tenantId: ${myapp.tenantId}\n      name: launch-template-name\n      instanceType: t3a.medium\n      version: '1'\n      versionDescription: launch template description\n      ami: ami-123test\n  name:\n    type: duplocloud:AwsLaunchTemplate\n    properties:\n      tenantId: ${myapp.tenantId}\n      instanceType: t3a.small\n      name: launch-template-name\n      versionDescription: launch template block device mapping\n      version: '2'\n      blockDeviceMappings:\n        - deviceName: /dev/xvda\n          ebs:\n            volumeSize: 30\n            volumeType: gp3\n            deleteOnTermination: true\n            encrypted: false\n            iops: 3000\n          virtualName: ephemeral1\n  template:\n    type: duplocloud:AwsLaunchTemplate\n    properties:\n      tenantId: ${myapp.tenantId}\n      name: launch-template-name\n      versionDescription: launch template block device mapping\n      version: '3'\n      instanceRequirements:\n        allowedInstanceTypes:\n          - t3a.*\n          - c5.*\n        vcpuCount:\n          min: 0\n          max: 2\n        memoryMib:\n          min: 4096\n          max: 5120\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nExample: Importing an existing AWS launch template\n\n - *TENANT_ID* is the tenant GUID\n\n - *NAME* is the name of the AWS launch template\n\n - *VERSION* available version of launch template , it is optional, use if needed to import specific version of available launch template\n\n```sh\n$ pulumi import duplocloud:index/awsLaunchTemplate:AwsLaunchTemplate lt *TENANT_ID*/launch-template/*NAME*/*VERSION*\n```\n\n",
+            "description": "duplocloud_aws_launch_template creates the new version over current launch template version\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as duplocloud from \"@duplocloud/pulumi\";\n\nconst myapp = new duplocloud.Tenant(\"myapp\", {\n    accountName: \"myapp\",\n    planId: \"default\",\n});\nconst lt = new duplocloud.AwsLaunchTemplate(\"lt\", {\n    tenantId: myapp.tenantId,\n    name: \"launch-template-name\",\n    instanceType: \"t3a.medium\",\n    version: \"1\",\n    versionDescription: \"launch template description\",\n    ami: \"ami-123test\",\n});\nconst name = new duplocloud.AwsLaunchTemplate(\"name\", {\n    tenantId: myapp.tenantId,\n    instanceType: \"t3a.small\",\n    name: \"launch-template-name\",\n    versionDescription: \"launch template block device mapping\",\n    version: \"2\",\n    blockDeviceMappings: [{\n        deviceName: \"/dev/xvda\",\n        ebs: {\n            volumeSize: 30,\n            volumeType: \"gp3\",\n            deleteOnTermination: true,\n            encrypted: false,\n            iops: 3000,\n        },\n        virtualName: \"ephemeral1\",\n    }],\n});\nconst template = new duplocloud.AwsLaunchTemplate(\"template\", {\n    tenantId: myapp.tenantId,\n    name: \"launch-template-name\",\n    versionDescription: \"launch template block device mapping\",\n    version: \"3\",\n    instanceRequirements: {\n        allowedInstanceTypes: [\n            \"t3a.*\",\n            \"c5.*\",\n        ],\n        vcpuCount: {\n            min: 0,\n            max: 2,\n        },\n        memoryMib: {\n            min: 4096,\n            max: 5120,\n        },\n    },\n});\nconst mixedInstanceTest = new duplocloud.AwsLaunchTemplate(\"mixed_instance_test\", {\n    tenantId: myapp.tenantId,\n    name: mixed_instances_asg.fullname,\n    versionDescription: \"launch template with extended instance requirements\",\n    instanceRequirements: {\n        allowedInstanceTypes: [\n            \"m5.*\",\n            \"m5a.*\",\n            \"c5.*\",\n        ],\n        vcpuCount: {\n            min: 2,\n            max: 8,\n        },\n        memoryMib: {\n            min: 4096,\n            max: 32768,\n        },\n        cpuManufacturers: [\n            \"intel\",\n            \"amd\",\n        ],\n        instanceGenerations: [\"current\"],\n        spotMaxPricePercentageOverLowestPrice: 100,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_duplocloud as duplocloud\n\nmyapp = duplocloud.Tenant(\"myapp\",\n    account_name=\"myapp\",\n    plan_id=\"default\")\nlt = duplocloud.AwsLaunchTemplate(\"lt\",\n    tenant_id=myapp.tenant_id,\n    name=\"launch-template-name\",\n    instance_type=\"t3a.medium\",\n    version=\"1\",\n    version_description=\"launch template description\",\n    ami=\"ami-123test\")\nname = duplocloud.AwsLaunchTemplate(\"name\",\n    tenant_id=myapp.tenant_id,\n    instance_type=\"t3a.small\",\n    name=\"launch-template-name\",\n    version_description=\"launch template block device mapping\",\n    version=\"2\",\n    block_device_mappings=[{\n        \"device_name\": \"/dev/xvda\",\n        \"ebs\": {\n            \"volume_size\": 30,\n            \"volume_type\": \"gp3\",\n            \"delete_on_termination\": True,\n            \"encrypted\": False,\n            \"iops\": 3000,\n        },\n        \"virtual_name\": \"ephemeral1\",\n    }])\ntemplate = duplocloud.AwsLaunchTemplate(\"template\",\n    tenant_id=myapp.tenant_id,\n    name=\"launch-template-name\",\n    version_description=\"launch template block device mapping\",\n    version=\"3\",\n    instance_requirements={\n        \"allowed_instance_types\": [\n            \"t3a.*\",\n            \"c5.*\",\n        ],\n        \"vcpu_count\": {\n            \"min\": 0,\n            \"max\": 2,\n        },\n        \"memory_mib\": {\n            \"min\": 4096,\n            \"max\": 5120,\n        },\n    })\nmixed_instance_test = duplocloud.AwsLaunchTemplate(\"mixed_instance_test\",\n    tenant_id=myapp.tenant_id,\n    name=mixed_instances_asg[\"fullname\"],\n    version_description=\"launch template with extended instance requirements\",\n    instance_requirements={\n        \"allowed_instance_types\": [\n            \"m5.*\",\n            \"m5a.*\",\n            \"c5.*\",\n        ],\n        \"vcpu_count\": {\n            \"min\": 2,\n            \"max\": 8,\n        },\n        \"memory_mib\": {\n            \"min\": 4096,\n            \"max\": 32768,\n        },\n        \"cpu_manufacturers\": [\n            \"intel\",\n            \"amd\",\n        ],\n        \"instance_generations\": [\"current\"],\n        \"spot_max_price_percentage_over_lowest_price\": 100,\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Pulumi = DuploCloud.Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myapp = new Pulumi.Tenant(\"myapp\", new()\n    {\n        AccountName = \"myapp\",\n        PlanId = \"default\",\n    });\n\n    var lt = new Pulumi.AwsLaunchTemplate(\"lt\", new()\n    {\n        TenantId = myapp.TenantId,\n        Name = \"launch-template-name\",\n        InstanceType = \"t3a.medium\",\n        Version = \"1\",\n        VersionDescription = \"launch template description\",\n        Ami = \"ami-123test\",\n    });\n\n    var name = new Pulumi.AwsLaunchTemplate(\"name\", new()\n    {\n        TenantId = myapp.TenantId,\n        InstanceType = \"t3a.small\",\n        Name = \"launch-template-name\",\n        VersionDescription = \"launch template block device mapping\",\n        Version = \"2\",\n        BlockDeviceMappings = new[]\n        {\n            new Pulumi.Inputs.AwsLaunchTemplateBlockDeviceMappingArgs\n            {\n                DeviceName = \"/dev/xvda\",\n                Ebs = new Pulumi.Inputs.AwsLaunchTemplateBlockDeviceMappingEbsArgs\n                {\n                    VolumeSize = 30,\n                    VolumeType = \"gp3\",\n                    DeleteOnTermination = true,\n                    Encrypted = false,\n                    Iops = 3000,\n                },\n                VirtualName = \"ephemeral1\",\n            },\n        },\n    });\n\n    var template = new Pulumi.AwsLaunchTemplate(\"template\", new()\n    {\n        TenantId = myapp.TenantId,\n        Name = \"launch-template-name\",\n        VersionDescription = \"launch template block device mapping\",\n        Version = \"3\",\n        InstanceRequirements = new Pulumi.Inputs.AwsLaunchTemplateInstanceRequirementsArgs\n        {\n            AllowedInstanceTypes = new[]\n            {\n                \"t3a.*\",\n                \"c5.*\",\n            },\n            VcpuCount = new Pulumi.Inputs.AwsLaunchTemplateInstanceRequirementsVcpuCountArgs\n            {\n                Min = 0,\n                Max = 2,\n            },\n            MemoryMib = new Pulumi.Inputs.AwsLaunchTemplateInstanceRequirementsMemoryMibArgs\n            {\n                Min = 4096,\n                Max = 5120,\n            },\n        },\n    });\n\n    var mixedInstanceTest = new Pulumi.AwsLaunchTemplate(\"mixed_instance_test\", new()\n    {\n        TenantId = myapp.TenantId,\n        Name = mixed_instances_asg.Fullname,\n        VersionDescription = \"launch template with extended instance requirements\",\n        InstanceRequirements = new Pulumi.Inputs.AwsLaunchTemplateInstanceRequirementsArgs\n        {\n            AllowedInstanceTypes = new[]\n            {\n                \"m5.*\",\n                \"m5a.*\",\n                \"c5.*\",\n            },\n            VcpuCount = new Pulumi.Inputs.AwsLaunchTemplateInstanceRequirementsVcpuCountArgs\n            {\n                Min = 2,\n                Max = 8,\n            },\n            MemoryMib = new Pulumi.Inputs.AwsLaunchTemplateInstanceRequirementsMemoryMibArgs\n            {\n                Min = 4096,\n                Max = 32768,\n            },\n            CpuManufacturers = new[]\n            {\n                \"intel\",\n                \"amd\",\n            },\n            InstanceGenerations = new[]\n            {\n                \"current\",\n            },\n            SpotMaxPricePercentageOverLowestPrice = 100,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/duplocloud/pulumi-duplocloud/sdk/go/duplocloud\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmyapp, err := duplocloud.NewTenant(ctx, \"myapp\", \u0026duplocloud.TenantArgs{\n\t\t\tAccountName: pulumi.String(\"myapp\"),\n\t\t\tPlanId:      pulumi.String(\"default\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = duplocloud.NewAwsLaunchTemplate(ctx, \"lt\", \u0026duplocloud.AwsLaunchTemplateArgs{\n\t\t\tTenantId:           myapp.TenantId,\n\t\t\tName:               pulumi.String(\"launch-template-name\"),\n\t\t\tInstanceType:       pulumi.String(\"t3a.medium\"),\n\t\t\tVersion:            pulumi.String(\"1\"),\n\t\t\tVersionDescription: pulumi.String(\"launch template description\"),\n\t\t\tAmi:                pulumi.String(\"ami-123test\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = duplocloud.NewAwsLaunchTemplate(ctx, \"name\", \u0026duplocloud.AwsLaunchTemplateArgs{\n\t\t\tTenantId:           myapp.TenantId,\n\t\t\tInstanceType:       pulumi.String(\"t3a.small\"),\n\t\t\tName:               pulumi.String(\"launch-template-name\"),\n\t\t\tVersionDescription: pulumi.String(\"launch template block device mapping\"),\n\t\t\tVersion:            pulumi.String(\"2\"),\n\t\t\tBlockDeviceMappings: duplocloud.AwsLaunchTemplateBlockDeviceMappingArray{\n\t\t\t\t\u0026duplocloud.AwsLaunchTemplateBlockDeviceMappingArgs{\n\t\t\t\t\tDeviceName: pulumi.String(\"/dev/xvda\"),\n\t\t\t\t\tEbs: \u0026duplocloud.AwsLaunchTemplateBlockDeviceMappingEbsArgs{\n\t\t\t\t\t\tVolumeSize:          pulumi.Int(30),\n\t\t\t\t\t\tVolumeType:          pulumi.String(\"gp3\"),\n\t\t\t\t\t\tDeleteOnTermination: pulumi.Bool(true),\n\t\t\t\t\t\tEncrypted:           pulumi.Bool(false),\n\t\t\t\t\t\tIops:                pulumi.Int(3000),\n\t\t\t\t\t},\n\t\t\t\t\tVirtualName: pulumi.String(\"ephemeral1\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = duplocloud.NewAwsLaunchTemplate(ctx, \"template\", \u0026duplocloud.AwsLaunchTemplateArgs{\n\t\t\tTenantId:           myapp.TenantId,\n\t\t\tName:               pulumi.String(\"launch-template-name\"),\n\t\t\tVersionDescription: pulumi.String(\"launch template block device mapping\"),\n\t\t\tVersion:            pulumi.String(\"3\"),\n\t\t\tInstanceRequirements: \u0026duplocloud.AwsLaunchTemplateInstanceRequirementsArgs{\n\t\t\t\tAllowedInstanceTypes: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"t3a.*\"),\n\t\t\t\t\tpulumi.String(\"c5.*\"),\n\t\t\t\t},\n\t\t\t\tVcpuCount: \u0026duplocloud.AwsLaunchTemplateInstanceRequirementsVcpuCountArgs{\n\t\t\t\t\tMin: pulumi.Int(0),\n\t\t\t\t\tMax: pulumi.Int(2),\n\t\t\t\t},\n\t\t\t\tMemoryMib: \u0026duplocloud.AwsLaunchTemplateInstanceRequirementsMemoryMibArgs{\n\t\t\t\t\tMin: pulumi.Int(4096),\n\t\t\t\t\tMax: pulumi.Int(5120),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = duplocloud.NewAwsLaunchTemplate(ctx, \"mixed_instance_test\", \u0026duplocloud.AwsLaunchTemplateArgs{\n\t\t\tTenantId:           myapp.TenantId,\n\t\t\tName:               pulumi.Any(mixed_instances_asg.Fullname),\n\t\t\tVersionDescription: pulumi.String(\"launch template with extended instance requirements\"),\n\t\t\tInstanceRequirements: \u0026duplocloud.AwsLaunchTemplateInstanceRequirementsArgs{\n\t\t\t\tAllowedInstanceTypes: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"m5.*\"),\n\t\t\t\t\tpulumi.String(\"m5a.*\"),\n\t\t\t\t\tpulumi.String(\"c5.*\"),\n\t\t\t\t},\n\t\t\t\tVcpuCount: \u0026duplocloud.AwsLaunchTemplateInstanceRequirementsVcpuCountArgs{\n\t\t\t\t\tMin: pulumi.Int(2),\n\t\t\t\t\tMax: pulumi.Int(8),\n\t\t\t\t},\n\t\t\t\tMemoryMib: \u0026duplocloud.AwsLaunchTemplateInstanceRequirementsMemoryMibArgs{\n\t\t\t\t\tMin: pulumi.Int(4096),\n\t\t\t\t\tMax: pulumi.Int(32768),\n\t\t\t\t},\n\t\t\t\tCpuManufacturers: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"intel\"),\n\t\t\t\t\tpulumi.String(\"amd\"),\n\t\t\t\t},\n\t\t\t\tInstanceGenerations: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"current\"),\n\t\t\t\t},\n\t\t\t\tSpotMaxPricePercentageOverLowestPrice: pulumi.Int(100),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.duplocloud.Tenant;\nimport com.pulumi.duplocloud.TenantArgs;\nimport com.pulumi.duplocloud.AwsLaunchTemplate;\nimport com.pulumi.duplocloud.AwsLaunchTemplateArgs;\nimport com.pulumi.duplocloud.inputs.AwsLaunchTemplateBlockDeviceMappingArgs;\nimport com.pulumi.duplocloud.inputs.AwsLaunchTemplateBlockDeviceMappingEbsArgs;\nimport com.pulumi.duplocloud.inputs.AwsLaunchTemplateInstanceRequirementsArgs;\nimport com.pulumi.duplocloud.inputs.AwsLaunchTemplateInstanceRequirementsVcpuCountArgs;\nimport com.pulumi.duplocloud.inputs.AwsLaunchTemplateInstanceRequirementsMemoryMibArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myapp = new Tenant(\"myapp\", TenantArgs.builder()\n            .accountName(\"myapp\")\n            .planId(\"default\")\n            .build());\n\n        var lt = new AwsLaunchTemplate(\"lt\", AwsLaunchTemplateArgs.builder()\n            .tenantId(myapp.tenantId())\n            .name(\"launch-template-name\")\n            .instanceType(\"t3a.medium\")\n            .version(\"1\")\n            .versionDescription(\"launch template description\")\n            .ami(\"ami-123test\")\n            .build());\n\n        var name = new AwsLaunchTemplate(\"name\", AwsLaunchTemplateArgs.builder()\n            .tenantId(myapp.tenantId())\n            .instanceType(\"t3a.small\")\n            .name(\"launch-template-name\")\n            .versionDescription(\"launch template block device mapping\")\n            .version(\"2\")\n            .blockDeviceMappings(AwsLaunchTemplateBlockDeviceMappingArgs.builder()\n                .deviceName(\"/dev/xvda\")\n                .ebs(AwsLaunchTemplateBlockDeviceMappingEbsArgs.builder()\n                    .volumeSize(30)\n                    .volumeType(\"gp3\")\n                    .deleteOnTermination(true)\n                    .encrypted(false)\n                    .iops(3000)\n                    .build())\n                .virtualName(\"ephemeral1\")\n                .build())\n            .build());\n\n        var template = new AwsLaunchTemplate(\"template\", AwsLaunchTemplateArgs.builder()\n            .tenantId(myapp.tenantId())\n            .name(\"launch-template-name\")\n            .versionDescription(\"launch template block device mapping\")\n            .version(\"3\")\n            .instanceRequirements(AwsLaunchTemplateInstanceRequirementsArgs.builder()\n                .allowedInstanceTypes(                \n                    \"t3a.*\",\n                    \"c5.*\")\n                .vcpuCount(AwsLaunchTemplateInstanceRequirementsVcpuCountArgs.builder()\n                    .min(0)\n                    .max(2)\n                    .build())\n                .memoryMib(AwsLaunchTemplateInstanceRequirementsMemoryMibArgs.builder()\n                    .min(4096)\n                    .max(5120)\n                    .build())\n                .build())\n            .build());\n\n        var mixedInstanceTest = new AwsLaunchTemplate(\"mixedInstanceTest\", AwsLaunchTemplateArgs.builder()\n            .tenantId(myapp.tenantId())\n            .name(mixed_instances_asg.fullname())\n            .versionDescription(\"launch template with extended instance requirements\")\n            .instanceRequirements(AwsLaunchTemplateInstanceRequirementsArgs.builder()\n                .allowedInstanceTypes(                \n                    \"m5.*\",\n                    \"m5a.*\",\n                    \"c5.*\")\n                .vcpuCount(AwsLaunchTemplateInstanceRequirementsVcpuCountArgs.builder()\n                    .min(2)\n                    .max(8)\n                    .build())\n                .memoryMib(AwsLaunchTemplateInstanceRequirementsMemoryMibArgs.builder()\n                    .min(4096)\n                    .max(32768)\n                    .build())\n                .cpuManufacturers(                \n                    \"intel\",\n                    \"amd\")\n                .instanceGenerations(\"current\")\n                .spotMaxPricePercentageOverLowestPrice(100)\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myapp:\n    type: duplocloud:Tenant\n    properties:\n      accountName: myapp\n      planId: default\n  lt:\n    type: duplocloud:AwsLaunchTemplate\n    properties:\n      tenantId: ${myapp.tenantId}\n      name: launch-template-name\n      instanceType: t3a.medium\n      version: '1'\n      versionDescription: launch template description\n      ami: ami-123test\n  name:\n    type: duplocloud:AwsLaunchTemplate\n    properties:\n      tenantId: ${myapp.tenantId}\n      instanceType: t3a.small\n      name: launch-template-name\n      versionDescription: launch template block device mapping\n      version: '2'\n      blockDeviceMappings:\n        - deviceName: /dev/xvda\n          ebs:\n            volumeSize: 30\n            volumeType: gp3\n            deleteOnTermination: true\n            encrypted: false\n            iops: 3000\n          virtualName: ephemeral1\n  template:\n    type: duplocloud:AwsLaunchTemplate\n    properties:\n      tenantId: ${myapp.tenantId}\n      name: launch-template-name\n      versionDescription: launch template block device mapping\n      version: '3'\n      instanceRequirements:\n        allowedInstanceTypes:\n          - t3a.*\n          - c5.*\n        vcpuCount:\n          min: 0\n          max: 2\n        memoryMib:\n          min: 4096\n          max: 5120\n  mixedInstanceTest:\n    type: duplocloud:AwsLaunchTemplate\n    name: mixed_instance_test\n    properties:\n      tenantId: ${myapp.tenantId}\n      name: ${[\"mixed-instances-asg\"].fullname}\n      versionDescription: launch template with extended instance requirements\n      instanceRequirements:\n        allowedInstanceTypes:\n          - m5.*\n          - m5a.*\n          - c5.*\n        vcpuCount:\n          min: 2\n          max: 8\n        memoryMib:\n          min: 4096\n          max: 32768\n        cpuManufacturers:\n          - intel\n          - amd\n        instanceGenerations:\n          - current\n        spotMaxPricePercentageOverLowestPrice: 100\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nExample: Importing an existing AWS launch template\n\n - *TENANT_ID* is the tenant GUID\n\n - *NAME* is the name of the AWS launch template\n\n - *VERSION* available version of launch template , it is optional, use if needed to import specific version of available launch template\n\n```sh\n$ pulumi import duplocloud:index/awsLaunchTemplate:AwsLaunchTemplate lt *TENANT_ID*/launch-template/*NAME*/*VERSION*\n```\n\n",
             "properties": {
                 "ami": {
                     "type": "string",
@@ -61763,6 +62224,229 @@
                 },
                 "required": [
                     "datas",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "duplocloud:index/getRdsInstance:getRdsInstance": {
+            "description": "`duplocloud.RdsInstance` retrieves the current configuration of an RDS instance (or promoted read replica) for a given tenant. Because this datasource always fetches live data from the API, it reflects the current writer endpoint after a failover event.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as duplocloud from \"@pulumi/duplocloud\";\n\nconst reader = duplocloud.getRdsInstance({\n    tenantId: tenantId,\n    name: \"duploread-replica\",\n});\nexport const rdsReaderHost = reader.then(reader =\u003e reader.host);\nconst cluster = duplocloud.getRdsInstance({\n    tenantId: tenantId,\n    name: \"duplocluster\",\n});\nexport const rdsClusterHost = cluster.then(cluster =\u003e cluster.host);\n```\n```python\nimport pulumi\nimport pulumi_duplocloud as duplocloud\n\nreader = duplocloud.get_rds_instance(tenant_id=tenant_id,\n    name=\"duploread-replica\")\npulumi.export(\"rdsReaderHost\", reader.host)\ncluster = duplocloud.get_rds_instance(tenant_id=tenant_id,\n    name=\"duplocluster\")\npulumi.export(\"rdsClusterHost\", cluster.host)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Pulumi = Pulumi.Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var reader = Pulumi.GetRdsInstance.Invoke(new()\n    {\n        TenantId = tenantId,\n        Name = \"duploread-replica\",\n    });\n\n    var cluster = Pulumi.GetRdsInstance.Invoke(new()\n    {\n        TenantId = tenantId,\n        Name = \"duplocluster\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"rdsReaderHost\"] = reader.Apply(getRdsInstanceResult =\u003e getRdsInstanceResult.Host),\n        [\"rdsClusterHost\"] = cluster.Apply(getRdsInstanceResult =\u003e getRdsInstanceResult.Host),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/duplocloud/pulumi-duplocloud/sdk/go/duplocloud\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treader, err := duplocloud.LookupRdsInstance(ctx, \u0026duplocloud.LookupRdsInstanceArgs{\n\t\t\tTenantId: tenantId,\n\t\t\tName:     \"duploread-replica\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"rdsReaderHost\", reader.Host)\n\t\tcluster, err := duplocloud.LookupRdsInstance(ctx, \u0026duplocloud.LookupRdsInstanceArgs{\n\t\t\tTenantId: tenantId,\n\t\t\tName:     \"duplocluster\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"rdsClusterHost\", cluster.Host)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.duplocloud.DuplocloudFunctions;\nimport com.pulumi.duplocloud.inputs.GetRdsInstanceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var reader = DuplocloudFunctions.getRdsInstance(GetRdsInstanceArgs.builder()\n            .tenantId(tenantId)\n            .name(\"duploread-replica\")\n            .build());\n\n        ctx.export(\"rdsReaderHost\", reader.applyValue(getRdsInstanceResult -\u003e getRdsInstanceResult.host()));\n        final var cluster = DuplocloudFunctions.getRdsInstance(GetRdsInstanceArgs.builder()\n            .tenantId(tenantId)\n            .name(\"duplocluster\")\n            .build());\n\n        ctx.export(\"rdsClusterHost\", cluster.applyValue(getRdsInstanceResult -\u003e getRdsInstanceResult.host()));\n    }\n}\n```\n```yaml\nvariables:\n  reader:\n    fn::invoke:\n      function: duplocloud:getRdsInstance\n      arguments:\n        tenantId: ${tenantId}\n        name: duploread-replica\n  cluster:\n    fn::invoke:\n      function: duplocloud:getRdsInstance\n      arguments:\n        tenantId: ${tenantId}\n        name: duplocluster\noutputs:\n  rdsReaderHost: ${reader.host}\n  rdsClusterHost: ${cluster.host}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getRdsInstance.\n",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the RDS instance.\n"
+                    },
+                    "tenantId": {
+                        "type": "string",
+                        "description": "The GUID of the tenant.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name",
+                    "tenantId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getRdsInstance.\n",
+                "properties": {
+                    "allocatedStorage": {
+                        "description": "The allocated storage in gigabytes.\n",
+                        "type": "integer"
+                    },
+                    "arn": {
+                        "description": "The ARN of the RDS instance.\n",
+                        "type": "string"
+                    },
+                    "autoMinorVersionUpgrade": {
+                        "description": "Whether auto minor version upgrade is enabled.\n",
+                        "type": "boolean"
+                    },
+                    "availabilityZone": {
+                        "description": "The Availability Zone of the RDS instance.\n",
+                        "type": "string"
+                    },
+                    "backupRetentionPeriod": {
+                        "description": "The backup retention period in days.\n",
+                        "type": "integer"
+                    },
+                    "clusterIdentifier": {
+                        "description": "The RDS Cluster Identifier.\n",
+                        "type": "string"
+                    },
+                    "clusterParameterGroupName": {
+                        "description": "Parameter group associated with this instance's DB Cluster.\n",
+                        "type": "string"
+                    },
+                    "dbName": {
+                        "description": "The name of the database.\n",
+                        "type": "string"
+                    },
+                    "dbSubnetGroupName": {
+                        "description": "Name of DB subnet group.\n",
+                        "type": "string"
+                    },
+                    "deletionProtection": {
+                        "description": "Whether deletion protection is enabled.\n",
+                        "type": "boolean"
+                    },
+                    "enableIamAuth": {
+                        "description": "Whether RDS IAM authentication is enabled.\n",
+                        "type": "boolean"
+                    },
+                    "enableLogging": {
+                        "description": "Whether or not RDS instance logging is enabled.\n",
+                        "type": "boolean"
+                    },
+                    "encryptStorage": {
+                        "description": "Whether or not the RDS instance storage is encrypted.\n",
+                        "type": "boolean"
+                    },
+                    "endpoint": {
+                        "description": "The current connection endpoint (host:port) of the RDS instance. Reflects the promoted writer after a failover.\n",
+                        "type": "string"
+                    },
+                    "engine": {
+                        "description": "The numerical index of database engine to use for the RDS instance.\n",
+                        "type": "integer"
+                    },
+                    "engineVersion": {
+                        "description": "The database engine version.\n",
+                        "type": "string"
+                    },
+                    "enhancedMonitoring": {
+                        "description": "The enhanced monitoring interval in seconds.\n",
+                        "type": "integer"
+                    },
+                    "host": {
+                        "description": "The DNS hostname of the RDS instance.\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "identifier": {
+                        "description": "The full name of the RDS instance.\n",
+                        "type": "string"
+                    },
+                    "instanceStatus": {
+                        "description": "The current status of the RDS instance.\n",
+                        "type": "string"
+                    },
+                    "iops": {
+                        "description": "The IOPS value for the RDS instance.\n",
+                        "type": "integer"
+                    },
+                    "kmsKeyId": {
+                        "description": "The globally unique identifier for the KMS key.\n",
+                        "type": "string"
+                    },
+                    "masterUsername": {
+                        "description": "The master username of the RDS instance.\n",
+                        "type": "string"
+                    },
+                    "multiAz": {
+                        "description": "Whether the RDS instance is multi-AZ.\n",
+                        "type": "boolean"
+                    },
+                    "name": {
+                        "description": "The name of the RDS instance.\n",
+                        "type": "string"
+                    },
+                    "parameterGroupName": {
+                        "description": "The RDS parameter group name applied to the instance.\n",
+                        "type": "string"
+                    },
+                    "performanceInsights": {
+                        "description": "Amazon RDS Performance Insights configuration.\n",
+                        "items": {
+                            "$ref": "#/types/duplocloud:index/getRdsInstancePerformanceInsight:getRdsInstancePerformanceInsight"
+                        },
+                        "type": "array"
+                    },
+                    "port": {
+                        "description": "The listening port of the RDS instance.\n",
+                        "type": "integer"
+                    },
+                    "size": {
+                        "description": "The instance type of the RDS instance.\n",
+                        "type": "string"
+                    },
+                    "skipFinalSnapshot": {
+                        "description": "Whether the final snapshot is skipped on delete.\n",
+                        "type": "boolean"
+                    },
+                    "snapshotId": {
+                        "description": "The database snapshot the RDS instance was initialized from.\n",
+                        "type": "string"
+                    },
+                    "storageAutoscalings": {
+                        "description": "Storage autoscaling configuration.\n",
+                        "items": {
+                            "$ref": "#/types/duplocloud:index/getRdsInstanceStorageAutoscaling:getRdsInstanceStorageAutoscaling"
+                        },
+                        "type": "array"
+                    },
+                    "storageType": {
+                        "description": "Storage type used for RDS instance storage.\n",
+                        "type": "string"
+                    },
+                    "storeDetailsInSecretManager": {
+                        "description": "Whether or not RDS details are stored in the AWS secrets manager.\n",
+                        "type": "boolean"
+                    },
+                    "tenantId": {
+                        "description": "The GUID of the tenant.\n",
+                        "type": "string"
+                    },
+                    "v2ScalingConfigurations": {
+                        "description": "Serverless v2 scaling configuration.\n",
+                        "items": {
+                            "$ref": "#/types/duplocloud:index/getRdsInstanceV2ScalingConfiguration:getRdsInstanceV2ScalingConfiguration"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "allocatedStorage",
+                    "arn",
+                    "autoMinorVersionUpgrade",
+                    "availabilityZone",
+                    "backupRetentionPeriod",
+                    "clusterIdentifier",
+                    "clusterParameterGroupName",
+                    "dbName",
+                    "dbSubnetGroupName",
+                    "deletionProtection",
+                    "enableIamAuth",
+                    "enableLogging",
+                    "encryptStorage",
+                    "endpoint",
+                    "engine",
+                    "engineVersion",
+                    "enhancedMonitoring",
+                    "host",
+                    "identifier",
+                    "instanceStatus",
+                    "iops",
+                    "kmsKeyId",
+                    "masterUsername",
+                    "multiAz",
+                    "name",
+                    "parameterGroupName",
+                    "performanceInsights",
+                    "port",
+                    "size",
+                    "skipFinalSnapshot",
+                    "snapshotId",
+                    "storageAutoscalings",
+                    "storageType",
+                    "storeDetailsInSecretManager",
+                    "tenantId",
+                    "v2ScalingConfigurations",
                     "id"
                 ],
                 "type": "object"

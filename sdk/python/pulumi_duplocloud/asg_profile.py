@@ -21,7 +21,6 @@ __all__ = ['AsgProfileArgs', 'AsgProfile']
 @pulumi.input_type
 class AsgProfileArgs:
     def __init__(__self__, *,
-                 capacity: pulumi.Input[str],
                  friendly_name: pulumi.Input[str],
                  image_id: pulumi.Input[str],
                  tenant_id: pulumi.Input[str],
@@ -29,6 +28,7 @@ class AsgProfileArgs:
                  allocated_public_ip: Optional[pulumi.Input[bool]] = None,
                  base64_user_data: Optional[pulumi.Input[str]] = None,
                  can_scale_from_zero: Optional[pulumi.Input[bool]] = None,
+                 capacity: Optional[pulumi.Input[str]] = None,
                  cloud: Optional[pulumi.Input[int]] = None,
                  custom_data_tags: Optional[pulumi.Input[Sequence[pulumi.Input['AsgProfileCustomDataTagArgs']]]] = None,
                  custom_node_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -44,6 +44,7 @@ class AsgProfileArgs:
                  metadatas: Optional[pulumi.Input[Sequence[pulumi.Input['AsgProfileMetadataArgs']]]] = None,
                  min_instance_count: Optional[pulumi.Input[int]] = None,
                  minion_tags: Optional[pulumi.Input[Sequence[pulumi.Input['AsgProfileMinionTagArgs']]]] = None,
+                 mixed_instances_policy: Optional[pulumi.Input['AsgProfileMixedInstancesPolicyArgs']] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['AsgProfileNetworkInterfaceArgs']]]] = None,
                  prepend_user_data: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['AsgProfileTagArgs']]]] = None,
@@ -56,7 +57,6 @@ class AsgProfileArgs:
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None):
         """
         The set of arguments for constructing a AsgProfile resource.
-        :param pulumi.Input[str] capacity: The AWS EC2 instance type.
         :param pulumi.Input[str] friendly_name: The short name of the host.
         :param pulumi.Input[str] image_id: The AMI ID to use.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the host will be created in.
@@ -65,6 +65,7 @@ class AsgProfileArgs:
         :param pulumi.Input[bool] allocated_public_ip: Whether or not to allocate a public IP.
         :param pulumi.Input[str] base64_user_data: Base64 encoded EC2 user data to associated with the host.
         :param pulumi.Input[bool] can_scale_from_zero: Whether or not ASG should leverage duplocloud's scale from 0 feature
+        :param pulumi.Input[str] capacity: The AWS EC2 instance type.
         :param pulumi.Input[int] cloud: The numeric ID of the cloud provider to launch the host in.
         :param pulumi.Input[Sequence[pulumi.Input['AsgProfileCustomDataTagArgs']]] custom_data_tags: A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value. **Note:**
                When importing an ASG created using the minion_tags block, from v0.12.6 onwards, need to add a custom_data_tags block by
@@ -82,6 +83,8 @@ class AsgProfileArgs:
                Key and its size as value, size value should be atleast 10*
         :param pulumi.Input[int] min_instance_count: The minimum size of the Auto Scaling Group.
         :param pulumi.Input[Sequence[pulumi.Input['AsgProfileMinionTagArgs']]] minion_tags: A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value.
+        :param pulumi.Input['AsgProfileMixedInstancesPolicyArgs'] mixed_instances_policy: Configuration block for a mixed instances policy. This allows an ASG to use multiple instance types and a mix of
+               On-Demand and Spot instances.
         :param pulumi.Input[Sequence[pulumi.Input['AsgProfileNetworkInterfaceArgs']]] network_interfaces: An optional list of custom network interface configurations to use when creating the host.
         :param pulumi.Input[bool] prepend_user_data: Bootstrap an EKS host with Duplo's user data, prepending it to custom user data if also provided.
         :param pulumi.Input[Sequence[pulumi.Input['AsgProfileTaintArgs']]] taints: Specify taints to attach to the nodes, to repel other nodes with different toleration
@@ -93,7 +96,6 @@ class AsgProfileArgs:
         :param pulumi.Input[Sequence[pulumi.Input[int]]] zones: The multi availability zone to launch the asg in, expressed as a number and starting at 0 - Zone A to 3 - Zone D, based
                on the infra setup
         """
-        pulumi.set(__self__, "capacity", capacity)
         pulumi.set(__self__, "friendly_name", friendly_name)
         pulumi.set(__self__, "image_id", image_id)
         pulumi.set(__self__, "tenant_id", tenant_id)
@@ -105,6 +107,8 @@ class AsgProfileArgs:
             pulumi.set(__self__, "base64_user_data", base64_user_data)
         if can_scale_from_zero is not None:
             pulumi.set(__self__, "can_scale_from_zero", can_scale_from_zero)
+        if capacity is not None:
+            pulumi.set(__self__, "capacity", capacity)
         if cloud is not None:
             pulumi.set(__self__, "cloud", cloud)
         if custom_data_tags is not None:
@@ -138,6 +142,8 @@ class AsgProfileArgs:
             pulumi.log.warn("""minion_tags is deprecated: minion_tags is deprecated and will be removed in a future release. Use custom_data_tags instead.""")
         if minion_tags is not None:
             pulumi.set(__self__, "minion_tags", minion_tags)
+        if mixed_instances_policy is not None:
+            pulumi.set(__self__, "mixed_instances_policy", mixed_instances_policy)
         if network_interfaces is not None:
             pulumi.set(__self__, "network_interfaces", network_interfaces)
         if prepend_user_data is not None:
@@ -161,18 +167,6 @@ class AsgProfileArgs:
             pulumi.set(__self__, "zone", zone)
         if zones is not None:
             pulumi.set(__self__, "zones", zones)
-
-    @property
-    @pulumi.getter
-    def capacity(self) -> pulumi.Input[str]:
-        """
-        The AWS EC2 instance type.
-        """
-        return pulumi.get(self, "capacity")
-
-    @capacity.setter
-    def capacity(self, value: pulumi.Input[str]):
-        pulumi.set(self, "capacity", value)
 
     @property
     @pulumi.getter(name="friendlyName")
@@ -258,6 +252,18 @@ class AsgProfileArgs:
     @can_scale_from_zero.setter
     def can_scale_from_zero(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "can_scale_from_zero", value)
+
+    @property
+    @pulumi.getter
+    def capacity(self) -> Optional[pulumi.Input[str]]:
+        """
+        The AWS EC2 instance type.
+        """
+        return pulumi.get(self, "capacity")
+
+    @capacity.setter
+    def capacity(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "capacity", value)
 
     @property
     @pulumi.getter
@@ -437,6 +443,19 @@ class AsgProfileArgs:
         pulumi.set(self, "minion_tags", value)
 
     @property
+    @pulumi.getter(name="mixedInstancesPolicy")
+    def mixed_instances_policy(self) -> Optional[pulumi.Input['AsgProfileMixedInstancesPolicyArgs']]:
+        """
+        Configuration block for a mixed instances policy. This allows an ASG to use multiple instance types and a mix of
+        On-Demand and Spot instances.
+        """
+        return pulumi.get(self, "mixed_instances_policy")
+
+    @mixed_instances_policy.setter
+    def mixed_instances_policy(self, value: Optional[pulumi.Input['AsgProfileMixedInstancesPolicyArgs']]):
+        pulumi.set(self, "mixed_instances_policy", value)
+
+    @property
     @pulumi.getter(name="networkInterfaces")
     def network_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AsgProfileNetworkInterfaceArgs']]]]:
         """
@@ -584,6 +603,7 @@ class _AsgProfileState:
                  metadatas: Optional[pulumi.Input[Sequence[pulumi.Input['AsgProfileMetadataArgs']]]] = None,
                  min_instance_count: Optional[pulumi.Input[int]] = None,
                  minion_tags: Optional[pulumi.Input[Sequence[pulumi.Input['AsgProfileMinionTagArgs']]]] = None,
+                 mixed_instances_policy: Optional[pulumi.Input['AsgProfileMixedInstancesPolicyArgs']] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['AsgProfileNetworkInterfaceArgs']]]] = None,
                  prepend_user_data: Optional[pulumi.Input[bool]] = None,
                  public_ip_address: Optional[pulumi.Input[str]] = None,
@@ -625,6 +645,8 @@ class _AsgProfileState:
                Key and its size as value, size value should be atleast 10*
         :param pulumi.Input[int] min_instance_count: The minimum size of the Auto Scaling Group.
         :param pulumi.Input[Sequence[pulumi.Input['AsgProfileMinionTagArgs']]] minion_tags: A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value.
+        :param pulumi.Input['AsgProfileMixedInstancesPolicyArgs'] mixed_instances_policy: Configuration block for a mixed instances policy. This allows an ASG to use multiple instance types and a mix of
+               On-Demand and Spot instances.
         :param pulumi.Input[Sequence[pulumi.Input['AsgProfileNetworkInterfaceArgs']]] network_interfaces: An optional list of custom network interface configurations to use when creating the host.
         :param pulumi.Input[bool] prepend_user_data: Bootstrap an EKS host with Duplo's user data, prepending it to custom user data if also provided.
         :param pulumi.Input[str] public_ip_address: The primary public IP address assigned to the host.
@@ -691,6 +713,8 @@ class _AsgProfileState:
             pulumi.log.warn("""minion_tags is deprecated: minion_tags is deprecated and will be removed in a future release. Use custom_data_tags instead.""")
         if minion_tags is not None:
             pulumi.set(__self__, "minion_tags", minion_tags)
+        if mixed_instances_policy is not None:
+            pulumi.set(__self__, "mixed_instances_policy", mixed_instances_policy)
         if network_interfaces is not None:
             pulumi.set(__self__, "network_interfaces", network_interfaces)
         if prepend_user_data is not None:
@@ -1015,6 +1039,19 @@ class _AsgProfileState:
         pulumi.set(self, "minion_tags", value)
 
     @property
+    @pulumi.getter(name="mixedInstancesPolicy")
+    def mixed_instances_policy(self) -> Optional[pulumi.Input['AsgProfileMixedInstancesPolicyArgs']]:
+        """
+        Configuration block for a mixed instances policy. This allows an ASG to use multiple instance types and a mix of
+        On-Demand and Spot instances.
+        """
+        return pulumi.get(self, "mixed_instances_policy")
+
+    @mixed_instances_policy.setter
+    def mixed_instances_policy(self, value: Optional[pulumi.Input['AsgProfileMixedInstancesPolicyArgs']]):
+        pulumi.set(self, "mixed_instances_policy", value)
+
+    @property
     @pulumi.getter(name="networkInterfaces")
     def network_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AsgProfileNetworkInterfaceArgs']]]]:
         """
@@ -1185,6 +1222,7 @@ class AsgProfile(pulumi.CustomResource):
                  metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AsgProfileMetadataArgs', 'AsgProfileMetadataArgsDict']]]]] = None,
                  min_instance_count: Optional[pulumi.Input[int]] = None,
                  minion_tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AsgProfileMinionTagArgs', 'AsgProfileMinionTagArgsDict']]]]] = None,
+                 mixed_instances_policy: Optional[pulumi.Input[Union['AsgProfileMixedInstancesPolicyArgs', 'AsgProfileMixedInstancesPolicyArgsDict']]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AsgProfileNetworkInterfaceArgs', 'AsgProfileNetworkInterfaceArgsDict']]]]] = None,
                  prepend_user_data: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AsgProfileTagArgs', 'AsgProfileTagArgsDict']]]]] = None,
@@ -1244,6 +1282,8 @@ class AsgProfile(pulumi.CustomResource):
                Key and its size as value, size value should be atleast 10*
         :param pulumi.Input[int] min_instance_count: The minimum size of the Auto Scaling Group.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AsgProfileMinionTagArgs', 'AsgProfileMinionTagArgsDict']]]] minion_tags: A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value.
+        :param pulumi.Input[Union['AsgProfileMixedInstancesPolicyArgs', 'AsgProfileMixedInstancesPolicyArgsDict']] mixed_instances_policy: Configuration block for a mixed instances policy. This allows an ASG to use multiple instance types and a mix of
+               On-Demand and Spot instances.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AsgProfileNetworkInterfaceArgs', 'AsgProfileNetworkInterfaceArgsDict']]]] network_interfaces: An optional list of custom network interface configurations to use when creating the host.
         :param pulumi.Input[bool] prepend_user_data: Bootstrap an EKS host with Duplo's user data, prepending it to custom user data if also provided.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AsgProfileTaintArgs', 'AsgProfileTaintArgsDict']]]] taints: Specify taints to attach to the nodes, to repel other nodes with different toleration
@@ -1319,6 +1359,7 @@ class AsgProfile(pulumi.CustomResource):
                  metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AsgProfileMetadataArgs', 'AsgProfileMetadataArgsDict']]]]] = None,
                  min_instance_count: Optional[pulumi.Input[int]] = None,
                  minion_tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AsgProfileMinionTagArgs', 'AsgProfileMinionTagArgsDict']]]]] = None,
+                 mixed_instances_policy: Optional[pulumi.Input[Union['AsgProfileMixedInstancesPolicyArgs', 'AsgProfileMixedInstancesPolicyArgsDict']]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AsgProfileNetworkInterfaceArgs', 'AsgProfileNetworkInterfaceArgsDict']]]]] = None,
                  prepend_user_data: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AsgProfileTagArgs', 'AsgProfileTagArgsDict']]]]] = None,
@@ -1343,8 +1384,6 @@ class AsgProfile(pulumi.CustomResource):
             __props__.__dict__["allocated_public_ip"] = allocated_public_ip
             __props__.__dict__["base64_user_data"] = base64_user_data
             __props__.__dict__["can_scale_from_zero"] = can_scale_from_zero
-            if capacity is None and not opts.urn:
-                raise TypeError("Missing required property 'capacity'")
             __props__.__dict__["capacity"] = capacity
             __props__.__dict__["cloud"] = cloud
             __props__.__dict__["custom_data_tags"] = custom_data_tags
@@ -1367,6 +1406,7 @@ class AsgProfile(pulumi.CustomResource):
             __props__.__dict__["metadatas"] = metadatas
             __props__.__dict__["min_instance_count"] = min_instance_count
             __props__.__dict__["minion_tags"] = minion_tags
+            __props__.__dict__["mixed_instances_policy"] = mixed_instances_policy
             __props__.__dict__["network_interfaces"] = network_interfaces
             __props__.__dict__["prepend_user_data"] = prepend_user_data
             __props__.__dict__["tags"] = tags
@@ -1419,6 +1459,7 @@ class AsgProfile(pulumi.CustomResource):
             metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AsgProfileMetadataArgs', 'AsgProfileMetadataArgsDict']]]]] = None,
             min_instance_count: Optional[pulumi.Input[int]] = None,
             minion_tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AsgProfileMinionTagArgs', 'AsgProfileMinionTagArgsDict']]]]] = None,
+            mixed_instances_policy: Optional[pulumi.Input[Union['AsgProfileMixedInstancesPolicyArgs', 'AsgProfileMixedInstancesPolicyArgsDict']]] = None,
             network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AsgProfileNetworkInterfaceArgs', 'AsgProfileNetworkInterfaceArgsDict']]]]] = None,
             prepend_user_data: Optional[pulumi.Input[bool]] = None,
             public_ip_address: Optional[pulumi.Input[str]] = None,
@@ -1465,6 +1506,8 @@ class AsgProfile(pulumi.CustomResource):
                Key and its size as value, size value should be atleast 10*
         :param pulumi.Input[int] min_instance_count: The minimum size of the Auto Scaling Group.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AsgProfileMinionTagArgs', 'AsgProfileMinionTagArgsDict']]]] minion_tags: A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value.
+        :param pulumi.Input[Union['AsgProfileMixedInstancesPolicyArgs', 'AsgProfileMixedInstancesPolicyArgsDict']] mixed_instances_policy: Configuration block for a mixed instances policy. This allows an ASG to use multiple instance types and a mix of
+               On-Demand and Spot instances.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AsgProfileNetworkInterfaceArgs', 'AsgProfileNetworkInterfaceArgsDict']]]] network_interfaces: An optional list of custom network interface configurations to use when creating the host.
         :param pulumi.Input[bool] prepend_user_data: Bootstrap an EKS host with Duplo's user data, prepending it to custom user data if also provided.
         :param pulumi.Input[str] public_ip_address: The primary public IP address assigned to the host.
@@ -1507,6 +1550,7 @@ class AsgProfile(pulumi.CustomResource):
         __props__.__dict__["metadatas"] = metadatas
         __props__.__dict__["min_instance_count"] = min_instance_count
         __props__.__dict__["minion_tags"] = minion_tags
+        __props__.__dict__["mixed_instances_policy"] = mixed_instances_policy
         __props__.__dict__["network_interfaces"] = network_interfaces
         __props__.__dict__["prepend_user_data"] = prepend_user_data
         __props__.__dict__["public_ip_address"] = public_ip_address
@@ -1564,7 +1608,7 @@ class AsgProfile(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def capacity(self) -> pulumi.Output[str]:
+    def capacity(self) -> pulumi.Output[Optional[str]]:
         """
         The AWS EC2 instance type.
         """
@@ -1715,6 +1759,15 @@ class AsgProfile(pulumi.CustomResource):
         A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value.
         """
         return pulumi.get(self, "minion_tags")
+
+    @property
+    @pulumi.getter(name="mixedInstancesPolicy")
+    def mixed_instances_policy(self) -> pulumi.Output[Optional['outputs.AsgProfileMixedInstancesPolicy']]:
+        """
+        Configuration block for a mixed instances policy. This allows an ASG to use multiple instance types and a mix of
+        On-Demand and Spot instances.
+        """
+        return pulumi.get(self, "mixed_instances_policy")
 
     @property
     @pulumi.getter(name="networkInterfaces")

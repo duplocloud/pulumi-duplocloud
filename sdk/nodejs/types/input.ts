@@ -20,6 +20,119 @@ export interface AsgProfileMinionTag {
     value: pulumi.Input<string>;
 }
 
+export interface AsgProfileMixedInstancesPolicy {
+    /**
+     * Configuration for the distribution of On-Demand and Spot instances.
+     */
+    instancesDistribution?: pulumi.Input<inputs.AsgProfileMixedInstancesPolicyInstancesDistribution>;
+    /**
+     * Launch template configuration with instance type overrides.
+     */
+    launchTemplate?: pulumi.Input<inputs.AsgProfileMixedInstancesPolicyLaunchTemplate>;
+}
+
+export interface AsgProfileMixedInstancesPolicyInstancesDistribution {
+    /**
+     * Strategy for allocating On-Demand instances (e.g. `prioritized`).
+     */
+    onDemandAllocationStrategy?: pulumi.Input<string>;
+    /**
+     * Minimum number of On-Demand instances in the group.
+     */
+    onDemandBaseCapacity?: pulumi.Input<number>;
+    /**
+     * Percentage of On-Demand instances above the base capacity (0-100).
+     */
+    onDemandPercentageAboveBaseCapacity?: pulumi.Input<number>;
+    /**
+     * Strategy for allocating Spot instances (e.g. `capacity-optimized`, `price-capacity-optimized`, `lowest-price`).
+     */
+    spotAllocationStrategy?: pulumi.Input<string>;
+    /**
+     * Number of Spot pools for allocation (only used with `lowest-price` strategy).
+     */
+    spotInstancePools?: pulumi.Input<number>;
+    /**
+     * Maximum price per unit hour for Spot instances.
+     */
+    spotMaxPrice?: pulumi.Input<string>;
+}
+
+export interface AsgProfileMixedInstancesPolicyLaunchTemplate {
+    /**
+     * List of instance type overrides for the launch template.
+     */
+    overrides?: pulumi.Input<pulumi.Input<inputs.AsgProfileMixedInstancesPolicyLaunchTemplateOverride>[]>;
+}
+
+export interface AsgProfileMixedInstancesPolicyLaunchTemplateOverride {
+    /**
+     * Instance requirements for flexible instance selection.
+     */
+    instanceRequirements?: pulumi.Input<inputs.AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirements>;
+    /**
+     * The instance type. Mutually exclusive with `instanceRequirements`.
+     */
+    instanceType?: pulumi.Input<string>;
+    /**
+     * The number of capacity units provided by the instance type.
+     */
+    weightedCapacity?: pulumi.Input<string>;
+}
+
+export interface AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirements {
+    /**
+     * List of allowed instance types (e.g. `m5.large`, `m5a.large`). Cannot be specified if `excludedInstanceTypes` is specified in the same launch template override.
+     */
+    allowedInstanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of CPU manufacturers (e.g. `intel`, `amd`, `amazon-web-services`).
+     */
+    cpuManufacturers?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of excluded instance types. Cannot be specified if `allowedInstanceTypes` is specified in the same launch template override.
+     */
+    excludedInstanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of instance generations (e.g. `current`, `previous`).
+     */
+    instanceGenerations?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Range of memory in MiB.
+     */
+    memoryMib: pulumi.Input<inputs.AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMib>;
+    /**
+     * Price protection threshold as a percentage over the lowest price.
+     */
+    spotMaxPricePercentageOverLowestPrice?: pulumi.Input<number>;
+    /**
+     * Range of vCPU counts.
+     */
+    vcpuCount: pulumi.Input<inputs.AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCount>;
+}
+
+export interface AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMib {
+    /**
+     * Maximum memory in MiB.
+     */
+    max?: pulumi.Input<number>;
+    /**
+     * Minimum memory in MiB.
+     */
+    min: pulumi.Input<number>;
+}
+
+export interface AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCount {
+    /**
+     * Maximum number of vCPUs.
+     */
+    max?: pulumi.Input<number>;
+    /**
+     * Minimum number of vCPUs.
+     */
+    min: pulumi.Input<number>;
+}
+
 export interface AsgProfileNetworkInterface {
     /**
      * Whether or not to associate a public IP with the newly created ENI.  Cannot be specified if `networkInterfaceId` is specified.
@@ -1237,9 +1350,25 @@ export interface AwsLaunchTemplateBlockDeviceMappingEbs {
 export interface AwsLaunchTemplateInstanceRequirements {
     allowedInstanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * List of CPU manufacturers (e.g. `intel`, `amd`, `amazon-web-services`).
+     */
+    cpuManufacturers?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of excluded instance types. Mutually exclusive with `allowedInstanceTypes`.
+     */
+    excludedInstanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of instance generations (e.g. `current`, `previous`).
+     */
+    instanceGenerations?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Block describing the minimum and maximum amount of memory (MiB). It is a required field when allowed*instance*types is set
      */
     memoryMib?: pulumi.Input<inputs.AwsLaunchTemplateInstanceRequirementsMemoryMib>;
+    /**
+     * Price protection threshold as a percentage over the lowest price.
+     */
+    spotMaxPricePercentageOverLowestPrice?: pulumi.Input<number>;
     /**
      * Block describing the minimum and maximum number of vCPUs. It is a required field when allowed*instance*types is set
      */
