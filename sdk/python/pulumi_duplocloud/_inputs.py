@@ -21,6 +21,20 @@ __all__ = [
     'AsgProfileMetadataArgsDict',
     'AsgProfileMinionTagArgs',
     'AsgProfileMinionTagArgsDict',
+    'AsgProfileMixedInstancesPolicyArgs',
+    'AsgProfileMixedInstancesPolicyArgsDict',
+    'AsgProfileMixedInstancesPolicyInstancesDistributionArgs',
+    'AsgProfileMixedInstancesPolicyInstancesDistributionArgsDict',
+    'AsgProfileMixedInstancesPolicyLaunchTemplateArgs',
+    'AsgProfileMixedInstancesPolicyLaunchTemplateArgsDict',
+    'AsgProfileMixedInstancesPolicyLaunchTemplateOverrideArgs',
+    'AsgProfileMixedInstancesPolicyLaunchTemplateOverrideArgsDict',
+    'AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsArgs',
+    'AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsArgsDict',
+    'AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibArgs',
+    'AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibArgsDict',
+    'AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountArgs',
+    'AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountArgsDict',
     'AsgProfileNetworkInterfaceArgs',
     'AsgProfileNetworkInterfaceArgsDict',
     'AsgProfileNetworkInterfaceMetadataArgs',
@@ -1507,6 +1521,546 @@ class AsgProfileMinionTagArgs:
     @value.setter
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class AsgProfileMixedInstancesPolicyArgsDict(TypedDict):
+        instances_distribution: NotRequired[pulumi.Input['AsgProfileMixedInstancesPolicyInstancesDistributionArgsDict']]
+        """
+        Configuration for the distribution of On-Demand and Spot instances.
+        """
+        launch_template: NotRequired[pulumi.Input['AsgProfileMixedInstancesPolicyLaunchTemplateArgsDict']]
+        """
+        Launch template configuration with instance type overrides.
+        """
+elif False:
+    AsgProfileMixedInstancesPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AsgProfileMixedInstancesPolicyArgs:
+    def __init__(__self__, *,
+                 instances_distribution: Optional[pulumi.Input['AsgProfileMixedInstancesPolicyInstancesDistributionArgs']] = None,
+                 launch_template: Optional[pulumi.Input['AsgProfileMixedInstancesPolicyLaunchTemplateArgs']] = None):
+        """
+        :param pulumi.Input['AsgProfileMixedInstancesPolicyInstancesDistributionArgs'] instances_distribution: Configuration for the distribution of On-Demand and Spot instances.
+        :param pulumi.Input['AsgProfileMixedInstancesPolicyLaunchTemplateArgs'] launch_template: Launch template configuration with instance type overrides.
+        """
+        if instances_distribution is not None:
+            pulumi.set(__self__, "instances_distribution", instances_distribution)
+        if launch_template is not None:
+            pulumi.set(__self__, "launch_template", launch_template)
+
+    @property
+    @pulumi.getter(name="instancesDistribution")
+    def instances_distribution(self) -> Optional[pulumi.Input['AsgProfileMixedInstancesPolicyInstancesDistributionArgs']]:
+        """
+        Configuration for the distribution of On-Demand and Spot instances.
+        """
+        return pulumi.get(self, "instances_distribution")
+
+    @instances_distribution.setter
+    def instances_distribution(self, value: Optional[pulumi.Input['AsgProfileMixedInstancesPolicyInstancesDistributionArgs']]):
+        pulumi.set(self, "instances_distribution", value)
+
+    @property
+    @pulumi.getter(name="launchTemplate")
+    def launch_template(self) -> Optional[pulumi.Input['AsgProfileMixedInstancesPolicyLaunchTemplateArgs']]:
+        """
+        Launch template configuration with instance type overrides.
+        """
+        return pulumi.get(self, "launch_template")
+
+    @launch_template.setter
+    def launch_template(self, value: Optional[pulumi.Input['AsgProfileMixedInstancesPolicyLaunchTemplateArgs']]):
+        pulumi.set(self, "launch_template", value)
+
+
+if not MYPY:
+    class AsgProfileMixedInstancesPolicyInstancesDistributionArgsDict(TypedDict):
+        on_demand_allocation_strategy: NotRequired[pulumi.Input[str]]
+        """
+        Strategy for allocating On-Demand instances (e.g. `prioritized`).
+        """
+        on_demand_base_capacity: NotRequired[pulumi.Input[int]]
+        """
+        Minimum number of On-Demand instances in the group.
+        """
+        on_demand_percentage_above_base_capacity: NotRequired[pulumi.Input[int]]
+        """
+        Percentage of On-Demand instances above the base capacity (0-100).
+        """
+        spot_allocation_strategy: NotRequired[pulumi.Input[str]]
+        """
+        Strategy for allocating Spot instances (e.g. `capacity-optimized`, `price-capacity-optimized`, `lowest-price`).
+        """
+        spot_instance_pools: NotRequired[pulumi.Input[int]]
+        """
+        Number of Spot pools for allocation (only used with `lowest-price` strategy).
+        """
+        spot_max_price: NotRequired[pulumi.Input[str]]
+        """
+        Maximum price per unit hour for Spot instances.
+        """
+elif False:
+    AsgProfileMixedInstancesPolicyInstancesDistributionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AsgProfileMixedInstancesPolicyInstancesDistributionArgs:
+    def __init__(__self__, *,
+                 on_demand_allocation_strategy: Optional[pulumi.Input[str]] = None,
+                 on_demand_base_capacity: Optional[pulumi.Input[int]] = None,
+                 on_demand_percentage_above_base_capacity: Optional[pulumi.Input[int]] = None,
+                 spot_allocation_strategy: Optional[pulumi.Input[str]] = None,
+                 spot_instance_pools: Optional[pulumi.Input[int]] = None,
+                 spot_max_price: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] on_demand_allocation_strategy: Strategy for allocating On-Demand instances (e.g. `prioritized`).
+        :param pulumi.Input[int] on_demand_base_capacity: Minimum number of On-Demand instances in the group.
+        :param pulumi.Input[int] on_demand_percentage_above_base_capacity: Percentage of On-Demand instances above the base capacity (0-100).
+        :param pulumi.Input[str] spot_allocation_strategy: Strategy for allocating Spot instances (e.g. `capacity-optimized`, `price-capacity-optimized`, `lowest-price`).
+        :param pulumi.Input[int] spot_instance_pools: Number of Spot pools for allocation (only used with `lowest-price` strategy).
+        :param pulumi.Input[str] spot_max_price: Maximum price per unit hour for Spot instances.
+        """
+        if on_demand_allocation_strategy is not None:
+            pulumi.set(__self__, "on_demand_allocation_strategy", on_demand_allocation_strategy)
+        if on_demand_base_capacity is not None:
+            pulumi.set(__self__, "on_demand_base_capacity", on_demand_base_capacity)
+        if on_demand_percentage_above_base_capacity is not None:
+            pulumi.set(__self__, "on_demand_percentage_above_base_capacity", on_demand_percentage_above_base_capacity)
+        if spot_allocation_strategy is not None:
+            pulumi.set(__self__, "spot_allocation_strategy", spot_allocation_strategy)
+        if spot_instance_pools is not None:
+            pulumi.set(__self__, "spot_instance_pools", spot_instance_pools)
+        if spot_max_price is not None:
+            pulumi.set(__self__, "spot_max_price", spot_max_price)
+
+    @property
+    @pulumi.getter(name="onDemandAllocationStrategy")
+    def on_demand_allocation_strategy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Strategy for allocating On-Demand instances (e.g. `prioritized`).
+        """
+        return pulumi.get(self, "on_demand_allocation_strategy")
+
+    @on_demand_allocation_strategy.setter
+    def on_demand_allocation_strategy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "on_demand_allocation_strategy", value)
+
+    @property
+    @pulumi.getter(name="onDemandBaseCapacity")
+    def on_demand_base_capacity(self) -> Optional[pulumi.Input[int]]:
+        """
+        Minimum number of On-Demand instances in the group.
+        """
+        return pulumi.get(self, "on_demand_base_capacity")
+
+    @on_demand_base_capacity.setter
+    def on_demand_base_capacity(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "on_demand_base_capacity", value)
+
+    @property
+    @pulumi.getter(name="onDemandPercentageAboveBaseCapacity")
+    def on_demand_percentage_above_base_capacity(self) -> Optional[pulumi.Input[int]]:
+        """
+        Percentage of On-Demand instances above the base capacity (0-100).
+        """
+        return pulumi.get(self, "on_demand_percentage_above_base_capacity")
+
+    @on_demand_percentage_above_base_capacity.setter
+    def on_demand_percentage_above_base_capacity(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "on_demand_percentage_above_base_capacity", value)
+
+    @property
+    @pulumi.getter(name="spotAllocationStrategy")
+    def spot_allocation_strategy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Strategy for allocating Spot instances (e.g. `capacity-optimized`, `price-capacity-optimized`, `lowest-price`).
+        """
+        return pulumi.get(self, "spot_allocation_strategy")
+
+    @spot_allocation_strategy.setter
+    def spot_allocation_strategy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "spot_allocation_strategy", value)
+
+    @property
+    @pulumi.getter(name="spotInstancePools")
+    def spot_instance_pools(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of Spot pools for allocation (only used with `lowest-price` strategy).
+        """
+        return pulumi.get(self, "spot_instance_pools")
+
+    @spot_instance_pools.setter
+    def spot_instance_pools(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "spot_instance_pools", value)
+
+    @property
+    @pulumi.getter(name="spotMaxPrice")
+    def spot_max_price(self) -> Optional[pulumi.Input[str]]:
+        """
+        Maximum price per unit hour for Spot instances.
+        """
+        return pulumi.get(self, "spot_max_price")
+
+    @spot_max_price.setter
+    def spot_max_price(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "spot_max_price", value)
+
+
+if not MYPY:
+    class AsgProfileMixedInstancesPolicyLaunchTemplateArgsDict(TypedDict):
+        overrides: NotRequired[pulumi.Input[Sequence[pulumi.Input['AsgProfileMixedInstancesPolicyLaunchTemplateOverrideArgsDict']]]]
+        """
+        List of instance type overrides for the launch template.
+        """
+elif False:
+    AsgProfileMixedInstancesPolicyLaunchTemplateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AsgProfileMixedInstancesPolicyLaunchTemplateArgs:
+    def __init__(__self__, *,
+                 overrides: Optional[pulumi.Input[Sequence[pulumi.Input['AsgProfileMixedInstancesPolicyLaunchTemplateOverrideArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['AsgProfileMixedInstancesPolicyLaunchTemplateOverrideArgs']]] overrides: List of instance type overrides for the launch template.
+        """
+        if overrides is not None:
+            pulumi.set(__self__, "overrides", overrides)
+
+    @property
+    @pulumi.getter
+    def overrides(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AsgProfileMixedInstancesPolicyLaunchTemplateOverrideArgs']]]]:
+        """
+        List of instance type overrides for the launch template.
+        """
+        return pulumi.get(self, "overrides")
+
+    @overrides.setter
+    def overrides(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AsgProfileMixedInstancesPolicyLaunchTemplateOverrideArgs']]]]):
+        pulumi.set(self, "overrides", value)
+
+
+if not MYPY:
+    class AsgProfileMixedInstancesPolicyLaunchTemplateOverrideArgsDict(TypedDict):
+        instance_requirements: NotRequired[pulumi.Input['AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsArgsDict']]
+        """
+        Instance requirements for flexible instance selection.
+        """
+        instance_type: NotRequired[pulumi.Input[str]]
+        """
+        The instance type. Mutually exclusive with `instance_requirements`.
+        """
+        weighted_capacity: NotRequired[pulumi.Input[str]]
+        """
+        The number of capacity units provided by the instance type.
+        """
+elif False:
+    AsgProfileMixedInstancesPolicyLaunchTemplateOverrideArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AsgProfileMixedInstancesPolicyLaunchTemplateOverrideArgs:
+    def __init__(__self__, *,
+                 instance_requirements: Optional[pulumi.Input['AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsArgs']] = None,
+                 instance_type: Optional[pulumi.Input[str]] = None,
+                 weighted_capacity: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input['AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsArgs'] instance_requirements: Instance requirements for flexible instance selection.
+        :param pulumi.Input[str] instance_type: The instance type. Mutually exclusive with `instance_requirements`.
+        :param pulumi.Input[str] weighted_capacity: The number of capacity units provided by the instance type.
+        """
+        if instance_requirements is not None:
+            pulumi.set(__self__, "instance_requirements", instance_requirements)
+        if instance_type is not None:
+            pulumi.set(__self__, "instance_type", instance_type)
+        if weighted_capacity is not None:
+            pulumi.set(__self__, "weighted_capacity", weighted_capacity)
+
+    @property
+    @pulumi.getter(name="instanceRequirements")
+    def instance_requirements(self) -> Optional[pulumi.Input['AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsArgs']]:
+        """
+        Instance requirements for flexible instance selection.
+        """
+        return pulumi.get(self, "instance_requirements")
+
+    @instance_requirements.setter
+    def instance_requirements(self, value: Optional[pulumi.Input['AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsArgs']]):
+        pulumi.set(self, "instance_requirements", value)
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The instance type. Mutually exclusive with `instance_requirements`.
+        """
+        return pulumi.get(self, "instance_type")
+
+    @instance_type.setter
+    def instance_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_type", value)
+
+    @property
+    @pulumi.getter(name="weightedCapacity")
+    def weighted_capacity(self) -> Optional[pulumi.Input[str]]:
+        """
+        The number of capacity units provided by the instance type.
+        """
+        return pulumi.get(self, "weighted_capacity")
+
+    @weighted_capacity.setter
+    def weighted_capacity(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "weighted_capacity", value)
+
+
+if not MYPY:
+    class AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsArgsDict(TypedDict):
+        memory_mib: pulumi.Input['AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibArgsDict']
+        """
+        Range of memory in MiB.
+        """
+        vcpu_count: pulumi.Input['AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountArgsDict']
+        """
+        Range of vCPU counts.
+        """
+        allowed_instance_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of allowed instance types (e.g. `m5.large`, `m5a.large`). Cannot be specified if `excluded_instance_types` is specified in the same launch template override.
+        """
+        cpu_manufacturers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of CPU manufacturers (e.g. `intel`, `amd`, `amazon-web-services`).
+        """
+        excluded_instance_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of excluded instance types. Cannot be specified if `allowed_instance_types` is specified in the same launch template override.
+        """
+        instance_generations: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of instance generations (e.g. `current`, `previous`).
+        """
+        spot_max_price_percentage_over_lowest_price: NotRequired[pulumi.Input[int]]
+        """
+        Price protection threshold as a percentage over the lowest price.
+        """
+elif False:
+    AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsArgs:
+    def __init__(__self__, *,
+                 memory_mib: pulumi.Input['AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibArgs'],
+                 vcpu_count: pulumi.Input['AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountArgs'],
+                 allowed_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 cpu_manufacturers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 excluded_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 instance_generations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 spot_max_price_percentage_over_lowest_price: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input['AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibArgs'] memory_mib: Range of memory in MiB.
+        :param pulumi.Input['AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountArgs'] vcpu_count: Range of vCPU counts.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_instance_types: List of allowed instance types (e.g. `m5.large`, `m5a.large`). Cannot be specified if `excluded_instance_types` is specified in the same launch template override.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] cpu_manufacturers: List of CPU manufacturers (e.g. `intel`, `amd`, `amazon-web-services`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] excluded_instance_types: List of excluded instance types. Cannot be specified if `allowed_instance_types` is specified in the same launch template override.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_generations: List of instance generations (e.g. `current`, `previous`).
+        :param pulumi.Input[int] spot_max_price_percentage_over_lowest_price: Price protection threshold as a percentage over the lowest price.
+        """
+        pulumi.set(__self__, "memory_mib", memory_mib)
+        pulumi.set(__self__, "vcpu_count", vcpu_count)
+        if allowed_instance_types is not None:
+            pulumi.set(__self__, "allowed_instance_types", allowed_instance_types)
+        if cpu_manufacturers is not None:
+            pulumi.set(__self__, "cpu_manufacturers", cpu_manufacturers)
+        if excluded_instance_types is not None:
+            pulumi.set(__self__, "excluded_instance_types", excluded_instance_types)
+        if instance_generations is not None:
+            pulumi.set(__self__, "instance_generations", instance_generations)
+        if spot_max_price_percentage_over_lowest_price is not None:
+            pulumi.set(__self__, "spot_max_price_percentage_over_lowest_price", spot_max_price_percentage_over_lowest_price)
+
+    @property
+    @pulumi.getter(name="memoryMib")
+    def memory_mib(self) -> pulumi.Input['AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibArgs']:
+        """
+        Range of memory in MiB.
+        """
+        return pulumi.get(self, "memory_mib")
+
+    @memory_mib.setter
+    def memory_mib(self, value: pulumi.Input['AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibArgs']):
+        pulumi.set(self, "memory_mib", value)
+
+    @property
+    @pulumi.getter(name="vcpuCount")
+    def vcpu_count(self) -> pulumi.Input['AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountArgs']:
+        """
+        Range of vCPU counts.
+        """
+        return pulumi.get(self, "vcpu_count")
+
+    @vcpu_count.setter
+    def vcpu_count(self, value: pulumi.Input['AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountArgs']):
+        pulumi.set(self, "vcpu_count", value)
+
+    @property
+    @pulumi.getter(name="allowedInstanceTypes")
+    def allowed_instance_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of allowed instance types (e.g. `m5.large`, `m5a.large`). Cannot be specified if `excluded_instance_types` is specified in the same launch template override.
+        """
+        return pulumi.get(self, "allowed_instance_types")
+
+    @allowed_instance_types.setter
+    def allowed_instance_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowed_instance_types", value)
+
+    @property
+    @pulumi.getter(name="cpuManufacturers")
+    def cpu_manufacturers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of CPU manufacturers (e.g. `intel`, `amd`, `amazon-web-services`).
+        """
+        return pulumi.get(self, "cpu_manufacturers")
+
+    @cpu_manufacturers.setter
+    def cpu_manufacturers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "cpu_manufacturers", value)
+
+    @property
+    @pulumi.getter(name="excludedInstanceTypes")
+    def excluded_instance_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of excluded instance types. Cannot be specified if `allowed_instance_types` is specified in the same launch template override.
+        """
+        return pulumi.get(self, "excluded_instance_types")
+
+    @excluded_instance_types.setter
+    def excluded_instance_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "excluded_instance_types", value)
+
+    @property
+    @pulumi.getter(name="instanceGenerations")
+    def instance_generations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of instance generations (e.g. `current`, `previous`).
+        """
+        return pulumi.get(self, "instance_generations")
+
+    @instance_generations.setter
+    def instance_generations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "instance_generations", value)
+
+    @property
+    @pulumi.getter(name="spotMaxPricePercentageOverLowestPrice")
+    def spot_max_price_percentage_over_lowest_price(self) -> Optional[pulumi.Input[int]]:
+        """
+        Price protection threshold as a percentage over the lowest price.
+        """
+        return pulumi.get(self, "spot_max_price_percentage_over_lowest_price")
+
+    @spot_max_price_percentage_over_lowest_price.setter
+    def spot_max_price_percentage_over_lowest_price(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "spot_max_price_percentage_over_lowest_price", value)
+
+
+if not MYPY:
+    class AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibArgsDict(TypedDict):
+        min: pulumi.Input[int]
+        """
+        Minimum memory in MiB.
+        """
+        max: NotRequired[pulumi.Input[int]]
+        """
+        Maximum memory in MiB.
+        """
+elif False:
+    AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibArgs:
+    def __init__(__self__, *,
+                 min: pulumi.Input[int],
+                 max: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] min: Minimum memory in MiB.
+        :param pulumi.Input[int] max: Maximum memory in MiB.
+        """
+        pulumi.set(__self__, "min", min)
+        if max is not None:
+            pulumi.set(__self__, "max", max)
+
+    @property
+    @pulumi.getter
+    def min(self) -> pulumi.Input[int]:
+        """
+        Minimum memory in MiB.
+        """
+        return pulumi.get(self, "min")
+
+    @min.setter
+    def min(self, value: pulumi.Input[int]):
+        pulumi.set(self, "min", value)
+
+    @property
+    @pulumi.getter
+    def max(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum memory in MiB.
+        """
+        return pulumi.get(self, "max")
+
+    @max.setter
+    def max(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max", value)
+
+
+if not MYPY:
+    class AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountArgsDict(TypedDict):
+        min: pulumi.Input[int]
+        """
+        Minimum number of vCPUs.
+        """
+        max: NotRequired[pulumi.Input[int]]
+        """
+        Maximum number of vCPUs.
+        """
+elif False:
+    AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountArgs:
+    def __init__(__self__, *,
+                 min: pulumi.Input[int],
+                 max: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] min: Minimum number of vCPUs.
+        :param pulumi.Input[int] max: Maximum number of vCPUs.
+        """
+        pulumi.set(__self__, "min", min)
+        if max is not None:
+            pulumi.set(__self__, "max", max)
+
+    @property
+    @pulumi.getter
+    def min(self) -> pulumi.Input[int]:
+        """
+        Minimum number of vCPUs.
+        """
+        return pulumi.get(self, "min")
+
+    @min.setter
+    def min(self, value: pulumi.Input[int]):
+        pulumi.set(self, "min", value)
+
+    @property
+    @pulumi.getter
+    def max(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of vCPUs.
+        """
+        return pulumi.get(self, "max")
+
+    @max.setter
+    def max(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max", value)
 
 
 if not MYPY:
@@ -8758,9 +9312,25 @@ class AwsLaunchTemplateBlockDeviceMappingEbsArgs:
 if not MYPY:
     class AwsLaunchTemplateInstanceRequirementsArgsDict(TypedDict):
         allowed_instance_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        cpu_manufacturers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of CPU manufacturers (e.g. `intel`, `amd`, `amazon-web-services`).
+        """
+        excluded_instance_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of excluded instance types. Mutually exclusive with `allowed_instance_types`.
+        """
+        instance_generations: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of instance generations (e.g. `current`, `previous`).
+        """
         memory_mib: NotRequired[pulumi.Input['AwsLaunchTemplateInstanceRequirementsMemoryMibArgsDict']]
         """
         Block describing the minimum and maximum amount of memory (MiB). It is a required field when allowed*instance*types is set
+        """
+        spot_max_price_percentage_over_lowest_price: NotRequired[pulumi.Input[int]]
+        """
+        Price protection threshold as a percentage over the lowest price.
         """
         vcpu_count: NotRequired[pulumi.Input['AwsLaunchTemplateInstanceRequirementsVcpuCountArgsDict']]
         """
@@ -8773,16 +9343,32 @@ elif False:
 class AwsLaunchTemplateInstanceRequirementsArgs:
     def __init__(__self__, *,
                  allowed_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 cpu_manufacturers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 excluded_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 instance_generations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  memory_mib: Optional[pulumi.Input['AwsLaunchTemplateInstanceRequirementsMemoryMibArgs']] = None,
+                 spot_max_price_percentage_over_lowest_price: Optional[pulumi.Input[int]] = None,
                  vcpu_count: Optional[pulumi.Input['AwsLaunchTemplateInstanceRequirementsVcpuCountArgs']] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] cpu_manufacturers: List of CPU manufacturers (e.g. `intel`, `amd`, `amazon-web-services`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] excluded_instance_types: List of excluded instance types. Mutually exclusive with `allowed_instance_types`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_generations: List of instance generations (e.g. `current`, `previous`).
         :param pulumi.Input['AwsLaunchTemplateInstanceRequirementsMemoryMibArgs'] memory_mib: Block describing the minimum and maximum amount of memory (MiB). It is a required field when allowed*instance*types is set
+        :param pulumi.Input[int] spot_max_price_percentage_over_lowest_price: Price protection threshold as a percentage over the lowest price.
         :param pulumi.Input['AwsLaunchTemplateInstanceRequirementsVcpuCountArgs'] vcpu_count: Block describing the minimum and maximum number of vCPUs. It is a required field when allowed*instance*types is set
         """
         if allowed_instance_types is not None:
             pulumi.set(__self__, "allowed_instance_types", allowed_instance_types)
+        if cpu_manufacturers is not None:
+            pulumi.set(__self__, "cpu_manufacturers", cpu_manufacturers)
+        if excluded_instance_types is not None:
+            pulumi.set(__self__, "excluded_instance_types", excluded_instance_types)
+        if instance_generations is not None:
+            pulumi.set(__self__, "instance_generations", instance_generations)
         if memory_mib is not None:
             pulumi.set(__self__, "memory_mib", memory_mib)
+        if spot_max_price_percentage_over_lowest_price is not None:
+            pulumi.set(__self__, "spot_max_price_percentage_over_lowest_price", spot_max_price_percentage_over_lowest_price)
         if vcpu_count is not None:
             pulumi.set(__self__, "vcpu_count", vcpu_count)
 
@@ -8796,6 +9382,42 @@ class AwsLaunchTemplateInstanceRequirementsArgs:
         pulumi.set(self, "allowed_instance_types", value)
 
     @property
+    @pulumi.getter(name="cpuManufacturers")
+    def cpu_manufacturers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of CPU manufacturers (e.g. `intel`, `amd`, `amazon-web-services`).
+        """
+        return pulumi.get(self, "cpu_manufacturers")
+
+    @cpu_manufacturers.setter
+    def cpu_manufacturers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "cpu_manufacturers", value)
+
+    @property
+    @pulumi.getter(name="excludedInstanceTypes")
+    def excluded_instance_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of excluded instance types. Mutually exclusive with `allowed_instance_types`.
+        """
+        return pulumi.get(self, "excluded_instance_types")
+
+    @excluded_instance_types.setter
+    def excluded_instance_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "excluded_instance_types", value)
+
+    @property
+    @pulumi.getter(name="instanceGenerations")
+    def instance_generations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of instance generations (e.g. `current`, `previous`).
+        """
+        return pulumi.get(self, "instance_generations")
+
+    @instance_generations.setter
+    def instance_generations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "instance_generations", value)
+
+    @property
     @pulumi.getter(name="memoryMib")
     def memory_mib(self) -> Optional[pulumi.Input['AwsLaunchTemplateInstanceRequirementsMemoryMibArgs']]:
         """
@@ -8806,6 +9428,18 @@ class AwsLaunchTemplateInstanceRequirementsArgs:
     @memory_mib.setter
     def memory_mib(self, value: Optional[pulumi.Input['AwsLaunchTemplateInstanceRequirementsMemoryMibArgs']]):
         pulumi.set(self, "memory_mib", value)
+
+    @property
+    @pulumi.getter(name="spotMaxPricePercentageOverLowestPrice")
+    def spot_max_price_percentage_over_lowest_price(self) -> Optional[pulumi.Input[int]]:
+        """
+        Price protection threshold as a percentage over the lowest price.
+        """
+        return pulumi.get(self, "spot_max_price_percentage_over_lowest_price")
+
+    @spot_max_price_percentage_over_lowest_price.setter
+    def spot_max_price_percentage_over_lowest_price(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "spot_max_price_percentage_over_lowest_price", value)
 
     @property
     @pulumi.getter(name="vcpuCount")

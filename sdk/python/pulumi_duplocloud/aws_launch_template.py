@@ -402,6 +402,31 @@ class AwsLaunchTemplate(pulumi.CustomResource):
                     "max": 5120,
                 },
             })
+        mixed_instance_test = duplocloud.AwsLaunchTemplate("mixed_instance_test",
+            tenant_id=myapp.tenant_id,
+            name=mixed_instances_asg["fullname"],
+            version_description="launch template with extended instance requirements",
+            instance_requirements={
+                "allowed_instance_types": [
+                    "m5.*",
+                    "m5a.*",
+                    "c5.*",
+                ],
+                "vcpu_count": {
+                    "min": 2,
+                    "max": 8,
+                },
+                "memory_mib": {
+                    "min": 4096,
+                    "max": 32768,
+                },
+                "cpu_manufacturers": [
+                    "intel",
+                    "amd",
+                ],
+                "instance_generations": ["current"],
+                "spot_max_price_percentage_over_lowest_price": 100,
+            })
         ```
 
         ## Import
@@ -489,6 +514,31 @@ class AwsLaunchTemplate(pulumi.CustomResource):
                     "min": 4096,
                     "max": 5120,
                 },
+            })
+        mixed_instance_test = duplocloud.AwsLaunchTemplate("mixed_instance_test",
+            tenant_id=myapp.tenant_id,
+            name=mixed_instances_asg["fullname"],
+            version_description="launch template with extended instance requirements",
+            instance_requirements={
+                "allowed_instance_types": [
+                    "m5.*",
+                    "m5a.*",
+                    "c5.*",
+                ],
+                "vcpu_count": {
+                    "min": 2,
+                    "max": 8,
+                },
+                "memory_mib": {
+                    "min": 4096,
+                    "max": 32768,
+                },
+                "cpu_manufacturers": [
+                    "intel",
+                    "amd",
+                ],
+                "instance_generations": ["current"],
+                "spot_max_price_percentage_over_lowest_price": 100,
             })
         ```
 

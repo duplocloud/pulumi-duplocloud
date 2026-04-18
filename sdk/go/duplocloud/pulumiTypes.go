@@ -313,6 +313,1243 @@ func (o AsgProfileMinionTagArrayOutput) Index(i pulumi.IntInput) AsgProfileMinio
 	}).(AsgProfileMinionTagOutput)
 }
 
+type AsgProfileMixedInstancesPolicy struct {
+	// Configuration for the distribution of On-Demand and Spot instances.
+	InstancesDistribution *AsgProfileMixedInstancesPolicyInstancesDistribution `pulumi:"instancesDistribution"`
+	// Launch template configuration with instance type overrides.
+	LaunchTemplate *AsgProfileMixedInstancesPolicyLaunchTemplate `pulumi:"launchTemplate"`
+}
+
+// AsgProfileMixedInstancesPolicyInput is an input type that accepts AsgProfileMixedInstancesPolicyArgs and AsgProfileMixedInstancesPolicyOutput values.
+// You can construct a concrete instance of `AsgProfileMixedInstancesPolicyInput` via:
+//
+//	AsgProfileMixedInstancesPolicyArgs{...}
+type AsgProfileMixedInstancesPolicyInput interface {
+	pulumi.Input
+
+	ToAsgProfileMixedInstancesPolicyOutput() AsgProfileMixedInstancesPolicyOutput
+	ToAsgProfileMixedInstancesPolicyOutputWithContext(context.Context) AsgProfileMixedInstancesPolicyOutput
+}
+
+type AsgProfileMixedInstancesPolicyArgs struct {
+	// Configuration for the distribution of On-Demand and Spot instances.
+	InstancesDistribution AsgProfileMixedInstancesPolicyInstancesDistributionPtrInput `pulumi:"instancesDistribution"`
+	// Launch template configuration with instance type overrides.
+	LaunchTemplate AsgProfileMixedInstancesPolicyLaunchTemplatePtrInput `pulumi:"launchTemplate"`
+}
+
+func (AsgProfileMixedInstancesPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AsgProfileMixedInstancesPolicy)(nil)).Elem()
+}
+
+func (i AsgProfileMixedInstancesPolicyArgs) ToAsgProfileMixedInstancesPolicyOutput() AsgProfileMixedInstancesPolicyOutput {
+	return i.ToAsgProfileMixedInstancesPolicyOutputWithContext(context.Background())
+}
+
+func (i AsgProfileMixedInstancesPolicyArgs) ToAsgProfileMixedInstancesPolicyOutputWithContext(ctx context.Context) AsgProfileMixedInstancesPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AsgProfileMixedInstancesPolicyOutput)
+}
+
+func (i AsgProfileMixedInstancesPolicyArgs) ToAsgProfileMixedInstancesPolicyPtrOutput() AsgProfileMixedInstancesPolicyPtrOutput {
+	return i.ToAsgProfileMixedInstancesPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i AsgProfileMixedInstancesPolicyArgs) ToAsgProfileMixedInstancesPolicyPtrOutputWithContext(ctx context.Context) AsgProfileMixedInstancesPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AsgProfileMixedInstancesPolicyOutput).ToAsgProfileMixedInstancesPolicyPtrOutputWithContext(ctx)
+}
+
+// AsgProfileMixedInstancesPolicyPtrInput is an input type that accepts AsgProfileMixedInstancesPolicyArgs, AsgProfileMixedInstancesPolicyPtr and AsgProfileMixedInstancesPolicyPtrOutput values.
+// You can construct a concrete instance of `AsgProfileMixedInstancesPolicyPtrInput` via:
+//
+//	        AsgProfileMixedInstancesPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type AsgProfileMixedInstancesPolicyPtrInput interface {
+	pulumi.Input
+
+	ToAsgProfileMixedInstancesPolicyPtrOutput() AsgProfileMixedInstancesPolicyPtrOutput
+	ToAsgProfileMixedInstancesPolicyPtrOutputWithContext(context.Context) AsgProfileMixedInstancesPolicyPtrOutput
+}
+
+type asgProfileMixedInstancesPolicyPtrType AsgProfileMixedInstancesPolicyArgs
+
+func AsgProfileMixedInstancesPolicyPtr(v *AsgProfileMixedInstancesPolicyArgs) AsgProfileMixedInstancesPolicyPtrInput {
+	return (*asgProfileMixedInstancesPolicyPtrType)(v)
+}
+
+func (*asgProfileMixedInstancesPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AsgProfileMixedInstancesPolicy)(nil)).Elem()
+}
+
+func (i *asgProfileMixedInstancesPolicyPtrType) ToAsgProfileMixedInstancesPolicyPtrOutput() AsgProfileMixedInstancesPolicyPtrOutput {
+	return i.ToAsgProfileMixedInstancesPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *asgProfileMixedInstancesPolicyPtrType) ToAsgProfileMixedInstancesPolicyPtrOutputWithContext(ctx context.Context) AsgProfileMixedInstancesPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AsgProfileMixedInstancesPolicyPtrOutput)
+}
+
+type AsgProfileMixedInstancesPolicyOutput struct{ *pulumi.OutputState }
+
+func (AsgProfileMixedInstancesPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AsgProfileMixedInstancesPolicy)(nil)).Elem()
+}
+
+func (o AsgProfileMixedInstancesPolicyOutput) ToAsgProfileMixedInstancesPolicyOutput() AsgProfileMixedInstancesPolicyOutput {
+	return o
+}
+
+func (o AsgProfileMixedInstancesPolicyOutput) ToAsgProfileMixedInstancesPolicyOutputWithContext(ctx context.Context) AsgProfileMixedInstancesPolicyOutput {
+	return o
+}
+
+func (o AsgProfileMixedInstancesPolicyOutput) ToAsgProfileMixedInstancesPolicyPtrOutput() AsgProfileMixedInstancesPolicyPtrOutput {
+	return o.ToAsgProfileMixedInstancesPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o AsgProfileMixedInstancesPolicyOutput) ToAsgProfileMixedInstancesPolicyPtrOutputWithContext(ctx context.Context) AsgProfileMixedInstancesPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AsgProfileMixedInstancesPolicy) *AsgProfileMixedInstancesPolicy {
+		return &v
+	}).(AsgProfileMixedInstancesPolicyPtrOutput)
+}
+
+// Configuration for the distribution of On-Demand and Spot instances.
+func (o AsgProfileMixedInstancesPolicyOutput) InstancesDistribution() AsgProfileMixedInstancesPolicyInstancesDistributionPtrOutput {
+	return o.ApplyT(func(v AsgProfileMixedInstancesPolicy) *AsgProfileMixedInstancesPolicyInstancesDistribution {
+		return v.InstancesDistribution
+	}).(AsgProfileMixedInstancesPolicyInstancesDistributionPtrOutput)
+}
+
+// Launch template configuration with instance type overrides.
+func (o AsgProfileMixedInstancesPolicyOutput) LaunchTemplate() AsgProfileMixedInstancesPolicyLaunchTemplatePtrOutput {
+	return o.ApplyT(func(v AsgProfileMixedInstancesPolicy) *AsgProfileMixedInstancesPolicyLaunchTemplate {
+		return v.LaunchTemplate
+	}).(AsgProfileMixedInstancesPolicyLaunchTemplatePtrOutput)
+}
+
+type AsgProfileMixedInstancesPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (AsgProfileMixedInstancesPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AsgProfileMixedInstancesPolicy)(nil)).Elem()
+}
+
+func (o AsgProfileMixedInstancesPolicyPtrOutput) ToAsgProfileMixedInstancesPolicyPtrOutput() AsgProfileMixedInstancesPolicyPtrOutput {
+	return o
+}
+
+func (o AsgProfileMixedInstancesPolicyPtrOutput) ToAsgProfileMixedInstancesPolicyPtrOutputWithContext(ctx context.Context) AsgProfileMixedInstancesPolicyPtrOutput {
+	return o
+}
+
+func (o AsgProfileMixedInstancesPolicyPtrOutput) Elem() AsgProfileMixedInstancesPolicyOutput {
+	return o.ApplyT(func(v *AsgProfileMixedInstancesPolicy) AsgProfileMixedInstancesPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret AsgProfileMixedInstancesPolicy
+		return ret
+	}).(AsgProfileMixedInstancesPolicyOutput)
+}
+
+// Configuration for the distribution of On-Demand and Spot instances.
+func (o AsgProfileMixedInstancesPolicyPtrOutput) InstancesDistribution() AsgProfileMixedInstancesPolicyInstancesDistributionPtrOutput {
+	return o.ApplyT(func(v *AsgProfileMixedInstancesPolicy) *AsgProfileMixedInstancesPolicyInstancesDistribution {
+		if v == nil {
+			return nil
+		}
+		return v.InstancesDistribution
+	}).(AsgProfileMixedInstancesPolicyInstancesDistributionPtrOutput)
+}
+
+// Launch template configuration with instance type overrides.
+func (o AsgProfileMixedInstancesPolicyPtrOutput) LaunchTemplate() AsgProfileMixedInstancesPolicyLaunchTemplatePtrOutput {
+	return o.ApplyT(func(v *AsgProfileMixedInstancesPolicy) *AsgProfileMixedInstancesPolicyLaunchTemplate {
+		if v == nil {
+			return nil
+		}
+		return v.LaunchTemplate
+	}).(AsgProfileMixedInstancesPolicyLaunchTemplatePtrOutput)
+}
+
+type AsgProfileMixedInstancesPolicyInstancesDistribution struct {
+	// Strategy for allocating On-Demand instances (e.g. `prioritized`).
+	OnDemandAllocationStrategy *string `pulumi:"onDemandAllocationStrategy"`
+	// Minimum number of On-Demand instances in the group.
+	OnDemandBaseCapacity *int `pulumi:"onDemandBaseCapacity"`
+	// Percentage of On-Demand instances above the base capacity (0-100).
+	OnDemandPercentageAboveBaseCapacity *int `pulumi:"onDemandPercentageAboveBaseCapacity"`
+	// Strategy for allocating Spot instances (e.g. `capacity-optimized`, `price-capacity-optimized`, `lowest-price`).
+	SpotAllocationStrategy *string `pulumi:"spotAllocationStrategy"`
+	// Number of Spot pools for allocation (only used with `lowest-price` strategy).
+	SpotInstancePools *int `pulumi:"spotInstancePools"`
+	// Maximum price per unit hour for Spot instances.
+	SpotMaxPrice *string `pulumi:"spotMaxPrice"`
+}
+
+// AsgProfileMixedInstancesPolicyInstancesDistributionInput is an input type that accepts AsgProfileMixedInstancesPolicyInstancesDistributionArgs and AsgProfileMixedInstancesPolicyInstancesDistributionOutput values.
+// You can construct a concrete instance of `AsgProfileMixedInstancesPolicyInstancesDistributionInput` via:
+//
+//	AsgProfileMixedInstancesPolicyInstancesDistributionArgs{...}
+type AsgProfileMixedInstancesPolicyInstancesDistributionInput interface {
+	pulumi.Input
+
+	ToAsgProfileMixedInstancesPolicyInstancesDistributionOutput() AsgProfileMixedInstancesPolicyInstancesDistributionOutput
+	ToAsgProfileMixedInstancesPolicyInstancesDistributionOutputWithContext(context.Context) AsgProfileMixedInstancesPolicyInstancesDistributionOutput
+}
+
+type AsgProfileMixedInstancesPolicyInstancesDistributionArgs struct {
+	// Strategy for allocating On-Demand instances (e.g. `prioritized`).
+	OnDemandAllocationStrategy pulumi.StringPtrInput `pulumi:"onDemandAllocationStrategy"`
+	// Minimum number of On-Demand instances in the group.
+	OnDemandBaseCapacity pulumi.IntPtrInput `pulumi:"onDemandBaseCapacity"`
+	// Percentage of On-Demand instances above the base capacity (0-100).
+	OnDemandPercentageAboveBaseCapacity pulumi.IntPtrInput `pulumi:"onDemandPercentageAboveBaseCapacity"`
+	// Strategy for allocating Spot instances (e.g. `capacity-optimized`, `price-capacity-optimized`, `lowest-price`).
+	SpotAllocationStrategy pulumi.StringPtrInput `pulumi:"spotAllocationStrategy"`
+	// Number of Spot pools for allocation (only used with `lowest-price` strategy).
+	SpotInstancePools pulumi.IntPtrInput `pulumi:"spotInstancePools"`
+	// Maximum price per unit hour for Spot instances.
+	SpotMaxPrice pulumi.StringPtrInput `pulumi:"spotMaxPrice"`
+}
+
+func (AsgProfileMixedInstancesPolicyInstancesDistributionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AsgProfileMixedInstancesPolicyInstancesDistribution)(nil)).Elem()
+}
+
+func (i AsgProfileMixedInstancesPolicyInstancesDistributionArgs) ToAsgProfileMixedInstancesPolicyInstancesDistributionOutput() AsgProfileMixedInstancesPolicyInstancesDistributionOutput {
+	return i.ToAsgProfileMixedInstancesPolicyInstancesDistributionOutputWithContext(context.Background())
+}
+
+func (i AsgProfileMixedInstancesPolicyInstancesDistributionArgs) ToAsgProfileMixedInstancesPolicyInstancesDistributionOutputWithContext(ctx context.Context) AsgProfileMixedInstancesPolicyInstancesDistributionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AsgProfileMixedInstancesPolicyInstancesDistributionOutput)
+}
+
+func (i AsgProfileMixedInstancesPolicyInstancesDistributionArgs) ToAsgProfileMixedInstancesPolicyInstancesDistributionPtrOutput() AsgProfileMixedInstancesPolicyInstancesDistributionPtrOutput {
+	return i.ToAsgProfileMixedInstancesPolicyInstancesDistributionPtrOutputWithContext(context.Background())
+}
+
+func (i AsgProfileMixedInstancesPolicyInstancesDistributionArgs) ToAsgProfileMixedInstancesPolicyInstancesDistributionPtrOutputWithContext(ctx context.Context) AsgProfileMixedInstancesPolicyInstancesDistributionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AsgProfileMixedInstancesPolicyInstancesDistributionOutput).ToAsgProfileMixedInstancesPolicyInstancesDistributionPtrOutputWithContext(ctx)
+}
+
+// AsgProfileMixedInstancesPolicyInstancesDistributionPtrInput is an input type that accepts AsgProfileMixedInstancesPolicyInstancesDistributionArgs, AsgProfileMixedInstancesPolicyInstancesDistributionPtr and AsgProfileMixedInstancesPolicyInstancesDistributionPtrOutput values.
+// You can construct a concrete instance of `AsgProfileMixedInstancesPolicyInstancesDistributionPtrInput` via:
+//
+//	        AsgProfileMixedInstancesPolicyInstancesDistributionArgs{...}
+//
+//	or:
+//
+//	        nil
+type AsgProfileMixedInstancesPolicyInstancesDistributionPtrInput interface {
+	pulumi.Input
+
+	ToAsgProfileMixedInstancesPolicyInstancesDistributionPtrOutput() AsgProfileMixedInstancesPolicyInstancesDistributionPtrOutput
+	ToAsgProfileMixedInstancesPolicyInstancesDistributionPtrOutputWithContext(context.Context) AsgProfileMixedInstancesPolicyInstancesDistributionPtrOutput
+}
+
+type asgProfileMixedInstancesPolicyInstancesDistributionPtrType AsgProfileMixedInstancesPolicyInstancesDistributionArgs
+
+func AsgProfileMixedInstancesPolicyInstancesDistributionPtr(v *AsgProfileMixedInstancesPolicyInstancesDistributionArgs) AsgProfileMixedInstancesPolicyInstancesDistributionPtrInput {
+	return (*asgProfileMixedInstancesPolicyInstancesDistributionPtrType)(v)
+}
+
+func (*asgProfileMixedInstancesPolicyInstancesDistributionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AsgProfileMixedInstancesPolicyInstancesDistribution)(nil)).Elem()
+}
+
+func (i *asgProfileMixedInstancesPolicyInstancesDistributionPtrType) ToAsgProfileMixedInstancesPolicyInstancesDistributionPtrOutput() AsgProfileMixedInstancesPolicyInstancesDistributionPtrOutput {
+	return i.ToAsgProfileMixedInstancesPolicyInstancesDistributionPtrOutputWithContext(context.Background())
+}
+
+func (i *asgProfileMixedInstancesPolicyInstancesDistributionPtrType) ToAsgProfileMixedInstancesPolicyInstancesDistributionPtrOutputWithContext(ctx context.Context) AsgProfileMixedInstancesPolicyInstancesDistributionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AsgProfileMixedInstancesPolicyInstancesDistributionPtrOutput)
+}
+
+type AsgProfileMixedInstancesPolicyInstancesDistributionOutput struct{ *pulumi.OutputState }
+
+func (AsgProfileMixedInstancesPolicyInstancesDistributionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AsgProfileMixedInstancesPolicyInstancesDistribution)(nil)).Elem()
+}
+
+func (o AsgProfileMixedInstancesPolicyInstancesDistributionOutput) ToAsgProfileMixedInstancesPolicyInstancesDistributionOutput() AsgProfileMixedInstancesPolicyInstancesDistributionOutput {
+	return o
+}
+
+func (o AsgProfileMixedInstancesPolicyInstancesDistributionOutput) ToAsgProfileMixedInstancesPolicyInstancesDistributionOutputWithContext(ctx context.Context) AsgProfileMixedInstancesPolicyInstancesDistributionOutput {
+	return o
+}
+
+func (o AsgProfileMixedInstancesPolicyInstancesDistributionOutput) ToAsgProfileMixedInstancesPolicyInstancesDistributionPtrOutput() AsgProfileMixedInstancesPolicyInstancesDistributionPtrOutput {
+	return o.ToAsgProfileMixedInstancesPolicyInstancesDistributionPtrOutputWithContext(context.Background())
+}
+
+func (o AsgProfileMixedInstancesPolicyInstancesDistributionOutput) ToAsgProfileMixedInstancesPolicyInstancesDistributionPtrOutputWithContext(ctx context.Context) AsgProfileMixedInstancesPolicyInstancesDistributionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AsgProfileMixedInstancesPolicyInstancesDistribution) *AsgProfileMixedInstancesPolicyInstancesDistribution {
+		return &v
+	}).(AsgProfileMixedInstancesPolicyInstancesDistributionPtrOutput)
+}
+
+// Strategy for allocating On-Demand instances (e.g. `prioritized`).
+func (o AsgProfileMixedInstancesPolicyInstancesDistributionOutput) OnDemandAllocationStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AsgProfileMixedInstancesPolicyInstancesDistribution) *string {
+		return v.OnDemandAllocationStrategy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Minimum number of On-Demand instances in the group.
+func (o AsgProfileMixedInstancesPolicyInstancesDistributionOutput) OnDemandBaseCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AsgProfileMixedInstancesPolicyInstancesDistribution) *int { return v.OnDemandBaseCapacity }).(pulumi.IntPtrOutput)
+}
+
+// Percentage of On-Demand instances above the base capacity (0-100).
+func (o AsgProfileMixedInstancesPolicyInstancesDistributionOutput) OnDemandPercentageAboveBaseCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AsgProfileMixedInstancesPolicyInstancesDistribution) *int {
+		return v.OnDemandPercentageAboveBaseCapacity
+	}).(pulumi.IntPtrOutput)
+}
+
+// Strategy for allocating Spot instances (e.g. `capacity-optimized`, `price-capacity-optimized`, `lowest-price`).
+func (o AsgProfileMixedInstancesPolicyInstancesDistributionOutput) SpotAllocationStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AsgProfileMixedInstancesPolicyInstancesDistribution) *string { return v.SpotAllocationStrategy }).(pulumi.StringPtrOutput)
+}
+
+// Number of Spot pools for allocation (only used with `lowest-price` strategy).
+func (o AsgProfileMixedInstancesPolicyInstancesDistributionOutput) SpotInstancePools() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AsgProfileMixedInstancesPolicyInstancesDistribution) *int { return v.SpotInstancePools }).(pulumi.IntPtrOutput)
+}
+
+// Maximum price per unit hour for Spot instances.
+func (o AsgProfileMixedInstancesPolicyInstancesDistributionOutput) SpotMaxPrice() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AsgProfileMixedInstancesPolicyInstancesDistribution) *string { return v.SpotMaxPrice }).(pulumi.StringPtrOutput)
+}
+
+type AsgProfileMixedInstancesPolicyInstancesDistributionPtrOutput struct{ *pulumi.OutputState }
+
+func (AsgProfileMixedInstancesPolicyInstancesDistributionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AsgProfileMixedInstancesPolicyInstancesDistribution)(nil)).Elem()
+}
+
+func (o AsgProfileMixedInstancesPolicyInstancesDistributionPtrOutput) ToAsgProfileMixedInstancesPolicyInstancesDistributionPtrOutput() AsgProfileMixedInstancesPolicyInstancesDistributionPtrOutput {
+	return o
+}
+
+func (o AsgProfileMixedInstancesPolicyInstancesDistributionPtrOutput) ToAsgProfileMixedInstancesPolicyInstancesDistributionPtrOutputWithContext(ctx context.Context) AsgProfileMixedInstancesPolicyInstancesDistributionPtrOutput {
+	return o
+}
+
+func (o AsgProfileMixedInstancesPolicyInstancesDistributionPtrOutput) Elem() AsgProfileMixedInstancesPolicyInstancesDistributionOutput {
+	return o.ApplyT(func(v *AsgProfileMixedInstancesPolicyInstancesDistribution) AsgProfileMixedInstancesPolicyInstancesDistribution {
+		if v != nil {
+			return *v
+		}
+		var ret AsgProfileMixedInstancesPolicyInstancesDistribution
+		return ret
+	}).(AsgProfileMixedInstancesPolicyInstancesDistributionOutput)
+}
+
+// Strategy for allocating On-Demand instances (e.g. `prioritized`).
+func (o AsgProfileMixedInstancesPolicyInstancesDistributionPtrOutput) OnDemandAllocationStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AsgProfileMixedInstancesPolicyInstancesDistribution) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OnDemandAllocationStrategy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Minimum number of On-Demand instances in the group.
+func (o AsgProfileMixedInstancesPolicyInstancesDistributionPtrOutput) OnDemandBaseCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AsgProfileMixedInstancesPolicyInstancesDistribution) *int {
+		if v == nil {
+			return nil
+		}
+		return v.OnDemandBaseCapacity
+	}).(pulumi.IntPtrOutput)
+}
+
+// Percentage of On-Demand instances above the base capacity (0-100).
+func (o AsgProfileMixedInstancesPolicyInstancesDistributionPtrOutput) OnDemandPercentageAboveBaseCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AsgProfileMixedInstancesPolicyInstancesDistribution) *int {
+		if v == nil {
+			return nil
+		}
+		return v.OnDemandPercentageAboveBaseCapacity
+	}).(pulumi.IntPtrOutput)
+}
+
+// Strategy for allocating Spot instances (e.g. `capacity-optimized`, `price-capacity-optimized`, `lowest-price`).
+func (o AsgProfileMixedInstancesPolicyInstancesDistributionPtrOutput) SpotAllocationStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AsgProfileMixedInstancesPolicyInstancesDistribution) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SpotAllocationStrategy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of Spot pools for allocation (only used with `lowest-price` strategy).
+func (o AsgProfileMixedInstancesPolicyInstancesDistributionPtrOutput) SpotInstancePools() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AsgProfileMixedInstancesPolicyInstancesDistribution) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SpotInstancePools
+	}).(pulumi.IntPtrOutput)
+}
+
+// Maximum price per unit hour for Spot instances.
+func (o AsgProfileMixedInstancesPolicyInstancesDistributionPtrOutput) SpotMaxPrice() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AsgProfileMixedInstancesPolicyInstancesDistribution) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SpotMaxPrice
+	}).(pulumi.StringPtrOutput)
+}
+
+type AsgProfileMixedInstancesPolicyLaunchTemplate struct {
+	// List of instance type overrides for the launch template.
+	Overrides []AsgProfileMixedInstancesPolicyLaunchTemplateOverride `pulumi:"overrides"`
+}
+
+// AsgProfileMixedInstancesPolicyLaunchTemplateInput is an input type that accepts AsgProfileMixedInstancesPolicyLaunchTemplateArgs and AsgProfileMixedInstancesPolicyLaunchTemplateOutput values.
+// You can construct a concrete instance of `AsgProfileMixedInstancesPolicyLaunchTemplateInput` via:
+//
+//	AsgProfileMixedInstancesPolicyLaunchTemplateArgs{...}
+type AsgProfileMixedInstancesPolicyLaunchTemplateInput interface {
+	pulumi.Input
+
+	ToAsgProfileMixedInstancesPolicyLaunchTemplateOutput() AsgProfileMixedInstancesPolicyLaunchTemplateOutput
+	ToAsgProfileMixedInstancesPolicyLaunchTemplateOutputWithContext(context.Context) AsgProfileMixedInstancesPolicyLaunchTemplateOutput
+}
+
+type AsgProfileMixedInstancesPolicyLaunchTemplateArgs struct {
+	// List of instance type overrides for the launch template.
+	Overrides AsgProfileMixedInstancesPolicyLaunchTemplateOverrideArrayInput `pulumi:"overrides"`
+}
+
+func (AsgProfileMixedInstancesPolicyLaunchTemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AsgProfileMixedInstancesPolicyLaunchTemplate)(nil)).Elem()
+}
+
+func (i AsgProfileMixedInstancesPolicyLaunchTemplateArgs) ToAsgProfileMixedInstancesPolicyLaunchTemplateOutput() AsgProfileMixedInstancesPolicyLaunchTemplateOutput {
+	return i.ToAsgProfileMixedInstancesPolicyLaunchTemplateOutputWithContext(context.Background())
+}
+
+func (i AsgProfileMixedInstancesPolicyLaunchTemplateArgs) ToAsgProfileMixedInstancesPolicyLaunchTemplateOutputWithContext(ctx context.Context) AsgProfileMixedInstancesPolicyLaunchTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AsgProfileMixedInstancesPolicyLaunchTemplateOutput)
+}
+
+func (i AsgProfileMixedInstancesPolicyLaunchTemplateArgs) ToAsgProfileMixedInstancesPolicyLaunchTemplatePtrOutput() AsgProfileMixedInstancesPolicyLaunchTemplatePtrOutput {
+	return i.ToAsgProfileMixedInstancesPolicyLaunchTemplatePtrOutputWithContext(context.Background())
+}
+
+func (i AsgProfileMixedInstancesPolicyLaunchTemplateArgs) ToAsgProfileMixedInstancesPolicyLaunchTemplatePtrOutputWithContext(ctx context.Context) AsgProfileMixedInstancesPolicyLaunchTemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AsgProfileMixedInstancesPolicyLaunchTemplateOutput).ToAsgProfileMixedInstancesPolicyLaunchTemplatePtrOutputWithContext(ctx)
+}
+
+// AsgProfileMixedInstancesPolicyLaunchTemplatePtrInput is an input type that accepts AsgProfileMixedInstancesPolicyLaunchTemplateArgs, AsgProfileMixedInstancesPolicyLaunchTemplatePtr and AsgProfileMixedInstancesPolicyLaunchTemplatePtrOutput values.
+// You can construct a concrete instance of `AsgProfileMixedInstancesPolicyLaunchTemplatePtrInput` via:
+//
+//	        AsgProfileMixedInstancesPolicyLaunchTemplateArgs{...}
+//
+//	or:
+//
+//	        nil
+type AsgProfileMixedInstancesPolicyLaunchTemplatePtrInput interface {
+	pulumi.Input
+
+	ToAsgProfileMixedInstancesPolicyLaunchTemplatePtrOutput() AsgProfileMixedInstancesPolicyLaunchTemplatePtrOutput
+	ToAsgProfileMixedInstancesPolicyLaunchTemplatePtrOutputWithContext(context.Context) AsgProfileMixedInstancesPolicyLaunchTemplatePtrOutput
+}
+
+type asgProfileMixedInstancesPolicyLaunchTemplatePtrType AsgProfileMixedInstancesPolicyLaunchTemplateArgs
+
+func AsgProfileMixedInstancesPolicyLaunchTemplatePtr(v *AsgProfileMixedInstancesPolicyLaunchTemplateArgs) AsgProfileMixedInstancesPolicyLaunchTemplatePtrInput {
+	return (*asgProfileMixedInstancesPolicyLaunchTemplatePtrType)(v)
+}
+
+func (*asgProfileMixedInstancesPolicyLaunchTemplatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AsgProfileMixedInstancesPolicyLaunchTemplate)(nil)).Elem()
+}
+
+func (i *asgProfileMixedInstancesPolicyLaunchTemplatePtrType) ToAsgProfileMixedInstancesPolicyLaunchTemplatePtrOutput() AsgProfileMixedInstancesPolicyLaunchTemplatePtrOutput {
+	return i.ToAsgProfileMixedInstancesPolicyLaunchTemplatePtrOutputWithContext(context.Background())
+}
+
+func (i *asgProfileMixedInstancesPolicyLaunchTemplatePtrType) ToAsgProfileMixedInstancesPolicyLaunchTemplatePtrOutputWithContext(ctx context.Context) AsgProfileMixedInstancesPolicyLaunchTemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AsgProfileMixedInstancesPolicyLaunchTemplatePtrOutput)
+}
+
+type AsgProfileMixedInstancesPolicyLaunchTemplateOutput struct{ *pulumi.OutputState }
+
+func (AsgProfileMixedInstancesPolicyLaunchTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AsgProfileMixedInstancesPolicyLaunchTemplate)(nil)).Elem()
+}
+
+func (o AsgProfileMixedInstancesPolicyLaunchTemplateOutput) ToAsgProfileMixedInstancesPolicyLaunchTemplateOutput() AsgProfileMixedInstancesPolicyLaunchTemplateOutput {
+	return o
+}
+
+func (o AsgProfileMixedInstancesPolicyLaunchTemplateOutput) ToAsgProfileMixedInstancesPolicyLaunchTemplateOutputWithContext(ctx context.Context) AsgProfileMixedInstancesPolicyLaunchTemplateOutput {
+	return o
+}
+
+func (o AsgProfileMixedInstancesPolicyLaunchTemplateOutput) ToAsgProfileMixedInstancesPolicyLaunchTemplatePtrOutput() AsgProfileMixedInstancesPolicyLaunchTemplatePtrOutput {
+	return o.ToAsgProfileMixedInstancesPolicyLaunchTemplatePtrOutputWithContext(context.Background())
+}
+
+func (o AsgProfileMixedInstancesPolicyLaunchTemplateOutput) ToAsgProfileMixedInstancesPolicyLaunchTemplatePtrOutputWithContext(ctx context.Context) AsgProfileMixedInstancesPolicyLaunchTemplatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AsgProfileMixedInstancesPolicyLaunchTemplate) *AsgProfileMixedInstancesPolicyLaunchTemplate {
+		return &v
+	}).(AsgProfileMixedInstancesPolicyLaunchTemplatePtrOutput)
+}
+
+// List of instance type overrides for the launch template.
+func (o AsgProfileMixedInstancesPolicyLaunchTemplateOutput) Overrides() AsgProfileMixedInstancesPolicyLaunchTemplateOverrideArrayOutput {
+	return o.ApplyT(func(v AsgProfileMixedInstancesPolicyLaunchTemplate) []AsgProfileMixedInstancesPolicyLaunchTemplateOverride {
+		return v.Overrides
+	}).(AsgProfileMixedInstancesPolicyLaunchTemplateOverrideArrayOutput)
+}
+
+type AsgProfileMixedInstancesPolicyLaunchTemplatePtrOutput struct{ *pulumi.OutputState }
+
+func (AsgProfileMixedInstancesPolicyLaunchTemplatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AsgProfileMixedInstancesPolicyLaunchTemplate)(nil)).Elem()
+}
+
+func (o AsgProfileMixedInstancesPolicyLaunchTemplatePtrOutput) ToAsgProfileMixedInstancesPolicyLaunchTemplatePtrOutput() AsgProfileMixedInstancesPolicyLaunchTemplatePtrOutput {
+	return o
+}
+
+func (o AsgProfileMixedInstancesPolicyLaunchTemplatePtrOutput) ToAsgProfileMixedInstancesPolicyLaunchTemplatePtrOutputWithContext(ctx context.Context) AsgProfileMixedInstancesPolicyLaunchTemplatePtrOutput {
+	return o
+}
+
+func (o AsgProfileMixedInstancesPolicyLaunchTemplatePtrOutput) Elem() AsgProfileMixedInstancesPolicyLaunchTemplateOutput {
+	return o.ApplyT(func(v *AsgProfileMixedInstancesPolicyLaunchTemplate) AsgProfileMixedInstancesPolicyLaunchTemplate {
+		if v != nil {
+			return *v
+		}
+		var ret AsgProfileMixedInstancesPolicyLaunchTemplate
+		return ret
+	}).(AsgProfileMixedInstancesPolicyLaunchTemplateOutput)
+}
+
+// List of instance type overrides for the launch template.
+func (o AsgProfileMixedInstancesPolicyLaunchTemplatePtrOutput) Overrides() AsgProfileMixedInstancesPolicyLaunchTemplateOverrideArrayOutput {
+	return o.ApplyT(func(v *AsgProfileMixedInstancesPolicyLaunchTemplate) []AsgProfileMixedInstancesPolicyLaunchTemplateOverride {
+		if v == nil {
+			return nil
+		}
+		return v.Overrides
+	}).(AsgProfileMixedInstancesPolicyLaunchTemplateOverrideArrayOutput)
+}
+
+type AsgProfileMixedInstancesPolicyLaunchTemplateOverride struct {
+	// Instance requirements for flexible instance selection.
+	InstanceRequirements *AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirements `pulumi:"instanceRequirements"`
+	// The instance type. Mutually exclusive with `instanceRequirements`.
+	InstanceType *string `pulumi:"instanceType"`
+	// The number of capacity units provided by the instance type.
+	WeightedCapacity *string `pulumi:"weightedCapacity"`
+}
+
+// AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInput is an input type that accepts AsgProfileMixedInstancesPolicyLaunchTemplateOverrideArgs and AsgProfileMixedInstancesPolicyLaunchTemplateOverrideOutput values.
+// You can construct a concrete instance of `AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInput` via:
+//
+//	AsgProfileMixedInstancesPolicyLaunchTemplateOverrideArgs{...}
+type AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInput interface {
+	pulumi.Input
+
+	ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideOutput() AsgProfileMixedInstancesPolicyLaunchTemplateOverrideOutput
+	ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideOutputWithContext(context.Context) AsgProfileMixedInstancesPolicyLaunchTemplateOverrideOutput
+}
+
+type AsgProfileMixedInstancesPolicyLaunchTemplateOverrideArgs struct {
+	// Instance requirements for flexible instance selection.
+	InstanceRequirements AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsPtrInput `pulumi:"instanceRequirements"`
+	// The instance type. Mutually exclusive with `instanceRequirements`.
+	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
+	// The number of capacity units provided by the instance type.
+	WeightedCapacity pulumi.StringPtrInput `pulumi:"weightedCapacity"`
+}
+
+func (AsgProfileMixedInstancesPolicyLaunchTemplateOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AsgProfileMixedInstancesPolicyLaunchTemplateOverride)(nil)).Elem()
+}
+
+func (i AsgProfileMixedInstancesPolicyLaunchTemplateOverrideArgs) ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideOutput() AsgProfileMixedInstancesPolicyLaunchTemplateOverrideOutput {
+	return i.ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideOutputWithContext(context.Background())
+}
+
+func (i AsgProfileMixedInstancesPolicyLaunchTemplateOverrideArgs) ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideOutputWithContext(ctx context.Context) AsgProfileMixedInstancesPolicyLaunchTemplateOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AsgProfileMixedInstancesPolicyLaunchTemplateOverrideOutput)
+}
+
+// AsgProfileMixedInstancesPolicyLaunchTemplateOverrideArrayInput is an input type that accepts AsgProfileMixedInstancesPolicyLaunchTemplateOverrideArray and AsgProfileMixedInstancesPolicyLaunchTemplateOverrideArrayOutput values.
+// You can construct a concrete instance of `AsgProfileMixedInstancesPolicyLaunchTemplateOverrideArrayInput` via:
+//
+//	AsgProfileMixedInstancesPolicyLaunchTemplateOverrideArray{ AsgProfileMixedInstancesPolicyLaunchTemplateOverrideArgs{...} }
+type AsgProfileMixedInstancesPolicyLaunchTemplateOverrideArrayInput interface {
+	pulumi.Input
+
+	ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideArrayOutput() AsgProfileMixedInstancesPolicyLaunchTemplateOverrideArrayOutput
+	ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideArrayOutputWithContext(context.Context) AsgProfileMixedInstancesPolicyLaunchTemplateOverrideArrayOutput
+}
+
+type AsgProfileMixedInstancesPolicyLaunchTemplateOverrideArray []AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInput
+
+func (AsgProfileMixedInstancesPolicyLaunchTemplateOverrideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AsgProfileMixedInstancesPolicyLaunchTemplateOverride)(nil)).Elem()
+}
+
+func (i AsgProfileMixedInstancesPolicyLaunchTemplateOverrideArray) ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideArrayOutput() AsgProfileMixedInstancesPolicyLaunchTemplateOverrideArrayOutput {
+	return i.ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideArrayOutputWithContext(context.Background())
+}
+
+func (i AsgProfileMixedInstancesPolicyLaunchTemplateOverrideArray) ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideArrayOutputWithContext(ctx context.Context) AsgProfileMixedInstancesPolicyLaunchTemplateOverrideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AsgProfileMixedInstancesPolicyLaunchTemplateOverrideArrayOutput)
+}
+
+type AsgProfileMixedInstancesPolicyLaunchTemplateOverrideOutput struct{ *pulumi.OutputState }
+
+func (AsgProfileMixedInstancesPolicyLaunchTemplateOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AsgProfileMixedInstancesPolicyLaunchTemplateOverride)(nil)).Elem()
+}
+
+func (o AsgProfileMixedInstancesPolicyLaunchTemplateOverrideOutput) ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideOutput() AsgProfileMixedInstancesPolicyLaunchTemplateOverrideOutput {
+	return o
+}
+
+func (o AsgProfileMixedInstancesPolicyLaunchTemplateOverrideOutput) ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideOutputWithContext(ctx context.Context) AsgProfileMixedInstancesPolicyLaunchTemplateOverrideOutput {
+	return o
+}
+
+// Instance requirements for flexible instance selection.
+func (o AsgProfileMixedInstancesPolicyLaunchTemplateOverrideOutput) InstanceRequirements() AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsPtrOutput {
+	return o.ApplyT(func(v AsgProfileMixedInstancesPolicyLaunchTemplateOverride) *AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirements {
+		return v.InstanceRequirements
+	}).(AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsPtrOutput)
+}
+
+// The instance type. Mutually exclusive with `instanceRequirements`.
+func (o AsgProfileMixedInstancesPolicyLaunchTemplateOverrideOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AsgProfileMixedInstancesPolicyLaunchTemplateOverride) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
+}
+
+// The number of capacity units provided by the instance type.
+func (o AsgProfileMixedInstancesPolicyLaunchTemplateOverrideOutput) WeightedCapacity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AsgProfileMixedInstancesPolicyLaunchTemplateOverride) *string { return v.WeightedCapacity }).(pulumi.StringPtrOutput)
+}
+
+type AsgProfileMixedInstancesPolicyLaunchTemplateOverrideArrayOutput struct{ *pulumi.OutputState }
+
+func (AsgProfileMixedInstancesPolicyLaunchTemplateOverrideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AsgProfileMixedInstancesPolicyLaunchTemplateOverride)(nil)).Elem()
+}
+
+func (o AsgProfileMixedInstancesPolicyLaunchTemplateOverrideArrayOutput) ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideArrayOutput() AsgProfileMixedInstancesPolicyLaunchTemplateOverrideArrayOutput {
+	return o
+}
+
+func (o AsgProfileMixedInstancesPolicyLaunchTemplateOverrideArrayOutput) ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideArrayOutputWithContext(ctx context.Context) AsgProfileMixedInstancesPolicyLaunchTemplateOverrideArrayOutput {
+	return o
+}
+
+func (o AsgProfileMixedInstancesPolicyLaunchTemplateOverrideArrayOutput) Index(i pulumi.IntInput) AsgProfileMixedInstancesPolicyLaunchTemplateOverrideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AsgProfileMixedInstancesPolicyLaunchTemplateOverride {
+		return vs[0].([]AsgProfileMixedInstancesPolicyLaunchTemplateOverride)[vs[1].(int)]
+	}).(AsgProfileMixedInstancesPolicyLaunchTemplateOverrideOutput)
+}
+
+type AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirements struct {
+	// List of allowed instance types (e.g. `m5.large`, `m5a.large`). Cannot be specified if `excludedInstanceTypes` is specified in the same launch template override.
+	AllowedInstanceTypes []string `pulumi:"allowedInstanceTypes"`
+	// List of CPU manufacturers (e.g. `intel`, `amd`, `amazon-web-services`).
+	CpuManufacturers []string `pulumi:"cpuManufacturers"`
+	// List of excluded instance types. Cannot be specified if `allowedInstanceTypes` is specified in the same launch template override.
+	ExcludedInstanceTypes []string `pulumi:"excludedInstanceTypes"`
+	// List of instance generations (e.g. `current`, `previous`).
+	InstanceGenerations []string `pulumi:"instanceGenerations"`
+	// Range of memory in MiB.
+	MemoryMib AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMib `pulumi:"memoryMib"`
+	// Price protection threshold as a percentage over the lowest price.
+	SpotMaxPricePercentageOverLowestPrice *int `pulumi:"spotMaxPricePercentageOverLowestPrice"`
+	// Range of vCPU counts.
+	VcpuCount AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCount `pulumi:"vcpuCount"`
+}
+
+// AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsInput is an input type that accepts AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsArgs and AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsOutput values.
+// You can construct a concrete instance of `AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsInput` via:
+//
+//	AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsArgs{...}
+type AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsInput interface {
+	pulumi.Input
+
+	ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsOutput() AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsOutput
+	ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsOutputWithContext(context.Context) AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsOutput
+}
+
+type AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsArgs struct {
+	// List of allowed instance types (e.g. `m5.large`, `m5a.large`). Cannot be specified if `excludedInstanceTypes` is specified in the same launch template override.
+	AllowedInstanceTypes pulumi.StringArrayInput `pulumi:"allowedInstanceTypes"`
+	// List of CPU manufacturers (e.g. `intel`, `amd`, `amazon-web-services`).
+	CpuManufacturers pulumi.StringArrayInput `pulumi:"cpuManufacturers"`
+	// List of excluded instance types. Cannot be specified if `allowedInstanceTypes` is specified in the same launch template override.
+	ExcludedInstanceTypes pulumi.StringArrayInput `pulumi:"excludedInstanceTypes"`
+	// List of instance generations (e.g. `current`, `previous`).
+	InstanceGenerations pulumi.StringArrayInput `pulumi:"instanceGenerations"`
+	// Range of memory in MiB.
+	MemoryMib AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibInput `pulumi:"memoryMib"`
+	// Price protection threshold as a percentage over the lowest price.
+	SpotMaxPricePercentageOverLowestPrice pulumi.IntPtrInput `pulumi:"spotMaxPricePercentageOverLowestPrice"`
+	// Range of vCPU counts.
+	VcpuCount AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountInput `pulumi:"vcpuCount"`
+}
+
+func (AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirements)(nil)).Elem()
+}
+
+func (i AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsArgs) ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsOutput() AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsOutput {
+	return i.ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsOutputWithContext(context.Background())
+}
+
+func (i AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsArgs) ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsOutputWithContext(ctx context.Context) AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsOutput)
+}
+
+func (i AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsArgs) ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsPtrOutput() AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsPtrOutput {
+	return i.ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsPtrOutputWithContext(context.Background())
+}
+
+func (i AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsArgs) ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsPtrOutputWithContext(ctx context.Context) AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsOutput).ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsPtrOutputWithContext(ctx)
+}
+
+// AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsPtrInput is an input type that accepts AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsArgs, AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsPtr and AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsPtrOutput values.
+// You can construct a concrete instance of `AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsPtrInput` via:
+//
+//	        AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsPtrInput interface {
+	pulumi.Input
+
+	ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsPtrOutput() AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsPtrOutput
+	ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsPtrOutputWithContext(context.Context) AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsPtrOutput
+}
+
+type asgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsPtrType AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsArgs
+
+func AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsPtr(v *AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsArgs) AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsPtrInput {
+	return (*asgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsPtrType)(v)
+}
+
+func (*asgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirements)(nil)).Elem()
+}
+
+func (i *asgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsPtrType) ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsPtrOutput() AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsPtrOutput {
+	return i.ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsPtrOutputWithContext(context.Background())
+}
+
+func (i *asgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsPtrType) ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsPtrOutputWithContext(ctx context.Context) AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsPtrOutput)
+}
+
+type AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsOutput struct{ *pulumi.OutputState }
+
+func (AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirements)(nil)).Elem()
+}
+
+func (o AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsOutput) ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsOutput() AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsOutput {
+	return o
+}
+
+func (o AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsOutput) ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsOutputWithContext(ctx context.Context) AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsOutput {
+	return o
+}
+
+func (o AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsOutput) ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsPtrOutput() AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsPtrOutput {
+	return o.ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsPtrOutputWithContext(context.Background())
+}
+
+func (o AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsOutput) ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsPtrOutputWithContext(ctx context.Context) AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirements) *AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirements {
+		return &v
+	}).(AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsPtrOutput)
+}
+
+// List of allowed instance types (e.g. `m5.large`, `m5a.large`). Cannot be specified if `excludedInstanceTypes` is specified in the same launch template override.
+func (o AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsOutput) AllowedInstanceTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirements) []string {
+		return v.AllowedInstanceTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of CPU manufacturers (e.g. `intel`, `amd`, `amazon-web-services`).
+func (o AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsOutput) CpuManufacturers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirements) []string {
+		return v.CpuManufacturers
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of excluded instance types. Cannot be specified if `allowedInstanceTypes` is specified in the same launch template override.
+func (o AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsOutput) ExcludedInstanceTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirements) []string {
+		return v.ExcludedInstanceTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of instance generations (e.g. `current`, `previous`).
+func (o AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsOutput) InstanceGenerations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirements) []string {
+		return v.InstanceGenerations
+	}).(pulumi.StringArrayOutput)
+}
+
+// Range of memory in MiB.
+func (o AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsOutput) MemoryMib() AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibOutput {
+	return o.ApplyT(func(v AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirements) AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMib {
+		return v.MemoryMib
+	}).(AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibOutput)
+}
+
+// Price protection threshold as a percentage over the lowest price.
+func (o AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsOutput) SpotMaxPricePercentageOverLowestPrice() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirements) *int {
+		return v.SpotMaxPricePercentageOverLowestPrice
+	}).(pulumi.IntPtrOutput)
+}
+
+// Range of vCPU counts.
+func (o AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsOutput) VcpuCount() AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountOutput {
+	return o.ApplyT(func(v AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirements) AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCount {
+		return v.VcpuCount
+	}).(AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountOutput)
+}
+
+type AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsPtrOutput struct{ *pulumi.OutputState }
+
+func (AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirements)(nil)).Elem()
+}
+
+func (o AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsPtrOutput) ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsPtrOutput() AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsPtrOutput {
+	return o
+}
+
+func (o AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsPtrOutput) ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsPtrOutputWithContext(ctx context.Context) AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsPtrOutput {
+	return o
+}
+
+func (o AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsPtrOutput) Elem() AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsOutput {
+	return o.ApplyT(func(v *AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirements) AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirements {
+		if v != nil {
+			return *v
+		}
+		var ret AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirements
+		return ret
+	}).(AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsOutput)
+}
+
+// List of allowed instance types (e.g. `m5.large`, `m5a.large`). Cannot be specified if `excludedInstanceTypes` is specified in the same launch template override.
+func (o AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsPtrOutput) AllowedInstanceTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirements) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedInstanceTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of CPU manufacturers (e.g. `intel`, `amd`, `amazon-web-services`).
+func (o AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsPtrOutput) CpuManufacturers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirements) []string {
+		if v == nil {
+			return nil
+		}
+		return v.CpuManufacturers
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of excluded instance types. Cannot be specified if `allowedInstanceTypes` is specified in the same launch template override.
+func (o AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsPtrOutput) ExcludedInstanceTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirements) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedInstanceTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of instance generations (e.g. `current`, `previous`).
+func (o AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsPtrOutput) InstanceGenerations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirements) []string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceGenerations
+	}).(pulumi.StringArrayOutput)
+}
+
+// Range of memory in MiB.
+func (o AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsPtrOutput) MemoryMib() AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibPtrOutput {
+	return o.ApplyT(func(v *AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirements) *AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMib {
+		if v == nil {
+			return nil
+		}
+		return &v.MemoryMib
+	}).(AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibPtrOutput)
+}
+
+// Price protection threshold as a percentage over the lowest price.
+func (o AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsPtrOutput) SpotMaxPricePercentageOverLowestPrice() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirements) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SpotMaxPricePercentageOverLowestPrice
+	}).(pulumi.IntPtrOutput)
+}
+
+// Range of vCPU counts.
+func (o AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsPtrOutput) VcpuCount() AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountPtrOutput {
+	return o.ApplyT(func(v *AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirements) *AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCount {
+		if v == nil {
+			return nil
+		}
+		return &v.VcpuCount
+	}).(AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountPtrOutput)
+}
+
+type AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMib struct {
+	// Maximum memory in MiB.
+	Max *int `pulumi:"max"`
+	// Minimum memory in MiB.
+	Min int `pulumi:"min"`
+}
+
+// AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibInput is an input type that accepts AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibArgs and AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibOutput values.
+// You can construct a concrete instance of `AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibInput` via:
+//
+//	AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibArgs{...}
+type AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibInput interface {
+	pulumi.Input
+
+	ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibOutput() AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibOutput
+	ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibOutputWithContext(context.Context) AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibOutput
+}
+
+type AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibArgs struct {
+	// Maximum memory in MiB.
+	Max pulumi.IntPtrInput `pulumi:"max"`
+	// Minimum memory in MiB.
+	Min pulumi.IntInput `pulumi:"min"`
+}
+
+func (AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMib)(nil)).Elem()
+}
+
+func (i AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibArgs) ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibOutput() AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibOutput {
+	return i.ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibOutputWithContext(context.Background())
+}
+
+func (i AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibArgs) ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibOutputWithContext(ctx context.Context) AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibOutput)
+}
+
+func (i AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibArgs) ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibPtrOutput() AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibPtrOutput {
+	return i.ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibPtrOutputWithContext(context.Background())
+}
+
+func (i AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibArgs) ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibPtrOutputWithContext(ctx context.Context) AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibOutput).ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibPtrOutputWithContext(ctx)
+}
+
+// AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibPtrInput is an input type that accepts AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibArgs, AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibPtr and AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibPtrOutput values.
+// You can construct a concrete instance of `AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibPtrInput` via:
+//
+//	        AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibArgs{...}
+//
+//	or:
+//
+//	        nil
+type AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibPtrInput interface {
+	pulumi.Input
+
+	ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibPtrOutput() AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibPtrOutput
+	ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibPtrOutputWithContext(context.Context) AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibPtrOutput
+}
+
+type asgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibPtrType AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibArgs
+
+func AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibPtr(v *AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibArgs) AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibPtrInput {
+	return (*asgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibPtrType)(v)
+}
+
+func (*asgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMib)(nil)).Elem()
+}
+
+func (i *asgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibPtrType) ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibPtrOutput() AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibPtrOutput {
+	return i.ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibPtrOutputWithContext(context.Background())
+}
+
+func (i *asgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibPtrType) ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibPtrOutputWithContext(ctx context.Context) AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibPtrOutput)
+}
+
+type AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibOutput struct{ *pulumi.OutputState }
+
+func (AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMib)(nil)).Elem()
+}
+
+func (o AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibOutput) ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibOutput() AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibOutput {
+	return o
+}
+
+func (o AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibOutput) ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibOutputWithContext(ctx context.Context) AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibOutput {
+	return o
+}
+
+func (o AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibOutput) ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibPtrOutput() AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibPtrOutput {
+	return o.ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibPtrOutputWithContext(context.Background())
+}
+
+func (o AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibOutput) ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibPtrOutputWithContext(ctx context.Context) AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMib) *AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMib {
+		return &v
+	}).(AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibPtrOutput)
+}
+
+// Maximum memory in MiB.
+func (o AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibOutput) Max() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMib) *int {
+		return v.Max
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minimum memory in MiB.
+func (o AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibOutput) Min() pulumi.IntOutput {
+	return o.ApplyT(func(v AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMib) int {
+		return v.Min
+	}).(pulumi.IntOutput)
+}
+
+type AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibPtrOutput struct{ *pulumi.OutputState }
+
+func (AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMib)(nil)).Elem()
+}
+
+func (o AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibPtrOutput) ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibPtrOutput() AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibPtrOutput {
+	return o
+}
+
+func (o AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibPtrOutput) ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibPtrOutputWithContext(ctx context.Context) AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibPtrOutput {
+	return o
+}
+
+func (o AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibPtrOutput) Elem() AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibOutput {
+	return o.ApplyT(func(v *AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMib) AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMib {
+		if v != nil {
+			return *v
+		}
+		var ret AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMib
+		return ret
+	}).(AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibOutput)
+}
+
+// Maximum memory in MiB.
+func (o AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibPtrOutput) Max() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMib) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Max
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minimum memory in MiB.
+func (o AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibPtrOutput) Min() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMib) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Min
+	}).(pulumi.IntPtrOutput)
+}
+
+type AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCount struct {
+	// Maximum number of vCPUs.
+	Max *int `pulumi:"max"`
+	// Minimum number of vCPUs.
+	Min int `pulumi:"min"`
+}
+
+// AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountInput is an input type that accepts AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountArgs and AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountOutput values.
+// You can construct a concrete instance of `AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountInput` via:
+//
+//	AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountArgs{...}
+type AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountInput interface {
+	pulumi.Input
+
+	ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountOutput() AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountOutput
+	ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountOutputWithContext(context.Context) AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountOutput
+}
+
+type AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountArgs struct {
+	// Maximum number of vCPUs.
+	Max pulumi.IntPtrInput `pulumi:"max"`
+	// Minimum number of vCPUs.
+	Min pulumi.IntInput `pulumi:"min"`
+}
+
+func (AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCount)(nil)).Elem()
+}
+
+func (i AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountArgs) ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountOutput() AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountOutput {
+	return i.ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountOutputWithContext(context.Background())
+}
+
+func (i AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountArgs) ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountOutputWithContext(ctx context.Context) AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountOutput)
+}
+
+func (i AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountArgs) ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountPtrOutput() AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountPtrOutput {
+	return i.ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountPtrOutputWithContext(context.Background())
+}
+
+func (i AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountArgs) ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountPtrOutputWithContext(ctx context.Context) AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountOutput).ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountPtrOutputWithContext(ctx)
+}
+
+// AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountPtrInput is an input type that accepts AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountArgs, AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountPtr and AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountPtrOutput values.
+// You can construct a concrete instance of `AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountPtrInput` via:
+//
+//	        AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountArgs{...}
+//
+//	or:
+//
+//	        nil
+type AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountPtrInput interface {
+	pulumi.Input
+
+	ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountPtrOutput() AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountPtrOutput
+	ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountPtrOutputWithContext(context.Context) AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountPtrOutput
+}
+
+type asgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountPtrType AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountArgs
+
+func AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountPtr(v *AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountArgs) AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountPtrInput {
+	return (*asgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountPtrType)(v)
+}
+
+func (*asgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCount)(nil)).Elem()
+}
+
+func (i *asgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountPtrType) ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountPtrOutput() AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountPtrOutput {
+	return i.ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountPtrOutputWithContext(context.Background())
+}
+
+func (i *asgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountPtrType) ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountPtrOutputWithContext(ctx context.Context) AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountPtrOutput)
+}
+
+type AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountOutput struct{ *pulumi.OutputState }
+
+func (AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCount)(nil)).Elem()
+}
+
+func (o AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountOutput) ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountOutput() AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountOutput {
+	return o
+}
+
+func (o AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountOutput) ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountOutputWithContext(ctx context.Context) AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountOutput {
+	return o
+}
+
+func (o AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountOutput) ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountPtrOutput() AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountPtrOutput {
+	return o.ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountPtrOutputWithContext(context.Background())
+}
+
+func (o AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountOutput) ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountPtrOutputWithContext(ctx context.Context) AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCount) *AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCount {
+		return &v
+	}).(AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountPtrOutput)
+}
+
+// Maximum number of vCPUs.
+func (o AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountOutput) Max() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCount) *int {
+		return v.Max
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minimum number of vCPUs.
+func (o AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountOutput) Min() pulumi.IntOutput {
+	return o.ApplyT(func(v AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCount) int {
+		return v.Min
+	}).(pulumi.IntOutput)
+}
+
+type AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountPtrOutput struct{ *pulumi.OutputState }
+
+func (AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCount)(nil)).Elem()
+}
+
+func (o AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountPtrOutput) ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountPtrOutput() AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountPtrOutput {
+	return o
+}
+
+func (o AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountPtrOutput) ToAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountPtrOutputWithContext(ctx context.Context) AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountPtrOutput {
+	return o
+}
+
+func (o AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountPtrOutput) Elem() AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountOutput {
+	return o.ApplyT(func(v *AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCount) AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCount {
+		if v != nil {
+			return *v
+		}
+		var ret AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCount
+		return ret
+	}).(AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountOutput)
+}
+
+// Maximum number of vCPUs.
+func (o AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountPtrOutput) Max() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCount) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Max
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minimum number of vCPUs.
+func (o AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountPtrOutput) Min() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCount) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Min
+	}).(pulumi.IntPtrOutput)
+}
+
 type AsgProfileNetworkInterface struct {
 	// Whether or not to associate a public IP with the newly created ENI.  Cannot be specified if `networkInterfaceId` is specified.
 	AssociatePublicIp *bool `pulumi:"associatePublicIp"`
@@ -15232,8 +16469,16 @@ func (o AwsLaunchTemplateBlockDeviceMappingEbsPtrOutput) VolumeType() pulumi.Str
 
 type AwsLaunchTemplateInstanceRequirements struct {
 	AllowedInstanceTypes []string `pulumi:"allowedInstanceTypes"`
+	// List of CPU manufacturers (e.g. `intel`, `amd`, `amazon-web-services`).
+	CpuManufacturers []string `pulumi:"cpuManufacturers"`
+	// List of excluded instance types. Mutually exclusive with `allowedInstanceTypes`.
+	ExcludedInstanceTypes []string `pulumi:"excludedInstanceTypes"`
+	// List of instance generations (e.g. `current`, `previous`).
+	InstanceGenerations []string `pulumi:"instanceGenerations"`
 	// Block describing the minimum and maximum amount of memory (MiB). It is a required field when allowed*instance*types is set
 	MemoryMib *AwsLaunchTemplateInstanceRequirementsMemoryMib `pulumi:"memoryMib"`
+	// Price protection threshold as a percentage over the lowest price.
+	SpotMaxPricePercentageOverLowestPrice *int `pulumi:"spotMaxPricePercentageOverLowestPrice"`
 	// Block describing the minimum and maximum number of vCPUs. It is a required field when allowed*instance*types is set
 	VcpuCount *AwsLaunchTemplateInstanceRequirementsVcpuCount `pulumi:"vcpuCount"`
 }
@@ -15251,8 +16496,16 @@ type AwsLaunchTemplateInstanceRequirementsInput interface {
 
 type AwsLaunchTemplateInstanceRequirementsArgs struct {
 	AllowedInstanceTypes pulumi.StringArrayInput `pulumi:"allowedInstanceTypes"`
+	// List of CPU manufacturers (e.g. `intel`, `amd`, `amazon-web-services`).
+	CpuManufacturers pulumi.StringArrayInput `pulumi:"cpuManufacturers"`
+	// List of excluded instance types. Mutually exclusive with `allowedInstanceTypes`.
+	ExcludedInstanceTypes pulumi.StringArrayInput `pulumi:"excludedInstanceTypes"`
+	// List of instance generations (e.g. `current`, `previous`).
+	InstanceGenerations pulumi.StringArrayInput `pulumi:"instanceGenerations"`
 	// Block describing the minimum and maximum amount of memory (MiB). It is a required field when allowed*instance*types is set
 	MemoryMib AwsLaunchTemplateInstanceRequirementsMemoryMibPtrInput `pulumi:"memoryMib"`
+	// Price protection threshold as a percentage over the lowest price.
+	SpotMaxPricePercentageOverLowestPrice pulumi.IntPtrInput `pulumi:"spotMaxPricePercentageOverLowestPrice"`
 	// Block describing the minimum and maximum number of vCPUs. It is a required field when allowed*instance*types is set
 	VcpuCount AwsLaunchTemplateInstanceRequirementsVcpuCountPtrInput `pulumi:"vcpuCount"`
 }
@@ -15338,11 +16591,31 @@ func (o AwsLaunchTemplateInstanceRequirementsOutput) AllowedInstanceTypes() pulu
 	return o.ApplyT(func(v AwsLaunchTemplateInstanceRequirements) []string { return v.AllowedInstanceTypes }).(pulumi.StringArrayOutput)
 }
 
+// List of CPU manufacturers (e.g. `intel`, `amd`, `amazon-web-services`).
+func (o AwsLaunchTemplateInstanceRequirementsOutput) CpuManufacturers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AwsLaunchTemplateInstanceRequirements) []string { return v.CpuManufacturers }).(pulumi.StringArrayOutput)
+}
+
+// List of excluded instance types. Mutually exclusive with `allowedInstanceTypes`.
+func (o AwsLaunchTemplateInstanceRequirementsOutput) ExcludedInstanceTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AwsLaunchTemplateInstanceRequirements) []string { return v.ExcludedInstanceTypes }).(pulumi.StringArrayOutput)
+}
+
+// List of instance generations (e.g. `current`, `previous`).
+func (o AwsLaunchTemplateInstanceRequirementsOutput) InstanceGenerations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AwsLaunchTemplateInstanceRequirements) []string { return v.InstanceGenerations }).(pulumi.StringArrayOutput)
+}
+
 // Block describing the minimum and maximum amount of memory (MiB). It is a required field when allowed*instance*types is set
 func (o AwsLaunchTemplateInstanceRequirementsOutput) MemoryMib() AwsLaunchTemplateInstanceRequirementsMemoryMibPtrOutput {
 	return o.ApplyT(func(v AwsLaunchTemplateInstanceRequirements) *AwsLaunchTemplateInstanceRequirementsMemoryMib {
 		return v.MemoryMib
 	}).(AwsLaunchTemplateInstanceRequirementsMemoryMibPtrOutput)
+}
+
+// Price protection threshold as a percentage over the lowest price.
+func (o AwsLaunchTemplateInstanceRequirementsOutput) SpotMaxPricePercentageOverLowestPrice() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AwsLaunchTemplateInstanceRequirements) *int { return v.SpotMaxPricePercentageOverLowestPrice }).(pulumi.IntPtrOutput)
 }
 
 // Block describing the minimum and maximum number of vCPUs. It is a required field when allowed*instance*types is set
@@ -15385,6 +16658,36 @@ func (o AwsLaunchTemplateInstanceRequirementsPtrOutput) AllowedInstanceTypes() p
 	}).(pulumi.StringArrayOutput)
 }
 
+// List of CPU manufacturers (e.g. `intel`, `amd`, `amazon-web-services`).
+func (o AwsLaunchTemplateInstanceRequirementsPtrOutput) CpuManufacturers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AwsLaunchTemplateInstanceRequirements) []string {
+		if v == nil {
+			return nil
+		}
+		return v.CpuManufacturers
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of excluded instance types. Mutually exclusive with `allowedInstanceTypes`.
+func (o AwsLaunchTemplateInstanceRequirementsPtrOutput) ExcludedInstanceTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AwsLaunchTemplateInstanceRequirements) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedInstanceTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of instance generations (e.g. `current`, `previous`).
+func (o AwsLaunchTemplateInstanceRequirementsPtrOutput) InstanceGenerations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AwsLaunchTemplateInstanceRequirements) []string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceGenerations
+	}).(pulumi.StringArrayOutput)
+}
+
 // Block describing the minimum and maximum amount of memory (MiB). It is a required field when allowed*instance*types is set
 func (o AwsLaunchTemplateInstanceRequirementsPtrOutput) MemoryMib() AwsLaunchTemplateInstanceRequirementsMemoryMibPtrOutput {
 	return o.ApplyT(func(v *AwsLaunchTemplateInstanceRequirements) *AwsLaunchTemplateInstanceRequirementsMemoryMib {
@@ -15393,6 +16696,16 @@ func (o AwsLaunchTemplateInstanceRequirementsPtrOutput) MemoryMib() AwsLaunchTem
 		}
 		return v.MemoryMib
 	}).(AwsLaunchTemplateInstanceRequirementsMemoryMibPtrOutput)
+}
+
+// Price protection threshold as a percentage over the lowest price.
+func (o AwsLaunchTemplateInstanceRequirementsPtrOutput) SpotMaxPricePercentageOverLowestPrice() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AwsLaunchTemplateInstanceRequirements) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SpotMaxPricePercentageOverLowestPrice
+	}).(pulumi.IntPtrOutput)
 }
 
 // Block describing the minimum and maximum number of vCPUs. It is a required field when allowed*instance*types is set
@@ -76214,993 +77527,6 @@ func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIg
 	}).(pulumi.StringPtrOutput)
 }
 
-type K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector struct {
-	// A list of label selector requirements. The requirements are ANDed.
-	MatchExpressions []K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression `pulumi:"matchExpressions"`
-	// A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
-	MatchLabels map[string]string `pulumi:"matchLabels"`
-}
-
-// K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorInput is an input type that accepts K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArgs and K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorInput` via:
-//
-//	K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArgs{...}
-type K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput() K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput
-	ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutputWithContext(context.Context) K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput
-}
-
-type K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArgs struct {
-	// A list of label selector requirements. The requirements are ANDed.
-	MatchExpressions K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayInput `pulumi:"matchExpressions"`
-	// A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
-	MatchLabels pulumi.StringMapInput `pulumi:"matchLabels"`
-}
-
-func (K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArgs) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput() K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput {
-	return i.ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArgs) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput)
-}
-
-// K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayInput is an input type that accepts K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArray and K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayInput` via:
-//
-//	K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArray{ K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArgs{...} }
-type K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutput() K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutput
-	ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutputWithContext(context.Context) K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutput
-}
-
-type K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArray []K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorInput
-
-func (K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArray) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutput() K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutput {
-	return i.ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArray) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutput)
-}
-
-type K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput() K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput {
-	return o
-}
-
-// A list of label selector requirements. The requirements are ANDed.
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput) MatchExpressions() K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector) []K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression {
-		return v.MatchExpressions
-	}).(K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutput)
-}
-
-// A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput) MatchLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector) map[string]string {
-		return v.MatchLabels
-	}).(pulumi.StringMapOutput)
-}
-
-type K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutput) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutput() K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutput) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutput) Index(i pulumi.IntInput) K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector {
-		return vs[0].([]K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector)[vs[1].(int)]
-	}).(K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput)
-}
-
-type K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression struct {
-	// The label key that the selector applies to.
-	Key *string `pulumi:"key"`
-	// A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
-	Operator *string `pulumi:"operator"`
-	// An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
-	Values []string `pulumi:"values"`
-}
-
-// K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionInput is an input type that accepts K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArgs and K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionInput` via:
-//
-//	K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArgs{...}
-type K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput() K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput
-	ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutputWithContext(context.Context) K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput
-}
-
-type K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArgs struct {
-	// The label key that the selector applies to.
-	Key pulumi.StringPtrInput `pulumi:"key"`
-	// A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
-	Operator pulumi.StringPtrInput `pulumi:"operator"`
-	// An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
-	Values pulumi.StringArrayInput `pulumi:"values"`
-}
-
-func (K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArgs) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput() K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput {
-	return i.ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArgs) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput)
-}
-
-// K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayInput is an input type that accepts K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArray and K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayInput` via:
-//
-//	K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArray{ K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArgs{...} }
-type K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutput() K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutput
-	ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutputWithContext(context.Context) K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutput
-}
-
-type K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArray []K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionInput
-
-func (K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArray) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutput() K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutput {
-	return i.ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArray) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutput)
-}
-
-type K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput() K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput {
-	return o
-}
-
-// The label key that the selector applies to.
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression) *string {
-		return v.Key
-	}).(pulumi.StringPtrOutput)
-}
-
-// A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput) Operator() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression) *string {
-		return v.Operator
-	}).(pulumi.StringPtrOutput)
-}
-
-// An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression) []string {
-		return v.Values
-	}).(pulumi.StringArrayOutput)
-}
-
-type K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutput) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutput() K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutput) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutput) Index(i pulumi.IntInput) K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression {
-		return vs[0].([]K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression)[vs[1].(int)]
-	}).(K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput)
-}
-
-type K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecution struct {
-	// A label query over a set of resources, in this case pods.
-	LabelSelectors []K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector `pulumi:"labelSelectors"`
-	// namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means 'this pod's namespace'
-	Namespaces []string `pulumi:"namespaces"`
-	// empty topology key is interpreted by the scheduler as 'all topologies'
-	TopologyKey *string `pulumi:"topologyKey"`
-}
-
-// K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionInput is an input type that accepts K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs and K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionInput` via:
-//
-//	K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs{...}
-type K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput() K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput
-	ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutputWithContext(context.Context) K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput
-}
-
-type K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs struct {
-	// A label query over a set of resources, in this case pods.
-	LabelSelectors K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayInput `pulumi:"labelSelectors"`
-	// namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means 'this pod's namespace'
-	Namespaces pulumi.StringArrayInput `pulumi:"namespaces"`
-	// empty topology key is interpreted by the scheduler as 'all topologies'
-	TopologyKey pulumi.StringPtrInput `pulumi:"topologyKey"`
-}
-
-func (K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecution)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput() K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput {
-	return i.ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput)
-}
-
-// K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayInput is an input type that accepts K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArray and K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayInput` via:
-//
-//	K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArray{ K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs{...} }
-type K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput() K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput
-	ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutputWithContext(context.Context) K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput
-}
-
-type K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArray []K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionInput
-
-func (K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecution)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArray) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput() K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput {
-	return i.ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArray) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput)
-}
-
-type K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecution)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput() K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput {
-	return o
-}
-
-// A label query over a set of resources, in this case pods.
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput) LabelSelectors() K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecution) []K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector {
-		return v.LabelSelectors
-	}).(K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutput)
-}
-
-// namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means 'this pod's namespace'
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput) Namespaces() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecution) []string {
-		return v.Namespaces
-	}).(pulumi.StringArrayOutput)
-}
-
-// empty topology key is interpreted by the scheduler as 'all topologies'
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput) TopologyKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecution) *string {
-		return v.TopologyKey
-	}).(pulumi.StringPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecution)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput() K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput) Index(i pulumi.IntInput) K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecution {
-		return vs[0].([]K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecution)[vs[1].(int)]
-	}).(K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput)
-}
-
-type K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector struct {
-	// A list of label selector requirements. The requirements are ANDed.
-	MatchExpressions []K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression `pulumi:"matchExpressions"`
-	// A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
-	MatchLabels map[string]string `pulumi:"matchLabels"`
-}
-
-// K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorInput is an input type that accepts K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArgs and K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorInput` via:
-//
-//	K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArgs{...}
-type K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput() K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput
-	ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutputWithContext(context.Context) K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput
-}
-
-type K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArgs struct {
-	// A list of label selector requirements. The requirements are ANDed.
-	MatchExpressions K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayInput `pulumi:"matchExpressions"`
-	// A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
-	MatchLabels pulumi.StringMapInput `pulumi:"matchLabels"`
-}
-
-func (K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArgs) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput() K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput {
-	return i.ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArgs) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput)
-}
-
-// K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayInput is an input type that accepts K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArray and K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayInput` via:
-//
-//	K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArray{ K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArgs{...} }
-type K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutput() K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutput
-	ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutputWithContext(context.Context) K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutput
-}
-
-type K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArray []K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorInput
-
-func (K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArray) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutput() K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutput {
-	return i.ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArray) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutput)
-}
-
-type K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput() K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput {
-	return o
-}
-
-// A list of label selector requirements. The requirements are ANDed.
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput) MatchExpressions() K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector) []K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression {
-		return v.MatchExpressions
-	}).(K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutput)
-}
-
-// A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput) MatchLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector) map[string]string {
-		return v.MatchLabels
-	}).(pulumi.StringMapOutput)
-}
-
-type K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutput) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutput() K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutput) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutput) Index(i pulumi.IntInput) K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector {
-		return vs[0].([]K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector)[vs[1].(int)]
-	}).(K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput)
-}
-
-type K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression struct {
-	// The label key that the selector applies to.
-	Key *string `pulumi:"key"`
-	// A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
-	Operator *string `pulumi:"operator"`
-	// An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
-	Values []string `pulumi:"values"`
-}
-
-// K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionInput is an input type that accepts K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArgs and K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionInput` via:
-//
-//	K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArgs{...}
-type K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput() K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput
-	ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutputWithContext(context.Context) K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput
-}
-
-type K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArgs struct {
-	// The label key that the selector applies to.
-	Key pulumi.StringPtrInput `pulumi:"key"`
-	// A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
-	Operator pulumi.StringPtrInput `pulumi:"operator"`
-	// An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
-	Values pulumi.StringArrayInput `pulumi:"values"`
-}
-
-func (K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArgs) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput() K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput {
-	return i.ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArgs) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput)
-}
-
-// K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayInput is an input type that accepts K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArray and K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayInput` via:
-//
-//	K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArray{ K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArgs{...} }
-type K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutput() K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutput
-	ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutputWithContext(context.Context) K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutput
-}
-
-type K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArray []K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionInput
-
-func (K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArray) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutput() K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutput {
-	return i.ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArray) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutput)
-}
-
-type K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput() K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput {
-	return o
-}
-
-// The label key that the selector applies to.
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression) *string {
-		return v.Key
-	}).(pulumi.StringPtrOutput)
-}
-
-// A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput) Operator() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression) *string {
-		return v.Operator
-	}).(pulumi.StringPtrOutput)
-}
-
-// An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression) []string {
-		return v.Values
-	}).(pulumi.StringArrayOutput)
-}
-
-type K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutput) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutput() K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutput) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutput) Index(i pulumi.IntInput) K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression {
-		return vs[0].([]K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression)[vs[1].(int)]
-	}).(K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput)
-}
-
-type K8sJobSpecTemplateSpecContainer struct {
-	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR*NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR*NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
-	Args []string `pulumi:"args"`
-	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR*NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR*NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
-	Commands []string `pulumi:"commands"`
-	// List of sources to populate environment variables in the container. The keys defined within a source must be a C*IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated.
-	EnvFroms []K8sJobSpecTemplateSpecContainerEnvFrom `pulumi:"envFroms"`
-	// List of environment variables to set in the container. Cannot be updated.
-	Envs []K8sJobSpecTemplateSpecContainerEnv `pulumi:"envs"`
-	// Docker image name. More info: https://kubernetes.io/docs/concepts/containers/images/
-	Image *string `pulumi:"image"`
-	// Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/images/#updating-images
-	ImagePullPolicy *string `pulumi:"imagePullPolicy"`
-	// Actions that the management system should take in response to container lifecycle events
-	Lifecycle *K8sJobSpecTemplateSpecContainerLifecycle `pulumi:"lifecycle"`
-	// Periodic probe of container liveness. Container will be restarted if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
-	LivenessProbe *K8sJobSpecTemplateSpecContainerLivenessProbe `pulumi:"livenessProbe"`
-	// Name of the container specified as a DNS*LABEL. Each container in a pod must have a unique name (DNS*LABEL). Cannot be updated.
-	Name string `pulumi:"name"`
-	// List of ports to expose from the container. Exposing a port here gives the system additional information about the network connections a container uses, but is primarily informational. Not specifying a port here DOES NOT prevent that port from being exposed. Any port which is listening on the default "0.0.0.0" address inside a container will be accessible from the network. Cannot be updated.
-	Ports []K8sJobSpecTemplateSpecContainerPort `pulumi:"ports"`
-	// Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
-	ReadinessProbe *K8sJobSpecTemplateSpecContainerReadinessProbe `pulumi:"readinessProbe"`
-	// Compute Resources required by this container. Cannot be updated. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
-	Resources *K8sJobSpecTemplateSpecContainerResources `pulumi:"resources"`
-	// Security options the pod should run with. More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
-	SecurityContext *K8sJobSpecTemplateSpecContainerSecurityContext `pulumi:"securityContext"`
-	// StartupProbe indicates that the Pod has successfully initialized. If specified, no other probes are executed until this completes successfully. If this probe fails, the Pod will be restarted, just as if the livenessProbe failed. This can be used to provide different probe parameters at the beginning of a Pod's lifecycle, when it might take a long time to load data or warm a cache, than during steady-state operation. This cannot be updated. This is an alpha feature enabled by the StartupProbe feature flag. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
-	StartupProbe *K8sJobSpecTemplateSpecContainerStartupProbe `pulumi:"startupProbe"`
-	// Whether this container should allocate a buffer for stdin in the container runtime. If this is not set, reads from stdin in the container will always result in EOF.  Defaults to `false`.
-	Stdin *bool `pulumi:"stdin"`
-	// Whether the container runtime should close the stdin channel after it has been opened by a single attach. When stdin is true the stdin stream will remain open across multiple attach sessions. If stdinOnce is set to true, stdin is opened on container start, is empty until the first client attaches to stdin, and then remains open and accepts data until the client disconnects, at which time stdin is closed and remains closed until the container is restarted. If this flag is false, a container processes that reads from stdin will never receive an EOF. Defaults to `false`.
-	StdinOnce *bool `pulumi:"stdinOnce"`
-	// Optional: Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Defaults to /dev/termination-log. Cannot be updated. Defaults to `/dev/termination-log`.
-	TerminationMessagePath *string `pulumi:"terminationMessagePath"`
-	// Optional: Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
-	TerminationMessagePolicy *string `pulumi:"terminationMessagePolicy"`
-	// Whether this container should allocate a TTY for itself Defaults to `false`.
-	Tty *bool `pulumi:"tty"`
-	// Pod volumes to mount into the container's filesystem. Cannot be updated.
-	VolumeMounts []K8sJobSpecTemplateSpecContainerVolumeMount `pulumi:"volumeMounts"`
-	// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image. Cannot be updated.
-	WorkingDir *string `pulumi:"workingDir"`
-}
-
-// K8sJobSpecTemplateSpecContainerInput is an input type that accepts K8sJobSpecTemplateSpecContainerArgs and K8sJobSpecTemplateSpecContainerOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerArgs{...}
-type K8sJobSpecTemplateSpecContainerInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerOutput() K8sJobSpecTemplateSpecContainerOutput
-	ToK8sJobSpecTemplateSpecContainerOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerOutput
-}
-
-type K8sJobSpecTemplateSpecContainerArgs struct {
-	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR*NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR*NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
-	Args pulumi.StringArrayInput `pulumi:"args"`
-	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR*NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR*NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
-	Commands pulumi.StringArrayInput `pulumi:"commands"`
-	// List of sources to populate environment variables in the container. The keys defined within a source must be a C*IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated.
-	EnvFroms K8sJobSpecTemplateSpecContainerEnvFromArrayInput `pulumi:"envFroms"`
-	// List of environment variables to set in the container. Cannot be updated.
-	Envs K8sJobSpecTemplateSpecContainerEnvArrayInput `pulumi:"envs"`
-	// Docker image name. More info: https://kubernetes.io/docs/concepts/containers/images/
-	Image pulumi.StringPtrInput `pulumi:"image"`
-	// Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/images/#updating-images
-	ImagePullPolicy pulumi.StringPtrInput `pulumi:"imagePullPolicy"`
-	// Actions that the management system should take in response to container lifecycle events
-	Lifecycle K8sJobSpecTemplateSpecContainerLifecyclePtrInput `pulumi:"lifecycle"`
-	// Periodic probe of container liveness. Container will be restarted if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
-	LivenessProbe K8sJobSpecTemplateSpecContainerLivenessProbePtrInput `pulumi:"livenessProbe"`
-	// Name of the container specified as a DNS*LABEL. Each container in a pod must have a unique name (DNS*LABEL). Cannot be updated.
-	Name pulumi.StringInput `pulumi:"name"`
-	// List of ports to expose from the container. Exposing a port here gives the system additional information about the network connections a container uses, but is primarily informational. Not specifying a port here DOES NOT prevent that port from being exposed. Any port which is listening on the default "0.0.0.0" address inside a container will be accessible from the network. Cannot be updated.
-	Ports K8sJobSpecTemplateSpecContainerPortArrayInput `pulumi:"ports"`
-	// Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
-	ReadinessProbe K8sJobSpecTemplateSpecContainerReadinessProbePtrInput `pulumi:"readinessProbe"`
-	// Compute Resources required by this container. Cannot be updated. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
-	Resources K8sJobSpecTemplateSpecContainerResourcesPtrInput `pulumi:"resources"`
-	// Security options the pod should run with. More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
-	SecurityContext K8sJobSpecTemplateSpecContainerSecurityContextPtrInput `pulumi:"securityContext"`
-	// StartupProbe indicates that the Pod has successfully initialized. If specified, no other probes are executed until this completes successfully. If this probe fails, the Pod will be restarted, just as if the livenessProbe failed. This can be used to provide different probe parameters at the beginning of a Pod's lifecycle, when it might take a long time to load data or warm a cache, than during steady-state operation. This cannot be updated. This is an alpha feature enabled by the StartupProbe feature flag. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
-	StartupProbe K8sJobSpecTemplateSpecContainerStartupProbePtrInput `pulumi:"startupProbe"`
-	// Whether this container should allocate a buffer for stdin in the container runtime. If this is not set, reads from stdin in the container will always result in EOF.  Defaults to `false`.
-	Stdin pulumi.BoolPtrInput `pulumi:"stdin"`
-	// Whether the container runtime should close the stdin channel after it has been opened by a single attach. When stdin is true the stdin stream will remain open across multiple attach sessions. If stdinOnce is set to true, stdin is opened on container start, is empty until the first client attaches to stdin, and then remains open and accepts data until the client disconnects, at which time stdin is closed and remains closed until the container is restarted. If this flag is false, a container processes that reads from stdin will never receive an EOF. Defaults to `false`.
-	StdinOnce pulumi.BoolPtrInput `pulumi:"stdinOnce"`
-	// Optional: Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Defaults to /dev/termination-log. Cannot be updated. Defaults to `/dev/termination-log`.
-	TerminationMessagePath pulumi.StringPtrInput `pulumi:"terminationMessagePath"`
-	// Optional: Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
-	TerminationMessagePolicy pulumi.StringPtrInput `pulumi:"terminationMessagePolicy"`
-	// Whether this container should allocate a TTY for itself Defaults to `false`.
-	Tty pulumi.BoolPtrInput `pulumi:"tty"`
-	// Pod volumes to mount into the container's filesystem. Cannot be updated.
-	VolumeMounts K8sJobSpecTemplateSpecContainerVolumeMountArrayInput `pulumi:"volumeMounts"`
-	// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image. Cannot be updated.
-	WorkingDir pulumi.StringPtrInput `pulumi:"workingDir"`
-}
-
-func (K8sJobSpecTemplateSpecContainerArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainer)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerArgs) ToK8sJobSpecTemplateSpecContainerOutput() K8sJobSpecTemplateSpecContainerOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerArgs) ToK8sJobSpecTemplateSpecContainerOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerOutput)
-}
-
-// K8sJobSpecTemplateSpecContainerArrayInput is an input type that accepts K8sJobSpecTemplateSpecContainerArray and K8sJobSpecTemplateSpecContainerArrayOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerArrayInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerArray{ K8sJobSpecTemplateSpecContainerArgs{...} }
-type K8sJobSpecTemplateSpecContainerArrayInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerArrayOutput() K8sJobSpecTemplateSpecContainerArrayOutput
-	ToK8sJobSpecTemplateSpecContainerArrayOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerArrayOutput
-}
-
-type K8sJobSpecTemplateSpecContainerArray []K8sJobSpecTemplateSpecContainerInput
-
-func (K8sJobSpecTemplateSpecContainerArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecContainer)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerArray) ToK8sJobSpecTemplateSpecContainerArrayOutput() K8sJobSpecTemplateSpecContainerArrayOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerArrayOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerArray) ToK8sJobSpecTemplateSpecContainerArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerArrayOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainer)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerOutput) ToK8sJobSpecTemplateSpecContainerOutput() K8sJobSpecTemplateSpecContainerOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerOutput) ToK8sJobSpecTemplateSpecContainerOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerOutput {
-	return o
-}
-
-// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR*NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR*NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
-func (o K8sJobSpecTemplateSpecContainerOutput) Args() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainer) []string { return v.Args }).(pulumi.StringArrayOutput)
-}
-
-// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR*NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR*NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
-func (o K8sJobSpecTemplateSpecContainerOutput) Commands() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainer) []string { return v.Commands }).(pulumi.StringArrayOutput)
-}
-
-// List of sources to populate environment variables in the container. The keys defined within a source must be a C*IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated.
-func (o K8sJobSpecTemplateSpecContainerOutput) EnvFroms() K8sJobSpecTemplateSpecContainerEnvFromArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainer) []K8sJobSpecTemplateSpecContainerEnvFrom { return v.EnvFroms }).(K8sJobSpecTemplateSpecContainerEnvFromArrayOutput)
-}
-
-// List of environment variables to set in the container. Cannot be updated.
-func (o K8sJobSpecTemplateSpecContainerOutput) Envs() K8sJobSpecTemplateSpecContainerEnvArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainer) []K8sJobSpecTemplateSpecContainerEnv { return v.Envs }).(K8sJobSpecTemplateSpecContainerEnvArrayOutput)
-}
-
-// Docker image name. More info: https://kubernetes.io/docs/concepts/containers/images/
-func (o K8sJobSpecTemplateSpecContainerOutput) Image() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainer) *string { return v.Image }).(pulumi.StringPtrOutput)
-}
-
-// Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/images/#updating-images
-func (o K8sJobSpecTemplateSpecContainerOutput) ImagePullPolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainer) *string { return v.ImagePullPolicy }).(pulumi.StringPtrOutput)
-}
-
-// Actions that the management system should take in response to container lifecycle events
-func (o K8sJobSpecTemplateSpecContainerOutput) Lifecycle() K8sJobSpecTemplateSpecContainerLifecyclePtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainer) *K8sJobSpecTemplateSpecContainerLifecycle { return v.Lifecycle }).(K8sJobSpecTemplateSpecContainerLifecyclePtrOutput)
-}
-
-// Periodic probe of container liveness. Container will be restarted if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
-func (o K8sJobSpecTemplateSpecContainerOutput) LivenessProbe() K8sJobSpecTemplateSpecContainerLivenessProbePtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainer) *K8sJobSpecTemplateSpecContainerLivenessProbe {
-		return v.LivenessProbe
-	}).(K8sJobSpecTemplateSpecContainerLivenessProbePtrOutput)
-}
-
-// Name of the container specified as a DNS*LABEL. Each container in a pod must have a unique name (DNS*LABEL). Cannot be updated.
-func (o K8sJobSpecTemplateSpecContainerOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainer) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// List of ports to expose from the container. Exposing a port here gives the system additional information about the network connections a container uses, but is primarily informational. Not specifying a port here DOES NOT prevent that port from being exposed. Any port which is listening on the default "0.0.0.0" address inside a container will be accessible from the network. Cannot be updated.
-func (o K8sJobSpecTemplateSpecContainerOutput) Ports() K8sJobSpecTemplateSpecContainerPortArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainer) []K8sJobSpecTemplateSpecContainerPort { return v.Ports }).(K8sJobSpecTemplateSpecContainerPortArrayOutput)
-}
-
-// Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
-func (o K8sJobSpecTemplateSpecContainerOutput) ReadinessProbe() K8sJobSpecTemplateSpecContainerReadinessProbePtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainer) *K8sJobSpecTemplateSpecContainerReadinessProbe {
-		return v.ReadinessProbe
-	}).(K8sJobSpecTemplateSpecContainerReadinessProbePtrOutput)
-}
-
-// Compute Resources required by this container. Cannot be updated. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
-func (o K8sJobSpecTemplateSpecContainerOutput) Resources() K8sJobSpecTemplateSpecContainerResourcesPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainer) *K8sJobSpecTemplateSpecContainerResources { return v.Resources }).(K8sJobSpecTemplateSpecContainerResourcesPtrOutput)
-}
-
-// Security options the pod should run with. More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
-func (o K8sJobSpecTemplateSpecContainerOutput) SecurityContext() K8sJobSpecTemplateSpecContainerSecurityContextPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainer) *K8sJobSpecTemplateSpecContainerSecurityContext {
-		return v.SecurityContext
-	}).(K8sJobSpecTemplateSpecContainerSecurityContextPtrOutput)
-}
-
-// StartupProbe indicates that the Pod has successfully initialized. If specified, no other probes are executed until this completes successfully. If this probe fails, the Pod will be restarted, just as if the livenessProbe failed. This can be used to provide different probe parameters at the beginning of a Pod's lifecycle, when it might take a long time to load data or warm a cache, than during steady-state operation. This cannot be updated. This is an alpha feature enabled by the StartupProbe feature flag. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
-func (o K8sJobSpecTemplateSpecContainerOutput) StartupProbe() K8sJobSpecTemplateSpecContainerStartupProbePtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainer) *K8sJobSpecTemplateSpecContainerStartupProbe {
-		return v.StartupProbe
-	}).(K8sJobSpecTemplateSpecContainerStartupProbePtrOutput)
-}
-
-// Whether this container should allocate a buffer for stdin in the container runtime. If this is not set, reads from stdin in the container will always result in EOF.  Defaults to `false`.
-func (o K8sJobSpecTemplateSpecContainerOutput) Stdin() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainer) *bool { return v.Stdin }).(pulumi.BoolPtrOutput)
-}
-
-// Whether the container runtime should close the stdin channel after it has been opened by a single attach. When stdin is true the stdin stream will remain open across multiple attach sessions. If stdinOnce is set to true, stdin is opened on container start, is empty until the first client attaches to stdin, and then remains open and accepts data until the client disconnects, at which time stdin is closed and remains closed until the container is restarted. If this flag is false, a container processes that reads from stdin will never receive an EOF. Defaults to `false`.
-func (o K8sJobSpecTemplateSpecContainerOutput) StdinOnce() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainer) *bool { return v.StdinOnce }).(pulumi.BoolPtrOutput)
-}
-
-// Optional: Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Defaults to /dev/termination-log. Cannot be updated. Defaults to `/dev/termination-log`.
-func (o K8sJobSpecTemplateSpecContainerOutput) TerminationMessagePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainer) *string { return v.TerminationMessagePath }).(pulumi.StringPtrOutput)
-}
-
-// Optional: Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
-func (o K8sJobSpecTemplateSpecContainerOutput) TerminationMessagePolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainer) *string { return v.TerminationMessagePolicy }).(pulumi.StringPtrOutput)
-}
-
-// Whether this container should allocate a TTY for itself Defaults to `false`.
-func (o K8sJobSpecTemplateSpecContainerOutput) Tty() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainer) *bool { return v.Tty }).(pulumi.BoolPtrOutput)
-}
-
-// Pod volumes to mount into the container's filesystem. Cannot be updated.
-func (o K8sJobSpecTemplateSpecContainerOutput) VolumeMounts() K8sJobSpecTemplateSpecContainerVolumeMountArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainer) []K8sJobSpecTemplateSpecContainerVolumeMount {
-		return v.VolumeMounts
-	}).(K8sJobSpecTemplateSpecContainerVolumeMountArrayOutput)
-}
-
-// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image. Cannot be updated.
-func (o K8sJobSpecTemplateSpecContainerOutput) WorkingDir() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainer) *string { return v.WorkingDir }).(pulumi.StringPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerArrayOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecContainer)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerArrayOutput) ToK8sJobSpecTemplateSpecContainerArrayOutput() K8sJobSpecTemplateSpecContainerArrayOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerArrayOutput) ToK8sJobSpecTemplateSpecContainerArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerArrayOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerArrayOutput) Index(i pulumi.IntInput) K8sJobSpecTemplateSpecContainerOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) K8sJobSpecTemplateSpecContainer {
-		return vs[0].([]K8sJobSpecTemplateSpecContainer)[vs[1].(int)]
-	}).(K8sJobSpecTemplateSpecContainerOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerEnv struct {
-	// Name of the environment variable. Must be a C_IDENTIFIER
-	Name string `pulumi:"name"`
-	// Variable references $(VAR*NAME) are expanded using the previous defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR*NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
-	Value *string `pulumi:"value"`
-	// Source for the environment variable's value
-	ValueFrom *K8sJobSpecTemplateSpecContainerEnvValueFrom `pulumi:"valueFrom"`
-}
-
-// K8sJobSpecTemplateSpecContainerEnvInput is an input type that accepts K8sJobSpecTemplateSpecContainerEnvArgs and K8sJobSpecTemplateSpecContainerEnvOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerEnvInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerEnvArgs{...}
-type K8sJobSpecTemplateSpecContainerEnvInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerEnvOutput() K8sJobSpecTemplateSpecContainerEnvOutput
-	ToK8sJobSpecTemplateSpecContainerEnvOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerEnvOutput
-}
-
-type K8sJobSpecTemplateSpecContainerEnvArgs struct {
-	// Name of the environment variable. Must be a C_IDENTIFIER
-	Name pulumi.StringInput `pulumi:"name"`
-	// Variable references $(VAR*NAME) are expanded using the previous defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR*NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
-	Value pulumi.StringPtrInput `pulumi:"value"`
-	// Source for the environment variable's value
-	ValueFrom K8sJobSpecTemplateSpecContainerEnvValueFromPtrInput `pulumi:"valueFrom"`
-}
-
-func (K8sJobSpecTemplateSpecContainerEnvArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerEnv)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerEnvArgs) ToK8sJobSpecTemplateSpecContainerEnvOutput() K8sJobSpecTemplateSpecContainerEnvOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerEnvOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerEnvArgs) ToK8sJobSpecTemplateSpecContainerEnvOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerEnvOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerEnvOutput)
-}
-
-// K8sJobSpecTemplateSpecContainerEnvArrayInput is an input type that accepts K8sJobSpecTemplateSpecContainerEnvArray and K8sJobSpecTemplateSpecContainerEnvArrayOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecContainerEnvArrayInput` via:
-//
-//	K8sJobSpecTemplateSpecContainerEnvArray{ K8sJobSpecTemplateSpecContainerEnvArgs{...} }
-type K8sJobSpecTemplateSpecContainerEnvArrayInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecContainerEnvArrayOutput() K8sJobSpecTemplateSpecContainerEnvArrayOutput
-	ToK8sJobSpecTemplateSpecContainerEnvArrayOutputWithContext(context.Context) K8sJobSpecTemplateSpecContainerEnvArrayOutput
-}
-
-type K8sJobSpecTemplateSpecContainerEnvArray []K8sJobSpecTemplateSpecContainerEnvInput
-
-func (K8sJobSpecTemplateSpecContainerEnvArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecContainerEnv)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecContainerEnvArray) ToK8sJobSpecTemplateSpecContainerEnvArrayOutput() K8sJobSpecTemplateSpecContainerEnvArrayOutput {
-	return i.ToK8sJobSpecTemplateSpecContainerEnvArrayOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecContainerEnvArray) ToK8sJobSpecTemplateSpecContainerEnvArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerEnvArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecContainerEnvArrayOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerEnvOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerEnvOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecContainerEnv)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvOutput) ToK8sJobSpecTemplateSpecContainerEnvOutput() K8sJobSpecTemplateSpecContainerEnvOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvOutput) ToK8sJobSpecTemplateSpecContainerEnvOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerEnvOutput {
-	return o
-}
-
-// Name of the environment variable. Must be a C_IDENTIFIER
-func (o K8sJobSpecTemplateSpecContainerEnvOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerEnv) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Variable references $(VAR*NAME) are expanded using the previous defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR*NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
-func (o K8sJobSpecTemplateSpecContainerEnvOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-// Source for the environment variable's value
-func (o K8sJobSpecTemplateSpecContainerEnvOutput) ValueFrom() K8sJobSpecTemplateSpecContainerEnvValueFromPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecContainerEnv) *K8sJobSpecTemplateSpecContainerEnvValueFrom {
-		return v.ValueFrom
-	}).(K8sJobSpecTemplateSpecContainerEnvValueFromPtrOutput)
-}
-
-type K8sJobSpecTemplateSpecContainerEnvArrayOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecContainerEnvArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecContainerEnv)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvArrayOutput) ToK8sJobSpecTemplateSpecContainerEnvArrayOutput() K8sJobSpecTemplateSpecContainerEnvArrayOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvArrayOutput) ToK8sJobSpecTemplateSpecContainerEnvArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecContainerEnvArrayOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecContainerEnvArrayOutput) Index(i pulumi.IntInput) K8sJobSpecTemplateSpecContainerEnvOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) K8sJobSpecTemplateSpecContainerEnv {
-		return vs[0].([]K8sJobSpecTemplateSpecContainerEnv)[vs[1].(int)]
-	}).(K8sJobSpecTemplateSpecContainerEnvOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AsgProfileCustomDataTagInput)(nil)).Elem(), AsgProfileCustomDataTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AsgProfileCustomDataTagArrayInput)(nil)).Elem(), AsgProfileCustomDataTagArray{})
@@ -77208,6 +77534,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AsgProfileMetadataArrayInput)(nil)).Elem(), AsgProfileMetadataArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AsgProfileMinionTagInput)(nil)).Elem(), AsgProfileMinionTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AsgProfileMinionTagArrayInput)(nil)).Elem(), AsgProfileMinionTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AsgProfileMixedInstancesPolicyInput)(nil)).Elem(), AsgProfileMixedInstancesPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AsgProfileMixedInstancesPolicyPtrInput)(nil)).Elem(), AsgProfileMixedInstancesPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AsgProfileMixedInstancesPolicyInstancesDistributionInput)(nil)).Elem(), AsgProfileMixedInstancesPolicyInstancesDistributionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AsgProfileMixedInstancesPolicyInstancesDistributionPtrInput)(nil)).Elem(), AsgProfileMixedInstancesPolicyInstancesDistributionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AsgProfileMixedInstancesPolicyLaunchTemplateInput)(nil)).Elem(), AsgProfileMixedInstancesPolicyLaunchTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AsgProfileMixedInstancesPolicyLaunchTemplatePtrInput)(nil)).Elem(), AsgProfileMixedInstancesPolicyLaunchTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInput)(nil)).Elem(), AsgProfileMixedInstancesPolicyLaunchTemplateOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AsgProfileMixedInstancesPolicyLaunchTemplateOverrideArrayInput)(nil)).Elem(), AsgProfileMixedInstancesPolicyLaunchTemplateOverrideArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsInput)(nil)).Elem(), AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsPtrInput)(nil)).Elem(), AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibInput)(nil)).Elem(), AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibPtrInput)(nil)).Elem(), AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountInput)(nil)).Elem(), AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountPtrInput)(nil)).Elem(), AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AsgProfileNetworkInterfaceInput)(nil)).Elem(), AsgProfileNetworkInterfaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AsgProfileNetworkInterfaceArrayInput)(nil)).Elem(), AsgProfileNetworkInterfaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AsgProfileNetworkInterfaceMetadataInput)(nil)).Elem(), AsgProfileNetworkInterfaceMetadataArgs{})
@@ -78175,26 +78515,26 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionInput)(nil)).Elem(), K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayInput)(nil)).Elem(), K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermInput)(nil)).Elem(), K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorInput)(nil)).Elem(), K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayInput)(nil)).Elem(), K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionInput)(nil)).Elem(), K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayInput)(nil)).Elem(), K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionInput)(nil)).Elem(), K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayInput)(nil)).Elem(), K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorInput)(nil)).Elem(), K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayInput)(nil)).Elem(), K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionInput)(nil)).Elem(), K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayInput)(nil)).Elem(), K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerArrayInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerEnvInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerEnvArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecContainerEnvArrayInput)(nil)).Elem(), K8sJobSpecTemplateSpecContainerEnvArray{})
 	pulumi.RegisterOutputType(AsgProfileCustomDataTagOutput{})
 	pulumi.RegisterOutputType(AsgProfileCustomDataTagArrayOutput{})
 	pulumi.RegisterOutputType(AsgProfileMetadataOutput{})
 	pulumi.RegisterOutputType(AsgProfileMetadataArrayOutput{})
 	pulumi.RegisterOutputType(AsgProfileMinionTagOutput{})
 	pulumi.RegisterOutputType(AsgProfileMinionTagArrayOutput{})
+	pulumi.RegisterOutputType(AsgProfileMixedInstancesPolicyOutput{})
+	pulumi.RegisterOutputType(AsgProfileMixedInstancesPolicyPtrOutput{})
+	pulumi.RegisterOutputType(AsgProfileMixedInstancesPolicyInstancesDistributionOutput{})
+	pulumi.RegisterOutputType(AsgProfileMixedInstancesPolicyInstancesDistributionPtrOutput{})
+	pulumi.RegisterOutputType(AsgProfileMixedInstancesPolicyLaunchTemplateOutput{})
+	pulumi.RegisterOutputType(AsgProfileMixedInstancesPolicyLaunchTemplatePtrOutput{})
+	pulumi.RegisterOutputType(AsgProfileMixedInstancesPolicyLaunchTemplateOverrideOutput{})
+	pulumi.RegisterOutputType(AsgProfileMixedInstancesPolicyLaunchTemplateOverrideArrayOutput{})
+	pulumi.RegisterOutputType(AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsOutput{})
+	pulumi.RegisterOutputType(AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsPtrOutput{})
+	pulumi.RegisterOutputType(AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibOutput{})
+	pulumi.RegisterOutputType(AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMibPtrOutput{})
+	pulumi.RegisterOutputType(AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountOutput{})
+	pulumi.RegisterOutputType(AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCountPtrOutput{})
 	pulumi.RegisterOutputType(AsgProfileNetworkInterfaceOutput{})
 	pulumi.RegisterOutputType(AsgProfileNetworkInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(AsgProfileNetworkInterfaceMetadataOutput{})
@@ -79162,18 +79502,4 @@ func init() {
 	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput{})
 	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput{})
 	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerArrayOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerEnvOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecContainerEnvArrayOutput{})
 }

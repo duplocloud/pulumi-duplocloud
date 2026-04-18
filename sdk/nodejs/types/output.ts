@@ -20,6 +20,119 @@ export interface AsgProfileMinionTag {
     value: string;
 }
 
+export interface AsgProfileMixedInstancesPolicy {
+    /**
+     * Configuration for the distribution of On-Demand and Spot instances.
+     */
+    instancesDistribution?: outputs.AsgProfileMixedInstancesPolicyInstancesDistribution;
+    /**
+     * Launch template configuration with instance type overrides.
+     */
+    launchTemplate?: outputs.AsgProfileMixedInstancesPolicyLaunchTemplate;
+}
+
+export interface AsgProfileMixedInstancesPolicyInstancesDistribution {
+    /**
+     * Strategy for allocating On-Demand instances (e.g. `prioritized`).
+     */
+    onDemandAllocationStrategy: string;
+    /**
+     * Minimum number of On-Demand instances in the group.
+     */
+    onDemandBaseCapacity?: number;
+    /**
+     * Percentage of On-Demand instances above the base capacity (0-100).
+     */
+    onDemandPercentageAboveBaseCapacity?: number;
+    /**
+     * Strategy for allocating Spot instances (e.g. `capacity-optimized`, `price-capacity-optimized`, `lowest-price`).
+     */
+    spotAllocationStrategy?: string;
+    /**
+     * Number of Spot pools for allocation (only used with `lowest-price` strategy).
+     */
+    spotInstancePools?: number;
+    /**
+     * Maximum price per unit hour for Spot instances.
+     */
+    spotMaxPrice?: string;
+}
+
+export interface AsgProfileMixedInstancesPolicyLaunchTemplate {
+    /**
+     * List of instance type overrides for the launch template.
+     */
+    overrides?: outputs.AsgProfileMixedInstancesPolicyLaunchTemplateOverride[];
+}
+
+export interface AsgProfileMixedInstancesPolicyLaunchTemplateOverride {
+    /**
+     * Instance requirements for flexible instance selection.
+     */
+    instanceRequirements?: outputs.AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirements;
+    /**
+     * The instance type. Mutually exclusive with `instanceRequirements`.
+     */
+    instanceType?: string;
+    /**
+     * The number of capacity units provided by the instance type.
+     */
+    weightedCapacity?: string;
+}
+
+export interface AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirements {
+    /**
+     * List of allowed instance types (e.g. `m5.large`, `m5a.large`). Cannot be specified if `excludedInstanceTypes` is specified in the same launch template override.
+     */
+    allowedInstanceTypes: string[];
+    /**
+     * List of CPU manufacturers (e.g. `intel`, `amd`, `amazon-web-services`).
+     */
+    cpuManufacturers: string[];
+    /**
+     * List of excluded instance types. Cannot be specified if `allowedInstanceTypes` is specified in the same launch template override.
+     */
+    excludedInstanceTypes: string[];
+    /**
+     * List of instance generations (e.g. `current`, `previous`).
+     */
+    instanceGenerations: string[];
+    /**
+     * Range of memory in MiB.
+     */
+    memoryMib: outputs.AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMib;
+    /**
+     * Price protection threshold as a percentage over the lowest price.
+     */
+    spotMaxPricePercentageOverLowestPrice: number;
+    /**
+     * Range of vCPU counts.
+     */
+    vcpuCount: outputs.AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCount;
+}
+
+export interface AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMib {
+    /**
+     * Maximum memory in MiB.
+     */
+    max?: number;
+    /**
+     * Minimum memory in MiB.
+     */
+    min: number;
+}
+
+export interface AsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCount {
+    /**
+     * Maximum number of vCPUs.
+     */
+    max?: number;
+    /**
+     * Minimum number of vCPUs.
+     */
+    min: number;
+}
+
 export interface AsgProfileNetworkInterface {
     /**
      * Whether or not to associate a public IP with the newly created ENI.  Cannot be specified if `networkInterfaceId` is specified.
@@ -1237,9 +1350,25 @@ export interface AwsLaunchTemplateBlockDeviceMappingEbs {
 export interface AwsLaunchTemplateInstanceRequirements {
     allowedInstanceTypes: string[];
     /**
+     * List of CPU manufacturers (e.g. `intel`, `amd`, `amazon-web-services`).
+     */
+    cpuManufacturers?: string[];
+    /**
+     * List of excluded instance types. Mutually exclusive with `allowedInstanceTypes`.
+     */
+    excludedInstanceTypes?: string[];
+    /**
+     * List of instance generations (e.g. `current`, `previous`).
+     */
+    instanceGenerations?: string[];
+    /**
      * Block describing the minimum and maximum amount of memory (MiB). It is a required field when allowed*instance*types is set
      */
     memoryMib?: outputs.AwsLaunchTemplateInstanceRequirementsMemoryMib;
+    /**
+     * Price protection threshold as a percentage over the lowest price.
+     */
+    spotMaxPricePercentageOverLowestPrice?: number;
     /**
      * Block describing the minimum and maximum number of vCPUs. It is a required field when allowed*instance*types is set
      */
@@ -3399,7 +3528,7 @@ export interface GetAsgProfilesAsgProfile {
     /**
      * The AWS EC2 instance type.
      */
-    capacity: string;
+    capacity?: string;
     /**
      * The numeric ID of the cloud provider to launch the host in.
      */
@@ -3473,6 +3602,10 @@ export interface GetAsgProfilesAsgProfile {
      */
     minionTags: outputs.GetAsgProfilesAsgProfileMinionTag[];
     /**
+     * Configuration block for a mixed instances policy. This allows an ASG to use multiple instance types and a mix of On-Demand and Spot instances.
+     */
+    mixedInstancesPolicy?: outputs.GetAsgProfilesAsgProfileMixedInstancesPolicy;
+    /**
      * An optional list of custom network interface configurations to use when creating the host.
      */
     networkInterfaces: outputs.GetAsgProfilesAsgProfileNetworkInterface[];
@@ -3528,6 +3661,119 @@ export interface GetAsgProfilesAsgProfileMetadata {
 export interface GetAsgProfilesAsgProfileMinionTag {
     key: string;
     value: string;
+}
+
+export interface GetAsgProfilesAsgProfileMixedInstancesPolicy {
+    /**
+     * Configuration for the distribution of On-Demand and Spot instances.
+     */
+    instancesDistribution?: outputs.GetAsgProfilesAsgProfileMixedInstancesPolicyInstancesDistribution;
+    /**
+     * Launch template configuration with instance type overrides.
+     */
+    launchTemplate?: outputs.GetAsgProfilesAsgProfileMixedInstancesPolicyLaunchTemplate;
+}
+
+export interface GetAsgProfilesAsgProfileMixedInstancesPolicyInstancesDistribution {
+    /**
+     * Strategy for allocating On-Demand instances (e.g. `prioritized`).
+     */
+    onDemandAllocationStrategy: string;
+    /**
+     * Minimum number of On-Demand instances in the group.
+     */
+    onDemandBaseCapacity?: number;
+    /**
+     * Percentage of On-Demand instances above the base capacity (0-100).
+     */
+    onDemandPercentageAboveBaseCapacity?: number;
+    /**
+     * Strategy for allocating Spot instances (e.g. `capacity-optimized`, `price-capacity-optimized`, `lowest-price`).
+     */
+    spotAllocationStrategy?: string;
+    /**
+     * Number of Spot pools for allocation (only used with `lowest-price` strategy).
+     */
+    spotInstancePools?: number;
+    /**
+     * Maximum price per unit hour for Spot instances.
+     */
+    spotMaxPrice?: string;
+}
+
+export interface GetAsgProfilesAsgProfileMixedInstancesPolicyLaunchTemplate {
+    /**
+     * List of instance type overrides for the launch template.
+     */
+    overrides?: outputs.GetAsgProfilesAsgProfileMixedInstancesPolicyLaunchTemplateOverride[];
+}
+
+export interface GetAsgProfilesAsgProfileMixedInstancesPolicyLaunchTemplateOverride {
+    /**
+     * Instance requirements for flexible instance selection.
+     */
+    instanceRequirements?: outputs.GetAsgProfilesAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirements;
+    /**
+     * The instance type. Mutually exclusive with `instanceRequirements`.
+     */
+    instanceType?: string;
+    /**
+     * The number of capacity units provided by the instance type.
+     */
+    weightedCapacity?: string;
+}
+
+export interface GetAsgProfilesAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirements {
+    /**
+     * List of allowed instance types (e.g. `m5.large`, `m5a.large`). Cannot be specified if `excludedInstanceTypes` is specified in the same launch template override.
+     */
+    allowedInstanceTypes: string[];
+    /**
+     * List of CPU manufacturers (e.g. `intel`, `amd`, `amazon-web-services`).
+     */
+    cpuManufacturers: string[];
+    /**
+     * List of excluded instance types. Cannot be specified if `allowedInstanceTypes` is specified in the same launch template override.
+     */
+    excludedInstanceTypes: string[];
+    /**
+     * List of instance generations (e.g. `current`, `previous`).
+     */
+    instanceGenerations: string[];
+    /**
+     * Range of memory in MiB.
+     */
+    memoryMib: outputs.GetAsgProfilesAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMib;
+    /**
+     * Price protection threshold as a percentage over the lowest price.
+     */
+    spotMaxPricePercentageOverLowestPrice: number;
+    /**
+     * Range of vCPU counts.
+     */
+    vcpuCount: outputs.GetAsgProfilesAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCount;
+}
+
+export interface GetAsgProfilesAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMib {
+    /**
+     * Maximum memory in MiB.
+     */
+    max?: number;
+    /**
+     * Minimum memory in MiB.
+     */
+    min: number;
+}
+
+export interface GetAsgProfilesAsgProfileMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsVcpuCount {
+    /**
+     * Maximum number of vCPUs.
+     */
+    max?: number;
+    /**
+     * Minimum number of vCPUs.
+     */
+    min: number;
 }
 
 export interface GetAsgProfilesAsgProfileNetworkInterface {
@@ -11896,6 +12142,43 @@ export interface GetPlansDataMetadata {
 export interface GetPlansDataWafInfo {
     id: string;
     name: string;
+}
+
+export interface GetRdsInstancePerformanceInsight {
+    /**
+     * Whether Performance Insights is enabled.
+     */
+    enabled: boolean;
+    /**
+     * ARN of the KMS key used to encrypt Performance Insights data.
+     */
+    kmsKeyId: string;
+    /**
+     * Retention period in days.
+     */
+    retentionPeriod: number;
+}
+
+export interface GetRdsInstanceStorageAutoscaling {
+    /**
+     * Whether storage autoscaling is enabled.
+     */
+    enable: boolean;
+    /**
+     * The upper limit in GiB for storage autoscaling.
+     */
+    maxAllocatedStorage: number;
+}
+
+export interface GetRdsInstanceV2ScalingConfiguration {
+    /**
+     * Maximum scaling capacity.
+     */
+    maxCapacity: number;
+    /**
+     * Minimum scaling capacity.
+     */
+    minCapacity: number;
 }
 
 export interface GetS3BucketDefaultEncryption {

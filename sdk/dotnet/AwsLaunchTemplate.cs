@@ -90,6 +90,42 @@ namespace DuploCloud.Pulumi
     ///         },
     ///     });
     /// 
+    ///     var mixedInstanceTest = new Pulumi.AwsLaunchTemplate("mixed_instance_test", new()
+    ///     {
+    ///         TenantId = myapp.TenantId,
+    ///         Name = mixed_instances_asg.Fullname,
+    ///         VersionDescription = "launch template with extended instance requirements",
+    ///         InstanceRequirements = new Pulumi.Inputs.AwsLaunchTemplateInstanceRequirementsArgs
+    ///         {
+    ///             AllowedInstanceTypes = new[]
+    ///             {
+    ///                 "m5.*",
+    ///                 "m5a.*",
+    ///                 "c5.*",
+    ///             },
+    ///             VcpuCount = new Pulumi.Inputs.AwsLaunchTemplateInstanceRequirementsVcpuCountArgs
+    ///             {
+    ///                 Min = 2,
+    ///                 Max = 8,
+    ///             },
+    ///             MemoryMib = new Pulumi.Inputs.AwsLaunchTemplateInstanceRequirementsMemoryMibArgs
+    ///             {
+    ///                 Min = 4096,
+    ///                 Max = 32768,
+    ///             },
+    ///             CpuManufacturers = new[]
+    ///             {
+    ///                 "intel",
+    ///                 "amd",
+    ///             },
+    ///             InstanceGenerations = new[]
+    ///             {
+    ///                 "current",
+    ///             },
+    ///             SpotMaxPricePercentageOverLowestPrice = 100,
+    ///         },
+    ///     });
+    /// 
     /// });
     /// ```
     /// 

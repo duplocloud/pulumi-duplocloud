@@ -92,6 +92,37 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			_, err = duplocloud.NewAwsLaunchTemplate(ctx, "mixed_instance_test", &duplocloud.AwsLaunchTemplateArgs{
+//				TenantId:           myapp.TenantId,
+//				Name:               pulumi.Any(mixed_instances_asg.Fullname),
+//				VersionDescription: pulumi.String("launch template with extended instance requirements"),
+//				InstanceRequirements: &duplocloud.AwsLaunchTemplateInstanceRequirementsArgs{
+//					AllowedInstanceTypes: pulumi.StringArray{
+//						pulumi.String("m5.*"),
+//						pulumi.String("m5a.*"),
+//						pulumi.String("c5.*"),
+//					},
+//					VcpuCount: &duplocloud.AwsLaunchTemplateInstanceRequirementsVcpuCountArgs{
+//						Min: pulumi.Int(2),
+//						Max: pulumi.Int(8),
+//					},
+//					MemoryMib: &duplocloud.AwsLaunchTemplateInstanceRequirementsMemoryMibArgs{
+//						Min: pulumi.Int(4096),
+//						Max: pulumi.Int(32768),
+//					},
+//					CpuManufacturers: pulumi.StringArray{
+//						pulumi.String("intel"),
+//						pulumi.String("amd"),
+//					},
+//					InstanceGenerations: pulumi.StringArray{
+//						pulumi.String("current"),
+//					},
+//					SpotMaxPricePercentageOverLowestPrice: pulumi.Int(100),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			return nil
 //		})
 //	}

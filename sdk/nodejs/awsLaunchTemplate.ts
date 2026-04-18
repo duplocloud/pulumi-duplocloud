@@ -65,6 +65,32 @@ import * as utilities from "./utilities";
  *         },
  *     },
  * });
+ * const mixedInstanceTest = new duplocloud.AwsLaunchTemplate("mixed_instance_test", {
+ *     tenantId: myapp.tenantId,
+ *     name: mixed_instances_asg.fullname,
+ *     versionDescription: "launch template with extended instance requirements",
+ *     instanceRequirements: {
+ *         allowedInstanceTypes: [
+ *             "m5.*",
+ *             "m5a.*",
+ *             "c5.*",
+ *         ],
+ *         vcpuCount: {
+ *             min: 2,
+ *             max: 8,
+ *         },
+ *         memoryMib: {
+ *             min: 4096,
+ *             max: 32768,
+ *         },
+ *         cpuManufacturers: [
+ *             "intel",
+ *             "amd",
+ *         ],
+ *         instanceGenerations: ["current"],
+ *         spotMaxPricePercentageOverLowestPrice: 100,
+ *     },
+ * });
  * ```
  *
  * ## Import
