@@ -53,6 +53,14 @@ namespace DuploCloud.Pulumi
         public Output<string> Arn { get; private set; } = null!;
 
         /// <summary>
+        /// A map of arbitrary AWS tags applied to the ASG and its launched EC2 instances (routed via the backend's `TagsCsv`
+        /// field). Use this for tags that aren't `AllocationTags` — those belong in `custom_data_tags`. Changes force replacement
+        /// because the backend applies these tags only at create time.
+        /// </summary>
+        [Output("asgTags")]
+        public Output<ImmutableDictionary<string, string>> AsgTags { get; private set; } = null!;
+
+        /// <summary>
         /// Base64 encoded EC2 user data to associated with the host.
         /// </summary>
         [Output("base64UserData")]
@@ -313,6 +321,20 @@ namespace DuploCloud.Pulumi
         /// </summary>
         [Input("allocatedPublicIp")]
         public Input<bool>? AllocatedPublicIp { get; set; }
+
+        [Input("asgTags")]
+        private InputMap<string>? _asgTags;
+
+        /// <summary>
+        /// A map of arbitrary AWS tags applied to the ASG and its launched EC2 instances (routed via the backend's `TagsCsv`
+        /// field). Use this for tags that aren't `AllocationTags` — those belong in `custom_data_tags`. Changes force replacement
+        /// because the backend applies these tags only at create time.
+        /// </summary>
+        public InputMap<string> AsgTags
+        {
+            get => _asgTags ?? (_asgTags = new InputMap<string>());
+            set => _asgTags = value;
+        }
 
         /// <summary>
         /// Base64 encoded EC2 user data to associated with the host.
@@ -587,6 +609,20 @@ namespace DuploCloud.Pulumi
         /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
+
+        [Input("asgTags")]
+        private InputMap<string>? _asgTags;
+
+        /// <summary>
+        /// A map of arbitrary AWS tags applied to the ASG and its launched EC2 instances (routed via the backend's `TagsCsv`
+        /// field). Use this for tags that aren't `AllocationTags` — those belong in `custom_data_tags`. Changes force replacement
+        /// because the backend applies these tags only at create time.
+        /// </summary>
+        public InputMap<string> AsgTags
+        {
+            get => _asgTags ?? (_asgTags = new InputMap<string>());
+            set => _asgTags = value;
+        }
 
         /// <summary>
         /// Base64 encoded EC2 user data to associated with the host.

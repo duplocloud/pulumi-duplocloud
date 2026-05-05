@@ -26,6 +26,7 @@ class AsgProfileArgs:
                  tenant_id: pulumi.Input[str],
                  agent_platform: Optional[pulumi.Input[int]] = None,
                  allocated_public_ip: Optional[pulumi.Input[bool]] = None,
+                 asg_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  base64_user_data: Optional[pulumi.Input[str]] = None,
                  can_scale_from_zero: Optional[pulumi.Input[bool]] = None,
                  capacity: Optional[pulumi.Input[str]] = None,
@@ -63,6 +64,9 @@ class AsgProfileArgs:
         :param pulumi.Input[int] agent_platform: The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
                Windows - 7: EKS Linux - 8: ECS
         :param pulumi.Input[bool] allocated_public_ip: Whether or not to allocate a public IP.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] asg_tags: A map of arbitrary AWS tags applied to the ASG and its launched EC2 instances (routed via the backend's `TagsCsv`
+               field). Use this for tags that aren't `AllocationTags` — those belong in `custom_data_tags`. Changes force replacement
+               because the backend applies these tags only at create time.
         :param pulumi.Input[str] base64_user_data: Base64 encoded EC2 user data to associated with the host.
         :param pulumi.Input[bool] can_scale_from_zero: Whether or not ASG should leverage duplocloud's scale from 0 feature
         :param pulumi.Input[str] capacity: The AWS EC2 instance type.
@@ -103,6 +107,8 @@ class AsgProfileArgs:
             pulumi.set(__self__, "agent_platform", agent_platform)
         if allocated_public_ip is not None:
             pulumi.set(__self__, "allocated_public_ip", allocated_public_ip)
+        if asg_tags is not None:
+            pulumi.set(__self__, "asg_tags", asg_tags)
         if base64_user_data is not None:
             pulumi.set(__self__, "base64_user_data", base64_user_data)
         if can_scale_from_zero is not None:
@@ -228,6 +234,20 @@ class AsgProfileArgs:
     @allocated_public_ip.setter
     def allocated_public_ip(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "allocated_public_ip", value)
+
+    @property
+    @pulumi.getter(name="asgTags")
+    def asg_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A map of arbitrary AWS tags applied to the ASG and its launched EC2 instances (routed via the backend's `TagsCsv`
+        field). Use this for tags that aren't `AllocationTags` — those belong in `custom_data_tags`. Changes force replacement
+        because the backend applies these tags only at create time.
+        """
+        return pulumi.get(self, "asg_tags")
+
+    @asg_tags.setter
+    def asg_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "asg_tags", value)
 
     @property
     @pulumi.getter(name="base64UserData")
@@ -581,6 +601,7 @@ class _AsgProfileState:
                  agent_platform: Optional[pulumi.Input[int]] = None,
                  allocated_public_ip: Optional[pulumi.Input[bool]] = None,
                  arn: Optional[pulumi.Input[str]] = None,
+                 asg_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  base64_user_data: Optional[pulumi.Input[str]] = None,
                  can_scale_from_zero: Optional[pulumi.Input[bool]] = None,
                  capacity: Optional[pulumi.Input[str]] = None,
@@ -622,6 +643,9 @@ class _AsgProfileState:
                Windows - 7: EKS Linux - 8: ECS
         :param pulumi.Input[bool] allocated_public_ip: Whether or not to allocate a public IP.
         :param pulumi.Input[str] arn: The ASG arn.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] asg_tags: A map of arbitrary AWS tags applied to the ASG and its launched EC2 instances (routed via the backend's `TagsCsv`
+               field). Use this for tags that aren't `AllocationTags` — those belong in `custom_data_tags`. Changes force replacement
+               because the backend applies these tags only at create time.
         :param pulumi.Input[str] base64_user_data: Base64 encoded EC2 user data to associated with the host.
         :param pulumi.Input[bool] can_scale_from_zero: Whether or not ASG should leverage duplocloud's scale from 0 feature
         :param pulumi.Input[str] capacity: The AWS EC2 instance type.
@@ -666,6 +690,8 @@ class _AsgProfileState:
             pulumi.set(__self__, "allocated_public_ip", allocated_public_ip)
         if arn is not None:
             pulumi.set(__self__, "arn", arn)
+        if asg_tags is not None:
+            pulumi.set(__self__, "asg_tags", asg_tags)
         if base64_user_data is not None:
             pulumi.set(__self__, "base64_user_data", base64_user_data)
         if can_scale_from_zero is not None:
@@ -779,6 +805,20 @@ class _AsgProfileState:
     @arn.setter
     def arn(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "arn", value)
+
+    @property
+    @pulumi.getter(name="asgTags")
+    def asg_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A map of arbitrary AWS tags applied to the ASG and its launched EC2 instances (routed via the backend's `TagsCsv`
+        field). Use this for tags that aren't `AllocationTags` — those belong in `custom_data_tags`. Changes force replacement
+        because the backend applies these tags only at create time.
+        """
+        return pulumi.get(self, "asg_tags")
+
+    @asg_tags.setter
+    def asg_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "asg_tags", value)
 
     @property
     @pulumi.getter(name="base64UserData")
@@ -1202,6 +1242,7 @@ class AsgProfile(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  agent_platform: Optional[pulumi.Input[int]] = None,
                  allocated_public_ip: Optional[pulumi.Input[bool]] = None,
+                 asg_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  base64_user_data: Optional[pulumi.Input[str]] = None,
                  can_scale_from_zero: Optional[pulumi.Input[bool]] = None,
                  capacity: Optional[pulumi.Input[str]] = None,
@@ -1260,6 +1301,9 @@ class AsgProfile(pulumi.CustomResource):
         :param pulumi.Input[int] agent_platform: The numeric ID of the container agent pool that this host is added to. - 0: Linux Docker/Native - 4: None - 5: Docker
                Windows - 7: EKS Linux - 8: ECS
         :param pulumi.Input[bool] allocated_public_ip: Whether or not to allocate a public IP.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] asg_tags: A map of arbitrary AWS tags applied to the ASG and its launched EC2 instances (routed via the backend's `TagsCsv`
+               field). Use this for tags that aren't `AllocationTags` — those belong in `custom_data_tags`. Changes force replacement
+               because the backend applies these tags only at create time.
         :param pulumi.Input[str] base64_user_data: Base64 encoded EC2 user data to associated with the host.
         :param pulumi.Input[bool] can_scale_from_zero: Whether or not ASG should leverage duplocloud's scale from 0 feature
         :param pulumi.Input[str] capacity: The AWS EC2 instance type.
@@ -1339,6 +1383,7 @@ class AsgProfile(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  agent_platform: Optional[pulumi.Input[int]] = None,
                  allocated_public_ip: Optional[pulumi.Input[bool]] = None,
+                 asg_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  base64_user_data: Optional[pulumi.Input[str]] = None,
                  can_scale_from_zero: Optional[pulumi.Input[bool]] = None,
                  capacity: Optional[pulumi.Input[str]] = None,
@@ -1382,6 +1427,7 @@ class AsgProfile(pulumi.CustomResource):
 
             __props__.__dict__["agent_platform"] = agent_platform
             __props__.__dict__["allocated_public_ip"] = allocated_public_ip
+            __props__.__dict__["asg_tags"] = asg_tags
             __props__.__dict__["base64_user_data"] = base64_user_data
             __props__.__dict__["can_scale_from_zero"] = can_scale_from_zero
             __props__.__dict__["capacity"] = capacity
@@ -1437,6 +1483,7 @@ class AsgProfile(pulumi.CustomResource):
             agent_platform: Optional[pulumi.Input[int]] = None,
             allocated_public_ip: Optional[pulumi.Input[bool]] = None,
             arn: Optional[pulumi.Input[str]] = None,
+            asg_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             base64_user_data: Optional[pulumi.Input[str]] = None,
             can_scale_from_zero: Optional[pulumi.Input[bool]] = None,
             capacity: Optional[pulumi.Input[str]] = None,
@@ -1483,6 +1530,9 @@ class AsgProfile(pulumi.CustomResource):
                Windows - 7: EKS Linux - 8: ECS
         :param pulumi.Input[bool] allocated_public_ip: Whether or not to allocate a public IP.
         :param pulumi.Input[str] arn: The ASG arn.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] asg_tags: A map of arbitrary AWS tags applied to the ASG and its launched EC2 instances (routed via the backend's `TagsCsv`
+               field). Use this for tags that aren't `AllocationTags` — those belong in `custom_data_tags`. Changes force replacement
+               because the backend applies these tags only at create time.
         :param pulumi.Input[str] base64_user_data: Base64 encoded EC2 user data to associated with the host.
         :param pulumi.Input[bool] can_scale_from_zero: Whether or not ASG should leverage duplocloud's scale from 0 feature
         :param pulumi.Input[str] capacity: The AWS EC2 instance type.
@@ -1528,6 +1578,7 @@ class AsgProfile(pulumi.CustomResource):
         __props__.__dict__["agent_platform"] = agent_platform
         __props__.__dict__["allocated_public_ip"] = allocated_public_ip
         __props__.__dict__["arn"] = arn
+        __props__.__dict__["asg_tags"] = asg_tags
         __props__.__dict__["base64_user_data"] = base64_user_data
         __props__.__dict__["can_scale_from_zero"] = can_scale_from_zero
         __props__.__dict__["capacity"] = capacity
@@ -1589,6 +1640,16 @@ class AsgProfile(pulumi.CustomResource):
         The ASG arn.
         """
         return pulumi.get(self, "arn")
+
+    @property
+    @pulumi.getter(name="asgTags")
+    def asg_tags(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        A map of arbitrary AWS tags applied to the ASG and its launched EC2 instances (routed via the backend's `TagsCsv`
+        field). Use this for tags that aren't `AllocationTags` — those belong in `custom_data_tags`. Changes force replacement
+        because the backend applies these tags only at create time.
+        """
+        return pulumi.get(self, "asg_tags")
 
     @property
     @pulumi.getter(name="base64UserData")

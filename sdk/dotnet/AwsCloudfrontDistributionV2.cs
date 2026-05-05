@@ -73,7 +73,7 @@ namespace DuploCloud.Pulumi
     ///                 ConnectionTimeout = 10,
     ///                 DomainName = forcloudfront.Fullname.Apply(fullname =&gt; $"{fullname}.s3.{region}.amazonaws.com"),
     ///                 OriginId = forcloudfront.Fullname.Apply(fullname =&gt; $"{fullname}.s3.{region}.amazonaws.com"),
-    ///                 OriginPath = "/acme-portal.dev.shastacloud.io",
+    ///                 OriginPath = "/portal.example.io",
     ///             },
     ///         },
     ///         DefaultCacheBehavior = new Pulumi.Inputs.AwsCloudfrontDistributionV2DefaultCacheBehaviorArgs

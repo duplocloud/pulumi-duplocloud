@@ -78,7 +78,7 @@ import (
 //						OriginId: forcloudfront.Fullname.ApplyT(func(fullname string) (string, error) {
 //							return fmt.Sprintf("%v.s3.%v.amazonaws.com", fullname, region), nil
 //						}).(pulumi.StringOutput),
-//						OriginPath: pulumi.String("/acme-portal.dev.shastacloud.io"),
+//						OriginPath: pulumi.String("/portal.example.io"),
 //					},
 //				},
 //				DefaultCacheBehavior: &duplocloud.AwsCloudfrontDistributionV2DefaultCacheBehaviorArgs{

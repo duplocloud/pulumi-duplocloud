@@ -42341,6 +42341,7 @@ class TenantTag(dict):
 class GetAsgProfilesAsgProfileResult(dict):
     def __init__(__self__, *,
                  arn: str,
+                 asg_tags: Mapping[str, str],
                  base64_user_data: str,
                  can_scale_from_zero: bool,
                  custom_data_tags: Sequence['outputs.GetAsgProfilesAsgProfileCustomDataTagResult'],
@@ -42379,6 +42380,7 @@ class GetAsgProfilesAsgProfileResult(dict):
                  wait_for_capacity: Optional[bool] = None):
         """
         :param str arn: The ASG arn.
+        :param Mapping[str, str] asg_tags: A map of arbitrary AWS tags applied to the ASG and its launched EC2 instances (routed via the backend's `TagsCsv` field). Use this for tags that aren't `AllocationTags` — those belong in `custom_data_tags`. Changes force replacement because the backend applies these tags only at create time.
         :param str base64_user_data: Base64 encoded EC2 user data to associated with the host.
         :param bool can_scale_from_zero: Whether or not ASG should leverage duplocloud's scale from 0 feature
         :param Sequence['GetAsgProfilesAsgProfileCustomDataTagArgs'] custom_data_tags: A map of tags to assign to the resource. Example - `AllocationTags` can be passed as tag key with any value.
@@ -42423,6 +42425,7 @@ class GetAsgProfilesAsgProfileResult(dict):
         :param bool wait_for_capacity: Whether or not to wait until ASG instances to be healthy, after creation.
         """
         pulumi.set(__self__, "arn", arn)
+        pulumi.set(__self__, "asg_tags", asg_tags)
         pulumi.set(__self__, "base64_user_data", base64_user_data)
         pulumi.set(__self__, "can_scale_from_zero", can_scale_from_zero)
         pulumi.set(__self__, "custom_data_tags", custom_data_tags)
@@ -42481,6 +42484,14 @@ class GetAsgProfilesAsgProfileResult(dict):
         The ASG arn.
         """
         return pulumi.get(self, "arn")
+
+    @property
+    @pulumi.getter(name="asgTags")
+    def asg_tags(self) -> Mapping[str, str]:
+        """
+        A map of arbitrary AWS tags applied to the ASG and its launched EC2 instances (routed via the backend's `TagsCsv` field). Use this for tags that aren't `AllocationTags` — those belong in `custom_data_tags`. Changes force replacement because the backend applies these tags only at create time.
+        """
+        return pulumi.get(self, "asg_tags")
 
     @property
     @pulumi.getter(name="base64UserData")

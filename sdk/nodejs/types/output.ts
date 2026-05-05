@@ -3518,6 +3518,10 @@ export interface GetAsgProfilesAsgProfile {
      */
     arn: string;
     /**
+     * A map of arbitrary AWS tags applied to the ASG and its launched EC2 instances (routed via the backend's `TagsCsv` field). Use this for tags that aren't `AllocationTags` — those belong in `customDataTags`. Changes force replacement because the backend applies these tags only at create time.
+     */
+    asgTags: {[key: string]: string};
+    /**
      * Base64 encoded EC2 user data to associated with the host.
      */
     base64UserData: string;

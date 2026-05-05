@@ -32,6 +32,10 @@ namespace DuploCloud.Pulumi.Outputs
         /// </summary>
         public readonly string Arn;
         /// <summary>
+        /// A map of arbitrary AWS tags applied to the ASG and its launched EC2 instances (routed via the backend's `TagsCsv` field). Use this for tags that aren't `AllocationTags` — those belong in `custom_data_tags`. Changes force replacement because the backend applies these tags only at create time.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> AsgTags;
+        /// <summary>
         /// Base64 encoded EC2 user data to associated with the host.
         /// </summary>
         public readonly string Base64UserData;
@@ -167,6 +171,8 @@ namespace DuploCloud.Pulumi.Outputs
 
             string arn,
 
+            ImmutableDictionary<string, string> asgTags,
+
             string base64UserData,
 
             bool canScaleFromZero,
@@ -238,6 +244,7 @@ namespace DuploCloud.Pulumi.Outputs
             AgentPlatform = agentPlatform;
             AllocatedPublicIp = allocatedPublicIp;
             Arn = arn;
+            AsgTags = asgTags;
             Base64UserData = base64UserData;
             CanScaleFromZero = canScaleFromZero;
             Capacity = capacity;
