@@ -50,7 +50,7 @@ import * as utilities from "./utilities";
  *         connectionTimeout: 10,
  *         domainName: pulumi.interpolate`${forcloudfront.fullname}.s3.${region}.amazonaws.com`,
  *         originId: pulumi.interpolate`${forcloudfront.fullname}.s3.${region}.amazonaws.com`,
- *         originPath: "/acme-portal.dev.shastacloud.io",
+ *         originPath: "/portal.example.io",
  *     }],
  *     defaultCacheBehavior: {
  *         targetOriginId: pulumi.interpolate`${forcloudfront.fullname}.s3.${region}.amazonaws.com`,

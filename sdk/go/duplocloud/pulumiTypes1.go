@@ -30153,6 +30153,8 @@ type GetAsgProfilesAsgProfile struct {
 	AllocatedPublicIp *bool `pulumi:"allocatedPublicIp"`
 	// The ASG arn.
 	Arn string `pulumi:"arn"`
+	// A map of arbitrary AWS tags applied to the ASG and its launched EC2 instances (routed via the backend's `TagsCsv` field). Use this for tags that aren't `AllocationTags` — those belong in `customDataTags`. Changes force replacement because the backend applies these tags only at create time.
+	AsgTags map[string]string `pulumi:"asgTags"`
 	// Base64 encoded EC2 user data to associated with the host.
 	Base64UserData string `pulumi:"base64UserData"`
 	// Whether or not ASG should leverage duplocloud's scale from 0 feature
@@ -30249,6 +30251,8 @@ type GetAsgProfilesAsgProfileArgs struct {
 	AllocatedPublicIp pulumi.BoolPtrInput `pulumi:"allocatedPublicIp"`
 	// The ASG arn.
 	Arn pulumi.StringInput `pulumi:"arn"`
+	// A map of arbitrary AWS tags applied to the ASG and its launched EC2 instances (routed via the backend's `TagsCsv` field). Use this for tags that aren't `AllocationTags` — those belong in `customDataTags`. Changes force replacement because the backend applies these tags only at create time.
+	AsgTags pulumi.StringMapInput `pulumi:"asgTags"`
 	// Base64 encoded EC2 user data to associated with the host.
 	Base64UserData pulumi.StringInput `pulumi:"base64UserData"`
 	// Whether or not ASG should leverage duplocloud's scale from 0 feature
@@ -30392,6 +30396,11 @@ func (o GetAsgProfilesAsgProfileOutput) AllocatedPublicIp() pulumi.BoolPtrOutput
 // The ASG arn.
 func (o GetAsgProfilesAsgProfileOutput) Arn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAsgProfilesAsgProfile) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+// A map of arbitrary AWS tags applied to the ASG and its launched EC2 instances (routed via the backend's `TagsCsv` field). Use this for tags that aren't `AllocationTags` — those belong in `customDataTags`. Changes force replacement because the backend applies these tags only at create time.
+func (o GetAsgProfilesAsgProfileOutput) AsgTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetAsgProfilesAsgProfile) map[string]string { return v.AsgTags }).(pulumi.StringMapOutput)
 }
 
 // Base64 encoded EC2 user data to associated with the host.

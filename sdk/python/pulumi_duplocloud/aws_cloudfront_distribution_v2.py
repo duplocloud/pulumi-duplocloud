@@ -746,7 +746,7 @@ class AwsCloudfrontDistributionV2(pulumi.CustomResource):
                 "connection_timeout": 10,
                 "domain_name": forcloudfront.fullname.apply(lambda fullname: f"{fullname}.s3.{region}.amazonaws.com"),
                 "origin_id": forcloudfront.fullname.apply(lambda fullname: f"{fullname}.s3.{region}.amazonaws.com"),
-                "origin_path": "/acme-portal.dev.shastacloud.io",
+                "origin_path": "/portal.example.io",
             }],
             default_cache_behavior={
                 "target_origin_id": forcloudfront.fullname.apply(lambda fullname: f"{fullname}.s3.{region}.amazonaws.com"),
@@ -889,7 +889,7 @@ class AwsCloudfrontDistributionV2(pulumi.CustomResource):
                 "connection_timeout": 10,
                 "domain_name": forcloudfront.fullname.apply(lambda fullname: f"{fullname}.s3.{region}.amazonaws.com"),
                 "origin_id": forcloudfront.fullname.apply(lambda fullname: f"{fullname}.s3.{region}.amazonaws.com"),
-                "origin_path": "/acme-portal.dev.shastacloud.io",
+                "origin_path": "/portal.example.io",
             }],
             default_cache_behavior={
                 "target_origin_id": forcloudfront.fullname.apply(lambda fullname: f"{fullname}.s3.{region}.amazonaws.com"),

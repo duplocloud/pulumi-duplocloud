@@ -68,6 +68,12 @@ export class AsgProfile extends pulumi.CustomResource {
      */
     public /*out*/ readonly arn!: pulumi.Output<string>;
     /**
+     * A map of arbitrary AWS tags applied to the ASG and its launched EC2 instances (routed via the backend's `TagsCsv`
+     * field). Use this for tags that aren't `AllocationTags` — those belong in `customDataTags`. Changes force replacement
+     * because the backend applies these tags only at create time.
+     */
+    public readonly asgTags!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Base64 encoded EC2 user data to associated with the host.
      */
     public readonly base64UserData!: pulumi.Output<string>;
@@ -220,6 +226,7 @@ export class AsgProfile extends pulumi.CustomResource {
             resourceInputs["agentPlatform"] = state ? state.agentPlatform : undefined;
             resourceInputs["allocatedPublicIp"] = state ? state.allocatedPublicIp : undefined;
             resourceInputs["arn"] = state ? state.arn : undefined;
+            resourceInputs["asgTags"] = state ? state.asgTags : undefined;
             resourceInputs["base64UserData"] = state ? state.base64UserData : undefined;
             resourceInputs["canScaleFromZero"] = state ? state.canScaleFromZero : undefined;
             resourceInputs["capacity"] = state ? state.capacity : undefined;
@@ -268,6 +275,7 @@ export class AsgProfile extends pulumi.CustomResource {
             }
             resourceInputs["agentPlatform"] = args ? args.agentPlatform : undefined;
             resourceInputs["allocatedPublicIp"] = args ? args.allocatedPublicIp : undefined;
+            resourceInputs["asgTags"] = args ? args.asgTags : undefined;
             resourceInputs["base64UserData"] = args ? args.base64UserData : undefined;
             resourceInputs["canScaleFromZero"] = args ? args.canScaleFromZero : undefined;
             resourceInputs["capacity"] = args ? args.capacity : undefined;
@@ -327,6 +335,12 @@ export interface AsgProfileState {
      * The ASG arn.
      */
     arn?: pulumi.Input<string>;
+    /**
+     * A map of arbitrary AWS tags applied to the ASG and its launched EC2 instances (routed via the backend's `TagsCsv`
+     * field). Use this for tags that aren't `AllocationTags` — those belong in `customDataTags`. Changes force replacement
+     * because the backend applies these tags only at create time.
+     */
+    asgTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Base64 encoded EC2 user data to associated with the host.
      */
@@ -478,6 +492,12 @@ export interface AsgProfileArgs {
      * Whether or not to allocate a public IP.
      */
     allocatedPublicIp?: pulumi.Input<boolean>;
+    /**
+     * A map of arbitrary AWS tags applied to the ASG and its launched EC2 instances (routed via the backend's `TagsCsv`
+     * field). Use this for tags that aren't `AllocationTags` — those belong in `customDataTags`. Changes force replacement
+     * because the backend applies these tags only at create time.
+     */
+    asgTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Base64 encoded EC2 user data to associated with the host.
      */
