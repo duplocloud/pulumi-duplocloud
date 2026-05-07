@@ -84,3 +84,41 @@ jobs:
     secrets: inherit
     with:
       version: ${{ needs.prerequisites.outputs.version }}
+
+  notify_slack:
+    name: Notify Slack
+    needs:
+      - prerequisites
+      - publish
+    if: always() && needs.publish.result != 'skipped'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Slack notification (Success)
+        if: needs.publish.result == 'success'
+        uses: slackapi/slack-github-action@v2.1.1
+        with:
+          webhook-type: webhook-trigger
+          webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
+          payload: |
+            {
+              "header": "✅ Pulumi DuploCloud Provider Released! 🚀",
+              "release-version": "v${{ needs.prerequisites.outputs.version }}",
+              "pulumi-provider": "https://github.com/duplocloud/pulumi-duplocloud/releases/tag/v${{ needs.prerequisites.outputs.version }}",
+              "terraform-provider": "https://github.com/duplocloud/terraform-provider-duplocloud/releases/tag/v${{ needs.prerequisites.outputs.version }}",
+              "node-sdk": "https://www.npmjs.com/package/@duplocloud/pulumi/v/${{ needs.prerequisites.outputs.version }}",
+              "python-sdk": "https://pypi.org/project/pulumi-duplocloud/${{ needs.prerequisites.outputs.version }}",
+              "go-sdk": "https://github.com/duplocloud/pulumi-duplocloud/releases/tag/v${{ needs.prerequisites.outputs.version }}",
+              "dotnet-sdk": "https://www.nuget.org/packages/DuploCloud.Pulumi/${{ needs.prerequisites.outputs.version }}"
+            }
+      - name: Send Slack notification (Failure)
+        if: needs.publish.result == 'failure'
+        uses: slackapi/slack-github-action@v2.1.1
+        with:
+          webhook-type: webhook-trigger
+          webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
+          payload: |
+            {
+              "header": "❌ Pulumi DuploCloud Provider Release Failed!",
+              "release-version": "v${{ needs.prerequisites.outputs.version }}",
+              "error": "The provider release process failed. Please check the workflow logs: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+            }
