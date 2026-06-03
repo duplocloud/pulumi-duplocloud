@@ -1197,6 +1197,9 @@
             "duplocloud_azure_datafactory": {
                 "current": "duplocloud:index/azureDatafactory:AzureDatafactory"
             },
+            "duplocloud_azure_infra_secret": {
+                "current": "duplocloud:index/azureInfraSecret:AzureInfraSecret"
+            },
             "duplocloud_azure_k8_node_pool": {
                 "current": "duplocloud:index/azureK8NodePool:AzureK8NodePool",
                 "fields": {
