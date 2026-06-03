@@ -5,10 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * > **Deprecated:** `duplocloud.AzureKeyVaultSecret` has been renamed to `duplocloud.AzureInfraSecret`. Please update your configuration to use the new resource name. The old name remains as an alias and will be removed in a future release.
- * > 
- * > To migrate existing state without recreating the secret:
- *
  * `duplocloud.AzureInfraSecret` manages an infrastructure-level Azure Key Vault Secret in Duplo.
  *
  * ## Example Usage
@@ -21,7 +17,7 @@ import * as utilities from "./utilities";
  *     accountName: "myapp",
  *     planId: "default",
  * });
- * const myappAzureKeyVaultSecret = new duplocloud.AzureKeyVaultSecret("myapp", {
+ * const myappAzureInfraSecret = new duplocloud.AzureInfraSecret("myapp", {
  *     tenantId: myapp.tenantId,
  *     name: pulumi.interpolate`${myapp.accountName}-test`,
  *     value: "tst",
@@ -31,21 +27,21 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Example: Importing an existing Azure Key Vault Secret
+ * Example: Importing an existing Azure Infra Secret
  *
  *  - *TENANT_ID* is the tenant GUID
  *
- *  - *SHORT_NAME* is the short name of the Azure Key Vault Secret
+ *  - *SHORT_NAME* is the short name of the Azure Infra Secret
  *
  * # 
  *
  * ```sh
- * $ pulumi import duplocloud:index/azureKeyVaultSecret:AzureKeyVaultSecret mykvsecret *TENANT_ID*&#47;*SHORT_NAME*
+ * $ pulumi import duplocloud:index/azureInfraSecret:AzureInfraSecret myinfrasecret *TENANT_ID*&#47;*SHORT_NAME*
  * ```
  */
-export class AzureKeyVaultSecret extends pulumi.CustomResource {
+export class AzureInfraSecret extends pulumi.CustomResource {
     /**
-     * Get an existing AzureKeyVaultSecret resource's state with the given name, ID, and optional extra
+     * Get an existing AzureInfraSecret resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -53,22 +49,22 @@ export class AzureKeyVaultSecret extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AzureKeyVaultSecretState, opts?: pulumi.CustomResourceOptions): AzureKeyVaultSecret {
-        return new AzureKeyVaultSecret(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AzureInfraSecretState, opts?: pulumi.CustomResourceOptions): AzureInfraSecret {
+        return new AzureInfraSecret(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'duplocloud:index/azureKeyVaultSecret:AzureKeyVaultSecret';
+    public static readonly __pulumiType = 'duplocloud:index/azureInfraSecret:AzureInfraSecret';
 
     /**
-     * Returns true if the given object is an instance of AzureKeyVaultSecret.  This is designed to work even
+     * Returns true if the given object is an instance of AzureInfraSecret.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is AzureKeyVaultSecret {
+    public static isInstance(obj: any): obj is AzureInfraSecret {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === AzureKeyVaultSecret.__pulumiType;
+        return obj['__pulumiType'] === AzureInfraSecret.__pulumiType;
     }
 
     /**
@@ -113,18 +109,18 @@ export class AzureKeyVaultSecret extends pulumi.CustomResource {
     public /*out*/ readonly version!: pulumi.Output<string>;
 
     /**
-     * Create a AzureKeyVaultSecret resource with the given unique name, arguments, and options.
+     * Create a AzureInfraSecret resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: AzureKeyVaultSecretArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: AzureKeyVaultSecretArgs | AzureKeyVaultSecretState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: AzureInfraSecretArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: AzureInfraSecretArgs | AzureInfraSecretState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as AzureKeyVaultSecretState | undefined;
+            const state = argsOrState as AzureInfraSecretState | undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
             resourceInputs["fullname"] = state ? state.fullname : undefined;
             resourceInputs["keyVaultId"] = state ? state.keyVaultId : undefined;
@@ -136,7 +132,7 @@ export class AzureKeyVaultSecret extends pulumi.CustomResource {
             resourceInputs["vaultBaseUrl"] = state ? state.vaultBaseUrl : undefined;
             resourceInputs["version"] = state ? state.version : undefined;
         } else {
-            const args = argsOrState as AzureKeyVaultSecretArgs | undefined;
+            const args = argsOrState as AzureInfraSecretArgs | undefined;
             if ((!args || args.tenantId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tenantId'");
             }
@@ -157,14 +153,14 @@ export class AzureKeyVaultSecret extends pulumi.CustomResource {
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["value"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
-        super(AzureKeyVaultSecret.__pulumiType, name, resourceInputs, opts);
+        super(AzureInfraSecret.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering AzureKeyVaultSecret resources.
+ * Input properties used for looking up and filtering AzureInfraSecret resources.
  */
-export interface AzureKeyVaultSecretState {
+export interface AzureInfraSecretState {
     /**
      * Determines whether the object is enabled.
      */
@@ -208,9 +204,9 @@ export interface AzureKeyVaultSecretState {
 }
 
 /**
- * The set of arguments for constructing a AzureKeyVaultSecret resource.
+ * The set of arguments for constructing a AzureInfraSecret resource.
  */
-export interface AzureKeyVaultSecretArgs {
+export interface AzureInfraSecretArgs {
     /**
      * The ID of the Key Vault where the Secret should be created.
      */

@@ -125,6 +125,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AzureCosmosDbDatabase{}
 	case "duplocloud:index/azureDatafactory:AzureDatafactory":
 		r = &AzureDatafactory{}
+	case "duplocloud:index/azureInfraSecret:AzureInfraSecret":
+		r = &AzureInfraSecret{}
 	case "duplocloud:index/azureK8NodePool:AzureK8NodePool":
 		r = &AzureK8NodePool{}
 	case "duplocloud:index/azureK8sCluster:AzureK8sCluster":
@@ -616,6 +618,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"duplocloud",
 		"index/azureDatafactory",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"duplocloud",
+		"index/azureInfraSecret",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

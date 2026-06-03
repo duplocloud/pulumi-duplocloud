@@ -27,6 +27,36 @@ import (
 // ```sh
 // $ pulumi import duplocloud:index/gcpSqlDatabaseInstance:GcpSqlDatabaseInstance sql_instance *TENANT_ID*/*SHORT_NAME*
 // ```
+//
+// After import, `pulumi preview` will show a diff for `root_password` because the
+//
+// GCP Cloud SQL GET API redacts this field. You have two options:
+//
+// #
+//
+// 1. Set `root_password` in your config to the current GCP value and run
+//
+//	`pulumi up` once. The provider syncs state to the config value
+//
+//	without pushing a password change to GCP. For future rotations, change
+//
+//	the password in GCP first, then update `root_password` and re-apply.
+//
+// #
+//
+// 2. Suppress the diff permanently by adding the lifecycle block below.
+//
+//	Use this only if you do not want Terraform to track the password value
+//
+//	(rotations must then be performed out-of-band):
+//
+// #
+//
+//	lifecycle {
+//
+//	  ignore_changes = [root_password]
+//
+//	}
 type GcpSqlDatabaseInstance struct {
 	pulumi.CustomResourceState
 
@@ -38,8 +68,8 @@ type GcpSqlDatabaseInstance struct {
 	DatabaseVersion pulumi.StringOutput `pulumi:"databaseVersion"`
 	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
 	DiskSize pulumi.IntOutput `pulumi:"diskSize"`
-	// Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS Defaults to `ENTERPRISE`.
-	Edition pulumi.StringPtrOutput `pulumi:"edition"`
+	// Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS
+	Edition pulumi.StringOutput `pulumi:"edition"`
 	// The full name of the sql database.
 	Fullname pulumi.StringOutput `pulumi:"fullname"`
 	// List of IP addresses of the database.
@@ -51,9 +81,8 @@ type GcpSqlDatabaseInstance struct {
 	// The short name of the sql database.  Duplo will add a prefix to the name.  You can retrieve the full name from the `fullname` attribute.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Flag to enable backup process on delete of database
-	NeedBackup pulumi.BoolPtrOutput `pulumi:"needBackup"`
-	// Provide root password for specific database versions.
-	RootPassword pulumi.StringOutput `pulumi:"rootPassword"`
+	NeedBackup   pulumi.BoolPtrOutput `pulumi:"needBackup"`
+	RootPassword pulumi.StringOutput  `pulumi:"rootPassword"`
 	// The SelfLink of the sql database.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// The GUID of the tenant that the sql database will be created in.
@@ -80,6 +109,13 @@ func NewGcpSqlDatabaseInstance(ctx *pulumi.Context,
 	if args.Tier == nil {
 		return nil, errors.New("invalid value for required argument 'Tier'")
 	}
+	if args.RootPassword != nil {
+		args.RootPassword = pulumi.ToSecret(args.RootPassword).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"rootPassword",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource GcpSqlDatabaseInstance
 	err := ctx.RegisterResource("duplocloud:index/gcpSqlDatabaseInstance:GcpSqlDatabaseInstance", name, args, &resource, opts...)
@@ -111,7 +147,7 @@ type gcpSqlDatabaseInstanceState struct {
 	DatabaseVersion *string `pulumi:"databaseVersion"`
 	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
 	DiskSize *int `pulumi:"diskSize"`
-	// Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS Defaults to `ENTERPRISE`.
+	// Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS
 	Edition *string `pulumi:"edition"`
 	// The full name of the sql database.
 	Fullname *string `pulumi:"fullname"`
@@ -124,8 +160,7 @@ type gcpSqlDatabaseInstanceState struct {
 	// The short name of the sql database.  Duplo will add a prefix to the name.  You can retrieve the full name from the `fullname` attribute.
 	Name *string `pulumi:"name"`
 	// Flag to enable backup process on delete of database
-	NeedBackup *bool `pulumi:"needBackup"`
-	// Provide root password for specific database versions.
+	NeedBackup   *bool   `pulumi:"needBackup"`
 	RootPassword *string `pulumi:"rootPassword"`
 	// The SelfLink of the sql database.
 	SelfLink *string `pulumi:"selfLink"`
@@ -146,7 +181,7 @@ type GcpSqlDatabaseInstanceState struct {
 	DatabaseVersion pulumi.StringPtrInput
 	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
 	DiskSize pulumi.IntPtrInput
-	// Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS Defaults to `ENTERPRISE`.
+	// Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS
 	Edition pulumi.StringPtrInput
 	// The full name of the sql database.
 	Fullname pulumi.StringPtrInput
@@ -159,8 +194,7 @@ type GcpSqlDatabaseInstanceState struct {
 	// The short name of the sql database.  Duplo will add a prefix to the name.  You can retrieve the full name from the `fullname` attribute.
 	Name pulumi.StringPtrInput
 	// Flag to enable backup process on delete of database
-	NeedBackup pulumi.BoolPtrInput
-	// Provide root password for specific database versions.
+	NeedBackup   pulumi.BoolPtrInput
 	RootPassword pulumi.StringPtrInput
 	// The SelfLink of the sql database.
 	SelfLink pulumi.StringPtrInput
@@ -183,7 +217,7 @@ type gcpSqlDatabaseInstanceArgs struct {
 	DatabaseVersion string `pulumi:"databaseVersion"`
 	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
 	DiskSize *int `pulumi:"diskSize"`
-	// Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS Defaults to `ENTERPRISE`.
+	// Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS
 	Edition *string `pulumi:"edition"`
 	// IP configuration for the database instance.
 	IpConfiguration *GcpSqlDatabaseInstanceIpConfiguration `pulumi:"ipConfiguration"`
@@ -192,8 +226,7 @@ type gcpSqlDatabaseInstanceArgs struct {
 	// The short name of the sql database.  Duplo will add a prefix to the name.  You can retrieve the full name from the `fullname` attribute.
 	Name *string `pulumi:"name"`
 	// Flag to enable backup process on delete of database
-	NeedBackup *bool `pulumi:"needBackup"`
-	// Provide root password for specific database versions.
+	NeedBackup   *bool   `pulumi:"needBackup"`
 	RootPassword *string `pulumi:"rootPassword"`
 	// The GUID of the tenant that the sql database will be created in.
 	TenantId string `pulumi:"tenantId"`
@@ -211,7 +244,7 @@ type GcpSqlDatabaseInstanceArgs struct {
 	DatabaseVersion pulumi.StringInput
 	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
 	DiskSize pulumi.IntPtrInput
-	// Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS Defaults to `ENTERPRISE`.
+	// Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS
 	Edition pulumi.StringPtrInput
 	// IP configuration for the database instance.
 	IpConfiguration GcpSqlDatabaseInstanceIpConfigurationPtrInput
@@ -220,8 +253,7 @@ type GcpSqlDatabaseInstanceArgs struct {
 	// The short name of the sql database.  Duplo will add a prefix to the name.  You can retrieve the full name from the `fullname` attribute.
 	Name pulumi.StringPtrInput
 	// Flag to enable backup process on delete of database
-	NeedBackup pulumi.BoolPtrInput
-	// Provide root password for specific database versions.
+	NeedBackup   pulumi.BoolPtrInput
 	RootPassword pulumi.StringPtrInput
 	// The GUID of the tenant that the sql database will be created in.
 	TenantId pulumi.StringInput
@@ -338,9 +370,9 @@ func (o GcpSqlDatabaseInstanceOutput) DiskSize() pulumi.IntOutput {
 	return o.ApplyT(func(v *GcpSqlDatabaseInstance) pulumi.IntOutput { return v.DiskSize }).(pulumi.IntOutput)
 }
 
-// Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS Defaults to `ENTERPRISE`.
-func (o GcpSqlDatabaseInstanceOutput) Edition() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GcpSqlDatabaseInstance) pulumi.StringPtrOutput { return v.Edition }).(pulumi.StringPtrOutput)
+// Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS
+func (o GcpSqlDatabaseInstanceOutput) Edition() pulumi.StringOutput {
+	return o.ApplyT(func(v *GcpSqlDatabaseInstance) pulumi.StringOutput { return v.Edition }).(pulumi.StringOutput)
 }
 
 // The full name of the sql database.
@@ -373,7 +405,6 @@ func (o GcpSqlDatabaseInstanceOutput) NeedBackup() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GcpSqlDatabaseInstance) pulumi.BoolPtrOutput { return v.NeedBackup }).(pulumi.BoolPtrOutput)
 }
 
-// Provide root password for specific database versions.
 func (o GcpSqlDatabaseInstanceOutput) RootPassword() pulumi.StringOutput {
 	return o.ApplyT(func(v *GcpSqlDatabaseInstance) pulumi.StringOutput { return v.RootPassword }).(pulumi.StringOutput)
 }

@@ -3325,7 +3325,7 @@ export interface GcpPubsubSubscriptionPushConfigNoWrapper {
 
 export interface GcpPubsubSubscriptionPushConfigOidcToken {
     /**
-     * Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string. Defaults to `false`.
+     * Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string.
      */
     audience?: pulumi.Input<string>;
     /**

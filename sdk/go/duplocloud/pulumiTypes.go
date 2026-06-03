@@ -37684,7 +37684,7 @@ func (o GcpPubsubSubscriptionPushConfigNoWrapperPtrOutput) WriteMetadata() pulum
 }
 
 type GcpPubsubSubscriptionPushConfigOidcToken struct {
-	// Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string. Defaults to `false`.
+	// Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string.
 	Audience *string `pulumi:"audience"`
 	// Service account email to be used for generating the OIDC token.
 	ServiceAccountEmail string `pulumi:"serviceAccountEmail"`
@@ -37702,7 +37702,7 @@ type GcpPubsubSubscriptionPushConfigOidcTokenInput interface {
 }
 
 type GcpPubsubSubscriptionPushConfigOidcTokenArgs struct {
-	// Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string. Defaults to `false`.
+	// Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string.
 	Audience pulumi.StringPtrInput `pulumi:"audience"`
 	// Service account email to be used for generating the OIDC token.
 	ServiceAccountEmail pulumi.StringInput `pulumi:"serviceAccountEmail"`
@@ -37785,7 +37785,7 @@ func (o GcpPubsubSubscriptionPushConfigOidcTokenOutput) ToGcpPubsubSubscriptionP
 	}).(GcpPubsubSubscriptionPushConfigOidcTokenPtrOutput)
 }
 
-// Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string. Defaults to `false`.
+// Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string.
 func (o GcpPubsubSubscriptionPushConfigOidcTokenOutput) Audience() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GcpPubsubSubscriptionPushConfigOidcToken) *string { return v.Audience }).(pulumi.StringPtrOutput)
 }
@@ -37819,7 +37819,7 @@ func (o GcpPubsubSubscriptionPushConfigOidcTokenPtrOutput) Elem() GcpPubsubSubsc
 	}).(GcpPubsubSubscriptionPushConfigOidcTokenOutput)
 }
 
-// Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string. Defaults to `false`.
+// Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string.
 func (o GcpPubsubSubscriptionPushConfigOidcTokenPtrOutput) Audience() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GcpPubsubSubscriptionPushConfigOidcToken) *string {
 		if v == nil {

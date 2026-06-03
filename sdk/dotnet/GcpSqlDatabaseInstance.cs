@@ -26,6 +26,36 @@ namespace DuploCloud.Pulumi
     /// ```sh
     /// $ pulumi import duplocloud:index/gcpSqlDatabaseInstance:GcpSqlDatabaseInstance sql_instance *TENANT_ID*/*SHORT_NAME*
     /// ```
+    /// 
+    /// After import, `pulumi preview` will show a diff for `root_password` because the
+    /// 
+    /// GCP Cloud SQL GET API redacts this field. You have two options:
+    /// 
+    /// # 
+    /// 
+    /// 1. Set `root_password` in your config to the current GCP value and run
+    ///    
+    ///    `pulumi up` once. The provider syncs state to the config value
+    ///    
+    ///    without pushing a password change to GCP. For future rotations, change
+    ///    
+    ///    the password in GCP first, then update `root_password` and re-apply.
+    /// 
+    /// # 
+    /// 
+    /// 2. Suppress the diff permanently by adding the lifecycle block below.
+    ///    
+    ///    Use this only if you do not want Terraform to track the password value
+    ///    
+    ///    (rotations must then be performed out-of-band):
+    /// 
+    /// # 
+    /// 
+    ///      lifecycle {
+    ///     
+    ///        ignore_changes = [root_password]
+    ///     
+    ///      }
     /// </summary>
     [PulumiResourceType("duplocloud:index/gcpSqlDatabaseInstance:GcpSqlDatabaseInstance")]
     public partial class GcpSqlDatabaseInstance : global::Pulumi.CustomResource
@@ -55,10 +85,10 @@ namespace DuploCloud.Pulumi
         public Output<int> DiskSize { get; private set; } = null!;
 
         /// <summary>
-        /// Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS Defaults to `ENTERPRISE`.
+        /// Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS
         /// </summary>
         [Output("edition")]
-        public Output<string?> Edition { get; private set; } = null!;
+        public Output<string> Edition { get; private set; } = null!;
 
         /// <summary>
         /// The full name of the sql database.
@@ -96,9 +126,6 @@ namespace DuploCloud.Pulumi
         [Output("needBackup")]
         public Output<bool?> NeedBackup { get; private set; } = null!;
 
-        /// <summary>
-        /// Provide root password for specific database versions.
-        /// </summary>
         [Output("rootPassword")]
         public Output<string> RootPassword { get; private set; } = null!;
 
@@ -150,6 +177,10 @@ namespace DuploCloud.Pulumi
             {
                 Version = Utilities.Version,
                 PluginDownloadURL = "github://api.github.com/duplocloud/pulumi-duplocloud",
+                AdditionalSecretOutputs =
+                {
+                    "rootPassword",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -198,7 +229,7 @@ namespace DuploCloud.Pulumi
         public Input<int>? DiskSize { get; set; }
 
         /// <summary>
-        /// Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS Defaults to `ENTERPRISE`.
+        /// Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS
         /// </summary>
         [Input("edition")]
         public Input<string>? Edition { get; set; }
@@ -233,11 +264,17 @@ namespace DuploCloud.Pulumi
         [Input("needBackup")]
         public Input<bool>? NeedBackup { get; set; }
 
-        /// <summary>
-        /// Provide root password for specific database versions.
-        /// </summary>
         [Input("rootPassword")]
-        public Input<string>? RootPassword { get; set; }
+        private Input<string>? _rootPassword;
+        public Input<string>? RootPassword
+        {
+            get => _rootPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _rootPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The GUID of the tenant that the sql database will be created in.
@@ -296,7 +333,7 @@ namespace DuploCloud.Pulumi
         public Input<int>? DiskSize { get; set; }
 
         /// <summary>
-        /// Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS Defaults to `ENTERPRISE`.
+        /// Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS
         /// </summary>
         [Input("edition")]
         public Input<string>? Edition { get; set; }
@@ -349,11 +386,17 @@ namespace DuploCloud.Pulumi
         [Input("needBackup")]
         public Input<bool>? NeedBackup { get; set; }
 
-        /// <summary>
-        /// Provide root password for specific database versions.
-        /// </summary>
         [Input("rootPassword")]
-        public Input<string>? RootPassword { get; set; }
+        private Input<string>? _rootPassword;
+        public Input<string>? RootPassword
+        {
+            get => _rootPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _rootPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The SelfLink of the sql database.

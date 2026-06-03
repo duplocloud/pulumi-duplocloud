@@ -6627,7 +6627,7 @@
             "properties": {
                 "audience": {
                     "type": "string",
-                    "description": "Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string. Defaults to `false`.\n"
+                    "description": "Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string.\n"
                 },
                 "serviceAccountEmail": {
                     "type": "string",
@@ -39673,7 +39673,7 @@
                 },
                 "environmentClass": {
                     "type": "string",
-                    "description": "Environment class for the cluster. Possible options are `mw1.micro`, `mw1.small`, `mw1.medium`, `mw1.large`, `mw1.xlarge`, `mw1.2xlarge`.\n"
+                    "description": "Environment class for the cluster. Possible options are `mw1.micro`, `mw1.small`, `mw1.medium`, `mw1.large`, `mw1.xlarge`, `mw1.2xlarge`. Changing this forces a new resource to be created.\n"
                 },
                 "executionRoleArn": {
                     "type": "string",
@@ -39816,7 +39816,8 @@
                 },
                 "environmentClass": {
                     "type": "string",
-                    "description": "Environment class for the cluster. Possible options are `mw1.micro`, `mw1.small`, `mw1.medium`, `mw1.large`, `mw1.xlarge`, `mw1.2xlarge`.\n"
+                    "description": "Environment class for the cluster. Possible options are `mw1.micro`, `mw1.small`, `mw1.medium`, `mw1.large`, `mw1.xlarge`, `mw1.2xlarge`. Changing this forces a new resource to be created.\n",
+                    "willReplaceOnChanges": true
                 },
                 "executionRoleArn": {
                     "type": "string",
@@ -39925,7 +39926,8 @@
                     },
                     "environmentClass": {
                         "type": "string",
-                        "description": "Environment class for the cluster. Possible options are `mw1.micro`, `mw1.small`, `mw1.medium`, `mw1.large`, `mw1.xlarge`, `mw1.2xlarge`.\n"
+                        "description": "Environment class for the cluster. Possible options are `mw1.micro`, `mw1.small`, `mw1.medium`, `mw1.large`, `mw1.xlarge`, `mw1.2xlarge`. Changing this forces a new resource to be created.\n",
+                        "willReplaceOnChanges": true
                     },
                     "executionRoleArn": {
                         "type": "string",
@@ -42076,6 +42078,140 @@
                 "type": "object"
             }
         },
+        "duplocloud:index/azureInfraSecret:AzureInfraSecret": {
+            "description": "`duplocloud.AzureInfraSecret` manages an infrastructure-level Azure Key Vault Secret in Duplo.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as duplocloud from \"@duplocloud/pulumi\";\n\nconst myapp = new duplocloud.Tenant(\"myapp\", {\n    accountName: \"myapp\",\n    planId: \"default\",\n});\nconst myappAzureInfraSecret = new duplocloud.AzureInfraSecret(\"myapp\", {\n    tenantId: myapp.tenantId,\n    name: pulumi.interpolate`${myapp.accountName}-test`,\n    value: \"tst\",\n    type: \"duplo_container_env\",\n});\n```\n```python\nimport pulumi\nimport pulumi_duplocloud as duplocloud\n\nmyapp = duplocloud.Tenant(\"myapp\",\n    account_name=\"myapp\",\n    plan_id=\"default\")\nmyapp_azure_infra_secret = duplocloud.AzureInfraSecret(\"myapp\",\n    tenant_id=myapp.tenant_id,\n    name=myapp.account_name.apply(lambda account_name: f\"{account_name}-test\"),\n    value=\"tst\",\n    type=\"duplo_container_env\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Pulumi = DuploCloud.Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myapp = new Pulumi.Tenant(\"myapp\", new()\n    {\n        AccountName = \"myapp\",\n        PlanId = \"default\",\n    });\n\n    var myappAzureInfraSecret = new Pulumi.AzureInfraSecret(\"myapp\", new()\n    {\n        TenantId = myapp.TenantId,\n        Name = myapp.AccountName.Apply(accountName =\u003e $\"{accountName}-test\"),\n        Value = \"tst\",\n        Type = \"duplo_container_env\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/duplocloud/pulumi-duplocloud/sdk/go/duplocloud\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmyapp, err := duplocloud.NewTenant(ctx, \"myapp\", \u0026duplocloud.TenantArgs{\n\t\t\tAccountName: pulumi.String(\"myapp\"),\n\t\t\tPlanId:      pulumi.String(\"default\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = duplocloud.NewAzureInfraSecret(ctx, \"myapp\", \u0026duplocloud.AzureInfraSecretArgs{\n\t\t\tTenantId: myapp.TenantId,\n\t\t\tName: myapp.AccountName.ApplyT(func(accountName string) (string, error) {\n\t\t\t\treturn fmt.Sprintf(\"%v-test\", accountName), nil\n\t\t\t}).(pulumi.StringOutput),\n\t\t\tValue: pulumi.String(\"tst\"),\n\t\t\tType:  pulumi.String(\"duplo_container_env\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.duplocloud.Tenant;\nimport com.pulumi.duplocloud.TenantArgs;\nimport com.pulumi.duplocloud.AzureInfraSecret;\nimport com.pulumi.duplocloud.AzureInfraSecretArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myapp = new Tenant(\"myapp\", TenantArgs.builder()\n            .accountName(\"myapp\")\n            .planId(\"default\")\n            .build());\n\n        var myappAzureInfraSecret = new AzureInfraSecret(\"myappAzureInfraSecret\", AzureInfraSecretArgs.builder()\n            .tenantId(myapp.tenantId())\n            .name(myapp.accountName().applyValue(accountName -\u003e String.format(\"%s-test\", accountName)))\n            .value(\"tst\")\n            .type(\"duplo_container_env\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myapp:\n    type: duplocloud:Tenant\n    properties:\n      accountName: myapp\n      planId: default\n  myappAzureInfraSecret:\n    type: duplocloud:AzureInfraSecret\n    name: myapp\n    properties:\n      tenantId: ${myapp.tenantId}\n      name: ${myapp.accountName}-test\n      value: tst\n      type: duplo_container_env\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nExample: Importing an existing Azure Infra Secret\n\n - *TENANT_ID* is the tenant GUID\n\n - *SHORT_NAME* is the short name of the Azure Infra Secret\n\n#\n\n```sh\n$ pulumi import duplocloud:index/azureInfraSecret:AzureInfraSecret myinfrasecret *TENANT_ID*/*SHORT_NAME*\n```\n\n",
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Determines whether the object is enabled.\n"
+                },
+                "fullname": {
+                    "type": "string",
+                    "description": "Duplo will generate name of the Key Vault Secret.\n"
+                },
+                "keyVaultId": {
+                    "type": "string",
+                    "description": "The ID of the Key Vault where the Secret should be created.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Specifies the name of the Key Vault Secret. Must start with the tenant's account name (case-insensitive); the Duplo backend filters list results by this prefix, so secrets without it cannot be retrieved after creation. Changing this forces a new resource to be created.\n"
+                },
+                "recoveryLevel": {
+                    "type": "string",
+                    "description": "Reflects the deletion recovery level currently in effect for secrets in the current vault.\n"
+                },
+                "tenantId": {
+                    "type": "string",
+                    "description": "The GUID of the tenant that the key vault secret will be created in.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Specifies the content type for the Key Vault Secret. Defaults to `duplo_container_env`.\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Specifies the value of the Key vault secret.\n",
+                    "secret": true
+                },
+                "vaultBaseUrl": {
+                    "type": "string",
+                    "description": "Base URL of the Azure Key Vault\n"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "The current version of the Key Vault Secret.\n"
+                }
+            },
+            "required": [
+                "enabled",
+                "fullname",
+                "name",
+                "recoveryLevel",
+                "tenantId",
+                "value",
+                "vaultBaseUrl",
+                "version"
+            ],
+            "inputProperties": {
+                "keyVaultId": {
+                    "type": "string",
+                    "description": "The ID of the Key Vault where the Secret should be created.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Specifies the name of the Key Vault Secret. Must start with the tenant's account name (case-insensitive); the Duplo backend filters list results by this prefix, so secrets without it cannot be retrieved after creation. Changing this forces a new resource to be created.\n",
+                    "willReplaceOnChanges": true
+                },
+                "tenantId": {
+                    "type": "string",
+                    "description": "The GUID of the tenant that the key vault secret will be created in.\n",
+                    "willReplaceOnChanges": true
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Specifies the content type for the Key Vault Secret. Defaults to `duplo_container_env`.\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Specifies the value of the Key vault secret.\n",
+                    "secret": true
+                }
+            },
+            "requiredInputs": [
+                "tenantId",
+                "value"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering AzureInfraSecret resources.\n",
+                "properties": {
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Determines whether the object is enabled.\n"
+                    },
+                    "fullname": {
+                        "type": "string",
+                        "description": "Duplo will generate name of the Key Vault Secret.\n"
+                    },
+                    "keyVaultId": {
+                        "type": "string",
+                        "description": "The ID of the Key Vault where the Secret should be created.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Specifies the name of the Key Vault Secret. Must start with the tenant's account name (case-insensitive); the Duplo backend filters list results by this prefix, so secrets without it cannot be retrieved after creation. Changing this forces a new resource to be created.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "recoveryLevel": {
+                        "type": "string",
+                        "description": "Reflects the deletion recovery level currently in effect for secrets in the current vault.\n"
+                    },
+                    "tenantId": {
+                        "type": "string",
+                        "description": "The GUID of the tenant that the key vault secret will be created in.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "Specifies the content type for the Key Vault Secret. Defaults to `duplo_container_env`.\n"
+                    },
+                    "value": {
+                        "type": "string",
+                        "description": "Specifies the value of the Key vault secret.\n",
+                        "secret": true
+                    },
+                    "vaultBaseUrl": {
+                        "type": "string",
+                        "description": "Base URL of the Azure Key Vault\n"
+                    },
+                    "version": {
+                        "type": "string",
+                        "description": "The current version of the Key Vault Secret.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "duplocloud:index/azureK8NodePool:AzureK8NodePool": {
             "description": "`duplocloud.AzureK8NodePool` manages a Node Pool of Kubernetes Cluster in Duplo.\n\n## Import\n\nExample: Importing an existing Azure K8S Node Pool\n\n - *TENANT_ID* is the tenant GUID\n\n - *FRIENDLY_NAME* is the duplo generated name of the the Azure K8S Node Pool\n\n#\n\n```sh\n$ pulumi import duplocloud:index/azureK8NodePool:AzureK8NodePool node_pool *TENANT_ID*/*FRIENDLY_NAME*\n```\n\n",
             "properties": {
@@ -42599,7 +42735,7 @@
             }
         },
         "duplocloud:index/azureKeyVaultSecret:AzureKeyVaultSecret": {
-            "description": "`duplocloud.AzureKeyVaultSecret` manages a Key Vault Secret in Duplo.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as duplocloud from \"@duplocloud/pulumi\";\n\nconst myapp = new duplocloud.Tenant(\"myapp\", {\n    accountName: \"myapp\",\n    planId: \"default\",\n});\nconst myappAzureKeyVaultSecret = new duplocloud.AzureKeyVaultSecret(\"myapp\", {\n    tenantId: myapp.tenantId,\n    name: \"base01-test\",\n    value: \"tst\",\n    type: \"duplo_container_env\",\n});\n```\n```python\nimport pulumi\nimport pulumi_duplocloud as duplocloud\n\nmyapp = duplocloud.Tenant(\"myapp\",\n    account_name=\"myapp\",\n    plan_id=\"default\")\nmyapp_azure_key_vault_secret = duplocloud.AzureKeyVaultSecret(\"myapp\",\n    tenant_id=myapp.tenant_id,\n    name=\"base01-test\",\n    value=\"tst\",\n    type=\"duplo_container_env\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Pulumi = DuploCloud.Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myapp = new Pulumi.Tenant(\"myapp\", new()\n    {\n        AccountName = \"myapp\",\n        PlanId = \"default\",\n    });\n\n    var myappAzureKeyVaultSecret = new Pulumi.AzureKeyVaultSecret(\"myapp\", new()\n    {\n        TenantId = myapp.TenantId,\n        Name = \"base01-test\",\n        Value = \"tst\",\n        Type = \"duplo_container_env\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/duplocloud/pulumi-duplocloud/sdk/go/duplocloud\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmyapp, err := duplocloud.NewTenant(ctx, \"myapp\", \u0026duplocloud.TenantArgs{\n\t\t\tAccountName: pulumi.String(\"myapp\"),\n\t\t\tPlanId:      pulumi.String(\"default\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = duplocloud.NewAzureKeyVaultSecret(ctx, \"myapp\", \u0026duplocloud.AzureKeyVaultSecretArgs{\n\t\t\tTenantId: myapp.TenantId,\n\t\t\tName:     pulumi.String(\"base01-test\"),\n\t\t\tValue:    pulumi.String(\"tst\"),\n\t\t\tType:     pulumi.String(\"duplo_container_env\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.duplocloud.Tenant;\nimport com.pulumi.duplocloud.TenantArgs;\nimport com.pulumi.duplocloud.AzureKeyVaultSecret;\nimport com.pulumi.duplocloud.AzureKeyVaultSecretArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myapp = new Tenant(\"myapp\", TenantArgs.builder()\n            .accountName(\"myapp\")\n            .planId(\"default\")\n            .build());\n\n        var myappAzureKeyVaultSecret = new AzureKeyVaultSecret(\"myappAzureKeyVaultSecret\", AzureKeyVaultSecretArgs.builder()\n            .tenantId(myapp.tenantId())\n            .name(\"base01-test\")\n            .value(\"tst\")\n            .type(\"duplo_container_env\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myapp:\n    type: duplocloud:Tenant\n    properties:\n      accountName: myapp\n      planId: default\n  myappAzureKeyVaultSecret:\n    type: duplocloud:AzureKeyVaultSecret\n    name: myapp\n    properties:\n      tenantId: ${myapp.tenantId}\n      name: base01-test\n      value: tst\n      type: duplo_container_env\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nExample: Importing an existing Azure Key Vault Secret\n\n - *TENANT_ID* is the tenant GUID\n\n - *SHORT_NAME* is the short name of the Azure Key Vault Secret\n\n#\n\n```sh\n$ pulumi import duplocloud:index/azureKeyVaultSecret:AzureKeyVaultSecret mykvsecret *TENANT_ID*/*SHORT_NAME*\n```\n\n",
+            "description": "\u003e **Deprecated:** `duplocloud.AzureKeyVaultSecret` has been renamed to `duplocloud.AzureInfraSecret`. Please update your configuration to use the new resource name. The old name remains as an alias and will be removed in a future release.\n\u003e\n\u003e To migrate existing state without recreating the secret:\n\u003e\n\u003e ```shell\n\u003e terraform state mv duplocloud_azure_key_vault_secret.\u003cname\u003e duplocloud_azure_infra_secret.\u003cname\u003e\n\u003e ```\n\n`duplocloud.AzureInfraSecret` manages an infrastructure-level Azure Key Vault Secret in Duplo.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as duplocloud from \"@duplocloud/pulumi\";\n\nconst myapp = new duplocloud.Tenant(\"myapp\", {\n    accountName: \"myapp\",\n    planId: \"default\",\n});\nconst myappAzureKeyVaultSecret = new duplocloud.AzureKeyVaultSecret(\"myapp\", {\n    tenantId: myapp.tenantId,\n    name: pulumi.interpolate`${myapp.accountName}-test`,\n    value: \"tst\",\n    type: \"duplo_container_env\",\n});\n```\n```python\nimport pulumi\nimport pulumi_duplocloud as duplocloud\n\nmyapp = duplocloud.Tenant(\"myapp\",\n    account_name=\"myapp\",\n    plan_id=\"default\")\nmyapp_azure_key_vault_secret = duplocloud.AzureKeyVaultSecret(\"myapp\",\n    tenant_id=myapp.tenant_id,\n    name=myapp.account_name.apply(lambda account_name: f\"{account_name}-test\"),\n    value=\"tst\",\n    type=\"duplo_container_env\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Pulumi = DuploCloud.Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myapp = new Pulumi.Tenant(\"myapp\", new()\n    {\n        AccountName = \"myapp\",\n        PlanId = \"default\",\n    });\n\n    var myappAzureKeyVaultSecret = new Pulumi.AzureKeyVaultSecret(\"myapp\", new()\n    {\n        TenantId = myapp.TenantId,\n        Name = myapp.AccountName.Apply(accountName =\u003e $\"{accountName}-test\"),\n        Value = \"tst\",\n        Type = \"duplo_container_env\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/duplocloud/pulumi-duplocloud/sdk/go/duplocloud\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmyapp, err := duplocloud.NewTenant(ctx, \"myapp\", \u0026duplocloud.TenantArgs{\n\t\t\tAccountName: pulumi.String(\"myapp\"),\n\t\t\tPlanId:      pulumi.String(\"default\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = duplocloud.NewAzureKeyVaultSecret(ctx, \"myapp\", \u0026duplocloud.AzureKeyVaultSecretArgs{\n\t\t\tTenantId: myapp.TenantId,\n\t\t\tName: myapp.AccountName.ApplyT(func(accountName string) (string, error) {\n\t\t\t\treturn fmt.Sprintf(\"%v-test\", accountName), nil\n\t\t\t}).(pulumi.StringOutput),\n\t\t\tValue: pulumi.String(\"tst\"),\n\t\t\tType:  pulumi.String(\"duplo_container_env\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.duplocloud.Tenant;\nimport com.pulumi.duplocloud.TenantArgs;\nimport com.pulumi.duplocloud.AzureKeyVaultSecret;\nimport com.pulumi.duplocloud.AzureKeyVaultSecretArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myapp = new Tenant(\"myapp\", TenantArgs.builder()\n            .accountName(\"myapp\")\n            .planId(\"default\")\n            .build());\n\n        var myappAzureKeyVaultSecret = new AzureKeyVaultSecret(\"myappAzureKeyVaultSecret\", AzureKeyVaultSecretArgs.builder()\n            .tenantId(myapp.tenantId())\n            .name(myapp.accountName().applyValue(accountName -\u003e String.format(\"%s-test\", accountName)))\n            .value(\"tst\")\n            .type(\"duplo_container_env\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myapp:\n    type: duplocloud:Tenant\n    properties:\n      accountName: myapp\n      planId: default\n  myappAzureKeyVaultSecret:\n    type: duplocloud:AzureKeyVaultSecret\n    name: myapp\n    properties:\n      tenantId: ${myapp.tenantId}\n      name: ${myapp.accountName}-test\n      value: tst\n      type: duplo_container_env\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nExample: Importing an existing Azure Key Vault Secret\n\n - *TENANT_ID* is the tenant GUID\n\n - *SHORT_NAME* is the short name of the Azure Key Vault Secret\n\n#\n\n```sh\n$ pulumi import duplocloud:index/azureKeyVaultSecret:AzureKeyVaultSecret mykvsecret *TENANT_ID*/*SHORT_NAME*\n```\n\n",
             "properties": {
                 "enabled": {
                     "type": "boolean",
@@ -42615,7 +42751,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Specifies the name of the Key Vault Secret. Changing this forces a new resource to be created.\n"
+                    "description": "Specifies the name of the Key Vault Secret. Must start with the tenant's account name (case-insensitive); the Duplo backend filters list results by this prefix, so secrets without it cannot be retrieved after creation. Changing this forces a new resource to be created.\n"
                 },
                 "recoveryLevel": {
                     "type": "string",
@@ -42660,7 +42796,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Specifies the name of the Key Vault Secret. Changing this forces a new resource to be created.\n",
+                    "description": "Specifies the name of the Key Vault Secret. Must start with the tenant's account name (case-insensitive); the Duplo backend filters list results by this prefix, so secrets without it cannot be retrieved after creation. Changing this forces a new resource to be created.\n",
                     "willReplaceOnChanges": true
                 },
                 "tenantId": {
@@ -42699,7 +42835,7 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "Specifies the name of the Key Vault Secret. Changing this forces a new resource to be created.\n",
+                        "description": "Specifies the name of the Key Vault Secret. Must start with the tenant's account name (case-insensitive); the Duplo backend filters list results by this prefix, so secrets without it cannot be retrieved after creation. Changing this forces a new resource to be created.\n",
                         "willReplaceOnChanges": true
                     },
                     "recoveryLevel": {
@@ -48078,7 +48214,7 @@
                 },
                 "enableClusterMode": {
                     "type": "boolean",
-                    "description": "Flag to enable/disable redis/valkey cluster mode.\n"
+                    "description": "Flag to enable/disable redis/valkey cluster mode. Cluster mode should be enabled if the instance acts as the primary for\na global datastore.\n"
                 },
                 "encryptionAtRest": {
                     "type": "boolean",
@@ -48214,7 +48350,7 @@
                 },
                 "enableClusterMode": {
                     "type": "boolean",
-                    "description": "Flag to enable/disable redis/valkey cluster mode.\n",
+                    "description": "Flag to enable/disable redis/valkey cluster mode. Cluster mode should be enabled if the instance acts as the primary for\na global datastore.\n",
                     "willReplaceOnChanges": true
                 },
                 "encryptionAtRest": {
@@ -48322,7 +48458,7 @@
                     },
                     "enableClusterMode": {
                         "type": "boolean",
-                        "description": "Flag to enable/disable redis/valkey cluster mode.\n",
+                        "description": "Flag to enable/disable redis/valkey cluster mode. Cluster mode should be enabled if the instance acts as the primary for\na global datastore.\n",
                         "willReplaceOnChanges": true
                     },
                     "encryptionAtRest": {
@@ -51084,7 +51220,7 @@
             "properties": {
                 "ackDeadlineSeconds": {
                     "type": "integer",
-                    "description": "This value is the maximum time after a Pub/Sub subscriber receives a message before the subscriber should acknowledge the message. Defaults to `10`.\n"
+                    "description": "Maximum time after a Pub/Sub subscriber receives a message before the subscriber should acknowledge the message. If unset, GCP applies its default of 10s. For cloud*storage*config subscriptions, GCP raises this to at least the configured max_duration; leaving this unset lets the provider track GCP's chosen value without drift.\n"
                 },
                 "bigQuery": {
                     "$ref": "#/types/duplocloud:index/GcpPubsubSubscriptionBigQuery:GcpPubsubSubscriptionBigQuery",
@@ -51155,6 +51291,7 @@
                 }
             },
             "required": [
+                "ackDeadlineSeconds",
                 "bigQuery",
                 "cloudStorageConfig",
                 "deadLetterPolicy",
@@ -51170,7 +51307,7 @@
             "inputProperties": {
                 "ackDeadlineSeconds": {
                     "type": "integer",
-                    "description": "This value is the maximum time after a Pub/Sub subscriber receives a message before the subscriber should acknowledge the message. Defaults to `10`.\n"
+                    "description": "Maximum time after a Pub/Sub subscriber receives a message before the subscriber should acknowledge the message. If unset, GCP applies its default of 10s. For cloud*storage*config subscriptions, GCP raises this to at least the configured max_duration; leaving this unset lets the provider track GCP's chosen value without drift.\n"
                 },
                 "bigQuery": {
                     "$ref": "#/types/duplocloud:index/GcpPubsubSubscriptionBigQuery:GcpPubsubSubscriptionBigQuery",
@@ -51253,7 +51390,7 @@
                 "properties": {
                     "ackDeadlineSeconds": {
                         "type": "integer",
-                        "description": "This value is the maximum time after a Pub/Sub subscriber receives a message before the subscriber should acknowledge the message. Defaults to `10`.\n"
+                        "description": "Maximum time after a Pub/Sub subscriber receives a message before the subscriber should acknowledge the message. If unset, GCP applies its default of 10s. For cloud*storage*config subscriptions, GCP raises this to at least the configured max_duration; leaving this unset lets the provider track GCP's chosen value without drift.\n"
                     },
                     "bigQuery": {
                         "$ref": "#/types/duplocloud:index/GcpPubsubSubscriptionBigQuery:GcpPubsubSubscriptionBigQuery",
@@ -51799,7 +51936,7 @@
             }
         },
         "duplocloud:index/gcpSqlDatabaseInstance:GcpSqlDatabaseInstance": {
-            "description": "`duplocloud.GcpSqlDatabaseInstance` manages a GCP SQL Database Instance in Duplo.\n\n## Import\n\nExample: Importing an existing GCP SQL database instance\n\n - *TENANT_ID* is the tenant GUID\n\n - *SHORT_NAME* is the short name of the GCP SQL database instance\n\n#\n\n```sh\n$ pulumi import duplocloud:index/gcpSqlDatabaseInstance:GcpSqlDatabaseInstance sql_instance *TENANT_ID*/*SHORT_NAME*\n```\n\n",
+            "description": "`duplocloud.GcpSqlDatabaseInstance` manages a GCP SQL Database Instance in Duplo.\n\n## Import\n\nExample: Importing an existing GCP SQL database instance\n\n - *TENANT_ID* is the tenant GUID\n\n - *SHORT_NAME* is the short name of the GCP SQL database instance\n\n#\n\n```sh\n$ pulumi import duplocloud:index/gcpSqlDatabaseInstance:GcpSqlDatabaseInstance sql_instance *TENANT_ID*/*SHORT_NAME*\n```\n\nAfter import, `pulumi preview` will show a diff for `root_password` because the\n\nGCP Cloud SQL GET API redacts this field. You have two options:\n\n#\n\n1. Set `root_password` in your config to the current GCP value and run\n\n   `pulumi up` once. The provider syncs state to the config value\n\n   without pushing a password change to GCP. For future rotations, change\n\n   the password in GCP first, then update `root_password` and re-apply.\n\n#\n\n2. Suppress the diff permanently by adding the lifecycle block below.\n\n   Use this only if you do not want Terraform to track the password value\n\n   (rotations must then be performed out-of-band):\n\n#\n\n     lifecycle {\n\n       ignore_changes = [root_password]\n\n     }\n\n",
             "properties": {
                 "connectionName": {
                     "type": "string",
@@ -51822,7 +51959,7 @@
                 },
                 "edition": {
                     "type": "string",
-                    "description": "Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS Defaults to `ENTERPRISE`.\n"
+                    "description": "Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS\n"
                 },
                 "fullname": {
                     "type": "string",
@@ -51856,7 +51993,7 @@
                 },
                 "rootPassword": {
                     "type": "string",
-                    "description": "Provide root password for specific database versions.\n"
+                    "secret": true
                 },
                 "selfLink": {
                     "type": "string",
@@ -51879,6 +52016,7 @@
                 "connectionName",
                 "databaseVersion",
                 "diskSize",
+                "edition",
                 "fullname",
                 "ipAddresses",
                 "ipConfiguration",
@@ -51907,7 +52045,7 @@
                 },
                 "edition": {
                     "type": "string",
-                    "description": "Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS Defaults to `ENTERPRISE`.\n",
+                    "description": "Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS\n",
                     "willReplaceOnChanges": true
                 },
                 "ipConfiguration": {
@@ -51932,7 +52070,7 @@
                 },
                 "rootPassword": {
                     "type": "string",
-                    "description": "Provide root password for specific database versions.\n"
+                    "secret": true
                 },
                 "tenantId": {
                     "type": "string",
@@ -51977,7 +52115,7 @@
                     },
                     "edition": {
                         "type": "string",
-                        "description": "Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS Defaults to `ENTERPRISE`.\n",
+                        "description": "Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS\n",
                         "willReplaceOnChanges": true
                     },
                     "fullname": {
@@ -52013,7 +52151,7 @@
                     },
                     "rootPassword": {
                         "type": "string",
-                        "description": "Provide root password for specific database versions.\n"
+                        "secret": true
                     },
                     "selfLink": {
                         "type": "string",
@@ -55830,7 +55968,7 @@
             }
         },
         "duplocloud:index/planWafV2:PlanWafV2": {
-            "description": "`duplocloud.PlanWafV2` manages the list of waf's avaialble to a plan in Duplo.\n\nThis resource allows you take control of individual waf's for a specific plan.\n",
+            "description": "`duplocloud.PlanWafV2` manages the list of waf's avaialble to a plan in Duplo.\n\nThis resource allows you take control of individual waf's for a specific plan.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nresources:\n  myplan:\n    type: duplocloud:PlanWafV2\n    properties:\n      planId: plan-name\n      wafs:\n        - name: WebAcl name\n          arn: WebAcl ARN\n          dashboardUrl: dashboard url\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nExample: Importing an existing WAF instance\n\n - *PLAN_ID* is the plan name\n\n```sh\n$ pulumi import duplocloud:index/planWafV2:PlanWafV2 myplan *PLAN_ID*/waf\n```\n\n",
             "properties": {
                 "deleteUnspecifiedWafs": {
                     "type": "boolean",

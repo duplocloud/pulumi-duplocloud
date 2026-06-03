@@ -52,9 +52,9 @@ export class GcpPubsubSubscription extends pulumi.CustomResource {
     }
 
     /**
-     * This value is the maximum time after a Pub/Sub subscriber receives a message before the subscriber should acknowledge the message. Defaults to `10`.
+     * Maximum time after a Pub/Sub subscriber receives a message before the subscriber should acknowledge the message. If unset, GCP applies its default of 10s. For cloud*storage*config subscriptions, GCP raises this to at least the configured max_duration; leaving this unset lets the provider track GCP's chosen value without drift.
      */
-    public readonly ackDeadlineSeconds!: pulumi.Output<number | undefined>;
+    public readonly ackDeadlineSeconds!: pulumi.Output<number>;
     /**
      * BigQuery configuration related to Pub/Sub subscription, to stream message into BigQuery table
      */
@@ -186,7 +186,7 @@ export class GcpPubsubSubscription extends pulumi.CustomResource {
  */
 export interface GcpPubsubSubscriptionState {
     /**
-     * This value is the maximum time after a Pub/Sub subscriber receives a message before the subscriber should acknowledge the message. Defaults to `10`.
+     * Maximum time after a Pub/Sub subscriber receives a message before the subscriber should acknowledge the message. If unset, GCP applies its default of 10s. For cloud*storage*config subscriptions, GCP raises this to at least the configured max_duration; leaving this unset lets the provider track GCP's chosen value without drift.
      */
     ackDeadlineSeconds?: pulumi.Input<number>;
     /**
@@ -260,7 +260,7 @@ export interface GcpPubsubSubscriptionState {
  */
 export interface GcpPubsubSubscriptionArgs {
     /**
-     * This value is the maximum time after a Pub/Sub subscriber receives a message before the subscriber should acknowledge the message. Defaults to `10`.
+     * Maximum time after a Pub/Sub subscriber receives a message before the subscriber should acknowledge the message. If unset, GCP applies its default of 10s. For cloud*storage*config subscriptions, GCP raises this to at least the configured max_duration; leaving this unset lets the provider track GCP's chosen value without drift.
      */
     ackDeadlineSeconds?: pulumi.Input<number>;
     /**

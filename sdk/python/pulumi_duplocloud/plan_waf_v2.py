@@ -166,6 +166,16 @@ class PlanWafV2(pulumi.CustomResource):
 
         This resource allows you take control of individual waf's for a specific plan.
 
+        ## Import
+
+        Example: Importing an existing WAF instance
+
+         - *PLAN_ID* is the plan name
+
+        ```sh
+        $ pulumi import duplocloud:index/planWafV2:PlanWafV2 myplan *PLAN_ID*/waf
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] delete_unspecified_wafs: Whether or not this resource should delete any wafs not specified by this resource. **WARNING:**  It is not recommended to change the default value of `false`. Defaults to `false`.
@@ -181,6 +191,16 @@ class PlanWafV2(pulumi.CustomResource):
         `PlanWafV2` manages the list of waf's avaialble to a plan in Duplo.
 
         This resource allows you take control of individual waf's for a specific plan.
+
+        ## Import
+
+        Example: Importing an existing WAF instance
+
+         - *PLAN_ID* is the plan name
+
+        ```sh
+        $ pulumi import duplocloud:index/planWafV2:PlanWafV2 myplan *PLAN_ID*/waf
+        ```
 
         :param str resource_name: The name of the resource.
         :param PlanWafV2Args args: The arguments to use to populate this resource's properties.

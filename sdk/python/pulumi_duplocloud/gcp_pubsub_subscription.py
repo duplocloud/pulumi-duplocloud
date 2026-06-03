@@ -41,7 +41,7 @@ class GcpPubsubSubscriptionArgs:
         The set of arguments for constructing a GcpPubsubSubscription resource.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant where the Pub/Sub subscription for the topic will be created.
         :param pulumi.Input[str] topic: A reference to a Topic resource on which Pub/Sub subscription need to be created.
-        :param pulumi.Input[int] ack_deadline_seconds: This value is the maximum time after a Pub/Sub subscriber receives a message before the subscriber should acknowledge the message. Defaults to `10`.
+        :param pulumi.Input[int] ack_deadline_seconds: Maximum time after a Pub/Sub subscriber receives a message before the subscriber should acknowledge the message. If unset, GCP applies its default of 10s. For cloud*storage*config subscriptions, GCP raises this to at least the configured max_duration; leaving this unset lets the provider track GCP's chosen value without drift.
         :param pulumi.Input['GcpPubsubSubscriptionBigQueryArgs'] big_query: BigQuery configuration related to Pub/Sub subscription, to stream message into BigQuery table
         :param pulumi.Input['GcpPubsubSubscriptionCloudStorageConfigArgs'] cloud_storage_config: Cloud Storage  configuration related to Pub/Sub subscription, to store message in storage bucket
         :param pulumi.Input['GcpPubsubSubscriptionDeadLetterPolicyArgs'] dead_letter_policy: A policy that specifies the conditions for dead lettering messages in this Pub/Sub subscription. If dead*letter*policy is not set, dead lettering is disabled
@@ -115,7 +115,7 @@ class GcpPubsubSubscriptionArgs:
     @pulumi.getter(name="ackDeadlineSeconds")
     def ack_deadline_seconds(self) -> Optional[pulumi.Input[int]]:
         """
-        This value is the maximum time after a Pub/Sub subscriber receives a message before the subscriber should acknowledge the message. Defaults to `10`.
+        Maximum time after a Pub/Sub subscriber receives a message before the subscriber should acknowledge the message. If unset, GCP applies its default of 10s. For cloud*storage*config subscriptions, GCP raises this to at least the configured max_duration; leaving this unset lets the provider track GCP's chosen value without drift.
         """
         return pulumi.get(self, "ack_deadline_seconds")
 
@@ -302,7 +302,7 @@ class _GcpPubsubSubscriptionState:
                  topic: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering GcpPubsubSubscription resources.
-        :param pulumi.Input[int] ack_deadline_seconds: This value is the maximum time after a Pub/Sub subscriber receives a message before the subscriber should acknowledge the message. Defaults to `10`.
+        :param pulumi.Input[int] ack_deadline_seconds: Maximum time after a Pub/Sub subscriber receives a message before the subscriber should acknowledge the message. If unset, GCP applies its default of 10s. For cloud*storage*config subscriptions, GCP raises this to at least the configured max_duration; leaving this unset lets the provider track GCP's chosen value without drift.
         :param pulumi.Input['GcpPubsubSubscriptionBigQueryArgs'] big_query: BigQuery configuration related to Pub/Sub subscription, to stream message into BigQuery table
         :param pulumi.Input['GcpPubsubSubscriptionCloudStorageConfigArgs'] cloud_storage_config: Cloud Storage  configuration related to Pub/Sub subscription, to store message in storage bucket
         :param pulumi.Input['GcpPubsubSubscriptionDeadLetterPolicyArgs'] dead_letter_policy: A policy that specifies the conditions for dead lettering messages in this Pub/Sub subscription. If dead*letter*policy is not set, dead lettering is disabled
@@ -359,7 +359,7 @@ class _GcpPubsubSubscriptionState:
     @pulumi.getter(name="ackDeadlineSeconds")
     def ack_deadline_seconds(self) -> Optional[pulumi.Input[int]]:
         """
-        This value is the maximum time after a Pub/Sub subscriber receives a message before the subscriber should acknowledge the message. Defaults to `10`.
+        Maximum time after a Pub/Sub subscriber receives a message before the subscriber should acknowledge the message. If unset, GCP applies its default of 10s. For cloud*storage*config subscriptions, GCP raises this to at least the configured max_duration; leaving this unset lets the provider track GCP's chosen value without drift.
         """
         return pulumi.get(self, "ack_deadline_seconds")
 
@@ -601,7 +601,7 @@ class GcpPubsubSubscription(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] ack_deadline_seconds: This value is the maximum time after a Pub/Sub subscriber receives a message before the subscriber should acknowledge the message. Defaults to `10`.
+        :param pulumi.Input[int] ack_deadline_seconds: Maximum time after a Pub/Sub subscriber receives a message before the subscriber should acknowledge the message. If unset, GCP applies its default of 10s. For cloud*storage*config subscriptions, GCP raises this to at least the configured max_duration; leaving this unset lets the provider track GCP's chosen value without drift.
         :param pulumi.Input[Union['GcpPubsubSubscriptionBigQueryArgs', 'GcpPubsubSubscriptionBigQueryArgsDict']] big_query: BigQuery configuration related to Pub/Sub subscription, to stream message into BigQuery table
         :param pulumi.Input[Union['GcpPubsubSubscriptionCloudStorageConfigArgs', 'GcpPubsubSubscriptionCloudStorageConfigArgsDict']] cloud_storage_config: Cloud Storage  configuration related to Pub/Sub subscription, to store message in storage bucket
         :param pulumi.Input[Union['GcpPubsubSubscriptionDeadLetterPolicyArgs', 'GcpPubsubSubscriptionDeadLetterPolicyArgsDict']] dead_letter_policy: A policy that specifies the conditions for dead lettering messages in this Pub/Sub subscription. If dead*letter*policy is not set, dead lettering is disabled
@@ -736,7 +736,7 @@ class GcpPubsubSubscription(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] ack_deadline_seconds: This value is the maximum time after a Pub/Sub subscriber receives a message before the subscriber should acknowledge the message. Defaults to `10`.
+        :param pulumi.Input[int] ack_deadline_seconds: Maximum time after a Pub/Sub subscriber receives a message before the subscriber should acknowledge the message. If unset, GCP applies its default of 10s. For cloud*storage*config subscriptions, GCP raises this to at least the configured max_duration; leaving this unset lets the provider track GCP's chosen value without drift.
         :param pulumi.Input[Union['GcpPubsubSubscriptionBigQueryArgs', 'GcpPubsubSubscriptionBigQueryArgsDict']] big_query: BigQuery configuration related to Pub/Sub subscription, to stream message into BigQuery table
         :param pulumi.Input[Union['GcpPubsubSubscriptionCloudStorageConfigArgs', 'GcpPubsubSubscriptionCloudStorageConfigArgsDict']] cloud_storage_config: Cloud Storage  configuration related to Pub/Sub subscription, to store message in storage bucket
         :param pulumi.Input[Union['GcpPubsubSubscriptionDeadLetterPolicyArgs', 'GcpPubsubSubscriptionDeadLetterPolicyArgsDict']] dead_letter_policy: A policy that specifies the conditions for dead lettering messages in this Pub/Sub subscription. If dead*letter*policy is not set, dead lettering is disabled
@@ -779,9 +779,9 @@ class GcpPubsubSubscription(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ackDeadlineSeconds")
-    def ack_deadline_seconds(self) -> pulumi.Output[Optional[int]]:
+    def ack_deadline_seconds(self) -> pulumi.Output[int]:
         """
-        This value is the maximum time after a Pub/Sub subscriber receives a message before the subscriber should acknowledge the message. Defaults to `10`.
+        Maximum time after a Pub/Sub subscriber receives a message before the subscriber should acknowledge the message. If unset, GCP applies its default of 10s. For cloud*storage*config subscriptions, GCP raises this to at least the configured max_duration; leaving this unset lets the provider track GCP's chosen value without drift.
         """
         return pulumi.get(self, "ack_deadline_seconds")
 

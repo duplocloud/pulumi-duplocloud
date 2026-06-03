@@ -10,6 +10,16 @@ import * as utilities from "./utilities";
  * `duplocloud.PlanWafV2` manages the list of waf's avaialble to a plan in Duplo.
  *
  * This resource allows you take control of individual waf's for a specific plan.
+ *
+ * ## Import
+ *
+ * Example: Importing an existing WAF instance
+ *
+ *  - *PLAN_ID* is the plan name
+ *
+ * ```sh
+ * $ pulumi import duplocloud:index/planWafV2:PlanWafV2 myplan *PLAN_ID*&#47;waf
+ * ```
  */
 export class PlanWafV2 extends pulumi.CustomResource {
     /**

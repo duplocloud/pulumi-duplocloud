@@ -30,8 +30,8 @@ import (
 type GcpPubsubSubscription struct {
 	pulumi.CustomResourceState
 
-	// This value is the maximum time after a Pub/Sub subscriber receives a message before the subscriber should acknowledge the message. Defaults to `10`.
-	AckDeadlineSeconds pulumi.IntPtrOutput `pulumi:"ackDeadlineSeconds"`
+	// Maximum time after a Pub/Sub subscriber receives a message before the subscriber should acknowledge the message. If unset, GCP applies its default of 10s. For cloud*storage*config subscriptions, GCP raises this to at least the configured max_duration; leaving this unset lets the provider track GCP's chosen value without drift.
+	AckDeadlineSeconds pulumi.IntOutput `pulumi:"ackDeadlineSeconds"`
 	// BigQuery configuration related to Pub/Sub subscription, to stream message into BigQuery table
 	BigQuery GcpPubsubSubscriptionBigQueryOutput `pulumi:"bigQuery"`
 	// Cloud Storage  configuration related to Pub/Sub subscription, to store message in storage bucket
@@ -102,7 +102,7 @@ func GetGcpPubsubSubscription(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GcpPubsubSubscription resources.
 type gcpPubsubSubscriptionState struct {
-	// This value is the maximum time after a Pub/Sub subscriber receives a message before the subscriber should acknowledge the message. Defaults to `10`.
+	// Maximum time after a Pub/Sub subscriber receives a message before the subscriber should acknowledge the message. If unset, GCP applies its default of 10s. For cloud*storage*config subscriptions, GCP raises this to at least the configured max_duration; leaving this unset lets the provider track GCP's chosen value without drift.
 	AckDeadlineSeconds *int `pulumi:"ackDeadlineSeconds"`
 	// BigQuery configuration related to Pub/Sub subscription, to stream message into BigQuery table
 	BigQuery *GcpPubsubSubscriptionBigQuery `pulumi:"bigQuery"`
@@ -139,7 +139,7 @@ type gcpPubsubSubscriptionState struct {
 }
 
 type GcpPubsubSubscriptionState struct {
-	// This value is the maximum time after a Pub/Sub subscriber receives a message before the subscriber should acknowledge the message. Defaults to `10`.
+	// Maximum time after a Pub/Sub subscriber receives a message before the subscriber should acknowledge the message. If unset, GCP applies its default of 10s. For cloud*storage*config subscriptions, GCP raises this to at least the configured max_duration; leaving this unset lets the provider track GCP's chosen value without drift.
 	AckDeadlineSeconds pulumi.IntPtrInput
 	// BigQuery configuration related to Pub/Sub subscription, to stream message into BigQuery table
 	BigQuery GcpPubsubSubscriptionBigQueryPtrInput
@@ -180,7 +180,7 @@ func (GcpPubsubSubscriptionState) ElementType() reflect.Type {
 }
 
 type gcpPubsubSubscriptionArgs struct {
-	// This value is the maximum time after a Pub/Sub subscriber receives a message before the subscriber should acknowledge the message. Defaults to `10`.
+	// Maximum time after a Pub/Sub subscriber receives a message before the subscriber should acknowledge the message. If unset, GCP applies its default of 10s. For cloud*storage*config subscriptions, GCP raises this to at least the configured max_duration; leaving this unset lets the provider track GCP's chosen value without drift.
 	AckDeadlineSeconds *int `pulumi:"ackDeadlineSeconds"`
 	// BigQuery configuration related to Pub/Sub subscription, to stream message into BigQuery table
 	BigQuery *GcpPubsubSubscriptionBigQuery `pulumi:"bigQuery"`
@@ -216,7 +216,7 @@ type gcpPubsubSubscriptionArgs struct {
 
 // The set of arguments for constructing a GcpPubsubSubscription resource.
 type GcpPubsubSubscriptionArgs struct {
-	// This value is the maximum time after a Pub/Sub subscriber receives a message before the subscriber should acknowledge the message. Defaults to `10`.
+	// Maximum time after a Pub/Sub subscriber receives a message before the subscriber should acknowledge the message. If unset, GCP applies its default of 10s. For cloud*storage*config subscriptions, GCP raises this to at least the configured max_duration; leaving this unset lets the provider track GCP's chosen value without drift.
 	AckDeadlineSeconds pulumi.IntPtrInput
 	// BigQuery configuration related to Pub/Sub subscription, to stream message into BigQuery table
 	BigQuery GcpPubsubSubscriptionBigQueryPtrInput
@@ -337,9 +337,9 @@ func (o GcpPubsubSubscriptionOutput) ToGcpPubsubSubscriptionOutputWithContext(ct
 	return o
 }
 
-// This value is the maximum time after a Pub/Sub subscriber receives a message before the subscriber should acknowledge the message. Defaults to `10`.
-func (o GcpPubsubSubscriptionOutput) AckDeadlineSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GcpPubsubSubscription) pulumi.IntPtrOutput { return v.AckDeadlineSeconds }).(pulumi.IntPtrOutput)
+// Maximum time after a Pub/Sub subscriber receives a message before the subscriber should acknowledge the message. If unset, GCP applies its default of 10s. For cloud*storage*config subscriptions, GCP raises this to at least the configured max_duration; leaving this unset lets the provider track GCP's chosen value without drift.
+func (o GcpPubsubSubscriptionOutput) AckDeadlineSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v *GcpPubsubSubscription) pulumi.IntOutput { return v.AckDeadlineSeconds }).(pulumi.IntOutput)
 }
 
 // BigQuery configuration related to Pub/Sub subscription, to stream message into BigQuery table

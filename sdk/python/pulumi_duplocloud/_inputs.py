@@ -19547,7 +19547,7 @@ if not MYPY:
         """
         audience: NotRequired[pulumi.Input[str]]
         """
-        Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string. Defaults to `false`.
+        Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string.
         """
 elif False:
     GcpPubsubSubscriptionPushConfigOidcTokenArgsDict: TypeAlias = Mapping[str, Any]
@@ -19559,7 +19559,7 @@ class GcpPubsubSubscriptionPushConfigOidcTokenArgs:
                  audience: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] service_account_email: Service account email to be used for generating the OIDC token.
-        :param pulumi.Input[str] audience: Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string. Defaults to `false`.
+        :param pulumi.Input[str] audience: Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string.
         """
         pulumi.set(__self__, "service_account_email", service_account_email)
         if audience is not None:
@@ -19581,7 +19581,7 @@ class GcpPubsubSubscriptionPushConfigOidcTokenArgs:
     @pulumi.getter
     def audience(self) -> Optional[pulumi.Input[str]]:
         """
-        Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string. Defaults to `false`.
+        Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string.
         """
         return pulumi.get(self, "audience")
 

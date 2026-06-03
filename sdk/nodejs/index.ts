@@ -265,6 +265,11 @@ export type AzureDatafactory = import("./azureDatafactory").AzureDatafactory;
 export const AzureDatafactory: typeof import("./azureDatafactory").AzureDatafactory = null as any;
 utilities.lazyLoad(exports, ["AzureDatafactory"], () => require("./azureDatafactory"));
 
+export { AzureInfraSecretArgs, AzureInfraSecretState } from "./azureInfraSecret";
+export type AzureInfraSecret = import("./azureInfraSecret").AzureInfraSecret;
+export const AzureInfraSecret: typeof import("./azureInfraSecret").AzureInfraSecret = null as any;
+utilities.lazyLoad(exports, ["AzureInfraSecret"], () => require("./azureInfraSecret"));
+
 export { AzureK8NodePoolArgs, AzureK8NodePoolState } from "./azureK8NodePool";
 export type AzureK8NodePool = import("./azureK8NodePool").AzureK8NodePool;
 export const AzureK8NodePool: typeof import("./azureK8NodePool").AzureK8NodePool = null as any;
@@ -1268,6 +1273,8 @@ const _module = {
                 return new AzureCosmosDbDatabase(name, <any>undefined, { urn })
             case "duplocloud:index/azureDatafactory:AzureDatafactory":
                 return new AzureDatafactory(name, <any>undefined, { urn })
+            case "duplocloud:index/azureInfraSecret:AzureInfraSecret":
+                return new AzureInfraSecret(name, <any>undefined, { urn })
             case "duplocloud:index/azureK8NodePool:AzureK8NodePool":
                 return new AzureK8NodePool(name, <any>undefined, { urn })
             case "duplocloud:index/azureK8sCluster:AzureK8sCluster":
@@ -1527,6 +1534,7 @@ pulumi.runtime.registerResourceModule("duplocloud", "index/azureCosmosDbAccount"
 pulumi.runtime.registerResourceModule("duplocloud", "index/azureCosmosDbContainer", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/azureCosmosDbDatabase", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/azureDatafactory", _module)
+pulumi.runtime.registerResourceModule("duplocloud", "index/azureInfraSecret", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/azureK8NodePool", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/azureK8sCluster", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/azureKeyVaultSecret", _module)

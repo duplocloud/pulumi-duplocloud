@@ -15,7 +15,7 @@ namespace DuploCloud.Pulumi.Outputs
     public sealed class GcpPubsubSubscriptionPushConfigOidcToken
     {
         /// <summary>
-        /// Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string. Defaults to `false`.
+        /// Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string.
         /// </summary>
         public readonly string? Audience;
         /// <summary>

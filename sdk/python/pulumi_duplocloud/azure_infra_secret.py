@@ -14,10 +14,10 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
-__all__ = ['AzureKeyVaultSecretArgs', 'AzureKeyVaultSecret']
+__all__ = ['AzureInfraSecretArgs', 'AzureInfraSecret']
 
 @pulumi.input_type
-class AzureKeyVaultSecretArgs:
+class AzureInfraSecretArgs:
     def __init__(__self__, *,
                  tenant_id: pulumi.Input[str],
                  value: pulumi.Input[str],
@@ -25,7 +25,7 @@ class AzureKeyVaultSecretArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
-        The set of arguments for constructing a AzureKeyVaultSecret resource.
+        The set of arguments for constructing a AzureInfraSecret resource.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the key vault secret will be created in.
         :param pulumi.Input[str] value: Specifies the value of the Key vault secret.
         :param pulumi.Input[str] key_vault_id: The ID of the Key Vault where the Secret should be created.
@@ -103,7 +103,7 @@ class AzureKeyVaultSecretArgs:
 
 
 @pulumi.input_type
-class _AzureKeyVaultSecretState:
+class _AzureInfraSecretState:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  fullname: Optional[pulumi.Input[str]] = None,
@@ -116,7 +116,7 @@ class _AzureKeyVaultSecretState:
                  vault_base_url: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
-        Input properties used for looking up and filtering AzureKeyVaultSecret resources.
+        Input properties used for looking up and filtering AzureInfraSecret resources.
         :param pulumi.Input[bool] enabled: Determines whether the object is enabled.
         :param pulumi.Input[str] fullname: Duplo will generate name of the Key Vault Secret.
         :param pulumi.Input[str] key_vault_id: The ID of the Key Vault where the Secret should be created.
@@ -270,7 +270,7 @@ class _AzureKeyVaultSecretState:
         pulumi.set(self, "version", value)
 
 
-class AzureKeyVaultSecret(pulumi.CustomResource):
+class AzureInfraSecret(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -282,10 +282,6 @@ class AzureKeyVaultSecret(pulumi.CustomResource):
                  value: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        > **Deprecated:** `AzureKeyVaultSecret` has been renamed to `AzureInfraSecret`. Please update your configuration to use the new resource name. The old name remains as an alias and will be removed in a future release.
-        > 
-        > To migrate existing state without recreating the secret:
-
         `AzureInfraSecret` manages an infrastructure-level Azure Key Vault Secret in Duplo.
 
         ## Example Usage
@@ -297,7 +293,7 @@ class AzureKeyVaultSecret(pulumi.CustomResource):
         myapp = duplocloud.Tenant("myapp",
             account_name="myapp",
             plan_id="default")
-        myapp_azure_key_vault_secret = duplocloud.AzureKeyVaultSecret("myapp",
+        myapp_azure_infra_secret = duplocloud.AzureInfraSecret("myapp",
             tenant_id=myapp.tenant_id,
             name=myapp.account_name.apply(lambda account_name: f"{account_name}-test"),
             value="tst",
@@ -306,16 +302,16 @@ class AzureKeyVaultSecret(pulumi.CustomResource):
 
         ## Import
 
-        Example: Importing an existing Azure Key Vault Secret
+        Example: Importing an existing Azure Infra Secret
 
          - *TENANT_ID* is the tenant GUID
 
-         - *SHORT_NAME* is the short name of the Azure Key Vault Secret
+         - *SHORT_NAME* is the short name of the Azure Infra Secret
 
         # 
 
         ```sh
-        $ pulumi import duplocloud:index/azureKeyVaultSecret:AzureKeyVaultSecret mykvsecret *TENANT_ID*/*SHORT_NAME*
+        $ pulumi import duplocloud:index/azureInfraSecret:AzureInfraSecret myinfrasecret *TENANT_ID*/*SHORT_NAME*
         ```
 
         :param str resource_name: The name of the resource.
@@ -330,13 +326,9 @@ class AzureKeyVaultSecret(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AzureKeyVaultSecretArgs,
+                 args: AzureInfraSecretArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > **Deprecated:** `AzureKeyVaultSecret` has been renamed to `AzureInfraSecret`. Please update your configuration to use the new resource name. The old name remains as an alias and will be removed in a future release.
-        > 
-        > To migrate existing state without recreating the secret:
-
         `AzureInfraSecret` manages an infrastructure-level Azure Key Vault Secret in Duplo.
 
         ## Example Usage
@@ -348,7 +340,7 @@ class AzureKeyVaultSecret(pulumi.CustomResource):
         myapp = duplocloud.Tenant("myapp",
             account_name="myapp",
             plan_id="default")
-        myapp_azure_key_vault_secret = duplocloud.AzureKeyVaultSecret("myapp",
+        myapp_azure_infra_secret = duplocloud.AzureInfraSecret("myapp",
             tenant_id=myapp.tenant_id,
             name=myapp.account_name.apply(lambda account_name: f"{account_name}-test"),
             value="tst",
@@ -357,25 +349,25 @@ class AzureKeyVaultSecret(pulumi.CustomResource):
 
         ## Import
 
-        Example: Importing an existing Azure Key Vault Secret
+        Example: Importing an existing Azure Infra Secret
 
          - *TENANT_ID* is the tenant GUID
 
-         - *SHORT_NAME* is the short name of the Azure Key Vault Secret
+         - *SHORT_NAME* is the short name of the Azure Infra Secret
 
         # 
 
         ```sh
-        $ pulumi import duplocloud:index/azureKeyVaultSecret:AzureKeyVaultSecret mykvsecret *TENANT_ID*/*SHORT_NAME*
+        $ pulumi import duplocloud:index/azureInfraSecret:AzureInfraSecret myinfrasecret *TENANT_ID*/*SHORT_NAME*
         ```
 
         :param str resource_name: The name of the resource.
-        :param AzureKeyVaultSecretArgs args: The arguments to use to populate this resource's properties.
+        :param AzureInfraSecretArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(AzureKeyVaultSecretArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(AzureInfraSecretArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -396,7 +388,7 @@ class AzureKeyVaultSecret(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = AzureKeyVaultSecretArgs.__new__(AzureKeyVaultSecretArgs)
+            __props__ = AzureInfraSecretArgs.__new__(AzureInfraSecretArgs)
 
             __props__.__dict__["key_vault_id"] = key_vault_id
             __props__.__dict__["name"] = name
@@ -414,8 +406,8 @@ class AzureKeyVaultSecret(pulumi.CustomResource):
             __props__.__dict__["version"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["value"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
-        super(AzureKeyVaultSecret, __self__).__init__(
-            'duplocloud:index/azureKeyVaultSecret:AzureKeyVaultSecret',
+        super(AzureInfraSecret, __self__).__init__(
+            'duplocloud:index/azureInfraSecret:AzureInfraSecret',
             resource_name,
             __props__,
             opts)
@@ -433,9 +425,9 @@ class AzureKeyVaultSecret(pulumi.CustomResource):
             type: Optional[pulumi.Input[str]] = None,
             value: Optional[pulumi.Input[str]] = None,
             vault_base_url: Optional[pulumi.Input[str]] = None,
-            version: Optional[pulumi.Input[str]] = None) -> 'AzureKeyVaultSecret':
+            version: Optional[pulumi.Input[str]] = None) -> 'AzureInfraSecret':
         """
-        Get an existing AzureKeyVaultSecret resource's state with the given name, id, and optional extra
+        Get an existing AzureInfraSecret resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
@@ -454,7 +446,7 @@ class AzureKeyVaultSecret(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = _AzureKeyVaultSecretState.__new__(_AzureKeyVaultSecretState)
+        __props__ = _AzureInfraSecretState.__new__(_AzureInfraSecretState)
 
         __props__.__dict__["enabled"] = enabled
         __props__.__dict__["fullname"] = fullname
@@ -466,7 +458,7 @@ class AzureKeyVaultSecret(pulumi.CustomResource):
         __props__.__dict__["value"] = value
         __props__.__dict__["vault_base_url"] = vault_base_url
         __props__.__dict__["version"] = version
-        return AzureKeyVaultSecret(resource_name, opts=opts, __props__=__props__)
+        return AzureInfraSecret(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter
