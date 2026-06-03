@@ -50,7 +50,7 @@ class AwsMwaaEnvironmentArgs:
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the Managed Workflows Apache Airflow will be created in.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] airflow_configuration_options: The `airflow_configuration_options` parameter specifies airflow override options
         :param pulumi.Input[str] airflow_version: Airflow version of your environment, will be set by default to the latest version that MWAA supports.
-        :param pulumi.Input[str] environment_class: Environment class for the cluster. Possible options are `mw1.micro`, `mw1.small`, `mw1.medium`, `mw1.large`, `mw1.xlarge`, `mw1.2xlarge`.
+        :param pulumi.Input[str] environment_class: Environment class for the cluster. Possible options are `mw1.micro`, `mw1.small`, `mw1.medium`, `mw1.large`, `mw1.xlarge`, `mw1.2xlarge`. Changing this forces a new resource to be created.
         :param pulumi.Input[str] execution_role_arn: The Execution Role ARN of the Amazon MWAA Environment
         :param pulumi.Input[str] kms_key: The Amazon Resource Name (ARN) of your KMS key that you want to use for encryption. Will be set to the ARN of the managed KMS key aws/airflow by default.
         :param pulumi.Input[int] max_workers: The maximum number of workers that can be automatically scaled up. Value need to be between `1` and `25`.
@@ -173,7 +173,7 @@ class AwsMwaaEnvironmentArgs:
     @pulumi.getter(name="environmentClass")
     def environment_class(self) -> Optional[pulumi.Input[str]]:
         """
-        Environment class for the cluster. Possible options are `mw1.micro`, `mw1.small`, `mw1.medium`, `mw1.large`, `mw1.xlarge`, `mw1.2xlarge`.
+        Environment class for the cluster. Possible options are `mw1.micro`, `mw1.small`, `mw1.medium`, `mw1.large`, `mw1.xlarge`, `mw1.2xlarge`. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "environment_class")
 
@@ -408,7 +408,7 @@ class _AwsMwaaEnvironmentState:
         :param pulumi.Input[str] airflow_version: Airflow version of your environment, will be set by default to the latest version that MWAA supports.
         :param pulumi.Input[str] arn: The ARN of the Managed Workflows Apache Airflow.
         :param pulumi.Input[str] dag_s3_path: The relative path to the DAG folder on your Amazon S3 storage bucket.
-        :param pulumi.Input[str] environment_class: Environment class for the cluster. Possible options are `mw1.micro`, `mw1.small`, `mw1.medium`, `mw1.large`, `mw1.xlarge`, `mw1.2xlarge`.
+        :param pulumi.Input[str] environment_class: Environment class for the cluster. Possible options are `mw1.micro`, `mw1.small`, `mw1.medium`, `mw1.large`, `mw1.xlarge`, `mw1.2xlarge`. Changing this forces a new resource to be created.
         :param pulumi.Input[str] execution_role_arn: The Execution Role ARN of the Amazon MWAA Environment
         :param pulumi.Input[str] fullname: The full name provided by duplo for Apache Airflow Environment.
         :param pulumi.Input[str] kms_key: The Amazon Resource Name (ARN) of your KMS key that you want to use for encryption. Will be set to the ARN of the managed KMS key aws/airflow by default.
@@ -540,7 +540,7 @@ class _AwsMwaaEnvironmentState:
     @pulumi.getter(name="environmentClass")
     def environment_class(self) -> Optional[pulumi.Input[str]]:
         """
-        Environment class for the cluster. Possible options are `mw1.micro`, `mw1.small`, `mw1.medium`, `mw1.large`, `mw1.xlarge`, `mw1.2xlarge`.
+        Environment class for the cluster. Possible options are `mw1.micro`, `mw1.small`, `mw1.medium`, `mw1.large`, `mw1.xlarge`, `mw1.2xlarge`. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "environment_class")
 
@@ -921,7 +921,7 @@ class AwsMwaaEnvironment(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] airflow_configuration_options: The `airflow_configuration_options` parameter specifies airflow override options
         :param pulumi.Input[str] airflow_version: Airflow version of your environment, will be set by default to the latest version that MWAA supports.
         :param pulumi.Input[str] dag_s3_path: The relative path to the DAG folder on your Amazon S3 storage bucket.
-        :param pulumi.Input[str] environment_class: Environment class for the cluster. Possible options are `mw1.micro`, `mw1.small`, `mw1.medium`, `mw1.large`, `mw1.xlarge`, `mw1.2xlarge`.
+        :param pulumi.Input[str] environment_class: Environment class for the cluster. Possible options are `mw1.micro`, `mw1.small`, `mw1.medium`, `mw1.large`, `mw1.xlarge`, `mw1.2xlarge`. Changing this forces a new resource to be created.
         :param pulumi.Input[str] execution_role_arn: The Execution Role ARN of the Amazon MWAA Environment
         :param pulumi.Input[str] kms_key: The Amazon Resource Name (ARN) of your KMS key that you want to use for encryption. Will be set to the ARN of the managed KMS key aws/airflow by default.
         :param pulumi.Input[int] max_workers: The maximum number of workers that can be automatically scaled up. Value need to be between `1` and `25`.
@@ -1146,7 +1146,7 @@ class AwsMwaaEnvironment(pulumi.CustomResource):
         :param pulumi.Input[str] airflow_version: Airflow version of your environment, will be set by default to the latest version that MWAA supports.
         :param pulumi.Input[str] arn: The ARN of the Managed Workflows Apache Airflow.
         :param pulumi.Input[str] dag_s3_path: The relative path to the DAG folder on your Amazon S3 storage bucket.
-        :param pulumi.Input[str] environment_class: Environment class for the cluster. Possible options are `mw1.micro`, `mw1.small`, `mw1.medium`, `mw1.large`, `mw1.xlarge`, `mw1.2xlarge`.
+        :param pulumi.Input[str] environment_class: Environment class for the cluster. Possible options are `mw1.micro`, `mw1.small`, `mw1.medium`, `mw1.large`, `mw1.xlarge`, `mw1.2xlarge`. Changing this forces a new resource to be created.
         :param pulumi.Input[str] execution_role_arn: The Execution Role ARN of the Amazon MWAA Environment
         :param pulumi.Input[str] fullname: The full name provided by duplo for Apache Airflow Environment.
         :param pulumi.Input[str] kms_key: The Amazon Resource Name (ARN) of your KMS key that you want to use for encryption. Will be set to the ARN of the managed KMS key aws/airflow by default.
@@ -1239,7 +1239,7 @@ class AwsMwaaEnvironment(pulumi.CustomResource):
     @pulumi.getter(name="environmentClass")
     def environment_class(self) -> pulumi.Output[str]:
         """
-        Environment class for the cluster. Possible options are `mw1.micro`, `mw1.small`, `mw1.medium`, `mw1.large`, `mw1.xlarge`, `mw1.2xlarge`.
+        Environment class for the cluster. Possible options are `mw1.micro`, `mw1.small`, `mw1.medium`, `mw1.large`, `mw1.xlarge`, `mw1.2xlarge`. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "environment_class")
 

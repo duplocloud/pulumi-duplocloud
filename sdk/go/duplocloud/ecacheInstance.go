@@ -359,7 +359,8 @@ type EcacheInstance struct {
 	AutomaticFailoverEnabled pulumi.BoolOutput `pulumi:"automaticFailoverEnabled"`
 	// The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache - `2` : Valkey
 	CacheType pulumi.IntPtrOutput `pulumi:"cacheType"`
-	// Flag to enable/disable redis/valkey cluster mode.
+	// Flag to enable/disable redis/valkey cluster mode. Cluster mode should be enabled if the instance acts as the primary for
+	// a global datastore.
 	EnableClusterMode pulumi.BoolPtrOutput `pulumi:"enableClusterMode"`
 	// Enables encryption-at-rest.
 	EncryptionAtRest pulumi.BoolPtrOutput `pulumi:"encryptionAtRest"`
@@ -460,7 +461,8 @@ type ecacheInstanceState struct {
 	AutomaticFailoverEnabled *bool `pulumi:"automaticFailoverEnabled"`
 	// The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache - `2` : Valkey
 	CacheType *int `pulumi:"cacheType"`
-	// Flag to enable/disable redis/valkey cluster mode.
+	// Flag to enable/disable redis/valkey cluster mode. Cluster mode should be enabled if the instance acts as the primary for
+	// a global datastore.
 	EnableClusterMode *bool `pulumi:"enableClusterMode"`
 	// Enables encryption-at-rest.
 	EncryptionAtRest *bool `pulumi:"encryptionAtRest"`
@@ -526,7 +528,8 @@ type EcacheInstanceState struct {
 	AutomaticFailoverEnabled pulumi.BoolPtrInput
 	// The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache - `2` : Valkey
 	CacheType pulumi.IntPtrInput
-	// Flag to enable/disable redis/valkey cluster mode.
+	// Flag to enable/disable redis/valkey cluster mode. Cluster mode should be enabled if the instance acts as the primary for
+	// a global datastore.
 	EnableClusterMode pulumi.BoolPtrInput
 	// Enables encryption-at-rest.
 	EncryptionAtRest pulumi.BoolPtrInput
@@ -593,7 +596,8 @@ type ecacheInstanceArgs struct {
 	AutomaticFailoverEnabled *bool `pulumi:"automaticFailoverEnabled"`
 	// The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache - `2` : Valkey
 	CacheType *int `pulumi:"cacheType"`
-	// Flag to enable/disable redis/valkey cluster mode.
+	// Flag to enable/disable redis/valkey cluster mode. Cluster mode should be enabled if the instance acts as the primary for
+	// a global datastore.
 	EnableClusterMode *bool `pulumi:"enableClusterMode"`
 	// Enables encryption-at-rest.
 	EncryptionAtRest *bool `pulumi:"encryptionAtRest"`
@@ -645,7 +649,8 @@ type EcacheInstanceArgs struct {
 	AutomaticFailoverEnabled pulumi.BoolPtrInput
 	// The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache - `2` : Valkey
 	CacheType pulumi.IntPtrInput
-	// Flag to enable/disable redis/valkey cluster mode.
+	// Flag to enable/disable redis/valkey cluster mode. Cluster mode should be enabled if the instance acts as the primary for
+	// a global datastore.
 	EnableClusterMode pulumi.BoolPtrInput
 	// Enables encryption-at-rest.
 	EncryptionAtRest pulumi.BoolPtrInput
@@ -800,7 +805,8 @@ func (o EcacheInstanceOutput) CacheType() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *EcacheInstance) pulumi.IntPtrOutput { return v.CacheType }).(pulumi.IntPtrOutput)
 }
 
-// Flag to enable/disable redis/valkey cluster mode.
+// Flag to enable/disable redis/valkey cluster mode. Cluster mode should be enabled if the instance acts as the primary for
+// a global datastore.
 func (o EcacheInstanceOutput) EnableClusterMode() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EcacheInstance) pulumi.BoolPtrOutput { return v.EnableClusterMode }).(pulumi.BoolPtrOutput)
 }

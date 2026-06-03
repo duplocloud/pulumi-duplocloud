@@ -57,6 +57,7 @@ from .azure_cosmos_db_account import *
 from .azure_cosmos_db_container import *
 from .azure_cosmos_db_database import *
 from .azure_datafactory import *
+from .azure_infra_secret import *
 from .azure_k8_node_pool import *
 from .azure_k8s_cluster import *
 from .azure_key_vault_secret import *
@@ -661,6 +662,14 @@ _utilities.register(
   "fqn": "pulumi_duplocloud",
   "classes": {
    "duplocloud:index/azureDatafactory:AzureDatafactory": "AzureDatafactory"
+  }
+ },
+ {
+  "pkg": "duplocloud",
+  "mod": "index/azureInfraSecret",
+  "fqn": "pulumi_duplocloud",
+  "classes": {
+   "duplocloud:index/azureInfraSecret:AzureInfraSecret": "AzureInfraSecret"
   }
  },
  {

@@ -65,6 +65,7 @@
         "azureCosmosDbContainer.ts",
         "azureCosmosDbDatabase.ts",
         "azureDatafactory.ts",
+        "azureInfraSecret.ts",
         "azureK8NodePool.ts",
         "azureK8sCluster.ts",
         "azureKeyVaultSecret.ts",

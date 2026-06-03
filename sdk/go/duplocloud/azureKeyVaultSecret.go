@@ -12,7 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// `AzureKeyVaultSecret` manages a Key Vault Secret in Duplo.
+// > **Deprecated:** `AzureKeyVaultSecret` has been renamed to `AzureInfraSecret`. Please update your configuration to use the new resource name. The old name remains as an alias and will be removed in a future release.
+// >
+// > To migrate existing state without recreating the secret:
+//
+// `AzureInfraSecret` manages an infrastructure-level Azure Key Vault Secret in Duplo.
 //
 // ## Example Usage
 //
@@ -20,6 +24,8 @@ import (
 // package main
 //
 // import (
+//
+//	"fmt"
 //
 //	"github.com/duplocloud/pulumi-duplocloud/sdk/go/duplocloud"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -37,9 +43,11 @@ import (
 //			}
 //			_, err = duplocloud.NewAzureKeyVaultSecret(ctx, "myapp", &duplocloud.AzureKeyVaultSecretArgs{
 //				TenantId: myapp.TenantId,
-//				Name:     pulumi.String("base01-test"),
-//				Value:    pulumi.String("tst"),
-//				Type:     pulumi.String("duplo_container_env"),
+//				Name: myapp.AccountName.ApplyT(func(accountName string) (string, error) {
+//					return fmt.Sprintf("%v-test", accountName), nil
+//				}).(pulumi.StringOutput),
+//				Value: pulumi.String("tst"),
+//				Type:  pulumi.String("duplo_container_env"),
 //			})
 //			if err != nil {
 //				return err
@@ -72,7 +80,7 @@ type AzureKeyVaultSecret struct {
 	Fullname pulumi.StringOutput `pulumi:"fullname"`
 	// The ID of the Key Vault where the Secret should be created.
 	KeyVaultId pulumi.StringPtrOutput `pulumi:"keyVaultId"`
-	// Specifies the name of the Key Vault Secret. Changing this forces a new resource to be created.
+	// Specifies the name of the Key Vault Secret. Must start with the tenant's account name (case-insensitive); the Duplo backend filters list results by this prefix, so secrets without it cannot be retrieved after creation. Changing this forces a new resource to be created.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Reflects the deletion recovery level currently in effect for secrets in the current vault.
 	RecoveryLevel pulumi.StringOutput `pulumi:"recoveryLevel"`
@@ -137,7 +145,7 @@ type azureKeyVaultSecretState struct {
 	Fullname *string `pulumi:"fullname"`
 	// The ID of the Key Vault where the Secret should be created.
 	KeyVaultId *string `pulumi:"keyVaultId"`
-	// Specifies the name of the Key Vault Secret. Changing this forces a new resource to be created.
+	// Specifies the name of the Key Vault Secret. Must start with the tenant's account name (case-insensitive); the Duplo backend filters list results by this prefix, so secrets without it cannot be retrieved after creation. Changing this forces a new resource to be created.
 	Name *string `pulumi:"name"`
 	// Reflects the deletion recovery level currently in effect for secrets in the current vault.
 	RecoveryLevel *string `pulumi:"recoveryLevel"`
@@ -160,7 +168,7 @@ type AzureKeyVaultSecretState struct {
 	Fullname pulumi.StringPtrInput
 	// The ID of the Key Vault where the Secret should be created.
 	KeyVaultId pulumi.StringPtrInput
-	// Specifies the name of the Key Vault Secret. Changing this forces a new resource to be created.
+	// Specifies the name of the Key Vault Secret. Must start with the tenant's account name (case-insensitive); the Duplo backend filters list results by this prefix, so secrets without it cannot be retrieved after creation. Changing this forces a new resource to be created.
 	Name pulumi.StringPtrInput
 	// Reflects the deletion recovery level currently in effect for secrets in the current vault.
 	RecoveryLevel pulumi.StringPtrInput
@@ -183,7 +191,7 @@ func (AzureKeyVaultSecretState) ElementType() reflect.Type {
 type azureKeyVaultSecretArgs struct {
 	// The ID of the Key Vault where the Secret should be created.
 	KeyVaultId *string `pulumi:"keyVaultId"`
-	// Specifies the name of the Key Vault Secret. Changing this forces a new resource to be created.
+	// Specifies the name of the Key Vault Secret. Must start with the tenant's account name (case-insensitive); the Duplo backend filters list results by this prefix, so secrets without it cannot be retrieved after creation. Changing this forces a new resource to be created.
 	Name *string `pulumi:"name"`
 	// The GUID of the tenant that the key vault secret will be created in.
 	TenantId string `pulumi:"tenantId"`
@@ -197,7 +205,7 @@ type azureKeyVaultSecretArgs struct {
 type AzureKeyVaultSecretArgs struct {
 	// The ID of the Key Vault where the Secret should be created.
 	KeyVaultId pulumi.StringPtrInput
-	// Specifies the name of the Key Vault Secret. Changing this forces a new resource to be created.
+	// Specifies the name of the Key Vault Secret. Must start with the tenant's account name (case-insensitive); the Duplo backend filters list results by this prefix, so secrets without it cannot be retrieved after creation. Changing this forces a new resource to be created.
 	Name pulumi.StringPtrInput
 	// The GUID of the tenant that the key vault secret will be created in.
 	TenantId pulumi.StringInput
@@ -309,7 +317,7 @@ func (o AzureKeyVaultSecretOutput) KeyVaultId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AzureKeyVaultSecret) pulumi.StringPtrOutput { return v.KeyVaultId }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the name of the Key Vault Secret. Changing this forces a new resource to be created.
+// Specifies the name of the Key Vault Secret. Must start with the tenant's account name (case-insensitive); the Duplo backend filters list results by this prefix, so secrets without it cannot be retrieved after creation. Changing this forces a new resource to be created.
 func (o AzureKeyVaultSecretOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzureKeyVaultSecret) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

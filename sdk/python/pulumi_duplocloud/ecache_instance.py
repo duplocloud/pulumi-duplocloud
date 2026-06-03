@@ -49,7 +49,8 @@ class EcacheInstanceArgs:
         :param pulumi.Input[str] auth_token: Set a password for authenticating to the ElastiCache instance.  Only supported if `encryption_in_transit` is to to `true`.
         :param pulumi.Input[bool] automatic_failover_enabled: Enables automatic failover.
         :param pulumi.Input[int] cache_type: The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache - `2` : Valkey
-        :param pulumi.Input[bool] enable_cluster_mode: Flag to enable/disable redis/valkey cluster mode.
+        :param pulumi.Input[bool] enable_cluster_mode: Flag to enable/disable redis/valkey cluster mode. Cluster mode should be enabled if the instance acts as the primary for
+               a global datastore.
         :param pulumi.Input[bool] encryption_at_rest: Enables encryption-at-rest.
         :param pulumi.Input[bool] encryption_in_transit: Enables encryption-in-transit.
         :param pulumi.Input[str] engine_version: The engine version of the elastic instance. See AWS documentation for the [available Redis and Valkey instance
@@ -176,7 +177,8 @@ class EcacheInstanceArgs:
     @pulumi.getter(name="enableClusterMode")
     def enable_cluster_mode(self) -> Optional[pulumi.Input[bool]]:
         """
-        Flag to enable/disable redis/valkey cluster mode.
+        Flag to enable/disable redis/valkey cluster mode. Cluster mode should be enabled if the instance acts as the primary for
+        a global datastore.
         """
         return pulumi.get(self, "enable_cluster_mode")
 
@@ -395,7 +397,8 @@ class _EcacheInstanceState:
         :param pulumi.Input[str] auth_token: Set a password for authenticating to the ElastiCache instance.  Only supported if `encryption_in_transit` is to to `true`.
         :param pulumi.Input[bool] automatic_failover_enabled: Enables automatic failover.
         :param pulumi.Input[int] cache_type: The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache - `2` : Valkey
-        :param pulumi.Input[bool] enable_cluster_mode: Flag to enable/disable redis/valkey cluster mode.
+        :param pulumi.Input[bool] enable_cluster_mode: Flag to enable/disable redis/valkey cluster mode. Cluster mode should be enabled if the instance acts as the primary for
+               a global datastore.
         :param pulumi.Input[bool] encryption_at_rest: Enables encryption-at-rest.
         :param pulumi.Input[bool] encryption_in_transit: Enables encryption-in-transit.
         :param pulumi.Input[str] endpoint: The endpoint of the elasticache instance.
@@ -545,7 +548,8 @@ class _EcacheInstanceState:
     @pulumi.getter(name="enableClusterMode")
     def enable_cluster_mode(self) -> Optional[pulumi.Input[bool]]:
         """
-        Flag to enable/disable redis/valkey cluster mode.
+        Flag to enable/disable redis/valkey cluster mode. Cluster mode should be enabled if the instance acts as the primary for
+        a global datastore.
         """
         return pulumi.get(self, "enable_cluster_mode")
 
@@ -1036,7 +1040,8 @@ class EcacheInstance(pulumi.CustomResource):
         :param pulumi.Input[str] auth_token: Set a password for authenticating to the ElastiCache instance.  Only supported if `encryption_in_transit` is to to `true`.
         :param pulumi.Input[bool] automatic_failover_enabled: Enables automatic failover.
         :param pulumi.Input[int] cache_type: The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache - `2` : Valkey
-        :param pulumi.Input[bool] enable_cluster_mode: Flag to enable/disable redis/valkey cluster mode.
+        :param pulumi.Input[bool] enable_cluster_mode: Flag to enable/disable redis/valkey cluster mode. Cluster mode should be enabled if the instance acts as the primary for
+               a global datastore.
         :param pulumi.Input[bool] encryption_at_rest: Enables encryption-at-rest.
         :param pulumi.Input[bool] encryption_in_transit: Enables encryption-in-transit.
         :param pulumi.Input[str] engine_version: The engine version of the elastic instance. See AWS documentation for the [available Redis and Valkey instance
@@ -1374,7 +1379,8 @@ class EcacheInstance(pulumi.CustomResource):
         :param pulumi.Input[str] auth_token: Set a password for authenticating to the ElastiCache instance.  Only supported if `encryption_in_transit` is to to `true`.
         :param pulumi.Input[bool] automatic_failover_enabled: Enables automatic failover.
         :param pulumi.Input[int] cache_type: The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache - `2` : Valkey
-        :param pulumi.Input[bool] enable_cluster_mode: Flag to enable/disable redis/valkey cluster mode.
+        :param pulumi.Input[bool] enable_cluster_mode: Flag to enable/disable redis/valkey cluster mode. Cluster mode should be enabled if the instance acts as the primary for
+               a global datastore.
         :param pulumi.Input[bool] encryption_at_rest: Enables encryption-at-rest.
         :param pulumi.Input[bool] encryption_in_transit: Enables encryption-in-transit.
         :param pulumi.Input[str] endpoint: The endpoint of the elasticache instance.
@@ -1481,7 +1487,8 @@ class EcacheInstance(pulumi.CustomResource):
     @pulumi.getter(name="enableClusterMode")
     def enable_cluster_mode(self) -> pulumi.Output[Optional[bool]]:
         """
-        Flag to enable/disable redis/valkey cluster mode.
+        Flag to enable/disable redis/valkey cluster mode. Cluster mode should be enabled if the instance acts as the primary for
+        a global datastore.
         """
         return pulumi.get(self, "enable_cluster_mode")
 

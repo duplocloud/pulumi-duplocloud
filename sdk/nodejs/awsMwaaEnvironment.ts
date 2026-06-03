@@ -125,7 +125,7 @@ export class AwsMwaaEnvironment extends pulumi.CustomResource {
      */
     public readonly dagS3Path!: pulumi.Output<string>;
     /**
-     * Environment class for the cluster. Possible options are `mw1.micro`, `mw1.small`, `mw1.medium`, `mw1.large`, `mw1.xlarge`, `mw1.2xlarge`.
+     * Environment class for the cluster. Possible options are `mw1.micro`, `mw1.small`, `mw1.medium`, `mw1.large`, `mw1.xlarge`, `mw1.2xlarge`. Changing this forces a new resource to be created.
      */
     public readonly environmentClass!: pulumi.Output<string>;
     /**
@@ -324,7 +324,7 @@ export interface AwsMwaaEnvironmentState {
      */
     dagS3Path?: pulumi.Input<string>;
     /**
-     * Environment class for the cluster. Possible options are `mw1.micro`, `mw1.small`, `mw1.medium`, `mw1.large`, `mw1.xlarge`, `mw1.2xlarge`.
+     * Environment class for the cluster. Possible options are `mw1.micro`, `mw1.small`, `mw1.medium`, `mw1.large`, `mw1.xlarge`, `mw1.2xlarge`. Changing this forces a new resource to be created.
      */
     environmentClass?: pulumi.Input<string>;
     /**
@@ -432,7 +432,7 @@ export interface AwsMwaaEnvironmentArgs {
      */
     dagS3Path: pulumi.Input<string>;
     /**
-     * Environment class for the cluster. Possible options are `mw1.micro`, `mw1.small`, `mw1.medium`, `mw1.large`, `mw1.xlarge`, `mw1.2xlarge`.
+     * Environment class for the cluster. Possible options are `mw1.micro`, `mw1.small`, `mw1.medium`, `mw1.large`, `mw1.xlarge`, `mw1.2xlarge`. Changing this forces a new resource to be created.
      */
     environmentClass?: pulumi.Input<string>;
     /**

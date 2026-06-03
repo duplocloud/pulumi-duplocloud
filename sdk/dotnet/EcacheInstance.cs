@@ -315,7 +315,8 @@ namespace DuploCloud.Pulumi
         public Output<int?> CacheType { get; private set; } = null!;
 
         /// <summary>
-        /// Flag to enable/disable redis/valkey cluster mode.
+        /// Flag to enable/disable redis/valkey cluster mode. Cluster mode should be enabled if the instance acts as the primary for
+        /// a global datastore.
         /// </summary>
         [Output("enableClusterMode")]
         public Output<bool?> EnableClusterMode { get; private set; } = null!;
@@ -524,7 +525,8 @@ namespace DuploCloud.Pulumi
         public Input<int>? CacheType { get; set; }
 
         /// <summary>
-        /// Flag to enable/disable redis/valkey cluster mode.
+        /// Flag to enable/disable redis/valkey cluster mode. Cluster mode should be enabled if the instance acts as the primary for
+        /// a global datastore.
         /// </summary>
         [Input("enableClusterMode")]
         public Input<bool>? EnableClusterMode { get; set; }
@@ -678,7 +680,8 @@ namespace DuploCloud.Pulumi
         public Input<int>? CacheType { get; set; }
 
         /// <summary>
-        /// Flag to enable/disable redis/valkey cluster mode.
+        /// Flag to enable/disable redis/valkey cluster mode. Cluster mode should be enabled if the instance acts as the primary for
+        /// a global datastore.
         /// </summary>
         [Input("enableClusterMode")]
         public Input<bool>? EnableClusterMode { get; set; }

@@ -40,12 +40,11 @@ class GcpSqlDatabaseInstanceArgs:
         :param pulumi.Input[str] tier: The machine type to use. See tiers for more details and supported versions. Postgres supports only shared-core machine types, and custom machine types, format for custom machine type db-custom-{vCPU}-{memory-in-MB} example `db-custom-2-13312`.See the [Machine Type Documentation](https://cloud.google.com/compute/docs/machine-resource) to learn more about machine types.
         :param pulumi.Input[Sequence[pulumi.Input['GcpSqlDatabaseInstanceDatabaseFlagArgs']]] database_flags: List of database flags to be set on the database instance. Please refer to the [Database Flags Documentation](https://cloud.google.com/sql/docs/mysql/flags) for more details on available flags.
         :param pulumi.Input[int] disk_size: The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
-        :param pulumi.Input[str] edition: Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS Defaults to `ENTERPRISE`.
+        :param pulumi.Input[str] edition: Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS
         :param pulumi.Input['GcpSqlDatabaseInstanceIpConfigurationArgs'] ip_configuration: IP configuration for the database instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Map of string keys and values that can be used to organize and categorize this resource.
         :param pulumi.Input[str] name: The short name of the sql database.  Duplo will add a prefix to the name.  You can retrieve the full name from the `fullname` attribute.
         :param pulumi.Input[bool] need_backup: Flag to enable backup process on delete of database
-        :param pulumi.Input[str] root_password: Provide root password for specific database versions.
         :param pulumi.Input[bool] wait_until_ready: Whether or not to wait until sql database instance to be ready, after creation.
         """
         pulumi.set(__self__, "database_version", database_version)
@@ -134,7 +133,7 @@ class GcpSqlDatabaseInstanceArgs:
     @pulumi.getter
     def edition(self) -> Optional[pulumi.Input[str]]:
         """
-        Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS Defaults to `ENTERPRISE`.
+        Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS
         """
         return pulumi.get(self, "edition")
 
@@ -193,9 +192,6 @@ class GcpSqlDatabaseInstanceArgs:
     @property
     @pulumi.getter(name="rootPassword")
     def root_password(self) -> Optional[pulumi.Input[str]]:
-        """
-        Provide root password for specific database versions.
-        """
         return pulumi.get(self, "root_password")
 
     @root_password.setter
@@ -240,14 +236,13 @@ class _GcpSqlDatabaseInstanceState:
         :param pulumi.Input[Sequence[pulumi.Input['GcpSqlDatabaseInstanceDatabaseFlagArgs']]] database_flags: List of database flags to be set on the database instance. Please refer to the [Database Flags Documentation](https://cloud.google.com/sql/docs/mysql/flags) for more details on available flags.
         :param pulumi.Input[str] database_version: The MySQL, PostgreSQL or SQL Server version to use.Supported values include `MYSQL_5_6`,`MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`,`POSTGRES_10`,`POSTGRES_11`,`POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`, `POSTGRES_15`,`POSTGRES_16`,`POSTGRES_17`, `SQLSERVER_2017_STANDARD`,`SQLSERVER_2017_ENTERPRISE`,`SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`,`SQLSERVER_2019_STANDARD`, `SQLSERVER_2019_ENTERPRISE`, `SQLSERVER_2019_EXPRESS`,`SQLSERVER_2019_WEB`,`SQLSERVER_2022_WEB`,`SQLSERVER_2022_EXPRESS`,`SQLSERVER_2022_ENTERPRISE`,`SQLSERVER_2022_STANDARD`.[Database Version Policies](https://cloud.google.com/sql/docs/db-versions) includes an up-to-date reference of supported versions.
         :param pulumi.Input[int] disk_size: The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
-        :param pulumi.Input[str] edition: Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS Defaults to `ENTERPRISE`.
+        :param pulumi.Input[str] edition: Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS
         :param pulumi.Input[str] fullname: The full name of the sql database.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_addresses: List of IP addresses of the database.
         :param pulumi.Input['GcpSqlDatabaseInstanceIpConfigurationArgs'] ip_configuration: IP configuration for the database instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Map of string keys and values that can be used to organize and categorize this resource.
         :param pulumi.Input[str] name: The short name of the sql database.  Duplo will add a prefix to the name.  You can retrieve the full name from the `fullname` attribute.
         :param pulumi.Input[bool] need_backup: Flag to enable backup process on delete of database
-        :param pulumi.Input[str] root_password: Provide root password for specific database versions.
         :param pulumi.Input[str] self_link: The SelfLink of the sql database.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the sql database will be created in.
         :param pulumi.Input[str] tier: The machine type to use. See tiers for more details and supported versions. Postgres supports only shared-core machine types, and custom machine types, format for custom machine type db-custom-{vCPU}-{memory-in-MB} example `db-custom-2-13312`.See the [Machine Type Documentation](https://cloud.google.com/compute/docs/machine-resource) to learn more about machine types.
@@ -338,7 +333,7 @@ class _GcpSqlDatabaseInstanceState:
     @pulumi.getter
     def edition(self) -> Optional[pulumi.Input[str]]:
         """
-        Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS Defaults to `ENTERPRISE`.
+        Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS
         """
         return pulumi.get(self, "edition")
 
@@ -421,9 +416,6 @@ class _GcpSqlDatabaseInstanceState:
     @property
     @pulumi.getter(name="rootPassword")
     def root_password(self) -> Optional[pulumi.Input[str]]:
-        """
-        Provide root password for specific database versions.
-        """
         return pulumi.get(self, "root_password")
 
     @root_password.setter
@@ -514,17 +506,46 @@ class GcpSqlDatabaseInstance(pulumi.CustomResource):
         $ pulumi import duplocloud:index/gcpSqlDatabaseInstance:GcpSqlDatabaseInstance sql_instance *TENANT_ID*/*SHORT_NAME*
         ```
 
+        After import, `pulumi preview` will show a diff for `root_password` because the
+
+        GCP Cloud SQL GET API redacts this field. You have two options:
+
+        # 
+
+        1. Set `root_password` in your config to the current GCP value and run
+           
+           `pulumi up` once. The provider syncs state to the config value
+           
+           without pushing a password change to GCP. For future rotations, change
+           
+           the password in GCP first, then update `root_password` and re-apply.
+
+        # 
+
+        2. Suppress the diff permanently by adding the lifecycle block below.
+           
+           Use this only if you do not want Terraform to track the password value
+           
+           (rotations must then be performed out-of-band):
+
+        # 
+
+             lifecycle {
+            
+               ignore_changes = [root_password]
+            
+             }
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['GcpSqlDatabaseInstanceDatabaseFlagArgs', 'GcpSqlDatabaseInstanceDatabaseFlagArgsDict']]]] database_flags: List of database flags to be set on the database instance. Please refer to the [Database Flags Documentation](https://cloud.google.com/sql/docs/mysql/flags) for more details on available flags.
         :param pulumi.Input[str] database_version: The MySQL, PostgreSQL or SQL Server version to use.Supported values include `MYSQL_5_6`,`MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`,`POSTGRES_10`,`POSTGRES_11`,`POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`, `POSTGRES_15`,`POSTGRES_16`,`POSTGRES_17`, `SQLSERVER_2017_STANDARD`,`SQLSERVER_2017_ENTERPRISE`,`SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`,`SQLSERVER_2019_STANDARD`, `SQLSERVER_2019_ENTERPRISE`, `SQLSERVER_2019_EXPRESS`,`SQLSERVER_2019_WEB`,`SQLSERVER_2022_WEB`,`SQLSERVER_2022_EXPRESS`,`SQLSERVER_2022_ENTERPRISE`,`SQLSERVER_2022_STANDARD`.[Database Version Policies](https://cloud.google.com/sql/docs/db-versions) includes an up-to-date reference of supported versions.
         :param pulumi.Input[int] disk_size: The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
-        :param pulumi.Input[str] edition: Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS Defaults to `ENTERPRISE`.
+        :param pulumi.Input[str] edition: Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS
         :param pulumi.Input[Union['GcpSqlDatabaseInstanceIpConfigurationArgs', 'GcpSqlDatabaseInstanceIpConfigurationArgsDict']] ip_configuration: IP configuration for the database instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Map of string keys and values that can be used to organize and categorize this resource.
         :param pulumi.Input[str] name: The short name of the sql database.  Duplo will add a prefix to the name.  You can retrieve the full name from the `fullname` attribute.
         :param pulumi.Input[bool] need_backup: Flag to enable backup process on delete of database
-        :param pulumi.Input[str] root_password: Provide root password for specific database versions.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the sql database will be created in.
         :param pulumi.Input[str] tier: The machine type to use. See tiers for more details and supported versions. Postgres supports only shared-core machine types, and custom machine types, format for custom machine type db-custom-{vCPU}-{memory-in-MB} example `db-custom-2-13312`.See the [Machine Type Documentation](https://cloud.google.com/compute/docs/machine-resource) to learn more about machine types.
         :param pulumi.Input[bool] wait_until_ready: Whether or not to wait until sql database instance to be ready, after creation.
@@ -551,6 +572,36 @@ class GcpSqlDatabaseInstance(pulumi.CustomResource):
         ```sh
         $ pulumi import duplocloud:index/gcpSqlDatabaseInstance:GcpSqlDatabaseInstance sql_instance *TENANT_ID*/*SHORT_NAME*
         ```
+
+        After import, `pulumi preview` will show a diff for `root_password` because the
+
+        GCP Cloud SQL GET API redacts this field. You have two options:
+
+        # 
+
+        1. Set `root_password` in your config to the current GCP value and run
+           
+           `pulumi up` once. The provider syncs state to the config value
+           
+           without pushing a password change to GCP. For future rotations, change
+           
+           the password in GCP first, then update `root_password` and re-apply.
+
+        # 
+
+        2. Suppress the diff permanently by adding the lifecycle block below.
+           
+           Use this only if you do not want Terraform to track the password value
+           
+           (rotations must then be performed out-of-band):
+
+        # 
+
+             lifecycle {
+            
+               ignore_changes = [root_password]
+            
+             }
 
         :param str resource_name: The name of the resource.
         :param GcpSqlDatabaseInstanceArgs args: The arguments to use to populate this resource's properties.
@@ -598,7 +649,7 @@ class GcpSqlDatabaseInstance(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             __props__.__dict__["need_backup"] = need_backup
-            __props__.__dict__["root_password"] = root_password
+            __props__.__dict__["root_password"] = None if root_password is None else pulumi.Output.secret(root_password)
             if tenant_id is None and not opts.urn:
                 raise TypeError("Missing required property 'tenant_id'")
             __props__.__dict__["tenant_id"] = tenant_id
@@ -610,6 +661,8 @@ class GcpSqlDatabaseInstance(pulumi.CustomResource):
             __props__.__dict__["fullname"] = None
             __props__.__dict__["ip_addresses"] = None
             __props__.__dict__["self_link"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["rootPassword"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(GcpSqlDatabaseInstance, __self__).__init__(
             'duplocloud:index/gcpSqlDatabaseInstance:GcpSqlDatabaseInstance',
             resource_name,
@@ -647,14 +700,13 @@ class GcpSqlDatabaseInstance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['GcpSqlDatabaseInstanceDatabaseFlagArgs', 'GcpSqlDatabaseInstanceDatabaseFlagArgsDict']]]] database_flags: List of database flags to be set on the database instance. Please refer to the [Database Flags Documentation](https://cloud.google.com/sql/docs/mysql/flags) for more details on available flags.
         :param pulumi.Input[str] database_version: The MySQL, PostgreSQL or SQL Server version to use.Supported values include `MYSQL_5_6`,`MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`,`POSTGRES_10`,`POSTGRES_11`,`POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`, `POSTGRES_15`,`POSTGRES_16`,`POSTGRES_17`, `SQLSERVER_2017_STANDARD`,`SQLSERVER_2017_ENTERPRISE`,`SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`,`SQLSERVER_2019_STANDARD`, `SQLSERVER_2019_ENTERPRISE`, `SQLSERVER_2019_EXPRESS`,`SQLSERVER_2019_WEB`,`SQLSERVER_2022_WEB`,`SQLSERVER_2022_EXPRESS`,`SQLSERVER_2022_ENTERPRISE`,`SQLSERVER_2022_STANDARD`.[Database Version Policies](https://cloud.google.com/sql/docs/db-versions) includes an up-to-date reference of supported versions.
         :param pulumi.Input[int] disk_size: The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
-        :param pulumi.Input[str] edition: Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS Defaults to `ENTERPRISE`.
+        :param pulumi.Input[str] edition: Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS
         :param pulumi.Input[str] fullname: The full name of the sql database.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_addresses: List of IP addresses of the database.
         :param pulumi.Input[Union['GcpSqlDatabaseInstanceIpConfigurationArgs', 'GcpSqlDatabaseInstanceIpConfigurationArgsDict']] ip_configuration: IP configuration for the database instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Map of string keys and values that can be used to organize and categorize this resource.
         :param pulumi.Input[str] name: The short name of the sql database.  Duplo will add a prefix to the name.  You can retrieve the full name from the `fullname` attribute.
         :param pulumi.Input[bool] need_backup: Flag to enable backup process on delete of database
-        :param pulumi.Input[str] root_password: Provide root password for specific database versions.
         :param pulumi.Input[str] self_link: The SelfLink of the sql database.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the sql database will be created in.
         :param pulumi.Input[str] tier: The machine type to use. See tiers for more details and supported versions. Postgres supports only shared-core machine types, and custom machine types, format for custom machine type db-custom-{vCPU}-{memory-in-MB} example `db-custom-2-13312`.See the [Machine Type Documentation](https://cloud.google.com/compute/docs/machine-resource) to learn more about machine types.
@@ -716,9 +768,9 @@ class GcpSqlDatabaseInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def edition(self) -> pulumi.Output[Optional[str]]:
+    def edition(self) -> pulumi.Output[str]:
         """
-        Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS Defaults to `ENTERPRISE`.
+        Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS
         """
         return pulumi.get(self, "edition")
 
@@ -773,9 +825,6 @@ class GcpSqlDatabaseInstance(pulumi.CustomResource):
     @property
     @pulumi.getter(name="rootPassword")
     def root_password(self) -> pulumi.Output[str]:
-        """
-        Provide root password for specific database versions.
-        """
         return pulumi.get(self, "root_password")
 
     @property

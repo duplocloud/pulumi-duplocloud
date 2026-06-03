@@ -22,6 +22,36 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import duplocloud:index/gcpSqlDatabaseInstance:GcpSqlDatabaseInstance sql_instance *TENANT_ID*&#47;*SHORT_NAME*
  * ```
+ *
+ * After import, `pulumi preview` will show a diff for `root_password` because the
+ *
+ * GCP Cloud SQL GET API redacts this field. You have two options:
+ *
+ * # 
+ *
+ * 1. Set `root_password` in your config to the current GCP value and run
+ *    
+ *    `pulumi up` once. The provider syncs state to the config value
+ *    
+ *    without pushing a password change to GCP. For future rotations, change
+ *    
+ *    the password in GCP first, then update `root_password` and re-apply.
+ *
+ * # 
+ *
+ * 2. Suppress the diff permanently by adding the lifecycle block below.
+ *    
+ *    Use this only if you do not want Terraform to track the password value
+ *    
+ *    (rotations must then be performed out-of-band):
+ *
+ * # 
+ *
+ *      lifecycle {
+ *     
+ *        ignore_changes = [root_password]
+ *     
+ *      }
  */
 export class GcpSqlDatabaseInstance extends pulumi.CustomResource {
     /**
@@ -68,9 +98,9 @@ export class GcpSqlDatabaseInstance extends pulumi.CustomResource {
      */
     public readonly diskSize!: pulumi.Output<number>;
     /**
-     * Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS Defaults to `ENTERPRISE`.
+     * Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS
      */
-    public readonly edition!: pulumi.Output<string | undefined>;
+    public readonly edition!: pulumi.Output<string>;
     /**
      * The full name of the sql database.
      */
@@ -95,9 +125,6 @@ export class GcpSqlDatabaseInstance extends pulumi.CustomResource {
      * Flag to enable backup process on delete of database
      */
     public readonly needBackup!: pulumi.Output<boolean | undefined>;
-    /**
-     * Provide root password for specific database versions.
-     */
     public readonly rootPassword!: pulumi.Output<string>;
     /**
      * The SelfLink of the sql database.
@@ -164,7 +191,7 @@ export class GcpSqlDatabaseInstance extends pulumi.CustomResource {
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["needBackup"] = args ? args.needBackup : undefined;
-            resourceInputs["rootPassword"] = args ? args.rootPassword : undefined;
+            resourceInputs["rootPassword"] = args?.rootPassword ? pulumi.secret(args.rootPassword) : undefined;
             resourceInputs["tenantId"] = args ? args.tenantId : undefined;
             resourceInputs["tier"] = args ? args.tier : undefined;
             resourceInputs["waitUntilReady"] = args ? args.waitUntilReady : undefined;
@@ -174,6 +201,8 @@ export class GcpSqlDatabaseInstance extends pulumi.CustomResource {
             resourceInputs["selfLink"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["rootPassword"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(GcpSqlDatabaseInstance.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -199,7 +228,7 @@ export interface GcpSqlDatabaseInstanceState {
      */
     diskSize?: pulumi.Input<number>;
     /**
-     * Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS Defaults to `ENTERPRISE`.
+     * Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS
      */
     edition?: pulumi.Input<string>;
     /**
@@ -226,9 +255,6 @@ export interface GcpSqlDatabaseInstanceState {
      * Flag to enable backup process on delete of database
      */
     needBackup?: pulumi.Input<boolean>;
-    /**
-     * Provide root password for specific database versions.
-     */
     rootPassword?: pulumi.Input<string>;
     /**
      * The SelfLink of the sql database.
@@ -265,7 +291,7 @@ export interface GcpSqlDatabaseInstanceArgs {
      */
     diskSize?: pulumi.Input<number>;
     /**
-     * Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS Defaults to `ENTERPRISE`.
+     * Edition for the database. Valid value ENTERPRISE, ENTERPRISE_PLUS
      */
     edition?: pulumi.Input<string>;
     /**
@@ -284,9 +310,6 @@ export interface GcpSqlDatabaseInstanceArgs {
      * Flag to enable backup process on delete of database
      */
     needBackup?: pulumi.Input<boolean>;
-    /**
-     * Provide root password for specific database versions.
-     */
     rootPassword?: pulumi.Input<string>;
     /**
      * The GUID of the tenant that the sql database will be created in.

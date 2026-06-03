@@ -15753,7 +15753,7 @@ class GcpPubsubSubscriptionPushConfigOidcToken(dict):
                  audience: Optional[str] = None):
         """
         :param str service_account_email: Service account email to be used for generating the OIDC token.
-        :param str audience: Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string. Defaults to `false`.
+        :param str audience: Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string.
         """
         pulumi.set(__self__, "service_account_email", service_account_email)
         if audience is not None:
@@ -15771,7 +15771,7 @@ class GcpPubsubSubscriptionPushConfigOidcToken(dict):
     @pulumi.getter
     def audience(self) -> Optional[str]:
         """
-        Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string. Defaults to `false`.
+        Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string.
         """
         return pulumi.get(self, "audience")
 

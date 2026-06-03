@@ -255,7 +255,8 @@ export class EcacheInstance extends pulumi.CustomResource {
      */
     public readonly cacheType!: pulumi.Output<number | undefined>;
     /**
-     * Flag to enable/disable redis/valkey cluster mode.
+     * Flag to enable/disable redis/valkey cluster mode. Cluster mode should be enabled if the instance acts as the primary for
+     * a global datastore.
      */
     public readonly enableClusterMode!: pulumi.Output<boolean | undefined>;
     /**
@@ -458,7 +459,8 @@ export interface EcacheInstanceState {
      */
     cacheType?: pulumi.Input<number>;
     /**
-     * Flag to enable/disable redis/valkey cluster mode.
+     * Flag to enable/disable redis/valkey cluster mode. Cluster mode should be enabled if the instance acts as the primary for
+     * a global datastore.
      */
     enableClusterMode?: pulumi.Input<boolean>;
     /**
@@ -574,7 +576,8 @@ export interface EcacheInstanceArgs {
      */
     cacheType?: pulumi.Input<number>;
     /**
-     * Flag to enable/disable redis/valkey cluster mode.
+     * Flag to enable/disable redis/valkey cluster mode. Cluster mode should be enabled if the instance acts as the primary for
+     * a global datastore.
      */
     enableClusterMode?: pulumi.Input<boolean>;
     /**

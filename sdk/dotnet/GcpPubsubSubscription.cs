@@ -31,10 +31,10 @@ namespace DuploCloud.Pulumi
     public partial class GcpPubsubSubscription : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// This value is the maximum time after a Pub/Sub subscriber receives a message before the subscriber should acknowledge the message. Defaults to `10`.
+        /// Maximum time after a Pub/Sub subscriber receives a message before the subscriber should acknowledge the message. If unset, GCP applies its default of 10s. For cloud*storage*config subscriptions, GCP raises this to at least the configured max_duration; leaving this unset lets the provider track GCP's chosen value without drift.
         /// </summary>
         [Output("ackDeadlineSeconds")]
-        public Output<int?> AckDeadlineSeconds { get; private set; } = null!;
+        public Output<int> AckDeadlineSeconds { get; private set; } = null!;
 
         /// <summary>
         /// BigQuery configuration related to Pub/Sub subscription, to stream message into BigQuery table
@@ -180,7 +180,7 @@ namespace DuploCloud.Pulumi
     public sealed class GcpPubsubSubscriptionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// This value is the maximum time after a Pub/Sub subscriber receives a message before the subscriber should acknowledge the message. Defaults to `10`.
+        /// Maximum time after a Pub/Sub subscriber receives a message before the subscriber should acknowledge the message. If unset, GCP applies its default of 10s. For cloud*storage*config subscriptions, GCP raises this to at least the configured max_duration; leaving this unset lets the provider track GCP's chosen value without drift.
         /// </summary>
         [Input("ackDeadlineSeconds")]
         public Input<int>? AckDeadlineSeconds { get; set; }
@@ -290,7 +290,7 @@ namespace DuploCloud.Pulumi
     public sealed class GcpPubsubSubscriptionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// This value is the maximum time after a Pub/Sub subscriber receives a message before the subscriber should acknowledge the message. Defaults to `10`.
+        /// Maximum time after a Pub/Sub subscriber receives a message before the subscriber should acknowledge the message. If unset, GCP applies its default of 10s. For cloud*storage*config subscriptions, GCP raises this to at least the configured max_duration; leaving this unset lets the provider track GCP's chosen value without drift.
         /// </summary>
         [Input("ackDeadlineSeconds")]
         public Input<int>? AckDeadlineSeconds { get; set; }

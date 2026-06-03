@@ -11,10 +11,6 @@ using Pulumi;
 namespace DuploCloud.Pulumi
 {
     /// <summary>
-    /// &gt; **Deprecated:** `duplocloud.AzureKeyVaultSecret` has been renamed to `duplocloud.AzureInfraSecret`. Please update your configuration to use the new resource name. The old name remains as an alias and will be removed in a future release.
-    /// &gt; 
-    /// &gt; To migrate existing state without recreating the secret:
-    /// 
     /// `duplocloud.AzureInfraSecret` manages an infrastructure-level Azure Key Vault Secret in Duplo.
     /// 
     /// ## Example Usage
@@ -33,7 +29,7 @@ namespace DuploCloud.Pulumi
     ///         PlanId = "default",
     ///     });
     /// 
-    ///     var myappAzureKeyVaultSecret = new Pulumi.AzureKeyVaultSecret("myapp", new()
+    ///     var myappAzureInfraSecret = new Pulumi.AzureInfraSecret("myapp", new()
     ///     {
     ///         TenantId = myapp.TenantId,
     ///         Name = myapp.AccountName.Apply(accountName =&gt; $"{accountName}-test"),
@@ -46,20 +42,20 @@ namespace DuploCloud.Pulumi
     /// 
     /// ## Import
     /// 
-    /// Example: Importing an existing Azure Key Vault Secret
+    /// Example: Importing an existing Azure Infra Secret
     /// 
     ///  - *TENANT_ID* is the tenant GUID
     /// 
-    ///  - *SHORT_NAME* is the short name of the Azure Key Vault Secret
+    ///  - *SHORT_NAME* is the short name of the Azure Infra Secret
     /// 
     /// # 
     /// 
     /// ```sh
-    /// $ pulumi import duplocloud:index/azureKeyVaultSecret:AzureKeyVaultSecret mykvsecret *TENANT_ID*/*SHORT_NAME*
+    /// $ pulumi import duplocloud:index/azureInfraSecret:AzureInfraSecret myinfrasecret *TENANT_ID*/*SHORT_NAME*
     /// ```
     /// </summary>
-    [PulumiResourceType("duplocloud:index/azureKeyVaultSecret:AzureKeyVaultSecret")]
-    public partial class AzureKeyVaultSecret : global::Pulumi.CustomResource
+    [PulumiResourceType("duplocloud:index/azureInfraSecret:AzureInfraSecret")]
+    public partial class AzureInfraSecret : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Determines whether the object is enabled.
@@ -123,19 +119,19 @@ namespace DuploCloud.Pulumi
 
 
         /// <summary>
-        /// Create a AzureKeyVaultSecret resource with the given unique name, arguments, and options.
+        /// Create a AzureInfraSecret resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public AzureKeyVaultSecret(string name, AzureKeyVaultSecretArgs args, CustomResourceOptions? options = null)
-            : base("duplocloud:index/azureKeyVaultSecret:AzureKeyVaultSecret", name, args ?? new AzureKeyVaultSecretArgs(), MakeResourceOptions(options, ""))
+        public AzureInfraSecret(string name, AzureInfraSecretArgs args, CustomResourceOptions? options = null)
+            : base("duplocloud:index/azureInfraSecret:AzureInfraSecret", name, args ?? new AzureInfraSecretArgs(), MakeResourceOptions(options, ""))
         {
         }
 
-        private AzureKeyVaultSecret(string name, Input<string> id, AzureKeyVaultSecretState? state = null, CustomResourceOptions? options = null)
-            : base("duplocloud:index/azureKeyVaultSecret:AzureKeyVaultSecret", name, state, MakeResourceOptions(options, id))
+        private AzureInfraSecret(string name, Input<string> id, AzureInfraSecretState? state = null, CustomResourceOptions? options = null)
+            : base("duplocloud:index/azureInfraSecret:AzureInfraSecret", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -156,7 +152,7 @@ namespace DuploCloud.Pulumi
             return merged;
         }
         /// <summary>
-        /// Get an existing AzureKeyVaultSecret resource's state with the given name, ID, and optional extra
+        /// Get an existing AzureInfraSecret resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
@@ -164,13 +160,13 @@ namespace DuploCloud.Pulumi
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="state">Any extra arguments used during the lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static AzureKeyVaultSecret Get(string name, Input<string> id, AzureKeyVaultSecretState? state = null, CustomResourceOptions? options = null)
+        public static AzureInfraSecret Get(string name, Input<string> id, AzureInfraSecretState? state = null, CustomResourceOptions? options = null)
         {
-            return new AzureKeyVaultSecret(name, id, state, options);
+            return new AzureInfraSecret(name, id, state, options);
         }
     }
 
-    public sealed class AzureKeyVaultSecretArgs : global::Pulumi.ResourceArgs
+    public sealed class AzureInfraSecretArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the Key Vault where the Secret should be created.
@@ -212,13 +208,13 @@ namespace DuploCloud.Pulumi
             }
         }
 
-        public AzureKeyVaultSecretArgs()
+        public AzureInfraSecretArgs()
         {
         }
-        public static new AzureKeyVaultSecretArgs Empty => new AzureKeyVaultSecretArgs();
+        public static new AzureInfraSecretArgs Empty => new AzureInfraSecretArgs();
     }
 
-    public sealed class AzureKeyVaultSecretState : global::Pulumi.ResourceArgs
+    public sealed class AzureInfraSecretState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Determines whether the object is enabled.
@@ -290,9 +286,9 @@ namespace DuploCloud.Pulumi
         [Input("version")]
         public Input<string>? Version { get; set; }
 
-        public AzureKeyVaultSecretState()
+        public AzureInfraSecretState()
         {
         }
-        public static new AzureKeyVaultSecretState Empty => new AzureKeyVaultSecretState();
+        public static new AzureInfraSecretState Empty => new AzureInfraSecretState();
     }
 }
