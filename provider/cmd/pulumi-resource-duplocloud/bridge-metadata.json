@@ -585,7 +585,12 @@
                 }
             },
             "duplocloud_aws_cloudwatch_event_target": {
-                "current": "duplocloud:index/awsCloudwatchEventTarget:AwsCloudwatchEventTarget"
+                "current": "duplocloud:index/awsCloudwatchEventTarget:AwsCloudwatchEventTarget",
+                "fields": {
+                    "input_transformer": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "duplocloud_aws_cloudwatch_metric_alarm": {
                 "current": "duplocloud:index/awsCloudwatchMetricAlarm:AwsCloudwatchMetricAlarm",

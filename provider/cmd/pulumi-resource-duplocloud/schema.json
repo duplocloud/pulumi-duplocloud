@@ -2244,6 +2244,25 @@
                 "value"
             ]
         },
+        "duplocloud:index/AwsCloudwatchEventTargetInputTransformer:AwsCloudwatchEventTargetInputTransformer": {
+            "properties": {
+                "inputPaths": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Map of variable names to JSONPath expressions that extract values from the event. The variable names can be referenced in `input_template` using `\u003cname\u003e` syntax.\n"
+                },
+                "inputTemplate": {
+                    "type": "string",
+                    "description": "Template that defines the payload passed to the target. Variables defined in `input_paths` are referenced using `\u003cname\u003e` syntax.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "inputTemplate"
+            ]
+        },
         "duplocloud:index/AwsCloudwatchMetricAlarmDimension:AwsCloudwatchMetricAlarmDimension": {
             "properties": {
                 "key": {
@@ -35466,7 +35485,11 @@
                 },
                 "input": {
                     "type": "string",
-                    "description": "Valid JSON text passed to the target.\n"
+                    "description": "Valid JSON text passed to the target. Conflicts with `input_transformer`.\n"
+                },
+                "inputTransformer": {
+                    "$ref": "#/types/duplocloud:index/AwsCloudwatchEventTargetInputTransformer:AwsCloudwatchEventTargetInputTransformer",
+                    "description": "Settings used to transform the matched event before passing it to the target. Conflicts with `input`.\n"
                 },
                 "roleArn": {
                     "type": "string",
@@ -35505,7 +35528,11 @@
                 },
                 "input": {
                     "type": "string",
-                    "description": "Valid JSON text passed to the target.\n"
+                    "description": "Valid JSON text passed to the target. Conflicts with `input_transformer`.\n"
+                },
+                "inputTransformer": {
+                    "$ref": "#/types/duplocloud:index/AwsCloudwatchEventTargetInputTransformer:AwsCloudwatchEventTargetInputTransformer",
+                    "description": "Settings used to transform the matched event before passing it to the target. Conflicts with `input`.\n"
                 },
                 "roleArn": {
                     "type": "string",
@@ -35546,7 +35573,11 @@
                     },
                     "input": {
                         "type": "string",
-                        "description": "Valid JSON text passed to the target.\n"
+                        "description": "Valid JSON text passed to the target. Conflicts with `input_transformer`.\n"
+                    },
+                    "inputTransformer": {
+                        "$ref": "#/types/duplocloud:index/AwsCloudwatchEventTargetInputTransformer:AwsCloudwatchEventTargetInputTransformer",
+                        "description": "Settings used to transform the matched event before passing it to the target. Conflicts with `input`.\n"
                     },
                     "roleArn": {
                         "type": "string",
