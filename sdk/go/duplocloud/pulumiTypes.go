@@ -11912,6 +11912,162 @@ func (o AwsCloudwatchEventRuleTagArrayOutput) Index(i pulumi.IntInput) AwsCloudw
 	}).(AwsCloudwatchEventRuleTagOutput)
 }
 
+type AwsCloudwatchEventTargetInputTransformer struct {
+	// Map of variable names to JSONPath expressions that extract values from the event. The variable names can be referenced in `inputTemplate` using `<name>` syntax.
+	InputPaths map[string]string `pulumi:"inputPaths"`
+	// Template that defines the payload passed to the target. Variables defined in `inputPaths` are referenced using `<name>` syntax.
+	InputTemplate string `pulumi:"inputTemplate"`
+}
+
+// AwsCloudwatchEventTargetInputTransformerInput is an input type that accepts AwsCloudwatchEventTargetInputTransformerArgs and AwsCloudwatchEventTargetInputTransformerOutput values.
+// You can construct a concrete instance of `AwsCloudwatchEventTargetInputTransformerInput` via:
+//
+//	AwsCloudwatchEventTargetInputTransformerArgs{...}
+type AwsCloudwatchEventTargetInputTransformerInput interface {
+	pulumi.Input
+
+	ToAwsCloudwatchEventTargetInputTransformerOutput() AwsCloudwatchEventTargetInputTransformerOutput
+	ToAwsCloudwatchEventTargetInputTransformerOutputWithContext(context.Context) AwsCloudwatchEventTargetInputTransformerOutput
+}
+
+type AwsCloudwatchEventTargetInputTransformerArgs struct {
+	// Map of variable names to JSONPath expressions that extract values from the event. The variable names can be referenced in `inputTemplate` using `<name>` syntax.
+	InputPaths pulumi.StringMapInput `pulumi:"inputPaths"`
+	// Template that defines the payload passed to the target. Variables defined in `inputPaths` are referenced using `<name>` syntax.
+	InputTemplate pulumi.StringInput `pulumi:"inputTemplate"`
+}
+
+func (AwsCloudwatchEventTargetInputTransformerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsCloudwatchEventTargetInputTransformer)(nil)).Elem()
+}
+
+func (i AwsCloudwatchEventTargetInputTransformerArgs) ToAwsCloudwatchEventTargetInputTransformerOutput() AwsCloudwatchEventTargetInputTransformerOutput {
+	return i.ToAwsCloudwatchEventTargetInputTransformerOutputWithContext(context.Background())
+}
+
+func (i AwsCloudwatchEventTargetInputTransformerArgs) ToAwsCloudwatchEventTargetInputTransformerOutputWithContext(ctx context.Context) AwsCloudwatchEventTargetInputTransformerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCloudwatchEventTargetInputTransformerOutput)
+}
+
+func (i AwsCloudwatchEventTargetInputTransformerArgs) ToAwsCloudwatchEventTargetInputTransformerPtrOutput() AwsCloudwatchEventTargetInputTransformerPtrOutput {
+	return i.ToAwsCloudwatchEventTargetInputTransformerPtrOutputWithContext(context.Background())
+}
+
+func (i AwsCloudwatchEventTargetInputTransformerArgs) ToAwsCloudwatchEventTargetInputTransformerPtrOutputWithContext(ctx context.Context) AwsCloudwatchEventTargetInputTransformerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCloudwatchEventTargetInputTransformerOutput).ToAwsCloudwatchEventTargetInputTransformerPtrOutputWithContext(ctx)
+}
+
+// AwsCloudwatchEventTargetInputTransformerPtrInput is an input type that accepts AwsCloudwatchEventTargetInputTransformerArgs, AwsCloudwatchEventTargetInputTransformerPtr and AwsCloudwatchEventTargetInputTransformerPtrOutput values.
+// You can construct a concrete instance of `AwsCloudwatchEventTargetInputTransformerPtrInput` via:
+//
+//	        AwsCloudwatchEventTargetInputTransformerArgs{...}
+//
+//	or:
+//
+//	        nil
+type AwsCloudwatchEventTargetInputTransformerPtrInput interface {
+	pulumi.Input
+
+	ToAwsCloudwatchEventTargetInputTransformerPtrOutput() AwsCloudwatchEventTargetInputTransformerPtrOutput
+	ToAwsCloudwatchEventTargetInputTransformerPtrOutputWithContext(context.Context) AwsCloudwatchEventTargetInputTransformerPtrOutput
+}
+
+type awsCloudwatchEventTargetInputTransformerPtrType AwsCloudwatchEventTargetInputTransformerArgs
+
+func AwsCloudwatchEventTargetInputTransformerPtr(v *AwsCloudwatchEventTargetInputTransformerArgs) AwsCloudwatchEventTargetInputTransformerPtrInput {
+	return (*awsCloudwatchEventTargetInputTransformerPtrType)(v)
+}
+
+func (*awsCloudwatchEventTargetInputTransformerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsCloudwatchEventTargetInputTransformer)(nil)).Elem()
+}
+
+func (i *awsCloudwatchEventTargetInputTransformerPtrType) ToAwsCloudwatchEventTargetInputTransformerPtrOutput() AwsCloudwatchEventTargetInputTransformerPtrOutput {
+	return i.ToAwsCloudwatchEventTargetInputTransformerPtrOutputWithContext(context.Background())
+}
+
+func (i *awsCloudwatchEventTargetInputTransformerPtrType) ToAwsCloudwatchEventTargetInputTransformerPtrOutputWithContext(ctx context.Context) AwsCloudwatchEventTargetInputTransformerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCloudwatchEventTargetInputTransformerPtrOutput)
+}
+
+type AwsCloudwatchEventTargetInputTransformerOutput struct{ *pulumi.OutputState }
+
+func (AwsCloudwatchEventTargetInputTransformerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsCloudwatchEventTargetInputTransformer)(nil)).Elem()
+}
+
+func (o AwsCloudwatchEventTargetInputTransformerOutput) ToAwsCloudwatchEventTargetInputTransformerOutput() AwsCloudwatchEventTargetInputTransformerOutput {
+	return o
+}
+
+func (o AwsCloudwatchEventTargetInputTransformerOutput) ToAwsCloudwatchEventTargetInputTransformerOutputWithContext(ctx context.Context) AwsCloudwatchEventTargetInputTransformerOutput {
+	return o
+}
+
+func (o AwsCloudwatchEventTargetInputTransformerOutput) ToAwsCloudwatchEventTargetInputTransformerPtrOutput() AwsCloudwatchEventTargetInputTransformerPtrOutput {
+	return o.ToAwsCloudwatchEventTargetInputTransformerPtrOutputWithContext(context.Background())
+}
+
+func (o AwsCloudwatchEventTargetInputTransformerOutput) ToAwsCloudwatchEventTargetInputTransformerPtrOutputWithContext(ctx context.Context) AwsCloudwatchEventTargetInputTransformerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsCloudwatchEventTargetInputTransformer) *AwsCloudwatchEventTargetInputTransformer {
+		return &v
+	}).(AwsCloudwatchEventTargetInputTransformerPtrOutput)
+}
+
+// Map of variable names to JSONPath expressions that extract values from the event. The variable names can be referenced in `inputTemplate` using `<name>` syntax.
+func (o AwsCloudwatchEventTargetInputTransformerOutput) InputPaths() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AwsCloudwatchEventTargetInputTransformer) map[string]string { return v.InputPaths }).(pulumi.StringMapOutput)
+}
+
+// Template that defines the payload passed to the target. Variables defined in `inputPaths` are referenced using `<name>` syntax.
+func (o AwsCloudwatchEventTargetInputTransformerOutput) InputTemplate() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsCloudwatchEventTargetInputTransformer) string { return v.InputTemplate }).(pulumi.StringOutput)
+}
+
+type AwsCloudwatchEventTargetInputTransformerPtrOutput struct{ *pulumi.OutputState }
+
+func (AwsCloudwatchEventTargetInputTransformerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsCloudwatchEventTargetInputTransformer)(nil)).Elem()
+}
+
+func (o AwsCloudwatchEventTargetInputTransformerPtrOutput) ToAwsCloudwatchEventTargetInputTransformerPtrOutput() AwsCloudwatchEventTargetInputTransformerPtrOutput {
+	return o
+}
+
+func (o AwsCloudwatchEventTargetInputTransformerPtrOutput) ToAwsCloudwatchEventTargetInputTransformerPtrOutputWithContext(ctx context.Context) AwsCloudwatchEventTargetInputTransformerPtrOutput {
+	return o
+}
+
+func (o AwsCloudwatchEventTargetInputTransformerPtrOutput) Elem() AwsCloudwatchEventTargetInputTransformerOutput {
+	return o.ApplyT(func(v *AwsCloudwatchEventTargetInputTransformer) AwsCloudwatchEventTargetInputTransformer {
+		if v != nil {
+			return *v
+		}
+		var ret AwsCloudwatchEventTargetInputTransformer
+		return ret
+	}).(AwsCloudwatchEventTargetInputTransformerOutput)
+}
+
+// Map of variable names to JSONPath expressions that extract values from the event. The variable names can be referenced in `inputTemplate` using `<name>` syntax.
+func (o AwsCloudwatchEventTargetInputTransformerPtrOutput) InputPaths() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AwsCloudwatchEventTargetInputTransformer) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.InputPaths
+	}).(pulumi.StringMapOutput)
+}
+
+// Template that defines the payload passed to the target. Variables defined in `inputPaths` are referenced using `<name>` syntax.
+func (o AwsCloudwatchEventTargetInputTransformerPtrOutput) InputTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsCloudwatchEventTargetInputTransformer) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.InputTemplate
+	}).(pulumi.StringPtrOutput)
+}
+
 type AwsCloudwatchMetricAlarmDimension struct {
 	Key   string `pulumi:"key"`
 	Value string `pulumi:"value"`
@@ -77451,82 +77607,6 @@ func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIg
 	}).(K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput)
 }
 
-type K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTerm struct {
-	// A label query over a set of resources, in this case pods.
-	LabelSelectors []K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector `pulumi:"labelSelectors"`
-	// namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means 'this pod's namespace'
-	Namespaces []string `pulumi:"namespaces"`
-	// empty topology key is interpreted by the scheduler as 'all topologies'
-	TopologyKey *string `pulumi:"topologyKey"`
-}
-
-// K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermInput is an input type that accepts K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermArgs and K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermInput` via:
-//
-//	K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermArgs{...}
-type K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput() K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput
-	ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutputWithContext(context.Context) K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput
-}
-
-type K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermArgs struct {
-	// A label query over a set of resources, in this case pods.
-	LabelSelectors K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayInput `pulumi:"labelSelectors"`
-	// namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means 'this pod's namespace'
-	Namespaces pulumi.StringArrayInput `pulumi:"namespaces"`
-	// empty topology key is interpreted by the scheduler as 'all topologies'
-	TopologyKey pulumi.StringPtrInput `pulumi:"topologyKey"`
-}
-
-func (K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTerm)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermArgs) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput() K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput {
-	return i.ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermArgs) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput)
-}
-
-type K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTerm)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput() K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput {
-	return o
-}
-
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput {
-	return o
-}
-
-// A label query over a set of resources, in this case pods.
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput) LabelSelectors() K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTerm) []K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector {
-		return v.LabelSelectors
-	}).(K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutput)
-}
-
-// namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means 'this pod's namespace'
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput) Namespaces() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTerm) []string {
-		return v.Namespaces
-	}).(pulumi.StringArrayOutput)
-}
-
-// empty topology key is interpreted by the scheduler as 'all topologies'
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput) TopologyKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTerm) *string {
-		return v.TopologyKey
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AsgProfileCustomDataTagInput)(nil)).Elem(), AsgProfileCustomDataTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AsgProfileCustomDataTagArrayInput)(nil)).Elem(), AsgProfileCustomDataTagArray{})
@@ -77678,6 +77758,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsCloudfrontDistributionViewerCertificatePtrInput)(nil)).Elem(), AwsCloudfrontDistributionViewerCertificateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsCloudwatchEventRuleTagInput)(nil)).Elem(), AwsCloudwatchEventRuleTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsCloudwatchEventRuleTagArrayInput)(nil)).Elem(), AwsCloudwatchEventRuleTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsCloudwatchEventTargetInputTransformerInput)(nil)).Elem(), AwsCloudwatchEventTargetInputTransformerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsCloudwatchEventTargetInputTransformerPtrInput)(nil)).Elem(), AwsCloudwatchEventTargetInputTransformerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsCloudwatchMetricAlarmDimensionInput)(nil)).Elem(), AwsCloudwatchMetricAlarmDimensionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsCloudwatchMetricAlarmDimensionArrayInput)(nil)).Elem(), AwsCloudwatchMetricAlarmDimensionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsDynamodbTableV2AttributeInput)(nil)).Elem(), AwsDynamodbTableV2AttributeArgs{})
@@ -78514,7 +78596,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrInput)(nil)).Elem(), K8sJobSpecTemplateSpecAffinityPodAntiAffinityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionInput)(nil)).Elem(), K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayInput)(nil)).Elem(), K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermInput)(nil)).Elem(), K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermArgs{})
 	pulumi.RegisterOutputType(AsgProfileCustomDataTagOutput{})
 	pulumi.RegisterOutputType(AsgProfileCustomDataTagArrayOutput{})
 	pulumi.RegisterOutputType(AsgProfileMetadataOutput{})
@@ -78665,6 +78746,8 @@ func init() {
 	pulumi.RegisterOutputType(AwsCloudfrontDistributionViewerCertificatePtrOutput{})
 	pulumi.RegisterOutputType(AwsCloudwatchEventRuleTagOutput{})
 	pulumi.RegisterOutputType(AwsCloudwatchEventRuleTagArrayOutput{})
+	pulumi.RegisterOutputType(AwsCloudwatchEventTargetInputTransformerOutput{})
+	pulumi.RegisterOutputType(AwsCloudwatchEventTargetInputTransformerPtrOutput{})
 	pulumi.RegisterOutputType(AwsCloudwatchMetricAlarmDimensionOutput{})
 	pulumi.RegisterOutputType(AwsCloudwatchMetricAlarmDimensionArrayOutput{})
 	pulumi.RegisterOutputType(AwsDynamodbTableV2AttributeOutput{})
@@ -79501,5 +79584,4 @@ func init() {
 	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutput{})
 	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput{})
 	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput{})
 }

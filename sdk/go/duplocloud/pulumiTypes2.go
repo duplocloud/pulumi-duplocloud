@@ -13,6 +13,166 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetK8sJobSpecTemplateSpecAffinityPodAntiAffinity struct {
+	// The scheduler will prefer to schedule pods to nodes that satisfy the anti-affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions. The node that is most preferred is the one with the greatest sum of weights, i.e. for each node that meets all of the scheduling requirements (resource request, RequiredDuringScheduling anti-affinity expressions, etc.), compute a sum by iterating through the elements of this field and adding 'weight' to the sum if the node matches the corresponding MatchExpressions; the node(s) with the highest sum are the most preferred.
+	PreferredDuringSchedulingIgnoredDuringExecutions []GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecution `pulumi:"preferredDuringSchedulingIgnoredDuringExecutions"`
+	// If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system may or may not try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each PodAffinityTerm are intersected, i.e. all terms must be satisfied.
+	RequiredDuringSchedulingIgnoredDuringExecutions []GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecution `pulumi:"requiredDuringSchedulingIgnoredDuringExecutions"`
+}
+
+// GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityInput is an input type that accepts GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityArgs and GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityInput` via:
+//
+//	GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityArgs{...}
+type GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecAffinityPodAntiAffinityOutput() GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityOutput
+	ToGetK8sJobSpecTemplateSpecAffinityPodAntiAffinityOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityOutput
+}
+
+type GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityArgs struct {
+	// The scheduler will prefer to schedule pods to nodes that satisfy the anti-affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions. The node that is most preferred is the one with the greatest sum of weights, i.e. for each node that meets all of the scheduling requirements (resource request, RequiredDuringScheduling anti-affinity expressions, etc.), compute a sum by iterating through the elements of this field and adding 'weight' to the sum if the node matches the corresponding MatchExpressions; the node(s) with the highest sum are the most preferred.
+	PreferredDuringSchedulingIgnoredDuringExecutions GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayInput `pulumi:"preferredDuringSchedulingIgnoredDuringExecutions"`
+	// If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system may or may not try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each PodAffinityTerm are intersected, i.e. all terms must be satisfied.
+	RequiredDuringSchedulingIgnoredDuringExecutions GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayInput `pulumi:"requiredDuringSchedulingIgnoredDuringExecutions"`
+}
+
+func (GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecAffinityPodAntiAffinity)(nil)).Elem()
+}
+
+func (i GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityArgs) ToGetK8sJobSpecTemplateSpecAffinityPodAntiAffinityOutput() GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityOutput {
+	return i.ToGetK8sJobSpecTemplateSpecAffinityPodAntiAffinityOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityArgs) ToGetK8sJobSpecTemplateSpecAffinityPodAntiAffinityOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityOutput)
+}
+
+func (i GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityArgs) ToGetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutput() GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutputWithContext(context.Background())
+}
+
+func (i GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityArgs) ToGetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityOutput).ToGetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutputWithContext(ctx)
+}
+
+// GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrInput is an input type that accepts GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityArgs, GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtr and GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutput values.
+// You can construct a concrete instance of `GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrInput` via:
+//
+//	        GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrInput interface {
+	pulumi.Input
+
+	ToGetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutput() GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutput
+	ToGetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutputWithContext(context.Context) GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutput
+}
+
+type getK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrType GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityArgs
+
+func GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtr(v *GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityArgs) GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrInput {
+	return (*getK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrType)(v)
+}
+
+func (*getK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecAffinityPodAntiAffinity)(nil)).Elem()
+}
+
+func (i *getK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrType) ToGetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutput() GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutput {
+	return i.ToGetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutputWithContext(context.Background())
+}
+
+func (i *getK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrType) ToGetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutput)
+}
+
+type GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sJobSpecTemplateSpecAffinityPodAntiAffinity)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityOutput) ToGetK8sJobSpecTemplateSpecAffinityPodAntiAffinityOutput() GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityOutput) ToGetK8sJobSpecTemplateSpecAffinityPodAntiAffinityOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityOutput) ToGetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutput() GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutput {
+	return o.ToGetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutputWithContext(context.Background())
+}
+
+func (o GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityOutput) ToGetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetK8sJobSpecTemplateSpecAffinityPodAntiAffinity) *GetK8sJobSpecTemplateSpecAffinityPodAntiAffinity {
+		return &v
+	}).(GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutput)
+}
+
+// The scheduler will prefer to schedule pods to nodes that satisfy the anti-affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions. The node that is most preferred is the one with the greatest sum of weights, i.e. for each node that meets all of the scheduling requirements (resource request, RequiredDuringScheduling anti-affinity expressions, etc.), compute a sum by iterating through the elements of this field and adding 'weight' to the sum if the node matches the corresponding MatchExpressions; the node(s) with the highest sum are the most preferred.
+func (o GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityOutput) PreferredDuringSchedulingIgnoredDuringExecutions() GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecAffinityPodAntiAffinity) []GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecution {
+		return v.PreferredDuringSchedulingIgnoredDuringExecutions
+	}).(GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput)
+}
+
+// If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system may or may not try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each PodAffinityTerm are intersected, i.e. all terms must be satisfied.
+func (o GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityOutput) RequiredDuringSchedulingIgnoredDuringExecutions() GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput {
+	return o.ApplyT(func(v GetK8sJobSpecTemplateSpecAffinityPodAntiAffinity) []GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecution {
+		return v.RequiredDuringSchedulingIgnoredDuringExecutions
+	}).(GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput)
+}
+
+type GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutput struct{ *pulumi.OutputState }
+
+func (GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetK8sJobSpecTemplateSpecAffinityPodAntiAffinity)(nil)).Elem()
+}
+
+func (o GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutput) ToGetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutput() GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutput) ToGetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutputWithContext(ctx context.Context) GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutput {
+	return o
+}
+
+func (o GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutput) Elem() GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecAffinityPodAntiAffinity) GetK8sJobSpecTemplateSpecAffinityPodAntiAffinity {
+		if v != nil {
+			return *v
+		}
+		var ret GetK8sJobSpecTemplateSpecAffinityPodAntiAffinity
+		return ret
+	}).(GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityOutput)
+}
+
+// The scheduler will prefer to schedule pods to nodes that satisfy the anti-affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions. The node that is most preferred is the one with the greatest sum of weights, i.e. for each node that meets all of the scheduling requirements (resource request, RequiredDuringScheduling anti-affinity expressions, etc.), compute a sum by iterating through the elements of this field and adding 'weight' to the sum if the node matches the corresponding MatchExpressions; the node(s) with the highest sum are the most preferred.
+func (o GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutput) PreferredDuringSchedulingIgnoredDuringExecutions() GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecAffinityPodAntiAffinity) []GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecution {
+		if v == nil {
+			return nil
+		}
+		return v.PreferredDuringSchedulingIgnoredDuringExecutions
+	}).(GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput)
+}
+
+// If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system may or may not try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each PodAffinityTerm are intersected, i.e. all terms must be satisfied.
+func (o GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutput) RequiredDuringSchedulingIgnoredDuringExecutions() GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput {
+	return o.ApplyT(func(v *GetK8sJobSpecTemplateSpecAffinityPodAntiAffinity) []GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecution {
+		if v == nil {
+			return nil
+		}
+		return v.RequiredDuringSchedulingIgnoredDuringExecutions
+	}).(GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput)
+}
+
 type GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecution struct {
 	// A pod affinity term, associated with the corresponding weight
 	PodAffinityTerm GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTerm `pulumi:"podAffinityTerm"`
@@ -32271,6 +32431,8 @@ func (o GetTenantsTenantTagArrayOutput) Index(i pulumi.IntInput) GetTenantsTenan
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermInput)(nil)).Elem(), GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermArgs{})
@@ -32707,6 +32869,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantsTenantPolicyArrayInput)(nil)).Elem(), GetTenantsTenantPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantsTenantTagInput)(nil)).Elem(), GetTenantsTenantTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantsTenantTagArrayInput)(nil)).Elem(), GetTenantsTenantTagArray{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityOutput{})
+	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutput{})
 	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput{})
 	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput{})
 	pulumi.RegisterOutputType(GetK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput{})

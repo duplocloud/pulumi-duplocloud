@@ -948,6 +948,17 @@ export interface AwsCloudwatchEventRuleTag {
     value: string;
 }
 
+export interface AwsCloudwatchEventTargetInputTransformer {
+    /**
+     * Map of variable names to JSONPath expressions that extract values from the event. The variable names can be referenced in `inputTemplate` using `<name>` syntax.
+     */
+    inputPaths?: {[key: string]: string};
+    /**
+     * Template that defines the payload passed to the target. Variables defined in `inputPaths` are referenced using `<name>` syntax.
+     */
+    inputTemplate: string;
+}
+
 export interface AwsCloudwatchMetricAlarmDimension {
     key: string;
     value: string;

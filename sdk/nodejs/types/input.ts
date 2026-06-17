@@ -948,6 +948,17 @@ export interface AwsCloudwatchEventRuleTag {
     value: pulumi.Input<string>;
 }
 
+export interface AwsCloudwatchEventTargetInputTransformer {
+    /**
+     * Map of variable names to JSONPath expressions that extract values from the event. The variable names can be referenced in `inputTemplate` using `<name>` syntax.
+     */
+    inputPaths?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Template that defines the payload passed to the target. Variables defined in `inputPaths` are referenced using `<name>` syntax.
+     */
+    inputTemplate: pulumi.Input<string>;
+}
+
 export interface AwsCloudwatchMetricAlarmDimension {
     key: pulumi.Input<string>;
     value: pulumi.Input<string>;

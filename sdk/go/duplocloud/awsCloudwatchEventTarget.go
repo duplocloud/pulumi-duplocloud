@@ -97,8 +97,10 @@ type AwsCloudwatchEventTarget struct {
 
 	// The event bus to associate with the rule. If you omit this, the default event bus is used.
 	EventBusName pulumi.StringOutput `pulumi:"eventBusName"`
-	// Valid JSON text passed to the target.
+	// Valid JSON text passed to the target. Conflicts with `inputTransformer`.
 	Input pulumi.StringOutput `pulumi:"input"`
+	// Settings used to transform the matched event before passing it to the target. Conflicts with `input`.
+	InputTransformer AwsCloudwatchEventTargetInputTransformerPtrOutput `pulumi:"inputTransformer"`
 	// The Amazon Resource Name (ARN) associated with the role that is used for target invocation.
 	RoleArn pulumi.StringOutput `pulumi:"roleArn"`
 	// The name of the rule you want to add targets to.
@@ -155,8 +157,10 @@ func GetAwsCloudwatchEventTarget(ctx *pulumi.Context,
 type awsCloudwatchEventTargetState struct {
 	// The event bus to associate with the rule. If you omit this, the default event bus is used.
 	EventBusName *string `pulumi:"eventBusName"`
-	// Valid JSON text passed to the target.
+	// Valid JSON text passed to the target. Conflicts with `inputTransformer`.
 	Input *string `pulumi:"input"`
+	// Settings used to transform the matched event before passing it to the target. Conflicts with `input`.
+	InputTransformer *AwsCloudwatchEventTargetInputTransformer `pulumi:"inputTransformer"`
 	// The Amazon Resource Name (ARN) associated with the role that is used for target invocation.
 	RoleArn *string `pulumi:"roleArn"`
 	// The name of the rule you want to add targets to.
@@ -172,8 +176,10 @@ type awsCloudwatchEventTargetState struct {
 type AwsCloudwatchEventTargetState struct {
 	// The event bus to associate with the rule. If you omit this, the default event bus is used.
 	EventBusName pulumi.StringPtrInput
-	// Valid JSON text passed to the target.
+	// Valid JSON text passed to the target. Conflicts with `inputTransformer`.
 	Input pulumi.StringPtrInput
+	// Settings used to transform the matched event before passing it to the target. Conflicts with `input`.
+	InputTransformer AwsCloudwatchEventTargetInputTransformerPtrInput
 	// The Amazon Resource Name (ARN) associated with the role that is used for target invocation.
 	RoleArn pulumi.StringPtrInput
 	// The name of the rule you want to add targets to.
@@ -193,8 +199,10 @@ func (AwsCloudwatchEventTargetState) ElementType() reflect.Type {
 type awsCloudwatchEventTargetArgs struct {
 	// The event bus to associate with the rule. If you omit this, the default event bus is used.
 	EventBusName *string `pulumi:"eventBusName"`
-	// Valid JSON text passed to the target.
+	// Valid JSON text passed to the target. Conflicts with `inputTransformer`.
 	Input *string `pulumi:"input"`
+	// Settings used to transform the matched event before passing it to the target. Conflicts with `input`.
+	InputTransformer *AwsCloudwatchEventTargetInputTransformer `pulumi:"inputTransformer"`
 	// The Amazon Resource Name (ARN) associated with the role that is used for target invocation.
 	RoleArn *string `pulumi:"roleArn"`
 	// The name of the rule you want to add targets to.
@@ -211,8 +219,10 @@ type awsCloudwatchEventTargetArgs struct {
 type AwsCloudwatchEventTargetArgs struct {
 	// The event bus to associate with the rule. If you omit this, the default event bus is used.
 	EventBusName pulumi.StringPtrInput
-	// Valid JSON text passed to the target.
+	// Valid JSON text passed to the target. Conflicts with `inputTransformer`.
 	Input pulumi.StringPtrInput
+	// Settings used to transform the matched event before passing it to the target. Conflicts with `input`.
+	InputTransformer AwsCloudwatchEventTargetInputTransformerPtrInput
 	// The Amazon Resource Name (ARN) associated with the role that is used for target invocation.
 	RoleArn pulumi.StringPtrInput
 	// The name of the rule you want to add targets to.
@@ -317,9 +327,16 @@ func (o AwsCloudwatchEventTargetOutput) EventBusName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AwsCloudwatchEventTarget) pulumi.StringOutput { return v.EventBusName }).(pulumi.StringOutput)
 }
 
-// Valid JSON text passed to the target.
+// Valid JSON text passed to the target. Conflicts with `inputTransformer`.
 func (o AwsCloudwatchEventTargetOutput) Input() pulumi.StringOutput {
 	return o.ApplyT(func(v *AwsCloudwatchEventTarget) pulumi.StringOutput { return v.Input }).(pulumi.StringOutput)
+}
+
+// Settings used to transform the matched event before passing it to the target. Conflicts with `input`.
+func (o AwsCloudwatchEventTargetOutput) InputTransformer() AwsCloudwatchEventTargetInputTransformerPtrOutput {
+	return o.ApplyT(func(v *AwsCloudwatchEventTarget) AwsCloudwatchEventTargetInputTransformerPtrOutput {
+		return v.InputTransformer
+	}).(AwsCloudwatchEventTargetInputTransformerPtrOutput)
 }
 
 // The Amazon Resource Name (ARN) associated with the role that is used for target invocation.

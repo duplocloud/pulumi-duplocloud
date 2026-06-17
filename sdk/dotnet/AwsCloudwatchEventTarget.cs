@@ -94,10 +94,16 @@ namespace DuploCloud.Pulumi
         public Output<string> EventBusName { get; private set; } = null!;
 
         /// <summary>
-        /// Valid JSON text passed to the target.
+        /// Valid JSON text passed to the target. Conflicts with `input_transformer`.
         /// </summary>
         [Output("input")]
         public Output<string> Input { get; private set; } = null!;
+
+        /// <summary>
+        /// Settings used to transform the matched event before passing it to the target. Conflicts with `input`.
+        /// </summary>
+        [Output("inputTransformer")]
+        public Output<Outputs.AwsCloudwatchEventTargetInputTransformer?> InputTransformer { get; private set; } = null!;
 
         /// <summary>
         /// The Amazon Resource Name (ARN) associated with the role that is used for target invocation.
@@ -183,10 +189,16 @@ namespace DuploCloud.Pulumi
         public Input<string>? EventBusName { get; set; }
 
         /// <summary>
-        /// Valid JSON text passed to the target.
+        /// Valid JSON text passed to the target. Conflicts with `input_transformer`.
         /// </summary>
         [Input("input")]
         public Input<string>? Input { get; set; }
+
+        /// <summary>
+        /// Settings used to transform the matched event before passing it to the target. Conflicts with `input`.
+        /// </summary>
+        [Input("inputTransformer")]
+        public Input<Inputs.AwsCloudwatchEventTargetInputTransformerArgs>? InputTransformer { get; set; }
 
         /// <summary>
         /// The Amazon Resource Name (ARN) associated with the role that is used for target invocation.
@@ -233,10 +245,16 @@ namespace DuploCloud.Pulumi
         public Input<string>? EventBusName { get; set; }
 
         /// <summary>
-        /// Valid JSON text passed to the target.
+        /// Valid JSON text passed to the target. Conflicts with `input_transformer`.
         /// </summary>
         [Input("input")]
         public Input<string>? Input { get; set; }
+
+        /// <summary>
+        /// Settings used to transform the matched event before passing it to the target. Conflicts with `input`.
+        /// </summary>
+        [Input("inputTransformer")]
+        public Input<Inputs.AwsCloudwatchEventTargetInputTransformerGetArgs>? InputTransformer { get; set; }
 
         /// <summary>
         /// The Amazon Resource Name (ARN) associated with the role that is used for target invocation.

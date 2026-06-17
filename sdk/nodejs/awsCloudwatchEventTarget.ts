@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -95,9 +97,13 @@ export class AwsCloudwatchEventTarget extends pulumi.CustomResource {
      */
     public readonly eventBusName!: pulumi.Output<string>;
     /**
-     * Valid JSON text passed to the target.
+     * Valid JSON text passed to the target. Conflicts with `inputTransformer`.
      */
     public readonly input!: pulumi.Output<string>;
+    /**
+     * Settings used to transform the matched event before passing it to the target. Conflicts with `input`.
+     */
+    public readonly inputTransformer!: pulumi.Output<outputs.AwsCloudwatchEventTargetInputTransformer | undefined>;
     /**
      * The Amazon Resource Name (ARN) associated with the role that is used for target invocation.
      */
@@ -134,6 +140,7 @@ export class AwsCloudwatchEventTarget extends pulumi.CustomResource {
             const state = argsOrState as AwsCloudwatchEventTargetState | undefined;
             resourceInputs["eventBusName"] = state ? state.eventBusName : undefined;
             resourceInputs["input"] = state ? state.input : undefined;
+            resourceInputs["inputTransformer"] = state ? state.inputTransformer : undefined;
             resourceInputs["roleArn"] = state ? state.roleArn : undefined;
             resourceInputs["ruleName"] = state ? state.ruleName : undefined;
             resourceInputs["targetArn"] = state ? state.targetArn : undefined;
@@ -155,6 +162,7 @@ export class AwsCloudwatchEventTarget extends pulumi.CustomResource {
             }
             resourceInputs["eventBusName"] = args ? args.eventBusName : undefined;
             resourceInputs["input"] = args ? args.input : undefined;
+            resourceInputs["inputTransformer"] = args ? args.inputTransformer : undefined;
             resourceInputs["roleArn"] = args ? args.roleArn : undefined;
             resourceInputs["ruleName"] = args ? args.ruleName : undefined;
             resourceInputs["targetArn"] = args ? args.targetArn : undefined;
@@ -175,9 +183,13 @@ export interface AwsCloudwatchEventTargetState {
      */
     eventBusName?: pulumi.Input<string>;
     /**
-     * Valid JSON text passed to the target.
+     * Valid JSON text passed to the target. Conflicts with `inputTransformer`.
      */
     input?: pulumi.Input<string>;
+    /**
+     * Settings used to transform the matched event before passing it to the target. Conflicts with `input`.
+     */
+    inputTransformer?: pulumi.Input<inputs.AwsCloudwatchEventTargetInputTransformer>;
     /**
      * The Amazon Resource Name (ARN) associated with the role that is used for target invocation.
      */
@@ -209,9 +221,13 @@ export interface AwsCloudwatchEventTargetArgs {
      */
     eventBusName?: pulumi.Input<string>;
     /**
-     * Valid JSON text passed to the target.
+     * Valid JSON text passed to the target. Conflicts with `inputTransformer`.
      */
     input?: pulumi.Input<string>;
+    /**
+     * Settings used to transform the matched event before passing it to the target. Conflicts with `input`.
+     */
+    inputTransformer?: pulumi.Input<inputs.AwsCloudwatchEventTargetInputTransformer>;
     /**
      * The Amazon Resource Name (ARN) associated with the role that is used for target invocation.
      */

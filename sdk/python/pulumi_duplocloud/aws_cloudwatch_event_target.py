@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['AwsCloudwatchEventTargetArgs', 'AwsCloudwatchEventTarget']
 
@@ -25,6 +27,7 @@ class AwsCloudwatchEventTargetArgs:
                  tenant_id: pulumi.Input[str],
                  event_bus_name: Optional[pulumi.Input[str]] = None,
                  input: Optional[pulumi.Input[str]] = None,
+                 input_transformer: Optional[pulumi.Input['AwsCloudwatchEventTargetInputTransformerArgs']] = None,
                  role_arn: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AwsCloudwatchEventTarget resource.
@@ -33,7 +36,8 @@ class AwsCloudwatchEventTargetArgs:
         :param pulumi.Input[str] target_id: The unique target assignment ID.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the cloudwatch event target will be created in.
         :param pulumi.Input[str] event_bus_name: The event bus to associate with the rule. If you omit this, the default event bus is used.
-        :param pulumi.Input[str] input: Valid JSON text passed to the target.
+        :param pulumi.Input[str] input: Valid JSON text passed to the target. Conflicts with `input_transformer`.
+        :param pulumi.Input['AwsCloudwatchEventTargetInputTransformerArgs'] input_transformer: Settings used to transform the matched event before passing it to the target. Conflicts with `input`.
         :param pulumi.Input[str] role_arn: The Amazon Resource Name (ARN) associated with the role that is used for target invocation.
         """
         pulumi.set(__self__, "rule_name", rule_name)
@@ -44,6 +48,8 @@ class AwsCloudwatchEventTargetArgs:
             pulumi.set(__self__, "event_bus_name", event_bus_name)
         if input is not None:
             pulumi.set(__self__, "input", input)
+        if input_transformer is not None:
+            pulumi.set(__self__, "input_transformer", input_transformer)
         if role_arn is not None:
             pulumi.set(__self__, "role_arn", role_arn)
 
@@ -111,13 +117,25 @@ class AwsCloudwatchEventTargetArgs:
     @pulumi.getter
     def input(self) -> Optional[pulumi.Input[str]]:
         """
-        Valid JSON text passed to the target.
+        Valid JSON text passed to the target. Conflicts with `input_transformer`.
         """
         return pulumi.get(self, "input")
 
     @input.setter
     def input(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "input", value)
+
+    @property
+    @pulumi.getter(name="inputTransformer")
+    def input_transformer(self) -> Optional[pulumi.Input['AwsCloudwatchEventTargetInputTransformerArgs']]:
+        """
+        Settings used to transform the matched event before passing it to the target. Conflicts with `input`.
+        """
+        return pulumi.get(self, "input_transformer")
+
+    @input_transformer.setter
+    def input_transformer(self, value: Optional[pulumi.Input['AwsCloudwatchEventTargetInputTransformerArgs']]):
+        pulumi.set(self, "input_transformer", value)
 
     @property
     @pulumi.getter(name="roleArn")
@@ -137,6 +155,7 @@ class _AwsCloudwatchEventTargetState:
     def __init__(__self__, *,
                  event_bus_name: Optional[pulumi.Input[str]] = None,
                  input: Optional[pulumi.Input[str]] = None,
+                 input_transformer: Optional[pulumi.Input['AwsCloudwatchEventTargetInputTransformerArgs']] = None,
                  role_arn: Optional[pulumi.Input[str]] = None,
                  rule_name: Optional[pulumi.Input[str]] = None,
                  target_arn: Optional[pulumi.Input[str]] = None,
@@ -145,7 +164,8 @@ class _AwsCloudwatchEventTargetState:
         """
         Input properties used for looking up and filtering AwsCloudwatchEventTarget resources.
         :param pulumi.Input[str] event_bus_name: The event bus to associate with the rule. If you omit this, the default event bus is used.
-        :param pulumi.Input[str] input: Valid JSON text passed to the target.
+        :param pulumi.Input[str] input: Valid JSON text passed to the target. Conflicts with `input_transformer`.
+        :param pulumi.Input['AwsCloudwatchEventTargetInputTransformerArgs'] input_transformer: Settings used to transform the matched event before passing it to the target. Conflicts with `input`.
         :param pulumi.Input[str] role_arn: The Amazon Resource Name (ARN) associated with the role that is used for target invocation.
         :param pulumi.Input[str] rule_name: The name of the rule you want to add targets to.
         :param pulumi.Input[str] target_arn: The Amazon Resource Name (ARN) of the target.
@@ -156,6 +176,8 @@ class _AwsCloudwatchEventTargetState:
             pulumi.set(__self__, "event_bus_name", event_bus_name)
         if input is not None:
             pulumi.set(__self__, "input", input)
+        if input_transformer is not None:
+            pulumi.set(__self__, "input_transformer", input_transformer)
         if role_arn is not None:
             pulumi.set(__self__, "role_arn", role_arn)
         if rule_name is not None:
@@ -183,13 +205,25 @@ class _AwsCloudwatchEventTargetState:
     @pulumi.getter
     def input(self) -> Optional[pulumi.Input[str]]:
         """
-        Valid JSON text passed to the target.
+        Valid JSON text passed to the target. Conflicts with `input_transformer`.
         """
         return pulumi.get(self, "input")
 
     @input.setter
     def input(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "input", value)
+
+    @property
+    @pulumi.getter(name="inputTransformer")
+    def input_transformer(self) -> Optional[pulumi.Input['AwsCloudwatchEventTargetInputTransformerArgs']]:
+        """
+        Settings used to transform the matched event before passing it to the target. Conflicts with `input`.
+        """
+        return pulumi.get(self, "input_transformer")
+
+    @input_transformer.setter
+    def input_transformer(self, value: Optional[pulumi.Input['AwsCloudwatchEventTargetInputTransformerArgs']]):
+        pulumi.set(self, "input_transformer", value)
 
     @property
     @pulumi.getter(name="roleArn")
@@ -259,6 +293,7 @@ class AwsCloudwatchEventTarget(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  event_bus_name: Optional[pulumi.Input[str]] = None,
                  input: Optional[pulumi.Input[str]] = None,
+                 input_transformer: Optional[pulumi.Input[Union['AwsCloudwatchEventTargetInputTransformerArgs', 'AwsCloudwatchEventTargetInputTransformerArgsDict']]] = None,
                  role_arn: Optional[pulumi.Input[str]] = None,
                  rule_name: Optional[pulumi.Input[str]] = None,
                  target_arn: Optional[pulumi.Input[str]] = None,
@@ -322,7 +357,8 @@ class AwsCloudwatchEventTarget(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] event_bus_name: The event bus to associate with the rule. If you omit this, the default event bus is used.
-        :param pulumi.Input[str] input: Valid JSON text passed to the target.
+        :param pulumi.Input[str] input: Valid JSON text passed to the target. Conflicts with `input_transformer`.
+        :param pulumi.Input[Union['AwsCloudwatchEventTargetInputTransformerArgs', 'AwsCloudwatchEventTargetInputTransformerArgsDict']] input_transformer: Settings used to transform the matched event before passing it to the target. Conflicts with `input`.
         :param pulumi.Input[str] role_arn: The Amazon Resource Name (ARN) associated with the role that is used for target invocation.
         :param pulumi.Input[str] rule_name: The name of the rule you want to add targets to.
         :param pulumi.Input[str] target_arn: The Amazon Resource Name (ARN) of the target.
@@ -406,6 +442,7 @@ class AwsCloudwatchEventTarget(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  event_bus_name: Optional[pulumi.Input[str]] = None,
                  input: Optional[pulumi.Input[str]] = None,
+                 input_transformer: Optional[pulumi.Input[Union['AwsCloudwatchEventTargetInputTransformerArgs', 'AwsCloudwatchEventTargetInputTransformerArgsDict']]] = None,
                  role_arn: Optional[pulumi.Input[str]] = None,
                  rule_name: Optional[pulumi.Input[str]] = None,
                  target_arn: Optional[pulumi.Input[str]] = None,
@@ -422,6 +459,7 @@ class AwsCloudwatchEventTarget(pulumi.CustomResource):
 
             __props__.__dict__["event_bus_name"] = event_bus_name
             __props__.__dict__["input"] = input
+            __props__.__dict__["input_transformer"] = input_transformer
             __props__.__dict__["role_arn"] = role_arn
             if rule_name is None and not opts.urn:
                 raise TypeError("Missing required property 'rule_name'")
@@ -447,6 +485,7 @@ class AwsCloudwatchEventTarget(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             event_bus_name: Optional[pulumi.Input[str]] = None,
             input: Optional[pulumi.Input[str]] = None,
+            input_transformer: Optional[pulumi.Input[Union['AwsCloudwatchEventTargetInputTransformerArgs', 'AwsCloudwatchEventTargetInputTransformerArgsDict']]] = None,
             role_arn: Optional[pulumi.Input[str]] = None,
             rule_name: Optional[pulumi.Input[str]] = None,
             target_arn: Optional[pulumi.Input[str]] = None,
@@ -460,7 +499,8 @@ class AwsCloudwatchEventTarget(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] event_bus_name: The event bus to associate with the rule. If you omit this, the default event bus is used.
-        :param pulumi.Input[str] input: Valid JSON text passed to the target.
+        :param pulumi.Input[str] input: Valid JSON text passed to the target. Conflicts with `input_transformer`.
+        :param pulumi.Input[Union['AwsCloudwatchEventTargetInputTransformerArgs', 'AwsCloudwatchEventTargetInputTransformerArgsDict']] input_transformer: Settings used to transform the matched event before passing it to the target. Conflicts with `input`.
         :param pulumi.Input[str] role_arn: The Amazon Resource Name (ARN) associated with the role that is used for target invocation.
         :param pulumi.Input[str] rule_name: The name of the rule you want to add targets to.
         :param pulumi.Input[str] target_arn: The Amazon Resource Name (ARN) of the target.
@@ -473,6 +513,7 @@ class AwsCloudwatchEventTarget(pulumi.CustomResource):
 
         __props__.__dict__["event_bus_name"] = event_bus_name
         __props__.__dict__["input"] = input
+        __props__.__dict__["input_transformer"] = input_transformer
         __props__.__dict__["role_arn"] = role_arn
         __props__.__dict__["rule_name"] = rule_name
         __props__.__dict__["target_arn"] = target_arn
@@ -492,9 +533,17 @@ class AwsCloudwatchEventTarget(pulumi.CustomResource):
     @pulumi.getter
     def input(self) -> pulumi.Output[str]:
         """
-        Valid JSON text passed to the target.
+        Valid JSON text passed to the target. Conflicts with `input_transformer`.
         """
         return pulumi.get(self, "input")
+
+    @property
+    @pulumi.getter(name="inputTransformer")
+    def input_transformer(self) -> pulumi.Output[Optional['outputs.AwsCloudwatchEventTargetInputTransformer']]:
+        """
+        Settings used to transform the matched event before passing it to the target. Conflicts with `input`.
+        """
+        return pulumi.get(self, "input_transformer")
 
     @property
     @pulumi.getter(name="roleArn")

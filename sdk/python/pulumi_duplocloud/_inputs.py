@@ -167,6 +167,8 @@ __all__ = [
     'AwsCloudfrontDistributionViewerCertificateArgsDict',
     'AwsCloudwatchEventRuleTagArgs',
     'AwsCloudwatchEventRuleTagArgsDict',
+    'AwsCloudwatchEventTargetInputTransformerArgs',
+    'AwsCloudwatchEventTargetInputTransformerArgsDict',
     'AwsCloudwatchMetricAlarmDimensionArgs',
     'AwsCloudwatchMetricAlarmDimensionArgsDict',
     'AwsDynamodbTableV2AttributeArgs',
@@ -7130,6 +7132,57 @@ class AwsCloudwatchEventRuleTagArgs:
     @value.setter
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class AwsCloudwatchEventTargetInputTransformerArgsDict(TypedDict):
+        input_template: pulumi.Input[str]
+        """
+        Template that defines the payload passed to the target. Variables defined in `input_paths` are referenced using `<name>` syntax.
+        """
+        input_paths: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Map of variable names to JSONPath expressions that extract values from the event. The variable names can be referenced in `input_template` using `<name>` syntax.
+        """
+elif False:
+    AwsCloudwatchEventTargetInputTransformerArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AwsCloudwatchEventTargetInputTransformerArgs:
+    def __init__(__self__, *,
+                 input_template: pulumi.Input[str],
+                 input_paths: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] input_template: Template that defines the payload passed to the target. Variables defined in `input_paths` are referenced using `<name>` syntax.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] input_paths: Map of variable names to JSONPath expressions that extract values from the event. The variable names can be referenced in `input_template` using `<name>` syntax.
+        """
+        pulumi.set(__self__, "input_template", input_template)
+        if input_paths is not None:
+            pulumi.set(__self__, "input_paths", input_paths)
+
+    @property
+    @pulumi.getter(name="inputTemplate")
+    def input_template(self) -> pulumi.Input[str]:
+        """
+        Template that defines the payload passed to the target. Variables defined in `input_paths` are referenced using `<name>` syntax.
+        """
+        return pulumi.get(self, "input_template")
+
+    @input_template.setter
+    def input_template(self, value: pulumi.Input[str]):
+        pulumi.set(self, "input_template", value)
+
+    @property
+    @pulumi.getter(name="inputPaths")
+    def input_paths(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Map of variable names to JSONPath expressions that extract values from the event. The variable names can be referenced in `input_template` using `<name>` syntax.
+        """
+        return pulumi.get(self, "input_paths")
+
+    @input_paths.setter
+    def input_paths(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "input_paths", value)
 
 
 if not MYPY:
