@@ -20,10 +20,16 @@ namespace DuploCloud.Pulumi.Inputs
         public Input<double> MaxCapacity { get; set; } = null!;
 
         /// <summary>
-        /// Specifies min scaling capacity.
+        /// Specifies min scaling capacity. Set to `0` to enable Aurora Serverless v2 auto-pause (scale to zero) for idle clusters.
         /// </summary>
         [Input("minCapacity", required: true)]
         public Input<double> MinCapacity { get; set; } = null!;
+
+        /// <summary>
+        /// The amount of time, in seconds, the cluster must remain idle — no connections and no database activity while at `min_capacity` — before Aurora Serverless v2 auto-pauses it (scales to zero ACUs). Any activity resets the timer. Only applies when `min_capacity` is `0`. Must be between 300 (5 minutes) and 86400 (24 hours).
+        /// </summary>
+        [Input("secondsUntilAutoPause")]
+        public Input<int>? SecondsUntilAutoPause { get; set; }
 
         public RdsInstanceV2ScalingConfigurationGetArgs()
         {

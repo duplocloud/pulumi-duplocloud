@@ -182,6 +182,30 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
+ * ### Create an S3 bucket encrypted with a specific tenant KMS key (CMK)
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as duplocloud from "@duplocloud/pulumi";
+ * import * as duplocloud from "@pulumi/duplocloud";
+ *
+ * const tenant = duplocloud.getTenant({
+ *     name: "preprod",
+ * });
+ * const bucket = new duplocloud.S3Bucket("bucket", {
+ *     tenantId: tenant.then(tenant => tenant.id),
+ *     name: "data",
+ *     allowPublicAccess: false,
+ *     enableAccessLogs: false,
+ *     enableVersioning: true,
+ *     managedPolicies: ["ssl"],
+ *     defaultEncryption: {
+ *         method: "TenantKms",
+ *         kmsKeyId: "arn:aws:kms:us-west-2:123456789012:key/5ae7e54b-553e-42ef-936e-5f554df6bf9a",
+ *     },
+ * });
+ * ```
+ *
  * ### Deploy an S3 bucket with hardened security settings
  *
  * ```typescript

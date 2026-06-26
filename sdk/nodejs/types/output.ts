@@ -2662,6 +2662,34 @@ export interface DuploServiceLbconfigsLbconfig {
     extraSelectorLabels: outputs.DuploServiceLbconfigsLbconfigExtraSelectorLabel[];
     frontendIp: string;
     /**
+     * Backend service connection draining timeout in seconds. Applicable only for GCP.
+     */
+    gcpConnectionDrainingTimeoutSec: number;
+    /**
+     * Whether or not to enable access logs for the GCP load balancer. Applicable only for GCP.
+     */
+    gcpEnableAccessLogs: boolean;
+    /**
+     * Whether or not to enable HTTP to HTTPS redirect. Applicable only for GCP.
+     */
+    gcpHttpToHttpsRedirect: boolean;
+    /**
+     * Provides an average rate of destination HTTP requests for a single endpoint. Applicable only for GCP.
+     */
+    gcpMaxRatePerEndpoint: number;
+    /**
+     * The Cloud Armor security policy ID to apply to the load balancer. Applicable only for GCP.
+     */
+    gcpSecurityPolicyId: string;
+    /**
+     * Session affinity type. Must be one of: NONE, CLIENT_IP, GENERATED_COOKIE. Applicable only for GCP.
+     */
+    gcpSessionAffinity: string;
+    /**
+     * Backend service connection timeout in seconds. Applicable only for GCP.
+     */
+    gcpTimeoutSec: number;
+    /**
      * Health Check configuration block.
      */
     healthCheck: outputs.DuploServiceLbconfigsLbconfigHealthCheck;
@@ -4060,6 +4088,34 @@ export interface GetDuploServiceLbconfigsServiceLbconfig {
      */
     extraSelectorLabels: outputs.GetDuploServiceLbconfigsServiceLbconfigExtraSelectorLabel[];
     frontendIp: string;
+    /**
+     * Backend service connection draining timeout in seconds. Applicable only for GCP.
+     */
+    gcpConnectionDrainingTimeoutSec: number;
+    /**
+     * Whether or not to enable access logs for the GCP load balancer. Applicable only for GCP.
+     */
+    gcpEnableAccessLogs: boolean;
+    /**
+     * Whether or not to enable HTTP to HTTPS redirect. Applicable only for GCP.
+     */
+    gcpHttpToHttpsRedirect: boolean;
+    /**
+     * Provides an average rate of destination HTTP requests for a single endpoint. Applicable only for GCP.
+     */
+    gcpMaxRatePerEndpoint: number;
+    /**
+     * The Cloud Armor security policy ID to apply to the load balancer. Applicable only for GCP.
+     */
+    gcpSecurityPolicyId: string;
+    /**
+     * Session affinity type. Must be one of: NONE, CLIENT_IP, GENERATED_COOKIE. Applicable only for GCP.
+     */
+    gcpSessionAffinity: string;
+    /**
+     * Backend service connection timeout in seconds. Applicable only for GCP.
+     */
+    gcpTimeoutSec: number;
     /**
      * Health Check configuration block.
      */
@@ -12194,9 +12250,17 @@ export interface GetRdsInstanceV2ScalingConfiguration {
      * Minimum scaling capacity.
      */
     minCapacity: number;
+    /**
+     * Idle time in seconds (no connections or activity while at min_capacity) before Aurora Serverless v2 auto-pauses the cluster. Only applies when minCapacity is 0.
+     */
+    secondsUntilAutoPause: number;
 }
 
 export interface GetS3BucketDefaultEncryption {
+    /**
+     * The tenant KMS key ARN used for encryption, when a specific key is selected.
+     */
+    kmsKeyId: string;
     /**
      * Default encryption method.
      */
@@ -19271,9 +19335,13 @@ export interface RdsInstanceV2ScalingConfiguration {
      */
     maxCapacity: number;
     /**
-     * Specifies min scaling capacity.
+     * Specifies min scaling capacity. Set to `0` to enable Aurora Serverless v2 auto-pause (scale to zero) for idle clusters.
      */
     minCapacity: number;
+    /**
+     * The amount of time, in seconds, the cluster must remain idle — no connections and no database activity while at `minCapacity` — before Aurora Serverless v2 auto-pauses it (scales to zero ACUs). Any activity resets the timer. Only applies when `minCapacity` is `0`. Must be between 300 (5 minutes) and 86400 (24 hours).
+     */
+    secondsUntilAutoPause?: number;
 }
 
 export interface RdsReadReplicaPerformanceInsights {
@@ -19314,6 +19382,10 @@ export interface RdsReadReplicaV2ScalingConfiguration {
 }
 
 export interface S3BucketDefaultEncryption {
+    /**
+     * The tenant KMS key ID or ARN to use for encryption.  Only applicable when `method` is `TenantKms`.  When omitted, the default tenant KMS key is used.
+     */
+    kmsKeyId: string;
     /**
      * Default encryption method.  Must be one of: `None`, `Sse`, `AwsKms`, `TenantKms`.
      */

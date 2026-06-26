@@ -103,6 +103,48 @@ namespace DuploCloud.Pulumi.Inputs
         public Input<string>? FrontendIp { get; set; }
 
         /// <summary>
+        /// Backend service connection draining timeout in seconds. Applicable only for GCP.
+        /// </summary>
+        [Input("gcpConnectionDrainingTimeoutSec")]
+        public Input<int>? GcpConnectionDrainingTimeoutSec { get; set; }
+
+        /// <summary>
+        /// Whether or not to enable access logs for the GCP load balancer. Applicable only for GCP.
+        /// </summary>
+        [Input("gcpEnableAccessLogs")]
+        public Input<bool>? GcpEnableAccessLogs { get; set; }
+
+        /// <summary>
+        /// Whether or not to enable HTTP to HTTPS redirect. Applicable only for GCP.
+        /// </summary>
+        [Input("gcpHttpToHttpsRedirect")]
+        public Input<bool>? GcpHttpToHttpsRedirect { get; set; }
+
+        /// <summary>
+        /// Provides an average rate of destination HTTP requests for a single endpoint. Applicable only for GCP.
+        /// </summary>
+        [Input("gcpMaxRatePerEndpoint")]
+        public Input<double>? GcpMaxRatePerEndpoint { get; set; }
+
+        /// <summary>
+        /// The Cloud Armor security policy ID to apply to the load balancer. Applicable only for GCP.
+        /// </summary>
+        [Input("gcpSecurityPolicyId")]
+        public Input<string>? GcpSecurityPolicyId { get; set; }
+
+        /// <summary>
+        /// Session affinity type. Must be one of: NONE, CLIENT_IP, GENERATED_COOKIE. Applicable only for GCP.
+        /// </summary>
+        [Input("gcpSessionAffinity")]
+        public Input<string>? GcpSessionAffinity { get; set; }
+
+        /// <summary>
+        /// Backend service connection timeout in seconds. Applicable only for GCP.
+        /// </summary>
+        [Input("gcpTimeoutSec")]
+        public Input<int>? GcpTimeoutSec { get; set; }
+
+        /// <summary>
         /// Health Check configuration block.
         /// </summary>
         [Input("healthCheck")]

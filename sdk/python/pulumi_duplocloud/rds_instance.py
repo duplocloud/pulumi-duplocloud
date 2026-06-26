@@ -109,8 +109,8 @@ class RdsInstanceArgs:
                guaranteed, high-performance IOPS. Aurora I/O-Optimized storage offers provisioned IOPS for Aurora clusters that require
                consistently high performance for critical workloads. |
         :param pulumi.Input[bool] store_details_in_secret_manager: Whether or not to store RDS details in the AWS secrets manager.
-        :param pulumi.Input['RdsInstanceV2ScalingConfigurationArgs'] v2_scaling_configuration: Serverless v2_scaling_configuration min and max scaling capacity. This configuration is only applicable for serverless
-               instances
+        :param pulumi.Input['RdsInstanceV2ScalingConfigurationArgs'] v2_scaling_configuration: Serverless v2 scaling configuration specifying the min and max scaling capacity (in ACUs). This configuration is only
+               applicable for serverless instances.
         """
         pulumi.set(__self__, "engine", engine)
         pulumi.set(__self__, "size", size)
@@ -547,8 +547,8 @@ class RdsInstanceArgs:
     @pulumi.getter(name="v2ScalingConfiguration")
     def v2_scaling_configuration(self) -> Optional[pulumi.Input['RdsInstanceV2ScalingConfigurationArgs']]:
         """
-        Serverless v2_scaling_configuration min and max scaling capacity. This configuration is only applicable for serverless
-        instances
+        Serverless v2 scaling configuration specifying the min and max scaling capacity (in ACUs). This configuration is only
+        applicable for serverless instances.
         """
         return pulumi.get(self, "v2_scaling_configuration")
 
@@ -662,8 +662,8 @@ class _RdsInstanceState:
                consistently high performance for critical workloads. |
         :param pulumi.Input[bool] store_details_in_secret_manager: Whether or not to store RDS details in the AWS secrets manager.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the RDS instance will be created in.
-        :param pulumi.Input['RdsInstanceV2ScalingConfigurationArgs'] v2_scaling_configuration: Serverless v2_scaling_configuration min and max scaling capacity. This configuration is only applicable for serverless
-               instances
+        :param pulumi.Input['RdsInstanceV2ScalingConfigurationArgs'] v2_scaling_configuration: Serverless v2 scaling configuration specifying the min and max scaling capacity (in ACUs). This configuration is only
+               applicable for serverless instances.
         """
         if allocated_storage is not None:
             pulumi.set(__self__, "allocated_storage", allocated_storage)
@@ -1201,8 +1201,8 @@ class _RdsInstanceState:
     @pulumi.getter(name="v2ScalingConfiguration")
     def v2_scaling_configuration(self) -> Optional[pulumi.Input['RdsInstanceV2ScalingConfigurationArgs']]:
         """
-        Serverless v2_scaling_configuration min and max scaling capacity. This configuration is only applicable for serverless
-        instances
+        Serverless v2 scaling configuration specifying the min and max scaling capacity (in ACUs). This configuration is only
+        applicable for serverless instances.
         """
         return pulumi.get(self, "v2_scaling_configuration")
 
@@ -1685,8 +1685,8 @@ class RdsInstance(pulumi.CustomResource):
                consistently high performance for critical workloads. |
         :param pulumi.Input[bool] store_details_in_secret_manager: Whether or not to store RDS details in the AWS secrets manager.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the RDS instance will be created in.
-        :param pulumi.Input[Union['RdsInstanceV2ScalingConfigurationArgs', 'RdsInstanceV2ScalingConfigurationArgsDict']] v2_scaling_configuration: Serverless v2_scaling_configuration min and max scaling capacity. This configuration is only applicable for serverless
-               instances
+        :param pulumi.Input[Union['RdsInstanceV2ScalingConfigurationArgs', 'RdsInstanceV2ScalingConfigurationArgsDict']] v2_scaling_configuration: Serverless v2 scaling configuration specifying the min and max scaling capacity (in ACUs). This configuration is only
+               applicable for serverless instances.
         """
         ...
     @overload
@@ -2290,8 +2290,8 @@ class RdsInstance(pulumi.CustomResource):
                consistently high performance for critical workloads. |
         :param pulumi.Input[bool] store_details_in_secret_manager: Whether or not to store RDS details in the AWS secrets manager.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the RDS instance will be created in.
-        :param pulumi.Input[Union['RdsInstanceV2ScalingConfigurationArgs', 'RdsInstanceV2ScalingConfigurationArgsDict']] v2_scaling_configuration: Serverless v2_scaling_configuration min and max scaling capacity. This configuration is only applicable for serverless
-               instances
+        :param pulumi.Input[Union['RdsInstanceV2ScalingConfigurationArgs', 'RdsInstanceV2ScalingConfigurationArgsDict']] v2_scaling_configuration: Serverless v2 scaling configuration specifying the min and max scaling capacity (in ACUs). This configuration is only
+               applicable for serverless instances.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -2653,8 +2653,8 @@ class RdsInstance(pulumi.CustomResource):
     @pulumi.getter(name="v2ScalingConfiguration")
     def v2_scaling_configuration(self) -> pulumi.Output[Optional['outputs.RdsInstanceV2ScalingConfiguration']]:
         """
-        Serverless v2_scaling_configuration min and max scaling capacity. This configuration is only applicable for serverless
-        instances
+        Serverless v2 scaling configuration specifying the min and max scaling capacity (in ACUs). This configuration is only
+        applicable for serverless instances.
         """
         return pulumi.get(self, "v2_scaling_configuration")
 

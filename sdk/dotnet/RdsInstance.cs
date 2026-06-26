@@ -818,8 +818,8 @@ namespace DuploCloud.Pulumi
         public Output<string> TenantId { get; private set; } = null!;
 
         /// <summary>
-        /// Serverless v2_scaling_configuration min and max scaling capacity. This configuration is only applicable for serverless
-        /// instances
+        /// Serverless v2 scaling configuration specifying the min and max scaling capacity (in ACUs). This configuration is only
+        /// applicable for serverless instances.
         /// </summary>
         [Output("v2ScalingConfiguration")]
         public Output<Outputs.RdsInstanceV2ScalingConfiguration?> V2ScalingConfiguration { get; private set; } = null!;
@@ -1085,8 +1085,8 @@ namespace DuploCloud.Pulumi
         public Input<string> TenantId { get; set; } = null!;
 
         /// <summary>
-        /// Serverless v2_scaling_configuration min and max scaling capacity. This configuration is only applicable for serverless
-        /// instances
+        /// Serverless v2 scaling configuration specifying the min and max scaling capacity (in ACUs). This configuration is only
+        /// applicable for serverless instances.
         /// </summary>
         [Input("v2ScalingConfiguration")]
         public Input<Inputs.RdsInstanceV2ScalingConfigurationArgs>? V2ScalingConfiguration { get; set; }
@@ -1351,8 +1351,8 @@ namespace DuploCloud.Pulumi
         public Input<string>? TenantId { get; set; }
 
         /// <summary>
-        /// Serverless v2_scaling_configuration min and max scaling capacity. This configuration is only applicable for serverless
-        /// instances
+        /// Serverless v2 scaling configuration specifying the min and max scaling capacity (in ACUs). This configuration is only
+        /// applicable for serverless instances.
         /// </summary>
         [Input("v2ScalingConfiguration")]
         public Input<Inputs.RdsInstanceV2ScalingConfigurationGetArgs>? V2ScalingConfiguration { get; set; }

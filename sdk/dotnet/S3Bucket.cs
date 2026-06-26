@@ -279,6 +279,43 @@ namespace DuploCloud.Pulumi
     /// });
     /// ```
     /// 
+    /// ### Create an S3 bucket encrypted with a specific tenant KMS key (CMK)
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Pulumi = DuploCloud.Pulumi;
+    /// using Pulumi = Pulumi.Pulumi;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var tenant = Pulumi.GetTenant.Invoke(new()
+    ///     {
+    ///         Name = "preprod",
+    ///     });
+    /// 
+    ///     var bucket = new Pulumi.S3Bucket("bucket", new()
+    ///     {
+    ///         TenantId = tenant.Apply(getTenantResult =&gt; getTenantResult.Id),
+    ///         Name = "data",
+    ///         AllowPublicAccess = false,
+    ///         EnableAccessLogs = false,
+    ///         EnableVersioning = true,
+    ///         ManagedPolicies = new[]
+    ///         {
+    ///             "ssl",
+    ///         },
+    ///         DefaultEncryption = new Pulumi.Inputs.S3BucketDefaultEncryptionArgs
+    ///         {
+    ///             Method = "TenantKms",
+    ///             KmsKeyId = "arn:aws:kms:us-west-2:123456789012:key/5ae7e54b-553e-42ef-936e-5f554df6bf9a",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ### Deploy an S3 bucket with hardened security settings
     /// 
     /// ```csharp

@@ -629,8 +629,8 @@ export class RdsInstance extends pulumi.CustomResource {
      */
     public readonly tenantId!: pulumi.Output<string>;
     /**
-     * Serverless v2ScalingConfiguration min and max scaling capacity. This configuration is only applicable for serverless
-     * instances
+     * Serverless v2 scaling configuration specifying the min and max scaling capacity (in ACUs). This configuration is only
+     * applicable for serverless instances.
      */
     public readonly v2ScalingConfiguration!: pulumi.Output<outputs.RdsInstanceV2ScalingConfiguration | undefined>;
 
@@ -914,8 +914,8 @@ export interface RdsInstanceState {
      */
     tenantId?: pulumi.Input<string>;
     /**
-     * Serverless v2ScalingConfiguration min and max scaling capacity. This configuration is only applicable for serverless
-     * instances
+     * Serverless v2 scaling configuration specifying the min and max scaling capacity (in ACUs). This configuration is only
+     * applicable for serverless instances.
      */
     v2ScalingConfiguration?: pulumi.Input<inputs.RdsInstanceV2ScalingConfiguration>;
 }
@@ -1066,8 +1066,8 @@ export interface RdsInstanceArgs {
      */
     tenantId: pulumi.Input<string>;
     /**
-     * Serverless v2ScalingConfiguration min and max scaling capacity. This configuration is only applicable for serverless
-     * instances
+     * Serverless v2 scaling configuration specifying the min and max scaling capacity (in ACUs). This configuration is only
+     * applicable for serverless instances.
      */
     v2ScalingConfiguration?: pulumi.Input<inputs.RdsInstanceV2ScalingConfiguration>;
 }
