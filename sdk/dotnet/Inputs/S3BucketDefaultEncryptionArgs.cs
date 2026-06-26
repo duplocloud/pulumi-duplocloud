@@ -14,6 +14,12 @@ namespace DuploCloud.Pulumi.Inputs
     public sealed class S3BucketDefaultEncryptionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The tenant KMS key ID or ARN to use for encryption.  Only applicable when `method` is `TenantKms`.  When omitted, the default tenant KMS key is used.
+        /// </summary>
+        [Input("kmsKeyId")]
+        public Input<string>? KmsKeyId { get; set; }
+
+        /// <summary>
         /// Default encryption method.  Must be one of: `None`, `Sse`, `AwsKms`, `TenantKms`.
         /// </summary>
         [Input("method")]

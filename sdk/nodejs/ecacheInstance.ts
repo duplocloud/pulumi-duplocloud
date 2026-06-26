@@ -252,6 +252,8 @@ export class EcacheInstance extends pulumi.CustomResource {
     public readonly automaticFailoverEnabled!: pulumi.Output<boolean>;
     /**
      * The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache - `2` : Valkey
+     * Changing `cacheType` from `0` (Redis) to `2` (Valkey) performs an in-place engine upgrade. Any other change to
+     * `cacheType` forces replacement of the instance.
      */
     public readonly cacheType!: pulumi.Output<number | undefined>;
     /**
@@ -456,6 +458,8 @@ export interface EcacheInstanceState {
     automaticFailoverEnabled?: pulumi.Input<boolean>;
     /**
      * The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache - `2` : Valkey
+     * Changing `cacheType` from `0` (Redis) to `2` (Valkey) performs an in-place engine upgrade. Any other change to
+     * `cacheType` forces replacement of the instance.
      */
     cacheType?: pulumi.Input<number>;
     /**
@@ -573,6 +577,8 @@ export interface EcacheInstanceArgs {
     automaticFailoverEnabled?: pulumi.Input<boolean>;
     /**
      * The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache - `2` : Valkey
+     * Changing `cacheType` from `0` (Redis) to `2` (Valkey) performs an in-place engine upgrade. Any other change to
+     * `cacheType` forces replacement of the instance.
      */
     cacheType?: pulumi.Input<number>;
     /**

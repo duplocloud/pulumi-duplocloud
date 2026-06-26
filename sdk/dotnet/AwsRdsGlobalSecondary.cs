@@ -92,6 +92,12 @@ namespace DuploCloud.Pulumi
         public Output<string> GlobalId { get; private set; } = null!;
 
         /// <summary>
+        /// Optional custom KMS key (key ID or ARN) used to encrypt the secondary cluster's storage. The key must belong to the secondary tenant or its plan. When omitted, the secondary tenant's default KMS key is used.
+        /// </summary>
+        [Output("kmsKeyId")]
+        public Output<string?> KmsKeyId { get; private set; } = null!;
+
+        /// <summary>
         /// It removes the reader instances under secondary cluster by retaining the secondary cluster, Valid during updation Defaults to `false`.
         /// </summary>
         [Output("makeHeadless")]
@@ -184,6 +190,12 @@ namespace DuploCloud.Pulumi
         public Input<string> ClusterIdentifier { get; set; } = null!;
 
         /// <summary>
+        /// Optional custom KMS key (key ID or ARN) used to encrypt the secondary cluster's storage. The key must belong to the secondary tenant or its plan. When omitted, the secondary tenant's default KMS key is used.
+        /// </summary>
+        [Input("kmsKeyId")]
+        public Input<string>? KmsKeyId { get; set; }
+
+        /// <summary>
         /// It removes the reader instances under secondary cluster by retaining the secondary cluster, Valid during updation Defaults to `false`.
         /// </summary>
         [Input("makeHeadless")]
@@ -226,6 +238,12 @@ namespace DuploCloud.Pulumi
         /// </summary>
         [Input("globalId")]
         public Input<string>? GlobalId { get; set; }
+
+        /// <summary>
+        /// Optional custom KMS key (key ID or ARN) used to encrypt the secondary cluster's storage. The key must belong to the secondary tenant or its plan. When omitted, the secondary tenant's default KMS key is used.
+        /// </summary>
+        [Input("kmsKeyId")]
+        public Input<string>? KmsKeyId { get; set; }
 
         /// <summary>
         /// It removes the reader instances under secondary cluster by retaining the secondary cluster, Valid during updation Defaults to `false`.

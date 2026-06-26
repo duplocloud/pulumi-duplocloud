@@ -22,15 +22,22 @@ namespace DuploCloud.Pulumi.Outputs
         /// Minimum scaling capacity.
         /// </summary>
         public readonly double MinCapacity;
+        /// <summary>
+        /// Idle time in seconds (no connections or activity while at min_capacity) before Aurora Serverless v2 auto-pauses the cluster. Only applies when min_capacity is 0.
+        /// </summary>
+        public readonly int SecondsUntilAutoPause;
 
         [OutputConstructor]
         private GetRdsInstanceV2ScalingConfigurationResult(
             double maxCapacity,
 
-            double minCapacity)
+            double minCapacity,
+
+            int secondsUntilAutoPause)
         {
             MaxCapacity = maxCapacity;
             MinCapacity = minCapacity;
+            SecondsUntilAutoPause = secondsUntilAutoPause;
         }
     }
 }

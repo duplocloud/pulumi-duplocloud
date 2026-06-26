@@ -96,6 +96,10 @@ export class AwsRdsGlobalSecondary extends pulumi.CustomResource {
      */
     public /*out*/ readonly globalId!: pulumi.Output<string>;
     /**
+     * Optional custom KMS key (key ID or ARN) used to encrypt the secondary cluster's storage. The key must belong to the secondary tenant or its plan. When omitted, the secondary tenant's default KMS key is used.
+     */
+    public readonly kmsKeyId!: pulumi.Output<string | undefined>;
+    /**
      * It removes the reader instances under secondary cluster by retaining the secondary cluster, Valid during updation Defaults to `false`.
      */
     public readonly makeHeadless!: pulumi.Output<boolean | undefined>;
@@ -136,6 +140,7 @@ export class AwsRdsGlobalSecondary extends pulumi.CustomResource {
             const state = argsOrState as AwsRdsGlobalSecondaryState | undefined;
             resourceInputs["clusterIdentifier"] = state ? state.clusterIdentifier : undefined;
             resourceInputs["globalId"] = state ? state.globalId : undefined;
+            resourceInputs["kmsKeyId"] = state ? state.kmsKeyId : undefined;
             resourceInputs["makeHeadless"] = state ? state.makeHeadless : undefined;
             resourceInputs["primaryRegion"] = state ? state.primaryRegion : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
@@ -158,6 +163,7 @@ export class AwsRdsGlobalSecondary extends pulumi.CustomResource {
                 throw new Error("Missing required property 'tenantId'");
             }
             resourceInputs["clusterIdentifier"] = args ? args.clusterIdentifier : undefined;
+            resourceInputs["kmsKeyId"] = args ? args.kmsKeyId : undefined;
             resourceInputs["makeHeadless"] = args ? args.makeHeadless : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["secondaryTenantId"] = args ? args.secondaryTenantId : undefined;
@@ -184,6 +190,10 @@ export interface AwsRdsGlobalSecondaryState {
      * The identifier of the Global Database.
      */
     globalId?: pulumi.Input<string>;
+    /**
+     * Optional custom KMS key (key ID or ARN) used to encrypt the secondary cluster's storage. The key must belong to the secondary tenant or its plan. When omitted, the secondary tenant's default KMS key is used.
+     */
+    kmsKeyId?: pulumi.Input<string>;
     /**
      * It removes the reader instances under secondary cluster by retaining the secondary cluster, Valid during updation Defaults to `false`.
      */
@@ -219,6 +229,10 @@ export interface AwsRdsGlobalSecondaryArgs {
      * The identifier of the primary Database.
      */
     clusterIdentifier: pulumi.Input<string>;
+    /**
+     * Optional custom KMS key (key ID or ARN) used to encrypt the secondary cluster's storage. The key must belong to the secondary tenant or its plan. When omitted, the secondary tenant's default KMS key is used.
+     */
+    kmsKeyId?: pulumi.Input<string>;
     /**
      * It removes the reader instances under secondary cluster by retaining the secondary cluster, Valid during updation Defaults to `false`.
      */

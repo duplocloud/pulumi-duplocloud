@@ -23,6 +23,7 @@ class AwsRdsGlobalSecondaryArgs:
                  region: pulumi.Input[str],
                  secondary_tenant_id: pulumi.Input[str],
                  tenant_id: pulumi.Input[str],
+                 kms_key_id: Optional[pulumi.Input[str]] = None,
                  make_headless: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a AwsRdsGlobalSecondary resource.
@@ -30,12 +31,15 @@ class AwsRdsGlobalSecondaryArgs:
         :param pulumi.Input[str] region: The region of the secondary Database.
         :param pulumi.Input[str] secondary_tenant_id: The GUID of the tenant that the secondary RDS Global Database will be created in.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the RDS tag will be created in.
+        :param pulumi.Input[str] kms_key_id: Optional custom KMS key (key ID or ARN) used to encrypt the secondary cluster's storage. The key must belong to the secondary tenant or its plan. When omitted, the secondary tenant's default KMS key is used.
         :param pulumi.Input[bool] make_headless: It removes the reader instances under secondary cluster by retaining the secondary cluster, Valid during updation Defaults to `false`.
         """
         pulumi.set(__self__, "cluster_identifier", cluster_identifier)
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "secondary_tenant_id", secondary_tenant_id)
         pulumi.set(__self__, "tenant_id", tenant_id)
+        if kms_key_id is not None:
+            pulumi.set(__self__, "kms_key_id", kms_key_id)
         if make_headless is not None:
             pulumi.set(__self__, "make_headless", make_headless)
 
@@ -88,6 +92,18 @@ class AwsRdsGlobalSecondaryArgs:
         pulumi.set(self, "tenant_id", value)
 
     @property
+    @pulumi.getter(name="kmsKeyId")
+    def kms_key_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional custom KMS key (key ID or ARN) used to encrypt the secondary cluster's storage. The key must belong to the secondary tenant or its plan. When omitted, the secondary tenant's default KMS key is used.
+        """
+        return pulumi.get(self, "kms_key_id")
+
+    @kms_key_id.setter
+    def kms_key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key_id", value)
+
+    @property
     @pulumi.getter(name="makeHeadless")
     def make_headless(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -105,6 +121,7 @@ class _AwsRdsGlobalSecondaryState:
     def __init__(__self__, *,
                  cluster_identifier: Optional[pulumi.Input[str]] = None,
                  global_id: Optional[pulumi.Input[str]] = None,
+                 kms_key_id: Optional[pulumi.Input[str]] = None,
                  make_headless: Optional[pulumi.Input[bool]] = None,
                  primary_region: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -116,6 +133,7 @@ class _AwsRdsGlobalSecondaryState:
         Input properties used for looking up and filtering AwsRdsGlobalSecondary resources.
         :param pulumi.Input[str] cluster_identifier: The identifier of the primary Database.
         :param pulumi.Input[str] global_id: The identifier of the Global Database.
+        :param pulumi.Input[str] kms_key_id: Optional custom KMS key (key ID or ARN) used to encrypt the secondary cluster's storage. The key must belong to the secondary tenant or its plan. When omitted, the secondary tenant's default KMS key is used.
         :param pulumi.Input[bool] make_headless: It removes the reader instances under secondary cluster by retaining the secondary cluster, Valid during updation Defaults to `false`.
         :param pulumi.Input[str] region: The region of the secondary Database.
         :param pulumi.Input[str] secondary_cluster: The identifier of the secondary cluster.
@@ -127,6 +145,8 @@ class _AwsRdsGlobalSecondaryState:
             pulumi.set(__self__, "cluster_identifier", cluster_identifier)
         if global_id is not None:
             pulumi.set(__self__, "global_id", global_id)
+        if kms_key_id is not None:
+            pulumi.set(__self__, "kms_key_id", kms_key_id)
         if make_headless is not None:
             pulumi.set(__self__, "make_headless", make_headless)
         if primary_region is not None:
@@ -165,6 +185,18 @@ class _AwsRdsGlobalSecondaryState:
     @global_id.setter
     def global_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "global_id", value)
+
+    @property
+    @pulumi.getter(name="kmsKeyId")
+    def kms_key_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional custom KMS key (key ID or ARN) used to encrypt the secondary cluster's storage. The key must belong to the secondary tenant or its plan. When omitted, the secondary tenant's default KMS key is used.
+        """
+        return pulumi.get(self, "kms_key_id")
+
+    @kms_key_id.setter
+    def kms_key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key_id", value)
 
     @property
     @pulumi.getter(name="makeHeadless")
@@ -254,6 +286,7 @@ class AwsRdsGlobalSecondary(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_identifier: Optional[pulumi.Input[str]] = None,
+                 kms_key_id: Optional[pulumi.Input[str]] = None,
                  make_headless: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  secondary_tenant_id: Optional[pulumi.Input[str]] = None,
@@ -314,6 +347,7 @@ class AwsRdsGlobalSecondary(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_identifier: The identifier of the primary Database.
+        :param pulumi.Input[str] kms_key_id: Optional custom KMS key (key ID or ARN) used to encrypt the secondary cluster's storage. The key must belong to the secondary tenant or its plan. When omitted, the secondary tenant's default KMS key is used.
         :param pulumi.Input[bool] make_headless: It removes the reader instances under secondary cluster by retaining the secondary cluster, Valid during updation Defaults to `false`.
         :param pulumi.Input[str] region: The region of the secondary Database.
         :param pulumi.Input[str] secondary_tenant_id: The GUID of the tenant that the secondary RDS Global Database will be created in.
@@ -393,6 +427,7 @@ class AwsRdsGlobalSecondary(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_identifier: Optional[pulumi.Input[str]] = None,
+                 kms_key_id: Optional[pulumi.Input[str]] = None,
                  make_headless: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  secondary_tenant_id: Optional[pulumi.Input[str]] = None,
@@ -409,6 +444,7 @@ class AwsRdsGlobalSecondary(pulumi.CustomResource):
             if cluster_identifier is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_identifier'")
             __props__.__dict__["cluster_identifier"] = cluster_identifier
+            __props__.__dict__["kms_key_id"] = kms_key_id
             __props__.__dict__["make_headless"] = make_headless
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
@@ -435,6 +471,7 @@ class AwsRdsGlobalSecondary(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             cluster_identifier: Optional[pulumi.Input[str]] = None,
             global_id: Optional[pulumi.Input[str]] = None,
+            kms_key_id: Optional[pulumi.Input[str]] = None,
             make_headless: Optional[pulumi.Input[bool]] = None,
             primary_region: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
@@ -451,6 +488,7 @@ class AwsRdsGlobalSecondary(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_identifier: The identifier of the primary Database.
         :param pulumi.Input[str] global_id: The identifier of the Global Database.
+        :param pulumi.Input[str] kms_key_id: Optional custom KMS key (key ID or ARN) used to encrypt the secondary cluster's storage. The key must belong to the secondary tenant or its plan. When omitted, the secondary tenant's default KMS key is used.
         :param pulumi.Input[bool] make_headless: It removes the reader instances under secondary cluster by retaining the secondary cluster, Valid during updation Defaults to `false`.
         :param pulumi.Input[str] region: The region of the secondary Database.
         :param pulumi.Input[str] secondary_cluster: The identifier of the secondary cluster.
@@ -464,6 +502,7 @@ class AwsRdsGlobalSecondary(pulumi.CustomResource):
 
         __props__.__dict__["cluster_identifier"] = cluster_identifier
         __props__.__dict__["global_id"] = global_id
+        __props__.__dict__["kms_key_id"] = kms_key_id
         __props__.__dict__["make_headless"] = make_headless
         __props__.__dict__["primary_region"] = primary_region
         __props__.__dict__["region"] = region
@@ -488,6 +527,14 @@ class AwsRdsGlobalSecondary(pulumi.CustomResource):
         The identifier of the Global Database.
         """
         return pulumi.get(self, "global_id")
+
+    @property
+    @pulumi.getter(name="kmsKeyId")
+    def kms_key_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional custom KMS key (key ID or ARN) used to encrypt the secondary cluster's storage. The key must belong to the secondary tenant or its plan. When omitted, the secondary tenant's default KMS key is used.
+        """
+        return pulumi.get(self, "kms_key_id")
 
     @property
     @pulumi.getter(name="makeHeadless")

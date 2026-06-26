@@ -31473,6 +31473,20 @@ type DuploServiceLbconfigsLbconfig struct {
 	// Only for K8S services or load balancers in Kubernetes.  Sets an additional selector label to narrow which pods can receive traffic.
 	ExtraSelectorLabels []DuploServiceLbconfigsLbconfigExtraSelectorLabel `pulumi:"extraSelectorLabels"`
 	FrontendIp          *string                                           `pulumi:"frontendIp"`
+	// Backend service connection draining timeout in seconds. Applicable only for GCP.
+	GcpConnectionDrainingTimeoutSec *int `pulumi:"gcpConnectionDrainingTimeoutSec"`
+	// Whether or not to enable access logs for the GCP load balancer. Applicable only for GCP.
+	GcpEnableAccessLogs *bool `pulumi:"gcpEnableAccessLogs"`
+	// Whether or not to enable HTTP to HTTPS redirect. Applicable only for GCP.
+	GcpHttpToHttpsRedirect *bool `pulumi:"gcpHttpToHttpsRedirect"`
+	// Provides an average rate of destination HTTP requests for a single endpoint. Applicable only for GCP.
+	GcpMaxRatePerEndpoint *float64 `pulumi:"gcpMaxRatePerEndpoint"`
+	// The Cloud Armor security policy ID to apply to the load balancer. Applicable only for GCP.
+	GcpSecurityPolicyId *string `pulumi:"gcpSecurityPolicyId"`
+	// Session affinity type. Must be one of: NONE, CLIENT_IP, GENERATED_COOKIE. Applicable only for GCP.
+	GcpSessionAffinity *string `pulumi:"gcpSessionAffinity"`
+	// Backend service connection timeout in seconds. Applicable only for GCP.
+	GcpTimeoutSec *int `pulumi:"gcpTimeoutSec"`
 	// Health Check configuration block.
 	HealthCheck *DuploServiceLbconfigsLbconfigHealthCheck `pulumi:"healthCheck"`
 	// The health check URL to associate with this load balancer configuration.
@@ -31562,6 +31576,20 @@ type DuploServiceLbconfigsLbconfigArgs struct {
 	// Only for K8S services or load balancers in Kubernetes.  Sets an additional selector label to narrow which pods can receive traffic.
 	ExtraSelectorLabels DuploServiceLbconfigsLbconfigExtraSelectorLabelArrayInput `pulumi:"extraSelectorLabels"`
 	FrontendIp          pulumi.StringPtrInput                                     `pulumi:"frontendIp"`
+	// Backend service connection draining timeout in seconds. Applicable only for GCP.
+	GcpConnectionDrainingTimeoutSec pulumi.IntPtrInput `pulumi:"gcpConnectionDrainingTimeoutSec"`
+	// Whether or not to enable access logs for the GCP load balancer. Applicable only for GCP.
+	GcpEnableAccessLogs pulumi.BoolPtrInput `pulumi:"gcpEnableAccessLogs"`
+	// Whether or not to enable HTTP to HTTPS redirect. Applicable only for GCP.
+	GcpHttpToHttpsRedirect pulumi.BoolPtrInput `pulumi:"gcpHttpToHttpsRedirect"`
+	// Provides an average rate of destination HTTP requests for a single endpoint. Applicable only for GCP.
+	GcpMaxRatePerEndpoint pulumi.Float64PtrInput `pulumi:"gcpMaxRatePerEndpoint"`
+	// The Cloud Armor security policy ID to apply to the load balancer. Applicable only for GCP.
+	GcpSecurityPolicyId pulumi.StringPtrInput `pulumi:"gcpSecurityPolicyId"`
+	// Session affinity type. Must be one of: NONE, CLIENT_IP, GENERATED_COOKIE. Applicable only for GCP.
+	GcpSessionAffinity pulumi.StringPtrInput `pulumi:"gcpSessionAffinity"`
+	// Backend service connection timeout in seconds. Applicable only for GCP.
+	GcpTimeoutSec pulumi.IntPtrInput `pulumi:"gcpTimeoutSec"`
 	// Health Check configuration block.
 	HealthCheck DuploServiceLbconfigsLbconfigHealthCheckPtrInput `pulumi:"healthCheck"`
 	// The health check URL to associate with this load balancer configuration.
@@ -31726,6 +31754,41 @@ func (o DuploServiceLbconfigsLbconfigOutput) ExtraSelectorLabels() DuploServiceL
 
 func (o DuploServiceLbconfigsLbconfigOutput) FrontendIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DuploServiceLbconfigsLbconfig) *string { return v.FrontendIp }).(pulumi.StringPtrOutput)
+}
+
+// Backend service connection draining timeout in seconds. Applicable only for GCP.
+func (o DuploServiceLbconfigsLbconfigOutput) GcpConnectionDrainingTimeoutSec() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DuploServiceLbconfigsLbconfig) *int { return v.GcpConnectionDrainingTimeoutSec }).(pulumi.IntPtrOutput)
+}
+
+// Whether or not to enable access logs for the GCP load balancer. Applicable only for GCP.
+func (o DuploServiceLbconfigsLbconfigOutput) GcpEnableAccessLogs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DuploServiceLbconfigsLbconfig) *bool { return v.GcpEnableAccessLogs }).(pulumi.BoolPtrOutput)
+}
+
+// Whether or not to enable HTTP to HTTPS redirect. Applicable only for GCP.
+func (o DuploServiceLbconfigsLbconfigOutput) GcpHttpToHttpsRedirect() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DuploServiceLbconfigsLbconfig) *bool { return v.GcpHttpToHttpsRedirect }).(pulumi.BoolPtrOutput)
+}
+
+// Provides an average rate of destination HTTP requests for a single endpoint. Applicable only for GCP.
+func (o DuploServiceLbconfigsLbconfigOutput) GcpMaxRatePerEndpoint() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DuploServiceLbconfigsLbconfig) *float64 { return v.GcpMaxRatePerEndpoint }).(pulumi.Float64PtrOutput)
+}
+
+// The Cloud Armor security policy ID to apply to the load balancer. Applicable only for GCP.
+func (o DuploServiceLbconfigsLbconfigOutput) GcpSecurityPolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DuploServiceLbconfigsLbconfig) *string { return v.GcpSecurityPolicyId }).(pulumi.StringPtrOutput)
+}
+
+// Session affinity type. Must be one of: NONE, CLIENT_IP, GENERATED_COOKIE. Applicable only for GCP.
+func (o DuploServiceLbconfigsLbconfigOutput) GcpSessionAffinity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DuploServiceLbconfigsLbconfig) *string { return v.GcpSessionAffinity }).(pulumi.StringPtrOutput)
+}
+
+// Backend service connection timeout in seconds. Applicable only for GCP.
+func (o DuploServiceLbconfigsLbconfigOutput) GcpTimeoutSec() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DuploServiceLbconfigsLbconfig) *int { return v.GcpTimeoutSec }).(pulumi.IntPtrOutput)
 }
 
 // Health Check configuration block.

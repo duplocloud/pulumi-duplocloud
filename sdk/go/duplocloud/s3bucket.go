@@ -324,6 +324,49 @@ import (
 //
 // ```
 //
+// ### Create an S3 bucket encrypted with a specific tenant KMS key (CMK)
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/duplocloud/pulumi-duplocloud/sdk/go/duplocloud"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			tenant, err := duplocloud.LookupTenant(ctx, &duplocloud.LookupTenantArgs{
+//				Name: pulumi.StringRef("preprod"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = duplocloud.NewS3Bucket(ctx, "bucket", &duplocloud.S3BucketArgs{
+//				TenantId:          pulumi.String(tenant.Id),
+//				Name:              pulumi.String("data"),
+//				AllowPublicAccess: pulumi.Bool(false),
+//				EnableAccessLogs:  pulumi.Bool(false),
+//				EnableVersioning:  pulumi.Bool(true),
+//				ManagedPolicies: pulumi.StringArray{
+//					pulumi.String("ssl"),
+//				},
+//				DefaultEncryption: &duplocloud.S3BucketDefaultEncryptionArgs{
+//					Method:   pulumi.String("TenantKms"),
+//					KmsKeyId: pulumi.String("arn:aws:kms:us-west-2:123456789012:key/5ae7e54b-553e-42ef-936e-5f554df6bf9a"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ### Deploy an S3 bucket with hardened security settings
 //
 // ```go

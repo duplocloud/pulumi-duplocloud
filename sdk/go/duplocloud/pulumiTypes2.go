@@ -30872,6 +30872,8 @@ type GetRdsInstanceV2ScalingConfiguration struct {
 	MaxCapacity float64 `pulumi:"maxCapacity"`
 	// Minimum scaling capacity.
 	MinCapacity float64 `pulumi:"minCapacity"`
+	// Idle time in seconds (no connections or activity while at min_capacity) before Aurora Serverless v2 auto-pauses the cluster. Only applies when minCapacity is 0.
+	SecondsUntilAutoPause int `pulumi:"secondsUntilAutoPause"`
 }
 
 // GetRdsInstanceV2ScalingConfigurationInput is an input type that accepts GetRdsInstanceV2ScalingConfigurationArgs and GetRdsInstanceV2ScalingConfigurationOutput values.
@@ -30890,6 +30892,8 @@ type GetRdsInstanceV2ScalingConfigurationArgs struct {
 	MaxCapacity pulumi.Float64Input `pulumi:"maxCapacity"`
 	// Minimum scaling capacity.
 	MinCapacity pulumi.Float64Input `pulumi:"minCapacity"`
+	// Idle time in seconds (no connections or activity while at min_capacity) before Aurora Serverless v2 auto-pauses the cluster. Only applies when minCapacity is 0.
+	SecondsUntilAutoPause pulumi.IntInput `pulumi:"secondsUntilAutoPause"`
 }
 
 func (GetRdsInstanceV2ScalingConfigurationArgs) ElementType() reflect.Type {
@@ -30953,6 +30957,11 @@ func (o GetRdsInstanceV2ScalingConfigurationOutput) MinCapacity() pulumi.Float64
 	return o.ApplyT(func(v GetRdsInstanceV2ScalingConfiguration) float64 { return v.MinCapacity }).(pulumi.Float64Output)
 }
 
+// Idle time in seconds (no connections or activity while at min_capacity) before Aurora Serverless v2 auto-pauses the cluster. Only applies when minCapacity is 0.
+func (o GetRdsInstanceV2ScalingConfigurationOutput) SecondsUntilAutoPause() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRdsInstanceV2ScalingConfiguration) int { return v.SecondsUntilAutoPause }).(pulumi.IntOutput)
+}
+
 type GetRdsInstanceV2ScalingConfigurationArrayOutput struct{ *pulumi.OutputState }
 
 func (GetRdsInstanceV2ScalingConfigurationArrayOutput) ElementType() reflect.Type {
@@ -30974,6 +30983,8 @@ func (o GetRdsInstanceV2ScalingConfigurationArrayOutput) Index(i pulumi.IntInput
 }
 
 type GetS3BucketDefaultEncryption struct {
+	// The tenant KMS key ARN used for encryption, when a specific key is selected.
+	KmsKeyId string `pulumi:"kmsKeyId"`
 	// Default encryption method.
 	Method string `pulumi:"method"`
 }
@@ -30990,6 +31001,8 @@ type GetS3BucketDefaultEncryptionInput interface {
 }
 
 type GetS3BucketDefaultEncryptionArgs struct {
+	// The tenant KMS key ARN used for encryption, when a specific key is selected.
+	KmsKeyId pulumi.StringInput `pulumi:"kmsKeyId"`
 	// Default encryption method.
 	Method pulumi.StringInput `pulumi:"method"`
 }
@@ -31043,6 +31056,11 @@ func (o GetS3BucketDefaultEncryptionOutput) ToGetS3BucketDefaultEncryptionOutput
 
 func (o GetS3BucketDefaultEncryptionOutput) ToGetS3BucketDefaultEncryptionOutputWithContext(ctx context.Context) GetS3BucketDefaultEncryptionOutput {
 	return o
+}
+
+// The tenant KMS key ARN used for encryption, when a specific key is selected.
+func (o GetS3BucketDefaultEncryptionOutput) KmsKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetS3BucketDefaultEncryption) string { return v.KmsKeyId }).(pulumi.StringOutput)
 }
 
 // Default encryption method.

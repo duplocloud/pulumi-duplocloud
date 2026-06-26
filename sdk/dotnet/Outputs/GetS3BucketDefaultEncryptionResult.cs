@@ -15,13 +15,21 @@ namespace DuploCloud.Pulumi.Outputs
     public sealed class GetS3BucketDefaultEncryptionResult
     {
         /// <summary>
+        /// The tenant KMS key ARN used for encryption, when a specific key is selected.
+        /// </summary>
+        public readonly string KmsKeyId;
+        /// <summary>
         /// Default encryption method.
         /// </summary>
         public readonly string Method;
 
         [OutputConstructor]
-        private GetS3BucketDefaultEncryptionResult(string method)
+        private GetS3BucketDefaultEncryptionResult(
+            string kmsKeyId,
+
+            string method)
         {
+            KmsKeyId = kmsKeyId;
             Method = method;
         }
     }

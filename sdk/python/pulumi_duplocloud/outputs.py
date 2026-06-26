@@ -12962,6 +12962,20 @@ class DuploServiceLbconfigsLbconfig(dict):
             suggest = "extra_selector_labels"
         elif key == "frontendIp":
             suggest = "frontend_ip"
+        elif key == "gcpConnectionDrainingTimeoutSec":
+            suggest = "gcp_connection_draining_timeout_sec"
+        elif key == "gcpEnableAccessLogs":
+            suggest = "gcp_enable_access_logs"
+        elif key == "gcpHttpToHttpsRedirect":
+            suggest = "gcp_http_to_https_redirect"
+        elif key == "gcpMaxRatePerEndpoint":
+            suggest = "gcp_max_rate_per_endpoint"
+        elif key == "gcpSecurityPolicyId":
+            suggest = "gcp_security_policy_id"
+        elif key == "gcpSessionAffinity":
+            suggest = "gcp_session_affinity"
+        elif key == "gcpTimeoutSec":
+            suggest = "gcp_timeout_sec"
         elif key == "healthCheck":
             suggest = "health_check"
         elif key == "healthCheckUrl":
@@ -13012,6 +13026,13 @@ class DuploServiceLbconfigsLbconfig(dict):
                  external_traffic_policy: Optional[str] = None,
                  extra_selector_labels: Optional[Sequence['outputs.DuploServiceLbconfigsLbconfigExtraSelectorLabel']] = None,
                  frontend_ip: Optional[str] = None,
+                 gcp_connection_draining_timeout_sec: Optional[int] = None,
+                 gcp_enable_access_logs: Optional[bool] = None,
+                 gcp_http_to_https_redirect: Optional[bool] = None,
+                 gcp_max_rate_per_endpoint: Optional[float] = None,
+                 gcp_security_policy_id: Optional[str] = None,
+                 gcp_session_affinity: Optional[str] = None,
+                 gcp_timeout_sec: Optional[int] = None,
                  health_check: Optional['outputs.DuploServiceLbconfigsLbconfigHealthCheck'] = None,
                  health_check_url: Optional[str] = None,
                  host_name: Optional[str] = None,
@@ -13061,6 +13082,13 @@ class DuploServiceLbconfigsLbconfig(dict):
         :param int external_port: The frontend port associated with this load balancer configuration. Required if `lb_type` is not `7`.
         :param str external_traffic_policy: Only for K8S Node Port (`lb_type = 4`) or load balancers in Kubernetes.  Set the kubernetes service `externalTrafficPolicy` attribute.
         :param Sequence['DuploServiceLbconfigsLbconfigExtraSelectorLabelArgs'] extra_selector_labels: Only for K8S services or load balancers in Kubernetes.  Sets an additional selector label to narrow which pods can receive traffic.
+        :param int gcp_connection_draining_timeout_sec: Backend service connection draining timeout in seconds. Applicable only for GCP.
+        :param bool gcp_enable_access_logs: Whether or not to enable access logs for the GCP load balancer. Applicable only for GCP.
+        :param bool gcp_http_to_https_redirect: Whether or not to enable HTTP to HTTPS redirect. Applicable only for GCP.
+        :param float gcp_max_rate_per_endpoint: Provides an average rate of destination HTTP requests for a single endpoint. Applicable only for GCP.
+        :param str gcp_security_policy_id: The Cloud Armor security policy ID to apply to the load balancer. Applicable only for GCP.
+        :param str gcp_session_affinity: Session affinity type. Must be one of: NONE, CLIENT_IP, GENERATED_COOKIE. Applicable only for GCP.
+        :param int gcp_timeout_sec: Backend service connection timeout in seconds. Applicable only for GCP.
         :param 'DuploServiceLbconfigsLbconfigHealthCheckArgs' health_check: Health Check configuration block.
         :param str health_check_url: The health check URL to associate with this load balancer configuration.
         :param str host_name: (Azure Only) Set only if Azure Shared Application Gateway is used (`lb_type = 5`).
@@ -13101,6 +13129,20 @@ class DuploServiceLbconfigsLbconfig(dict):
             pulumi.set(__self__, "extra_selector_labels", extra_selector_labels)
         if frontend_ip is not None:
             pulumi.set(__self__, "frontend_ip", frontend_ip)
+        if gcp_connection_draining_timeout_sec is not None:
+            pulumi.set(__self__, "gcp_connection_draining_timeout_sec", gcp_connection_draining_timeout_sec)
+        if gcp_enable_access_logs is not None:
+            pulumi.set(__self__, "gcp_enable_access_logs", gcp_enable_access_logs)
+        if gcp_http_to_https_redirect is not None:
+            pulumi.set(__self__, "gcp_http_to_https_redirect", gcp_http_to_https_redirect)
+        if gcp_max_rate_per_endpoint is not None:
+            pulumi.set(__self__, "gcp_max_rate_per_endpoint", gcp_max_rate_per_endpoint)
+        if gcp_security_policy_id is not None:
+            pulumi.set(__self__, "gcp_security_policy_id", gcp_security_policy_id)
+        if gcp_session_affinity is not None:
+            pulumi.set(__self__, "gcp_session_affinity", gcp_session_affinity)
+        if gcp_timeout_sec is not None:
+            pulumi.set(__self__, "gcp_timeout_sec", gcp_timeout_sec)
         if health_check is not None:
             pulumi.set(__self__, "health_check", health_check)
         if health_check_url is not None:
@@ -13265,6 +13307,62 @@ class DuploServiceLbconfigsLbconfig(dict):
     @pulumi.getter(name="frontendIp")
     def frontend_ip(self) -> Optional[str]:
         return pulumi.get(self, "frontend_ip")
+
+    @property
+    @pulumi.getter(name="gcpConnectionDrainingTimeoutSec")
+    def gcp_connection_draining_timeout_sec(self) -> Optional[int]:
+        """
+        Backend service connection draining timeout in seconds. Applicable only for GCP.
+        """
+        return pulumi.get(self, "gcp_connection_draining_timeout_sec")
+
+    @property
+    @pulumi.getter(name="gcpEnableAccessLogs")
+    def gcp_enable_access_logs(self) -> Optional[bool]:
+        """
+        Whether or not to enable access logs for the GCP load balancer. Applicable only for GCP.
+        """
+        return pulumi.get(self, "gcp_enable_access_logs")
+
+    @property
+    @pulumi.getter(name="gcpHttpToHttpsRedirect")
+    def gcp_http_to_https_redirect(self) -> Optional[bool]:
+        """
+        Whether or not to enable HTTP to HTTPS redirect. Applicable only for GCP.
+        """
+        return pulumi.get(self, "gcp_http_to_https_redirect")
+
+    @property
+    @pulumi.getter(name="gcpMaxRatePerEndpoint")
+    def gcp_max_rate_per_endpoint(self) -> Optional[float]:
+        """
+        Provides an average rate of destination HTTP requests for a single endpoint. Applicable only for GCP.
+        """
+        return pulumi.get(self, "gcp_max_rate_per_endpoint")
+
+    @property
+    @pulumi.getter(name="gcpSecurityPolicyId")
+    def gcp_security_policy_id(self) -> Optional[str]:
+        """
+        The Cloud Armor security policy ID to apply to the load balancer. Applicable only for GCP.
+        """
+        return pulumi.get(self, "gcp_security_policy_id")
+
+    @property
+    @pulumi.getter(name="gcpSessionAffinity")
+    def gcp_session_affinity(self) -> Optional[str]:
+        """
+        Session affinity type. Must be one of: NONE, CLIENT_IP, GENERATED_COOKIE. Applicable only for GCP.
+        """
+        return pulumi.get(self, "gcp_session_affinity")
+
+    @property
+    @pulumi.getter(name="gcpTimeoutSec")
+    def gcp_timeout_sec(self) -> Optional[int]:
+        """
+        Backend service connection timeout in seconds. Applicable only for GCP.
+        """
+        return pulumi.get(self, "gcp_timeout_sec")
 
     @property
     @pulumi.getter(name="healthCheck")
@@ -41747,6 +41845,8 @@ class RdsInstanceV2ScalingConfiguration(dict):
             suggest = "max_capacity"
         elif key == "minCapacity":
             suggest = "min_capacity"
+        elif key == "secondsUntilAutoPause":
+            suggest = "seconds_until_auto_pause"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in RdsInstanceV2ScalingConfiguration. Access the value via the '{suggest}' property getter instead.")
@@ -41761,13 +41861,17 @@ class RdsInstanceV2ScalingConfiguration(dict):
 
     def __init__(__self__, *,
                  max_capacity: float,
-                 min_capacity: float):
+                 min_capacity: float,
+                 seconds_until_auto_pause: Optional[int] = None):
         """
         :param float max_capacity: Specifies max scaling capacity.
-        :param float min_capacity: Specifies min scaling capacity.
+        :param float min_capacity: Specifies min scaling capacity. Set to `0` to enable Aurora Serverless v2 auto-pause (scale to zero) for idle clusters.
+        :param int seconds_until_auto_pause: The amount of time, in seconds, the cluster must remain idle — no connections and no database activity while at `min_capacity` — before Aurora Serverless v2 auto-pauses it (scales to zero ACUs). Any activity resets the timer. Only applies when `min_capacity` is `0`. Must be between 300 (5 minutes) and 86400 (24 hours).
         """
         pulumi.set(__self__, "max_capacity", max_capacity)
         pulumi.set(__self__, "min_capacity", min_capacity)
+        if seconds_until_auto_pause is not None:
+            pulumi.set(__self__, "seconds_until_auto_pause", seconds_until_auto_pause)
 
     @property
     @pulumi.getter(name="maxCapacity")
@@ -41781,9 +41885,17 @@ class RdsInstanceV2ScalingConfiguration(dict):
     @pulumi.getter(name="minCapacity")
     def min_capacity(self) -> float:
         """
-        Specifies min scaling capacity.
+        Specifies min scaling capacity. Set to `0` to enable Aurora Serverless v2 auto-pause (scale to zero) for idle clusters.
         """
         return pulumi.get(self, "min_capacity")
+
+    @property
+    @pulumi.getter(name="secondsUntilAutoPause")
+    def seconds_until_auto_pause(self) -> Optional[int]:
+        """
+        The amount of time, in seconds, the cluster must remain idle — no connections and no database activity while at `min_capacity` — before Aurora Serverless v2 auto-pauses it (scales to zero ACUs). Any activity resets the timer. Only applies when `min_capacity` is `0`. Must be between 300 (5 minutes) and 86400 (24 hours).
+        """
+        return pulumi.get(self, "seconds_until_auto_pause")
 
 
 @pulumi.output_type
@@ -41946,13 +42058,42 @@ class RdsReadReplicaV2ScalingConfiguration(dict):
 
 @pulumi.output_type
 class S3BucketDefaultEncryption(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeyId":
+            suggest = "kms_key_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in S3BucketDefaultEncryption. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        S3BucketDefaultEncryption.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        S3BucketDefaultEncryption.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
+                 kms_key_id: Optional[str] = None,
                  method: Optional[str] = None):
         """
+        :param str kms_key_id: The tenant KMS key ID or ARN to use for encryption.  Only applicable when `method` is `TenantKms`.  When omitted, the default tenant KMS key is used.
         :param str method: Default encryption method.  Must be one of: `None`, `Sse`, `AwsKms`, `TenantKms`.
         """
+        if kms_key_id is not None:
+            pulumi.set(__self__, "kms_key_id", kms_key_id)
         if method is not None:
             pulumi.set(__self__, "method", method)
+
+    @property
+    @pulumi.getter(name="kmsKeyId")
+    def kms_key_id(self) -> Optional[str]:
+        """
+        The tenant KMS key ID or ARN to use for encryption.  Only applicable when `method` is `TenantKms`.  When omitted, the default tenant KMS key is used.
+        """
+        return pulumi.get(self, "kms_key_id")
 
     @property
     @pulumi.getter
@@ -44022,6 +44163,13 @@ class GetDuploServiceLbconfigsServiceLbconfigResult(dict):
                  external_traffic_policy: str,
                  extra_selector_labels: Sequence['outputs.GetDuploServiceLbconfigsServiceLbconfigExtraSelectorLabelResult'],
                  frontend_ip: str,
+                 gcp_connection_draining_timeout_sec: int,
+                 gcp_enable_access_logs: bool,
+                 gcp_http_to_https_redirect: bool,
+                 gcp_max_rate_per_endpoint: float,
+                 gcp_security_policy_id: str,
+                 gcp_session_affinity: str,
+                 gcp_timeout_sec: int,
                  health_check: 'outputs.GetDuploServiceLbconfigsServiceLbconfigHealthCheckResult',
                  health_check_url: str,
                  host_name: str,
@@ -44052,6 +44200,13 @@ class GetDuploServiceLbconfigsServiceLbconfigResult(dict):
         :param int external_port: The frontend port associated with this load balancer configuration. Required if `lb_type` is not `7`.
         :param str external_traffic_policy: Only for K8S Node Port (`lb_type = 4`) or load balancers in Kubernetes.  Set the kubernetes service `externalTrafficPolicy` attribute.
         :param Sequence['GetDuploServiceLbconfigsServiceLbconfigExtraSelectorLabelArgs'] extra_selector_labels: Only for K8S services or load balancers in Kubernetes.  Sets an additional selector label to narrow which pods can receive traffic.
+        :param int gcp_connection_draining_timeout_sec: Backend service connection draining timeout in seconds. Applicable only for GCP.
+        :param bool gcp_enable_access_logs: Whether or not to enable access logs for the GCP load balancer. Applicable only for GCP.
+        :param bool gcp_http_to_https_redirect: Whether or not to enable HTTP to HTTPS redirect. Applicable only for GCP.
+        :param float gcp_max_rate_per_endpoint: Provides an average rate of destination HTTP requests for a single endpoint. Applicable only for GCP.
+        :param str gcp_security_policy_id: The Cloud Armor security policy ID to apply to the load balancer. Applicable only for GCP.
+        :param str gcp_session_affinity: Session affinity type. Must be one of: NONE, CLIENT_IP, GENERATED_COOKIE. Applicable only for GCP.
+        :param int gcp_timeout_sec: Backend service connection timeout in seconds. Applicable only for GCP.
         :param 'GetDuploServiceLbconfigsServiceLbconfigHealthCheckArgs' health_check: Health Check configuration block.
         :param str health_check_url: The health check URL to associate with this load balancer configuration.
         :param str host_name: (Azure Only) Set only if Azure Shared Application Gateway is used (`lb_type = 5`).
@@ -44099,6 +44254,13 @@ class GetDuploServiceLbconfigsServiceLbconfigResult(dict):
         pulumi.set(__self__, "external_traffic_policy", external_traffic_policy)
         pulumi.set(__self__, "extra_selector_labels", extra_selector_labels)
         pulumi.set(__self__, "frontend_ip", frontend_ip)
+        pulumi.set(__self__, "gcp_connection_draining_timeout_sec", gcp_connection_draining_timeout_sec)
+        pulumi.set(__self__, "gcp_enable_access_logs", gcp_enable_access_logs)
+        pulumi.set(__self__, "gcp_http_to_https_redirect", gcp_http_to_https_redirect)
+        pulumi.set(__self__, "gcp_max_rate_per_endpoint", gcp_max_rate_per_endpoint)
+        pulumi.set(__self__, "gcp_security_policy_id", gcp_security_policy_id)
+        pulumi.set(__self__, "gcp_session_affinity", gcp_session_affinity)
+        pulumi.set(__self__, "gcp_timeout_sec", gcp_timeout_sec)
         pulumi.set(__self__, "health_check", health_check)
         pulumi.set(__self__, "health_check_url", health_check_url)
         pulumi.set(__self__, "host_name", host_name)
@@ -44210,6 +44372,62 @@ class GetDuploServiceLbconfigsServiceLbconfigResult(dict):
     @pulumi.getter(name="frontendIp")
     def frontend_ip(self) -> str:
         return pulumi.get(self, "frontend_ip")
+
+    @property
+    @pulumi.getter(name="gcpConnectionDrainingTimeoutSec")
+    def gcp_connection_draining_timeout_sec(self) -> int:
+        """
+        Backend service connection draining timeout in seconds. Applicable only for GCP.
+        """
+        return pulumi.get(self, "gcp_connection_draining_timeout_sec")
+
+    @property
+    @pulumi.getter(name="gcpEnableAccessLogs")
+    def gcp_enable_access_logs(self) -> bool:
+        """
+        Whether or not to enable access logs for the GCP load balancer. Applicable only for GCP.
+        """
+        return pulumi.get(self, "gcp_enable_access_logs")
+
+    @property
+    @pulumi.getter(name="gcpHttpToHttpsRedirect")
+    def gcp_http_to_https_redirect(self) -> bool:
+        """
+        Whether or not to enable HTTP to HTTPS redirect. Applicable only for GCP.
+        """
+        return pulumi.get(self, "gcp_http_to_https_redirect")
+
+    @property
+    @pulumi.getter(name="gcpMaxRatePerEndpoint")
+    def gcp_max_rate_per_endpoint(self) -> float:
+        """
+        Provides an average rate of destination HTTP requests for a single endpoint. Applicable only for GCP.
+        """
+        return pulumi.get(self, "gcp_max_rate_per_endpoint")
+
+    @property
+    @pulumi.getter(name="gcpSecurityPolicyId")
+    def gcp_security_policy_id(self) -> str:
+        """
+        The Cloud Armor security policy ID to apply to the load balancer. Applicable only for GCP.
+        """
+        return pulumi.get(self, "gcp_security_policy_id")
+
+    @property
+    @pulumi.getter(name="gcpSessionAffinity")
+    def gcp_session_affinity(self) -> str:
+        """
+        Session affinity type. Must be one of: NONE, CLIENT_IP, GENERATED_COOKIE. Applicable only for GCP.
+        """
+        return pulumi.get(self, "gcp_session_affinity")
+
+    @property
+    @pulumi.getter(name="gcpTimeoutSec")
+    def gcp_timeout_sec(self) -> int:
+        """
+        Backend service connection timeout in seconds. Applicable only for GCP.
+        """
+        return pulumi.get(self, "gcp_timeout_sec")
 
     @property
     @pulumi.getter(name="healthCheck")
@@ -67850,13 +68068,16 @@ class GetRdsInstanceStorageAutoscalingResult(dict):
 class GetRdsInstanceV2ScalingConfigurationResult(dict):
     def __init__(__self__, *,
                  max_capacity: float,
-                 min_capacity: float):
+                 min_capacity: float,
+                 seconds_until_auto_pause: int):
         """
         :param float max_capacity: Maximum scaling capacity.
         :param float min_capacity: Minimum scaling capacity.
+        :param int seconds_until_auto_pause: Idle time in seconds (no connections or activity while at min_capacity) before Aurora Serverless v2 auto-pauses the cluster. Only applies when min_capacity is 0.
         """
         pulumi.set(__self__, "max_capacity", max_capacity)
         pulumi.set(__self__, "min_capacity", min_capacity)
+        pulumi.set(__self__, "seconds_until_auto_pause", seconds_until_auto_pause)
 
     @property
     @pulumi.getter(name="maxCapacity")
@@ -67874,15 +68095,34 @@ class GetRdsInstanceV2ScalingConfigurationResult(dict):
         """
         return pulumi.get(self, "min_capacity")
 
+    @property
+    @pulumi.getter(name="secondsUntilAutoPause")
+    def seconds_until_auto_pause(self) -> int:
+        """
+        Idle time in seconds (no connections or activity while at min_capacity) before Aurora Serverless v2 auto-pauses the cluster. Only applies when min_capacity is 0.
+        """
+        return pulumi.get(self, "seconds_until_auto_pause")
+
 
 @pulumi.output_type
 class GetS3BucketDefaultEncryptionResult(dict):
     def __init__(__self__, *,
+                 kms_key_id: str,
                  method: str):
         """
+        :param str kms_key_id: The tenant KMS key ARN used for encryption, when a specific key is selected.
         :param str method: Default encryption method.
         """
+        pulumi.set(__self__, "kms_key_id", kms_key_id)
         pulumi.set(__self__, "method", method)
+
+    @property
+    @pulumi.getter(name="kmsKeyId")
+    def kms_key_id(self) -> str:
+        """
+        The tenant KMS key ARN used for encryption, when a specific key is selected.
+        """
+        return pulumi.get(self, "kms_key_id")
 
     @property
     @pulumi.getter

@@ -28304,8 +28304,10 @@ func (o RdsInstanceStorageAutoscalingPtrOutput) MaxAllocatedStorage() pulumi.Int
 type RdsInstanceV2ScalingConfiguration struct {
 	// Specifies max scaling capacity.
 	MaxCapacity float64 `pulumi:"maxCapacity"`
-	// Specifies min scaling capacity.
+	// Specifies min scaling capacity. Set to `0` to enable Aurora Serverless v2 auto-pause (scale to zero) for idle clusters.
 	MinCapacity float64 `pulumi:"minCapacity"`
+	// The amount of time, in seconds, the cluster must remain idle — no connections and no database activity while at `minCapacity` — before Aurora Serverless v2 auto-pauses it (scales to zero ACUs). Any activity resets the timer. Only applies when `minCapacity` is `0`. Must be between 300 (5 minutes) and 86400 (24 hours).
+	SecondsUntilAutoPause *int `pulumi:"secondsUntilAutoPause"`
 }
 
 // RdsInstanceV2ScalingConfigurationInput is an input type that accepts RdsInstanceV2ScalingConfigurationArgs and RdsInstanceV2ScalingConfigurationOutput values.
@@ -28322,8 +28324,10 @@ type RdsInstanceV2ScalingConfigurationInput interface {
 type RdsInstanceV2ScalingConfigurationArgs struct {
 	// Specifies max scaling capacity.
 	MaxCapacity pulumi.Float64Input `pulumi:"maxCapacity"`
-	// Specifies min scaling capacity.
+	// Specifies min scaling capacity. Set to `0` to enable Aurora Serverless v2 auto-pause (scale to zero) for idle clusters.
 	MinCapacity pulumi.Float64Input `pulumi:"minCapacity"`
+	// The amount of time, in seconds, the cluster must remain idle — no connections and no database activity while at `minCapacity` — before Aurora Serverless v2 auto-pauses it (scales to zero ACUs). Any activity resets the timer. Only applies when `minCapacity` is `0`. Must be between 300 (5 minutes) and 86400 (24 hours).
+	SecondsUntilAutoPause pulumi.IntPtrInput `pulumi:"secondsUntilAutoPause"`
 }
 
 func (RdsInstanceV2ScalingConfigurationArgs) ElementType() reflect.Type {
@@ -28408,9 +28412,14 @@ func (o RdsInstanceV2ScalingConfigurationOutput) MaxCapacity() pulumi.Float64Out
 	return o.ApplyT(func(v RdsInstanceV2ScalingConfiguration) float64 { return v.MaxCapacity }).(pulumi.Float64Output)
 }
 
-// Specifies min scaling capacity.
+// Specifies min scaling capacity. Set to `0` to enable Aurora Serverless v2 auto-pause (scale to zero) for idle clusters.
 func (o RdsInstanceV2ScalingConfigurationOutput) MinCapacity() pulumi.Float64Output {
 	return o.ApplyT(func(v RdsInstanceV2ScalingConfiguration) float64 { return v.MinCapacity }).(pulumi.Float64Output)
+}
+
+// The amount of time, in seconds, the cluster must remain idle — no connections and no database activity while at `minCapacity` — before Aurora Serverless v2 auto-pauses it (scales to zero ACUs). Any activity resets the timer. Only applies when `minCapacity` is `0`. Must be between 300 (5 minutes) and 86400 (24 hours).
+func (o RdsInstanceV2ScalingConfigurationOutput) SecondsUntilAutoPause() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RdsInstanceV2ScalingConfiguration) *int { return v.SecondsUntilAutoPause }).(pulumi.IntPtrOutput)
 }
 
 type RdsInstanceV2ScalingConfigurationPtrOutput struct{ *pulumi.OutputState }
@@ -28447,7 +28456,7 @@ func (o RdsInstanceV2ScalingConfigurationPtrOutput) MaxCapacity() pulumi.Float64
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Specifies min scaling capacity.
+// Specifies min scaling capacity. Set to `0` to enable Aurora Serverless v2 auto-pause (scale to zero) for idle clusters.
 func (o RdsInstanceV2ScalingConfigurationPtrOutput) MinCapacity() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *RdsInstanceV2ScalingConfiguration) *float64 {
 		if v == nil {
@@ -28455,6 +28464,16 @@ func (o RdsInstanceV2ScalingConfigurationPtrOutput) MinCapacity() pulumi.Float64
 		}
 		return &v.MinCapacity
 	}).(pulumi.Float64PtrOutput)
+}
+
+// The amount of time, in seconds, the cluster must remain idle — no connections and no database activity while at `minCapacity` — before Aurora Serverless v2 auto-pauses it (scales to zero ACUs). Any activity resets the timer. Only applies when `minCapacity` is `0`. Must be between 300 (5 minutes) and 86400 (24 hours).
+func (o RdsInstanceV2ScalingConfigurationPtrOutput) SecondsUntilAutoPause() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RdsInstanceV2ScalingConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SecondsUntilAutoPause
+	}).(pulumi.IntPtrOutput)
 }
 
 type RdsReadReplicaPerformanceInsights struct {
@@ -28945,6 +28964,8 @@ func (o RdsReadReplicaV2ScalingConfigurationPtrOutput) MinCapacity() pulumi.Floa
 }
 
 type S3BucketDefaultEncryption struct {
+	// The tenant KMS key ID or ARN to use for encryption.  Only applicable when `method` is `TenantKms`.  When omitted, the default tenant KMS key is used.
+	KmsKeyId *string `pulumi:"kmsKeyId"`
 	// Default encryption method.  Must be one of: `None`, `Sse`, `AwsKms`, `TenantKms`.
 	Method *string `pulumi:"method"`
 }
@@ -28961,6 +28982,8 @@ type S3BucketDefaultEncryptionInput interface {
 }
 
 type S3BucketDefaultEncryptionArgs struct {
+	// The tenant KMS key ID or ARN to use for encryption.  Only applicable when `method` is `TenantKms`.  When omitted, the default tenant KMS key is used.
+	KmsKeyId pulumi.StringPtrInput `pulumi:"kmsKeyId"`
 	// Default encryption method.  Must be one of: `None`, `Sse`, `AwsKms`, `TenantKms`.
 	Method pulumi.StringPtrInput `pulumi:"method"`
 }
@@ -29042,6 +29065,11 @@ func (o S3BucketDefaultEncryptionOutput) ToS3BucketDefaultEncryptionPtrOutputWit
 	}).(S3BucketDefaultEncryptionPtrOutput)
 }
 
+// The tenant KMS key ID or ARN to use for encryption.  Only applicable when `method` is `TenantKms`.  When omitted, the default tenant KMS key is used.
+func (o S3BucketDefaultEncryptionOutput) KmsKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v S3BucketDefaultEncryption) *string { return v.KmsKeyId }).(pulumi.StringPtrOutput)
+}
+
 // Default encryption method.  Must be one of: `None`, `Sse`, `AwsKms`, `TenantKms`.
 func (o S3BucketDefaultEncryptionOutput) Method() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v S3BucketDefaultEncryption) *string { return v.Method }).(pulumi.StringPtrOutput)
@@ -29069,6 +29097,16 @@ func (o S3BucketDefaultEncryptionPtrOutput) Elem() S3BucketDefaultEncryptionOutp
 		var ret S3BucketDefaultEncryption
 		return ret
 	}).(S3BucketDefaultEncryptionOutput)
+}
+
+// The tenant KMS key ID or ARN to use for encryption.  Only applicable when `method` is `TenantKms`.  When omitted, the default tenant KMS key is used.
+func (o S3BucketDefaultEncryptionPtrOutput) KmsKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *S3BucketDefaultEncryption) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKeyId
+	}).(pulumi.StringPtrOutput)
 }
 
 // Default encryption method.  Must be one of: `None`, `Sse`, `AwsKms`, `TenantKms`.
@@ -34593,6 +34631,20 @@ type GetDuploServiceLbconfigsServiceLbconfig struct {
 	// Only for K8S services or load balancers in Kubernetes.  Sets an additional selector label to narrow which pods can receive traffic.
 	ExtraSelectorLabels []GetDuploServiceLbconfigsServiceLbconfigExtraSelectorLabel `pulumi:"extraSelectorLabels"`
 	FrontendIp          string                                                      `pulumi:"frontendIp"`
+	// Backend service connection draining timeout in seconds. Applicable only for GCP.
+	GcpConnectionDrainingTimeoutSec int `pulumi:"gcpConnectionDrainingTimeoutSec"`
+	// Whether or not to enable access logs for the GCP load balancer. Applicable only for GCP.
+	GcpEnableAccessLogs bool `pulumi:"gcpEnableAccessLogs"`
+	// Whether or not to enable HTTP to HTTPS redirect. Applicable only for GCP.
+	GcpHttpToHttpsRedirect bool `pulumi:"gcpHttpToHttpsRedirect"`
+	// Provides an average rate of destination HTTP requests for a single endpoint. Applicable only for GCP.
+	GcpMaxRatePerEndpoint float64 `pulumi:"gcpMaxRatePerEndpoint"`
+	// The Cloud Armor security policy ID to apply to the load balancer. Applicable only for GCP.
+	GcpSecurityPolicyId string `pulumi:"gcpSecurityPolicyId"`
+	// Session affinity type. Must be one of: NONE, CLIENT_IP, GENERATED_COOKIE. Applicable only for GCP.
+	GcpSessionAffinity string `pulumi:"gcpSessionAffinity"`
+	// Backend service connection timeout in seconds. Applicable only for GCP.
+	GcpTimeoutSec int `pulumi:"gcpTimeoutSec"`
 	// Health Check configuration block.
 	HealthCheck GetDuploServiceLbconfigsServiceLbconfigHealthCheck `pulumi:"healthCheck"`
 	// The health check URL to associate with this load balancer configuration.
@@ -34682,6 +34734,20 @@ type GetDuploServiceLbconfigsServiceLbconfigArgs struct {
 	// Only for K8S services or load balancers in Kubernetes.  Sets an additional selector label to narrow which pods can receive traffic.
 	ExtraSelectorLabels GetDuploServiceLbconfigsServiceLbconfigExtraSelectorLabelArrayInput `pulumi:"extraSelectorLabels"`
 	FrontendIp          pulumi.StringInput                                                  `pulumi:"frontendIp"`
+	// Backend service connection draining timeout in seconds. Applicable only for GCP.
+	GcpConnectionDrainingTimeoutSec pulumi.IntInput `pulumi:"gcpConnectionDrainingTimeoutSec"`
+	// Whether or not to enable access logs for the GCP load balancer. Applicable only for GCP.
+	GcpEnableAccessLogs pulumi.BoolInput `pulumi:"gcpEnableAccessLogs"`
+	// Whether or not to enable HTTP to HTTPS redirect. Applicable only for GCP.
+	GcpHttpToHttpsRedirect pulumi.BoolInput `pulumi:"gcpHttpToHttpsRedirect"`
+	// Provides an average rate of destination HTTP requests for a single endpoint. Applicable only for GCP.
+	GcpMaxRatePerEndpoint pulumi.Float64Input `pulumi:"gcpMaxRatePerEndpoint"`
+	// The Cloud Armor security policy ID to apply to the load balancer. Applicable only for GCP.
+	GcpSecurityPolicyId pulumi.StringInput `pulumi:"gcpSecurityPolicyId"`
+	// Session affinity type. Must be one of: NONE, CLIENT_IP, GENERATED_COOKIE. Applicable only for GCP.
+	GcpSessionAffinity pulumi.StringInput `pulumi:"gcpSessionAffinity"`
+	// Backend service connection timeout in seconds. Applicable only for GCP.
+	GcpTimeoutSec pulumi.IntInput `pulumi:"gcpTimeoutSec"`
 	// Health Check configuration block.
 	HealthCheck GetDuploServiceLbconfigsServiceLbconfigHealthCheckInput `pulumi:"healthCheck"`
 	// The health check URL to associate with this load balancer configuration.
@@ -34846,6 +34912,41 @@ func (o GetDuploServiceLbconfigsServiceLbconfigOutput) ExtraSelectorLabels() Get
 
 func (o GetDuploServiceLbconfigsServiceLbconfigOutput) FrontendIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDuploServiceLbconfigsServiceLbconfig) string { return v.FrontendIp }).(pulumi.StringOutput)
+}
+
+// Backend service connection draining timeout in seconds. Applicable only for GCP.
+func (o GetDuploServiceLbconfigsServiceLbconfigOutput) GcpConnectionDrainingTimeoutSec() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDuploServiceLbconfigsServiceLbconfig) int { return v.GcpConnectionDrainingTimeoutSec }).(pulumi.IntOutput)
+}
+
+// Whether or not to enable access logs for the GCP load balancer. Applicable only for GCP.
+func (o GetDuploServiceLbconfigsServiceLbconfigOutput) GcpEnableAccessLogs() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDuploServiceLbconfigsServiceLbconfig) bool { return v.GcpEnableAccessLogs }).(pulumi.BoolOutput)
+}
+
+// Whether or not to enable HTTP to HTTPS redirect. Applicable only for GCP.
+func (o GetDuploServiceLbconfigsServiceLbconfigOutput) GcpHttpToHttpsRedirect() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDuploServiceLbconfigsServiceLbconfig) bool { return v.GcpHttpToHttpsRedirect }).(pulumi.BoolOutput)
+}
+
+// Provides an average rate of destination HTTP requests for a single endpoint. Applicable only for GCP.
+func (o GetDuploServiceLbconfigsServiceLbconfigOutput) GcpMaxRatePerEndpoint() pulumi.Float64Output {
+	return o.ApplyT(func(v GetDuploServiceLbconfigsServiceLbconfig) float64 { return v.GcpMaxRatePerEndpoint }).(pulumi.Float64Output)
+}
+
+// The Cloud Armor security policy ID to apply to the load balancer. Applicable only for GCP.
+func (o GetDuploServiceLbconfigsServiceLbconfigOutput) GcpSecurityPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDuploServiceLbconfigsServiceLbconfig) string { return v.GcpSecurityPolicyId }).(pulumi.StringOutput)
+}
+
+// Session affinity type. Must be one of: NONE, CLIENT_IP, GENERATED_COOKIE. Applicable only for GCP.
+func (o GetDuploServiceLbconfigsServiceLbconfigOutput) GcpSessionAffinity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDuploServiceLbconfigsServiceLbconfig) string { return v.GcpSessionAffinity }).(pulumi.StringOutput)
+}
+
+// Backend service connection timeout in seconds. Applicable only for GCP.
+func (o GetDuploServiceLbconfigsServiceLbconfigOutput) GcpTimeoutSec() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDuploServiceLbconfigsServiceLbconfig) int { return v.GcpTimeoutSec }).(pulumi.IntOutput)
 }
 
 // Health Check configuration block.

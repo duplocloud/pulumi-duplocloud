@@ -783,8 +783,8 @@ type RdsInstance struct {
 	StoreDetailsInSecretManager pulumi.BoolPtrOutput `pulumi:"storeDetailsInSecretManager"`
 	// The GUID of the tenant that the RDS instance will be created in.
 	TenantId pulumi.StringOutput `pulumi:"tenantId"`
-	// Serverless v2ScalingConfiguration min and max scaling capacity. This configuration is only applicable for serverless
-	// instances
+	// Serverless v2 scaling configuration specifying the min and max scaling capacity (in ACUs). This configuration is only
+	// applicable for serverless instances.
 	V2ScalingConfiguration RdsInstanceV2ScalingConfigurationPtrOutput `pulumi:"v2ScalingConfiguration"`
 }
 
@@ -933,8 +933,8 @@ type rdsInstanceState struct {
 	StoreDetailsInSecretManager *bool `pulumi:"storeDetailsInSecretManager"`
 	// The GUID of the tenant that the RDS instance will be created in.
 	TenantId *string `pulumi:"tenantId"`
-	// Serverless v2ScalingConfiguration min and max scaling capacity. This configuration is only applicable for serverless
-	// instances
+	// Serverless v2 scaling configuration specifying the min and max scaling capacity (in ACUs). This configuration is only
+	// applicable for serverless instances.
 	V2ScalingConfiguration *RdsInstanceV2ScalingConfiguration `pulumi:"v2ScalingConfiguration"`
 }
 
@@ -1038,8 +1038,8 @@ type RdsInstanceState struct {
 	StoreDetailsInSecretManager pulumi.BoolPtrInput
 	// The GUID of the tenant that the RDS instance will be created in.
 	TenantId pulumi.StringPtrInput
-	// Serverless v2ScalingConfiguration min and max scaling capacity. This configuration is only applicable for serverless
-	// instances
+	// Serverless v2 scaling configuration specifying the min and max scaling capacity (in ACUs). This configuration is only
+	// applicable for serverless instances.
 	V2ScalingConfiguration RdsInstanceV2ScalingConfigurationPtrInput
 }
 
@@ -1133,8 +1133,8 @@ type rdsInstanceArgs struct {
 	StoreDetailsInSecretManager *bool `pulumi:"storeDetailsInSecretManager"`
 	// The GUID of the tenant that the RDS instance will be created in.
 	TenantId string `pulumi:"tenantId"`
-	// Serverless v2ScalingConfiguration min and max scaling capacity. This configuration is only applicable for serverless
-	// instances
+	// Serverless v2 scaling configuration specifying the min and max scaling capacity (in ACUs). This configuration is only
+	// applicable for serverless instances.
 	V2ScalingConfiguration *RdsInstanceV2ScalingConfiguration `pulumi:"v2ScalingConfiguration"`
 }
 
@@ -1225,8 +1225,8 @@ type RdsInstanceArgs struct {
 	StoreDetailsInSecretManager pulumi.BoolPtrInput
 	// The GUID of the tenant that the RDS instance will be created in.
 	TenantId pulumi.StringInput
-	// Serverless v2ScalingConfiguration min and max scaling capacity. This configuration is only applicable for serverless
-	// instances
+	// Serverless v2 scaling configuration specifying the min and max scaling capacity (in ACUs). This configuration is only
+	// applicable for serverless instances.
 	V2ScalingConfiguration RdsInstanceV2ScalingConfigurationPtrInput
 }
 
@@ -1524,8 +1524,8 @@ func (o RdsInstanceOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RdsInstance) pulumi.StringOutput { return v.TenantId }).(pulumi.StringOutput)
 }
 
-// Serverless v2ScalingConfiguration min and max scaling capacity. This configuration is only applicable for serverless
-// instances
+// Serverless v2 scaling configuration specifying the min and max scaling capacity (in ACUs). This configuration is only
+// applicable for serverless instances.
 func (o RdsInstanceOutput) V2ScalingConfiguration() RdsInstanceV2ScalingConfigurationPtrOutput {
 	return o.ApplyT(func(v *RdsInstance) RdsInstanceV2ScalingConfigurationPtrOutput { return v.V2ScalingConfiguration }).(RdsInstanceV2ScalingConfigurationPtrOutput)
 }

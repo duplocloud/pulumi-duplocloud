@@ -62,6 +62,34 @@ namespace DuploCloud.Pulumi.Outputs
         public readonly ImmutableArray<Outputs.GetDuploServiceLbconfigsServiceLbconfigExtraSelectorLabelResult> ExtraSelectorLabels;
         public readonly string FrontendIp;
         /// <summary>
+        /// Backend service connection draining timeout in seconds. Applicable only for GCP.
+        /// </summary>
+        public readonly int GcpConnectionDrainingTimeoutSec;
+        /// <summary>
+        /// Whether or not to enable access logs for the GCP load balancer. Applicable only for GCP.
+        /// </summary>
+        public readonly bool GcpEnableAccessLogs;
+        /// <summary>
+        /// Whether or not to enable HTTP to HTTPS redirect. Applicable only for GCP.
+        /// </summary>
+        public readonly bool GcpHttpToHttpsRedirect;
+        /// <summary>
+        /// Provides an average rate of destination HTTP requests for a single endpoint. Applicable only for GCP.
+        /// </summary>
+        public readonly double GcpMaxRatePerEndpoint;
+        /// <summary>
+        /// The Cloud Armor security policy ID to apply to the load balancer. Applicable only for GCP.
+        /// </summary>
+        public readonly string GcpSecurityPolicyId;
+        /// <summary>
+        /// Session affinity type. Must be one of: NONE, CLIENT_IP, GENERATED_COOKIE. Applicable only for GCP.
+        /// </summary>
+        public readonly string GcpSessionAffinity;
+        /// <summary>
+        /// Backend service connection timeout in seconds. Applicable only for GCP.
+        /// </summary>
+        public readonly int GcpTimeoutSec;
+        /// <summary>
         /// Health Check configuration block.
         /// </summary>
         public readonly Outputs.GetDuploServiceLbconfigsServiceLbconfigHealthCheckResult HealthCheck;
@@ -168,6 +196,20 @@ namespace DuploCloud.Pulumi.Outputs
 
             string frontendIp,
 
+            int gcpConnectionDrainingTimeoutSec,
+
+            bool gcpEnableAccessLogs,
+
+            bool gcpHttpToHttpsRedirect,
+
+            double gcpMaxRatePerEndpoint,
+
+            string gcpSecurityPolicyId,
+
+            string gcpSessionAffinity,
+
+            int gcpTimeoutSec,
+
             Outputs.GetDuploServiceLbconfigsServiceLbconfigHealthCheckResult healthCheck,
 
             string healthCheckUrl,
@@ -212,6 +254,13 @@ namespace DuploCloud.Pulumi.Outputs
             ExternalTrafficPolicy = externalTrafficPolicy;
             ExtraSelectorLabels = extraSelectorLabels;
             FrontendIp = frontendIp;
+            GcpConnectionDrainingTimeoutSec = gcpConnectionDrainingTimeoutSec;
+            GcpEnableAccessLogs = gcpEnableAccessLogs;
+            GcpHttpToHttpsRedirect = gcpHttpToHttpsRedirect;
+            GcpMaxRatePerEndpoint = gcpMaxRatePerEndpoint;
+            GcpSecurityPolicyId = gcpSecurityPolicyId;
+            GcpSessionAffinity = gcpSessionAffinity;
+            GcpTimeoutSec = gcpTimeoutSec;
             HealthCheck = healthCheck;
             HealthCheckUrl = healthCheckUrl;
             HostName = hostName;

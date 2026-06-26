@@ -310,6 +310,8 @@ namespace DuploCloud.Pulumi
 
         /// <summary>
         /// The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache - `2` : Valkey
+        /// Changing `cache_type` from `0` (Redis) to `2` (Valkey) performs an in-place engine upgrade. Any other change to
+        /// `cache_type` forces replacement of the instance.
         /// </summary>
         [Output("cacheType")]
         public Output<int?> CacheType { get; private set; } = null!;
@@ -520,6 +522,8 @@ namespace DuploCloud.Pulumi
 
         /// <summary>
         /// The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache - `2` : Valkey
+        /// Changing `cache_type` from `0` (Redis) to `2` (Valkey) performs an in-place engine upgrade. Any other change to
+        /// `cache_type` forces replacement of the instance.
         /// </summary>
         [Input("cacheType")]
         public Input<int>? CacheType { get; set; }
@@ -675,6 +679,8 @@ namespace DuploCloud.Pulumi
 
         /// <summary>
         /// The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache - `2` : Valkey
+        /// Changing `cache_type` from `0` (Redis) to `2` (Valkey) performs an in-place engine upgrade. Any other change to
+        /// `cache_type` forces replacement of the instance.
         /// </summary>
         [Input("cacheType")]
         public Input<int>? CacheType { get; set; }

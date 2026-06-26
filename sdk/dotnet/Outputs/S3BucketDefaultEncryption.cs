@@ -15,13 +15,21 @@ namespace DuploCloud.Pulumi.Outputs
     public sealed class S3BucketDefaultEncryption
     {
         /// <summary>
+        /// The tenant KMS key ID or ARN to use for encryption.  Only applicable when `method` is `TenantKms`.  When omitted, the default tenant KMS key is used.
+        /// </summary>
+        public readonly string? KmsKeyId;
+        /// <summary>
         /// Default encryption method.  Must be one of: `None`, `Sse`, `AwsKms`, `TenantKms`.
         /// </summary>
         public readonly string? Method;
 
         [OutputConstructor]
-        private S3BucketDefaultEncryption(string? method)
+        private S3BucketDefaultEncryption(
+            string? kmsKeyId,
+
+            string? method)
         {
+            KmsKeyId = kmsKeyId;
             Method = method;
         }
     }

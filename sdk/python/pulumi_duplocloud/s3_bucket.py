@@ -520,6 +520,26 @@ class S3Bucket(pulumi.CustomResource):
             })
         ```
 
+        ### Create an S3 bucket encrypted with a specific tenant KMS key (CMK)
+
+        ```python
+        import pulumi
+        import pulumi_duplocloud as duplocloud
+
+        tenant = duplocloud.get_tenant(name="preprod")
+        bucket = duplocloud.S3Bucket("bucket",
+            tenant_id=tenant.id,
+            name="data",
+            allow_public_access=False,
+            enable_access_logs=False,
+            enable_versioning=True,
+            managed_policies=["ssl"],
+            default_encryption={
+                "method": "TenantKms",
+                "kms_key_id": "arn:aws:kms:us-west-2:123456789012:key/5ae7e54b-553e-42ef-936e-5f554df6bf9a",
+            })
+        ```
+
         ### Deploy an S3 bucket with hardened security settings
 
         ```python
@@ -758,6 +778,26 @@ class S3Bucket(pulumi.CustomResource):
             managed_policies=["ssl"],
             default_encryption={
                 "method": "TenantKms",
+            })
+        ```
+
+        ### Create an S3 bucket encrypted with a specific tenant KMS key (CMK)
+
+        ```python
+        import pulumi
+        import pulumi_duplocloud as duplocloud
+
+        tenant = duplocloud.get_tenant(name="preprod")
+        bucket = duplocloud.S3Bucket("bucket",
+            tenant_id=tenant.id,
+            name="data",
+            allow_public_access=False,
+            enable_access_logs=False,
+            enable_versioning=True,
+            managed_policies=["ssl"],
+            default_encryption={
+                "method": "TenantKms",
+                "kms_key_id": "arn:aws:kms:us-west-2:123456789012:key/5ae7e54b-553e-42ef-936e-5f554df6bf9a",
             })
         ```
 
