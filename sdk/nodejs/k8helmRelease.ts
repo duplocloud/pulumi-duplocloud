@@ -87,6 +87,10 @@ export class K8HelmRelease extends pulumi.CustomResource {
      */
     public readonly charts!: pulumi.Output<outputs.K8HelmReleaseChart[]>;
     /**
+     * When `true`, sets FluxCD's `spec.upgrade.force` so the release is delete-and-recreated on upgrade instead of patched. Use this to unblock chart upgrades on adopted releases where a field changes shape (e.g. an `env` entry moving from `value` to `valueFrom`) and Kubernetes Server-Side Apply cannot clear the stale field. Defaults to `false`.
+     */
+    public readonly forceUpdate!: pulumi.Output<boolean | undefined>;
+    /**
      * Interval related to helm release Defaults to `5m0s`.
      */
     public readonly interval!: pulumi.Output<string | undefined>;
@@ -121,6 +125,7 @@ export class K8HelmRelease extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as K8HelmReleaseState | undefined;
             resourceInputs["charts"] = state ? state.charts : undefined;
+            resourceInputs["forceUpdate"] = state ? state.forceUpdate : undefined;
             resourceInputs["interval"] = state ? state.interval : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["releaseName"] = state ? state.releaseName : undefined;
@@ -138,6 +143,7 @@ export class K8HelmRelease extends pulumi.CustomResource {
                 throw new Error("Missing required property 'tenantId'");
             }
             resourceInputs["charts"] = args ? args.charts : undefined;
+            resourceInputs["forceUpdate"] = args ? args.forceUpdate : undefined;
             resourceInputs["interval"] = args ? args.interval : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["releaseName"] = args ? args.releaseName : undefined;
@@ -157,6 +163,10 @@ export interface K8HelmReleaseState {
      * Helm chart
      */
     charts?: pulumi.Input<pulumi.Input<inputs.K8HelmReleaseChart>[]>;
+    /**
+     * When `true`, sets FluxCD's `spec.upgrade.force` so the release is delete-and-recreated on upgrade instead of patched. Use this to unblock chart upgrades on adopted releases where a field changes shape (e.g. an `env` entry moving from `value` to `valueFrom`) and Kubernetes Server-Side Apply cannot clear the stale field. Defaults to `false`.
+     */
+    forceUpdate?: pulumi.Input<boolean>;
     /**
      * Interval related to helm release Defaults to `5m0s`.
      */
@@ -187,6 +197,10 @@ export interface K8HelmReleaseArgs {
      * Helm chart
      */
     charts: pulumi.Input<pulumi.Input<inputs.K8HelmReleaseChart>[]>;
+    /**
+     * When `true`, sets FluxCD's `spec.upgrade.force` so the release is delete-and-recreated on upgrade instead of patched. Use this to unblock chart upgrades on adopted releases where a field changes shape (e.g. an `env` entry moving from `value` to `valueFrom`) and Kubernetes Server-Side Apply cannot clear the stale field. Defaults to `false`.
+     */
+    forceUpdate?: pulumi.Input<boolean>;
     /**
      * Interval related to helm release Defaults to `5m0s`.
      */

@@ -90,6 +90,8 @@ type K8HelmRelease struct {
 
 	// Helm chart
 	Charts K8HelmReleaseChartArrayOutput `pulumi:"charts"`
+	// When `true`, sets FluxCD's `spec.upgrade.force` so the release is delete-and-recreated on upgrade instead of patched. Use this to unblock chart upgrades on adopted releases where a field changes shape (e.g. an `env` entry moving from `value` to `valueFrom`) and Kubernetes Server-Side Apply cannot clear the stale field. Defaults to `false`.
+	ForceUpdate pulumi.BoolPtrOutput `pulumi:"forceUpdate"`
 	// Interval related to helm release Defaults to `5m0s`.
 	Interval pulumi.StringPtrOutput `pulumi:"interval"`
 	// The name of the helm chart
@@ -143,6 +145,8 @@ func GetK8HelmRelease(ctx *pulumi.Context,
 type k8helmReleaseState struct {
 	// Helm chart
 	Charts []K8HelmReleaseChart `pulumi:"charts"`
+	// When `true`, sets FluxCD's `spec.upgrade.force` so the release is delete-and-recreated on upgrade instead of patched. Use this to unblock chart upgrades on adopted releases where a field changes shape (e.g. an `env` entry moving from `value` to `valueFrom`) and Kubernetes Server-Side Apply cannot clear the stale field. Defaults to `false`.
+	ForceUpdate *bool `pulumi:"forceUpdate"`
 	// Interval related to helm release Defaults to `5m0s`.
 	Interval *string `pulumi:"interval"`
 	// The name of the helm chart
@@ -158,6 +162,8 @@ type k8helmReleaseState struct {
 type K8HelmReleaseState struct {
 	// Helm chart
 	Charts K8HelmReleaseChartArrayInput
+	// When `true`, sets FluxCD's `spec.upgrade.force` so the release is delete-and-recreated on upgrade instead of patched. Use this to unblock chart upgrades on adopted releases where a field changes shape (e.g. an `env` entry moving from `value` to `valueFrom`) and Kubernetes Server-Side Apply cannot clear the stale field. Defaults to `false`.
+	ForceUpdate pulumi.BoolPtrInput
 	// Interval related to helm release Defaults to `5m0s`.
 	Interval pulumi.StringPtrInput
 	// The name of the helm chart
@@ -177,6 +183,8 @@ func (K8HelmReleaseState) ElementType() reflect.Type {
 type k8helmReleaseArgs struct {
 	// Helm chart
 	Charts []K8HelmReleaseChart `pulumi:"charts"`
+	// When `true`, sets FluxCD's `spec.upgrade.force` so the release is delete-and-recreated on upgrade instead of patched. Use this to unblock chart upgrades on adopted releases where a field changes shape (e.g. an `env` entry moving from `value` to `valueFrom`) and Kubernetes Server-Side Apply cannot clear the stale field. Defaults to `false`.
+	ForceUpdate *bool `pulumi:"forceUpdate"`
 	// Interval related to helm release Defaults to `5m0s`.
 	Interval *string `pulumi:"interval"`
 	// The name of the helm chart
@@ -193,6 +201,8 @@ type k8helmReleaseArgs struct {
 type K8HelmReleaseArgs struct {
 	// Helm chart
 	Charts K8HelmReleaseChartArrayInput
+	// When `true`, sets FluxCD's `spec.upgrade.force` so the release is delete-and-recreated on upgrade instead of patched. Use this to unblock chart upgrades on adopted releases where a field changes shape (e.g. an `env` entry moving from `value` to `valueFrom`) and Kubernetes Server-Side Apply cannot clear the stale field. Defaults to `false`.
+	ForceUpdate pulumi.BoolPtrInput
 	// Interval related to helm release Defaults to `5m0s`.
 	Interval pulumi.StringPtrInput
 	// The name of the helm chart
@@ -295,6 +305,11 @@ func (o K8HelmReleaseOutput) ToK8HelmReleaseOutputWithContext(ctx context.Contex
 // Helm chart
 func (o K8HelmReleaseOutput) Charts() K8HelmReleaseChartArrayOutput {
 	return o.ApplyT(func(v *K8HelmRelease) K8HelmReleaseChartArrayOutput { return v.Charts }).(K8HelmReleaseChartArrayOutput)
+}
+
+// When `true`, sets FluxCD's `spec.upgrade.force` so the release is delete-and-recreated on upgrade instead of patched. Use this to unblock chart upgrades on adopted releases where a field changes shape (e.g. an `env` entry moving from `value` to `valueFrom`) and Kubernetes Server-Side Apply cannot clear the stale field. Defaults to `false`.
+func (o K8HelmReleaseOutput) ForceUpdate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *K8HelmRelease) pulumi.BoolPtrOutput { return v.ForceUpdate }).(pulumi.BoolPtrOutput)
 }
 
 // Interval related to helm release Defaults to `5m0s`.
