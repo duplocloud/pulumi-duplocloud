@@ -53858,6 +53858,10 @@
                     },
                     "description": "Helm chart\n"
                 },
+                "forceUpdate": {
+                    "type": "boolean",
+                    "description": "When `true`, sets FluxCD's `spec.upgrade.force` so the release is delete-and-recreated on upgrade instead of patched. Use this to unblock chart upgrades on adopted releases where a field changes shape (e.g. an `env` entry moving from `value` to `valueFrom`) and Kubernetes Server-Side Apply cannot clear the stale field. Defaults to `false`.\n"
+                },
                 "interval": {
                     "type": "string",
                     "description": "Interval related to helm release Defaults to `5m0s`.\n"
@@ -53893,6 +53897,10 @@
                     },
                     "description": "Helm chart\n",
                     "willReplaceOnChanges": true
+                },
+                "forceUpdate": {
+                    "type": "boolean",
+                    "description": "When `true`, sets FluxCD's `spec.upgrade.force` so the release is delete-and-recreated on upgrade instead of patched. Use this to unblock chart upgrades on adopted releases where a field changes shape (e.g. an `env` entry moving from `value` to `valueFrom`) and Kubernetes Server-Side Apply cannot clear the stale field. Defaults to `false`.\n"
                 },
                 "interval": {
                     "type": "string",
@@ -53933,6 +53941,10 @@
                         },
                         "description": "Helm chart\n",
                         "willReplaceOnChanges": true
+                    },
+                    "forceUpdate": {
+                        "type": "boolean",
+                        "description": "When `true`, sets FluxCD's `spec.upgrade.force` so the release is delete-and-recreated on upgrade instead of patched. Use this to unblock chart upgrades on adopted releases where a field changes shape (e.g. an `env` entry moving from `value` to `valueFrom`) and Kubernetes Server-Side Apply cannot clear the stale field. Defaults to `false`.\n"
                     },
                     "interval": {
                         "type": "string",
