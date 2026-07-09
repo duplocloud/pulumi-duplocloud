@@ -84,6 +84,12 @@ namespace DuploCloud.Pulumi
         public Output<ImmutableArray<Outputs.K8HelmReleaseChart>> Charts { get; private set; } = null!;
 
         /// <summary>
+        /// When `true`, sets FluxCD's `spec.upgrade.force` so the release is delete-and-recreated on upgrade instead of patched. Use this to unblock chart upgrades on adopted releases where a field changes shape (e.g. an `env` entry moving from `value` to `valueFrom`) and Kubernetes Server-Side Apply cannot clear the stale field. Defaults to `false`.
+        /// </summary>
+        [Output("forceUpdate")]
+        public Output<bool?> ForceUpdate { get; private set; } = null!;
+
+        /// <summary>
         /// Interval related to helm release Defaults to `5m0s`.
         /// </summary>
         [Output("interval")]
@@ -173,6 +179,12 @@ namespace DuploCloud.Pulumi
         }
 
         /// <summary>
+        /// When `true`, sets FluxCD's `spec.upgrade.force` so the release is delete-and-recreated on upgrade instead of patched. Use this to unblock chart upgrades on adopted releases where a field changes shape (e.g. an `env` entry moving from `value` to `valueFrom`) and Kubernetes Server-Side Apply cannot clear the stale field. Defaults to `false`.
+        /// </summary>
+        [Input("forceUpdate")]
+        public Input<bool>? ForceUpdate { get; set; }
+
+        /// <summary>
         /// Interval related to helm release Defaults to `5m0s`.
         /// </summary>
         [Input("interval")]
@@ -221,6 +233,12 @@ namespace DuploCloud.Pulumi
             get => _charts ?? (_charts = new InputList<Inputs.K8HelmReleaseChartGetArgs>());
             set => _charts = value;
         }
+
+        /// <summary>
+        /// When `true`, sets FluxCD's `spec.upgrade.force` so the release is delete-and-recreated on upgrade instead of patched. Use this to unblock chart upgrades on adopted releases where a field changes shape (e.g. an `env` entry moving from `value` to `valueFrom`) and Kubernetes Server-Side Apply cannot clear the stale field. Defaults to `false`.
+        /// </summary>
+        [Input("forceUpdate")]
+        public Input<bool>? ForceUpdate { get; set; }
 
         /// <summary>
         /// Interval related to helm release Defaults to `5m0s`.

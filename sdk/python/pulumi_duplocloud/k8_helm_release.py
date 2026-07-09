@@ -24,6 +24,7 @@ class K8HelmReleaseArgs:
                  charts: pulumi.Input[Sequence[pulumi.Input['K8HelmReleaseChartArgs']]],
                  release_name: pulumi.Input[str],
                  tenant_id: pulumi.Input[str],
+                 force_update: Optional[pulumi.Input[bool]] = None,
                  interval: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  values: Optional[pulumi.Input[str]] = None):
@@ -32,6 +33,7 @@ class K8HelmReleaseArgs:
         :param pulumi.Input[Sequence[pulumi.Input['K8HelmReleaseChartArgs']]] charts: Helm chart
         :param pulumi.Input[str] release_name: Provide release name to identify specific deployment of helm chart.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the storage bucket will be created in.
+        :param pulumi.Input[bool] force_update: When `true`, sets FluxCD's `spec.upgrade.force` so the release is delete-and-recreated on upgrade instead of patched. Use this to unblock chart upgrades on adopted releases where a field changes shape (e.g. an `env` entry moving from `value` to `valueFrom`) and Kubernetes Server-Side Apply cannot clear the stale field. Defaults to `false`.
         :param pulumi.Input[str] interval: Interval related to helm release Defaults to `5m0s`.
         :param pulumi.Input[str] name: The name of the helm chart
         :param pulumi.Input[str] values: Customise an helm chart.
@@ -39,6 +41,8 @@ class K8HelmReleaseArgs:
         pulumi.set(__self__, "charts", charts)
         pulumi.set(__self__, "release_name", release_name)
         pulumi.set(__self__, "tenant_id", tenant_id)
+        if force_update is not None:
+            pulumi.set(__self__, "force_update", force_update)
         if interval is not None:
             pulumi.set(__self__, "interval", interval)
         if name is not None:
@@ -83,6 +87,18 @@ class K8HelmReleaseArgs:
         pulumi.set(self, "tenant_id", value)
 
     @property
+    @pulumi.getter(name="forceUpdate")
+    def force_update(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When `true`, sets FluxCD's `spec.upgrade.force` so the release is delete-and-recreated on upgrade instead of patched. Use this to unblock chart upgrades on adopted releases where a field changes shape (e.g. an `env` entry moving from `value` to `valueFrom`) and Kubernetes Server-Side Apply cannot clear the stale field. Defaults to `false`.
+        """
+        return pulumi.get(self, "force_update")
+
+    @force_update.setter
+    def force_update(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_update", value)
+
+    @property
     @pulumi.getter
     def interval(self) -> Optional[pulumi.Input[str]]:
         """
@@ -123,6 +139,7 @@ class K8HelmReleaseArgs:
 class _K8HelmReleaseState:
     def __init__(__self__, *,
                  charts: Optional[pulumi.Input[Sequence[pulumi.Input['K8HelmReleaseChartArgs']]]] = None,
+                 force_update: Optional[pulumi.Input[bool]] = None,
                  interval: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  release_name: Optional[pulumi.Input[str]] = None,
@@ -131,6 +148,7 @@ class _K8HelmReleaseState:
         """
         Input properties used for looking up and filtering K8HelmRelease resources.
         :param pulumi.Input[Sequence[pulumi.Input['K8HelmReleaseChartArgs']]] charts: Helm chart
+        :param pulumi.Input[bool] force_update: When `true`, sets FluxCD's `spec.upgrade.force` so the release is delete-and-recreated on upgrade instead of patched. Use this to unblock chart upgrades on adopted releases where a field changes shape (e.g. an `env` entry moving from `value` to `valueFrom`) and Kubernetes Server-Side Apply cannot clear the stale field. Defaults to `false`.
         :param pulumi.Input[str] interval: Interval related to helm release Defaults to `5m0s`.
         :param pulumi.Input[str] name: The name of the helm chart
         :param pulumi.Input[str] release_name: Provide release name to identify specific deployment of helm chart.
@@ -139,6 +157,8 @@ class _K8HelmReleaseState:
         """
         if charts is not None:
             pulumi.set(__self__, "charts", charts)
+        if force_update is not None:
+            pulumi.set(__self__, "force_update", force_update)
         if interval is not None:
             pulumi.set(__self__, "interval", interval)
         if name is not None:
@@ -161,6 +181,18 @@ class _K8HelmReleaseState:
     @charts.setter
     def charts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8HelmReleaseChartArgs']]]]):
         pulumi.set(self, "charts", value)
+
+    @property
+    @pulumi.getter(name="forceUpdate")
+    def force_update(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When `true`, sets FluxCD's `spec.upgrade.force` so the release is delete-and-recreated on upgrade instead of patched. Use this to unblock chart upgrades on adopted releases where a field changes shape (e.g. an `env` entry moving from `value` to `valueFrom`) and Kubernetes Server-Side Apply cannot clear the stale field. Defaults to `false`.
+        """
+        return pulumi.get(self, "force_update")
+
+    @force_update.setter
+    def force_update(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_update", value)
 
     @property
     @pulumi.getter
@@ -229,6 +261,7 @@ class K8HelmRelease(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  charts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['K8HelmReleaseChartArgs', 'K8HelmReleaseChartArgsDict']]]]] = None,
+                 force_update: Optional[pulumi.Input[bool]] = None,
                  interval: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  release_name: Optional[pulumi.Input[str]] = None,
@@ -285,6 +318,7 @@ class K8HelmRelease(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['K8HelmReleaseChartArgs', 'K8HelmReleaseChartArgsDict']]]] charts: Helm chart
+        :param pulumi.Input[bool] force_update: When `true`, sets FluxCD's `spec.upgrade.force` so the release is delete-and-recreated on upgrade instead of patched. Use this to unblock chart upgrades on adopted releases where a field changes shape (e.g. an `env` entry moving from `value` to `valueFrom`) and Kubernetes Server-Side Apply cannot clear the stale field. Defaults to `false`.
         :param pulumi.Input[str] interval: Interval related to helm release Defaults to `5m0s`.
         :param pulumi.Input[str] name: The name of the helm chart
         :param pulumi.Input[str] release_name: Provide release name to identify specific deployment of helm chart.
@@ -360,6 +394,7 @@ class K8HelmRelease(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  charts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['K8HelmReleaseChartArgs', 'K8HelmReleaseChartArgsDict']]]]] = None,
+                 force_update: Optional[pulumi.Input[bool]] = None,
                  interval: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  release_name: Optional[pulumi.Input[str]] = None,
@@ -377,6 +412,7 @@ class K8HelmRelease(pulumi.CustomResource):
             if charts is None and not opts.urn:
                 raise TypeError("Missing required property 'charts'")
             __props__.__dict__["charts"] = charts
+            __props__.__dict__["force_update"] = force_update
             __props__.__dict__["interval"] = interval
             __props__.__dict__["name"] = name
             if release_name is None and not opts.urn:
@@ -397,6 +433,7 @@ class K8HelmRelease(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             charts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['K8HelmReleaseChartArgs', 'K8HelmReleaseChartArgsDict']]]]] = None,
+            force_update: Optional[pulumi.Input[bool]] = None,
             interval: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             release_name: Optional[pulumi.Input[str]] = None,
@@ -410,6 +447,7 @@ class K8HelmRelease(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['K8HelmReleaseChartArgs', 'K8HelmReleaseChartArgsDict']]]] charts: Helm chart
+        :param pulumi.Input[bool] force_update: When `true`, sets FluxCD's `spec.upgrade.force` so the release is delete-and-recreated on upgrade instead of patched. Use this to unblock chart upgrades on adopted releases where a field changes shape (e.g. an `env` entry moving from `value` to `valueFrom`) and Kubernetes Server-Side Apply cannot clear the stale field. Defaults to `false`.
         :param pulumi.Input[str] interval: Interval related to helm release Defaults to `5m0s`.
         :param pulumi.Input[str] name: The name of the helm chart
         :param pulumi.Input[str] release_name: Provide release name to identify specific deployment of helm chart.
@@ -421,6 +459,7 @@ class K8HelmRelease(pulumi.CustomResource):
         __props__ = _K8HelmReleaseState.__new__(_K8HelmReleaseState)
 
         __props__.__dict__["charts"] = charts
+        __props__.__dict__["force_update"] = force_update
         __props__.__dict__["interval"] = interval
         __props__.__dict__["name"] = name
         __props__.__dict__["release_name"] = release_name
@@ -435,6 +474,14 @@ class K8HelmRelease(pulumi.CustomResource):
         Helm chart
         """
         return pulumi.get(self, "charts")
+
+    @property
+    @pulumi.getter(name="forceUpdate")
+    def force_update(self) -> pulumi.Output[Optional[bool]]:
+        """
+        When `true`, sets FluxCD's `spec.upgrade.force` so the release is delete-and-recreated on upgrade instead of patched. Use this to unblock chart upgrades on adopted releases where a field changes shape (e.g. an `env` entry moving from `value` to `valueFrom`) and Kubernetes Server-Side Apply cannot clear the stale field. Defaults to `false`.
+        """
+        return pulumi.get(self, "force_update")
 
     @property
     @pulumi.getter
