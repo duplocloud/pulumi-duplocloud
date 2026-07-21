@@ -27,7 +27,7 @@ class GetDuploServiceResult:
     """
     A collection of values returned by getDuploService.
     """
-    def __init__(__self__, agent_platform=None, allocation_tags=None, any_host_allowed=None, cloud=None, cloud_creds_from_k8s_service_account=None, commands=None, docker_image=None, domain=None, extra_config=None, force_stateful_set=None, fqdn=None, fqdn_ex=None, hpa_specs=None, id=None, is_daemonset=None, is_unique_k8s_node_required=None, lb_synced_deployment=None, name=None, other_docker_config=None, other_docker_host_config=None, parent_domain=None, replica_collocation_allowed=None, replicas=None, replicas_matching_asg_name=None, should_spread_across_zones=None, tags=None, tenant_id=None, volumes=None):
+    def __init__(__self__, agent_platform=None, allocation_tags=None, any_host_allowed=None, cloud=None, cloud_creds_from_k8s_service_account=None, commands=None, docker_image=None, domain=None, extra_config=None, force_stateful_set=None, fqdn=None, fqdn_ex=None, hpa_specs=None, id=None, is_daemonset=None, is_unique_k8s_node_required=None, k8s_worker_os=None, lb_synced_deployment=None, name=None, other_docker_config=None, other_docker_host_config=None, parent_domain=None, replica_collocation_allowed=None, replicas=None, replicas_matching_asg_name=None, should_spread_across_zones=None, tags=None, tenant_id=None, volumes=None):
         if agent_platform and not isinstance(agent_platform, int):
             raise TypeError("Expected argument 'agent_platform' to be a int")
         pulumi.set(__self__, "agent_platform", agent_platform)
@@ -76,6 +76,9 @@ class GetDuploServiceResult:
         if is_unique_k8s_node_required and not isinstance(is_unique_k8s_node_required, bool):
             raise TypeError("Expected argument 'is_unique_k8s_node_required' to be a bool")
         pulumi.set(__self__, "is_unique_k8s_node_required", is_unique_k8s_node_required)
+        if k8s_worker_os and not isinstance(k8s_worker_os, str):
+            raise TypeError("Expected argument 'k8s_worker_os' to be a str")
+        pulumi.set(__self__, "k8s_worker_os", k8s_worker_os)
         if lb_synced_deployment and not isinstance(lb_synced_deployment, bool):
             raise TypeError("Expected argument 'lb_synced_deployment' to be a bool")
         pulumi.set(__self__, "lb_synced_deployment", lb_synced_deployment)
@@ -209,6 +212,14 @@ class GetDuploServiceResult:
         return pulumi.get(self, "is_unique_k8s_node_required")
 
     @property
+    @pulumi.getter(name="k8sWorkerOs")
+    def k8s_worker_os(self) -> str:
+        """
+        OS type for k8s worker. Valid values: `Linux`, `Windows`.
+        """
+        return pulumi.get(self, "k8s_worker_os")
+
+    @property
     @pulumi.getter(name="lbSyncedDeployment")
     def lb_synced_deployment(self) -> bool:
         return pulumi.get(self, "lb_synced_deployment")
@@ -297,6 +308,7 @@ class AwaitableGetDuploServiceResult(GetDuploServiceResult):
             id=self.id,
             is_daemonset=self.is_daemonset,
             is_unique_k8s_node_required=self.is_unique_k8s_node_required,
+            k8s_worker_os=self.k8s_worker_os,
             lb_synced_deployment=self.lb_synced_deployment,
             name=self.name,
             other_docker_config=self.other_docker_config,
@@ -340,6 +352,7 @@ def get_duplo_service(name: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         is_daemonset=pulumi.get(__ret__, 'is_daemonset'),
         is_unique_k8s_node_required=pulumi.get(__ret__, 'is_unique_k8s_node_required'),
+        k8s_worker_os=pulumi.get(__ret__, 'k8s_worker_os'),
         lb_synced_deployment=pulumi.get(__ret__, 'lb_synced_deployment'),
         name=pulumi.get(__ret__, 'name'),
         other_docker_config=pulumi.get(__ret__, 'other_docker_config'),
@@ -380,6 +393,7 @@ def get_duplo_service_output(name: Optional[pulumi.Input[str]] = None,
         id=pulumi.get(__response__, 'id'),
         is_daemonset=pulumi.get(__response__, 'is_daemonset'),
         is_unique_k8s_node_required=pulumi.get(__response__, 'is_unique_k8s_node_required'),
+        k8s_worker_os=pulumi.get(__response__, 'k8s_worker_os'),
         lb_synced_deployment=pulumi.get(__response__, 'lb_synced_deployment'),
         name=pulumi.get(__response__, 'name'),
         other_docker_config=pulumi.get(__response__, 'other_docker_config'),

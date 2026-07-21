@@ -41,6 +41,10 @@ namespace DuploCloud.Pulumi.Outputs
         /// Whether or not the replicas must be scheduled on separate Kubernetes nodes.  Only supported on Kubernetes.
         /// </summary>
         public readonly bool IsUniqueK8sNodeRequired;
+        /// <summary>
+        /// OS type for k8s worker. Valid values: `Linux`, `Windows`.
+        /// </summary>
+        public readonly string K8sWorkerOs;
         public readonly bool LbSyncedDeployment;
         public readonly string Name;
         public readonly string OtherDockerConfig;
@@ -92,6 +96,8 @@ namespace DuploCloud.Pulumi.Outputs
 
             bool isUniqueK8sNodeRequired,
 
+            string k8sWorkerOs,
+
             bool lbSyncedDeployment,
 
             string name,
@@ -131,6 +137,7 @@ namespace DuploCloud.Pulumi.Outputs
             HpaSpecs = hpaSpecs;
             IsDaemonset = isDaemonset;
             IsUniqueK8sNodeRequired = isUniqueK8sNodeRequired;
+            K8sWorkerOs = k8sWorkerOs;
             LbSyncedDeployment = lbSyncedDeployment;
             Name = name;
             OtherDockerConfig = otherDockerConfig;

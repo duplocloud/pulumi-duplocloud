@@ -630,7 +630,7 @@ type DuploService struct {
 	IsDaemonset pulumi.BoolPtrOutput `pulumi:"isDaemonset"`
 	// Whether or not the replicas must be scheduled on separate Kubernetes nodes. Only supported on Kubernetes.
 	IsUniqueK8sNodeRequired pulumi.BoolPtrOutput `pulumi:"isUniqueK8sNodeRequired"`
-	// OS type for k8s worker, this field is associated to azure cloud. Valid values: `Linux`, `Windows`
+	// OS type for k8s worker. Valid values: `Linux`, `Windows`.
 	K8sWorkerOs        pulumi.StringPtrOutput `pulumi:"k8sWorkerOs"`
 	LbSyncedDeployment pulumi.BoolPtrOutput   `pulumi:"lbSyncedDeployment"`
 	// The name of the service to create.
@@ -726,7 +726,7 @@ type duploServiceState struct {
 	IsDaemonset *bool `pulumi:"isDaemonset"`
 	// Whether or not the replicas must be scheduled on separate Kubernetes nodes. Only supported on Kubernetes.
 	IsUniqueK8sNodeRequired *bool `pulumi:"isUniqueK8sNodeRequired"`
-	// OS type for k8s worker, this field is associated to azure cloud. Valid values: `Linux`, `Windows`
+	// OS type for k8s worker. Valid values: `Linux`, `Windows`.
 	K8sWorkerOs        *string `pulumi:"k8sWorkerOs"`
 	LbSyncedDeployment *bool   `pulumi:"lbSyncedDeployment"`
 	// The name of the service to create.
@@ -787,7 +787,7 @@ type DuploServiceState struct {
 	IsDaemonset pulumi.BoolPtrInput
 	// Whether or not the replicas must be scheduled on separate Kubernetes nodes. Only supported on Kubernetes.
 	IsUniqueK8sNodeRequired pulumi.BoolPtrInput
-	// OS type for k8s worker, this field is associated to azure cloud. Valid values: `Linux`, `Windows`
+	// OS type for k8s worker. Valid values: `Linux`, `Windows`.
 	K8sWorkerOs        pulumi.StringPtrInput
 	LbSyncedDeployment pulumi.BoolPtrInput
 	// The name of the service to create.
@@ -844,7 +844,7 @@ type duploServiceArgs struct {
 	IsDaemonset *bool `pulumi:"isDaemonset"`
 	// Whether or not the replicas must be scheduled on separate Kubernetes nodes. Only supported on Kubernetes.
 	IsUniqueK8sNodeRequired *bool `pulumi:"isUniqueK8sNodeRequired"`
-	// OS type for k8s worker, this field is associated to azure cloud. Valid values: `Linux`, `Windows`
+	// OS type for k8s worker. Valid values: `Linux`, `Windows`.
 	K8sWorkerOs        *string `pulumi:"k8sWorkerOs"`
 	LbSyncedDeployment *bool   `pulumi:"lbSyncedDeployment"`
 	// The name of the service to create.
@@ -895,7 +895,7 @@ type DuploServiceArgs struct {
 	IsDaemonset pulumi.BoolPtrInput
 	// Whether or not the replicas must be scheduled on separate Kubernetes nodes. Only supported on Kubernetes.
 	IsUniqueK8sNodeRequired pulumi.BoolPtrInput
-	// OS type for k8s worker, this field is associated to azure cloud. Valid values: `Linux`, `Windows`
+	// OS type for k8s worker. Valid values: `Linux`, `Windows`.
 	K8sWorkerOs        pulumi.StringPtrInput
 	LbSyncedDeployment pulumi.BoolPtrInput
 	// The name of the service to create.
@@ -1098,7 +1098,7 @@ func (o DuploServiceOutput) IsUniqueK8sNodeRequired() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DuploService) pulumi.BoolPtrOutput { return v.IsUniqueK8sNodeRequired }).(pulumi.BoolPtrOutput)
 }
 
-// OS type for k8s worker, this field is associated to azure cloud. Valid values: `Linux`, `Windows`
+// OS type for k8s worker. Valid values: `Linux`, `Windows`.
 func (o DuploServiceOutput) K8sWorkerOs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DuploService) pulumi.StringPtrOutput { return v.K8sWorkerOs }).(pulumi.StringPtrOutput)
 }
