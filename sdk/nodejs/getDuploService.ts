@@ -57,6 +57,10 @@ export interface GetDuploServiceResult {
      * Whether or not the replicas must be scheduled on separate Kubernetes nodes.  Only supported on Kubernetes.
      */
     readonly isUniqueK8sNodeRequired: boolean;
+    /**
+     * OS type for k8s worker. Valid values: `Linux`, `Windows`.
+     */
+    readonly k8sWorkerOs: string;
     readonly lbSyncedDeployment: boolean;
     readonly name: string;
     readonly otherDockerConfig: string;

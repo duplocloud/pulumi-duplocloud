@@ -64,7 +64,7 @@ class DuploServiceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['DuploServiceInitContainerDockerImageArgs']]] init_container_docker_images: The docker images to use for the launched init container(s).
         :param pulumi.Input[bool] is_daemonset: Whether or not to enable DaemonSet.
         :param pulumi.Input[bool] is_unique_k8s_node_required: Whether or not the replicas must be scheduled on separate Kubernetes nodes. Only supported on Kubernetes.
-        :param pulumi.Input[str] k8s_worker_os: OS type for k8s worker, this field is associated to azure cloud. Valid values: `Linux`, `Windows`
+        :param pulumi.Input[str] k8s_worker_os: OS type for k8s worker. Valid values: `Linux`, `Windows`.
         :param pulumi.Input[str] name: The name of the service to create.
         :param pulumi.Input[bool] replica_collocation_allowed: Allow replica collocation for the service. If this is set then 2 replicas can be on the same host.
         :param pulumi.Input[int] replicas: The number of container replicas to deploy.
@@ -309,7 +309,7 @@ class DuploServiceArgs:
     @pulumi.getter(name="k8sWorkerOs")
     def k8s_worker_os(self) -> Optional[pulumi.Input[str]]:
         """
-        OS type for k8s worker, this field is associated to azure cloud. Valid values: `Linux`, `Windows`
+        OS type for k8s worker. Valid values: `Linux`, `Windows`.
         """
         return pulumi.get(self, "k8s_worker_os")
 
@@ -469,7 +469,7 @@ class _DuploServiceState:
         :param pulumi.Input[Sequence[pulumi.Input['DuploServiceInitContainerDockerImageArgs']]] init_container_docker_images: The docker images to use for the launched init container(s).
         :param pulumi.Input[bool] is_daemonset: Whether or not to enable DaemonSet.
         :param pulumi.Input[bool] is_unique_k8s_node_required: Whether or not the replicas must be scheduled on separate Kubernetes nodes. Only supported on Kubernetes.
-        :param pulumi.Input[str] k8s_worker_os: OS type for k8s worker, this field is associated to azure cloud. Valid values: `Linux`, `Windows`
+        :param pulumi.Input[str] k8s_worker_os: OS type for k8s worker. Valid values: `Linux`, `Windows`.
         :param pulumi.Input[str] name: The name of the service to create.
         :param pulumi.Input[str] parent_domain: The service's parent domain
         :param pulumi.Input[bool] replica_collocation_allowed: Allow replica collocation for the service. If this is set then 2 replicas can be on the same host.
@@ -766,7 +766,7 @@ class _DuploServiceState:
     @pulumi.getter(name="k8sWorkerOs")
     def k8s_worker_os(self) -> Optional[pulumi.Input[str]]:
         """
-        OS type for k8s worker, this field is associated to azure cloud. Valid values: `Linux`, `Windows`
+        OS type for k8s worker. Valid values: `Linux`, `Windows`.
         """
         return pulumi.get(self, "k8s_worker_os")
 
@@ -1247,7 +1247,7 @@ class DuploService(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['DuploServiceInitContainerDockerImageArgs', 'DuploServiceInitContainerDockerImageArgsDict']]]] init_container_docker_images: The docker images to use for the launched init container(s).
         :param pulumi.Input[bool] is_daemonset: Whether or not to enable DaemonSet.
         :param pulumi.Input[bool] is_unique_k8s_node_required: Whether or not the replicas must be scheduled on separate Kubernetes nodes. Only supported on Kubernetes.
-        :param pulumi.Input[str] k8s_worker_os: OS type for k8s worker, this field is associated to azure cloud. Valid values: `Linux`, `Windows`
+        :param pulumi.Input[str] k8s_worker_os: OS type for k8s worker. Valid values: `Linux`, `Windows`.
         :param pulumi.Input[str] name: The name of the service to create.
         :param pulumi.Input[bool] replica_collocation_allowed: Allow replica collocation for the service. If this is set then 2 replicas can be on the same host.
         :param pulumi.Input[int] replicas: The number of container replicas to deploy.
@@ -1709,7 +1709,7 @@ class DuploService(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['DuploServiceInitContainerDockerImageArgs', 'DuploServiceInitContainerDockerImageArgsDict']]]] init_container_docker_images: The docker images to use for the launched init container(s).
         :param pulumi.Input[bool] is_daemonset: Whether or not to enable DaemonSet.
         :param pulumi.Input[bool] is_unique_k8s_node_required: Whether or not the replicas must be scheduled on separate Kubernetes nodes. Only supported on Kubernetes.
-        :param pulumi.Input[str] k8s_worker_os: OS type for k8s worker, this field is associated to azure cloud. Valid values: `Linux`, `Windows`
+        :param pulumi.Input[str] k8s_worker_os: OS type for k8s worker. Valid values: `Linux`, `Windows`.
         :param pulumi.Input[str] name: The name of the service to create.
         :param pulumi.Input[str] parent_domain: The service's parent domain
         :param pulumi.Input[bool] replica_collocation_allowed: Allow replica collocation for the service. If this is set then 2 replicas can be on the same host.
@@ -1903,7 +1903,7 @@ class DuploService(pulumi.CustomResource):
     @pulumi.getter(name="k8sWorkerOs")
     def k8s_worker_os(self) -> pulumi.Output[Optional[str]]:
         """
-        OS type for k8s worker, this field is associated to azure cloud. Valid values: `Linux`, `Windows`
+        OS type for k8s worker. Valid values: `Linux`, `Windows`.
         """
         return pulumi.get(self, "k8s_worker_os")
 

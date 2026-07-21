@@ -44739,6 +44739,7 @@ class GetDuploServicesServiceResult(dict):
                  hpa_specs: str,
                  is_daemonset: bool,
                  is_unique_k8s_node_required: bool,
+                 k8s_worker_os: str,
                  lb_synced_deployment: bool,
                  name: str,
                  other_docker_config: str,
@@ -44756,6 +44757,7 @@ class GetDuploServicesServiceResult(dict):
         :param str fqdn: The fully qualified domain associated with the service
         :param str fqdn_ex: External fully qualified domain associated with the service
         :param bool is_unique_k8s_node_required: Whether or not the replicas must be scheduled on separate Kubernetes nodes.  Only supported on Kubernetes.
+        :param str k8s_worker_os: OS type for k8s worker. Valid values: `Linux`, `Windows`.
         :param str parent_domain: The service's parent domain
         :param bool should_spread_across_zones: Whether or not the replicas must be spread across availability zones.  Only supported on Kubernetes.
         """
@@ -44774,6 +44776,7 @@ class GetDuploServicesServiceResult(dict):
         pulumi.set(__self__, "hpa_specs", hpa_specs)
         pulumi.set(__self__, "is_daemonset", is_daemonset)
         pulumi.set(__self__, "is_unique_k8s_node_required", is_unique_k8s_node_required)
+        pulumi.set(__self__, "k8s_worker_os", k8s_worker_os)
         pulumi.set(__self__, "lb_synced_deployment", lb_synced_deployment)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "other_docker_config", other_docker_config)
@@ -44873,6 +44876,14 @@ class GetDuploServicesServiceResult(dict):
         Whether or not the replicas must be scheduled on separate Kubernetes nodes.  Only supported on Kubernetes.
         """
         return pulumi.get(self, "is_unique_k8s_node_required")
+
+    @property
+    @pulumi.getter(name="k8sWorkerOs")
+    def k8s_worker_os(self) -> str:
+        """
+        OS type for k8s worker. Valid values: `Linux`, `Windows`.
+        """
+        return pulumi.get(self, "k8s_worker_os")
 
     @property
     @pulumi.getter(name="lbSyncedDeployment")

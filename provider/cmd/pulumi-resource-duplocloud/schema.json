@@ -19160,6 +19160,10 @@
                     "type": "boolean",
                     "description": "Whether or not the replicas must be scheduled on separate Kubernetes nodes.  Only supported on Kubernetes.\n"
                 },
+                "k8sWorkerOs": {
+                    "type": "string",
+                    "description": "OS type for k8s worker. Valid values: `Linux`, `Windows`.\n"
+                },
                 "lbSyncedDeployment": {
                     "type": "boolean"
                 },
@@ -19219,6 +19223,7 @@
                 "hpaSpecs",
                 "isDaemonset",
                 "isUniqueK8sNodeRequired",
+                "k8sWorkerOs",
                 "lbSyncedDeployment",
                 "name",
                 "otherDockerConfig",
@@ -47552,7 +47557,7 @@
                 },
                 "k8sWorkerOs": {
                     "type": "string",
-                    "description": "OS type for k8s worker, this field is associated to azure cloud. Valid values: `Linux`, `Windows`\n"
+                    "description": "OS type for k8s worker. Valid values: `Linux`, `Windows`.\n"
                 },
                 "lbSyncedDeployment": {
                     "type": "boolean"
@@ -47680,7 +47685,7 @@
                 },
                 "k8sWorkerOs": {
                     "type": "string",
-                    "description": "OS type for k8s worker, this field is associated to azure cloud. Valid values: `Linux`, `Windows`\n",
+                    "description": "OS type for k8s worker. Valid values: `Linux`, `Windows`.\n",
                     "willReplaceOnChanges": true
                 },
                 "lbSyncedDeployment": {
@@ -47807,7 +47812,7 @@
                     },
                     "k8sWorkerOs": {
                         "type": "string",
-                        "description": "OS type for k8s worker, this field is associated to azure cloud. Valid values: `Linux`, `Windows`\n",
+                        "description": "OS type for k8s worker. Valid values: `Linux`, `Windows`.\n",
                         "willReplaceOnChanges": true
                     },
                     "lbSyncedDeployment": {
@@ -59618,6 +59623,10 @@
                         "description": "Whether or not the replicas must be scheduled on separate Kubernetes nodes.  Only supported on Kubernetes.\n",
                         "type": "boolean"
                     },
+                    "k8sWorkerOs": {
+                        "description": "OS type for k8s worker. Valid values: `Linux`, `Windows`.\n",
+                        "type": "string"
+                    },
                     "lbSyncedDeployment": {
                         "type": "boolean"
                     },
@@ -59676,6 +59685,7 @@
                     "hpaSpecs",
                     "isDaemonset",
                     "isUniqueK8sNodeRequired",
+                    "k8sWorkerOs",
                     "lbSyncedDeployment",
                     "name",
                     "otherDockerConfig",

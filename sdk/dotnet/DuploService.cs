@@ -588,7 +588,7 @@ namespace DuploCloud.Pulumi
         public Output<bool?> IsUniqueK8sNodeRequired { get; private set; } = null!;
 
         /// <summary>
-        /// OS type for k8s worker, this field is associated to azure cloud. Valid values: `Linux`, `Windows`
+        /// OS type for k8s worker. Valid values: `Linux`, `Windows`.
         /// </summary>
         [Output("k8sWorkerOs")]
         public Output<string?> K8sWorkerOs { get; private set; } = null!;
@@ -785,7 +785,7 @@ namespace DuploCloud.Pulumi
         public Input<bool>? IsUniqueK8sNodeRequired { get; set; }
 
         /// <summary>
-        /// OS type for k8s worker, this field is associated to azure cloud. Valid values: `Linux`, `Windows`
+        /// OS type for k8s worker. Valid values: `Linux`, `Windows`.
         /// </summary>
         [Input("k8sWorkerOs")]
         public Input<string>? K8sWorkerOs { get; set; }
@@ -958,7 +958,7 @@ namespace DuploCloud.Pulumi
         public Input<bool>? IsUniqueK8sNodeRequired { get; set; }
 
         /// <summary>
-        /// OS type for k8s worker, this field is associated to azure cloud. Valid values: `Linux`, `Windows`
+        /// OS type for k8s worker. Valid values: `Linux`, `Windows`.
         /// </summary>
         [Input("k8sWorkerOs")]
         public Input<string>? K8sWorkerOs { get; set; }

@@ -35497,11 +35497,13 @@ type GetDuploServicesService struct {
 	HpaSpecs    string `pulumi:"hpaSpecs"`
 	IsDaemonset bool   `pulumi:"isDaemonset"`
 	// Whether or not the replicas must be scheduled on separate Kubernetes nodes.  Only supported on Kubernetes.
-	IsUniqueK8sNodeRequired bool   `pulumi:"isUniqueK8sNodeRequired"`
-	LbSyncedDeployment      bool   `pulumi:"lbSyncedDeployment"`
-	Name                    string `pulumi:"name"`
-	OtherDockerConfig       string `pulumi:"otherDockerConfig"`
-	OtherDockerHostConfig   string `pulumi:"otherDockerHostConfig"`
+	IsUniqueK8sNodeRequired bool `pulumi:"isUniqueK8sNodeRequired"`
+	// OS type for k8s worker. Valid values: `Linux`, `Windows`.
+	K8sWorkerOs           string `pulumi:"k8sWorkerOs"`
+	LbSyncedDeployment    bool   `pulumi:"lbSyncedDeployment"`
+	Name                  string `pulumi:"name"`
+	OtherDockerConfig     string `pulumi:"otherDockerConfig"`
+	OtherDockerHostConfig string `pulumi:"otherDockerHostConfig"`
 	// The service's parent domain
 	ParentDomain              string `pulumi:"parentDomain"`
 	ReplicaCollocationAllowed bool   `pulumi:"replicaCollocationAllowed"`
@@ -35544,11 +35546,13 @@ type GetDuploServicesServiceArgs struct {
 	HpaSpecs    pulumi.StringInput `pulumi:"hpaSpecs"`
 	IsDaemonset pulumi.BoolInput   `pulumi:"isDaemonset"`
 	// Whether or not the replicas must be scheduled on separate Kubernetes nodes.  Only supported on Kubernetes.
-	IsUniqueK8sNodeRequired pulumi.BoolInput   `pulumi:"isUniqueK8sNodeRequired"`
-	LbSyncedDeployment      pulumi.BoolInput   `pulumi:"lbSyncedDeployment"`
-	Name                    pulumi.StringInput `pulumi:"name"`
-	OtherDockerConfig       pulumi.StringInput `pulumi:"otherDockerConfig"`
-	OtherDockerHostConfig   pulumi.StringInput `pulumi:"otherDockerHostConfig"`
+	IsUniqueK8sNodeRequired pulumi.BoolInput `pulumi:"isUniqueK8sNodeRequired"`
+	// OS type for k8s worker. Valid values: `Linux`, `Windows`.
+	K8sWorkerOs           pulumi.StringInput `pulumi:"k8sWorkerOs"`
+	LbSyncedDeployment    pulumi.BoolInput   `pulumi:"lbSyncedDeployment"`
+	Name                  pulumi.StringInput `pulumi:"name"`
+	OtherDockerConfig     pulumi.StringInput `pulumi:"otherDockerConfig"`
+	OtherDockerHostConfig pulumi.StringInput `pulumi:"otherDockerHostConfig"`
 	// The service's parent domain
 	ParentDomain              pulumi.StringInput `pulumi:"parentDomain"`
 	ReplicaCollocationAllowed pulumi.BoolInput   `pulumi:"replicaCollocationAllowed"`
@@ -35674,6 +35678,11 @@ func (o GetDuploServicesServiceOutput) IsDaemonset() pulumi.BoolOutput {
 // Whether or not the replicas must be scheduled on separate Kubernetes nodes.  Only supported on Kubernetes.
 func (o GetDuploServicesServiceOutput) IsUniqueK8sNodeRequired() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDuploServicesService) bool { return v.IsUniqueK8sNodeRequired }).(pulumi.BoolOutput)
+}
+
+// OS type for k8s worker. Valid values: `Linux`, `Windows`.
+func (o GetDuploServicesServiceOutput) K8sWorkerOs() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDuploServicesService) string { return v.K8sWorkerOs }).(pulumi.StringOutput)
 }
 
 func (o GetDuploServicesServiceOutput) LbSyncedDeployment() pulumi.BoolOutput {

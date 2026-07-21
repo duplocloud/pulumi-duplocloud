@@ -431,7 +431,7 @@ export class DuploService extends pulumi.CustomResource {
      */
     public readonly isUniqueK8sNodeRequired!: pulumi.Output<boolean | undefined>;
     /**
-     * OS type for k8s worker, this field is associated to azure cloud. Valid values: `Linux`, `Windows`
+     * OS type for k8s worker. Valid values: `Linux`, `Windows`.
      */
     public readonly k8sWorkerOs!: pulumi.Output<string | undefined>;
     public readonly lbSyncedDeployment!: pulumi.Output<boolean | undefined>;
@@ -631,7 +631,7 @@ export interface DuploServiceState {
      */
     isUniqueK8sNodeRequired?: pulumi.Input<boolean>;
     /**
-     * OS type for k8s worker, this field is associated to azure cloud. Valid values: `Linux`, `Windows`
+     * OS type for k8s worker. Valid values: `Linux`, `Windows`.
      */
     k8sWorkerOs?: pulumi.Input<string>;
     lbSyncedDeployment?: pulumi.Input<boolean>;
@@ -725,7 +725,7 @@ export interface DuploServiceArgs {
      */
     isUniqueK8sNodeRequired?: pulumi.Input<boolean>;
     /**
-     * OS type for k8s worker, this field is associated to azure cloud. Valid values: `Linux`, `Windows`
+     * OS type for k8s worker. Valid values: `Linux`, `Windows`.
      */
     k8sWorkerOs?: pulumi.Input<string>;
     lbSyncedDeployment?: pulumi.Input<boolean>;

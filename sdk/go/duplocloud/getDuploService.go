@@ -49,11 +49,13 @@ type LookupDuploServiceResult struct {
 	Id          string `pulumi:"id"`
 	IsDaemonset bool   `pulumi:"isDaemonset"`
 	// Whether or not the replicas must be scheduled on separate Kubernetes nodes.  Only supported on Kubernetes.
-	IsUniqueK8sNodeRequired bool   `pulumi:"isUniqueK8sNodeRequired"`
-	LbSyncedDeployment      bool   `pulumi:"lbSyncedDeployment"`
-	Name                    string `pulumi:"name"`
-	OtherDockerConfig       string `pulumi:"otherDockerConfig"`
-	OtherDockerHostConfig   string `pulumi:"otherDockerHostConfig"`
+	IsUniqueK8sNodeRequired bool `pulumi:"isUniqueK8sNodeRequired"`
+	// OS type for k8s worker. Valid values: `Linux`, `Windows`.
+	K8sWorkerOs           string `pulumi:"k8sWorkerOs"`
+	LbSyncedDeployment    bool   `pulumi:"lbSyncedDeployment"`
+	Name                  string `pulumi:"name"`
+	OtherDockerConfig     string `pulumi:"otherDockerConfig"`
+	OtherDockerHostConfig string `pulumi:"otherDockerHostConfig"`
 	// The service's parent domain
 	ParentDomain              string `pulumi:"parentDomain"`
 	ReplicaCollocationAllowed bool   `pulumi:"replicaCollocationAllowed"`
@@ -167,6 +169,11 @@ func (o LookupDuploServiceResultOutput) IsDaemonset() pulumi.BoolOutput {
 // Whether or not the replicas must be scheduled on separate Kubernetes nodes.  Only supported on Kubernetes.
 func (o LookupDuploServiceResultOutput) IsUniqueK8sNodeRequired() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupDuploServiceResult) bool { return v.IsUniqueK8sNodeRequired }).(pulumi.BoolOutput)
+}
+
+// OS type for k8s worker. Valid values: `Linux`, `Windows`.
+func (o LookupDuploServiceResultOutput) K8sWorkerOs() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDuploServiceResult) string { return v.K8sWorkerOs }).(pulumi.StringOutput)
 }
 
 func (o LookupDuploServiceResultOutput) LbSyncedDeployment() pulumi.BoolOutput {
