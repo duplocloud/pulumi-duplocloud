@@ -1,8 +1,0 @@
-{
-  "recommendations": [
-    "golang.go",
-    "github.vscode-github-actions",
-    "github.vscode-pull-request-github",
-    "ms-vscode.makefile-tools"
-  ]
-}
