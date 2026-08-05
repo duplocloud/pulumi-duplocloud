@@ -28306,7 +28306,7 @@ type RdsInstanceV2ScalingConfiguration struct {
 	MaxCapacity float64 `pulumi:"maxCapacity"`
 	// Specifies min scaling capacity. Set to `0` to enable Aurora Serverless v2 auto-pause (scale to zero) for idle clusters.
 	MinCapacity float64 `pulumi:"minCapacity"`
-	// The amount of time, in seconds, the cluster must remain idle — no connections and no database activity while at `minCapacity` — before Aurora Serverless v2 auto-pauses it (scales to zero ACUs). Any activity resets the timer. Only applies when `minCapacity` is `0`. Must be between 300 (5 minutes) and 86400 (24 hours).
+	// The amount of time, in seconds, the cluster must remain idle — no connections and no database activity while at `minCapacity` — before Aurora Serverless v2 auto-pauses it (scales to zero ACUs). Any activity resets the timer. Only applies when `minCapacity` is `0`. Must be between 300 (5 minutes) and 86400 (24 hours). When omitted, AWS applies its default of 300; the applied value is reflected in state once the backend reports it.
 	SecondsUntilAutoPause *int `pulumi:"secondsUntilAutoPause"`
 }
 
@@ -28326,7 +28326,7 @@ type RdsInstanceV2ScalingConfigurationArgs struct {
 	MaxCapacity pulumi.Float64Input `pulumi:"maxCapacity"`
 	// Specifies min scaling capacity. Set to `0` to enable Aurora Serverless v2 auto-pause (scale to zero) for idle clusters.
 	MinCapacity pulumi.Float64Input `pulumi:"minCapacity"`
-	// The amount of time, in seconds, the cluster must remain idle — no connections and no database activity while at `minCapacity` — before Aurora Serverless v2 auto-pauses it (scales to zero ACUs). Any activity resets the timer. Only applies when `minCapacity` is `0`. Must be between 300 (5 minutes) and 86400 (24 hours).
+	// The amount of time, in seconds, the cluster must remain idle — no connections and no database activity while at `minCapacity` — before Aurora Serverless v2 auto-pauses it (scales to zero ACUs). Any activity resets the timer. Only applies when `minCapacity` is `0`. Must be between 300 (5 minutes) and 86400 (24 hours). When omitted, AWS applies its default of 300; the applied value is reflected in state once the backend reports it.
 	SecondsUntilAutoPause pulumi.IntPtrInput `pulumi:"secondsUntilAutoPause"`
 }
 
@@ -28417,7 +28417,7 @@ func (o RdsInstanceV2ScalingConfigurationOutput) MinCapacity() pulumi.Float64Out
 	return o.ApplyT(func(v RdsInstanceV2ScalingConfiguration) float64 { return v.MinCapacity }).(pulumi.Float64Output)
 }
 
-// The amount of time, in seconds, the cluster must remain idle — no connections and no database activity while at `minCapacity` — before Aurora Serverless v2 auto-pauses it (scales to zero ACUs). Any activity resets the timer. Only applies when `minCapacity` is `0`. Must be between 300 (5 minutes) and 86400 (24 hours).
+// The amount of time, in seconds, the cluster must remain idle — no connections and no database activity while at `minCapacity` — before Aurora Serverless v2 auto-pauses it (scales to zero ACUs). Any activity resets the timer. Only applies when `minCapacity` is `0`. Must be between 300 (5 minutes) and 86400 (24 hours). When omitted, AWS applies its default of 300; the applied value is reflected in state once the backend reports it.
 func (o RdsInstanceV2ScalingConfigurationOutput) SecondsUntilAutoPause() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RdsInstanceV2ScalingConfiguration) *int { return v.SecondsUntilAutoPause }).(pulumi.IntPtrOutput)
 }
@@ -28466,7 +28466,7 @@ func (o RdsInstanceV2ScalingConfigurationPtrOutput) MinCapacity() pulumi.Float64
 	}).(pulumi.Float64PtrOutput)
 }
 
-// The amount of time, in seconds, the cluster must remain idle — no connections and no database activity while at `minCapacity` — before Aurora Serverless v2 auto-pauses it (scales to zero ACUs). Any activity resets the timer. Only applies when `minCapacity` is `0`. Must be between 300 (5 minutes) and 86400 (24 hours).
+// The amount of time, in seconds, the cluster must remain idle — no connections and no database activity while at `minCapacity` — before Aurora Serverless v2 auto-pauses it (scales to zero ACUs). Any activity resets the timer. Only applies when `minCapacity` is `0`. Must be between 300 (5 minutes) and 86400 (24 hours). When omitted, AWS applies its default of 300; the applied value is reflected in state once the backend reports it.
 func (o RdsInstanceV2ScalingConfigurationPtrOutput) SecondsUntilAutoPause() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RdsInstanceV2ScalingConfiguration) *int {
 		if v == nil {
@@ -31179,7 +31179,7 @@ type GetAsgProfilesAsgProfileMixedInstancesPolicyInstancesDistribution struct {
 	OnDemandAllocationStrategy string `pulumi:"onDemandAllocationStrategy"`
 	// Minimum number of On-Demand instances in the group.
 	OnDemandBaseCapacity *int `pulumi:"onDemandBaseCapacity"`
-	// Percentage of On-Demand instances above the base capacity (0-100).
+	// Percentage of On-Demand instances above the base capacity (0-100). Set explicitly to `0` for 100% Spot above base capacity. Omit to leave it unmanaged: on create AWS applies its default of 100% On-Demand, and on an existing ASG the current value is left unchanged.
 	OnDemandPercentageAboveBaseCapacity *int `pulumi:"onDemandPercentageAboveBaseCapacity"`
 	// Strategy for allocating Spot instances (e.g. `capacity-optimized`, `price-capacity-optimized`, `lowest-price`).
 	SpotAllocationStrategy *string `pulumi:"spotAllocationStrategy"`
@@ -31205,7 +31205,7 @@ type GetAsgProfilesAsgProfileMixedInstancesPolicyInstancesDistributionArgs struc
 	OnDemandAllocationStrategy pulumi.StringInput `pulumi:"onDemandAllocationStrategy"`
 	// Minimum number of On-Demand instances in the group.
 	OnDemandBaseCapacity pulumi.IntPtrInput `pulumi:"onDemandBaseCapacity"`
-	// Percentage of On-Demand instances above the base capacity (0-100).
+	// Percentage of On-Demand instances above the base capacity (0-100). Set explicitly to `0` for 100% Spot above base capacity. Omit to leave it unmanaged: on create AWS applies its default of 100% On-Demand, and on an existing ASG the current value is left unchanged.
 	OnDemandPercentageAboveBaseCapacity pulumi.IntPtrInput `pulumi:"onDemandPercentageAboveBaseCapacity"`
 	// Strategy for allocating Spot instances (e.g. `capacity-optimized`, `price-capacity-optimized`, `lowest-price`).
 	SpotAllocationStrategy pulumi.StringPtrInput `pulumi:"spotAllocationStrategy"`
@@ -31306,7 +31306,7 @@ func (o GetAsgProfilesAsgProfileMixedInstancesPolicyInstancesDistributionOutput)
 	}).(pulumi.IntPtrOutput)
 }
 
-// Percentage of On-Demand instances above the base capacity (0-100).
+// Percentage of On-Demand instances above the base capacity (0-100). Set explicitly to `0` for 100% Spot above base capacity. Omit to leave it unmanaged: on create AWS applies its default of 100% On-Demand, and on an existing ASG the current value is left unchanged.
 func (o GetAsgProfilesAsgProfileMixedInstancesPolicyInstancesDistributionOutput) OnDemandPercentageAboveBaseCapacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetAsgProfilesAsgProfileMixedInstancesPolicyInstancesDistribution) *int {
 		return v.OnDemandPercentageAboveBaseCapacity
@@ -31378,7 +31378,7 @@ func (o GetAsgProfilesAsgProfileMixedInstancesPolicyInstancesDistributionPtrOutp
 	}).(pulumi.IntPtrOutput)
 }
 
-// Percentage of On-Demand instances above the base capacity (0-100).
+// Percentage of On-Demand instances above the base capacity (0-100). Set explicitly to `0` for 100% Spot above base capacity. Omit to leave it unmanaged: on create AWS applies its default of 100% On-Demand, and on an existing ASG the current value is left unchanged.
 func (o GetAsgProfilesAsgProfileMixedInstancesPolicyInstancesDistributionPtrOutput) OnDemandPercentageAboveBaseCapacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetAsgProfilesAsgProfileMixedInstancesPolicyInstancesDistribution) *int {
 		if v == nil {
@@ -36272,6 +36272,8 @@ type GetEcsServiceLoadBalancer struct {
 	ReplicationControllerName string `pulumi:"replicationControllerName"`
 	// Number of Load Balancer target group to associate with the service.
 	TargetGroupCount int `pulumi:"targetGroupCount"`
+	// The time in seconds that a TCP connection is allowed to be idle. Only applicable for TCP/TLS listeners on Load Balancers of type `network` (`lbType = 6`). Valid values are between `60` and `6000`. AWS defaults to `350` when unset; the applied value is reflected in state once the backend reports it.
+	TcpIdleTimeoutSeconds int `pulumi:"tcpIdleTimeoutSeconds"`
 	// The ARN of a web application firewall to associate this load balancer.
 	Webaclid string `pulumi:"webaclid"`
 }
@@ -36333,6 +36335,8 @@ type GetEcsServiceLoadBalancerArgs struct {
 	ReplicationControllerName pulumi.StringInput `pulumi:"replicationControllerName"`
 	// Number of Load Balancer target group to associate with the service.
 	TargetGroupCount pulumi.IntInput `pulumi:"targetGroupCount"`
+	// The time in seconds that a TCP connection is allowed to be idle. Only applicable for TCP/TLS listeners on Load Balancers of type `network` (`lbType = 6`). Valid values are between `60` and `6000`. AWS defaults to `350` when unset; the applied value is reflected in state once the backend reports it.
+	TcpIdleTimeoutSeconds pulumi.IntInput `pulumi:"tcpIdleTimeoutSeconds"`
 	// The ARN of a web application firewall to associate this load balancer.
 	Webaclid pulumi.StringInput `pulumi:"webaclid"`
 }
@@ -36490,6 +36494,11 @@ func (o GetEcsServiceLoadBalancerOutput) ReplicationControllerName() pulumi.Stri
 // Number of Load Balancer target group to associate with the service.
 func (o GetEcsServiceLoadBalancerOutput) TargetGroupCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetEcsServiceLoadBalancer) int { return v.TargetGroupCount }).(pulumi.IntOutput)
+}
+
+// The time in seconds that a TCP connection is allowed to be idle. Only applicable for TCP/TLS listeners on Load Balancers of type `network` (`lbType = 6`). Valid values are between `60` and `6000`. AWS defaults to `350` when unset; the applied value is reflected in state once the backend reports it.
+func (o GetEcsServiceLoadBalancerOutput) TcpIdleTimeoutSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEcsServiceLoadBalancer) int { return v.TcpIdleTimeoutSeconds }).(pulumi.IntOutput)
 }
 
 // The ARN of a web application firewall to associate this load balancer.
@@ -37493,6 +37502,8 @@ type GetEcsServicesServiceLoadBalancer struct {
 	ReplicationControllerName string `pulumi:"replicationControllerName"`
 	// Number of Load Balancer target group to associate with the service.
 	TargetGroupCount int `pulumi:"targetGroupCount"`
+	// The time in seconds that a TCP connection is allowed to be idle. Only applicable for TCP/TLS listeners on Load Balancers of type `network` (`lbType = 6`). Valid values are between `60` and `6000`. AWS defaults to `350` when unset; the applied value is reflected in state once the backend reports it.
+	TcpIdleTimeoutSeconds int `pulumi:"tcpIdleTimeoutSeconds"`
 	// The ARN of a web application firewall to associate this load balancer.
 	Webaclid string `pulumi:"webaclid"`
 }
@@ -37554,6 +37565,8 @@ type GetEcsServicesServiceLoadBalancerArgs struct {
 	ReplicationControllerName pulumi.StringInput `pulumi:"replicationControllerName"`
 	// Number of Load Balancer target group to associate with the service.
 	TargetGroupCount pulumi.IntInput `pulumi:"targetGroupCount"`
+	// The time in seconds that a TCP connection is allowed to be idle. Only applicable for TCP/TLS listeners on Load Balancers of type `network` (`lbType = 6`). Valid values are between `60` and `6000`. AWS defaults to `350` when unset; the applied value is reflected in state once the backend reports it.
+	TcpIdleTimeoutSeconds pulumi.IntInput `pulumi:"tcpIdleTimeoutSeconds"`
 	// The ARN of a web application firewall to associate this load balancer.
 	Webaclid pulumi.StringInput `pulumi:"webaclid"`
 }
@@ -37711,6 +37724,11 @@ func (o GetEcsServicesServiceLoadBalancerOutput) ReplicationControllerName() pul
 // Number of Load Balancer target group to associate with the service.
 func (o GetEcsServicesServiceLoadBalancerOutput) TargetGroupCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetEcsServicesServiceLoadBalancer) int { return v.TargetGroupCount }).(pulumi.IntOutput)
+}
+
+// The time in seconds that a TCP connection is allowed to be idle. Only applicable for TCP/TLS listeners on Load Balancers of type `network` (`lbType = 6`). Valid values are between `60` and `6000`. AWS defaults to `350` when unset; the applied value is reflected in state once the backend reports it.
+func (o GetEcsServicesServiceLoadBalancerOutput) TcpIdleTimeoutSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEcsServicesServiceLoadBalancer) int { return v.TcpIdleTimeoutSeconds }).(pulumi.IntOutput)
 }
 
 // The ARN of a web application firewall to associate this load balancer.

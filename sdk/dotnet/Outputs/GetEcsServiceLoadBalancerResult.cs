@@ -94,6 +94,10 @@ namespace DuploCloud.Pulumi.Outputs
         /// </summary>
         public readonly int TargetGroupCount;
         /// <summary>
+        /// The time in seconds that a TCP connection is allowed to be idle. Only applicable for TCP/TLS listeners on Load Balancers of type `network` (`lb_type = 6`). Valid values are between `60` and `6000`. AWS defaults to `350` when unset; the applied value is reflected in state once the backend reports it.
+        /// </summary>
+        public readonly int TcpIdleTimeoutSeconds;
+        /// <summary>
         /// The ARN of a web application firewall to associate this load balancer.
         /// </summary>
         public readonly string Webaclid;
@@ -138,6 +142,8 @@ namespace DuploCloud.Pulumi.Outputs
 
             int targetGroupCount,
 
+            int tcpIdleTimeoutSeconds,
+
             string webaclid)
         {
             BackendProtocol = backendProtocol;
@@ -159,6 +165,7 @@ namespace DuploCloud.Pulumi.Outputs
             Protocol = protocol;
             ReplicationControllerName = replicationControllerName;
             TargetGroupCount = targetGroupCount;
+            TcpIdleTimeoutSeconds = tcpIdleTimeoutSeconds;
             Webaclid = webaclid;
         }
     }

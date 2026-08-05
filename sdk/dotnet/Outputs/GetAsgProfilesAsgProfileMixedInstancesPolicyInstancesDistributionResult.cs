@@ -23,7 +23,7 @@ namespace DuploCloud.Pulumi.Outputs
         /// </summary>
         public readonly int? OnDemandBaseCapacity;
         /// <summary>
-        /// Percentage of On-Demand instances above the base capacity (0-100).
+        /// Percentage of On-Demand instances above the base capacity (0-100). Set explicitly to `0` for 100% Spot above base capacity. Omit to leave it unmanaged: on create AWS applies its default of 100% On-Demand, and on an existing ASG the current value is left unchanged.
         /// </summary>
         public readonly int? OnDemandPercentageAboveBaseCapacity;
         /// <summary>

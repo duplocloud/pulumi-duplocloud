@@ -478,7 +478,7 @@ type AsgProfileMixedInstancesPolicyInstancesDistribution struct {
 	OnDemandAllocationStrategy *string `pulumi:"onDemandAllocationStrategy"`
 	// Minimum number of On-Demand instances in the group.
 	OnDemandBaseCapacity *int `pulumi:"onDemandBaseCapacity"`
-	// Percentage of On-Demand instances above the base capacity (0-100).
+	// Percentage of On-Demand instances above the base capacity (0-100). Set explicitly to `0` for 100% Spot above base capacity. Omit to leave it unmanaged: on create AWS applies its default of 100% On-Demand, and on an existing ASG the current value is left unchanged.
 	OnDemandPercentageAboveBaseCapacity *int `pulumi:"onDemandPercentageAboveBaseCapacity"`
 	// Strategy for allocating Spot instances (e.g. `capacity-optimized`, `price-capacity-optimized`, `lowest-price`).
 	SpotAllocationStrategy *string `pulumi:"spotAllocationStrategy"`
@@ -504,7 +504,7 @@ type AsgProfileMixedInstancesPolicyInstancesDistributionArgs struct {
 	OnDemandAllocationStrategy pulumi.StringPtrInput `pulumi:"onDemandAllocationStrategy"`
 	// Minimum number of On-Demand instances in the group.
 	OnDemandBaseCapacity pulumi.IntPtrInput `pulumi:"onDemandBaseCapacity"`
-	// Percentage of On-Demand instances above the base capacity (0-100).
+	// Percentage of On-Demand instances above the base capacity (0-100). Set explicitly to `0` for 100% Spot above base capacity. Omit to leave it unmanaged: on create AWS applies its default of 100% On-Demand, and on an existing ASG the current value is left unchanged.
 	OnDemandPercentageAboveBaseCapacity pulumi.IntPtrInput `pulumi:"onDemandPercentageAboveBaseCapacity"`
 	// Strategy for allocating Spot instances (e.g. `capacity-optimized`, `price-capacity-optimized`, `lowest-price`).
 	SpotAllocationStrategy pulumi.StringPtrInput `pulumi:"spotAllocationStrategy"`
@@ -603,7 +603,7 @@ func (o AsgProfileMixedInstancesPolicyInstancesDistributionOutput) OnDemandBaseC
 	return o.ApplyT(func(v AsgProfileMixedInstancesPolicyInstancesDistribution) *int { return v.OnDemandBaseCapacity }).(pulumi.IntPtrOutput)
 }
 
-// Percentage of On-Demand instances above the base capacity (0-100).
+// Percentage of On-Demand instances above the base capacity (0-100). Set explicitly to `0` for 100% Spot above base capacity. Omit to leave it unmanaged: on create AWS applies its default of 100% On-Demand, and on an existing ASG the current value is left unchanged.
 func (o AsgProfileMixedInstancesPolicyInstancesDistributionOutput) OnDemandPercentageAboveBaseCapacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AsgProfileMixedInstancesPolicyInstancesDistribution) *int {
 		return v.OnDemandPercentageAboveBaseCapacity
@@ -669,7 +669,7 @@ func (o AsgProfileMixedInstancesPolicyInstancesDistributionPtrOutput) OnDemandBa
 	}).(pulumi.IntPtrOutput)
 }
 
-// Percentage of On-Demand instances above the base capacity (0-100).
+// Percentage of On-Demand instances above the base capacity (0-100). Set explicitly to `0` for 100% Spot above base capacity. Omit to leave it unmanaged: on create AWS applies its default of 100% On-Demand, and on an existing ASG the current value is left unchanged.
 func (o AsgProfileMixedInstancesPolicyInstancesDistributionPtrOutput) OnDemandPercentageAboveBaseCapacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AsgProfileMixedInstancesPolicyInstancesDistribution) *int {
 		if v == nil {
@@ -32959,6 +32959,8 @@ type EcsServiceLoadBalancer struct {
 	ReplicationControllerName *string `pulumi:"replicationControllerName"`
 	// Number of Load Balancer target group to associate with the service.
 	TargetGroupCount int `pulumi:"targetGroupCount"`
+	// The time in seconds that a TCP connection is allowed to be idle. Only applicable for TCP/TLS listeners on Load Balancers of type `network` (`lbType = 6`). Valid values are between `60` and `6000`. AWS defaults to `350` when unset; the applied value is reflected in state once the backend reports it.
+	TcpIdleTimeoutSeconds *int `pulumi:"tcpIdleTimeoutSeconds"`
 	// The ARN of a web application firewall to associate this load balancer.
 	Webaclid *string `pulumi:"webaclid"`
 }
@@ -33020,6 +33022,8 @@ type EcsServiceLoadBalancerArgs struct {
 	ReplicationControllerName pulumi.StringPtrInput `pulumi:"replicationControllerName"`
 	// Number of Load Balancer target group to associate with the service.
 	TargetGroupCount pulumi.IntInput `pulumi:"targetGroupCount"`
+	// The time in seconds that a TCP connection is allowed to be idle. Only applicable for TCP/TLS listeners on Load Balancers of type `network` (`lbType = 6`). Valid values are between `60` and `6000`. AWS defaults to `350` when unset; the applied value is reflected in state once the backend reports it.
+	TcpIdleTimeoutSeconds pulumi.IntPtrInput `pulumi:"tcpIdleTimeoutSeconds"`
 	// The ARN of a web application firewall to associate this load balancer.
 	Webaclid pulumi.StringPtrInput `pulumi:"webaclid"`
 }
@@ -33175,6 +33179,11 @@ func (o EcsServiceLoadBalancerOutput) ReplicationControllerName() pulumi.StringP
 // Number of Load Balancer target group to associate with the service.
 func (o EcsServiceLoadBalancerOutput) TargetGroupCount() pulumi.IntOutput {
 	return o.ApplyT(func(v EcsServiceLoadBalancer) int { return v.TargetGroupCount }).(pulumi.IntOutput)
+}
+
+// The time in seconds that a TCP connection is allowed to be idle. Only applicable for TCP/TLS listeners on Load Balancers of type `network` (`lbType = 6`). Valid values are between `60` and `6000`. AWS defaults to `350` when unset; the applied value is reflected in state once the backend reports it.
+func (o EcsServiceLoadBalancerOutput) TcpIdleTimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EcsServiceLoadBalancer) *int { return v.TcpIdleTimeoutSeconds }).(pulumi.IntPtrOutput)
 }
 
 // The ARN of a web application firewall to associate this load balancer.

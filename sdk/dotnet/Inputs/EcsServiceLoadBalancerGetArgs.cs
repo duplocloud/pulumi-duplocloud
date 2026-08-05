@@ -131,6 +131,12 @@ namespace DuploCloud.Pulumi.Inputs
         public Input<int> TargetGroupCount { get; set; } = null!;
 
         /// <summary>
+        /// The time in seconds that a TCP connection is allowed to be idle. Only applicable for TCP/TLS listeners on Load Balancers of type `network` (`lb_type = 6`). Valid values are between `60` and `6000`. AWS defaults to `350` when unset; the applied value is reflected in state once the backend reports it.
+        /// </summary>
+        [Input("tcpIdleTimeoutSeconds")]
+        public Input<int>? TcpIdleTimeoutSeconds { get; set; }
+
+        /// <summary>
         /// The ARN of a web application firewall to associate this load balancer.
         /// </summary>
         [Input("webaclid")]

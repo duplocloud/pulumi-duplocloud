@@ -26,7 +26,7 @@ namespace DuploCloud.Pulumi.Inputs
         public Input<int>? OnDemandBaseCapacity { get; set; }
 
         /// <summary>
-        /// Percentage of On-Demand instances above the base capacity (0-100).
+        /// Percentage of On-Demand instances above the base capacity (0-100). Set explicitly to `0` for 100% Spot above base capacity. Omit to leave it unmanaged: on create AWS applies its default of 100% On-Demand, and on an existing ASG the current value is left unchanged.
         /// </summary>
         [Input("onDemandPercentageAboveBaseCapacity")]
         public Input<int>? OnDemandPercentageAboveBaseCapacity { get; set; }

@@ -41,7 +41,7 @@ export interface AsgProfileMixedInstancesPolicyInstancesDistribution {
      */
     onDemandBaseCapacity?: number;
     /**
-     * Percentage of On-Demand instances above the base capacity (0-100).
+     * Percentage of On-Demand instances above the base capacity (0-100). Set explicitly to `0` for 100% Spot above base capacity. Omit to leave it unmanaged: on create AWS applies its default of 100% On-Demand, and on an existing ASG the current value is left unchanged.
      */
     onDemandPercentageAboveBaseCapacity?: number;
     /**
@@ -2963,6 +2963,10 @@ export interface EcsServiceLoadBalancer {
      */
     targetGroupCount: number;
     /**
+     * The time in seconds that a TCP connection is allowed to be idle. Only applicable for TCP/TLS listeners on Load Balancers of type `network` (`lbType = 6`). Valid values are between `60` and `6000`. AWS defaults to `350` when unset; the applied value is reflected in state once the backend reports it.
+     */
+    tcpIdleTimeoutSeconds: number;
+    /**
      * The ARN of a web application firewall to associate this load balancer.
      */
     webaclid: string;
@@ -3727,7 +3731,7 @@ export interface GetAsgProfilesAsgProfileMixedInstancesPolicyInstancesDistributi
      */
     onDemandBaseCapacity?: number;
     /**
-     * Percentage of On-Demand instances above the base capacity (0-100).
+     * Percentage of On-Demand instances above the base capacity (0-100). Set explicitly to `0` for 100% Spot above base capacity. Omit to leave it unmanaged: on create AWS applies its default of 100% On-Demand, and on an existing ASG the current value is left unchanged.
      */
     onDemandPercentageAboveBaseCapacity?: number;
     /**
@@ -4435,6 +4439,10 @@ export interface GetEcsServiceLoadBalancer {
      */
     targetGroupCount: number;
     /**
+     * The time in seconds that a TCP connection is allowed to be idle. Only applicable for TCP/TLS listeners on Load Balancers of type `network` (`lbType = 6`). Valid values are between `60` and `6000`. AWS defaults to `350` when unset; the applied value is reflected in state once the backend reports it.
+     */
+    tcpIdleTimeoutSeconds: number;
+    /**
      * The ARN of a web application firewall to associate this load balancer.
      */
     webaclid: string;
@@ -4658,6 +4666,10 @@ export interface GetEcsServicesServiceLoadBalancer {
      * Number of Load Balancer target group to associate with the service.
      */
     targetGroupCount: number;
+    /**
+     * The time in seconds that a TCP connection is allowed to be idle. Only applicable for TCP/TLS listeners on Load Balancers of type `network` (`lbType = 6`). Valid values are between `60` and `6000`. AWS defaults to `350` when unset; the applied value is reflected in state once the backend reports it.
+     */
+    tcpIdleTimeoutSeconds: number;
     /**
      * The ARN of a web application firewall to associate this load balancer.
      */
@@ -19343,9 +19355,9 @@ export interface RdsInstanceV2ScalingConfiguration {
      */
     minCapacity: number;
     /**
-     * The amount of time, in seconds, the cluster must remain idle — no connections and no database activity while at `minCapacity` — before Aurora Serverless v2 auto-pauses it (scales to zero ACUs). Any activity resets the timer. Only applies when `minCapacity` is `0`. Must be between 300 (5 minutes) and 86400 (24 hours).
+     * The amount of time, in seconds, the cluster must remain idle — no connections and no database activity while at `minCapacity` — before Aurora Serverless v2 auto-pauses it (scales to zero ACUs). Any activity resets the timer. Only applies when `minCapacity` is `0`. Must be between 300 (5 minutes) and 86400 (24 hours). When omitted, AWS applies its default of 300; the applied value is reflected in state once the backend reports it.
      */
-    secondsUntilAutoPause?: number;
+    secondsUntilAutoPause: number;
 }
 
 export interface RdsReadReplicaPerformanceInsights {
