@@ -1589,7 +1589,7 @@ if not MYPY:
         """
         on_demand_percentage_above_base_capacity: NotRequired[pulumi.Input[int]]
         """
-        Percentage of On-Demand instances above the base capacity (0-100).
+        Percentage of On-Demand instances above the base capacity (0-100). Set explicitly to `0` for 100% Spot above base capacity. Omit to leave it unmanaged: on create AWS applies its default of 100% On-Demand, and on an existing ASG the current value is left unchanged.
         """
         spot_allocation_strategy: NotRequired[pulumi.Input[str]]
         """
@@ -1618,7 +1618,7 @@ class AsgProfileMixedInstancesPolicyInstancesDistributionArgs:
         """
         :param pulumi.Input[str] on_demand_allocation_strategy: Strategy for allocating On-Demand instances (e.g. `prioritized`).
         :param pulumi.Input[int] on_demand_base_capacity: Minimum number of On-Demand instances in the group.
-        :param pulumi.Input[int] on_demand_percentage_above_base_capacity: Percentage of On-Demand instances above the base capacity (0-100).
+        :param pulumi.Input[int] on_demand_percentage_above_base_capacity: Percentage of On-Demand instances above the base capacity (0-100). Set explicitly to `0` for 100% Spot above base capacity. Omit to leave it unmanaged: on create AWS applies its default of 100% On-Demand, and on an existing ASG the current value is left unchanged.
         :param pulumi.Input[str] spot_allocation_strategy: Strategy for allocating Spot instances (e.g. `capacity-optimized`, `price-capacity-optimized`, `lowest-price`).
         :param pulumi.Input[int] spot_instance_pools: Number of Spot pools for allocation (only used with `lowest-price` strategy).
         :param pulumi.Input[str] spot_max_price: Maximum price per unit hour for Spot instances.
@@ -1664,7 +1664,7 @@ class AsgProfileMixedInstancesPolicyInstancesDistributionArgs:
     @pulumi.getter(name="onDemandPercentageAboveBaseCapacity")
     def on_demand_percentage_above_base_capacity(self) -> Optional[pulumi.Input[int]]:
         """
-        Percentage of On-Demand instances above the base capacity (0-100).
+        Percentage of On-Demand instances above the base capacity (0-100). Set explicitly to `0` for 100% Spot above base capacity. Omit to leave it unmanaged: on create AWS applies its default of 100% On-Demand, and on an existing ASG the current value is left unchanged.
         """
         return pulumi.get(self, "on_demand_percentage_above_base_capacity")
 
@@ -17325,6 +17325,10 @@ if not MYPY:
         The load balancer name.
         """
         replication_controller_name: NotRequired[pulumi.Input[str]]
+        tcp_idle_timeout_seconds: NotRequired[pulumi.Input[int]]
+        """
+        The time in seconds that a TCP connection is allowed to be idle. Only applicable for TCP/TLS listeners on Load Balancers of type `network` (`lb_type = 6`). Valid values are between `60` and `6000`. AWS defaults to `350` when unset; the applied value is reflected in state once the backend reports it.
+        """
         webaclid: NotRequired[pulumi.Input[str]]
         """
         The ARN of a web application firewall to associate this load balancer.
@@ -17354,6 +17358,7 @@ class EcsServiceLoadBalancerArgs:
                  load_balancer_arn: Optional[pulumi.Input[str]] = None,
                  load_balancer_name: Optional[pulumi.Input[str]] = None,
                  replication_controller_name: Optional[pulumi.Input[str]] = None,
+                 tcp_idle_timeout_seconds: Optional[pulumi.Input[int]] = None,
                  webaclid: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[int] external_port: The frontend port associated with this load balancer configuration.
@@ -17380,6 +17385,7 @@ class EcsServiceLoadBalancerArgs:
         :param pulumi.Input[bool] is_internal: Whether or not to create an internal load balancer.
         :param pulumi.Input[str] load_balancer_arn: The load balancer ARN.
         :param pulumi.Input[str] load_balancer_name: The load balancer name.
+        :param pulumi.Input[int] tcp_idle_timeout_seconds: The time in seconds that a TCP connection is allowed to be idle. Only applicable for TCP/TLS listeners on Load Balancers of type `network` (`lb_type = 6`). Valid values are between `60` and `6000`. AWS defaults to `350` when unset; the applied value is reflected in state once the backend reports it.
         :param pulumi.Input[str] webaclid: The ARN of a web application firewall to associate this load balancer.
         """
         pulumi.set(__self__, "external_port", external_port)
@@ -17418,6 +17424,8 @@ class EcsServiceLoadBalancerArgs:
             pulumi.set(__self__, "load_balancer_name", load_balancer_name)
         if replication_controller_name is not None:
             pulumi.set(__self__, "replication_controller_name", replication_controller_name)
+        if tcp_idle_timeout_seconds is not None:
+            pulumi.set(__self__, "tcp_idle_timeout_seconds", tcp_idle_timeout_seconds)
         if webaclid is not None:
             pulumi.set(__self__, "webaclid", webaclid)
 
@@ -17652,6 +17660,18 @@ class EcsServiceLoadBalancerArgs:
     @replication_controller_name.setter
     def replication_controller_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "replication_controller_name", value)
+
+    @property
+    @pulumi.getter(name="tcpIdleTimeoutSeconds")
+    def tcp_idle_timeout_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        The time in seconds that a TCP connection is allowed to be idle. Only applicable for TCP/TLS listeners on Load Balancers of type `network` (`lb_type = 6`). Valid values are between `60` and `6000`. AWS defaults to `350` when unset; the applied value is reflected in state once the backend reports it.
+        """
+        return pulumi.get(self, "tcp_idle_timeout_seconds")
+
+    @tcp_idle_timeout_seconds.setter
+    def tcp_idle_timeout_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "tcp_idle_timeout_seconds", value)
 
     @property
     @pulumi.getter
@@ -54790,7 +54810,7 @@ if not MYPY:
         """
         seconds_until_auto_pause: NotRequired[pulumi.Input[int]]
         """
-        The amount of time, in seconds, the cluster must remain idle — no connections and no database activity while at `min_capacity` — before Aurora Serverless v2 auto-pauses it (scales to zero ACUs). Any activity resets the timer. Only applies when `min_capacity` is `0`. Must be between 300 (5 minutes) and 86400 (24 hours).
+        The amount of time, in seconds, the cluster must remain idle — no connections and no database activity while at `min_capacity` — before Aurora Serverless v2 auto-pauses it (scales to zero ACUs). Any activity resets the timer. Only applies when `min_capacity` is `0`. Must be between 300 (5 minutes) and 86400 (24 hours). When omitted, AWS applies its default of 300; the applied value is reflected in state once the backend reports it.
         """
 elif False:
     RdsInstanceV2ScalingConfigurationArgsDict: TypeAlias = Mapping[str, Any]
@@ -54804,7 +54824,7 @@ class RdsInstanceV2ScalingConfigurationArgs:
         """
         :param pulumi.Input[float] max_capacity: Specifies max scaling capacity.
         :param pulumi.Input[float] min_capacity: Specifies min scaling capacity. Set to `0` to enable Aurora Serverless v2 auto-pause (scale to zero) for idle clusters.
-        :param pulumi.Input[int] seconds_until_auto_pause: The amount of time, in seconds, the cluster must remain idle — no connections and no database activity while at `min_capacity` — before Aurora Serverless v2 auto-pauses it (scales to zero ACUs). Any activity resets the timer. Only applies when `min_capacity` is `0`. Must be between 300 (5 minutes) and 86400 (24 hours).
+        :param pulumi.Input[int] seconds_until_auto_pause: The amount of time, in seconds, the cluster must remain idle — no connections and no database activity while at `min_capacity` — before Aurora Serverless v2 auto-pauses it (scales to zero ACUs). Any activity resets the timer. Only applies when `min_capacity` is `0`. Must be between 300 (5 minutes) and 86400 (24 hours). When omitted, AWS applies its default of 300; the applied value is reflected in state once the backend reports it.
         """
         pulumi.set(__self__, "max_capacity", max_capacity)
         pulumi.set(__self__, "min_capacity", min_capacity)
@@ -54839,7 +54859,7 @@ class RdsInstanceV2ScalingConfigurationArgs:
     @pulumi.getter(name="secondsUntilAutoPause")
     def seconds_until_auto_pause(self) -> Optional[pulumi.Input[int]]:
         """
-        The amount of time, in seconds, the cluster must remain idle — no connections and no database activity while at `min_capacity` — before Aurora Serverless v2 auto-pauses it (scales to zero ACUs). Any activity resets the timer. Only applies when `min_capacity` is `0`. Must be between 300 (5 minutes) and 86400 (24 hours).
+        The amount of time, in seconds, the cluster must remain idle — no connections and no database activity while at `min_capacity` — before Aurora Serverless v2 auto-pauses it (scales to zero ACUs). Any activity resets the timer. Only applies when `min_capacity` is `0`. Must be between 300 (5 minutes) and 86400 (24 hours). When omitted, AWS applies its default of 300; the applied value is reflected in state once the backend reports it.
         """
         return pulumi.get(self, "seconds_until_auto_pause")
 

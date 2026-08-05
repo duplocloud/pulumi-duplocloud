@@ -26,7 +26,7 @@ namespace DuploCloud.Pulumi.Inputs
         public Input<double> MinCapacity { get; set; } = null!;
 
         /// <summary>
-        /// The amount of time, in seconds, the cluster must remain idle — no connections and no database activity while at `min_capacity` — before Aurora Serverless v2 auto-pauses it (scales to zero ACUs). Any activity resets the timer. Only applies when `min_capacity` is `0`. Must be between 300 (5 minutes) and 86400 (24 hours).
+        /// The amount of time, in seconds, the cluster must remain idle — no connections and no database activity while at `min_capacity` — before Aurora Serverless v2 auto-pauses it (scales to zero ACUs). Any activity resets the timer. Only applies when `min_capacity` is `0`. Must be between 300 (5 minutes) and 86400 (24 hours). When omitted, AWS applies its default of 300; the applied value is reflected in state once the backend reports it.
         /// </summary>
         [Input("secondsUntilAutoPause")]
         public Input<int>? SecondsUntilAutoPause { get; set; }
