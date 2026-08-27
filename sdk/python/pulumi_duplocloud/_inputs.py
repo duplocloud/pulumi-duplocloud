@@ -965,6 +965,384 @@ __all__ = [
     'K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeSecretItemArgsDict',
     'K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeVsphereVolumeArgs',
     'K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeVsphereVolumeArgsDict',
+    'K8sDaemonSetMetadataArgs',
+    'K8sDaemonSetMetadataArgsDict',
+    'K8sDaemonSetSpecArgs',
+    'K8sDaemonSetSpecArgsDict',
+    'K8sDaemonSetSpecSelectorArgs',
+    'K8sDaemonSetSpecSelectorArgsDict',
+    'K8sDaemonSetSpecSelectorMatchExpressionArgs',
+    'K8sDaemonSetSpecSelectorMatchExpressionArgsDict',
+    'K8sDaemonSetSpecTemplateArgs',
+    'K8sDaemonSetSpecTemplateArgsDict',
+    'K8sDaemonSetSpecTemplateMetadataArgs',
+    'K8sDaemonSetSpecTemplateMetadataArgsDict',
+    'K8sDaemonSetSpecTemplateSpecArgs',
+    'K8sDaemonSetSpecTemplateSpecArgsDict',
+    'K8sDaemonSetSpecTemplateSpecAffinityArgs',
+    'K8sDaemonSetSpecTemplateSpecAffinityArgsDict',
+    'K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityArgs',
+    'K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityArgsDict',
+    'K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs',
+    'K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgsDict',
+    'K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceArgs',
+    'K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceArgsDict',
+    'K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArgs',
+    'K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArgsDict',
+    'K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs',
+    'K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgsDict',
+    'K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArgs',
+    'K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArgsDict',
+    'K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArgs',
+    'K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArgsDict',
+    'K8sDaemonSetSpecTemplateSpecAffinityPodAffinityArgs',
+    'K8sDaemonSetSpecTemplateSpecAffinityPodAffinityArgsDict',
+    'K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs',
+    'K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgsDict',
+    'K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermArgs',
+    'K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermArgsDict',
+    'K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArgs',
+    'K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArgsDict',
+    'K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArgs',
+    'K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArgsDict',
+    'K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs',
+    'K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgsDict',
+    'K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArgs',
+    'K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArgsDict',
+    'K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArgs',
+    'K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArgsDict',
+    'K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityArgs',
+    'K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityArgsDict',
+    'K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs',
+    'K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgsDict',
+    'K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermArgs',
+    'K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermArgsDict',
+    'K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArgs',
+    'K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArgsDict',
+    'K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArgs',
+    'K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArgsDict',
+    'K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs',
+    'K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgsDict',
+    'K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArgs',
+    'K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArgsDict',
+    'K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArgs',
+    'K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArgsDict',
+    'K8sDaemonSetSpecTemplateSpecContainerArgs',
+    'K8sDaemonSetSpecTemplateSpecContainerArgsDict',
+    'K8sDaemonSetSpecTemplateSpecContainerEnvArgs',
+    'K8sDaemonSetSpecTemplateSpecContainerEnvArgsDict',
+    'K8sDaemonSetSpecTemplateSpecContainerEnvFromArgs',
+    'K8sDaemonSetSpecTemplateSpecContainerEnvFromArgsDict',
+    'K8sDaemonSetSpecTemplateSpecContainerEnvFromConfigMapRefArgs',
+    'K8sDaemonSetSpecTemplateSpecContainerEnvFromConfigMapRefArgsDict',
+    'K8sDaemonSetSpecTemplateSpecContainerEnvFromSecretRefArgs',
+    'K8sDaemonSetSpecTemplateSpecContainerEnvFromSecretRefArgsDict',
+    'K8sDaemonSetSpecTemplateSpecContainerEnvValueFromArgs',
+    'K8sDaemonSetSpecTemplateSpecContainerEnvValueFromArgsDict',
+    'K8sDaemonSetSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefArgs',
+    'K8sDaemonSetSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefArgsDict',
+    'K8sDaemonSetSpecTemplateSpecContainerEnvValueFromFieldRefArgs',
+    'K8sDaemonSetSpecTemplateSpecContainerEnvValueFromFieldRefArgsDict',
+    'K8sDaemonSetSpecTemplateSpecContainerEnvValueFromResourceFieldRefArgs',
+    'K8sDaemonSetSpecTemplateSpecContainerEnvValueFromResourceFieldRefArgsDict',
+    'K8sDaemonSetSpecTemplateSpecContainerEnvValueFromSecretKeyRefArgs',
+    'K8sDaemonSetSpecTemplateSpecContainerEnvValueFromSecretKeyRefArgsDict',
+    'K8sDaemonSetSpecTemplateSpecContainerLifecycleArgs',
+    'K8sDaemonSetSpecTemplateSpecContainerLifecycleArgsDict',
+    'K8sDaemonSetSpecTemplateSpecContainerLifecyclePostStartArgs',
+    'K8sDaemonSetSpecTemplateSpecContainerLifecyclePostStartArgsDict',
+    'K8sDaemonSetSpecTemplateSpecContainerLifecyclePostStartExecArgs',
+    'K8sDaemonSetSpecTemplateSpecContainerLifecyclePostStartExecArgsDict',
+    'K8sDaemonSetSpecTemplateSpecContainerLifecyclePostStartHttpGetArgs',
+    'K8sDaemonSetSpecTemplateSpecContainerLifecyclePostStartHttpGetArgsDict',
+    'K8sDaemonSetSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArgs',
+    'K8sDaemonSetSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArgsDict',
+    'K8sDaemonSetSpecTemplateSpecContainerLifecyclePostStartTcpSocketArgs',
+    'K8sDaemonSetSpecTemplateSpecContainerLifecyclePostStartTcpSocketArgsDict',
+    'K8sDaemonSetSpecTemplateSpecContainerLifecyclePreStopArgs',
+    'K8sDaemonSetSpecTemplateSpecContainerLifecyclePreStopArgsDict',
+    'K8sDaemonSetSpecTemplateSpecContainerLifecyclePreStopExecArgs',
+    'K8sDaemonSetSpecTemplateSpecContainerLifecyclePreStopExecArgsDict',
+    'K8sDaemonSetSpecTemplateSpecContainerLifecyclePreStopHttpGetArgs',
+    'K8sDaemonSetSpecTemplateSpecContainerLifecyclePreStopHttpGetArgsDict',
+    'K8sDaemonSetSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArgs',
+    'K8sDaemonSetSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArgsDict',
+    'K8sDaemonSetSpecTemplateSpecContainerLifecyclePreStopTcpSocketArgs',
+    'K8sDaemonSetSpecTemplateSpecContainerLifecyclePreStopTcpSocketArgsDict',
+    'K8sDaemonSetSpecTemplateSpecContainerLivenessProbeArgs',
+    'K8sDaemonSetSpecTemplateSpecContainerLivenessProbeArgsDict',
+    'K8sDaemonSetSpecTemplateSpecContainerLivenessProbeExecArgs',
+    'K8sDaemonSetSpecTemplateSpecContainerLivenessProbeExecArgsDict',
+    'K8sDaemonSetSpecTemplateSpecContainerLivenessProbeGrpcArgs',
+    'K8sDaemonSetSpecTemplateSpecContainerLivenessProbeGrpcArgsDict',
+    'K8sDaemonSetSpecTemplateSpecContainerLivenessProbeHttpGetArgs',
+    'K8sDaemonSetSpecTemplateSpecContainerLivenessProbeHttpGetArgsDict',
+    'K8sDaemonSetSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArgs',
+    'K8sDaemonSetSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArgsDict',
+    'K8sDaemonSetSpecTemplateSpecContainerLivenessProbeTcpSocketArgs',
+    'K8sDaemonSetSpecTemplateSpecContainerLivenessProbeTcpSocketArgsDict',
+    'K8sDaemonSetSpecTemplateSpecContainerPortArgs',
+    'K8sDaemonSetSpecTemplateSpecContainerPortArgsDict',
+    'K8sDaemonSetSpecTemplateSpecContainerReadinessProbeArgs',
+    'K8sDaemonSetSpecTemplateSpecContainerReadinessProbeArgsDict',
+    'K8sDaemonSetSpecTemplateSpecContainerReadinessProbeExecArgs',
+    'K8sDaemonSetSpecTemplateSpecContainerReadinessProbeExecArgsDict',
+    'K8sDaemonSetSpecTemplateSpecContainerReadinessProbeGrpcArgs',
+    'K8sDaemonSetSpecTemplateSpecContainerReadinessProbeGrpcArgsDict',
+    'K8sDaemonSetSpecTemplateSpecContainerReadinessProbeHttpGetArgs',
+    'K8sDaemonSetSpecTemplateSpecContainerReadinessProbeHttpGetArgsDict',
+    'K8sDaemonSetSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArgs',
+    'K8sDaemonSetSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArgsDict',
+    'K8sDaemonSetSpecTemplateSpecContainerReadinessProbeTcpSocketArgs',
+    'K8sDaemonSetSpecTemplateSpecContainerReadinessProbeTcpSocketArgsDict',
+    'K8sDaemonSetSpecTemplateSpecContainerResourcesArgs',
+    'K8sDaemonSetSpecTemplateSpecContainerResourcesArgsDict',
+    'K8sDaemonSetSpecTemplateSpecContainerSecurityContextArgs',
+    'K8sDaemonSetSpecTemplateSpecContainerSecurityContextArgsDict',
+    'K8sDaemonSetSpecTemplateSpecContainerSecurityContextCapabilitiesArgs',
+    'K8sDaemonSetSpecTemplateSpecContainerSecurityContextCapabilitiesArgsDict',
+    'K8sDaemonSetSpecTemplateSpecContainerSecurityContextSeLinuxOptionsArgs',
+    'K8sDaemonSetSpecTemplateSpecContainerSecurityContextSeLinuxOptionsArgsDict',
+    'K8sDaemonSetSpecTemplateSpecContainerSecurityContextSeccompProfileArgs',
+    'K8sDaemonSetSpecTemplateSpecContainerSecurityContextSeccompProfileArgsDict',
+    'K8sDaemonSetSpecTemplateSpecContainerStartupProbeArgs',
+    'K8sDaemonSetSpecTemplateSpecContainerStartupProbeArgsDict',
+    'K8sDaemonSetSpecTemplateSpecContainerStartupProbeExecArgs',
+    'K8sDaemonSetSpecTemplateSpecContainerStartupProbeExecArgsDict',
+    'K8sDaemonSetSpecTemplateSpecContainerStartupProbeGrpcArgs',
+    'K8sDaemonSetSpecTemplateSpecContainerStartupProbeGrpcArgsDict',
+    'K8sDaemonSetSpecTemplateSpecContainerStartupProbeHttpGetArgs',
+    'K8sDaemonSetSpecTemplateSpecContainerStartupProbeHttpGetArgsDict',
+    'K8sDaemonSetSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArgs',
+    'K8sDaemonSetSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArgsDict',
+    'K8sDaemonSetSpecTemplateSpecContainerStartupProbeTcpSocketArgs',
+    'K8sDaemonSetSpecTemplateSpecContainerStartupProbeTcpSocketArgsDict',
+    'K8sDaemonSetSpecTemplateSpecContainerVolumeMountArgs',
+    'K8sDaemonSetSpecTemplateSpecContainerVolumeMountArgsDict',
+    'K8sDaemonSetSpecTemplateSpecDnsConfigArgs',
+    'K8sDaemonSetSpecTemplateSpecDnsConfigArgsDict',
+    'K8sDaemonSetSpecTemplateSpecDnsConfigOptionArgs',
+    'K8sDaemonSetSpecTemplateSpecDnsConfigOptionArgsDict',
+    'K8sDaemonSetSpecTemplateSpecHostAliasArgs',
+    'K8sDaemonSetSpecTemplateSpecHostAliasArgsDict',
+    'K8sDaemonSetSpecTemplateSpecImagePullSecretArgs',
+    'K8sDaemonSetSpecTemplateSpecImagePullSecretArgsDict',
+    'K8sDaemonSetSpecTemplateSpecInitContainerArgs',
+    'K8sDaemonSetSpecTemplateSpecInitContainerArgsDict',
+    'K8sDaemonSetSpecTemplateSpecInitContainerEnvArgs',
+    'K8sDaemonSetSpecTemplateSpecInitContainerEnvArgsDict',
+    'K8sDaemonSetSpecTemplateSpecInitContainerEnvFromArgs',
+    'K8sDaemonSetSpecTemplateSpecInitContainerEnvFromArgsDict',
+    'K8sDaemonSetSpecTemplateSpecInitContainerEnvFromConfigMapRefArgs',
+    'K8sDaemonSetSpecTemplateSpecInitContainerEnvFromConfigMapRefArgsDict',
+    'K8sDaemonSetSpecTemplateSpecInitContainerEnvFromSecretRefArgs',
+    'K8sDaemonSetSpecTemplateSpecInitContainerEnvFromSecretRefArgsDict',
+    'K8sDaemonSetSpecTemplateSpecInitContainerEnvValueFromArgs',
+    'K8sDaemonSetSpecTemplateSpecInitContainerEnvValueFromArgsDict',
+    'K8sDaemonSetSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefArgs',
+    'K8sDaemonSetSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefArgsDict',
+    'K8sDaemonSetSpecTemplateSpecInitContainerEnvValueFromFieldRefArgs',
+    'K8sDaemonSetSpecTemplateSpecInitContainerEnvValueFromFieldRefArgsDict',
+    'K8sDaemonSetSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefArgs',
+    'K8sDaemonSetSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefArgsDict',
+    'K8sDaemonSetSpecTemplateSpecInitContainerEnvValueFromSecretKeyRefArgs',
+    'K8sDaemonSetSpecTemplateSpecInitContainerEnvValueFromSecretKeyRefArgsDict',
+    'K8sDaemonSetSpecTemplateSpecInitContainerLifecycleArgs',
+    'K8sDaemonSetSpecTemplateSpecInitContainerLifecycleArgsDict',
+    'K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePostStartArgs',
+    'K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePostStartArgsDict',
+    'K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePostStartExecArgs',
+    'K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePostStartExecArgsDict',
+    'K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePostStartHttpGetArgs',
+    'K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePostStartHttpGetArgsDict',
+    'K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePostStartHttpGetHttpHeaderArgs',
+    'K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePostStartHttpGetHttpHeaderArgsDict',
+    'K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePostStartTcpSocketArgs',
+    'K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePostStartTcpSocketArgsDict',
+    'K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePreStopArgs',
+    'K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePreStopArgsDict',
+    'K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePreStopExecArgs',
+    'K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePreStopExecArgsDict',
+    'K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePreStopHttpGetArgs',
+    'K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePreStopHttpGetArgsDict',
+    'K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePreStopHttpGetHttpHeaderArgs',
+    'K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePreStopHttpGetHttpHeaderArgsDict',
+    'K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePreStopTcpSocketArgs',
+    'K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePreStopTcpSocketArgsDict',
+    'K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeArgs',
+    'K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeArgsDict',
+    'K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeExecArgs',
+    'K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeExecArgsDict',
+    'K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeGrpcArgs',
+    'K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeGrpcArgsDict',
+    'K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeHttpGetArgs',
+    'K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeHttpGetArgsDict',
+    'K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeHttpGetHttpHeaderArgs',
+    'K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeHttpGetHttpHeaderArgsDict',
+    'K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeTcpSocketArgs',
+    'K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeTcpSocketArgsDict',
+    'K8sDaemonSetSpecTemplateSpecInitContainerPortArgs',
+    'K8sDaemonSetSpecTemplateSpecInitContainerPortArgsDict',
+    'K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeArgs',
+    'K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeArgsDict',
+    'K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeExecArgs',
+    'K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeExecArgsDict',
+    'K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeGrpcArgs',
+    'K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeGrpcArgsDict',
+    'K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeHttpGetArgs',
+    'K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeHttpGetArgsDict',
+    'K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeHttpGetHttpHeaderArgs',
+    'K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeHttpGetHttpHeaderArgsDict',
+    'K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeTcpSocketArgs',
+    'K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeTcpSocketArgsDict',
+    'K8sDaemonSetSpecTemplateSpecInitContainerResourcesArgs',
+    'K8sDaemonSetSpecTemplateSpecInitContainerResourcesArgsDict',
+    'K8sDaemonSetSpecTemplateSpecInitContainerSecurityContextArgs',
+    'K8sDaemonSetSpecTemplateSpecInitContainerSecurityContextArgsDict',
+    'K8sDaemonSetSpecTemplateSpecInitContainerSecurityContextCapabilitiesArgs',
+    'K8sDaemonSetSpecTemplateSpecInitContainerSecurityContextCapabilitiesArgsDict',
+    'K8sDaemonSetSpecTemplateSpecInitContainerSecurityContextSeLinuxOptionsArgs',
+    'K8sDaemonSetSpecTemplateSpecInitContainerSecurityContextSeLinuxOptionsArgsDict',
+    'K8sDaemonSetSpecTemplateSpecInitContainerSecurityContextSeccompProfileArgs',
+    'K8sDaemonSetSpecTemplateSpecInitContainerSecurityContextSeccompProfileArgsDict',
+    'K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeArgs',
+    'K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeArgsDict',
+    'K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeExecArgs',
+    'K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeExecArgsDict',
+    'K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeGrpcArgs',
+    'K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeGrpcArgsDict',
+    'K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeHttpGetArgs',
+    'K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeHttpGetArgsDict',
+    'K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeHttpGetHttpHeaderArgs',
+    'K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeHttpGetHttpHeaderArgsDict',
+    'K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeTcpSocketArgs',
+    'K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeTcpSocketArgsDict',
+    'K8sDaemonSetSpecTemplateSpecInitContainerVolumeMountArgs',
+    'K8sDaemonSetSpecTemplateSpecInitContainerVolumeMountArgsDict',
+    'K8sDaemonSetSpecTemplateSpecReadinessGateArgs',
+    'K8sDaemonSetSpecTemplateSpecReadinessGateArgsDict',
+    'K8sDaemonSetSpecTemplateSpecSecurityContextArgs',
+    'K8sDaemonSetSpecTemplateSpecSecurityContextArgsDict',
+    'K8sDaemonSetSpecTemplateSpecSecurityContextSeLinuxOptionsArgs',
+    'K8sDaemonSetSpecTemplateSpecSecurityContextSeLinuxOptionsArgsDict',
+    'K8sDaemonSetSpecTemplateSpecSecurityContextSeccompProfileArgs',
+    'K8sDaemonSetSpecTemplateSpecSecurityContextSeccompProfileArgsDict',
+    'K8sDaemonSetSpecTemplateSpecSecurityContextSysctlArgs',
+    'K8sDaemonSetSpecTemplateSpecSecurityContextSysctlArgsDict',
+    'K8sDaemonSetSpecTemplateSpecTolerationArgs',
+    'K8sDaemonSetSpecTemplateSpecTolerationArgsDict',
+    'K8sDaemonSetSpecTemplateSpecTopologySpreadConstraintArgs',
+    'K8sDaemonSetSpecTemplateSpecTopologySpreadConstraintArgsDict',
+    'K8sDaemonSetSpecTemplateSpecTopologySpreadConstraintLabelSelectorArgs',
+    'K8sDaemonSetSpecTemplateSpecTopologySpreadConstraintLabelSelectorArgsDict',
+    'K8sDaemonSetSpecTemplateSpecTopologySpreadConstraintLabelSelectorMatchExpressionArgs',
+    'K8sDaemonSetSpecTemplateSpecTopologySpreadConstraintLabelSelectorMatchExpressionArgsDict',
+    'K8sDaemonSetSpecTemplateSpecVolumeArgs',
+    'K8sDaemonSetSpecTemplateSpecVolumeArgsDict',
+    'K8sDaemonSetSpecTemplateSpecVolumeAwsElasticBlockStoreArgs',
+    'K8sDaemonSetSpecTemplateSpecVolumeAwsElasticBlockStoreArgsDict',
+    'K8sDaemonSetSpecTemplateSpecVolumeAzureDiskArgs',
+    'K8sDaemonSetSpecTemplateSpecVolumeAzureDiskArgsDict',
+    'K8sDaemonSetSpecTemplateSpecVolumeAzureFileArgs',
+    'K8sDaemonSetSpecTemplateSpecVolumeAzureFileArgsDict',
+    'K8sDaemonSetSpecTemplateSpecVolumeCephFsArgs',
+    'K8sDaemonSetSpecTemplateSpecVolumeCephFsArgsDict',
+    'K8sDaemonSetSpecTemplateSpecVolumeCephFsSecretRefArgs',
+    'K8sDaemonSetSpecTemplateSpecVolumeCephFsSecretRefArgsDict',
+    'K8sDaemonSetSpecTemplateSpecVolumeCinderArgs',
+    'K8sDaemonSetSpecTemplateSpecVolumeCinderArgsDict',
+    'K8sDaemonSetSpecTemplateSpecVolumeConfigMapArgs',
+    'K8sDaemonSetSpecTemplateSpecVolumeConfigMapArgsDict',
+    'K8sDaemonSetSpecTemplateSpecVolumeConfigMapItemArgs',
+    'K8sDaemonSetSpecTemplateSpecVolumeConfigMapItemArgsDict',
+    'K8sDaemonSetSpecTemplateSpecVolumeCsiArgs',
+    'K8sDaemonSetSpecTemplateSpecVolumeCsiArgsDict',
+    'K8sDaemonSetSpecTemplateSpecVolumeCsiNodePublishSecretRefArgs',
+    'K8sDaemonSetSpecTemplateSpecVolumeCsiNodePublishSecretRefArgsDict',
+    'K8sDaemonSetSpecTemplateSpecVolumeDownwardApiArgs',
+    'K8sDaemonSetSpecTemplateSpecVolumeDownwardApiArgsDict',
+    'K8sDaemonSetSpecTemplateSpecVolumeDownwardApiItemArgs',
+    'K8sDaemonSetSpecTemplateSpecVolumeDownwardApiItemArgsDict',
+    'K8sDaemonSetSpecTemplateSpecVolumeDownwardApiItemFieldRefArgs',
+    'K8sDaemonSetSpecTemplateSpecVolumeDownwardApiItemFieldRefArgsDict',
+    'K8sDaemonSetSpecTemplateSpecVolumeDownwardApiItemResourceFieldRefArgs',
+    'K8sDaemonSetSpecTemplateSpecVolumeDownwardApiItemResourceFieldRefArgsDict',
+    'K8sDaemonSetSpecTemplateSpecVolumeEmptyDirArgs',
+    'K8sDaemonSetSpecTemplateSpecVolumeEmptyDirArgsDict',
+    'K8sDaemonSetSpecTemplateSpecVolumeEphemeralArgs',
+    'K8sDaemonSetSpecTemplateSpecVolumeEphemeralArgsDict',
+    'K8sDaemonSetSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateArgs',
+    'K8sDaemonSetSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateArgsDict',
+    'K8sDaemonSetSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateMetadataArgs',
+    'K8sDaemonSetSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateMetadataArgsDict',
+    'K8sDaemonSetSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateSpecArgs',
+    'K8sDaemonSetSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateSpecArgsDict',
+    'K8sDaemonSetSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateSpecResourcesArgs',
+    'K8sDaemonSetSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateSpecResourcesArgsDict',
+    'K8sDaemonSetSpecTemplateSpecVolumeFcArgs',
+    'K8sDaemonSetSpecTemplateSpecVolumeFcArgsDict',
+    'K8sDaemonSetSpecTemplateSpecVolumeFlexVolumeArgs',
+    'K8sDaemonSetSpecTemplateSpecVolumeFlexVolumeArgsDict',
+    'K8sDaemonSetSpecTemplateSpecVolumeFlexVolumeSecretRefArgs',
+    'K8sDaemonSetSpecTemplateSpecVolumeFlexVolumeSecretRefArgsDict',
+    'K8sDaemonSetSpecTemplateSpecVolumeFlockerArgs',
+    'K8sDaemonSetSpecTemplateSpecVolumeFlockerArgsDict',
+    'K8sDaemonSetSpecTemplateSpecVolumeGcePersistentDiskArgs',
+    'K8sDaemonSetSpecTemplateSpecVolumeGcePersistentDiskArgsDict',
+    'K8sDaemonSetSpecTemplateSpecVolumeGitRepoArgs',
+    'K8sDaemonSetSpecTemplateSpecVolumeGitRepoArgsDict',
+    'K8sDaemonSetSpecTemplateSpecVolumeGlusterfsArgs',
+    'K8sDaemonSetSpecTemplateSpecVolumeGlusterfsArgsDict',
+    'K8sDaemonSetSpecTemplateSpecVolumeHostPathArgs',
+    'K8sDaemonSetSpecTemplateSpecVolumeHostPathArgsDict',
+    'K8sDaemonSetSpecTemplateSpecVolumeIscsiArgs',
+    'K8sDaemonSetSpecTemplateSpecVolumeIscsiArgsDict',
+    'K8sDaemonSetSpecTemplateSpecVolumeLocalArgs',
+    'K8sDaemonSetSpecTemplateSpecVolumeLocalArgsDict',
+    'K8sDaemonSetSpecTemplateSpecVolumeNfsArgs',
+    'K8sDaemonSetSpecTemplateSpecVolumeNfsArgsDict',
+    'K8sDaemonSetSpecTemplateSpecVolumePersistentVolumeClaimArgs',
+    'K8sDaemonSetSpecTemplateSpecVolumePersistentVolumeClaimArgsDict',
+    'K8sDaemonSetSpecTemplateSpecVolumePhotonPersistentDiskArgs',
+    'K8sDaemonSetSpecTemplateSpecVolumePhotonPersistentDiskArgsDict',
+    'K8sDaemonSetSpecTemplateSpecVolumeProjectedArgs',
+    'K8sDaemonSetSpecTemplateSpecVolumeProjectedArgsDict',
+    'K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceArgs',
+    'K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceArgsDict',
+    'K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceConfigMapArgs',
+    'K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceConfigMapArgsDict',
+    'K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceConfigMapItemArgs',
+    'K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceConfigMapItemArgsDict',
+    'K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceDownwardApiArgs',
+    'K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceDownwardApiArgsDict',
+    'K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceDownwardApiItemArgs',
+    'K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceDownwardApiItemArgsDict',
+    'K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceDownwardApiItemFieldRefArgs',
+    'K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceDownwardApiItemFieldRefArgsDict',
+    'K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceDownwardApiItemResourceFieldRefArgs',
+    'K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceDownwardApiItemResourceFieldRefArgsDict',
+    'K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceSecretArgs',
+    'K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceSecretArgsDict',
+    'K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceSecretItemArgs',
+    'K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceSecretItemArgsDict',
+    'K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceServiceAccountTokenArgs',
+    'K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceServiceAccountTokenArgsDict',
+    'K8sDaemonSetSpecTemplateSpecVolumeQuobyteArgs',
+    'K8sDaemonSetSpecTemplateSpecVolumeQuobyteArgsDict',
+    'K8sDaemonSetSpecTemplateSpecVolumeRbdArgs',
+    'K8sDaemonSetSpecTemplateSpecVolumeRbdArgsDict',
+    'K8sDaemonSetSpecTemplateSpecVolumeRbdSecretRefArgs',
+    'K8sDaemonSetSpecTemplateSpecVolumeRbdSecretRefArgsDict',
+    'K8sDaemonSetSpecTemplateSpecVolumeSecretArgs',
+    'K8sDaemonSetSpecTemplateSpecVolumeSecretArgsDict',
+    'K8sDaemonSetSpecTemplateSpecVolumeSecretItemArgs',
+    'K8sDaemonSetSpecTemplateSpecVolumeSecretItemArgsDict',
+    'K8sDaemonSetSpecTemplateSpecVolumeVsphereVolumeArgs',
+    'K8sDaemonSetSpecTemplateSpecVolumeVsphereVolumeArgsDict',
+    'K8sDaemonSetSpecUpdateStrategyArgs',
+    'K8sDaemonSetSpecUpdateStrategyArgsDict',
+    'K8sDaemonSetSpecUpdateStrategyRollingUpdateArgs',
+    'K8sDaemonSetSpecUpdateStrategyRollingUpdateArgsDict',
     'K8sJobMetadataArgs',
     'K8sJobMetadataArgsDict',
     'K8sJobSpecArgs',
@@ -38197,6 +38575,15380 @@ class K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeVsphereVolumeArgs:
     @fs_type.setter
     def fs_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "fs_type", value)
+
+
+if not MYPY:
+    class K8sDaemonSetMetadataArgsDict(TypedDict):
+        annotations: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        An unstructured key value map stored with the daemonset that may be used to store arbitrary metadata. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+        """
+        generation: NotRequired[pulumi.Input[int]]
+        """
+        A sequence number representing a specific generation of the desired state.
+        """
+        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Map of string keys and values that can be used to organize and categorize (scope and select) the daemonset. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the daemonset, must be unique. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        """
+        namespace: NotRequired[pulumi.Input[str]]
+        """
+        Namespace defines the space within which name of the daemonset must be unique.
+        """
+        resource_version: NotRequired[pulumi.Input[str]]
+        """
+        An opaque value that represents the internal version of this daemonset that can be used by clients to determine when daemonset has changed. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+        """
+        uid: NotRequired[pulumi.Input[str]]
+        """
+        The unique in time and space value for this daemonset. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
+        """
+elif False:
+    K8sDaemonSetMetadataArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetMetadataArgs:
+    def __init__(__self__, *,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 generation: Optional[pulumi.Input[int]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 namespace: Optional[pulumi.Input[str]] = None,
+                 resource_version: Optional[pulumi.Input[str]] = None,
+                 uid: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: An unstructured key value map stored with the daemonset that may be used to store arbitrary metadata. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+        :param pulumi.Input[int] generation: A sequence number representing a specific generation of the desired state.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Map of string keys and values that can be used to organize and categorize (scope and select) the daemonset. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+        :param pulumi.Input[str] name: Name of the daemonset, must be unique. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        :param pulumi.Input[str] namespace: Namespace defines the space within which name of the daemonset must be unique.
+        :param pulumi.Input[str] resource_version: An opaque value that represents the internal version of this daemonset that can be used by clients to determine when daemonset has changed. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+        :param pulumi.Input[str] uid: The unique in time and space value for this daemonset. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
+        """
+        if annotations is not None:
+            pulumi.set(__self__, "annotations", annotations)
+        if generation is not None:
+            pulumi.set(__self__, "generation", generation)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if resource_version is not None:
+            pulumi.set(__self__, "resource_version", resource_version)
+        if uid is not None:
+            pulumi.set(__self__, "uid", uid)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        An unstructured key value map stored with the daemonset that may be used to store arbitrary metadata. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+        """
+        return pulumi.get(self, "annotations")
+
+    @annotations.setter
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "annotations", value)
+
+    @property
+    @pulumi.getter
+    def generation(self) -> Optional[pulumi.Input[int]]:
+        """
+        A sequence number representing a specific generation of the desired state.
+        """
+        return pulumi.get(self, "generation")
+
+    @generation.setter
+    def generation(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "generation", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Map of string keys and values that can be used to organize and categorize (scope and select) the daemonset. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the daemonset, must be unique. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[pulumi.Input[str]]:
+        """
+        Namespace defines the space within which name of the daemonset must be unique.
+        """
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace", value)
+
+    @property
+    @pulumi.getter(name="resourceVersion")
+    def resource_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        An opaque value that represents the internal version of this daemonset that can be used by clients to determine when daemonset has changed. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+        """
+        return pulumi.get(self, "resource_version")
+
+    @resource_version.setter
+    def resource_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_version", value)
+
+    @property
+    @pulumi.getter
+    def uid(self) -> Optional[pulumi.Input[str]]:
+        """
+        The unique in time and space value for this daemonset. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
+        """
+        return pulumi.get(self, "uid")
+
+    @uid.setter
+    def uid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "uid", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecArgsDict(TypedDict):
+        selector: pulumi.Input['K8sDaemonSetSpecSelectorArgsDict']
+        """
+        A label query over pods that are managed by the daemon set. Must match in order to be controlled. It must match the pod template's labels.
+        """
+        template: pulumi.Input['K8sDaemonSetSpecTemplateArgsDict']
+        """
+        An object that describes the pod that will be created. The DaemonSet will create exactly one copy of this pod on every node that matches the template's node selector.
+        """
+        min_ready_seconds: NotRequired[pulumi.Input[int]]
+        """
+        The minimum number of seconds for which a newly created pod should be ready without any of its containers crashing, for it to be considered available. Defaults to `0`.
+        """
+        revision_history_limit: NotRequired[pulumi.Input[int]]
+        """
+        The number of old history to retain to allow rollback. Defaults to `10`.
+        """
+        update_strategy: NotRequired[pulumi.Input['K8sDaemonSetSpecUpdateStrategyArgsDict']]
+        """
+        An update strategy to replace existing DaemonSet pods with new pods.
+        """
+elif False:
+    K8sDaemonSetSpecArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecArgs:
+    def __init__(__self__, *,
+                 selector: pulumi.Input['K8sDaemonSetSpecSelectorArgs'],
+                 template: pulumi.Input['K8sDaemonSetSpecTemplateArgs'],
+                 min_ready_seconds: Optional[pulumi.Input[int]] = None,
+                 revision_history_limit: Optional[pulumi.Input[int]] = None,
+                 update_strategy: Optional[pulumi.Input['K8sDaemonSetSpecUpdateStrategyArgs']] = None):
+        """
+        :param pulumi.Input['K8sDaemonSetSpecSelectorArgs'] selector: A label query over pods that are managed by the daemon set. Must match in order to be controlled. It must match the pod template's labels.
+        :param pulumi.Input['K8sDaemonSetSpecTemplateArgs'] template: An object that describes the pod that will be created. The DaemonSet will create exactly one copy of this pod on every node that matches the template's node selector.
+        :param pulumi.Input[int] min_ready_seconds: The minimum number of seconds for which a newly created pod should be ready without any of its containers crashing, for it to be considered available. Defaults to `0`.
+        :param pulumi.Input[int] revision_history_limit: The number of old history to retain to allow rollback. Defaults to `10`.
+        :param pulumi.Input['K8sDaemonSetSpecUpdateStrategyArgs'] update_strategy: An update strategy to replace existing DaemonSet pods with new pods.
+        """
+        pulumi.set(__self__, "selector", selector)
+        pulumi.set(__self__, "template", template)
+        if min_ready_seconds is not None:
+            pulumi.set(__self__, "min_ready_seconds", min_ready_seconds)
+        if revision_history_limit is not None:
+            pulumi.set(__self__, "revision_history_limit", revision_history_limit)
+        if update_strategy is not None:
+            pulumi.set(__self__, "update_strategy", update_strategy)
+
+    @property
+    @pulumi.getter
+    def selector(self) -> pulumi.Input['K8sDaemonSetSpecSelectorArgs']:
+        """
+        A label query over pods that are managed by the daemon set. Must match in order to be controlled. It must match the pod template's labels.
+        """
+        return pulumi.get(self, "selector")
+
+    @selector.setter
+    def selector(self, value: pulumi.Input['K8sDaemonSetSpecSelectorArgs']):
+        pulumi.set(self, "selector", value)
+
+    @property
+    @pulumi.getter
+    def template(self) -> pulumi.Input['K8sDaemonSetSpecTemplateArgs']:
+        """
+        An object that describes the pod that will be created. The DaemonSet will create exactly one copy of this pod on every node that matches the template's node selector.
+        """
+        return pulumi.get(self, "template")
+
+    @template.setter
+    def template(self, value: pulumi.Input['K8sDaemonSetSpecTemplateArgs']):
+        pulumi.set(self, "template", value)
+
+    @property
+    @pulumi.getter(name="minReadySeconds")
+    def min_ready_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        The minimum number of seconds for which a newly created pod should be ready without any of its containers crashing, for it to be considered available. Defaults to `0`.
+        """
+        return pulumi.get(self, "min_ready_seconds")
+
+    @min_ready_seconds.setter
+    def min_ready_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_ready_seconds", value)
+
+    @property
+    @pulumi.getter(name="revisionHistoryLimit")
+    def revision_history_limit(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of old history to retain to allow rollback. Defaults to `10`.
+        """
+        return pulumi.get(self, "revision_history_limit")
+
+    @revision_history_limit.setter
+    def revision_history_limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "revision_history_limit", value)
+
+    @property
+    @pulumi.getter(name="updateStrategy")
+    def update_strategy(self) -> Optional[pulumi.Input['K8sDaemonSetSpecUpdateStrategyArgs']]:
+        """
+        An update strategy to replace existing DaemonSet pods with new pods.
+        """
+        return pulumi.get(self, "update_strategy")
+
+    @update_strategy.setter
+    def update_strategy(self, value: Optional[pulumi.Input['K8sDaemonSetSpecUpdateStrategyArgs']]):
+        pulumi.set(self, "update_strategy", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecSelectorArgsDict(TypedDict):
+        match_expressions: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecSelectorMatchExpressionArgsDict']]]]
+        """
+        A list of label selector requirements. The requirements are ANDed.
+        """
+        match_labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `match_expressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+        """
+elif False:
+    K8sDaemonSetSpecSelectorArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecSelectorArgs:
+    def __init__(__self__, *,
+                 match_expressions: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecSelectorMatchExpressionArgs']]]] = None,
+                 match_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecSelectorMatchExpressionArgs']]] match_expressions: A list of label selector requirements. The requirements are ANDed.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] match_labels: A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `match_expressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+        """
+        if match_expressions is not None:
+            pulumi.set(__self__, "match_expressions", match_expressions)
+        if match_labels is not None:
+            pulumi.set(__self__, "match_labels", match_labels)
+
+    @property
+    @pulumi.getter(name="matchExpressions")
+    def match_expressions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecSelectorMatchExpressionArgs']]]]:
+        """
+        A list of label selector requirements. The requirements are ANDed.
+        """
+        return pulumi.get(self, "match_expressions")
+
+    @match_expressions.setter
+    def match_expressions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecSelectorMatchExpressionArgs']]]]):
+        pulumi.set(self, "match_expressions", value)
+
+    @property
+    @pulumi.getter(name="matchLabels")
+    def match_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `match_expressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+        """
+        return pulumi.get(self, "match_labels")
+
+    @match_labels.setter
+    def match_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "match_labels", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecSelectorMatchExpressionArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[str]]
+        """
+        The label key that the selector applies to.
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
+        """
+        values: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
+        """
+elif False:
+    K8sDaemonSetSpecSelectorMatchExpressionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecSelectorMatchExpressionArgs:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[str]] = None,
+                 operator: Optional[pulumi.Input[str]] = None,
+                 values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] key: The label key that the selector applies to.
+        :param pulumi.Input[str] operator: A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The label key that the selector applies to.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "values", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateArgsDict(TypedDict):
+        spec: pulumi.Input['K8sDaemonSetSpecTemplateSpecArgsDict']
+        """
+        Spec of the pods managed by the daemonset
+        """
+        metadata: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateMetadataArgsDict']]
+        """
+        Standard daemonset's metadata. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
+        """
+elif False:
+    K8sDaemonSetSpecTemplateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateArgs:
+    def __init__(__self__, *,
+                 spec: pulumi.Input['K8sDaemonSetSpecTemplateSpecArgs'],
+                 metadata: Optional[pulumi.Input['K8sDaemonSetSpecTemplateMetadataArgs']] = None):
+        """
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecArgs'] spec: Spec of the pods managed by the daemonset
+        :param pulumi.Input['K8sDaemonSetSpecTemplateMetadataArgs'] metadata: Standard daemonset's metadata. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
+        """
+        pulumi.set(__self__, "spec", spec)
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
+
+    @property
+    @pulumi.getter
+    def spec(self) -> pulumi.Input['K8sDaemonSetSpecTemplateSpecArgs']:
+        """
+        Spec of the pods managed by the daemonset
+        """
+        return pulumi.get(self, "spec")
+
+    @spec.setter
+    def spec(self, value: pulumi.Input['K8sDaemonSetSpecTemplateSpecArgs']):
+        pulumi.set(self, "spec", value)
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateMetadataArgs']]:
+        """
+        Standard daemonset's metadata. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
+        """
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateMetadataArgs']]):
+        pulumi.set(self, "metadata", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateMetadataArgsDict(TypedDict):
+        annotations: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        An unstructured key value map stored with the daemonset that may be used to store arbitrary metadata. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+        """
+        generation: NotRequired[pulumi.Input[int]]
+        """
+        A sequence number representing a specific generation of the desired state.
+        """
+        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Map of string keys and values that can be used to organize and categorize (scope and select) the daemonset. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the daemonset, must be unique. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        """
+        resource_version: NotRequired[pulumi.Input[str]]
+        """
+        An opaque value that represents the internal version of this daemonset that can be used by clients to determine when daemonset has changed. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+        """
+        uid: NotRequired[pulumi.Input[str]]
+        """
+        The unique in time and space value for this daemonset. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
+        """
+elif False:
+    K8sDaemonSetSpecTemplateMetadataArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateMetadataArgs:
+    def __init__(__self__, *,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 generation: Optional[pulumi.Input[int]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 resource_version: Optional[pulumi.Input[str]] = None,
+                 uid: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: An unstructured key value map stored with the daemonset that may be used to store arbitrary metadata. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+        :param pulumi.Input[int] generation: A sequence number representing a specific generation of the desired state.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Map of string keys and values that can be used to organize and categorize (scope and select) the daemonset. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+        :param pulumi.Input[str] name: Name of the daemonset, must be unique. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        :param pulumi.Input[str] resource_version: An opaque value that represents the internal version of this daemonset that can be used by clients to determine when daemonset has changed. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+        :param pulumi.Input[str] uid: The unique in time and space value for this daemonset. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
+        """
+        if annotations is not None:
+            pulumi.set(__self__, "annotations", annotations)
+        if generation is not None:
+            pulumi.set(__self__, "generation", generation)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if resource_version is not None:
+            pulumi.set(__self__, "resource_version", resource_version)
+        if uid is not None:
+            pulumi.set(__self__, "uid", uid)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        An unstructured key value map stored with the daemonset that may be used to store arbitrary metadata. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+        """
+        return pulumi.get(self, "annotations")
+
+    @annotations.setter
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "annotations", value)
+
+    @property
+    @pulumi.getter
+    def generation(self) -> Optional[pulumi.Input[int]]:
+        """
+        A sequence number representing a specific generation of the desired state.
+        """
+        return pulumi.get(self, "generation")
+
+    @generation.setter
+    def generation(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "generation", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Map of string keys and values that can be used to organize and categorize (scope and select) the daemonset. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the daemonset, must be unique. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="resourceVersion")
+    def resource_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        An opaque value that represents the internal version of this daemonset that can be used by clients to determine when daemonset has changed. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+        """
+        return pulumi.get(self, "resource_version")
+
+    @resource_version.setter
+    def resource_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_version", value)
+
+    @property
+    @pulumi.getter
+    def uid(self) -> Optional[pulumi.Input[str]]:
+        """
+        The unique in time and space value for this daemonset. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
+        """
+        return pulumi.get(self, "uid")
+
+    @uid.setter
+    def uid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "uid", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecArgsDict(TypedDict):
+        containers: pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerArgsDict']]]
+        """
+        List of containers belonging to the pod. Containers cannot currently be added or removed. There must be at least one container in a Pod. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/
+        """
+        active_deadline_seconds: NotRequired[pulumi.Input[int]]
+        """
+        Optional duration in seconds the pod may be active on the node relative to StartTime before the system will actively try to mark it failed and kill associated containers. Value must be a positive integer.
+        """
+        affinity: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityArgsDict']]
+        """
+        Optional pod scheduling constraints.
+        """
+        automount_service_account_token: NotRequired[pulumi.Input[bool]]
+        """
+        AutomountServiceAccountToken indicates whether a service account token should be automatically mounted. Defaults to `true`.
+        """
+        dns_config: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecDnsConfigArgsDict']]
+        """
+        Specifies the DNS parameters of a pod. Parameters specified here will be merged to the generated DNS configuration based on DNSPolicy. Optional: Defaults to empty
+        """
+        dns_policy: NotRequired[pulumi.Input[str]]
+        """
+        Set DNS policy for containers within the pod. Valid values are 'ClusterFirstWithHostNet', 'ClusterFirst', 'Default' or 'None'. DNS parameters given in DNSConfig will be merged with the policy selected with DNSPolicy. To have DNS options set along with hostNetwork, you have to specify DNS policy explicitly to 'ClusterFirstWithHostNet'. Defaults to 'ClusterFirst'. More info: https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy Defaults to `ClusterFirst`.
+        """
+        enable_service_links: NotRequired[pulumi.Input[bool]]
+        """
+        Enables generating environment variables for service discovery. Defaults to true. Defaults to `true`.
+        """
+        host_aliases: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecHostAliasArgsDict']]]]
+        """
+        List of hosts and IPs that will be injected into the pod's hosts file if specified. Optional: Defaults to empty.
+        """
+        host_ipc: NotRequired[pulumi.Input[bool]]
+        """
+        Use the host's ipc namespace. Optional: Defaults to false. Defaults to `false`.
+        """
+        host_network: NotRequired[pulumi.Input[bool]]
+        """
+        Host networking requested for this pod. Use the host's network namespace. If this option is set, the ports that will be used must be specified. Defaults to `false`.
+        """
+        host_pid: NotRequired[pulumi.Input[bool]]
+        """
+        Use the host's pid namespace. Defaults to `false`.
+        """
+        hostname: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the hostname of the Pod If not specified, the pod's hostname will be set to a system-defined value.
+        """
+        image_pull_secrets: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecImagePullSecretArgsDict']]]]
+        """
+        ImagePullSecrets is an optional list of references to secrets in the same namespace to use for pulling any of the images used by this PodSpec. If specified, these secrets will be passed to individual puller implementations for them to use. For example, in the case of docker, only DockerConfig type secrets are honored. More info: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
+        """
+        init_containers: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerArgsDict']]]]
+        """
+        List of init containers belonging to the pod. Init containers always run to completion and each must complete successfully before the next is started. More info: https://kubernetes.io/docs/concepts/workloads/pods/init-containers/
+        """
+        node_name: NotRequired[pulumi.Input[str]]
+        """
+        NodeName is a request to schedule this pod onto a specific node. If it is non-empty, the scheduler simply schedules this pod onto that node, assuming that it fits resource requirements.
+        """
+        node_selector: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        NodeSelector is a selector which must be true for the pod to fit on a node. Selector which must match a node's labels for the pod to be scheduled on that node. More info: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/.
+        """
+        priority_class_name: NotRequired[pulumi.Input[str]]
+        """
+        If specified, indicates the pod's priority. "system-node-critical" and "system-cluster-critical" are two special keywords which indicate the highest priorities with the former being the highest priority. Any other name must be defined by creating a PriorityClass object with that name. If not specified, the pod priority will be default or zero if there is no default.
+        """
+        readiness_gates: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecReadinessGateArgsDict']]]]
+        """
+        If specified, all readiness gates will be evaluated for pod readiness. A pod is ready when all its containers are ready AND all conditions specified in the readiness gates have status equal to "True" More info: https://git.k8s.io/enhancements/keps/sig-network/0007-pod-ready%2B%2B.md
+        """
+        restart_policy: NotRequired[pulumi.Input[str]]
+        """
+        Restart policy for all containers within the pod. DaemonSets only support `Always`. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#restart-policy. Defaults to `Always`.
+        """
+        runtime_class_name: NotRequired[pulumi.Input[str]]
+        """
+        RuntimeClassName is a feature for selecting the container runtime configuration. The container runtime configuration is used to run a Pod's containers. More info: https://kubernetes.io/docs/concepts/containers/runtime-class
+        """
+        scheduler_name: NotRequired[pulumi.Input[str]]
+        """
+        If specified, the pod will be dispatched by specified scheduler. If not specified, the pod will be dispatched by default scheduler.
+        """
+        security_context: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecSecurityContextArgsDict']]
+        """
+        SecurityContext holds pod-level security attributes and common container settings. Optional: Defaults to empty
+        """
+        service_account_name: NotRequired[pulumi.Input[str]]
+        """
+        ServiceAccountName is the name of the ServiceAccount to use to run this pod. More info: http://releases.k8s.io/HEAD/docs/design/service_accounts.md.
+        """
+        share_process_namespace: NotRequired[pulumi.Input[bool]]
+        """
+        Share a single process namespace between all of the containers in a pod. When this is set containers will be able to view and signal processes from other containers in the same pod, and the first process in each container will not be assigned PID 1. HostPID and ShareProcessNamespace cannot both be set. Optional: Defaults to false. Defaults to `false`.
+        """
+        subdomain: NotRequired[pulumi.Input[str]]
+        """
+        If specified, the fully qualified Pod hostname will be "...svc.". If not specified, the pod will not have a domainname at all..
+        """
+        termination_grace_period_seconds: NotRequired[pulumi.Input[int]]
+        """
+        Optional duration in seconds the pod needs to terminate gracefully. May be decreased in delete request. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period will be used instead. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. Defaults to `30`.
+        """
+        tolerations: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecTolerationArgsDict']]]]
+        """
+        If specified, the pod's toleration. Optional: Defaults to empty
+        """
+        topology_spread_constraints: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecTopologySpreadConstraintArgsDict']]]]
+        """
+        describes how a group of pods ought to spread across topology domains. Scheduler will schedule pods in a way which abides by the constraints.
+        """
+        volumes: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeArgsDict']]]]
+        """
+        List of volumes that can be mounted by containers belonging to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecArgs:
+    def __init__(__self__, *,
+                 containers: pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerArgs']]],
+                 active_deadline_seconds: Optional[pulumi.Input[int]] = None,
+                 affinity: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityArgs']] = None,
+                 automount_service_account_token: Optional[pulumi.Input[bool]] = None,
+                 dns_config: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecDnsConfigArgs']] = None,
+                 dns_policy: Optional[pulumi.Input[str]] = None,
+                 enable_service_links: Optional[pulumi.Input[bool]] = None,
+                 host_aliases: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecHostAliasArgs']]]] = None,
+                 host_ipc: Optional[pulumi.Input[bool]] = None,
+                 host_network: Optional[pulumi.Input[bool]] = None,
+                 host_pid: Optional[pulumi.Input[bool]] = None,
+                 hostname: Optional[pulumi.Input[str]] = None,
+                 image_pull_secrets: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecImagePullSecretArgs']]]] = None,
+                 init_containers: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerArgs']]]] = None,
+                 node_name: Optional[pulumi.Input[str]] = None,
+                 node_selector: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 priority_class_name: Optional[pulumi.Input[str]] = None,
+                 readiness_gates: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecReadinessGateArgs']]]] = None,
+                 restart_policy: Optional[pulumi.Input[str]] = None,
+                 runtime_class_name: Optional[pulumi.Input[str]] = None,
+                 scheduler_name: Optional[pulumi.Input[str]] = None,
+                 security_context: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecSecurityContextArgs']] = None,
+                 service_account_name: Optional[pulumi.Input[str]] = None,
+                 share_process_namespace: Optional[pulumi.Input[bool]] = None,
+                 subdomain: Optional[pulumi.Input[str]] = None,
+                 termination_grace_period_seconds: Optional[pulumi.Input[int]] = None,
+                 tolerations: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecTolerationArgs']]]] = None,
+                 topology_spread_constraints: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecTopologySpreadConstraintArgs']]]] = None,
+                 volumes: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerArgs']]] containers: List of containers belonging to the pod. Containers cannot currently be added or removed. There must be at least one container in a Pod. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/
+        :param pulumi.Input[int] active_deadline_seconds: Optional duration in seconds the pod may be active on the node relative to StartTime before the system will actively try to mark it failed and kill associated containers. Value must be a positive integer.
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityArgs'] affinity: Optional pod scheduling constraints.
+        :param pulumi.Input[bool] automount_service_account_token: AutomountServiceAccountToken indicates whether a service account token should be automatically mounted. Defaults to `true`.
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecDnsConfigArgs'] dns_config: Specifies the DNS parameters of a pod. Parameters specified here will be merged to the generated DNS configuration based on DNSPolicy. Optional: Defaults to empty
+        :param pulumi.Input[str] dns_policy: Set DNS policy for containers within the pod. Valid values are 'ClusterFirstWithHostNet', 'ClusterFirst', 'Default' or 'None'. DNS parameters given in DNSConfig will be merged with the policy selected with DNSPolicy. To have DNS options set along with hostNetwork, you have to specify DNS policy explicitly to 'ClusterFirstWithHostNet'. Defaults to 'ClusterFirst'. More info: https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy Defaults to `ClusterFirst`.
+        :param pulumi.Input[bool] enable_service_links: Enables generating environment variables for service discovery. Defaults to true. Defaults to `true`.
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecHostAliasArgs']]] host_aliases: List of hosts and IPs that will be injected into the pod's hosts file if specified. Optional: Defaults to empty.
+        :param pulumi.Input[bool] host_ipc: Use the host's ipc namespace. Optional: Defaults to false. Defaults to `false`.
+        :param pulumi.Input[bool] host_network: Host networking requested for this pod. Use the host's network namespace. If this option is set, the ports that will be used must be specified. Defaults to `false`.
+        :param pulumi.Input[bool] host_pid: Use the host's pid namespace. Defaults to `false`.
+        :param pulumi.Input[str] hostname: Specifies the hostname of the Pod If not specified, the pod's hostname will be set to a system-defined value.
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecImagePullSecretArgs']]] image_pull_secrets: ImagePullSecrets is an optional list of references to secrets in the same namespace to use for pulling any of the images used by this PodSpec. If specified, these secrets will be passed to individual puller implementations for them to use. For example, in the case of docker, only DockerConfig type secrets are honored. More info: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerArgs']]] init_containers: List of init containers belonging to the pod. Init containers always run to completion and each must complete successfully before the next is started. More info: https://kubernetes.io/docs/concepts/workloads/pods/init-containers/
+        :param pulumi.Input[str] node_name: NodeName is a request to schedule this pod onto a specific node. If it is non-empty, the scheduler simply schedules this pod onto that node, assuming that it fits resource requirements.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] node_selector: NodeSelector is a selector which must be true for the pod to fit on a node. Selector which must match a node's labels for the pod to be scheduled on that node. More info: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/.
+        :param pulumi.Input[str] priority_class_name: If specified, indicates the pod's priority. "system-node-critical" and "system-cluster-critical" are two special keywords which indicate the highest priorities with the former being the highest priority. Any other name must be defined by creating a PriorityClass object with that name. If not specified, the pod priority will be default or zero if there is no default.
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecReadinessGateArgs']]] readiness_gates: If specified, all readiness gates will be evaluated for pod readiness. A pod is ready when all its containers are ready AND all conditions specified in the readiness gates have status equal to "True" More info: https://git.k8s.io/enhancements/keps/sig-network/0007-pod-ready%2B%2B.md
+        :param pulumi.Input[str] restart_policy: Restart policy for all containers within the pod. DaemonSets only support `Always`. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#restart-policy. Defaults to `Always`.
+        :param pulumi.Input[str] runtime_class_name: RuntimeClassName is a feature for selecting the container runtime configuration. The container runtime configuration is used to run a Pod's containers. More info: https://kubernetes.io/docs/concepts/containers/runtime-class
+        :param pulumi.Input[str] scheduler_name: If specified, the pod will be dispatched by specified scheduler. If not specified, the pod will be dispatched by default scheduler.
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecSecurityContextArgs'] security_context: SecurityContext holds pod-level security attributes and common container settings. Optional: Defaults to empty
+        :param pulumi.Input[str] service_account_name: ServiceAccountName is the name of the ServiceAccount to use to run this pod. More info: http://releases.k8s.io/HEAD/docs/design/service_accounts.md.
+        :param pulumi.Input[bool] share_process_namespace: Share a single process namespace between all of the containers in a pod. When this is set containers will be able to view and signal processes from other containers in the same pod, and the first process in each container will not be assigned PID 1. HostPID and ShareProcessNamespace cannot both be set. Optional: Defaults to false. Defaults to `false`.
+        :param pulumi.Input[str] subdomain: If specified, the fully qualified Pod hostname will be "...svc.". If not specified, the pod will not have a domainname at all..
+        :param pulumi.Input[int] termination_grace_period_seconds: Optional duration in seconds the pod needs to terminate gracefully. May be decreased in delete request. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period will be used instead. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. Defaults to `30`.
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecTolerationArgs']]] tolerations: If specified, the pod's toleration. Optional: Defaults to empty
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecTopologySpreadConstraintArgs']]] topology_spread_constraints: describes how a group of pods ought to spread across topology domains. Scheduler will schedule pods in a way which abides by the constraints.
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeArgs']]] volumes: List of volumes that can be mounted by containers belonging to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes
+        """
+        pulumi.set(__self__, "containers", containers)
+        if active_deadline_seconds is not None:
+            pulumi.set(__self__, "active_deadline_seconds", active_deadline_seconds)
+        if affinity is not None:
+            pulumi.set(__self__, "affinity", affinity)
+        if automount_service_account_token is not None:
+            pulumi.set(__self__, "automount_service_account_token", automount_service_account_token)
+        if dns_config is not None:
+            pulumi.set(__self__, "dns_config", dns_config)
+        if dns_policy is not None:
+            pulumi.set(__self__, "dns_policy", dns_policy)
+        if enable_service_links is not None:
+            pulumi.set(__self__, "enable_service_links", enable_service_links)
+        if host_aliases is not None:
+            pulumi.set(__self__, "host_aliases", host_aliases)
+        if host_ipc is not None:
+            pulumi.set(__self__, "host_ipc", host_ipc)
+        if host_network is not None:
+            pulumi.set(__self__, "host_network", host_network)
+        if host_pid is not None:
+            pulumi.set(__self__, "host_pid", host_pid)
+        if hostname is not None:
+            pulumi.set(__self__, "hostname", hostname)
+        if image_pull_secrets is not None:
+            pulumi.set(__self__, "image_pull_secrets", image_pull_secrets)
+        if init_containers is not None:
+            pulumi.set(__self__, "init_containers", init_containers)
+        if node_name is not None:
+            pulumi.set(__self__, "node_name", node_name)
+        if node_selector is not None:
+            pulumi.set(__self__, "node_selector", node_selector)
+        if priority_class_name is not None:
+            pulumi.set(__self__, "priority_class_name", priority_class_name)
+        if readiness_gates is not None:
+            pulumi.set(__self__, "readiness_gates", readiness_gates)
+        if restart_policy is not None:
+            pulumi.set(__self__, "restart_policy", restart_policy)
+        if runtime_class_name is not None:
+            pulumi.set(__self__, "runtime_class_name", runtime_class_name)
+        if scheduler_name is not None:
+            pulumi.set(__self__, "scheduler_name", scheduler_name)
+        if security_context is not None:
+            pulumi.set(__self__, "security_context", security_context)
+        if service_account_name is not None:
+            pulumi.set(__self__, "service_account_name", service_account_name)
+        if share_process_namespace is not None:
+            pulumi.set(__self__, "share_process_namespace", share_process_namespace)
+        if subdomain is not None:
+            pulumi.set(__self__, "subdomain", subdomain)
+        if termination_grace_period_seconds is not None:
+            pulumi.set(__self__, "termination_grace_period_seconds", termination_grace_period_seconds)
+        if tolerations is not None:
+            pulumi.set(__self__, "tolerations", tolerations)
+        if topology_spread_constraints is not None:
+            pulumi.set(__self__, "topology_spread_constraints", topology_spread_constraints)
+        if volumes is not None:
+            pulumi.set(__self__, "volumes", volumes)
+
+    @property
+    @pulumi.getter
+    def containers(self) -> pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerArgs']]]:
+        """
+        List of containers belonging to the pod. Containers cannot currently be added or removed. There must be at least one container in a Pod. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/
+        """
+        return pulumi.get(self, "containers")
+
+    @containers.setter
+    def containers(self, value: pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerArgs']]]):
+        pulumi.set(self, "containers", value)
+
+    @property
+    @pulumi.getter(name="activeDeadlineSeconds")
+    def active_deadline_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional duration in seconds the pod may be active on the node relative to StartTime before the system will actively try to mark it failed and kill associated containers. Value must be a positive integer.
+        """
+        return pulumi.get(self, "active_deadline_seconds")
+
+    @active_deadline_seconds.setter
+    def active_deadline_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "active_deadline_seconds", value)
+
+    @property
+    @pulumi.getter
+    def affinity(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityArgs']]:
+        """
+        Optional pod scheduling constraints.
+        """
+        return pulumi.get(self, "affinity")
+
+    @affinity.setter
+    def affinity(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityArgs']]):
+        pulumi.set(self, "affinity", value)
+
+    @property
+    @pulumi.getter(name="automountServiceAccountToken")
+    def automount_service_account_token(self) -> Optional[pulumi.Input[bool]]:
+        """
+        AutomountServiceAccountToken indicates whether a service account token should be automatically mounted. Defaults to `true`.
+        """
+        return pulumi.get(self, "automount_service_account_token")
+
+    @automount_service_account_token.setter
+    def automount_service_account_token(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "automount_service_account_token", value)
+
+    @property
+    @pulumi.getter(name="dnsConfig")
+    def dns_config(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecDnsConfigArgs']]:
+        """
+        Specifies the DNS parameters of a pod. Parameters specified here will be merged to the generated DNS configuration based on DNSPolicy. Optional: Defaults to empty
+        """
+        return pulumi.get(self, "dns_config")
+
+    @dns_config.setter
+    def dns_config(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecDnsConfigArgs']]):
+        pulumi.set(self, "dns_config", value)
+
+    @property
+    @pulumi.getter(name="dnsPolicy")
+    def dns_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Set DNS policy for containers within the pod. Valid values are 'ClusterFirstWithHostNet', 'ClusterFirst', 'Default' or 'None'. DNS parameters given in DNSConfig will be merged with the policy selected with DNSPolicy. To have DNS options set along with hostNetwork, you have to specify DNS policy explicitly to 'ClusterFirstWithHostNet'. Defaults to 'ClusterFirst'. More info: https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy Defaults to `ClusterFirst`.
+        """
+        return pulumi.get(self, "dns_policy")
+
+    @dns_policy.setter
+    def dns_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dns_policy", value)
+
+    @property
+    @pulumi.getter(name="enableServiceLinks")
+    def enable_service_links(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enables generating environment variables for service discovery. Defaults to true. Defaults to `true`.
+        """
+        return pulumi.get(self, "enable_service_links")
+
+    @enable_service_links.setter
+    def enable_service_links(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_service_links", value)
+
+    @property
+    @pulumi.getter(name="hostAliases")
+    def host_aliases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecHostAliasArgs']]]]:
+        """
+        List of hosts and IPs that will be injected into the pod's hosts file if specified. Optional: Defaults to empty.
+        """
+        return pulumi.get(self, "host_aliases")
+
+    @host_aliases.setter
+    def host_aliases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecHostAliasArgs']]]]):
+        pulumi.set(self, "host_aliases", value)
+
+    @property
+    @pulumi.getter(name="hostIpc")
+    def host_ipc(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Use the host's ipc namespace. Optional: Defaults to false. Defaults to `false`.
+        """
+        return pulumi.get(self, "host_ipc")
+
+    @host_ipc.setter
+    def host_ipc(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "host_ipc", value)
+
+    @property
+    @pulumi.getter(name="hostNetwork")
+    def host_network(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Host networking requested for this pod. Use the host's network namespace. If this option is set, the ports that will be used must be specified. Defaults to `false`.
+        """
+        return pulumi.get(self, "host_network")
+
+    @host_network.setter
+    def host_network(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "host_network", value)
+
+    @property
+    @pulumi.getter(name="hostPid")
+    def host_pid(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Use the host's pid namespace. Defaults to `false`.
+        """
+        return pulumi.get(self, "host_pid")
+
+    @host_pid.setter
+    def host_pid(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "host_pid", value)
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the hostname of the Pod If not specified, the pod's hostname will be set to a system-defined value.
+        """
+        return pulumi.get(self, "hostname")
+
+    @hostname.setter
+    def hostname(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "hostname", value)
+
+    @property
+    @pulumi.getter(name="imagePullSecrets")
+    def image_pull_secrets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecImagePullSecretArgs']]]]:
+        """
+        ImagePullSecrets is an optional list of references to secrets in the same namespace to use for pulling any of the images used by this PodSpec. If specified, these secrets will be passed to individual puller implementations for them to use. For example, in the case of docker, only DockerConfig type secrets are honored. More info: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
+        """
+        return pulumi.get(self, "image_pull_secrets")
+
+    @image_pull_secrets.setter
+    def image_pull_secrets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecImagePullSecretArgs']]]]):
+        pulumi.set(self, "image_pull_secrets", value)
+
+    @property
+    @pulumi.getter(name="initContainers")
+    def init_containers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerArgs']]]]:
+        """
+        List of init containers belonging to the pod. Init containers always run to completion and each must complete successfully before the next is started. More info: https://kubernetes.io/docs/concepts/workloads/pods/init-containers/
+        """
+        return pulumi.get(self, "init_containers")
+
+    @init_containers.setter
+    def init_containers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerArgs']]]]):
+        pulumi.set(self, "init_containers", value)
+
+    @property
+    @pulumi.getter(name="nodeName")
+    def node_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        NodeName is a request to schedule this pod onto a specific node. If it is non-empty, the scheduler simply schedules this pod onto that node, assuming that it fits resource requirements.
+        """
+        return pulumi.get(self, "node_name")
+
+    @node_name.setter
+    def node_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "node_name", value)
+
+    @property
+    @pulumi.getter(name="nodeSelector")
+    def node_selector(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        NodeSelector is a selector which must be true for the pod to fit on a node. Selector which must match a node's labels for the pod to be scheduled on that node. More info: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/.
+        """
+        return pulumi.get(self, "node_selector")
+
+    @node_selector.setter
+    def node_selector(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "node_selector", value)
+
+    @property
+    @pulumi.getter(name="priorityClassName")
+    def priority_class_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        If specified, indicates the pod's priority. "system-node-critical" and "system-cluster-critical" are two special keywords which indicate the highest priorities with the former being the highest priority. Any other name must be defined by creating a PriorityClass object with that name. If not specified, the pod priority will be default or zero if there is no default.
+        """
+        return pulumi.get(self, "priority_class_name")
+
+    @priority_class_name.setter
+    def priority_class_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "priority_class_name", value)
+
+    @property
+    @pulumi.getter(name="readinessGates")
+    def readiness_gates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecReadinessGateArgs']]]]:
+        """
+        If specified, all readiness gates will be evaluated for pod readiness. A pod is ready when all its containers are ready AND all conditions specified in the readiness gates have status equal to "True" More info: https://git.k8s.io/enhancements/keps/sig-network/0007-pod-ready%2B%2B.md
+        """
+        return pulumi.get(self, "readiness_gates")
+
+    @readiness_gates.setter
+    def readiness_gates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecReadinessGateArgs']]]]):
+        pulumi.set(self, "readiness_gates", value)
+
+    @property
+    @pulumi.getter(name="restartPolicy")
+    def restart_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Restart policy for all containers within the pod. DaemonSets only support `Always`. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#restart-policy. Defaults to `Always`.
+        """
+        return pulumi.get(self, "restart_policy")
+
+    @restart_policy.setter
+    def restart_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "restart_policy", value)
+
+    @property
+    @pulumi.getter(name="runtimeClassName")
+    def runtime_class_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        RuntimeClassName is a feature for selecting the container runtime configuration. The container runtime configuration is used to run a Pod's containers. More info: https://kubernetes.io/docs/concepts/containers/runtime-class
+        """
+        return pulumi.get(self, "runtime_class_name")
+
+    @runtime_class_name.setter
+    def runtime_class_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "runtime_class_name", value)
+
+    @property
+    @pulumi.getter(name="schedulerName")
+    def scheduler_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        If specified, the pod will be dispatched by specified scheduler. If not specified, the pod will be dispatched by default scheduler.
+        """
+        return pulumi.get(self, "scheduler_name")
+
+    @scheduler_name.setter
+    def scheduler_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scheduler_name", value)
+
+    @property
+    @pulumi.getter(name="securityContext")
+    def security_context(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecSecurityContextArgs']]:
+        """
+        SecurityContext holds pod-level security attributes and common container settings. Optional: Defaults to empty
+        """
+        return pulumi.get(self, "security_context")
+
+    @security_context.setter
+    def security_context(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecSecurityContextArgs']]):
+        pulumi.set(self, "security_context", value)
+
+    @property
+    @pulumi.getter(name="serviceAccountName")
+    def service_account_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        ServiceAccountName is the name of the ServiceAccount to use to run this pod. More info: http://releases.k8s.io/HEAD/docs/design/service_accounts.md.
+        """
+        return pulumi.get(self, "service_account_name")
+
+    @service_account_name.setter
+    def service_account_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_account_name", value)
+
+    @property
+    @pulumi.getter(name="shareProcessNamespace")
+    def share_process_namespace(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Share a single process namespace between all of the containers in a pod. When this is set containers will be able to view and signal processes from other containers in the same pod, and the first process in each container will not be assigned PID 1. HostPID and ShareProcessNamespace cannot both be set. Optional: Defaults to false. Defaults to `false`.
+        """
+        return pulumi.get(self, "share_process_namespace")
+
+    @share_process_namespace.setter
+    def share_process_namespace(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "share_process_namespace", value)
+
+    @property
+    @pulumi.getter
+    def subdomain(self) -> Optional[pulumi.Input[str]]:
+        """
+        If specified, the fully qualified Pod hostname will be "...svc.". If not specified, the pod will not have a domainname at all..
+        """
+        return pulumi.get(self, "subdomain")
+
+    @subdomain.setter
+    def subdomain(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subdomain", value)
+
+    @property
+    @pulumi.getter(name="terminationGracePeriodSeconds")
+    def termination_grace_period_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional duration in seconds the pod needs to terminate gracefully. May be decreased in delete request. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period will be used instead. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. Defaults to `30`.
+        """
+        return pulumi.get(self, "termination_grace_period_seconds")
+
+    @termination_grace_period_seconds.setter
+    def termination_grace_period_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "termination_grace_period_seconds", value)
+
+    @property
+    @pulumi.getter
+    def tolerations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecTolerationArgs']]]]:
+        """
+        If specified, the pod's toleration. Optional: Defaults to empty
+        """
+        return pulumi.get(self, "tolerations")
+
+    @tolerations.setter
+    def tolerations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecTolerationArgs']]]]):
+        pulumi.set(self, "tolerations", value)
+
+    @property
+    @pulumi.getter(name="topologySpreadConstraints")
+    def topology_spread_constraints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecTopologySpreadConstraintArgs']]]]:
+        """
+        describes how a group of pods ought to spread across topology domains. Scheduler will schedule pods in a way which abides by the constraints.
+        """
+        return pulumi.get(self, "topology_spread_constraints")
+
+    @topology_spread_constraints.setter
+    def topology_spread_constraints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecTopologySpreadConstraintArgs']]]]):
+        pulumi.set(self, "topology_spread_constraints", value)
+
+    @property
+    @pulumi.getter
+    def volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeArgs']]]]:
+        """
+        List of volumes that can be mounted by containers belonging to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes
+        """
+        return pulumi.get(self, "volumes")
+
+    @volumes.setter
+    def volumes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeArgs']]]]):
+        pulumi.set(self, "volumes", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecAffinityArgsDict(TypedDict):
+        node_affinity: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityArgsDict']]
+        """
+        Node affinity scheduling rules for the pod.
+        """
+        pod_affinity: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAffinityArgsDict']]
+        """
+        Inter-pod topological affinity. rules that specify that certain pods should be placed in the same topological domain (e.g. same node, same rack, same zone, same power domain, etc.)
+        """
+        pod_anti_affinity: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityArgsDict']]
+        """
+        Inter-pod topological affinity. rules that specify that certain pods should be placed in the same topological domain (e.g. same node, same rack, same zone, same power domain, etc.)
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecAffinityArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecAffinityArgs:
+    def __init__(__self__, *,
+                 node_affinity: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityArgs']] = None,
+                 pod_affinity: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAffinityArgs']] = None,
+                 pod_anti_affinity: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityArgs']] = None):
+        """
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityArgs'] node_affinity: Node affinity scheduling rules for the pod.
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAffinityArgs'] pod_affinity: Inter-pod topological affinity. rules that specify that certain pods should be placed in the same topological domain (e.g. same node, same rack, same zone, same power domain, etc.)
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityArgs'] pod_anti_affinity: Inter-pod topological affinity. rules that specify that certain pods should be placed in the same topological domain (e.g. same node, same rack, same zone, same power domain, etc.)
+        """
+        if node_affinity is not None:
+            pulumi.set(__self__, "node_affinity", node_affinity)
+        if pod_affinity is not None:
+            pulumi.set(__self__, "pod_affinity", pod_affinity)
+        if pod_anti_affinity is not None:
+            pulumi.set(__self__, "pod_anti_affinity", pod_anti_affinity)
+
+    @property
+    @pulumi.getter(name="nodeAffinity")
+    def node_affinity(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityArgs']]:
+        """
+        Node affinity scheduling rules for the pod.
+        """
+        return pulumi.get(self, "node_affinity")
+
+    @node_affinity.setter
+    def node_affinity(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityArgs']]):
+        pulumi.set(self, "node_affinity", value)
+
+    @property
+    @pulumi.getter(name="podAffinity")
+    def pod_affinity(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAffinityArgs']]:
+        """
+        Inter-pod topological affinity. rules that specify that certain pods should be placed in the same topological domain (e.g. same node, same rack, same zone, same power domain, etc.)
+        """
+        return pulumi.get(self, "pod_affinity")
+
+    @pod_affinity.setter
+    def pod_affinity(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAffinityArgs']]):
+        pulumi.set(self, "pod_affinity", value)
+
+    @property
+    @pulumi.getter(name="podAntiAffinity")
+    def pod_anti_affinity(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityArgs']]:
+        """
+        Inter-pod topological affinity. rules that specify that certain pods should be placed in the same topological domain (e.g. same node, same rack, same zone, same power domain, etc.)
+        """
+        return pulumi.get(self, "pod_anti_affinity")
+
+    @pod_anti_affinity.setter
+    def pod_anti_affinity(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityArgs']]):
+        pulumi.set(self, "pod_anti_affinity", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityArgsDict(TypedDict):
+        preferred_during_scheduling_ignored_during_executions: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgsDict']]]]
+        """
+        The scheduler will prefer to schedule pods to nodes that satisfy the affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions. The node that is most preferred is the one with the greatest sum of weights, i.e. for each node that meets all of the scheduling requirements (resource request, RequiredDuringScheduling affinity expressions, etc.), compute a sum by iterating through the elements of this field and adding 'weight' to the sum if the node matches the corresponding MatchExpressions; the node(s) with the highest sum are the most preferred.
+        """
+        required_during_scheduling_ignored_during_execution: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgsDict']]
+        """
+        If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a node label update), the system may or may not try to eventually evict the pod from its node.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityArgs:
+    def __init__(__self__, *,
+                 preferred_during_scheduling_ignored_during_executions: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs']]]] = None,
+                 required_during_scheduling_ignored_during_execution: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs']] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs']]] preferred_during_scheduling_ignored_during_executions: The scheduler will prefer to schedule pods to nodes that satisfy the affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions. The node that is most preferred is the one with the greatest sum of weights, i.e. for each node that meets all of the scheduling requirements (resource request, RequiredDuringScheduling affinity expressions, etc.), compute a sum by iterating through the elements of this field and adding 'weight' to the sum if the node matches the corresponding MatchExpressions; the node(s) with the highest sum are the most preferred.
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs'] required_during_scheduling_ignored_during_execution: If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a node label update), the system may or may not try to eventually evict the pod from its node.
+        """
+        if preferred_during_scheduling_ignored_during_executions is not None:
+            pulumi.set(__self__, "preferred_during_scheduling_ignored_during_executions", preferred_during_scheduling_ignored_during_executions)
+        if required_during_scheduling_ignored_during_execution is not None:
+            pulumi.set(__self__, "required_during_scheduling_ignored_during_execution", required_during_scheduling_ignored_during_execution)
+
+    @property
+    @pulumi.getter(name="preferredDuringSchedulingIgnoredDuringExecutions")
+    def preferred_during_scheduling_ignored_during_executions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs']]]]:
+        """
+        The scheduler will prefer to schedule pods to nodes that satisfy the affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions. The node that is most preferred is the one with the greatest sum of weights, i.e. for each node that meets all of the scheduling requirements (resource request, RequiredDuringScheduling affinity expressions, etc.), compute a sum by iterating through the elements of this field and adding 'weight' to the sum if the node matches the corresponding MatchExpressions; the node(s) with the highest sum are the most preferred.
+        """
+        return pulumi.get(self, "preferred_during_scheduling_ignored_during_executions")
+
+    @preferred_during_scheduling_ignored_during_executions.setter
+    def preferred_during_scheduling_ignored_during_executions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs']]]]):
+        pulumi.set(self, "preferred_during_scheduling_ignored_during_executions", value)
+
+    @property
+    @pulumi.getter(name="requiredDuringSchedulingIgnoredDuringExecution")
+    def required_during_scheduling_ignored_during_execution(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs']]:
+        """
+        If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a node label update), the system may or may not try to eventually evict the pod from its node.
+        """
+        return pulumi.get(self, "required_during_scheduling_ignored_during_execution")
+
+    @required_during_scheduling_ignored_during_execution.setter
+    def required_during_scheduling_ignored_during_execution(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs']]):
+        pulumi.set(self, "required_during_scheduling_ignored_during_execution", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgsDict(TypedDict):
+        preference: pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceArgsDict']
+        """
+        A node selector term, associated with the corresponding weight.
+        """
+        weight: NotRequired[pulumi.Input[int]]
+        """
+        weight is in the range 1-100
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs:
+    def __init__(__self__, *,
+                 preference: pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceArgs'],
+                 weight: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceArgs'] preference: A node selector term, associated with the corresponding weight.
+        :param pulumi.Input[int] weight: weight is in the range 1-100
+        """
+        pulumi.set(__self__, "preference", preference)
+        if weight is not None:
+            pulumi.set(__self__, "weight", weight)
+
+    @property
+    @pulumi.getter
+    def preference(self) -> pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceArgs']:
+        """
+        A node selector term, associated with the corresponding weight.
+        """
+        return pulumi.get(self, "preference")
+
+    @preference.setter
+    def preference(self, value: pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceArgs']):
+        pulumi.set(self, "preference", value)
+
+    @property
+    @pulumi.getter
+    def weight(self) -> Optional[pulumi.Input[int]]:
+        """
+        weight is in the range 1-100
+        """
+        return pulumi.get(self, "weight")
+
+    @weight.setter
+    def weight(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "weight", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceArgsDict(TypedDict):
+        match_expressions: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArgsDict']]]]
+        """
+        List of node selector requirements. The requirements are ANDed.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceArgs:
+    def __init__(__self__, *,
+                 match_expressions: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArgs']]] match_expressions: List of node selector requirements. The requirements are ANDed.
+        """
+        if match_expressions is not None:
+            pulumi.set(__self__, "match_expressions", match_expressions)
+
+    @property
+    @pulumi.getter(name="matchExpressions")
+    def match_expressions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArgs']]]]:
+        """
+        List of node selector requirements. The requirements are ANDed.
+        """
+        return pulumi.get(self, "match_expressions")
+
+    @match_expressions.setter
+    def match_expressions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArgs']]]]):
+        pulumi.set(self, "match_expressions", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[str]]
+        """
+        The label key that the selector applies to.
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        Operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists, DoesNotExist. Gt, and Lt.
+        """
+        values: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArgs:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[str]] = None,
+                 operator: Optional[pulumi.Input[str]] = None,
+                 values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] key: The label key that the selector applies to.
+        :param pulumi.Input[str] operator: Operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists, DoesNotExist. Gt, and Lt.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The label key that the selector applies to.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        Operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists, DoesNotExist. Gt, and Lt.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "values", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgsDict(TypedDict):
+        node_selector_terms: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArgsDict']]]]
+        """
+        List of node selector terms. The terms are ORed.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs:
+    def __init__(__self__, *,
+                 node_selector_terms: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArgs']]] node_selector_terms: List of node selector terms. The terms are ORed.
+        """
+        if node_selector_terms is not None:
+            pulumi.set(__self__, "node_selector_terms", node_selector_terms)
+
+    @property
+    @pulumi.getter(name="nodeSelectorTerms")
+    def node_selector_terms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArgs']]]]:
+        """
+        List of node selector terms. The terms are ORed.
+        """
+        return pulumi.get(self, "node_selector_terms")
+
+    @node_selector_terms.setter
+    def node_selector_terms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArgs']]]]):
+        pulumi.set(self, "node_selector_terms", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArgsDict(TypedDict):
+        match_expressions: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArgsDict']]]]
+        """
+        List of node selector requirements. The requirements are ANDed.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArgs:
+    def __init__(__self__, *,
+                 match_expressions: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArgs']]] match_expressions: List of node selector requirements. The requirements are ANDed.
+        """
+        if match_expressions is not None:
+            pulumi.set(__self__, "match_expressions", match_expressions)
+
+    @property
+    @pulumi.getter(name="matchExpressions")
+    def match_expressions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArgs']]]]:
+        """
+        List of node selector requirements. The requirements are ANDed.
+        """
+        return pulumi.get(self, "match_expressions")
+
+    @match_expressions.setter
+    def match_expressions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArgs']]]]):
+        pulumi.set(self, "match_expressions", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[str]]
+        """
+        The label key that the selector applies to.
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        Operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists, DoesNotExist. Gt, and Lt.
+        """
+        values: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArgs:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[str]] = None,
+                 operator: Optional[pulumi.Input[str]] = None,
+                 values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] key: The label key that the selector applies to.
+        :param pulumi.Input[str] operator: Operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists, DoesNotExist. Gt, and Lt.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The label key that the selector applies to.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        Operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists, DoesNotExist. Gt, and Lt.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "values", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecAffinityPodAffinityArgsDict(TypedDict):
+        preferred_during_scheduling_ignored_during_executions: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgsDict']]]]
+        """
+        The scheduler will prefer to schedule pods to nodes that satisfy the anti-affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions. The node that is most preferred is the one with the greatest sum of weights, i.e. for each node that meets all of the scheduling requirements (resource request, RequiredDuringScheduling anti-affinity expressions, etc.), compute a sum by iterating through the elements of this field and adding 'weight' to the sum if the node matches the corresponding MatchExpressions; the node(s) with the highest sum are the most preferred.
+        """
+        required_during_scheduling_ignored_during_executions: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgsDict']]]]
+        """
+        If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system may or may not try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each PodAffinityTerm are intersected, i.e. all terms must be satisfied.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecAffinityPodAffinityArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecAffinityPodAffinityArgs:
+    def __init__(__self__, *,
+                 preferred_during_scheduling_ignored_during_executions: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs']]]] = None,
+                 required_during_scheduling_ignored_during_executions: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs']]] preferred_during_scheduling_ignored_during_executions: The scheduler will prefer to schedule pods to nodes that satisfy the anti-affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions. The node that is most preferred is the one with the greatest sum of weights, i.e. for each node that meets all of the scheduling requirements (resource request, RequiredDuringScheduling anti-affinity expressions, etc.), compute a sum by iterating through the elements of this field and adding 'weight' to the sum if the node matches the corresponding MatchExpressions; the node(s) with the highest sum are the most preferred.
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs']]] required_during_scheduling_ignored_during_executions: If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system may or may not try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each PodAffinityTerm are intersected, i.e. all terms must be satisfied.
+        """
+        if preferred_during_scheduling_ignored_during_executions is not None:
+            pulumi.set(__self__, "preferred_during_scheduling_ignored_during_executions", preferred_during_scheduling_ignored_during_executions)
+        if required_during_scheduling_ignored_during_executions is not None:
+            pulumi.set(__self__, "required_during_scheduling_ignored_during_executions", required_during_scheduling_ignored_during_executions)
+
+    @property
+    @pulumi.getter(name="preferredDuringSchedulingIgnoredDuringExecutions")
+    def preferred_during_scheduling_ignored_during_executions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs']]]]:
+        """
+        The scheduler will prefer to schedule pods to nodes that satisfy the anti-affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions. The node that is most preferred is the one with the greatest sum of weights, i.e. for each node that meets all of the scheduling requirements (resource request, RequiredDuringScheduling anti-affinity expressions, etc.), compute a sum by iterating through the elements of this field and adding 'weight' to the sum if the node matches the corresponding MatchExpressions; the node(s) with the highest sum are the most preferred.
+        """
+        return pulumi.get(self, "preferred_during_scheduling_ignored_during_executions")
+
+    @preferred_during_scheduling_ignored_during_executions.setter
+    def preferred_during_scheduling_ignored_during_executions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs']]]]):
+        pulumi.set(self, "preferred_during_scheduling_ignored_during_executions", value)
+
+    @property
+    @pulumi.getter(name="requiredDuringSchedulingIgnoredDuringExecutions")
+    def required_during_scheduling_ignored_during_executions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs']]]]:
+        """
+        If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system may or may not try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each PodAffinityTerm are intersected, i.e. all terms must be satisfied.
+        """
+        return pulumi.get(self, "required_during_scheduling_ignored_during_executions")
+
+    @required_during_scheduling_ignored_during_executions.setter
+    def required_during_scheduling_ignored_during_executions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs']]]]):
+        pulumi.set(self, "required_during_scheduling_ignored_during_executions", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgsDict(TypedDict):
+        pod_affinity_term: pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermArgsDict']
+        """
+        A pod affinity term, associated with the corresponding weight
+        """
+        weight: pulumi.Input[int]
+        """
+        weight associated with matching the corresponding podAffinityTerm, in the range 1-100
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs:
+    def __init__(__self__, *,
+                 pod_affinity_term: pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermArgs'],
+                 weight: pulumi.Input[int]):
+        """
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermArgs'] pod_affinity_term: A pod affinity term, associated with the corresponding weight
+        :param pulumi.Input[int] weight: weight associated with matching the corresponding podAffinityTerm, in the range 1-100
+        """
+        pulumi.set(__self__, "pod_affinity_term", pod_affinity_term)
+        pulumi.set(__self__, "weight", weight)
+
+    @property
+    @pulumi.getter(name="podAffinityTerm")
+    def pod_affinity_term(self) -> pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermArgs']:
+        """
+        A pod affinity term, associated with the corresponding weight
+        """
+        return pulumi.get(self, "pod_affinity_term")
+
+    @pod_affinity_term.setter
+    def pod_affinity_term(self, value: pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermArgs']):
+        pulumi.set(self, "pod_affinity_term", value)
+
+    @property
+    @pulumi.getter
+    def weight(self) -> pulumi.Input[int]:
+        """
+        weight associated with matching the corresponding podAffinityTerm, in the range 1-100
+        """
+        return pulumi.get(self, "weight")
+
+    @weight.setter
+    def weight(self, value: pulumi.Input[int]):
+        pulumi.set(self, "weight", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermArgsDict(TypedDict):
+        label_selectors: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArgsDict']]]]
+        """
+        A label query over a set of resources, in this case pods.
+        """
+        namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means 'this pod's namespace'
+        """
+        topology_key: NotRequired[pulumi.Input[str]]
+        """
+        empty topology key is interpreted by the scheduler as 'all topologies'
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermArgs:
+    def __init__(__self__, *,
+                 label_selectors: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArgs']]]] = None,
+                 namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 topology_key: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArgs']]] label_selectors: A label query over a set of resources, in this case pods.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] namespaces: namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means 'this pod's namespace'
+        :param pulumi.Input[str] topology_key: empty topology key is interpreted by the scheduler as 'all topologies'
+        """
+        if label_selectors is not None:
+            pulumi.set(__self__, "label_selectors", label_selectors)
+        if namespaces is not None:
+            pulumi.set(__self__, "namespaces", namespaces)
+        if topology_key is not None:
+            pulumi.set(__self__, "topology_key", topology_key)
+
+    @property
+    @pulumi.getter(name="labelSelectors")
+    def label_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArgs']]]]:
+        """
+        A label query over a set of resources, in this case pods.
+        """
+        return pulumi.get(self, "label_selectors")
+
+    @label_selectors.setter
+    def label_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArgs']]]]):
+        pulumi.set(self, "label_selectors", value)
+
+    @property
+    @pulumi.getter
+    def namespaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means 'this pod's namespace'
+        """
+        return pulumi.get(self, "namespaces")
+
+    @namespaces.setter
+    def namespaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "namespaces", value)
+
+    @property
+    @pulumi.getter(name="topologyKey")
+    def topology_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        empty topology key is interpreted by the scheduler as 'all topologies'
+        """
+        return pulumi.get(self, "topology_key")
+
+    @topology_key.setter
+    def topology_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "topology_key", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArgsDict(TypedDict):
+        match_expressions: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArgsDict']]]]
+        """
+        A list of label selector requirements. The requirements are ANDed.
+        """
+        match_labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `match_expressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArgs:
+    def __init__(__self__, *,
+                 match_expressions: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArgs']]]] = None,
+                 match_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArgs']]] match_expressions: A list of label selector requirements. The requirements are ANDed.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] match_labels: A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `match_expressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+        """
+        if match_expressions is not None:
+            pulumi.set(__self__, "match_expressions", match_expressions)
+        if match_labels is not None:
+            pulumi.set(__self__, "match_labels", match_labels)
+
+    @property
+    @pulumi.getter(name="matchExpressions")
+    def match_expressions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArgs']]]]:
+        """
+        A list of label selector requirements. The requirements are ANDed.
+        """
+        return pulumi.get(self, "match_expressions")
+
+    @match_expressions.setter
+    def match_expressions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArgs']]]]):
+        pulumi.set(self, "match_expressions", value)
+
+    @property
+    @pulumi.getter(name="matchLabels")
+    def match_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `match_expressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+        """
+        return pulumi.get(self, "match_labels")
+
+    @match_labels.setter
+    def match_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "match_labels", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[str]]
+        """
+        The label key that the selector applies to.
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
+        """
+        values: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArgs:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[str]] = None,
+                 operator: Optional[pulumi.Input[str]] = None,
+                 values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] key: The label key that the selector applies to.
+        :param pulumi.Input[str] operator: A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The label key that the selector applies to.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "values", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgsDict(TypedDict):
+        label_selectors: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArgsDict']]]]
+        """
+        A label query over a set of resources, in this case pods.
+        """
+        namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means 'this pod's namespace'
+        """
+        topology_key: NotRequired[pulumi.Input[str]]
+        """
+        empty topology key is interpreted by the scheduler as 'all topologies'
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs:
+    def __init__(__self__, *,
+                 label_selectors: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArgs']]]] = None,
+                 namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 topology_key: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArgs']]] label_selectors: A label query over a set of resources, in this case pods.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] namespaces: namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means 'this pod's namespace'
+        :param pulumi.Input[str] topology_key: empty topology key is interpreted by the scheduler as 'all topologies'
+        """
+        if label_selectors is not None:
+            pulumi.set(__self__, "label_selectors", label_selectors)
+        if namespaces is not None:
+            pulumi.set(__self__, "namespaces", namespaces)
+        if topology_key is not None:
+            pulumi.set(__self__, "topology_key", topology_key)
+
+    @property
+    @pulumi.getter(name="labelSelectors")
+    def label_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArgs']]]]:
+        """
+        A label query over a set of resources, in this case pods.
+        """
+        return pulumi.get(self, "label_selectors")
+
+    @label_selectors.setter
+    def label_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArgs']]]]):
+        pulumi.set(self, "label_selectors", value)
+
+    @property
+    @pulumi.getter
+    def namespaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means 'this pod's namespace'
+        """
+        return pulumi.get(self, "namespaces")
+
+    @namespaces.setter
+    def namespaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "namespaces", value)
+
+    @property
+    @pulumi.getter(name="topologyKey")
+    def topology_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        empty topology key is interpreted by the scheduler as 'all topologies'
+        """
+        return pulumi.get(self, "topology_key")
+
+    @topology_key.setter
+    def topology_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "topology_key", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArgsDict(TypedDict):
+        match_expressions: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArgsDict']]]]
+        """
+        A list of label selector requirements. The requirements are ANDed.
+        """
+        match_labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `match_expressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArgs:
+    def __init__(__self__, *,
+                 match_expressions: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArgs']]]] = None,
+                 match_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArgs']]] match_expressions: A list of label selector requirements. The requirements are ANDed.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] match_labels: A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `match_expressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+        """
+        if match_expressions is not None:
+            pulumi.set(__self__, "match_expressions", match_expressions)
+        if match_labels is not None:
+            pulumi.set(__self__, "match_labels", match_labels)
+
+    @property
+    @pulumi.getter(name="matchExpressions")
+    def match_expressions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArgs']]]]:
+        """
+        A list of label selector requirements. The requirements are ANDed.
+        """
+        return pulumi.get(self, "match_expressions")
+
+    @match_expressions.setter
+    def match_expressions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArgs']]]]):
+        pulumi.set(self, "match_expressions", value)
+
+    @property
+    @pulumi.getter(name="matchLabels")
+    def match_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `match_expressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+        """
+        return pulumi.get(self, "match_labels")
+
+    @match_labels.setter
+    def match_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "match_labels", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[str]]
+        """
+        The label key that the selector applies to.
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
+        """
+        values: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArgs:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[str]] = None,
+                 operator: Optional[pulumi.Input[str]] = None,
+                 values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] key: The label key that the selector applies to.
+        :param pulumi.Input[str] operator: A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The label key that the selector applies to.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "values", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityArgsDict(TypedDict):
+        preferred_during_scheduling_ignored_during_executions: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgsDict']]]]
+        """
+        The scheduler will prefer to schedule pods to nodes that satisfy the anti-affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions. The node that is most preferred is the one with the greatest sum of weights, i.e. for each node that meets all of the scheduling requirements (resource request, RequiredDuringScheduling anti-affinity expressions, etc.), compute a sum by iterating through the elements of this field and adding 'weight' to the sum if the node matches the corresponding MatchExpressions; the node(s) with the highest sum are the most preferred.
+        """
+        required_during_scheduling_ignored_during_executions: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgsDict']]]]
+        """
+        If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system may or may not try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each PodAffinityTerm are intersected, i.e. all terms must be satisfied.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityArgs:
+    def __init__(__self__, *,
+                 preferred_during_scheduling_ignored_during_executions: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs']]]] = None,
+                 required_during_scheduling_ignored_during_executions: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs']]] preferred_during_scheduling_ignored_during_executions: The scheduler will prefer to schedule pods to nodes that satisfy the anti-affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions. The node that is most preferred is the one with the greatest sum of weights, i.e. for each node that meets all of the scheduling requirements (resource request, RequiredDuringScheduling anti-affinity expressions, etc.), compute a sum by iterating through the elements of this field and adding 'weight' to the sum if the node matches the corresponding MatchExpressions; the node(s) with the highest sum are the most preferred.
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs']]] required_during_scheduling_ignored_during_executions: If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system may or may not try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each PodAffinityTerm are intersected, i.e. all terms must be satisfied.
+        """
+        if preferred_during_scheduling_ignored_during_executions is not None:
+            pulumi.set(__self__, "preferred_during_scheduling_ignored_during_executions", preferred_during_scheduling_ignored_during_executions)
+        if required_during_scheduling_ignored_during_executions is not None:
+            pulumi.set(__self__, "required_during_scheduling_ignored_during_executions", required_during_scheduling_ignored_during_executions)
+
+    @property
+    @pulumi.getter(name="preferredDuringSchedulingIgnoredDuringExecutions")
+    def preferred_during_scheduling_ignored_during_executions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs']]]]:
+        """
+        The scheduler will prefer to schedule pods to nodes that satisfy the anti-affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions. The node that is most preferred is the one with the greatest sum of weights, i.e. for each node that meets all of the scheduling requirements (resource request, RequiredDuringScheduling anti-affinity expressions, etc.), compute a sum by iterating through the elements of this field and adding 'weight' to the sum if the node matches the corresponding MatchExpressions; the node(s) with the highest sum are the most preferred.
+        """
+        return pulumi.get(self, "preferred_during_scheduling_ignored_during_executions")
+
+    @preferred_during_scheduling_ignored_during_executions.setter
+    def preferred_during_scheduling_ignored_during_executions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs']]]]):
+        pulumi.set(self, "preferred_during_scheduling_ignored_during_executions", value)
+
+    @property
+    @pulumi.getter(name="requiredDuringSchedulingIgnoredDuringExecutions")
+    def required_during_scheduling_ignored_during_executions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs']]]]:
+        """
+        If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system may or may not try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each PodAffinityTerm are intersected, i.e. all terms must be satisfied.
+        """
+        return pulumi.get(self, "required_during_scheduling_ignored_during_executions")
+
+    @required_during_scheduling_ignored_during_executions.setter
+    def required_during_scheduling_ignored_during_executions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs']]]]):
+        pulumi.set(self, "required_during_scheduling_ignored_during_executions", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgsDict(TypedDict):
+        pod_affinity_term: pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermArgsDict']
+        """
+        A pod affinity term, associated with the corresponding weight
+        """
+        weight: pulumi.Input[int]
+        """
+        weight associated with matching the corresponding podAffinityTerm, in the range 1-100
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs:
+    def __init__(__self__, *,
+                 pod_affinity_term: pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermArgs'],
+                 weight: pulumi.Input[int]):
+        """
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermArgs'] pod_affinity_term: A pod affinity term, associated with the corresponding weight
+        :param pulumi.Input[int] weight: weight associated with matching the corresponding podAffinityTerm, in the range 1-100
+        """
+        pulumi.set(__self__, "pod_affinity_term", pod_affinity_term)
+        pulumi.set(__self__, "weight", weight)
+
+    @property
+    @pulumi.getter(name="podAffinityTerm")
+    def pod_affinity_term(self) -> pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermArgs']:
+        """
+        A pod affinity term, associated with the corresponding weight
+        """
+        return pulumi.get(self, "pod_affinity_term")
+
+    @pod_affinity_term.setter
+    def pod_affinity_term(self, value: pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermArgs']):
+        pulumi.set(self, "pod_affinity_term", value)
+
+    @property
+    @pulumi.getter
+    def weight(self) -> pulumi.Input[int]:
+        """
+        weight associated with matching the corresponding podAffinityTerm, in the range 1-100
+        """
+        return pulumi.get(self, "weight")
+
+    @weight.setter
+    def weight(self, value: pulumi.Input[int]):
+        pulumi.set(self, "weight", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermArgsDict(TypedDict):
+        label_selectors: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArgsDict']]]]
+        """
+        A label query over a set of resources, in this case pods.
+        """
+        namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means 'this pod's namespace'
+        """
+        topology_key: NotRequired[pulumi.Input[str]]
+        """
+        empty topology key is interpreted by the scheduler as 'all topologies'
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermArgs:
+    def __init__(__self__, *,
+                 label_selectors: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArgs']]]] = None,
+                 namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 topology_key: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArgs']]] label_selectors: A label query over a set of resources, in this case pods.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] namespaces: namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means 'this pod's namespace'
+        :param pulumi.Input[str] topology_key: empty topology key is interpreted by the scheduler as 'all topologies'
+        """
+        if label_selectors is not None:
+            pulumi.set(__self__, "label_selectors", label_selectors)
+        if namespaces is not None:
+            pulumi.set(__self__, "namespaces", namespaces)
+        if topology_key is not None:
+            pulumi.set(__self__, "topology_key", topology_key)
+
+    @property
+    @pulumi.getter(name="labelSelectors")
+    def label_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArgs']]]]:
+        """
+        A label query over a set of resources, in this case pods.
+        """
+        return pulumi.get(self, "label_selectors")
+
+    @label_selectors.setter
+    def label_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArgs']]]]):
+        pulumi.set(self, "label_selectors", value)
+
+    @property
+    @pulumi.getter
+    def namespaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means 'this pod's namespace'
+        """
+        return pulumi.get(self, "namespaces")
+
+    @namespaces.setter
+    def namespaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "namespaces", value)
+
+    @property
+    @pulumi.getter(name="topologyKey")
+    def topology_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        empty topology key is interpreted by the scheduler as 'all topologies'
+        """
+        return pulumi.get(self, "topology_key")
+
+    @topology_key.setter
+    def topology_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "topology_key", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArgsDict(TypedDict):
+        match_expressions: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArgsDict']]]]
+        """
+        A list of label selector requirements. The requirements are ANDed.
+        """
+        match_labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `match_expressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArgs:
+    def __init__(__self__, *,
+                 match_expressions: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArgs']]]] = None,
+                 match_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArgs']]] match_expressions: A list of label selector requirements. The requirements are ANDed.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] match_labels: A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `match_expressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+        """
+        if match_expressions is not None:
+            pulumi.set(__self__, "match_expressions", match_expressions)
+        if match_labels is not None:
+            pulumi.set(__self__, "match_labels", match_labels)
+
+    @property
+    @pulumi.getter(name="matchExpressions")
+    def match_expressions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArgs']]]]:
+        """
+        A list of label selector requirements. The requirements are ANDed.
+        """
+        return pulumi.get(self, "match_expressions")
+
+    @match_expressions.setter
+    def match_expressions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArgs']]]]):
+        pulumi.set(self, "match_expressions", value)
+
+    @property
+    @pulumi.getter(name="matchLabels")
+    def match_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `match_expressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+        """
+        return pulumi.get(self, "match_labels")
+
+    @match_labels.setter
+    def match_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "match_labels", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[str]]
+        """
+        The label key that the selector applies to.
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
+        """
+        values: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArgs:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[str]] = None,
+                 operator: Optional[pulumi.Input[str]] = None,
+                 values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] key: The label key that the selector applies to.
+        :param pulumi.Input[str] operator: A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The label key that the selector applies to.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "values", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgsDict(TypedDict):
+        label_selectors: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArgsDict']]]]
+        """
+        A label query over a set of resources, in this case pods.
+        """
+        namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means 'this pod's namespace'
+        """
+        topology_key: NotRequired[pulumi.Input[str]]
+        """
+        empty topology key is interpreted by the scheduler as 'all topologies'
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs:
+    def __init__(__self__, *,
+                 label_selectors: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArgs']]]] = None,
+                 namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 topology_key: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArgs']]] label_selectors: A label query over a set of resources, in this case pods.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] namespaces: namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means 'this pod's namespace'
+        :param pulumi.Input[str] topology_key: empty topology key is interpreted by the scheduler as 'all topologies'
+        """
+        if label_selectors is not None:
+            pulumi.set(__self__, "label_selectors", label_selectors)
+        if namespaces is not None:
+            pulumi.set(__self__, "namespaces", namespaces)
+        if topology_key is not None:
+            pulumi.set(__self__, "topology_key", topology_key)
+
+    @property
+    @pulumi.getter(name="labelSelectors")
+    def label_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArgs']]]]:
+        """
+        A label query over a set of resources, in this case pods.
+        """
+        return pulumi.get(self, "label_selectors")
+
+    @label_selectors.setter
+    def label_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArgs']]]]):
+        pulumi.set(self, "label_selectors", value)
+
+    @property
+    @pulumi.getter
+    def namespaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means 'this pod's namespace'
+        """
+        return pulumi.get(self, "namespaces")
+
+    @namespaces.setter
+    def namespaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "namespaces", value)
+
+    @property
+    @pulumi.getter(name="topologyKey")
+    def topology_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        empty topology key is interpreted by the scheduler as 'all topologies'
+        """
+        return pulumi.get(self, "topology_key")
+
+    @topology_key.setter
+    def topology_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "topology_key", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArgsDict(TypedDict):
+        match_expressions: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArgsDict']]]]
+        """
+        A list of label selector requirements. The requirements are ANDed.
+        """
+        match_labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `match_expressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArgs:
+    def __init__(__self__, *,
+                 match_expressions: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArgs']]]] = None,
+                 match_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArgs']]] match_expressions: A list of label selector requirements. The requirements are ANDed.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] match_labels: A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `match_expressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+        """
+        if match_expressions is not None:
+            pulumi.set(__self__, "match_expressions", match_expressions)
+        if match_labels is not None:
+            pulumi.set(__self__, "match_labels", match_labels)
+
+    @property
+    @pulumi.getter(name="matchExpressions")
+    def match_expressions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArgs']]]]:
+        """
+        A list of label selector requirements. The requirements are ANDed.
+        """
+        return pulumi.get(self, "match_expressions")
+
+    @match_expressions.setter
+    def match_expressions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArgs']]]]):
+        pulumi.set(self, "match_expressions", value)
+
+    @property
+    @pulumi.getter(name="matchLabels")
+    def match_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `match_expressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+        """
+        return pulumi.get(self, "match_labels")
+
+    @match_labels.setter
+    def match_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "match_labels", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[str]]
+        """
+        The label key that the selector applies to.
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
+        """
+        values: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArgs:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[str]] = None,
+                 operator: Optional[pulumi.Input[str]] = None,
+                 values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] key: The label key that the selector applies to.
+        :param pulumi.Input[str] operator: A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The label key that the selector applies to.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "values", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecContainerArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Name of the container specified as a DNS*LABEL. Each container in a pod must have a unique name (DNS*LABEL). Cannot be updated.
+        """
+        args: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR*NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR*NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        """
+        commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR*NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR*NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        """
+        env_froms: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerEnvFromArgsDict']]]]
+        """
+        List of sources to populate environment variables in the container. The keys defined within a source must be a C*IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated.
+        """
+        envs: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerEnvArgsDict']]]]
+        """
+        List of environment variables to set in the container. Cannot be updated.
+        """
+        image: NotRequired[pulumi.Input[str]]
+        """
+        Docker image name. More info: https://kubernetes.io/docs/concepts/containers/images/
+        """
+        image_pull_policy: NotRequired[pulumi.Input[str]]
+        """
+        Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/images/#updating-images
+        """
+        lifecycle: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLifecycleArgsDict']]
+        """
+        Actions that the management system should take in response to container lifecycle events
+        """
+        liveness_probe: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLivenessProbeArgsDict']]
+        """
+        Periodic probe of container liveness. Container will be restarted if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+        """
+        ports: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerPortArgsDict']]]]
+        """
+        List of ports to expose from the container. Exposing a port here gives the system additional information about the network connections a container uses, but is primarily informational. Not specifying a port here DOES NOT prevent that port from being exposed. Any port which is listening on the default "0.0.0.0" address inside a container will be accessible from the network. Cannot be updated.
+        """
+        readiness_probe: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerReadinessProbeArgsDict']]
+        """
+        Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+        """
+        resources: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerResourcesArgsDict']]
+        """
+        Compute Resources required by this container. Cannot be updated. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+        """
+        security_context: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerSecurityContextArgsDict']]
+        """
+        Security options the pod should run with. More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+        """
+        startup_probe: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerStartupProbeArgsDict']]
+        """
+        StartupProbe indicates that the Pod has successfully initialized. If specified, no other probes are executed until this completes successfully. If this probe fails, the Pod will be restarted, just as if the livenessProbe failed. This can be used to provide different probe parameters at the beginning of a Pod's lifecycle, when it might take a long time to load data or warm a cache, than during steady-state operation. This cannot be updated. This is an alpha feature enabled by the StartupProbe feature flag. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        """
+        stdin: NotRequired[pulumi.Input[bool]]
+        """
+        Whether this container should allocate a buffer for stdin in the container runtime. If this is not set, reads from stdin in the container will always result in EOF.  Defaults to `false`.
+        """
+        stdin_once: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the container runtime should close the stdin channel after it has been opened by a single attach. When stdin is true the stdin stream will remain open across multiple attach sessions. If stdinOnce is set to true, stdin is opened on container start, is empty until the first client attaches to stdin, and then remains open and accepts data until the client disconnects, at which time stdin is closed and remains closed until the container is restarted. If this flag is false, a container processes that reads from stdin will never receive an EOF. Defaults to `false`.
+        """
+        termination_message_path: NotRequired[pulumi.Input[str]]
+        """
+        Optional: Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Defaults to /dev/termination-log. Cannot be updated. Defaults to `/dev/termination-log`.
+        """
+        termination_message_policy: NotRequired[pulumi.Input[str]]
+        """
+        Optional: Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
+        """
+        tty: NotRequired[pulumi.Input[bool]]
+        """
+        Whether this container should allocate a TTY for itself Defaults to `false`.
+        """
+        volume_mounts: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerVolumeMountArgsDict']]]]
+        """
+        Pod volumes to mount into the container's filesystem. Cannot be updated.
+        """
+        working_dir: NotRequired[pulumi.Input[str]]
+        """
+        Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image. Cannot be updated.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecContainerArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecContainerArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 env_froms: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerEnvFromArgs']]]] = None,
+                 envs: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerEnvArgs']]]] = None,
+                 image: Optional[pulumi.Input[str]] = None,
+                 image_pull_policy: Optional[pulumi.Input[str]] = None,
+                 lifecycle: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLifecycleArgs']] = None,
+                 liveness_probe: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLivenessProbeArgs']] = None,
+                 ports: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerPortArgs']]]] = None,
+                 readiness_probe: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerReadinessProbeArgs']] = None,
+                 resources: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerResourcesArgs']] = None,
+                 security_context: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerSecurityContextArgs']] = None,
+                 startup_probe: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerStartupProbeArgs']] = None,
+                 stdin: Optional[pulumi.Input[bool]] = None,
+                 stdin_once: Optional[pulumi.Input[bool]] = None,
+                 termination_message_path: Optional[pulumi.Input[str]] = None,
+                 termination_message_policy: Optional[pulumi.Input[str]] = None,
+                 tty: Optional[pulumi.Input[bool]] = None,
+                 volume_mounts: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerVolumeMountArgs']]]] = None,
+                 working_dir: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: Name of the container specified as a DNS*LABEL. Each container in a pod must have a unique name (DNS*LABEL). Cannot be updated.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] args: Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR*NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR*NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] commands: Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR*NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR*NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerEnvFromArgs']]] env_froms: List of sources to populate environment variables in the container. The keys defined within a source must be a C*IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated.
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerEnvArgs']]] envs: List of environment variables to set in the container. Cannot be updated.
+        :param pulumi.Input[str] image: Docker image name. More info: https://kubernetes.io/docs/concepts/containers/images/
+        :param pulumi.Input[str] image_pull_policy: Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/images/#updating-images
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLifecycleArgs'] lifecycle: Actions that the management system should take in response to container lifecycle events
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLivenessProbeArgs'] liveness_probe: Periodic probe of container liveness. Container will be restarted if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerPortArgs']]] ports: List of ports to expose from the container. Exposing a port here gives the system additional information about the network connections a container uses, but is primarily informational. Not specifying a port here DOES NOT prevent that port from being exposed. Any port which is listening on the default "0.0.0.0" address inside a container will be accessible from the network. Cannot be updated.
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerReadinessProbeArgs'] readiness_probe: Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerResourcesArgs'] resources: Compute Resources required by this container. Cannot be updated. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerSecurityContextArgs'] security_context: Security options the pod should run with. More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerStartupProbeArgs'] startup_probe: StartupProbe indicates that the Pod has successfully initialized. If specified, no other probes are executed until this completes successfully. If this probe fails, the Pod will be restarted, just as if the livenessProbe failed. This can be used to provide different probe parameters at the beginning of a Pod's lifecycle, when it might take a long time to load data or warm a cache, than during steady-state operation. This cannot be updated. This is an alpha feature enabled by the StartupProbe feature flag. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        :param pulumi.Input[bool] stdin: Whether this container should allocate a buffer for stdin in the container runtime. If this is not set, reads from stdin in the container will always result in EOF.  Defaults to `false`.
+        :param pulumi.Input[bool] stdin_once: Whether the container runtime should close the stdin channel after it has been opened by a single attach. When stdin is true the stdin stream will remain open across multiple attach sessions. If stdinOnce is set to true, stdin is opened on container start, is empty until the first client attaches to stdin, and then remains open and accepts data until the client disconnects, at which time stdin is closed and remains closed until the container is restarted. If this flag is false, a container processes that reads from stdin will never receive an EOF. Defaults to `false`.
+        :param pulumi.Input[str] termination_message_path: Optional: Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Defaults to /dev/termination-log. Cannot be updated. Defaults to `/dev/termination-log`.
+        :param pulumi.Input[str] termination_message_policy: Optional: Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
+        :param pulumi.Input[bool] tty: Whether this container should allocate a TTY for itself Defaults to `false`.
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerVolumeMountArgs']]] volume_mounts: Pod volumes to mount into the container's filesystem. Cannot be updated.
+        :param pulumi.Input[str] working_dir: Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image. Cannot be updated.
+        """
+        pulumi.set(__self__, "name", name)
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if commands is not None:
+            pulumi.set(__self__, "commands", commands)
+        if env_froms is not None:
+            pulumi.set(__self__, "env_froms", env_froms)
+        if envs is not None:
+            pulumi.set(__self__, "envs", envs)
+        if image is not None:
+            pulumi.set(__self__, "image", image)
+        if image_pull_policy is not None:
+            pulumi.set(__self__, "image_pull_policy", image_pull_policy)
+        if lifecycle is not None:
+            pulumi.set(__self__, "lifecycle", lifecycle)
+        if liveness_probe is not None:
+            pulumi.set(__self__, "liveness_probe", liveness_probe)
+        if ports is not None:
+            pulumi.set(__self__, "ports", ports)
+        if readiness_probe is not None:
+            pulumi.set(__self__, "readiness_probe", readiness_probe)
+        if resources is not None:
+            pulumi.set(__self__, "resources", resources)
+        if security_context is not None:
+            pulumi.set(__self__, "security_context", security_context)
+        if startup_probe is not None:
+            pulumi.set(__self__, "startup_probe", startup_probe)
+        if stdin is not None:
+            pulumi.set(__self__, "stdin", stdin)
+        if stdin_once is not None:
+            pulumi.set(__self__, "stdin_once", stdin_once)
+        if termination_message_path is not None:
+            pulumi.set(__self__, "termination_message_path", termination_message_path)
+        if termination_message_policy is not None:
+            pulumi.set(__self__, "termination_message_policy", termination_message_policy)
+        if tty is not None:
+            pulumi.set(__self__, "tty", tty)
+        if volume_mounts is not None:
+            pulumi.set(__self__, "volume_mounts", volume_mounts)
+        if working_dir is not None:
+            pulumi.set(__self__, "working_dir", working_dir)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Name of the container specified as a DNS*LABEL. Each container in a pod must have a unique name (DNS*LABEL). Cannot be updated.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR*NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR*NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        """
+        return pulumi.get(self, "args")
+
+    @args.setter
+    def args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "args", value)
+
+    @property
+    @pulumi.getter
+    def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR*NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR*NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        """
+        return pulumi.get(self, "commands")
+
+    @commands.setter
+    def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "commands", value)
+
+    @property
+    @pulumi.getter(name="envFroms")
+    def env_froms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerEnvFromArgs']]]]:
+        """
+        List of sources to populate environment variables in the container. The keys defined within a source must be a C*IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated.
+        """
+        return pulumi.get(self, "env_froms")
+
+    @env_froms.setter
+    def env_froms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerEnvFromArgs']]]]):
+        pulumi.set(self, "env_froms", value)
+
+    @property
+    @pulumi.getter
+    def envs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerEnvArgs']]]]:
+        """
+        List of environment variables to set in the container. Cannot be updated.
+        """
+        return pulumi.get(self, "envs")
+
+    @envs.setter
+    def envs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerEnvArgs']]]]):
+        pulumi.set(self, "envs", value)
+
+    @property
+    @pulumi.getter
+    def image(self) -> Optional[pulumi.Input[str]]:
+        """
+        Docker image name. More info: https://kubernetes.io/docs/concepts/containers/images/
+        """
+        return pulumi.get(self, "image")
+
+    @image.setter
+    def image(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image", value)
+
+    @property
+    @pulumi.getter(name="imagePullPolicy")
+    def image_pull_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/images/#updating-images
+        """
+        return pulumi.get(self, "image_pull_policy")
+
+    @image_pull_policy.setter
+    def image_pull_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image_pull_policy", value)
+
+    @property
+    @pulumi.getter
+    def lifecycle(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLifecycleArgs']]:
+        """
+        Actions that the management system should take in response to container lifecycle events
+        """
+        return pulumi.get(self, "lifecycle")
+
+    @lifecycle.setter
+    def lifecycle(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLifecycleArgs']]):
+        pulumi.set(self, "lifecycle", value)
+
+    @property
+    @pulumi.getter(name="livenessProbe")
+    def liveness_probe(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLivenessProbeArgs']]:
+        """
+        Periodic probe of container liveness. Container will be restarted if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+        """
+        return pulumi.get(self, "liveness_probe")
+
+    @liveness_probe.setter
+    def liveness_probe(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLivenessProbeArgs']]):
+        pulumi.set(self, "liveness_probe", value)
+
+    @property
+    @pulumi.getter
+    def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerPortArgs']]]]:
+        """
+        List of ports to expose from the container. Exposing a port here gives the system additional information about the network connections a container uses, but is primarily informational. Not specifying a port here DOES NOT prevent that port from being exposed. Any port which is listening on the default "0.0.0.0" address inside a container will be accessible from the network. Cannot be updated.
+        """
+        return pulumi.get(self, "ports")
+
+    @ports.setter
+    def ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerPortArgs']]]]):
+        pulumi.set(self, "ports", value)
+
+    @property
+    @pulumi.getter(name="readinessProbe")
+    def readiness_probe(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerReadinessProbeArgs']]:
+        """
+        Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+        """
+        return pulumi.get(self, "readiness_probe")
+
+    @readiness_probe.setter
+    def readiness_probe(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerReadinessProbeArgs']]):
+        pulumi.set(self, "readiness_probe", value)
+
+    @property
+    @pulumi.getter
+    def resources(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerResourcesArgs']]:
+        """
+        Compute Resources required by this container. Cannot be updated. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+        """
+        return pulumi.get(self, "resources")
+
+    @resources.setter
+    def resources(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerResourcesArgs']]):
+        pulumi.set(self, "resources", value)
+
+    @property
+    @pulumi.getter(name="securityContext")
+    def security_context(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerSecurityContextArgs']]:
+        """
+        Security options the pod should run with. More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+        """
+        return pulumi.get(self, "security_context")
+
+    @security_context.setter
+    def security_context(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerSecurityContextArgs']]):
+        pulumi.set(self, "security_context", value)
+
+    @property
+    @pulumi.getter(name="startupProbe")
+    def startup_probe(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerStartupProbeArgs']]:
+        """
+        StartupProbe indicates that the Pod has successfully initialized. If specified, no other probes are executed until this completes successfully. If this probe fails, the Pod will be restarted, just as if the livenessProbe failed. This can be used to provide different probe parameters at the beginning of a Pod's lifecycle, when it might take a long time to load data or warm a cache, than during steady-state operation. This cannot be updated. This is an alpha feature enabled by the StartupProbe feature flag. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        """
+        return pulumi.get(self, "startup_probe")
+
+    @startup_probe.setter
+    def startup_probe(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerStartupProbeArgs']]):
+        pulumi.set(self, "startup_probe", value)
+
+    @property
+    @pulumi.getter
+    def stdin(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether this container should allocate a buffer for stdin in the container runtime. If this is not set, reads from stdin in the container will always result in EOF.  Defaults to `false`.
+        """
+        return pulumi.get(self, "stdin")
+
+    @stdin.setter
+    def stdin(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "stdin", value)
+
+    @property
+    @pulumi.getter(name="stdinOnce")
+    def stdin_once(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the container runtime should close the stdin channel after it has been opened by a single attach. When stdin is true the stdin stream will remain open across multiple attach sessions. If stdinOnce is set to true, stdin is opened on container start, is empty until the first client attaches to stdin, and then remains open and accepts data until the client disconnects, at which time stdin is closed and remains closed until the container is restarted. If this flag is false, a container processes that reads from stdin will never receive an EOF. Defaults to `false`.
+        """
+        return pulumi.get(self, "stdin_once")
+
+    @stdin_once.setter
+    def stdin_once(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "stdin_once", value)
+
+    @property
+    @pulumi.getter(name="terminationMessagePath")
+    def termination_message_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional: Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Defaults to /dev/termination-log. Cannot be updated. Defaults to `/dev/termination-log`.
+        """
+        return pulumi.get(self, "termination_message_path")
+
+    @termination_message_path.setter
+    def termination_message_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "termination_message_path", value)
+
+    @property
+    @pulumi.getter(name="terminationMessagePolicy")
+    def termination_message_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional: Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
+        """
+        return pulumi.get(self, "termination_message_policy")
+
+    @termination_message_policy.setter
+    def termination_message_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "termination_message_policy", value)
+
+    @property
+    @pulumi.getter
+    def tty(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether this container should allocate a TTY for itself Defaults to `false`.
+        """
+        return pulumi.get(self, "tty")
+
+    @tty.setter
+    def tty(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "tty", value)
+
+    @property
+    @pulumi.getter(name="volumeMounts")
+    def volume_mounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerVolumeMountArgs']]]]:
+        """
+        Pod volumes to mount into the container's filesystem. Cannot be updated.
+        """
+        return pulumi.get(self, "volume_mounts")
+
+    @volume_mounts.setter
+    def volume_mounts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerVolumeMountArgs']]]]):
+        pulumi.set(self, "volume_mounts", value)
+
+    @property
+    @pulumi.getter(name="workingDir")
+    def working_dir(self) -> Optional[pulumi.Input[str]]:
+        """
+        Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image. Cannot be updated.
+        """
+        return pulumi.get(self, "working_dir")
+
+    @working_dir.setter
+    def working_dir(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "working_dir", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecContainerEnvArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Name of the environment variable. Must be a C_IDENTIFIER
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        Variable references $(VAR*NAME) are expanded using the previous defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR*NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
+        """
+        value_from: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerEnvValueFromArgsDict']]
+        """
+        Source for the environment variable's value
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecContainerEnvArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecContainerEnvArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 value: Optional[pulumi.Input[str]] = None,
+                 value_from: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerEnvValueFromArgs']] = None):
+        """
+        :param pulumi.Input[str] name: Name of the environment variable. Must be a C_IDENTIFIER
+        :param pulumi.Input[str] value: Variable references $(VAR*NAME) are expanded using the previous defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR*NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerEnvValueFromArgs'] value_from: Source for the environment variable's value
+        """
+        pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+        if value_from is not None:
+            pulumi.set(__self__, "value_from", value_from)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Name of the environment variable. Must be a C_IDENTIFIER
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        Variable references $(VAR*NAME) are expanded using the previous defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR*NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter(name="valueFrom")
+    def value_from(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerEnvValueFromArgs']]:
+        """
+        Source for the environment variable's value
+        """
+        return pulumi.get(self, "value_from")
+
+    @value_from.setter
+    def value_from(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerEnvValueFromArgs']]):
+        pulumi.set(self, "value_from", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecContainerEnvFromArgsDict(TypedDict):
+        config_map_ref: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerEnvFromConfigMapRefArgsDict']]
+        """
+        The ConfigMap to select from
+        """
+        prefix: NotRequired[pulumi.Input[str]]
+        """
+        An optional identifer to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
+        """
+        secret_ref: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerEnvFromSecretRefArgsDict']]
+        """
+        The Secret to select from
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecContainerEnvFromArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecContainerEnvFromArgs:
+    def __init__(__self__, *,
+                 config_map_ref: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerEnvFromConfigMapRefArgs']] = None,
+                 prefix: Optional[pulumi.Input[str]] = None,
+                 secret_ref: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerEnvFromSecretRefArgs']] = None):
+        """
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerEnvFromConfigMapRefArgs'] config_map_ref: The ConfigMap to select from
+        :param pulumi.Input[str] prefix: An optional identifer to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerEnvFromSecretRefArgs'] secret_ref: The Secret to select from
+        """
+        if config_map_ref is not None:
+            pulumi.set(__self__, "config_map_ref", config_map_ref)
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+        if secret_ref is not None:
+            pulumi.set(__self__, "secret_ref", secret_ref)
+
+    @property
+    @pulumi.getter(name="configMapRef")
+    def config_map_ref(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerEnvFromConfigMapRefArgs']]:
+        """
+        The ConfigMap to select from
+        """
+        return pulumi.get(self, "config_map_ref")
+
+    @config_map_ref.setter
+    def config_map_ref(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerEnvFromConfigMapRefArgs']]):
+        pulumi.set(self, "config_map_ref", value)
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional identifer to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
+        """
+        return pulumi.get(self, "prefix")
+
+    @prefix.setter
+    def prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "prefix", value)
+
+    @property
+    @pulumi.getter(name="secretRef")
+    def secret_ref(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerEnvFromSecretRefArgs']]:
+        """
+        The Secret to select from
+        """
+        return pulumi.get(self, "secret_ref")
+
+    @secret_ref.setter
+    def secret_ref(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerEnvFromSecretRefArgs']]):
+        pulumi.set(self, "secret_ref", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecContainerEnvFromConfigMapRefArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        """
+        optional: NotRequired[pulumi.Input[bool]]
+        """
+        Specify whether the ConfigMap must be defined
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecContainerEnvFromConfigMapRefArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecContainerEnvFromConfigMapRefArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 optional: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] name: Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        :param pulumi.Input[bool] optional: Specify whether the ConfigMap must be defined
+        """
+        pulumi.set(__self__, "name", name)
+        if optional is not None:
+            pulumi.set(__self__, "optional", optional)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def optional(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specify whether the ConfigMap must be defined
+        """
+        return pulumi.get(self, "optional")
+
+    @optional.setter
+    def optional(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "optional", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecContainerEnvFromSecretRefArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        """
+        optional: NotRequired[pulumi.Input[bool]]
+        """
+        Specify whether the Secret must be defined
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecContainerEnvFromSecretRefArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecContainerEnvFromSecretRefArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 optional: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] name: Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        :param pulumi.Input[bool] optional: Specify whether the Secret must be defined
+        """
+        pulumi.set(__self__, "name", name)
+        if optional is not None:
+            pulumi.set(__self__, "optional", optional)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def optional(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specify whether the Secret must be defined
+        """
+        return pulumi.get(self, "optional")
+
+    @optional.setter
+    def optional(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "optional", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecContainerEnvValueFromArgsDict(TypedDict):
+        config_map_key_ref: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefArgsDict']]
+        """
+        Selects a key of a ConfigMap.
+        """
+        field_ref: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerEnvValueFromFieldRefArgsDict']]
+        """
+        Selects a field of the pod: supports metadata.name, metadata.namespace, metadata.labels, metadata.annotations, spec.nodeName, spec.serviceAccountName, status.podIP.
+        """
+        resource_field_ref: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerEnvValueFromResourceFieldRefArgsDict']]
+        """
+        Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.
+        """
+        secret_key_ref: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerEnvValueFromSecretKeyRefArgsDict']]
+        """
+        Selects a key of a secret in the pod's namespace.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecContainerEnvValueFromArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecContainerEnvValueFromArgs:
+    def __init__(__self__, *,
+                 config_map_key_ref: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefArgs']] = None,
+                 field_ref: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerEnvValueFromFieldRefArgs']] = None,
+                 resource_field_ref: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerEnvValueFromResourceFieldRefArgs']] = None,
+                 secret_key_ref: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerEnvValueFromSecretKeyRefArgs']] = None):
+        """
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefArgs'] config_map_key_ref: Selects a key of a ConfigMap.
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerEnvValueFromFieldRefArgs'] field_ref: Selects a field of the pod: supports metadata.name, metadata.namespace, metadata.labels, metadata.annotations, spec.nodeName, spec.serviceAccountName, status.podIP.
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerEnvValueFromResourceFieldRefArgs'] resource_field_ref: Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerEnvValueFromSecretKeyRefArgs'] secret_key_ref: Selects a key of a secret in the pod's namespace.
+        """
+        if config_map_key_ref is not None:
+            pulumi.set(__self__, "config_map_key_ref", config_map_key_ref)
+        if field_ref is not None:
+            pulumi.set(__self__, "field_ref", field_ref)
+        if resource_field_ref is not None:
+            pulumi.set(__self__, "resource_field_ref", resource_field_ref)
+        if secret_key_ref is not None:
+            pulumi.set(__self__, "secret_key_ref", secret_key_ref)
+
+    @property
+    @pulumi.getter(name="configMapKeyRef")
+    def config_map_key_ref(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefArgs']]:
+        """
+        Selects a key of a ConfigMap.
+        """
+        return pulumi.get(self, "config_map_key_ref")
+
+    @config_map_key_ref.setter
+    def config_map_key_ref(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefArgs']]):
+        pulumi.set(self, "config_map_key_ref", value)
+
+    @property
+    @pulumi.getter(name="fieldRef")
+    def field_ref(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerEnvValueFromFieldRefArgs']]:
+        """
+        Selects a field of the pod: supports metadata.name, metadata.namespace, metadata.labels, metadata.annotations, spec.nodeName, spec.serviceAccountName, status.podIP.
+        """
+        return pulumi.get(self, "field_ref")
+
+    @field_ref.setter
+    def field_ref(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerEnvValueFromFieldRefArgs']]):
+        pulumi.set(self, "field_ref", value)
+
+    @property
+    @pulumi.getter(name="resourceFieldRef")
+    def resource_field_ref(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerEnvValueFromResourceFieldRefArgs']]:
+        """
+        Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.
+        """
+        return pulumi.get(self, "resource_field_ref")
+
+    @resource_field_ref.setter
+    def resource_field_ref(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerEnvValueFromResourceFieldRefArgs']]):
+        pulumi.set(self, "resource_field_ref", value)
+
+    @property
+    @pulumi.getter(name="secretKeyRef")
+    def secret_key_ref(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerEnvValueFromSecretKeyRefArgs']]:
+        """
+        Selects a key of a secret in the pod's namespace.
+        """
+        return pulumi.get(self, "secret_key_ref")
+
+    @secret_key_ref.setter
+    def secret_key_ref(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerEnvValueFromSecretKeyRefArgs']]):
+        pulumi.set(self, "secret_key_ref", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[str]]
+        """
+        The key to select.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        """
+        optional: NotRequired[pulumi.Input[bool]]
+        """
+        Specify whether the ConfigMap or its key must be defined.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecContainerEnvValueFromConfigMapKeyRefArgs:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 optional: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] key: The key to select.
+        :param pulumi.Input[str] name: Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        :param pulumi.Input[bool] optional: Specify whether the ConfigMap or its key must be defined.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if optional is not None:
+            pulumi.set(__self__, "optional", optional)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key to select.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def optional(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specify whether the ConfigMap or its key must be defined.
+        """
+        return pulumi.get(self, "optional")
+
+    @optional.setter
+    def optional(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "optional", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecContainerEnvValueFromFieldRefArgsDict(TypedDict):
+        api_version: NotRequired[pulumi.Input[str]]
+        """
+        Version of the schema the FieldPath is written in terms of, defaults to "v1". Defaults to `v1`.
+        """
+        field_path: NotRequired[pulumi.Input[str]]
+        """
+        Path of the field to select in the specified API version
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecContainerEnvValueFromFieldRefArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecContainerEnvValueFromFieldRefArgs:
+    def __init__(__self__, *,
+                 api_version: Optional[pulumi.Input[str]] = None,
+                 field_path: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] api_version: Version of the schema the FieldPath is written in terms of, defaults to "v1". Defaults to `v1`.
+        :param pulumi.Input[str] field_path: Path of the field to select in the specified API version
+        """
+        if api_version is not None:
+            pulumi.set(__self__, "api_version", api_version)
+        if field_path is not None:
+            pulumi.set(__self__, "field_path", field_path)
+
+    @property
+    @pulumi.getter(name="apiVersion")
+    def api_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Version of the schema the FieldPath is written in terms of, defaults to "v1". Defaults to `v1`.
+        """
+        return pulumi.get(self, "api_version")
+
+    @api_version.setter
+    def api_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "api_version", value)
+
+    @property
+    @pulumi.getter(name="fieldPath")
+    def field_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Path of the field to select in the specified API version
+        """
+        return pulumi.get(self, "field_path")
+
+    @field_path.setter
+    def field_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "field_path", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecContainerEnvValueFromResourceFieldRefArgsDict(TypedDict):
+        resource: pulumi.Input[str]
+        """
+        Resource to select
+        """
+        container_name: NotRequired[pulumi.Input[str]]
+        divisor: NotRequired[pulumi.Input[str]]
+        """
+        Defaults to `1`.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecContainerEnvValueFromResourceFieldRefArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecContainerEnvValueFromResourceFieldRefArgs:
+    def __init__(__self__, *,
+                 resource: pulumi.Input[str],
+                 container_name: Optional[pulumi.Input[str]] = None,
+                 divisor: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] resource: Resource to select
+        :param pulumi.Input[str] divisor: Defaults to `1`.
+        """
+        pulumi.set(__self__, "resource", resource)
+        if container_name is not None:
+            pulumi.set(__self__, "container_name", container_name)
+        if divisor is not None:
+            pulumi.set(__self__, "divisor", divisor)
+
+    @property
+    @pulumi.getter
+    def resource(self) -> pulumi.Input[str]:
+        """
+        Resource to select
+        """
+        return pulumi.get(self, "resource")
+
+    @resource.setter
+    def resource(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource", value)
+
+    @property
+    @pulumi.getter(name="containerName")
+    def container_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "container_name")
+
+    @container_name.setter
+    def container_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "container_name", value)
+
+    @property
+    @pulumi.getter
+    def divisor(self) -> Optional[pulumi.Input[str]]:
+        """
+        Defaults to `1`.
+        """
+        return pulumi.get(self, "divisor")
+
+    @divisor.setter
+    def divisor(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "divisor", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecContainerEnvValueFromSecretKeyRefArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[str]]
+        """
+        The key of the secret to select from. Must be a valid secret key.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        """
+        optional: NotRequired[pulumi.Input[bool]]
+        """
+        Specify whether the Secret or its key must be defined.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecContainerEnvValueFromSecretKeyRefArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecContainerEnvValueFromSecretKeyRefArgs:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 optional: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] key: The key of the secret to select from. Must be a valid secret key.
+        :param pulumi.Input[str] name: Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        :param pulumi.Input[bool] optional: Specify whether the Secret or its key must be defined.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if optional is not None:
+            pulumi.set(__self__, "optional", optional)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key of the secret to select from. Must be a valid secret key.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def optional(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specify whether the Secret or its key must be defined.
+        """
+        return pulumi.get(self, "optional")
+
+    @optional.setter
+    def optional(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "optional", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecContainerLifecycleArgsDict(TypedDict):
+        post_starts: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLifecyclePostStartArgsDict']]]]
+        """
+        post*start is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+        """
+        pre_stops: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLifecyclePreStopArgsDict']]]]
+        """
+        pre*stop is called immediately before a container is terminated. The container is terminated after the handler completes. The reason for termination is passed to the handler. Regardless of the outcome of the handler, the container is eventually terminated. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecContainerLifecycleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecContainerLifecycleArgs:
+    def __init__(__self__, *,
+                 post_starts: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLifecyclePostStartArgs']]]] = None,
+                 pre_stops: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLifecyclePreStopArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLifecyclePostStartArgs']]] post_starts: post*start is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLifecyclePreStopArgs']]] pre_stops: pre*stop is called immediately before a container is terminated. The container is terminated after the handler completes. The reason for termination is passed to the handler. Regardless of the outcome of the handler, the container is eventually terminated. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+        """
+        if post_starts is not None:
+            pulumi.set(__self__, "post_starts", post_starts)
+        if pre_stops is not None:
+            pulumi.set(__self__, "pre_stops", pre_stops)
+
+    @property
+    @pulumi.getter(name="postStarts")
+    def post_starts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLifecyclePostStartArgs']]]]:
+        """
+        post*start is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+        """
+        return pulumi.get(self, "post_starts")
+
+    @post_starts.setter
+    def post_starts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLifecyclePostStartArgs']]]]):
+        pulumi.set(self, "post_starts", value)
+
+    @property
+    @pulumi.getter(name="preStops")
+    def pre_stops(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLifecyclePreStopArgs']]]]:
+        """
+        pre*stop is called immediately before a container is terminated. The container is terminated after the handler completes. The reason for termination is passed to the handler. Regardless of the outcome of the handler, the container is eventually terminated. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+        """
+        return pulumi.get(self, "pre_stops")
+
+    @pre_stops.setter
+    def pre_stops(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLifecyclePreStopArgs']]]]):
+        pulumi.set(self, "pre_stops", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecContainerLifecyclePostStartArgsDict(TypedDict):
+        exec_: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLifecyclePostStartExecArgsDict']]
+        """
+        exec specifies the action to take.
+        """
+        http_get: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLifecyclePostStartHttpGetArgsDict']]
+        """
+        Specifies the http request to perform.
+        """
+        tcp_sockets: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLifecyclePostStartTcpSocketArgsDict']]]]
+        """
+        TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecContainerLifecyclePostStartArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecContainerLifecyclePostStartArgs:
+    def __init__(__self__, *,
+                 exec_: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLifecyclePostStartExecArgs']] = None,
+                 http_get: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLifecyclePostStartHttpGetArgs']] = None,
+                 tcp_sockets: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLifecyclePostStartTcpSocketArgs']]]] = None):
+        """
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLifecyclePostStartExecArgs'] exec_: exec specifies the action to take.
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLifecyclePostStartHttpGetArgs'] http_get: Specifies the http request to perform.
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLifecyclePostStartTcpSocketArgs']]] tcp_sockets: TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+        """
+        if exec_ is not None:
+            pulumi.set(__self__, "exec_", exec_)
+        if http_get is not None:
+            pulumi.set(__self__, "http_get", http_get)
+        if tcp_sockets is not None:
+            pulumi.set(__self__, "tcp_sockets", tcp_sockets)
+
+    @property
+    @pulumi.getter(name="exec")
+    def exec_(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLifecyclePostStartExecArgs']]:
+        """
+        exec specifies the action to take.
+        """
+        return pulumi.get(self, "exec_")
+
+    @exec_.setter
+    def exec_(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLifecyclePostStartExecArgs']]):
+        pulumi.set(self, "exec_", value)
+
+    @property
+    @pulumi.getter(name="httpGet")
+    def http_get(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLifecyclePostStartHttpGetArgs']]:
+        """
+        Specifies the http request to perform.
+        """
+        return pulumi.get(self, "http_get")
+
+    @http_get.setter
+    def http_get(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLifecyclePostStartHttpGetArgs']]):
+        pulumi.set(self, "http_get", value)
+
+    @property
+    @pulumi.getter(name="tcpSockets")
+    def tcp_sockets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLifecyclePostStartTcpSocketArgs']]]]:
+        """
+        TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+        """
+        return pulumi.get(self, "tcp_sockets")
+
+    @tcp_sockets.setter
+    def tcp_sockets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLifecyclePostStartTcpSocketArgs']]]]):
+        pulumi.set(self, "tcp_sockets", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecContainerLifecyclePostStartExecArgsDict(TypedDict):
+        commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecContainerLifecyclePostStartExecArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecContainerLifecyclePostStartExecArgs:
+    def __init__(__self__, *,
+                 commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] commands: Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+        """
+        if commands is not None:
+            pulumi.set(__self__, "commands", commands)
+
+    @property
+    @pulumi.getter
+    def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+        """
+        return pulumi.get(self, "commands")
+
+    @commands.setter
+    def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "commands", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecContainerLifecyclePostStartHttpGetArgsDict(TypedDict):
+        host: NotRequired[pulumi.Input[str]]
+        """
+        Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+        """
+        http_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArgsDict']]]]
+        """
+        Scheme to use for connecting to the host.
+        """
+        path: NotRequired[pulumi.Input[str]]
+        """
+        Path to access on the HTTP server.
+        """
+        port: NotRequired[pulumi.Input[str]]
+        """
+        Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        """
+        scheme: NotRequired[pulumi.Input[str]]
+        """
+        Scheme to use for connecting to the host. Defaults to `HTTP`.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecContainerLifecyclePostStartHttpGetArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecContainerLifecyclePostStartHttpGetArgs:
+    def __init__(__self__, *,
+                 host: Optional[pulumi.Input[str]] = None,
+                 http_headers: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArgs']]]] = None,
+                 path: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[str]] = None,
+                 scheme: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] host: Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArgs']]] http_headers: Scheme to use for connecting to the host.
+        :param pulumi.Input[str] path: Path to access on the HTTP server.
+        :param pulumi.Input[str] port: Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        :param pulumi.Input[str] scheme: Scheme to use for connecting to the host. Defaults to `HTTP`.
+        """
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if http_headers is not None:
+            pulumi.set(__self__, "http_headers", http_headers)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if scheme is not None:
+            pulumi.set(__self__, "scheme", scheme)
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[pulumi.Input[str]]:
+        """
+        Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "host", value)
+
+    @property
+    @pulumi.getter(name="httpHeaders")
+    def http_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArgs']]]]:
+        """
+        Scheme to use for connecting to the host.
+        """
+        return pulumi.get(self, "http_headers")
+
+    @http_headers.setter
+    def http_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArgs']]]]):
+        pulumi.set(self, "http_headers", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Path to access on the HTTP server.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def scheme(self) -> Optional[pulumi.Input[str]]:
+        """
+        Scheme to use for connecting to the host. Defaults to `HTTP`.
+        """
+        return pulumi.get(self, "scheme")
+
+    @scheme.setter
+    def scheme(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scheme", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The header field name
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The header field value
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecContainerLifecyclePostStartHttpGetHttpHeaderArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: The header field name
+        :param pulumi.Input[str] value: The header field value
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The header field name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The header field value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecContainerLifecyclePostStartTcpSocketArgsDict(TypedDict):
+        port: pulumi.Input[str]
+        """
+        Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecContainerLifecyclePostStartTcpSocketArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecContainerLifecyclePostStartTcpSocketArgs:
+    def __init__(__self__, *,
+                 port: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] port: Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        """
+        pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[str]:
+        """
+        Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[str]):
+        pulumi.set(self, "port", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecContainerLifecyclePreStopArgsDict(TypedDict):
+        exec_: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLifecyclePreStopExecArgsDict']]
+        """
+        exec specifies the action to take.
+        """
+        http_get: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLifecyclePreStopHttpGetArgsDict']]
+        """
+        Specifies the http request to perform.
+        """
+        tcp_sockets: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLifecyclePreStopTcpSocketArgsDict']]]]
+        """
+        TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecContainerLifecyclePreStopArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecContainerLifecyclePreStopArgs:
+    def __init__(__self__, *,
+                 exec_: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLifecyclePreStopExecArgs']] = None,
+                 http_get: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLifecyclePreStopHttpGetArgs']] = None,
+                 tcp_sockets: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLifecyclePreStopTcpSocketArgs']]]] = None):
+        """
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLifecyclePreStopExecArgs'] exec_: exec specifies the action to take.
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLifecyclePreStopHttpGetArgs'] http_get: Specifies the http request to perform.
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLifecyclePreStopTcpSocketArgs']]] tcp_sockets: TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+        """
+        if exec_ is not None:
+            pulumi.set(__self__, "exec_", exec_)
+        if http_get is not None:
+            pulumi.set(__self__, "http_get", http_get)
+        if tcp_sockets is not None:
+            pulumi.set(__self__, "tcp_sockets", tcp_sockets)
+
+    @property
+    @pulumi.getter(name="exec")
+    def exec_(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLifecyclePreStopExecArgs']]:
+        """
+        exec specifies the action to take.
+        """
+        return pulumi.get(self, "exec_")
+
+    @exec_.setter
+    def exec_(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLifecyclePreStopExecArgs']]):
+        pulumi.set(self, "exec_", value)
+
+    @property
+    @pulumi.getter(name="httpGet")
+    def http_get(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLifecyclePreStopHttpGetArgs']]:
+        """
+        Specifies the http request to perform.
+        """
+        return pulumi.get(self, "http_get")
+
+    @http_get.setter
+    def http_get(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLifecyclePreStopHttpGetArgs']]):
+        pulumi.set(self, "http_get", value)
+
+    @property
+    @pulumi.getter(name="tcpSockets")
+    def tcp_sockets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLifecyclePreStopTcpSocketArgs']]]]:
+        """
+        TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+        """
+        return pulumi.get(self, "tcp_sockets")
+
+    @tcp_sockets.setter
+    def tcp_sockets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLifecyclePreStopTcpSocketArgs']]]]):
+        pulumi.set(self, "tcp_sockets", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecContainerLifecyclePreStopExecArgsDict(TypedDict):
+        commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecContainerLifecyclePreStopExecArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecContainerLifecyclePreStopExecArgs:
+    def __init__(__self__, *,
+                 commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] commands: Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+        """
+        if commands is not None:
+            pulumi.set(__self__, "commands", commands)
+
+    @property
+    @pulumi.getter
+    def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+        """
+        return pulumi.get(self, "commands")
+
+    @commands.setter
+    def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "commands", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecContainerLifecyclePreStopHttpGetArgsDict(TypedDict):
+        host: NotRequired[pulumi.Input[str]]
+        """
+        Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+        """
+        http_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArgsDict']]]]
+        """
+        Scheme to use for connecting to the host.
+        """
+        path: NotRequired[pulumi.Input[str]]
+        """
+        Path to access on the HTTP server.
+        """
+        port: NotRequired[pulumi.Input[str]]
+        """
+        Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        """
+        scheme: NotRequired[pulumi.Input[str]]
+        """
+        Scheme to use for connecting to the host. Defaults to `HTTP`.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecContainerLifecyclePreStopHttpGetArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecContainerLifecyclePreStopHttpGetArgs:
+    def __init__(__self__, *,
+                 host: Optional[pulumi.Input[str]] = None,
+                 http_headers: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArgs']]]] = None,
+                 path: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[str]] = None,
+                 scheme: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] host: Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArgs']]] http_headers: Scheme to use for connecting to the host.
+        :param pulumi.Input[str] path: Path to access on the HTTP server.
+        :param pulumi.Input[str] port: Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        :param pulumi.Input[str] scheme: Scheme to use for connecting to the host. Defaults to `HTTP`.
+        """
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if http_headers is not None:
+            pulumi.set(__self__, "http_headers", http_headers)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if scheme is not None:
+            pulumi.set(__self__, "scheme", scheme)
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[pulumi.Input[str]]:
+        """
+        Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "host", value)
+
+    @property
+    @pulumi.getter(name="httpHeaders")
+    def http_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArgs']]]]:
+        """
+        Scheme to use for connecting to the host.
+        """
+        return pulumi.get(self, "http_headers")
+
+    @http_headers.setter
+    def http_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArgs']]]]):
+        pulumi.set(self, "http_headers", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Path to access on the HTTP server.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def scheme(self) -> Optional[pulumi.Input[str]]:
+        """
+        Scheme to use for connecting to the host. Defaults to `HTTP`.
+        """
+        return pulumi.get(self, "scheme")
+
+    @scheme.setter
+    def scheme(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scheme", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The header field name
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The header field value
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecContainerLifecyclePreStopHttpGetHttpHeaderArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: The header field name
+        :param pulumi.Input[str] value: The header field value
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The header field name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The header field value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecContainerLifecyclePreStopTcpSocketArgsDict(TypedDict):
+        port: pulumi.Input[str]
+        """
+        Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecContainerLifecyclePreStopTcpSocketArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecContainerLifecyclePreStopTcpSocketArgs:
+    def __init__(__self__, *,
+                 port: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] port: Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        """
+        pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[str]:
+        """
+        Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[str]):
+        pulumi.set(self, "port", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecContainerLivenessProbeArgsDict(TypedDict):
+        exec_: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLivenessProbeExecArgsDict']]
+        """
+        exec specifies the action to take.
+        """
+        failure_threshold: NotRequired[pulumi.Input[int]]
+        """
+        Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to `3`.
+        """
+        grpcs: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLivenessProbeGrpcArgsDict']]]]
+        """
+        GRPC specifies an action involving a GRPC port.
+        """
+        http_get: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLivenessProbeHttpGetArgsDict']]
+        """
+        Specifies the http request to perform.
+        """
+        initial_delay_seconds: NotRequired[pulumi.Input[int]]
+        """
+        Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+        """
+        period_seconds: NotRequired[pulumi.Input[int]]
+        """
+        How often (in seconds) to perform the probe Defaults to `10`.
+        """
+        success_threshold: NotRequired[pulumi.Input[int]]
+        """
+        Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to `1`.
+        """
+        tcp_sockets: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLivenessProbeTcpSocketArgsDict']]]]
+        """
+        TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+        """
+        timeout_seconds: NotRequired[pulumi.Input[int]]
+        """
+        Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes Defaults to `1`.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecContainerLivenessProbeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecContainerLivenessProbeArgs:
+    def __init__(__self__, *,
+                 exec_: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLivenessProbeExecArgs']] = None,
+                 failure_threshold: Optional[pulumi.Input[int]] = None,
+                 grpcs: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLivenessProbeGrpcArgs']]]] = None,
+                 http_get: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLivenessProbeHttpGetArgs']] = None,
+                 initial_delay_seconds: Optional[pulumi.Input[int]] = None,
+                 period_seconds: Optional[pulumi.Input[int]] = None,
+                 success_threshold: Optional[pulumi.Input[int]] = None,
+                 tcp_sockets: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLivenessProbeTcpSocketArgs']]]] = None,
+                 timeout_seconds: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLivenessProbeExecArgs'] exec_: exec specifies the action to take.
+        :param pulumi.Input[int] failure_threshold: Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to `3`.
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLivenessProbeGrpcArgs']]] grpcs: GRPC specifies an action involving a GRPC port.
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLivenessProbeHttpGetArgs'] http_get: Specifies the http request to perform.
+        :param pulumi.Input[int] initial_delay_seconds: Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+        :param pulumi.Input[int] period_seconds: How often (in seconds) to perform the probe Defaults to `10`.
+        :param pulumi.Input[int] success_threshold: Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to `1`.
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLivenessProbeTcpSocketArgs']]] tcp_sockets: TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+        :param pulumi.Input[int] timeout_seconds: Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes Defaults to `1`.
+        """
+        if exec_ is not None:
+            pulumi.set(__self__, "exec_", exec_)
+        if failure_threshold is not None:
+            pulumi.set(__self__, "failure_threshold", failure_threshold)
+        if grpcs is not None:
+            pulumi.set(__self__, "grpcs", grpcs)
+        if http_get is not None:
+            pulumi.set(__self__, "http_get", http_get)
+        if initial_delay_seconds is not None:
+            pulumi.set(__self__, "initial_delay_seconds", initial_delay_seconds)
+        if period_seconds is not None:
+            pulumi.set(__self__, "period_seconds", period_seconds)
+        if success_threshold is not None:
+            pulumi.set(__self__, "success_threshold", success_threshold)
+        if tcp_sockets is not None:
+            pulumi.set(__self__, "tcp_sockets", tcp_sockets)
+        if timeout_seconds is not None:
+            pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+
+    @property
+    @pulumi.getter(name="exec")
+    def exec_(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLivenessProbeExecArgs']]:
+        """
+        exec specifies the action to take.
+        """
+        return pulumi.get(self, "exec_")
+
+    @exec_.setter
+    def exec_(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLivenessProbeExecArgs']]):
+        pulumi.set(self, "exec_", value)
+
+    @property
+    @pulumi.getter(name="failureThreshold")
+    def failure_threshold(self) -> Optional[pulumi.Input[int]]:
+        """
+        Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to `3`.
+        """
+        return pulumi.get(self, "failure_threshold")
+
+    @failure_threshold.setter
+    def failure_threshold(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "failure_threshold", value)
+
+    @property
+    @pulumi.getter
+    def grpcs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLivenessProbeGrpcArgs']]]]:
+        """
+        GRPC specifies an action involving a GRPC port.
+        """
+        return pulumi.get(self, "grpcs")
+
+    @grpcs.setter
+    def grpcs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLivenessProbeGrpcArgs']]]]):
+        pulumi.set(self, "grpcs", value)
+
+    @property
+    @pulumi.getter(name="httpGet")
+    def http_get(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLivenessProbeHttpGetArgs']]:
+        """
+        Specifies the http request to perform.
+        """
+        return pulumi.get(self, "http_get")
+
+    @http_get.setter
+    def http_get(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLivenessProbeHttpGetArgs']]):
+        pulumi.set(self, "http_get", value)
+
+    @property
+    @pulumi.getter(name="initialDelaySeconds")
+    def initial_delay_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+        """
+        return pulumi.get(self, "initial_delay_seconds")
+
+    @initial_delay_seconds.setter
+    def initial_delay_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "initial_delay_seconds", value)
+
+    @property
+    @pulumi.getter(name="periodSeconds")
+    def period_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        How often (in seconds) to perform the probe Defaults to `10`.
+        """
+        return pulumi.get(self, "period_seconds")
+
+    @period_seconds.setter
+    def period_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "period_seconds", value)
+
+    @property
+    @pulumi.getter(name="successThreshold")
+    def success_threshold(self) -> Optional[pulumi.Input[int]]:
+        """
+        Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to `1`.
+        """
+        return pulumi.get(self, "success_threshold")
+
+    @success_threshold.setter
+    def success_threshold(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "success_threshold", value)
+
+    @property
+    @pulumi.getter(name="tcpSockets")
+    def tcp_sockets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLivenessProbeTcpSocketArgs']]]]:
+        """
+        TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+        """
+        return pulumi.get(self, "tcp_sockets")
+
+    @tcp_sockets.setter
+    def tcp_sockets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLivenessProbeTcpSocketArgs']]]]):
+        pulumi.set(self, "tcp_sockets", value)
+
+    @property
+    @pulumi.getter(name="timeoutSeconds")
+    def timeout_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes Defaults to `1`.
+        """
+        return pulumi.get(self, "timeout_seconds")
+
+    @timeout_seconds.setter
+    def timeout_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "timeout_seconds", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecContainerLivenessProbeExecArgsDict(TypedDict):
+        commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecContainerLivenessProbeExecArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecContainerLivenessProbeExecArgs:
+    def __init__(__self__, *,
+                 commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] commands: Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+        """
+        if commands is not None:
+            pulumi.set(__self__, "commands", commands)
+
+    @property
+    @pulumi.getter
+    def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+        """
+        return pulumi.get(self, "commands")
+
+    @commands.setter
+    def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "commands", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecContainerLivenessProbeGrpcArgsDict(TypedDict):
+        port: pulumi.Input[int]
+        """
+        Number of the port to access on the container. Number must be in the range 1 to 65535.
+        """
+        service: NotRequired[pulumi.Input[str]]
+        """
+        Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecContainerLivenessProbeGrpcArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecContainerLivenessProbeGrpcArgs:
+    def __init__(__self__, *,
+                 port: pulumi.Input[int],
+                 service: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] port: Number of the port to access on the container. Number must be in the range 1 to 65535.
+        :param pulumi.Input[str] service: Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+        """
+        pulumi.set(__self__, "port", port)
+        if service is not None:
+            pulumi.set(__self__, "service", service)
+
+    @property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[int]:
+        """
+        Number of the port to access on the container. Number must be in the range 1 to 65535.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[int]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def service(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecContainerLivenessProbeHttpGetArgsDict(TypedDict):
+        host: NotRequired[pulumi.Input[str]]
+        """
+        Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+        """
+        http_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArgsDict']]]]
+        """
+        Scheme to use for connecting to the host.
+        """
+        path: NotRequired[pulumi.Input[str]]
+        """
+        Path to access on the HTTP server.
+        """
+        port: NotRequired[pulumi.Input[str]]
+        """
+        Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        """
+        scheme: NotRequired[pulumi.Input[str]]
+        """
+        Scheme to use for connecting to the host. Defaults to `HTTP`.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecContainerLivenessProbeHttpGetArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecContainerLivenessProbeHttpGetArgs:
+    def __init__(__self__, *,
+                 host: Optional[pulumi.Input[str]] = None,
+                 http_headers: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArgs']]]] = None,
+                 path: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[str]] = None,
+                 scheme: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] host: Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArgs']]] http_headers: Scheme to use for connecting to the host.
+        :param pulumi.Input[str] path: Path to access on the HTTP server.
+        :param pulumi.Input[str] port: Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        :param pulumi.Input[str] scheme: Scheme to use for connecting to the host. Defaults to `HTTP`.
+        """
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if http_headers is not None:
+            pulumi.set(__self__, "http_headers", http_headers)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if scheme is not None:
+            pulumi.set(__self__, "scheme", scheme)
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[pulumi.Input[str]]:
+        """
+        Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "host", value)
+
+    @property
+    @pulumi.getter(name="httpHeaders")
+    def http_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArgs']]]]:
+        """
+        Scheme to use for connecting to the host.
+        """
+        return pulumi.get(self, "http_headers")
+
+    @http_headers.setter
+    def http_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArgs']]]]):
+        pulumi.set(self, "http_headers", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Path to access on the HTTP server.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def scheme(self) -> Optional[pulumi.Input[str]]:
+        """
+        Scheme to use for connecting to the host. Defaults to `HTTP`.
+        """
+        return pulumi.get(self, "scheme")
+
+    @scheme.setter
+    def scheme(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scheme", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The header field name
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The header field value
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: The header field name
+        :param pulumi.Input[str] value: The header field value
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The header field name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The header field value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecContainerLivenessProbeTcpSocketArgsDict(TypedDict):
+        port: pulumi.Input[str]
+        """
+        Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecContainerLivenessProbeTcpSocketArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecContainerLivenessProbeTcpSocketArgs:
+    def __init__(__self__, *,
+                 port: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] port: Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        """
+        pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[str]:
+        """
+        Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[str]):
+        pulumi.set(self, "port", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecContainerPortArgsDict(TypedDict):
+        container_port: pulumi.Input[int]
+        """
+        Number of port to expose on the pod's IP address. This must be a valid port number, 0 < x < 65536.
+        """
+        host_ip: NotRequired[pulumi.Input[str]]
+        """
+        What host IP to bind the external port to.
+        """
+        host_port: NotRequired[pulumi.Input[int]]
+        """
+        Number of port to expose on the host. If specified, this must be a valid port number, 0 < x < 65536. If HostNetwork is specified, this must match ContainerPort. Most containers do not need this.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        If specified, this must be an IANA*SVC*NAME and unique within the pod. Each named port in a pod must have a unique name. Name for the port that can be referred to by services
+        """
+        protocol: NotRequired[pulumi.Input[str]]
+        """
+        Protocol for port. Must be UDP or TCP. Defaults to "TCP". Defaults to `TCP`.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecContainerPortArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecContainerPortArgs:
+    def __init__(__self__, *,
+                 container_port: pulumi.Input[int],
+                 host_ip: Optional[pulumi.Input[str]] = None,
+                 host_port: Optional[pulumi.Input[int]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 protocol: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] container_port: Number of port to expose on the pod's IP address. This must be a valid port number, 0 < x < 65536.
+        :param pulumi.Input[str] host_ip: What host IP to bind the external port to.
+        :param pulumi.Input[int] host_port: Number of port to expose on the host. If specified, this must be a valid port number, 0 < x < 65536. If HostNetwork is specified, this must match ContainerPort. Most containers do not need this.
+        :param pulumi.Input[str] name: If specified, this must be an IANA*SVC*NAME and unique within the pod. Each named port in a pod must have a unique name. Name for the port that can be referred to by services
+        :param pulumi.Input[str] protocol: Protocol for port. Must be UDP or TCP. Defaults to "TCP". Defaults to `TCP`.
+        """
+        pulumi.set(__self__, "container_port", container_port)
+        if host_ip is not None:
+            pulumi.set(__self__, "host_ip", host_ip)
+        if host_port is not None:
+            pulumi.set(__self__, "host_port", host_port)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+
+    @property
+    @pulumi.getter(name="containerPort")
+    def container_port(self) -> pulumi.Input[int]:
+        """
+        Number of port to expose on the pod's IP address. This must be a valid port number, 0 < x < 65536.
+        """
+        return pulumi.get(self, "container_port")
+
+    @container_port.setter
+    def container_port(self, value: pulumi.Input[int]):
+        pulumi.set(self, "container_port", value)
+
+    @property
+    @pulumi.getter(name="hostIp")
+    def host_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        What host IP to bind the external port to.
+        """
+        return pulumi.get(self, "host_ip")
+
+    @host_ip.setter
+    def host_ip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "host_ip", value)
+
+    @property
+    @pulumi.getter(name="hostPort")
+    def host_port(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of port to expose on the host. If specified, this must be a valid port number, 0 < x < 65536. If HostNetwork is specified, this must match ContainerPort. Most containers do not need this.
+        """
+        return pulumi.get(self, "host_port")
+
+    @host_port.setter
+    def host_port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "host_port", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        If specified, this must be an IANA*SVC*NAME and unique within the pod. Each named port in a pod must have a unique name. Name for the port that can be referred to by services
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> Optional[pulumi.Input[str]]:
+        """
+        Protocol for port. Must be UDP or TCP. Defaults to "TCP". Defaults to `TCP`.
+        """
+        return pulumi.get(self, "protocol")
+
+    @protocol.setter
+    def protocol(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "protocol", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecContainerReadinessProbeArgsDict(TypedDict):
+        exec_: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerReadinessProbeExecArgsDict']]
+        """
+        exec specifies the action to take.
+        """
+        failure_threshold: NotRequired[pulumi.Input[int]]
+        """
+        Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to `3`.
+        """
+        grpcs: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerReadinessProbeGrpcArgsDict']]]]
+        """
+        GRPC specifies an action involving a GRPC port.
+        """
+        http_get: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerReadinessProbeHttpGetArgsDict']]
+        """
+        Specifies the http request to perform.
+        """
+        initial_delay_seconds: NotRequired[pulumi.Input[int]]
+        """
+        Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+        """
+        period_seconds: NotRequired[pulumi.Input[int]]
+        """
+        How often (in seconds) to perform the probe Defaults to `10`.
+        """
+        success_threshold: NotRequired[pulumi.Input[int]]
+        """
+        Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to `1`.
+        """
+        tcp_sockets: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerReadinessProbeTcpSocketArgsDict']]]]
+        """
+        TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+        """
+        timeout_seconds: NotRequired[pulumi.Input[int]]
+        """
+        Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes Defaults to `1`.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecContainerReadinessProbeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecContainerReadinessProbeArgs:
+    def __init__(__self__, *,
+                 exec_: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerReadinessProbeExecArgs']] = None,
+                 failure_threshold: Optional[pulumi.Input[int]] = None,
+                 grpcs: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerReadinessProbeGrpcArgs']]]] = None,
+                 http_get: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerReadinessProbeHttpGetArgs']] = None,
+                 initial_delay_seconds: Optional[pulumi.Input[int]] = None,
+                 period_seconds: Optional[pulumi.Input[int]] = None,
+                 success_threshold: Optional[pulumi.Input[int]] = None,
+                 tcp_sockets: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerReadinessProbeTcpSocketArgs']]]] = None,
+                 timeout_seconds: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerReadinessProbeExecArgs'] exec_: exec specifies the action to take.
+        :param pulumi.Input[int] failure_threshold: Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to `3`.
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerReadinessProbeGrpcArgs']]] grpcs: GRPC specifies an action involving a GRPC port.
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerReadinessProbeHttpGetArgs'] http_get: Specifies the http request to perform.
+        :param pulumi.Input[int] initial_delay_seconds: Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+        :param pulumi.Input[int] period_seconds: How often (in seconds) to perform the probe Defaults to `10`.
+        :param pulumi.Input[int] success_threshold: Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to `1`.
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerReadinessProbeTcpSocketArgs']]] tcp_sockets: TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+        :param pulumi.Input[int] timeout_seconds: Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes Defaults to `1`.
+        """
+        if exec_ is not None:
+            pulumi.set(__self__, "exec_", exec_)
+        if failure_threshold is not None:
+            pulumi.set(__self__, "failure_threshold", failure_threshold)
+        if grpcs is not None:
+            pulumi.set(__self__, "grpcs", grpcs)
+        if http_get is not None:
+            pulumi.set(__self__, "http_get", http_get)
+        if initial_delay_seconds is not None:
+            pulumi.set(__self__, "initial_delay_seconds", initial_delay_seconds)
+        if period_seconds is not None:
+            pulumi.set(__self__, "period_seconds", period_seconds)
+        if success_threshold is not None:
+            pulumi.set(__self__, "success_threshold", success_threshold)
+        if tcp_sockets is not None:
+            pulumi.set(__self__, "tcp_sockets", tcp_sockets)
+        if timeout_seconds is not None:
+            pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+
+    @property
+    @pulumi.getter(name="exec")
+    def exec_(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerReadinessProbeExecArgs']]:
+        """
+        exec specifies the action to take.
+        """
+        return pulumi.get(self, "exec_")
+
+    @exec_.setter
+    def exec_(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerReadinessProbeExecArgs']]):
+        pulumi.set(self, "exec_", value)
+
+    @property
+    @pulumi.getter(name="failureThreshold")
+    def failure_threshold(self) -> Optional[pulumi.Input[int]]:
+        """
+        Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to `3`.
+        """
+        return pulumi.get(self, "failure_threshold")
+
+    @failure_threshold.setter
+    def failure_threshold(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "failure_threshold", value)
+
+    @property
+    @pulumi.getter
+    def grpcs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerReadinessProbeGrpcArgs']]]]:
+        """
+        GRPC specifies an action involving a GRPC port.
+        """
+        return pulumi.get(self, "grpcs")
+
+    @grpcs.setter
+    def grpcs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerReadinessProbeGrpcArgs']]]]):
+        pulumi.set(self, "grpcs", value)
+
+    @property
+    @pulumi.getter(name="httpGet")
+    def http_get(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerReadinessProbeHttpGetArgs']]:
+        """
+        Specifies the http request to perform.
+        """
+        return pulumi.get(self, "http_get")
+
+    @http_get.setter
+    def http_get(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerReadinessProbeHttpGetArgs']]):
+        pulumi.set(self, "http_get", value)
+
+    @property
+    @pulumi.getter(name="initialDelaySeconds")
+    def initial_delay_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+        """
+        return pulumi.get(self, "initial_delay_seconds")
+
+    @initial_delay_seconds.setter
+    def initial_delay_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "initial_delay_seconds", value)
+
+    @property
+    @pulumi.getter(name="periodSeconds")
+    def period_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        How often (in seconds) to perform the probe Defaults to `10`.
+        """
+        return pulumi.get(self, "period_seconds")
+
+    @period_seconds.setter
+    def period_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "period_seconds", value)
+
+    @property
+    @pulumi.getter(name="successThreshold")
+    def success_threshold(self) -> Optional[pulumi.Input[int]]:
+        """
+        Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to `1`.
+        """
+        return pulumi.get(self, "success_threshold")
+
+    @success_threshold.setter
+    def success_threshold(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "success_threshold", value)
+
+    @property
+    @pulumi.getter(name="tcpSockets")
+    def tcp_sockets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerReadinessProbeTcpSocketArgs']]]]:
+        """
+        TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+        """
+        return pulumi.get(self, "tcp_sockets")
+
+    @tcp_sockets.setter
+    def tcp_sockets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerReadinessProbeTcpSocketArgs']]]]):
+        pulumi.set(self, "tcp_sockets", value)
+
+    @property
+    @pulumi.getter(name="timeoutSeconds")
+    def timeout_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes Defaults to `1`.
+        """
+        return pulumi.get(self, "timeout_seconds")
+
+    @timeout_seconds.setter
+    def timeout_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "timeout_seconds", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecContainerReadinessProbeExecArgsDict(TypedDict):
+        commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecContainerReadinessProbeExecArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecContainerReadinessProbeExecArgs:
+    def __init__(__self__, *,
+                 commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] commands: Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+        """
+        if commands is not None:
+            pulumi.set(__self__, "commands", commands)
+
+    @property
+    @pulumi.getter
+    def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+        """
+        return pulumi.get(self, "commands")
+
+    @commands.setter
+    def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "commands", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecContainerReadinessProbeGrpcArgsDict(TypedDict):
+        port: pulumi.Input[int]
+        """
+        Number of the port to access on the container. Number must be in the range 1 to 65535.
+        """
+        service: NotRequired[pulumi.Input[str]]
+        """
+        Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecContainerReadinessProbeGrpcArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecContainerReadinessProbeGrpcArgs:
+    def __init__(__self__, *,
+                 port: pulumi.Input[int],
+                 service: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] port: Number of the port to access on the container. Number must be in the range 1 to 65535.
+        :param pulumi.Input[str] service: Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+        """
+        pulumi.set(__self__, "port", port)
+        if service is not None:
+            pulumi.set(__self__, "service", service)
+
+    @property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[int]:
+        """
+        Number of the port to access on the container. Number must be in the range 1 to 65535.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[int]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def service(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecContainerReadinessProbeHttpGetArgsDict(TypedDict):
+        host: NotRequired[pulumi.Input[str]]
+        """
+        Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+        """
+        http_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArgsDict']]]]
+        """
+        Scheme to use for connecting to the host.
+        """
+        path: NotRequired[pulumi.Input[str]]
+        """
+        Path to access on the HTTP server.
+        """
+        port: NotRequired[pulumi.Input[str]]
+        """
+        Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        """
+        scheme: NotRequired[pulumi.Input[str]]
+        """
+        Scheme to use for connecting to the host. Defaults to `HTTP`.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecContainerReadinessProbeHttpGetArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecContainerReadinessProbeHttpGetArgs:
+    def __init__(__self__, *,
+                 host: Optional[pulumi.Input[str]] = None,
+                 http_headers: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArgs']]]] = None,
+                 path: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[str]] = None,
+                 scheme: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] host: Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArgs']]] http_headers: Scheme to use for connecting to the host.
+        :param pulumi.Input[str] path: Path to access on the HTTP server.
+        :param pulumi.Input[str] port: Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        :param pulumi.Input[str] scheme: Scheme to use for connecting to the host. Defaults to `HTTP`.
+        """
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if http_headers is not None:
+            pulumi.set(__self__, "http_headers", http_headers)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if scheme is not None:
+            pulumi.set(__self__, "scheme", scheme)
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[pulumi.Input[str]]:
+        """
+        Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "host", value)
+
+    @property
+    @pulumi.getter(name="httpHeaders")
+    def http_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArgs']]]]:
+        """
+        Scheme to use for connecting to the host.
+        """
+        return pulumi.get(self, "http_headers")
+
+    @http_headers.setter
+    def http_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArgs']]]]):
+        pulumi.set(self, "http_headers", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Path to access on the HTTP server.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def scheme(self) -> Optional[pulumi.Input[str]]:
+        """
+        Scheme to use for connecting to the host. Defaults to `HTTP`.
+        """
+        return pulumi.get(self, "scheme")
+
+    @scheme.setter
+    def scheme(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scheme", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The header field name
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The header field value
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecContainerReadinessProbeHttpGetHttpHeaderArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: The header field name
+        :param pulumi.Input[str] value: The header field value
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The header field name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The header field value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecContainerReadinessProbeTcpSocketArgsDict(TypedDict):
+        port: pulumi.Input[str]
+        """
+        Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecContainerReadinessProbeTcpSocketArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecContainerReadinessProbeTcpSocketArgs:
+    def __init__(__self__, *,
+                 port: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] port: Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        """
+        pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[str]:
+        """
+        Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[str]):
+        pulumi.set(self, "port", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecContainerResourcesArgsDict(TypedDict):
+        limits: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+        """
+        requests: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecContainerResourcesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecContainerResourcesArgs:
+    def __init__(__self__, *,
+                 limits: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 requests: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] limits: Describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] requests: Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
+        """
+        if limits is not None:
+            pulumi.set(__self__, "limits", limits)
+        if requests is not None:
+            pulumi.set(__self__, "requests", requests)
+
+    @property
+    @pulumi.getter
+    def limits(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+        """
+        return pulumi.get(self, "limits")
+
+    @limits.setter
+    def limits(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "limits", value)
+
+    @property
+    @pulumi.getter
+    def requests(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
+        """
+        return pulumi.get(self, "requests")
+
+    @requests.setter
+    def requests(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "requests", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecContainerSecurityContextArgsDict(TypedDict):
+        allow_privilege_escalation: NotRequired[pulumi.Input[bool]]
+        """
+        AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the no*new*privs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP*SYS*ADMIN Defaults to `true`.
+        """
+        capabilities: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerSecurityContextCapabilitiesArgsDict']]
+        """
+        The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime.
+        """
+        privileged: NotRequired[pulumi.Input[bool]]
+        """
+        Run container in privileged mode. Processes in privileged containers are essentially equivalent to root on the host. Defaults to false. Defaults to `false`.
+        """
+        read_only_root_filesystem: NotRequired[pulumi.Input[bool]]
+        """
+        Whether this container has a read-only root filesystem. Default is false. Defaults to `false`.
+        """
+        run_as_group: NotRequired[pulumi.Input[str]]
+        """
+        The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+        """
+        run_as_non_root: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+        """
+        run_as_user: NotRequired[pulumi.Input[str]]
+        """
+        The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+        """
+        se_linux_options: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerSecurityContextSeLinuxOptionsArgsDict']]
+        """
+        The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+        """
+        seccomp_profile: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerSecurityContextSeccompProfileArgsDict']]
+        """
+        The seccomp options to use by the containers in this pod. Note that this field cannot be set when spec.os.name is windows.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecContainerSecurityContextArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecContainerSecurityContextArgs:
+    def __init__(__self__, *,
+                 allow_privilege_escalation: Optional[pulumi.Input[bool]] = None,
+                 capabilities: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerSecurityContextCapabilitiesArgs']] = None,
+                 privileged: Optional[pulumi.Input[bool]] = None,
+                 read_only_root_filesystem: Optional[pulumi.Input[bool]] = None,
+                 run_as_group: Optional[pulumi.Input[str]] = None,
+                 run_as_non_root: Optional[pulumi.Input[bool]] = None,
+                 run_as_user: Optional[pulumi.Input[str]] = None,
+                 se_linux_options: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerSecurityContextSeLinuxOptionsArgs']] = None,
+                 seccomp_profile: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerSecurityContextSeccompProfileArgs']] = None):
+        """
+        :param pulumi.Input[bool] allow_privilege_escalation: AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the no*new*privs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP*SYS*ADMIN Defaults to `true`.
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerSecurityContextCapabilitiesArgs'] capabilities: The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime.
+        :param pulumi.Input[bool] privileged: Run container in privileged mode. Processes in privileged containers are essentially equivalent to root on the host. Defaults to false. Defaults to `false`.
+        :param pulumi.Input[bool] read_only_root_filesystem: Whether this container has a read-only root filesystem. Default is false. Defaults to `false`.
+        :param pulumi.Input[str] run_as_group: The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+        :param pulumi.Input[bool] run_as_non_root: Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+        :param pulumi.Input[str] run_as_user: The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerSecurityContextSeLinuxOptionsArgs'] se_linux_options: The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerSecurityContextSeccompProfileArgs'] seccomp_profile: The seccomp options to use by the containers in this pod. Note that this field cannot be set when spec.os.name is windows.
+        """
+        if allow_privilege_escalation is not None:
+            pulumi.set(__self__, "allow_privilege_escalation", allow_privilege_escalation)
+        if capabilities is not None:
+            pulumi.set(__self__, "capabilities", capabilities)
+        if privileged is not None:
+            pulumi.set(__self__, "privileged", privileged)
+        if read_only_root_filesystem is not None:
+            pulumi.set(__self__, "read_only_root_filesystem", read_only_root_filesystem)
+        if run_as_group is not None:
+            pulumi.set(__self__, "run_as_group", run_as_group)
+        if run_as_non_root is not None:
+            pulumi.set(__self__, "run_as_non_root", run_as_non_root)
+        if run_as_user is not None:
+            pulumi.set(__self__, "run_as_user", run_as_user)
+        if se_linux_options is not None:
+            pulumi.set(__self__, "se_linux_options", se_linux_options)
+        if seccomp_profile is not None:
+            pulumi.set(__self__, "seccomp_profile", seccomp_profile)
+
+    @property
+    @pulumi.getter(name="allowPrivilegeEscalation")
+    def allow_privilege_escalation(self) -> Optional[pulumi.Input[bool]]:
+        """
+        AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the no*new*privs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP*SYS*ADMIN Defaults to `true`.
+        """
+        return pulumi.get(self, "allow_privilege_escalation")
+
+    @allow_privilege_escalation.setter
+    def allow_privilege_escalation(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_privilege_escalation", value)
+
+    @property
+    @pulumi.getter
+    def capabilities(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerSecurityContextCapabilitiesArgs']]:
+        """
+        The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime.
+        """
+        return pulumi.get(self, "capabilities")
+
+    @capabilities.setter
+    def capabilities(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerSecurityContextCapabilitiesArgs']]):
+        pulumi.set(self, "capabilities", value)
+
+    @property
+    @pulumi.getter
+    def privileged(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Run container in privileged mode. Processes in privileged containers are essentially equivalent to root on the host. Defaults to false. Defaults to `false`.
+        """
+        return pulumi.get(self, "privileged")
+
+    @privileged.setter
+    def privileged(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "privileged", value)
+
+    @property
+    @pulumi.getter(name="readOnlyRootFilesystem")
+    def read_only_root_filesystem(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether this container has a read-only root filesystem. Default is false. Defaults to `false`.
+        """
+        return pulumi.get(self, "read_only_root_filesystem")
+
+    @read_only_root_filesystem.setter
+    def read_only_root_filesystem(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "read_only_root_filesystem", value)
+
+    @property
+    @pulumi.getter(name="runAsGroup")
+    def run_as_group(self) -> Optional[pulumi.Input[str]]:
+        """
+        The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+        """
+        return pulumi.get(self, "run_as_group")
+
+    @run_as_group.setter
+    def run_as_group(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "run_as_group", value)
+
+    @property
+    @pulumi.getter(name="runAsNonRoot")
+    def run_as_non_root(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+        """
+        return pulumi.get(self, "run_as_non_root")
+
+    @run_as_non_root.setter
+    def run_as_non_root(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "run_as_non_root", value)
+
+    @property
+    @pulumi.getter(name="runAsUser")
+    def run_as_user(self) -> Optional[pulumi.Input[str]]:
+        """
+        The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+        """
+        return pulumi.get(self, "run_as_user")
+
+    @run_as_user.setter
+    def run_as_user(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "run_as_user", value)
+
+    @property
+    @pulumi.getter(name="seLinuxOptions")
+    def se_linux_options(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerSecurityContextSeLinuxOptionsArgs']]:
+        """
+        The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+        """
+        return pulumi.get(self, "se_linux_options")
+
+    @se_linux_options.setter
+    def se_linux_options(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerSecurityContextSeLinuxOptionsArgs']]):
+        pulumi.set(self, "se_linux_options", value)
+
+    @property
+    @pulumi.getter(name="seccompProfile")
+    def seccomp_profile(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerSecurityContextSeccompProfileArgs']]:
+        """
+        The seccomp options to use by the containers in this pod. Note that this field cannot be set when spec.os.name is windows.
+        """
+        return pulumi.get(self, "seccomp_profile")
+
+    @seccomp_profile.setter
+    def seccomp_profile(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerSecurityContextSeccompProfileArgs']]):
+        pulumi.set(self, "seccomp_profile", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecContainerSecurityContextCapabilitiesArgsDict(TypedDict):
+        adds: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Added capabilities
+        """
+        drops: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Removed capabilities
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecContainerSecurityContextCapabilitiesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecContainerSecurityContextCapabilitiesArgs:
+    def __init__(__self__, *,
+                 adds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 drops: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] adds: Added capabilities
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] drops: Removed capabilities
+        """
+        if adds is not None:
+            pulumi.set(__self__, "adds", adds)
+        if drops is not None:
+            pulumi.set(__self__, "drops", drops)
+
+    @property
+    @pulumi.getter
+    def adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Added capabilities
+        """
+        return pulumi.get(self, "adds")
+
+    @adds.setter
+    def adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "adds", value)
+
+    @property
+    @pulumi.getter
+    def drops(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Removed capabilities
+        """
+        return pulumi.get(self, "drops")
+
+    @drops.setter
+    def drops(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "drops", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecContainerSecurityContextSeLinuxOptionsArgsDict(TypedDict):
+        level: NotRequired[pulumi.Input[str]]
+        """
+        Level is SELinux level label that applies to the container.
+        """
+        role: NotRequired[pulumi.Input[str]]
+        """
+        Role is a SELinux role label that applies to the container.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Type is a SELinux type label that applies to the container.
+        """
+        user: NotRequired[pulumi.Input[str]]
+        """
+        User is a SELinux user label that applies to the container.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecContainerSecurityContextSeLinuxOptionsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecContainerSecurityContextSeLinuxOptionsArgs:
+    def __init__(__self__, *,
+                 level: Optional[pulumi.Input[str]] = None,
+                 role: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 user: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] level: Level is SELinux level label that applies to the container.
+        :param pulumi.Input[str] role: Role is a SELinux role label that applies to the container.
+        :param pulumi.Input[str] type: Type is a SELinux type label that applies to the container.
+        :param pulumi.Input[str] user: User is a SELinux user label that applies to the container.
+        """
+        if level is not None:
+            pulumi.set(__self__, "level", level)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if user is not None:
+            pulumi.set(__self__, "user", user)
+
+    @property
+    @pulumi.getter
+    def level(self) -> Optional[pulumi.Input[str]]:
+        """
+        Level is SELinux level label that applies to the container.
+        """
+        return pulumi.get(self, "level")
+
+    @level.setter
+    def level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "level", value)
+
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[pulumi.Input[str]]:
+        """
+        Role is a SELinux role label that applies to the container.
+        """
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type is a SELinux type label that applies to the container.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def user(self) -> Optional[pulumi.Input[str]]:
+        """
+        User is a SELinux user label that applies to the container.
+        """
+        return pulumi.get(self, "user")
+
+    @user.setter
+    def user(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecContainerSecurityContextSeccompProfileArgsDict(TypedDict):
+        localhost_profile: NotRequired[pulumi.Input[str]]
+        """
+        Localhost Profile indicates a profile defined in a file on the node should be used. The profile must be preconfigured on the node to work. Defaults to ``.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Type indicates which kind of seccomp profile will be applied. Valid options are: Localhost, RuntimeDefault, Unconfined. Defaults to `Unconfined`.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecContainerSecurityContextSeccompProfileArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecContainerSecurityContextSeccompProfileArgs:
+    def __init__(__self__, *,
+                 localhost_profile: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] localhost_profile: Localhost Profile indicates a profile defined in a file on the node should be used. The profile must be preconfigured on the node to work. Defaults to ``.
+        :param pulumi.Input[str] type: Type indicates which kind of seccomp profile will be applied. Valid options are: Localhost, RuntimeDefault, Unconfined. Defaults to `Unconfined`.
+        """
+        if localhost_profile is not None:
+            pulumi.set(__self__, "localhost_profile", localhost_profile)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="localhostProfile")
+    def localhost_profile(self) -> Optional[pulumi.Input[str]]:
+        """
+        Localhost Profile indicates a profile defined in a file on the node should be used. The profile must be preconfigured on the node to work. Defaults to ``.
+        """
+        return pulumi.get(self, "localhost_profile")
+
+    @localhost_profile.setter
+    def localhost_profile(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "localhost_profile", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type indicates which kind of seccomp profile will be applied. Valid options are: Localhost, RuntimeDefault, Unconfined. Defaults to `Unconfined`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecContainerStartupProbeArgsDict(TypedDict):
+        exec_: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerStartupProbeExecArgsDict']]
+        """
+        exec specifies the action to take.
+        """
+        failure_threshold: NotRequired[pulumi.Input[int]]
+        """
+        Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to `3`.
+        """
+        grpcs: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerStartupProbeGrpcArgsDict']]]]
+        """
+        GRPC specifies an action involving a GRPC port.
+        """
+        http_get: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerStartupProbeHttpGetArgsDict']]
+        """
+        Specifies the http request to perform.
+        """
+        initial_delay_seconds: NotRequired[pulumi.Input[int]]
+        """
+        Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+        """
+        period_seconds: NotRequired[pulumi.Input[int]]
+        """
+        How often (in seconds) to perform the probe Defaults to `10`.
+        """
+        success_threshold: NotRequired[pulumi.Input[int]]
+        """
+        Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to `1`.
+        """
+        tcp_sockets: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerStartupProbeTcpSocketArgsDict']]]]
+        """
+        TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+        """
+        timeout_seconds: NotRequired[pulumi.Input[int]]
+        """
+        Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes Defaults to `1`.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecContainerStartupProbeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecContainerStartupProbeArgs:
+    def __init__(__self__, *,
+                 exec_: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerStartupProbeExecArgs']] = None,
+                 failure_threshold: Optional[pulumi.Input[int]] = None,
+                 grpcs: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerStartupProbeGrpcArgs']]]] = None,
+                 http_get: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerStartupProbeHttpGetArgs']] = None,
+                 initial_delay_seconds: Optional[pulumi.Input[int]] = None,
+                 period_seconds: Optional[pulumi.Input[int]] = None,
+                 success_threshold: Optional[pulumi.Input[int]] = None,
+                 tcp_sockets: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerStartupProbeTcpSocketArgs']]]] = None,
+                 timeout_seconds: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerStartupProbeExecArgs'] exec_: exec specifies the action to take.
+        :param pulumi.Input[int] failure_threshold: Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to `3`.
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerStartupProbeGrpcArgs']]] grpcs: GRPC specifies an action involving a GRPC port.
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerStartupProbeHttpGetArgs'] http_get: Specifies the http request to perform.
+        :param pulumi.Input[int] initial_delay_seconds: Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+        :param pulumi.Input[int] period_seconds: How often (in seconds) to perform the probe Defaults to `10`.
+        :param pulumi.Input[int] success_threshold: Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to `1`.
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerStartupProbeTcpSocketArgs']]] tcp_sockets: TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+        :param pulumi.Input[int] timeout_seconds: Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes Defaults to `1`.
+        """
+        if exec_ is not None:
+            pulumi.set(__self__, "exec_", exec_)
+        if failure_threshold is not None:
+            pulumi.set(__self__, "failure_threshold", failure_threshold)
+        if grpcs is not None:
+            pulumi.set(__self__, "grpcs", grpcs)
+        if http_get is not None:
+            pulumi.set(__self__, "http_get", http_get)
+        if initial_delay_seconds is not None:
+            pulumi.set(__self__, "initial_delay_seconds", initial_delay_seconds)
+        if period_seconds is not None:
+            pulumi.set(__self__, "period_seconds", period_seconds)
+        if success_threshold is not None:
+            pulumi.set(__self__, "success_threshold", success_threshold)
+        if tcp_sockets is not None:
+            pulumi.set(__self__, "tcp_sockets", tcp_sockets)
+        if timeout_seconds is not None:
+            pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+
+    @property
+    @pulumi.getter(name="exec")
+    def exec_(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerStartupProbeExecArgs']]:
+        """
+        exec specifies the action to take.
+        """
+        return pulumi.get(self, "exec_")
+
+    @exec_.setter
+    def exec_(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerStartupProbeExecArgs']]):
+        pulumi.set(self, "exec_", value)
+
+    @property
+    @pulumi.getter(name="failureThreshold")
+    def failure_threshold(self) -> Optional[pulumi.Input[int]]:
+        """
+        Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to `3`.
+        """
+        return pulumi.get(self, "failure_threshold")
+
+    @failure_threshold.setter
+    def failure_threshold(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "failure_threshold", value)
+
+    @property
+    @pulumi.getter
+    def grpcs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerStartupProbeGrpcArgs']]]]:
+        """
+        GRPC specifies an action involving a GRPC port.
+        """
+        return pulumi.get(self, "grpcs")
+
+    @grpcs.setter
+    def grpcs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerStartupProbeGrpcArgs']]]]):
+        pulumi.set(self, "grpcs", value)
+
+    @property
+    @pulumi.getter(name="httpGet")
+    def http_get(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerStartupProbeHttpGetArgs']]:
+        """
+        Specifies the http request to perform.
+        """
+        return pulumi.get(self, "http_get")
+
+    @http_get.setter
+    def http_get(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerStartupProbeHttpGetArgs']]):
+        pulumi.set(self, "http_get", value)
+
+    @property
+    @pulumi.getter(name="initialDelaySeconds")
+    def initial_delay_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+        """
+        return pulumi.get(self, "initial_delay_seconds")
+
+    @initial_delay_seconds.setter
+    def initial_delay_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "initial_delay_seconds", value)
+
+    @property
+    @pulumi.getter(name="periodSeconds")
+    def period_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        How often (in seconds) to perform the probe Defaults to `10`.
+        """
+        return pulumi.get(self, "period_seconds")
+
+    @period_seconds.setter
+    def period_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "period_seconds", value)
+
+    @property
+    @pulumi.getter(name="successThreshold")
+    def success_threshold(self) -> Optional[pulumi.Input[int]]:
+        """
+        Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to `1`.
+        """
+        return pulumi.get(self, "success_threshold")
+
+    @success_threshold.setter
+    def success_threshold(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "success_threshold", value)
+
+    @property
+    @pulumi.getter(name="tcpSockets")
+    def tcp_sockets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerStartupProbeTcpSocketArgs']]]]:
+        """
+        TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+        """
+        return pulumi.get(self, "tcp_sockets")
+
+    @tcp_sockets.setter
+    def tcp_sockets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerStartupProbeTcpSocketArgs']]]]):
+        pulumi.set(self, "tcp_sockets", value)
+
+    @property
+    @pulumi.getter(name="timeoutSeconds")
+    def timeout_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes Defaults to `1`.
+        """
+        return pulumi.get(self, "timeout_seconds")
+
+    @timeout_seconds.setter
+    def timeout_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "timeout_seconds", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecContainerStartupProbeExecArgsDict(TypedDict):
+        commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecContainerStartupProbeExecArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecContainerStartupProbeExecArgs:
+    def __init__(__self__, *,
+                 commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] commands: Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+        """
+        if commands is not None:
+            pulumi.set(__self__, "commands", commands)
+
+    @property
+    @pulumi.getter
+    def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+        """
+        return pulumi.get(self, "commands")
+
+    @commands.setter
+    def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "commands", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecContainerStartupProbeGrpcArgsDict(TypedDict):
+        port: pulumi.Input[int]
+        """
+        Number of the port to access on the container. Number must be in the range 1 to 65535.
+        """
+        service: NotRequired[pulumi.Input[str]]
+        """
+        Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecContainerStartupProbeGrpcArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecContainerStartupProbeGrpcArgs:
+    def __init__(__self__, *,
+                 port: pulumi.Input[int],
+                 service: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] port: Number of the port to access on the container. Number must be in the range 1 to 65535.
+        :param pulumi.Input[str] service: Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+        """
+        pulumi.set(__self__, "port", port)
+        if service is not None:
+            pulumi.set(__self__, "service", service)
+
+    @property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[int]:
+        """
+        Number of the port to access on the container. Number must be in the range 1 to 65535.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[int]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def service(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecContainerStartupProbeHttpGetArgsDict(TypedDict):
+        host: NotRequired[pulumi.Input[str]]
+        """
+        Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+        """
+        http_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArgsDict']]]]
+        """
+        Scheme to use for connecting to the host.
+        """
+        path: NotRequired[pulumi.Input[str]]
+        """
+        Path to access on the HTTP server.
+        """
+        port: NotRequired[pulumi.Input[str]]
+        """
+        Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        """
+        scheme: NotRequired[pulumi.Input[str]]
+        """
+        Scheme to use for connecting to the host. Defaults to `HTTP`.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecContainerStartupProbeHttpGetArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecContainerStartupProbeHttpGetArgs:
+    def __init__(__self__, *,
+                 host: Optional[pulumi.Input[str]] = None,
+                 http_headers: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArgs']]]] = None,
+                 path: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[str]] = None,
+                 scheme: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] host: Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArgs']]] http_headers: Scheme to use for connecting to the host.
+        :param pulumi.Input[str] path: Path to access on the HTTP server.
+        :param pulumi.Input[str] port: Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        :param pulumi.Input[str] scheme: Scheme to use for connecting to the host. Defaults to `HTTP`.
+        """
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if http_headers is not None:
+            pulumi.set(__self__, "http_headers", http_headers)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if scheme is not None:
+            pulumi.set(__self__, "scheme", scheme)
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[pulumi.Input[str]]:
+        """
+        Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "host", value)
+
+    @property
+    @pulumi.getter(name="httpHeaders")
+    def http_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArgs']]]]:
+        """
+        Scheme to use for connecting to the host.
+        """
+        return pulumi.get(self, "http_headers")
+
+    @http_headers.setter
+    def http_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArgs']]]]):
+        pulumi.set(self, "http_headers", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Path to access on the HTTP server.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def scheme(self) -> Optional[pulumi.Input[str]]:
+        """
+        Scheme to use for connecting to the host. Defaults to `HTTP`.
+        """
+        return pulumi.get(self, "scheme")
+
+    @scheme.setter
+    def scheme(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scheme", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The header field name
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The header field value
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecContainerStartupProbeHttpGetHttpHeaderArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: The header field name
+        :param pulumi.Input[str] value: The header field value
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The header field name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The header field value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecContainerStartupProbeTcpSocketArgsDict(TypedDict):
+        port: pulumi.Input[str]
+        """
+        Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecContainerStartupProbeTcpSocketArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecContainerStartupProbeTcpSocketArgs:
+    def __init__(__self__, *,
+                 port: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] port: Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        """
+        pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[str]:
+        """
+        Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[str]):
+        pulumi.set(self, "port", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecContainerVolumeMountArgsDict(TypedDict):
+        mount_path: pulumi.Input[str]
+        """
+        Path within the container at which the volume should be mounted. Must not contain ':'.
+        """
+        name: pulumi.Input[str]
+        """
+        This must match the Name of a Volume.
+        """
+        mount_propagation: NotRequired[pulumi.Input[str]]
+        """
+        Mount propagation mode. mount_propagation determines how mounts are propagated from the host to container and the other way around. Valid values are None (default), HostToContainer and Bidirectional. Defaults to `None`.
+        """
+        read_only: NotRequired[pulumi.Input[bool]]
+        """
+        Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false. Defaults to `false`.
+        """
+        sub_path: NotRequired[pulumi.Input[str]]
+        """
+        Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecContainerVolumeMountArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecContainerVolumeMountArgs:
+    def __init__(__self__, *,
+                 mount_path: pulumi.Input[str],
+                 name: pulumi.Input[str],
+                 mount_propagation: Optional[pulumi.Input[str]] = None,
+                 read_only: Optional[pulumi.Input[bool]] = None,
+                 sub_path: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] mount_path: Path within the container at which the volume should be mounted. Must not contain ':'.
+        :param pulumi.Input[str] name: This must match the Name of a Volume.
+        :param pulumi.Input[str] mount_propagation: Mount propagation mode. mount_propagation determines how mounts are propagated from the host to container and the other way around. Valid values are None (default), HostToContainer and Bidirectional. Defaults to `None`.
+        :param pulumi.Input[bool] read_only: Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false. Defaults to `false`.
+        :param pulumi.Input[str] sub_path: Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
+        """
+        pulumi.set(__self__, "mount_path", mount_path)
+        pulumi.set(__self__, "name", name)
+        if mount_propagation is not None:
+            pulumi.set(__self__, "mount_propagation", mount_propagation)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+        if sub_path is not None:
+            pulumi.set(__self__, "sub_path", sub_path)
+
+    @property
+    @pulumi.getter(name="mountPath")
+    def mount_path(self) -> pulumi.Input[str]:
+        """
+        Path within the container at which the volume should be mounted. Must not contain ':'.
+        """
+        return pulumi.get(self, "mount_path")
+
+    @mount_path.setter
+    def mount_path(self, value: pulumi.Input[str]):
+        pulumi.set(self, "mount_path", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        This must match the Name of a Volume.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="mountPropagation")
+    def mount_propagation(self) -> Optional[pulumi.Input[str]]:
+        """
+        Mount propagation mode. mount_propagation determines how mounts are propagated from the host to container and the other way around. Valid values are None (default), HostToContainer and Bidirectional. Defaults to `None`.
+        """
+        return pulumi.get(self, "mount_propagation")
+
+    @mount_propagation.setter
+    def mount_propagation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mount_propagation", value)
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false. Defaults to `false`.
+        """
+        return pulumi.get(self, "read_only")
+
+    @read_only.setter
+    def read_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "read_only", value)
+
+    @property
+    @pulumi.getter(name="subPath")
+    def sub_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
+        """
+        return pulumi.get(self, "sub_path")
+
+    @sub_path.setter
+    def sub_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sub_path", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecDnsConfigArgsDict(TypedDict):
+        nameservers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of DNS name server IP addresses. This will be appended to the base nameservers generated from DNSPolicy. Duplicated nameservers will be removed.
+        """
+        options: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecDnsConfigOptionArgsDict']]]]
+        """
+        A list of DNS resolver options. This will be merged with the base options generated from DNSPolicy. Duplicated entries will be removed. Resolution options given in Options will override those that appear in the base DNSPolicy.
+        """
+        searches: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of DNS search domains for host-name lookup. This will be appended to the base search paths generated from DNSPolicy. Duplicated search paths will be removed.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecDnsConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecDnsConfigArgs:
+    def __init__(__self__, *,
+                 nameservers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 options: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecDnsConfigOptionArgs']]]] = None,
+                 searches: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] nameservers: A list of DNS name server IP addresses. This will be appended to the base nameservers generated from DNSPolicy. Duplicated nameservers will be removed.
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecDnsConfigOptionArgs']]] options: A list of DNS resolver options. This will be merged with the base options generated from DNSPolicy. Duplicated entries will be removed. Resolution options given in Options will override those that appear in the base DNSPolicy.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] searches: A list of DNS search domains for host-name lookup. This will be appended to the base search paths generated from DNSPolicy. Duplicated search paths will be removed.
+        """
+        if nameservers is not None:
+            pulumi.set(__self__, "nameservers", nameservers)
+        if options is not None:
+            pulumi.set(__self__, "options", options)
+        if searches is not None:
+            pulumi.set(__self__, "searches", searches)
+
+    @property
+    @pulumi.getter
+    def nameservers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of DNS name server IP addresses. This will be appended to the base nameservers generated from DNSPolicy. Duplicated nameservers will be removed.
+        """
+        return pulumi.get(self, "nameservers")
+
+    @nameservers.setter
+    def nameservers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "nameservers", value)
+
+    @property
+    @pulumi.getter
+    def options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecDnsConfigOptionArgs']]]]:
+        """
+        A list of DNS resolver options. This will be merged with the base options generated from DNSPolicy. Duplicated entries will be removed. Resolution options given in Options will override those that appear in the base DNSPolicy.
+        """
+        return pulumi.get(self, "options")
+
+    @options.setter
+    def options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecDnsConfigOptionArgs']]]]):
+        pulumi.set(self, "options", value)
+
+    @property
+    @pulumi.getter
+    def searches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of DNS search domains for host-name lookup. This will be appended to the base search paths generated from DNSPolicy. Duplicated search paths will be removed.
+        """
+        return pulumi.get(self, "searches")
+
+    @searches.setter
+    def searches(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "searches", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecDnsConfigOptionArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Name of the option.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        Value of the option. Optional: Defaults to empty.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecDnsConfigOptionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecDnsConfigOptionArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: Name of the option.
+        :param pulumi.Input[str] value: Value of the option. Optional: Defaults to empty.
+        """
+        pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Name of the option.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        Value of the option. Optional: Defaults to empty.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecHostAliasArgsDict(TypedDict):
+        hostnames: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        Hostnames for the IP address.
+        """
+        ip: pulumi.Input[str]
+        """
+        IP address of the host file entry.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecHostAliasArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecHostAliasArgs:
+    def __init__(__self__, *,
+                 hostnames: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 ip: pulumi.Input[str]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] hostnames: Hostnames for the IP address.
+        :param pulumi.Input[str] ip: IP address of the host file entry.
+        """
+        pulumi.set(__self__, "hostnames", hostnames)
+        pulumi.set(__self__, "ip", ip)
+
+    @property
+    @pulumi.getter
+    def hostnames(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Hostnames for the IP address.
+        """
+        return pulumi.get(self, "hostnames")
+
+    @hostnames.setter
+    def hostnames(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "hostnames", value)
+
+    @property
+    @pulumi.getter
+    def ip(self) -> pulumi.Input[str]:
+        """
+        IP address of the host file entry.
+        """
+        return pulumi.get(self, "ip")
+
+    @ip.setter
+    def ip(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ip", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecImagePullSecretArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecImagePullSecretArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecImagePullSecretArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] name: Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        """
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecInitContainerArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Name of the container specified as a DNS*LABEL. Each container in a pod must have a unique name (DNS*LABEL). Cannot be updated.
+        """
+        args: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR*NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR*NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        """
+        commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR*NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR*NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        """
+        env_froms: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerEnvFromArgsDict']]]]
+        """
+        List of sources to populate environment variables in the container. The keys defined within a source must be a C*IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated.
+        """
+        envs: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerEnvArgsDict']]]]
+        """
+        List of environment variables to set in the container. Cannot be updated.
+        """
+        image: NotRequired[pulumi.Input[str]]
+        """
+        Docker image name. More info: https://kubernetes.io/docs/concepts/containers/images/
+        """
+        image_pull_policy: NotRequired[pulumi.Input[str]]
+        """
+        Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/images/#updating-images
+        """
+        lifecycle: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLifecycleArgsDict']]
+        """
+        Actions that the management system should take in response to container lifecycle events
+        """
+        liveness_probe: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeArgsDict']]
+        """
+        Periodic probe of container liveness. Container will be restarted if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+        """
+        ports: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerPortArgsDict']]]]
+        """
+        List of ports to expose from the container. Exposing a port here gives the system additional information about the network connections a container uses, but is primarily informational. Not specifying a port here DOES NOT prevent that port from being exposed. Any port which is listening on the default "0.0.0.0" address inside a container will be accessible from the network. Cannot be updated.
+        """
+        readiness_probe: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeArgsDict']]
+        """
+        Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+        """
+        resources: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerResourcesArgsDict']]
+        """
+        Compute Resources required by this container. Cannot be updated. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+        """
+        security_context: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerSecurityContextArgsDict']]
+        """
+        Security options the pod should run with. More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+        """
+        startup_probe: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeArgsDict']]
+        """
+        StartupProbe indicates that the Pod has successfully initialized. If specified, no other probes are executed until this completes successfully. If this probe fails, the Pod will be restarted, just as if the livenessProbe failed. This can be used to provide different probe parameters at the beginning of a Pod's lifecycle, when it might take a long time to load data or warm a cache, than during steady-state operation. This cannot be updated. This is an alpha feature enabled by the StartupProbe feature flag. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        """
+        stdin: NotRequired[pulumi.Input[bool]]
+        """
+        Whether this container should allocate a buffer for stdin in the container runtime. If this is not set, reads from stdin in the container will always result in EOF.  Defaults to `false`.
+        """
+        stdin_once: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the container runtime should close the stdin channel after it has been opened by a single attach. When stdin is true the stdin stream will remain open across multiple attach sessions. If stdinOnce is set to true, stdin is opened on container start, is empty until the first client attaches to stdin, and then remains open and accepts data until the client disconnects, at which time stdin is closed and remains closed until the container is restarted. If this flag is false, a container processes that reads from stdin will never receive an EOF. Defaults to `false`.
+        """
+        termination_message_path: NotRequired[pulumi.Input[str]]
+        """
+        Optional: Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Defaults to /dev/termination-log. Cannot be updated. Defaults to `/dev/termination-log`.
+        """
+        termination_message_policy: NotRequired[pulumi.Input[str]]
+        """
+        Optional: Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
+        """
+        tty: NotRequired[pulumi.Input[bool]]
+        """
+        Whether this container should allocate a TTY for itself Defaults to `false`.
+        """
+        volume_mounts: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerVolumeMountArgsDict']]]]
+        """
+        Pod volumes to mount into the container's filesystem. Cannot be updated.
+        """
+        working_dir: NotRequired[pulumi.Input[str]]
+        """
+        Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image. Cannot be updated.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecInitContainerArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecInitContainerArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 env_froms: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerEnvFromArgs']]]] = None,
+                 envs: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerEnvArgs']]]] = None,
+                 image: Optional[pulumi.Input[str]] = None,
+                 image_pull_policy: Optional[pulumi.Input[str]] = None,
+                 lifecycle: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLifecycleArgs']] = None,
+                 liveness_probe: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeArgs']] = None,
+                 ports: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerPortArgs']]]] = None,
+                 readiness_probe: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeArgs']] = None,
+                 resources: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerResourcesArgs']] = None,
+                 security_context: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerSecurityContextArgs']] = None,
+                 startup_probe: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeArgs']] = None,
+                 stdin: Optional[pulumi.Input[bool]] = None,
+                 stdin_once: Optional[pulumi.Input[bool]] = None,
+                 termination_message_path: Optional[pulumi.Input[str]] = None,
+                 termination_message_policy: Optional[pulumi.Input[str]] = None,
+                 tty: Optional[pulumi.Input[bool]] = None,
+                 volume_mounts: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerVolumeMountArgs']]]] = None,
+                 working_dir: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: Name of the container specified as a DNS*LABEL. Each container in a pod must have a unique name (DNS*LABEL). Cannot be updated.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] args: Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR*NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR*NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] commands: Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR*NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR*NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerEnvFromArgs']]] env_froms: List of sources to populate environment variables in the container. The keys defined within a source must be a C*IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated.
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerEnvArgs']]] envs: List of environment variables to set in the container. Cannot be updated.
+        :param pulumi.Input[str] image: Docker image name. More info: https://kubernetes.io/docs/concepts/containers/images/
+        :param pulumi.Input[str] image_pull_policy: Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/images/#updating-images
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLifecycleArgs'] lifecycle: Actions that the management system should take in response to container lifecycle events
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeArgs'] liveness_probe: Periodic probe of container liveness. Container will be restarted if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerPortArgs']]] ports: List of ports to expose from the container. Exposing a port here gives the system additional information about the network connections a container uses, but is primarily informational. Not specifying a port here DOES NOT prevent that port from being exposed. Any port which is listening on the default "0.0.0.0" address inside a container will be accessible from the network. Cannot be updated.
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeArgs'] readiness_probe: Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerResourcesArgs'] resources: Compute Resources required by this container. Cannot be updated. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerSecurityContextArgs'] security_context: Security options the pod should run with. More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeArgs'] startup_probe: StartupProbe indicates that the Pod has successfully initialized. If specified, no other probes are executed until this completes successfully. If this probe fails, the Pod will be restarted, just as if the livenessProbe failed. This can be used to provide different probe parameters at the beginning of a Pod's lifecycle, when it might take a long time to load data or warm a cache, than during steady-state operation. This cannot be updated. This is an alpha feature enabled by the StartupProbe feature flag. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        :param pulumi.Input[bool] stdin: Whether this container should allocate a buffer for stdin in the container runtime. If this is not set, reads from stdin in the container will always result in EOF.  Defaults to `false`.
+        :param pulumi.Input[bool] stdin_once: Whether the container runtime should close the stdin channel after it has been opened by a single attach. When stdin is true the stdin stream will remain open across multiple attach sessions. If stdinOnce is set to true, stdin is opened on container start, is empty until the first client attaches to stdin, and then remains open and accepts data until the client disconnects, at which time stdin is closed and remains closed until the container is restarted. If this flag is false, a container processes that reads from stdin will never receive an EOF. Defaults to `false`.
+        :param pulumi.Input[str] termination_message_path: Optional: Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Defaults to /dev/termination-log. Cannot be updated. Defaults to `/dev/termination-log`.
+        :param pulumi.Input[str] termination_message_policy: Optional: Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
+        :param pulumi.Input[bool] tty: Whether this container should allocate a TTY for itself Defaults to `false`.
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerVolumeMountArgs']]] volume_mounts: Pod volumes to mount into the container's filesystem. Cannot be updated.
+        :param pulumi.Input[str] working_dir: Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image. Cannot be updated.
+        """
+        pulumi.set(__self__, "name", name)
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if commands is not None:
+            pulumi.set(__self__, "commands", commands)
+        if env_froms is not None:
+            pulumi.set(__self__, "env_froms", env_froms)
+        if envs is not None:
+            pulumi.set(__self__, "envs", envs)
+        if image is not None:
+            pulumi.set(__self__, "image", image)
+        if image_pull_policy is not None:
+            pulumi.set(__self__, "image_pull_policy", image_pull_policy)
+        if lifecycle is not None:
+            pulumi.set(__self__, "lifecycle", lifecycle)
+        if liveness_probe is not None:
+            pulumi.set(__self__, "liveness_probe", liveness_probe)
+        if ports is not None:
+            pulumi.set(__self__, "ports", ports)
+        if readiness_probe is not None:
+            pulumi.set(__self__, "readiness_probe", readiness_probe)
+        if resources is not None:
+            pulumi.set(__self__, "resources", resources)
+        if security_context is not None:
+            pulumi.set(__self__, "security_context", security_context)
+        if startup_probe is not None:
+            pulumi.set(__self__, "startup_probe", startup_probe)
+        if stdin is not None:
+            pulumi.set(__self__, "stdin", stdin)
+        if stdin_once is not None:
+            pulumi.set(__self__, "stdin_once", stdin_once)
+        if termination_message_path is not None:
+            pulumi.set(__self__, "termination_message_path", termination_message_path)
+        if termination_message_policy is not None:
+            pulumi.set(__self__, "termination_message_policy", termination_message_policy)
+        if tty is not None:
+            pulumi.set(__self__, "tty", tty)
+        if volume_mounts is not None:
+            pulumi.set(__self__, "volume_mounts", volume_mounts)
+        if working_dir is not None:
+            pulumi.set(__self__, "working_dir", working_dir)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Name of the container specified as a DNS*LABEL. Each container in a pod must have a unique name (DNS*LABEL). Cannot be updated.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR*NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR*NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        """
+        return pulumi.get(self, "args")
+
+    @args.setter
+    def args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "args", value)
+
+    @property
+    @pulumi.getter
+    def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR*NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR*NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        """
+        return pulumi.get(self, "commands")
+
+    @commands.setter
+    def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "commands", value)
+
+    @property
+    @pulumi.getter(name="envFroms")
+    def env_froms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerEnvFromArgs']]]]:
+        """
+        List of sources to populate environment variables in the container. The keys defined within a source must be a C*IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated.
+        """
+        return pulumi.get(self, "env_froms")
+
+    @env_froms.setter
+    def env_froms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerEnvFromArgs']]]]):
+        pulumi.set(self, "env_froms", value)
+
+    @property
+    @pulumi.getter
+    def envs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerEnvArgs']]]]:
+        """
+        List of environment variables to set in the container. Cannot be updated.
+        """
+        return pulumi.get(self, "envs")
+
+    @envs.setter
+    def envs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerEnvArgs']]]]):
+        pulumi.set(self, "envs", value)
+
+    @property
+    @pulumi.getter
+    def image(self) -> Optional[pulumi.Input[str]]:
+        """
+        Docker image name. More info: https://kubernetes.io/docs/concepts/containers/images/
+        """
+        return pulumi.get(self, "image")
+
+    @image.setter
+    def image(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image", value)
+
+    @property
+    @pulumi.getter(name="imagePullPolicy")
+    def image_pull_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/images/#updating-images
+        """
+        return pulumi.get(self, "image_pull_policy")
+
+    @image_pull_policy.setter
+    def image_pull_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image_pull_policy", value)
+
+    @property
+    @pulumi.getter
+    def lifecycle(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLifecycleArgs']]:
+        """
+        Actions that the management system should take in response to container lifecycle events
+        """
+        return pulumi.get(self, "lifecycle")
+
+    @lifecycle.setter
+    def lifecycle(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLifecycleArgs']]):
+        pulumi.set(self, "lifecycle", value)
+
+    @property
+    @pulumi.getter(name="livenessProbe")
+    def liveness_probe(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeArgs']]:
+        """
+        Periodic probe of container liveness. Container will be restarted if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+        """
+        return pulumi.get(self, "liveness_probe")
+
+    @liveness_probe.setter
+    def liveness_probe(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeArgs']]):
+        pulumi.set(self, "liveness_probe", value)
+
+    @property
+    @pulumi.getter
+    def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerPortArgs']]]]:
+        """
+        List of ports to expose from the container. Exposing a port here gives the system additional information about the network connections a container uses, but is primarily informational. Not specifying a port here DOES NOT prevent that port from being exposed. Any port which is listening on the default "0.0.0.0" address inside a container will be accessible from the network. Cannot be updated.
+        """
+        return pulumi.get(self, "ports")
+
+    @ports.setter
+    def ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerPortArgs']]]]):
+        pulumi.set(self, "ports", value)
+
+    @property
+    @pulumi.getter(name="readinessProbe")
+    def readiness_probe(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeArgs']]:
+        """
+        Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+        """
+        return pulumi.get(self, "readiness_probe")
+
+    @readiness_probe.setter
+    def readiness_probe(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeArgs']]):
+        pulumi.set(self, "readiness_probe", value)
+
+    @property
+    @pulumi.getter
+    def resources(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerResourcesArgs']]:
+        """
+        Compute Resources required by this container. Cannot be updated. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+        """
+        return pulumi.get(self, "resources")
+
+    @resources.setter
+    def resources(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerResourcesArgs']]):
+        pulumi.set(self, "resources", value)
+
+    @property
+    @pulumi.getter(name="securityContext")
+    def security_context(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerSecurityContextArgs']]:
+        """
+        Security options the pod should run with. More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+        """
+        return pulumi.get(self, "security_context")
+
+    @security_context.setter
+    def security_context(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerSecurityContextArgs']]):
+        pulumi.set(self, "security_context", value)
+
+    @property
+    @pulumi.getter(name="startupProbe")
+    def startup_probe(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeArgs']]:
+        """
+        StartupProbe indicates that the Pod has successfully initialized. If specified, no other probes are executed until this completes successfully. If this probe fails, the Pod will be restarted, just as if the livenessProbe failed. This can be used to provide different probe parameters at the beginning of a Pod's lifecycle, when it might take a long time to load data or warm a cache, than during steady-state operation. This cannot be updated. This is an alpha feature enabled by the StartupProbe feature flag. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        """
+        return pulumi.get(self, "startup_probe")
+
+    @startup_probe.setter
+    def startup_probe(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeArgs']]):
+        pulumi.set(self, "startup_probe", value)
+
+    @property
+    @pulumi.getter
+    def stdin(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether this container should allocate a buffer for stdin in the container runtime. If this is not set, reads from stdin in the container will always result in EOF.  Defaults to `false`.
+        """
+        return pulumi.get(self, "stdin")
+
+    @stdin.setter
+    def stdin(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "stdin", value)
+
+    @property
+    @pulumi.getter(name="stdinOnce")
+    def stdin_once(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the container runtime should close the stdin channel after it has been opened by a single attach. When stdin is true the stdin stream will remain open across multiple attach sessions. If stdinOnce is set to true, stdin is opened on container start, is empty until the first client attaches to stdin, and then remains open and accepts data until the client disconnects, at which time stdin is closed and remains closed until the container is restarted. If this flag is false, a container processes that reads from stdin will never receive an EOF. Defaults to `false`.
+        """
+        return pulumi.get(self, "stdin_once")
+
+    @stdin_once.setter
+    def stdin_once(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "stdin_once", value)
+
+    @property
+    @pulumi.getter(name="terminationMessagePath")
+    def termination_message_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional: Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Defaults to /dev/termination-log. Cannot be updated. Defaults to `/dev/termination-log`.
+        """
+        return pulumi.get(self, "termination_message_path")
+
+    @termination_message_path.setter
+    def termination_message_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "termination_message_path", value)
+
+    @property
+    @pulumi.getter(name="terminationMessagePolicy")
+    def termination_message_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional: Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
+        """
+        return pulumi.get(self, "termination_message_policy")
+
+    @termination_message_policy.setter
+    def termination_message_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "termination_message_policy", value)
+
+    @property
+    @pulumi.getter
+    def tty(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether this container should allocate a TTY for itself Defaults to `false`.
+        """
+        return pulumi.get(self, "tty")
+
+    @tty.setter
+    def tty(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "tty", value)
+
+    @property
+    @pulumi.getter(name="volumeMounts")
+    def volume_mounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerVolumeMountArgs']]]]:
+        """
+        Pod volumes to mount into the container's filesystem. Cannot be updated.
+        """
+        return pulumi.get(self, "volume_mounts")
+
+    @volume_mounts.setter
+    def volume_mounts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerVolumeMountArgs']]]]):
+        pulumi.set(self, "volume_mounts", value)
+
+    @property
+    @pulumi.getter(name="workingDir")
+    def working_dir(self) -> Optional[pulumi.Input[str]]:
+        """
+        Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image. Cannot be updated.
+        """
+        return pulumi.get(self, "working_dir")
+
+    @working_dir.setter
+    def working_dir(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "working_dir", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecInitContainerEnvArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Name of the environment variable. Must be a C_IDENTIFIER
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        Variable references $(VAR*NAME) are expanded using the previous defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR*NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
+        """
+        value_from: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerEnvValueFromArgsDict']]
+        """
+        Source for the environment variable's value
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecInitContainerEnvArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecInitContainerEnvArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 value: Optional[pulumi.Input[str]] = None,
+                 value_from: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerEnvValueFromArgs']] = None):
+        """
+        :param pulumi.Input[str] name: Name of the environment variable. Must be a C_IDENTIFIER
+        :param pulumi.Input[str] value: Variable references $(VAR*NAME) are expanded using the previous defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR*NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerEnvValueFromArgs'] value_from: Source for the environment variable's value
+        """
+        pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+        if value_from is not None:
+            pulumi.set(__self__, "value_from", value_from)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Name of the environment variable. Must be a C_IDENTIFIER
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        Variable references $(VAR*NAME) are expanded using the previous defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR*NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter(name="valueFrom")
+    def value_from(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerEnvValueFromArgs']]:
+        """
+        Source for the environment variable's value
+        """
+        return pulumi.get(self, "value_from")
+
+    @value_from.setter
+    def value_from(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerEnvValueFromArgs']]):
+        pulumi.set(self, "value_from", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecInitContainerEnvFromArgsDict(TypedDict):
+        config_map_ref: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerEnvFromConfigMapRefArgsDict']]
+        """
+        The ConfigMap to select from
+        """
+        prefix: NotRequired[pulumi.Input[str]]
+        """
+        An optional identifer to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
+        """
+        secret_ref: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerEnvFromSecretRefArgsDict']]
+        """
+        The Secret to select from
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecInitContainerEnvFromArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecInitContainerEnvFromArgs:
+    def __init__(__self__, *,
+                 config_map_ref: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerEnvFromConfigMapRefArgs']] = None,
+                 prefix: Optional[pulumi.Input[str]] = None,
+                 secret_ref: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerEnvFromSecretRefArgs']] = None):
+        """
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerEnvFromConfigMapRefArgs'] config_map_ref: The ConfigMap to select from
+        :param pulumi.Input[str] prefix: An optional identifer to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerEnvFromSecretRefArgs'] secret_ref: The Secret to select from
+        """
+        if config_map_ref is not None:
+            pulumi.set(__self__, "config_map_ref", config_map_ref)
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+        if secret_ref is not None:
+            pulumi.set(__self__, "secret_ref", secret_ref)
+
+    @property
+    @pulumi.getter(name="configMapRef")
+    def config_map_ref(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerEnvFromConfigMapRefArgs']]:
+        """
+        The ConfigMap to select from
+        """
+        return pulumi.get(self, "config_map_ref")
+
+    @config_map_ref.setter
+    def config_map_ref(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerEnvFromConfigMapRefArgs']]):
+        pulumi.set(self, "config_map_ref", value)
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional identifer to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
+        """
+        return pulumi.get(self, "prefix")
+
+    @prefix.setter
+    def prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "prefix", value)
+
+    @property
+    @pulumi.getter(name="secretRef")
+    def secret_ref(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerEnvFromSecretRefArgs']]:
+        """
+        The Secret to select from
+        """
+        return pulumi.get(self, "secret_ref")
+
+    @secret_ref.setter
+    def secret_ref(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerEnvFromSecretRefArgs']]):
+        pulumi.set(self, "secret_ref", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecInitContainerEnvFromConfigMapRefArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        """
+        optional: NotRequired[pulumi.Input[bool]]
+        """
+        Specify whether the ConfigMap must be defined
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecInitContainerEnvFromConfigMapRefArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecInitContainerEnvFromConfigMapRefArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 optional: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] name: Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        :param pulumi.Input[bool] optional: Specify whether the ConfigMap must be defined
+        """
+        pulumi.set(__self__, "name", name)
+        if optional is not None:
+            pulumi.set(__self__, "optional", optional)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def optional(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specify whether the ConfigMap must be defined
+        """
+        return pulumi.get(self, "optional")
+
+    @optional.setter
+    def optional(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "optional", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecInitContainerEnvFromSecretRefArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        """
+        optional: NotRequired[pulumi.Input[bool]]
+        """
+        Specify whether the Secret must be defined
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecInitContainerEnvFromSecretRefArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecInitContainerEnvFromSecretRefArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 optional: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] name: Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        :param pulumi.Input[bool] optional: Specify whether the Secret must be defined
+        """
+        pulumi.set(__self__, "name", name)
+        if optional is not None:
+            pulumi.set(__self__, "optional", optional)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def optional(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specify whether the Secret must be defined
+        """
+        return pulumi.get(self, "optional")
+
+    @optional.setter
+    def optional(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "optional", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecInitContainerEnvValueFromArgsDict(TypedDict):
+        config_map_key_ref: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefArgsDict']]
+        """
+        Selects a key of a ConfigMap.
+        """
+        field_ref: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerEnvValueFromFieldRefArgsDict']]
+        """
+        Selects a field of the pod: supports metadata.name, metadata.namespace, metadata.labels, metadata.annotations, spec.nodeName, spec.serviceAccountName, status.podIP.
+        """
+        resource_field_ref: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefArgsDict']]
+        """
+        Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.
+        """
+        secret_key_ref: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerEnvValueFromSecretKeyRefArgsDict']]
+        """
+        Selects a key of a secret in the pod's namespace.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecInitContainerEnvValueFromArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecInitContainerEnvValueFromArgs:
+    def __init__(__self__, *,
+                 config_map_key_ref: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefArgs']] = None,
+                 field_ref: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerEnvValueFromFieldRefArgs']] = None,
+                 resource_field_ref: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefArgs']] = None,
+                 secret_key_ref: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerEnvValueFromSecretKeyRefArgs']] = None):
+        """
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefArgs'] config_map_key_ref: Selects a key of a ConfigMap.
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerEnvValueFromFieldRefArgs'] field_ref: Selects a field of the pod: supports metadata.name, metadata.namespace, metadata.labels, metadata.annotations, spec.nodeName, spec.serviceAccountName, status.podIP.
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefArgs'] resource_field_ref: Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerEnvValueFromSecretKeyRefArgs'] secret_key_ref: Selects a key of a secret in the pod's namespace.
+        """
+        if config_map_key_ref is not None:
+            pulumi.set(__self__, "config_map_key_ref", config_map_key_ref)
+        if field_ref is not None:
+            pulumi.set(__self__, "field_ref", field_ref)
+        if resource_field_ref is not None:
+            pulumi.set(__self__, "resource_field_ref", resource_field_ref)
+        if secret_key_ref is not None:
+            pulumi.set(__self__, "secret_key_ref", secret_key_ref)
+
+    @property
+    @pulumi.getter(name="configMapKeyRef")
+    def config_map_key_ref(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefArgs']]:
+        """
+        Selects a key of a ConfigMap.
+        """
+        return pulumi.get(self, "config_map_key_ref")
+
+    @config_map_key_ref.setter
+    def config_map_key_ref(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefArgs']]):
+        pulumi.set(self, "config_map_key_ref", value)
+
+    @property
+    @pulumi.getter(name="fieldRef")
+    def field_ref(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerEnvValueFromFieldRefArgs']]:
+        """
+        Selects a field of the pod: supports metadata.name, metadata.namespace, metadata.labels, metadata.annotations, spec.nodeName, spec.serviceAccountName, status.podIP.
+        """
+        return pulumi.get(self, "field_ref")
+
+    @field_ref.setter
+    def field_ref(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerEnvValueFromFieldRefArgs']]):
+        pulumi.set(self, "field_ref", value)
+
+    @property
+    @pulumi.getter(name="resourceFieldRef")
+    def resource_field_ref(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefArgs']]:
+        """
+        Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.
+        """
+        return pulumi.get(self, "resource_field_ref")
+
+    @resource_field_ref.setter
+    def resource_field_ref(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefArgs']]):
+        pulumi.set(self, "resource_field_ref", value)
+
+    @property
+    @pulumi.getter(name="secretKeyRef")
+    def secret_key_ref(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerEnvValueFromSecretKeyRefArgs']]:
+        """
+        Selects a key of a secret in the pod's namespace.
+        """
+        return pulumi.get(self, "secret_key_ref")
+
+    @secret_key_ref.setter
+    def secret_key_ref(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerEnvValueFromSecretKeyRefArgs']]):
+        pulumi.set(self, "secret_key_ref", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[str]]
+        """
+        The key to select.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        """
+        optional: NotRequired[pulumi.Input[bool]]
+        """
+        Specify whether the ConfigMap or its key must be defined.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecInitContainerEnvValueFromConfigMapKeyRefArgs:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 optional: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] key: The key to select.
+        :param pulumi.Input[str] name: Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        :param pulumi.Input[bool] optional: Specify whether the ConfigMap or its key must be defined.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if optional is not None:
+            pulumi.set(__self__, "optional", optional)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key to select.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def optional(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specify whether the ConfigMap or its key must be defined.
+        """
+        return pulumi.get(self, "optional")
+
+    @optional.setter
+    def optional(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "optional", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecInitContainerEnvValueFromFieldRefArgsDict(TypedDict):
+        api_version: NotRequired[pulumi.Input[str]]
+        """
+        Version of the schema the FieldPath is written in terms of, defaults to "v1". Defaults to `v1`.
+        """
+        field_path: NotRequired[pulumi.Input[str]]
+        """
+        Path of the field to select in the specified API version
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecInitContainerEnvValueFromFieldRefArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecInitContainerEnvValueFromFieldRefArgs:
+    def __init__(__self__, *,
+                 api_version: Optional[pulumi.Input[str]] = None,
+                 field_path: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] api_version: Version of the schema the FieldPath is written in terms of, defaults to "v1". Defaults to `v1`.
+        :param pulumi.Input[str] field_path: Path of the field to select in the specified API version
+        """
+        if api_version is not None:
+            pulumi.set(__self__, "api_version", api_version)
+        if field_path is not None:
+            pulumi.set(__self__, "field_path", field_path)
+
+    @property
+    @pulumi.getter(name="apiVersion")
+    def api_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Version of the schema the FieldPath is written in terms of, defaults to "v1". Defaults to `v1`.
+        """
+        return pulumi.get(self, "api_version")
+
+    @api_version.setter
+    def api_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "api_version", value)
+
+    @property
+    @pulumi.getter(name="fieldPath")
+    def field_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Path of the field to select in the specified API version
+        """
+        return pulumi.get(self, "field_path")
+
+    @field_path.setter
+    def field_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "field_path", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefArgsDict(TypedDict):
+        resource: pulumi.Input[str]
+        """
+        Resource to select
+        """
+        container_name: NotRequired[pulumi.Input[str]]
+        divisor: NotRequired[pulumi.Input[str]]
+        """
+        Defaults to `1`.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecInitContainerEnvValueFromResourceFieldRefArgs:
+    def __init__(__self__, *,
+                 resource: pulumi.Input[str],
+                 container_name: Optional[pulumi.Input[str]] = None,
+                 divisor: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] resource: Resource to select
+        :param pulumi.Input[str] divisor: Defaults to `1`.
+        """
+        pulumi.set(__self__, "resource", resource)
+        if container_name is not None:
+            pulumi.set(__self__, "container_name", container_name)
+        if divisor is not None:
+            pulumi.set(__self__, "divisor", divisor)
+
+    @property
+    @pulumi.getter
+    def resource(self) -> pulumi.Input[str]:
+        """
+        Resource to select
+        """
+        return pulumi.get(self, "resource")
+
+    @resource.setter
+    def resource(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource", value)
+
+    @property
+    @pulumi.getter(name="containerName")
+    def container_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "container_name")
+
+    @container_name.setter
+    def container_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "container_name", value)
+
+    @property
+    @pulumi.getter
+    def divisor(self) -> Optional[pulumi.Input[str]]:
+        """
+        Defaults to `1`.
+        """
+        return pulumi.get(self, "divisor")
+
+    @divisor.setter
+    def divisor(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "divisor", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecInitContainerEnvValueFromSecretKeyRefArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[str]]
+        """
+        The key of the secret to select from. Must be a valid secret key.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        """
+        optional: NotRequired[pulumi.Input[bool]]
+        """
+        Specify whether the Secret or its key must be defined.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecInitContainerEnvValueFromSecretKeyRefArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecInitContainerEnvValueFromSecretKeyRefArgs:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 optional: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] key: The key of the secret to select from. Must be a valid secret key.
+        :param pulumi.Input[str] name: Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        :param pulumi.Input[bool] optional: Specify whether the Secret or its key must be defined.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if optional is not None:
+            pulumi.set(__self__, "optional", optional)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key of the secret to select from. Must be a valid secret key.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def optional(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specify whether the Secret or its key must be defined.
+        """
+        return pulumi.get(self, "optional")
+
+    @optional.setter
+    def optional(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "optional", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecInitContainerLifecycleArgsDict(TypedDict):
+        post_starts: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePostStartArgsDict']]]]
+        """
+        post*start is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+        """
+        pre_stops: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePreStopArgsDict']]]]
+        """
+        pre*stop is called immediately before a container is terminated. The container is terminated after the handler completes. The reason for termination is passed to the handler. Regardless of the outcome of the handler, the container is eventually terminated. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecInitContainerLifecycleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecInitContainerLifecycleArgs:
+    def __init__(__self__, *,
+                 post_starts: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePostStartArgs']]]] = None,
+                 pre_stops: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePreStopArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePostStartArgs']]] post_starts: post*start is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePreStopArgs']]] pre_stops: pre*stop is called immediately before a container is terminated. The container is terminated after the handler completes. The reason for termination is passed to the handler. Regardless of the outcome of the handler, the container is eventually terminated. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+        """
+        if post_starts is not None:
+            pulumi.set(__self__, "post_starts", post_starts)
+        if pre_stops is not None:
+            pulumi.set(__self__, "pre_stops", pre_stops)
+
+    @property
+    @pulumi.getter(name="postStarts")
+    def post_starts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePostStartArgs']]]]:
+        """
+        post*start is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+        """
+        return pulumi.get(self, "post_starts")
+
+    @post_starts.setter
+    def post_starts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePostStartArgs']]]]):
+        pulumi.set(self, "post_starts", value)
+
+    @property
+    @pulumi.getter(name="preStops")
+    def pre_stops(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePreStopArgs']]]]:
+        """
+        pre*stop is called immediately before a container is terminated. The container is terminated after the handler completes. The reason for termination is passed to the handler. Regardless of the outcome of the handler, the container is eventually terminated. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+        """
+        return pulumi.get(self, "pre_stops")
+
+    @pre_stops.setter
+    def pre_stops(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePreStopArgs']]]]):
+        pulumi.set(self, "pre_stops", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePostStartArgsDict(TypedDict):
+        exec_: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePostStartExecArgsDict']]
+        """
+        exec specifies the action to take.
+        """
+        http_get: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePostStartHttpGetArgsDict']]
+        """
+        Specifies the http request to perform.
+        """
+        tcp_sockets: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePostStartTcpSocketArgsDict']]]]
+        """
+        TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePostStartArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePostStartArgs:
+    def __init__(__self__, *,
+                 exec_: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePostStartExecArgs']] = None,
+                 http_get: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePostStartHttpGetArgs']] = None,
+                 tcp_sockets: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePostStartTcpSocketArgs']]]] = None):
+        """
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePostStartExecArgs'] exec_: exec specifies the action to take.
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePostStartHttpGetArgs'] http_get: Specifies the http request to perform.
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePostStartTcpSocketArgs']]] tcp_sockets: TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+        """
+        if exec_ is not None:
+            pulumi.set(__self__, "exec_", exec_)
+        if http_get is not None:
+            pulumi.set(__self__, "http_get", http_get)
+        if tcp_sockets is not None:
+            pulumi.set(__self__, "tcp_sockets", tcp_sockets)
+
+    @property
+    @pulumi.getter(name="exec")
+    def exec_(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePostStartExecArgs']]:
+        """
+        exec specifies the action to take.
+        """
+        return pulumi.get(self, "exec_")
+
+    @exec_.setter
+    def exec_(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePostStartExecArgs']]):
+        pulumi.set(self, "exec_", value)
+
+    @property
+    @pulumi.getter(name="httpGet")
+    def http_get(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePostStartHttpGetArgs']]:
+        """
+        Specifies the http request to perform.
+        """
+        return pulumi.get(self, "http_get")
+
+    @http_get.setter
+    def http_get(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePostStartHttpGetArgs']]):
+        pulumi.set(self, "http_get", value)
+
+    @property
+    @pulumi.getter(name="tcpSockets")
+    def tcp_sockets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePostStartTcpSocketArgs']]]]:
+        """
+        TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+        """
+        return pulumi.get(self, "tcp_sockets")
+
+    @tcp_sockets.setter
+    def tcp_sockets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePostStartTcpSocketArgs']]]]):
+        pulumi.set(self, "tcp_sockets", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePostStartExecArgsDict(TypedDict):
+        commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePostStartExecArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePostStartExecArgs:
+    def __init__(__self__, *,
+                 commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] commands: Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+        """
+        if commands is not None:
+            pulumi.set(__self__, "commands", commands)
+
+    @property
+    @pulumi.getter
+    def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+        """
+        return pulumi.get(self, "commands")
+
+    @commands.setter
+    def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "commands", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePostStartHttpGetArgsDict(TypedDict):
+        host: NotRequired[pulumi.Input[str]]
+        """
+        Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+        """
+        http_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePostStartHttpGetHttpHeaderArgsDict']]]]
+        """
+        Scheme to use for connecting to the host.
+        """
+        path: NotRequired[pulumi.Input[str]]
+        """
+        Path to access on the HTTP server.
+        """
+        port: NotRequired[pulumi.Input[str]]
+        """
+        Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        """
+        scheme: NotRequired[pulumi.Input[str]]
+        """
+        Scheme to use for connecting to the host. Defaults to `HTTP`.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePostStartHttpGetArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePostStartHttpGetArgs:
+    def __init__(__self__, *,
+                 host: Optional[pulumi.Input[str]] = None,
+                 http_headers: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePostStartHttpGetHttpHeaderArgs']]]] = None,
+                 path: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[str]] = None,
+                 scheme: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] host: Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePostStartHttpGetHttpHeaderArgs']]] http_headers: Scheme to use for connecting to the host.
+        :param pulumi.Input[str] path: Path to access on the HTTP server.
+        :param pulumi.Input[str] port: Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        :param pulumi.Input[str] scheme: Scheme to use for connecting to the host. Defaults to `HTTP`.
+        """
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if http_headers is not None:
+            pulumi.set(__self__, "http_headers", http_headers)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if scheme is not None:
+            pulumi.set(__self__, "scheme", scheme)
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[pulumi.Input[str]]:
+        """
+        Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "host", value)
+
+    @property
+    @pulumi.getter(name="httpHeaders")
+    def http_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePostStartHttpGetHttpHeaderArgs']]]]:
+        """
+        Scheme to use for connecting to the host.
+        """
+        return pulumi.get(self, "http_headers")
+
+    @http_headers.setter
+    def http_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePostStartHttpGetHttpHeaderArgs']]]]):
+        pulumi.set(self, "http_headers", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Path to access on the HTTP server.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def scheme(self) -> Optional[pulumi.Input[str]]:
+        """
+        Scheme to use for connecting to the host. Defaults to `HTTP`.
+        """
+        return pulumi.get(self, "scheme")
+
+    @scheme.setter
+    def scheme(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scheme", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePostStartHttpGetHttpHeaderArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The header field name
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The header field value
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePostStartHttpGetHttpHeaderArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePostStartHttpGetHttpHeaderArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: The header field name
+        :param pulumi.Input[str] value: The header field value
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The header field name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The header field value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePostStartTcpSocketArgsDict(TypedDict):
+        port: pulumi.Input[str]
+        """
+        Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePostStartTcpSocketArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePostStartTcpSocketArgs:
+    def __init__(__self__, *,
+                 port: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] port: Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        """
+        pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[str]:
+        """
+        Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[str]):
+        pulumi.set(self, "port", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePreStopArgsDict(TypedDict):
+        exec_: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePreStopExecArgsDict']]
+        """
+        exec specifies the action to take.
+        """
+        http_get: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePreStopHttpGetArgsDict']]
+        """
+        Specifies the http request to perform.
+        """
+        tcp_sockets: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePreStopTcpSocketArgsDict']]]]
+        """
+        TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePreStopArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePreStopArgs:
+    def __init__(__self__, *,
+                 exec_: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePreStopExecArgs']] = None,
+                 http_get: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePreStopHttpGetArgs']] = None,
+                 tcp_sockets: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePreStopTcpSocketArgs']]]] = None):
+        """
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePreStopExecArgs'] exec_: exec specifies the action to take.
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePreStopHttpGetArgs'] http_get: Specifies the http request to perform.
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePreStopTcpSocketArgs']]] tcp_sockets: TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+        """
+        if exec_ is not None:
+            pulumi.set(__self__, "exec_", exec_)
+        if http_get is not None:
+            pulumi.set(__self__, "http_get", http_get)
+        if tcp_sockets is not None:
+            pulumi.set(__self__, "tcp_sockets", tcp_sockets)
+
+    @property
+    @pulumi.getter(name="exec")
+    def exec_(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePreStopExecArgs']]:
+        """
+        exec specifies the action to take.
+        """
+        return pulumi.get(self, "exec_")
+
+    @exec_.setter
+    def exec_(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePreStopExecArgs']]):
+        pulumi.set(self, "exec_", value)
+
+    @property
+    @pulumi.getter(name="httpGet")
+    def http_get(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePreStopHttpGetArgs']]:
+        """
+        Specifies the http request to perform.
+        """
+        return pulumi.get(self, "http_get")
+
+    @http_get.setter
+    def http_get(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePreStopHttpGetArgs']]):
+        pulumi.set(self, "http_get", value)
+
+    @property
+    @pulumi.getter(name="tcpSockets")
+    def tcp_sockets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePreStopTcpSocketArgs']]]]:
+        """
+        TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+        """
+        return pulumi.get(self, "tcp_sockets")
+
+    @tcp_sockets.setter
+    def tcp_sockets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePreStopTcpSocketArgs']]]]):
+        pulumi.set(self, "tcp_sockets", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePreStopExecArgsDict(TypedDict):
+        commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePreStopExecArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePreStopExecArgs:
+    def __init__(__self__, *,
+                 commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] commands: Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+        """
+        if commands is not None:
+            pulumi.set(__self__, "commands", commands)
+
+    @property
+    @pulumi.getter
+    def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+        """
+        return pulumi.get(self, "commands")
+
+    @commands.setter
+    def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "commands", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePreStopHttpGetArgsDict(TypedDict):
+        host: NotRequired[pulumi.Input[str]]
+        """
+        Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+        """
+        http_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePreStopHttpGetHttpHeaderArgsDict']]]]
+        """
+        Scheme to use for connecting to the host.
+        """
+        path: NotRequired[pulumi.Input[str]]
+        """
+        Path to access on the HTTP server.
+        """
+        port: NotRequired[pulumi.Input[str]]
+        """
+        Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        """
+        scheme: NotRequired[pulumi.Input[str]]
+        """
+        Scheme to use for connecting to the host. Defaults to `HTTP`.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePreStopHttpGetArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePreStopHttpGetArgs:
+    def __init__(__self__, *,
+                 host: Optional[pulumi.Input[str]] = None,
+                 http_headers: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePreStopHttpGetHttpHeaderArgs']]]] = None,
+                 path: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[str]] = None,
+                 scheme: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] host: Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePreStopHttpGetHttpHeaderArgs']]] http_headers: Scheme to use for connecting to the host.
+        :param pulumi.Input[str] path: Path to access on the HTTP server.
+        :param pulumi.Input[str] port: Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        :param pulumi.Input[str] scheme: Scheme to use for connecting to the host. Defaults to `HTTP`.
+        """
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if http_headers is not None:
+            pulumi.set(__self__, "http_headers", http_headers)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if scheme is not None:
+            pulumi.set(__self__, "scheme", scheme)
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[pulumi.Input[str]]:
+        """
+        Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "host", value)
+
+    @property
+    @pulumi.getter(name="httpHeaders")
+    def http_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePreStopHttpGetHttpHeaderArgs']]]]:
+        """
+        Scheme to use for connecting to the host.
+        """
+        return pulumi.get(self, "http_headers")
+
+    @http_headers.setter
+    def http_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePreStopHttpGetHttpHeaderArgs']]]]):
+        pulumi.set(self, "http_headers", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Path to access on the HTTP server.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def scheme(self) -> Optional[pulumi.Input[str]]:
+        """
+        Scheme to use for connecting to the host. Defaults to `HTTP`.
+        """
+        return pulumi.get(self, "scheme")
+
+    @scheme.setter
+    def scheme(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scheme", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePreStopHttpGetHttpHeaderArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The header field name
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The header field value
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePreStopHttpGetHttpHeaderArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePreStopHttpGetHttpHeaderArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: The header field name
+        :param pulumi.Input[str] value: The header field value
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The header field name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The header field value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePreStopTcpSocketArgsDict(TypedDict):
+        port: pulumi.Input[str]
+        """
+        Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePreStopTcpSocketArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecInitContainerLifecyclePreStopTcpSocketArgs:
+    def __init__(__self__, *,
+                 port: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] port: Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        """
+        pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[str]:
+        """
+        Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[str]):
+        pulumi.set(self, "port", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeArgsDict(TypedDict):
+        exec_: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeExecArgsDict']]
+        """
+        exec specifies the action to take.
+        """
+        failure_threshold: NotRequired[pulumi.Input[int]]
+        """
+        Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to `3`.
+        """
+        grpcs: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeGrpcArgsDict']]]]
+        """
+        GRPC specifies an action involving a GRPC port.
+        """
+        http_get: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeHttpGetArgsDict']]
+        """
+        Specifies the http request to perform.
+        """
+        initial_delay_seconds: NotRequired[pulumi.Input[int]]
+        """
+        Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+        """
+        period_seconds: NotRequired[pulumi.Input[int]]
+        """
+        How often (in seconds) to perform the probe Defaults to `10`.
+        """
+        success_threshold: NotRequired[pulumi.Input[int]]
+        """
+        Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to `1`.
+        """
+        tcp_sockets: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeTcpSocketArgsDict']]]]
+        """
+        TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+        """
+        timeout_seconds: NotRequired[pulumi.Input[int]]
+        """
+        Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes Defaults to `1`.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeArgs:
+    def __init__(__self__, *,
+                 exec_: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeExecArgs']] = None,
+                 failure_threshold: Optional[pulumi.Input[int]] = None,
+                 grpcs: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeGrpcArgs']]]] = None,
+                 http_get: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeHttpGetArgs']] = None,
+                 initial_delay_seconds: Optional[pulumi.Input[int]] = None,
+                 period_seconds: Optional[pulumi.Input[int]] = None,
+                 success_threshold: Optional[pulumi.Input[int]] = None,
+                 tcp_sockets: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeTcpSocketArgs']]]] = None,
+                 timeout_seconds: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeExecArgs'] exec_: exec specifies the action to take.
+        :param pulumi.Input[int] failure_threshold: Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to `3`.
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeGrpcArgs']]] grpcs: GRPC specifies an action involving a GRPC port.
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeHttpGetArgs'] http_get: Specifies the http request to perform.
+        :param pulumi.Input[int] initial_delay_seconds: Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+        :param pulumi.Input[int] period_seconds: How often (in seconds) to perform the probe Defaults to `10`.
+        :param pulumi.Input[int] success_threshold: Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to `1`.
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeTcpSocketArgs']]] tcp_sockets: TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+        :param pulumi.Input[int] timeout_seconds: Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes Defaults to `1`.
+        """
+        if exec_ is not None:
+            pulumi.set(__self__, "exec_", exec_)
+        if failure_threshold is not None:
+            pulumi.set(__self__, "failure_threshold", failure_threshold)
+        if grpcs is not None:
+            pulumi.set(__self__, "grpcs", grpcs)
+        if http_get is not None:
+            pulumi.set(__self__, "http_get", http_get)
+        if initial_delay_seconds is not None:
+            pulumi.set(__self__, "initial_delay_seconds", initial_delay_seconds)
+        if period_seconds is not None:
+            pulumi.set(__self__, "period_seconds", period_seconds)
+        if success_threshold is not None:
+            pulumi.set(__self__, "success_threshold", success_threshold)
+        if tcp_sockets is not None:
+            pulumi.set(__self__, "tcp_sockets", tcp_sockets)
+        if timeout_seconds is not None:
+            pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+
+    @property
+    @pulumi.getter(name="exec")
+    def exec_(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeExecArgs']]:
+        """
+        exec specifies the action to take.
+        """
+        return pulumi.get(self, "exec_")
+
+    @exec_.setter
+    def exec_(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeExecArgs']]):
+        pulumi.set(self, "exec_", value)
+
+    @property
+    @pulumi.getter(name="failureThreshold")
+    def failure_threshold(self) -> Optional[pulumi.Input[int]]:
+        """
+        Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to `3`.
+        """
+        return pulumi.get(self, "failure_threshold")
+
+    @failure_threshold.setter
+    def failure_threshold(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "failure_threshold", value)
+
+    @property
+    @pulumi.getter
+    def grpcs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeGrpcArgs']]]]:
+        """
+        GRPC specifies an action involving a GRPC port.
+        """
+        return pulumi.get(self, "grpcs")
+
+    @grpcs.setter
+    def grpcs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeGrpcArgs']]]]):
+        pulumi.set(self, "grpcs", value)
+
+    @property
+    @pulumi.getter(name="httpGet")
+    def http_get(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeHttpGetArgs']]:
+        """
+        Specifies the http request to perform.
+        """
+        return pulumi.get(self, "http_get")
+
+    @http_get.setter
+    def http_get(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeHttpGetArgs']]):
+        pulumi.set(self, "http_get", value)
+
+    @property
+    @pulumi.getter(name="initialDelaySeconds")
+    def initial_delay_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+        """
+        return pulumi.get(self, "initial_delay_seconds")
+
+    @initial_delay_seconds.setter
+    def initial_delay_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "initial_delay_seconds", value)
+
+    @property
+    @pulumi.getter(name="periodSeconds")
+    def period_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        How often (in seconds) to perform the probe Defaults to `10`.
+        """
+        return pulumi.get(self, "period_seconds")
+
+    @period_seconds.setter
+    def period_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "period_seconds", value)
+
+    @property
+    @pulumi.getter(name="successThreshold")
+    def success_threshold(self) -> Optional[pulumi.Input[int]]:
+        """
+        Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to `1`.
+        """
+        return pulumi.get(self, "success_threshold")
+
+    @success_threshold.setter
+    def success_threshold(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "success_threshold", value)
+
+    @property
+    @pulumi.getter(name="tcpSockets")
+    def tcp_sockets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeTcpSocketArgs']]]]:
+        """
+        TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+        """
+        return pulumi.get(self, "tcp_sockets")
+
+    @tcp_sockets.setter
+    def tcp_sockets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeTcpSocketArgs']]]]):
+        pulumi.set(self, "tcp_sockets", value)
+
+    @property
+    @pulumi.getter(name="timeoutSeconds")
+    def timeout_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes Defaults to `1`.
+        """
+        return pulumi.get(self, "timeout_seconds")
+
+    @timeout_seconds.setter
+    def timeout_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "timeout_seconds", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeExecArgsDict(TypedDict):
+        commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeExecArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeExecArgs:
+    def __init__(__self__, *,
+                 commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] commands: Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+        """
+        if commands is not None:
+            pulumi.set(__self__, "commands", commands)
+
+    @property
+    @pulumi.getter
+    def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+        """
+        return pulumi.get(self, "commands")
+
+    @commands.setter
+    def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "commands", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeGrpcArgsDict(TypedDict):
+        port: pulumi.Input[int]
+        """
+        Number of the port to access on the container. Number must be in the range 1 to 65535.
+        """
+        service: NotRequired[pulumi.Input[str]]
+        """
+        Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeGrpcArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeGrpcArgs:
+    def __init__(__self__, *,
+                 port: pulumi.Input[int],
+                 service: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] port: Number of the port to access on the container. Number must be in the range 1 to 65535.
+        :param pulumi.Input[str] service: Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+        """
+        pulumi.set(__self__, "port", port)
+        if service is not None:
+            pulumi.set(__self__, "service", service)
+
+    @property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[int]:
+        """
+        Number of the port to access on the container. Number must be in the range 1 to 65535.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[int]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def service(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeHttpGetArgsDict(TypedDict):
+        host: NotRequired[pulumi.Input[str]]
+        """
+        Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+        """
+        http_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeHttpGetHttpHeaderArgsDict']]]]
+        """
+        Scheme to use for connecting to the host.
+        """
+        path: NotRequired[pulumi.Input[str]]
+        """
+        Path to access on the HTTP server.
+        """
+        port: NotRequired[pulumi.Input[str]]
+        """
+        Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        """
+        scheme: NotRequired[pulumi.Input[str]]
+        """
+        Scheme to use for connecting to the host. Defaults to `HTTP`.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeHttpGetArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeHttpGetArgs:
+    def __init__(__self__, *,
+                 host: Optional[pulumi.Input[str]] = None,
+                 http_headers: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeHttpGetHttpHeaderArgs']]]] = None,
+                 path: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[str]] = None,
+                 scheme: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] host: Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeHttpGetHttpHeaderArgs']]] http_headers: Scheme to use for connecting to the host.
+        :param pulumi.Input[str] path: Path to access on the HTTP server.
+        :param pulumi.Input[str] port: Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        :param pulumi.Input[str] scheme: Scheme to use for connecting to the host. Defaults to `HTTP`.
+        """
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if http_headers is not None:
+            pulumi.set(__self__, "http_headers", http_headers)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if scheme is not None:
+            pulumi.set(__self__, "scheme", scheme)
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[pulumi.Input[str]]:
+        """
+        Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "host", value)
+
+    @property
+    @pulumi.getter(name="httpHeaders")
+    def http_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeHttpGetHttpHeaderArgs']]]]:
+        """
+        Scheme to use for connecting to the host.
+        """
+        return pulumi.get(self, "http_headers")
+
+    @http_headers.setter
+    def http_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeHttpGetHttpHeaderArgs']]]]):
+        pulumi.set(self, "http_headers", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Path to access on the HTTP server.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def scheme(self) -> Optional[pulumi.Input[str]]:
+        """
+        Scheme to use for connecting to the host. Defaults to `HTTP`.
+        """
+        return pulumi.get(self, "scheme")
+
+    @scheme.setter
+    def scheme(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scheme", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeHttpGetHttpHeaderArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The header field name
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The header field value
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeHttpGetHttpHeaderArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeHttpGetHttpHeaderArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: The header field name
+        :param pulumi.Input[str] value: The header field value
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The header field name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The header field value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeTcpSocketArgsDict(TypedDict):
+        port: pulumi.Input[str]
+        """
+        Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeTcpSocketArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecInitContainerLivenessProbeTcpSocketArgs:
+    def __init__(__self__, *,
+                 port: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] port: Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        """
+        pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[str]:
+        """
+        Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[str]):
+        pulumi.set(self, "port", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecInitContainerPortArgsDict(TypedDict):
+        container_port: pulumi.Input[int]
+        """
+        Number of port to expose on the pod's IP address. This must be a valid port number, 0 < x < 65536.
+        """
+        host_ip: NotRequired[pulumi.Input[str]]
+        """
+        What host IP to bind the external port to.
+        """
+        host_port: NotRequired[pulumi.Input[int]]
+        """
+        Number of port to expose on the host. If specified, this must be a valid port number, 0 < x < 65536. If HostNetwork is specified, this must match ContainerPort. Most containers do not need this.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        If specified, this must be an IANA*SVC*NAME and unique within the pod. Each named port in a pod must have a unique name. Name for the port that can be referred to by services
+        """
+        protocol: NotRequired[pulumi.Input[str]]
+        """
+        Protocol for port. Must be UDP or TCP. Defaults to "TCP". Defaults to `TCP`.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecInitContainerPortArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecInitContainerPortArgs:
+    def __init__(__self__, *,
+                 container_port: pulumi.Input[int],
+                 host_ip: Optional[pulumi.Input[str]] = None,
+                 host_port: Optional[pulumi.Input[int]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 protocol: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] container_port: Number of port to expose on the pod's IP address. This must be a valid port number, 0 < x < 65536.
+        :param pulumi.Input[str] host_ip: What host IP to bind the external port to.
+        :param pulumi.Input[int] host_port: Number of port to expose on the host. If specified, this must be a valid port number, 0 < x < 65536. If HostNetwork is specified, this must match ContainerPort. Most containers do not need this.
+        :param pulumi.Input[str] name: If specified, this must be an IANA*SVC*NAME and unique within the pod. Each named port in a pod must have a unique name. Name for the port that can be referred to by services
+        :param pulumi.Input[str] protocol: Protocol for port. Must be UDP or TCP. Defaults to "TCP". Defaults to `TCP`.
+        """
+        pulumi.set(__self__, "container_port", container_port)
+        if host_ip is not None:
+            pulumi.set(__self__, "host_ip", host_ip)
+        if host_port is not None:
+            pulumi.set(__self__, "host_port", host_port)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+
+    @property
+    @pulumi.getter(name="containerPort")
+    def container_port(self) -> pulumi.Input[int]:
+        """
+        Number of port to expose on the pod's IP address. This must be a valid port number, 0 < x < 65536.
+        """
+        return pulumi.get(self, "container_port")
+
+    @container_port.setter
+    def container_port(self, value: pulumi.Input[int]):
+        pulumi.set(self, "container_port", value)
+
+    @property
+    @pulumi.getter(name="hostIp")
+    def host_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        What host IP to bind the external port to.
+        """
+        return pulumi.get(self, "host_ip")
+
+    @host_ip.setter
+    def host_ip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "host_ip", value)
+
+    @property
+    @pulumi.getter(name="hostPort")
+    def host_port(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of port to expose on the host. If specified, this must be a valid port number, 0 < x < 65536. If HostNetwork is specified, this must match ContainerPort. Most containers do not need this.
+        """
+        return pulumi.get(self, "host_port")
+
+    @host_port.setter
+    def host_port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "host_port", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        If specified, this must be an IANA*SVC*NAME and unique within the pod. Each named port in a pod must have a unique name. Name for the port that can be referred to by services
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> Optional[pulumi.Input[str]]:
+        """
+        Protocol for port. Must be UDP or TCP. Defaults to "TCP". Defaults to `TCP`.
+        """
+        return pulumi.get(self, "protocol")
+
+    @protocol.setter
+    def protocol(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "protocol", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeArgsDict(TypedDict):
+        exec_: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeExecArgsDict']]
+        """
+        exec specifies the action to take.
+        """
+        failure_threshold: NotRequired[pulumi.Input[int]]
+        """
+        Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to `3`.
+        """
+        grpcs: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeGrpcArgsDict']]]]
+        """
+        GRPC specifies an action involving a GRPC port.
+        """
+        http_get: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeHttpGetArgsDict']]
+        """
+        Specifies the http request to perform.
+        """
+        initial_delay_seconds: NotRequired[pulumi.Input[int]]
+        """
+        Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+        """
+        period_seconds: NotRequired[pulumi.Input[int]]
+        """
+        How often (in seconds) to perform the probe Defaults to `10`.
+        """
+        success_threshold: NotRequired[pulumi.Input[int]]
+        """
+        Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to `1`.
+        """
+        tcp_sockets: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeTcpSocketArgsDict']]]]
+        """
+        TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+        """
+        timeout_seconds: NotRequired[pulumi.Input[int]]
+        """
+        Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes Defaults to `1`.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeArgs:
+    def __init__(__self__, *,
+                 exec_: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeExecArgs']] = None,
+                 failure_threshold: Optional[pulumi.Input[int]] = None,
+                 grpcs: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeGrpcArgs']]]] = None,
+                 http_get: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeHttpGetArgs']] = None,
+                 initial_delay_seconds: Optional[pulumi.Input[int]] = None,
+                 period_seconds: Optional[pulumi.Input[int]] = None,
+                 success_threshold: Optional[pulumi.Input[int]] = None,
+                 tcp_sockets: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeTcpSocketArgs']]]] = None,
+                 timeout_seconds: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeExecArgs'] exec_: exec specifies the action to take.
+        :param pulumi.Input[int] failure_threshold: Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to `3`.
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeGrpcArgs']]] grpcs: GRPC specifies an action involving a GRPC port.
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeHttpGetArgs'] http_get: Specifies the http request to perform.
+        :param pulumi.Input[int] initial_delay_seconds: Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+        :param pulumi.Input[int] period_seconds: How often (in seconds) to perform the probe Defaults to `10`.
+        :param pulumi.Input[int] success_threshold: Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to `1`.
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeTcpSocketArgs']]] tcp_sockets: TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+        :param pulumi.Input[int] timeout_seconds: Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes Defaults to `1`.
+        """
+        if exec_ is not None:
+            pulumi.set(__self__, "exec_", exec_)
+        if failure_threshold is not None:
+            pulumi.set(__self__, "failure_threshold", failure_threshold)
+        if grpcs is not None:
+            pulumi.set(__self__, "grpcs", grpcs)
+        if http_get is not None:
+            pulumi.set(__self__, "http_get", http_get)
+        if initial_delay_seconds is not None:
+            pulumi.set(__self__, "initial_delay_seconds", initial_delay_seconds)
+        if period_seconds is not None:
+            pulumi.set(__self__, "period_seconds", period_seconds)
+        if success_threshold is not None:
+            pulumi.set(__self__, "success_threshold", success_threshold)
+        if tcp_sockets is not None:
+            pulumi.set(__self__, "tcp_sockets", tcp_sockets)
+        if timeout_seconds is not None:
+            pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+
+    @property
+    @pulumi.getter(name="exec")
+    def exec_(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeExecArgs']]:
+        """
+        exec specifies the action to take.
+        """
+        return pulumi.get(self, "exec_")
+
+    @exec_.setter
+    def exec_(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeExecArgs']]):
+        pulumi.set(self, "exec_", value)
+
+    @property
+    @pulumi.getter(name="failureThreshold")
+    def failure_threshold(self) -> Optional[pulumi.Input[int]]:
+        """
+        Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to `3`.
+        """
+        return pulumi.get(self, "failure_threshold")
+
+    @failure_threshold.setter
+    def failure_threshold(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "failure_threshold", value)
+
+    @property
+    @pulumi.getter
+    def grpcs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeGrpcArgs']]]]:
+        """
+        GRPC specifies an action involving a GRPC port.
+        """
+        return pulumi.get(self, "grpcs")
+
+    @grpcs.setter
+    def grpcs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeGrpcArgs']]]]):
+        pulumi.set(self, "grpcs", value)
+
+    @property
+    @pulumi.getter(name="httpGet")
+    def http_get(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeHttpGetArgs']]:
+        """
+        Specifies the http request to perform.
+        """
+        return pulumi.get(self, "http_get")
+
+    @http_get.setter
+    def http_get(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeHttpGetArgs']]):
+        pulumi.set(self, "http_get", value)
+
+    @property
+    @pulumi.getter(name="initialDelaySeconds")
+    def initial_delay_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+        """
+        return pulumi.get(self, "initial_delay_seconds")
+
+    @initial_delay_seconds.setter
+    def initial_delay_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "initial_delay_seconds", value)
+
+    @property
+    @pulumi.getter(name="periodSeconds")
+    def period_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        How often (in seconds) to perform the probe Defaults to `10`.
+        """
+        return pulumi.get(self, "period_seconds")
+
+    @period_seconds.setter
+    def period_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "period_seconds", value)
+
+    @property
+    @pulumi.getter(name="successThreshold")
+    def success_threshold(self) -> Optional[pulumi.Input[int]]:
+        """
+        Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to `1`.
+        """
+        return pulumi.get(self, "success_threshold")
+
+    @success_threshold.setter
+    def success_threshold(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "success_threshold", value)
+
+    @property
+    @pulumi.getter(name="tcpSockets")
+    def tcp_sockets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeTcpSocketArgs']]]]:
+        """
+        TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+        """
+        return pulumi.get(self, "tcp_sockets")
+
+    @tcp_sockets.setter
+    def tcp_sockets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeTcpSocketArgs']]]]):
+        pulumi.set(self, "tcp_sockets", value)
+
+    @property
+    @pulumi.getter(name="timeoutSeconds")
+    def timeout_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes Defaults to `1`.
+        """
+        return pulumi.get(self, "timeout_seconds")
+
+    @timeout_seconds.setter
+    def timeout_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "timeout_seconds", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeExecArgsDict(TypedDict):
+        commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeExecArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeExecArgs:
+    def __init__(__self__, *,
+                 commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] commands: Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+        """
+        if commands is not None:
+            pulumi.set(__self__, "commands", commands)
+
+    @property
+    @pulumi.getter
+    def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+        """
+        return pulumi.get(self, "commands")
+
+    @commands.setter
+    def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "commands", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeGrpcArgsDict(TypedDict):
+        port: pulumi.Input[int]
+        """
+        Number of the port to access on the container. Number must be in the range 1 to 65535.
+        """
+        service: NotRequired[pulumi.Input[str]]
+        """
+        Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeGrpcArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeGrpcArgs:
+    def __init__(__self__, *,
+                 port: pulumi.Input[int],
+                 service: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] port: Number of the port to access on the container. Number must be in the range 1 to 65535.
+        :param pulumi.Input[str] service: Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+        """
+        pulumi.set(__self__, "port", port)
+        if service is not None:
+            pulumi.set(__self__, "service", service)
+
+    @property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[int]:
+        """
+        Number of the port to access on the container. Number must be in the range 1 to 65535.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[int]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def service(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeHttpGetArgsDict(TypedDict):
+        host: NotRequired[pulumi.Input[str]]
+        """
+        Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+        """
+        http_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeHttpGetHttpHeaderArgsDict']]]]
+        """
+        Scheme to use for connecting to the host.
+        """
+        path: NotRequired[pulumi.Input[str]]
+        """
+        Path to access on the HTTP server.
+        """
+        port: NotRequired[pulumi.Input[str]]
+        """
+        Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        """
+        scheme: NotRequired[pulumi.Input[str]]
+        """
+        Scheme to use for connecting to the host. Defaults to `HTTP`.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeHttpGetArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeHttpGetArgs:
+    def __init__(__self__, *,
+                 host: Optional[pulumi.Input[str]] = None,
+                 http_headers: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeHttpGetHttpHeaderArgs']]]] = None,
+                 path: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[str]] = None,
+                 scheme: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] host: Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeHttpGetHttpHeaderArgs']]] http_headers: Scheme to use for connecting to the host.
+        :param pulumi.Input[str] path: Path to access on the HTTP server.
+        :param pulumi.Input[str] port: Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        :param pulumi.Input[str] scheme: Scheme to use for connecting to the host. Defaults to `HTTP`.
+        """
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if http_headers is not None:
+            pulumi.set(__self__, "http_headers", http_headers)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if scheme is not None:
+            pulumi.set(__self__, "scheme", scheme)
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[pulumi.Input[str]]:
+        """
+        Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "host", value)
+
+    @property
+    @pulumi.getter(name="httpHeaders")
+    def http_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeHttpGetHttpHeaderArgs']]]]:
+        """
+        Scheme to use for connecting to the host.
+        """
+        return pulumi.get(self, "http_headers")
+
+    @http_headers.setter
+    def http_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeHttpGetHttpHeaderArgs']]]]):
+        pulumi.set(self, "http_headers", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Path to access on the HTTP server.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def scheme(self) -> Optional[pulumi.Input[str]]:
+        """
+        Scheme to use for connecting to the host. Defaults to `HTTP`.
+        """
+        return pulumi.get(self, "scheme")
+
+    @scheme.setter
+    def scheme(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scheme", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeHttpGetHttpHeaderArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The header field name
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The header field value
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeHttpGetHttpHeaderArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeHttpGetHttpHeaderArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: The header field name
+        :param pulumi.Input[str] value: The header field value
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The header field name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The header field value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeTcpSocketArgsDict(TypedDict):
+        port: pulumi.Input[str]
+        """
+        Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeTcpSocketArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecInitContainerReadinessProbeTcpSocketArgs:
+    def __init__(__self__, *,
+                 port: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] port: Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        """
+        pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[str]:
+        """
+        Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[str]):
+        pulumi.set(self, "port", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecInitContainerResourcesArgsDict(TypedDict):
+        limits: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+        """
+        requests: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecInitContainerResourcesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecInitContainerResourcesArgs:
+    def __init__(__self__, *,
+                 limits: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 requests: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] limits: Describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] requests: Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
+        """
+        if limits is not None:
+            pulumi.set(__self__, "limits", limits)
+        if requests is not None:
+            pulumi.set(__self__, "requests", requests)
+
+    @property
+    @pulumi.getter
+    def limits(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+        """
+        return pulumi.get(self, "limits")
+
+    @limits.setter
+    def limits(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "limits", value)
+
+    @property
+    @pulumi.getter
+    def requests(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
+        """
+        return pulumi.get(self, "requests")
+
+    @requests.setter
+    def requests(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "requests", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecInitContainerSecurityContextArgsDict(TypedDict):
+        allow_privilege_escalation: NotRequired[pulumi.Input[bool]]
+        """
+        AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the no*new*privs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP*SYS*ADMIN Defaults to `true`.
+        """
+        capabilities: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerSecurityContextCapabilitiesArgsDict']]
+        """
+        The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime.
+        """
+        privileged: NotRequired[pulumi.Input[bool]]
+        """
+        Run container in privileged mode. Processes in privileged containers are essentially equivalent to root on the host. Defaults to false. Defaults to `false`.
+        """
+        read_only_root_filesystem: NotRequired[pulumi.Input[bool]]
+        """
+        Whether this container has a read-only root filesystem. Default is false. Defaults to `false`.
+        """
+        run_as_group: NotRequired[pulumi.Input[str]]
+        """
+        The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+        """
+        run_as_non_root: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+        """
+        run_as_user: NotRequired[pulumi.Input[str]]
+        """
+        The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+        """
+        se_linux_options: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerSecurityContextSeLinuxOptionsArgsDict']]
+        """
+        The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+        """
+        seccomp_profile: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerSecurityContextSeccompProfileArgsDict']]
+        """
+        The seccomp options to use by the containers in this pod. Note that this field cannot be set when spec.os.name is windows.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecInitContainerSecurityContextArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecInitContainerSecurityContextArgs:
+    def __init__(__self__, *,
+                 allow_privilege_escalation: Optional[pulumi.Input[bool]] = None,
+                 capabilities: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerSecurityContextCapabilitiesArgs']] = None,
+                 privileged: Optional[pulumi.Input[bool]] = None,
+                 read_only_root_filesystem: Optional[pulumi.Input[bool]] = None,
+                 run_as_group: Optional[pulumi.Input[str]] = None,
+                 run_as_non_root: Optional[pulumi.Input[bool]] = None,
+                 run_as_user: Optional[pulumi.Input[str]] = None,
+                 se_linux_options: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerSecurityContextSeLinuxOptionsArgs']] = None,
+                 seccomp_profile: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerSecurityContextSeccompProfileArgs']] = None):
+        """
+        :param pulumi.Input[bool] allow_privilege_escalation: AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the no*new*privs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP*SYS*ADMIN Defaults to `true`.
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerSecurityContextCapabilitiesArgs'] capabilities: The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime.
+        :param pulumi.Input[bool] privileged: Run container in privileged mode. Processes in privileged containers are essentially equivalent to root on the host. Defaults to false. Defaults to `false`.
+        :param pulumi.Input[bool] read_only_root_filesystem: Whether this container has a read-only root filesystem. Default is false. Defaults to `false`.
+        :param pulumi.Input[str] run_as_group: The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+        :param pulumi.Input[bool] run_as_non_root: Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+        :param pulumi.Input[str] run_as_user: The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerSecurityContextSeLinuxOptionsArgs'] se_linux_options: The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerSecurityContextSeccompProfileArgs'] seccomp_profile: The seccomp options to use by the containers in this pod. Note that this field cannot be set when spec.os.name is windows.
+        """
+        if allow_privilege_escalation is not None:
+            pulumi.set(__self__, "allow_privilege_escalation", allow_privilege_escalation)
+        if capabilities is not None:
+            pulumi.set(__self__, "capabilities", capabilities)
+        if privileged is not None:
+            pulumi.set(__self__, "privileged", privileged)
+        if read_only_root_filesystem is not None:
+            pulumi.set(__self__, "read_only_root_filesystem", read_only_root_filesystem)
+        if run_as_group is not None:
+            pulumi.set(__self__, "run_as_group", run_as_group)
+        if run_as_non_root is not None:
+            pulumi.set(__self__, "run_as_non_root", run_as_non_root)
+        if run_as_user is not None:
+            pulumi.set(__self__, "run_as_user", run_as_user)
+        if se_linux_options is not None:
+            pulumi.set(__self__, "se_linux_options", se_linux_options)
+        if seccomp_profile is not None:
+            pulumi.set(__self__, "seccomp_profile", seccomp_profile)
+
+    @property
+    @pulumi.getter(name="allowPrivilegeEscalation")
+    def allow_privilege_escalation(self) -> Optional[pulumi.Input[bool]]:
+        """
+        AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the no*new*privs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP*SYS*ADMIN Defaults to `true`.
+        """
+        return pulumi.get(self, "allow_privilege_escalation")
+
+    @allow_privilege_escalation.setter
+    def allow_privilege_escalation(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_privilege_escalation", value)
+
+    @property
+    @pulumi.getter
+    def capabilities(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerSecurityContextCapabilitiesArgs']]:
+        """
+        The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime.
+        """
+        return pulumi.get(self, "capabilities")
+
+    @capabilities.setter
+    def capabilities(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerSecurityContextCapabilitiesArgs']]):
+        pulumi.set(self, "capabilities", value)
+
+    @property
+    @pulumi.getter
+    def privileged(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Run container in privileged mode. Processes in privileged containers are essentially equivalent to root on the host. Defaults to false. Defaults to `false`.
+        """
+        return pulumi.get(self, "privileged")
+
+    @privileged.setter
+    def privileged(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "privileged", value)
+
+    @property
+    @pulumi.getter(name="readOnlyRootFilesystem")
+    def read_only_root_filesystem(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether this container has a read-only root filesystem. Default is false. Defaults to `false`.
+        """
+        return pulumi.get(self, "read_only_root_filesystem")
+
+    @read_only_root_filesystem.setter
+    def read_only_root_filesystem(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "read_only_root_filesystem", value)
+
+    @property
+    @pulumi.getter(name="runAsGroup")
+    def run_as_group(self) -> Optional[pulumi.Input[str]]:
+        """
+        The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+        """
+        return pulumi.get(self, "run_as_group")
+
+    @run_as_group.setter
+    def run_as_group(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "run_as_group", value)
+
+    @property
+    @pulumi.getter(name="runAsNonRoot")
+    def run_as_non_root(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+        """
+        return pulumi.get(self, "run_as_non_root")
+
+    @run_as_non_root.setter
+    def run_as_non_root(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "run_as_non_root", value)
+
+    @property
+    @pulumi.getter(name="runAsUser")
+    def run_as_user(self) -> Optional[pulumi.Input[str]]:
+        """
+        The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+        """
+        return pulumi.get(self, "run_as_user")
+
+    @run_as_user.setter
+    def run_as_user(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "run_as_user", value)
+
+    @property
+    @pulumi.getter(name="seLinuxOptions")
+    def se_linux_options(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerSecurityContextSeLinuxOptionsArgs']]:
+        """
+        The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+        """
+        return pulumi.get(self, "se_linux_options")
+
+    @se_linux_options.setter
+    def se_linux_options(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerSecurityContextSeLinuxOptionsArgs']]):
+        pulumi.set(self, "se_linux_options", value)
+
+    @property
+    @pulumi.getter(name="seccompProfile")
+    def seccomp_profile(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerSecurityContextSeccompProfileArgs']]:
+        """
+        The seccomp options to use by the containers in this pod. Note that this field cannot be set when spec.os.name is windows.
+        """
+        return pulumi.get(self, "seccomp_profile")
+
+    @seccomp_profile.setter
+    def seccomp_profile(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerSecurityContextSeccompProfileArgs']]):
+        pulumi.set(self, "seccomp_profile", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecInitContainerSecurityContextCapabilitiesArgsDict(TypedDict):
+        adds: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Added capabilities
+        """
+        drops: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Removed capabilities
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecInitContainerSecurityContextCapabilitiesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecInitContainerSecurityContextCapabilitiesArgs:
+    def __init__(__self__, *,
+                 adds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 drops: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] adds: Added capabilities
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] drops: Removed capabilities
+        """
+        if adds is not None:
+            pulumi.set(__self__, "adds", adds)
+        if drops is not None:
+            pulumi.set(__self__, "drops", drops)
+
+    @property
+    @pulumi.getter
+    def adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Added capabilities
+        """
+        return pulumi.get(self, "adds")
+
+    @adds.setter
+    def adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "adds", value)
+
+    @property
+    @pulumi.getter
+    def drops(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Removed capabilities
+        """
+        return pulumi.get(self, "drops")
+
+    @drops.setter
+    def drops(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "drops", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecInitContainerSecurityContextSeLinuxOptionsArgsDict(TypedDict):
+        level: NotRequired[pulumi.Input[str]]
+        """
+        Level is SELinux level label that applies to the container.
+        """
+        role: NotRequired[pulumi.Input[str]]
+        """
+        Role is a SELinux role label that applies to the container.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Type is a SELinux type label that applies to the container.
+        """
+        user: NotRequired[pulumi.Input[str]]
+        """
+        User is a SELinux user label that applies to the container.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecInitContainerSecurityContextSeLinuxOptionsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecInitContainerSecurityContextSeLinuxOptionsArgs:
+    def __init__(__self__, *,
+                 level: Optional[pulumi.Input[str]] = None,
+                 role: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 user: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] level: Level is SELinux level label that applies to the container.
+        :param pulumi.Input[str] role: Role is a SELinux role label that applies to the container.
+        :param pulumi.Input[str] type: Type is a SELinux type label that applies to the container.
+        :param pulumi.Input[str] user: User is a SELinux user label that applies to the container.
+        """
+        if level is not None:
+            pulumi.set(__self__, "level", level)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if user is not None:
+            pulumi.set(__self__, "user", user)
+
+    @property
+    @pulumi.getter
+    def level(self) -> Optional[pulumi.Input[str]]:
+        """
+        Level is SELinux level label that applies to the container.
+        """
+        return pulumi.get(self, "level")
+
+    @level.setter
+    def level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "level", value)
+
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[pulumi.Input[str]]:
+        """
+        Role is a SELinux role label that applies to the container.
+        """
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type is a SELinux type label that applies to the container.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def user(self) -> Optional[pulumi.Input[str]]:
+        """
+        User is a SELinux user label that applies to the container.
+        """
+        return pulumi.get(self, "user")
+
+    @user.setter
+    def user(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecInitContainerSecurityContextSeccompProfileArgsDict(TypedDict):
+        localhost_profile: NotRequired[pulumi.Input[str]]
+        """
+        Localhost Profile indicates a profile defined in a file on the node should be used. The profile must be preconfigured on the node to work. Defaults to ``.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Type indicates which kind of seccomp profile will be applied. Valid options are: Localhost, RuntimeDefault, Unconfined. Defaults to `Unconfined`.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecInitContainerSecurityContextSeccompProfileArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecInitContainerSecurityContextSeccompProfileArgs:
+    def __init__(__self__, *,
+                 localhost_profile: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] localhost_profile: Localhost Profile indicates a profile defined in a file on the node should be used. The profile must be preconfigured on the node to work. Defaults to ``.
+        :param pulumi.Input[str] type: Type indicates which kind of seccomp profile will be applied. Valid options are: Localhost, RuntimeDefault, Unconfined. Defaults to `Unconfined`.
+        """
+        if localhost_profile is not None:
+            pulumi.set(__self__, "localhost_profile", localhost_profile)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="localhostProfile")
+    def localhost_profile(self) -> Optional[pulumi.Input[str]]:
+        """
+        Localhost Profile indicates a profile defined in a file on the node should be used. The profile must be preconfigured on the node to work. Defaults to ``.
+        """
+        return pulumi.get(self, "localhost_profile")
+
+    @localhost_profile.setter
+    def localhost_profile(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "localhost_profile", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type indicates which kind of seccomp profile will be applied. Valid options are: Localhost, RuntimeDefault, Unconfined. Defaults to `Unconfined`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeArgsDict(TypedDict):
+        exec_: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeExecArgsDict']]
+        """
+        exec specifies the action to take.
+        """
+        failure_threshold: NotRequired[pulumi.Input[int]]
+        """
+        Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to `3`.
+        """
+        grpcs: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeGrpcArgsDict']]]]
+        """
+        GRPC specifies an action involving a GRPC port.
+        """
+        http_get: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeHttpGetArgsDict']]
+        """
+        Specifies the http request to perform.
+        """
+        initial_delay_seconds: NotRequired[pulumi.Input[int]]
+        """
+        Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+        """
+        period_seconds: NotRequired[pulumi.Input[int]]
+        """
+        How often (in seconds) to perform the probe Defaults to `10`.
+        """
+        success_threshold: NotRequired[pulumi.Input[int]]
+        """
+        Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to `1`.
+        """
+        tcp_sockets: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeTcpSocketArgsDict']]]]
+        """
+        TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+        """
+        timeout_seconds: NotRequired[pulumi.Input[int]]
+        """
+        Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes Defaults to `1`.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeArgs:
+    def __init__(__self__, *,
+                 exec_: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeExecArgs']] = None,
+                 failure_threshold: Optional[pulumi.Input[int]] = None,
+                 grpcs: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeGrpcArgs']]]] = None,
+                 http_get: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeHttpGetArgs']] = None,
+                 initial_delay_seconds: Optional[pulumi.Input[int]] = None,
+                 period_seconds: Optional[pulumi.Input[int]] = None,
+                 success_threshold: Optional[pulumi.Input[int]] = None,
+                 tcp_sockets: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeTcpSocketArgs']]]] = None,
+                 timeout_seconds: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeExecArgs'] exec_: exec specifies the action to take.
+        :param pulumi.Input[int] failure_threshold: Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to `3`.
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeGrpcArgs']]] grpcs: GRPC specifies an action involving a GRPC port.
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeHttpGetArgs'] http_get: Specifies the http request to perform.
+        :param pulumi.Input[int] initial_delay_seconds: Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+        :param pulumi.Input[int] period_seconds: How often (in seconds) to perform the probe Defaults to `10`.
+        :param pulumi.Input[int] success_threshold: Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to `1`.
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeTcpSocketArgs']]] tcp_sockets: TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+        :param pulumi.Input[int] timeout_seconds: Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes Defaults to `1`.
+        """
+        if exec_ is not None:
+            pulumi.set(__self__, "exec_", exec_)
+        if failure_threshold is not None:
+            pulumi.set(__self__, "failure_threshold", failure_threshold)
+        if grpcs is not None:
+            pulumi.set(__self__, "grpcs", grpcs)
+        if http_get is not None:
+            pulumi.set(__self__, "http_get", http_get)
+        if initial_delay_seconds is not None:
+            pulumi.set(__self__, "initial_delay_seconds", initial_delay_seconds)
+        if period_seconds is not None:
+            pulumi.set(__self__, "period_seconds", period_seconds)
+        if success_threshold is not None:
+            pulumi.set(__self__, "success_threshold", success_threshold)
+        if tcp_sockets is not None:
+            pulumi.set(__self__, "tcp_sockets", tcp_sockets)
+        if timeout_seconds is not None:
+            pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+
+    @property
+    @pulumi.getter(name="exec")
+    def exec_(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeExecArgs']]:
+        """
+        exec specifies the action to take.
+        """
+        return pulumi.get(self, "exec_")
+
+    @exec_.setter
+    def exec_(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeExecArgs']]):
+        pulumi.set(self, "exec_", value)
+
+    @property
+    @pulumi.getter(name="failureThreshold")
+    def failure_threshold(self) -> Optional[pulumi.Input[int]]:
+        """
+        Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to `3`.
+        """
+        return pulumi.get(self, "failure_threshold")
+
+    @failure_threshold.setter
+    def failure_threshold(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "failure_threshold", value)
+
+    @property
+    @pulumi.getter
+    def grpcs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeGrpcArgs']]]]:
+        """
+        GRPC specifies an action involving a GRPC port.
+        """
+        return pulumi.get(self, "grpcs")
+
+    @grpcs.setter
+    def grpcs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeGrpcArgs']]]]):
+        pulumi.set(self, "grpcs", value)
+
+    @property
+    @pulumi.getter(name="httpGet")
+    def http_get(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeHttpGetArgs']]:
+        """
+        Specifies the http request to perform.
+        """
+        return pulumi.get(self, "http_get")
+
+    @http_get.setter
+    def http_get(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeHttpGetArgs']]):
+        pulumi.set(self, "http_get", value)
+
+    @property
+    @pulumi.getter(name="initialDelaySeconds")
+    def initial_delay_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+        """
+        return pulumi.get(self, "initial_delay_seconds")
+
+    @initial_delay_seconds.setter
+    def initial_delay_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "initial_delay_seconds", value)
+
+    @property
+    @pulumi.getter(name="periodSeconds")
+    def period_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        How often (in seconds) to perform the probe Defaults to `10`.
+        """
+        return pulumi.get(self, "period_seconds")
+
+    @period_seconds.setter
+    def period_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "period_seconds", value)
+
+    @property
+    @pulumi.getter(name="successThreshold")
+    def success_threshold(self) -> Optional[pulumi.Input[int]]:
+        """
+        Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to `1`.
+        """
+        return pulumi.get(self, "success_threshold")
+
+    @success_threshold.setter
+    def success_threshold(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "success_threshold", value)
+
+    @property
+    @pulumi.getter(name="tcpSockets")
+    def tcp_sockets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeTcpSocketArgs']]]]:
+        """
+        TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
+        """
+        return pulumi.get(self, "tcp_sockets")
+
+    @tcp_sockets.setter
+    def tcp_sockets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeTcpSocketArgs']]]]):
+        pulumi.set(self, "tcp_sockets", value)
+
+    @property
+    @pulumi.getter(name="timeoutSeconds")
+    def timeout_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of seconds after which the probe times out. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes Defaults to `1`.
+        """
+        return pulumi.get(self, "timeout_seconds")
+
+    @timeout_seconds.setter
+    def timeout_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "timeout_seconds", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeExecArgsDict(TypedDict):
+        commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeExecArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeExecArgs:
+    def __init__(__self__, *,
+                 commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] commands: Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+        """
+        if commands is not None:
+            pulumi.set(__self__, "commands", commands)
+
+    @property
+    @pulumi.getter
+    def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+        """
+        return pulumi.get(self, "commands")
+
+    @commands.setter
+    def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "commands", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeGrpcArgsDict(TypedDict):
+        port: pulumi.Input[int]
+        """
+        Number of the port to access on the container. Number must be in the range 1 to 65535.
+        """
+        service: NotRequired[pulumi.Input[str]]
+        """
+        Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeGrpcArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeGrpcArgs:
+    def __init__(__self__, *,
+                 port: pulumi.Input[int],
+                 service: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] port: Number of the port to access on the container. Number must be in the range 1 to 65535.
+        :param pulumi.Input[str] service: Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+        """
+        pulumi.set(__self__, "port", port)
+        if service is not None:
+            pulumi.set(__self__, "service", service)
+
+    @property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[int]:
+        """
+        Number of the port to access on the container. Number must be in the range 1 to 65535.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[int]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def service(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeHttpGetArgsDict(TypedDict):
+        host: NotRequired[pulumi.Input[str]]
+        """
+        Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+        """
+        http_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeHttpGetHttpHeaderArgsDict']]]]
+        """
+        Scheme to use for connecting to the host.
+        """
+        path: NotRequired[pulumi.Input[str]]
+        """
+        Path to access on the HTTP server.
+        """
+        port: NotRequired[pulumi.Input[str]]
+        """
+        Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        """
+        scheme: NotRequired[pulumi.Input[str]]
+        """
+        Scheme to use for connecting to the host. Defaults to `HTTP`.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeHttpGetArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeHttpGetArgs:
+    def __init__(__self__, *,
+                 host: Optional[pulumi.Input[str]] = None,
+                 http_headers: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeHttpGetHttpHeaderArgs']]]] = None,
+                 path: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[str]] = None,
+                 scheme: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] host: Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeHttpGetHttpHeaderArgs']]] http_headers: Scheme to use for connecting to the host.
+        :param pulumi.Input[str] path: Path to access on the HTTP server.
+        :param pulumi.Input[str] port: Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        :param pulumi.Input[str] scheme: Scheme to use for connecting to the host. Defaults to `HTTP`.
+        """
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if http_headers is not None:
+            pulumi.set(__self__, "http_headers", http_headers)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if scheme is not None:
+            pulumi.set(__self__, "scheme", scheme)
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[pulumi.Input[str]]:
+        """
+        Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "host", value)
+
+    @property
+    @pulumi.getter(name="httpHeaders")
+    def http_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeHttpGetHttpHeaderArgs']]]]:
+        """
+        Scheme to use for connecting to the host.
+        """
+        return pulumi.get(self, "http_headers")
+
+    @http_headers.setter
+    def http_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeHttpGetHttpHeaderArgs']]]]):
+        pulumi.set(self, "http_headers", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Path to access on the HTTP server.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def scheme(self) -> Optional[pulumi.Input[str]]:
+        """
+        Scheme to use for connecting to the host. Defaults to `HTTP`.
+        """
+        return pulumi.get(self, "scheme")
+
+    @scheme.setter
+    def scheme(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scheme", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeHttpGetHttpHeaderArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The header field name
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The header field value
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeHttpGetHttpHeaderArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeHttpGetHttpHeaderArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: The header field name
+        :param pulumi.Input[str] value: The header field value
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The header field name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The header field value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeTcpSocketArgsDict(TypedDict):
+        port: pulumi.Input[str]
+        """
+        Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeTcpSocketArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecInitContainerStartupProbeTcpSocketArgs:
+    def __init__(__self__, *,
+                 port: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] port: Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        """
+        pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[str]:
+        """
+        Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA*SVC*NAME.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[str]):
+        pulumi.set(self, "port", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecInitContainerVolumeMountArgsDict(TypedDict):
+        mount_path: pulumi.Input[str]
+        """
+        Path within the container at which the volume should be mounted. Must not contain ':'.
+        """
+        name: pulumi.Input[str]
+        """
+        This must match the Name of a Volume.
+        """
+        mount_propagation: NotRequired[pulumi.Input[str]]
+        """
+        Mount propagation mode. mount_propagation determines how mounts are propagated from the host to container and the other way around. Valid values are None (default), HostToContainer and Bidirectional. Defaults to `None`.
+        """
+        read_only: NotRequired[pulumi.Input[bool]]
+        """
+        Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false. Defaults to `false`.
+        """
+        sub_path: NotRequired[pulumi.Input[str]]
+        """
+        Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecInitContainerVolumeMountArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecInitContainerVolumeMountArgs:
+    def __init__(__self__, *,
+                 mount_path: pulumi.Input[str],
+                 name: pulumi.Input[str],
+                 mount_propagation: Optional[pulumi.Input[str]] = None,
+                 read_only: Optional[pulumi.Input[bool]] = None,
+                 sub_path: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] mount_path: Path within the container at which the volume should be mounted. Must not contain ':'.
+        :param pulumi.Input[str] name: This must match the Name of a Volume.
+        :param pulumi.Input[str] mount_propagation: Mount propagation mode. mount_propagation determines how mounts are propagated from the host to container and the other way around. Valid values are None (default), HostToContainer and Bidirectional. Defaults to `None`.
+        :param pulumi.Input[bool] read_only: Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false. Defaults to `false`.
+        :param pulumi.Input[str] sub_path: Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
+        """
+        pulumi.set(__self__, "mount_path", mount_path)
+        pulumi.set(__self__, "name", name)
+        if mount_propagation is not None:
+            pulumi.set(__self__, "mount_propagation", mount_propagation)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+        if sub_path is not None:
+            pulumi.set(__self__, "sub_path", sub_path)
+
+    @property
+    @pulumi.getter(name="mountPath")
+    def mount_path(self) -> pulumi.Input[str]:
+        """
+        Path within the container at which the volume should be mounted. Must not contain ':'.
+        """
+        return pulumi.get(self, "mount_path")
+
+    @mount_path.setter
+    def mount_path(self, value: pulumi.Input[str]):
+        pulumi.set(self, "mount_path", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        This must match the Name of a Volume.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="mountPropagation")
+    def mount_propagation(self) -> Optional[pulumi.Input[str]]:
+        """
+        Mount propagation mode. mount_propagation determines how mounts are propagated from the host to container and the other way around. Valid values are None (default), HostToContainer and Bidirectional. Defaults to `None`.
+        """
+        return pulumi.get(self, "mount_propagation")
+
+    @mount_propagation.setter
+    def mount_propagation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mount_propagation", value)
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false. Defaults to `false`.
+        """
+        return pulumi.get(self, "read_only")
+
+    @read_only.setter
+    def read_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "read_only", value)
+
+    @property
+    @pulumi.getter(name="subPath")
+    def sub_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
+        """
+        return pulumi.get(self, "sub_path")
+
+    @sub_path.setter
+    def sub_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sub_path", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecReadinessGateArgsDict(TypedDict):
+        condition_type: pulumi.Input[str]
+        """
+        refers to a condition in the pod's condition list with matching type.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecReadinessGateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecReadinessGateArgs:
+    def __init__(__self__, *,
+                 condition_type: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] condition_type: refers to a condition in the pod's condition list with matching type.
+        """
+        pulumi.set(__self__, "condition_type", condition_type)
+
+    @property
+    @pulumi.getter(name="conditionType")
+    def condition_type(self) -> pulumi.Input[str]:
+        """
+        refers to a condition in the pod's condition list with matching type.
+        """
+        return pulumi.get(self, "condition_type")
+
+    @condition_type.setter
+    def condition_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "condition_type", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecSecurityContextArgsDict(TypedDict):
+        fs_group: NotRequired[pulumi.Input[str]]
+        """
+        A special supplemental group that applies to all containers in a pod. Some volume types allow the Kubelet to change the ownership of that volume to be owned by the pod: 1. The owning GID will be the FSGroup 2. The setgid bit is set (new files created in the volume will be owned by FSGroup) 3. The permission bits are OR'd with rw-rw---- If unset, the Kubelet will not modify the ownership and permissions of any volume.
+        """
+        fs_group_change_policy: NotRequired[pulumi.Input[str]]
+        """
+        fsGroupChangePolicy defines behavior of changing ownership and permission of the volume before being exposed inside Pod. This field will only apply to volume types which support fsGroup based ownership(and permissions). It will have no effect on ephemeral volume types such as: secret, configmaps and emptydir.
+        """
+        run_as_group: NotRequired[pulumi.Input[str]]
+        """
+        The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in SecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container.
+        """
+        run_as_non_root: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in SecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+        """
+        run_as_user: NotRequired[pulumi.Input[str]]
+        """
+        The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in SecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container.
+        """
+        se_linux_options: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecSecurityContextSeLinuxOptionsArgsDict']]
+        """
+        The SELinux context to be applied to all containers. If unspecified, the container runtime will allocate a random SELinux context for each container. May also be set in SecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container.
+        """
+        seccomp_profile: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecSecurityContextSeccompProfileArgsDict']]
+        """
+        The seccomp options to use by the containers in this pod. Note that this field cannot be set when spec.os.name is windows.
+        """
+        supplemental_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[int]]]]
+        """
+        A list of groups applied to the first process run in each container, in addition to the container's primary GID. If unspecified, no groups will be added to any container.
+        """
+        sysctls: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecSecurityContextSysctlArgsDict']]]]
+        """
+        holds a list of namespaced sysctls used for the pod.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecSecurityContextArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecSecurityContextArgs:
+    def __init__(__self__, *,
+                 fs_group: Optional[pulumi.Input[str]] = None,
+                 fs_group_change_policy: Optional[pulumi.Input[str]] = None,
+                 run_as_group: Optional[pulumi.Input[str]] = None,
+                 run_as_non_root: Optional[pulumi.Input[bool]] = None,
+                 run_as_user: Optional[pulumi.Input[str]] = None,
+                 se_linux_options: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecSecurityContextSeLinuxOptionsArgs']] = None,
+                 seccomp_profile: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecSecurityContextSeccompProfileArgs']] = None,
+                 supplemental_groups: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 sysctls: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecSecurityContextSysctlArgs']]]] = None):
+        """
+        :param pulumi.Input[str] fs_group: A special supplemental group that applies to all containers in a pod. Some volume types allow the Kubelet to change the ownership of that volume to be owned by the pod: 1. The owning GID will be the FSGroup 2. The setgid bit is set (new files created in the volume will be owned by FSGroup) 3. The permission bits are OR'd with rw-rw---- If unset, the Kubelet will not modify the ownership and permissions of any volume.
+        :param pulumi.Input[str] fs_group_change_policy: fsGroupChangePolicy defines behavior of changing ownership and permission of the volume before being exposed inside Pod. This field will only apply to volume types which support fsGroup based ownership(and permissions). It will have no effect on ephemeral volume types such as: secret, configmaps and emptydir.
+        :param pulumi.Input[str] run_as_group: The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in SecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container.
+        :param pulumi.Input[bool] run_as_non_root: Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in SecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+        :param pulumi.Input[str] run_as_user: The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in SecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container.
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecSecurityContextSeLinuxOptionsArgs'] se_linux_options: The SELinux context to be applied to all containers. If unspecified, the container runtime will allocate a random SELinux context for each container. May also be set in SecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container.
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecSecurityContextSeccompProfileArgs'] seccomp_profile: The seccomp options to use by the containers in this pod. Note that this field cannot be set when spec.os.name is windows.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] supplemental_groups: A list of groups applied to the first process run in each container, in addition to the container's primary GID. If unspecified, no groups will be added to any container.
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecSecurityContextSysctlArgs']]] sysctls: holds a list of namespaced sysctls used for the pod.
+        """
+        if fs_group is not None:
+            pulumi.set(__self__, "fs_group", fs_group)
+        if fs_group_change_policy is not None:
+            pulumi.set(__self__, "fs_group_change_policy", fs_group_change_policy)
+        if run_as_group is not None:
+            pulumi.set(__self__, "run_as_group", run_as_group)
+        if run_as_non_root is not None:
+            pulumi.set(__self__, "run_as_non_root", run_as_non_root)
+        if run_as_user is not None:
+            pulumi.set(__self__, "run_as_user", run_as_user)
+        if se_linux_options is not None:
+            pulumi.set(__self__, "se_linux_options", se_linux_options)
+        if seccomp_profile is not None:
+            pulumi.set(__self__, "seccomp_profile", seccomp_profile)
+        if supplemental_groups is not None:
+            pulumi.set(__self__, "supplemental_groups", supplemental_groups)
+        if sysctls is not None:
+            pulumi.set(__self__, "sysctls", sysctls)
+
+    @property
+    @pulumi.getter(name="fsGroup")
+    def fs_group(self) -> Optional[pulumi.Input[str]]:
+        """
+        A special supplemental group that applies to all containers in a pod. Some volume types allow the Kubelet to change the ownership of that volume to be owned by the pod: 1. The owning GID will be the FSGroup 2. The setgid bit is set (new files created in the volume will be owned by FSGroup) 3. The permission bits are OR'd with rw-rw---- If unset, the Kubelet will not modify the ownership and permissions of any volume.
+        """
+        return pulumi.get(self, "fs_group")
+
+    @fs_group.setter
+    def fs_group(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fs_group", value)
+
+    @property
+    @pulumi.getter(name="fsGroupChangePolicy")
+    def fs_group_change_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        fsGroupChangePolicy defines behavior of changing ownership and permission of the volume before being exposed inside Pod. This field will only apply to volume types which support fsGroup based ownership(and permissions). It will have no effect on ephemeral volume types such as: secret, configmaps and emptydir.
+        """
+        return pulumi.get(self, "fs_group_change_policy")
+
+    @fs_group_change_policy.setter
+    def fs_group_change_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fs_group_change_policy", value)
+
+    @property
+    @pulumi.getter(name="runAsGroup")
+    def run_as_group(self) -> Optional[pulumi.Input[str]]:
+        """
+        The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in SecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container.
+        """
+        return pulumi.get(self, "run_as_group")
+
+    @run_as_group.setter
+    def run_as_group(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "run_as_group", value)
+
+    @property
+    @pulumi.getter(name="runAsNonRoot")
+    def run_as_non_root(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in SecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+        """
+        return pulumi.get(self, "run_as_non_root")
+
+    @run_as_non_root.setter
+    def run_as_non_root(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "run_as_non_root", value)
+
+    @property
+    @pulumi.getter(name="runAsUser")
+    def run_as_user(self) -> Optional[pulumi.Input[str]]:
+        """
+        The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in SecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container.
+        """
+        return pulumi.get(self, "run_as_user")
+
+    @run_as_user.setter
+    def run_as_user(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "run_as_user", value)
+
+    @property
+    @pulumi.getter(name="seLinuxOptions")
+    def se_linux_options(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecSecurityContextSeLinuxOptionsArgs']]:
+        """
+        The SELinux context to be applied to all containers. If unspecified, the container runtime will allocate a random SELinux context for each container. May also be set in SecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container.
+        """
+        return pulumi.get(self, "se_linux_options")
+
+    @se_linux_options.setter
+    def se_linux_options(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecSecurityContextSeLinuxOptionsArgs']]):
+        pulumi.set(self, "se_linux_options", value)
+
+    @property
+    @pulumi.getter(name="seccompProfile")
+    def seccomp_profile(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecSecurityContextSeccompProfileArgs']]:
+        """
+        The seccomp options to use by the containers in this pod. Note that this field cannot be set when spec.os.name is windows.
+        """
+        return pulumi.get(self, "seccomp_profile")
+
+    @seccomp_profile.setter
+    def seccomp_profile(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecSecurityContextSeccompProfileArgs']]):
+        pulumi.set(self, "seccomp_profile", value)
+
+    @property
+    @pulumi.getter(name="supplementalGroups")
+    def supplemental_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
+        """
+        A list of groups applied to the first process run in each container, in addition to the container's primary GID. If unspecified, no groups will be added to any container.
+        """
+        return pulumi.get(self, "supplemental_groups")
+
+    @supplemental_groups.setter
+    def supplemental_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
+        pulumi.set(self, "supplemental_groups", value)
+
+    @property
+    @pulumi.getter
+    def sysctls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecSecurityContextSysctlArgs']]]]:
+        """
+        holds a list of namespaced sysctls used for the pod.
+        """
+        return pulumi.get(self, "sysctls")
+
+    @sysctls.setter
+    def sysctls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecSecurityContextSysctlArgs']]]]):
+        pulumi.set(self, "sysctls", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecSecurityContextSeLinuxOptionsArgsDict(TypedDict):
+        level: NotRequired[pulumi.Input[str]]
+        """
+        Level is SELinux level label that applies to the container.
+        """
+        role: NotRequired[pulumi.Input[str]]
+        """
+        Role is a SELinux role label that applies to the container.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Type is a SELinux type label that applies to the container.
+        """
+        user: NotRequired[pulumi.Input[str]]
+        """
+        User is a SELinux user label that applies to the container.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecSecurityContextSeLinuxOptionsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecSecurityContextSeLinuxOptionsArgs:
+    def __init__(__self__, *,
+                 level: Optional[pulumi.Input[str]] = None,
+                 role: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 user: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] level: Level is SELinux level label that applies to the container.
+        :param pulumi.Input[str] role: Role is a SELinux role label that applies to the container.
+        :param pulumi.Input[str] type: Type is a SELinux type label that applies to the container.
+        :param pulumi.Input[str] user: User is a SELinux user label that applies to the container.
+        """
+        if level is not None:
+            pulumi.set(__self__, "level", level)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if user is not None:
+            pulumi.set(__self__, "user", user)
+
+    @property
+    @pulumi.getter
+    def level(self) -> Optional[pulumi.Input[str]]:
+        """
+        Level is SELinux level label that applies to the container.
+        """
+        return pulumi.get(self, "level")
+
+    @level.setter
+    def level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "level", value)
+
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[pulumi.Input[str]]:
+        """
+        Role is a SELinux role label that applies to the container.
+        """
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type is a SELinux type label that applies to the container.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def user(self) -> Optional[pulumi.Input[str]]:
+        """
+        User is a SELinux user label that applies to the container.
+        """
+        return pulumi.get(self, "user")
+
+    @user.setter
+    def user(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecSecurityContextSeccompProfileArgsDict(TypedDict):
+        localhost_profile: NotRequired[pulumi.Input[str]]
+        """
+        Localhost Profile indicates a profile defined in a file on the node should be used. The profile must be preconfigured on the node to work. Defaults to ``.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Type indicates which kind of seccomp profile will be applied. Valid options are: Localhost, RuntimeDefault, Unconfined. Defaults to `Unconfined`.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecSecurityContextSeccompProfileArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecSecurityContextSeccompProfileArgs:
+    def __init__(__self__, *,
+                 localhost_profile: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] localhost_profile: Localhost Profile indicates a profile defined in a file on the node should be used. The profile must be preconfigured on the node to work. Defaults to ``.
+        :param pulumi.Input[str] type: Type indicates which kind of seccomp profile will be applied. Valid options are: Localhost, RuntimeDefault, Unconfined. Defaults to `Unconfined`.
+        """
+        if localhost_profile is not None:
+            pulumi.set(__self__, "localhost_profile", localhost_profile)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="localhostProfile")
+    def localhost_profile(self) -> Optional[pulumi.Input[str]]:
+        """
+        Localhost Profile indicates a profile defined in a file on the node should be used. The profile must be preconfigured on the node to work. Defaults to ``.
+        """
+        return pulumi.get(self, "localhost_profile")
+
+    @localhost_profile.setter
+    def localhost_profile(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "localhost_profile", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type indicates which kind of seccomp profile will be applied. Valid options are: Localhost, RuntimeDefault, Unconfined. Defaults to `Unconfined`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecSecurityContextSysctlArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Name of a property to set.
+        """
+        value: pulumi.Input[str]
+        """
+        Value of a property to set.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecSecurityContextSysctlArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecSecurityContextSysctlArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 value: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] name: Name of a property to set.
+        :param pulumi.Input[str] value: Value of a property to set.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Name of a property to set.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        Value of a property to set.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecTolerationArgsDict(TypedDict):
+        effect: NotRequired[pulumi.Input[str]]
+        """
+        Effect indicates the taint effect to match. Empty means match all taint effects. When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.
+        """
+        key: NotRequired[pulumi.Input[str]]
+        """
+        Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key is empty, operator must be Exists; this combination means to match all values and all keys.
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        Operator represents a key's relationship to the value. Valid operators are Exists and Equal. Defaults to Equal. Exists is equivalent to wildcard for value, so that a pod can tolerate all taints of a particular category. Defaults to `Equal`.
+        """
+        toleration_seconds: NotRequired[pulumi.Input[str]]
+        """
+        TolerationSeconds represents the period of time the toleration (which must be of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default, it is not set, which means tolerate the taint forever (do not evict). Zero and negative values will be treated as 0 (evict immediately) by the system.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        Value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecTolerationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecTolerationArgs:
+    def __init__(__self__, *,
+                 effect: Optional[pulumi.Input[str]] = None,
+                 key: Optional[pulumi.Input[str]] = None,
+                 operator: Optional[pulumi.Input[str]] = None,
+                 toleration_seconds: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] effect: Effect indicates the taint effect to match. Empty means match all taint effects. When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.
+        :param pulumi.Input[str] key: Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key is empty, operator must be Exists; this combination means to match all values and all keys.
+        :param pulumi.Input[str] operator: Operator represents a key's relationship to the value. Valid operators are Exists and Equal. Defaults to Equal. Exists is equivalent to wildcard for value, so that a pod can tolerate all taints of a particular category. Defaults to `Equal`.
+        :param pulumi.Input[str] toleration_seconds: TolerationSeconds represents the period of time the toleration (which must be of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default, it is not set, which means tolerate the taint forever (do not evict). Zero and negative values will be treated as 0 (evict immediately) by the system.
+        :param pulumi.Input[str] value: Value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string.
+        """
+        if effect is not None:
+            pulumi.set(__self__, "effect", effect)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if toleration_seconds is not None:
+            pulumi.set(__self__, "toleration_seconds", toleration_seconds)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def effect(self) -> Optional[pulumi.Input[str]]:
+        """
+        Effect indicates the taint effect to match. Empty means match all taint effects. When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.
+        """
+        return pulumi.get(self, "effect")
+
+    @effect.setter
+    def effect(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "effect", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key is empty, operator must be Exists; this combination means to match all values and all keys.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        Operator represents a key's relationship to the value. Valid operators are Exists and Equal. Defaults to Equal. Exists is equivalent to wildcard for value, so that a pod can tolerate all taints of a particular category. Defaults to `Equal`.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter(name="tolerationSeconds")
+    def toleration_seconds(self) -> Optional[pulumi.Input[str]]:
+        """
+        TolerationSeconds represents the period of time the toleration (which must be of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default, it is not set, which means tolerate the taint forever (do not evict). Zero and negative values will be treated as 0 (evict immediately) by the system.
+        """
+        return pulumi.get(self, "toleration_seconds")
+
+    @toleration_seconds.setter
+    def toleration_seconds(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "toleration_seconds", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        Value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecTopologySpreadConstraintArgsDict(TypedDict):
+        label_selectors: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecTopologySpreadConstraintLabelSelectorArgsDict']]]]
+        """
+        A label query over a set of resources, in this case pods.
+        """
+        max_skew: NotRequired[pulumi.Input[int]]
+        """
+        describes the degree to which pods may be unevenly distributed. Defaults to `1`.
+        """
+        topology_key: NotRequired[pulumi.Input[str]]
+        """
+        the key of node labels. Nodes that have a label with this key and identical values are considered to be in the same topology.
+        """
+        when_unsatisfiable: NotRequired[pulumi.Input[str]]
+        """
+        indicates how to deal with a pod if it doesn't satisfy the spread constraint. Defaults to `DoNotSchedule`.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecTopologySpreadConstraintArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecTopologySpreadConstraintArgs:
+    def __init__(__self__, *,
+                 label_selectors: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecTopologySpreadConstraintLabelSelectorArgs']]]] = None,
+                 max_skew: Optional[pulumi.Input[int]] = None,
+                 topology_key: Optional[pulumi.Input[str]] = None,
+                 when_unsatisfiable: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecTopologySpreadConstraintLabelSelectorArgs']]] label_selectors: A label query over a set of resources, in this case pods.
+        :param pulumi.Input[int] max_skew: describes the degree to which pods may be unevenly distributed. Defaults to `1`.
+        :param pulumi.Input[str] topology_key: the key of node labels. Nodes that have a label with this key and identical values are considered to be in the same topology.
+        :param pulumi.Input[str] when_unsatisfiable: indicates how to deal with a pod if it doesn't satisfy the spread constraint. Defaults to `DoNotSchedule`.
+        """
+        if label_selectors is not None:
+            pulumi.set(__self__, "label_selectors", label_selectors)
+        if max_skew is not None:
+            pulumi.set(__self__, "max_skew", max_skew)
+        if topology_key is not None:
+            pulumi.set(__self__, "topology_key", topology_key)
+        if when_unsatisfiable is not None:
+            pulumi.set(__self__, "when_unsatisfiable", when_unsatisfiable)
+
+    @property
+    @pulumi.getter(name="labelSelectors")
+    def label_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecTopologySpreadConstraintLabelSelectorArgs']]]]:
+        """
+        A label query over a set of resources, in this case pods.
+        """
+        return pulumi.get(self, "label_selectors")
+
+    @label_selectors.setter
+    def label_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecTopologySpreadConstraintLabelSelectorArgs']]]]):
+        pulumi.set(self, "label_selectors", value)
+
+    @property
+    @pulumi.getter(name="maxSkew")
+    def max_skew(self) -> Optional[pulumi.Input[int]]:
+        """
+        describes the degree to which pods may be unevenly distributed. Defaults to `1`.
+        """
+        return pulumi.get(self, "max_skew")
+
+    @max_skew.setter
+    def max_skew(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_skew", value)
+
+    @property
+    @pulumi.getter(name="topologyKey")
+    def topology_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        the key of node labels. Nodes that have a label with this key and identical values are considered to be in the same topology.
+        """
+        return pulumi.get(self, "topology_key")
+
+    @topology_key.setter
+    def topology_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "topology_key", value)
+
+    @property
+    @pulumi.getter(name="whenUnsatisfiable")
+    def when_unsatisfiable(self) -> Optional[pulumi.Input[str]]:
+        """
+        indicates how to deal with a pod if it doesn't satisfy the spread constraint. Defaults to `DoNotSchedule`.
+        """
+        return pulumi.get(self, "when_unsatisfiable")
+
+    @when_unsatisfiable.setter
+    def when_unsatisfiable(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "when_unsatisfiable", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecTopologySpreadConstraintLabelSelectorArgsDict(TypedDict):
+        match_expressions: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecTopologySpreadConstraintLabelSelectorMatchExpressionArgsDict']]]]
+        """
+        A list of label selector requirements. The requirements are ANDed.
+        """
+        match_labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `match_expressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecTopologySpreadConstraintLabelSelectorArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecTopologySpreadConstraintLabelSelectorArgs:
+    def __init__(__self__, *,
+                 match_expressions: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecTopologySpreadConstraintLabelSelectorMatchExpressionArgs']]]] = None,
+                 match_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecTopologySpreadConstraintLabelSelectorMatchExpressionArgs']]] match_expressions: A list of label selector requirements. The requirements are ANDed.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] match_labels: A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `match_expressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+        """
+        if match_expressions is not None:
+            pulumi.set(__self__, "match_expressions", match_expressions)
+        if match_labels is not None:
+            pulumi.set(__self__, "match_labels", match_labels)
+
+    @property
+    @pulumi.getter(name="matchExpressions")
+    def match_expressions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecTopologySpreadConstraintLabelSelectorMatchExpressionArgs']]]]:
+        """
+        A list of label selector requirements. The requirements are ANDed.
+        """
+        return pulumi.get(self, "match_expressions")
+
+    @match_expressions.setter
+    def match_expressions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecTopologySpreadConstraintLabelSelectorMatchExpressionArgs']]]]):
+        pulumi.set(self, "match_expressions", value)
+
+    @property
+    @pulumi.getter(name="matchLabels")
+    def match_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `match_expressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+        """
+        return pulumi.get(self, "match_labels")
+
+    @match_labels.setter
+    def match_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "match_labels", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecTopologySpreadConstraintLabelSelectorMatchExpressionArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[str]]
+        """
+        The label key that the selector applies to.
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
+        """
+        values: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecTopologySpreadConstraintLabelSelectorMatchExpressionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecTopologySpreadConstraintLabelSelectorMatchExpressionArgs:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[str]] = None,
+                 operator: Optional[pulumi.Input[str]] = None,
+                 values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] key: The label key that the selector applies to.
+        :param pulumi.Input[str] operator: A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The label key that the selector applies to.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "values", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecVolumeArgsDict(TypedDict):
+        aws_elastic_block_store: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeAwsElasticBlockStoreArgsDict']]
+        """
+        Represents an AWS Disk resource that is attached to a kubelet's host machine and then exposed to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+        """
+        azure_disk: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeAzureDiskArgsDict']]
+        """
+        Represents an Azure Data Disk mount on the host and bind mount to the pod.
+        """
+        azure_file: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeAzureFileArgsDict']]
+        """
+        Represents an Azure File Service mount on the host and bind mount to the pod.
+        """
+        ceph_fs: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeCephFsArgsDict']]
+        """
+        Represents a Ceph FS mount on the host that shares a pod's lifetime
+        """
+        cinder: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeCinderArgsDict']]
+        """
+        Represents a cinder volume attached and mounted on kubelets host machine. More info: https://examples.k8s.io/mysql-cinder-pd/README.md
+        """
+        config_map: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeConfigMapArgsDict']]
+        """
+        ConfigMap represents a configMap that should populate this volume
+        """
+        csi: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeCsiArgsDict']]
+        """
+        Represents a CSI Volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#csi
+        """
+        downward_api: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeDownwardApiArgsDict']]
+        """
+        DownwardAPI represents downward API about the pod that should populate this volume
+        """
+        empty_dir: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeEmptyDirArgsDict']]
+        """
+        EmptyDir represents a temporary directory that shares a pod's lifetime. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir
+        """
+        ephemeral: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeEphemeralArgsDict']]
+        """
+        Represents an ephemeral volume that is handled by a normal storage driver. More info: https://kubernetes.io/docs/concepts/storage/ephemeral-volumes/#generic-ephemeral-volumes
+        """
+        fc: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeFcArgsDict']]
+        """
+        Represents a Fibre Channel resource that is attached to a kubelet's host machine and then exposed to the pod.
+        """
+        flex_volume: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeFlexVolumeArgsDict']]
+        """
+        Represents a generic volume resource that is provisioned/attached using an exec based plugin. This is an alpha feature and may change in future.
+        """
+        flocker: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeFlockerArgsDict']]
+        """
+        Represents a Flocker volume attached to a kubelet's host machine and exposed to the pod for its usage. This depends on the Flocker control service being running
+        """
+        gce_persistent_disk: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeGcePersistentDiskArgsDict']]
+        """
+        Represents a GCE Disk resource that is attached to a kubelet's host machine and then exposed to the pod. Provisioned by an admin. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+        """
+        git_repo: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeGitRepoArgsDict']]
+        """
+        GitRepo represents a git repository at a particular revision.
+        """
+        glusterfs: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeGlusterfsArgsDict']]
+        """
+        Represents a Glusterfs volume that is attached to a host and exposed to the pod. Provisioned by an admin. More info: https://examples.k8s.io/volumes/glusterfs/README.md
+        """
+        host_path: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeHostPathArgsDict']]
+        """
+        Represents a directory on the host. Provisioned by a developer or tester. This is useful for single-node development and testing only! On-host storage is not supported in any way and WILL NOT WORK in a multi-node cluster. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath
+        """
+        iscsi: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeIscsiArgsDict']]
+        """
+        Represents an ISCSI Disk resource that is attached to a kubelet's host machine and then exposed to the pod. Provisioned by an admin.
+        """
+        local: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeLocalArgsDict']]
+        """
+        Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Volume's name. Must be a DNS_LABEL and unique within the pod. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        """
+        nfs: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeNfsArgsDict']]
+        """
+        Represents an NFS mount on the host. Provisioned by an admin. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+        """
+        persistent_volume_claim: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumePersistentVolumeClaimArgsDict']]
+        """
+        The specification of a persistent volume.
+        """
+        photon_persistent_disk: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumePhotonPersistentDiskArgsDict']]
+        """
+        Represents a PhotonController persistent disk attached and mounted on kubelets host machine
+        """
+        projected: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeProjectedArgsDict']]
+        """
+        Projected represents a single volume that projects several volume sources into the same directory. More info: https://kubernetes.io/docs/concepts/storage/volumes/#projected
+        """
+        quobyte: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeQuobyteArgsDict']]
+        """
+        Quobyte represents a Quobyte mount on the host that shares a pod's lifetime
+        """
+        rbd: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeRbdArgsDict']]
+        """
+        Represents a Rados Block Device mount on the host that shares a pod's lifetime. More info: https://examples.k8s.io/volumes/rbd/README.md
+        """
+        secret: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeSecretArgsDict']]
+        """
+        Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secrets
+        """
+        vsphere_volume: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeVsphereVolumeArgsDict']]
+        """
+        Represents a vSphere volume attached and mounted on kubelets host machine
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecVolumeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecVolumeArgs:
+    def __init__(__self__, *,
+                 aws_elastic_block_store: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeAwsElasticBlockStoreArgs']] = None,
+                 azure_disk: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeAzureDiskArgs']] = None,
+                 azure_file: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeAzureFileArgs']] = None,
+                 ceph_fs: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeCephFsArgs']] = None,
+                 cinder: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeCinderArgs']] = None,
+                 config_map: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeConfigMapArgs']] = None,
+                 csi: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeCsiArgs']] = None,
+                 downward_api: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeDownwardApiArgs']] = None,
+                 empty_dir: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeEmptyDirArgs']] = None,
+                 ephemeral: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeEphemeralArgs']] = None,
+                 fc: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeFcArgs']] = None,
+                 flex_volume: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeFlexVolumeArgs']] = None,
+                 flocker: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeFlockerArgs']] = None,
+                 gce_persistent_disk: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeGcePersistentDiskArgs']] = None,
+                 git_repo: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeGitRepoArgs']] = None,
+                 glusterfs: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeGlusterfsArgs']] = None,
+                 host_path: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeHostPathArgs']] = None,
+                 iscsi: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeIscsiArgs']] = None,
+                 local: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeLocalArgs']] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 nfs: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeNfsArgs']] = None,
+                 persistent_volume_claim: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumePersistentVolumeClaimArgs']] = None,
+                 photon_persistent_disk: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumePhotonPersistentDiskArgs']] = None,
+                 projected: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeProjectedArgs']] = None,
+                 quobyte: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeQuobyteArgs']] = None,
+                 rbd: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeRbdArgs']] = None,
+                 secret: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeSecretArgs']] = None,
+                 vsphere_volume: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeVsphereVolumeArgs']] = None):
+        """
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeAwsElasticBlockStoreArgs'] aws_elastic_block_store: Represents an AWS Disk resource that is attached to a kubelet's host machine and then exposed to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeAzureDiskArgs'] azure_disk: Represents an Azure Data Disk mount on the host and bind mount to the pod.
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeAzureFileArgs'] azure_file: Represents an Azure File Service mount on the host and bind mount to the pod.
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeCephFsArgs'] ceph_fs: Represents a Ceph FS mount on the host that shares a pod's lifetime
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeCinderArgs'] cinder: Represents a cinder volume attached and mounted on kubelets host machine. More info: https://examples.k8s.io/mysql-cinder-pd/README.md
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeConfigMapArgs'] config_map: ConfigMap represents a configMap that should populate this volume
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeCsiArgs'] csi: Represents a CSI Volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#csi
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeDownwardApiArgs'] downward_api: DownwardAPI represents downward API about the pod that should populate this volume
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeEmptyDirArgs'] empty_dir: EmptyDir represents a temporary directory that shares a pod's lifetime. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeEphemeralArgs'] ephemeral: Represents an ephemeral volume that is handled by a normal storage driver. More info: https://kubernetes.io/docs/concepts/storage/ephemeral-volumes/#generic-ephemeral-volumes
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeFcArgs'] fc: Represents a Fibre Channel resource that is attached to a kubelet's host machine and then exposed to the pod.
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeFlexVolumeArgs'] flex_volume: Represents a generic volume resource that is provisioned/attached using an exec based plugin. This is an alpha feature and may change in future.
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeFlockerArgs'] flocker: Represents a Flocker volume attached to a kubelet's host machine and exposed to the pod for its usage. This depends on the Flocker control service being running
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeGcePersistentDiskArgs'] gce_persistent_disk: Represents a GCE Disk resource that is attached to a kubelet's host machine and then exposed to the pod. Provisioned by an admin. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeGitRepoArgs'] git_repo: GitRepo represents a git repository at a particular revision.
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeGlusterfsArgs'] glusterfs: Represents a Glusterfs volume that is attached to a host and exposed to the pod. Provisioned by an admin. More info: https://examples.k8s.io/volumes/glusterfs/README.md
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeHostPathArgs'] host_path: Represents a directory on the host. Provisioned by a developer or tester. This is useful for single-node development and testing only! On-host storage is not supported in any way and WILL NOT WORK in a multi-node cluster. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeIscsiArgs'] iscsi: Represents an ISCSI Disk resource that is attached to a kubelet's host machine and then exposed to the pod. Provisioned by an admin.
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeLocalArgs'] local: Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local
+        :param pulumi.Input[str] name: Volume's name. Must be a DNS_LABEL and unique within the pod. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeNfsArgs'] nfs: Represents an NFS mount on the host. Provisioned by an admin. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumePersistentVolumeClaimArgs'] persistent_volume_claim: The specification of a persistent volume.
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumePhotonPersistentDiskArgs'] photon_persistent_disk: Represents a PhotonController persistent disk attached and mounted on kubelets host machine
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeProjectedArgs'] projected: Projected represents a single volume that projects several volume sources into the same directory. More info: https://kubernetes.io/docs/concepts/storage/volumes/#projected
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeQuobyteArgs'] quobyte: Quobyte represents a Quobyte mount on the host that shares a pod's lifetime
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeRbdArgs'] rbd: Represents a Rados Block Device mount on the host that shares a pod's lifetime. More info: https://examples.k8s.io/volumes/rbd/README.md
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeSecretArgs'] secret: Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secrets
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeVsphereVolumeArgs'] vsphere_volume: Represents a vSphere volume attached and mounted on kubelets host machine
+        """
+        if aws_elastic_block_store is not None:
+            pulumi.set(__self__, "aws_elastic_block_store", aws_elastic_block_store)
+        if azure_disk is not None:
+            pulumi.set(__self__, "azure_disk", azure_disk)
+        if azure_file is not None:
+            pulumi.set(__self__, "azure_file", azure_file)
+        if ceph_fs is not None:
+            pulumi.set(__self__, "ceph_fs", ceph_fs)
+        if cinder is not None:
+            pulumi.set(__self__, "cinder", cinder)
+        if config_map is not None:
+            pulumi.set(__self__, "config_map", config_map)
+        if csi is not None:
+            pulumi.set(__self__, "csi", csi)
+        if downward_api is not None:
+            pulumi.set(__self__, "downward_api", downward_api)
+        if empty_dir is not None:
+            pulumi.set(__self__, "empty_dir", empty_dir)
+        if ephemeral is not None:
+            pulumi.set(__self__, "ephemeral", ephemeral)
+        if fc is not None:
+            pulumi.set(__self__, "fc", fc)
+        if flex_volume is not None:
+            pulumi.set(__self__, "flex_volume", flex_volume)
+        if flocker is not None:
+            pulumi.set(__self__, "flocker", flocker)
+        if gce_persistent_disk is not None:
+            pulumi.set(__self__, "gce_persistent_disk", gce_persistent_disk)
+        if git_repo is not None:
+            pulumi.set(__self__, "git_repo", git_repo)
+        if glusterfs is not None:
+            pulumi.set(__self__, "glusterfs", glusterfs)
+        if host_path is not None:
+            pulumi.set(__self__, "host_path", host_path)
+        if iscsi is not None:
+            pulumi.set(__self__, "iscsi", iscsi)
+        if local is not None:
+            pulumi.set(__self__, "local", local)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if nfs is not None:
+            pulumi.set(__self__, "nfs", nfs)
+        if persistent_volume_claim is not None:
+            pulumi.set(__self__, "persistent_volume_claim", persistent_volume_claim)
+        if photon_persistent_disk is not None:
+            pulumi.set(__self__, "photon_persistent_disk", photon_persistent_disk)
+        if projected is not None:
+            pulumi.set(__self__, "projected", projected)
+        if quobyte is not None:
+            pulumi.set(__self__, "quobyte", quobyte)
+        if rbd is not None:
+            pulumi.set(__self__, "rbd", rbd)
+        if secret is not None:
+            pulumi.set(__self__, "secret", secret)
+        if vsphere_volume is not None:
+            pulumi.set(__self__, "vsphere_volume", vsphere_volume)
+
+    @property
+    @pulumi.getter(name="awsElasticBlockStore")
+    def aws_elastic_block_store(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeAwsElasticBlockStoreArgs']]:
+        """
+        Represents an AWS Disk resource that is attached to a kubelet's host machine and then exposed to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+        """
+        return pulumi.get(self, "aws_elastic_block_store")
+
+    @aws_elastic_block_store.setter
+    def aws_elastic_block_store(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeAwsElasticBlockStoreArgs']]):
+        pulumi.set(self, "aws_elastic_block_store", value)
+
+    @property
+    @pulumi.getter(name="azureDisk")
+    def azure_disk(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeAzureDiskArgs']]:
+        """
+        Represents an Azure Data Disk mount on the host and bind mount to the pod.
+        """
+        return pulumi.get(self, "azure_disk")
+
+    @azure_disk.setter
+    def azure_disk(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeAzureDiskArgs']]):
+        pulumi.set(self, "azure_disk", value)
+
+    @property
+    @pulumi.getter(name="azureFile")
+    def azure_file(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeAzureFileArgs']]:
+        """
+        Represents an Azure File Service mount on the host and bind mount to the pod.
+        """
+        return pulumi.get(self, "azure_file")
+
+    @azure_file.setter
+    def azure_file(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeAzureFileArgs']]):
+        pulumi.set(self, "azure_file", value)
+
+    @property
+    @pulumi.getter(name="cephFs")
+    def ceph_fs(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeCephFsArgs']]:
+        """
+        Represents a Ceph FS mount on the host that shares a pod's lifetime
+        """
+        return pulumi.get(self, "ceph_fs")
+
+    @ceph_fs.setter
+    def ceph_fs(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeCephFsArgs']]):
+        pulumi.set(self, "ceph_fs", value)
+
+    @property
+    @pulumi.getter
+    def cinder(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeCinderArgs']]:
+        """
+        Represents a cinder volume attached and mounted on kubelets host machine. More info: https://examples.k8s.io/mysql-cinder-pd/README.md
+        """
+        return pulumi.get(self, "cinder")
+
+    @cinder.setter
+    def cinder(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeCinderArgs']]):
+        pulumi.set(self, "cinder", value)
+
+    @property
+    @pulumi.getter(name="configMap")
+    def config_map(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeConfigMapArgs']]:
+        """
+        ConfigMap represents a configMap that should populate this volume
+        """
+        return pulumi.get(self, "config_map")
+
+    @config_map.setter
+    def config_map(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeConfigMapArgs']]):
+        pulumi.set(self, "config_map", value)
+
+    @property
+    @pulumi.getter
+    def csi(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeCsiArgs']]:
+        """
+        Represents a CSI Volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#csi
+        """
+        return pulumi.get(self, "csi")
+
+    @csi.setter
+    def csi(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeCsiArgs']]):
+        pulumi.set(self, "csi", value)
+
+    @property
+    @pulumi.getter(name="downwardApi")
+    def downward_api(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeDownwardApiArgs']]:
+        """
+        DownwardAPI represents downward API about the pod that should populate this volume
+        """
+        return pulumi.get(self, "downward_api")
+
+    @downward_api.setter
+    def downward_api(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeDownwardApiArgs']]):
+        pulumi.set(self, "downward_api", value)
+
+    @property
+    @pulumi.getter(name="emptyDir")
+    def empty_dir(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeEmptyDirArgs']]:
+        """
+        EmptyDir represents a temporary directory that shares a pod's lifetime. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir
+        """
+        return pulumi.get(self, "empty_dir")
+
+    @empty_dir.setter
+    def empty_dir(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeEmptyDirArgs']]):
+        pulumi.set(self, "empty_dir", value)
+
+    @property
+    @pulumi.getter
+    def ephemeral(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeEphemeralArgs']]:
+        """
+        Represents an ephemeral volume that is handled by a normal storage driver. More info: https://kubernetes.io/docs/concepts/storage/ephemeral-volumes/#generic-ephemeral-volumes
+        """
+        return pulumi.get(self, "ephemeral")
+
+    @ephemeral.setter
+    def ephemeral(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeEphemeralArgs']]):
+        pulumi.set(self, "ephemeral", value)
+
+    @property
+    @pulumi.getter
+    def fc(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeFcArgs']]:
+        """
+        Represents a Fibre Channel resource that is attached to a kubelet's host machine and then exposed to the pod.
+        """
+        return pulumi.get(self, "fc")
+
+    @fc.setter
+    def fc(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeFcArgs']]):
+        pulumi.set(self, "fc", value)
+
+    @property
+    @pulumi.getter(name="flexVolume")
+    def flex_volume(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeFlexVolumeArgs']]:
+        """
+        Represents a generic volume resource that is provisioned/attached using an exec based plugin. This is an alpha feature and may change in future.
+        """
+        return pulumi.get(self, "flex_volume")
+
+    @flex_volume.setter
+    def flex_volume(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeFlexVolumeArgs']]):
+        pulumi.set(self, "flex_volume", value)
+
+    @property
+    @pulumi.getter
+    def flocker(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeFlockerArgs']]:
+        """
+        Represents a Flocker volume attached to a kubelet's host machine and exposed to the pod for its usage. This depends on the Flocker control service being running
+        """
+        return pulumi.get(self, "flocker")
+
+    @flocker.setter
+    def flocker(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeFlockerArgs']]):
+        pulumi.set(self, "flocker", value)
+
+    @property
+    @pulumi.getter(name="gcePersistentDisk")
+    def gce_persistent_disk(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeGcePersistentDiskArgs']]:
+        """
+        Represents a GCE Disk resource that is attached to a kubelet's host machine and then exposed to the pod. Provisioned by an admin. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+        """
+        return pulumi.get(self, "gce_persistent_disk")
+
+    @gce_persistent_disk.setter
+    def gce_persistent_disk(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeGcePersistentDiskArgs']]):
+        pulumi.set(self, "gce_persistent_disk", value)
+
+    @property
+    @pulumi.getter(name="gitRepo")
+    def git_repo(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeGitRepoArgs']]:
+        """
+        GitRepo represents a git repository at a particular revision.
+        """
+        return pulumi.get(self, "git_repo")
+
+    @git_repo.setter
+    def git_repo(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeGitRepoArgs']]):
+        pulumi.set(self, "git_repo", value)
+
+    @property
+    @pulumi.getter
+    def glusterfs(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeGlusterfsArgs']]:
+        """
+        Represents a Glusterfs volume that is attached to a host and exposed to the pod. Provisioned by an admin. More info: https://examples.k8s.io/volumes/glusterfs/README.md
+        """
+        return pulumi.get(self, "glusterfs")
+
+    @glusterfs.setter
+    def glusterfs(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeGlusterfsArgs']]):
+        pulumi.set(self, "glusterfs", value)
+
+    @property
+    @pulumi.getter(name="hostPath")
+    def host_path(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeHostPathArgs']]:
+        """
+        Represents a directory on the host. Provisioned by a developer or tester. This is useful for single-node development and testing only! On-host storage is not supported in any way and WILL NOT WORK in a multi-node cluster. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath
+        """
+        return pulumi.get(self, "host_path")
+
+    @host_path.setter
+    def host_path(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeHostPathArgs']]):
+        pulumi.set(self, "host_path", value)
+
+    @property
+    @pulumi.getter
+    def iscsi(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeIscsiArgs']]:
+        """
+        Represents an ISCSI Disk resource that is attached to a kubelet's host machine and then exposed to the pod. Provisioned by an admin.
+        """
+        return pulumi.get(self, "iscsi")
+
+    @iscsi.setter
+    def iscsi(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeIscsiArgs']]):
+        pulumi.set(self, "iscsi", value)
+
+    @property
+    @pulumi.getter
+    def local(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeLocalArgs']]:
+        """
+        Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local
+        """
+        return pulumi.get(self, "local")
+
+    @local.setter
+    def local(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeLocalArgs']]):
+        pulumi.set(self, "local", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Volume's name. Must be a DNS_LABEL and unique within the pod. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def nfs(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeNfsArgs']]:
+        """
+        Represents an NFS mount on the host. Provisioned by an admin. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+        """
+        return pulumi.get(self, "nfs")
+
+    @nfs.setter
+    def nfs(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeNfsArgs']]):
+        pulumi.set(self, "nfs", value)
+
+    @property
+    @pulumi.getter(name="persistentVolumeClaim")
+    def persistent_volume_claim(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumePersistentVolumeClaimArgs']]:
+        """
+        The specification of a persistent volume.
+        """
+        return pulumi.get(self, "persistent_volume_claim")
+
+    @persistent_volume_claim.setter
+    def persistent_volume_claim(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumePersistentVolumeClaimArgs']]):
+        pulumi.set(self, "persistent_volume_claim", value)
+
+    @property
+    @pulumi.getter(name="photonPersistentDisk")
+    def photon_persistent_disk(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumePhotonPersistentDiskArgs']]:
+        """
+        Represents a PhotonController persistent disk attached and mounted on kubelets host machine
+        """
+        return pulumi.get(self, "photon_persistent_disk")
+
+    @photon_persistent_disk.setter
+    def photon_persistent_disk(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumePhotonPersistentDiskArgs']]):
+        pulumi.set(self, "photon_persistent_disk", value)
+
+    @property
+    @pulumi.getter
+    def projected(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeProjectedArgs']]:
+        """
+        Projected represents a single volume that projects several volume sources into the same directory. More info: https://kubernetes.io/docs/concepts/storage/volumes/#projected
+        """
+        return pulumi.get(self, "projected")
+
+    @projected.setter
+    def projected(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeProjectedArgs']]):
+        pulumi.set(self, "projected", value)
+
+    @property
+    @pulumi.getter
+    def quobyte(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeQuobyteArgs']]:
+        """
+        Quobyte represents a Quobyte mount on the host that shares a pod's lifetime
+        """
+        return pulumi.get(self, "quobyte")
+
+    @quobyte.setter
+    def quobyte(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeQuobyteArgs']]):
+        pulumi.set(self, "quobyte", value)
+
+    @property
+    @pulumi.getter
+    def rbd(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeRbdArgs']]:
+        """
+        Represents a Rados Block Device mount on the host that shares a pod's lifetime. More info: https://examples.k8s.io/volumes/rbd/README.md
+        """
+        return pulumi.get(self, "rbd")
+
+    @rbd.setter
+    def rbd(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeRbdArgs']]):
+        pulumi.set(self, "rbd", value)
+
+    @property
+    @pulumi.getter
+    def secret(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeSecretArgs']]:
+        """
+        Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secrets
+        """
+        return pulumi.get(self, "secret")
+
+    @secret.setter
+    def secret(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeSecretArgs']]):
+        pulumi.set(self, "secret", value)
+
+    @property
+    @pulumi.getter(name="vsphereVolume")
+    def vsphere_volume(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeVsphereVolumeArgs']]:
+        """
+        Represents a vSphere volume attached and mounted on kubelets host machine
+        """
+        return pulumi.get(self, "vsphere_volume")
+
+    @vsphere_volume.setter
+    def vsphere_volume(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeVsphereVolumeArgs']]):
+        pulumi.set(self, "vsphere_volume", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecVolumeAwsElasticBlockStoreArgsDict(TypedDict):
+        volume_id: pulumi.Input[str]
+        """
+        Unique ID of the persistent disk resource in AWS (Amazon EBS volume). More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+        """
+        fs_type: NotRequired[pulumi.Input[str]]
+        """
+        Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+        """
+        partition: NotRequired[pulumi.Input[int]]
+        """
+        The partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as "1". Similarly, the volume partition for /dev/sda is "0" (or you can leave the property empty).
+        """
+        read_only: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to set the read-only property in VolumeMounts to "true". If omitted, the default is "false". More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecVolumeAwsElasticBlockStoreArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecVolumeAwsElasticBlockStoreArgs:
+    def __init__(__self__, *,
+                 volume_id: pulumi.Input[str],
+                 fs_type: Optional[pulumi.Input[str]] = None,
+                 partition: Optional[pulumi.Input[int]] = None,
+                 read_only: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] volume_id: Unique ID of the persistent disk resource in AWS (Amazon EBS volume). More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+        :param pulumi.Input[str] fs_type: Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+        :param pulumi.Input[int] partition: The partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as "1". Similarly, the volume partition for /dev/sda is "0" (or you can leave the property empty).
+        :param pulumi.Input[bool] read_only: Whether to set the read-only property in VolumeMounts to "true". If omitted, the default is "false". More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+        """
+        pulumi.set(__self__, "volume_id", volume_id)
+        if fs_type is not None:
+            pulumi.set(__self__, "fs_type", fs_type)
+        if partition is not None:
+            pulumi.set(__self__, "partition", partition)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+
+    @property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[str]:
+        """
+        Unique ID of the persistent disk resource in AWS (Amazon EBS volume). More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "volume_id", value)
+
+    @property
+    @pulumi.getter(name="fsType")
+    def fs_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+        """
+        return pulumi.get(self, "fs_type")
+
+    @fs_type.setter
+    def fs_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fs_type", value)
+
+    @property
+    @pulumi.getter
+    def partition(self) -> Optional[pulumi.Input[int]]:
+        """
+        The partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as "1". Similarly, the volume partition for /dev/sda is "0" (or you can leave the property empty).
+        """
+        return pulumi.get(self, "partition")
+
+    @partition.setter
+    def partition(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "partition", value)
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to set the read-only property in VolumeMounts to "true". If omitted, the default is "false". More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+        """
+        return pulumi.get(self, "read_only")
+
+    @read_only.setter
+    def read_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "read_only", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecVolumeAzureDiskArgsDict(TypedDict):
+        caching_mode: pulumi.Input[str]
+        """
+        Host Caching mode: None, Read Only, Read Write.
+        """
+        data_disk_uri: pulumi.Input[str]
+        """
+        The URI the data disk in the blob storage
+        """
+        disk_name: pulumi.Input[str]
+        """
+        The Name of the data disk in the blob storage
+        """
+        fs_type: NotRequired[pulumi.Input[str]]
+        """
+        Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+        """
+        kind: NotRequired[pulumi.Input[str]]
+        """
+        The type for the data disk. Expected values: Shared, Dedicated, Managed. Defaults to Shared
+        """
+        read_only: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to force the read-only setting in VolumeMounts. Defaults to false (read/write). Defaults to `false`.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecVolumeAzureDiskArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecVolumeAzureDiskArgs:
+    def __init__(__self__, *,
+                 caching_mode: pulumi.Input[str],
+                 data_disk_uri: pulumi.Input[str],
+                 disk_name: pulumi.Input[str],
+                 fs_type: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input[str]] = None,
+                 read_only: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] caching_mode: Host Caching mode: None, Read Only, Read Write.
+        :param pulumi.Input[str] data_disk_uri: The URI the data disk in the blob storage
+        :param pulumi.Input[str] disk_name: The Name of the data disk in the blob storage
+        :param pulumi.Input[str] fs_type: Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+        :param pulumi.Input[str] kind: The type for the data disk. Expected values: Shared, Dedicated, Managed. Defaults to Shared
+        :param pulumi.Input[bool] read_only: Whether to force the read-only setting in VolumeMounts. Defaults to false (read/write). Defaults to `false`.
+        """
+        pulumi.set(__self__, "caching_mode", caching_mode)
+        pulumi.set(__self__, "data_disk_uri", data_disk_uri)
+        pulumi.set(__self__, "disk_name", disk_name)
+        if fs_type is not None:
+            pulumi.set(__self__, "fs_type", fs_type)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+
+    @property
+    @pulumi.getter(name="cachingMode")
+    def caching_mode(self) -> pulumi.Input[str]:
+        """
+        Host Caching mode: None, Read Only, Read Write.
+        """
+        return pulumi.get(self, "caching_mode")
+
+    @caching_mode.setter
+    def caching_mode(self, value: pulumi.Input[str]):
+        pulumi.set(self, "caching_mode", value)
+
+    @property
+    @pulumi.getter(name="dataDiskUri")
+    def data_disk_uri(self) -> pulumi.Input[str]:
+        """
+        The URI the data disk in the blob storage
+        """
+        return pulumi.get(self, "data_disk_uri")
+
+    @data_disk_uri.setter
+    def data_disk_uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "data_disk_uri", value)
+
+    @property
+    @pulumi.getter(name="diskName")
+    def disk_name(self) -> pulumi.Input[str]:
+        """
+        The Name of the data disk in the blob storage
+        """
+        return pulumi.get(self, "disk_name")
+
+    @disk_name.setter
+    def disk_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "disk_name", value)
+
+    @property
+    @pulumi.getter(name="fsType")
+    def fs_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+        """
+        return pulumi.get(self, "fs_type")
+
+    @fs_type.setter
+    def fs_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fs_type", value)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type for the data disk. Expected values: Shared, Dedicated, Managed. Defaults to Shared
+        """
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kind", value)
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to force the read-only setting in VolumeMounts. Defaults to false (read/write). Defaults to `false`.
+        """
+        return pulumi.get(self, "read_only")
+
+    @read_only.setter
+    def read_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "read_only", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecVolumeAzureFileArgsDict(TypedDict):
+        secret_name: pulumi.Input[str]
+        """
+        The name of secret that contains Azure Storage Account Name and Key
+        """
+        share_name: pulumi.Input[str]
+        """
+        Share Name
+        """
+        read_only: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to force the read-only setting in VolumeMounts. Defaults to false (read/write).
+        """
+        secret_namespace: NotRequired[pulumi.Input[str]]
+        """
+        The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is "default" namespace.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecVolumeAzureFileArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecVolumeAzureFileArgs:
+    def __init__(__self__, *,
+                 secret_name: pulumi.Input[str],
+                 share_name: pulumi.Input[str],
+                 read_only: Optional[pulumi.Input[bool]] = None,
+                 secret_namespace: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] secret_name: The name of secret that contains Azure Storage Account Name and Key
+        :param pulumi.Input[str] share_name: Share Name
+        :param pulumi.Input[bool] read_only: Whether to force the read-only setting in VolumeMounts. Defaults to false (read/write).
+        :param pulumi.Input[str] secret_namespace: The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is "default" namespace.
+        """
+        pulumi.set(__self__, "secret_name", secret_name)
+        pulumi.set(__self__, "share_name", share_name)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+        if secret_namespace is not None:
+            pulumi.set(__self__, "secret_namespace", secret_namespace)
+
+    @property
+    @pulumi.getter(name="secretName")
+    def secret_name(self) -> pulumi.Input[str]:
+        """
+        The name of secret that contains Azure Storage Account Name and Key
+        """
+        return pulumi.get(self, "secret_name")
+
+    @secret_name.setter
+    def secret_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "secret_name", value)
+
+    @property
+    @pulumi.getter(name="shareName")
+    def share_name(self) -> pulumi.Input[str]:
+        """
+        Share Name
+        """
+        return pulumi.get(self, "share_name")
+
+    @share_name.setter
+    def share_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "share_name", value)
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to force the read-only setting in VolumeMounts. Defaults to false (read/write).
+        """
+        return pulumi.get(self, "read_only")
+
+    @read_only.setter
+    def read_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "read_only", value)
+
+    @property
+    @pulumi.getter(name="secretNamespace")
+    def secret_namespace(self) -> Optional[pulumi.Input[str]]:
+        """
+        The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is "default" namespace.
+        """
+        return pulumi.get(self, "secret_namespace")
+
+    @secret_namespace.setter
+    def secret_namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secret_namespace", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecVolumeCephFsArgsDict(TypedDict):
+        monitors: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        Monitors is a collection of Ceph monitors. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+        """
+        path: NotRequired[pulumi.Input[str]]
+        """
+        Used as the mounted root, rather than the full Ceph tree, default is /
+        """
+        read_only: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to force the read-only setting in VolumeMounts. Defaults to `false` (read/write). More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+        """
+        secret_file: NotRequired[pulumi.Input[str]]
+        """
+        The path to key ring for User, default is `/etc/ceph/user.secret`. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+        """
+        secret_ref: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeCephFsSecretRefArgsDict']]
+        """
+        Reference to the authentication secret for User, default is empty. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+        """
+        user: NotRequired[pulumi.Input[str]]
+        """
+        User is the rados user name, default is admin. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecVolumeCephFsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecVolumeCephFsArgs:
+    def __init__(__self__, *,
+                 monitors: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 path: Optional[pulumi.Input[str]] = None,
+                 read_only: Optional[pulumi.Input[bool]] = None,
+                 secret_file: Optional[pulumi.Input[str]] = None,
+                 secret_ref: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeCephFsSecretRefArgs']] = None,
+                 user: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] monitors: Monitors is a collection of Ceph monitors. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+        :param pulumi.Input[str] path: Used as the mounted root, rather than the full Ceph tree, default is /
+        :param pulumi.Input[bool] read_only: Whether to force the read-only setting in VolumeMounts. Defaults to `false` (read/write). More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+        :param pulumi.Input[str] secret_file: The path to key ring for User, default is `/etc/ceph/user.secret`. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeCephFsSecretRefArgs'] secret_ref: Reference to the authentication secret for User, default is empty. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+        :param pulumi.Input[str] user: User is the rados user name, default is admin. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+        """
+        pulumi.set(__self__, "monitors", monitors)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+        if secret_file is not None:
+            pulumi.set(__self__, "secret_file", secret_file)
+        if secret_ref is not None:
+            pulumi.set(__self__, "secret_ref", secret_ref)
+        if user is not None:
+            pulumi.set(__self__, "user", user)
+
+    @property
+    @pulumi.getter
+    def monitors(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Monitors is a collection of Ceph monitors. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+        """
+        return pulumi.get(self, "monitors")
+
+    @monitors.setter
+    def monitors(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "monitors", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Used as the mounted root, rather than the full Ceph tree, default is /
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to force the read-only setting in VolumeMounts. Defaults to `false` (read/write). More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+        """
+        return pulumi.get(self, "read_only")
+
+    @read_only.setter
+    def read_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "read_only", value)
+
+    @property
+    @pulumi.getter(name="secretFile")
+    def secret_file(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path to key ring for User, default is `/etc/ceph/user.secret`. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+        """
+        return pulumi.get(self, "secret_file")
+
+    @secret_file.setter
+    def secret_file(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secret_file", value)
+
+    @property
+    @pulumi.getter(name="secretRef")
+    def secret_ref(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeCephFsSecretRefArgs']]:
+        """
+        Reference to the authentication secret for User, default is empty. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+        """
+        return pulumi.get(self, "secret_ref")
+
+    @secret_ref.setter
+    def secret_ref(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeCephFsSecretRefArgs']]):
+        pulumi.set(self, "secret_ref", value)
+
+    @property
+    @pulumi.getter
+    def user(self) -> Optional[pulumi.Input[str]]:
+        """
+        User is the rados user name, default is admin. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+        """
+        return pulumi.get(self, "user")
+
+    @user.setter
+    def user(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecVolumeCephFsSecretRefArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        """
+        namespace: NotRequired[pulumi.Input[str]]
+        """
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecVolumeCephFsSecretRefArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecVolumeCephFsSecretRefArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 namespace: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        :param pulumi.Input[str] namespace: Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        """
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecVolumeCinderArgsDict(TypedDict):
+        volume_id: pulumi.Input[str]
+        """
+        Volume ID used to identify the volume in Cinder. More info: https://examples.k8s.io/mysql-cinder-pd/README.md
+        """
+        fs_type: NotRequired[pulumi.Input[str]]
+        """
+        Filesystem type to mount. Must be a filesystem type supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://examples.k8s.io/mysql-cinder-pd/README.md
+        """
+        read_only: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to force the read-only setting in VolumeMounts. Defaults to false (read/write). More info: https://examples.k8s.io/mysql-cinder-pd/README.md
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecVolumeCinderArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecVolumeCinderArgs:
+    def __init__(__self__, *,
+                 volume_id: pulumi.Input[str],
+                 fs_type: Optional[pulumi.Input[str]] = None,
+                 read_only: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] volume_id: Volume ID used to identify the volume in Cinder. More info: https://examples.k8s.io/mysql-cinder-pd/README.md
+        :param pulumi.Input[str] fs_type: Filesystem type to mount. Must be a filesystem type supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://examples.k8s.io/mysql-cinder-pd/README.md
+        :param pulumi.Input[bool] read_only: Whether to force the read-only setting in VolumeMounts. Defaults to false (read/write). More info: https://examples.k8s.io/mysql-cinder-pd/README.md
+        """
+        pulumi.set(__self__, "volume_id", volume_id)
+        if fs_type is not None:
+            pulumi.set(__self__, "fs_type", fs_type)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+
+    @property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[str]:
+        """
+        Volume ID used to identify the volume in Cinder. More info: https://examples.k8s.io/mysql-cinder-pd/README.md
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "volume_id", value)
+
+    @property
+    @pulumi.getter(name="fsType")
+    def fs_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Filesystem type to mount. Must be a filesystem type supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://examples.k8s.io/mysql-cinder-pd/README.md
+        """
+        return pulumi.get(self, "fs_type")
+
+    @fs_type.setter
+    def fs_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fs_type", value)
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to force the read-only setting in VolumeMounts. Defaults to false (read/write). More info: https://examples.k8s.io/mysql-cinder-pd/README.md
+        """
+        return pulumi.get(self, "read_only")
+
+    @read_only.setter
+    def read_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "read_only", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecVolumeConfigMapArgsDict(TypedDict):
+        default_mode: NotRequired[pulumi.Input[str]]
+        """
+        Optional: mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. Defaults to `0644`.
+        """
+        items: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeConfigMapItemArgsDict']]]]
+        """
+        If unspecified, each key-value pair in the Data field of the referenced ConfigMap will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the ConfigMap, the volume setup will error unless it is marked optional. Paths must be relative and may not contain the '..' path or start with '..'.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        """
+        optional: NotRequired[pulumi.Input[bool]]
+        """
+        Optional: Specify whether the ConfigMap or its keys must be defined.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecVolumeConfigMapArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecVolumeConfigMapArgs:
+    def __init__(__self__, *,
+                 default_mode: Optional[pulumi.Input[str]] = None,
+                 items: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeConfigMapItemArgs']]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 optional: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] default_mode: Optional: mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. Defaults to `0644`.
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeConfigMapItemArgs']]] items: If unspecified, each key-value pair in the Data field of the referenced ConfigMap will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the ConfigMap, the volume setup will error unless it is marked optional. Paths must be relative and may not contain the '..' path or start with '..'.
+        :param pulumi.Input[str] name: Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        :param pulumi.Input[bool] optional: Optional: Specify whether the ConfigMap or its keys must be defined.
+        """
+        if default_mode is not None:
+            pulumi.set(__self__, "default_mode", default_mode)
+        if items is not None:
+            pulumi.set(__self__, "items", items)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if optional is not None:
+            pulumi.set(__self__, "optional", optional)
+
+    @property
+    @pulumi.getter(name="defaultMode")
+    def default_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional: mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. Defaults to `0644`.
+        """
+        return pulumi.get(self, "default_mode")
+
+    @default_mode.setter
+    def default_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_mode", value)
+
+    @property
+    @pulumi.getter
+    def items(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeConfigMapItemArgs']]]]:
+        """
+        If unspecified, each key-value pair in the Data field of the referenced ConfigMap will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the ConfigMap, the volume setup will error unless it is marked optional. Paths must be relative and may not contain the '..' path or start with '..'.
+        """
+        return pulumi.get(self, "items")
+
+    @items.setter
+    def items(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeConfigMapItemArgs']]]]):
+        pulumi.set(self, "items", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def optional(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional: Specify whether the ConfigMap or its keys must be defined.
+        """
+        return pulumi.get(self, "optional")
+
+    @optional.setter
+    def optional(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "optional", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecVolumeConfigMapItemArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[str]]
+        """
+        The key to project.
+        """
+        mode: NotRequired[pulumi.Input[str]]
+        """
+        Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+        """
+        path: NotRequired[pulumi.Input[str]]
+        """
+        The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecVolumeConfigMapItemArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecVolumeConfigMapItemArgs:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[str]] = None,
+                 mode: Optional[pulumi.Input[str]] = None,
+                 path: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: The key to project.
+        :param pulumi.Input[str] mode: Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+        :param pulumi.Input[str] path: The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key to project.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mode", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecVolumeCsiArgsDict(TypedDict):
+        driver: pulumi.Input[str]
+        """
+        the name of the volume driver to use. More info: https://kubernetes.io/docs/concepts/storage/volumes/#csi
+        """
+        fs_type: NotRequired[pulumi.Input[str]]
+        """
+        Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+        """
+        node_publish_secret_ref: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeCsiNodePublishSecretRefArgsDict']]
+        """
+        A reference to the secret object containing sensitive information to pass to the CSI driver to complete the CSI NodePublishVolume and NodeUnpublishVolume calls.
+        """
+        read_only: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to set the read-only property in VolumeMounts to "true". If omitted, the default is "false". More info: https://kubernetes.io/docs/concepts/storage/volumes#csi
+        """
+        volume_attributes: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Attributes of the volume to publish.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecVolumeCsiArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecVolumeCsiArgs:
+    def __init__(__self__, *,
+                 driver: pulumi.Input[str],
+                 fs_type: Optional[pulumi.Input[str]] = None,
+                 node_publish_secret_ref: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeCsiNodePublishSecretRefArgs']] = None,
+                 read_only: Optional[pulumi.Input[bool]] = None,
+                 volume_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] driver: the name of the volume driver to use. More info: https://kubernetes.io/docs/concepts/storage/volumes/#csi
+        :param pulumi.Input[str] fs_type: Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeCsiNodePublishSecretRefArgs'] node_publish_secret_ref: A reference to the secret object containing sensitive information to pass to the CSI driver to complete the CSI NodePublishVolume and NodeUnpublishVolume calls.
+        :param pulumi.Input[bool] read_only: Whether to set the read-only property in VolumeMounts to "true". If omitted, the default is "false". More info: https://kubernetes.io/docs/concepts/storage/volumes#csi
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] volume_attributes: Attributes of the volume to publish.
+        """
+        pulumi.set(__self__, "driver", driver)
+        if fs_type is not None:
+            pulumi.set(__self__, "fs_type", fs_type)
+        if node_publish_secret_ref is not None:
+            pulumi.set(__self__, "node_publish_secret_ref", node_publish_secret_ref)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+        if volume_attributes is not None:
+            pulumi.set(__self__, "volume_attributes", volume_attributes)
+
+    @property
+    @pulumi.getter
+    def driver(self) -> pulumi.Input[str]:
+        """
+        the name of the volume driver to use. More info: https://kubernetes.io/docs/concepts/storage/volumes/#csi
+        """
+        return pulumi.get(self, "driver")
+
+    @driver.setter
+    def driver(self, value: pulumi.Input[str]):
+        pulumi.set(self, "driver", value)
+
+    @property
+    @pulumi.getter(name="fsType")
+    def fs_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+        """
+        return pulumi.get(self, "fs_type")
+
+    @fs_type.setter
+    def fs_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fs_type", value)
+
+    @property
+    @pulumi.getter(name="nodePublishSecretRef")
+    def node_publish_secret_ref(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeCsiNodePublishSecretRefArgs']]:
+        """
+        A reference to the secret object containing sensitive information to pass to the CSI driver to complete the CSI NodePublishVolume and NodeUnpublishVolume calls.
+        """
+        return pulumi.get(self, "node_publish_secret_ref")
+
+    @node_publish_secret_ref.setter
+    def node_publish_secret_ref(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeCsiNodePublishSecretRefArgs']]):
+        pulumi.set(self, "node_publish_secret_ref", value)
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to set the read-only property in VolumeMounts to "true". If omitted, the default is "false". More info: https://kubernetes.io/docs/concepts/storage/volumes#csi
+        """
+        return pulumi.get(self, "read_only")
+
+    @read_only.setter
+    def read_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "read_only", value)
+
+    @property
+    @pulumi.getter(name="volumeAttributes")
+    def volume_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Attributes of the volume to publish.
+        """
+        return pulumi.get(self, "volume_attributes")
+
+    @volume_attributes.setter
+    def volume_attributes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "volume_attributes", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecVolumeCsiNodePublishSecretRefArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecVolumeCsiNodePublishSecretRefArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecVolumeCsiNodePublishSecretRefArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecVolumeDownwardApiArgsDict(TypedDict):
+        default_mode: NotRequired[pulumi.Input[str]]
+        """
+        Optional: mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. Defaults to `0644`.
+        """
+        items: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeDownwardApiItemArgsDict']]]]
+        """
+        If unspecified, each key-value pair in the Data field of the referenced ConfigMap will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the ConfigMap, the volume setup will error. Paths must be relative and may not contain the '..' path or start with '..'.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecVolumeDownwardApiArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecVolumeDownwardApiArgs:
+    def __init__(__self__, *,
+                 default_mode: Optional[pulumi.Input[str]] = None,
+                 items: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeDownwardApiItemArgs']]]] = None):
+        """
+        :param pulumi.Input[str] default_mode: Optional: mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. Defaults to `0644`.
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeDownwardApiItemArgs']]] items: If unspecified, each key-value pair in the Data field of the referenced ConfigMap will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the ConfigMap, the volume setup will error. Paths must be relative and may not contain the '..' path or start with '..'.
+        """
+        if default_mode is not None:
+            pulumi.set(__self__, "default_mode", default_mode)
+        if items is not None:
+            pulumi.set(__self__, "items", items)
+
+    @property
+    @pulumi.getter(name="defaultMode")
+    def default_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional: mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. Defaults to `0644`.
+        """
+        return pulumi.get(self, "default_mode")
+
+    @default_mode.setter
+    def default_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_mode", value)
+
+    @property
+    @pulumi.getter
+    def items(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeDownwardApiItemArgs']]]]:
+        """
+        If unspecified, each key-value pair in the Data field of the referenced ConfigMap will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the ConfigMap, the volume setup will error. Paths must be relative and may not contain the '..' path or start with '..'.
+        """
+        return pulumi.get(self, "items")
+
+    @items.setter
+    def items(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeDownwardApiItemArgs']]]]):
+        pulumi.set(self, "items", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecVolumeDownwardApiItemArgsDict(TypedDict):
+        field_ref: pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeDownwardApiItemFieldRefArgsDict']
+        """
+        Required: Selects a field of the pod: only annotations, labels, name and namespace are supported.
+        """
+        path: pulumi.Input[str]
+        """
+        Path is the relative path name of the file to be created. Must not be absolute or contain the '..' path. Must be utf-8 encoded. The first item of the relative path must not start with '..'
+        """
+        mode: NotRequired[pulumi.Input[str]]
+        """
+        Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+        """
+        resource_field_ref: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeDownwardApiItemResourceFieldRefArgsDict']]
+        """
+        Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, requests.cpu and requests.memory) are currently supported.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecVolumeDownwardApiItemArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecVolumeDownwardApiItemArgs:
+    def __init__(__self__, *,
+                 field_ref: pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeDownwardApiItemFieldRefArgs'],
+                 path: pulumi.Input[str],
+                 mode: Optional[pulumi.Input[str]] = None,
+                 resource_field_ref: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeDownwardApiItemResourceFieldRefArgs']] = None):
+        """
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeDownwardApiItemFieldRefArgs'] field_ref: Required: Selects a field of the pod: only annotations, labels, name and namespace are supported.
+        :param pulumi.Input[str] path: Path is the relative path name of the file to be created. Must not be absolute or contain the '..' path. Must be utf-8 encoded. The first item of the relative path must not start with '..'
+        :param pulumi.Input[str] mode: Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeDownwardApiItemResourceFieldRefArgs'] resource_field_ref: Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, requests.cpu and requests.memory) are currently supported.
+        """
+        pulumi.set(__self__, "field_ref", field_ref)
+        pulumi.set(__self__, "path", path)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if resource_field_ref is not None:
+            pulumi.set(__self__, "resource_field_ref", resource_field_ref)
+
+    @property
+    @pulumi.getter(name="fieldRef")
+    def field_ref(self) -> pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeDownwardApiItemFieldRefArgs']:
+        """
+        Required: Selects a field of the pod: only annotations, labels, name and namespace are supported.
+        """
+        return pulumi.get(self, "field_ref")
+
+    @field_ref.setter
+    def field_ref(self, value: pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeDownwardApiItemFieldRefArgs']):
+        pulumi.set(self, "field_ref", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> pulumi.Input[str]:
+        """
+        Path is the relative path name of the file to be created. Must not be absolute or contain the '..' path. Must be utf-8 encoded. The first item of the relative path must not start with '..'
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: pulumi.Input[str]):
+        pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mode", value)
+
+    @property
+    @pulumi.getter(name="resourceFieldRef")
+    def resource_field_ref(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeDownwardApiItemResourceFieldRefArgs']]:
+        """
+        Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, requests.cpu and requests.memory) are currently supported.
+        """
+        return pulumi.get(self, "resource_field_ref")
+
+    @resource_field_ref.setter
+    def resource_field_ref(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeDownwardApiItemResourceFieldRefArgs']]):
+        pulumi.set(self, "resource_field_ref", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecVolumeDownwardApiItemFieldRefArgsDict(TypedDict):
+        api_version: NotRequired[pulumi.Input[str]]
+        """
+        Version of the schema the FieldPath is written in terms of, defaults to "v1". Defaults to `v1`.
+        """
+        field_path: NotRequired[pulumi.Input[str]]
+        """
+        Path of the field to select in the specified API version
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecVolumeDownwardApiItemFieldRefArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecVolumeDownwardApiItemFieldRefArgs:
+    def __init__(__self__, *,
+                 api_version: Optional[pulumi.Input[str]] = None,
+                 field_path: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] api_version: Version of the schema the FieldPath is written in terms of, defaults to "v1". Defaults to `v1`.
+        :param pulumi.Input[str] field_path: Path of the field to select in the specified API version
+        """
+        if api_version is not None:
+            pulumi.set(__self__, "api_version", api_version)
+        if field_path is not None:
+            pulumi.set(__self__, "field_path", field_path)
+
+    @property
+    @pulumi.getter(name="apiVersion")
+    def api_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Version of the schema the FieldPath is written in terms of, defaults to "v1". Defaults to `v1`.
+        """
+        return pulumi.get(self, "api_version")
+
+    @api_version.setter
+    def api_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "api_version", value)
+
+    @property
+    @pulumi.getter(name="fieldPath")
+    def field_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Path of the field to select in the specified API version
+        """
+        return pulumi.get(self, "field_path")
+
+    @field_path.setter
+    def field_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "field_path", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecVolumeDownwardApiItemResourceFieldRefArgsDict(TypedDict):
+        container_name: pulumi.Input[str]
+        resource: pulumi.Input[str]
+        """
+        Resource to select
+        """
+        divisor: NotRequired[pulumi.Input[str]]
+        """
+        Defaults to `1`.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecVolumeDownwardApiItemResourceFieldRefArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecVolumeDownwardApiItemResourceFieldRefArgs:
+    def __init__(__self__, *,
+                 container_name: pulumi.Input[str],
+                 resource: pulumi.Input[str],
+                 divisor: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] resource: Resource to select
+        :param pulumi.Input[str] divisor: Defaults to `1`.
+        """
+        pulumi.set(__self__, "container_name", container_name)
+        pulumi.set(__self__, "resource", resource)
+        if divisor is not None:
+            pulumi.set(__self__, "divisor", divisor)
+
+    @property
+    @pulumi.getter(name="containerName")
+    def container_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "container_name")
+
+    @container_name.setter
+    def container_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "container_name", value)
+
+    @property
+    @pulumi.getter
+    def resource(self) -> pulumi.Input[str]:
+        """
+        Resource to select
+        """
+        return pulumi.get(self, "resource")
+
+    @resource.setter
+    def resource(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource", value)
+
+    @property
+    @pulumi.getter
+    def divisor(self) -> Optional[pulumi.Input[str]]:
+        """
+        Defaults to `1`.
+        """
+        return pulumi.get(self, "divisor")
+
+    @divisor.setter
+    def divisor(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "divisor", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecVolumeEmptyDirArgsDict(TypedDict):
+        medium: NotRequired[pulumi.Input[str]]
+        """
+        What type of storage medium should back this directory. The default is "" which means to use the node's default medium. Must be an empty string (default) or Memory. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir Defaults to ``.
+        """
+        size_limit: NotRequired[pulumi.Input[str]]
+        """
+        Total amount of local storage required for this EmptyDir volume.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecVolumeEmptyDirArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecVolumeEmptyDirArgs:
+    def __init__(__self__, *,
+                 medium: Optional[pulumi.Input[str]] = None,
+                 size_limit: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] medium: What type of storage medium should back this directory. The default is "" which means to use the node's default medium. Must be an empty string (default) or Memory. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir Defaults to ``.
+        :param pulumi.Input[str] size_limit: Total amount of local storage required for this EmptyDir volume.
+        """
+        if medium is not None:
+            pulumi.set(__self__, "medium", medium)
+        if size_limit is not None:
+            pulumi.set(__self__, "size_limit", size_limit)
+
+    @property
+    @pulumi.getter
+    def medium(self) -> Optional[pulumi.Input[str]]:
+        """
+        What type of storage medium should back this directory. The default is "" which means to use the node's default medium. Must be an empty string (default) or Memory. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir Defaults to ``.
+        """
+        return pulumi.get(self, "medium")
+
+    @medium.setter
+    def medium(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "medium", value)
+
+    @property
+    @pulumi.getter(name="sizeLimit")
+    def size_limit(self) -> Optional[pulumi.Input[str]]:
+        """
+        Total amount of local storage required for this EmptyDir volume.
+        """
+        return pulumi.get(self, "size_limit")
+
+    @size_limit.setter
+    def size_limit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "size_limit", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecVolumeEphemeralArgsDict(TypedDict):
+        volume_claim_template: pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateArgsDict']
+        """
+        Will be used to create a stand-alone PVC to provision the volume. The pod in which this EphemeralVolumeSource is embedded will be the owner of the PVC.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecVolumeEphemeralArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecVolumeEphemeralArgs:
+    def __init__(__self__, *,
+                 volume_claim_template: pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateArgs']):
+        """
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateArgs'] volume_claim_template: Will be used to create a stand-alone PVC to provision the volume. The pod in which this EphemeralVolumeSource is embedded will be the owner of the PVC.
+        """
+        pulumi.set(__self__, "volume_claim_template", volume_claim_template)
+
+    @property
+    @pulumi.getter(name="volumeClaimTemplate")
+    def volume_claim_template(self) -> pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateArgs']:
+        """
+        Will be used to create a stand-alone PVC to provision the volume. The pod in which this EphemeralVolumeSource is embedded will be the owner of the PVC.
+        """
+        return pulumi.get(self, "volume_claim_template")
+
+    @volume_claim_template.setter
+    def volume_claim_template(self, value: pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateArgs']):
+        pulumi.set(self, "volume_claim_template", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateArgsDict(TypedDict):
+        spec: pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateSpecArgsDict']
+        """
+        The specification for the PersistentVolumeClaim. The entire content is copied unchanged into the PVC that gets created from this template. The same fields as in a PersistentVolumeClaim are also valid here.
+        """
+        metadata: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateMetadataArgsDict']]
+        """
+        May contain labels and annotations that will be copied into the PVC when creating it. No other fields are allowed and will be rejected during validation.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateArgs:
+    def __init__(__self__, *,
+                 spec: pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateSpecArgs'],
+                 metadata: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateMetadataArgs']] = None):
+        """
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateSpecArgs'] spec: The specification for the PersistentVolumeClaim. The entire content is copied unchanged into the PVC that gets created from this template. The same fields as in a PersistentVolumeClaim are also valid here.
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateMetadataArgs'] metadata: May contain labels and annotations that will be copied into the PVC when creating it. No other fields are allowed and will be rejected during validation.
+        """
+        pulumi.set(__self__, "spec", spec)
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
+
+    @property
+    @pulumi.getter
+    def spec(self) -> pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateSpecArgs']:
+        """
+        The specification for the PersistentVolumeClaim. The entire content is copied unchanged into the PVC that gets created from this template. The same fields as in a PersistentVolumeClaim are also valid here.
+        """
+        return pulumi.get(self, "spec")
+
+    @spec.setter
+    def spec(self, value: pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateSpecArgs']):
+        pulumi.set(self, "spec", value)
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateMetadataArgs']]:
+        """
+        May contain labels and annotations that will be copied into the PVC when creating it. No other fields are allowed and will be rejected during validation.
+        """
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateMetadataArgs']]):
+        pulumi.set(self, "metadata", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateMetadataArgsDict(TypedDict):
+        annotations: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        An unstructured key value map stored with the persistent volume claim that may be used to store arbitrary metadata. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+        """
+        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Map of string keys and values that can be used to organize and categorize (scope and select) the persistent volume claim. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateMetadataArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateMetadataArgs:
+    def __init__(__self__, *,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: An unstructured key value map stored with the persistent volume claim that may be used to store arbitrary metadata. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Map of string keys and values that can be used to organize and categorize (scope and select) the persistent volume claim. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+        """
+        if annotations is not None:
+            pulumi.set(__self__, "annotations", annotations)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        An unstructured key value map stored with the persistent volume claim that may be used to store arbitrary metadata. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+        """
+        return pulumi.get(self, "annotations")
+
+    @annotations.setter
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "annotations", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Map of string keys and values that can be used to organize and categorize (scope and select) the persistent volume claim. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateSpecArgsDict(TypedDict):
+        access_modes: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        A set of the desired access modes the volume should have. More info: http://kubernetes.io/docs/user-guide/persistent-volumes#access-modes-1
+        """
+        resources: pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateSpecResourcesArgsDict']
+        """
+        A list of the minimum resources the volume should have. More info: http://kubernetes.io/docs/user-guide/persistent-volumes#resources
+        """
+        storage_class_name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the storage class requested by the claim
+        """
+        volume_mode: NotRequired[pulumi.Input[str]]
+        """
+        Kubernetes supports two volumeModes of PersistentVolumes: `Filesystem` and `Block`.
+        """
+        volume_name: NotRequired[pulumi.Input[str]]
+        """
+        The binding reference to the PersistentVolume backing this claim.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateSpecArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateSpecArgs:
+    def __init__(__self__, *,
+                 access_modes: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 resources: pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateSpecResourcesArgs'],
+                 storage_class_name: Optional[pulumi.Input[str]] = None,
+                 volume_mode: Optional[pulumi.Input[str]] = None,
+                 volume_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] access_modes: A set of the desired access modes the volume should have. More info: http://kubernetes.io/docs/user-guide/persistent-volumes#access-modes-1
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateSpecResourcesArgs'] resources: A list of the minimum resources the volume should have. More info: http://kubernetes.io/docs/user-guide/persistent-volumes#resources
+        :param pulumi.Input[str] storage_class_name: Name of the storage class requested by the claim
+        :param pulumi.Input[str] volume_mode: Kubernetes supports two volumeModes of PersistentVolumes: `Filesystem` and `Block`.
+        :param pulumi.Input[str] volume_name: The binding reference to the PersistentVolume backing this claim.
+        """
+        pulumi.set(__self__, "access_modes", access_modes)
+        pulumi.set(__self__, "resources", resources)
+        if storage_class_name is not None:
+            pulumi.set(__self__, "storage_class_name", storage_class_name)
+        if volume_mode is not None:
+            pulumi.set(__self__, "volume_mode", volume_mode)
+        if volume_name is not None:
+            pulumi.set(__self__, "volume_name", volume_name)
+
+    @property
+    @pulumi.getter(name="accessModes")
+    def access_modes(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        A set of the desired access modes the volume should have. More info: http://kubernetes.io/docs/user-guide/persistent-volumes#access-modes-1
+        """
+        return pulumi.get(self, "access_modes")
+
+    @access_modes.setter
+    def access_modes(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "access_modes", value)
+
+    @property
+    @pulumi.getter
+    def resources(self) -> pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateSpecResourcesArgs']:
+        """
+        A list of the minimum resources the volume should have. More info: http://kubernetes.io/docs/user-guide/persistent-volumes#resources
+        """
+        return pulumi.get(self, "resources")
+
+    @resources.setter
+    def resources(self, value: pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateSpecResourcesArgs']):
+        pulumi.set(self, "resources", value)
+
+    @property
+    @pulumi.getter(name="storageClassName")
+    def storage_class_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the storage class requested by the claim
+        """
+        return pulumi.get(self, "storage_class_name")
+
+    @storage_class_name.setter
+    def storage_class_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_class_name", value)
+
+    @property
+    @pulumi.getter(name="volumeMode")
+    def volume_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Kubernetes supports two volumeModes of PersistentVolumes: `Filesystem` and `Block`.
+        """
+        return pulumi.get(self, "volume_mode")
+
+    @volume_mode.setter
+    def volume_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "volume_mode", value)
+
+    @property
+    @pulumi.getter(name="volumeName")
+    def volume_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The binding reference to the PersistentVolume backing this claim.
+        """
+        return pulumi.get(self, "volume_name")
+
+    @volume_name.setter
+    def volume_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "volume_name", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateSpecResourcesArgsDict(TypedDict):
+        limits: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Map describing the maximum amount of compute resources allowed. More info: http://kubernetes.io/docs/user-guide/compute-resources/
+        """
+        requests: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Map describing the minimum amount of compute resources required. If this is omitted for a container, it defaults to `limits` if that is explicitly specified, otherwise to an implementation-defined value. More info: http://kubernetes.io/docs/user-guide/compute-resources/
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateSpecResourcesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecVolumeEphemeralVolumeClaimTemplateSpecResourcesArgs:
+    def __init__(__self__, *,
+                 limits: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 requests: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] limits: Map describing the maximum amount of compute resources allowed. More info: http://kubernetes.io/docs/user-guide/compute-resources/
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] requests: Map describing the minimum amount of compute resources required. If this is omitted for a container, it defaults to `limits` if that is explicitly specified, otherwise to an implementation-defined value. More info: http://kubernetes.io/docs/user-guide/compute-resources/
+        """
+        if limits is not None:
+            pulumi.set(__self__, "limits", limits)
+        if requests is not None:
+            pulumi.set(__self__, "requests", requests)
+
+    @property
+    @pulumi.getter
+    def limits(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Map describing the maximum amount of compute resources allowed. More info: http://kubernetes.io/docs/user-guide/compute-resources/
+        """
+        return pulumi.get(self, "limits")
+
+    @limits.setter
+    def limits(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "limits", value)
+
+    @property
+    @pulumi.getter
+    def requests(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Map describing the minimum amount of compute resources required. If this is omitted for a container, it defaults to `limits` if that is explicitly specified, otherwise to an implementation-defined value. More info: http://kubernetes.io/docs/user-guide/compute-resources/
+        """
+        return pulumi.get(self, "requests")
+
+    @requests.setter
+    def requests(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "requests", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecVolumeFcArgsDict(TypedDict):
+        lun: pulumi.Input[int]
+        """
+        FC target lun number
+        """
+        target_ww_ns: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        FC target worldwide names (WWNs)
+        """
+        fs_type: NotRequired[pulumi.Input[str]]
+        """
+        Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+        """
+        read_only: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to force the read-only setting in VolumeMounts. Defaults to false (read/write).
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecVolumeFcArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecVolumeFcArgs:
+    def __init__(__self__, *,
+                 lun: pulumi.Input[int],
+                 target_ww_ns: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 fs_type: Optional[pulumi.Input[str]] = None,
+                 read_only: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[int] lun: FC target lun number
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_ww_ns: FC target worldwide names (WWNs)
+        :param pulumi.Input[str] fs_type: Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+        :param pulumi.Input[bool] read_only: Whether to force the read-only setting in VolumeMounts. Defaults to false (read/write).
+        """
+        pulumi.set(__self__, "lun", lun)
+        pulumi.set(__self__, "target_ww_ns", target_ww_ns)
+        if fs_type is not None:
+            pulumi.set(__self__, "fs_type", fs_type)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+
+    @property
+    @pulumi.getter
+    def lun(self) -> pulumi.Input[int]:
+        """
+        FC target lun number
+        """
+        return pulumi.get(self, "lun")
+
+    @lun.setter
+    def lun(self, value: pulumi.Input[int]):
+        pulumi.set(self, "lun", value)
+
+    @property
+    @pulumi.getter(name="targetWwNs")
+    def target_ww_ns(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        FC target worldwide names (WWNs)
+        """
+        return pulumi.get(self, "target_ww_ns")
+
+    @target_ww_ns.setter
+    def target_ww_ns(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "target_ww_ns", value)
+
+    @property
+    @pulumi.getter(name="fsType")
+    def fs_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+        """
+        return pulumi.get(self, "fs_type")
+
+    @fs_type.setter
+    def fs_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fs_type", value)
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to force the read-only setting in VolumeMounts. Defaults to false (read/write).
+        """
+        return pulumi.get(self, "read_only")
+
+    @read_only.setter
+    def read_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "read_only", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecVolumeFlexVolumeArgsDict(TypedDict):
+        driver: pulumi.Input[str]
+        """
+        Driver is the name of the driver to use for this volume.
+        """
+        fs_type: NotRequired[pulumi.Input[str]]
+        """
+        Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". The default filesystem depends on FlexVolume script.
+        """
+        options: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Extra command options if any.
+        """
+        read_only: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to force the ReadOnly setting in VolumeMounts. Defaults to false (read/write).
+        """
+        secret_ref: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeFlexVolumeSecretRefArgsDict']]
+        """
+        Reference to the secret object containing sensitive information to pass to the plugin scripts. This may be empty if no secret object is specified. If the secret object contains more than one secret, all secrets are passed to the plugin scripts.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecVolumeFlexVolumeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecVolumeFlexVolumeArgs:
+    def __init__(__self__, *,
+                 driver: pulumi.Input[str],
+                 fs_type: Optional[pulumi.Input[str]] = None,
+                 options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 read_only: Optional[pulumi.Input[bool]] = None,
+                 secret_ref: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeFlexVolumeSecretRefArgs']] = None):
+        """
+        :param pulumi.Input[str] driver: Driver is the name of the driver to use for this volume.
+        :param pulumi.Input[str] fs_type: Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". The default filesystem depends on FlexVolume script.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] options: Extra command options if any.
+        :param pulumi.Input[bool] read_only: Whether to force the ReadOnly setting in VolumeMounts. Defaults to false (read/write).
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeFlexVolumeSecretRefArgs'] secret_ref: Reference to the secret object containing sensitive information to pass to the plugin scripts. This may be empty if no secret object is specified. If the secret object contains more than one secret, all secrets are passed to the plugin scripts.
+        """
+        pulumi.set(__self__, "driver", driver)
+        if fs_type is not None:
+            pulumi.set(__self__, "fs_type", fs_type)
+        if options is not None:
+            pulumi.set(__self__, "options", options)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+        if secret_ref is not None:
+            pulumi.set(__self__, "secret_ref", secret_ref)
+
+    @property
+    @pulumi.getter
+    def driver(self) -> pulumi.Input[str]:
+        """
+        Driver is the name of the driver to use for this volume.
+        """
+        return pulumi.get(self, "driver")
+
+    @driver.setter
+    def driver(self, value: pulumi.Input[str]):
+        pulumi.set(self, "driver", value)
+
+    @property
+    @pulumi.getter(name="fsType")
+    def fs_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". The default filesystem depends on FlexVolume script.
+        """
+        return pulumi.get(self, "fs_type")
+
+    @fs_type.setter
+    def fs_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fs_type", value)
+
+    @property
+    @pulumi.getter
+    def options(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Extra command options if any.
+        """
+        return pulumi.get(self, "options")
+
+    @options.setter
+    def options(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "options", value)
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to force the ReadOnly setting in VolumeMounts. Defaults to false (read/write).
+        """
+        return pulumi.get(self, "read_only")
+
+    @read_only.setter
+    def read_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "read_only", value)
+
+    @property
+    @pulumi.getter(name="secretRef")
+    def secret_ref(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeFlexVolumeSecretRefArgs']]:
+        """
+        Reference to the secret object containing sensitive information to pass to the plugin scripts. This may be empty if no secret object is specified. If the secret object contains more than one secret, all secrets are passed to the plugin scripts.
+        """
+        return pulumi.get(self, "secret_ref")
+
+    @secret_ref.setter
+    def secret_ref(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeFlexVolumeSecretRefArgs']]):
+        pulumi.set(self, "secret_ref", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecVolumeFlexVolumeSecretRefArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        """
+        namespace: NotRequired[pulumi.Input[str]]
+        """
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecVolumeFlexVolumeSecretRefArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecVolumeFlexVolumeSecretRefArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 namespace: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        :param pulumi.Input[str] namespace: Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        """
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecVolumeFlockerArgsDict(TypedDict):
+        dataset_name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the dataset stored as metadata > name on the dataset for Flocker should be considered as deprecated
+        """
+        dataset_uuid: NotRequired[pulumi.Input[str]]
+        """
+        UUID of the dataset. This is unique identifier of a Flocker dataset
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecVolumeFlockerArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecVolumeFlockerArgs:
+    def __init__(__self__, *,
+                 dataset_name: Optional[pulumi.Input[str]] = None,
+                 dataset_uuid: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] dataset_name: Name of the dataset stored as metadata > name on the dataset for Flocker should be considered as deprecated
+        :param pulumi.Input[str] dataset_uuid: UUID of the dataset. This is unique identifier of a Flocker dataset
+        """
+        if dataset_name is not None:
+            pulumi.set(__self__, "dataset_name", dataset_name)
+        if dataset_uuid is not None:
+            pulumi.set(__self__, "dataset_uuid", dataset_uuid)
+
+    @property
+    @pulumi.getter(name="datasetName")
+    def dataset_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the dataset stored as metadata > name on the dataset for Flocker should be considered as deprecated
+        """
+        return pulumi.get(self, "dataset_name")
+
+    @dataset_name.setter
+    def dataset_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dataset_name", value)
+
+    @property
+    @pulumi.getter(name="datasetUuid")
+    def dataset_uuid(self) -> Optional[pulumi.Input[str]]:
+        """
+        UUID of the dataset. This is unique identifier of a Flocker dataset
+        """
+        return pulumi.get(self, "dataset_uuid")
+
+    @dataset_uuid.setter
+    def dataset_uuid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dataset_uuid", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecVolumeGcePersistentDiskArgsDict(TypedDict):
+        pd_name: pulumi.Input[str]
+        """
+        Unique name of the PD resource in GCE. Used to identify the disk in GCE. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+        """
+        fs_type: NotRequired[pulumi.Input[str]]
+        """
+        Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+        """
+        partition: NotRequired[pulumi.Input[int]]
+        """
+        The partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as "1". Similarly, the volume partition for /dev/sda is "0" (or you can leave the property empty). More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+        """
+        read_only: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecVolumeGcePersistentDiskArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecVolumeGcePersistentDiskArgs:
+    def __init__(__self__, *,
+                 pd_name: pulumi.Input[str],
+                 fs_type: Optional[pulumi.Input[str]] = None,
+                 partition: Optional[pulumi.Input[int]] = None,
+                 read_only: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] pd_name: Unique name of the PD resource in GCE. Used to identify the disk in GCE. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+        :param pulumi.Input[str] fs_type: Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+        :param pulumi.Input[int] partition: The partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as "1". Similarly, the volume partition for /dev/sda is "0" (or you can leave the property empty). More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+        :param pulumi.Input[bool] read_only: Whether to force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+        """
+        pulumi.set(__self__, "pd_name", pd_name)
+        if fs_type is not None:
+            pulumi.set(__self__, "fs_type", fs_type)
+        if partition is not None:
+            pulumi.set(__self__, "partition", partition)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+
+    @property
+    @pulumi.getter(name="pdName")
+    def pd_name(self) -> pulumi.Input[str]:
+        """
+        Unique name of the PD resource in GCE. Used to identify the disk in GCE. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+        """
+        return pulumi.get(self, "pd_name")
+
+    @pd_name.setter
+    def pd_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "pd_name", value)
+
+    @property
+    @pulumi.getter(name="fsType")
+    def fs_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+        """
+        return pulumi.get(self, "fs_type")
+
+    @fs_type.setter
+    def fs_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fs_type", value)
+
+    @property
+    @pulumi.getter
+    def partition(self) -> Optional[pulumi.Input[int]]:
+        """
+        The partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as "1". Similarly, the volume partition for /dev/sda is "0" (or you can leave the property empty). More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+        """
+        return pulumi.get(self, "partition")
+
+    @partition.setter
+    def partition(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "partition", value)
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+        """
+        return pulumi.get(self, "read_only")
+
+    @read_only.setter
+    def read_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "read_only", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecVolumeGitRepoArgsDict(TypedDict):
+        directory: NotRequired[pulumi.Input[str]]
+        """
+        Target directory name. Must not contain or start with '..'. If '.' is supplied, the volume directory will be the git repository. Otherwise, if specified, the volume will contain the git repository in the subdirectory with the given name.
+        """
+        repository: NotRequired[pulumi.Input[str]]
+        """
+        Repository URL
+        """
+        revision: NotRequired[pulumi.Input[str]]
+        """
+        Commit hash for the specified revision.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecVolumeGitRepoArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecVolumeGitRepoArgs:
+    def __init__(__self__, *,
+                 directory: Optional[pulumi.Input[str]] = None,
+                 repository: Optional[pulumi.Input[str]] = None,
+                 revision: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] directory: Target directory name. Must not contain or start with '..'. If '.' is supplied, the volume directory will be the git repository. Otherwise, if specified, the volume will contain the git repository in the subdirectory with the given name.
+        :param pulumi.Input[str] repository: Repository URL
+        :param pulumi.Input[str] revision: Commit hash for the specified revision.
+        """
+        if directory is not None:
+            pulumi.set(__self__, "directory", directory)
+        if repository is not None:
+            pulumi.set(__self__, "repository", repository)
+        if revision is not None:
+            pulumi.set(__self__, "revision", revision)
+
+    @property
+    @pulumi.getter
+    def directory(self) -> Optional[pulumi.Input[str]]:
+        """
+        Target directory name. Must not contain or start with '..'. If '.' is supplied, the volume directory will be the git repository. Otherwise, if specified, the volume will contain the git repository in the subdirectory with the given name.
+        """
+        return pulumi.get(self, "directory")
+
+    @directory.setter
+    def directory(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "directory", value)
+
+    @property
+    @pulumi.getter
+    def repository(self) -> Optional[pulumi.Input[str]]:
+        """
+        Repository URL
+        """
+        return pulumi.get(self, "repository")
+
+    @repository.setter
+    def repository(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repository", value)
+
+    @property
+    @pulumi.getter
+    def revision(self) -> Optional[pulumi.Input[str]]:
+        """
+        Commit hash for the specified revision.
+        """
+        return pulumi.get(self, "revision")
+
+    @revision.setter
+    def revision(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "revision", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecVolumeGlusterfsArgsDict(TypedDict):
+        endpoints_name: pulumi.Input[str]
+        """
+        The endpoint name that details Glusterfs topology. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
+        """
+        path: pulumi.Input[str]
+        """
+        The Glusterfs volume path. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
+        """
+        read_only: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to force the Glusterfs volume to be mounted with read-only permissions. Defaults to false. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecVolumeGlusterfsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecVolumeGlusterfsArgs:
+    def __init__(__self__, *,
+                 endpoints_name: pulumi.Input[str],
+                 path: pulumi.Input[str],
+                 read_only: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] endpoints_name: The endpoint name that details Glusterfs topology. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
+        :param pulumi.Input[str] path: The Glusterfs volume path. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
+        :param pulumi.Input[bool] read_only: Whether to force the Glusterfs volume to be mounted with read-only permissions. Defaults to false. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
+        """
+        pulumi.set(__self__, "endpoints_name", endpoints_name)
+        pulumi.set(__self__, "path", path)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+
+    @property
+    @pulumi.getter(name="endpointsName")
+    def endpoints_name(self) -> pulumi.Input[str]:
+        """
+        The endpoint name that details Glusterfs topology. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
+        """
+        return pulumi.get(self, "endpoints_name")
+
+    @endpoints_name.setter
+    def endpoints_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "endpoints_name", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> pulumi.Input[str]:
+        """
+        The Glusterfs volume path. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: pulumi.Input[str]):
+        pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to force the Glusterfs volume to be mounted with read-only permissions. Defaults to false. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
+        """
+        return pulumi.get(self, "read_only")
+
+    @read_only.setter
+    def read_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "read_only", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecVolumeHostPathArgsDict(TypedDict):
+        path: NotRequired[pulumi.Input[str]]
+        """
+        Path of the directory on the host. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Type for HostPath volume. Allowed values are "" (default), DirectoryOrCreate, Directory, FileOrCreate, File, Socket, CharDevice and BlockDevice
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecVolumeHostPathArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecVolumeHostPathArgs:
+    def __init__(__self__, *,
+                 path: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] path: Path of the directory on the host. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath
+        :param pulumi.Input[str] type: Type for HostPath volume. Allowed values are "" (default), DirectoryOrCreate, Directory, FileOrCreate, File, Socket, CharDevice and BlockDevice
+        """
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Path of the directory on the host. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type for HostPath volume. Allowed values are "" (default), DirectoryOrCreate, Directory, FileOrCreate, File, Socket, CharDevice and BlockDevice
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecVolumeIscsiArgsDict(TypedDict):
+        iqn: pulumi.Input[str]
+        """
+        Target iSCSI Qualified Name.
+        """
+        target_portal: pulumi.Input[str]
+        """
+        iSCSI target portal. The portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260).
+        """
+        fs_type: NotRequired[pulumi.Input[str]]
+        """
+        Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#iscsi
+        """
+        iscsi_interface: NotRequired[pulumi.Input[str]]
+        """
+        iSCSI interface name that uses an iSCSI transport. Defaults to 'default' (tcp). Defaults to `default`.
+        """
+        lun: NotRequired[pulumi.Input[int]]
+        """
+        iSCSI target lun number.
+        """
+        read_only: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to force the read-only setting in VolumeMounts. Defaults to false.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecVolumeIscsiArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecVolumeIscsiArgs:
+    def __init__(__self__, *,
+                 iqn: pulumi.Input[str],
+                 target_portal: pulumi.Input[str],
+                 fs_type: Optional[pulumi.Input[str]] = None,
+                 iscsi_interface: Optional[pulumi.Input[str]] = None,
+                 lun: Optional[pulumi.Input[int]] = None,
+                 read_only: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] iqn: Target iSCSI Qualified Name.
+        :param pulumi.Input[str] target_portal: iSCSI target portal. The portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260).
+        :param pulumi.Input[str] fs_type: Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#iscsi
+        :param pulumi.Input[str] iscsi_interface: iSCSI interface name that uses an iSCSI transport. Defaults to 'default' (tcp). Defaults to `default`.
+        :param pulumi.Input[int] lun: iSCSI target lun number.
+        :param pulumi.Input[bool] read_only: Whether to force the read-only setting in VolumeMounts. Defaults to false.
+        """
+        pulumi.set(__self__, "iqn", iqn)
+        pulumi.set(__self__, "target_portal", target_portal)
+        if fs_type is not None:
+            pulumi.set(__self__, "fs_type", fs_type)
+        if iscsi_interface is not None:
+            pulumi.set(__self__, "iscsi_interface", iscsi_interface)
+        if lun is not None:
+            pulumi.set(__self__, "lun", lun)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+
+    @property
+    @pulumi.getter
+    def iqn(self) -> pulumi.Input[str]:
+        """
+        Target iSCSI Qualified Name.
+        """
+        return pulumi.get(self, "iqn")
+
+    @iqn.setter
+    def iqn(self, value: pulumi.Input[str]):
+        pulumi.set(self, "iqn", value)
+
+    @property
+    @pulumi.getter(name="targetPortal")
+    def target_portal(self) -> pulumi.Input[str]:
+        """
+        iSCSI target portal. The portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260).
+        """
+        return pulumi.get(self, "target_portal")
+
+    @target_portal.setter
+    def target_portal(self, value: pulumi.Input[str]):
+        pulumi.set(self, "target_portal", value)
+
+    @property
+    @pulumi.getter(name="fsType")
+    def fs_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#iscsi
+        """
+        return pulumi.get(self, "fs_type")
+
+    @fs_type.setter
+    def fs_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fs_type", value)
+
+    @property
+    @pulumi.getter(name="iscsiInterface")
+    def iscsi_interface(self) -> Optional[pulumi.Input[str]]:
+        """
+        iSCSI interface name that uses an iSCSI transport. Defaults to 'default' (tcp). Defaults to `default`.
+        """
+        return pulumi.get(self, "iscsi_interface")
+
+    @iscsi_interface.setter
+    def iscsi_interface(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "iscsi_interface", value)
+
+    @property
+    @pulumi.getter
+    def lun(self) -> Optional[pulumi.Input[int]]:
+        """
+        iSCSI target lun number.
+        """
+        return pulumi.get(self, "lun")
+
+    @lun.setter
+    def lun(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "lun", value)
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to force the read-only setting in VolumeMounts. Defaults to false.
+        """
+        return pulumi.get(self, "read_only")
+
+    @read_only.setter
+    def read_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "read_only", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecVolumeLocalArgsDict(TypedDict):
+        path: NotRequired[pulumi.Input[str]]
+        """
+        Path of the directory on the host. More info: https://kubernetes.io/docs/concepts/storage/volumes#local
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecVolumeLocalArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecVolumeLocalArgs:
+    def __init__(__self__, *,
+                 path: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] path: Path of the directory on the host. More info: https://kubernetes.io/docs/concepts/storage/volumes#local
+        """
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Path of the directory on the host. More info: https://kubernetes.io/docs/concepts/storage/volumes#local
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecVolumeNfsArgsDict(TypedDict):
+        path: pulumi.Input[str]
+        """
+        Path that is exported by the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+        """
+        server: pulumi.Input[str]
+        """
+        Server is the hostname or IP address of the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+        """
+        read_only: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to force the NFS export to be mounted with read-only permissions. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecVolumeNfsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecVolumeNfsArgs:
+    def __init__(__self__, *,
+                 path: pulumi.Input[str],
+                 server: pulumi.Input[str],
+                 read_only: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] path: Path that is exported by the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+        :param pulumi.Input[str] server: Server is the hostname or IP address of the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+        :param pulumi.Input[bool] read_only: Whether to force the NFS export to be mounted with read-only permissions. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+        """
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "server", server)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+
+    @property
+    @pulumi.getter
+    def path(self) -> pulumi.Input[str]:
+        """
+        Path that is exported by the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: pulumi.Input[str]):
+        pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter
+    def server(self) -> pulumi.Input[str]:
+        """
+        Server is the hostname or IP address of the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+        """
+        return pulumi.get(self, "server")
+
+    @server.setter
+    def server(self, value: pulumi.Input[str]):
+        pulumi.set(self, "server", value)
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to force the NFS export to be mounted with read-only permissions. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+        """
+        return pulumi.get(self, "read_only")
+
+    @read_only.setter
+    def read_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "read_only", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecVolumePersistentVolumeClaimArgsDict(TypedDict):
+        claim_name: NotRequired[pulumi.Input[str]]
+        """
+        ClaimName is the name of a PersistentVolumeClaim in the same
+        """
+        read_only: NotRequired[pulumi.Input[bool]]
+        """
+        Will force the ReadOnly setting in VolumeMounts. Defaults to `false`.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecVolumePersistentVolumeClaimArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecVolumePersistentVolumeClaimArgs:
+    def __init__(__self__, *,
+                 claim_name: Optional[pulumi.Input[str]] = None,
+                 read_only: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] claim_name: ClaimName is the name of a PersistentVolumeClaim in the same
+        :param pulumi.Input[bool] read_only: Will force the ReadOnly setting in VolumeMounts. Defaults to `false`.
+        """
+        if claim_name is not None:
+            pulumi.set(__self__, "claim_name", claim_name)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+
+    @property
+    @pulumi.getter(name="claimName")
+    def claim_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        ClaimName is the name of a PersistentVolumeClaim in the same
+        """
+        return pulumi.get(self, "claim_name")
+
+    @claim_name.setter
+    def claim_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "claim_name", value)
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Will force the ReadOnly setting in VolumeMounts. Defaults to `false`.
+        """
+        return pulumi.get(self, "read_only")
+
+    @read_only.setter
+    def read_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "read_only", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecVolumePhotonPersistentDiskArgsDict(TypedDict):
+        pd_id: pulumi.Input[str]
+        """
+        ID that identifies Photon Controller persistent disk
+        """
+        fs_type: NotRequired[pulumi.Input[str]]
+        """
+        Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecVolumePhotonPersistentDiskArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecVolumePhotonPersistentDiskArgs:
+    def __init__(__self__, *,
+                 pd_id: pulumi.Input[str],
+                 fs_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] pd_id: ID that identifies Photon Controller persistent disk
+        :param pulumi.Input[str] fs_type: Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+        """
+        pulumi.set(__self__, "pd_id", pd_id)
+        if fs_type is not None:
+            pulumi.set(__self__, "fs_type", fs_type)
+
+    @property
+    @pulumi.getter(name="pdId")
+    def pd_id(self) -> pulumi.Input[str]:
+        """
+        ID that identifies Photon Controller persistent disk
+        """
+        return pulumi.get(self, "pd_id")
+
+    @pd_id.setter
+    def pd_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "pd_id", value)
+
+    @property
+    @pulumi.getter(name="fsType")
+    def fs_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+        """
+        return pulumi.get(self, "fs_type")
+
+    @fs_type.setter
+    def fs_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fs_type", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecVolumeProjectedArgsDict(TypedDict):
+        sources: pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceArgsDict']]]
+        """
+        Source of the volume to project in the directory.
+        """
+        default_mode: NotRequired[pulumi.Input[str]]
+        """
+        Optional: mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. Defaults to `0644`.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecVolumeProjectedArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecVolumeProjectedArgs:
+    def __init__(__self__, *,
+                 sources: pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceArgs']]],
+                 default_mode: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceArgs']]] sources: Source of the volume to project in the directory.
+        :param pulumi.Input[str] default_mode: Optional: mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. Defaults to `0644`.
+        """
+        pulumi.set(__self__, "sources", sources)
+        if default_mode is not None:
+            pulumi.set(__self__, "default_mode", default_mode)
+
+    @property
+    @pulumi.getter
+    def sources(self) -> pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceArgs']]]:
+        """
+        Source of the volume to project in the directory.
+        """
+        return pulumi.get(self, "sources")
+
+    @sources.setter
+    def sources(self, value: pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceArgs']]]):
+        pulumi.set(self, "sources", value)
+
+    @property
+    @pulumi.getter(name="defaultMode")
+    def default_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional: mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. Defaults to `0644`.
+        """
+        return pulumi.get(self, "default_mode")
+
+    @default_mode.setter
+    def default_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_mode", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceArgsDict(TypedDict):
+        config_maps: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceConfigMapArgsDict']]]]
+        """
+        ConfigMap represents a configMap that should populate this volume
+        """
+        downward_api: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceDownwardApiArgsDict']]
+        """
+        DownwardAPI represents downward API about the pod that should populate this volume
+        """
+        secrets: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceSecretArgsDict']]]]
+        """
+        Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secrets
+        """
+        service_account_token: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceServiceAccountTokenArgsDict']]
+        """
+        A projected service account token volume
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceArgs:
+    def __init__(__self__, *,
+                 config_maps: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceConfigMapArgs']]]] = None,
+                 downward_api: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceDownwardApiArgs']] = None,
+                 secrets: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceSecretArgs']]]] = None,
+                 service_account_token: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceServiceAccountTokenArgs']] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceConfigMapArgs']]] config_maps: ConfigMap represents a configMap that should populate this volume
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceDownwardApiArgs'] downward_api: DownwardAPI represents downward API about the pod that should populate this volume
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceSecretArgs']]] secrets: Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secrets
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceServiceAccountTokenArgs'] service_account_token: A projected service account token volume
+        """
+        if config_maps is not None:
+            pulumi.set(__self__, "config_maps", config_maps)
+        if downward_api is not None:
+            pulumi.set(__self__, "downward_api", downward_api)
+        if secrets is not None:
+            pulumi.set(__self__, "secrets", secrets)
+        if service_account_token is not None:
+            pulumi.set(__self__, "service_account_token", service_account_token)
+
+    @property
+    @pulumi.getter(name="configMaps")
+    def config_maps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceConfigMapArgs']]]]:
+        """
+        ConfigMap represents a configMap that should populate this volume
+        """
+        return pulumi.get(self, "config_maps")
+
+    @config_maps.setter
+    def config_maps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceConfigMapArgs']]]]):
+        pulumi.set(self, "config_maps", value)
+
+    @property
+    @pulumi.getter(name="downwardApi")
+    def downward_api(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceDownwardApiArgs']]:
+        """
+        DownwardAPI represents downward API about the pod that should populate this volume
+        """
+        return pulumi.get(self, "downward_api")
+
+    @downward_api.setter
+    def downward_api(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceDownwardApiArgs']]):
+        pulumi.set(self, "downward_api", value)
+
+    @property
+    @pulumi.getter
+    def secrets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceSecretArgs']]]]:
+        """
+        Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secrets
+        """
+        return pulumi.get(self, "secrets")
+
+    @secrets.setter
+    def secrets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceSecretArgs']]]]):
+        pulumi.set(self, "secrets", value)
+
+    @property
+    @pulumi.getter(name="serviceAccountToken")
+    def service_account_token(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceServiceAccountTokenArgs']]:
+        """
+        A projected service account token volume
+        """
+        return pulumi.get(self, "service_account_token")
+
+    @service_account_token.setter
+    def service_account_token(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceServiceAccountTokenArgs']]):
+        pulumi.set(self, "service_account_token", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceConfigMapArgsDict(TypedDict):
+        items: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceConfigMapItemArgsDict']]]]
+        """
+        If unspecified, each key-value pair in the Data field of the referenced ConfigMap will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the ConfigMap, the volume setup will error. Paths must be relative and may not contain the '..' path or start with '..'.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        """
+        optional: NotRequired[pulumi.Input[bool]]
+        """
+        Optional: Specify whether the ConfigMap or it's keys must be defined.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceConfigMapArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceConfigMapArgs:
+    def __init__(__self__, *,
+                 items: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceConfigMapItemArgs']]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 optional: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceConfigMapItemArgs']]] items: If unspecified, each key-value pair in the Data field of the referenced ConfigMap will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the ConfigMap, the volume setup will error. Paths must be relative and may not contain the '..' path or start with '..'.
+        :param pulumi.Input[str] name: Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        :param pulumi.Input[bool] optional: Optional: Specify whether the ConfigMap or it's keys must be defined.
+        """
+        if items is not None:
+            pulumi.set(__self__, "items", items)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if optional is not None:
+            pulumi.set(__self__, "optional", optional)
+
+    @property
+    @pulumi.getter
+    def items(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceConfigMapItemArgs']]]]:
+        """
+        If unspecified, each key-value pair in the Data field of the referenced ConfigMap will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the ConfigMap, the volume setup will error. Paths must be relative and may not contain the '..' path or start with '..'.
+        """
+        return pulumi.get(self, "items")
+
+    @items.setter
+    def items(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceConfigMapItemArgs']]]]):
+        pulumi.set(self, "items", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def optional(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional: Specify whether the ConfigMap or it's keys must be defined.
+        """
+        return pulumi.get(self, "optional")
+
+    @optional.setter
+    def optional(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "optional", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceConfigMapItemArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[str]]
+        """
+        The key to project.
+        """
+        mode: NotRequired[pulumi.Input[str]]
+        """
+        Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+        """
+        path: NotRequired[pulumi.Input[str]]
+        """
+        The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceConfigMapItemArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceConfigMapItemArgs:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[str]] = None,
+                 mode: Optional[pulumi.Input[str]] = None,
+                 path: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: The key to project.
+        :param pulumi.Input[str] mode: Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+        :param pulumi.Input[str] path: The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key to project.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mode", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceDownwardApiArgsDict(TypedDict):
+        items: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceDownwardApiItemArgsDict']]]]
+        """
+        Represents a volume containing downward API info. Downward API volumes support ownership management and SELinux relabeling.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceDownwardApiArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceDownwardApiArgs:
+    def __init__(__self__, *,
+                 items: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceDownwardApiItemArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceDownwardApiItemArgs']]] items: Represents a volume containing downward API info. Downward API volumes support ownership management and SELinux relabeling.
+        """
+        if items is not None:
+            pulumi.set(__self__, "items", items)
+
+    @property
+    @pulumi.getter
+    def items(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceDownwardApiItemArgs']]]]:
+        """
+        Represents a volume containing downward API info. Downward API volumes support ownership management and SELinux relabeling.
+        """
+        return pulumi.get(self, "items")
+
+    @items.setter
+    def items(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceDownwardApiItemArgs']]]]):
+        pulumi.set(self, "items", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceDownwardApiItemArgsDict(TypedDict):
+        path: pulumi.Input[str]
+        """
+        Path is the relative path name of the file to be created. Must not be absolute or contain the '..' path. Must be utf-8 encoded. The first item of the relative path must not start with '..'
+        """
+        field_ref: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceDownwardApiItemFieldRefArgsDict']]
+        """
+        Selects a field of the pod: only annotations, labels, name and namespace are supported.
+        """
+        mode: NotRequired[pulumi.Input[str]]
+        """
+        Mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+        """
+        resource_field_ref: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceDownwardApiItemResourceFieldRefArgsDict']]
+        """
+        Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, requests.cpu and requests.memory) are currently supported.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceDownwardApiItemArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceDownwardApiItemArgs:
+    def __init__(__self__, *,
+                 path: pulumi.Input[str],
+                 field_ref: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceDownwardApiItemFieldRefArgs']] = None,
+                 mode: Optional[pulumi.Input[str]] = None,
+                 resource_field_ref: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceDownwardApiItemResourceFieldRefArgs']] = None):
+        """
+        :param pulumi.Input[str] path: Path is the relative path name of the file to be created. Must not be absolute or contain the '..' path. Must be utf-8 encoded. The first item of the relative path must not start with '..'
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceDownwardApiItemFieldRefArgs'] field_ref: Selects a field of the pod: only annotations, labels, name and namespace are supported.
+        :param pulumi.Input[str] mode: Mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceDownwardApiItemResourceFieldRefArgs'] resource_field_ref: Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, requests.cpu and requests.memory) are currently supported.
+        """
+        pulumi.set(__self__, "path", path)
+        if field_ref is not None:
+            pulumi.set(__self__, "field_ref", field_ref)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if resource_field_ref is not None:
+            pulumi.set(__self__, "resource_field_ref", resource_field_ref)
+
+    @property
+    @pulumi.getter
+    def path(self) -> pulumi.Input[str]:
+        """
+        Path is the relative path name of the file to be created. Must not be absolute or contain the '..' path. Must be utf-8 encoded. The first item of the relative path must not start with '..'
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: pulumi.Input[str]):
+        pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter(name="fieldRef")
+    def field_ref(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceDownwardApiItemFieldRefArgs']]:
+        """
+        Selects a field of the pod: only annotations, labels, name and namespace are supported.
+        """
+        return pulumi.get(self, "field_ref")
+
+    @field_ref.setter
+    def field_ref(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceDownwardApiItemFieldRefArgs']]):
+        pulumi.set(self, "field_ref", value)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mode", value)
+
+    @property
+    @pulumi.getter(name="resourceFieldRef")
+    def resource_field_ref(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceDownwardApiItemResourceFieldRefArgs']]:
+        """
+        Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, requests.cpu and requests.memory) are currently supported.
+        """
+        return pulumi.get(self, "resource_field_ref")
+
+    @resource_field_ref.setter
+    def resource_field_ref(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceDownwardApiItemResourceFieldRefArgs']]):
+        pulumi.set(self, "resource_field_ref", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceDownwardApiItemFieldRefArgsDict(TypedDict):
+        api_version: NotRequired[pulumi.Input[str]]
+        """
+        Version of the schema the FieldPath is written in terms of, defaults to 'v1'. Defaults to `v1`.
+        """
+        field_path: NotRequired[pulumi.Input[str]]
+        """
+        Path of the field to select in the specified API version
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceDownwardApiItemFieldRefArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceDownwardApiItemFieldRefArgs:
+    def __init__(__self__, *,
+                 api_version: Optional[pulumi.Input[str]] = None,
+                 field_path: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] api_version: Version of the schema the FieldPath is written in terms of, defaults to 'v1'. Defaults to `v1`.
+        :param pulumi.Input[str] field_path: Path of the field to select in the specified API version
+        """
+        if api_version is not None:
+            pulumi.set(__self__, "api_version", api_version)
+        if field_path is not None:
+            pulumi.set(__self__, "field_path", field_path)
+
+    @property
+    @pulumi.getter(name="apiVersion")
+    def api_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Version of the schema the FieldPath is written in terms of, defaults to 'v1'. Defaults to `v1`.
+        """
+        return pulumi.get(self, "api_version")
+
+    @api_version.setter
+    def api_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "api_version", value)
+
+    @property
+    @pulumi.getter(name="fieldPath")
+    def field_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Path of the field to select in the specified API version
+        """
+        return pulumi.get(self, "field_path")
+
+    @field_path.setter
+    def field_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "field_path", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceDownwardApiItemResourceFieldRefArgsDict(TypedDict):
+        container_name: pulumi.Input[str]
+        resource: pulumi.Input[str]
+        """
+        Resource to select
+        """
+        divisor: NotRequired[pulumi.Input[str]]
+        """
+        Defaults to `1`.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceDownwardApiItemResourceFieldRefArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceDownwardApiItemResourceFieldRefArgs:
+    def __init__(__self__, *,
+                 container_name: pulumi.Input[str],
+                 resource: pulumi.Input[str],
+                 divisor: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] resource: Resource to select
+        :param pulumi.Input[str] divisor: Defaults to `1`.
+        """
+        pulumi.set(__self__, "container_name", container_name)
+        pulumi.set(__self__, "resource", resource)
+        if divisor is not None:
+            pulumi.set(__self__, "divisor", divisor)
+
+    @property
+    @pulumi.getter(name="containerName")
+    def container_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "container_name")
+
+    @container_name.setter
+    def container_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "container_name", value)
+
+    @property
+    @pulumi.getter
+    def resource(self) -> pulumi.Input[str]:
+        """
+        Resource to select
+        """
+        return pulumi.get(self, "resource")
+
+    @resource.setter
+    def resource(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource", value)
+
+    @property
+    @pulumi.getter
+    def divisor(self) -> Optional[pulumi.Input[str]]:
+        """
+        Defaults to `1`.
+        """
+        return pulumi.get(self, "divisor")
+
+    @divisor.setter
+    def divisor(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "divisor", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceSecretArgsDict(TypedDict):
+        items: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceSecretItemArgsDict']]]]
+        """
+        If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional. Paths must be relative and may not contain the '..' path or start with '..'.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the secret in the pod's namespace to use. More info: https://kubernetes.io/docs/concepts/storage/volumes#secrets
+        """
+        optional: NotRequired[pulumi.Input[bool]]
+        """
+        Optional: Specify whether the Secret or it's keys must be defined.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceSecretArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceSecretArgs:
+    def __init__(__self__, *,
+                 items: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceSecretItemArgs']]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 optional: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceSecretItemArgs']]] items: If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional. Paths must be relative and may not contain the '..' path or start with '..'.
+        :param pulumi.Input[str] name: Name of the secret in the pod's namespace to use. More info: https://kubernetes.io/docs/concepts/storage/volumes#secrets
+        :param pulumi.Input[bool] optional: Optional: Specify whether the Secret or it's keys must be defined.
+        """
+        if items is not None:
+            pulumi.set(__self__, "items", items)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if optional is not None:
+            pulumi.set(__self__, "optional", optional)
+
+    @property
+    @pulumi.getter
+    def items(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceSecretItemArgs']]]]:
+        """
+        If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional. Paths must be relative and may not contain the '..' path or start with '..'.
+        """
+        return pulumi.get(self, "items")
+
+    @items.setter
+    def items(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceSecretItemArgs']]]]):
+        pulumi.set(self, "items", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the secret in the pod's namespace to use. More info: https://kubernetes.io/docs/concepts/storage/volumes#secrets
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def optional(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional: Specify whether the Secret or it's keys must be defined.
+        """
+        return pulumi.get(self, "optional")
+
+    @optional.setter
+    def optional(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "optional", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceSecretItemArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[str]]
+        """
+        The key to project.
+        """
+        mode: NotRequired[pulumi.Input[str]]
+        """
+        Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+        """
+        path: NotRequired[pulumi.Input[str]]
+        """
+        The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceSecretItemArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceSecretItemArgs:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[str]] = None,
+                 mode: Optional[pulumi.Input[str]] = None,
+                 path: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: The key to project.
+        :param pulumi.Input[str] mode: Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+        :param pulumi.Input[str] path: The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key to project.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mode", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceServiceAccountTokenArgsDict(TypedDict):
+        path: pulumi.Input[str]
+        """
+        Path specifies a relative path to the mount point of the projected volume.
+        """
+        audience: NotRequired[pulumi.Input[str]]
+        """
+        Audience is the intended audience of the token
+        """
+        expiration_seconds: NotRequired[pulumi.Input[int]]
+        """
+        ExpirationSeconds is the expected duration of validity of the service account token. It defaults to 1 hour and must be at least 10 minutes (600 seconds). Defaults to `3600`.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceServiceAccountTokenArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecVolumeProjectedSourceServiceAccountTokenArgs:
+    def __init__(__self__, *,
+                 path: pulumi.Input[str],
+                 audience: Optional[pulumi.Input[str]] = None,
+                 expiration_seconds: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] path: Path specifies a relative path to the mount point of the projected volume.
+        :param pulumi.Input[str] audience: Audience is the intended audience of the token
+        :param pulumi.Input[int] expiration_seconds: ExpirationSeconds is the expected duration of validity of the service account token. It defaults to 1 hour and must be at least 10 minutes (600 seconds). Defaults to `3600`.
+        """
+        pulumi.set(__self__, "path", path)
+        if audience is not None:
+            pulumi.set(__self__, "audience", audience)
+        if expiration_seconds is not None:
+            pulumi.set(__self__, "expiration_seconds", expiration_seconds)
+
+    @property
+    @pulumi.getter
+    def path(self) -> pulumi.Input[str]:
+        """
+        Path specifies a relative path to the mount point of the projected volume.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: pulumi.Input[str]):
+        pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter
+    def audience(self) -> Optional[pulumi.Input[str]]:
+        """
+        Audience is the intended audience of the token
+        """
+        return pulumi.get(self, "audience")
+
+    @audience.setter
+    def audience(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "audience", value)
+
+    @property
+    @pulumi.getter(name="expirationSeconds")
+    def expiration_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        ExpirationSeconds is the expected duration of validity of the service account token. It defaults to 1 hour and must be at least 10 minutes (600 seconds). Defaults to `3600`.
+        """
+        return pulumi.get(self, "expiration_seconds")
+
+    @expiration_seconds.setter
+    def expiration_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "expiration_seconds", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecVolumeQuobyteArgsDict(TypedDict):
+        registry: pulumi.Input[str]
+        """
+        Registry represents a single or multiple Quobyte Registry services specified as a string as host:port pair (multiple entries are separated with commas) which acts as the central registry for volumes
+        """
+        volume: pulumi.Input[str]
+        """
+        Volume is a string that references an already created Quobyte volume by name.
+        """
+        group: NotRequired[pulumi.Input[str]]
+        """
+        Group to map volume access to Default is no group
+        """
+        read_only: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to force the Quobyte volume to be mounted with read-only permissions. Defaults to false.
+        """
+        user: NotRequired[pulumi.Input[str]]
+        """
+        User to map volume access to Defaults to serivceaccount user
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecVolumeQuobyteArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecVolumeQuobyteArgs:
+    def __init__(__self__, *,
+                 registry: pulumi.Input[str],
+                 volume: pulumi.Input[str],
+                 group: Optional[pulumi.Input[str]] = None,
+                 read_only: Optional[pulumi.Input[bool]] = None,
+                 user: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] registry: Registry represents a single or multiple Quobyte Registry services specified as a string as host:port pair (multiple entries are separated with commas) which acts as the central registry for volumes
+        :param pulumi.Input[str] volume: Volume is a string that references an already created Quobyte volume by name.
+        :param pulumi.Input[str] group: Group to map volume access to Default is no group
+        :param pulumi.Input[bool] read_only: Whether to force the Quobyte volume to be mounted with read-only permissions. Defaults to false.
+        :param pulumi.Input[str] user: User to map volume access to Defaults to serivceaccount user
+        """
+        pulumi.set(__self__, "registry", registry)
+        pulumi.set(__self__, "volume", volume)
+        if group is not None:
+            pulumi.set(__self__, "group", group)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+        if user is not None:
+            pulumi.set(__self__, "user", user)
+
+    @property
+    @pulumi.getter
+    def registry(self) -> pulumi.Input[str]:
+        """
+        Registry represents a single or multiple Quobyte Registry services specified as a string as host:port pair (multiple entries are separated with commas) which acts as the central registry for volumes
+        """
+        return pulumi.get(self, "registry")
+
+    @registry.setter
+    def registry(self, value: pulumi.Input[str]):
+        pulumi.set(self, "registry", value)
+
+    @property
+    @pulumi.getter
+    def volume(self) -> pulumi.Input[str]:
+        """
+        Volume is a string that references an already created Quobyte volume by name.
+        """
+        return pulumi.get(self, "volume")
+
+    @volume.setter
+    def volume(self, value: pulumi.Input[str]):
+        pulumi.set(self, "volume", value)
+
+    @property
+    @pulumi.getter
+    def group(self) -> Optional[pulumi.Input[str]]:
+        """
+        Group to map volume access to Default is no group
+        """
+        return pulumi.get(self, "group")
+
+    @group.setter
+    def group(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group", value)
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to force the Quobyte volume to be mounted with read-only permissions. Defaults to false.
+        """
+        return pulumi.get(self, "read_only")
+
+    @read_only.setter
+    def read_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "read_only", value)
+
+    @property
+    @pulumi.getter
+    def user(self) -> Optional[pulumi.Input[str]]:
+        """
+        User to map volume access to Defaults to serivceaccount user
+        """
+        return pulumi.get(self, "user")
+
+    @user.setter
+    def user(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecVolumeRbdArgsDict(TypedDict):
+        ceph_monitors: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        A collection of Ceph monitors. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+        """
+        rbd_image: pulumi.Input[str]
+        """
+        The rados image name. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+        """
+        fs_type: NotRequired[pulumi.Input[str]]
+        """
+        Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#rbd
+        """
+        keyring: NotRequired[pulumi.Input[str]]
+        """
+        Keyring is the path to key ring for RBDUser. Default is /etc/ceph/keyring. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+        """
+        rados_user: NotRequired[pulumi.Input[str]]
+        """
+        The rados user name. Default is admin. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it Defaults to `admin`.
+        """
+        rbd_pool: NotRequired[pulumi.Input[str]]
+        """
+        The rados pool name. Default is rbd. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it. Defaults to `rbd`.
+        """
+        read_only: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to force the read-only setting in VolumeMounts. Defaults to false. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it Defaults to `false`.
+        """
+        secret_ref: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeRbdSecretRefArgsDict']]
+        """
+        Name of the authentication secret for RBDUser. If provided overrides keyring. Default is nil. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecVolumeRbdArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecVolumeRbdArgs:
+    def __init__(__self__, *,
+                 ceph_monitors: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 rbd_image: pulumi.Input[str],
+                 fs_type: Optional[pulumi.Input[str]] = None,
+                 keyring: Optional[pulumi.Input[str]] = None,
+                 rados_user: Optional[pulumi.Input[str]] = None,
+                 rbd_pool: Optional[pulumi.Input[str]] = None,
+                 read_only: Optional[pulumi.Input[bool]] = None,
+                 secret_ref: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeRbdSecretRefArgs']] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ceph_monitors: A collection of Ceph monitors. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+        :param pulumi.Input[str] rbd_image: The rados image name. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+        :param pulumi.Input[str] fs_type: Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#rbd
+        :param pulumi.Input[str] keyring: Keyring is the path to key ring for RBDUser. Default is /etc/ceph/keyring. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+        :param pulumi.Input[str] rados_user: The rados user name. Default is admin. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it Defaults to `admin`.
+        :param pulumi.Input[str] rbd_pool: The rados pool name. Default is rbd. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it. Defaults to `rbd`.
+        :param pulumi.Input[bool] read_only: Whether to force the read-only setting in VolumeMounts. Defaults to false. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it Defaults to `false`.
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeRbdSecretRefArgs'] secret_ref: Name of the authentication secret for RBDUser. If provided overrides keyring. Default is nil. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+        """
+        pulumi.set(__self__, "ceph_monitors", ceph_monitors)
+        pulumi.set(__self__, "rbd_image", rbd_image)
+        if fs_type is not None:
+            pulumi.set(__self__, "fs_type", fs_type)
+        if keyring is not None:
+            pulumi.set(__self__, "keyring", keyring)
+        if rados_user is not None:
+            pulumi.set(__self__, "rados_user", rados_user)
+        if rbd_pool is not None:
+            pulumi.set(__self__, "rbd_pool", rbd_pool)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+        if secret_ref is not None:
+            pulumi.set(__self__, "secret_ref", secret_ref)
+
+    @property
+    @pulumi.getter(name="cephMonitors")
+    def ceph_monitors(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        A collection of Ceph monitors. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+        """
+        return pulumi.get(self, "ceph_monitors")
+
+    @ceph_monitors.setter
+    def ceph_monitors(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "ceph_monitors", value)
+
+    @property
+    @pulumi.getter(name="rbdImage")
+    def rbd_image(self) -> pulumi.Input[str]:
+        """
+        The rados image name. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+        """
+        return pulumi.get(self, "rbd_image")
+
+    @rbd_image.setter
+    def rbd_image(self, value: pulumi.Input[str]):
+        pulumi.set(self, "rbd_image", value)
+
+    @property
+    @pulumi.getter(name="fsType")
+    def fs_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#rbd
+        """
+        return pulumi.get(self, "fs_type")
+
+    @fs_type.setter
+    def fs_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fs_type", value)
+
+    @property
+    @pulumi.getter
+    def keyring(self) -> Optional[pulumi.Input[str]]:
+        """
+        Keyring is the path to key ring for RBDUser. Default is /etc/ceph/keyring. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+        """
+        return pulumi.get(self, "keyring")
+
+    @keyring.setter
+    def keyring(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "keyring", value)
+
+    @property
+    @pulumi.getter(name="radosUser")
+    def rados_user(self) -> Optional[pulumi.Input[str]]:
+        """
+        The rados user name. Default is admin. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it Defaults to `admin`.
+        """
+        return pulumi.get(self, "rados_user")
+
+    @rados_user.setter
+    def rados_user(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "rados_user", value)
+
+    @property
+    @pulumi.getter(name="rbdPool")
+    def rbd_pool(self) -> Optional[pulumi.Input[str]]:
+        """
+        The rados pool name. Default is rbd. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it. Defaults to `rbd`.
+        """
+        return pulumi.get(self, "rbd_pool")
+
+    @rbd_pool.setter
+    def rbd_pool(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "rbd_pool", value)
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to force the read-only setting in VolumeMounts. Defaults to false. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it Defaults to `false`.
+        """
+        return pulumi.get(self, "read_only")
+
+    @read_only.setter
+    def read_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "read_only", value)
+
+    @property
+    @pulumi.getter(name="secretRef")
+    def secret_ref(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeRbdSecretRefArgs']]:
+        """
+        Name of the authentication secret for RBDUser. If provided overrides keyring. Default is nil. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+        """
+        return pulumi.get(self, "secret_ref")
+
+    @secret_ref.setter
+    def secret_ref(self, value: Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeRbdSecretRefArgs']]):
+        pulumi.set(self, "secret_ref", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecVolumeRbdSecretRefArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        """
+        namespace: NotRequired[pulumi.Input[str]]
+        """
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecVolumeRbdSecretRefArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecVolumeRbdSecretRefArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 namespace: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        :param pulumi.Input[str] namespace: Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        """
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecVolumeSecretArgsDict(TypedDict):
+        default_mode: NotRequired[pulumi.Input[str]]
+        """
+        Optional: mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. Defaults to `0644`.
+        """
+        items: NotRequired[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeSecretItemArgsDict']]]]
+        """
+        If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional. Paths must be relative and may not contain the '..' path or start with '..'.
+        """
+        optional: NotRequired[pulumi.Input[bool]]
+        """
+        Optional: Specify whether the Secret or its keys must be defined.
+        """
+        secret_name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the secret in the pod's namespace to use. More info: https://kubernetes.io/docs/concepts/storage/volumes#secrets
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecVolumeSecretArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecVolumeSecretArgs:
+    def __init__(__self__, *,
+                 default_mode: Optional[pulumi.Input[str]] = None,
+                 items: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeSecretItemArgs']]]] = None,
+                 optional: Optional[pulumi.Input[bool]] = None,
+                 secret_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] default_mode: Optional: mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. Defaults to `0644`.
+        :param pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeSecretItemArgs']]] items: If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional. Paths must be relative and may not contain the '..' path or start with '..'.
+        :param pulumi.Input[bool] optional: Optional: Specify whether the Secret or its keys must be defined.
+        :param pulumi.Input[str] secret_name: Name of the secret in the pod's namespace to use. More info: https://kubernetes.io/docs/concepts/storage/volumes#secrets
+        """
+        if default_mode is not None:
+            pulumi.set(__self__, "default_mode", default_mode)
+        if items is not None:
+            pulumi.set(__self__, "items", items)
+        if optional is not None:
+            pulumi.set(__self__, "optional", optional)
+        if secret_name is not None:
+            pulumi.set(__self__, "secret_name", secret_name)
+
+    @property
+    @pulumi.getter(name="defaultMode")
+    def default_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional: mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. Defaults to `0644`.
+        """
+        return pulumi.get(self, "default_mode")
+
+    @default_mode.setter
+    def default_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_mode", value)
+
+    @property
+    @pulumi.getter
+    def items(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeSecretItemArgs']]]]:
+        """
+        If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional. Paths must be relative and may not contain the '..' path or start with '..'.
+        """
+        return pulumi.get(self, "items")
+
+    @items.setter
+    def items(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeSecretItemArgs']]]]):
+        pulumi.set(self, "items", value)
+
+    @property
+    @pulumi.getter
+    def optional(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional: Specify whether the Secret or its keys must be defined.
+        """
+        return pulumi.get(self, "optional")
+
+    @optional.setter
+    def optional(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "optional", value)
+
+    @property
+    @pulumi.getter(name="secretName")
+    def secret_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the secret in the pod's namespace to use. More info: https://kubernetes.io/docs/concepts/storage/volumes#secrets
+        """
+        return pulumi.get(self, "secret_name")
+
+    @secret_name.setter
+    def secret_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secret_name", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecVolumeSecretItemArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[str]]
+        """
+        The key to project.
+        """
+        mode: NotRequired[pulumi.Input[str]]
+        """
+        Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+        """
+        path: NotRequired[pulumi.Input[str]]
+        """
+        The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecVolumeSecretItemArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecVolumeSecretItemArgs:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[str]] = None,
+                 mode: Optional[pulumi.Input[str]] = None,
+                 path: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: The key to project.
+        :param pulumi.Input[str] mode: Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+        :param pulumi.Input[str] path: The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key to project.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mode", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecTemplateSpecVolumeVsphereVolumeArgsDict(TypedDict):
+        volume_path: pulumi.Input[str]
+        """
+        Path that identifies vSphere volume vmdk
+        """
+        fs_type: NotRequired[pulumi.Input[str]]
+        """
+        Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+        """
+elif False:
+    K8sDaemonSetSpecTemplateSpecVolumeVsphereVolumeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecTemplateSpecVolumeVsphereVolumeArgs:
+    def __init__(__self__, *,
+                 volume_path: pulumi.Input[str],
+                 fs_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] volume_path: Path that identifies vSphere volume vmdk
+        :param pulumi.Input[str] fs_type: Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+        """
+        pulumi.set(__self__, "volume_path", volume_path)
+        if fs_type is not None:
+            pulumi.set(__self__, "fs_type", fs_type)
+
+    @property
+    @pulumi.getter(name="volumePath")
+    def volume_path(self) -> pulumi.Input[str]:
+        """
+        Path that identifies vSphere volume vmdk
+        """
+        return pulumi.get(self, "volume_path")
+
+    @volume_path.setter
+    def volume_path(self, value: pulumi.Input[str]):
+        pulumi.set(self, "volume_path", value)
+
+    @property
+    @pulumi.getter(name="fsType")
+    def fs_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+        """
+        return pulumi.get(self, "fs_type")
+
+    @fs_type.setter
+    def fs_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fs_type", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecUpdateStrategyArgsDict(TypedDict):
+        rolling_update: NotRequired[pulumi.Input['K8sDaemonSetSpecUpdateStrategyRollingUpdateArgsDict']]
+        """
+        Rolling update config params. Present only if type = RollingUpdate.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Type of daemon set update. Can be `RollingUpdate` or `OnDelete`. Default is `RollingUpdate`. Defaults to `RollingUpdate`.
+        """
+elif False:
+    K8sDaemonSetSpecUpdateStrategyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecUpdateStrategyArgs:
+    def __init__(__self__, *,
+                 rolling_update: Optional[pulumi.Input['K8sDaemonSetSpecUpdateStrategyRollingUpdateArgs']] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input['K8sDaemonSetSpecUpdateStrategyRollingUpdateArgs'] rolling_update: Rolling update config params. Present only if type = RollingUpdate.
+        :param pulumi.Input[str] type: Type of daemon set update. Can be `RollingUpdate` or `OnDelete`. Default is `RollingUpdate`. Defaults to `RollingUpdate`.
+        """
+        if rolling_update is not None:
+            pulumi.set(__self__, "rolling_update", rolling_update)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="rollingUpdate")
+    def rolling_update(self) -> Optional[pulumi.Input['K8sDaemonSetSpecUpdateStrategyRollingUpdateArgs']]:
+        """
+        Rolling update config params. Present only if type = RollingUpdate.
+        """
+        return pulumi.get(self, "rolling_update")
+
+    @rolling_update.setter
+    def rolling_update(self, value: Optional[pulumi.Input['K8sDaemonSetSpecUpdateStrategyRollingUpdateArgs']]):
+        pulumi.set(self, "rolling_update", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of daemon set update. Can be `RollingUpdate` or `OnDelete`. Default is `RollingUpdate`. Defaults to `RollingUpdate`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+if not MYPY:
+    class K8sDaemonSetSpecUpdateStrategyRollingUpdateArgsDict(TypedDict):
+        max_surge: NotRequired[pulumi.Input[str]]
+        """
+        The maximum number of nodes with an existing available DaemonSet pod that can have an updated DaemonSet pod during an update. Value can be an absolute number (ex: 5) or a percentage of desired pods (ex: 10%). Default is 0. Defaults to `0`.
+        """
+        max_unavailable: NotRequired[pulumi.Input[str]]
+        """
+        The maximum number of DaemonSet pods that can be unavailable during the update. Value can be an absolute number (ex: 5) or a percentage of total number of DaemonSet pods at the start of the update (ex: 10%). Default is 1. Defaults to `1`.
+        """
+elif False:
+    K8sDaemonSetSpecUpdateStrategyRollingUpdateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class K8sDaemonSetSpecUpdateStrategyRollingUpdateArgs:
+    def __init__(__self__, *,
+                 max_surge: Optional[pulumi.Input[str]] = None,
+                 max_unavailable: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] max_surge: The maximum number of nodes with an existing available DaemonSet pod that can have an updated DaemonSet pod during an update. Value can be an absolute number (ex: 5) or a percentage of desired pods (ex: 10%). Default is 0. Defaults to `0`.
+        :param pulumi.Input[str] max_unavailable: The maximum number of DaemonSet pods that can be unavailable during the update. Value can be an absolute number (ex: 5) or a percentage of total number of DaemonSet pods at the start of the update (ex: 10%). Default is 1. Defaults to `1`.
+        """
+        if max_surge is not None:
+            pulumi.set(__self__, "max_surge", max_surge)
+        if max_unavailable is not None:
+            pulumi.set(__self__, "max_unavailable", max_unavailable)
+
+    @property
+    @pulumi.getter(name="maxSurge")
+    def max_surge(self) -> Optional[pulumi.Input[str]]:
+        """
+        The maximum number of nodes with an existing available DaemonSet pod that can have an updated DaemonSet pod during an update. Value can be an absolute number (ex: 5) or a percentage of desired pods (ex: 10%). Default is 0. Defaults to `0`.
+        """
+        return pulumi.get(self, "max_surge")
+
+    @max_surge.setter
+    def max_surge(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_surge", value)
+
+    @property
+    @pulumi.getter(name="maxUnavailable")
+    def max_unavailable(self) -> Optional[pulumi.Input[str]]:
+        """
+        The maximum number of DaemonSet pods that can be unavailable during the update. Value can be an absolute number (ex: 5) or a percentage of total number of DaemonSet pods at the start of the update (ex: 10%). Default is 1. Defaults to `1`.
+        """
+        return pulumi.get(self, "max_unavailable")
+
+    @max_unavailable.setter
+    def max_unavailable(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_unavailable", value)
 
 
 if not MYPY:

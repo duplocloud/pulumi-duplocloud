@@ -73802,199 +73802,190 @@ func (o K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeVsphereVolumePtrOutput) V
 	}).(pulumi.StringPtrOutput)
 }
 
-type K8sJobMetadata struct {
-	// An unstructured key value map stored with the job that may be used to store arbitrary metadata. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+type K8sDaemonSetMetadata struct {
+	// An unstructured key value map stored with the daemonset that may be used to store arbitrary metadata. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
 	Annotations map[string]string `pulumi:"annotations"`
-	// Prefix, used by the server, to generate a unique name ONLY IF the `name` field has not been provided. This value will also be combined with a unique suffix. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#idempotency
-	GenerateName *string `pulumi:"generateName"`
 	// A sequence number representing a specific generation of the desired state.
 	Generation *int `pulumi:"generation"`
-	// Map of string keys and values that can be used to organize and categorize (scope and select) the job. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+	// Map of string keys and values that can be used to organize and categorize (scope and select) the daemonset. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
 	Labels map[string]string `pulumi:"labels"`
-	// Name of the job, must be unique. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+	// Name of the daemonset, must be unique. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 	Name *string `pulumi:"name"`
-	// Namespace defines the space within which name of the job must be unique.
+	// Namespace defines the space within which name of the daemonset must be unique.
 	Namespace *string `pulumi:"namespace"`
-	// An opaque value that represents the internal version of this job that can be used by clients to determine when job has changed. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+	// An opaque value that represents the internal version of this daemonset that can be used by clients to determine when daemonset has changed. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
 	ResourceVersion *string `pulumi:"resourceVersion"`
-	// The unique in time and space value for this job. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
+	// The unique in time and space value for this daemonset. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
 	Uid *string `pulumi:"uid"`
 }
 
-// K8sJobMetadataInput is an input type that accepts K8sJobMetadataArgs and K8sJobMetadataOutput values.
-// You can construct a concrete instance of `K8sJobMetadataInput` via:
+// K8sDaemonSetMetadataInput is an input type that accepts K8sDaemonSetMetadataArgs and K8sDaemonSetMetadataOutput values.
+// You can construct a concrete instance of `K8sDaemonSetMetadataInput` via:
 //
-//	K8sJobMetadataArgs{...}
-type K8sJobMetadataInput interface {
+//	K8sDaemonSetMetadataArgs{...}
+type K8sDaemonSetMetadataInput interface {
 	pulumi.Input
 
-	ToK8sJobMetadataOutput() K8sJobMetadataOutput
-	ToK8sJobMetadataOutputWithContext(context.Context) K8sJobMetadataOutput
+	ToK8sDaemonSetMetadataOutput() K8sDaemonSetMetadataOutput
+	ToK8sDaemonSetMetadataOutputWithContext(context.Context) K8sDaemonSetMetadataOutput
 }
 
-type K8sJobMetadataArgs struct {
-	// An unstructured key value map stored with the job that may be used to store arbitrary metadata. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+type K8sDaemonSetMetadataArgs struct {
+	// An unstructured key value map stored with the daemonset that may be used to store arbitrary metadata. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
 	Annotations pulumi.StringMapInput `pulumi:"annotations"`
-	// Prefix, used by the server, to generate a unique name ONLY IF the `name` field has not been provided. This value will also be combined with a unique suffix. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#idempotency
-	GenerateName pulumi.StringPtrInput `pulumi:"generateName"`
 	// A sequence number representing a specific generation of the desired state.
 	Generation pulumi.IntPtrInput `pulumi:"generation"`
-	// Map of string keys and values that can be used to organize and categorize (scope and select) the job. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+	// Map of string keys and values that can be used to organize and categorize (scope and select) the daemonset. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
 	Labels pulumi.StringMapInput `pulumi:"labels"`
-	// Name of the job, must be unique. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+	// Name of the daemonset, must be unique. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Namespace defines the space within which name of the job must be unique.
+	// Namespace defines the space within which name of the daemonset must be unique.
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
-	// An opaque value that represents the internal version of this job that can be used by clients to determine when job has changed. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+	// An opaque value that represents the internal version of this daemonset that can be used by clients to determine when daemonset has changed. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
 	ResourceVersion pulumi.StringPtrInput `pulumi:"resourceVersion"`
-	// The unique in time and space value for this job. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
+	// The unique in time and space value for this daemonset. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
 	Uid pulumi.StringPtrInput `pulumi:"uid"`
 }
 
-func (K8sJobMetadataArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobMetadata)(nil)).Elem()
+func (K8sDaemonSetMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sDaemonSetMetadata)(nil)).Elem()
 }
 
-func (i K8sJobMetadataArgs) ToK8sJobMetadataOutput() K8sJobMetadataOutput {
-	return i.ToK8sJobMetadataOutputWithContext(context.Background())
+func (i K8sDaemonSetMetadataArgs) ToK8sDaemonSetMetadataOutput() K8sDaemonSetMetadataOutput {
+	return i.ToK8sDaemonSetMetadataOutputWithContext(context.Background())
 }
 
-func (i K8sJobMetadataArgs) ToK8sJobMetadataOutputWithContext(ctx context.Context) K8sJobMetadataOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobMetadataOutput)
+func (i K8sDaemonSetMetadataArgs) ToK8sDaemonSetMetadataOutputWithContext(ctx context.Context) K8sDaemonSetMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetMetadataOutput)
 }
 
-func (i K8sJobMetadataArgs) ToK8sJobMetadataPtrOutput() K8sJobMetadataPtrOutput {
-	return i.ToK8sJobMetadataPtrOutputWithContext(context.Background())
+func (i K8sDaemonSetMetadataArgs) ToK8sDaemonSetMetadataPtrOutput() K8sDaemonSetMetadataPtrOutput {
+	return i.ToK8sDaemonSetMetadataPtrOutputWithContext(context.Background())
 }
 
-func (i K8sJobMetadataArgs) ToK8sJobMetadataPtrOutputWithContext(ctx context.Context) K8sJobMetadataPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobMetadataOutput).ToK8sJobMetadataPtrOutputWithContext(ctx)
+func (i K8sDaemonSetMetadataArgs) ToK8sDaemonSetMetadataPtrOutputWithContext(ctx context.Context) K8sDaemonSetMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetMetadataOutput).ToK8sDaemonSetMetadataPtrOutputWithContext(ctx)
 }
 
-// K8sJobMetadataPtrInput is an input type that accepts K8sJobMetadataArgs, K8sJobMetadataPtr and K8sJobMetadataPtrOutput values.
-// You can construct a concrete instance of `K8sJobMetadataPtrInput` via:
+// K8sDaemonSetMetadataPtrInput is an input type that accepts K8sDaemonSetMetadataArgs, K8sDaemonSetMetadataPtr and K8sDaemonSetMetadataPtrOutput values.
+// You can construct a concrete instance of `K8sDaemonSetMetadataPtrInput` via:
 //
-//	        K8sJobMetadataArgs{...}
+//	        K8sDaemonSetMetadataArgs{...}
 //
 //	or:
 //
 //	        nil
-type K8sJobMetadataPtrInput interface {
+type K8sDaemonSetMetadataPtrInput interface {
 	pulumi.Input
 
-	ToK8sJobMetadataPtrOutput() K8sJobMetadataPtrOutput
-	ToK8sJobMetadataPtrOutputWithContext(context.Context) K8sJobMetadataPtrOutput
+	ToK8sDaemonSetMetadataPtrOutput() K8sDaemonSetMetadataPtrOutput
+	ToK8sDaemonSetMetadataPtrOutputWithContext(context.Context) K8sDaemonSetMetadataPtrOutput
 }
 
-type k8sJobMetadataPtrType K8sJobMetadataArgs
+type k8sDaemonSetMetadataPtrType K8sDaemonSetMetadataArgs
 
-func K8sJobMetadataPtr(v *K8sJobMetadataArgs) K8sJobMetadataPtrInput {
-	return (*k8sJobMetadataPtrType)(v)
+func K8sDaemonSetMetadataPtr(v *K8sDaemonSetMetadataArgs) K8sDaemonSetMetadataPtrInput {
+	return (*k8sDaemonSetMetadataPtrType)(v)
 }
 
-func (*k8sJobMetadataPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobMetadata)(nil)).Elem()
+func (*k8sDaemonSetMetadataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**K8sDaemonSetMetadata)(nil)).Elem()
 }
 
-func (i *k8sJobMetadataPtrType) ToK8sJobMetadataPtrOutput() K8sJobMetadataPtrOutput {
-	return i.ToK8sJobMetadataPtrOutputWithContext(context.Background())
+func (i *k8sDaemonSetMetadataPtrType) ToK8sDaemonSetMetadataPtrOutput() K8sDaemonSetMetadataPtrOutput {
+	return i.ToK8sDaemonSetMetadataPtrOutputWithContext(context.Background())
 }
 
-func (i *k8sJobMetadataPtrType) ToK8sJobMetadataPtrOutputWithContext(ctx context.Context) K8sJobMetadataPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobMetadataPtrOutput)
+func (i *k8sDaemonSetMetadataPtrType) ToK8sDaemonSetMetadataPtrOutputWithContext(ctx context.Context) K8sDaemonSetMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetMetadataPtrOutput)
 }
 
-type K8sJobMetadataOutput struct{ *pulumi.OutputState }
+type K8sDaemonSetMetadataOutput struct{ *pulumi.OutputState }
 
-func (K8sJobMetadataOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobMetadata)(nil)).Elem()
+func (K8sDaemonSetMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sDaemonSetMetadata)(nil)).Elem()
 }
 
-func (o K8sJobMetadataOutput) ToK8sJobMetadataOutput() K8sJobMetadataOutput {
+func (o K8sDaemonSetMetadataOutput) ToK8sDaemonSetMetadataOutput() K8sDaemonSetMetadataOutput {
 	return o
 }
 
-func (o K8sJobMetadataOutput) ToK8sJobMetadataOutputWithContext(ctx context.Context) K8sJobMetadataOutput {
+func (o K8sDaemonSetMetadataOutput) ToK8sDaemonSetMetadataOutputWithContext(ctx context.Context) K8sDaemonSetMetadataOutput {
 	return o
 }
 
-func (o K8sJobMetadataOutput) ToK8sJobMetadataPtrOutput() K8sJobMetadataPtrOutput {
-	return o.ToK8sJobMetadataPtrOutputWithContext(context.Background())
+func (o K8sDaemonSetMetadataOutput) ToK8sDaemonSetMetadataPtrOutput() K8sDaemonSetMetadataPtrOutput {
+	return o.ToK8sDaemonSetMetadataPtrOutputWithContext(context.Background())
 }
 
-func (o K8sJobMetadataOutput) ToK8sJobMetadataPtrOutputWithContext(ctx context.Context) K8sJobMetadataPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v K8sJobMetadata) *K8sJobMetadata {
+func (o K8sDaemonSetMetadataOutput) ToK8sDaemonSetMetadataPtrOutputWithContext(ctx context.Context) K8sDaemonSetMetadataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v K8sDaemonSetMetadata) *K8sDaemonSetMetadata {
 		return &v
-	}).(K8sJobMetadataPtrOutput)
+	}).(K8sDaemonSetMetadataPtrOutput)
 }
 
-// An unstructured key value map stored with the job that may be used to store arbitrary metadata. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
-func (o K8sJobMetadataOutput) Annotations() pulumi.StringMapOutput {
-	return o.ApplyT(func(v K8sJobMetadata) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
-}
-
-// Prefix, used by the server, to generate a unique name ONLY IF the `name` field has not been provided. This value will also be combined with a unique suffix. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#idempotency
-func (o K8sJobMetadataOutput) GenerateName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobMetadata) *string { return v.GenerateName }).(pulumi.StringPtrOutput)
+// An unstructured key value map stored with the daemonset that may be used to store arbitrary metadata. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+func (o K8sDaemonSetMetadataOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v K8sDaemonSetMetadata) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // A sequence number representing a specific generation of the desired state.
-func (o K8sJobMetadataOutput) Generation() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v K8sJobMetadata) *int { return v.Generation }).(pulumi.IntPtrOutput)
+func (o K8sDaemonSetMetadataOutput) Generation() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v K8sDaemonSetMetadata) *int { return v.Generation }).(pulumi.IntPtrOutput)
 }
 
-// Map of string keys and values that can be used to organize and categorize (scope and select) the job. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
-func (o K8sJobMetadataOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v K8sJobMetadata) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+// Map of string keys and values that can be used to organize and categorize (scope and select) the daemonset. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+func (o K8sDaemonSetMetadataOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v K8sDaemonSetMetadata) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Name of the job, must be unique. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-func (o K8sJobMetadataOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobMetadata) *string { return v.Name }).(pulumi.StringPtrOutput)
+// Name of the daemonset, must be unique. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+func (o K8sDaemonSetMetadataOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v K8sDaemonSetMetadata) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Namespace defines the space within which name of the job must be unique.
-func (o K8sJobMetadataOutput) Namespace() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobMetadata) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+// Namespace defines the space within which name of the daemonset must be unique.
+func (o K8sDaemonSetMetadataOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v K8sDaemonSetMetadata) *string { return v.Namespace }).(pulumi.StringPtrOutput)
 }
 
-// An opaque value that represents the internal version of this job that can be used by clients to determine when job has changed. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
-func (o K8sJobMetadataOutput) ResourceVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobMetadata) *string { return v.ResourceVersion }).(pulumi.StringPtrOutput)
+// An opaque value that represents the internal version of this daemonset that can be used by clients to determine when daemonset has changed. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+func (o K8sDaemonSetMetadataOutput) ResourceVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v K8sDaemonSetMetadata) *string { return v.ResourceVersion }).(pulumi.StringPtrOutput)
 }
 
-// The unique in time and space value for this job. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
-func (o K8sJobMetadataOutput) Uid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobMetadata) *string { return v.Uid }).(pulumi.StringPtrOutput)
+// The unique in time and space value for this daemonset. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
+func (o K8sDaemonSetMetadataOutput) Uid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v K8sDaemonSetMetadata) *string { return v.Uid }).(pulumi.StringPtrOutput)
 }
 
-type K8sJobMetadataPtrOutput struct{ *pulumi.OutputState }
+type K8sDaemonSetMetadataPtrOutput struct{ *pulumi.OutputState }
 
-func (K8sJobMetadataPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobMetadata)(nil)).Elem()
+func (K8sDaemonSetMetadataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**K8sDaemonSetMetadata)(nil)).Elem()
 }
 
-func (o K8sJobMetadataPtrOutput) ToK8sJobMetadataPtrOutput() K8sJobMetadataPtrOutput {
+func (o K8sDaemonSetMetadataPtrOutput) ToK8sDaemonSetMetadataPtrOutput() K8sDaemonSetMetadataPtrOutput {
 	return o
 }
 
-func (o K8sJobMetadataPtrOutput) ToK8sJobMetadataPtrOutputWithContext(ctx context.Context) K8sJobMetadataPtrOutput {
+func (o K8sDaemonSetMetadataPtrOutput) ToK8sDaemonSetMetadataPtrOutputWithContext(ctx context.Context) K8sDaemonSetMetadataPtrOutput {
 	return o
 }
 
-func (o K8sJobMetadataPtrOutput) Elem() K8sJobMetadataOutput {
-	return o.ApplyT(func(v *K8sJobMetadata) K8sJobMetadata {
+func (o K8sDaemonSetMetadataPtrOutput) Elem() K8sDaemonSetMetadataOutput {
+	return o.ApplyT(func(v *K8sDaemonSetMetadata) K8sDaemonSetMetadata {
 		if v != nil {
 			return *v
 		}
-		var ret K8sJobMetadata
+		var ret K8sDaemonSetMetadata
 		return ret
-	}).(K8sJobMetadataOutput)
+	}).(K8sDaemonSetMetadataOutput)
 }
 
-// An unstructured key value map stored with the job that may be used to store arbitrary metadata. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
-func (o K8sJobMetadataPtrOutput) Annotations() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *K8sJobMetadata) map[string]string {
+// An unstructured key value map stored with the daemonset that may be used to store arbitrary metadata. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+func (o K8sDaemonSetMetadataPtrOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *K8sDaemonSetMetadata) map[string]string {
 		if v == nil {
 			return nil
 		}
@@ -74002,19 +73993,9 @@ func (o K8sJobMetadataPtrOutput) Annotations() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// Prefix, used by the server, to generate a unique name ONLY IF the `name` field has not been provided. This value will also be combined with a unique suffix. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#idempotency
-func (o K8sJobMetadataPtrOutput) GenerateName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *K8sJobMetadata) *string {
-		if v == nil {
-			return nil
-		}
-		return v.GenerateName
-	}).(pulumi.StringPtrOutput)
-}
-
 // A sequence number representing a specific generation of the desired state.
-func (o K8sJobMetadataPtrOutput) Generation() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *K8sJobMetadata) *int {
+func (o K8sDaemonSetMetadataPtrOutput) Generation() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *K8sDaemonSetMetadata) *int {
 		if v == nil {
 			return nil
 		}
@@ -74022,9 +74003,9 @@ func (o K8sJobMetadataPtrOutput) Generation() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Map of string keys and values that can be used to organize and categorize (scope and select) the job. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
-func (o K8sJobMetadataPtrOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *K8sJobMetadata) map[string]string {
+// Map of string keys and values that can be used to organize and categorize (scope and select) the daemonset. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+func (o K8sDaemonSetMetadataPtrOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *K8sDaemonSetMetadata) map[string]string {
 		if v == nil {
 			return nil
 		}
@@ -74032,9 +74013,9 @@ func (o K8sJobMetadataPtrOutput) Labels() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// Name of the job, must be unique. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-func (o K8sJobMetadataPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *K8sJobMetadata) *string {
+// Name of the daemonset, must be unique. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+func (o K8sDaemonSetMetadataPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *K8sDaemonSetMetadata) *string {
 		if v == nil {
 			return nil
 		}
@@ -74042,9 +74023,9 @@ func (o K8sJobMetadataPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Namespace defines the space within which name of the job must be unique.
-func (o K8sJobMetadataPtrOutput) Namespace() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *K8sJobMetadata) *string {
+// Namespace defines the space within which name of the daemonset must be unique.
+func (o K8sDaemonSetMetadataPtrOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *K8sDaemonSetMetadata) *string {
 		if v == nil {
 			return nil
 		}
@@ -74052,9 +74033,9 @@ func (o K8sJobMetadataPtrOutput) Namespace() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// An opaque value that represents the internal version of this job that can be used by clients to determine when job has changed. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
-func (o K8sJobMetadataPtrOutput) ResourceVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *K8sJobMetadata) *string {
+// An opaque value that represents the internal version of this daemonset that can be used by clients to determine when daemonset has changed. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+func (o K8sDaemonSetMetadataPtrOutput) ResourceVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *K8sDaemonSetMetadata) *string {
 		if v == nil {
 			return nil
 		}
@@ -74062,9 +74043,9 @@ func (o K8sJobMetadataPtrOutput) ResourceVersion() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The unique in time and space value for this job. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
-func (o K8sJobMetadataPtrOutput) Uid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *K8sJobMetadata) *string {
+// The unique in time and space value for this daemonset. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
+func (o K8sDaemonSetMetadataPtrOutput) Uid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *K8sDaemonSetMetadata) *string {
 		if v == nil {
 			return nil
 		}
@@ -74072,324 +74053,368 @@ func (o K8sJobMetadataPtrOutput) Uid() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type K8sJobSpec struct {
-	// Optional duration in seconds the pod may be active on the node relative to StartTime before the system will actively try to mark it failed and kill associated containers. Value must be a positive integer.
-	ActiveDeadlineSeconds *int `pulumi:"activeDeadlineSeconds"`
-	// Specifies the number of retries before marking this job failed. Defaults to 6 Defaults to `6`.
-	BackoffLimit *int `pulumi:"backoffLimit"`
-	// Specifies how Pod completions are tracked. It can be `NonIndexed` (default) or `Indexed`. More info: https://kubernetes.io/docs/concepts/workloads/controllers/job/#completion-mode
-	CompletionMode *string `pulumi:"completionMode"`
-	// Specifies the desired number of successfully finished pods the job should be run with. Setting to nil means that the success of any pod signals the success of all pods, and allows parallelism to have any positive value. Setting to 1 means that parallelism is limited to 1 and the success of that pod signals the success of the job. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/ Defaults to `1`.
-	Completions *int `pulumi:"completions"`
-	// Controls generation of pod labels and pod selectors. Leave unset unless you are certain what you are doing. When false or unset, the system pick labels unique to this job and appends those labels to the pod template. When true, the user is responsible for picking unique labels and specifying the selector. Failure to pick a unique label may cause this and other jobs to not function correctly. More info: https://git.k8s.io/community/contributors/design-proposals/selector-generation.md
-	ManualSelector *bool `pulumi:"manualSelector"`
-	// Specifies the maximum desired number of pods the job should run at any given time. The actual number of pods running in steady state will be less than this number when ((.spec.completions - .status.successful) < .spec.parallelism), i.e. when the work left to do is less than max parallelism. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/ Defaults to `1`.
-	Parallelism *int `pulumi:"parallelism"`
-	// A label query over volumes to consider for binding.
-	Selector *K8sJobSpecSelector `pulumi:"selector"`
-	// Describes the pod that will be created when executing a job. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
-	Template K8sJobSpecTemplate `pulumi:"template"`
-	// ttlSecondsAfterFinished limits the lifetime of a Job that has finished execution (either Complete or Failed). If this field is set, ttlSecondsAfterFinished after the Job finishes, it is eligible to be automatically deleted. When the Job is being deleted, its lifecycle guarantees (e.g. finalizers) will be honored. If this field is unset, the Job won't be automatically deleted. If this field is set to zero, the Job becomes eligible to be deleted immediately after it finishes.
-	TtlSecondsAfterFinished *string `pulumi:"ttlSecondsAfterFinished"`
+type K8sDaemonSetSpec struct {
+	// The minimum number of seconds for which a newly created pod should be ready without any of its containers crashing, for it to be considered available. Defaults to `0`.
+	MinReadySeconds *int `pulumi:"minReadySeconds"`
+	// The number of old history to retain to allow rollback. Defaults to `10`.
+	RevisionHistoryLimit *int `pulumi:"revisionHistoryLimit"`
+	// A label query over pods that are managed by the daemon set. Must match in order to be controlled. It must match the pod template's labels.
+	Selector K8sDaemonSetSpecSelector `pulumi:"selector"`
+	// An object that describes the pod that will be created. The DaemonSet will create exactly one copy of this pod on every node that matches the template's node selector.
+	Template K8sDaemonSetSpecTemplate `pulumi:"template"`
+	// An update strategy to replace existing DaemonSet pods with new pods.
+	UpdateStrategy *K8sDaemonSetSpecUpdateStrategy `pulumi:"updateStrategy"`
 }
 
-// K8sJobSpecInput is an input type that accepts K8sJobSpecArgs and K8sJobSpecOutput values.
-// You can construct a concrete instance of `K8sJobSpecInput` via:
+// K8sDaemonSetSpecInput is an input type that accepts K8sDaemonSetSpecArgs and K8sDaemonSetSpecOutput values.
+// You can construct a concrete instance of `K8sDaemonSetSpecInput` via:
 //
-//	K8sJobSpecArgs{...}
-type K8sJobSpecInput interface {
+//	K8sDaemonSetSpecArgs{...}
+type K8sDaemonSetSpecInput interface {
 	pulumi.Input
 
-	ToK8sJobSpecOutput() K8sJobSpecOutput
-	ToK8sJobSpecOutputWithContext(context.Context) K8sJobSpecOutput
+	ToK8sDaemonSetSpecOutput() K8sDaemonSetSpecOutput
+	ToK8sDaemonSetSpecOutputWithContext(context.Context) K8sDaemonSetSpecOutput
 }
 
-type K8sJobSpecArgs struct {
-	// Optional duration in seconds the pod may be active on the node relative to StartTime before the system will actively try to mark it failed and kill associated containers. Value must be a positive integer.
-	ActiveDeadlineSeconds pulumi.IntPtrInput `pulumi:"activeDeadlineSeconds"`
-	// Specifies the number of retries before marking this job failed. Defaults to 6 Defaults to `6`.
-	BackoffLimit pulumi.IntPtrInput `pulumi:"backoffLimit"`
-	// Specifies how Pod completions are tracked. It can be `NonIndexed` (default) or `Indexed`. More info: https://kubernetes.io/docs/concepts/workloads/controllers/job/#completion-mode
-	CompletionMode pulumi.StringPtrInput `pulumi:"completionMode"`
-	// Specifies the desired number of successfully finished pods the job should be run with. Setting to nil means that the success of any pod signals the success of all pods, and allows parallelism to have any positive value. Setting to 1 means that parallelism is limited to 1 and the success of that pod signals the success of the job. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/ Defaults to `1`.
-	Completions pulumi.IntPtrInput `pulumi:"completions"`
-	// Controls generation of pod labels and pod selectors. Leave unset unless you are certain what you are doing. When false or unset, the system pick labels unique to this job and appends those labels to the pod template. When true, the user is responsible for picking unique labels and specifying the selector. Failure to pick a unique label may cause this and other jobs to not function correctly. More info: https://git.k8s.io/community/contributors/design-proposals/selector-generation.md
-	ManualSelector pulumi.BoolPtrInput `pulumi:"manualSelector"`
-	// Specifies the maximum desired number of pods the job should run at any given time. The actual number of pods running in steady state will be less than this number when ((.spec.completions - .status.successful) < .spec.parallelism), i.e. when the work left to do is less than max parallelism. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/ Defaults to `1`.
-	Parallelism pulumi.IntPtrInput `pulumi:"parallelism"`
-	// A label query over volumes to consider for binding.
-	Selector K8sJobSpecSelectorPtrInput `pulumi:"selector"`
-	// Describes the pod that will be created when executing a job. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
-	Template K8sJobSpecTemplateInput `pulumi:"template"`
-	// ttlSecondsAfterFinished limits the lifetime of a Job that has finished execution (either Complete or Failed). If this field is set, ttlSecondsAfterFinished after the Job finishes, it is eligible to be automatically deleted. When the Job is being deleted, its lifecycle guarantees (e.g. finalizers) will be honored. If this field is unset, the Job won't be automatically deleted. If this field is set to zero, the Job becomes eligible to be deleted immediately after it finishes.
-	TtlSecondsAfterFinished pulumi.StringPtrInput `pulumi:"ttlSecondsAfterFinished"`
+type K8sDaemonSetSpecArgs struct {
+	// The minimum number of seconds for which a newly created pod should be ready without any of its containers crashing, for it to be considered available. Defaults to `0`.
+	MinReadySeconds pulumi.IntPtrInput `pulumi:"minReadySeconds"`
+	// The number of old history to retain to allow rollback. Defaults to `10`.
+	RevisionHistoryLimit pulumi.IntPtrInput `pulumi:"revisionHistoryLimit"`
+	// A label query over pods that are managed by the daemon set. Must match in order to be controlled. It must match the pod template's labels.
+	Selector K8sDaemonSetSpecSelectorInput `pulumi:"selector"`
+	// An object that describes the pod that will be created. The DaemonSet will create exactly one copy of this pod on every node that matches the template's node selector.
+	Template K8sDaemonSetSpecTemplateInput `pulumi:"template"`
+	// An update strategy to replace existing DaemonSet pods with new pods.
+	UpdateStrategy K8sDaemonSetSpecUpdateStrategyPtrInput `pulumi:"updateStrategy"`
 }
 
-func (K8sJobSpecArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpec)(nil)).Elem()
+func (K8sDaemonSetSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sDaemonSetSpec)(nil)).Elem()
 }
 
-func (i K8sJobSpecArgs) ToK8sJobSpecOutput() K8sJobSpecOutput {
-	return i.ToK8sJobSpecOutputWithContext(context.Background())
+func (i K8sDaemonSetSpecArgs) ToK8sDaemonSetSpecOutput() K8sDaemonSetSpecOutput {
+	return i.ToK8sDaemonSetSpecOutputWithContext(context.Background())
 }
 
-func (i K8sJobSpecArgs) ToK8sJobSpecOutputWithContext(ctx context.Context) K8sJobSpecOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecOutput)
+func (i K8sDaemonSetSpecArgs) ToK8sDaemonSetSpecOutputWithContext(ctx context.Context) K8sDaemonSetSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetSpecOutput)
 }
 
-// K8sJobSpecArrayInput is an input type that accepts K8sJobSpecArray and K8sJobSpecArrayOutput values.
-// You can construct a concrete instance of `K8sJobSpecArrayInput` via:
+func (i K8sDaemonSetSpecArgs) ToK8sDaemonSetSpecPtrOutput() K8sDaemonSetSpecPtrOutput {
+	return i.ToK8sDaemonSetSpecPtrOutputWithContext(context.Background())
+}
+
+func (i K8sDaemonSetSpecArgs) ToK8sDaemonSetSpecPtrOutputWithContext(ctx context.Context) K8sDaemonSetSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetSpecOutput).ToK8sDaemonSetSpecPtrOutputWithContext(ctx)
+}
+
+// K8sDaemonSetSpecPtrInput is an input type that accepts K8sDaemonSetSpecArgs, K8sDaemonSetSpecPtr and K8sDaemonSetSpecPtrOutput values.
+// You can construct a concrete instance of `K8sDaemonSetSpecPtrInput` via:
 //
-//	K8sJobSpecArray{ K8sJobSpecArgs{...} }
-type K8sJobSpecArrayInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecArrayOutput() K8sJobSpecArrayOutput
-	ToK8sJobSpecArrayOutputWithContext(context.Context) K8sJobSpecArrayOutput
-}
-
-type K8sJobSpecArray []K8sJobSpecInput
-
-func (K8sJobSpecArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpec)(nil)).Elem()
-}
-
-func (i K8sJobSpecArray) ToK8sJobSpecArrayOutput() K8sJobSpecArrayOutput {
-	return i.ToK8sJobSpecArrayOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecArray) ToK8sJobSpecArrayOutputWithContext(ctx context.Context) K8sJobSpecArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecArrayOutput)
-}
-
-type K8sJobSpecOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpec)(nil)).Elem()
-}
-
-func (o K8sJobSpecOutput) ToK8sJobSpecOutput() K8sJobSpecOutput {
-	return o
-}
-
-func (o K8sJobSpecOutput) ToK8sJobSpecOutputWithContext(ctx context.Context) K8sJobSpecOutput {
-	return o
-}
-
-// Optional duration in seconds the pod may be active on the node relative to StartTime before the system will actively try to mark it failed and kill associated containers. Value must be a positive integer.
-func (o K8sJobSpecOutput) ActiveDeadlineSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v K8sJobSpec) *int { return v.ActiveDeadlineSeconds }).(pulumi.IntPtrOutput)
-}
-
-// Specifies the number of retries before marking this job failed. Defaults to 6 Defaults to `6`.
-func (o K8sJobSpecOutput) BackoffLimit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v K8sJobSpec) *int { return v.BackoffLimit }).(pulumi.IntPtrOutput)
-}
-
-// Specifies how Pod completions are tracked. It can be `NonIndexed` (default) or `Indexed`. More info: https://kubernetes.io/docs/concepts/workloads/controllers/job/#completion-mode
-func (o K8sJobSpecOutput) CompletionMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpec) *string { return v.CompletionMode }).(pulumi.StringPtrOutput)
-}
-
-// Specifies the desired number of successfully finished pods the job should be run with. Setting to nil means that the success of any pod signals the success of all pods, and allows parallelism to have any positive value. Setting to 1 means that parallelism is limited to 1 and the success of that pod signals the success of the job. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/ Defaults to `1`.
-func (o K8sJobSpecOutput) Completions() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v K8sJobSpec) *int { return v.Completions }).(pulumi.IntPtrOutput)
-}
-
-// Controls generation of pod labels and pod selectors. Leave unset unless you are certain what you are doing. When false or unset, the system pick labels unique to this job and appends those labels to the pod template. When true, the user is responsible for picking unique labels and specifying the selector. Failure to pick a unique label may cause this and other jobs to not function correctly. More info: https://git.k8s.io/community/contributors/design-proposals/selector-generation.md
-func (o K8sJobSpecOutput) ManualSelector() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v K8sJobSpec) *bool { return v.ManualSelector }).(pulumi.BoolPtrOutput)
-}
-
-// Specifies the maximum desired number of pods the job should run at any given time. The actual number of pods running in steady state will be less than this number when ((.spec.completions - .status.successful) < .spec.parallelism), i.e. when the work left to do is less than max parallelism. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/ Defaults to `1`.
-func (o K8sJobSpecOutput) Parallelism() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v K8sJobSpec) *int { return v.Parallelism }).(pulumi.IntPtrOutput)
-}
-
-// A label query over volumes to consider for binding.
-func (o K8sJobSpecOutput) Selector() K8sJobSpecSelectorPtrOutput {
-	return o.ApplyT(func(v K8sJobSpec) *K8sJobSpecSelector { return v.Selector }).(K8sJobSpecSelectorPtrOutput)
-}
-
-// Describes the pod that will be created when executing a job. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
-func (o K8sJobSpecOutput) Template() K8sJobSpecTemplateOutput {
-	return o.ApplyT(func(v K8sJobSpec) K8sJobSpecTemplate { return v.Template }).(K8sJobSpecTemplateOutput)
-}
-
-// ttlSecondsAfterFinished limits the lifetime of a Job that has finished execution (either Complete or Failed). If this field is set, ttlSecondsAfterFinished after the Job finishes, it is eligible to be automatically deleted. When the Job is being deleted, its lifecycle guarantees (e.g. finalizers) will be honored. If this field is unset, the Job won't be automatically deleted. If this field is set to zero, the Job becomes eligible to be deleted immediately after it finishes.
-func (o K8sJobSpecOutput) TtlSecondsAfterFinished() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpec) *string { return v.TtlSecondsAfterFinished }).(pulumi.StringPtrOutput)
-}
-
-type K8sJobSpecArrayOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpec)(nil)).Elem()
-}
-
-func (o K8sJobSpecArrayOutput) ToK8sJobSpecArrayOutput() K8sJobSpecArrayOutput {
-	return o
-}
-
-func (o K8sJobSpecArrayOutput) ToK8sJobSpecArrayOutputWithContext(ctx context.Context) K8sJobSpecArrayOutput {
-	return o
-}
-
-func (o K8sJobSpecArrayOutput) Index(i pulumi.IntInput) K8sJobSpecOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) K8sJobSpec {
-		return vs[0].([]K8sJobSpec)[vs[1].(int)]
-	}).(K8sJobSpecOutput)
-}
-
-type K8sJobSpecSelector struct {
-	// A list of label selector requirements. The requirements are ANDed.
-	MatchExpressions []K8sJobSpecSelectorMatchExpression `pulumi:"matchExpressions"`
-	// A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
-	MatchLabels map[string]string `pulumi:"matchLabels"`
-}
-
-// K8sJobSpecSelectorInput is an input type that accepts K8sJobSpecSelectorArgs and K8sJobSpecSelectorOutput values.
-// You can construct a concrete instance of `K8sJobSpecSelectorInput` via:
-//
-//	K8sJobSpecSelectorArgs{...}
-type K8sJobSpecSelectorInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecSelectorOutput() K8sJobSpecSelectorOutput
-	ToK8sJobSpecSelectorOutputWithContext(context.Context) K8sJobSpecSelectorOutput
-}
-
-type K8sJobSpecSelectorArgs struct {
-	// A list of label selector requirements. The requirements are ANDed.
-	MatchExpressions K8sJobSpecSelectorMatchExpressionArrayInput `pulumi:"matchExpressions"`
-	// A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
-	MatchLabels pulumi.StringMapInput `pulumi:"matchLabels"`
-}
-
-func (K8sJobSpecSelectorArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecSelector)(nil)).Elem()
-}
-
-func (i K8sJobSpecSelectorArgs) ToK8sJobSpecSelectorOutput() K8sJobSpecSelectorOutput {
-	return i.ToK8sJobSpecSelectorOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecSelectorArgs) ToK8sJobSpecSelectorOutputWithContext(ctx context.Context) K8sJobSpecSelectorOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecSelectorOutput)
-}
-
-func (i K8sJobSpecSelectorArgs) ToK8sJobSpecSelectorPtrOutput() K8sJobSpecSelectorPtrOutput {
-	return i.ToK8sJobSpecSelectorPtrOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecSelectorArgs) ToK8sJobSpecSelectorPtrOutputWithContext(ctx context.Context) K8sJobSpecSelectorPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecSelectorOutput).ToK8sJobSpecSelectorPtrOutputWithContext(ctx)
-}
-
-// K8sJobSpecSelectorPtrInput is an input type that accepts K8sJobSpecSelectorArgs, K8sJobSpecSelectorPtr and K8sJobSpecSelectorPtrOutput values.
-// You can construct a concrete instance of `K8sJobSpecSelectorPtrInput` via:
-//
-//	        K8sJobSpecSelectorArgs{...}
+//	        K8sDaemonSetSpecArgs{...}
 //
 //	or:
 //
 //	        nil
-type K8sJobSpecSelectorPtrInput interface {
+type K8sDaemonSetSpecPtrInput interface {
 	pulumi.Input
 
-	ToK8sJobSpecSelectorPtrOutput() K8sJobSpecSelectorPtrOutput
-	ToK8sJobSpecSelectorPtrOutputWithContext(context.Context) K8sJobSpecSelectorPtrOutput
+	ToK8sDaemonSetSpecPtrOutput() K8sDaemonSetSpecPtrOutput
+	ToK8sDaemonSetSpecPtrOutputWithContext(context.Context) K8sDaemonSetSpecPtrOutput
 }
 
-type k8sJobSpecSelectorPtrType K8sJobSpecSelectorArgs
+type k8sDaemonSetSpecPtrType K8sDaemonSetSpecArgs
 
-func K8sJobSpecSelectorPtr(v *K8sJobSpecSelectorArgs) K8sJobSpecSelectorPtrInput {
-	return (*k8sJobSpecSelectorPtrType)(v)
+func K8sDaemonSetSpecPtr(v *K8sDaemonSetSpecArgs) K8sDaemonSetSpecPtrInput {
+	return (*k8sDaemonSetSpecPtrType)(v)
 }
 
-func (*k8sJobSpecSelectorPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecSelector)(nil)).Elem()
+func (*k8sDaemonSetSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**K8sDaemonSetSpec)(nil)).Elem()
 }
 
-func (i *k8sJobSpecSelectorPtrType) ToK8sJobSpecSelectorPtrOutput() K8sJobSpecSelectorPtrOutput {
-	return i.ToK8sJobSpecSelectorPtrOutputWithContext(context.Background())
+func (i *k8sDaemonSetSpecPtrType) ToK8sDaemonSetSpecPtrOutput() K8sDaemonSetSpecPtrOutput {
+	return i.ToK8sDaemonSetSpecPtrOutputWithContext(context.Background())
 }
 
-func (i *k8sJobSpecSelectorPtrType) ToK8sJobSpecSelectorPtrOutputWithContext(ctx context.Context) K8sJobSpecSelectorPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecSelectorPtrOutput)
+func (i *k8sDaemonSetSpecPtrType) ToK8sDaemonSetSpecPtrOutputWithContext(ctx context.Context) K8sDaemonSetSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetSpecPtrOutput)
 }
 
-type K8sJobSpecSelectorOutput struct{ *pulumi.OutputState }
+type K8sDaemonSetSpecOutput struct{ *pulumi.OutputState }
 
-func (K8sJobSpecSelectorOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecSelector)(nil)).Elem()
+func (K8sDaemonSetSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sDaemonSetSpec)(nil)).Elem()
 }
 
-func (o K8sJobSpecSelectorOutput) ToK8sJobSpecSelectorOutput() K8sJobSpecSelectorOutput {
+func (o K8sDaemonSetSpecOutput) ToK8sDaemonSetSpecOutput() K8sDaemonSetSpecOutput {
 	return o
 }
 
-func (o K8sJobSpecSelectorOutput) ToK8sJobSpecSelectorOutputWithContext(ctx context.Context) K8sJobSpecSelectorOutput {
+func (o K8sDaemonSetSpecOutput) ToK8sDaemonSetSpecOutputWithContext(ctx context.Context) K8sDaemonSetSpecOutput {
 	return o
 }
 
-func (o K8sJobSpecSelectorOutput) ToK8sJobSpecSelectorPtrOutput() K8sJobSpecSelectorPtrOutput {
-	return o.ToK8sJobSpecSelectorPtrOutputWithContext(context.Background())
+func (o K8sDaemonSetSpecOutput) ToK8sDaemonSetSpecPtrOutput() K8sDaemonSetSpecPtrOutput {
+	return o.ToK8sDaemonSetSpecPtrOutputWithContext(context.Background())
 }
 
-func (o K8sJobSpecSelectorOutput) ToK8sJobSpecSelectorPtrOutputWithContext(ctx context.Context) K8sJobSpecSelectorPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v K8sJobSpecSelector) *K8sJobSpecSelector {
+func (o K8sDaemonSetSpecOutput) ToK8sDaemonSetSpecPtrOutputWithContext(ctx context.Context) K8sDaemonSetSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v K8sDaemonSetSpec) *K8sDaemonSetSpec {
 		return &v
-	}).(K8sJobSpecSelectorPtrOutput)
+	}).(K8sDaemonSetSpecPtrOutput)
 }
 
-// A list of label selector requirements. The requirements are ANDed.
-func (o K8sJobSpecSelectorOutput) MatchExpressions() K8sJobSpecSelectorMatchExpressionArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecSelector) []K8sJobSpecSelectorMatchExpression { return v.MatchExpressions }).(K8sJobSpecSelectorMatchExpressionArrayOutput)
+// The minimum number of seconds for which a newly created pod should be ready without any of its containers crashing, for it to be considered available. Defaults to `0`.
+func (o K8sDaemonSetSpecOutput) MinReadySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpec) *int { return v.MinReadySeconds }).(pulumi.IntPtrOutput)
 }
 
-// A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
-func (o K8sJobSpecSelectorOutput) MatchLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v K8sJobSpecSelector) map[string]string { return v.MatchLabels }).(pulumi.StringMapOutput)
+// The number of old history to retain to allow rollback. Defaults to `10`.
+func (o K8sDaemonSetSpecOutput) RevisionHistoryLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpec) *int { return v.RevisionHistoryLimit }).(pulumi.IntPtrOutput)
 }
 
-type K8sJobSpecSelectorPtrOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecSelectorPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecSelector)(nil)).Elem()
+// A label query over pods that are managed by the daemon set. Must match in order to be controlled. It must match the pod template's labels.
+func (o K8sDaemonSetSpecOutput) Selector() K8sDaemonSetSpecSelectorOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpec) K8sDaemonSetSpecSelector { return v.Selector }).(K8sDaemonSetSpecSelectorOutput)
 }
 
-func (o K8sJobSpecSelectorPtrOutput) ToK8sJobSpecSelectorPtrOutput() K8sJobSpecSelectorPtrOutput {
+// An object that describes the pod that will be created. The DaemonSet will create exactly one copy of this pod on every node that matches the template's node selector.
+func (o K8sDaemonSetSpecOutput) Template() K8sDaemonSetSpecTemplateOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpec) K8sDaemonSetSpecTemplate { return v.Template }).(K8sDaemonSetSpecTemplateOutput)
+}
+
+// An update strategy to replace existing DaemonSet pods with new pods.
+func (o K8sDaemonSetSpecOutput) UpdateStrategy() K8sDaemonSetSpecUpdateStrategyPtrOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpec) *K8sDaemonSetSpecUpdateStrategy { return v.UpdateStrategy }).(K8sDaemonSetSpecUpdateStrategyPtrOutput)
+}
+
+type K8sDaemonSetSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (K8sDaemonSetSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**K8sDaemonSetSpec)(nil)).Elem()
+}
+
+func (o K8sDaemonSetSpecPtrOutput) ToK8sDaemonSetSpecPtrOutput() K8sDaemonSetSpecPtrOutput {
 	return o
 }
 
-func (o K8sJobSpecSelectorPtrOutput) ToK8sJobSpecSelectorPtrOutputWithContext(ctx context.Context) K8sJobSpecSelectorPtrOutput {
+func (o K8sDaemonSetSpecPtrOutput) ToK8sDaemonSetSpecPtrOutputWithContext(ctx context.Context) K8sDaemonSetSpecPtrOutput {
 	return o
 }
 
-func (o K8sJobSpecSelectorPtrOutput) Elem() K8sJobSpecSelectorOutput {
-	return o.ApplyT(func(v *K8sJobSpecSelector) K8sJobSpecSelector {
+func (o K8sDaemonSetSpecPtrOutput) Elem() K8sDaemonSetSpecOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpec) K8sDaemonSetSpec {
 		if v != nil {
 			return *v
 		}
-		var ret K8sJobSpecSelector
+		var ret K8sDaemonSetSpec
 		return ret
-	}).(K8sJobSpecSelectorOutput)
+	}).(K8sDaemonSetSpecOutput)
+}
+
+// The minimum number of seconds for which a newly created pod should be ready without any of its containers crashing, for it to be considered available. Defaults to `0`.
+func (o K8sDaemonSetSpecPtrOutput) MinReadySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpec) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinReadySeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of old history to retain to allow rollback. Defaults to `10`.
+func (o K8sDaemonSetSpecPtrOutput) RevisionHistoryLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpec) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RevisionHistoryLimit
+	}).(pulumi.IntPtrOutput)
+}
+
+// A label query over pods that are managed by the daemon set. Must match in order to be controlled. It must match the pod template's labels.
+func (o K8sDaemonSetSpecPtrOutput) Selector() K8sDaemonSetSpecSelectorPtrOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpec) *K8sDaemonSetSpecSelector {
+		if v == nil {
+			return nil
+		}
+		return &v.Selector
+	}).(K8sDaemonSetSpecSelectorPtrOutput)
+}
+
+// An object that describes the pod that will be created. The DaemonSet will create exactly one copy of this pod on every node that matches the template's node selector.
+func (o K8sDaemonSetSpecPtrOutput) Template() K8sDaemonSetSpecTemplatePtrOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpec) *K8sDaemonSetSpecTemplate {
+		if v == nil {
+			return nil
+		}
+		return &v.Template
+	}).(K8sDaemonSetSpecTemplatePtrOutput)
+}
+
+// An update strategy to replace existing DaemonSet pods with new pods.
+func (o K8sDaemonSetSpecPtrOutput) UpdateStrategy() K8sDaemonSetSpecUpdateStrategyPtrOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpec) *K8sDaemonSetSpecUpdateStrategy {
+		if v == nil {
+			return nil
+		}
+		return v.UpdateStrategy
+	}).(K8sDaemonSetSpecUpdateStrategyPtrOutput)
+}
+
+type K8sDaemonSetSpecSelector struct {
+	// A list of label selector requirements. The requirements are ANDed.
+	MatchExpressions []K8sDaemonSetSpecSelectorMatchExpression `pulumi:"matchExpressions"`
+	// A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+	MatchLabels map[string]string `pulumi:"matchLabels"`
+}
+
+// K8sDaemonSetSpecSelectorInput is an input type that accepts K8sDaemonSetSpecSelectorArgs and K8sDaemonSetSpecSelectorOutput values.
+// You can construct a concrete instance of `K8sDaemonSetSpecSelectorInput` via:
+//
+//	K8sDaemonSetSpecSelectorArgs{...}
+type K8sDaemonSetSpecSelectorInput interface {
+	pulumi.Input
+
+	ToK8sDaemonSetSpecSelectorOutput() K8sDaemonSetSpecSelectorOutput
+	ToK8sDaemonSetSpecSelectorOutputWithContext(context.Context) K8sDaemonSetSpecSelectorOutput
+}
+
+type K8sDaemonSetSpecSelectorArgs struct {
+	// A list of label selector requirements. The requirements are ANDed.
+	MatchExpressions K8sDaemonSetSpecSelectorMatchExpressionArrayInput `pulumi:"matchExpressions"`
+	// A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+	MatchLabels pulumi.StringMapInput `pulumi:"matchLabels"`
+}
+
+func (K8sDaemonSetSpecSelectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sDaemonSetSpecSelector)(nil)).Elem()
+}
+
+func (i K8sDaemonSetSpecSelectorArgs) ToK8sDaemonSetSpecSelectorOutput() K8sDaemonSetSpecSelectorOutput {
+	return i.ToK8sDaemonSetSpecSelectorOutputWithContext(context.Background())
+}
+
+func (i K8sDaemonSetSpecSelectorArgs) ToK8sDaemonSetSpecSelectorOutputWithContext(ctx context.Context) K8sDaemonSetSpecSelectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetSpecSelectorOutput)
+}
+
+func (i K8sDaemonSetSpecSelectorArgs) ToK8sDaemonSetSpecSelectorPtrOutput() K8sDaemonSetSpecSelectorPtrOutput {
+	return i.ToK8sDaemonSetSpecSelectorPtrOutputWithContext(context.Background())
+}
+
+func (i K8sDaemonSetSpecSelectorArgs) ToK8sDaemonSetSpecSelectorPtrOutputWithContext(ctx context.Context) K8sDaemonSetSpecSelectorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetSpecSelectorOutput).ToK8sDaemonSetSpecSelectorPtrOutputWithContext(ctx)
+}
+
+// K8sDaemonSetSpecSelectorPtrInput is an input type that accepts K8sDaemonSetSpecSelectorArgs, K8sDaemonSetSpecSelectorPtr and K8sDaemonSetSpecSelectorPtrOutput values.
+// You can construct a concrete instance of `K8sDaemonSetSpecSelectorPtrInput` via:
+//
+//	        K8sDaemonSetSpecSelectorArgs{...}
+//
+//	or:
+//
+//	        nil
+type K8sDaemonSetSpecSelectorPtrInput interface {
+	pulumi.Input
+
+	ToK8sDaemonSetSpecSelectorPtrOutput() K8sDaemonSetSpecSelectorPtrOutput
+	ToK8sDaemonSetSpecSelectorPtrOutputWithContext(context.Context) K8sDaemonSetSpecSelectorPtrOutput
+}
+
+type k8sDaemonSetSpecSelectorPtrType K8sDaemonSetSpecSelectorArgs
+
+func K8sDaemonSetSpecSelectorPtr(v *K8sDaemonSetSpecSelectorArgs) K8sDaemonSetSpecSelectorPtrInput {
+	return (*k8sDaemonSetSpecSelectorPtrType)(v)
+}
+
+func (*k8sDaemonSetSpecSelectorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**K8sDaemonSetSpecSelector)(nil)).Elem()
+}
+
+func (i *k8sDaemonSetSpecSelectorPtrType) ToK8sDaemonSetSpecSelectorPtrOutput() K8sDaemonSetSpecSelectorPtrOutput {
+	return i.ToK8sDaemonSetSpecSelectorPtrOutputWithContext(context.Background())
+}
+
+func (i *k8sDaemonSetSpecSelectorPtrType) ToK8sDaemonSetSpecSelectorPtrOutputWithContext(ctx context.Context) K8sDaemonSetSpecSelectorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetSpecSelectorPtrOutput)
+}
+
+type K8sDaemonSetSpecSelectorOutput struct{ *pulumi.OutputState }
+
+func (K8sDaemonSetSpecSelectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sDaemonSetSpecSelector)(nil)).Elem()
+}
+
+func (o K8sDaemonSetSpecSelectorOutput) ToK8sDaemonSetSpecSelectorOutput() K8sDaemonSetSpecSelectorOutput {
+	return o
+}
+
+func (o K8sDaemonSetSpecSelectorOutput) ToK8sDaemonSetSpecSelectorOutputWithContext(ctx context.Context) K8sDaemonSetSpecSelectorOutput {
+	return o
+}
+
+func (o K8sDaemonSetSpecSelectorOutput) ToK8sDaemonSetSpecSelectorPtrOutput() K8sDaemonSetSpecSelectorPtrOutput {
+	return o.ToK8sDaemonSetSpecSelectorPtrOutputWithContext(context.Background())
+}
+
+func (o K8sDaemonSetSpecSelectorOutput) ToK8sDaemonSetSpecSelectorPtrOutputWithContext(ctx context.Context) K8sDaemonSetSpecSelectorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v K8sDaemonSetSpecSelector) *K8sDaemonSetSpecSelector {
+		return &v
+	}).(K8sDaemonSetSpecSelectorPtrOutput)
 }
 
 // A list of label selector requirements. The requirements are ANDed.
-func (o K8sJobSpecSelectorPtrOutput) MatchExpressions() K8sJobSpecSelectorMatchExpressionArrayOutput {
-	return o.ApplyT(func(v *K8sJobSpecSelector) []K8sJobSpecSelectorMatchExpression {
+func (o K8sDaemonSetSpecSelectorOutput) MatchExpressions() K8sDaemonSetSpecSelectorMatchExpressionArrayOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecSelector) []K8sDaemonSetSpecSelectorMatchExpression { return v.MatchExpressions }).(K8sDaemonSetSpecSelectorMatchExpressionArrayOutput)
+}
+
+// A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+func (o K8sDaemonSetSpecSelectorOutput) MatchLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecSelector) map[string]string { return v.MatchLabels }).(pulumi.StringMapOutput)
+}
+
+type K8sDaemonSetSpecSelectorPtrOutput struct{ *pulumi.OutputState }
+
+func (K8sDaemonSetSpecSelectorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**K8sDaemonSetSpecSelector)(nil)).Elem()
+}
+
+func (o K8sDaemonSetSpecSelectorPtrOutput) ToK8sDaemonSetSpecSelectorPtrOutput() K8sDaemonSetSpecSelectorPtrOutput {
+	return o
+}
+
+func (o K8sDaemonSetSpecSelectorPtrOutput) ToK8sDaemonSetSpecSelectorPtrOutputWithContext(ctx context.Context) K8sDaemonSetSpecSelectorPtrOutput {
+	return o
+}
+
+func (o K8sDaemonSetSpecSelectorPtrOutput) Elem() K8sDaemonSetSpecSelectorOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpecSelector) K8sDaemonSetSpecSelector {
+		if v != nil {
+			return *v
+		}
+		var ret K8sDaemonSetSpecSelector
+		return ret
+	}).(K8sDaemonSetSpecSelectorOutput)
+}
+
+// A list of label selector requirements. The requirements are ANDed.
+func (o K8sDaemonSetSpecSelectorPtrOutput) MatchExpressions() K8sDaemonSetSpecSelectorMatchExpressionArrayOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpecSelector) []K8sDaemonSetSpecSelectorMatchExpression {
 		if v == nil {
 			return nil
 		}
 		return v.MatchExpressions
-	}).(K8sJobSpecSelectorMatchExpressionArrayOutput)
+	}).(K8sDaemonSetSpecSelectorMatchExpressionArrayOutput)
 }
 
 // A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
-func (o K8sJobSpecSelectorPtrOutput) MatchLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *K8sJobSpecSelector) map[string]string {
+func (o K8sDaemonSetSpecSelectorPtrOutput) MatchLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpecSelector) map[string]string {
 		if v == nil {
 			return nil
 		}
@@ -74397,7 +74422,7 @@ func (o K8sJobSpecSelectorPtrOutput) MatchLabels() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-type K8sJobSpecSelectorMatchExpression struct {
+type K8sDaemonSetSpecSelectorMatchExpression struct {
 	// The label key that the selector applies to.
 	Key *string `pulumi:"key"`
 	// A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
@@ -74406,18 +74431,18 @@ type K8sJobSpecSelectorMatchExpression struct {
 	Values []string `pulumi:"values"`
 }
 
-// K8sJobSpecSelectorMatchExpressionInput is an input type that accepts K8sJobSpecSelectorMatchExpressionArgs and K8sJobSpecSelectorMatchExpressionOutput values.
-// You can construct a concrete instance of `K8sJobSpecSelectorMatchExpressionInput` via:
+// K8sDaemonSetSpecSelectorMatchExpressionInput is an input type that accepts K8sDaemonSetSpecSelectorMatchExpressionArgs and K8sDaemonSetSpecSelectorMatchExpressionOutput values.
+// You can construct a concrete instance of `K8sDaemonSetSpecSelectorMatchExpressionInput` via:
 //
-//	K8sJobSpecSelectorMatchExpressionArgs{...}
-type K8sJobSpecSelectorMatchExpressionInput interface {
+//	K8sDaemonSetSpecSelectorMatchExpressionArgs{...}
+type K8sDaemonSetSpecSelectorMatchExpressionInput interface {
 	pulumi.Input
 
-	ToK8sJobSpecSelectorMatchExpressionOutput() K8sJobSpecSelectorMatchExpressionOutput
-	ToK8sJobSpecSelectorMatchExpressionOutputWithContext(context.Context) K8sJobSpecSelectorMatchExpressionOutput
+	ToK8sDaemonSetSpecSelectorMatchExpressionOutput() K8sDaemonSetSpecSelectorMatchExpressionOutput
+	ToK8sDaemonSetSpecSelectorMatchExpressionOutputWithContext(context.Context) K8sDaemonSetSpecSelectorMatchExpressionOutput
 }
 
-type K8sJobSpecSelectorMatchExpressionArgs struct {
+type K8sDaemonSetSpecSelectorMatchExpressionArgs struct {
 	// The label key that the selector applies to.
 	Key pulumi.StringPtrInput `pulumi:"key"`
 	// A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
@@ -74426,337 +74451,423 @@ type K8sJobSpecSelectorMatchExpressionArgs struct {
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
-func (K8sJobSpecSelectorMatchExpressionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecSelectorMatchExpression)(nil)).Elem()
+func (K8sDaemonSetSpecSelectorMatchExpressionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sDaemonSetSpecSelectorMatchExpression)(nil)).Elem()
 }
 
-func (i K8sJobSpecSelectorMatchExpressionArgs) ToK8sJobSpecSelectorMatchExpressionOutput() K8sJobSpecSelectorMatchExpressionOutput {
-	return i.ToK8sJobSpecSelectorMatchExpressionOutputWithContext(context.Background())
+func (i K8sDaemonSetSpecSelectorMatchExpressionArgs) ToK8sDaemonSetSpecSelectorMatchExpressionOutput() K8sDaemonSetSpecSelectorMatchExpressionOutput {
+	return i.ToK8sDaemonSetSpecSelectorMatchExpressionOutputWithContext(context.Background())
 }
 
-func (i K8sJobSpecSelectorMatchExpressionArgs) ToK8sJobSpecSelectorMatchExpressionOutputWithContext(ctx context.Context) K8sJobSpecSelectorMatchExpressionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecSelectorMatchExpressionOutput)
+func (i K8sDaemonSetSpecSelectorMatchExpressionArgs) ToK8sDaemonSetSpecSelectorMatchExpressionOutputWithContext(ctx context.Context) K8sDaemonSetSpecSelectorMatchExpressionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetSpecSelectorMatchExpressionOutput)
 }
 
-// K8sJobSpecSelectorMatchExpressionArrayInput is an input type that accepts K8sJobSpecSelectorMatchExpressionArray and K8sJobSpecSelectorMatchExpressionArrayOutput values.
-// You can construct a concrete instance of `K8sJobSpecSelectorMatchExpressionArrayInput` via:
+// K8sDaemonSetSpecSelectorMatchExpressionArrayInput is an input type that accepts K8sDaemonSetSpecSelectorMatchExpressionArray and K8sDaemonSetSpecSelectorMatchExpressionArrayOutput values.
+// You can construct a concrete instance of `K8sDaemonSetSpecSelectorMatchExpressionArrayInput` via:
 //
-//	K8sJobSpecSelectorMatchExpressionArray{ K8sJobSpecSelectorMatchExpressionArgs{...} }
-type K8sJobSpecSelectorMatchExpressionArrayInput interface {
+//	K8sDaemonSetSpecSelectorMatchExpressionArray{ K8sDaemonSetSpecSelectorMatchExpressionArgs{...} }
+type K8sDaemonSetSpecSelectorMatchExpressionArrayInput interface {
 	pulumi.Input
 
-	ToK8sJobSpecSelectorMatchExpressionArrayOutput() K8sJobSpecSelectorMatchExpressionArrayOutput
-	ToK8sJobSpecSelectorMatchExpressionArrayOutputWithContext(context.Context) K8sJobSpecSelectorMatchExpressionArrayOutput
+	ToK8sDaemonSetSpecSelectorMatchExpressionArrayOutput() K8sDaemonSetSpecSelectorMatchExpressionArrayOutput
+	ToK8sDaemonSetSpecSelectorMatchExpressionArrayOutputWithContext(context.Context) K8sDaemonSetSpecSelectorMatchExpressionArrayOutput
 }
 
-type K8sJobSpecSelectorMatchExpressionArray []K8sJobSpecSelectorMatchExpressionInput
+type K8sDaemonSetSpecSelectorMatchExpressionArray []K8sDaemonSetSpecSelectorMatchExpressionInput
 
-func (K8sJobSpecSelectorMatchExpressionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecSelectorMatchExpression)(nil)).Elem()
+func (K8sDaemonSetSpecSelectorMatchExpressionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]K8sDaemonSetSpecSelectorMatchExpression)(nil)).Elem()
 }
 
-func (i K8sJobSpecSelectorMatchExpressionArray) ToK8sJobSpecSelectorMatchExpressionArrayOutput() K8sJobSpecSelectorMatchExpressionArrayOutput {
-	return i.ToK8sJobSpecSelectorMatchExpressionArrayOutputWithContext(context.Background())
+func (i K8sDaemonSetSpecSelectorMatchExpressionArray) ToK8sDaemonSetSpecSelectorMatchExpressionArrayOutput() K8sDaemonSetSpecSelectorMatchExpressionArrayOutput {
+	return i.ToK8sDaemonSetSpecSelectorMatchExpressionArrayOutputWithContext(context.Background())
 }
 
-func (i K8sJobSpecSelectorMatchExpressionArray) ToK8sJobSpecSelectorMatchExpressionArrayOutputWithContext(ctx context.Context) K8sJobSpecSelectorMatchExpressionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecSelectorMatchExpressionArrayOutput)
+func (i K8sDaemonSetSpecSelectorMatchExpressionArray) ToK8sDaemonSetSpecSelectorMatchExpressionArrayOutputWithContext(ctx context.Context) K8sDaemonSetSpecSelectorMatchExpressionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetSpecSelectorMatchExpressionArrayOutput)
 }
 
-type K8sJobSpecSelectorMatchExpressionOutput struct{ *pulumi.OutputState }
+type K8sDaemonSetSpecSelectorMatchExpressionOutput struct{ *pulumi.OutputState }
 
-func (K8sJobSpecSelectorMatchExpressionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecSelectorMatchExpression)(nil)).Elem()
+func (K8sDaemonSetSpecSelectorMatchExpressionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sDaemonSetSpecSelectorMatchExpression)(nil)).Elem()
 }
 
-func (o K8sJobSpecSelectorMatchExpressionOutput) ToK8sJobSpecSelectorMatchExpressionOutput() K8sJobSpecSelectorMatchExpressionOutput {
+func (o K8sDaemonSetSpecSelectorMatchExpressionOutput) ToK8sDaemonSetSpecSelectorMatchExpressionOutput() K8sDaemonSetSpecSelectorMatchExpressionOutput {
 	return o
 }
 
-func (o K8sJobSpecSelectorMatchExpressionOutput) ToK8sJobSpecSelectorMatchExpressionOutputWithContext(ctx context.Context) K8sJobSpecSelectorMatchExpressionOutput {
+func (o K8sDaemonSetSpecSelectorMatchExpressionOutput) ToK8sDaemonSetSpecSelectorMatchExpressionOutputWithContext(ctx context.Context) K8sDaemonSetSpecSelectorMatchExpressionOutput {
 	return o
 }
 
 // The label key that the selector applies to.
-func (o K8sJobSpecSelectorMatchExpressionOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecSelectorMatchExpression) *string { return v.Key }).(pulumi.StringPtrOutput)
+func (o K8sDaemonSetSpecSelectorMatchExpressionOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecSelectorMatchExpression) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
 // A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
-func (o K8sJobSpecSelectorMatchExpressionOutput) Operator() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecSelectorMatchExpression) *string { return v.Operator }).(pulumi.StringPtrOutput)
+func (o K8sDaemonSetSpecSelectorMatchExpressionOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecSelectorMatchExpression) *string { return v.Operator }).(pulumi.StringPtrOutput)
 }
 
 // An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
-func (o K8sJobSpecSelectorMatchExpressionOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecSelectorMatchExpression) []string { return v.Values }).(pulumi.StringArrayOutput)
+func (o K8sDaemonSetSpecSelectorMatchExpressionOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecSelectorMatchExpression) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
-type K8sJobSpecSelectorMatchExpressionArrayOutput struct{ *pulumi.OutputState }
+type K8sDaemonSetSpecSelectorMatchExpressionArrayOutput struct{ *pulumi.OutputState }
 
-func (K8sJobSpecSelectorMatchExpressionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecSelectorMatchExpression)(nil)).Elem()
+func (K8sDaemonSetSpecSelectorMatchExpressionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]K8sDaemonSetSpecSelectorMatchExpression)(nil)).Elem()
 }
 
-func (o K8sJobSpecSelectorMatchExpressionArrayOutput) ToK8sJobSpecSelectorMatchExpressionArrayOutput() K8sJobSpecSelectorMatchExpressionArrayOutput {
+func (o K8sDaemonSetSpecSelectorMatchExpressionArrayOutput) ToK8sDaemonSetSpecSelectorMatchExpressionArrayOutput() K8sDaemonSetSpecSelectorMatchExpressionArrayOutput {
 	return o
 }
 
-func (o K8sJobSpecSelectorMatchExpressionArrayOutput) ToK8sJobSpecSelectorMatchExpressionArrayOutputWithContext(ctx context.Context) K8sJobSpecSelectorMatchExpressionArrayOutput {
+func (o K8sDaemonSetSpecSelectorMatchExpressionArrayOutput) ToK8sDaemonSetSpecSelectorMatchExpressionArrayOutputWithContext(ctx context.Context) K8sDaemonSetSpecSelectorMatchExpressionArrayOutput {
 	return o
 }
 
-func (o K8sJobSpecSelectorMatchExpressionArrayOutput) Index(i pulumi.IntInput) K8sJobSpecSelectorMatchExpressionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) K8sJobSpecSelectorMatchExpression {
-		return vs[0].([]K8sJobSpecSelectorMatchExpression)[vs[1].(int)]
-	}).(K8sJobSpecSelectorMatchExpressionOutput)
+func (o K8sDaemonSetSpecSelectorMatchExpressionArrayOutput) Index(i pulumi.IntInput) K8sDaemonSetSpecSelectorMatchExpressionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) K8sDaemonSetSpecSelectorMatchExpression {
+		return vs[0].([]K8sDaemonSetSpecSelectorMatchExpression)[vs[1].(int)]
+	}).(K8sDaemonSetSpecSelectorMatchExpressionOutput)
 }
 
-type K8sJobSpecTemplate struct {
-	// Standard job's metadata. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata *K8sJobSpecTemplateMetadata `pulumi:"metadata"`
-	// Spec of the pods owned by the job
-	Spec *K8sJobSpecTemplateSpec `pulumi:"spec"`
+type K8sDaemonSetSpecTemplate struct {
+	// Standard daemonset's metadata. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
+	Metadata *K8sDaemonSetSpecTemplateMetadata `pulumi:"metadata"`
+	// Spec of the pods managed by the daemonset
+	Spec K8sDaemonSetSpecTemplateSpec `pulumi:"spec"`
 }
 
-// K8sJobSpecTemplateInput is an input type that accepts K8sJobSpecTemplateArgs and K8sJobSpecTemplateOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateInput` via:
+// K8sDaemonSetSpecTemplateInput is an input type that accepts K8sDaemonSetSpecTemplateArgs and K8sDaemonSetSpecTemplateOutput values.
+// You can construct a concrete instance of `K8sDaemonSetSpecTemplateInput` via:
 //
-//	K8sJobSpecTemplateArgs{...}
-type K8sJobSpecTemplateInput interface {
+//	K8sDaemonSetSpecTemplateArgs{...}
+type K8sDaemonSetSpecTemplateInput interface {
 	pulumi.Input
 
-	ToK8sJobSpecTemplateOutput() K8sJobSpecTemplateOutput
-	ToK8sJobSpecTemplateOutputWithContext(context.Context) K8sJobSpecTemplateOutput
+	ToK8sDaemonSetSpecTemplateOutput() K8sDaemonSetSpecTemplateOutput
+	ToK8sDaemonSetSpecTemplateOutputWithContext(context.Context) K8sDaemonSetSpecTemplateOutput
 }
 
-type K8sJobSpecTemplateArgs struct {
-	// Standard job's metadata. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata K8sJobSpecTemplateMetadataPtrInput `pulumi:"metadata"`
-	// Spec of the pods owned by the job
-	Spec K8sJobSpecTemplateSpecPtrInput `pulumi:"spec"`
+type K8sDaemonSetSpecTemplateArgs struct {
+	// Standard daemonset's metadata. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
+	Metadata K8sDaemonSetSpecTemplateMetadataPtrInput `pulumi:"metadata"`
+	// Spec of the pods managed by the daemonset
+	Spec K8sDaemonSetSpecTemplateSpecInput `pulumi:"spec"`
 }
 
-func (K8sJobSpecTemplateArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplate)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sDaemonSetSpecTemplate)(nil)).Elem()
 }
 
-func (i K8sJobSpecTemplateArgs) ToK8sJobSpecTemplateOutput() K8sJobSpecTemplateOutput {
-	return i.ToK8sJobSpecTemplateOutputWithContext(context.Background())
+func (i K8sDaemonSetSpecTemplateArgs) ToK8sDaemonSetSpecTemplateOutput() K8sDaemonSetSpecTemplateOutput {
+	return i.ToK8sDaemonSetSpecTemplateOutputWithContext(context.Background())
 }
 
-func (i K8sJobSpecTemplateArgs) ToK8sJobSpecTemplateOutputWithContext(ctx context.Context) K8sJobSpecTemplateOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateOutput)
+func (i K8sDaemonSetSpecTemplateArgs) ToK8sDaemonSetSpecTemplateOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetSpecTemplateOutput)
 }
 
-type K8sJobSpecTemplateOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplate)(nil)).Elem()
+func (i K8sDaemonSetSpecTemplateArgs) ToK8sDaemonSetSpecTemplatePtrOutput() K8sDaemonSetSpecTemplatePtrOutput {
+	return i.ToK8sDaemonSetSpecTemplatePtrOutputWithContext(context.Background())
 }
 
-func (o K8sJobSpecTemplateOutput) ToK8sJobSpecTemplateOutput() K8sJobSpecTemplateOutput {
-	return o
+func (i K8sDaemonSetSpecTemplateArgs) ToK8sDaemonSetSpecTemplatePtrOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetSpecTemplateOutput).ToK8sDaemonSetSpecTemplatePtrOutputWithContext(ctx)
 }
 
-func (o K8sJobSpecTemplateOutput) ToK8sJobSpecTemplateOutputWithContext(ctx context.Context) K8sJobSpecTemplateOutput {
-	return o
-}
-
-// Standard job's metadata. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
-func (o K8sJobSpecTemplateOutput) Metadata() K8sJobSpecTemplateMetadataPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplate) *K8sJobSpecTemplateMetadata { return v.Metadata }).(K8sJobSpecTemplateMetadataPtrOutput)
-}
-
-// Spec of the pods owned by the job
-func (o K8sJobSpecTemplateOutput) Spec() K8sJobSpecTemplateSpecPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplate) *K8sJobSpecTemplateSpec { return v.Spec }).(K8sJobSpecTemplateSpecPtrOutput)
-}
-
-type K8sJobSpecTemplateMetadata struct {
-	// An unstructured key value map stored with the job that may be used to store arbitrary metadata. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
-	Annotations map[string]string `pulumi:"annotations"`
-	// Prefix, used by the server, to generate a unique name ONLY IF the `name` field has not been provided. This value will also be combined with a unique suffix. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#idempotency
-	GenerateName *string `pulumi:"generateName"`
-	// A sequence number representing a specific generation of the desired state.
-	Generation *int `pulumi:"generation"`
-	// Map of string keys and values that can be used to organize and categorize (scope and select) the job. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
-	Labels map[string]string `pulumi:"labels"`
-	// Name of the job, must be unique. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-	Name *string `pulumi:"name"`
-	// An opaque value that represents the internal version of this job that can be used by clients to determine when job has changed. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
-	ResourceVersion *string `pulumi:"resourceVersion"`
-	// The unique in time and space value for this job. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
-	Uid *string `pulumi:"uid"`
-}
-
-// K8sJobSpecTemplateMetadataInput is an input type that accepts K8sJobSpecTemplateMetadataArgs and K8sJobSpecTemplateMetadataOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateMetadataInput` via:
+// K8sDaemonSetSpecTemplatePtrInput is an input type that accepts K8sDaemonSetSpecTemplateArgs, K8sDaemonSetSpecTemplatePtr and K8sDaemonSetSpecTemplatePtrOutput values.
+// You can construct a concrete instance of `K8sDaemonSetSpecTemplatePtrInput` via:
 //
-//	K8sJobSpecTemplateMetadataArgs{...}
-type K8sJobSpecTemplateMetadataInput interface {
-	pulumi.Input
-
-	ToK8sJobSpecTemplateMetadataOutput() K8sJobSpecTemplateMetadataOutput
-	ToK8sJobSpecTemplateMetadataOutputWithContext(context.Context) K8sJobSpecTemplateMetadataOutput
-}
-
-type K8sJobSpecTemplateMetadataArgs struct {
-	// An unstructured key value map stored with the job that may be used to store arbitrary metadata. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
-	Annotations pulumi.StringMapInput `pulumi:"annotations"`
-	// Prefix, used by the server, to generate a unique name ONLY IF the `name` field has not been provided. This value will also be combined with a unique suffix. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#idempotency
-	GenerateName pulumi.StringPtrInput `pulumi:"generateName"`
-	// A sequence number representing a specific generation of the desired state.
-	Generation pulumi.IntPtrInput `pulumi:"generation"`
-	// Map of string keys and values that can be used to organize and categorize (scope and select) the job. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
-	Labels pulumi.StringMapInput `pulumi:"labels"`
-	// Name of the job, must be unique. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// An opaque value that represents the internal version of this job that can be used by clients to determine when job has changed. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
-	ResourceVersion pulumi.StringPtrInput `pulumi:"resourceVersion"`
-	// The unique in time and space value for this job. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
-	Uid pulumi.StringPtrInput `pulumi:"uid"`
-}
-
-func (K8sJobSpecTemplateMetadataArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateMetadata)(nil)).Elem()
-}
-
-func (i K8sJobSpecTemplateMetadataArgs) ToK8sJobSpecTemplateMetadataOutput() K8sJobSpecTemplateMetadataOutput {
-	return i.ToK8sJobSpecTemplateMetadataOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateMetadataArgs) ToK8sJobSpecTemplateMetadataOutputWithContext(ctx context.Context) K8sJobSpecTemplateMetadataOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateMetadataOutput)
-}
-
-func (i K8sJobSpecTemplateMetadataArgs) ToK8sJobSpecTemplateMetadataPtrOutput() K8sJobSpecTemplateMetadataPtrOutput {
-	return i.ToK8sJobSpecTemplateMetadataPtrOutputWithContext(context.Background())
-}
-
-func (i K8sJobSpecTemplateMetadataArgs) ToK8sJobSpecTemplateMetadataPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateMetadataPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateMetadataOutput).ToK8sJobSpecTemplateMetadataPtrOutputWithContext(ctx)
-}
-
-// K8sJobSpecTemplateMetadataPtrInput is an input type that accepts K8sJobSpecTemplateMetadataArgs, K8sJobSpecTemplateMetadataPtr and K8sJobSpecTemplateMetadataPtrOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateMetadataPtrInput` via:
-//
-//	        K8sJobSpecTemplateMetadataArgs{...}
+//	        K8sDaemonSetSpecTemplateArgs{...}
 //
 //	or:
 //
 //	        nil
-type K8sJobSpecTemplateMetadataPtrInput interface {
+type K8sDaemonSetSpecTemplatePtrInput interface {
 	pulumi.Input
 
-	ToK8sJobSpecTemplateMetadataPtrOutput() K8sJobSpecTemplateMetadataPtrOutput
-	ToK8sJobSpecTemplateMetadataPtrOutputWithContext(context.Context) K8sJobSpecTemplateMetadataPtrOutput
+	ToK8sDaemonSetSpecTemplatePtrOutput() K8sDaemonSetSpecTemplatePtrOutput
+	ToK8sDaemonSetSpecTemplatePtrOutputWithContext(context.Context) K8sDaemonSetSpecTemplatePtrOutput
 }
 
-type k8sJobSpecTemplateMetadataPtrType K8sJobSpecTemplateMetadataArgs
+type k8sDaemonSetSpecTemplatePtrType K8sDaemonSetSpecTemplateArgs
 
-func K8sJobSpecTemplateMetadataPtr(v *K8sJobSpecTemplateMetadataArgs) K8sJobSpecTemplateMetadataPtrInput {
-	return (*k8sJobSpecTemplateMetadataPtrType)(v)
+func K8sDaemonSetSpecTemplatePtr(v *K8sDaemonSetSpecTemplateArgs) K8sDaemonSetSpecTemplatePtrInput {
+	return (*k8sDaemonSetSpecTemplatePtrType)(v)
 }
 
-func (*k8sJobSpecTemplateMetadataPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateMetadata)(nil)).Elem()
+func (*k8sDaemonSetSpecTemplatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**K8sDaemonSetSpecTemplate)(nil)).Elem()
 }
 
-func (i *k8sJobSpecTemplateMetadataPtrType) ToK8sJobSpecTemplateMetadataPtrOutput() K8sJobSpecTemplateMetadataPtrOutput {
-	return i.ToK8sJobSpecTemplateMetadataPtrOutputWithContext(context.Background())
+func (i *k8sDaemonSetSpecTemplatePtrType) ToK8sDaemonSetSpecTemplatePtrOutput() K8sDaemonSetSpecTemplatePtrOutput {
+	return i.ToK8sDaemonSetSpecTemplatePtrOutputWithContext(context.Background())
 }
 
-func (i *k8sJobSpecTemplateMetadataPtrType) ToK8sJobSpecTemplateMetadataPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateMetadataPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateMetadataPtrOutput)
+func (i *k8sDaemonSetSpecTemplatePtrType) ToK8sDaemonSetSpecTemplatePtrOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetSpecTemplatePtrOutput)
 }
 
-type K8sJobSpecTemplateMetadataOutput struct{ *pulumi.OutputState }
+type K8sDaemonSetSpecTemplateOutput struct{ *pulumi.OutputState }
 
-func (K8sJobSpecTemplateMetadataOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateMetadata)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sDaemonSetSpecTemplate)(nil)).Elem()
 }
 
-func (o K8sJobSpecTemplateMetadataOutput) ToK8sJobSpecTemplateMetadataOutput() K8sJobSpecTemplateMetadataOutput {
+func (o K8sDaemonSetSpecTemplateOutput) ToK8sDaemonSetSpecTemplateOutput() K8sDaemonSetSpecTemplateOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateMetadataOutput) ToK8sJobSpecTemplateMetadataOutputWithContext(ctx context.Context) K8sJobSpecTemplateMetadataOutput {
+func (o K8sDaemonSetSpecTemplateOutput) ToK8sDaemonSetSpecTemplateOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateMetadataOutput) ToK8sJobSpecTemplateMetadataPtrOutput() K8sJobSpecTemplateMetadataPtrOutput {
-	return o.ToK8sJobSpecTemplateMetadataPtrOutputWithContext(context.Background())
+func (o K8sDaemonSetSpecTemplateOutput) ToK8sDaemonSetSpecTemplatePtrOutput() K8sDaemonSetSpecTemplatePtrOutput {
+	return o.ToK8sDaemonSetSpecTemplatePtrOutputWithContext(context.Background())
 }
 
-func (o K8sJobSpecTemplateMetadataOutput) ToK8sJobSpecTemplateMetadataPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateMetadataPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v K8sJobSpecTemplateMetadata) *K8sJobSpecTemplateMetadata {
+func (o K8sDaemonSetSpecTemplateOutput) ToK8sDaemonSetSpecTemplatePtrOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v K8sDaemonSetSpecTemplate) *K8sDaemonSetSpecTemplate {
 		return &v
-	}).(K8sJobSpecTemplateMetadataPtrOutput)
+	}).(K8sDaemonSetSpecTemplatePtrOutput)
 }
 
-// An unstructured key value map stored with the job that may be used to store arbitrary metadata. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
-func (o K8sJobSpecTemplateMetadataOutput) Annotations() pulumi.StringMapOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateMetadata) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
+// Standard daemonset's metadata. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
+func (o K8sDaemonSetSpecTemplateOutput) Metadata() K8sDaemonSetSpecTemplateMetadataPtrOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplate) *K8sDaemonSetSpecTemplateMetadata { return v.Metadata }).(K8sDaemonSetSpecTemplateMetadataPtrOutput)
 }
 
-// Prefix, used by the server, to generate a unique name ONLY IF the `name` field has not been provided. This value will also be combined with a unique suffix. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#idempotency
-func (o K8sJobSpecTemplateMetadataOutput) GenerateName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateMetadata) *string { return v.GenerateName }).(pulumi.StringPtrOutput)
+// Spec of the pods managed by the daemonset
+func (o K8sDaemonSetSpecTemplateOutput) Spec() K8sDaemonSetSpecTemplateSpecOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplate) K8sDaemonSetSpecTemplateSpec { return v.Spec }).(K8sDaemonSetSpecTemplateSpecOutput)
 }
 
-// A sequence number representing a specific generation of the desired state.
-func (o K8sJobSpecTemplateMetadataOutput) Generation() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateMetadata) *int { return v.Generation }).(pulumi.IntPtrOutput)
+type K8sDaemonSetSpecTemplatePtrOutput struct{ *pulumi.OutputState }
+
+func (K8sDaemonSetSpecTemplatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**K8sDaemonSetSpecTemplate)(nil)).Elem()
 }
 
-// Map of string keys and values that can be used to organize and categorize (scope and select) the job. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
-func (o K8sJobSpecTemplateMetadataOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateMetadata) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
-}
-
-// Name of the job, must be unique. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-func (o K8sJobSpecTemplateMetadataOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateMetadata) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// An opaque value that represents the internal version of this job that can be used by clients to determine when job has changed. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
-func (o K8sJobSpecTemplateMetadataOutput) ResourceVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateMetadata) *string { return v.ResourceVersion }).(pulumi.StringPtrOutput)
-}
-
-// The unique in time and space value for this job. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
-func (o K8sJobSpecTemplateMetadataOutput) Uid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateMetadata) *string { return v.Uid }).(pulumi.StringPtrOutput)
-}
-
-type K8sJobSpecTemplateMetadataPtrOutput struct{ *pulumi.OutputState }
-
-func (K8sJobSpecTemplateMetadataPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateMetadata)(nil)).Elem()
-}
-
-func (o K8sJobSpecTemplateMetadataPtrOutput) ToK8sJobSpecTemplateMetadataPtrOutput() K8sJobSpecTemplateMetadataPtrOutput {
+func (o K8sDaemonSetSpecTemplatePtrOutput) ToK8sDaemonSetSpecTemplatePtrOutput() K8sDaemonSetSpecTemplatePtrOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateMetadataPtrOutput) ToK8sJobSpecTemplateMetadataPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateMetadataPtrOutput {
+func (o K8sDaemonSetSpecTemplatePtrOutput) ToK8sDaemonSetSpecTemplatePtrOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplatePtrOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateMetadataPtrOutput) Elem() K8sJobSpecTemplateMetadataOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateMetadata) K8sJobSpecTemplateMetadata {
+func (o K8sDaemonSetSpecTemplatePtrOutput) Elem() K8sDaemonSetSpecTemplateOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpecTemplate) K8sDaemonSetSpecTemplate {
 		if v != nil {
 			return *v
 		}
-		var ret K8sJobSpecTemplateMetadata
+		var ret K8sDaemonSetSpecTemplate
 		return ret
-	}).(K8sJobSpecTemplateMetadataOutput)
+	}).(K8sDaemonSetSpecTemplateOutput)
 }
 
-// An unstructured key value map stored with the job that may be used to store arbitrary metadata. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
-func (o K8sJobSpecTemplateMetadataPtrOutput) Annotations() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateMetadata) map[string]string {
+// Standard daemonset's metadata. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
+func (o K8sDaemonSetSpecTemplatePtrOutput) Metadata() K8sDaemonSetSpecTemplateMetadataPtrOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpecTemplate) *K8sDaemonSetSpecTemplateMetadata {
+		if v == nil {
+			return nil
+		}
+		return v.Metadata
+	}).(K8sDaemonSetSpecTemplateMetadataPtrOutput)
+}
+
+// Spec of the pods managed by the daemonset
+func (o K8sDaemonSetSpecTemplatePtrOutput) Spec() K8sDaemonSetSpecTemplateSpecPtrOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpecTemplate) *K8sDaemonSetSpecTemplateSpec {
+		if v == nil {
+			return nil
+		}
+		return &v.Spec
+	}).(K8sDaemonSetSpecTemplateSpecPtrOutput)
+}
+
+type K8sDaemonSetSpecTemplateMetadata struct {
+	// An unstructured key value map stored with the daemonset that may be used to store arbitrary metadata. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+	Annotations map[string]string `pulumi:"annotations"`
+	// A sequence number representing a specific generation of the desired state.
+	Generation *int `pulumi:"generation"`
+	// Map of string keys and values that can be used to organize and categorize (scope and select) the daemonset. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+	Labels map[string]string `pulumi:"labels"`
+	// Name of the daemonset, must be unique. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+	Name *string `pulumi:"name"`
+	// An opaque value that represents the internal version of this daemonset that can be used by clients to determine when daemonset has changed. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+	ResourceVersion *string `pulumi:"resourceVersion"`
+	// The unique in time and space value for this daemonset. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
+	Uid *string `pulumi:"uid"`
+}
+
+// K8sDaemonSetSpecTemplateMetadataInput is an input type that accepts K8sDaemonSetSpecTemplateMetadataArgs and K8sDaemonSetSpecTemplateMetadataOutput values.
+// You can construct a concrete instance of `K8sDaemonSetSpecTemplateMetadataInput` via:
+//
+//	K8sDaemonSetSpecTemplateMetadataArgs{...}
+type K8sDaemonSetSpecTemplateMetadataInput interface {
+	pulumi.Input
+
+	ToK8sDaemonSetSpecTemplateMetadataOutput() K8sDaemonSetSpecTemplateMetadataOutput
+	ToK8sDaemonSetSpecTemplateMetadataOutputWithContext(context.Context) K8sDaemonSetSpecTemplateMetadataOutput
+}
+
+type K8sDaemonSetSpecTemplateMetadataArgs struct {
+	// An unstructured key value map stored with the daemonset that may be used to store arbitrary metadata. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+	Annotations pulumi.StringMapInput `pulumi:"annotations"`
+	// A sequence number representing a specific generation of the desired state.
+	Generation pulumi.IntPtrInput `pulumi:"generation"`
+	// Map of string keys and values that can be used to organize and categorize (scope and select) the daemonset. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// Name of the daemonset, must be unique. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// An opaque value that represents the internal version of this daemonset that can be used by clients to determine when daemonset has changed. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+	ResourceVersion pulumi.StringPtrInput `pulumi:"resourceVersion"`
+	// The unique in time and space value for this daemonset. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
+	Uid pulumi.StringPtrInput `pulumi:"uid"`
+}
+
+func (K8sDaemonSetSpecTemplateMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sDaemonSetSpecTemplateMetadata)(nil)).Elem()
+}
+
+func (i K8sDaemonSetSpecTemplateMetadataArgs) ToK8sDaemonSetSpecTemplateMetadataOutput() K8sDaemonSetSpecTemplateMetadataOutput {
+	return i.ToK8sDaemonSetSpecTemplateMetadataOutputWithContext(context.Background())
+}
+
+func (i K8sDaemonSetSpecTemplateMetadataArgs) ToK8sDaemonSetSpecTemplateMetadataOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetSpecTemplateMetadataOutput)
+}
+
+func (i K8sDaemonSetSpecTemplateMetadataArgs) ToK8sDaemonSetSpecTemplateMetadataPtrOutput() K8sDaemonSetSpecTemplateMetadataPtrOutput {
+	return i.ToK8sDaemonSetSpecTemplateMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i K8sDaemonSetSpecTemplateMetadataArgs) ToK8sDaemonSetSpecTemplateMetadataPtrOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetSpecTemplateMetadataOutput).ToK8sDaemonSetSpecTemplateMetadataPtrOutputWithContext(ctx)
+}
+
+// K8sDaemonSetSpecTemplateMetadataPtrInput is an input type that accepts K8sDaemonSetSpecTemplateMetadataArgs, K8sDaemonSetSpecTemplateMetadataPtr and K8sDaemonSetSpecTemplateMetadataPtrOutput values.
+// You can construct a concrete instance of `K8sDaemonSetSpecTemplateMetadataPtrInput` via:
+//
+//	        K8sDaemonSetSpecTemplateMetadataArgs{...}
+//
+//	or:
+//
+//	        nil
+type K8sDaemonSetSpecTemplateMetadataPtrInput interface {
+	pulumi.Input
+
+	ToK8sDaemonSetSpecTemplateMetadataPtrOutput() K8sDaemonSetSpecTemplateMetadataPtrOutput
+	ToK8sDaemonSetSpecTemplateMetadataPtrOutputWithContext(context.Context) K8sDaemonSetSpecTemplateMetadataPtrOutput
+}
+
+type k8sDaemonSetSpecTemplateMetadataPtrType K8sDaemonSetSpecTemplateMetadataArgs
+
+func K8sDaemonSetSpecTemplateMetadataPtr(v *K8sDaemonSetSpecTemplateMetadataArgs) K8sDaemonSetSpecTemplateMetadataPtrInput {
+	return (*k8sDaemonSetSpecTemplateMetadataPtrType)(v)
+}
+
+func (*k8sDaemonSetSpecTemplateMetadataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**K8sDaemonSetSpecTemplateMetadata)(nil)).Elem()
+}
+
+func (i *k8sDaemonSetSpecTemplateMetadataPtrType) ToK8sDaemonSetSpecTemplateMetadataPtrOutput() K8sDaemonSetSpecTemplateMetadataPtrOutput {
+	return i.ToK8sDaemonSetSpecTemplateMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i *k8sDaemonSetSpecTemplateMetadataPtrType) ToK8sDaemonSetSpecTemplateMetadataPtrOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetSpecTemplateMetadataPtrOutput)
+}
+
+type K8sDaemonSetSpecTemplateMetadataOutput struct{ *pulumi.OutputState }
+
+func (K8sDaemonSetSpecTemplateMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sDaemonSetSpecTemplateMetadata)(nil)).Elem()
+}
+
+func (o K8sDaemonSetSpecTemplateMetadataOutput) ToK8sDaemonSetSpecTemplateMetadataOutput() K8sDaemonSetSpecTemplateMetadataOutput {
+	return o
+}
+
+func (o K8sDaemonSetSpecTemplateMetadataOutput) ToK8sDaemonSetSpecTemplateMetadataOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateMetadataOutput {
+	return o
+}
+
+func (o K8sDaemonSetSpecTemplateMetadataOutput) ToK8sDaemonSetSpecTemplateMetadataPtrOutput() K8sDaemonSetSpecTemplateMetadataPtrOutput {
+	return o.ToK8sDaemonSetSpecTemplateMetadataPtrOutputWithContext(context.Background())
+}
+
+func (o K8sDaemonSetSpecTemplateMetadataOutput) ToK8sDaemonSetSpecTemplateMetadataPtrOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateMetadataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v K8sDaemonSetSpecTemplateMetadata) *K8sDaemonSetSpecTemplateMetadata {
+		return &v
+	}).(K8sDaemonSetSpecTemplateMetadataPtrOutput)
+}
+
+// An unstructured key value map stored with the daemonset that may be used to store arbitrary metadata. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+func (o K8sDaemonSetSpecTemplateMetadataOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateMetadata) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
+}
+
+// A sequence number representing a specific generation of the desired state.
+func (o K8sDaemonSetSpecTemplateMetadataOutput) Generation() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateMetadata) *int { return v.Generation }).(pulumi.IntPtrOutput)
+}
+
+// Map of string keys and values that can be used to organize and categorize (scope and select) the daemonset. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+func (o K8sDaemonSetSpecTemplateMetadataOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateMetadata) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Name of the daemonset, must be unique. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+func (o K8sDaemonSetSpecTemplateMetadataOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateMetadata) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// An opaque value that represents the internal version of this daemonset that can be used by clients to determine when daemonset has changed. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+func (o K8sDaemonSetSpecTemplateMetadataOutput) ResourceVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateMetadata) *string { return v.ResourceVersion }).(pulumi.StringPtrOutput)
+}
+
+// The unique in time and space value for this daemonset. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
+func (o K8sDaemonSetSpecTemplateMetadataOutput) Uid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateMetadata) *string { return v.Uid }).(pulumi.StringPtrOutput)
+}
+
+type K8sDaemonSetSpecTemplateMetadataPtrOutput struct{ *pulumi.OutputState }
+
+func (K8sDaemonSetSpecTemplateMetadataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**K8sDaemonSetSpecTemplateMetadata)(nil)).Elem()
+}
+
+func (o K8sDaemonSetSpecTemplateMetadataPtrOutput) ToK8sDaemonSetSpecTemplateMetadataPtrOutput() K8sDaemonSetSpecTemplateMetadataPtrOutput {
+	return o
+}
+
+func (o K8sDaemonSetSpecTemplateMetadataPtrOutput) ToK8sDaemonSetSpecTemplateMetadataPtrOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateMetadataPtrOutput {
+	return o
+}
+
+func (o K8sDaemonSetSpecTemplateMetadataPtrOutput) Elem() K8sDaemonSetSpecTemplateMetadataOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpecTemplateMetadata) K8sDaemonSetSpecTemplateMetadata {
+		if v != nil {
+			return *v
+		}
+		var ret K8sDaemonSetSpecTemplateMetadata
+		return ret
+	}).(K8sDaemonSetSpecTemplateMetadataOutput)
+}
+
+// An unstructured key value map stored with the daemonset that may be used to store arbitrary metadata. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+func (o K8sDaemonSetSpecTemplateMetadataPtrOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpecTemplateMetadata) map[string]string {
 		if v == nil {
 			return nil
 		}
@@ -74764,19 +74875,9 @@ func (o K8sJobSpecTemplateMetadataPtrOutput) Annotations() pulumi.StringMapOutpu
 	}).(pulumi.StringMapOutput)
 }
 
-// Prefix, used by the server, to generate a unique name ONLY IF the `name` field has not been provided. This value will also be combined with a unique suffix. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#idempotency
-func (o K8sJobSpecTemplateMetadataPtrOutput) GenerateName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateMetadata) *string {
-		if v == nil {
-			return nil
-		}
-		return v.GenerateName
-	}).(pulumi.StringPtrOutput)
-}
-
 // A sequence number representing a specific generation of the desired state.
-func (o K8sJobSpecTemplateMetadataPtrOutput) Generation() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateMetadata) *int {
+func (o K8sDaemonSetSpecTemplateMetadataPtrOutput) Generation() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpecTemplateMetadata) *int {
 		if v == nil {
 			return nil
 		}
@@ -74784,9 +74885,9 @@ func (o K8sJobSpecTemplateMetadataPtrOutput) Generation() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Map of string keys and values that can be used to organize and categorize (scope and select) the job. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
-func (o K8sJobSpecTemplateMetadataPtrOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateMetadata) map[string]string {
+// Map of string keys and values that can be used to organize and categorize (scope and select) the daemonset. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+func (o K8sDaemonSetSpecTemplateMetadataPtrOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpecTemplateMetadata) map[string]string {
 		if v == nil {
 			return nil
 		}
@@ -74794,9 +74895,9 @@ func (o K8sJobSpecTemplateMetadataPtrOutput) Labels() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// Name of the job, must be unique. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-func (o K8sJobSpecTemplateMetadataPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateMetadata) *string {
+// Name of the daemonset, must be unique. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+func (o K8sDaemonSetSpecTemplateMetadataPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpecTemplateMetadata) *string {
 		if v == nil {
 			return nil
 		}
@@ -74804,9 +74905,9 @@ func (o K8sJobSpecTemplateMetadataPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// An opaque value that represents the internal version of this job that can be used by clients to determine when job has changed. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
-func (o K8sJobSpecTemplateMetadataPtrOutput) ResourceVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateMetadata) *string {
+// An opaque value that represents the internal version of this daemonset that can be used by clients to determine when daemonset has changed. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+func (o K8sDaemonSetSpecTemplateMetadataPtrOutput) ResourceVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpecTemplateMetadata) *string {
 		if v == nil {
 			return nil
 		}
@@ -74814,9 +74915,9 @@ func (o K8sJobSpecTemplateMetadataPtrOutput) ResourceVersion() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// The unique in time and space value for this job. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
-func (o K8sJobSpecTemplateMetadataPtrOutput) Uid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateMetadata) *string {
+// The unique in time and space value for this daemonset. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
+func (o K8sDaemonSetSpecTemplateMetadataPtrOutput) Uid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpecTemplateMetadata) *string {
 		if v == nil {
 			return nil
 		}
@@ -74824,35 +74925,35 @@ func (o K8sJobSpecTemplateMetadataPtrOutput) Uid() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type K8sJobSpecTemplateSpec struct {
+type K8sDaemonSetSpecTemplateSpec struct {
 	// Optional duration in seconds the pod may be active on the node relative to StartTime before the system will actively try to mark it failed and kill associated containers. Value must be a positive integer.
 	ActiveDeadlineSeconds *int `pulumi:"activeDeadlineSeconds"`
 	// Optional pod scheduling constraints.
-	Affinity *K8sJobSpecTemplateSpecAffinity `pulumi:"affinity"`
+	Affinity *K8sDaemonSetSpecTemplateSpecAffinity `pulumi:"affinity"`
 	// AutomountServiceAccountToken indicates whether a service account token should be automatically mounted. Defaults to `true`.
 	AutomountServiceAccountToken *bool `pulumi:"automountServiceAccountToken"`
 	// List of containers belonging to the pod. Containers cannot currently be added or removed. There must be at least one container in a Pod. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/
-	Containers []K8sJobSpecTemplateSpecContainer `pulumi:"containers"`
+	Containers []K8sDaemonSetSpecTemplateSpecContainer `pulumi:"containers"`
 	// Specifies the DNS parameters of a pod. Parameters specified here will be merged to the generated DNS configuration based on DNSPolicy. Optional: Defaults to empty
-	DnsConfig *K8sJobSpecTemplateSpecDnsConfig `pulumi:"dnsConfig"`
-	// Set DNS policy for containers within the pod. Valid values are 'ClusterFirstWithHostNet', 'ClusterFirst', 'Default' or 'None'. DNS parameters given in DNSConfig will be merged with the policy selected with DNSPolicy. To have DNS options set along with hostNetwork, you have to specify DNS policy explicitly to 'ClusterFirstWithHostNet'. Defaults to 'ClusterFirst'. More info: https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy
+	DnsConfig *K8sDaemonSetSpecTemplateSpecDnsConfig `pulumi:"dnsConfig"`
+	// Set DNS policy for containers within the pod. Valid values are 'ClusterFirstWithHostNet', 'ClusterFirst', 'Default' or 'None'. DNS parameters given in DNSConfig will be merged with the policy selected with DNSPolicy. To have DNS options set along with hostNetwork, you have to specify DNS policy explicitly to 'ClusterFirstWithHostNet'. Defaults to 'ClusterFirst'. More info: https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy Defaults to `ClusterFirst`.
 	DnsPolicy *string `pulumi:"dnsPolicy"`
 	// Enables generating environment variables for service discovery. Defaults to true. Defaults to `true`.
 	EnableServiceLinks *bool `pulumi:"enableServiceLinks"`
 	// List of hosts and IPs that will be injected into the pod's hosts file if specified. Optional: Defaults to empty.
-	HostAliases []K8sJobSpecTemplateSpecHostAlias `pulumi:"hostAliases"`
-	// Use the host's ipc namespace. Optional: Defaults to false.
+	HostAliases []K8sDaemonSetSpecTemplateSpecHostAlias `pulumi:"hostAliases"`
+	// Use the host's ipc namespace. Optional: Defaults to false. Defaults to `false`.
 	HostIpc *bool `pulumi:"hostIpc"`
-	// Host networking requested for this pod. Use the host's network namespace. If this option is set, the ports that will be used must be specified.
+	// Host networking requested for this pod. Use the host's network namespace. If this option is set, the ports that will be used must be specified. Defaults to `false`.
 	HostNetwork *bool `pulumi:"hostNetwork"`
-	// Use the host's pid namespace.
+	// Use the host's pid namespace. Defaults to `false`.
 	HostPid *bool `pulumi:"hostPid"`
 	// Specifies the hostname of the Pod If not specified, the pod's hostname will be set to a system-defined value.
 	Hostname *string `pulumi:"hostname"`
 	// ImagePullSecrets is an optional list of references to secrets in the same namespace to use for pulling any of the images used by this PodSpec. If specified, these secrets will be passed to individual puller implementations for them to use. For example, in the case of docker, only DockerConfig type secrets are honored. More info: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
-	ImagePullSecrets []K8sJobSpecTemplateSpecImagePullSecret `pulumi:"imagePullSecrets"`
+	ImagePullSecrets []K8sDaemonSetSpecTemplateSpecImagePullSecret `pulumi:"imagePullSecrets"`
 	// List of init containers belonging to the pod. Init containers always run to completion and each must complete successfully before the next is started. More info: https://kubernetes.io/docs/concepts/workloads/pods/init-containers/
-	InitContainers []K8sJobSpecTemplateSpecInitContainer `pulumi:"initContainers"`
+	InitContainers []K8sDaemonSetSpecTemplateSpecInitContainer `pulumi:"initContainers"`
 	// NodeName is a request to schedule this pod onto a specific node. If it is non-empty, the scheduler simply schedules this pod onto that node, assuming that it fits resource requirements.
 	NodeName *string `pulumi:"nodeName"`
 	// NodeSelector is a selector which must be true for the pod to fit on a node. Selector which must match a node's labels for the pod to be scheduled on that node. More info: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/.
@@ -74860,71 +74961,71 @@ type K8sJobSpecTemplateSpec struct {
 	// If specified, indicates the pod's priority. "system-node-critical" and "system-cluster-critical" are two special keywords which indicate the highest priorities with the former being the highest priority. Any other name must be defined by creating a PriorityClass object with that name. If not specified, the pod priority will be default or zero if there is no default.
 	PriorityClassName *string `pulumi:"priorityClassName"`
 	// If specified, all readiness gates will be evaluated for pod readiness. A pod is ready when all its containers are ready AND all conditions specified in the readiness gates have status equal to "True" More info: https://git.k8s.io/enhancements/keps/sig-network/0007-pod-ready%2B%2B.md
-	ReadinessGates []K8sJobSpecTemplateSpecReadinessGate `pulumi:"readinessGates"`
-	// Restart policy for all containers within the pod. One of OnFailure, Never. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#restart-policy. Defaults to `Never`.
+	ReadinessGates []K8sDaemonSetSpecTemplateSpecReadinessGate `pulumi:"readinessGates"`
+	// Restart policy for all containers within the pod. DaemonSets only support `Always`. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#restart-policy. Defaults to `Always`.
 	RestartPolicy *string `pulumi:"restartPolicy"`
 	// RuntimeClassName is a feature for selecting the container runtime configuration. The container runtime configuration is used to run a Pod's containers. More info: https://kubernetes.io/docs/concepts/containers/runtime-class
 	RuntimeClassName *string `pulumi:"runtimeClassName"`
 	// If specified, the pod will be dispatched by specified scheduler. If not specified, the pod will be dispatched by default scheduler.
 	SchedulerName *string `pulumi:"schedulerName"`
 	// SecurityContext holds pod-level security attributes and common container settings. Optional: Defaults to empty
-	SecurityContext *K8sJobSpecTemplateSpecSecurityContext `pulumi:"securityContext"`
+	SecurityContext *K8sDaemonSetSpecTemplateSpecSecurityContext `pulumi:"securityContext"`
 	// ServiceAccountName is the name of the ServiceAccount to use to run this pod. More info: http://releases.k8s.io/HEAD/docs/design/service_accounts.md.
 	ServiceAccountName *string `pulumi:"serviceAccountName"`
 	// Share a single process namespace between all of the containers in a pod. When this is set containers will be able to view and signal processes from other containers in the same pod, and the first process in each container will not be assigned PID 1. HostPID and ShareProcessNamespace cannot both be set. Optional: Defaults to false. Defaults to `false`.
 	ShareProcessNamespace *bool `pulumi:"shareProcessNamespace"`
 	// If specified, the fully qualified Pod hostname will be "...svc.". If not specified, the pod will not have a domainname at all..
 	Subdomain *string `pulumi:"subdomain"`
-	// Optional duration in seconds the pod needs to terminate gracefully. May be decreased in delete request. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period will be used instead. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process.
+	// Optional duration in seconds the pod needs to terminate gracefully. May be decreased in delete request. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period will be used instead. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. Defaults to `30`.
 	TerminationGracePeriodSeconds *int `pulumi:"terminationGracePeriodSeconds"`
 	// If specified, the pod's toleration. Optional: Defaults to empty
-	Tolerations []K8sJobSpecTemplateSpecToleration `pulumi:"tolerations"`
+	Tolerations []K8sDaemonSetSpecTemplateSpecToleration `pulumi:"tolerations"`
 	// describes how a group of pods ought to spread across topology domains. Scheduler will schedule pods in a way which abides by the constraints.
-	TopologySpreadConstraints []K8sJobSpecTemplateSpecTopologySpreadConstraint `pulumi:"topologySpreadConstraints"`
+	TopologySpreadConstraints []K8sDaemonSetSpecTemplateSpecTopologySpreadConstraint `pulumi:"topologySpreadConstraints"`
 	// List of volumes that can be mounted by containers belonging to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes
-	Volumes []K8sJobSpecTemplateSpecVolume `pulumi:"volumes"`
+	Volumes []K8sDaemonSetSpecTemplateSpecVolume `pulumi:"volumes"`
 }
 
-// K8sJobSpecTemplateSpecInput is an input type that accepts K8sJobSpecTemplateSpecArgs and K8sJobSpecTemplateSpecOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecInput` via:
+// K8sDaemonSetSpecTemplateSpecInput is an input type that accepts K8sDaemonSetSpecTemplateSpecArgs and K8sDaemonSetSpecTemplateSpecOutput values.
+// You can construct a concrete instance of `K8sDaemonSetSpecTemplateSpecInput` via:
 //
-//	K8sJobSpecTemplateSpecArgs{...}
-type K8sJobSpecTemplateSpecInput interface {
+//	K8sDaemonSetSpecTemplateSpecArgs{...}
+type K8sDaemonSetSpecTemplateSpecInput interface {
 	pulumi.Input
 
-	ToK8sJobSpecTemplateSpecOutput() K8sJobSpecTemplateSpecOutput
-	ToK8sJobSpecTemplateSpecOutputWithContext(context.Context) K8sJobSpecTemplateSpecOutput
+	ToK8sDaemonSetSpecTemplateSpecOutput() K8sDaemonSetSpecTemplateSpecOutput
+	ToK8sDaemonSetSpecTemplateSpecOutputWithContext(context.Context) K8sDaemonSetSpecTemplateSpecOutput
 }
 
-type K8sJobSpecTemplateSpecArgs struct {
+type K8sDaemonSetSpecTemplateSpecArgs struct {
 	// Optional duration in seconds the pod may be active on the node relative to StartTime before the system will actively try to mark it failed and kill associated containers. Value must be a positive integer.
 	ActiveDeadlineSeconds pulumi.IntPtrInput `pulumi:"activeDeadlineSeconds"`
 	// Optional pod scheduling constraints.
-	Affinity K8sJobSpecTemplateSpecAffinityPtrInput `pulumi:"affinity"`
+	Affinity K8sDaemonSetSpecTemplateSpecAffinityPtrInput `pulumi:"affinity"`
 	// AutomountServiceAccountToken indicates whether a service account token should be automatically mounted. Defaults to `true`.
 	AutomountServiceAccountToken pulumi.BoolPtrInput `pulumi:"automountServiceAccountToken"`
 	// List of containers belonging to the pod. Containers cannot currently be added or removed. There must be at least one container in a Pod. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/
-	Containers K8sJobSpecTemplateSpecContainerArrayInput `pulumi:"containers"`
+	Containers K8sDaemonSetSpecTemplateSpecContainerArrayInput `pulumi:"containers"`
 	// Specifies the DNS parameters of a pod. Parameters specified here will be merged to the generated DNS configuration based on DNSPolicy. Optional: Defaults to empty
-	DnsConfig K8sJobSpecTemplateSpecDnsConfigPtrInput `pulumi:"dnsConfig"`
-	// Set DNS policy for containers within the pod. Valid values are 'ClusterFirstWithHostNet', 'ClusterFirst', 'Default' or 'None'. DNS parameters given in DNSConfig will be merged with the policy selected with DNSPolicy. To have DNS options set along with hostNetwork, you have to specify DNS policy explicitly to 'ClusterFirstWithHostNet'. Defaults to 'ClusterFirst'. More info: https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy
+	DnsConfig K8sDaemonSetSpecTemplateSpecDnsConfigPtrInput `pulumi:"dnsConfig"`
+	// Set DNS policy for containers within the pod. Valid values are 'ClusterFirstWithHostNet', 'ClusterFirst', 'Default' or 'None'. DNS parameters given in DNSConfig will be merged with the policy selected with DNSPolicy. To have DNS options set along with hostNetwork, you have to specify DNS policy explicitly to 'ClusterFirstWithHostNet'. Defaults to 'ClusterFirst'. More info: https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy Defaults to `ClusterFirst`.
 	DnsPolicy pulumi.StringPtrInput `pulumi:"dnsPolicy"`
 	// Enables generating environment variables for service discovery. Defaults to true. Defaults to `true`.
 	EnableServiceLinks pulumi.BoolPtrInput `pulumi:"enableServiceLinks"`
 	// List of hosts and IPs that will be injected into the pod's hosts file if specified. Optional: Defaults to empty.
-	HostAliases K8sJobSpecTemplateSpecHostAliasArrayInput `pulumi:"hostAliases"`
-	// Use the host's ipc namespace. Optional: Defaults to false.
+	HostAliases K8sDaemonSetSpecTemplateSpecHostAliasArrayInput `pulumi:"hostAliases"`
+	// Use the host's ipc namespace. Optional: Defaults to false. Defaults to `false`.
 	HostIpc pulumi.BoolPtrInput `pulumi:"hostIpc"`
-	// Host networking requested for this pod. Use the host's network namespace. If this option is set, the ports that will be used must be specified.
+	// Host networking requested for this pod. Use the host's network namespace. If this option is set, the ports that will be used must be specified. Defaults to `false`.
 	HostNetwork pulumi.BoolPtrInput `pulumi:"hostNetwork"`
-	// Use the host's pid namespace.
+	// Use the host's pid namespace. Defaults to `false`.
 	HostPid pulumi.BoolPtrInput `pulumi:"hostPid"`
 	// Specifies the hostname of the Pod If not specified, the pod's hostname will be set to a system-defined value.
 	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
 	// ImagePullSecrets is an optional list of references to secrets in the same namespace to use for pulling any of the images used by this PodSpec. If specified, these secrets will be passed to individual puller implementations for them to use. For example, in the case of docker, only DockerConfig type secrets are honored. More info: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
-	ImagePullSecrets K8sJobSpecTemplateSpecImagePullSecretArrayInput `pulumi:"imagePullSecrets"`
+	ImagePullSecrets K8sDaemonSetSpecTemplateSpecImagePullSecretArrayInput `pulumi:"imagePullSecrets"`
 	// List of init containers belonging to the pod. Init containers always run to completion and each must complete successfully before the next is started. More info: https://kubernetes.io/docs/concepts/workloads/pods/init-containers/
-	InitContainers K8sJobSpecTemplateSpecInitContainerArrayInput `pulumi:"initContainers"`
+	InitContainers K8sDaemonSetSpecTemplateSpecInitContainerArrayInput `pulumi:"initContainers"`
 	// NodeName is a request to schedule this pod onto a specific node. If it is non-empty, the scheduler simply schedules this pod onto that node, assuming that it fits resource requirements.
 	NodeName pulumi.StringPtrInput `pulumi:"nodeName"`
 	// NodeSelector is a selector which must be true for the pod to fit on a node. Selector which must match a node's labels for the pod to be scheduled on that node. More info: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/.
@@ -74932,282 +75033,290 @@ type K8sJobSpecTemplateSpecArgs struct {
 	// If specified, indicates the pod's priority. "system-node-critical" and "system-cluster-critical" are two special keywords which indicate the highest priorities with the former being the highest priority. Any other name must be defined by creating a PriorityClass object with that name. If not specified, the pod priority will be default or zero if there is no default.
 	PriorityClassName pulumi.StringPtrInput `pulumi:"priorityClassName"`
 	// If specified, all readiness gates will be evaluated for pod readiness. A pod is ready when all its containers are ready AND all conditions specified in the readiness gates have status equal to "True" More info: https://git.k8s.io/enhancements/keps/sig-network/0007-pod-ready%2B%2B.md
-	ReadinessGates K8sJobSpecTemplateSpecReadinessGateArrayInput `pulumi:"readinessGates"`
-	// Restart policy for all containers within the pod. One of OnFailure, Never. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#restart-policy. Defaults to `Never`.
+	ReadinessGates K8sDaemonSetSpecTemplateSpecReadinessGateArrayInput `pulumi:"readinessGates"`
+	// Restart policy for all containers within the pod. DaemonSets only support `Always`. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#restart-policy. Defaults to `Always`.
 	RestartPolicy pulumi.StringPtrInput `pulumi:"restartPolicy"`
 	// RuntimeClassName is a feature for selecting the container runtime configuration. The container runtime configuration is used to run a Pod's containers. More info: https://kubernetes.io/docs/concepts/containers/runtime-class
 	RuntimeClassName pulumi.StringPtrInput `pulumi:"runtimeClassName"`
 	// If specified, the pod will be dispatched by specified scheduler. If not specified, the pod will be dispatched by default scheduler.
 	SchedulerName pulumi.StringPtrInput `pulumi:"schedulerName"`
 	// SecurityContext holds pod-level security attributes and common container settings. Optional: Defaults to empty
-	SecurityContext K8sJobSpecTemplateSpecSecurityContextPtrInput `pulumi:"securityContext"`
+	SecurityContext K8sDaemonSetSpecTemplateSpecSecurityContextPtrInput `pulumi:"securityContext"`
 	// ServiceAccountName is the name of the ServiceAccount to use to run this pod. More info: http://releases.k8s.io/HEAD/docs/design/service_accounts.md.
 	ServiceAccountName pulumi.StringPtrInput `pulumi:"serviceAccountName"`
 	// Share a single process namespace between all of the containers in a pod. When this is set containers will be able to view and signal processes from other containers in the same pod, and the first process in each container will not be assigned PID 1. HostPID and ShareProcessNamespace cannot both be set. Optional: Defaults to false. Defaults to `false`.
 	ShareProcessNamespace pulumi.BoolPtrInput `pulumi:"shareProcessNamespace"`
 	// If specified, the fully qualified Pod hostname will be "...svc.". If not specified, the pod will not have a domainname at all..
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
-	// Optional duration in seconds the pod needs to terminate gracefully. May be decreased in delete request. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period will be used instead. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process.
+	// Optional duration in seconds the pod needs to terminate gracefully. May be decreased in delete request. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period will be used instead. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. Defaults to `30`.
 	TerminationGracePeriodSeconds pulumi.IntPtrInput `pulumi:"terminationGracePeriodSeconds"`
 	// If specified, the pod's toleration. Optional: Defaults to empty
-	Tolerations K8sJobSpecTemplateSpecTolerationArrayInput `pulumi:"tolerations"`
+	Tolerations K8sDaemonSetSpecTemplateSpecTolerationArrayInput `pulumi:"tolerations"`
 	// describes how a group of pods ought to spread across topology domains. Scheduler will schedule pods in a way which abides by the constraints.
-	TopologySpreadConstraints K8sJobSpecTemplateSpecTopologySpreadConstraintArrayInput `pulumi:"topologySpreadConstraints"`
+	TopologySpreadConstraints K8sDaemonSetSpecTemplateSpecTopologySpreadConstraintArrayInput `pulumi:"topologySpreadConstraints"`
 	// List of volumes that can be mounted by containers belonging to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes
-	Volumes K8sJobSpecTemplateSpecVolumeArrayInput `pulumi:"volumes"`
+	Volumes K8sDaemonSetSpecTemplateSpecVolumeArrayInput `pulumi:"volumes"`
 }
 
-func (K8sJobSpecTemplateSpecArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpec)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sDaemonSetSpecTemplateSpec)(nil)).Elem()
 }
 
-func (i K8sJobSpecTemplateSpecArgs) ToK8sJobSpecTemplateSpecOutput() K8sJobSpecTemplateSpecOutput {
-	return i.ToK8sJobSpecTemplateSpecOutputWithContext(context.Background())
+func (i K8sDaemonSetSpecTemplateSpecArgs) ToK8sDaemonSetSpecTemplateSpecOutput() K8sDaemonSetSpecTemplateSpecOutput {
+	return i.ToK8sDaemonSetSpecTemplateSpecOutputWithContext(context.Background())
 }
 
-func (i K8sJobSpecTemplateSpecArgs) ToK8sJobSpecTemplateSpecOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecOutput)
+func (i K8sDaemonSetSpecTemplateSpecArgs) ToK8sDaemonSetSpecTemplateSpecOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetSpecTemplateSpecOutput)
 }
 
-func (i K8sJobSpecTemplateSpecArgs) ToK8sJobSpecTemplateSpecPtrOutput() K8sJobSpecTemplateSpecPtrOutput {
-	return i.ToK8sJobSpecTemplateSpecPtrOutputWithContext(context.Background())
+func (i K8sDaemonSetSpecTemplateSpecArgs) ToK8sDaemonSetSpecTemplateSpecPtrOutput() K8sDaemonSetSpecTemplateSpecPtrOutput {
+	return i.ToK8sDaemonSetSpecTemplateSpecPtrOutputWithContext(context.Background())
 }
 
-func (i K8sJobSpecTemplateSpecArgs) ToK8sJobSpecTemplateSpecPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecOutput).ToK8sJobSpecTemplateSpecPtrOutputWithContext(ctx)
+func (i K8sDaemonSetSpecTemplateSpecArgs) ToK8sDaemonSetSpecTemplateSpecPtrOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetSpecTemplateSpecOutput).ToK8sDaemonSetSpecTemplateSpecPtrOutputWithContext(ctx)
 }
 
-// K8sJobSpecTemplateSpecPtrInput is an input type that accepts K8sJobSpecTemplateSpecArgs, K8sJobSpecTemplateSpecPtr and K8sJobSpecTemplateSpecPtrOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecPtrInput` via:
+// K8sDaemonSetSpecTemplateSpecPtrInput is an input type that accepts K8sDaemonSetSpecTemplateSpecArgs, K8sDaemonSetSpecTemplateSpecPtr and K8sDaemonSetSpecTemplateSpecPtrOutput values.
+// You can construct a concrete instance of `K8sDaemonSetSpecTemplateSpecPtrInput` via:
 //
-//	        K8sJobSpecTemplateSpecArgs{...}
+//	        K8sDaemonSetSpecTemplateSpecArgs{...}
 //
 //	or:
 //
 //	        nil
-type K8sJobSpecTemplateSpecPtrInput interface {
+type K8sDaemonSetSpecTemplateSpecPtrInput interface {
 	pulumi.Input
 
-	ToK8sJobSpecTemplateSpecPtrOutput() K8sJobSpecTemplateSpecPtrOutput
-	ToK8sJobSpecTemplateSpecPtrOutputWithContext(context.Context) K8sJobSpecTemplateSpecPtrOutput
+	ToK8sDaemonSetSpecTemplateSpecPtrOutput() K8sDaemonSetSpecTemplateSpecPtrOutput
+	ToK8sDaemonSetSpecTemplateSpecPtrOutputWithContext(context.Context) K8sDaemonSetSpecTemplateSpecPtrOutput
 }
 
-type k8sJobSpecTemplateSpecPtrType K8sJobSpecTemplateSpecArgs
+type k8sDaemonSetSpecTemplateSpecPtrType K8sDaemonSetSpecTemplateSpecArgs
 
-func K8sJobSpecTemplateSpecPtr(v *K8sJobSpecTemplateSpecArgs) K8sJobSpecTemplateSpecPtrInput {
-	return (*k8sJobSpecTemplateSpecPtrType)(v)
+func K8sDaemonSetSpecTemplateSpecPtr(v *K8sDaemonSetSpecTemplateSpecArgs) K8sDaemonSetSpecTemplateSpecPtrInput {
+	return (*k8sDaemonSetSpecTemplateSpecPtrType)(v)
 }
 
-func (*k8sJobSpecTemplateSpecPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpec)(nil)).Elem()
+func (*k8sDaemonSetSpecTemplateSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**K8sDaemonSetSpecTemplateSpec)(nil)).Elem()
 }
 
-func (i *k8sJobSpecTemplateSpecPtrType) ToK8sJobSpecTemplateSpecPtrOutput() K8sJobSpecTemplateSpecPtrOutput {
-	return i.ToK8sJobSpecTemplateSpecPtrOutputWithContext(context.Background())
+func (i *k8sDaemonSetSpecTemplateSpecPtrType) ToK8sDaemonSetSpecTemplateSpecPtrOutput() K8sDaemonSetSpecTemplateSpecPtrOutput {
+	return i.ToK8sDaemonSetSpecTemplateSpecPtrOutputWithContext(context.Background())
 }
 
-func (i *k8sJobSpecTemplateSpecPtrType) ToK8sJobSpecTemplateSpecPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecPtrOutput)
+func (i *k8sDaemonSetSpecTemplateSpecPtrType) ToK8sDaemonSetSpecTemplateSpecPtrOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetSpecTemplateSpecPtrOutput)
 }
 
-type K8sJobSpecTemplateSpecOutput struct{ *pulumi.OutputState }
+type K8sDaemonSetSpecTemplateSpecOutput struct{ *pulumi.OutputState }
 
-func (K8sJobSpecTemplateSpecOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpec)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sDaemonSetSpecTemplateSpec)(nil)).Elem()
 }
 
-func (o K8sJobSpecTemplateSpecOutput) ToK8sJobSpecTemplateSpecOutput() K8sJobSpecTemplateSpecOutput {
+func (o K8sDaemonSetSpecTemplateSpecOutput) ToK8sDaemonSetSpecTemplateSpecOutput() K8sDaemonSetSpecTemplateSpecOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecOutput) ToK8sJobSpecTemplateSpecOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecOutput {
+func (o K8sDaemonSetSpecTemplateSpecOutput) ToK8sDaemonSetSpecTemplateSpecOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecOutput) ToK8sJobSpecTemplateSpecPtrOutput() K8sJobSpecTemplateSpecPtrOutput {
-	return o.ToK8sJobSpecTemplateSpecPtrOutputWithContext(context.Background())
+func (o K8sDaemonSetSpecTemplateSpecOutput) ToK8sDaemonSetSpecTemplateSpecPtrOutput() K8sDaemonSetSpecTemplateSpecPtrOutput {
+	return o.ToK8sDaemonSetSpecTemplateSpecPtrOutputWithContext(context.Background())
 }
 
-func (o K8sJobSpecTemplateSpecOutput) ToK8sJobSpecTemplateSpecPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v K8sJobSpecTemplateSpec) *K8sJobSpecTemplateSpec {
+func (o K8sDaemonSetSpecTemplateSpecOutput) ToK8sDaemonSetSpecTemplateSpecPtrOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v K8sDaemonSetSpecTemplateSpec) *K8sDaemonSetSpecTemplateSpec {
 		return &v
-	}).(K8sJobSpecTemplateSpecPtrOutput)
+	}).(K8sDaemonSetSpecTemplateSpecPtrOutput)
 }
 
 // Optional duration in seconds the pod may be active on the node relative to StartTime before the system will actively try to mark it failed and kill associated containers. Value must be a positive integer.
-func (o K8sJobSpecTemplateSpecOutput) ActiveDeadlineSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpec) *int { return v.ActiveDeadlineSeconds }).(pulumi.IntPtrOutput)
+func (o K8sDaemonSetSpecTemplateSpecOutput) ActiveDeadlineSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpec) *int { return v.ActiveDeadlineSeconds }).(pulumi.IntPtrOutput)
 }
 
 // Optional pod scheduling constraints.
-func (o K8sJobSpecTemplateSpecOutput) Affinity() K8sJobSpecTemplateSpecAffinityPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpec) *K8sJobSpecTemplateSpecAffinity { return v.Affinity }).(K8sJobSpecTemplateSpecAffinityPtrOutput)
+func (o K8sDaemonSetSpecTemplateSpecOutput) Affinity() K8sDaemonSetSpecTemplateSpecAffinityPtrOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpec) *K8sDaemonSetSpecTemplateSpecAffinity { return v.Affinity }).(K8sDaemonSetSpecTemplateSpecAffinityPtrOutput)
 }
 
 // AutomountServiceAccountToken indicates whether a service account token should be automatically mounted. Defaults to `true`.
-func (o K8sJobSpecTemplateSpecOutput) AutomountServiceAccountToken() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpec) *bool { return v.AutomountServiceAccountToken }).(pulumi.BoolPtrOutput)
+func (o K8sDaemonSetSpecTemplateSpecOutput) AutomountServiceAccountToken() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpec) *bool { return v.AutomountServiceAccountToken }).(pulumi.BoolPtrOutput)
 }
 
 // List of containers belonging to the pod. Containers cannot currently be added or removed. There must be at least one container in a Pod. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/
-func (o K8sJobSpecTemplateSpecOutput) Containers() K8sJobSpecTemplateSpecContainerArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpec) []K8sJobSpecTemplateSpecContainer { return v.Containers }).(K8sJobSpecTemplateSpecContainerArrayOutput)
+func (o K8sDaemonSetSpecTemplateSpecOutput) Containers() K8sDaemonSetSpecTemplateSpecContainerArrayOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpec) []K8sDaemonSetSpecTemplateSpecContainer { return v.Containers }).(K8sDaemonSetSpecTemplateSpecContainerArrayOutput)
 }
 
 // Specifies the DNS parameters of a pod. Parameters specified here will be merged to the generated DNS configuration based on DNSPolicy. Optional: Defaults to empty
-func (o K8sJobSpecTemplateSpecOutput) DnsConfig() K8sJobSpecTemplateSpecDnsConfigPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpec) *K8sJobSpecTemplateSpecDnsConfig { return v.DnsConfig }).(K8sJobSpecTemplateSpecDnsConfigPtrOutput)
+func (o K8sDaemonSetSpecTemplateSpecOutput) DnsConfig() K8sDaemonSetSpecTemplateSpecDnsConfigPtrOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpec) *K8sDaemonSetSpecTemplateSpecDnsConfig { return v.DnsConfig }).(K8sDaemonSetSpecTemplateSpecDnsConfigPtrOutput)
 }
 
-// Set DNS policy for containers within the pod. Valid values are 'ClusterFirstWithHostNet', 'ClusterFirst', 'Default' or 'None'. DNS parameters given in DNSConfig will be merged with the policy selected with DNSPolicy. To have DNS options set along with hostNetwork, you have to specify DNS policy explicitly to 'ClusterFirstWithHostNet'. Defaults to 'ClusterFirst'. More info: https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy
-func (o K8sJobSpecTemplateSpecOutput) DnsPolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpec) *string { return v.DnsPolicy }).(pulumi.StringPtrOutput)
+// Set DNS policy for containers within the pod. Valid values are 'ClusterFirstWithHostNet', 'ClusterFirst', 'Default' or 'None'. DNS parameters given in DNSConfig will be merged with the policy selected with DNSPolicy. To have DNS options set along with hostNetwork, you have to specify DNS policy explicitly to 'ClusterFirstWithHostNet'. Defaults to 'ClusterFirst'. More info: https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy Defaults to `ClusterFirst`.
+func (o K8sDaemonSetSpecTemplateSpecOutput) DnsPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpec) *string { return v.DnsPolicy }).(pulumi.StringPtrOutput)
 }
 
 // Enables generating environment variables for service discovery. Defaults to true. Defaults to `true`.
-func (o K8sJobSpecTemplateSpecOutput) EnableServiceLinks() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpec) *bool { return v.EnableServiceLinks }).(pulumi.BoolPtrOutput)
+func (o K8sDaemonSetSpecTemplateSpecOutput) EnableServiceLinks() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpec) *bool { return v.EnableServiceLinks }).(pulumi.BoolPtrOutput)
 }
 
 // List of hosts and IPs that will be injected into the pod's hosts file if specified. Optional: Defaults to empty.
-func (o K8sJobSpecTemplateSpecOutput) HostAliases() K8sJobSpecTemplateSpecHostAliasArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpec) []K8sJobSpecTemplateSpecHostAlias { return v.HostAliases }).(K8sJobSpecTemplateSpecHostAliasArrayOutput)
+func (o K8sDaemonSetSpecTemplateSpecOutput) HostAliases() K8sDaemonSetSpecTemplateSpecHostAliasArrayOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpec) []K8sDaemonSetSpecTemplateSpecHostAlias { return v.HostAliases }).(K8sDaemonSetSpecTemplateSpecHostAliasArrayOutput)
 }
 
-// Use the host's ipc namespace. Optional: Defaults to false.
-func (o K8sJobSpecTemplateSpecOutput) HostIpc() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpec) *bool { return v.HostIpc }).(pulumi.BoolPtrOutput)
+// Use the host's ipc namespace. Optional: Defaults to false. Defaults to `false`.
+func (o K8sDaemonSetSpecTemplateSpecOutput) HostIpc() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpec) *bool { return v.HostIpc }).(pulumi.BoolPtrOutput)
 }
 
-// Host networking requested for this pod. Use the host's network namespace. If this option is set, the ports that will be used must be specified.
-func (o K8sJobSpecTemplateSpecOutput) HostNetwork() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpec) *bool { return v.HostNetwork }).(pulumi.BoolPtrOutput)
+// Host networking requested for this pod. Use the host's network namespace. If this option is set, the ports that will be used must be specified. Defaults to `false`.
+func (o K8sDaemonSetSpecTemplateSpecOutput) HostNetwork() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpec) *bool { return v.HostNetwork }).(pulumi.BoolPtrOutput)
 }
 
-// Use the host's pid namespace.
-func (o K8sJobSpecTemplateSpecOutput) HostPid() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpec) *bool { return v.HostPid }).(pulumi.BoolPtrOutput)
+// Use the host's pid namespace. Defaults to `false`.
+func (o K8sDaemonSetSpecTemplateSpecOutput) HostPid() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpec) *bool { return v.HostPid }).(pulumi.BoolPtrOutput)
 }
 
 // Specifies the hostname of the Pod If not specified, the pod's hostname will be set to a system-defined value.
-func (o K8sJobSpecTemplateSpecOutput) Hostname() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpec) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+func (o K8sDaemonSetSpecTemplateSpecOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpec) *string { return v.Hostname }).(pulumi.StringPtrOutput)
 }
 
 // ImagePullSecrets is an optional list of references to secrets in the same namespace to use for pulling any of the images used by this PodSpec. If specified, these secrets will be passed to individual puller implementations for them to use. For example, in the case of docker, only DockerConfig type secrets are honored. More info: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
-func (o K8sJobSpecTemplateSpecOutput) ImagePullSecrets() K8sJobSpecTemplateSpecImagePullSecretArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpec) []K8sJobSpecTemplateSpecImagePullSecret { return v.ImagePullSecrets }).(K8sJobSpecTemplateSpecImagePullSecretArrayOutput)
+func (o K8sDaemonSetSpecTemplateSpecOutput) ImagePullSecrets() K8sDaemonSetSpecTemplateSpecImagePullSecretArrayOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpec) []K8sDaemonSetSpecTemplateSpecImagePullSecret {
+		return v.ImagePullSecrets
+	}).(K8sDaemonSetSpecTemplateSpecImagePullSecretArrayOutput)
 }
 
 // List of init containers belonging to the pod. Init containers always run to completion and each must complete successfully before the next is started. More info: https://kubernetes.io/docs/concepts/workloads/pods/init-containers/
-func (o K8sJobSpecTemplateSpecOutput) InitContainers() K8sJobSpecTemplateSpecInitContainerArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpec) []K8sJobSpecTemplateSpecInitContainer { return v.InitContainers }).(K8sJobSpecTemplateSpecInitContainerArrayOutput)
+func (o K8sDaemonSetSpecTemplateSpecOutput) InitContainers() K8sDaemonSetSpecTemplateSpecInitContainerArrayOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpec) []K8sDaemonSetSpecTemplateSpecInitContainer {
+		return v.InitContainers
+	}).(K8sDaemonSetSpecTemplateSpecInitContainerArrayOutput)
 }
 
 // NodeName is a request to schedule this pod onto a specific node. If it is non-empty, the scheduler simply schedules this pod onto that node, assuming that it fits resource requirements.
-func (o K8sJobSpecTemplateSpecOutput) NodeName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpec) *string { return v.NodeName }).(pulumi.StringPtrOutput)
+func (o K8sDaemonSetSpecTemplateSpecOutput) NodeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpec) *string { return v.NodeName }).(pulumi.StringPtrOutput)
 }
 
 // NodeSelector is a selector which must be true for the pod to fit on a node. Selector which must match a node's labels for the pod to be scheduled on that node. More info: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/.
-func (o K8sJobSpecTemplateSpecOutput) NodeSelector() pulumi.StringMapOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpec) map[string]string { return v.NodeSelector }).(pulumi.StringMapOutput)
+func (o K8sDaemonSetSpecTemplateSpecOutput) NodeSelector() pulumi.StringMapOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpec) map[string]string { return v.NodeSelector }).(pulumi.StringMapOutput)
 }
 
 // If specified, indicates the pod's priority. "system-node-critical" and "system-cluster-critical" are two special keywords which indicate the highest priorities with the former being the highest priority. Any other name must be defined by creating a PriorityClass object with that name. If not specified, the pod priority will be default or zero if there is no default.
-func (o K8sJobSpecTemplateSpecOutput) PriorityClassName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpec) *string { return v.PriorityClassName }).(pulumi.StringPtrOutput)
+func (o K8sDaemonSetSpecTemplateSpecOutput) PriorityClassName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpec) *string { return v.PriorityClassName }).(pulumi.StringPtrOutput)
 }
 
 // If specified, all readiness gates will be evaluated for pod readiness. A pod is ready when all its containers are ready AND all conditions specified in the readiness gates have status equal to "True" More info: https://git.k8s.io/enhancements/keps/sig-network/0007-pod-ready%2B%2B.md
-func (o K8sJobSpecTemplateSpecOutput) ReadinessGates() K8sJobSpecTemplateSpecReadinessGateArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpec) []K8sJobSpecTemplateSpecReadinessGate { return v.ReadinessGates }).(K8sJobSpecTemplateSpecReadinessGateArrayOutput)
+func (o K8sDaemonSetSpecTemplateSpecOutput) ReadinessGates() K8sDaemonSetSpecTemplateSpecReadinessGateArrayOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpec) []K8sDaemonSetSpecTemplateSpecReadinessGate {
+		return v.ReadinessGates
+	}).(K8sDaemonSetSpecTemplateSpecReadinessGateArrayOutput)
 }
 
-// Restart policy for all containers within the pod. One of OnFailure, Never. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#restart-policy. Defaults to `Never`.
-func (o K8sJobSpecTemplateSpecOutput) RestartPolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpec) *string { return v.RestartPolicy }).(pulumi.StringPtrOutput)
+// Restart policy for all containers within the pod. DaemonSets only support `Always`. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#restart-policy. Defaults to `Always`.
+func (o K8sDaemonSetSpecTemplateSpecOutput) RestartPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpec) *string { return v.RestartPolicy }).(pulumi.StringPtrOutput)
 }
 
 // RuntimeClassName is a feature for selecting the container runtime configuration. The container runtime configuration is used to run a Pod's containers. More info: https://kubernetes.io/docs/concepts/containers/runtime-class
-func (o K8sJobSpecTemplateSpecOutput) RuntimeClassName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpec) *string { return v.RuntimeClassName }).(pulumi.StringPtrOutput)
+func (o K8sDaemonSetSpecTemplateSpecOutput) RuntimeClassName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpec) *string { return v.RuntimeClassName }).(pulumi.StringPtrOutput)
 }
 
 // If specified, the pod will be dispatched by specified scheduler. If not specified, the pod will be dispatched by default scheduler.
-func (o K8sJobSpecTemplateSpecOutput) SchedulerName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpec) *string { return v.SchedulerName }).(pulumi.StringPtrOutput)
+func (o K8sDaemonSetSpecTemplateSpecOutput) SchedulerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpec) *string { return v.SchedulerName }).(pulumi.StringPtrOutput)
 }
 
 // SecurityContext holds pod-level security attributes and common container settings. Optional: Defaults to empty
-func (o K8sJobSpecTemplateSpecOutput) SecurityContext() K8sJobSpecTemplateSpecSecurityContextPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpec) *K8sJobSpecTemplateSpecSecurityContext { return v.SecurityContext }).(K8sJobSpecTemplateSpecSecurityContextPtrOutput)
+func (o K8sDaemonSetSpecTemplateSpecOutput) SecurityContext() K8sDaemonSetSpecTemplateSpecSecurityContextPtrOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpec) *K8sDaemonSetSpecTemplateSpecSecurityContext {
+		return v.SecurityContext
+	}).(K8sDaemonSetSpecTemplateSpecSecurityContextPtrOutput)
 }
 
 // ServiceAccountName is the name of the ServiceAccount to use to run this pod. More info: http://releases.k8s.io/HEAD/docs/design/service_accounts.md.
-func (o K8sJobSpecTemplateSpecOutput) ServiceAccountName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpec) *string { return v.ServiceAccountName }).(pulumi.StringPtrOutput)
+func (o K8sDaemonSetSpecTemplateSpecOutput) ServiceAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpec) *string { return v.ServiceAccountName }).(pulumi.StringPtrOutput)
 }
 
 // Share a single process namespace between all of the containers in a pod. When this is set containers will be able to view and signal processes from other containers in the same pod, and the first process in each container will not be assigned PID 1. HostPID and ShareProcessNamespace cannot both be set. Optional: Defaults to false. Defaults to `false`.
-func (o K8sJobSpecTemplateSpecOutput) ShareProcessNamespace() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpec) *bool { return v.ShareProcessNamespace }).(pulumi.BoolPtrOutput)
+func (o K8sDaemonSetSpecTemplateSpecOutput) ShareProcessNamespace() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpec) *bool { return v.ShareProcessNamespace }).(pulumi.BoolPtrOutput)
 }
 
 // If specified, the fully qualified Pod hostname will be "...svc.". If not specified, the pod will not have a domainname at all..
-func (o K8sJobSpecTemplateSpecOutput) Subdomain() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpec) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+func (o K8sDaemonSetSpecTemplateSpecOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpec) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
 }
 
-// Optional duration in seconds the pod needs to terminate gracefully. May be decreased in delete request. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period will be used instead. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process.
-func (o K8sJobSpecTemplateSpecOutput) TerminationGracePeriodSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpec) *int { return v.TerminationGracePeriodSeconds }).(pulumi.IntPtrOutput)
+// Optional duration in seconds the pod needs to terminate gracefully. May be decreased in delete request. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period will be used instead. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. Defaults to `30`.
+func (o K8sDaemonSetSpecTemplateSpecOutput) TerminationGracePeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpec) *int { return v.TerminationGracePeriodSeconds }).(pulumi.IntPtrOutput)
 }
 
 // If specified, the pod's toleration. Optional: Defaults to empty
-func (o K8sJobSpecTemplateSpecOutput) Tolerations() K8sJobSpecTemplateSpecTolerationArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpec) []K8sJobSpecTemplateSpecToleration { return v.Tolerations }).(K8sJobSpecTemplateSpecTolerationArrayOutput)
+func (o K8sDaemonSetSpecTemplateSpecOutput) Tolerations() K8sDaemonSetSpecTemplateSpecTolerationArrayOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpec) []K8sDaemonSetSpecTemplateSpecToleration { return v.Tolerations }).(K8sDaemonSetSpecTemplateSpecTolerationArrayOutput)
 }
 
 // describes how a group of pods ought to spread across topology domains. Scheduler will schedule pods in a way which abides by the constraints.
-func (o K8sJobSpecTemplateSpecOutput) TopologySpreadConstraints() K8sJobSpecTemplateSpecTopologySpreadConstraintArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpec) []K8sJobSpecTemplateSpecTopologySpreadConstraint {
+func (o K8sDaemonSetSpecTemplateSpecOutput) TopologySpreadConstraints() K8sDaemonSetSpecTemplateSpecTopologySpreadConstraintArrayOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpec) []K8sDaemonSetSpecTemplateSpecTopologySpreadConstraint {
 		return v.TopologySpreadConstraints
-	}).(K8sJobSpecTemplateSpecTopologySpreadConstraintArrayOutput)
+	}).(K8sDaemonSetSpecTemplateSpecTopologySpreadConstraintArrayOutput)
 }
 
 // List of volumes that can be mounted by containers belonging to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes
-func (o K8sJobSpecTemplateSpecOutput) Volumes() K8sJobSpecTemplateSpecVolumeArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpec) []K8sJobSpecTemplateSpecVolume { return v.Volumes }).(K8sJobSpecTemplateSpecVolumeArrayOutput)
+func (o K8sDaemonSetSpecTemplateSpecOutput) Volumes() K8sDaemonSetSpecTemplateSpecVolumeArrayOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpec) []K8sDaemonSetSpecTemplateSpecVolume { return v.Volumes }).(K8sDaemonSetSpecTemplateSpecVolumeArrayOutput)
 }
 
-type K8sJobSpecTemplateSpecPtrOutput struct{ *pulumi.OutputState }
+type K8sDaemonSetSpecTemplateSpecPtrOutput struct{ *pulumi.OutputState }
 
-func (K8sJobSpecTemplateSpecPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpec)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**K8sDaemonSetSpecTemplateSpec)(nil)).Elem()
 }
 
-func (o K8sJobSpecTemplateSpecPtrOutput) ToK8sJobSpecTemplateSpecPtrOutput() K8sJobSpecTemplateSpecPtrOutput {
+func (o K8sDaemonSetSpecTemplateSpecPtrOutput) ToK8sDaemonSetSpecTemplateSpecPtrOutput() K8sDaemonSetSpecTemplateSpecPtrOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecPtrOutput) ToK8sJobSpecTemplateSpecPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecPtrOutput {
+func (o K8sDaemonSetSpecTemplateSpecPtrOutput) ToK8sDaemonSetSpecTemplateSpecPtrOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecPtrOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecPtrOutput) Elem() K8sJobSpecTemplateSpecOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpec) K8sJobSpecTemplateSpec {
+func (o K8sDaemonSetSpecTemplateSpecPtrOutput) Elem() K8sDaemonSetSpecTemplateSpecOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpecTemplateSpec) K8sDaemonSetSpecTemplateSpec {
 		if v != nil {
 			return *v
 		}
-		var ret K8sJobSpecTemplateSpec
+		var ret K8sDaemonSetSpecTemplateSpec
 		return ret
-	}).(K8sJobSpecTemplateSpecOutput)
+	}).(K8sDaemonSetSpecTemplateSpecOutput)
 }
 
 // Optional duration in seconds the pod may be active on the node relative to StartTime before the system will actively try to mark it failed and kill associated containers. Value must be a positive integer.
-func (o K8sJobSpecTemplateSpecPtrOutput) ActiveDeadlineSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpec) *int {
+func (o K8sDaemonSetSpecTemplateSpecPtrOutput) ActiveDeadlineSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpecTemplateSpec) *int {
 		if v == nil {
 			return nil
 		}
@@ -75216,18 +75325,18 @@ func (o K8sJobSpecTemplateSpecPtrOutput) ActiveDeadlineSeconds() pulumi.IntPtrOu
 }
 
 // Optional pod scheduling constraints.
-func (o K8sJobSpecTemplateSpecPtrOutput) Affinity() K8sJobSpecTemplateSpecAffinityPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpec) *K8sJobSpecTemplateSpecAffinity {
+func (o K8sDaemonSetSpecTemplateSpecPtrOutput) Affinity() K8sDaemonSetSpecTemplateSpecAffinityPtrOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpecTemplateSpec) *K8sDaemonSetSpecTemplateSpecAffinity {
 		if v == nil {
 			return nil
 		}
 		return v.Affinity
-	}).(K8sJobSpecTemplateSpecAffinityPtrOutput)
+	}).(K8sDaemonSetSpecTemplateSpecAffinityPtrOutput)
 }
 
 // AutomountServiceAccountToken indicates whether a service account token should be automatically mounted. Defaults to `true`.
-func (o K8sJobSpecTemplateSpecPtrOutput) AutomountServiceAccountToken() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpec) *bool {
+func (o K8sDaemonSetSpecTemplateSpecPtrOutput) AutomountServiceAccountToken() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpecTemplateSpec) *bool {
 		if v == nil {
 			return nil
 		}
@@ -75236,28 +75345,28 @@ func (o K8sJobSpecTemplateSpecPtrOutput) AutomountServiceAccountToken() pulumi.B
 }
 
 // List of containers belonging to the pod. Containers cannot currently be added or removed. There must be at least one container in a Pod. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/
-func (o K8sJobSpecTemplateSpecPtrOutput) Containers() K8sJobSpecTemplateSpecContainerArrayOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpec) []K8sJobSpecTemplateSpecContainer {
+func (o K8sDaemonSetSpecTemplateSpecPtrOutput) Containers() K8sDaemonSetSpecTemplateSpecContainerArrayOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpecTemplateSpec) []K8sDaemonSetSpecTemplateSpecContainer {
 		if v == nil {
 			return nil
 		}
 		return v.Containers
-	}).(K8sJobSpecTemplateSpecContainerArrayOutput)
+	}).(K8sDaemonSetSpecTemplateSpecContainerArrayOutput)
 }
 
 // Specifies the DNS parameters of a pod. Parameters specified here will be merged to the generated DNS configuration based on DNSPolicy. Optional: Defaults to empty
-func (o K8sJobSpecTemplateSpecPtrOutput) DnsConfig() K8sJobSpecTemplateSpecDnsConfigPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpec) *K8sJobSpecTemplateSpecDnsConfig {
+func (o K8sDaemonSetSpecTemplateSpecPtrOutput) DnsConfig() K8sDaemonSetSpecTemplateSpecDnsConfigPtrOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpecTemplateSpec) *K8sDaemonSetSpecTemplateSpecDnsConfig {
 		if v == nil {
 			return nil
 		}
 		return v.DnsConfig
-	}).(K8sJobSpecTemplateSpecDnsConfigPtrOutput)
+	}).(K8sDaemonSetSpecTemplateSpecDnsConfigPtrOutput)
 }
 
-// Set DNS policy for containers within the pod. Valid values are 'ClusterFirstWithHostNet', 'ClusterFirst', 'Default' or 'None'. DNS parameters given in DNSConfig will be merged with the policy selected with DNSPolicy. To have DNS options set along with hostNetwork, you have to specify DNS policy explicitly to 'ClusterFirstWithHostNet'. Defaults to 'ClusterFirst'. More info: https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy
-func (o K8sJobSpecTemplateSpecPtrOutput) DnsPolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpec) *string {
+// Set DNS policy for containers within the pod. Valid values are 'ClusterFirstWithHostNet', 'ClusterFirst', 'Default' or 'None'. DNS parameters given in DNSConfig will be merged with the policy selected with DNSPolicy. To have DNS options set along with hostNetwork, you have to specify DNS policy explicitly to 'ClusterFirstWithHostNet'. Defaults to 'ClusterFirst'. More info: https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy Defaults to `ClusterFirst`.
+func (o K8sDaemonSetSpecTemplateSpecPtrOutput) DnsPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpecTemplateSpec) *string {
 		if v == nil {
 			return nil
 		}
@@ -75266,8 +75375,8 @@ func (o K8sJobSpecTemplateSpecPtrOutput) DnsPolicy() pulumi.StringPtrOutput {
 }
 
 // Enables generating environment variables for service discovery. Defaults to true. Defaults to `true`.
-func (o K8sJobSpecTemplateSpecPtrOutput) EnableServiceLinks() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpec) *bool {
+func (o K8sDaemonSetSpecTemplateSpecPtrOutput) EnableServiceLinks() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpecTemplateSpec) *bool {
 		if v == nil {
 			return nil
 		}
@@ -75276,18 +75385,18 @@ func (o K8sJobSpecTemplateSpecPtrOutput) EnableServiceLinks() pulumi.BoolPtrOutp
 }
 
 // List of hosts and IPs that will be injected into the pod's hosts file if specified. Optional: Defaults to empty.
-func (o K8sJobSpecTemplateSpecPtrOutput) HostAliases() K8sJobSpecTemplateSpecHostAliasArrayOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpec) []K8sJobSpecTemplateSpecHostAlias {
+func (o K8sDaemonSetSpecTemplateSpecPtrOutput) HostAliases() K8sDaemonSetSpecTemplateSpecHostAliasArrayOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpecTemplateSpec) []K8sDaemonSetSpecTemplateSpecHostAlias {
 		if v == nil {
 			return nil
 		}
 		return v.HostAliases
-	}).(K8sJobSpecTemplateSpecHostAliasArrayOutput)
+	}).(K8sDaemonSetSpecTemplateSpecHostAliasArrayOutput)
 }
 
-// Use the host's ipc namespace. Optional: Defaults to false.
-func (o K8sJobSpecTemplateSpecPtrOutput) HostIpc() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpec) *bool {
+// Use the host's ipc namespace. Optional: Defaults to false. Defaults to `false`.
+func (o K8sDaemonSetSpecTemplateSpecPtrOutput) HostIpc() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpecTemplateSpec) *bool {
 		if v == nil {
 			return nil
 		}
@@ -75295,9 +75404,9 @@ func (o K8sJobSpecTemplateSpecPtrOutput) HostIpc() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Host networking requested for this pod. Use the host's network namespace. If this option is set, the ports that will be used must be specified.
-func (o K8sJobSpecTemplateSpecPtrOutput) HostNetwork() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpec) *bool {
+// Host networking requested for this pod. Use the host's network namespace. If this option is set, the ports that will be used must be specified. Defaults to `false`.
+func (o K8sDaemonSetSpecTemplateSpecPtrOutput) HostNetwork() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpecTemplateSpec) *bool {
 		if v == nil {
 			return nil
 		}
@@ -75305,9 +75414,9 @@ func (o K8sJobSpecTemplateSpecPtrOutput) HostNetwork() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Use the host's pid namespace.
-func (o K8sJobSpecTemplateSpecPtrOutput) HostPid() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpec) *bool {
+// Use the host's pid namespace. Defaults to `false`.
+func (o K8sDaemonSetSpecTemplateSpecPtrOutput) HostPid() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpecTemplateSpec) *bool {
 		if v == nil {
 			return nil
 		}
@@ -75316,8 +75425,8 @@ func (o K8sJobSpecTemplateSpecPtrOutput) HostPid() pulumi.BoolPtrOutput {
 }
 
 // Specifies the hostname of the Pod If not specified, the pod's hostname will be set to a system-defined value.
-func (o K8sJobSpecTemplateSpecPtrOutput) Hostname() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpec) *string {
+func (o K8sDaemonSetSpecTemplateSpecPtrOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpecTemplateSpec) *string {
 		if v == nil {
 			return nil
 		}
@@ -75326,28 +75435,28 @@ func (o K8sJobSpecTemplateSpecPtrOutput) Hostname() pulumi.StringPtrOutput {
 }
 
 // ImagePullSecrets is an optional list of references to secrets in the same namespace to use for pulling any of the images used by this PodSpec. If specified, these secrets will be passed to individual puller implementations for them to use. For example, in the case of docker, only DockerConfig type secrets are honored. More info: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
-func (o K8sJobSpecTemplateSpecPtrOutput) ImagePullSecrets() K8sJobSpecTemplateSpecImagePullSecretArrayOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpec) []K8sJobSpecTemplateSpecImagePullSecret {
+func (o K8sDaemonSetSpecTemplateSpecPtrOutput) ImagePullSecrets() K8sDaemonSetSpecTemplateSpecImagePullSecretArrayOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpecTemplateSpec) []K8sDaemonSetSpecTemplateSpecImagePullSecret {
 		if v == nil {
 			return nil
 		}
 		return v.ImagePullSecrets
-	}).(K8sJobSpecTemplateSpecImagePullSecretArrayOutput)
+	}).(K8sDaemonSetSpecTemplateSpecImagePullSecretArrayOutput)
 }
 
 // List of init containers belonging to the pod. Init containers always run to completion and each must complete successfully before the next is started. More info: https://kubernetes.io/docs/concepts/workloads/pods/init-containers/
-func (o K8sJobSpecTemplateSpecPtrOutput) InitContainers() K8sJobSpecTemplateSpecInitContainerArrayOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpec) []K8sJobSpecTemplateSpecInitContainer {
+func (o K8sDaemonSetSpecTemplateSpecPtrOutput) InitContainers() K8sDaemonSetSpecTemplateSpecInitContainerArrayOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpecTemplateSpec) []K8sDaemonSetSpecTemplateSpecInitContainer {
 		if v == nil {
 			return nil
 		}
 		return v.InitContainers
-	}).(K8sJobSpecTemplateSpecInitContainerArrayOutput)
+	}).(K8sDaemonSetSpecTemplateSpecInitContainerArrayOutput)
 }
 
 // NodeName is a request to schedule this pod onto a specific node. If it is non-empty, the scheduler simply schedules this pod onto that node, assuming that it fits resource requirements.
-func (o K8sJobSpecTemplateSpecPtrOutput) NodeName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpec) *string {
+func (o K8sDaemonSetSpecTemplateSpecPtrOutput) NodeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpecTemplateSpec) *string {
 		if v == nil {
 			return nil
 		}
@@ -75356,8 +75465,8 @@ func (o K8sJobSpecTemplateSpecPtrOutput) NodeName() pulumi.StringPtrOutput {
 }
 
 // NodeSelector is a selector which must be true for the pod to fit on a node. Selector which must match a node's labels for the pod to be scheduled on that node. More info: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/.
-func (o K8sJobSpecTemplateSpecPtrOutput) NodeSelector() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpec) map[string]string {
+func (o K8sDaemonSetSpecTemplateSpecPtrOutput) NodeSelector() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpecTemplateSpec) map[string]string {
 		if v == nil {
 			return nil
 		}
@@ -75366,8 +75475,8 @@ func (o K8sJobSpecTemplateSpecPtrOutput) NodeSelector() pulumi.StringMapOutput {
 }
 
 // If specified, indicates the pod's priority. "system-node-critical" and "system-cluster-critical" are two special keywords which indicate the highest priorities with the former being the highest priority. Any other name must be defined by creating a PriorityClass object with that name. If not specified, the pod priority will be default or zero if there is no default.
-func (o K8sJobSpecTemplateSpecPtrOutput) PriorityClassName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpec) *string {
+func (o K8sDaemonSetSpecTemplateSpecPtrOutput) PriorityClassName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpecTemplateSpec) *string {
 		if v == nil {
 			return nil
 		}
@@ -75376,18 +75485,18 @@ func (o K8sJobSpecTemplateSpecPtrOutput) PriorityClassName() pulumi.StringPtrOut
 }
 
 // If specified, all readiness gates will be evaluated for pod readiness. A pod is ready when all its containers are ready AND all conditions specified in the readiness gates have status equal to "True" More info: https://git.k8s.io/enhancements/keps/sig-network/0007-pod-ready%2B%2B.md
-func (o K8sJobSpecTemplateSpecPtrOutput) ReadinessGates() K8sJobSpecTemplateSpecReadinessGateArrayOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpec) []K8sJobSpecTemplateSpecReadinessGate {
+func (o K8sDaemonSetSpecTemplateSpecPtrOutput) ReadinessGates() K8sDaemonSetSpecTemplateSpecReadinessGateArrayOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpecTemplateSpec) []K8sDaemonSetSpecTemplateSpecReadinessGate {
 		if v == nil {
 			return nil
 		}
 		return v.ReadinessGates
-	}).(K8sJobSpecTemplateSpecReadinessGateArrayOutput)
+	}).(K8sDaemonSetSpecTemplateSpecReadinessGateArrayOutput)
 }
 
-// Restart policy for all containers within the pod. One of OnFailure, Never. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#restart-policy. Defaults to `Never`.
-func (o K8sJobSpecTemplateSpecPtrOutput) RestartPolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpec) *string {
+// Restart policy for all containers within the pod. DaemonSets only support `Always`. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#restart-policy. Defaults to `Always`.
+func (o K8sDaemonSetSpecTemplateSpecPtrOutput) RestartPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpecTemplateSpec) *string {
 		if v == nil {
 			return nil
 		}
@@ -75396,8 +75505,8 @@ func (o K8sJobSpecTemplateSpecPtrOutput) RestartPolicy() pulumi.StringPtrOutput 
 }
 
 // RuntimeClassName is a feature for selecting the container runtime configuration. The container runtime configuration is used to run a Pod's containers. More info: https://kubernetes.io/docs/concepts/containers/runtime-class
-func (o K8sJobSpecTemplateSpecPtrOutput) RuntimeClassName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpec) *string {
+func (o K8sDaemonSetSpecTemplateSpecPtrOutput) RuntimeClassName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpecTemplateSpec) *string {
 		if v == nil {
 			return nil
 		}
@@ -75406,8 +75515,8 @@ func (o K8sJobSpecTemplateSpecPtrOutput) RuntimeClassName() pulumi.StringPtrOutp
 }
 
 // If specified, the pod will be dispatched by specified scheduler. If not specified, the pod will be dispatched by default scheduler.
-func (o K8sJobSpecTemplateSpecPtrOutput) SchedulerName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpec) *string {
+func (o K8sDaemonSetSpecTemplateSpecPtrOutput) SchedulerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpecTemplateSpec) *string {
 		if v == nil {
 			return nil
 		}
@@ -75416,18 +75525,18 @@ func (o K8sJobSpecTemplateSpecPtrOutput) SchedulerName() pulumi.StringPtrOutput 
 }
 
 // SecurityContext holds pod-level security attributes and common container settings. Optional: Defaults to empty
-func (o K8sJobSpecTemplateSpecPtrOutput) SecurityContext() K8sJobSpecTemplateSpecSecurityContextPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpec) *K8sJobSpecTemplateSpecSecurityContext {
+func (o K8sDaemonSetSpecTemplateSpecPtrOutput) SecurityContext() K8sDaemonSetSpecTemplateSpecSecurityContextPtrOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpecTemplateSpec) *K8sDaemonSetSpecTemplateSpecSecurityContext {
 		if v == nil {
 			return nil
 		}
 		return v.SecurityContext
-	}).(K8sJobSpecTemplateSpecSecurityContextPtrOutput)
+	}).(K8sDaemonSetSpecTemplateSpecSecurityContextPtrOutput)
 }
 
 // ServiceAccountName is the name of the ServiceAccount to use to run this pod. More info: http://releases.k8s.io/HEAD/docs/design/service_accounts.md.
-func (o K8sJobSpecTemplateSpecPtrOutput) ServiceAccountName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpec) *string {
+func (o K8sDaemonSetSpecTemplateSpecPtrOutput) ServiceAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpecTemplateSpec) *string {
 		if v == nil {
 			return nil
 		}
@@ -75436,8 +75545,8 @@ func (o K8sJobSpecTemplateSpecPtrOutput) ServiceAccountName() pulumi.StringPtrOu
 }
 
 // Share a single process namespace between all of the containers in a pod. When this is set containers will be able to view and signal processes from other containers in the same pod, and the first process in each container will not be assigned PID 1. HostPID and ShareProcessNamespace cannot both be set. Optional: Defaults to false. Defaults to `false`.
-func (o K8sJobSpecTemplateSpecPtrOutput) ShareProcessNamespace() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpec) *bool {
+func (o K8sDaemonSetSpecTemplateSpecPtrOutput) ShareProcessNamespace() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpecTemplateSpec) *bool {
 		if v == nil {
 			return nil
 		}
@@ -75446,8 +75555,8 @@ func (o K8sJobSpecTemplateSpecPtrOutput) ShareProcessNamespace() pulumi.BoolPtrO
 }
 
 // If specified, the fully qualified Pod hostname will be "...svc.". If not specified, the pod will not have a domainname at all..
-func (o K8sJobSpecTemplateSpecPtrOutput) Subdomain() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpec) *string {
+func (o K8sDaemonSetSpecTemplateSpecPtrOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpecTemplateSpec) *string {
 		if v == nil {
 			return nil
 		}
@@ -75455,9 +75564,9 @@ func (o K8sJobSpecTemplateSpecPtrOutput) Subdomain() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional duration in seconds the pod needs to terminate gracefully. May be decreased in delete request. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period will be used instead. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process.
-func (o K8sJobSpecTemplateSpecPtrOutput) TerminationGracePeriodSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpec) *int {
+// Optional duration in seconds the pod needs to terminate gracefully. May be decreased in delete request. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period will be used instead. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. Defaults to `30`.
+func (o K8sDaemonSetSpecTemplateSpecPtrOutput) TerminationGracePeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpecTemplateSpec) *int {
 		if v == nil {
 			return nil
 		}
@@ -75466,541 +75575,541 @@ func (o K8sJobSpecTemplateSpecPtrOutput) TerminationGracePeriodSeconds() pulumi.
 }
 
 // If specified, the pod's toleration. Optional: Defaults to empty
-func (o K8sJobSpecTemplateSpecPtrOutput) Tolerations() K8sJobSpecTemplateSpecTolerationArrayOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpec) []K8sJobSpecTemplateSpecToleration {
+func (o K8sDaemonSetSpecTemplateSpecPtrOutput) Tolerations() K8sDaemonSetSpecTemplateSpecTolerationArrayOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpecTemplateSpec) []K8sDaemonSetSpecTemplateSpecToleration {
 		if v == nil {
 			return nil
 		}
 		return v.Tolerations
-	}).(K8sJobSpecTemplateSpecTolerationArrayOutput)
+	}).(K8sDaemonSetSpecTemplateSpecTolerationArrayOutput)
 }
 
 // describes how a group of pods ought to spread across topology domains. Scheduler will schedule pods in a way which abides by the constraints.
-func (o K8sJobSpecTemplateSpecPtrOutput) TopologySpreadConstraints() K8sJobSpecTemplateSpecTopologySpreadConstraintArrayOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpec) []K8sJobSpecTemplateSpecTopologySpreadConstraint {
+func (o K8sDaemonSetSpecTemplateSpecPtrOutput) TopologySpreadConstraints() K8sDaemonSetSpecTemplateSpecTopologySpreadConstraintArrayOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpecTemplateSpec) []K8sDaemonSetSpecTemplateSpecTopologySpreadConstraint {
 		if v == nil {
 			return nil
 		}
 		return v.TopologySpreadConstraints
-	}).(K8sJobSpecTemplateSpecTopologySpreadConstraintArrayOutput)
+	}).(K8sDaemonSetSpecTemplateSpecTopologySpreadConstraintArrayOutput)
 }
 
 // List of volumes that can be mounted by containers belonging to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes
-func (o K8sJobSpecTemplateSpecPtrOutput) Volumes() K8sJobSpecTemplateSpecVolumeArrayOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpec) []K8sJobSpecTemplateSpecVolume {
+func (o K8sDaemonSetSpecTemplateSpecPtrOutput) Volumes() K8sDaemonSetSpecTemplateSpecVolumeArrayOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpecTemplateSpec) []K8sDaemonSetSpecTemplateSpecVolume {
 		if v == nil {
 			return nil
 		}
 		return v.Volumes
-	}).(K8sJobSpecTemplateSpecVolumeArrayOutput)
+	}).(K8sDaemonSetSpecTemplateSpecVolumeArrayOutput)
 }
 
-type K8sJobSpecTemplateSpecAffinity struct {
+type K8sDaemonSetSpecTemplateSpecAffinity struct {
 	// Node affinity scheduling rules for the pod.
-	NodeAffinity *K8sJobSpecTemplateSpecAffinityNodeAffinity `pulumi:"nodeAffinity"`
+	NodeAffinity *K8sDaemonSetSpecTemplateSpecAffinityNodeAffinity `pulumi:"nodeAffinity"`
 	// Inter-pod topological affinity. rules that specify that certain pods should be placed in the same topological domain (e.g. same node, same rack, same zone, same power domain, etc.)
-	PodAffinity *K8sJobSpecTemplateSpecAffinityPodAffinity `pulumi:"podAffinity"`
+	PodAffinity *K8sDaemonSetSpecTemplateSpecAffinityPodAffinity `pulumi:"podAffinity"`
 	// Inter-pod topological affinity. rules that specify that certain pods should be placed in the same topological domain (e.g. same node, same rack, same zone, same power domain, etc.)
-	PodAntiAffinity *K8sJobSpecTemplateSpecAffinityPodAntiAffinity `pulumi:"podAntiAffinity"`
+	PodAntiAffinity *K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinity `pulumi:"podAntiAffinity"`
 }
 
-// K8sJobSpecTemplateSpecAffinityInput is an input type that accepts K8sJobSpecTemplateSpecAffinityArgs and K8sJobSpecTemplateSpecAffinityOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecAffinityInput` via:
+// K8sDaemonSetSpecTemplateSpecAffinityInput is an input type that accepts K8sDaemonSetSpecTemplateSpecAffinityArgs and K8sDaemonSetSpecTemplateSpecAffinityOutput values.
+// You can construct a concrete instance of `K8sDaemonSetSpecTemplateSpecAffinityInput` via:
 //
-//	K8sJobSpecTemplateSpecAffinityArgs{...}
-type K8sJobSpecTemplateSpecAffinityInput interface {
+//	K8sDaemonSetSpecTemplateSpecAffinityArgs{...}
+type K8sDaemonSetSpecTemplateSpecAffinityInput interface {
 	pulumi.Input
 
-	ToK8sJobSpecTemplateSpecAffinityOutput() K8sJobSpecTemplateSpecAffinityOutput
-	ToK8sJobSpecTemplateSpecAffinityOutputWithContext(context.Context) K8sJobSpecTemplateSpecAffinityOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityOutput() K8sDaemonSetSpecTemplateSpecAffinityOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityOutputWithContext(context.Context) K8sDaemonSetSpecTemplateSpecAffinityOutput
 }
 
-type K8sJobSpecTemplateSpecAffinityArgs struct {
+type K8sDaemonSetSpecTemplateSpecAffinityArgs struct {
 	// Node affinity scheduling rules for the pod.
-	NodeAffinity K8sJobSpecTemplateSpecAffinityNodeAffinityPtrInput `pulumi:"nodeAffinity"`
+	NodeAffinity K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPtrInput `pulumi:"nodeAffinity"`
 	// Inter-pod topological affinity. rules that specify that certain pods should be placed in the same topological domain (e.g. same node, same rack, same zone, same power domain, etc.)
-	PodAffinity K8sJobSpecTemplateSpecAffinityPodAffinityPtrInput `pulumi:"podAffinity"`
+	PodAffinity K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPtrInput `pulumi:"podAffinity"`
 	// Inter-pod topological affinity. rules that specify that certain pods should be placed in the same topological domain (e.g. same node, same rack, same zone, same power domain, etc.)
-	PodAntiAffinity K8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrInput `pulumi:"podAntiAffinity"`
+	PodAntiAffinity K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPtrInput `pulumi:"podAntiAffinity"`
 }
 
-func (K8sJobSpecTemplateSpecAffinityArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecAffinity)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinity)(nil)).Elem()
 }
 
-func (i K8sJobSpecTemplateSpecAffinityArgs) ToK8sJobSpecTemplateSpecAffinityOutput() K8sJobSpecTemplateSpecAffinityOutput {
-	return i.ToK8sJobSpecTemplateSpecAffinityOutputWithContext(context.Background())
+func (i K8sDaemonSetSpecTemplateSpecAffinityArgs) ToK8sDaemonSetSpecTemplateSpecAffinityOutput() K8sDaemonSetSpecTemplateSpecAffinityOutput {
+	return i.ToK8sDaemonSetSpecTemplateSpecAffinityOutputWithContext(context.Background())
 }
 
-func (i K8sJobSpecTemplateSpecAffinityArgs) ToK8sJobSpecTemplateSpecAffinityOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecAffinityOutput)
+func (i K8sDaemonSetSpecTemplateSpecAffinityArgs) ToK8sDaemonSetSpecTemplateSpecAffinityOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetSpecTemplateSpecAffinityOutput)
 }
 
-func (i K8sJobSpecTemplateSpecAffinityArgs) ToK8sJobSpecTemplateSpecAffinityPtrOutput() K8sJobSpecTemplateSpecAffinityPtrOutput {
-	return i.ToK8sJobSpecTemplateSpecAffinityPtrOutputWithContext(context.Background())
+func (i K8sDaemonSetSpecTemplateSpecAffinityArgs) ToK8sDaemonSetSpecTemplateSpecAffinityPtrOutput() K8sDaemonSetSpecTemplateSpecAffinityPtrOutput {
+	return i.ToK8sDaemonSetSpecTemplateSpecAffinityPtrOutputWithContext(context.Background())
 }
 
-func (i K8sJobSpecTemplateSpecAffinityArgs) ToK8sJobSpecTemplateSpecAffinityPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecAffinityOutput).ToK8sJobSpecTemplateSpecAffinityPtrOutputWithContext(ctx)
+func (i K8sDaemonSetSpecTemplateSpecAffinityArgs) ToK8sDaemonSetSpecTemplateSpecAffinityPtrOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetSpecTemplateSpecAffinityOutput).ToK8sDaemonSetSpecTemplateSpecAffinityPtrOutputWithContext(ctx)
 }
 
-// K8sJobSpecTemplateSpecAffinityPtrInput is an input type that accepts K8sJobSpecTemplateSpecAffinityArgs, K8sJobSpecTemplateSpecAffinityPtr and K8sJobSpecTemplateSpecAffinityPtrOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecAffinityPtrInput` via:
+// K8sDaemonSetSpecTemplateSpecAffinityPtrInput is an input type that accepts K8sDaemonSetSpecTemplateSpecAffinityArgs, K8sDaemonSetSpecTemplateSpecAffinityPtr and K8sDaemonSetSpecTemplateSpecAffinityPtrOutput values.
+// You can construct a concrete instance of `K8sDaemonSetSpecTemplateSpecAffinityPtrInput` via:
 //
-//	        K8sJobSpecTemplateSpecAffinityArgs{...}
+//	        K8sDaemonSetSpecTemplateSpecAffinityArgs{...}
 //
 //	or:
 //
 //	        nil
-type K8sJobSpecTemplateSpecAffinityPtrInput interface {
+type K8sDaemonSetSpecTemplateSpecAffinityPtrInput interface {
 	pulumi.Input
 
-	ToK8sJobSpecTemplateSpecAffinityPtrOutput() K8sJobSpecTemplateSpecAffinityPtrOutput
-	ToK8sJobSpecTemplateSpecAffinityPtrOutputWithContext(context.Context) K8sJobSpecTemplateSpecAffinityPtrOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityPtrOutput() K8sDaemonSetSpecTemplateSpecAffinityPtrOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityPtrOutputWithContext(context.Context) K8sDaemonSetSpecTemplateSpecAffinityPtrOutput
 }
 
-type k8sJobSpecTemplateSpecAffinityPtrType K8sJobSpecTemplateSpecAffinityArgs
+type k8sDaemonSetSpecTemplateSpecAffinityPtrType K8sDaemonSetSpecTemplateSpecAffinityArgs
 
-func K8sJobSpecTemplateSpecAffinityPtr(v *K8sJobSpecTemplateSpecAffinityArgs) K8sJobSpecTemplateSpecAffinityPtrInput {
-	return (*k8sJobSpecTemplateSpecAffinityPtrType)(v)
+func K8sDaemonSetSpecTemplateSpecAffinityPtr(v *K8sDaemonSetSpecTemplateSpecAffinityArgs) K8sDaemonSetSpecTemplateSpecAffinityPtrInput {
+	return (*k8sDaemonSetSpecTemplateSpecAffinityPtrType)(v)
 }
 
-func (*k8sJobSpecTemplateSpecAffinityPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecAffinity)(nil)).Elem()
+func (*k8sDaemonSetSpecTemplateSpecAffinityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**K8sDaemonSetSpecTemplateSpecAffinity)(nil)).Elem()
 }
 
-func (i *k8sJobSpecTemplateSpecAffinityPtrType) ToK8sJobSpecTemplateSpecAffinityPtrOutput() K8sJobSpecTemplateSpecAffinityPtrOutput {
-	return i.ToK8sJobSpecTemplateSpecAffinityPtrOutputWithContext(context.Background())
+func (i *k8sDaemonSetSpecTemplateSpecAffinityPtrType) ToK8sDaemonSetSpecTemplateSpecAffinityPtrOutput() K8sDaemonSetSpecTemplateSpecAffinityPtrOutput {
+	return i.ToK8sDaemonSetSpecTemplateSpecAffinityPtrOutputWithContext(context.Background())
 }
 
-func (i *k8sJobSpecTemplateSpecAffinityPtrType) ToK8sJobSpecTemplateSpecAffinityPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecAffinityPtrOutput)
+func (i *k8sDaemonSetSpecTemplateSpecAffinityPtrType) ToK8sDaemonSetSpecTemplateSpecAffinityPtrOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetSpecTemplateSpecAffinityPtrOutput)
 }
 
-type K8sJobSpecTemplateSpecAffinityOutput struct{ *pulumi.OutputState }
+type K8sDaemonSetSpecTemplateSpecAffinityOutput struct{ *pulumi.OutputState }
 
-func (K8sJobSpecTemplateSpecAffinityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecAffinity)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinity)(nil)).Elem()
 }
 
-func (o K8sJobSpecTemplateSpecAffinityOutput) ToK8sJobSpecTemplateSpecAffinityOutput() K8sJobSpecTemplateSpecAffinityOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityOutput) ToK8sDaemonSetSpecTemplateSpecAffinityOutput() K8sDaemonSetSpecTemplateSpecAffinityOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecAffinityOutput) ToK8sJobSpecTemplateSpecAffinityOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityOutput) ToK8sDaemonSetSpecTemplateSpecAffinityOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecAffinityOutput) ToK8sJobSpecTemplateSpecAffinityPtrOutput() K8sJobSpecTemplateSpecAffinityPtrOutput {
-	return o.ToK8sJobSpecTemplateSpecAffinityPtrOutputWithContext(context.Background())
+func (o K8sDaemonSetSpecTemplateSpecAffinityOutput) ToK8sDaemonSetSpecTemplateSpecAffinityPtrOutput() K8sDaemonSetSpecTemplateSpecAffinityPtrOutput {
+	return o.ToK8sDaemonSetSpecTemplateSpecAffinityPtrOutputWithContext(context.Background())
 }
 
-func (o K8sJobSpecTemplateSpecAffinityOutput) ToK8sJobSpecTemplateSpecAffinityPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v K8sJobSpecTemplateSpecAffinity) *K8sJobSpecTemplateSpecAffinity {
+func (o K8sDaemonSetSpecTemplateSpecAffinityOutput) ToK8sDaemonSetSpecTemplateSpecAffinityPtrOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v K8sDaemonSetSpecTemplateSpecAffinity) *K8sDaemonSetSpecTemplateSpecAffinity {
 		return &v
-	}).(K8sJobSpecTemplateSpecAffinityPtrOutput)
+	}).(K8sDaemonSetSpecTemplateSpecAffinityPtrOutput)
 }
 
 // Node affinity scheduling rules for the pod.
-func (o K8sJobSpecTemplateSpecAffinityOutput) NodeAffinity() K8sJobSpecTemplateSpecAffinityNodeAffinityPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecAffinity) *K8sJobSpecTemplateSpecAffinityNodeAffinity {
+func (o K8sDaemonSetSpecTemplateSpecAffinityOutput) NodeAffinity() K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPtrOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpecAffinity) *K8sDaemonSetSpecTemplateSpecAffinityNodeAffinity {
 		return v.NodeAffinity
-	}).(K8sJobSpecTemplateSpecAffinityNodeAffinityPtrOutput)
+	}).(K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPtrOutput)
 }
 
 // Inter-pod topological affinity. rules that specify that certain pods should be placed in the same topological domain (e.g. same node, same rack, same zone, same power domain, etc.)
-func (o K8sJobSpecTemplateSpecAffinityOutput) PodAffinity() K8sJobSpecTemplateSpecAffinityPodAffinityPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecAffinity) *K8sJobSpecTemplateSpecAffinityPodAffinity {
+func (o K8sDaemonSetSpecTemplateSpecAffinityOutput) PodAffinity() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPtrOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpecAffinity) *K8sDaemonSetSpecTemplateSpecAffinityPodAffinity {
 		return v.PodAffinity
-	}).(K8sJobSpecTemplateSpecAffinityPodAffinityPtrOutput)
+	}).(K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPtrOutput)
 }
 
 // Inter-pod topological affinity. rules that specify that certain pods should be placed in the same topological domain (e.g. same node, same rack, same zone, same power domain, etc.)
-func (o K8sJobSpecTemplateSpecAffinityOutput) PodAntiAffinity() K8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecAffinity) *K8sJobSpecTemplateSpecAffinityPodAntiAffinity {
+func (o K8sDaemonSetSpecTemplateSpecAffinityOutput) PodAntiAffinity() K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPtrOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpecAffinity) *K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinity {
 		return v.PodAntiAffinity
-	}).(K8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutput)
+	}).(K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPtrOutput)
 }
 
-type K8sJobSpecTemplateSpecAffinityPtrOutput struct{ *pulumi.OutputState }
+type K8sDaemonSetSpecTemplateSpecAffinityPtrOutput struct{ *pulumi.OutputState }
 
-func (K8sJobSpecTemplateSpecAffinityPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecAffinity)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**K8sDaemonSetSpecTemplateSpecAffinity)(nil)).Elem()
 }
 
-func (o K8sJobSpecTemplateSpecAffinityPtrOutput) ToK8sJobSpecTemplateSpecAffinityPtrOutput() K8sJobSpecTemplateSpecAffinityPtrOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPtrOutput) ToK8sDaemonSetSpecTemplateSpecAffinityPtrOutput() K8sDaemonSetSpecTemplateSpecAffinityPtrOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecAffinityPtrOutput) ToK8sJobSpecTemplateSpecAffinityPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPtrOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPtrOutput) ToK8sDaemonSetSpecTemplateSpecAffinityPtrOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityPtrOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecAffinityPtrOutput) Elem() K8sJobSpecTemplateSpecAffinityOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecAffinity) K8sJobSpecTemplateSpecAffinity {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPtrOutput) Elem() K8sDaemonSetSpecTemplateSpecAffinityOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpecTemplateSpecAffinity) K8sDaemonSetSpecTemplateSpecAffinity {
 		if v != nil {
 			return *v
 		}
-		var ret K8sJobSpecTemplateSpecAffinity
+		var ret K8sDaemonSetSpecTemplateSpecAffinity
 		return ret
-	}).(K8sJobSpecTemplateSpecAffinityOutput)
+	}).(K8sDaemonSetSpecTemplateSpecAffinityOutput)
 }
 
 // Node affinity scheduling rules for the pod.
-func (o K8sJobSpecTemplateSpecAffinityPtrOutput) NodeAffinity() K8sJobSpecTemplateSpecAffinityNodeAffinityPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecAffinity) *K8sJobSpecTemplateSpecAffinityNodeAffinity {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPtrOutput) NodeAffinity() K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPtrOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpecTemplateSpecAffinity) *K8sDaemonSetSpecTemplateSpecAffinityNodeAffinity {
 		if v == nil {
 			return nil
 		}
 		return v.NodeAffinity
-	}).(K8sJobSpecTemplateSpecAffinityNodeAffinityPtrOutput)
+	}).(K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPtrOutput)
 }
 
 // Inter-pod topological affinity. rules that specify that certain pods should be placed in the same topological domain (e.g. same node, same rack, same zone, same power domain, etc.)
-func (o K8sJobSpecTemplateSpecAffinityPtrOutput) PodAffinity() K8sJobSpecTemplateSpecAffinityPodAffinityPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecAffinity) *K8sJobSpecTemplateSpecAffinityPodAffinity {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPtrOutput) PodAffinity() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPtrOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpecTemplateSpecAffinity) *K8sDaemonSetSpecTemplateSpecAffinityPodAffinity {
 		if v == nil {
 			return nil
 		}
 		return v.PodAffinity
-	}).(K8sJobSpecTemplateSpecAffinityPodAffinityPtrOutput)
+	}).(K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPtrOutput)
 }
 
 // Inter-pod topological affinity. rules that specify that certain pods should be placed in the same topological domain (e.g. same node, same rack, same zone, same power domain, etc.)
-func (o K8sJobSpecTemplateSpecAffinityPtrOutput) PodAntiAffinity() K8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecAffinity) *K8sJobSpecTemplateSpecAffinityPodAntiAffinity {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPtrOutput) PodAntiAffinity() K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPtrOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpecTemplateSpecAffinity) *K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinity {
 		if v == nil {
 			return nil
 		}
 		return v.PodAntiAffinity
-	}).(K8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutput)
+	}).(K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPtrOutput)
 }
 
-type K8sJobSpecTemplateSpecAffinityNodeAffinity struct {
+type K8sDaemonSetSpecTemplateSpecAffinityNodeAffinity struct {
 	// The scheduler will prefer to schedule pods to nodes that satisfy the affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions. The node that is most preferred is the one with the greatest sum of weights, i.e. for each node that meets all of the scheduling requirements (resource request, RequiredDuringScheduling affinity expressions, etc.), compute a sum by iterating through the elements of this field and adding 'weight' to the sum if the node matches the corresponding MatchExpressions; the node(s) with the highest sum are the most preferred.
-	PreferredDuringSchedulingIgnoredDuringExecutions []K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecution `pulumi:"preferredDuringSchedulingIgnoredDuringExecutions"`
+	PreferredDuringSchedulingIgnoredDuringExecutions []K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecution `pulumi:"preferredDuringSchedulingIgnoredDuringExecutions"`
 	// If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a node label update), the system may or may not try to eventually evict the pod from its node.
-	RequiredDuringSchedulingIgnoredDuringExecution *K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution `pulumi:"requiredDuringSchedulingIgnoredDuringExecution"`
+	RequiredDuringSchedulingIgnoredDuringExecution *K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution `pulumi:"requiredDuringSchedulingIgnoredDuringExecution"`
 }
 
-// K8sJobSpecTemplateSpecAffinityNodeAffinityInput is an input type that accepts K8sJobSpecTemplateSpecAffinityNodeAffinityArgs and K8sJobSpecTemplateSpecAffinityNodeAffinityOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecAffinityNodeAffinityInput` via:
+// K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityInput is an input type that accepts K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityArgs and K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityOutput values.
+// You can construct a concrete instance of `K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityInput` via:
 //
-//	K8sJobSpecTemplateSpecAffinityNodeAffinityArgs{...}
-type K8sJobSpecTemplateSpecAffinityNodeAffinityInput interface {
+//	K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityArgs{...}
+type K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityInput interface {
 	pulumi.Input
 
-	ToK8sJobSpecTemplateSpecAffinityNodeAffinityOutput() K8sJobSpecTemplateSpecAffinityNodeAffinityOutput
-	ToK8sJobSpecTemplateSpecAffinityNodeAffinityOutputWithContext(context.Context) K8sJobSpecTemplateSpecAffinityNodeAffinityOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityOutput() K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityOutputWithContext(context.Context) K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityOutput
 }
 
-type K8sJobSpecTemplateSpecAffinityNodeAffinityArgs struct {
+type K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityArgs struct {
 	// The scheduler will prefer to schedule pods to nodes that satisfy the affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions. The node that is most preferred is the one with the greatest sum of weights, i.e. for each node that meets all of the scheduling requirements (resource request, RequiredDuringScheduling affinity expressions, etc.), compute a sum by iterating through the elements of this field and adding 'weight' to the sum if the node matches the corresponding MatchExpressions; the node(s) with the highest sum are the most preferred.
-	PreferredDuringSchedulingIgnoredDuringExecutions K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayInput `pulumi:"preferredDuringSchedulingIgnoredDuringExecutions"`
+	PreferredDuringSchedulingIgnoredDuringExecutions K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayInput `pulumi:"preferredDuringSchedulingIgnoredDuringExecutions"`
 	// If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a node label update), the system may or may not try to eventually evict the pod from its node.
-	RequiredDuringSchedulingIgnoredDuringExecution K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrInput `pulumi:"requiredDuringSchedulingIgnoredDuringExecution"`
+	RequiredDuringSchedulingIgnoredDuringExecution K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrInput `pulumi:"requiredDuringSchedulingIgnoredDuringExecution"`
 }
 
-func (K8sJobSpecTemplateSpecAffinityNodeAffinityArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityNodeAffinity)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityNodeAffinity)(nil)).Elem()
 }
 
-func (i K8sJobSpecTemplateSpecAffinityNodeAffinityArgs) ToK8sJobSpecTemplateSpecAffinityNodeAffinityOutput() K8sJobSpecTemplateSpecAffinityNodeAffinityOutput {
-	return i.ToK8sJobSpecTemplateSpecAffinityNodeAffinityOutputWithContext(context.Background())
+func (i K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityArgs) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityOutput() K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityOutput {
+	return i.ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityOutputWithContext(context.Background())
 }
 
-func (i K8sJobSpecTemplateSpecAffinityNodeAffinityArgs) ToK8sJobSpecTemplateSpecAffinityNodeAffinityOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityNodeAffinityOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecAffinityNodeAffinityOutput)
+func (i K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityArgs) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityOutput)
 }
 
-func (i K8sJobSpecTemplateSpecAffinityNodeAffinityArgs) ToK8sJobSpecTemplateSpecAffinityNodeAffinityPtrOutput() K8sJobSpecTemplateSpecAffinityNodeAffinityPtrOutput {
-	return i.ToK8sJobSpecTemplateSpecAffinityNodeAffinityPtrOutputWithContext(context.Background())
+func (i K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityArgs) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPtrOutput() K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPtrOutput {
+	return i.ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPtrOutputWithContext(context.Background())
 }
 
-func (i K8sJobSpecTemplateSpecAffinityNodeAffinityArgs) ToK8sJobSpecTemplateSpecAffinityNodeAffinityPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityNodeAffinityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecAffinityNodeAffinityOutput).ToK8sJobSpecTemplateSpecAffinityNodeAffinityPtrOutputWithContext(ctx)
+func (i K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityArgs) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPtrOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityOutput).ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPtrOutputWithContext(ctx)
 }
 
-// K8sJobSpecTemplateSpecAffinityNodeAffinityPtrInput is an input type that accepts K8sJobSpecTemplateSpecAffinityNodeAffinityArgs, K8sJobSpecTemplateSpecAffinityNodeAffinityPtr and K8sJobSpecTemplateSpecAffinityNodeAffinityPtrOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecAffinityNodeAffinityPtrInput` via:
+// K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPtrInput is an input type that accepts K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityArgs, K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPtr and K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPtrOutput values.
+// You can construct a concrete instance of `K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPtrInput` via:
 //
-//	        K8sJobSpecTemplateSpecAffinityNodeAffinityArgs{...}
+//	        K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityArgs{...}
 //
 //	or:
 //
 //	        nil
-type K8sJobSpecTemplateSpecAffinityNodeAffinityPtrInput interface {
+type K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPtrInput interface {
 	pulumi.Input
 
-	ToK8sJobSpecTemplateSpecAffinityNodeAffinityPtrOutput() K8sJobSpecTemplateSpecAffinityNodeAffinityPtrOutput
-	ToK8sJobSpecTemplateSpecAffinityNodeAffinityPtrOutputWithContext(context.Context) K8sJobSpecTemplateSpecAffinityNodeAffinityPtrOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPtrOutput() K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPtrOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPtrOutputWithContext(context.Context) K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPtrOutput
 }
 
-type k8sJobSpecTemplateSpecAffinityNodeAffinityPtrType K8sJobSpecTemplateSpecAffinityNodeAffinityArgs
+type k8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPtrType K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityArgs
 
-func K8sJobSpecTemplateSpecAffinityNodeAffinityPtr(v *K8sJobSpecTemplateSpecAffinityNodeAffinityArgs) K8sJobSpecTemplateSpecAffinityNodeAffinityPtrInput {
-	return (*k8sJobSpecTemplateSpecAffinityNodeAffinityPtrType)(v)
+func K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPtr(v *K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityArgs) K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPtrInput {
+	return (*k8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPtrType)(v)
 }
 
-func (*k8sJobSpecTemplateSpecAffinityNodeAffinityPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecAffinityNodeAffinity)(nil)).Elem()
+func (*k8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**K8sDaemonSetSpecTemplateSpecAffinityNodeAffinity)(nil)).Elem()
 }
 
-func (i *k8sJobSpecTemplateSpecAffinityNodeAffinityPtrType) ToK8sJobSpecTemplateSpecAffinityNodeAffinityPtrOutput() K8sJobSpecTemplateSpecAffinityNodeAffinityPtrOutput {
-	return i.ToK8sJobSpecTemplateSpecAffinityNodeAffinityPtrOutputWithContext(context.Background())
+func (i *k8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPtrType) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPtrOutput() K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPtrOutput {
+	return i.ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPtrOutputWithContext(context.Background())
 }
 
-func (i *k8sJobSpecTemplateSpecAffinityNodeAffinityPtrType) ToK8sJobSpecTemplateSpecAffinityNodeAffinityPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityNodeAffinityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecAffinityNodeAffinityPtrOutput)
+func (i *k8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPtrType) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPtrOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPtrOutput)
 }
 
-type K8sJobSpecTemplateSpecAffinityNodeAffinityOutput struct{ *pulumi.OutputState }
+type K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityOutput struct{ *pulumi.OutputState }
 
-func (K8sJobSpecTemplateSpecAffinityNodeAffinityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityNodeAffinity)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityNodeAffinity)(nil)).Elem()
 }
 
-func (o K8sJobSpecTemplateSpecAffinityNodeAffinityOutput) ToK8sJobSpecTemplateSpecAffinityNodeAffinityOutput() K8sJobSpecTemplateSpecAffinityNodeAffinityOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityOutput) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityOutput() K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecAffinityNodeAffinityOutput) ToK8sJobSpecTemplateSpecAffinityNodeAffinityOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityNodeAffinityOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityOutput) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecAffinityNodeAffinityOutput) ToK8sJobSpecTemplateSpecAffinityNodeAffinityPtrOutput() K8sJobSpecTemplateSpecAffinityNodeAffinityPtrOutput {
-	return o.ToK8sJobSpecTemplateSpecAffinityNodeAffinityPtrOutputWithContext(context.Background())
+func (o K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityOutput) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPtrOutput() K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPtrOutput {
+	return o.ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPtrOutputWithContext(context.Background())
 }
 
-func (o K8sJobSpecTemplateSpecAffinityNodeAffinityOutput) ToK8sJobSpecTemplateSpecAffinityNodeAffinityPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityNodeAffinityPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v K8sJobSpecTemplateSpecAffinityNodeAffinity) *K8sJobSpecTemplateSpecAffinityNodeAffinity {
+func (o K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityOutput) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPtrOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v K8sDaemonSetSpecTemplateSpecAffinityNodeAffinity) *K8sDaemonSetSpecTemplateSpecAffinityNodeAffinity {
 		return &v
-	}).(K8sJobSpecTemplateSpecAffinityNodeAffinityPtrOutput)
+	}).(K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPtrOutput)
 }
 
 // The scheduler will prefer to schedule pods to nodes that satisfy the affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions. The node that is most preferred is the one with the greatest sum of weights, i.e. for each node that meets all of the scheduling requirements (resource request, RequiredDuringScheduling affinity expressions, etc.), compute a sum by iterating through the elements of this field and adding 'weight' to the sum if the node matches the corresponding MatchExpressions; the node(s) with the highest sum are the most preferred.
-func (o K8sJobSpecTemplateSpecAffinityNodeAffinityOutput) PreferredDuringSchedulingIgnoredDuringExecutions() K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecAffinityNodeAffinity) []K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecution {
+func (o K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityOutput) PreferredDuringSchedulingIgnoredDuringExecutions() K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpecAffinityNodeAffinity) []K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecution {
 		return v.PreferredDuringSchedulingIgnoredDuringExecutions
-	}).(K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput)
+	}).(K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput)
 }
 
 // If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a node label update), the system may or may not try to eventually evict the pod from its node.
-func (o K8sJobSpecTemplateSpecAffinityNodeAffinityOutput) RequiredDuringSchedulingIgnoredDuringExecution() K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecAffinityNodeAffinity) *K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution {
+func (o K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityOutput) RequiredDuringSchedulingIgnoredDuringExecution() K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpecAffinityNodeAffinity) *K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution {
 		return v.RequiredDuringSchedulingIgnoredDuringExecution
-	}).(K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutput)
+	}).(K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutput)
 }
 
-type K8sJobSpecTemplateSpecAffinityNodeAffinityPtrOutput struct{ *pulumi.OutputState }
+type K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPtrOutput struct{ *pulumi.OutputState }
 
-func (K8sJobSpecTemplateSpecAffinityNodeAffinityPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecAffinityNodeAffinity)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**K8sDaemonSetSpecTemplateSpecAffinityNodeAffinity)(nil)).Elem()
 }
 
-func (o K8sJobSpecTemplateSpecAffinityNodeAffinityPtrOutput) ToK8sJobSpecTemplateSpecAffinityNodeAffinityPtrOutput() K8sJobSpecTemplateSpecAffinityNodeAffinityPtrOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPtrOutput) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPtrOutput() K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPtrOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecAffinityNodeAffinityPtrOutput) ToK8sJobSpecTemplateSpecAffinityNodeAffinityPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityNodeAffinityPtrOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPtrOutput) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPtrOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPtrOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecAffinityNodeAffinityPtrOutput) Elem() K8sJobSpecTemplateSpecAffinityNodeAffinityOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecAffinityNodeAffinity) K8sJobSpecTemplateSpecAffinityNodeAffinity {
+func (o K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPtrOutput) Elem() K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpecTemplateSpecAffinityNodeAffinity) K8sDaemonSetSpecTemplateSpecAffinityNodeAffinity {
 		if v != nil {
 			return *v
 		}
-		var ret K8sJobSpecTemplateSpecAffinityNodeAffinity
+		var ret K8sDaemonSetSpecTemplateSpecAffinityNodeAffinity
 		return ret
-	}).(K8sJobSpecTemplateSpecAffinityNodeAffinityOutput)
+	}).(K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityOutput)
 }
 
 // The scheduler will prefer to schedule pods to nodes that satisfy the affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions. The node that is most preferred is the one with the greatest sum of weights, i.e. for each node that meets all of the scheduling requirements (resource request, RequiredDuringScheduling affinity expressions, etc.), compute a sum by iterating through the elements of this field and adding 'weight' to the sum if the node matches the corresponding MatchExpressions; the node(s) with the highest sum are the most preferred.
-func (o K8sJobSpecTemplateSpecAffinityNodeAffinityPtrOutput) PreferredDuringSchedulingIgnoredDuringExecutions() K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecAffinityNodeAffinity) []K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecution {
+func (o K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPtrOutput) PreferredDuringSchedulingIgnoredDuringExecutions() K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpecTemplateSpecAffinityNodeAffinity) []K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecution {
 		if v == nil {
 			return nil
 		}
 		return v.PreferredDuringSchedulingIgnoredDuringExecutions
-	}).(K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput)
+	}).(K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput)
 }
 
 // If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a node label update), the system may or may not try to eventually evict the pod from its node.
-func (o K8sJobSpecTemplateSpecAffinityNodeAffinityPtrOutput) RequiredDuringSchedulingIgnoredDuringExecution() K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecAffinityNodeAffinity) *K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution {
+func (o K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPtrOutput) RequiredDuringSchedulingIgnoredDuringExecution() K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpecTemplateSpecAffinityNodeAffinity) *K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution {
 		if v == nil {
 			return nil
 		}
 		return v.RequiredDuringSchedulingIgnoredDuringExecution
-	}).(K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutput)
+	}).(K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutput)
 }
 
-type K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecution struct {
+type K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecution struct {
 	// A node selector term, associated with the corresponding weight.
-	Preference K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreference `pulumi:"preference"`
+	Preference K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreference `pulumi:"preference"`
 	// weight is in the range 1-100
 	Weight *int `pulumi:"weight"`
 }
 
-// K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionInput is an input type that accepts K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs and K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionInput` via:
+// K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionInput is an input type that accepts K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs and K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput values.
+// You can construct a concrete instance of `K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionInput` via:
 //
-//	K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs{...}
-type K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionInput interface {
+//	K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs{...}
+type K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionInput interface {
 	pulumi.Input
 
-	ToK8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput() K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput
-	ToK8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutputWithContext(context.Context) K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput() K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutputWithContext(context.Context) K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput
 }
 
-type K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs struct {
+type K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs struct {
 	// A node selector term, associated with the corresponding weight.
-	Preference K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceInput `pulumi:"preference"`
+	Preference K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceInput `pulumi:"preference"`
 	// weight is in the range 1-100
 	Weight pulumi.IntPtrInput `pulumi:"weight"`
 }
 
-func (K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecution)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecution)(nil)).Elem()
 }
 
-func (i K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs) ToK8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput() K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput {
-	return i.ToK8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutputWithContext(context.Background())
+func (i K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput() K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput {
+	return i.ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutputWithContext(context.Background())
 }
 
-func (i K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs) ToK8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput)
+func (i K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput)
 }
 
-// K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayInput is an input type that accepts K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArray and K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayInput` via:
+// K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayInput is an input type that accepts K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArray and K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput values.
+// You can construct a concrete instance of `K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayInput` via:
 //
-//	K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArray{ K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs{...} }
-type K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayInput interface {
+//	K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArray{ K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs{...} }
+type K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayInput interface {
 	pulumi.Input
 
-	ToK8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput() K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput
-	ToK8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutputWithContext(context.Context) K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput() K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutputWithContext(context.Context) K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput
 }
 
-type K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArray []K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionInput
+type K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArray []K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionInput
 
-func (K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecution)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecution)(nil)).Elem()
 }
 
-func (i K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArray) ToK8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput() K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput {
-	return i.ToK8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutputWithContext(context.Background())
+func (i K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArray) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput() K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput {
+	return i.ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutputWithContext(context.Background())
 }
 
-func (i K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArray) ToK8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput)
+func (i K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArray) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput)
 }
 
-type K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput struct{ *pulumi.OutputState }
+type K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput struct{ *pulumi.OutputState }
 
-func (K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecution)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecution)(nil)).Elem()
 }
 
-func (o K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput) ToK8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput() K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput() K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput) ToK8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput {
 	return o
 }
 
 // A node selector term, associated with the corresponding weight.
-func (o K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput) Preference() K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecution) K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreference {
+func (o K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput) Preference() K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecution) K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreference {
 		return v.Preference
-	}).(K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceOutput)
+	}).(K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceOutput)
 }
 
 // weight is in the range 1-100
-func (o K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput) Weight() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecution) *int {
+func (o K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput) Weight() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecution) *int {
 		return v.Weight
 	}).(pulumi.IntPtrOutput)
 }
 
-type K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput struct{ *pulumi.OutputState }
+type K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput struct{ *pulumi.OutputState }
 
-func (K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecution)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecution)(nil)).Elem()
 }
 
-func (o K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput) ToK8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput() K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput() K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput) ToK8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput) Index(i pulumi.IntInput) K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecution {
-		return vs[0].([]K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecution)[vs[1].(int)]
-	}).(K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput)
+func (o K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput) Index(i pulumi.IntInput) K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecution {
+		return vs[0].([]K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecution)[vs[1].(int)]
+	}).(K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput)
 }
 
-type K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreference struct {
+type K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreference struct {
 	// List of node selector requirements. The requirements are ANDed.
-	MatchExpressions []K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpression `pulumi:"matchExpressions"`
+	MatchExpressions []K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpression `pulumi:"matchExpressions"`
 }
 
-// K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceInput is an input type that accepts K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceArgs and K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceInput` via:
+// K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceInput is an input type that accepts K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceArgs and K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceOutput values.
+// You can construct a concrete instance of `K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceInput` via:
 //
-//	K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceArgs{...}
-type K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceInput interface {
+//	K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceArgs{...}
+type K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceInput interface {
 	pulumi.Input
 
-	ToK8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceOutput() K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceOutput
-	ToK8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceOutputWithContext(context.Context) K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceOutput() K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceOutputWithContext(context.Context) K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceOutput
 }
 
-type K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceArgs struct {
+type K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceArgs struct {
 	// List of node selector requirements. The requirements are ANDed.
-	MatchExpressions K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArrayInput `pulumi:"matchExpressions"`
+	MatchExpressions K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArrayInput `pulumi:"matchExpressions"`
 }
 
-func (K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreference)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreference)(nil)).Elem()
 }
 
-func (i K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceArgs) ToK8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceOutput() K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceOutput {
-	return i.ToK8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceOutputWithContext(context.Background())
+func (i K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceArgs) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceOutput() K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceOutput {
+	return i.ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceOutputWithContext(context.Background())
 }
 
-func (i K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceArgs) ToK8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceOutput)
+func (i K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceArgs) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceOutput)
 }
 
-type K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceOutput struct{ *pulumi.OutputState }
+type K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceOutput struct{ *pulumi.OutputState }
 
-func (K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreference)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreference)(nil)).Elem()
 }
 
-func (o K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceOutput) ToK8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceOutput() K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceOutput) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceOutput() K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceOutput) ToK8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceOutput) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceOutput {
 	return o
 }
 
 // List of node selector requirements. The requirements are ANDed.
-func (o K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceOutput) MatchExpressions() K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreference) []K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpression {
+func (o K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceOutput) MatchExpressions() K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArrayOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreference) []K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpression {
 		return v.MatchExpressions
-	}).(K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArrayOutput)
+	}).(K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArrayOutput)
 }
 
-type K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpression struct {
+type K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpression struct {
 	// The label key that the selector applies to.
 	Key *string `pulumi:"key"`
 	// Operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists, DoesNotExist. Gt, and Lt.
@@ -76009,18 +76118,18 @@ type K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredD
 	Values []string `pulumi:"values"`
 }
 
-// K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionInput is an input type that accepts K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArgs and K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionInput` via:
+// K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionInput is an input type that accepts K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArgs and K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionOutput values.
+// You can construct a concrete instance of `K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionInput` via:
 //
-//	K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArgs{...}
-type K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionInput interface {
+//	K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArgs{...}
+type K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionInput interface {
 	pulumi.Input
 
-	ToK8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionOutput() K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionOutput
-	ToK8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionOutputWithContext(context.Context) K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionOutput() K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionOutputWithContext(context.Context) K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionOutput
 }
 
-type K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArgs struct {
+type K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArgs struct {
 	// The label key that the selector applies to.
 	Key pulumi.StringPtrInput `pulumi:"key"`
 	// Operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists, DoesNotExist. Gt, and Lt.
@@ -76029,337 +76138,337 @@ type K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredD
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
-func (K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpression)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpression)(nil)).Elem()
 }
 
-func (i K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArgs) ToK8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionOutput() K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionOutput {
-	return i.ToK8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionOutputWithContext(context.Background())
+func (i K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArgs) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionOutput() K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionOutput {
+	return i.ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionOutputWithContext(context.Background())
 }
 
-func (i K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArgs) ToK8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionOutput)
+func (i K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArgs) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionOutput)
 }
 
-// K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArrayInput is an input type that accepts K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArray and K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArrayOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArrayInput` via:
+// K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArrayInput is an input type that accepts K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArray and K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArrayOutput values.
+// You can construct a concrete instance of `K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArrayInput` via:
 //
-//	K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArray{ K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArgs{...} }
-type K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArrayInput interface {
+//	K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArray{ K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArgs{...} }
+type K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArrayInput interface {
 	pulumi.Input
 
-	ToK8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArrayOutput() K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArrayOutput
-	ToK8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArrayOutputWithContext(context.Context) K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArrayOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArrayOutput() K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArrayOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArrayOutputWithContext(context.Context) K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArrayOutput
 }
 
-type K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArray []K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionInput
+type K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArray []K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionInput
 
-func (K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpression)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpression)(nil)).Elem()
 }
 
-func (i K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArray) ToK8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArrayOutput() K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArrayOutput {
-	return i.ToK8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArrayOutputWithContext(context.Background())
+func (i K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArray) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArrayOutput() K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArrayOutput {
+	return i.ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArrayOutputWithContext(context.Background())
 }
 
-func (i K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArray) ToK8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArrayOutput)
+func (i K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArray) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArrayOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArrayOutput)
 }
 
-type K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionOutput struct{ *pulumi.OutputState }
+type K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionOutput struct{ *pulumi.OutputState }
 
-func (K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpression)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpression)(nil)).Elem()
 }
 
-func (o K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionOutput) ToK8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionOutput() K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionOutput) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionOutput() K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionOutput) ToK8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionOutput) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionOutput {
 	return o
 }
 
 // The label key that the selector applies to.
-func (o K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpression) *string {
+func (o K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpression) *string {
 		return v.Key
 	}).(pulumi.StringPtrOutput)
 }
 
 // Operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists, DoesNotExist. Gt, and Lt.
-func (o K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionOutput) Operator() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpression) *string {
+func (o K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpression) *string {
 		return v.Operator
 	}).(pulumi.StringPtrOutput)
 }
 
 // Values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch.
-func (o K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpression) []string {
+func (o K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpression) []string {
 		return v.Values
 	}).(pulumi.StringArrayOutput)
 }
 
-type K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArrayOutput struct{ *pulumi.OutputState }
+type K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArrayOutput struct{ *pulumi.OutputState }
 
-func (K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpression)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpression)(nil)).Elem()
 }
 
-func (o K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArrayOutput) ToK8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArrayOutput() K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArrayOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArrayOutput) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArrayOutput() K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArrayOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArrayOutput) ToK8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArrayOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArrayOutput) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArrayOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArrayOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArrayOutput) Index(i pulumi.IntInput) K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpression {
-		return vs[0].([]K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpression)[vs[1].(int)]
-	}).(K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionOutput)
+func (o K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArrayOutput) Index(i pulumi.IntInput) K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpression {
+		return vs[0].([]K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpression)[vs[1].(int)]
+	}).(K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionOutput)
 }
 
-type K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution struct {
+type K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution struct {
 	// List of node selector terms. The terms are ORed.
-	NodeSelectorTerms []K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTerm `pulumi:"nodeSelectorTerms"`
+	NodeSelectorTerms []K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTerm `pulumi:"nodeSelectorTerms"`
 }
 
-// K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionInput is an input type that accepts K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs and K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionInput` via:
+// K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionInput is an input type that accepts K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs and K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput values.
+// You can construct a concrete instance of `K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionInput` via:
 //
-//	K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs{...}
-type K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionInput interface {
+//	K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs{...}
+type K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionInput interface {
 	pulumi.Input
 
-	ToK8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput() K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput
-	ToK8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutputWithContext(context.Context) K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput() K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutputWithContext(context.Context) K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput
 }
 
-type K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs struct {
+type K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs struct {
 	// List of node selector terms. The terms are ORed.
-	NodeSelectorTerms K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayInput `pulumi:"nodeSelectorTerms"`
+	NodeSelectorTerms K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayInput `pulumi:"nodeSelectorTerms"`
 }
 
-func (K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution)(nil)).Elem()
 }
 
-func (i K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs) ToK8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput() K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput {
-	return i.ToK8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutputWithContext(context.Background())
+func (i K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput() K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput {
+	return i.ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutputWithContext(context.Background())
 }
 
-func (i K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs) ToK8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput)
+func (i K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput)
 }
 
-func (i K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs) ToK8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutput() K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutput {
-	return i.ToK8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutputWithContext(context.Background())
+func (i K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutput() K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutput {
+	return i.ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutputWithContext(context.Background())
 }
 
-func (i K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs) ToK8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput).ToK8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutputWithContext(ctx)
+func (i K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput).ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutputWithContext(ctx)
 }
 
-// K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrInput is an input type that accepts K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs, K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtr and K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrInput` via:
+// K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrInput is an input type that accepts K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs, K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtr and K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutput values.
+// You can construct a concrete instance of `K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrInput` via:
 //
-//	        K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs{...}
+//	        K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs{...}
 //
 //	or:
 //
 //	        nil
-type K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrInput interface {
+type K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrInput interface {
 	pulumi.Input
 
-	ToK8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutput() K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutput
-	ToK8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutputWithContext(context.Context) K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutput() K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutputWithContext(context.Context) K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutput
 }
 
-type k8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrType K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs
+type k8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrType K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs
 
-func K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtr(v *K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs) K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrInput {
-	return (*k8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrType)(v)
+func K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtr(v *K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs) K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrInput {
+	return (*k8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrType)(v)
 }
 
-func (*k8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution)(nil)).Elem()
+func (*k8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution)(nil)).Elem()
 }
 
-func (i *k8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrType) ToK8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutput() K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutput {
-	return i.ToK8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutputWithContext(context.Background())
+func (i *k8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrType) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutput() K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutput {
+	return i.ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutputWithContext(context.Background())
 }
 
-func (i *k8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrType) ToK8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutput)
+func (i *k8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrType) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutput)
 }
 
-type K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput struct{ *pulumi.OutputState }
+type K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput struct{ *pulumi.OutputState }
 
-func (K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution)(nil)).Elem()
 }
 
-func (o K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput) ToK8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput() K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput() K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput) ToK8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput) ToK8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutput() K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutput {
-	return o.ToK8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutputWithContext(context.Background())
+func (o K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutput() K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutput {
+	return o.ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutputWithContext(context.Background())
 }
 
-func (o K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput) ToK8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution) *K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution {
+func (o K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution) *K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution {
 		return &v
-	}).(K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutput)
+	}).(K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutput)
 }
 
 // List of node selector terms. The terms are ORed.
-func (o K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput) NodeSelectorTerms() K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution) []K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTerm {
+func (o K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput) NodeSelectorTerms() K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution) []K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTerm {
 		return v.NodeSelectorTerms
-	}).(K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayOutput)
+	}).(K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayOutput)
 }
 
-type K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutput struct{ *pulumi.OutputState }
+type K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutput struct{ *pulumi.OutputState }
 
-func (K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution)(nil)).Elem()
 }
 
-func (o K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutput) ToK8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutput() K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutput) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutput() K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutput) ToK8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutput) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutput) Elem() K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution) K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution {
+func (o K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutput) Elem() K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution) K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution {
 		if v != nil {
 			return *v
 		}
-		var ret K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution
+		var ret K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution
 		return ret
-	}).(K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput)
+	}).(K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput)
 }
 
 // List of node selector terms. The terms are ORed.
-func (o K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutput) NodeSelectorTerms() K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution) []K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTerm {
+func (o K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutput) NodeSelectorTerms() K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution) []K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTerm {
 		if v == nil {
 			return nil
 		}
 		return v.NodeSelectorTerms
-	}).(K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayOutput)
+	}).(K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayOutput)
 }
 
-type K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTerm struct {
+type K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTerm struct {
 	// List of node selector requirements. The requirements are ANDed.
-	MatchExpressions []K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpression `pulumi:"matchExpressions"`
+	MatchExpressions []K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpression `pulumi:"matchExpressions"`
 }
 
-// K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermInput is an input type that accepts K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArgs and K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermInput` via:
+// K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermInput is an input type that accepts K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArgs and K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermOutput values.
+// You can construct a concrete instance of `K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermInput` via:
 //
-//	K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArgs{...}
-type K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermInput interface {
+//	K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArgs{...}
+type K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermInput interface {
 	pulumi.Input
 
-	ToK8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermOutput() K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermOutput
-	ToK8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermOutputWithContext(context.Context) K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermOutput() K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermOutputWithContext(context.Context) K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermOutput
 }
 
-type K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArgs struct {
+type K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArgs struct {
 	// List of node selector requirements. The requirements are ANDed.
-	MatchExpressions K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArrayInput `pulumi:"matchExpressions"`
+	MatchExpressions K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArrayInput `pulumi:"matchExpressions"`
 }
 
-func (K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTerm)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTerm)(nil)).Elem()
 }
 
-func (i K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArgs) ToK8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermOutput() K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermOutput {
-	return i.ToK8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermOutputWithContext(context.Background())
+func (i K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArgs) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermOutput() K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermOutput {
+	return i.ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermOutputWithContext(context.Background())
 }
 
-func (i K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArgs) ToK8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermOutput)
+func (i K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArgs) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermOutput)
 }
 
-// K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayInput is an input type that accepts K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArray and K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayInput` via:
+// K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayInput is an input type that accepts K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArray and K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayOutput values.
+// You can construct a concrete instance of `K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayInput` via:
 //
-//	K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArray{ K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArgs{...} }
-type K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayInput interface {
+//	K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArray{ K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArgs{...} }
+type K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayInput interface {
 	pulumi.Input
 
-	ToK8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayOutput() K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayOutput
-	ToK8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayOutputWithContext(context.Context) K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayOutput() K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayOutputWithContext(context.Context) K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayOutput
 }
 
-type K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArray []K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermInput
+type K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArray []K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermInput
 
-func (K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTerm)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTerm)(nil)).Elem()
 }
 
-func (i K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArray) ToK8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayOutput() K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayOutput {
-	return i.ToK8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayOutputWithContext(context.Background())
+func (i K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArray) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayOutput() K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayOutput {
+	return i.ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayOutputWithContext(context.Background())
 }
 
-func (i K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArray) ToK8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayOutput)
+func (i K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArray) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayOutput)
 }
 
-type K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermOutput struct{ *pulumi.OutputState }
+type K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermOutput struct{ *pulumi.OutputState }
 
-func (K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTerm)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTerm)(nil)).Elem()
 }
 
-func (o K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermOutput) ToK8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermOutput() K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermOutput) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermOutput() K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermOutput) ToK8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermOutput) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermOutput {
 	return o
 }
 
 // List of node selector requirements. The requirements are ANDed.
-func (o K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermOutput) MatchExpressions() K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTerm) []K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpression {
+func (o K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermOutput) MatchExpressions() K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArrayOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTerm) []K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpression {
 		return v.MatchExpressions
-	}).(K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArrayOutput)
+	}).(K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArrayOutput)
 }
 
-type K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayOutput struct{ *pulumi.OutputState }
+type K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayOutput struct{ *pulumi.OutputState }
 
-func (K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTerm)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTerm)(nil)).Elem()
 }
 
-func (o K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayOutput) ToK8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayOutput() K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayOutput) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayOutput() K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayOutput) ToK8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayOutput) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayOutput) Index(i pulumi.IntInput) K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTerm {
-		return vs[0].([]K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTerm)[vs[1].(int)]
-	}).(K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermOutput)
+func (o K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayOutput) Index(i pulumi.IntInput) K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTerm {
+		return vs[0].([]K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTerm)[vs[1].(int)]
+	}).(K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermOutput)
 }
 
-type K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpression struct {
+type K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpression struct {
 	// The label key that the selector applies to.
 	Key *string `pulumi:"key"`
 	// Operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists, DoesNotExist. Gt, and Lt.
@@ -76368,18 +76477,18 @@ type K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDu
 	Values []string `pulumi:"values"`
 }
 
-// K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionInput is an input type that accepts K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArgs and K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionInput` via:
+// K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionInput is an input type that accepts K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArgs and K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionOutput values.
+// You can construct a concrete instance of `K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionInput` via:
 //
-//	K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArgs{...}
-type K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionInput interface {
+//	K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArgs{...}
+type K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionInput interface {
 	pulumi.Input
 
-	ToK8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionOutput() K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionOutput
-	ToK8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionOutputWithContext(context.Context) K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionOutput() K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionOutputWithContext(context.Context) K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionOutput
 }
 
-type K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArgs struct {
+type K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArgs struct {
 	// The label key that the selector applies to.
 	Key pulumi.StringPtrInput `pulumi:"key"`
 	// Operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists, DoesNotExist. Gt, and Lt.
@@ -76388,555 +76497,555 @@ type K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDu
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
-func (K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpression)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpression)(nil)).Elem()
 }
 
-func (i K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArgs) ToK8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionOutput() K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionOutput {
-	return i.ToK8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionOutputWithContext(context.Background())
+func (i K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArgs) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionOutput() K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionOutput {
+	return i.ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionOutputWithContext(context.Background())
 }
 
-func (i K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArgs) ToK8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionOutput)
+func (i K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArgs) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionOutput)
 }
 
-// K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArrayInput is an input type that accepts K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArray and K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArrayOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArrayInput` via:
+// K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArrayInput is an input type that accepts K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArray and K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArrayOutput values.
+// You can construct a concrete instance of `K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArrayInput` via:
 //
-//	K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArray{ K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArgs{...} }
-type K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArrayInput interface {
+//	K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArray{ K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArgs{...} }
+type K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArrayInput interface {
 	pulumi.Input
 
-	ToK8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArrayOutput() K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArrayOutput
-	ToK8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArrayOutputWithContext(context.Context) K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArrayOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArrayOutput() K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArrayOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArrayOutputWithContext(context.Context) K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArrayOutput
 }
 
-type K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArray []K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionInput
+type K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArray []K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionInput
 
-func (K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpression)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpression)(nil)).Elem()
 }
 
-func (i K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArray) ToK8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArrayOutput() K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArrayOutput {
-	return i.ToK8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArrayOutputWithContext(context.Background())
+func (i K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArray) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArrayOutput() K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArrayOutput {
+	return i.ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArrayOutputWithContext(context.Background())
 }
 
-func (i K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArray) ToK8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArrayOutput)
+func (i K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArray) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArrayOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArrayOutput)
 }
 
-type K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionOutput struct{ *pulumi.OutputState }
+type K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionOutput struct{ *pulumi.OutputState }
 
-func (K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpression)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpression)(nil)).Elem()
 }
 
-func (o K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionOutput) ToK8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionOutput() K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionOutput) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionOutput() K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionOutput) ToK8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionOutput) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionOutput {
 	return o
 }
 
 // The label key that the selector applies to.
-func (o K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpression) *string {
+func (o K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpression) *string {
 		return v.Key
 	}).(pulumi.StringPtrOutput)
 }
 
 // Operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists, DoesNotExist. Gt, and Lt.
-func (o K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionOutput) Operator() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpression) *string {
+func (o K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpression) *string {
 		return v.Operator
 	}).(pulumi.StringPtrOutput)
 }
 
 // Values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch.
-func (o K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpression) []string {
+func (o K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpression) []string {
 		return v.Values
 	}).(pulumi.StringArrayOutput)
 }
 
-type K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArrayOutput struct{ *pulumi.OutputState }
+type K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArrayOutput struct{ *pulumi.OutputState }
 
-func (K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpression)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpression)(nil)).Elem()
 }
 
-func (o K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArrayOutput) ToK8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArrayOutput() K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArrayOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArrayOutput) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArrayOutput() K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArrayOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArrayOutput) ToK8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArrayOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArrayOutput) ToK8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArrayOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArrayOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArrayOutput) Index(i pulumi.IntInput) K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpression {
-		return vs[0].([]K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpression)[vs[1].(int)]
-	}).(K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionOutput)
+func (o K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArrayOutput) Index(i pulumi.IntInput) K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpression {
+		return vs[0].([]K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpression)[vs[1].(int)]
+	}).(K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionOutput)
 }
 
-type K8sJobSpecTemplateSpecAffinityPodAffinity struct {
+type K8sDaemonSetSpecTemplateSpecAffinityPodAffinity struct {
 	// The scheduler will prefer to schedule pods to nodes that satisfy the anti-affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions. The node that is most preferred is the one with the greatest sum of weights, i.e. for each node that meets all of the scheduling requirements (resource request, RequiredDuringScheduling anti-affinity expressions, etc.), compute a sum by iterating through the elements of this field and adding 'weight' to the sum if the node matches the corresponding MatchExpressions; the node(s) with the highest sum are the most preferred.
-	PreferredDuringSchedulingIgnoredDuringExecutions []K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecution `pulumi:"preferredDuringSchedulingIgnoredDuringExecutions"`
+	PreferredDuringSchedulingIgnoredDuringExecutions []K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecution `pulumi:"preferredDuringSchedulingIgnoredDuringExecutions"`
 	// If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system may or may not try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each PodAffinityTerm are intersected, i.e. all terms must be satisfied.
-	RequiredDuringSchedulingIgnoredDuringExecutions []K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecution `pulumi:"requiredDuringSchedulingIgnoredDuringExecutions"`
+	RequiredDuringSchedulingIgnoredDuringExecutions []K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecution `pulumi:"requiredDuringSchedulingIgnoredDuringExecutions"`
 }
 
-// K8sJobSpecTemplateSpecAffinityPodAffinityInput is an input type that accepts K8sJobSpecTemplateSpecAffinityPodAffinityArgs and K8sJobSpecTemplateSpecAffinityPodAffinityOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecAffinityPodAffinityInput` via:
+// K8sDaemonSetSpecTemplateSpecAffinityPodAffinityInput is an input type that accepts K8sDaemonSetSpecTemplateSpecAffinityPodAffinityArgs and K8sDaemonSetSpecTemplateSpecAffinityPodAffinityOutput values.
+// You can construct a concrete instance of `K8sDaemonSetSpecTemplateSpecAffinityPodAffinityInput` via:
 //
-//	K8sJobSpecTemplateSpecAffinityPodAffinityArgs{...}
-type K8sJobSpecTemplateSpecAffinityPodAffinityInput interface {
+//	K8sDaemonSetSpecTemplateSpecAffinityPodAffinityArgs{...}
+type K8sDaemonSetSpecTemplateSpecAffinityPodAffinityInput interface {
 	pulumi.Input
 
-	ToK8sJobSpecTemplateSpecAffinityPodAffinityOutput() K8sJobSpecTemplateSpecAffinityPodAffinityOutput
-	ToK8sJobSpecTemplateSpecAffinityPodAffinityOutputWithContext(context.Context) K8sJobSpecTemplateSpecAffinityPodAffinityOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityOutputWithContext(context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityOutput
 }
 
-type K8sJobSpecTemplateSpecAffinityPodAffinityArgs struct {
+type K8sDaemonSetSpecTemplateSpecAffinityPodAffinityArgs struct {
 	// The scheduler will prefer to schedule pods to nodes that satisfy the anti-affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions. The node that is most preferred is the one with the greatest sum of weights, i.e. for each node that meets all of the scheduling requirements (resource request, RequiredDuringScheduling anti-affinity expressions, etc.), compute a sum by iterating through the elements of this field and adding 'weight' to the sum if the node matches the corresponding MatchExpressions; the node(s) with the highest sum are the most preferred.
-	PreferredDuringSchedulingIgnoredDuringExecutions K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayInput `pulumi:"preferredDuringSchedulingIgnoredDuringExecutions"`
+	PreferredDuringSchedulingIgnoredDuringExecutions K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayInput `pulumi:"preferredDuringSchedulingIgnoredDuringExecutions"`
 	// If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system may or may not try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each PodAffinityTerm are intersected, i.e. all terms must be satisfied.
-	RequiredDuringSchedulingIgnoredDuringExecutions K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayInput `pulumi:"requiredDuringSchedulingIgnoredDuringExecutions"`
+	RequiredDuringSchedulingIgnoredDuringExecutions K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayInput `pulumi:"requiredDuringSchedulingIgnoredDuringExecutions"`
 }
 
-func (K8sJobSpecTemplateSpecAffinityPodAffinityArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAffinity)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityPodAffinityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityPodAffinity)(nil)).Elem()
 }
 
-func (i K8sJobSpecTemplateSpecAffinityPodAffinityArgs) ToK8sJobSpecTemplateSpecAffinityPodAffinityOutput() K8sJobSpecTemplateSpecAffinityPodAffinityOutput {
-	return i.ToK8sJobSpecTemplateSpecAffinityPodAffinityOutputWithContext(context.Background())
+func (i K8sDaemonSetSpecTemplateSpecAffinityPodAffinityArgs) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityOutput {
+	return i.ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityOutputWithContext(context.Background())
 }
 
-func (i K8sJobSpecTemplateSpecAffinityPodAffinityArgs) ToK8sJobSpecTemplateSpecAffinityPodAffinityOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAffinityOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecAffinityPodAffinityOutput)
+func (i K8sDaemonSetSpecTemplateSpecAffinityPodAffinityArgs) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetSpecTemplateSpecAffinityPodAffinityOutput)
 }
 
-func (i K8sJobSpecTemplateSpecAffinityPodAffinityArgs) ToK8sJobSpecTemplateSpecAffinityPodAffinityPtrOutput() K8sJobSpecTemplateSpecAffinityPodAffinityPtrOutput {
-	return i.ToK8sJobSpecTemplateSpecAffinityPodAffinityPtrOutputWithContext(context.Background())
+func (i K8sDaemonSetSpecTemplateSpecAffinityPodAffinityArgs) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPtrOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPtrOutput {
+	return i.ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPtrOutputWithContext(context.Background())
 }
 
-func (i K8sJobSpecTemplateSpecAffinityPodAffinityArgs) ToK8sJobSpecTemplateSpecAffinityPodAffinityPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAffinityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecAffinityPodAffinityOutput).ToK8sJobSpecTemplateSpecAffinityPodAffinityPtrOutputWithContext(ctx)
+func (i K8sDaemonSetSpecTemplateSpecAffinityPodAffinityArgs) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPtrOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetSpecTemplateSpecAffinityPodAffinityOutput).ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPtrOutputWithContext(ctx)
 }
 
-// K8sJobSpecTemplateSpecAffinityPodAffinityPtrInput is an input type that accepts K8sJobSpecTemplateSpecAffinityPodAffinityArgs, K8sJobSpecTemplateSpecAffinityPodAffinityPtr and K8sJobSpecTemplateSpecAffinityPodAffinityPtrOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecAffinityPodAffinityPtrInput` via:
+// K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPtrInput is an input type that accepts K8sDaemonSetSpecTemplateSpecAffinityPodAffinityArgs, K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPtr and K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPtrOutput values.
+// You can construct a concrete instance of `K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPtrInput` via:
 //
-//	        K8sJobSpecTemplateSpecAffinityPodAffinityArgs{...}
+//	        K8sDaemonSetSpecTemplateSpecAffinityPodAffinityArgs{...}
 //
 //	or:
 //
 //	        nil
-type K8sJobSpecTemplateSpecAffinityPodAffinityPtrInput interface {
+type K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPtrInput interface {
 	pulumi.Input
 
-	ToK8sJobSpecTemplateSpecAffinityPodAffinityPtrOutput() K8sJobSpecTemplateSpecAffinityPodAffinityPtrOutput
-	ToK8sJobSpecTemplateSpecAffinityPodAffinityPtrOutputWithContext(context.Context) K8sJobSpecTemplateSpecAffinityPodAffinityPtrOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPtrOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPtrOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPtrOutputWithContext(context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPtrOutput
 }
 
-type k8sJobSpecTemplateSpecAffinityPodAffinityPtrType K8sJobSpecTemplateSpecAffinityPodAffinityArgs
+type k8sDaemonSetSpecTemplateSpecAffinityPodAffinityPtrType K8sDaemonSetSpecTemplateSpecAffinityPodAffinityArgs
 
-func K8sJobSpecTemplateSpecAffinityPodAffinityPtr(v *K8sJobSpecTemplateSpecAffinityPodAffinityArgs) K8sJobSpecTemplateSpecAffinityPodAffinityPtrInput {
-	return (*k8sJobSpecTemplateSpecAffinityPodAffinityPtrType)(v)
+func K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPtr(v *K8sDaemonSetSpecTemplateSpecAffinityPodAffinityArgs) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPtrInput {
+	return (*k8sDaemonSetSpecTemplateSpecAffinityPodAffinityPtrType)(v)
 }
 
-func (*k8sJobSpecTemplateSpecAffinityPodAffinityPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecAffinityPodAffinity)(nil)).Elem()
+func (*k8sDaemonSetSpecTemplateSpecAffinityPodAffinityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**K8sDaemonSetSpecTemplateSpecAffinityPodAffinity)(nil)).Elem()
 }
 
-func (i *k8sJobSpecTemplateSpecAffinityPodAffinityPtrType) ToK8sJobSpecTemplateSpecAffinityPodAffinityPtrOutput() K8sJobSpecTemplateSpecAffinityPodAffinityPtrOutput {
-	return i.ToK8sJobSpecTemplateSpecAffinityPodAffinityPtrOutputWithContext(context.Background())
+func (i *k8sDaemonSetSpecTemplateSpecAffinityPodAffinityPtrType) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPtrOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPtrOutput {
+	return i.ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPtrOutputWithContext(context.Background())
 }
 
-func (i *k8sJobSpecTemplateSpecAffinityPodAffinityPtrType) ToK8sJobSpecTemplateSpecAffinityPodAffinityPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAffinityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecAffinityPodAffinityPtrOutput)
+func (i *k8sDaemonSetSpecTemplateSpecAffinityPodAffinityPtrType) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPtrOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPtrOutput)
 }
 
-type K8sJobSpecTemplateSpecAffinityPodAffinityOutput struct{ *pulumi.OutputState }
+type K8sDaemonSetSpecTemplateSpecAffinityPodAffinityOutput struct{ *pulumi.OutputState }
 
-func (K8sJobSpecTemplateSpecAffinityPodAffinityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAffinity)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityPodAffinityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityPodAffinity)(nil)).Elem()
 }
 
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityOutput) ToK8sJobSpecTemplateSpecAffinityPodAffinityOutput() K8sJobSpecTemplateSpecAffinityPodAffinityOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityOutput) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityOutput) ToK8sJobSpecTemplateSpecAffinityPodAffinityOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAffinityOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityOutput) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityOutput) ToK8sJobSpecTemplateSpecAffinityPodAffinityPtrOutput() K8sJobSpecTemplateSpecAffinityPodAffinityPtrOutput {
-	return o.ToK8sJobSpecTemplateSpecAffinityPodAffinityPtrOutputWithContext(context.Background())
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityOutput) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPtrOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPtrOutput {
+	return o.ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPtrOutputWithContext(context.Background())
 }
 
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityOutput) ToK8sJobSpecTemplateSpecAffinityPodAffinityPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAffinityPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v K8sJobSpecTemplateSpecAffinityPodAffinity) *K8sJobSpecTemplateSpecAffinityPodAffinity {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityOutput) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPtrOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v K8sDaemonSetSpecTemplateSpecAffinityPodAffinity) *K8sDaemonSetSpecTemplateSpecAffinityPodAffinity {
 		return &v
-	}).(K8sJobSpecTemplateSpecAffinityPodAffinityPtrOutput)
+	}).(K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPtrOutput)
 }
 
 // The scheduler will prefer to schedule pods to nodes that satisfy the anti-affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions. The node that is most preferred is the one with the greatest sum of weights, i.e. for each node that meets all of the scheduling requirements (resource request, RequiredDuringScheduling anti-affinity expressions, etc.), compute a sum by iterating through the elements of this field and adding 'weight' to the sum if the node matches the corresponding MatchExpressions; the node(s) with the highest sum are the most preferred.
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityOutput) PreferredDuringSchedulingIgnoredDuringExecutions() K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecAffinityPodAffinity) []K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecution {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityOutput) PreferredDuringSchedulingIgnoredDuringExecutions() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpecAffinityPodAffinity) []K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecution {
 		return v.PreferredDuringSchedulingIgnoredDuringExecutions
-	}).(K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput)
+	}).(K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput)
 }
 
 // If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system may or may not try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each PodAffinityTerm are intersected, i.e. all terms must be satisfied.
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityOutput) RequiredDuringSchedulingIgnoredDuringExecutions() K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecAffinityPodAffinity) []K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecution {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityOutput) RequiredDuringSchedulingIgnoredDuringExecutions() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpecAffinityPodAffinity) []K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecution {
 		return v.RequiredDuringSchedulingIgnoredDuringExecutions
-	}).(K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput)
+	}).(K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput)
 }
 
-type K8sJobSpecTemplateSpecAffinityPodAffinityPtrOutput struct{ *pulumi.OutputState }
+type K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPtrOutput struct{ *pulumi.OutputState }
 
-func (K8sJobSpecTemplateSpecAffinityPodAffinityPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecAffinityPodAffinity)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**K8sDaemonSetSpecTemplateSpecAffinityPodAffinity)(nil)).Elem()
 }
 
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityPtrOutput) ToK8sJobSpecTemplateSpecAffinityPodAffinityPtrOutput() K8sJobSpecTemplateSpecAffinityPodAffinityPtrOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPtrOutput) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPtrOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPtrOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityPtrOutput) ToK8sJobSpecTemplateSpecAffinityPodAffinityPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAffinityPtrOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPtrOutput) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPtrOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPtrOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityPtrOutput) Elem() K8sJobSpecTemplateSpecAffinityPodAffinityOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecAffinityPodAffinity) K8sJobSpecTemplateSpecAffinityPodAffinity {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPtrOutput) Elem() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpecTemplateSpecAffinityPodAffinity) K8sDaemonSetSpecTemplateSpecAffinityPodAffinity {
 		if v != nil {
 			return *v
 		}
-		var ret K8sJobSpecTemplateSpecAffinityPodAffinity
+		var ret K8sDaemonSetSpecTemplateSpecAffinityPodAffinity
 		return ret
-	}).(K8sJobSpecTemplateSpecAffinityPodAffinityOutput)
+	}).(K8sDaemonSetSpecTemplateSpecAffinityPodAffinityOutput)
 }
 
 // The scheduler will prefer to schedule pods to nodes that satisfy the anti-affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions. The node that is most preferred is the one with the greatest sum of weights, i.e. for each node that meets all of the scheduling requirements (resource request, RequiredDuringScheduling anti-affinity expressions, etc.), compute a sum by iterating through the elements of this field and adding 'weight' to the sum if the node matches the corresponding MatchExpressions; the node(s) with the highest sum are the most preferred.
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityPtrOutput) PreferredDuringSchedulingIgnoredDuringExecutions() K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecAffinityPodAffinity) []K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecution {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPtrOutput) PreferredDuringSchedulingIgnoredDuringExecutions() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpecTemplateSpecAffinityPodAffinity) []K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecution {
 		if v == nil {
 			return nil
 		}
 		return v.PreferredDuringSchedulingIgnoredDuringExecutions
-	}).(K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput)
+	}).(K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput)
 }
 
 // If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system may or may not try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each PodAffinityTerm are intersected, i.e. all terms must be satisfied.
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityPtrOutput) RequiredDuringSchedulingIgnoredDuringExecutions() K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecAffinityPodAffinity) []K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecution {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPtrOutput) RequiredDuringSchedulingIgnoredDuringExecutions() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpecTemplateSpecAffinityPodAffinity) []K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecution {
 		if v == nil {
 			return nil
 		}
 		return v.RequiredDuringSchedulingIgnoredDuringExecutions
-	}).(K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput)
+	}).(K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput)
 }
 
-type K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecution struct {
+type K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecution struct {
 	// A pod affinity term, associated with the corresponding weight
-	PodAffinityTerm K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTerm `pulumi:"podAffinityTerm"`
+	PodAffinityTerm K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTerm `pulumi:"podAffinityTerm"`
 	// weight associated with matching the corresponding podAffinityTerm, in the range 1-100
 	Weight int `pulumi:"weight"`
 }
 
-// K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionInput is an input type that accepts K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs and K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionInput` via:
+// K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionInput is an input type that accepts K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs and K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput values.
+// You can construct a concrete instance of `K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionInput` via:
 //
-//	K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs{...}
-type K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionInput interface {
+//	K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs{...}
+type K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionInput interface {
 	pulumi.Input
 
-	ToK8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput() K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput
-	ToK8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutputWithContext(context.Context) K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutputWithContext(context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput
 }
 
-type K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs struct {
+type K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs struct {
 	// A pod affinity term, associated with the corresponding weight
-	PodAffinityTerm K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermInput `pulumi:"podAffinityTerm"`
+	PodAffinityTerm K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermInput `pulumi:"podAffinityTerm"`
 	// weight associated with matching the corresponding podAffinityTerm, in the range 1-100
 	Weight pulumi.IntInput `pulumi:"weight"`
 }
 
-func (K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecution)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecution)(nil)).Elem()
 }
 
-func (i K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs) ToK8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput() K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput {
-	return i.ToK8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutputWithContext(context.Background())
+func (i K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput {
+	return i.ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutputWithContext(context.Background())
 }
 
-func (i K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs) ToK8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput)
+func (i K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput)
 }
 
-// K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayInput is an input type that accepts K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArray and K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayInput` via:
+// K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayInput is an input type that accepts K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArray and K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput values.
+// You can construct a concrete instance of `K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayInput` via:
 //
-//	K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArray{ K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs{...} }
-type K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayInput interface {
+//	K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArray{ K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs{...} }
+type K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayInput interface {
 	pulumi.Input
 
-	ToK8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput() K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput
-	ToK8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutputWithContext(context.Context) K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutputWithContext(context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput
 }
 
-type K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArray []K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionInput
+type K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArray []K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionInput
 
-func (K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecution)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecution)(nil)).Elem()
 }
 
-func (i K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArray) ToK8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput() K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput {
-	return i.ToK8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutputWithContext(context.Background())
+func (i K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArray) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput {
+	return i.ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutputWithContext(context.Background())
 }
 
-func (i K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArray) ToK8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput)
+func (i K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArray) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput)
 }
 
-type K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput struct{ *pulumi.OutputState }
+type K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput struct{ *pulumi.OutputState }
 
-func (K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecution)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecution)(nil)).Elem()
 }
 
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput) ToK8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput() K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput) ToK8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput {
 	return o
 }
 
 // A pod affinity term, associated with the corresponding weight
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput) PodAffinityTerm() K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecution) K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTerm {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput) PodAffinityTerm() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecution) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTerm {
 		return v.PodAffinityTerm
-	}).(K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput)
+	}).(K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput)
 }
 
 // weight associated with matching the corresponding podAffinityTerm, in the range 1-100
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput) Weight() pulumi.IntOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecution) int {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput) Weight() pulumi.IntOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecution) int {
 		return v.Weight
 	}).(pulumi.IntOutput)
 }
 
-type K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput struct{ *pulumi.OutputState }
+type K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput struct{ *pulumi.OutputState }
 
-func (K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecution)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecution)(nil)).Elem()
 }
 
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput) ToK8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput() K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput) ToK8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput) Index(i pulumi.IntInput) K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecution {
-		return vs[0].([]K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecution)[vs[1].(int)]
-	}).(K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput)
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput) Index(i pulumi.IntInput) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecution {
+		return vs[0].([]K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecution)[vs[1].(int)]
+	}).(K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput)
 }
 
-type K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTerm struct {
+type K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTerm struct {
 	// A label query over a set of resources, in this case pods.
-	LabelSelectors []K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector `pulumi:"labelSelectors"`
+	LabelSelectors []K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector `pulumi:"labelSelectors"`
 	// namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means 'this pod's namespace'
 	Namespaces []string `pulumi:"namespaces"`
 	// empty topology key is interpreted by the scheduler as 'all topologies'
 	TopologyKey *string `pulumi:"topologyKey"`
 }
 
-// K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermInput is an input type that accepts K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermArgs and K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermInput` via:
+// K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermInput is an input type that accepts K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermArgs and K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput values.
+// You can construct a concrete instance of `K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermInput` via:
 //
-//	K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermArgs{...}
-type K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermInput interface {
+//	K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermArgs{...}
+type K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermInput interface {
 	pulumi.Input
 
-	ToK8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput() K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput
-	ToK8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutputWithContext(context.Context) K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutputWithContext(context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput
 }
 
-type K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermArgs struct {
+type K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermArgs struct {
 	// A label query over a set of resources, in this case pods.
-	LabelSelectors K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayInput `pulumi:"labelSelectors"`
+	LabelSelectors K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayInput `pulumi:"labelSelectors"`
 	// namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means 'this pod's namespace'
 	Namespaces pulumi.StringArrayInput `pulumi:"namespaces"`
 	// empty topology key is interpreted by the scheduler as 'all topologies'
 	TopologyKey pulumi.StringPtrInput `pulumi:"topologyKey"`
 }
 
-func (K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTerm)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTerm)(nil)).Elem()
 }
 
-func (i K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermArgs) ToK8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput() K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput {
-	return i.ToK8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutputWithContext(context.Background())
+func (i K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermArgs) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput {
+	return i.ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutputWithContext(context.Background())
 }
 
-func (i K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermArgs) ToK8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput)
+func (i K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermArgs) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput)
 }
 
-type K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput struct{ *pulumi.OutputState }
+type K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput struct{ *pulumi.OutputState }
 
-func (K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTerm)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTerm)(nil)).Elem()
 }
 
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput) ToK8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput() K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput) ToK8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput {
 	return o
 }
 
 // A label query over a set of resources, in this case pods.
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput) LabelSelectors() K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTerm) []K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput) LabelSelectors() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTerm) []K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector {
 		return v.LabelSelectors
-	}).(K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutput)
+	}).(K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutput)
 }
 
 // namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means 'this pod's namespace'
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput) Namespaces() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTerm) []string {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput) Namespaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTerm) []string {
 		return v.Namespaces
 	}).(pulumi.StringArrayOutput)
 }
 
 // empty topology key is interpreted by the scheduler as 'all topologies'
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput) TopologyKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTerm) *string {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput) TopologyKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTerm) *string {
 		return v.TopologyKey
 	}).(pulumi.StringPtrOutput)
 }
 
-type K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector struct {
+type K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector struct {
 	// A list of label selector requirements. The requirements are ANDed.
-	MatchExpressions []K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression `pulumi:"matchExpressions"`
+	MatchExpressions []K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression `pulumi:"matchExpressions"`
 	// A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
 	MatchLabels map[string]string `pulumi:"matchLabels"`
 }
 
-// K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorInput is an input type that accepts K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArgs and K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorInput` via:
+// K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorInput is an input type that accepts K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArgs and K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput values.
+// You can construct a concrete instance of `K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorInput` via:
 //
-//	K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArgs{...}
-type K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorInput interface {
+//	K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArgs{...}
+type K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorInput interface {
 	pulumi.Input
 
-	ToK8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput() K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput
-	ToK8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutputWithContext(context.Context) K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutputWithContext(context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput
 }
 
-type K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArgs struct {
+type K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArgs struct {
 	// A list of label selector requirements. The requirements are ANDed.
-	MatchExpressions K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayInput `pulumi:"matchExpressions"`
+	MatchExpressions K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayInput `pulumi:"matchExpressions"`
 	// A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
 	MatchLabels pulumi.StringMapInput `pulumi:"matchLabels"`
 }
 
-func (K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector)(nil)).Elem()
 }
 
-func (i K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArgs) ToK8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput() K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput {
-	return i.ToK8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutputWithContext(context.Background())
+func (i K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArgs) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput {
+	return i.ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutputWithContext(context.Background())
 }
 
-func (i K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArgs) ToK8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput)
+func (i K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArgs) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput)
 }
 
-// K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayInput is an input type that accepts K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArray and K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayInput` via:
+// K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayInput is an input type that accepts K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArray and K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutput values.
+// You can construct a concrete instance of `K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayInput` via:
 //
-//	K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArray{ K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArgs{...} }
-type K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayInput interface {
+//	K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArray{ K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArgs{...} }
+type K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayInput interface {
 	pulumi.Input
 
-	ToK8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutput() K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutput
-	ToK8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutputWithContext(context.Context) K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutputWithContext(context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutput
 }
 
-type K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArray []K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorInput
+type K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArray []K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorInput
 
-func (K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector)(nil)).Elem()
 }
 
-func (i K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArray) ToK8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutput() K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutput {
-	return i.ToK8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutputWithContext(context.Background())
+func (i K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArray) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutput {
+	return i.ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutputWithContext(context.Background())
 }
 
-func (i K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArray) ToK8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutput)
+func (i K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArray) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutput)
 }
 
-type K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput struct{ *pulumi.OutputState }
+type K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput struct{ *pulumi.OutputState }
 
-func (K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector)(nil)).Elem()
 }
 
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput) ToK8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput() K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput) ToK8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput {
 	return o
 }
 
 // A list of label selector requirements. The requirements are ANDed.
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput) MatchExpressions() K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector) []K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput) MatchExpressions() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector) []K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression {
 		return v.MatchExpressions
-	}).(K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutput)
+	}).(K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutput)
 }
 
 // A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput) MatchLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector) map[string]string {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput) MatchLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector) map[string]string {
 		return v.MatchLabels
 	}).(pulumi.StringMapOutput)
 }
 
-type K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutput struct{ *pulumi.OutputState }
+type K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutput struct{ *pulumi.OutputState }
 
-func (K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector)(nil)).Elem()
 }
 
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutput) ToK8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutput() K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutput) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutput) ToK8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutput) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutput) Index(i pulumi.IntInput) K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector {
-		return vs[0].([]K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector)[vs[1].(int)]
-	}).(K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput)
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutput) Index(i pulumi.IntInput) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector {
+		return vs[0].([]K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector)[vs[1].(int)]
+	}).(K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput)
 }
 
-type K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression struct {
+type K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression struct {
 	// The label key that the selector applies to.
 	Key *string `pulumi:"key"`
 	// A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
@@ -76945,18 +77054,18 @@ type K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDu
 	Values []string `pulumi:"values"`
 }
 
-// K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionInput is an input type that accepts K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArgs and K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionInput` via:
+// K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionInput is an input type that accepts K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArgs and K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput values.
+// You can construct a concrete instance of `K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionInput` via:
 //
-//	K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArgs{...}
-type K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionInput interface {
+//	K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArgs{...}
+type K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionInput interface {
 	pulumi.Input
 
-	ToK8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput() K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput
-	ToK8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutputWithContext(context.Context) K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutputWithContext(context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput
 }
 
-type K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArgs struct {
+type K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArgs struct {
 	// The label key that the selector applies to.
 	Key pulumi.StringPtrInput `pulumi:"key"`
 	// A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
@@ -76965,330 +77074,330 @@ type K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDu
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
-func (K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression)(nil)).Elem()
 }
 
-func (i K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArgs) ToK8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput() K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput {
-	return i.ToK8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutputWithContext(context.Background())
+func (i K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArgs) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput {
+	return i.ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutputWithContext(context.Background())
 }
 
-func (i K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArgs) ToK8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput)
+func (i K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArgs) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput)
 }
 
-// K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayInput is an input type that accepts K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArray and K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayInput` via:
+// K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayInput is an input type that accepts K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArray and K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutput values.
+// You can construct a concrete instance of `K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayInput` via:
 //
-//	K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArray{ K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArgs{...} }
-type K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayInput interface {
+//	K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArray{ K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArgs{...} }
+type K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayInput interface {
 	pulumi.Input
 
-	ToK8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutput() K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutput
-	ToK8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutputWithContext(context.Context) K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutputWithContext(context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutput
 }
 
-type K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArray []K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionInput
+type K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArray []K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionInput
 
-func (K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression)(nil)).Elem()
 }
 
-func (i K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArray) ToK8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutput() K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutput {
-	return i.ToK8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutputWithContext(context.Background())
+func (i K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArray) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutput {
+	return i.ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutputWithContext(context.Background())
 }
 
-func (i K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArray) ToK8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutput)
+func (i K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArray) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutput)
 }
 
-type K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput struct{ *pulumi.OutputState }
+type K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput struct{ *pulumi.OutputState }
 
-func (K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression)(nil)).Elem()
 }
 
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput) ToK8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput() K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput) ToK8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput {
 	return o
 }
 
 // The label key that the selector applies to.
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression) *string {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression) *string {
 		return v.Key
 	}).(pulumi.StringPtrOutput)
 }
 
 // A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput) Operator() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression) *string {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression) *string {
 		return v.Operator
 	}).(pulumi.StringPtrOutput)
 }
 
 // An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression) []string {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression) []string {
 		return v.Values
 	}).(pulumi.StringArrayOutput)
 }
 
-type K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutput struct{ *pulumi.OutputState }
+type K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutput struct{ *pulumi.OutputState }
 
-func (K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression)(nil)).Elem()
 }
 
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutput) ToK8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutput() K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutput) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutput) ToK8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutput) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutput) Index(i pulumi.IntInput) K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression {
-		return vs[0].([]K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression)[vs[1].(int)]
-	}).(K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput)
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutput) Index(i pulumi.IntInput) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression {
+		return vs[0].([]K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpression)[vs[1].(int)]
+	}).(K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput)
 }
 
-type K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecution struct {
+type K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecution struct {
 	// A label query over a set of resources, in this case pods.
-	LabelSelectors []K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector `pulumi:"labelSelectors"`
+	LabelSelectors []K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector `pulumi:"labelSelectors"`
 	// namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means 'this pod's namespace'
 	Namespaces []string `pulumi:"namespaces"`
 	// empty topology key is interpreted by the scheduler as 'all topologies'
 	TopologyKey *string `pulumi:"topologyKey"`
 }
 
-// K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionInput is an input type that accepts K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs and K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionInput` via:
+// K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionInput is an input type that accepts K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs and K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput values.
+// You can construct a concrete instance of `K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionInput` via:
 //
-//	K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs{...}
-type K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionInput interface {
+//	K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs{...}
+type K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionInput interface {
 	pulumi.Input
 
-	ToK8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput() K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput
-	ToK8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutputWithContext(context.Context) K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutputWithContext(context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput
 }
 
-type K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs struct {
+type K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs struct {
 	// A label query over a set of resources, in this case pods.
-	LabelSelectors K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayInput `pulumi:"labelSelectors"`
+	LabelSelectors K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayInput `pulumi:"labelSelectors"`
 	// namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means 'this pod's namespace'
 	Namespaces pulumi.StringArrayInput `pulumi:"namespaces"`
 	// empty topology key is interpreted by the scheduler as 'all topologies'
 	TopologyKey pulumi.StringPtrInput `pulumi:"topologyKey"`
 }
 
-func (K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecution)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecution)(nil)).Elem()
 }
 
-func (i K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs) ToK8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput() K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput {
-	return i.ToK8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutputWithContext(context.Background())
+func (i K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput {
+	return i.ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutputWithContext(context.Background())
 }
 
-func (i K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs) ToK8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput)
+func (i K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput)
 }
 
-// K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayInput is an input type that accepts K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArray and K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayInput` via:
+// K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayInput is an input type that accepts K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArray and K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput values.
+// You can construct a concrete instance of `K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayInput` via:
 //
-//	K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArray{ K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs{...} }
-type K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayInput interface {
+//	K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArray{ K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs{...} }
+type K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayInput interface {
 	pulumi.Input
 
-	ToK8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput() K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput
-	ToK8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutputWithContext(context.Context) K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutputWithContext(context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput
 }
 
-type K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArray []K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionInput
+type K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArray []K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionInput
 
-func (K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecution)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecution)(nil)).Elem()
 }
 
-func (i K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArray) ToK8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput() K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput {
-	return i.ToK8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutputWithContext(context.Background())
+func (i K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArray) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput {
+	return i.ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutputWithContext(context.Background())
 }
 
-func (i K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArray) ToK8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput)
+func (i K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArray) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput)
 }
 
-type K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput struct{ *pulumi.OutputState }
+type K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput struct{ *pulumi.OutputState }
 
-func (K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecution)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecution)(nil)).Elem()
 }
 
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput) ToK8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput() K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput) ToK8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput {
 	return o
 }
 
 // A label query over a set of resources, in this case pods.
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput) LabelSelectors() K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecution) []K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput) LabelSelectors() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecution) []K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector {
 		return v.LabelSelectors
-	}).(K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutput)
+	}).(K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutput)
 }
 
 // namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means 'this pod's namespace'
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput) Namespaces() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecution) []string {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput) Namespaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecution) []string {
 		return v.Namespaces
 	}).(pulumi.StringArrayOutput)
 }
 
 // empty topology key is interpreted by the scheduler as 'all topologies'
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput) TopologyKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecution) *string {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput) TopologyKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecution) *string {
 		return v.TopologyKey
 	}).(pulumi.StringPtrOutput)
 }
 
-type K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput struct{ *pulumi.OutputState }
+type K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput struct{ *pulumi.OutputState }
 
-func (K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecution)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecution)(nil)).Elem()
 }
 
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput) ToK8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput() K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput) ToK8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput) Index(i pulumi.IntInput) K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecution {
-		return vs[0].([]K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecution)[vs[1].(int)]
-	}).(K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput)
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput) Index(i pulumi.IntInput) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecution {
+		return vs[0].([]K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecution)[vs[1].(int)]
+	}).(K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput)
 }
 
-type K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector struct {
+type K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector struct {
 	// A list of label selector requirements. The requirements are ANDed.
-	MatchExpressions []K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression `pulumi:"matchExpressions"`
+	MatchExpressions []K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression `pulumi:"matchExpressions"`
 	// A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
 	MatchLabels map[string]string `pulumi:"matchLabels"`
 }
 
-// K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorInput is an input type that accepts K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArgs and K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorInput` via:
+// K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorInput is an input type that accepts K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArgs and K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput values.
+// You can construct a concrete instance of `K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorInput` via:
 //
-//	K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArgs{...}
-type K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorInput interface {
+//	K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArgs{...}
+type K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorInput interface {
 	pulumi.Input
 
-	ToK8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput() K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput
-	ToK8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutputWithContext(context.Context) K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutputWithContext(context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput
 }
 
-type K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArgs struct {
+type K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArgs struct {
 	// A list of label selector requirements. The requirements are ANDed.
-	MatchExpressions K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayInput `pulumi:"matchExpressions"`
+	MatchExpressions K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayInput `pulumi:"matchExpressions"`
 	// A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
 	MatchLabels pulumi.StringMapInput `pulumi:"matchLabels"`
 }
 
-func (K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector)(nil)).Elem()
 }
 
-func (i K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArgs) ToK8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput() K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput {
-	return i.ToK8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutputWithContext(context.Background())
+func (i K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArgs) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput {
+	return i.ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutputWithContext(context.Background())
 }
 
-func (i K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArgs) ToK8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput)
+func (i K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArgs) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput)
 }
 
-// K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayInput is an input type that accepts K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArray and K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayInput` via:
+// K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayInput is an input type that accepts K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArray and K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutput values.
+// You can construct a concrete instance of `K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayInput` via:
 //
-//	K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArray{ K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArgs{...} }
-type K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayInput interface {
+//	K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArray{ K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArgs{...} }
+type K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayInput interface {
 	pulumi.Input
 
-	ToK8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutput() K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutput
-	ToK8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutputWithContext(context.Context) K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutputWithContext(context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutput
 }
 
-type K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArray []K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorInput
+type K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArray []K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorInput
 
-func (K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector)(nil)).Elem()
 }
 
-func (i K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArray) ToK8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutput() K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutput {
-	return i.ToK8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutputWithContext(context.Background())
+func (i K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArray) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutput {
+	return i.ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutputWithContext(context.Background())
 }
 
-func (i K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArray) ToK8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutput)
+func (i K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArray) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutput)
 }
 
-type K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput struct{ *pulumi.OutputState }
+type K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput struct{ *pulumi.OutputState }
 
-func (K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector)(nil)).Elem()
 }
 
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput) ToK8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput() K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput) ToK8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput {
 	return o
 }
 
 // A list of label selector requirements. The requirements are ANDed.
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput) MatchExpressions() K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector) []K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput) MatchExpressions() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector) []K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression {
 		return v.MatchExpressions
-	}).(K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutput)
+	}).(K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutput)
 }
 
 // A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput) MatchLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector) map[string]string {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput) MatchLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector) map[string]string {
 		return v.MatchLabels
 	}).(pulumi.StringMapOutput)
 }
 
-type K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutput struct{ *pulumi.OutputState }
+type K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutput struct{ *pulumi.OutputState }
 
-func (K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector)(nil)).Elem()
 }
 
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutput) ToK8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutput() K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutput) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutput) ToK8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutput) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutput) Index(i pulumi.IntInput) K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector {
-		return vs[0].([]K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector)[vs[1].(int)]
-	}).(K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput)
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutput) Index(i pulumi.IntInput) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector {
+		return vs[0].([]K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector)[vs[1].(int)]
+	}).(K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput)
 }
 
-type K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression struct {
+type K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression struct {
 	// The label key that the selector applies to.
 	Key *string `pulumi:"key"`
 	// A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
@@ -77297,18 +77406,18 @@ type K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDur
 	Values []string `pulumi:"values"`
 }
 
-// K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionInput is an input type that accepts K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArgs and K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionInput` via:
+// K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionInput is an input type that accepts K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArgs and K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput values.
+// You can construct a concrete instance of `K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionInput` via:
 //
-//	K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArgs{...}
-type K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionInput interface {
+//	K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArgs{...}
+type K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionInput interface {
 	pulumi.Input
 
-	ToK8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput() K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput
-	ToK8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutputWithContext(context.Context) K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutputWithContext(context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput
 }
 
-type K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArgs struct {
+type K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArgs struct {
 	// The label key that the selector applies to.
 	Key pulumi.StringPtrInput `pulumi:"key"`
 	// A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
@@ -77317,366 +77426,366 @@ type K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDur
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
-func (K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression)(nil)).Elem()
 }
 
-func (i K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArgs) ToK8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput() K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput {
-	return i.ToK8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutputWithContext(context.Background())
+func (i K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArgs) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput {
+	return i.ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutputWithContext(context.Background())
 }
 
-func (i K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArgs) ToK8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput)
+func (i K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArgs) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput)
 }
 
-// K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayInput is an input type that accepts K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArray and K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayInput` via:
+// K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayInput is an input type that accepts K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArray and K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutput values.
+// You can construct a concrete instance of `K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayInput` via:
 //
-//	K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArray{ K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArgs{...} }
-type K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayInput interface {
+//	K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArray{ K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArgs{...} }
+type K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayInput interface {
 	pulumi.Input
 
-	ToK8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutput() K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutput
-	ToK8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutputWithContext(context.Context) K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutputWithContext(context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutput
 }
 
-type K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArray []K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionInput
+type K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArray []K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionInput
 
-func (K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression)(nil)).Elem()
 }
 
-func (i K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArray) ToK8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutput() K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutput {
-	return i.ToK8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutputWithContext(context.Background())
+func (i K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArray) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutput {
+	return i.ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutputWithContext(context.Background())
 }
 
-func (i K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArray) ToK8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutput)
+func (i K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArray) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutput)
 }
 
-type K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput struct{ *pulumi.OutputState }
+type K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput struct{ *pulumi.OutputState }
 
-func (K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression)(nil)).Elem()
 }
 
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput) ToK8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput() K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput) ToK8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput {
 	return o
 }
 
 // The label key that the selector applies to.
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression) *string {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression) *string {
 		return v.Key
 	}).(pulumi.StringPtrOutput)
 }
 
 // A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput) Operator() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression) *string {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression) *string {
 		return v.Operator
 	}).(pulumi.StringPtrOutput)
 }
 
 // An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression) []string {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression) []string {
 		return v.Values
 	}).(pulumi.StringArrayOutput)
 }
 
-type K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutput struct{ *pulumi.OutputState }
+type K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutput struct{ *pulumi.OutputState }
 
-func (K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression)(nil)).Elem()
 }
 
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutput) ToK8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutput() K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutput) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutput) ToK8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutput) ToK8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutput) Index(i pulumi.IntInput) K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression {
-		return vs[0].([]K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression)[vs[1].(int)]
-	}).(K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput)
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutput) Index(i pulumi.IntInput) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression {
+		return vs[0].([]K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpression)[vs[1].(int)]
+	}).(K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput)
 }
 
-type K8sJobSpecTemplateSpecAffinityPodAntiAffinity struct {
+type K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinity struct {
 	// The scheduler will prefer to schedule pods to nodes that satisfy the anti-affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions. The node that is most preferred is the one with the greatest sum of weights, i.e. for each node that meets all of the scheduling requirements (resource request, RequiredDuringScheduling anti-affinity expressions, etc.), compute a sum by iterating through the elements of this field and adding 'weight' to the sum if the node matches the corresponding MatchExpressions; the node(s) with the highest sum are the most preferred.
-	PreferredDuringSchedulingIgnoredDuringExecutions []K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecution `pulumi:"preferredDuringSchedulingIgnoredDuringExecutions"`
+	PreferredDuringSchedulingIgnoredDuringExecutions []K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecution `pulumi:"preferredDuringSchedulingIgnoredDuringExecutions"`
 	// If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system may or may not try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each PodAffinityTerm are intersected, i.e. all terms must be satisfied.
-	RequiredDuringSchedulingIgnoredDuringExecutions []K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecution `pulumi:"requiredDuringSchedulingIgnoredDuringExecutions"`
+	RequiredDuringSchedulingIgnoredDuringExecutions []K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecution `pulumi:"requiredDuringSchedulingIgnoredDuringExecutions"`
 }
 
-// K8sJobSpecTemplateSpecAffinityPodAntiAffinityInput is an input type that accepts K8sJobSpecTemplateSpecAffinityPodAntiAffinityArgs and K8sJobSpecTemplateSpecAffinityPodAntiAffinityOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecAffinityPodAntiAffinityInput` via:
+// K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityInput is an input type that accepts K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityArgs and K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityOutput values.
+// You can construct a concrete instance of `K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityInput` via:
 //
-//	K8sJobSpecTemplateSpecAffinityPodAntiAffinityArgs{...}
-type K8sJobSpecTemplateSpecAffinityPodAntiAffinityInput interface {
+//	K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityArgs{...}
+type K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityInput interface {
 	pulumi.Input
 
-	ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityOutput() K8sJobSpecTemplateSpecAffinityPodAntiAffinityOutput
-	ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityOutputWithContext(context.Context) K8sJobSpecTemplateSpecAffinityPodAntiAffinityOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityOutputWithContext(context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityOutput
 }
 
-type K8sJobSpecTemplateSpecAffinityPodAntiAffinityArgs struct {
+type K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityArgs struct {
 	// The scheduler will prefer to schedule pods to nodes that satisfy the anti-affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions. The node that is most preferred is the one with the greatest sum of weights, i.e. for each node that meets all of the scheduling requirements (resource request, RequiredDuringScheduling anti-affinity expressions, etc.), compute a sum by iterating through the elements of this field and adding 'weight' to the sum if the node matches the corresponding MatchExpressions; the node(s) with the highest sum are the most preferred.
-	PreferredDuringSchedulingIgnoredDuringExecutions K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayInput `pulumi:"preferredDuringSchedulingIgnoredDuringExecutions"`
+	PreferredDuringSchedulingIgnoredDuringExecutions K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayInput `pulumi:"preferredDuringSchedulingIgnoredDuringExecutions"`
 	// If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system may or may not try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each PodAffinityTerm are intersected, i.e. all terms must be satisfied.
-	RequiredDuringSchedulingIgnoredDuringExecutions K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayInput `pulumi:"requiredDuringSchedulingIgnoredDuringExecutions"`
+	RequiredDuringSchedulingIgnoredDuringExecutions K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayInput `pulumi:"requiredDuringSchedulingIgnoredDuringExecutions"`
 }
 
-func (K8sJobSpecTemplateSpecAffinityPodAntiAffinityArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAntiAffinity)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinity)(nil)).Elem()
 }
 
-func (i K8sJobSpecTemplateSpecAffinityPodAntiAffinityArgs) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityOutput() K8sJobSpecTemplateSpecAffinityPodAntiAffinityOutput {
-	return i.ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityOutputWithContext(context.Background())
+func (i K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityArgs) ToK8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityOutput {
+	return i.ToK8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityOutputWithContext(context.Background())
 }
 
-func (i K8sJobSpecTemplateSpecAffinityPodAntiAffinityArgs) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAntiAffinityOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecAffinityPodAntiAffinityOutput)
+func (i K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityArgs) ToK8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityOutput)
 }
 
-func (i K8sJobSpecTemplateSpecAffinityPodAntiAffinityArgs) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutput() K8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutput {
-	return i.ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutputWithContext(context.Background())
+func (i K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityArgs) ToK8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPtrOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPtrOutput {
+	return i.ToK8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPtrOutputWithContext(context.Background())
 }
 
-func (i K8sJobSpecTemplateSpecAffinityPodAntiAffinityArgs) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecAffinityPodAntiAffinityOutput).ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutputWithContext(ctx)
+func (i K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityArgs) ToK8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPtrOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityOutput).ToK8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPtrOutputWithContext(ctx)
 }
 
-// K8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrInput is an input type that accepts K8sJobSpecTemplateSpecAffinityPodAntiAffinityArgs, K8sJobSpecTemplateSpecAffinityPodAntiAffinityPtr and K8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrInput` via:
+// K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPtrInput is an input type that accepts K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityArgs, K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPtr and K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPtrOutput values.
+// You can construct a concrete instance of `K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPtrInput` via:
 //
-//	        K8sJobSpecTemplateSpecAffinityPodAntiAffinityArgs{...}
+//	        K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityArgs{...}
 //
 //	or:
 //
 //	        nil
-type K8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrInput interface {
+type K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPtrInput interface {
 	pulumi.Input
 
-	ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutput() K8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutput
-	ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutputWithContext(context.Context) K8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPtrOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPtrOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPtrOutputWithContext(context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPtrOutput
 }
 
-type k8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrType K8sJobSpecTemplateSpecAffinityPodAntiAffinityArgs
+type k8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPtrType K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityArgs
 
-func K8sJobSpecTemplateSpecAffinityPodAntiAffinityPtr(v *K8sJobSpecTemplateSpecAffinityPodAntiAffinityArgs) K8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrInput {
-	return (*k8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrType)(v)
+func K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPtr(v *K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityArgs) K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPtrInput {
+	return (*k8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPtrType)(v)
 }
 
-func (*k8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecAffinityPodAntiAffinity)(nil)).Elem()
+func (*k8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinity)(nil)).Elem()
 }
 
-func (i *k8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrType) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutput() K8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutput {
-	return i.ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutputWithContext(context.Background())
+func (i *k8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPtrType) ToK8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPtrOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPtrOutput {
+	return i.ToK8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPtrOutputWithContext(context.Background())
 }
 
-func (i *k8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrType) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutput)
+func (i *k8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPtrType) ToK8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPtrOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPtrOutput)
 }
 
-type K8sJobSpecTemplateSpecAffinityPodAntiAffinityOutput struct{ *pulumi.OutputState }
+type K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityOutput struct{ *pulumi.OutputState }
 
-func (K8sJobSpecTemplateSpecAffinityPodAntiAffinityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAntiAffinity)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinity)(nil)).Elem()
 }
 
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityOutput) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityOutput() K8sJobSpecTemplateSpecAffinityPodAntiAffinityOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityOutput) ToK8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityOutput) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAntiAffinityOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityOutput) ToK8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityOutput) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutput() K8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutput {
-	return o.ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutputWithContext(context.Background())
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityOutput) ToK8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPtrOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPtrOutput {
+	return o.ToK8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPtrOutputWithContext(context.Background())
 }
 
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityOutput) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v K8sJobSpecTemplateSpecAffinityPodAntiAffinity) *K8sJobSpecTemplateSpecAffinityPodAntiAffinity {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityOutput) ToK8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPtrOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinity) *K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinity {
 		return &v
-	}).(K8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutput)
+	}).(K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPtrOutput)
 }
 
 // The scheduler will prefer to schedule pods to nodes that satisfy the anti-affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions. The node that is most preferred is the one with the greatest sum of weights, i.e. for each node that meets all of the scheduling requirements (resource request, RequiredDuringScheduling anti-affinity expressions, etc.), compute a sum by iterating through the elements of this field and adding 'weight' to the sum if the node matches the corresponding MatchExpressions; the node(s) with the highest sum are the most preferred.
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityOutput) PreferredDuringSchedulingIgnoredDuringExecutions() K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecAffinityPodAntiAffinity) []K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecution {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityOutput) PreferredDuringSchedulingIgnoredDuringExecutions() K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinity) []K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecution {
 		return v.PreferredDuringSchedulingIgnoredDuringExecutions
-	}).(K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput)
+	}).(K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput)
 }
 
 // If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system may or may not try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each PodAffinityTerm are intersected, i.e. all terms must be satisfied.
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityOutput) RequiredDuringSchedulingIgnoredDuringExecutions() K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecAffinityPodAntiAffinity) []K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecution {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityOutput) RequiredDuringSchedulingIgnoredDuringExecutions() K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinity) []K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecution {
 		return v.RequiredDuringSchedulingIgnoredDuringExecutions
-	}).(K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput)
+	}).(K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput)
 }
 
-type K8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutput struct{ *pulumi.OutputState }
+type K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPtrOutput struct{ *pulumi.OutputState }
 
-func (K8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sJobSpecTemplateSpecAffinityPodAntiAffinity)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinity)(nil)).Elem()
 }
 
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutput) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutput() K8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPtrOutput) ToK8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPtrOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPtrOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutput) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPtrOutput) ToK8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPtrOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPtrOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutput) Elem() K8sJobSpecTemplateSpecAffinityPodAntiAffinityOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecAffinityPodAntiAffinity) K8sJobSpecTemplateSpecAffinityPodAntiAffinity {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPtrOutput) Elem() K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinity) K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinity {
 		if v != nil {
 			return *v
 		}
-		var ret K8sJobSpecTemplateSpecAffinityPodAntiAffinity
+		var ret K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinity
 		return ret
-	}).(K8sJobSpecTemplateSpecAffinityPodAntiAffinityOutput)
+	}).(K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityOutput)
 }
 
 // The scheduler will prefer to schedule pods to nodes that satisfy the anti-affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions. The node that is most preferred is the one with the greatest sum of weights, i.e. for each node that meets all of the scheduling requirements (resource request, RequiredDuringScheduling anti-affinity expressions, etc.), compute a sum by iterating through the elements of this field and adding 'weight' to the sum if the node matches the corresponding MatchExpressions; the node(s) with the highest sum are the most preferred.
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutput) PreferredDuringSchedulingIgnoredDuringExecutions() K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecAffinityPodAntiAffinity) []K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecution {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPtrOutput) PreferredDuringSchedulingIgnoredDuringExecutions() K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinity) []K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecution {
 		if v == nil {
 			return nil
 		}
 		return v.PreferredDuringSchedulingIgnoredDuringExecutions
-	}).(K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput)
+	}).(K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput)
 }
 
 // If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system may or may not try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each PodAffinityTerm are intersected, i.e. all terms must be satisfied.
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutput) RequiredDuringSchedulingIgnoredDuringExecutions() K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput {
-	return o.ApplyT(func(v *K8sJobSpecTemplateSpecAffinityPodAntiAffinity) []K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecution {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPtrOutput) RequiredDuringSchedulingIgnoredDuringExecutions() K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput {
+	return o.ApplyT(func(v *K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinity) []K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecution {
 		if v == nil {
 			return nil
 		}
 		return v.RequiredDuringSchedulingIgnoredDuringExecutions
-	}).(K8sJobSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput)
+	}).(K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput)
 }
 
-type K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecution struct {
+type K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecution struct {
 	// A pod affinity term, associated with the corresponding weight
-	PodAffinityTerm K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTerm `pulumi:"podAffinityTerm"`
+	PodAffinityTerm K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTerm `pulumi:"podAffinityTerm"`
 	// weight associated with matching the corresponding podAffinityTerm, in the range 1-100
 	Weight int `pulumi:"weight"`
 }
 
-// K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionInput is an input type that accepts K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs and K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionInput` via:
+// K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionInput is an input type that accepts K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs and K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput values.
+// You can construct a concrete instance of `K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionInput` via:
 //
-//	K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs{...}
-type K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionInput interface {
+//	K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs{...}
+type K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionInput interface {
 	pulumi.Input
 
-	ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput() K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput
-	ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutputWithContext(context.Context) K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutputWithContext(context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput
 }
 
-type K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs struct {
+type K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs struct {
 	// A pod affinity term, associated with the corresponding weight
-	PodAffinityTerm K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermInput `pulumi:"podAffinityTerm"`
+	PodAffinityTerm K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermInput `pulumi:"podAffinityTerm"`
 	// weight associated with matching the corresponding podAffinityTerm, in the range 1-100
 	Weight pulumi.IntInput `pulumi:"weight"`
 }
 
-func (K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecution)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecution)(nil)).Elem()
 }
 
-func (i K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput() K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput {
-	return i.ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutputWithContext(context.Background())
+func (i K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs) ToK8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput {
+	return i.ToK8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutputWithContext(context.Background())
 }
 
-func (i K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput)
+func (i K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs) ToK8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput)
 }
 
-// K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayInput is an input type that accepts K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArray and K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput values.
-// You can construct a concrete instance of `K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayInput` via:
+// K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayInput is an input type that accepts K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArray and K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput values.
+// You can construct a concrete instance of `K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayInput` via:
 //
-//	K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArray{ K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs{...} }
-type K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayInput interface {
+//	K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArray{ K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs{...} }
+type K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayInput interface {
 	pulumi.Input
 
-	ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput() K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput
-	ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutputWithContext(context.Context) K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput
+	ToK8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutputWithContext(context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput
 }
 
-type K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArray []K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionInput
+type K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArray []K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionInput
 
-func (K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecution)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecution)(nil)).Elem()
 }
 
-func (i K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArray) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput() K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput {
-	return i.ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutputWithContext(context.Background())
+func (i K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArray) ToK8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput {
+	return i.ToK8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutputWithContext(context.Background())
 }
 
-func (i K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArray) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput)
+func (i K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArray) ToK8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput)
 }
 
-type K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput struct{ *pulumi.OutputState }
+type K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput struct{ *pulumi.OutputState }
 
-func (K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecution)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecution)(nil)).Elem()
 }
 
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput() K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput) ToK8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput) ToK8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput {
 	return o
 }
 
 // A pod affinity term, associated with the corresponding weight
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput) PodAffinityTerm() K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecution) K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTerm {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput) PodAffinityTerm() K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecution) K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTerm {
 		return v.PodAffinityTerm
-	}).(K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput)
+	}).(K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput)
 }
 
 // weight associated with matching the corresponding podAffinityTerm, in the range 1-100
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput) Weight() pulumi.IntOutput {
-	return o.ApplyT(func(v K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecution) int {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput) Weight() pulumi.IntOutput {
+	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecution) int {
 		return v.Weight
 	}).(pulumi.IntOutput)
 }
 
-type K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput struct{ *pulumi.OutputState }
+type K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput struct{ *pulumi.OutputState }
 
-func (K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecution)(nil)).Elem()
+func (K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecution)(nil)).Elem()
 }
 
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput() K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput) ToK8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput() K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput) ToK8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutputWithContext(ctx context.Context) K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput {
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput) ToK8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutputWithContext(ctx context.Context) K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput {
 	return o
 }
 
-func (o K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput) Index(i pulumi.IntInput) K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecution {
-		return vs[0].([]K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecution)[vs[1].(int)]
-	}).(K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput)
+func (o K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput) Index(i pulumi.IntInput) K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecution {
+		return vs[0].([]K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecution)[vs[1].(int)]
+	}).(K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput)
 }
 
 func init() {
@@ -78621,53 +78730,54 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeSecretItemArrayInput)(nil)).Elem(), K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeSecretItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeVsphereVolumeInput)(nil)).Elem(), K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeVsphereVolumeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeVsphereVolumePtrInput)(nil)).Elem(), K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeVsphereVolumeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobMetadataInput)(nil)).Elem(), K8sJobMetadataArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobMetadataPtrInput)(nil)).Elem(), K8sJobMetadataArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecInput)(nil)).Elem(), K8sJobSpecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecArrayInput)(nil)).Elem(), K8sJobSpecArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecSelectorInput)(nil)).Elem(), K8sJobSpecSelectorArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecSelectorPtrInput)(nil)).Elem(), K8sJobSpecSelectorArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecSelectorMatchExpressionInput)(nil)).Elem(), K8sJobSpecSelectorMatchExpressionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecSelectorMatchExpressionArrayInput)(nil)).Elem(), K8sJobSpecSelectorMatchExpressionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateInput)(nil)).Elem(), K8sJobSpecTemplateArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateMetadataInput)(nil)).Elem(), K8sJobSpecTemplateMetadataArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateMetadataPtrInput)(nil)).Elem(), K8sJobSpecTemplateMetadataArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecInput)(nil)).Elem(), K8sJobSpecTemplateSpecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecPtrInput)(nil)).Elem(), K8sJobSpecTemplateSpecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityInput)(nil)).Elem(), K8sJobSpecTemplateSpecAffinityArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPtrInput)(nil)).Elem(), K8sJobSpecTemplateSpecAffinityArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityNodeAffinityInput)(nil)).Elem(), K8sJobSpecTemplateSpecAffinityNodeAffinityArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityNodeAffinityPtrInput)(nil)).Elem(), K8sJobSpecTemplateSpecAffinityNodeAffinityArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionInput)(nil)).Elem(), K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayInput)(nil)).Elem(), K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceInput)(nil)).Elem(), K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionInput)(nil)).Elem(), K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArrayInput)(nil)).Elem(), K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionInput)(nil)).Elem(), K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrInput)(nil)).Elem(), K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermInput)(nil)).Elem(), K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayInput)(nil)).Elem(), K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionInput)(nil)).Elem(), K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArrayInput)(nil)).Elem(), K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAffinityInput)(nil)).Elem(), K8sJobSpecTemplateSpecAffinityPodAffinityArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAffinityPtrInput)(nil)).Elem(), K8sJobSpecTemplateSpecAffinityPodAffinityArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionInput)(nil)).Elem(), K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayInput)(nil)).Elem(), K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermInput)(nil)).Elem(), K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorInput)(nil)).Elem(), K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayInput)(nil)).Elem(), K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionInput)(nil)).Elem(), K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayInput)(nil)).Elem(), K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionInput)(nil)).Elem(), K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayInput)(nil)).Elem(), K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorInput)(nil)).Elem(), K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayInput)(nil)).Elem(), K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionInput)(nil)).Elem(), K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayInput)(nil)).Elem(), K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAntiAffinityInput)(nil)).Elem(), K8sJobSpecTemplateSpecAffinityPodAntiAffinityArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrInput)(nil)).Elem(), K8sJobSpecTemplateSpecAffinityPodAntiAffinityArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionInput)(nil)).Elem(), K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayInput)(nil)).Elem(), K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*K8sDaemonSetMetadataInput)(nil)).Elem(), K8sDaemonSetMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*K8sDaemonSetMetadataPtrInput)(nil)).Elem(), K8sDaemonSetMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*K8sDaemonSetSpecInput)(nil)).Elem(), K8sDaemonSetSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*K8sDaemonSetSpecPtrInput)(nil)).Elem(), K8sDaemonSetSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*K8sDaemonSetSpecSelectorInput)(nil)).Elem(), K8sDaemonSetSpecSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*K8sDaemonSetSpecSelectorPtrInput)(nil)).Elem(), K8sDaemonSetSpecSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*K8sDaemonSetSpecSelectorMatchExpressionInput)(nil)).Elem(), K8sDaemonSetSpecSelectorMatchExpressionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*K8sDaemonSetSpecSelectorMatchExpressionArrayInput)(nil)).Elem(), K8sDaemonSetSpecSelectorMatchExpressionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*K8sDaemonSetSpecTemplateInput)(nil)).Elem(), K8sDaemonSetSpecTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*K8sDaemonSetSpecTemplatePtrInput)(nil)).Elem(), K8sDaemonSetSpecTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*K8sDaemonSetSpecTemplateMetadataInput)(nil)).Elem(), K8sDaemonSetSpecTemplateMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*K8sDaemonSetSpecTemplateMetadataPtrInput)(nil)).Elem(), K8sDaemonSetSpecTemplateMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecInput)(nil)).Elem(), K8sDaemonSetSpecTemplateSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecPtrInput)(nil)).Elem(), K8sDaemonSetSpecTemplateSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityInput)(nil)).Elem(), K8sDaemonSetSpecTemplateSpecAffinityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityPtrInput)(nil)).Elem(), K8sDaemonSetSpecTemplateSpecAffinityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityInput)(nil)).Elem(), K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPtrInput)(nil)).Elem(), K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionInput)(nil)).Elem(), K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayInput)(nil)).Elem(), K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceInput)(nil)).Elem(), K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionInput)(nil)).Elem(), K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArrayInput)(nil)).Elem(), K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionInput)(nil)).Elem(), K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrInput)(nil)).Elem(), K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermInput)(nil)).Elem(), K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayInput)(nil)).Elem(), K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionInput)(nil)).Elem(), K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArrayInput)(nil)).Elem(), K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityPodAffinityInput)(nil)).Elem(), K8sDaemonSetSpecTemplateSpecAffinityPodAffinityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPtrInput)(nil)).Elem(), K8sDaemonSetSpecTemplateSpecAffinityPodAffinityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionInput)(nil)).Elem(), K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayInput)(nil)).Elem(), K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermInput)(nil)).Elem(), K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorInput)(nil)).Elem(), K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayInput)(nil)).Elem(), K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionInput)(nil)).Elem(), K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayInput)(nil)).Elem(), K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionInput)(nil)).Elem(), K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayInput)(nil)).Elem(), K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorInput)(nil)).Elem(), K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayInput)(nil)).Elem(), K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionInput)(nil)).Elem(), K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayInput)(nil)).Elem(), K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityInput)(nil)).Elem(), K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPtrInput)(nil)).Elem(), K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionInput)(nil)).Elem(), K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayInput)(nil)).Elem(), K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArray{})
 	pulumi.RegisterOutputType(AsgProfileCustomDataTagOutput{})
 	pulumi.RegisterOutputType(AsgProfileCustomDataTagArrayOutput{})
 	pulumi.RegisterOutputType(AsgProfileMetadataOutput{})
@@ -79609,51 +79719,52 @@ func init() {
 	pulumi.RegisterOutputType(K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeSecretItemArrayOutput{})
 	pulumi.RegisterOutputType(K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeVsphereVolumeOutput{})
 	pulumi.RegisterOutputType(K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeVsphereVolumePtrOutput{})
-	pulumi.RegisterOutputType(K8sJobMetadataOutput{})
-	pulumi.RegisterOutputType(K8sJobMetadataPtrOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecArrayOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecSelectorOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecSelectorPtrOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecSelectorMatchExpressionOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecSelectorMatchExpressionArrayOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateMetadataOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateMetadataPtrOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecPtrOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecAffinityOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecAffinityPtrOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecAffinityNodeAffinityOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecAffinityNodeAffinityPtrOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArrayOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArrayOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecAffinityPodAffinityOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecAffinityPodAffinityPtrOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecAffinityPodAntiAffinityOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecAffinityPodAntiAffinityPtrOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput{})
-	pulumi.RegisterOutputType(K8sJobSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput{})
+	pulumi.RegisterOutputType(K8sDaemonSetMetadataOutput{})
+	pulumi.RegisterOutputType(K8sDaemonSetMetadataPtrOutput{})
+	pulumi.RegisterOutputType(K8sDaemonSetSpecOutput{})
+	pulumi.RegisterOutputType(K8sDaemonSetSpecPtrOutput{})
+	pulumi.RegisterOutputType(K8sDaemonSetSpecSelectorOutput{})
+	pulumi.RegisterOutputType(K8sDaemonSetSpecSelectorPtrOutput{})
+	pulumi.RegisterOutputType(K8sDaemonSetSpecSelectorMatchExpressionOutput{})
+	pulumi.RegisterOutputType(K8sDaemonSetSpecSelectorMatchExpressionArrayOutput{})
+	pulumi.RegisterOutputType(K8sDaemonSetSpecTemplateOutput{})
+	pulumi.RegisterOutputType(K8sDaemonSetSpecTemplatePtrOutput{})
+	pulumi.RegisterOutputType(K8sDaemonSetSpecTemplateMetadataOutput{})
+	pulumi.RegisterOutputType(K8sDaemonSetSpecTemplateMetadataPtrOutput{})
+	pulumi.RegisterOutputType(K8sDaemonSetSpecTemplateSpecOutput{})
+	pulumi.RegisterOutputType(K8sDaemonSetSpecTemplateSpecPtrOutput{})
+	pulumi.RegisterOutputType(K8sDaemonSetSpecTemplateSpecAffinityOutput{})
+	pulumi.RegisterOutputType(K8sDaemonSetSpecTemplateSpecAffinityPtrOutput{})
+	pulumi.RegisterOutputType(K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityOutput{})
+	pulumi.RegisterOutputType(K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPtrOutput{})
+	pulumi.RegisterOutputType(K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput{})
+	pulumi.RegisterOutputType(K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput{})
+	pulumi.RegisterOutputType(K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceOutput{})
+	pulumi.RegisterOutputType(K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionOutput{})
+	pulumi.RegisterOutputType(K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressionArrayOutput{})
+	pulumi.RegisterOutputType(K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput{})
+	pulumi.RegisterOutputType(K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionPtrOutput{})
+	pulumi.RegisterOutputType(K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermOutput{})
+	pulumi.RegisterOutputType(K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermArrayOutput{})
+	pulumi.RegisterOutputType(K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionOutput{})
+	pulumi.RegisterOutputType(K8sDaemonSetSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermMatchExpressionArrayOutput{})
+	pulumi.RegisterOutputType(K8sDaemonSetSpecTemplateSpecAffinityPodAffinityOutput{})
+	pulumi.RegisterOutputType(K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPtrOutput{})
+	pulumi.RegisterOutputType(K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput{})
+	pulumi.RegisterOutputType(K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput{})
+	pulumi.RegisterOutputType(K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermOutput{})
+	pulumi.RegisterOutputType(K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorOutput{})
+	pulumi.RegisterOutputType(K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArrayOutput{})
+	pulumi.RegisterOutputType(K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionOutput{})
+	pulumi.RegisterOutputType(K8sDaemonSetSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressionArrayOutput{})
+	pulumi.RegisterOutputType(K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionOutput{})
+	pulumi.RegisterOutputType(K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionArrayOutput{})
+	pulumi.RegisterOutputType(K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorOutput{})
+	pulumi.RegisterOutputType(K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArrayOutput{})
+	pulumi.RegisterOutputType(K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionOutput{})
+	pulumi.RegisterOutputType(K8sDaemonSetSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressionArrayOutput{})
+	pulumi.RegisterOutputType(K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityOutput{})
+	pulumi.RegisterOutputType(K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPtrOutput{})
+	pulumi.RegisterOutputType(K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionOutput{})
+	pulumi.RegisterOutputType(K8sDaemonSetSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArrayOutput{})
 }

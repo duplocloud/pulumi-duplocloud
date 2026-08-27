@@ -213,6 +213,7 @@
         "k8ociRepository.ts",
         "k8persistentVolumeClaim.ts",
         "k8sCronJob.ts",
+        "k8sDaemonSet.ts",
         "k8sJob.ts",
         "k8secret.ts",
         "k8secretProviderClass.ts",

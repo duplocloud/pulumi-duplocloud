@@ -990,6 +990,11 @@ export type K8sCronJob = import("./k8sCronJob").K8sCronJob;
 export const K8sCronJob: typeof import("./k8sCronJob").K8sCronJob = null as any;
 utilities.lazyLoad(exports, ["K8sCronJob"], () => require("./k8sCronJob"));
 
+export { K8sDaemonSetArgs, K8sDaemonSetState } from "./k8sDaemonSet";
+export type K8sDaemonSet = import("./k8sDaemonSet").K8sDaemonSet;
+export const K8sDaemonSet: typeof import("./k8sDaemonSet").K8sDaemonSet = null as any;
+utilities.lazyLoad(exports, ["K8sDaemonSet"], () => require("./k8sDaemonSet"));
+
 export { K8sJobArgs, K8sJobState } from "./k8sJob";
 export type K8sJob = import("./k8sJob").K8sJob;
 export const K8sJob: typeof import("./k8sJob").K8sJob = null as any;
@@ -1419,6 +1424,8 @@ const _module = {
                 return new K8StorageClass(name, <any>undefined, { urn })
             case "duplocloud:index/k8sCronJob:K8sCronJob":
                 return new K8sCronJob(name, <any>undefined, { urn })
+            case "duplocloud:index/k8sDaemonSet:K8sDaemonSet":
+                return new K8sDaemonSet(name, <any>undefined, { urn })
             case "duplocloud:index/k8sJob:K8sJob":
                 return new K8sJob(name, <any>undefined, { urn })
             case "duplocloud:index/ociContainerengineNodePool:OciContainerengineNodePool":
@@ -1607,6 +1614,7 @@ pulumi.runtime.registerResourceModule("duplocloud", "index/k8Secret", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/k8SecretProviderClass", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/k8StorageClass", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/k8sCronJob", _module)
+pulumi.runtime.registerResourceModule("duplocloud", "index/k8sDaemonSet", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/k8sJob", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/ociContainerengineNodePool", _module)
 pulumi.runtime.registerResourceModule("duplocloud", "index/otherAgents", _module)
