@@ -3249,6 +3249,1088 @@
                     }
                 }
             },
+            "duplocloud_k8s_daemon_set": {
+                "current": "duplocloud:index/k8sDaemonSet:K8sDaemonSet",
+                "fields": {
+                    "metadata": {
+                        "maxItemsOne": true
+                    },
+                    "spec": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "selector": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "match_expressions": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "values": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "template": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "metadata": {
+                                                "maxItemsOne": true
+                                            },
+                                            "spec": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "affinity": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "node_affinity": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "preferred_during_scheduling_ignored_during_execution": {
+                                                                                    "maxItemsOne": false,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "preference": {
+                                                                                                "maxItemsOne": true,
+                                                                                                "elem": {
+                                                                                                    "fields": {
+                                                                                                        "match_expressions": {
+                                                                                                            "maxItemsOne": false,
+                                                                                                            "elem": {
+                                                                                                                "fields": {
+                                                                                                                    "values": {
+                                                                                                                        "maxItemsOne": false
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "required_during_scheduling_ignored_during_execution": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "node_selector_term": {
+                                                                                                "maxItemsOne": false,
+                                                                                                "elem": {
+                                                                                                    "fields": {
+                                                                                                        "match_expressions": {
+                                                                                                            "maxItemsOne": false,
+                                                                                                            "elem": {
+                                                                                                                "fields": {
+                                                                                                                    "values": {
+                                                                                                                        "maxItemsOne": false
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "pod_affinity": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "preferred_during_scheduling_ignored_during_execution": {
+                                                                                    "maxItemsOne": false,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "pod_affinity_term": {
+                                                                                                "maxItemsOne": true,
+                                                                                                "elem": {
+                                                                                                    "fields": {
+                                                                                                        "label_selector": {
+                                                                                                            "maxItemsOne": false,
+                                                                                                            "elem": {
+                                                                                                                "fields": {
+                                                                                                                    "match_expressions": {
+                                                                                                                        "maxItemsOne": false,
+                                                                                                                        "elem": {
+                                                                                                                            "fields": {
+                                                                                                                                "values": {
+                                                                                                                                    "maxItemsOne": false
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        },
+                                                                                                        "namespaces": {
+                                                                                                            "maxItemsOne": false
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "required_during_scheduling_ignored_during_execution": {
+                                                                                    "maxItemsOne": false,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "label_selector": {
+                                                                                                "maxItemsOne": false,
+                                                                                                "elem": {
+                                                                                                    "fields": {
+                                                                                                        "match_expressions": {
+                                                                                                            "maxItemsOne": false,
+                                                                                                            "elem": {
+                                                                                                                "fields": {
+                                                                                                                    "values": {
+                                                                                                                        "maxItemsOne": false
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            },
+                                                                                            "namespaces": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "pod_anti_affinity": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "preferred_during_scheduling_ignored_during_execution": {
+                                                                                    "maxItemsOne": false,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "pod_affinity_term": {
+                                                                                                "maxItemsOne": true,
+                                                                                                "elem": {
+                                                                                                    "fields": {
+                                                                                                        "label_selector": {
+                                                                                                            "maxItemsOne": false,
+                                                                                                            "elem": {
+                                                                                                                "fields": {
+                                                                                                                    "match_expressions": {
+                                                                                                                        "maxItemsOne": false,
+                                                                                                                        "elem": {
+                                                                                                                            "fields": {
+                                                                                                                                "values": {
+                                                                                                                                    "maxItemsOne": false
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        },
+                                                                                                        "namespaces": {
+                                                                                                            "maxItemsOne": false
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "required_during_scheduling_ignored_during_execution": {
+                                                                                    "maxItemsOne": false,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "label_selector": {
+                                                                                                "maxItemsOne": false,
+                                                                                                "elem": {
+                                                                                                    "fields": {
+                                                                                                        "match_expressions": {
+                                                                                                            "maxItemsOne": false,
+                                                                                                            "elem": {
+                                                                                                                "fields": {
+                                                                                                                    "values": {
+                                                                                                                        "maxItemsOne": false
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            },
+                                                                                            "namespaces": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "container": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "args": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "command": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "env": {
+                                                                        "maxItemsOne": false,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "value_from": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "config_map_key_ref": {
+                                                                                                "maxItemsOne": true
+                                                                                            },
+                                                                                            "field_ref": {
+                                                                                                "maxItemsOne": true
+                                                                                            },
+                                                                                            "resource_field_ref": {
+                                                                                                "maxItemsOne": true
+                                                                                            },
+                                                                                            "secret_key_ref": {
+                                                                                                "maxItemsOne": true
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "env_from": {
+                                                                        "maxItemsOne": false,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "config_map_ref": {
+                                                                                    "maxItemsOne": true
+                                                                                },
+                                                                                "secret_ref": {
+                                                                                    "maxItemsOne": true
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "lifecycle": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "post_start": {
+                                                                                    "maxItemsOne": false,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "exec": {
+                                                                                                "maxItemsOne": true,
+                                                                                                "elem": {
+                                                                                                    "fields": {
+                                                                                                        "command": {
+                                                                                                            "maxItemsOne": false
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            },
+                                                                                            "http_get": {
+                                                                                                "maxItemsOne": true,
+                                                                                                "elem": {
+                                                                                                    "fields": {
+                                                                                                        "http_header": {
+                                                                                                            "maxItemsOne": false
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            },
+                                                                                            "tcp_socket": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "pre_stop": {
+                                                                                    "maxItemsOne": false,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "exec": {
+                                                                                                "maxItemsOne": true,
+                                                                                                "elem": {
+                                                                                                    "fields": {
+                                                                                                        "command": {
+                                                                                                            "maxItemsOne": false
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            },
+                                                                                            "http_get": {
+                                                                                                "maxItemsOne": true,
+                                                                                                "elem": {
+                                                                                                    "fields": {
+                                                                                                        "http_header": {
+                                                                                                            "maxItemsOne": false
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            },
+                                                                                            "tcp_socket": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "liveness_probe": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "exec": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "command": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "grpc": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "http_get": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "http_header": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "tcp_socket": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "port": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "readiness_probe": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "exec": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "command": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "grpc": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "http_get": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "http_header": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "tcp_socket": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "resources": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "security_context": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "capabilities": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "add": {
+                                                                                                "maxItemsOne": false
+                                                                                            },
+                                                                                            "drop": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "se_linux_options": {
+                                                                                    "maxItemsOne": true
+                                                                                },
+                                                                                "seccomp_profile": {
+                                                                                    "maxItemsOne": true
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "startup_probe": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "exec": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "command": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "grpc": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "http_get": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "http_header": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "tcp_socket": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "volume_mount": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "dns_config": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "nameservers": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "option": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "searches": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "host_aliases": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "hostnames": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "image_pull_secrets": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "init_container": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "args": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "command": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "env": {
+                                                                        "maxItemsOne": false,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "value_from": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "config_map_key_ref": {
+                                                                                                "maxItemsOne": true
+                                                                                            },
+                                                                                            "field_ref": {
+                                                                                                "maxItemsOne": true
+                                                                                            },
+                                                                                            "resource_field_ref": {
+                                                                                                "maxItemsOne": true
+                                                                                            },
+                                                                                            "secret_key_ref": {
+                                                                                                "maxItemsOne": true
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "env_from": {
+                                                                        "maxItemsOne": false,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "config_map_ref": {
+                                                                                    "maxItemsOne": true
+                                                                                },
+                                                                                "secret_ref": {
+                                                                                    "maxItemsOne": true
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "lifecycle": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "post_start": {
+                                                                                    "maxItemsOne": false,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "exec": {
+                                                                                                "maxItemsOne": true,
+                                                                                                "elem": {
+                                                                                                    "fields": {
+                                                                                                        "command": {
+                                                                                                            "maxItemsOne": false
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            },
+                                                                                            "http_get": {
+                                                                                                "maxItemsOne": true,
+                                                                                                "elem": {
+                                                                                                    "fields": {
+                                                                                                        "http_header": {
+                                                                                                            "maxItemsOne": false
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            },
+                                                                                            "tcp_socket": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "pre_stop": {
+                                                                                    "maxItemsOne": false,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "exec": {
+                                                                                                "maxItemsOne": true,
+                                                                                                "elem": {
+                                                                                                    "fields": {
+                                                                                                        "command": {
+                                                                                                            "maxItemsOne": false
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            },
+                                                                                            "http_get": {
+                                                                                                "maxItemsOne": true,
+                                                                                                "elem": {
+                                                                                                    "fields": {
+                                                                                                        "http_header": {
+                                                                                                            "maxItemsOne": false
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            },
+                                                                                            "tcp_socket": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "liveness_probe": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "exec": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "command": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "grpc": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "http_get": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "http_header": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "tcp_socket": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "port": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "readiness_probe": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "exec": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "command": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "grpc": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "http_get": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "http_header": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "tcp_socket": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "resources": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "security_context": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "capabilities": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "add": {
+                                                                                                "maxItemsOne": false
+                                                                                            },
+                                                                                            "drop": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "se_linux_options": {
+                                                                                    "maxItemsOne": true
+                                                                                },
+                                                                                "seccomp_profile": {
+                                                                                    "maxItemsOne": true
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "startup_probe": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "exec": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "command": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "grpc": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "http_get": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "http_header": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "tcp_socket": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "volume_mount": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "readiness_gate": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "security_context": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "se_linux_options": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "seccomp_profile": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "supplemental_groups": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "sysctl": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "toleration": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "topology_spread_constraint": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "label_selector": {
+                                                                        "maxItemsOne": false,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "match_expressions": {
+                                                                                    "maxItemsOne": false,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "values": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "volume": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "aws_elastic_block_store": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "azure_disk": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "azure_file": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "ceph_fs": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "monitors": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "secret_ref": {
+                                                                                    "maxItemsOne": true
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "cinder": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "config_map": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "items": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "csi": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "node_publish_secret_ref": {
+                                                                                    "maxItemsOne": true
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "downward_api": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "items": {
+                                                                                    "maxItemsOne": false,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "field_ref": {
+                                                                                                "maxItemsOne": true
+                                                                                            },
+                                                                                            "resource_field_ref": {
+                                                                                                "maxItemsOne": true
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "empty_dir": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "ephemeral": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "volume_claim_template": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "metadata": {
+                                                                                                "maxItemsOne": true
+                                                                                            },
+                                                                                            "spec": {
+                                                                                                "maxItemsOne": true,
+                                                                                                "elem": {
+                                                                                                    "fields": {
+                                                                                                        "access_modes": {
+                                                                                                            "maxItemsOne": false
+                                                                                                        },
+                                                                                                        "resources": {
+                                                                                                            "maxItemsOne": true
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "fc": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "target_ww_ns": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "flex_volume": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "secret_ref": {
+                                                                                    "maxItemsOne": true
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "flocker": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "gce_persistent_disk": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "git_repo": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "glusterfs": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "host_path": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "iscsi": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "local": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "nfs": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "persistent_volume_claim": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "photon_persistent_disk": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "projected": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "sources": {
+                                                                                    "maxItemsOne": false,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "config_map": {
+                                                                                                "maxItemsOne": false,
+                                                                                                "elem": {
+                                                                                                    "fields": {
+                                                                                                        "items": {
+                                                                                                            "maxItemsOne": false
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            },
+                                                                                            "downward_api": {
+                                                                                                "maxItemsOne": true,
+                                                                                                "elem": {
+                                                                                                    "fields": {
+                                                                                                        "items": {
+                                                                                                            "maxItemsOne": false,
+                                                                                                            "elem": {
+                                                                                                                "fields": {
+                                                                                                                    "field_ref": {
+                                                                                                                        "maxItemsOne": true
+                                                                                                                    },
+                                                                                                                    "resource_field_ref": {
+                                                                                                                        "maxItemsOne": true
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            },
+                                                                                            "secret": {
+                                                                                                "maxItemsOne": false,
+                                                                                                "elem": {
+                                                                                                    "fields": {
+                                                                                                        "items": {
+                                                                                                            "maxItemsOne": false
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            },
+                                                                                            "service_account_token": {
+                                                                                                "maxItemsOne": true
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "quobyte": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "rbd": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "ceph_monitors": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "secret_ref": {
+                                                                                    "maxItemsOne": true
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "secret": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "items": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "vsphere_volume": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "update_strategy": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "rolling_update": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "duplocloud_k8s_job": {
                 "current": "duplocloud:index/k8sJob:K8sJob",
                 "fields": {

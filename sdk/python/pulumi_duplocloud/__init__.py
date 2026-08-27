@@ -205,6 +205,7 @@ from .k8_secret import *
 from .k8_secret_provider_class import *
 from .k8_storage_class import *
 from .k8s_cron_job import *
+from .k8s_daemon_set import *
 from .k8s_job import *
 from .oci_containerengine_node_pool import *
 from .other_agents import *
@@ -1246,6 +1247,14 @@ _utilities.register(
   "fqn": "pulumi_duplocloud",
   "classes": {
    "duplocloud:index/k8sCronJob:K8sCronJob": "K8sCronJob"
+  }
+ },
+ {
+  "pkg": "duplocloud",
+  "mod": "index/k8sDaemonSet",
+  "fqn": "pulumi_duplocloud",
+  "classes": {
+   "duplocloud:index/k8sDaemonSet:K8sDaemonSet": "K8sDaemonSet"
   }
  },
  {

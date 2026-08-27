@@ -271,6 +271,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &K8StorageClass{}
 	case "duplocloud:index/k8sCronJob:K8sCronJob":
 		r = &K8sCronJob{}
+	case "duplocloud:index/k8sDaemonSet:K8sDaemonSet":
+		r = &K8sDaemonSet{}
 	case "duplocloud:index/k8sJob:K8sJob":
 		r = &K8sJob{}
 	case "duplocloud:index/ociContainerengineNodePool:OciContainerengineNodePool":
@@ -983,6 +985,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"duplocloud",
 		"index/k8sCronJob",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"duplocloud",
+		"index/k8sDaemonSet",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
