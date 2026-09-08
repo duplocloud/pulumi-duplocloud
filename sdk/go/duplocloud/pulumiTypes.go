@@ -3195,7 +3195,7 @@ func (o AwsAppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomize
 type AwsAppautoscalingPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecification struct {
 	// The metric type.
 	PredefinedMetricType string `pulumi:"predefinedMetricType"`
-	// Reserved for future use. Must be less than or equal to 1023 characters in length.
+	// Identifies the resource associated with the metric type. Required for `ALBRequestCountPerTarget`, where it names the ALB and target group serving the scalable target, in the format `app/<load-balancer-name>/<load-balancer-id>/targetgroup/<target-group-name>/<target-group-id>`. Must be less than or equal to 1023 characters in length.
 	ResourceLabel *string `pulumi:"resourceLabel"`
 }
 
@@ -3213,7 +3213,7 @@ type AwsAppautoscalingPolicyTargetTrackingScalingPolicyConfigurationPredefinedMe
 type AwsAppautoscalingPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgs struct {
 	// The metric type.
 	PredefinedMetricType pulumi.StringInput `pulumi:"predefinedMetricType"`
-	// Reserved for future use. Must be less than or equal to 1023 characters in length.
+	// Identifies the resource associated with the metric type. Required for `ALBRequestCountPerTarget`, where it names the ALB and target group serving the scalable target, in the format `app/<load-balancer-name>/<load-balancer-id>/targetgroup/<target-group-name>/<target-group-id>`. Must be less than or equal to 1023 characters in length.
 	ResourceLabel pulumi.StringPtrInput `pulumi:"resourceLabel"`
 }
 
@@ -3301,7 +3301,7 @@ func (o AwsAppautoscalingPolicyTargetTrackingScalingPolicyConfigurationPredefine
 	}).(pulumi.StringOutput)
 }
 
-// Reserved for future use. Must be less than or equal to 1023 characters in length.
+// Identifies the resource associated with the metric type. Required for `ALBRequestCountPerTarget`, where it names the ALB and target group serving the scalable target, in the format `app/<load-balancer-name>/<load-balancer-id>/targetgroup/<target-group-name>/<target-group-id>`. Must be less than or equal to 1023 characters in length.
 func (o AwsAppautoscalingPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationOutput) ResourceLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AwsAppautoscalingPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecification) *string {
 		return v.ResourceLabel
@@ -3342,7 +3342,7 @@ func (o AwsAppautoscalingPolicyTargetTrackingScalingPolicyConfigurationPredefine
 	}).(pulumi.StringPtrOutput)
 }
 
-// Reserved for future use. Must be less than or equal to 1023 characters in length.
+// Identifies the resource associated with the metric type. Required for `ALBRequestCountPerTarget`, where it names the ALB and target group serving the scalable target, in the format `app/<load-balancer-name>/<load-balancer-id>/targetgroup/<target-group-name>/<target-group-id>`. Must be less than or equal to 1023 characters in length.
 func (o AwsAppautoscalingPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationPtrOutput) ResourceLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsAppautoscalingPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecification) *string {
 		if v == nil {

@@ -165,6 +165,7 @@
         "getK8Secret.ts",
         "getK8Secrets.ts",
         "getK8sCronJob.ts",
+        "getK8sDaemonSet.ts",
         "getK8sJob.ts",
         "getNativeHostImage.ts",
         "getNativeHostImages.ts",

@@ -64,6 +64,26 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Scale on incoming ALB traffic instead of resource usage. Only valid for services attached
+//			// to an ALB target group; resource_label identifies the ALB and target group serving them.
+//			_, err = duplocloud.NewAwsAppautoscalingPolicy(ctx, "asg-request-count-policy", &duplocloud.AwsAppautoscalingPolicyArgs{
+//				TenantId:          duplo_app.TenantId,
+//				Name:              pulumi.String("alb-request-count-per-target"),
+//				PolicyType:        pulumi.String("TargetTrackingScaling"),
+//				ResourceId:        asg_target.ResourceId,
+//				ScalableDimension: asg_target.ScalableDimension,
+//				ServiceNamespace:  asg_target.ServiceNamespace,
+//				TargetTrackingScalingPolicyConfiguration: &duplocloud.AwsAppautoscalingPolicyTargetTrackingScalingPolicyConfigurationArgs{
+//					PredefinedMetricSpecification: &duplocloud.AwsAppautoscalingPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgs{
+//						PredefinedMetricType: pulumi.String("ALBRequestCountPerTarget"),
+//						ResourceLabel:        pulumi.String("app/my-alb/778d41231b141a0f/targetgroup/my-alb-target-group/943f017f100becff"),
+//					},
+//					TargetValue: pulumi.Float64(100),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			return nil
 //		})
 //	}

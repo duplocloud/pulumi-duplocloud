@@ -20,7 +20,7 @@ namespace DuploCloud.Pulumi.Inputs
         public Input<string> PredefinedMetricType { get; set; } = null!;
 
         /// <summary>
-        /// Reserved for future use. Must be less than or equal to 1023 characters in length.
+        /// Identifies the resource associated with the metric type. Required for `ALBRequestCountPerTarget`, where it names the ALB and target group serving the scalable target, in the format `app/&lt;load-balancer-name&gt;/&lt;load-balancer-id&gt;/targetgroup/&lt;target-group-name&gt;/&lt;target-group-id&gt;`. Must be less than or equal to 1023 characters in length.
         /// </summary>
         [Input("resourceLabel")]
         public Input<string>? ResourceLabel { get; set; }

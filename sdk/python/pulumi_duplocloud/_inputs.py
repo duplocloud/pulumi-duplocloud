@@ -1795,6 +1795,8 @@ __all__ = [
     'GetGcpNodePoolTaintArgsDict',
     'GetK8sCronJobMetadataArgs',
     'GetK8sCronJobMetadataArgsDict',
+    'GetK8sDaemonSetMetadataArgs',
+    'GetK8sDaemonSetMetadataArgsDict',
     'GetK8sJobMetadataArgs',
     'GetK8sJobMetadataArgsDict',
 ]
@@ -3312,7 +3314,7 @@ if not MYPY:
         """
         resource_label: NotRequired[pulumi.Input[str]]
         """
-        Reserved for future use. Must be less than or equal to 1023 characters in length.
+        Identifies the resource associated with the metric type. Required for `ALBRequestCountPerTarget`, where it names the ALB and target group serving the scalable target, in the format `app/<load-balancer-name>/<load-balancer-id>/targetgroup/<target-group-name>/<target-group-id>`. Must be less than or equal to 1023 characters in length.
         """
 elif False:
     AwsAppautoscalingPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsDict: TypeAlias = Mapping[str, Any]
@@ -3324,7 +3326,7 @@ class AwsAppautoscalingPolicyTargetTrackingScalingPolicyConfigurationPredefinedM
                  resource_label: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] predefined_metric_type: The metric type.
-        :param pulumi.Input[str] resource_label: Reserved for future use. Must be less than or equal to 1023 characters in length.
+        :param pulumi.Input[str] resource_label: Identifies the resource associated with the metric type. Required for `ALBRequestCountPerTarget`, where it names the ALB and target group serving the scalable target, in the format `app/<load-balancer-name>/<load-balancer-id>/targetgroup/<target-group-name>/<target-group-id>`. Must be less than or equal to 1023 characters in length.
         """
         pulumi.set(__self__, "predefined_metric_type", predefined_metric_type)
         if resource_label is not None:
@@ -3346,7 +3348,7 @@ class AwsAppautoscalingPolicyTargetTrackingScalingPolicyConfigurationPredefinedM
     @pulumi.getter(name="resourceLabel")
     def resource_label(self) -> Optional[pulumi.Input[str]]:
         """
-        Reserved for future use. Must be less than or equal to 1023 characters in length.
+        Identifies the resource associated with the metric type. Required for `ALBRequestCountPerTarget`, where it names the ALB and target group serving the scalable target, in the format `app/<load-balancer-name>/<load-balancer-id>/targetgroup/<target-group-name>/<target-group-id>`. Must be less than or equal to 1023 characters in length.
         """
         return pulumi.get(self, "resource_label")
 
@@ -71858,6 +71860,151 @@ class GetK8sCronJobMetadataArgs:
     @generate_name.setter
     def generate_name(self, value: Optional[str]):
         pulumi.set(self, "generate_name", value)
+
+
+if not MYPY:
+    class GetK8sDaemonSetMetadataArgsDict(TypedDict):
+        annotations: Mapping[str, str]
+        """
+        An unstructured key value map stored with the daemonset that may be used to store arbitrary metadata. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+        """
+        generation: int
+        """
+        A sequence number representing a specific generation of the desired state.
+        """
+        labels: Mapping[str, str]
+        """
+        Map of string keys and values that can be used to organize and categorize (scope and select) the daemonset. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+        """
+        name: str
+        """
+        Name of the daemonset, must be unique. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        """
+        namespace: str
+        """
+        Namespace defines the space within which name of the daemonset must be unique.
+        """
+        resource_version: str
+        """
+        An opaque value that represents the internal version of this daemonset that can be used by clients to determine when daemonset has changed. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+        """
+        uid: str
+        """
+        The unique in time and space value for this daemonset. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
+        """
+elif False:
+    GetK8sDaemonSetMetadataArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetK8sDaemonSetMetadataArgs:
+    def __init__(__self__, *,
+                 annotations: Mapping[str, str],
+                 generation: int,
+                 labels: Mapping[str, str],
+                 name: str,
+                 namespace: str,
+                 resource_version: str,
+                 uid: str):
+        """
+        :param Mapping[str, str] annotations: An unstructured key value map stored with the daemonset that may be used to store arbitrary metadata. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+        :param int generation: A sequence number representing a specific generation of the desired state.
+        :param Mapping[str, str] labels: Map of string keys and values that can be used to organize and categorize (scope and select) the daemonset. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+        :param str name: Name of the daemonset, must be unique. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        :param str namespace: Namespace defines the space within which name of the daemonset must be unique.
+        :param str resource_version: An opaque value that represents the internal version of this daemonset that can be used by clients to determine when daemonset has changed. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+        :param str uid: The unique in time and space value for this daemonset. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
+        """
+        pulumi.set(__self__, "annotations", annotations)
+        pulumi.set(__self__, "generation", generation)
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "namespace", namespace)
+        pulumi.set(__self__, "resource_version", resource_version)
+        pulumi.set(__self__, "uid", uid)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Mapping[str, str]:
+        """
+        An unstructured key value map stored with the daemonset that may be used to store arbitrary metadata. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+        """
+        return pulumi.get(self, "annotations")
+
+    @annotations.setter
+    def annotations(self, value: Mapping[str, str]):
+        pulumi.set(self, "annotations", value)
+
+    @property
+    @pulumi.getter
+    def generation(self) -> int:
+        """
+        A sequence number representing a specific generation of the desired state.
+        """
+        return pulumi.get(self, "generation")
+
+    @generation.setter
+    def generation(self, value: int):
+        pulumi.set(self, "generation", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        """
+        Map of string keys and values that can be used to organize and categorize (scope and select) the daemonset. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Mapping[str, str]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the daemonset, must be unique. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: str):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> str:
+        """
+        Namespace defines the space within which name of the daemonset must be unique.
+        """
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: str):
+        pulumi.set(self, "namespace", value)
+
+    @property
+    @pulumi.getter(name="resourceVersion")
+    def resource_version(self) -> str:
+        """
+        An opaque value that represents the internal version of this daemonset that can be used by clients to determine when daemonset has changed. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+        """
+        return pulumi.get(self, "resource_version")
+
+    @resource_version.setter
+    def resource_version(self, value: str):
+        pulumi.set(self, "resource_version", value)
+
+    @property
+    @pulumi.getter
+    def uid(self) -> str:
+        """
+        The unique in time and space value for this daemonset. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
+        """
+        return pulumi.get(self, "uid")
+
+    @uid.setter
+    def uid(self, value: str):
+        pulumi.set(self, "uid", value)
 
 
 if not MYPY:

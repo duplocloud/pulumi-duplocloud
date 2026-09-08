@@ -755,6 +755,11 @@ export const getK8sCronJob: typeof import("./getK8sCronJob").getK8sCronJob = nul
 export const getK8sCronJobOutput: typeof import("./getK8sCronJob").getK8sCronJobOutput = null as any;
 utilities.lazyLoad(exports, ["getK8sCronJob","getK8sCronJobOutput"], () => require("./getK8sCronJob"));
 
+export { GetK8sDaemonSetArgs, GetK8sDaemonSetResult, GetK8sDaemonSetOutputArgs } from "./getK8sDaemonSet";
+export const getK8sDaemonSet: typeof import("./getK8sDaemonSet").getK8sDaemonSet = null as any;
+export const getK8sDaemonSetOutput: typeof import("./getK8sDaemonSet").getK8sDaemonSetOutput = null as any;
+utilities.lazyLoad(exports, ["getK8sDaemonSet","getK8sDaemonSetOutput"], () => require("./getK8sDaemonSet"));
+
 export { GetK8sJobArgs, GetK8sJobResult, GetK8sJobOutputArgs } from "./getK8sJob";
 export const getK8sJob: typeof import("./getK8sJob").getK8sJob = null as any;
 export const getK8sJobOutput: typeof import("./getK8sJob").getK8sJobOutput = null as any;

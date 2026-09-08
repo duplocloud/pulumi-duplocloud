@@ -296,7 +296,7 @@ export interface AwsAppautoscalingPolicyTargetTrackingScalingPolicyConfiguration
      */
     predefinedMetricType: pulumi.Input<string>;
     /**
-     * Reserved for future use. Must be less than or equal to 1023 characters in length.
+     * Identifies the resource associated with the metric type. Required for `ALBRequestCountPerTarget`, where it names the ALB and target group serving the scalable target, in the format `app/<load-balancer-name>/<load-balancer-id>/targetgroup/<target-group-name>/<target-group-id>`. Must be less than or equal to 1023 characters in length.
      */
     resourceLabel?: pulumi.Input<string>;
 }
@@ -3698,6 +3698,68 @@ export interface GetK8sCronJobMetadataArgs {
     resourceVersion?: pulumi.Input<string>;
     /**
      * The unique in time and space value for this cronjob. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
+     */
+    uid?: pulumi.Input<string>;
+}
+
+export interface GetK8sDaemonSetMetadata {
+    /**
+     * An unstructured key value map stored with the daemonset that may be used to store arbitrary metadata. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+     */
+    annotations?: {[key: string]: string};
+    /**
+     * A sequence number representing a specific generation of the desired state.
+     */
+    generation?: number;
+    /**
+     * Map of string keys and values that can be used to organize and categorize (scope and select) the daemonset. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+     */
+    labels?: {[key: string]: string};
+    /**
+     * Name of the daemonset, must be unique. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: string;
+    /**
+     * Namespace defines the space within which name of the daemonset must be unique.
+     */
+    namespace?: string;
+    /**
+     * An opaque value that represents the internal version of this daemonset that can be used by clients to determine when daemonset has changed. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+     */
+    resourceVersion?: string;
+    /**
+     * The unique in time and space value for this daemonset. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
+     */
+    uid?: string;
+}
+
+export interface GetK8sDaemonSetMetadataArgs {
+    /**
+     * An unstructured key value map stored with the daemonset that may be used to store arbitrary metadata. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+     */
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * A sequence number representing a specific generation of the desired state.
+     */
+    generation?: pulumi.Input<number>;
+    /**
+     * Map of string keys and values that can be used to organize and categorize (scope and select) the daemonset. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Name of the daemonset, must be unique. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Namespace defines the space within which name of the daemonset must be unique.
+     */
+    namespace?: pulumi.Input<string>;
+    /**
+     * An opaque value that represents the internal version of this daemonset that can be used by clients to determine when daemonset has changed. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+     */
+    resourceVersion?: pulumi.Input<string>;
+    /**
+     * The unique in time and space value for this daemonset. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
      */
     uid?: pulumi.Input<string>;
 }

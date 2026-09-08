@@ -361,6 +361,22 @@ class AwsAppautoscalingPolicy(pulumi.CustomResource):
                 },
                 "target_value": 40,
             })
+        # Scale on incoming ALB traffic instead of resource usage. Only valid for services attached
+        # to an ALB target group; resource_label identifies the ALB and target group serving them.
+        asg_request_count_policy = duplocloud.AwsAppautoscalingPolicy("asg-request-count-policy",
+            tenant_id=duplo_app.tenant_id,
+            name="alb-request-count-per-target",
+            policy_type="TargetTrackingScaling",
+            resource_id=asg_target.resource_id,
+            scalable_dimension=asg_target.scalable_dimension,
+            service_namespace=asg_target.service_namespace,
+            target_tracking_scaling_policy_configuration={
+                "predefined_metric_specification": {
+                    "predefined_metric_type": "ALBRequestCountPerTarget",
+                    "resource_label": "app/my-alb/778d41231b141a0f/targetgroup/my-alb-target-group/943f017f100becff",
+                },
+                "target_value": 100,
+            })
         ```
 
         ## Import
@@ -430,6 +446,22 @@ class AwsAppautoscalingPolicy(pulumi.CustomResource):
                     "predefined_metric_type": "ECSServiceAverageCPUUtilization",
                 },
                 "target_value": 40,
+            })
+        # Scale on incoming ALB traffic instead of resource usage. Only valid for services attached
+        # to an ALB target group; resource_label identifies the ALB and target group serving them.
+        asg_request_count_policy = duplocloud.AwsAppautoscalingPolicy("asg-request-count-policy",
+            tenant_id=duplo_app.tenant_id,
+            name="alb-request-count-per-target",
+            policy_type="TargetTrackingScaling",
+            resource_id=asg_target.resource_id,
+            scalable_dimension=asg_target.scalable_dimension,
+            service_namespace=asg_target.service_namespace,
+            target_tracking_scaling_policy_configuration={
+                "predefined_metric_specification": {
+                    "predefined_metric_type": "ALBRequestCountPerTarget",
+                    "resource_label": "app/my-alb/778d41231b141a0f/targetgroup/my-alb-target-group/943f017f100becff",
+                },
+                "target_value": 100,
             })
         ```
 

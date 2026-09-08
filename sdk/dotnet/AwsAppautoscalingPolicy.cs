@@ -58,6 +58,27 @@ namespace DuploCloud.Pulumi
     ///         },
     ///     });
     /// 
+    ///     // Scale on incoming ALB traffic instead of resource usage. Only valid for services attached
+    ///     // to an ALB target group; resource_label identifies the ALB and target group serving them.
+    ///     var asg_request_count_policy = new Pulumi.AwsAppautoscalingPolicy("asg-request-count-policy", new()
+    ///     {
+    ///         TenantId = duplo_app.TenantId,
+    ///         Name = "alb-request-count-per-target",
+    ///         PolicyType = "TargetTrackingScaling",
+    ///         ResourceId = asg_target.ResourceId,
+    ///         ScalableDimension = asg_target.ScalableDimension,
+    ///         ServiceNamespace = asg_target.ServiceNamespace,
+    ///         TargetTrackingScalingPolicyConfiguration = new Pulumi.Inputs.AwsAppautoscalingPolicyTargetTrackingScalingPolicyConfigurationArgs
+    ///         {
+    ///             PredefinedMetricSpecification = new Pulumi.Inputs.AwsAppautoscalingPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgs
+    ///             {
+    ///                 PredefinedMetricType = "ALBRequestCountPerTarget",
+    ///                 ResourceLabel = "app/my-alb/778d41231b141a0f/targetgroup/my-alb-target-group/943f017f100becff",
+    ///             },
+    ///             TargetValue = 100,
+    ///         },
+    ///     });
+    /// 
     /// });
     /// ```
     /// 
