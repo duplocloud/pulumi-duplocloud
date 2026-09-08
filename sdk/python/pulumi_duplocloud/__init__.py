@@ -155,6 +155,7 @@ from .get_k8_config_maps import *
 from .get_k8_secret import *
 from .get_k8_secrets import *
 from .get_k8s_cron_job import *
+from .get_k8s_daemon_set import *
 from .get_k8s_job import *
 from .get_native_host_image import *
 from .get_native_host_images import *

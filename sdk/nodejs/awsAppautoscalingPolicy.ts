@@ -42,6 +42,23 @@ import * as utilities from "./utilities";
  *         targetValue: 40,
  *     },
  * });
+ * // Scale on incoming ALB traffic instead of resource usage. Only valid for services attached
+ * // to an ALB target group; resource_label identifies the ALB and target group serving them.
+ * const asg_request_count_policy = new duplocloud.AwsAppautoscalingPolicy("asg-request-count-policy", {
+ *     tenantId: duplo_app.tenantId,
+ *     name: "alb-request-count-per-target",
+ *     policyType: "TargetTrackingScaling",
+ *     resourceId: asg_target.resourceId,
+ *     scalableDimension: asg_target.scalableDimension,
+ *     serviceNamespace: asg_target.serviceNamespace,
+ *     targetTrackingScalingPolicyConfiguration: {
+ *         predefinedMetricSpecification: {
+ *             predefinedMetricType: "ALBRequestCountPerTarget",
+ *             resourceLabel: "app/my-alb/778d41231b141a0f/targetgroup/my-alb-target-group/943f017f100becff",
+ *         },
+ *         targetValue: 100,
+ *     },
+ * });
  * ```
  *
  * ## Import
