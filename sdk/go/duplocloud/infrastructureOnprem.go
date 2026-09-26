@@ -87,7 +87,7 @@ type InfrastructureOnprem struct {
 
 	// The cloud account ID. Used with GCP cloud
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// Token to access cluster API's
+	// Token to access cluster APIs
 	ApiToken pulumi.StringOutput `pulumi:"apiToken"`
 	// The number of availability zones.  Must be one of: `2`, `3`, or `4`. This is applicable only for AWS.
 	Azcount pulumi.IntPtrOutput `pulumi:"azcount"`
@@ -149,6 +149,13 @@ func NewInfrastructureOnprem(ctx *pulumi.Context,
 	if args.Vendor == nil {
 		return nil, errors.New("invalid value for required argument 'Vendor'")
 	}
+	if args.ApiToken != nil {
+		args.ApiToken = pulumi.ToSecret(args.ApiToken).(pulumi.StringInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"apiToken",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource InfrastructureOnprem
 	err := ctx.RegisterResource("duplocloud:index/infrastructureOnprem:InfrastructureOnprem", name, args, &resource, opts...)
@@ -174,7 +181,7 @@ func GetInfrastructureOnprem(ctx *pulumi.Context,
 type infrastructureOnpremState struct {
 	// The cloud account ID. Used with GCP cloud
 	AccountId *string `pulumi:"accountId"`
-	// Token to access cluster API's
+	// Token to access cluster APIs
 	ApiToken *string `pulumi:"apiToken"`
 	// The number of availability zones.  Must be one of: `2`, `3`, or `4`. This is applicable only for AWS.
 	Azcount *int `pulumi:"azcount"`
@@ -205,7 +212,7 @@ type infrastructureOnpremState struct {
 type InfrastructureOnpremState struct {
 	// The cloud account ID. Used with GCP cloud
 	AccountId pulumi.StringPtrInput
-	// Token to access cluster API's
+	// Token to access cluster APIs
 	ApiToken pulumi.StringPtrInput
 	// The number of availability zones.  Must be one of: `2`, `3`, or `4`. This is applicable only for AWS.
 	Azcount pulumi.IntPtrInput
@@ -240,7 +247,7 @@ func (InfrastructureOnpremState) ElementType() reflect.Type {
 type infrastructureOnpremArgs struct {
 	// The cloud account ID. Used with GCP cloud
 	AccountId *string `pulumi:"accountId"`
-	// Token to access cluster API's
+	// Token to access cluster APIs
 	ApiToken string `pulumi:"apiToken"`
 	// The number of availability zones.  Must be one of: `2`, `3`, or `4`. This is applicable only for AWS.
 	Azcount *int `pulumi:"azcount"`
@@ -270,7 +277,7 @@ type infrastructureOnpremArgs struct {
 type InfrastructureOnpremArgs struct {
 	// The cloud account ID. Used with GCP cloud
 	AccountId pulumi.StringPtrInput
-	// Token to access cluster API's
+	// Token to access cluster APIs
 	ApiToken pulumi.StringInput
 	// The number of availability zones.  Must be one of: `2`, `3`, or `4`. This is applicable only for AWS.
 	Azcount pulumi.IntPtrInput
@@ -388,7 +395,7 @@ func (o InfrastructureOnpremOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *InfrastructureOnprem) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Token to access cluster API's
+// Token to access cluster APIs
 func (o InfrastructureOnpremOutput) ApiToken() pulumi.StringOutput {
 	return o.ApplyT(func(v *InfrastructureOnprem) pulumi.StringOutput { return v.ApiToken }).(pulumi.StringOutput)
 }

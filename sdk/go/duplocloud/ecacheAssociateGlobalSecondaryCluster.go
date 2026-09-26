@@ -137,6 +137,13 @@ func NewEcacheAssociateGlobalSecondaryCluster(ctx *pulumi.Context,
 	if args.TenantId == nil {
 		return nil, errors.New("invalid value for required argument 'TenantId'")
 	}
+	if args.AuthToken != nil {
+		args.AuthToken = pulumi.ToSecret(args.AuthToken).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"authToken",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource EcacheAssociateGlobalSecondaryCluster
 	err := ctx.RegisterResource("duplocloud:index/ecacheAssociateGlobalSecondaryCluster:EcacheAssociateGlobalSecondaryCluster", name, args, &resource, opts...)

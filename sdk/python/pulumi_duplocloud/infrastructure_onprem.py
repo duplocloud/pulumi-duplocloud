@@ -36,7 +36,7 @@ class InfrastructureOnpremArgs:
                  eks_config: Optional[pulumi.Input['InfrastructureOnpremEksConfigArgs']] = None):
         """
         The set of arguments for constructing a InfrastructureOnprem resource.
-        :param pulumi.Input[str] api_token: Token to access cluster API's
+        :param pulumi.Input[str] api_token: Token to access cluster APIs
         :param pulumi.Input[str] cluster_certificate_authority_data: Required to validate API server certificates and kubelet client certificates
         :param pulumi.Input[str] cluster_endpoint: Endpoint URL of K8 cluster
         :param pulumi.Input[str] cluster_name: Name of the on premise k8 cluster
@@ -72,7 +72,7 @@ class InfrastructureOnpremArgs:
     @pulumi.getter(name="apiToken")
     def api_token(self) -> pulumi.Input[str]:
         """
-        Token to access cluster API's
+        Token to access cluster APIs
         """
         return pulumi.get(self, "api_token")
 
@@ -245,7 +245,7 @@ class _InfrastructureOnpremState:
         """
         Input properties used for looking up and filtering InfrastructureOnprem resources.
         :param pulumi.Input[str] account_id: The cloud account ID. Used with GCP cloud
-        :param pulumi.Input[str] api_token: Token to access cluster API's
+        :param pulumi.Input[str] api_token: Token to access cluster APIs
         :param pulumi.Input[int] azcount: The number of availability zones.  Must be one of: `2`, `3`, or `4`. This is applicable only for AWS.
         :param pulumi.Input[str] cluster_certificate_authority_data: Required to validate API server certificates and kubelet client certificates
         :param pulumi.Input[str] cluster_endpoint: Endpoint URL of K8 cluster
@@ -304,7 +304,7 @@ class _InfrastructureOnpremState:
     @pulumi.getter(name="apiToken")
     def api_token(self) -> Optional[pulumi.Input[str]]:
         """
-        Token to access cluster API's
+        Token to access cluster APIs
         """
         return pulumi.get(self, "api_token")
 
@@ -531,7 +531,7 @@ class InfrastructureOnprem(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The cloud account ID. Used with GCP cloud
-        :param pulumi.Input[str] api_token: Token to access cluster API's
+        :param pulumi.Input[str] api_token: Token to access cluster APIs
         :param pulumi.Input[int] azcount: The number of availability zones.  Must be one of: `2`, `3`, or `4`. This is applicable only for AWS.
         :param pulumi.Input[str] cluster_certificate_authority_data: Required to validate API server certificates and kubelet client certificates
         :param pulumi.Input[str] cluster_endpoint: Endpoint URL of K8 cluster
@@ -642,7 +642,7 @@ class InfrastructureOnprem(pulumi.CustomResource):
             __props__.__dict__["account_id"] = account_id
             if api_token is None and not opts.urn:
                 raise TypeError("Missing required property 'api_token'")
-            __props__.__dict__["api_token"] = api_token
+            __props__.__dict__["api_token"] = None if api_token is None else pulumi.Output.secret(api_token)
             __props__.__dict__["azcount"] = azcount
             if cluster_certificate_authority_data is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_certificate_authority_data'")
@@ -671,6 +671,8 @@ class InfrastructureOnprem(pulumi.CustomResource):
                 raise TypeError("Missing required property 'vendor'")
             __props__.__dict__["vendor"] = vendor
             __props__.__dict__["status"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["apiToken"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(InfrastructureOnprem, __self__).__init__(
             'duplocloud:index/infrastructureOnprem:InfrastructureOnprem',
             resource_name,
@@ -703,7 +705,7 @@ class InfrastructureOnprem(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The cloud account ID. Used with GCP cloud
-        :param pulumi.Input[str] api_token: Token to access cluster API's
+        :param pulumi.Input[str] api_token: Token to access cluster APIs
         :param pulumi.Input[int] azcount: The number of availability zones.  Must be one of: `2`, `3`, or `4`. This is applicable only for AWS.
         :param pulumi.Input[str] cluster_certificate_authority_data: Required to validate API server certificates and kubelet client certificates
         :param pulumi.Input[str] cluster_endpoint: Endpoint URL of K8 cluster
@@ -749,7 +751,7 @@ class InfrastructureOnprem(pulumi.CustomResource):
     @pulumi.getter(name="apiToken")
     def api_token(self) -> pulumi.Output[str]:
         """
-        Token to access cluster API's
+        Token to access cluster APIs
         """
         return pulumi.get(self, "api_token")
 

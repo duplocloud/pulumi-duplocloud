@@ -883,7 +883,7 @@ class AzureCosmosDbAccount(pulumi.CustomResource):
             __props__.__dict__["secondary_readonly_sql_connection_string"] = None
             __props__.__dict__["secondary_sql_connection_string"] = None
             __props__.__dict__["write_endpoints"] = None
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["primaryMasterKey", "primaryReadonlyMasterKey", "secondaryMasterKey", "secondaryReadonlyMasterKey"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["primaryMasterKey", "primaryMongoConnectionString", "primaryReadonlyMasterKey", "primaryReadonlyMongoConnectionString", "primaryReadonlySqlConnectionString", "primarySqlConnectionString", "secondaryMasterKey", "secondaryMongoConnectionString", "secondaryReadonlyMasterKey", "secondaryReadonlyMongoConnectionString", "secondaryReadonlySqlConnectionString", "secondarySqlConnectionString"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(AzureCosmosDbAccount, __self__).__init__(
             'duplocloud:index/azureCosmosDbAccount:AzureCosmosDbAccount',

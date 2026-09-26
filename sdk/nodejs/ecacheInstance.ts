@@ -243,7 +243,7 @@ export class EcacheInstance extends pulumi.CustomResource {
      */
     public /*out*/ readonly arn!: pulumi.Output<string>;
     /**
-     * Set a password for authenticating to the ElastiCache instance.  Only supported if `encryptionInTransit` is to to `true`.
+     * Set a password for authenticating to the ElastiCache instance.  Only supported if `encryptionInTransit` is set to `true`.
      */
     public readonly authToken!: pulumi.Output<string | undefined>;
     /**
@@ -252,8 +252,9 @@ export class EcacheInstance extends pulumi.CustomResource {
     public readonly automaticFailoverEnabled!: pulumi.Output<boolean>;
     /**
      * The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache - `2` : Valkey
-     * Changing `cacheType` from `0` (Redis) to `2` (Valkey) performs an in-place engine upgrade. Any other change to
-     * `cacheType` forces replacement of the instance.
+     * Changing `cacheType` from `0` (Redis) to `2` (Valkey) performs an in-place engine upgrade. If the instance uses a custom
+     * parameter group, change `parameterGroupName` to a valkey-family parameter group in the same apply — AWS requires it to
+     * be part of the engine upgrade. Any other change to `cacheType` forces replacement of the instance.
      */
     public readonly cacheType!: pulumi.Output<number | undefined>;
     /**
@@ -405,7 +406,7 @@ export class EcacheInstance extends pulumi.CustomResource {
             if ((!args || args.tenantId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tenantId'");
             }
-            resourceInputs["authToken"] = args ? args.authToken : undefined;
+            resourceInputs["authToken"] = args?.authToken ? pulumi.secret(args.authToken) : undefined;
             resourceInputs["automaticFailoverEnabled"] = args ? args.automaticFailoverEnabled : undefined;
             resourceInputs["cacheType"] = args ? args.cacheType : undefined;
             resourceInputs["enableClusterMode"] = args ? args.enableClusterMode : undefined;
@@ -435,6 +436,8 @@ export class EcacheInstance extends pulumi.CustomResource {
             resourceInputs["port"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["authToken"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(EcacheInstance.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -449,7 +452,7 @@ export interface EcacheInstanceState {
      */
     arn?: pulumi.Input<string>;
     /**
-     * Set a password for authenticating to the ElastiCache instance.  Only supported if `encryptionInTransit` is to to `true`.
+     * Set a password for authenticating to the ElastiCache instance.  Only supported if `encryptionInTransit` is set to `true`.
      */
     authToken?: pulumi.Input<string>;
     /**
@@ -458,8 +461,9 @@ export interface EcacheInstanceState {
     automaticFailoverEnabled?: pulumi.Input<boolean>;
     /**
      * The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache - `2` : Valkey
-     * Changing `cacheType` from `0` (Redis) to `2` (Valkey) performs an in-place engine upgrade. Any other change to
-     * `cacheType` forces replacement of the instance.
+     * Changing `cacheType` from `0` (Redis) to `2` (Valkey) performs an in-place engine upgrade. If the instance uses a custom
+     * parameter group, change `parameterGroupName` to a valkey-family parameter group in the same apply — AWS requires it to
+     * be part of the engine upgrade. Any other change to `cacheType` forces replacement of the instance.
      */
     cacheType?: pulumi.Input<number>;
     /**
@@ -568,7 +572,7 @@ export interface EcacheInstanceState {
  */
 export interface EcacheInstanceArgs {
     /**
-     * Set a password for authenticating to the ElastiCache instance.  Only supported if `encryptionInTransit` is to to `true`.
+     * Set a password for authenticating to the ElastiCache instance.  Only supported if `encryptionInTransit` is set to `true`.
      */
     authToken?: pulumi.Input<string>;
     /**
@@ -577,8 +581,9 @@ export interface EcacheInstanceArgs {
     automaticFailoverEnabled?: pulumi.Input<boolean>;
     /**
      * The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache - `2` : Valkey
-     * Changing `cacheType` from `0` (Redis) to `2` (Valkey) performs an in-place engine upgrade. Any other change to
-     * `cacheType` forces replacement of the instance.
+     * Changing `cacheType` from `0` (Redis) to `2` (Valkey) performs an in-place engine upgrade. If the instance uses a custom
+     * parameter group, change `parameterGroupName` to a valkey-family parameter group in the same apply — AWS requires it to
+     * be part of the engine upgrade. Any other change to `cacheType` forces replacement of the instance.
      */
     cacheType?: pulumi.Input<number>;
     /**

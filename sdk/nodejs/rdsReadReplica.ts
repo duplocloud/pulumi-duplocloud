@@ -69,7 +69,7 @@ export class RdsReadReplica extends pulumi.CustomResource {
      */
     public readonly availabilityZone!: pulumi.Output<string>;
     /**
-     * The full name of the RDS Cluster.
+     * The full name of the RDS Cluster. This can also be the secondary cluster of an Aurora global database (`secondaryCluster` of the `duplocloud.AwsRdsGlobalSecondary` resource), which adds a reader instance to that secondary cluster. The secondary cluster must not be in headless mode (`makeHeadless = false`).
      */
     public readonly clusterIdentifier!: pulumi.Output<string>;
     /**
@@ -150,7 +150,7 @@ export class RdsReadReplica extends pulumi.CustomResource {
      */
     public readonly storageAutoscaling!: pulumi.Output<outputs.RdsReadReplicaStorageAutoscaling>;
     /**
-     * The GUID of the tenant that the RDS read replica will be created in.
+     * The GUID of the tenant that the RDS read replica will be created in. This must be the tenant that owns the cluster: for the secondary cluster of an Aurora global database, use the secondary tenant (`secondaryTenantId` of the `duplocloud.AwsRdsGlobalSecondary` resource).
      */
     public readonly tenantId!: pulumi.Output<string>;
     /**
@@ -262,7 +262,7 @@ export interface RdsReadReplicaState {
      */
     availabilityZone?: pulumi.Input<string>;
     /**
-     * The full name of the RDS Cluster.
+     * The full name of the RDS Cluster. This can also be the secondary cluster of an Aurora global database (`secondaryCluster` of the `duplocloud.AwsRdsGlobalSecondary` resource), which adds a reader instance to that secondary cluster. The secondary cluster must not be in headless mode (`makeHeadless = false`).
      */
     clusterIdentifier?: pulumi.Input<string>;
     /**
@@ -343,7 +343,7 @@ export interface RdsReadReplicaState {
      */
     storageAutoscaling?: pulumi.Input<inputs.RdsReadReplicaStorageAutoscaling>;
     /**
-     * The GUID of the tenant that the RDS read replica will be created in.
+     * The GUID of the tenant that the RDS read replica will be created in. This must be the tenant that owns the cluster: for the secondary cluster of an Aurora global database, use the secondary tenant (`secondaryTenantId` of the `duplocloud.AwsRdsGlobalSecondary` resource).
      */
     tenantId?: pulumi.Input<string>;
     /**
@@ -370,7 +370,7 @@ export interface RdsReadReplicaArgs {
      */
     availabilityZone?: pulumi.Input<string>;
     /**
-     * The full name of the RDS Cluster.
+     * The full name of the RDS Cluster. This can also be the secondary cluster of an Aurora global database (`secondaryCluster` of the `duplocloud.AwsRdsGlobalSecondary` resource), which adds a reader instance to that secondary cluster. The secondary cluster must not be in headless mode (`makeHeadless = false`).
      */
     clusterIdentifier: pulumi.Input<string>;
     /**
@@ -407,7 +407,7 @@ export interface RdsReadReplicaArgs {
      */
     storageAutoscaling?: pulumi.Input<inputs.RdsReadReplicaStorageAutoscaling>;
     /**
-     * The GUID of the tenant that the RDS read replica will be created in.
+     * The GUID of the tenant that the RDS read replica will be created in. This must be the tenant that owns the cluster: for the secondary cluster of an Aurora global database, use the secondary tenant (`secondaryTenantId` of the `duplocloud.AwsRdsGlobalSecondary` resource).
      */
     tenantId: pulumi.Input<string>;
     /**

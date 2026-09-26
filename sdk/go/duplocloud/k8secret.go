@@ -62,6 +62,29 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Track a secret whose values are owned outside of Terraform - created by the Duplo
+//			// installer, rotated out of band - so that services can depend on it without its
+//			// contents ever being written to Terraform state.
+//			//
+//			// Import the secret before the first apply:
+//			//
+//			//	terraform import duplocloud_k8_secret.env_var_global \
+//			//	  v2/subscriptions/*TENANT_ID*/K8SecretApiV2/env-var-os-global
+//			//
+//			// Importing is not strictly required - a create carries any existing data forward - but
+//			// it keeps Terraform from treating a secret that already exists as one it is making, and
+//			// it is the only way to catch a wrong secret_type before the plan proposes a replacement.
+//			// Note that the import itself writes the secret's values to state once, so rotate the
+//			// secret afterwards if that matters.
+//			_, err = duplocloud.NewK8Secret(ctx, "env_var_global", &duplocloud.K8SecretArgs{
+//				TenantId:         myapp.TenantId,
+//				SecretName:       pulumi.String("env-var-os-global"),
+//				SecretType:       pulumi.String("Opaque"),
+//				ManageSecretData: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			return nil
 //		})
 //	}
@@ -81,11 +104,23 @@ import (
 // ```sh
 // $ pulumi import duplocloud:index/k8Secret:K8Secret myapp v2/subscriptions/*TENANT_ID*/K8SecretApiV2/*NAME*
 // ```
+//
+// # An import has no configuration behind it, so it always runs as though Terraform manages
+//
+// the secret's contents: the values are read and written to state in plaintext, once,
+//
+// before `manage_secret_data = false` can take effect.  Subsequent reads mask them, but
+//
+// the values remain in the state history of a versioned remote backend.  Rotate the
+//
+// secret after importing, or scrub the state history, if that matters.
 type K8Secret struct {
 	pulumi.CustomResourceState
 
 	ClientSecretVersion pulumi.StringOutput `pulumi:"clientSecretVersion"`
-	// Annotations for the secret.
+	ManageSecretData    pulumi.BoolOutput   `pulumi:"manageSecretData"`
+	// Annotations for the secret. **Note: : To skip encoding of an already encoded value string of a k8's secrete add
+	// `duplocloud.net/skip-encoding: "true"`
 	SecretAnnotations pulumi.StringMapOutput `pulumi:"secretAnnotations"`
 	// A JSON encoded string representing the secret metadata. You can use the `jsonencode()` function to convert map or object
 	// data, if needed. You can use the `jsondecode()` function to read data.
@@ -148,7 +183,9 @@ func GetK8Secret(ctx *pulumi.Context,
 // Input properties used for looking up and filtering K8Secret resources.
 type k8secretState struct {
 	ClientSecretVersion *string `pulumi:"clientSecretVersion"`
-	// Annotations for the secret.
+	ManageSecretData    *bool   `pulumi:"manageSecretData"`
+	// Annotations for the secret. **Note: : To skip encoding of an already encoded value string of a k8's secrete add
+	// `duplocloud.net/skip-encoding: "true"`
 	SecretAnnotations map[string]string `pulumi:"secretAnnotations"`
 	// A JSON encoded string representing the secret metadata. You can use the `jsonencode()` function to convert map or object
 	// data, if needed. You can use the `jsondecode()` function to read data.
@@ -166,7 +203,9 @@ type k8secretState struct {
 
 type K8SecretState struct {
 	ClientSecretVersion pulumi.StringPtrInput
-	// Annotations for the secret.
+	ManageSecretData    pulumi.BoolPtrInput
+	// Annotations for the secret. **Note: : To skip encoding of an already encoded value string of a k8's secrete add
+	// `duplocloud.net/skip-encoding: "true"`
 	SecretAnnotations pulumi.StringMapInput
 	// A JSON encoded string representing the secret metadata. You can use the `jsonencode()` function to convert map or object
 	// data, if needed. You can use the `jsondecode()` function to read data.
@@ -187,7 +226,9 @@ func (K8SecretState) ElementType() reflect.Type {
 }
 
 type k8secretArgs struct {
-	// Annotations for the secret.
+	ManageSecretData *bool `pulumi:"manageSecretData"`
+	// Annotations for the secret. **Note: : To skip encoding of an already encoded value string of a k8's secrete add
+	// `duplocloud.net/skip-encoding: "true"`
 	SecretAnnotations map[string]string `pulumi:"secretAnnotations"`
 	// A JSON encoded string representing the secret metadata. You can use the `jsonencode()` function to convert map or object
 	// data, if needed. You can use the `jsondecode()` function to read data.
@@ -204,7 +245,9 @@ type k8secretArgs struct {
 
 // The set of arguments for constructing a K8Secret resource.
 type K8SecretArgs struct {
-	// Annotations for the secret.
+	ManageSecretData pulumi.BoolPtrInput
+	// Annotations for the secret. **Note: : To skip encoding of an already encoded value string of a k8's secrete add
+	// `duplocloud.net/skip-encoding: "true"`
 	SecretAnnotations pulumi.StringMapInput
 	// A JSON encoded string representing the secret metadata. You can use the `jsonencode()` function to convert map or object
 	// data, if needed. You can use the `jsondecode()` function to read data.
@@ -310,7 +353,12 @@ func (o K8SecretOutput) ClientSecretVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *K8Secret) pulumi.StringOutput { return v.ClientSecretVersion }).(pulumi.StringOutput)
 }
 
-// Annotations for the secret.
+func (o K8SecretOutput) ManageSecretData() pulumi.BoolOutput {
+	return o.ApplyT(func(v *K8Secret) pulumi.BoolOutput { return v.ManageSecretData }).(pulumi.BoolOutput)
+}
+
+// Annotations for the secret. **Note: : To skip encoding of an already encoded value string of a k8's secrete add
+// `duplocloud.net/skip-encoding: "true"`
 func (o K8SecretOutput) SecretAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *K8Secret) pulumi.StringMapOutput { return v.SecretAnnotations }).(pulumi.StringMapOutput)
 }

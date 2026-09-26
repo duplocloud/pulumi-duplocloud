@@ -87,7 +87,7 @@ namespace DuploCloud.Pulumi.Outputs
         /// </summary>
         public readonly Outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeIscsiResult? Iscsi;
         /// <summary>
-        /// Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local
+        /// Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local.
         /// </summary>
         public readonly Outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeLocalResult? Local;
         /// <summary>

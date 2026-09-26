@@ -32,7 +32,7 @@ class AwsRdsGlobalSecondaryArgs:
         :param pulumi.Input[str] secondary_tenant_id: The GUID of the tenant that the secondary RDS Global Database will be created in.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the RDS tag will be created in.
         :param pulumi.Input[str] kms_key_id: Optional custom KMS key (key ID or ARN) used to encrypt the secondary cluster's storage. The key must belong to the secondary tenant or its plan. When omitted, the secondary tenant's default KMS key is used.
-        :param pulumi.Input[bool] make_headless: It removes the reader instances under secondary cluster by retaining the secondary cluster, Valid during updation Defaults to `false`.
+        :param pulumi.Input[bool] make_headless: Removes every instance under the secondary cluster while retaining the cluster itself, including any reader added with `RdsReadReplica`. Read replicas can only be added to the secondary cluster while this is `false`. Valid during update. Defaults to `false`.
         """
         pulumi.set(__self__, "cluster_identifier", cluster_identifier)
         pulumi.set(__self__, "region", region)
@@ -107,7 +107,7 @@ class AwsRdsGlobalSecondaryArgs:
     @pulumi.getter(name="makeHeadless")
     def make_headless(self) -> Optional[pulumi.Input[bool]]:
         """
-        It removes the reader instances under secondary cluster by retaining the secondary cluster, Valid during updation Defaults to `false`.
+        Removes every instance under the secondary cluster while retaining the cluster itself, including any reader added with `RdsReadReplica`. Read replicas can only be added to the secondary cluster while this is `false`. Valid during update. Defaults to `false`.
         """
         return pulumi.get(self, "make_headless")
 
@@ -134,7 +134,7 @@ class _AwsRdsGlobalSecondaryState:
         :param pulumi.Input[str] cluster_identifier: The identifier of the primary Database.
         :param pulumi.Input[str] global_id: The identifier of the Global Database.
         :param pulumi.Input[str] kms_key_id: Optional custom KMS key (key ID or ARN) used to encrypt the secondary cluster's storage. The key must belong to the secondary tenant or its plan. When omitted, the secondary tenant's default KMS key is used.
-        :param pulumi.Input[bool] make_headless: It removes the reader instances under secondary cluster by retaining the secondary cluster, Valid during updation Defaults to `false`.
+        :param pulumi.Input[bool] make_headless: Removes every instance under the secondary cluster while retaining the cluster itself, including any reader added with `RdsReadReplica`. Read replicas can only be added to the secondary cluster while this is `false`. Valid during update. Defaults to `false`.
         :param pulumi.Input[str] region: The region of the secondary Database.
         :param pulumi.Input[str] secondary_cluster: The identifier of the secondary cluster.
         :param pulumi.Input[str] secondary_instance: The identifier of the secondary Database.
@@ -202,7 +202,7 @@ class _AwsRdsGlobalSecondaryState:
     @pulumi.getter(name="makeHeadless")
     def make_headless(self) -> Optional[pulumi.Input[bool]]:
         """
-        It removes the reader instances under secondary cluster by retaining the secondary cluster, Valid during updation Defaults to `false`.
+        Removes every instance under the secondary cluster while retaining the cluster itself, including any reader added with `RdsReadReplica`. Read replicas can only be added to the secondary cluster while this is `false`. Valid during update. Defaults to `false`.
         """
         return pulumi.get(self, "make_headless")
 
@@ -324,6 +324,14 @@ class AwsRdsGlobalSecondary(pulumi.CustomResource):
             cluster_identifier=mydb.cluster_identifier,
             secondary_tenant_id="a54598b1-0d8f-4a7b-ba7e-4a20f890a57d",
             region="us-east-2")
+        # Optional: additional reader instances on the secondary cluster. They live in
+        # the secondary tenant and target the secondary cluster identifier. Readers can
+        # only be added while make_headless is false.
+        gs_reader = duplocloud.RdsReadReplica("gs_reader",
+            tenant_id=gs.secondary_tenant_id,
+            name="primarydb-dr-reader",
+            size="db.r7g.large",
+            cluster_identifier=gs.secondary_cluster)
         ```
 
         ## Import
@@ -348,7 +356,7 @@ class AwsRdsGlobalSecondary(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_identifier: The identifier of the primary Database.
         :param pulumi.Input[str] kms_key_id: Optional custom KMS key (key ID or ARN) used to encrypt the secondary cluster's storage. The key must belong to the secondary tenant or its plan. When omitted, the secondary tenant's default KMS key is used.
-        :param pulumi.Input[bool] make_headless: It removes the reader instances under secondary cluster by retaining the secondary cluster, Valid during updation Defaults to `false`.
+        :param pulumi.Input[bool] make_headless: Removes every instance under the secondary cluster while retaining the cluster itself, including any reader added with `RdsReadReplica`. Read replicas can only be added to the secondary cluster while this is `false`. Valid during update. Defaults to `false`.
         :param pulumi.Input[str] region: The region of the secondary Database.
         :param pulumi.Input[str] secondary_tenant_id: The GUID of the tenant that the secondary RDS Global Database will be created in.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the RDS tag will be created in.
@@ -391,6 +399,14 @@ class AwsRdsGlobalSecondary(pulumi.CustomResource):
             cluster_identifier=mydb.cluster_identifier,
             secondary_tenant_id="a54598b1-0d8f-4a7b-ba7e-4a20f890a57d",
             region="us-east-2")
+        # Optional: additional reader instances on the secondary cluster. They live in
+        # the secondary tenant and target the secondary cluster identifier. Readers can
+        # only be added while make_headless is false.
+        gs_reader = duplocloud.RdsReadReplica("gs_reader",
+            tenant_id=gs.secondary_tenant_id,
+            name="primarydb-dr-reader",
+            size="db.r7g.large",
+            cluster_identifier=gs.secondary_cluster)
         ```
 
         ## Import
@@ -489,7 +505,7 @@ class AwsRdsGlobalSecondary(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_identifier: The identifier of the primary Database.
         :param pulumi.Input[str] global_id: The identifier of the Global Database.
         :param pulumi.Input[str] kms_key_id: Optional custom KMS key (key ID or ARN) used to encrypt the secondary cluster's storage. The key must belong to the secondary tenant or its plan. When omitted, the secondary tenant's default KMS key is used.
-        :param pulumi.Input[bool] make_headless: It removes the reader instances under secondary cluster by retaining the secondary cluster, Valid during updation Defaults to `false`.
+        :param pulumi.Input[bool] make_headless: Removes every instance under the secondary cluster while retaining the cluster itself, including any reader added with `RdsReadReplica`. Read replicas can only be added to the secondary cluster while this is `false`. Valid during update. Defaults to `false`.
         :param pulumi.Input[str] region: The region of the secondary Database.
         :param pulumi.Input[str] secondary_cluster: The identifier of the secondary cluster.
         :param pulumi.Input[str] secondary_instance: The identifier of the secondary Database.
@@ -540,7 +556,7 @@ class AwsRdsGlobalSecondary(pulumi.CustomResource):
     @pulumi.getter(name="makeHeadless")
     def make_headless(self) -> pulumi.Output[Optional[bool]]:
         """
-        It removes the reader instances under secondary cluster by retaining the secondary cluster, Valid during updation Defaults to `false`.
+        Removes every instance under the secondary cluster while retaining the cluster itself, including any reader added with `RdsReadReplica`. Read replicas can only be added to the secondary cluster while this is `false`. Valid during update. Defaults to `false`.
         """
         return pulumi.get(self, "make_headless")
 

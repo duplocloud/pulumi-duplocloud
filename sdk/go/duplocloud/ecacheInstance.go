@@ -353,13 +353,14 @@ type EcacheInstance struct {
 	ActualEngineVersion pulumi.StringOutput `pulumi:"actualEngineVersion"`
 	// The ARN of the elasticache instance.
 	Arn pulumi.StringOutput `pulumi:"arn"`
-	// Set a password for authenticating to the ElastiCache instance.  Only supported if `encryptionInTransit` is to to `true`.
+	// Set a password for authenticating to the ElastiCache instance.  Only supported if `encryptionInTransit` is set to `true`.
 	AuthToken pulumi.StringPtrOutput `pulumi:"authToken"`
 	// Enables automatic failover.
 	AutomaticFailoverEnabled pulumi.BoolOutput `pulumi:"automaticFailoverEnabled"`
 	// The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache - `2` : Valkey
-	// Changing `cacheType` from `0` (Redis) to `2` (Valkey) performs an in-place engine upgrade. Any other change to
-	// `cacheType` forces replacement of the instance.
+	// Changing `cacheType` from `0` (Redis) to `2` (Valkey) performs an in-place engine upgrade. If the instance uses a custom
+	// parameter group, change `parameterGroupName` to a valkey-family parameter group in the same apply — AWS requires it to
+	// be part of the engine upgrade. Any other change to `cacheType` forces replacement of the instance.
 	CacheType pulumi.IntPtrOutput `pulumi:"cacheType"`
 	// Flag to enable/disable redis/valkey cluster mode. Cluster mode should be enabled if the instance acts as the primary for
 	// a global datastore.
@@ -431,6 +432,13 @@ func NewEcacheInstance(ctx *pulumi.Context,
 	if args.TenantId == nil {
 		return nil, errors.New("invalid value for required argument 'TenantId'")
 	}
+	if args.AuthToken != nil {
+		args.AuthToken = pulumi.ToSecret(args.AuthToken).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"authToken",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource EcacheInstance
 	err := ctx.RegisterResource("duplocloud:index/ecacheInstance:EcacheInstance", name, args, &resource, opts...)
@@ -457,13 +465,14 @@ type ecacheInstanceState struct {
 	ActualEngineVersion *string `pulumi:"actualEngineVersion"`
 	// The ARN of the elasticache instance.
 	Arn *string `pulumi:"arn"`
-	// Set a password for authenticating to the ElastiCache instance.  Only supported if `encryptionInTransit` is to to `true`.
+	// Set a password for authenticating to the ElastiCache instance.  Only supported if `encryptionInTransit` is set to `true`.
 	AuthToken *string `pulumi:"authToken"`
 	// Enables automatic failover.
 	AutomaticFailoverEnabled *bool `pulumi:"automaticFailoverEnabled"`
 	// The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache - `2` : Valkey
-	// Changing `cacheType` from `0` (Redis) to `2` (Valkey) performs an in-place engine upgrade. Any other change to
-	// `cacheType` forces replacement of the instance.
+	// Changing `cacheType` from `0` (Redis) to `2` (Valkey) performs an in-place engine upgrade. If the instance uses a custom
+	// parameter group, change `parameterGroupName` to a valkey-family parameter group in the same apply — AWS requires it to
+	// be part of the engine upgrade. Any other change to `cacheType` forces replacement of the instance.
 	CacheType *int `pulumi:"cacheType"`
 	// Flag to enable/disable redis/valkey cluster mode. Cluster mode should be enabled if the instance acts as the primary for
 	// a global datastore.
@@ -526,13 +535,14 @@ type EcacheInstanceState struct {
 	ActualEngineVersion pulumi.StringPtrInput
 	// The ARN of the elasticache instance.
 	Arn pulumi.StringPtrInput
-	// Set a password for authenticating to the ElastiCache instance.  Only supported if `encryptionInTransit` is to to `true`.
+	// Set a password for authenticating to the ElastiCache instance.  Only supported if `encryptionInTransit` is set to `true`.
 	AuthToken pulumi.StringPtrInput
 	// Enables automatic failover.
 	AutomaticFailoverEnabled pulumi.BoolPtrInput
 	// The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache - `2` : Valkey
-	// Changing `cacheType` from `0` (Redis) to `2` (Valkey) performs an in-place engine upgrade. Any other change to
-	// `cacheType` forces replacement of the instance.
+	// Changing `cacheType` from `0` (Redis) to `2` (Valkey) performs an in-place engine upgrade. If the instance uses a custom
+	// parameter group, change `parameterGroupName` to a valkey-family parameter group in the same apply — AWS requires it to
+	// be part of the engine upgrade. Any other change to `cacheType` forces replacement of the instance.
 	CacheType pulumi.IntPtrInput
 	// Flag to enable/disable redis/valkey cluster mode. Cluster mode should be enabled if the instance acts as the primary for
 	// a global datastore.
@@ -596,13 +606,14 @@ func (EcacheInstanceState) ElementType() reflect.Type {
 }
 
 type ecacheInstanceArgs struct {
-	// Set a password for authenticating to the ElastiCache instance.  Only supported if `encryptionInTransit` is to to `true`.
+	// Set a password for authenticating to the ElastiCache instance.  Only supported if `encryptionInTransit` is set to `true`.
 	AuthToken *string `pulumi:"authToken"`
 	// Enables automatic failover.
 	AutomaticFailoverEnabled *bool `pulumi:"automaticFailoverEnabled"`
 	// The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache - `2` : Valkey
-	// Changing `cacheType` from `0` (Redis) to `2` (Valkey) performs an in-place engine upgrade. Any other change to
-	// `cacheType` forces replacement of the instance.
+	// Changing `cacheType` from `0` (Redis) to `2` (Valkey) performs an in-place engine upgrade. If the instance uses a custom
+	// parameter group, change `parameterGroupName` to a valkey-family parameter group in the same apply — AWS requires it to
+	// be part of the engine upgrade. Any other change to `cacheType` forces replacement of the instance.
 	CacheType *int `pulumi:"cacheType"`
 	// Flag to enable/disable redis/valkey cluster mode. Cluster mode should be enabled if the instance acts as the primary for
 	// a global datastore.
@@ -651,13 +662,14 @@ type ecacheInstanceArgs struct {
 
 // The set of arguments for constructing a EcacheInstance resource.
 type EcacheInstanceArgs struct {
-	// Set a password for authenticating to the ElastiCache instance.  Only supported if `encryptionInTransit` is to to `true`.
+	// Set a password for authenticating to the ElastiCache instance.  Only supported if `encryptionInTransit` is set to `true`.
 	AuthToken pulumi.StringPtrInput
 	// Enables automatic failover.
 	AutomaticFailoverEnabled pulumi.BoolPtrInput
 	// The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache - `2` : Valkey
-	// Changing `cacheType` from `0` (Redis) to `2` (Valkey) performs an in-place engine upgrade. Any other change to
-	// `cacheType` forces replacement of the instance.
+	// Changing `cacheType` from `0` (Redis) to `2` (Valkey) performs an in-place engine upgrade. If the instance uses a custom
+	// parameter group, change `parameterGroupName` to a valkey-family parameter group in the same apply — AWS requires it to
+	// be part of the engine upgrade. Any other change to `cacheType` forces replacement of the instance.
 	CacheType pulumi.IntPtrInput
 	// Flag to enable/disable redis/valkey cluster mode. Cluster mode should be enabled if the instance acts as the primary for
 	// a global datastore.
@@ -800,7 +812,7 @@ func (o EcacheInstanceOutput) Arn() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcacheInstance) pulumi.StringOutput { return v.Arn }).(pulumi.StringOutput)
 }
 
-// Set a password for authenticating to the ElastiCache instance.  Only supported if `encryptionInTransit` is to to `true`.
+// Set a password for authenticating to the ElastiCache instance.  Only supported if `encryptionInTransit` is set to `true`.
 func (o EcacheInstanceOutput) AuthToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcacheInstance) pulumi.StringPtrOutput { return v.AuthToken }).(pulumi.StringPtrOutput)
 }
@@ -811,8 +823,9 @@ func (o EcacheInstanceOutput) AutomaticFailoverEnabled() pulumi.BoolOutput {
 }
 
 // The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache - `2` : Valkey
-// Changing `cacheType` from `0` (Redis) to `2` (Valkey) performs an in-place engine upgrade. Any other change to
-// `cacheType` forces replacement of the instance.
+// Changing `cacheType` from `0` (Redis) to `2` (Valkey) performs an in-place engine upgrade. If the instance uses a custom
+// parameter group, change `parameterGroupName` to a valkey-family parameter group in the same apply — AWS requires it to
+// be part of the engine upgrade. Any other change to `cacheType` forces replacement of the instance.
 func (o EcacheInstanceOutput) CacheType() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *EcacheInstance) pulumi.IntPtrOutput { return v.CacheType }).(pulumi.IntPtrOutput)
 }

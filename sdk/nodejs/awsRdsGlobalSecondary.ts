@@ -39,6 +39,15 @@ import * as utilities from "./utilities";
  *     secondaryTenantId: "a54598b1-0d8f-4a7b-ba7e-4a20f890a57d",
  *     region: "us-east-2",
  * });
+ * // Optional: additional reader instances on the secondary cluster. They live in
+ * // the secondary tenant and target the secondary cluster identifier. Readers can
+ * // only be added while make_headless is false.
+ * const gsReader = new duplocloud.RdsReadReplica("gs_reader", {
+ *     tenantId: gs.secondaryTenantId,
+ *     name: "primarydb-dr-reader",
+ *     size: "db.r7g.large",
+ *     clusterIdentifier: gs.secondaryCluster,
+ * });
  * ```
  *
  * ## Import
@@ -100,7 +109,7 @@ export class AwsRdsGlobalSecondary extends pulumi.CustomResource {
      */
     public readonly kmsKeyId!: pulumi.Output<string | undefined>;
     /**
-     * It removes the reader instances under secondary cluster by retaining the secondary cluster, Valid during updation Defaults to `false`.
+     * Removes every instance under the secondary cluster while retaining the cluster itself, including any reader added with `duplocloud.RdsReadReplica`. Read replicas can only be added to the secondary cluster while this is `false`. Valid during update. Defaults to `false`.
      */
     public readonly makeHeadless!: pulumi.Output<boolean | undefined>;
     public /*out*/ readonly primaryRegion!: pulumi.Output<string>;
@@ -195,7 +204,7 @@ export interface AwsRdsGlobalSecondaryState {
      */
     kmsKeyId?: pulumi.Input<string>;
     /**
-     * It removes the reader instances under secondary cluster by retaining the secondary cluster, Valid during updation Defaults to `false`.
+     * Removes every instance under the secondary cluster while retaining the cluster itself, including any reader added with `duplocloud.RdsReadReplica`. Read replicas can only be added to the secondary cluster while this is `false`. Valid during update. Defaults to `false`.
      */
     makeHeadless?: pulumi.Input<boolean>;
     primaryRegion?: pulumi.Input<string>;
@@ -234,7 +243,7 @@ export interface AwsRdsGlobalSecondaryArgs {
      */
     kmsKeyId?: pulumi.Input<string>;
     /**
-     * It removes the reader instances under secondary cluster by retaining the secondary cluster, Valid during updation Defaults to `false`.
+     * Removes every instance under the secondary cluster while retaining the cluster itself, including any reader added with `duplocloud.RdsReadReplica`. Read replicas can only be added to the secondary cluster while this is `false`. Valid during update. Defaults to `false`.
      */
     makeHeadless?: pulumi.Input<boolean>;
     /**

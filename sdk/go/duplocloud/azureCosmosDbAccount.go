@@ -113,9 +113,17 @@ func NewAzureCosmosDbAccount(ctx *pulumi.Context,
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"primaryMasterKey",
+		"primaryMongoConnectionString",
 		"primaryReadonlyMasterKey",
+		"primaryReadonlyMongoConnectionString",
+		"primaryReadonlySqlConnectionString",
+		"primarySqlConnectionString",
 		"secondaryMasterKey",
+		"secondaryMongoConnectionString",
 		"secondaryReadonlyMasterKey",
+		"secondaryReadonlyMongoConnectionString",
+		"secondaryReadonlySqlConnectionString",
+		"secondarySqlConnectionString",
 	})
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)

@@ -34,6 +34,26 @@ import * as utilities from "./utilities";
  *         annotB: "ValueB",
  *     },
  * });
+ * // Track a secret whose values are owned outside of Terraform - created by the Duplo
+ * // installer, rotated out of band - so that services can depend on it without its
+ * // contents ever being written to Terraform state.
+ * //
+ * // Import the secret before the first apply:
+ * //
+ * //   terraform import duplocloud_k8_secret.env_var_global \
+ * //     v2/subscriptions/*TENANT_ID*&#47;K8SecretApiV2/env-var-os-global
+ * //
+ * // Importing is not strictly required - a create carries any existing data forward - but
+ * // it keeps Terraform from treating a secret that already exists as one it is making, and
+ * // it is the only way to catch a wrong secret_type before the plan proposes a replacement.
+ * // Note that the import itself writes the secret's values to state once, so rotate the
+ * // secret afterwards if that matters.
+ * const envVarGlobal = new duplocloud.K8Secret("env_var_global", {
+ *     tenantId: myapp.tenantId,
+ *     secretName: "env-var-os-global",
+ *     secretType: "Opaque",
+ *     manageSecretData: false,
+ * });
  * ```
  *
  * ## Import
@@ -49,6 +69,16 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import duplocloud:index/k8Secret:K8Secret myapp v2/subscriptions/*TENANT_ID*&#47;K8SecretApiV2/*NAME*
  * ```
+ *
+ * An import has no configuration behind it, so it always runs as though Terraform manages
+ *
+ * the secret's contents: the values are read and written to state in plaintext, once,
+ *
+ * before `manage_secret_data = false` can take effect.  Subsequent reads mask them, but
+ *
+ * the values remain in the state history of a versioned remote backend.  Rotate the
+ *
+ * secret after importing, or scrub the state history, if that matters.
  */
 export class K8Secret extends pulumi.CustomResource {
     /**
@@ -79,8 +109,10 @@ export class K8Secret extends pulumi.CustomResource {
     }
 
     public /*out*/ readonly clientSecretVersion!: pulumi.Output<string>;
+    public readonly manageSecretData!: pulumi.Output<boolean>;
     /**
-     * Annotations for the secret.
+     * Annotations for the secret. **Note: : To skip encoding of an already encoded value string of a k8's secrete add
+     * `duplocloud.net/skip-encoding: "true"`
      */
     public readonly secretAnnotations!: pulumi.Output<{[key: string]: string}>;
     /**
@@ -120,6 +152,7 @@ export class K8Secret extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as K8SecretState | undefined;
             resourceInputs["clientSecretVersion"] = state ? state.clientSecretVersion : undefined;
+            resourceInputs["manageSecretData"] = state ? state.manageSecretData : undefined;
             resourceInputs["secretAnnotations"] = state ? state.secretAnnotations : undefined;
             resourceInputs["secretData"] = state ? state.secretData : undefined;
             resourceInputs["secretLabels"] = state ? state.secretLabels : undefined;
@@ -138,6 +171,7 @@ export class K8Secret extends pulumi.CustomResource {
             if ((!args || args.tenantId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tenantId'");
             }
+            resourceInputs["manageSecretData"] = args ? args.manageSecretData : undefined;
             resourceInputs["secretAnnotations"] = args ? args.secretAnnotations : undefined;
             resourceInputs["secretData"] = args?.secretData ? pulumi.secret(args.secretData) : undefined;
             resourceInputs["secretLabels"] = args ? args.secretLabels : undefined;
@@ -159,8 +193,10 @@ export class K8Secret extends pulumi.CustomResource {
  */
 export interface K8SecretState {
     clientSecretVersion?: pulumi.Input<string>;
+    manageSecretData?: pulumi.Input<boolean>;
     /**
-     * Annotations for the secret.
+     * Annotations for the secret. **Note: : To skip encoding of an already encoded value string of a k8's secrete add
+     * `duplocloud.net/skip-encoding: "true"`
      */
     secretAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -191,8 +227,10 @@ export interface K8SecretState {
  * The set of arguments for constructing a K8Secret resource.
  */
 export interface K8SecretArgs {
+    manageSecretData?: pulumi.Input<boolean>;
     /**
-     * Annotations for the secret.
+     * Annotations for the secret. **Note: : To skip encoding of an already encoded value string of a k8's secrete add
+     * `duplocloud.net/skip-encoding: "true"`
      */
     secretAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

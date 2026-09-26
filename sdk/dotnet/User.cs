@@ -128,6 +128,10 @@ namespace DuploCloud.Pulumi
             {
                 Version = Utilities.Version,
                 PluginDownloadURL = "github://api.github.com/duplocloud/pulumi-duplocloud",
+                AdditionalSecretOutputs =
+                {
+                    "currentSessionToken",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -208,7 +212,16 @@ namespace DuploCloud.Pulumi
     public sealed class UserState : global::Pulumi.ResourceArgs
     {
         [Input("currentSessionToken")]
-        public Input<string>? CurrentSessionToken { get; set; }
+        private Input<string>? _currentSessionToken;
+        public Input<string>? CurrentSessionToken
+        {
+            get => _currentSessionToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _currentSessionToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("isConfirmationEmailSent")]
         public Input<bool>? IsConfirmationEmailSent { get; set; }

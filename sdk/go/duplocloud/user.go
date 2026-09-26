@@ -94,6 +94,10 @@ func NewUser(ctx *pulumi.Context,
 	if args.Username == nil {
 		return nil, errors.New("invalid value for required argument 'Username'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"currentSessionToken",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource User
 	err := ctx.RegisterResource("duplocloud:index/user:User", name, args, &resource, opts...)

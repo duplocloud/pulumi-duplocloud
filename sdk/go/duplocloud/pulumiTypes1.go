@@ -17233,7 +17233,9 @@ type K8sDaemonSetSpecTemplateSpecVolume struct {
 	HostPath *K8sDaemonSetSpecTemplateSpecVolumeHostPath `pulumi:"hostPath"`
 	// Represents an ISCSI Disk resource that is attached to a kubelet's host machine and then exposed to the pod. Provisioned by an admin.
 	Iscsi *K8sDaemonSetSpecTemplateSpecVolumeIscsi `pulumi:"iscsi"`
-	// Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local
+	// Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local. A local volume can only back a PersistentVolume, so this block is rejected on a pod volume. Use host*path, or reference a PersistentVolume through persistent*volume_claim.
+	//
+	// Deprecated: A local volume can only back a PersistentVolume, so this block is rejected on a pod volume. Use host_path, or reference a PersistentVolume through persistent_volume_claim.
 	Local *K8sDaemonSetSpecTemplateSpecVolumeLocal `pulumi:"local"`
 	// Volume's name. Must be a DNS_LABEL and unique within the pod. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 	Name *string `pulumi:"name"`
@@ -17303,7 +17305,9 @@ type K8sDaemonSetSpecTemplateSpecVolumeArgs struct {
 	HostPath K8sDaemonSetSpecTemplateSpecVolumeHostPathPtrInput `pulumi:"hostPath"`
 	// Represents an ISCSI Disk resource that is attached to a kubelet's host machine and then exposed to the pod. Provisioned by an admin.
 	Iscsi K8sDaemonSetSpecTemplateSpecVolumeIscsiPtrInput `pulumi:"iscsi"`
-	// Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local
+	// Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local. A local volume can only back a PersistentVolume, so this block is rejected on a pod volume. Use host*path, or reference a PersistentVolume through persistent*volume_claim.
+	//
+	// Deprecated: A local volume can only back a PersistentVolume, so this block is rejected on a pod volume. Use host_path, or reference a PersistentVolume through persistent_volume_claim.
 	Local K8sDaemonSetSpecTemplateSpecVolumeLocalPtrInput `pulumi:"local"`
 	// Volume's name. Must be a DNS_LABEL and unique within the pod. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -17492,7 +17496,9 @@ func (o K8sDaemonSetSpecTemplateSpecVolumeOutput) Iscsi() K8sDaemonSetSpecTempla
 	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpecVolume) *K8sDaemonSetSpecTemplateSpecVolumeIscsi { return v.Iscsi }).(K8sDaemonSetSpecTemplateSpecVolumeIscsiPtrOutput)
 }
 
-// Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local
+// Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local. A local volume can only back a PersistentVolume, so this block is rejected on a pod volume. Use host*path, or reference a PersistentVolume through persistent*volume_claim.
+//
+// Deprecated: A local volume can only back a PersistentVolume, so this block is rejected on a pod volume. Use host_path, or reference a PersistentVolume through persistent_volume_claim.
 func (o K8sDaemonSetSpecTemplateSpecVolumeOutput) Local() K8sDaemonSetSpecTemplateSpecVolumeLocalPtrOutput {
 	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpecVolume) *K8sDaemonSetSpecTemplateSpecVolumeLocal { return v.Local }).(K8sDaemonSetSpecTemplateSpecVolumeLocalPtrOutput)
 }
@@ -18003,7 +18009,9 @@ type K8sDaemonSetSpecTemplateSpecVolumeAzureFile struct {
 	ReadOnly *bool `pulumi:"readOnly"`
 	// The name of secret that contains Azure Storage Account Name and Key
 	SecretName string `pulumi:"secretName"`
-	// The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is "default" namespace.
+	// The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is "default" namespace. A secret namespace can only be set on a PersistentVolume, so this attribute is ignored on a pod volume. The secret is read from the pod's own namespace.
+	//
+	// Deprecated: A secret namespace can only be set on a PersistentVolume, so this attribute is ignored on a pod volume. The secret is read from the pod's own namespace.
 	SecretNamespace *string `pulumi:"secretNamespace"`
 	// Share Name
 	ShareName string `pulumi:"shareName"`
@@ -18025,7 +18033,9 @@ type K8sDaemonSetSpecTemplateSpecVolumeAzureFileArgs struct {
 	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
 	// The name of secret that contains Azure Storage Account Name and Key
 	SecretName pulumi.StringInput `pulumi:"secretName"`
-	// The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is "default" namespace.
+	// The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is "default" namespace. A secret namespace can only be set on a PersistentVolume, so this attribute is ignored on a pod volume. The secret is read from the pod's own namespace.
+	//
+	// Deprecated: A secret namespace can only be set on a PersistentVolume, so this attribute is ignored on a pod volume. The secret is read from the pod's own namespace.
 	SecretNamespace pulumi.StringPtrInput `pulumi:"secretNamespace"`
 	// Share Name
 	ShareName pulumi.StringInput `pulumi:"shareName"`
@@ -18118,7 +18128,9 @@ func (o K8sDaemonSetSpecTemplateSpecVolumeAzureFileOutput) SecretName() pulumi.S
 	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpecVolumeAzureFile) string { return v.SecretName }).(pulumi.StringOutput)
 }
 
-// The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is "default" namespace.
+// The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is "default" namespace. A secret namespace can only be set on a PersistentVolume, so this attribute is ignored on a pod volume. The secret is read from the pod's own namespace.
+//
+// Deprecated: A secret namespace can only be set on a PersistentVolume, so this attribute is ignored on a pod volume. The secret is read from the pod's own namespace.
 func (o K8sDaemonSetSpecTemplateSpecVolumeAzureFileOutput) SecretNamespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v K8sDaemonSetSpecTemplateSpecVolumeAzureFile) *string { return v.SecretNamespace }).(pulumi.StringPtrOutput)
 }
@@ -18172,7 +18184,9 @@ func (o K8sDaemonSetSpecTemplateSpecVolumeAzureFilePtrOutput) SecretName() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
-// The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is "default" namespace.
+// The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is "default" namespace. A secret namespace can only be set on a PersistentVolume, so this attribute is ignored on a pod volume. The secret is read from the pod's own namespace.
+//
+// Deprecated: A secret namespace can only be set on a PersistentVolume, so this attribute is ignored on a pod volume. The secret is read from the pod's own namespace.
 func (o K8sDaemonSetSpecTemplateSpecVolumeAzureFilePtrOutput) SecretNamespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *K8sDaemonSetSpecTemplateSpecVolumeAzureFile) *string {
 		if v == nil {
@@ -47227,7 +47241,9 @@ type K8sJobSpecTemplateSpecVolume struct {
 	HostPath *K8sJobSpecTemplateSpecVolumeHostPath `pulumi:"hostPath"`
 	// Represents an ISCSI Disk resource that is attached to a kubelet's host machine and then exposed to the pod. Provisioned by an admin.
 	Iscsi *K8sJobSpecTemplateSpecVolumeIscsi `pulumi:"iscsi"`
-	// Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local
+	// Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local. A local volume can only back a PersistentVolume, so this block is rejected on a pod volume. Use host*path, or reference a PersistentVolume through persistent*volume_claim.
+	//
+	// Deprecated: A local volume can only back a PersistentVolume, so this block is rejected on a pod volume. Use host_path, or reference a PersistentVolume through persistent_volume_claim.
 	Local *K8sJobSpecTemplateSpecVolumeLocal `pulumi:"local"`
 	// Volume's name. Must be a DNS_LABEL and unique within the pod. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 	Name *string `pulumi:"name"`
@@ -47297,7 +47313,9 @@ type K8sJobSpecTemplateSpecVolumeArgs struct {
 	HostPath K8sJobSpecTemplateSpecVolumeHostPathPtrInput `pulumi:"hostPath"`
 	// Represents an ISCSI Disk resource that is attached to a kubelet's host machine and then exposed to the pod. Provisioned by an admin.
 	Iscsi K8sJobSpecTemplateSpecVolumeIscsiPtrInput `pulumi:"iscsi"`
-	// Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local
+	// Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local. A local volume can only back a PersistentVolume, so this block is rejected on a pod volume. Use host*path, or reference a PersistentVolume through persistent*volume_claim.
+	//
+	// Deprecated: A local volume can only back a PersistentVolume, so this block is rejected on a pod volume. Use host_path, or reference a PersistentVolume through persistent_volume_claim.
 	Local K8sJobSpecTemplateSpecVolumeLocalPtrInput `pulumi:"local"`
 	// Volume's name. Must be a DNS_LABEL and unique within the pod. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -47464,7 +47482,9 @@ func (o K8sJobSpecTemplateSpecVolumeOutput) Iscsi() K8sJobSpecTemplateSpecVolume
 	return o.ApplyT(func(v K8sJobSpecTemplateSpecVolume) *K8sJobSpecTemplateSpecVolumeIscsi { return v.Iscsi }).(K8sJobSpecTemplateSpecVolumeIscsiPtrOutput)
 }
 
-// Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local
+// Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local. A local volume can only back a PersistentVolume, so this block is rejected on a pod volume. Use host*path, or reference a PersistentVolume through persistent*volume_claim.
+//
+// Deprecated: A local volume can only back a PersistentVolume, so this block is rejected on a pod volume. Use host_path, or reference a PersistentVolume through persistent_volume_claim.
 func (o K8sJobSpecTemplateSpecVolumeOutput) Local() K8sJobSpecTemplateSpecVolumeLocalPtrOutput {
 	return o.ApplyT(func(v K8sJobSpecTemplateSpecVolume) *K8sJobSpecTemplateSpecVolumeLocal { return v.Local }).(K8sJobSpecTemplateSpecVolumeLocalPtrOutput)
 }
@@ -47971,7 +47991,9 @@ type K8sJobSpecTemplateSpecVolumeAzureFile struct {
 	ReadOnly *bool `pulumi:"readOnly"`
 	// The name of secret that contains Azure Storage Account Name and Key
 	SecretName string `pulumi:"secretName"`
-	// The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is "default" namespace.
+	// The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is "default" namespace. A secret namespace can only be set on a PersistentVolume, so this attribute is ignored on a pod volume. The secret is read from the pod's own namespace.
+	//
+	// Deprecated: A secret namespace can only be set on a PersistentVolume, so this attribute is ignored on a pod volume. The secret is read from the pod's own namespace.
 	SecretNamespace *string `pulumi:"secretNamespace"`
 	// Share Name
 	ShareName string `pulumi:"shareName"`
@@ -47993,7 +48015,9 @@ type K8sJobSpecTemplateSpecVolumeAzureFileArgs struct {
 	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
 	// The name of secret that contains Azure Storage Account Name and Key
 	SecretName pulumi.StringInput `pulumi:"secretName"`
-	// The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is "default" namespace.
+	// The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is "default" namespace. A secret namespace can only be set on a PersistentVolume, so this attribute is ignored on a pod volume. The secret is read from the pod's own namespace.
+	//
+	// Deprecated: A secret namespace can only be set on a PersistentVolume, so this attribute is ignored on a pod volume. The secret is read from the pod's own namespace.
 	SecretNamespace pulumi.StringPtrInput `pulumi:"secretNamespace"`
 	// Share Name
 	ShareName pulumi.StringInput `pulumi:"shareName"`
@@ -48086,7 +48110,9 @@ func (o K8sJobSpecTemplateSpecVolumeAzureFileOutput) SecretName() pulumi.StringO
 	return o.ApplyT(func(v K8sJobSpecTemplateSpecVolumeAzureFile) string { return v.SecretName }).(pulumi.StringOutput)
 }
 
-// The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is "default" namespace.
+// The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is "default" namespace. A secret namespace can only be set on a PersistentVolume, so this attribute is ignored on a pod volume. The secret is read from the pod's own namespace.
+//
+// Deprecated: A secret namespace can only be set on a PersistentVolume, so this attribute is ignored on a pod volume. The secret is read from the pod's own namespace.
 func (o K8sJobSpecTemplateSpecVolumeAzureFileOutput) SecretNamespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v K8sJobSpecTemplateSpecVolumeAzureFile) *string { return v.SecretNamespace }).(pulumi.StringPtrOutput)
 }
@@ -48140,7 +48166,9 @@ func (o K8sJobSpecTemplateSpecVolumeAzureFilePtrOutput) SecretName() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is "default" namespace.
+// The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is "default" namespace. A secret namespace can only be set on a PersistentVolume, so this attribute is ignored on a pod volume. The secret is read from the pod's own namespace.
+//
+// Deprecated: A secret namespace can only be set on a PersistentVolume, so this attribute is ignored on a pod volume. The secret is read from the pod's own namespace.
 func (o K8sJobSpecTemplateSpecVolumeAzureFilePtrOutput) SecretNamespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *K8sJobSpecTemplateSpecVolumeAzureFile) *string {
 		if v == nil {

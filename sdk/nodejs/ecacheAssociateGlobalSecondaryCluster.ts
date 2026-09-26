@@ -166,7 +166,7 @@ export class EcacheAssociateGlobalSecondaryCluster extends pulumi.CustomResource
             if ((!args || args.tenantId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tenantId'");
             }
-            resourceInputs["authToken"] = args ? args.authToken : undefined;
+            resourceInputs["authToken"] = args?.authToken ? pulumi.secret(args.authToken) : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["globalDatastoreId"] = args ? args.globalDatastoreId : undefined;
             resourceInputs["secondaryClusterName"] = args ? args.secondaryClusterName : undefined;
@@ -177,6 +177,8 @@ export class EcacheAssociateGlobalSecondaryCluster extends pulumi.CustomResource
             resourceInputs["secondaryRegion"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["authToken"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(EcacheAssociateGlobalSecondaryCluster.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -122,7 +122,7 @@ namespace DuploCloud.Pulumi.Inputs
         public Input<Inputs.K8sJobSpecTemplateSpecVolumeIscsiGetArgs>? Iscsi { get; set; }
 
         /// <summary>
-        /// Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local
+        /// Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local. A local volume can only back a PersistentVolume, so this block is rejected on a pod volume. Use host*path, or reference a PersistentVolume through persistent*volume_claim.
         /// </summary>
         [Input("local")]
         public Input<Inputs.K8sJobSpecTemplateSpecVolumeLocalGetArgs>? Local { get; set; }
