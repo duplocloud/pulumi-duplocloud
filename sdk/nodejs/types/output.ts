@@ -7759,7 +7759,9 @@ export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolume {
      */
     iscsi?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeIscsi;
     /**
-     * Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local
+     * Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local.
+     *
+     * @deprecated A local volume can only back a PersistentVolume, so this block is rejected on a pod volume. Use host_path, or reference a PersistentVolume through persistent_volume_claim.
      */
     local?: outputs.GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeLocal;
     /**
@@ -7857,6 +7859,8 @@ export interface GetK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeAzureFile {
     secretName: string;
     /**
      * The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is "default" namespace.
+     *
+     * @deprecated A secret namespace can only be set on a PersistentVolume, so this attribute is ignored on a pod volume. The secret is read from the pod's own namespace.
      */
     secretNamespace?: string;
     /**
@@ -10924,7 +10928,9 @@ export interface GetK8sDaemonSetSpecTemplateSpecVolume {
      */
     iscsi?: outputs.GetK8sDaemonSetSpecTemplateSpecVolumeIscsi;
     /**
-     * Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local
+     * Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local.
+     *
+     * @deprecated A local volume can only back a PersistentVolume, so this block is rejected on a pod volume. Use host_path, or reference a PersistentVolume through persistent_volume_claim.
      */
     local?: outputs.GetK8sDaemonSetSpecTemplateSpecVolumeLocal;
     /**
@@ -11022,6 +11028,8 @@ export interface GetK8sDaemonSetSpecTemplateSpecVolumeAzureFile {
     secretName: string;
     /**
      * The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is "default" namespace.
+     *
+     * @deprecated A secret namespace can only be set on a PersistentVolume, so this attribute is ignored on a pod volume. The secret is read from the pod's own namespace.
      */
     secretNamespace?: string;
     /**
@@ -14135,7 +14143,9 @@ export interface GetK8sJobSpecTemplateSpecVolume {
      */
     iscsi?: outputs.GetK8sJobSpecTemplateSpecVolumeIscsi;
     /**
-     * Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local
+     * Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local.
+     *
+     * @deprecated A local volume can only back a PersistentVolume, so this block is rejected on a pod volume. Use host_path, or reference a PersistentVolume through persistent_volume_claim.
      */
     local?: outputs.GetK8sJobSpecTemplateSpecVolumeLocal;
     /**
@@ -14233,6 +14243,8 @@ export interface GetK8sJobSpecTemplateSpecVolumeAzureFile {
     secretName: string;
     /**
      * The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is "default" namespace.
+     *
+     * @deprecated A secret namespace can only be set on a PersistentVolume, so this attribute is ignored on a pod volume. The secret is read from the pod's own namespace.
      */
     secretNamespace?: string;
     /**
@@ -18364,7 +18376,9 @@ export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolume {
      */
     iscsi?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeIscsi;
     /**
-     * Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local
+     * Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local. A local volume can only back a PersistentVolume, so this block is rejected on a pod volume. Use host*path, or reference a PersistentVolume through persistent*volume*claim.
+     *
+     * @deprecated A local volume can only back a PersistentVolume, so this block is rejected on a pod volume. Use host_path, or reference a PersistentVolume through persistent_volume_claim.
      */
     local?: outputs.K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeLocal;
     /**
@@ -18461,7 +18475,9 @@ export interface K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeAzureFile {
      */
     secretName: string;
     /**
-     * The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is "default" namespace.
+     * The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is "default" namespace. A secret namespace can only be set on a PersistentVolume, so this attribute is ignored on a pod volume. The secret is read from the pod's own namespace.
+     *
+     * @deprecated A secret namespace can only be set on a PersistentVolume, so this attribute is ignored on a pod volume. The secret is read from the pod's own namespace.
      */
     secretNamespace?: string;
     /**
@@ -21541,7 +21557,9 @@ export interface K8sDaemonSetSpecTemplateSpecVolume {
      */
     iscsi?: outputs.K8sDaemonSetSpecTemplateSpecVolumeIscsi;
     /**
-     * Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local
+     * Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local. A local volume can only back a PersistentVolume, so this block is rejected on a pod volume. Use host*path, or reference a PersistentVolume through persistent*volume_claim.
+     *
+     * @deprecated A local volume can only back a PersistentVolume, so this block is rejected on a pod volume. Use host_path, or reference a PersistentVolume through persistent_volume_claim.
      */
     local?: outputs.K8sDaemonSetSpecTemplateSpecVolumeLocal;
     /**
@@ -21638,7 +21656,9 @@ export interface K8sDaemonSetSpecTemplateSpecVolumeAzureFile {
      */
     secretName: string;
     /**
-     * The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is "default" namespace.
+     * The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is "default" namespace. A secret namespace can only be set on a PersistentVolume, so this attribute is ignored on a pod volume. The secret is read from the pod's own namespace.
+     *
+     * @deprecated A secret namespace can only be set on a PersistentVolume, so this attribute is ignored on a pod volume. The secret is read from the pod's own namespace.
      */
     secretNamespace?: string;
     /**
@@ -24764,7 +24784,9 @@ export interface K8sJobSpecTemplateSpecVolume {
      */
     iscsi?: outputs.K8sJobSpecTemplateSpecVolumeIscsi;
     /**
-     * Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local
+     * Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local. A local volume can only back a PersistentVolume, so this block is rejected on a pod volume. Use host*path, or reference a PersistentVolume through persistent*volume_claim.
+     *
+     * @deprecated A local volume can only back a PersistentVolume, so this block is rejected on a pod volume. Use host_path, or reference a PersistentVolume through persistent_volume_claim.
      */
     local?: outputs.K8sJobSpecTemplateSpecVolumeLocal;
     /**
@@ -24861,7 +24883,9 @@ export interface K8sJobSpecTemplateSpecVolumeAzureFile {
      */
     secretName: string;
     /**
-     * The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is "default" namespace.
+     * The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is "default" namespace. A secret namespace can only be set on a PersistentVolume, so this attribute is ignored on a pod volume. The secret is read from the pod's own namespace.
+     *
+     * @deprecated A secret namespace can only be set on a PersistentVolume, so this attribute is ignored on a pod volume. The secret is read from the pod's own namespace.
      */
     secretNamespace?: string;
     /**

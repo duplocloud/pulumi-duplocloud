@@ -52,6 +52,28 @@ namespace DuploCloud.Pulumi
     ///         },
     ///     });
     /// 
+    ///     // Track a secret whose values are owned outside of Terraform - created by the Duplo
+    ///     // installer, rotated out of band - so that services can depend on it without its
+    ///     // contents ever being written to Terraform state.
+    ///     //
+    ///     // Import the secret before the first apply:
+    ///     //
+    ///     //   terraform import duplocloud_k8_secret.env_var_global \
+    ///     //     v2/subscriptions/*TENANT_ID*/K8SecretApiV2/env-var-os-global
+    ///     //
+    ///     // Importing is not strictly required - a create carries any existing data forward - but
+    ///     // it keeps Terraform from treating a secret that already exists as one it is making, and
+    ///     // it is the only way to catch a wrong secret_type before the plan proposes a replacement.
+    ///     // Note that the import itself writes the secret's values to state once, so rotate the
+    ///     // secret afterwards if that matters.
+    ///     var envVarGlobal = new Pulumi.K8Secret("env_var_global", new()
+    ///     {
+    ///         TenantId = myapp.TenantId,
+    ///         SecretName = "env-var-os-global",
+    ///         SecretType = "Opaque",
+    ///         ManageSecretData = false,
+    ///     });
+    /// 
     /// });
     /// ```
     /// 
@@ -68,6 +90,16 @@ namespace DuploCloud.Pulumi
     /// ```sh
     /// $ pulumi import duplocloud:index/k8Secret:K8Secret myapp v2/subscriptions/*TENANT_ID*/K8SecretApiV2/*NAME*
     /// ```
+    /// 
+    /// An import has no configuration behind it, so it always runs as though Terraform manages
+    /// 
+    /// the secret's contents: the values are read and written to state in plaintext, once,
+    /// 
+    /// before `manage_secret_data = false` can take effect.  Subsequent reads mask them, but
+    /// 
+    /// the values remain in the state history of a versioned remote backend.  Rotate the
+    /// 
+    /// secret after importing, or scrub the state history, if that matters.
     /// </summary>
     [PulumiResourceType("duplocloud:index/k8Secret:K8Secret")]
     public partial class K8Secret : global::Pulumi.CustomResource
@@ -75,8 +107,12 @@ namespace DuploCloud.Pulumi
         [Output("clientSecretVersion")]
         public Output<string> ClientSecretVersion { get; private set; } = null!;
 
+        [Output("manageSecretData")]
+        public Output<bool> ManageSecretData { get; private set; } = null!;
+
         /// <summary>
-        /// Annotations for the secret.
+        /// Annotations for the secret. **Note: : To skip encoding of an already encoded value string of a k8's secrete add
+        /// `duplocloud.net/skip-encoding: "true"`
         /// </summary>
         [Output("secretAnnotations")]
         public Output<ImmutableDictionary<string, string>> SecretAnnotations { get; private set; } = null!;
@@ -166,11 +202,15 @@ namespace DuploCloud.Pulumi
 
     public sealed class K8SecretArgs : global::Pulumi.ResourceArgs
     {
+        [Input("manageSecretData")]
+        public Input<bool>? ManageSecretData { get; set; }
+
         [Input("secretAnnotations")]
         private InputMap<string>? _secretAnnotations;
 
         /// <summary>
-        /// Annotations for the secret.
+        /// Annotations for the secret. **Note: : To skip encoding of an already encoded value string of a k8's secrete add
+        /// `duplocloud.net/skip-encoding: "true"`
         /// </summary>
         public InputMap<string> SecretAnnotations
         {
@@ -236,11 +276,15 @@ namespace DuploCloud.Pulumi
         [Input("clientSecretVersion")]
         public Input<string>? ClientSecretVersion { get; set; }
 
+        [Input("manageSecretData")]
+        public Input<bool>? ManageSecretData { get; set; }
+
         [Input("secretAnnotations")]
         private InputMap<string>? _secretAnnotations;
 
         /// <summary>
-        /// Annotations for the secret.
+        /// Annotations for the secret. **Note: : To skip encoding of an already encoded value string of a k8's secrete add
+        /// `duplocloud.net/skip-encoding: "true"`
         /// </summary>
         public InputMap<string> SecretAnnotations
         {

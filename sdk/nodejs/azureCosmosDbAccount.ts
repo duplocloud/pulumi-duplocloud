@@ -259,7 +259,7 @@ export class AzureCosmosDbAccount extends pulumi.CustomResource {
             resourceInputs["writeEndpoints"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["primaryMasterKey", "primaryReadonlyMasterKey", "secondaryMasterKey", "secondaryReadonlyMasterKey"] };
+        const secretOpts = { additionalSecretOutputs: ["primaryMasterKey", "primaryMongoConnectionString", "primaryReadonlyMasterKey", "primaryReadonlyMongoConnectionString", "primaryReadonlySqlConnectionString", "primarySqlConnectionString", "secondaryMasterKey", "secondaryMongoConnectionString", "secondaryReadonlyMasterKey", "secondaryReadonlyMongoConnectionString", "secondaryReadonlySqlConnectionString", "secondarySqlConnectionString"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(AzureCosmosDbAccount.__pulumiType, name, resourceInputs, opts);
     }

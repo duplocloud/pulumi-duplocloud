@@ -22,6 +22,7 @@ class K8SecretArgs:
                  secret_name: pulumi.Input[str],
                  secret_type: pulumi.Input[str],
                  tenant_id: pulumi.Input[str],
+                 manage_secret_data: Optional[pulumi.Input[bool]] = None,
                  secret_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  secret_data: Optional[pulumi.Input[str]] = None,
                  secret_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
@@ -30,7 +31,8 @@ class K8SecretArgs:
         :param pulumi.Input[str] secret_name: The name of the secret.
         :param pulumi.Input[str] secret_type: The type of the secret.  Usually `"Opaque"`.
         :param pulumi.Input[str] tenant_id: The GUID of the tenant that the secret will be created in.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] secret_annotations: Annotations for the secret.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] secret_annotations: Annotations for the secret. **Note: : To skip encoding of an already encoded value string of a k8's secrete add
+               `duplocloud.net/skip-encoding: "true"`
         :param pulumi.Input[str] secret_data: A JSON encoded string representing the secret metadata. You can use the `jsonencode()` function to convert map or object
                data, if needed. You can use the `jsondecode()` function to read data.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] secret_labels: Map of string keys and values that can be used to organize and categorize (scope and select) the secret
@@ -38,6 +40,8 @@ class K8SecretArgs:
         pulumi.set(__self__, "secret_name", secret_name)
         pulumi.set(__self__, "secret_type", secret_type)
         pulumi.set(__self__, "tenant_id", tenant_id)
+        if manage_secret_data is not None:
+            pulumi.set(__self__, "manage_secret_data", manage_secret_data)
         if secret_annotations is not None:
             pulumi.set(__self__, "secret_annotations", secret_annotations)
         if secret_data is not None:
@@ -82,10 +86,20 @@ class K8SecretArgs:
         pulumi.set(self, "tenant_id", value)
 
     @property
+    @pulumi.getter(name="manageSecretData")
+    def manage_secret_data(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "manage_secret_data")
+
+    @manage_secret_data.setter
+    def manage_secret_data(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "manage_secret_data", value)
+
+    @property
     @pulumi.getter(name="secretAnnotations")
     def secret_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Annotations for the secret.
+        Annotations for the secret. **Note: : To skip encoding of an already encoded value string of a k8's secrete add
+        `duplocloud.net/skip-encoding: "true"`
         """
         return pulumi.get(self, "secret_annotations")
 
@@ -123,6 +137,7 @@ class K8SecretArgs:
 class _K8SecretState:
     def __init__(__self__, *,
                  client_secret_version: Optional[pulumi.Input[str]] = None,
+                 manage_secret_data: Optional[pulumi.Input[bool]] = None,
                  secret_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  secret_data: Optional[pulumi.Input[str]] = None,
                  secret_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -132,7 +147,8 @@ class _K8SecretState:
                  tenant_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering K8Secret resources.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] secret_annotations: Annotations for the secret.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] secret_annotations: Annotations for the secret. **Note: : To skip encoding of an already encoded value string of a k8's secrete add
+               `duplocloud.net/skip-encoding: "true"`
         :param pulumi.Input[str] secret_data: A JSON encoded string representing the secret metadata. You can use the `jsonencode()` function to convert map or object
                data, if needed. You can use the `jsondecode()` function to read data.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] secret_labels: Map of string keys and values that can be used to organize and categorize (scope and select) the secret
@@ -142,6 +158,8 @@ class _K8SecretState:
         """
         if client_secret_version is not None:
             pulumi.set(__self__, "client_secret_version", client_secret_version)
+        if manage_secret_data is not None:
+            pulumi.set(__self__, "manage_secret_data", manage_secret_data)
         if secret_annotations is not None:
             pulumi.set(__self__, "secret_annotations", secret_annotations)
         if secret_data is not None:
@@ -167,10 +185,20 @@ class _K8SecretState:
         pulumi.set(self, "client_secret_version", value)
 
     @property
+    @pulumi.getter(name="manageSecretData")
+    def manage_secret_data(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "manage_secret_data")
+
+    @manage_secret_data.setter
+    def manage_secret_data(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "manage_secret_data", value)
+
+    @property
     @pulumi.getter(name="secretAnnotations")
     def secret_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Annotations for the secret.
+        Annotations for the secret. **Note: : To skip encoding of an already encoded value string of a k8's secrete add
+        `duplocloud.net/skip-encoding: "true"`
         """
         return pulumi.get(self, "secret_annotations")
 
@@ -254,6 +282,7 @@ class K8Secret(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 manage_secret_data: Optional[pulumi.Input[bool]] = None,
                  secret_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  secret_data: Optional[pulumi.Input[str]] = None,
                  secret_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -290,6 +319,25 @@ class K8Secret(pulumi.CustomResource):
                 "annotA": "ValueA",
                 "annotB": "ValueB",
             })
+        # Track a secret whose values are owned outside of Terraform - created by the Duplo
+        # installer, rotated out of band - so that services can depend on it without its
+        # contents ever being written to Terraform state.
+        #
+        # Import the secret before the first apply:
+        #
+        #   terraform import duplocloud_k8_secret.env_var_global \\
+        #     v2/subscriptions/*TENANT_ID*/K8SecretApiV2/env-var-os-global
+        #
+        # Importing is not strictly required - a create carries any existing data forward - but
+        # it keeps Terraform from treating a secret that already exists as one it is making, and
+        # it is the only way to catch a wrong secret_type before the plan proposes a replacement.
+        # Note that the import itself writes the secret's values to state once, so rotate the
+        # secret afterwards if that matters.
+        env_var_global = duplocloud.K8Secret("env_var_global",
+            tenant_id=myapp.tenant_id,
+            secret_name="env-var-os-global",
+            secret_type="Opaque",
+            manage_secret_data=False)
         ```
 
         ## Import
@@ -306,9 +354,20 @@ class K8Secret(pulumi.CustomResource):
         $ pulumi import duplocloud:index/k8Secret:K8Secret myapp v2/subscriptions/*TENANT_ID*/K8SecretApiV2/*NAME*
         ```
 
+        An import has no configuration behind it, so it always runs as though Terraform manages
+
+        the secret's contents: the values are read and written to state in plaintext, once,
+
+        before `manage_secret_data = false` can take effect.  Subsequent reads mask them, but
+
+        the values remain in the state history of a versioned remote backend.  Rotate the
+
+        secret after importing, or scrub the state history, if that matters.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] secret_annotations: Annotations for the secret.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] secret_annotations: Annotations for the secret. **Note: : To skip encoding of an already encoded value string of a k8's secrete add
+               `duplocloud.net/skip-encoding: "true"`
         :param pulumi.Input[str] secret_data: A JSON encoded string representing the secret metadata. You can use the `jsonencode()` function to convert map or object
                data, if needed. You can use the `jsondecode()` function to read data.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] secret_labels: Map of string keys and values that can be used to organize and categorize (scope and select) the secret
@@ -351,6 +410,25 @@ class K8Secret(pulumi.CustomResource):
                 "annotA": "ValueA",
                 "annotB": "ValueB",
             })
+        # Track a secret whose values are owned outside of Terraform - created by the Duplo
+        # installer, rotated out of band - so that services can depend on it without its
+        # contents ever being written to Terraform state.
+        #
+        # Import the secret before the first apply:
+        #
+        #   terraform import duplocloud_k8_secret.env_var_global \\
+        #     v2/subscriptions/*TENANT_ID*/K8SecretApiV2/env-var-os-global
+        #
+        # Importing is not strictly required - a create carries any existing data forward - but
+        # it keeps Terraform from treating a secret that already exists as one it is making, and
+        # it is the only way to catch a wrong secret_type before the plan proposes a replacement.
+        # Note that the import itself writes the secret's values to state once, so rotate the
+        # secret afterwards if that matters.
+        env_var_global = duplocloud.K8Secret("env_var_global",
+            tenant_id=myapp.tenant_id,
+            secret_name="env-var-os-global",
+            secret_type="Opaque",
+            manage_secret_data=False)
         ```
 
         ## Import
@@ -367,6 +445,16 @@ class K8Secret(pulumi.CustomResource):
         $ pulumi import duplocloud:index/k8Secret:K8Secret myapp v2/subscriptions/*TENANT_ID*/K8SecretApiV2/*NAME*
         ```
 
+        An import has no configuration behind it, so it always runs as though Terraform manages
+
+        the secret's contents: the values are read and written to state in plaintext, once,
+
+        before `manage_secret_data = false` can take effect.  Subsequent reads mask them, but
+
+        the values remain in the state history of a versioned remote backend.  Rotate the
+
+        secret after importing, or scrub the state history, if that matters.
+
         :param str resource_name: The name of the resource.
         :param K8SecretArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -382,6 +470,7 @@ class K8Secret(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 manage_secret_data: Optional[pulumi.Input[bool]] = None,
                  secret_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  secret_data: Optional[pulumi.Input[str]] = None,
                  secret_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -397,6 +486,7 @@ class K8Secret(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = K8SecretArgs.__new__(K8SecretArgs)
 
+            __props__.__dict__["manage_secret_data"] = manage_secret_data
             __props__.__dict__["secret_annotations"] = secret_annotations
             __props__.__dict__["secret_data"] = None if secret_data is None else pulumi.Output.secret(secret_data)
             __props__.__dict__["secret_labels"] = secret_labels
@@ -424,6 +514,7 @@ class K8Secret(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             client_secret_version: Optional[pulumi.Input[str]] = None,
+            manage_secret_data: Optional[pulumi.Input[bool]] = None,
             secret_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             secret_data: Optional[pulumi.Input[str]] = None,
             secret_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -438,7 +529,8 @@ class K8Secret(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] secret_annotations: Annotations for the secret.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] secret_annotations: Annotations for the secret. **Note: : To skip encoding of an already encoded value string of a k8's secrete add
+               `duplocloud.net/skip-encoding: "true"`
         :param pulumi.Input[str] secret_data: A JSON encoded string representing the secret metadata. You can use the `jsonencode()` function to convert map or object
                data, if needed. You can use the `jsondecode()` function to read data.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] secret_labels: Map of string keys and values that can be used to organize and categorize (scope and select) the secret
@@ -451,6 +543,7 @@ class K8Secret(pulumi.CustomResource):
         __props__ = _K8SecretState.__new__(_K8SecretState)
 
         __props__.__dict__["client_secret_version"] = client_secret_version
+        __props__.__dict__["manage_secret_data"] = manage_secret_data
         __props__.__dict__["secret_annotations"] = secret_annotations
         __props__.__dict__["secret_data"] = secret_data
         __props__.__dict__["secret_labels"] = secret_labels
@@ -466,10 +559,16 @@ class K8Secret(pulumi.CustomResource):
         return pulumi.get(self, "client_secret_version")
 
     @property
+    @pulumi.getter(name="manageSecretData")
+    def manage_secret_data(self) -> pulumi.Output[bool]:
+        return pulumi.get(self, "manage_secret_data")
+
+    @property
     @pulumi.getter(name="secretAnnotations")
     def secret_annotations(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        Annotations for the secret.
+        Annotations for the secret. **Note: : To skip encoding of an already encoded value string of a k8's secrete add
+        `duplocloud.net/skip-encoding: "true"`
         """
         return pulumi.get(self, "secret_annotations")
 

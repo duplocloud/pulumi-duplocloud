@@ -55,6 +55,17 @@ namespace DuploCloud.Pulumi
     ///         Region = "us-east-2",
     ///     });
     /// 
+    ///     // Optional: additional reader instances on the secondary cluster. They live in
+    ///     // the secondary tenant and target the secondary cluster identifier. Readers can
+    ///     // only be added while make_headless is false.
+    ///     var gsReader = new Pulumi.RdsReadReplica("gs_reader", new()
+    ///     {
+    ///         TenantId = gs.SecondaryTenantId,
+    ///         Name = "primarydb-dr-reader",
+    ///         Size = "db.r7g.large",
+    ///         ClusterIdentifier = gs.SecondaryCluster,
+    ///     });
+    /// 
     /// });
     /// ```
     /// 
@@ -98,7 +109,7 @@ namespace DuploCloud.Pulumi
         public Output<string?> KmsKeyId { get; private set; } = null!;
 
         /// <summary>
-        /// It removes the reader instances under secondary cluster by retaining the secondary cluster, Valid during updation Defaults to `false`.
+        /// Removes every instance under the secondary cluster while retaining the cluster itself, including any reader added with `duplocloud.RdsReadReplica`. Read replicas can only be added to the secondary cluster while this is `false`. Valid during update. Defaults to `false`.
         /// </summary>
         [Output("makeHeadless")]
         public Output<bool?> MakeHeadless { get; private set; } = null!;
@@ -196,7 +207,7 @@ namespace DuploCloud.Pulumi
         public Input<string>? KmsKeyId { get; set; }
 
         /// <summary>
-        /// It removes the reader instances under secondary cluster by retaining the secondary cluster, Valid during updation Defaults to `false`.
+        /// Removes every instance under the secondary cluster while retaining the cluster itself, including any reader added with `duplocloud.RdsReadReplica`. Read replicas can only be added to the secondary cluster while this is `false`. Valid during update. Defaults to `false`.
         /// </summary>
         [Input("makeHeadless")]
         public Input<bool>? MakeHeadless { get; set; }
@@ -246,7 +257,7 @@ namespace DuploCloud.Pulumi
         public Input<string>? KmsKeyId { get; set; }
 
         /// <summary>
-        /// It removes the reader instances under secondary cluster by retaining the secondary cluster, Valid during updation Defaults to `false`.
+        /// Removes every instance under the secondary cluster while retaining the cluster itself, including any reader added with `duplocloud.RdsReadReplica`. Read replicas can only be added to the secondary cluster while this is `false`. Valid during update. Defaults to `false`.
         /// </summary>
         [Input("makeHeadless")]
         public Input<bool>? MakeHeadless { get; set; }

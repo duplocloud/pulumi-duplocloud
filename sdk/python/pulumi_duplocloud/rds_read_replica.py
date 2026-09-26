@@ -37,10 +37,10 @@ class RdsReadReplicaArgs:
                  v2_scaling_configuration: Optional[pulumi.Input['RdsReadReplicaV2ScalingConfigurationArgs']] = None):
         """
         The set of arguments for constructing a RdsReadReplica resource.
-        :param pulumi.Input[str] cluster_identifier: The full name of the RDS Cluster.
+        :param pulumi.Input[str] cluster_identifier: The full name of the RDS Cluster. This can also be the secondary cluster of an Aurora global database (`secondary_cluster` of the `AwsRdsGlobalSecondary` resource), which adds a reader instance to that secondary cluster. The secondary cluster must not be in headless mode (`make_headless = false`).
         :param pulumi.Input[str] size: The type of the RDS read replica.
                See AWS documentation for the [available instance types](https://aws.amazon.com/rds/instance-types/).Size should be set as db.serverless if read replica instamce is created as serverless
-        :param pulumi.Input[str] tenant_id: The GUID of the tenant that the RDS read replica will be created in.
+        :param pulumi.Input[str] tenant_id: The GUID of the tenant that the RDS read replica will be created in. This must be the tenant that owns the cluster: for the secondary cluster of an Aurora global database, use the secondary tenant (`secondary_tenant_id` of the `AwsRdsGlobalSecondary` resource).
         :param pulumi.Input[int] allocated_storage: (Required unless a `snapshot_id` is provided) The allocated storage in gigabytes. This can only be set during an update; it will inherit the writer's value during creation.
                **Note:** Allocated storage can only be modified after every 6 hours.
         :param pulumi.Input[bool] auto_minor_version_upgrade: Enable or disable auto minor version upgrade
@@ -84,7 +84,7 @@ class RdsReadReplicaArgs:
     @pulumi.getter(name="clusterIdentifier")
     def cluster_identifier(self) -> pulumi.Input[str]:
         """
-        The full name of the RDS Cluster.
+        The full name of the RDS Cluster. This can also be the secondary cluster of an Aurora global database (`secondary_cluster` of the `AwsRdsGlobalSecondary` resource), which adds a reader instance to that secondary cluster. The secondary cluster must not be in headless mode (`make_headless = false`).
         """
         return pulumi.get(self, "cluster_identifier")
 
@@ -109,7 +109,7 @@ class RdsReadReplicaArgs:
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> pulumi.Input[str]:
         """
-        The GUID of the tenant that the RDS read replica will be created in.
+        The GUID of the tenant that the RDS read replica will be created in. This must be the tenant that owns the cluster: for the secondary cluster of an Aurora global database, use the secondary tenant (`secondary_tenant_id` of the `AwsRdsGlobalSecondary` resource).
         """
         return pulumi.get(self, "tenant_id")
 
@@ -287,7 +287,7 @@ class _RdsReadReplicaState:
         :param pulumi.Input[str] arn: The ARN of the RDS read replica.
         :param pulumi.Input[bool] auto_minor_version_upgrade: Enable or disable auto minor version upgrade
         :param pulumi.Input[str] availability_zone: The AZ for the RDS instance.
-        :param pulumi.Input[str] cluster_identifier: The full name of the RDS Cluster.
+        :param pulumi.Input[str] cluster_identifier: The full name of the RDS Cluster. This can also be the secondary cluster of an Aurora global database (`secondary_cluster` of the `AwsRdsGlobalSecondary` resource), which adds a reader instance to that secondary cluster. The secondary cluster must not be in headless mode (`make_headless = false`).
         :param pulumi.Input[str] cluster_parameter_group_name: Parameter group associated with this instance's DB Cluster.
         :param pulumi.Input[bool] enable_logging: Whether or not to enable the RDS instance logging. This setting is not applicable for document db cluster instance.
         :param pulumi.Input[bool] encrypt_storage: Whether or not to encrypt the RDS instance storage.
@@ -308,7 +308,7 @@ class _RdsReadReplicaState:
         :param pulumi.Input[str] size: The type of the RDS read replica.
                See AWS documentation for the [available instance types](https://aws.amazon.com/rds/instance-types/).Size should be set as db.serverless if read replica instamce is created as serverless
         :param pulumi.Input['RdsReadReplicaStorageAutoscalingArgs'] storage_autoscaling: This can only be set during an update; it will inherit the writer's value during creation.
-        :param pulumi.Input[str] tenant_id: The GUID of the tenant that the RDS read replica will be created in.
+        :param pulumi.Input[str] tenant_id: The GUID of the tenant that the RDS read replica will be created in. This must be the tenant that owns the cluster: for the secondary cluster of an Aurora global database, use the secondary tenant (`secondary_tenant_id` of the `AwsRdsGlobalSecondary` resource).
         :param pulumi.Input['RdsReadReplicaV2ScalingConfigurationArgs'] v2_scaling_configuration: Serverless v2*scaling*configuration min and max scalling capacity. Required during creating a servless read replica.
         """
         if allocated_storage is not None:
@@ -417,7 +417,7 @@ class _RdsReadReplicaState:
     @pulumi.getter(name="clusterIdentifier")
     def cluster_identifier(self) -> Optional[pulumi.Input[str]]:
         """
-        The full name of the RDS Cluster.
+        The full name of the RDS Cluster. This can also be the secondary cluster of an Aurora global database (`secondary_cluster` of the `AwsRdsGlobalSecondary` resource), which adds a reader instance to that secondary cluster. The secondary cluster must not be in headless mode (`make_headless = false`).
         """
         return pulumi.get(self, "cluster_identifier")
 
@@ -658,7 +658,7 @@ class _RdsReadReplicaState:
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The GUID of the tenant that the RDS read replica will be created in.
+        The GUID of the tenant that the RDS read replica will be created in. This must be the tenant that owns the cluster: for the secondary cluster of an Aurora global database, use the secondary tenant (`secondary_tenant_id` of the `AwsRdsGlobalSecondary` resource).
         """
         return pulumi.get(self, "tenant_id")
 
@@ -722,7 +722,7 @@ class RdsReadReplica(pulumi.CustomResource):
                **Note:** Allocated storage can only be modified after every 6 hours.
         :param pulumi.Input[bool] auto_minor_version_upgrade: Enable or disable auto minor version upgrade
         :param pulumi.Input[str] availability_zone: The AZ for the RDS instance.
-        :param pulumi.Input[str] cluster_identifier: The full name of the RDS Cluster.
+        :param pulumi.Input[str] cluster_identifier: The full name of the RDS Cluster. This can also be the secondary cluster of an Aurora global database (`secondary_cluster` of the `AwsRdsGlobalSecondary` resource), which adds a reader instance to that secondary cluster. The secondary cluster must not be in headless mode (`make_headless = false`).
         :param pulumi.Input[int] engine_type: Engine type required to validate applicable parameter group setting for different instance. Should be referred from writer
         :param pulumi.Input[int] enhanced_monitoring: Interval to capture metrics in real time for the operating system (OS) that your Amazon RDS DB instance runs on.
         :param pulumi.Input[bool] multi_az: Specifies if the RDS instance is multi-AZ.
@@ -732,7 +732,7 @@ class RdsReadReplica(pulumi.CustomResource):
         :param pulumi.Input[str] size: The type of the RDS read replica.
                See AWS documentation for the [available instance types](https://aws.amazon.com/rds/instance-types/).Size should be set as db.serverless if read replica instamce is created as serverless
         :param pulumi.Input[Union['RdsReadReplicaStorageAutoscalingArgs', 'RdsReadReplicaStorageAutoscalingArgsDict']] storage_autoscaling: This can only be set during an update; it will inherit the writer's value during creation.
-        :param pulumi.Input[str] tenant_id: The GUID of the tenant that the RDS read replica will be created in.
+        :param pulumi.Input[str] tenant_id: The GUID of the tenant that the RDS read replica will be created in. This must be the tenant that owns the cluster: for the secondary cluster of an Aurora global database, use the secondary tenant (`secondary_tenant_id` of the `AwsRdsGlobalSecondary` resource).
         :param pulumi.Input[Union['RdsReadReplicaV2ScalingConfigurationArgs', 'RdsReadReplicaV2ScalingConfigurationArgsDict']] v2_scaling_configuration: Serverless v2*scaling*configuration min and max scalling capacity. Required during creating a servless read replica.
         """
         ...
@@ -876,7 +876,7 @@ class RdsReadReplica(pulumi.CustomResource):
         :param pulumi.Input[str] arn: The ARN of the RDS read replica.
         :param pulumi.Input[bool] auto_minor_version_upgrade: Enable or disable auto minor version upgrade
         :param pulumi.Input[str] availability_zone: The AZ for the RDS instance.
-        :param pulumi.Input[str] cluster_identifier: The full name of the RDS Cluster.
+        :param pulumi.Input[str] cluster_identifier: The full name of the RDS Cluster. This can also be the secondary cluster of an Aurora global database (`secondary_cluster` of the `AwsRdsGlobalSecondary` resource), which adds a reader instance to that secondary cluster. The secondary cluster must not be in headless mode (`make_headless = false`).
         :param pulumi.Input[str] cluster_parameter_group_name: Parameter group associated with this instance's DB Cluster.
         :param pulumi.Input[bool] enable_logging: Whether or not to enable the RDS instance logging. This setting is not applicable for document db cluster instance.
         :param pulumi.Input[bool] encrypt_storage: Whether or not to encrypt the RDS instance storage.
@@ -897,7 +897,7 @@ class RdsReadReplica(pulumi.CustomResource):
         :param pulumi.Input[str] size: The type of the RDS read replica.
                See AWS documentation for the [available instance types](https://aws.amazon.com/rds/instance-types/).Size should be set as db.serverless if read replica instamce is created as serverless
         :param pulumi.Input[Union['RdsReadReplicaStorageAutoscalingArgs', 'RdsReadReplicaStorageAutoscalingArgsDict']] storage_autoscaling: This can only be set during an update; it will inherit the writer's value during creation.
-        :param pulumi.Input[str] tenant_id: The GUID of the tenant that the RDS read replica will be created in.
+        :param pulumi.Input[str] tenant_id: The GUID of the tenant that the RDS read replica will be created in. This must be the tenant that owns the cluster: for the secondary cluster of an Aurora global database, use the secondary tenant (`secondary_tenant_id` of the `AwsRdsGlobalSecondary` resource).
         :param pulumi.Input[Union['RdsReadReplicaV2ScalingConfigurationArgs', 'RdsReadReplicaV2ScalingConfigurationArgsDict']] v2_scaling_configuration: Serverless v2*scaling*configuration min and max scalling capacity. Required during creating a servless read replica.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -969,7 +969,7 @@ class RdsReadReplica(pulumi.CustomResource):
     @pulumi.getter(name="clusterIdentifier")
     def cluster_identifier(self) -> pulumi.Output[str]:
         """
-        The full name of the RDS Cluster.
+        The full name of the RDS Cluster. This can also be the secondary cluster of an Aurora global database (`secondary_cluster` of the `AwsRdsGlobalSecondary` resource), which adds a reader instance to that secondary cluster. The secondary cluster must not be in headless mode (`make_headless = false`).
         """
         return pulumi.get(self, "cluster_identifier")
 
@@ -1130,7 +1130,7 @@ class RdsReadReplica(pulumi.CustomResource):
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> pulumi.Output[str]:
         """
-        The GUID of the tenant that the RDS read replica will be created in.
+        The GUID of the tenant that the RDS read replica will be created in. This must be the tenant that owns the cluster: for the secondary cluster of an Aurora global database, use the secondary tenant (`secondary_tenant_id` of the `AwsRdsGlobalSecondary` resource).
         """
         return pulumi.get(self, "tenant_id")
 

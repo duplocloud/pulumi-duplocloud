@@ -297,7 +297,7 @@ namespace DuploCloud.Pulumi
         public Output<string> Arn { get; private set; } = null!;
 
         /// <summary>
-        /// Set a password for authenticating to the ElastiCache instance.  Only supported if `encryption_in_transit` is to to `true`.
+        /// Set a password for authenticating to the ElastiCache instance.  Only supported if `encryption_in_transit` is set to `true`.
         /// </summary>
         [Output("authToken")]
         public Output<string?> AuthToken { get; private set; } = null!;
@@ -310,8 +310,9 @@ namespace DuploCloud.Pulumi
 
         /// <summary>
         /// The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache - `2` : Valkey
-        /// Changing `cache_type` from `0` (Redis) to `2` (Valkey) performs an in-place engine upgrade. Any other change to
-        /// `cache_type` forces replacement of the instance.
+        /// Changing `cache_type` from `0` (Redis) to `2` (Valkey) performs an in-place engine upgrade. If the instance uses a
+        /// custom parameter group, change `parameter_group_name` to a valkey-family parameter group in the same apply — AWS
+        /// requires it to be part of the engine upgrade. Any other change to `cache_type` forces replacement of the instance.
         /// </summary>
         [Output("cacheType")]
         public Output<int?> CacheType { get; private set; } = null!;
@@ -485,6 +486,10 @@ namespace DuploCloud.Pulumi
             {
                 Version = Utilities.Version,
                 PluginDownloadURL = "github://api.github.com/duplocloud/pulumi-duplocloud",
+                AdditionalSecretOutputs =
+                {
+                    "authToken",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -508,11 +513,21 @@ namespace DuploCloud.Pulumi
 
     public sealed class EcacheInstanceArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Set a password for authenticating to the ElastiCache instance.  Only supported if `encryption_in_transit` is to to `true`.
-        /// </summary>
         [Input("authToken")]
-        public Input<string>? AuthToken { get; set; }
+        private Input<string>? _authToken;
+
+        /// <summary>
+        /// Set a password for authenticating to the ElastiCache instance.  Only supported if `encryption_in_transit` is set to `true`.
+        /// </summary>
+        public Input<string>? AuthToken
+        {
+            get => _authToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _authToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Enables automatic failover.
@@ -522,8 +537,9 @@ namespace DuploCloud.Pulumi
 
         /// <summary>
         /// The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache - `2` : Valkey
-        /// Changing `cache_type` from `0` (Redis) to `2` (Valkey) performs an in-place engine upgrade. Any other change to
-        /// `cache_type` forces replacement of the instance.
+        /// Changing `cache_type` from `0` (Redis) to `2` (Valkey) performs an in-place engine upgrade. If the instance uses a
+        /// custom parameter group, change `parameter_group_name` to a valkey-family parameter group in the same apply — AWS
+        /// requires it to be part of the engine upgrade. Any other change to `cache_type` forces replacement of the instance.
         /// </summary>
         [Input("cacheType")]
         public Input<int>? CacheType { get; set; }
@@ -665,11 +681,21 @@ namespace DuploCloud.Pulumi
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// Set a password for authenticating to the ElastiCache instance.  Only supported if `encryption_in_transit` is to to `true`.
-        /// </summary>
         [Input("authToken")]
-        public Input<string>? AuthToken { get; set; }
+        private Input<string>? _authToken;
+
+        /// <summary>
+        /// Set a password for authenticating to the ElastiCache instance.  Only supported if `encryption_in_transit` is set to `true`.
+        /// </summary>
+        public Input<string>? AuthToken
+        {
+            get => _authToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _authToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Enables automatic failover.
@@ -679,8 +705,9 @@ namespace DuploCloud.Pulumi
 
         /// <summary>
         /// The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache - `2` : Valkey
-        /// Changing `cache_type` from `0` (Redis) to `2` (Valkey) performs an in-place engine upgrade. Any other change to
-        /// `cache_type` forces replacement of the instance.
+        /// Changing `cache_type` from `0` (Redis) to `2` (Valkey) performs an in-place engine upgrade. If the instance uses a
+        /// custom parameter group, change `parameter_group_name` to a valkey-family parameter group in the same apply — AWS
+        /// requires it to be part of the engine upgrade. Any other change to `cache_type` forces replacement of the instance.
         /// </summary>
         [Input("cacheType")]
         public Input<int>? CacheType { get; set; }

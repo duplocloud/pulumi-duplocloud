@@ -165,6 +165,10 @@ namespace DuploCloud.Pulumi
             {
                 Version = Utilities.Version,
                 PluginDownloadURL = "github://api.github.com/duplocloud/pulumi-duplocloud",
+                AdditionalSecretOutputs =
+                {
+                    "authToken",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -188,11 +192,21 @@ namespace DuploCloud.Pulumi
 
     public sealed class EcacheAssociateGlobalSecondaryClusterArgs : global::Pulumi.ResourceArgs
     {
+        [Input("authToken")]
+        private Input<string>? _authToken;
+
         /// <summary>
         /// Set a password for authenticating to the ElastiCache instance.
         /// </summary>
-        [Input("authToken")]
-        public Input<string>? AuthToken { get; set; }
+        public Input<string>? AuthToken
+        {
+            get => _authToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _authToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The description for secondary cluster
@@ -238,11 +252,21 @@ namespace DuploCloud.Pulumi
 
     public sealed class EcacheAssociateGlobalSecondaryClusterState : global::Pulumi.ResourceArgs
     {
+        [Input("authToken")]
+        private Input<string>? _authToken;
+
         /// <summary>
         /// Set a password for authenticating to the ElastiCache instance.
         /// </summary>
-        [Input("authToken")]
-        public Input<string>? AuthToken { get; set; }
+        public Input<string>? AuthToken
+        {
+            get => _authToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _authToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The description for secondary cluster

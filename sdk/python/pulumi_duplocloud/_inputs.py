@@ -34395,7 +34395,7 @@ if not MYPY:
         """
         local: NotRequired[pulumi.Input['K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeLocalArgsDict']]
         """
-        Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local
+        Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local. A local volume can only back a PersistentVolume, so this block is rejected on a pod volume. Use host*path, or reference a PersistentVolume through persistent*volume*claim.
         """
         name: NotRequired[pulumi.Input[str]]
         """
@@ -34486,7 +34486,7 @@ class K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeArgs:
         :param pulumi.Input['K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeGlusterfsArgs'] glusterfs: Represents a Glusterfs volume that is attached to a host and exposed to the pod. Provisioned by an admin. More info: https://examples.k8s.io/volumes/glusterfs/README.md
         :param pulumi.Input['K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeHostPathArgs'] host_path: Represents a directory on the host. Provisioned by a developer or tester. This is useful for single-node development and testing only! On-host storage is not supported in any way and WILL NOT WORK in a multi-node cluster. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath
         :param pulumi.Input['K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeIscsiArgs'] iscsi: Represents an ISCSI Disk resource that is attached to a kubelet's host machine and then exposed to the pod. Provisioned by an admin.
-        :param pulumi.Input['K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeLocalArgs'] local: Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local
+        :param pulumi.Input['K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeLocalArgs'] local: Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local. A local volume can only back a PersistentVolume, so this block is rejected on a pod volume. Use host*path, or reference a PersistentVolume through persistent*volume*claim.
         :param pulumi.Input[str] name: Volume's name. Must be a DNS_LABEL and unique within the pod. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         :param pulumi.Input['K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeNfsArgs'] nfs: Represents an NFS mount on the host. Provisioned by an admin. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
         :param pulumi.Input['K8sCronJobSpecJobTemplateSpecTemplateSpecVolumePersistentVolumeClaimArgs'] persistent_volume_claim: The specification of a persistent volume.
@@ -34533,6 +34533,9 @@ class K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeArgs:
             pulumi.set(__self__, "host_path", host_path)
         if iscsi is not None:
             pulumi.set(__self__, "iscsi", iscsi)
+        if local is not None:
+            warnings.warn("""A local volume can only back a PersistentVolume, so this block is rejected on a pod volume. Use host_path, or reference a PersistentVolume through persistent_volume_claim.""", DeprecationWarning)
+            pulumi.log.warn("""local is deprecated: A local volume can only back a PersistentVolume, so this block is rejected on a pod volume. Use host_path, or reference a PersistentVolume through persistent_volume_claim.""")
         if local is not None:
             pulumi.set(__self__, "local", local)
         if name is not None:
@@ -34772,9 +34775,10 @@ class K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""A local volume can only back a PersistentVolume, so this block is rejected on a pod volume. Use host_path, or reference a PersistentVolume through persistent_volume_claim.""")
     def local(self) -> Optional[pulumi.Input['K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeLocalArgs']]:
         """
-        Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local
+        Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local. A local volume can only back a PersistentVolume, so this block is rejected on a pod volume. Use host*path, or reference a PersistentVolume through persistent*volume*claim.
         """
         return pulumi.get(self, "local")
 
@@ -35127,7 +35131,7 @@ if not MYPY:
         """
         secret_namespace: NotRequired[pulumi.Input[str]]
         """
-        The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is "default" namespace.
+        The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is "default" namespace. A secret namespace can only be set on a PersistentVolume, so this attribute is ignored on a pod volume. The secret is read from the pod's own namespace.
         """
 elif False:
     K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeAzureFileArgsDict: TypeAlias = Mapping[str, Any]
@@ -35143,12 +35147,15 @@ class K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeAzureFileArgs:
         :param pulumi.Input[str] secret_name: The name of secret that contains Azure Storage Account Name and Key
         :param pulumi.Input[str] share_name: Share Name
         :param pulumi.Input[bool] read_only: Whether to force the read-only setting in VolumeMounts. Defaults to false (read/write).
-        :param pulumi.Input[str] secret_namespace: The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is "default" namespace.
+        :param pulumi.Input[str] secret_namespace: The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is "default" namespace. A secret namespace can only be set on a PersistentVolume, so this attribute is ignored on a pod volume. The secret is read from the pod's own namespace.
         """
         pulumi.set(__self__, "secret_name", secret_name)
         pulumi.set(__self__, "share_name", share_name)
         if read_only is not None:
             pulumi.set(__self__, "read_only", read_only)
+        if secret_namespace is not None:
+            warnings.warn("""A secret namespace can only be set on a PersistentVolume, so this attribute is ignored on a pod volume. The secret is read from the pod's own namespace.""", DeprecationWarning)
+            pulumi.log.warn("""secret_namespace is deprecated: A secret namespace can only be set on a PersistentVolume, so this attribute is ignored on a pod volume. The secret is read from the pod's own namespace.""")
         if secret_namespace is not None:
             pulumi.set(__self__, "secret_namespace", secret_namespace)
 
@@ -35190,9 +35197,10 @@ class K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeAzureFileArgs:
 
     @property
     @pulumi.getter(name="secretNamespace")
+    @_utilities.deprecated("""A secret namespace can only be set on a PersistentVolume, so this attribute is ignored on a pod volume. The secret is read from the pod's own namespace.""")
     def secret_namespace(self) -> Optional[pulumi.Input[str]]:
         """
-        The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is "default" namespace.
+        The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is "default" namespace. A secret namespace can only be set on a PersistentVolume, so this attribute is ignored on a pod volume. The secret is read from the pod's own namespace.
         """
         return pulumi.get(self, "secret_namespace")
 
@@ -49665,7 +49673,7 @@ if not MYPY:
         """
         local: NotRequired[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeLocalArgsDict']]
         """
-        Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local
+        Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local. A local volume can only back a PersistentVolume, so this block is rejected on a pod volume. Use host*path, or reference a PersistentVolume through persistent*volume_claim.
         """
         name: NotRequired[pulumi.Input[str]]
         """
@@ -49756,7 +49764,7 @@ class K8sDaemonSetSpecTemplateSpecVolumeArgs:
         :param pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeGlusterfsArgs'] glusterfs: Represents a Glusterfs volume that is attached to a host and exposed to the pod. Provisioned by an admin. More info: https://examples.k8s.io/volumes/glusterfs/README.md
         :param pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeHostPathArgs'] host_path: Represents a directory on the host. Provisioned by a developer or tester. This is useful for single-node development and testing only! On-host storage is not supported in any way and WILL NOT WORK in a multi-node cluster. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath
         :param pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeIscsiArgs'] iscsi: Represents an ISCSI Disk resource that is attached to a kubelet's host machine and then exposed to the pod. Provisioned by an admin.
-        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeLocalArgs'] local: Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local
+        :param pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeLocalArgs'] local: Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local. A local volume can only back a PersistentVolume, so this block is rejected on a pod volume. Use host*path, or reference a PersistentVolume through persistent*volume_claim.
         :param pulumi.Input[str] name: Volume's name. Must be a DNS_LABEL and unique within the pod. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         :param pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeNfsArgs'] nfs: Represents an NFS mount on the host. Provisioned by an admin. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
         :param pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumePersistentVolumeClaimArgs'] persistent_volume_claim: The specification of a persistent volume.
@@ -49803,6 +49811,9 @@ class K8sDaemonSetSpecTemplateSpecVolumeArgs:
             pulumi.set(__self__, "host_path", host_path)
         if iscsi is not None:
             pulumi.set(__self__, "iscsi", iscsi)
+        if local is not None:
+            warnings.warn("""A local volume can only back a PersistentVolume, so this block is rejected on a pod volume. Use host_path, or reference a PersistentVolume through persistent_volume_claim.""", DeprecationWarning)
+            pulumi.log.warn("""local is deprecated: A local volume can only back a PersistentVolume, so this block is rejected on a pod volume. Use host_path, or reference a PersistentVolume through persistent_volume_claim.""")
         if local is not None:
             pulumi.set(__self__, "local", local)
         if name is not None:
@@ -50042,9 +50053,10 @@ class K8sDaemonSetSpecTemplateSpecVolumeArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""A local volume can only back a PersistentVolume, so this block is rejected on a pod volume. Use host_path, or reference a PersistentVolume through persistent_volume_claim.""")
     def local(self) -> Optional[pulumi.Input['K8sDaemonSetSpecTemplateSpecVolumeLocalArgs']]:
         """
-        Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local
+        Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local. A local volume can only back a PersistentVolume, so this block is rejected on a pod volume. Use host*path, or reference a PersistentVolume through persistent*volume_claim.
         """
         return pulumi.get(self, "local")
 
@@ -50397,7 +50409,7 @@ if not MYPY:
         """
         secret_namespace: NotRequired[pulumi.Input[str]]
         """
-        The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is "default" namespace.
+        The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is "default" namespace. A secret namespace can only be set on a PersistentVolume, so this attribute is ignored on a pod volume. The secret is read from the pod's own namespace.
         """
 elif False:
     K8sDaemonSetSpecTemplateSpecVolumeAzureFileArgsDict: TypeAlias = Mapping[str, Any]
@@ -50413,12 +50425,15 @@ class K8sDaemonSetSpecTemplateSpecVolumeAzureFileArgs:
         :param pulumi.Input[str] secret_name: The name of secret that contains Azure Storage Account Name and Key
         :param pulumi.Input[str] share_name: Share Name
         :param pulumi.Input[bool] read_only: Whether to force the read-only setting in VolumeMounts. Defaults to false (read/write).
-        :param pulumi.Input[str] secret_namespace: The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is "default" namespace.
+        :param pulumi.Input[str] secret_namespace: The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is "default" namespace. A secret namespace can only be set on a PersistentVolume, so this attribute is ignored on a pod volume. The secret is read from the pod's own namespace.
         """
         pulumi.set(__self__, "secret_name", secret_name)
         pulumi.set(__self__, "share_name", share_name)
         if read_only is not None:
             pulumi.set(__self__, "read_only", read_only)
+        if secret_namespace is not None:
+            warnings.warn("""A secret namespace can only be set on a PersistentVolume, so this attribute is ignored on a pod volume. The secret is read from the pod's own namespace.""", DeprecationWarning)
+            pulumi.log.warn("""secret_namespace is deprecated: A secret namespace can only be set on a PersistentVolume, so this attribute is ignored on a pod volume. The secret is read from the pod's own namespace.""")
         if secret_namespace is not None:
             pulumi.set(__self__, "secret_namespace", secret_namespace)
 
@@ -50460,9 +50475,10 @@ class K8sDaemonSetSpecTemplateSpecVolumeAzureFileArgs:
 
     @property
     @pulumi.getter(name="secretNamespace")
+    @_utilities.deprecated("""A secret namespace can only be set on a PersistentVolume, so this attribute is ignored on a pod volume. The secret is read from the pod's own namespace.""")
     def secret_namespace(self) -> Optional[pulumi.Input[str]]:
         """
-        The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is "default" namespace.
+        The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is "default" namespace. A secret namespace can only be set on a PersistentVolume, so this attribute is ignored on a pod volume. The secret is read from the pod's own namespace.
         """
         return pulumi.get(self, "secret_namespace")
 
@@ -65162,7 +65178,7 @@ if not MYPY:
         """
         local: NotRequired[pulumi.Input['K8sJobSpecTemplateSpecVolumeLocalArgsDict']]
         """
-        Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local
+        Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local. A local volume can only back a PersistentVolume, so this block is rejected on a pod volume. Use host*path, or reference a PersistentVolume through persistent*volume_claim.
         """
         name: NotRequired[pulumi.Input[str]]
         """
@@ -65253,7 +65269,7 @@ class K8sJobSpecTemplateSpecVolumeArgs:
         :param pulumi.Input['K8sJobSpecTemplateSpecVolumeGlusterfsArgs'] glusterfs: Represents a Glusterfs volume that is attached to a host and exposed to the pod. Provisioned by an admin. More info: https://examples.k8s.io/volumes/glusterfs/README.md
         :param pulumi.Input['K8sJobSpecTemplateSpecVolumeHostPathArgs'] host_path: Represents a directory on the host. Provisioned by a developer or tester. This is useful for single-node development and testing only! On-host storage is not supported in any way and WILL NOT WORK in a multi-node cluster. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath
         :param pulumi.Input['K8sJobSpecTemplateSpecVolumeIscsiArgs'] iscsi: Represents an ISCSI Disk resource that is attached to a kubelet's host machine and then exposed to the pod. Provisioned by an admin.
-        :param pulumi.Input['K8sJobSpecTemplateSpecVolumeLocalArgs'] local: Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local
+        :param pulumi.Input['K8sJobSpecTemplateSpecVolumeLocalArgs'] local: Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local. A local volume can only back a PersistentVolume, so this block is rejected on a pod volume. Use host*path, or reference a PersistentVolume through persistent*volume_claim.
         :param pulumi.Input[str] name: Volume's name. Must be a DNS_LABEL and unique within the pod. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         :param pulumi.Input['K8sJobSpecTemplateSpecVolumeNfsArgs'] nfs: Represents an NFS mount on the host. Provisioned by an admin. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
         :param pulumi.Input['K8sJobSpecTemplateSpecVolumePersistentVolumeClaimArgs'] persistent_volume_claim: The specification of a persistent volume.
@@ -65300,6 +65316,9 @@ class K8sJobSpecTemplateSpecVolumeArgs:
             pulumi.set(__self__, "host_path", host_path)
         if iscsi is not None:
             pulumi.set(__self__, "iscsi", iscsi)
+        if local is not None:
+            warnings.warn("""A local volume can only back a PersistentVolume, so this block is rejected on a pod volume. Use host_path, or reference a PersistentVolume through persistent_volume_claim.""", DeprecationWarning)
+            pulumi.log.warn("""local is deprecated: A local volume can only back a PersistentVolume, so this block is rejected on a pod volume. Use host_path, or reference a PersistentVolume through persistent_volume_claim.""")
         if local is not None:
             pulumi.set(__self__, "local", local)
         if name is not None:
@@ -65539,9 +65558,10 @@ class K8sJobSpecTemplateSpecVolumeArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""A local volume can only back a PersistentVolume, so this block is rejected on a pod volume. Use host_path, or reference a PersistentVolume through persistent_volume_claim.""")
     def local(self) -> Optional[pulumi.Input['K8sJobSpecTemplateSpecVolumeLocalArgs']]:
         """
-        Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local
+        Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local. A local volume can only back a PersistentVolume, so this block is rejected on a pod volume. Use host*path, or reference a PersistentVolume through persistent*volume_claim.
         """
         return pulumi.get(self, "local")
 
@@ -65894,7 +65914,7 @@ if not MYPY:
         """
         secret_namespace: NotRequired[pulumi.Input[str]]
         """
-        The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is "default" namespace.
+        The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is "default" namespace. A secret namespace can only be set on a PersistentVolume, so this attribute is ignored on a pod volume. The secret is read from the pod's own namespace.
         """
 elif False:
     K8sJobSpecTemplateSpecVolumeAzureFileArgsDict: TypeAlias = Mapping[str, Any]
@@ -65910,12 +65930,15 @@ class K8sJobSpecTemplateSpecVolumeAzureFileArgs:
         :param pulumi.Input[str] secret_name: The name of secret that contains Azure Storage Account Name and Key
         :param pulumi.Input[str] share_name: Share Name
         :param pulumi.Input[bool] read_only: Whether to force the read-only setting in VolumeMounts. Defaults to false (read/write).
-        :param pulumi.Input[str] secret_namespace: The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is "default" namespace.
+        :param pulumi.Input[str] secret_namespace: The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is "default" namespace. A secret namespace can only be set on a PersistentVolume, so this attribute is ignored on a pod volume. The secret is read from the pod's own namespace.
         """
         pulumi.set(__self__, "secret_name", secret_name)
         pulumi.set(__self__, "share_name", share_name)
         if read_only is not None:
             pulumi.set(__self__, "read_only", read_only)
+        if secret_namespace is not None:
+            warnings.warn("""A secret namespace can only be set on a PersistentVolume, so this attribute is ignored on a pod volume. The secret is read from the pod's own namespace.""", DeprecationWarning)
+            pulumi.log.warn("""secret_namespace is deprecated: A secret namespace can only be set on a PersistentVolume, so this attribute is ignored on a pod volume. The secret is read from the pod's own namespace.""")
         if secret_namespace is not None:
             pulumi.set(__self__, "secret_namespace", secret_namespace)
 
@@ -65957,9 +65980,10 @@ class K8sJobSpecTemplateSpecVolumeAzureFileArgs:
 
     @property
     @pulumi.getter(name="secretNamespace")
+    @_utilities.deprecated("""A secret namespace can only be set on a PersistentVolume, so this attribute is ignored on a pod volume. The secret is read from the pod's own namespace.""")
     def secret_namespace(self) -> Optional[pulumi.Input[str]]:
         """
-        The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is "default" namespace.
+        The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is "default" namespace. A secret namespace can only be set on a PersistentVolume, so this attribute is ignored on a pod volume. The secret is read from the pod's own namespace.
         """
         return pulumi.get(self, "secret_namespace")
 

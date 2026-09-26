@@ -90,7 +90,7 @@ namespace DuploCloud.Pulumi
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Token to access cluster API's
+        /// Token to access cluster APIs
         /// </summary>
         [Output("apiToken")]
         public Output<string> ApiToken { get; private set; } = null!;
@@ -191,6 +191,10 @@ namespace DuploCloud.Pulumi
             {
                 Version = Utilities.Version,
                 PluginDownloadURL = "github://api.github.com/duplocloud/pulumi-duplocloud",
+                AdditionalSecretOutputs =
+                {
+                    "apiToken",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -220,11 +224,21 @@ namespace DuploCloud.Pulumi
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
-        /// <summary>
-        /// Token to access cluster API's
-        /// </summary>
         [Input("apiToken", required: true)]
-        public Input<string> ApiToken { get; set; } = null!;
+        private Input<string>? _apiToken;
+
+        /// <summary>
+        /// Token to access cluster APIs
+        /// </summary>
+        public Input<string>? ApiToken
+        {
+            get => _apiToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _apiToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The number of availability zones.  Must be one of: `2`, `3`, or `4`. This is applicable only for AWS.
@@ -312,11 +326,21 @@ namespace DuploCloud.Pulumi
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
-        /// <summary>
-        /// Token to access cluster API's
-        /// </summary>
         [Input("apiToken")]
-        public Input<string>? ApiToken { get; set; }
+        private Input<string>? _apiToken;
+
+        /// <summary>
+        /// Token to access cluster APIs
+        /// </summary>
+        public Input<string>? ApiToken
+        {
+            get => _apiToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _apiToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The number of availability zones.  Must be one of: `2`, `3`, or `4`. This is applicable only for AWS.

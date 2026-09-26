@@ -26,7 +26,7 @@ namespace DuploCloud.Pulumi.Inputs
         public Input<string> SecretName { get; set; } = null!;
 
         /// <summary>
-        /// The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is "default" namespace.
+        /// The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is "default" namespace. A secret namespace can only be set on a PersistentVolume, so this attribute is ignored on a pod volume. The secret is read from the pod's own namespace.
         /// </summary>
         [Input("secretNamespace")]
         public Input<string>? SecretNamespace { get; set; }

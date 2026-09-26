@@ -54,11 +54,23 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = duplocloud.NewAwsRdsGlobalSecondary(ctx, "gs", &duplocloud.AwsRdsGlobalSecondaryArgs{
+//			gs, err := duplocloud.NewAwsRdsGlobalSecondary(ctx, "gs", &duplocloud.AwsRdsGlobalSecondaryArgs{
 //				TenantId:          myapp.TenantId,
 //				ClusterIdentifier: mydb.ClusterIdentifier,
 //				SecondaryTenantId: pulumi.String("a54598b1-0d8f-4a7b-ba7e-4a20f890a57d"),
 //				Region:            pulumi.String("us-east-2"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Optional: additional reader instances on the secondary cluster. They live in
+//			// the secondary tenant and target the secondary cluster identifier. Readers can
+//			// only be added while make_headless is false.
+//			_, err = duplocloud.NewRdsReadReplica(ctx, "gs_reader", &duplocloud.RdsReadReplicaArgs{
+//				TenantId:          gs.SecondaryTenantId,
+//				Name:              pulumi.String("primarydb-dr-reader"),
+//				Size:              pulumi.String("db.r7g.large"),
+//				ClusterIdentifier: gs.SecondaryCluster,
 //			})
 //			if err != nil {
 //				return err
@@ -95,7 +107,7 @@ type AwsRdsGlobalSecondary struct {
 	GlobalId pulumi.StringOutput `pulumi:"globalId"`
 	// Optional custom KMS key (key ID or ARN) used to encrypt the secondary cluster's storage. The key must belong to the secondary tenant or its plan. When omitted, the secondary tenant's default KMS key is used.
 	KmsKeyId pulumi.StringPtrOutput `pulumi:"kmsKeyId"`
-	// It removes the reader instances under secondary cluster by retaining the secondary cluster, Valid during updation Defaults to `false`.
+	// Removes every instance under the secondary cluster while retaining the cluster itself, including any reader added with `RdsReadReplica`. Read replicas can only be added to the secondary cluster while this is `false`. Valid during update. Defaults to `false`.
 	MakeHeadless  pulumi.BoolPtrOutput `pulumi:"makeHeadless"`
 	PrimaryRegion pulumi.StringOutput  `pulumi:"primaryRegion"`
 	// The region of the secondary Database.
@@ -158,7 +170,7 @@ type awsRdsGlobalSecondaryState struct {
 	GlobalId *string `pulumi:"globalId"`
 	// Optional custom KMS key (key ID or ARN) used to encrypt the secondary cluster's storage. The key must belong to the secondary tenant or its plan. When omitted, the secondary tenant's default KMS key is used.
 	KmsKeyId *string `pulumi:"kmsKeyId"`
-	// It removes the reader instances under secondary cluster by retaining the secondary cluster, Valid during updation Defaults to `false`.
+	// Removes every instance under the secondary cluster while retaining the cluster itself, including any reader added with `RdsReadReplica`. Read replicas can only be added to the secondary cluster while this is `false`. Valid during update. Defaults to `false`.
 	MakeHeadless  *bool   `pulumi:"makeHeadless"`
 	PrimaryRegion *string `pulumi:"primaryRegion"`
 	// The region of the secondary Database.
@@ -180,7 +192,7 @@ type AwsRdsGlobalSecondaryState struct {
 	GlobalId pulumi.StringPtrInput
 	// Optional custom KMS key (key ID or ARN) used to encrypt the secondary cluster's storage. The key must belong to the secondary tenant or its plan. When omitted, the secondary tenant's default KMS key is used.
 	KmsKeyId pulumi.StringPtrInput
-	// It removes the reader instances under secondary cluster by retaining the secondary cluster, Valid during updation Defaults to `false`.
+	// Removes every instance under the secondary cluster while retaining the cluster itself, including any reader added with `RdsReadReplica`. Read replicas can only be added to the secondary cluster while this is `false`. Valid during update. Defaults to `false`.
 	MakeHeadless  pulumi.BoolPtrInput
 	PrimaryRegion pulumi.StringPtrInput
 	// The region of the secondary Database.
@@ -204,7 +216,7 @@ type awsRdsGlobalSecondaryArgs struct {
 	ClusterIdentifier string `pulumi:"clusterIdentifier"`
 	// Optional custom KMS key (key ID or ARN) used to encrypt the secondary cluster's storage. The key must belong to the secondary tenant or its plan. When omitted, the secondary tenant's default KMS key is used.
 	KmsKeyId *string `pulumi:"kmsKeyId"`
-	// It removes the reader instances under secondary cluster by retaining the secondary cluster, Valid during updation Defaults to `false`.
+	// Removes every instance under the secondary cluster while retaining the cluster itself, including any reader added with `RdsReadReplica`. Read replicas can only be added to the secondary cluster while this is `false`. Valid during update. Defaults to `false`.
 	MakeHeadless *bool `pulumi:"makeHeadless"`
 	// The region of the secondary Database.
 	Region string `pulumi:"region"`
@@ -220,7 +232,7 @@ type AwsRdsGlobalSecondaryArgs struct {
 	ClusterIdentifier pulumi.StringInput
 	// Optional custom KMS key (key ID or ARN) used to encrypt the secondary cluster's storage. The key must belong to the secondary tenant or its plan. When omitted, the secondary tenant's default KMS key is used.
 	KmsKeyId pulumi.StringPtrInput
-	// It removes the reader instances under secondary cluster by retaining the secondary cluster, Valid during updation Defaults to `false`.
+	// Removes every instance under the secondary cluster while retaining the cluster itself, including any reader added with `RdsReadReplica`. Read replicas can only be added to the secondary cluster while this is `false`. Valid during update. Defaults to `false`.
 	MakeHeadless pulumi.BoolPtrInput
 	// The region of the secondary Database.
 	Region pulumi.StringInput
@@ -332,7 +344,7 @@ func (o AwsRdsGlobalSecondaryOutput) KmsKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsRdsGlobalSecondary) pulumi.StringPtrOutput { return v.KmsKeyId }).(pulumi.StringPtrOutput)
 }
 
-// It removes the reader instances under secondary cluster by retaining the secondary cluster, Valid during updation Defaults to `false`.
+// Removes every instance under the secondary cluster while retaining the cluster itself, including any reader added with `RdsReadReplica`. Read replicas can only be added to the secondary cluster while this is `false`. Valid during update. Defaults to `false`.
 func (o AwsRdsGlobalSecondaryOutput) MakeHeadless() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AwsRdsGlobalSecondary) pulumi.BoolPtrOutput { return v.MakeHeadless }).(pulumi.BoolPtrOutput)
 }

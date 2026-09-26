@@ -238,9 +238,17 @@ namespace DuploCloud.Pulumi
                 AdditionalSecretOutputs =
                 {
                     "primaryMasterKey",
+                    "primaryMongoConnectionString",
                     "primaryReadonlyMasterKey",
+                    "primaryReadonlyMongoConnectionString",
+                    "primaryReadonlySqlConnectionString",
+                    "primarySqlConnectionString",
                     "secondaryMasterKey",
+                    "secondaryMongoConnectionString",
                     "secondaryReadonlyMasterKey",
+                    "secondaryReadonlyMongoConnectionString",
+                    "secondaryReadonlySqlConnectionString",
+                    "secondarySqlConnectionString",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -474,11 +482,21 @@ namespace DuploCloud.Pulumi
             }
         }
 
+        [Input("primaryMongoConnectionString")]
+        private Input<string>? _primaryMongoConnectionString;
+
         /// <summary>
         /// The primary MongoDB connection string for the CosmosDB account.
         /// </summary>
-        [Input("primaryMongoConnectionString")]
-        public Input<string>? PrimaryMongoConnectionString { get; set; }
+        public Input<string>? PrimaryMongoConnectionString
+        {
+            get => _primaryMongoConnectionString;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _primaryMongoConnectionString = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("primaryReadonlyMasterKey")]
         private Input<string>? _primaryReadonlyMasterKey;
@@ -496,23 +514,53 @@ namespace DuploCloud.Pulumi
             }
         }
 
+        [Input("primaryReadonlyMongoConnectionString")]
+        private Input<string>? _primaryReadonlyMongoConnectionString;
+
         /// <summary>
         /// The primary readonly MongoDB connection string for the CosmosDB account.
         /// </summary>
-        [Input("primaryReadonlyMongoConnectionString")]
-        public Input<string>? PrimaryReadonlyMongoConnectionString { get; set; }
+        public Input<string>? PrimaryReadonlyMongoConnectionString
+        {
+            get => _primaryReadonlyMongoConnectionString;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _primaryReadonlyMongoConnectionString = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("primaryReadonlySqlConnectionString")]
+        private Input<string>? _primaryReadonlySqlConnectionString;
 
         /// <summary>
         /// The primary readonly SQL connection string for the CosmosDB account.
         /// </summary>
-        [Input("primaryReadonlySqlConnectionString")]
-        public Input<string>? PrimaryReadonlySqlConnectionString { get; set; }
+        public Input<string>? PrimaryReadonlySqlConnectionString
+        {
+            get => _primaryReadonlySqlConnectionString;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _primaryReadonlySqlConnectionString = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("primarySqlConnectionString")]
+        private Input<string>? _primarySqlConnectionString;
 
         /// <summary>
         /// The primary SQL connection string for the CosmosDB account.
         /// </summary>
-        [Input("primarySqlConnectionString")]
-        public Input<string>? PrimarySqlConnectionString { get; set; }
+        public Input<string>? PrimarySqlConnectionString
+        {
+            get => _primarySqlConnectionString;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _primarySqlConnectionString = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Flag to indicate whether to enable/disable public network access. Defaults to `Enabled`.
@@ -548,11 +596,21 @@ namespace DuploCloud.Pulumi
             }
         }
 
+        [Input("secondaryMongoConnectionString")]
+        private Input<string>? _secondaryMongoConnectionString;
+
         /// <summary>
         /// The secondary MongoDB connection string for the CosmosDB account.
         /// </summary>
-        [Input("secondaryMongoConnectionString")]
-        public Input<string>? SecondaryMongoConnectionString { get; set; }
+        public Input<string>? SecondaryMongoConnectionString
+        {
+            get => _secondaryMongoConnectionString;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secondaryMongoConnectionString = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("secondaryReadonlyMasterKey")]
         private Input<string>? _secondaryReadonlyMasterKey;
@@ -570,23 +628,53 @@ namespace DuploCloud.Pulumi
             }
         }
 
+        [Input("secondaryReadonlyMongoConnectionString")]
+        private Input<string>? _secondaryReadonlyMongoConnectionString;
+
         /// <summary>
         /// The secondary readonly MongoDB connection string for the CosmosDB account.
         /// </summary>
-        [Input("secondaryReadonlyMongoConnectionString")]
-        public Input<string>? SecondaryReadonlyMongoConnectionString { get; set; }
+        public Input<string>? SecondaryReadonlyMongoConnectionString
+        {
+            get => _secondaryReadonlyMongoConnectionString;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secondaryReadonlyMongoConnectionString = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("secondaryReadonlySqlConnectionString")]
+        private Input<string>? _secondaryReadonlySqlConnectionString;
 
         /// <summary>
         /// The secondary readonly SQL connection string for the CosmosDB account.
         /// </summary>
-        [Input("secondaryReadonlySqlConnectionString")]
-        public Input<string>? SecondaryReadonlySqlConnectionString { get; set; }
+        public Input<string>? SecondaryReadonlySqlConnectionString
+        {
+            get => _secondaryReadonlySqlConnectionString;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secondaryReadonlySqlConnectionString = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("secondarySqlConnectionString")]
+        private Input<string>? _secondarySqlConnectionString;
 
         /// <summary>
         /// The secondary SQL connection string for the CosmosDB account.
         /// </summary>
-        [Input("secondarySqlConnectionString")]
-        public Input<string>? SecondarySqlConnectionString { get; set; }
+        public Input<string>? SecondarySqlConnectionString
+        {
+            get => _secondarySqlConnectionString;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secondarySqlConnectionString = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The GUID of the tenant that the host will be created in.

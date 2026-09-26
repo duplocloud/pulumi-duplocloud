@@ -409,6 +409,8 @@ class User(pulumi.CustomResource):
             __props__.__dict__["is_confirmation_email_sent"] = None
             __props__.__dict__["is_vpn_config_created"] = None
             __props__.__dict__["vpn_static_ip"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["currentSessionToken"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(User, __self__).__init__(
             'duplocloud:index/user:User',
             resource_name,

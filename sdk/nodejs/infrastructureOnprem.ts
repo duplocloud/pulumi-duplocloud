@@ -92,7 +92,7 @@ export class InfrastructureOnprem extends pulumi.CustomResource {
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * Token to access cluster API's
+     * Token to access cluster APIs
      */
     public readonly apiToken!: pulumi.Output<string>;
     /**
@@ -201,7 +201,7 @@ export class InfrastructureOnprem extends pulumi.CustomResource {
                 throw new Error("Missing required property 'vendor'");
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["apiToken"] = args ? args.apiToken : undefined;
+            resourceInputs["apiToken"] = args?.apiToken ? pulumi.secret(args.apiToken) : undefined;
             resourceInputs["azcount"] = args ? args.azcount : undefined;
             resourceInputs["clusterCertificateAuthorityData"] = args ? args.clusterCertificateAuthorityData : undefined;
             resourceInputs["clusterEndpoint"] = args ? args.clusterEndpoint : undefined;
@@ -216,6 +216,8 @@ export class InfrastructureOnprem extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["apiToken"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(InfrastructureOnprem.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -229,7 +231,7 @@ export interface InfrastructureOnpremState {
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Token to access cluster API's
+     * Token to access cluster APIs
      */
     apiToken?: pulumi.Input<string>;
     /**
@@ -291,7 +293,7 @@ export interface InfrastructureOnpremArgs {
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Token to access cluster API's
+     * Token to access cluster APIs
      */
     apiToken: pulumi.Input<string>;
     /**

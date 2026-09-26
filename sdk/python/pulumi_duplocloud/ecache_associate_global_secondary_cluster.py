@@ -458,7 +458,7 @@ class EcacheAssociateGlobalSecondaryCluster(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = EcacheAssociateGlobalSecondaryClusterArgs.__new__(EcacheAssociateGlobalSecondaryClusterArgs)
 
-            __props__.__dict__["auth_token"] = auth_token
+            __props__.__dict__["auth_token"] = None if auth_token is None else pulumi.Output.secret(auth_token)
             __props__.__dict__["description"] = description
             if global_datastore_id is None and not opts.urn:
                 raise TypeError("Missing required property 'global_datastore_id'")
@@ -475,6 +475,8 @@ class EcacheAssociateGlobalSecondaryCluster(pulumi.CustomResource):
             __props__.__dict__["tenant_id"] = tenant_id
             __props__.__dict__["identifier"] = None
             __props__.__dict__["secondary_region"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["authToken"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(EcacheAssociateGlobalSecondaryCluster, __self__).__init__(
             'duplocloud:index/ecacheAssociateGlobalSecondaryCluster:EcacheAssociateGlobalSecondaryCluster',
             resource_name,
