@@ -11097,7 +11097,8 @@
                 },
                 "local": {
                     "$ref": "#/types/duplocloud:index/K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeLocal:K8sCronJobSpecJobTemplateSpecTemplateSpecVolumeLocal",
-                    "description": "Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local\n"
+                    "description": "Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local. A local volume can only back a PersistentVolume, so this block is rejected on a pod volume. Use host*path, or reference a PersistentVolume through persistent*volume*claim.\n",
+                    "deprecationMessage": "A local volume can only back a PersistentVolume, so this block is rejected on a pod volume. Use host_path, or reference a PersistentVolume through persistent_volume_claim."
                 },
                 "name": {
                     "type": "string",
@@ -11218,7 +11219,8 @@
                 },
                 "secretNamespace": {
                     "type": "string",
-                    "description": "The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is \"default\" namespace.\n",
+                    "description": "The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is \"default\" namespace. A secret namespace can only be set on a PersistentVolume, so this attribute is ignored on a pod volume. The secret is read from the pod's own namespace.\n",
+                    "deprecationMessage": "A secret namespace can only be set on a PersistentVolume, so this attribute is ignored on a pod volume. The secret is read from the pod's own namespace.",
                     "willReplaceOnChanges": true
                 },
                 "shareName": {
@@ -15520,7 +15522,8 @@
                 },
                 "local": {
                     "$ref": "#/types/duplocloud:index/K8sDaemonSetSpecTemplateSpecVolumeLocal:K8sDaemonSetSpecTemplateSpecVolumeLocal",
-                    "description": "Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local\n"
+                    "description": "Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local. A local volume can only back a PersistentVolume, so this block is rejected on a pod volume. Use host*path, or reference a PersistentVolume through persistent*volume_claim.\n",
+                    "deprecationMessage": "A local volume can only back a PersistentVolume, so this block is rejected on a pod volume. Use host_path, or reference a PersistentVolume through persistent_volume_claim."
                 },
                 "name": {
                     "type": "string",
@@ -15641,7 +15644,8 @@
                 },
                 "secretNamespace": {
                     "type": "string",
-                    "description": "The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is \"default\" namespace.\n",
+                    "description": "The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is \"default\" namespace. A secret namespace can only be set on a PersistentVolume, so this attribute is ignored on a pod volume. The secret is read from the pod's own namespace.\n",
+                    "deprecationMessage": "A secret namespace can only be set on a PersistentVolume, so this attribute is ignored on a pod volume. The secret is read from the pod's own namespace.",
                     "willReplaceOnChanges": true
                 },
                 "shareName": {
@@ -20178,7 +20182,8 @@
                 },
                 "local": {
                     "$ref": "#/types/duplocloud:index/K8sJobSpecTemplateSpecVolumeLocal:K8sJobSpecTemplateSpecVolumeLocal",
-                    "description": "Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local\n"
+                    "description": "Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local. A local volume can only back a PersistentVolume, so this block is rejected on a pod volume. Use host*path, or reference a PersistentVolume through persistent*volume_claim.\n",
+                    "deprecationMessage": "A local volume can only back a PersistentVolume, so this block is rejected on a pod volume. Use host_path, or reference a PersistentVolume through persistent_volume_claim."
                 },
                 "name": {
                     "type": "string",
@@ -20299,7 +20304,8 @@
                 },
                 "secretNamespace": {
                     "type": "string",
-                    "description": "The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is \"default\" namespace.\n",
+                    "description": "The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is \"default\" namespace. A secret namespace can only be set on a PersistentVolume, so this attribute is ignored on a pod volume. The secret is read from the pod's own namespace.\n",
+                    "deprecationMessage": "A secret namespace can only be set on a PersistentVolume, so this attribute is ignored on a pod volume. The secret is read from the pod's own namespace.",
                     "willReplaceOnChanges": true
                 },
                 "shareName": {
@@ -29370,7 +29376,8 @@
                 },
                 "local": {
                     "$ref": "#/types/duplocloud:index/getK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeLocal:getK8sCronJobSpecJobTemplateSpecTemplateSpecVolumeLocal",
-                    "description": "Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local\n"
+                    "description": "Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local.\n",
+                    "deprecationMessage": "A local volume can only back a PersistentVolume, so this block is rejected on a pod volume. Use host_path, or reference a PersistentVolume through persistent_volume_claim."
                 },
                 "name": {
                     "type": "string",
@@ -29492,7 +29499,8 @@
                 },
                 "secretNamespace": {
                     "type": "string",
-                    "description": "The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is \"default\" namespace.\n"
+                    "description": "The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is \"default\" namespace.\n",
+                    "deprecationMessage": "A secret namespace can only be set on a PersistentVolume, so this attribute is ignored on a pod volume. The secret is read from the pod's own namespace."
                 },
                 "shareName": {
                     "type": "string",
@@ -34054,7 +34062,8 @@
                 },
                 "local": {
                     "$ref": "#/types/duplocloud:index/getK8sDaemonSetSpecTemplateSpecVolumeLocal:getK8sDaemonSetSpecTemplateSpecVolumeLocal",
-                    "description": "Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local\n"
+                    "description": "Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local.\n",
+                    "deprecationMessage": "A local volume can only back a PersistentVolume, so this block is rejected on a pod volume. Use host_path, or reference a PersistentVolume through persistent_volume_claim."
                 },
                 "name": {
                     "type": "string",
@@ -34176,7 +34185,8 @@
                 },
                 "secretNamespace": {
                     "type": "string",
-                    "description": "The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is \"default\" namespace.\n"
+                    "description": "The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is \"default\" namespace.\n",
+                    "deprecationMessage": "A secret namespace can only be set on a PersistentVolume, so this attribute is ignored on a pod volume. The secret is read from the pod's own namespace."
                 },
                 "shareName": {
                     "type": "string",
@@ -38816,7 +38826,8 @@
                 },
                 "local": {
                     "$ref": "#/types/duplocloud:index/getK8sJobSpecTemplateSpecVolumeLocal:getK8sJobSpecTemplateSpecVolumeLocal",
-                    "description": "Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local\n"
+                    "description": "Represents a mounted local storage device such as a disk, partition or directory. Local volumes can only be used as a statically created PersistentVolume. Dynamic provisioning is not supported yet. More info: https://kubernetes.io/docs/concepts/storage/volumes#local.\n",
+                    "deprecationMessage": "A local volume can only back a PersistentVolume, so this block is rejected on a pod volume. Use host_path, or reference a PersistentVolume through persistent_volume_claim."
                 },
                 "name": {
                     "type": "string",
@@ -38938,7 +38949,8 @@
                 },
                 "secretNamespace": {
                     "type": "string",
-                    "description": "The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is \"default\" namespace.\n"
+                    "description": "The namespace of the secret that contains Azure Storage Account Name and Key. For Kubernetes up to 1.18.x the default is the same as the Pod. For Kubernetes 1.19.x and later the default is \"default\" namespace.\n",
+                    "deprecationMessage": "A secret namespace can only be set on a PersistentVolume, so this attribute is ignored on a pod volume. The secret is read from the pod's own namespace."
                 },
                 "shareName": {
                     "type": "string",
@@ -49360,7 +49372,7 @@
             }
         },
         "duplocloud:index/awsRdsGlobalSecondary:AwsRdsGlobalSecondary": {
-            "description": "`duplocloud_aws_rds_gloabal_database` manages secondary AWS RDS Global Database in Duplo.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as duplocloud from \"@duplocloud/pulumi\";\n\nconst myapp = new duplocloud.Tenant(\"myapp\", {\n    accountName: \"myapp\",\n    planId: \"default\",\n});\n// Generate a random password.\nconst mydb = new duplocloud.RdsInstance(\"mydb\", {\n    tenantId: myapp.tenantId,\n    name: \"primarydb\",\n    engine: 9,\n    engineVersion: \"17.5\",\n    size: \"db.r7g.large\",\n    kmsKeyId: \"arn:aws:kms:us-west-2:000000000000:key/69569059-6055-4238-9eb3-3e5235e1e262\",\n    masterUsername: \"myuser\",\n    masterPassword: \"$$$QWdqwe23dq\",\n    storageType: \"aurora\",\n    encryptStorage: true,\n    storeDetailsInSecretManager: true,\n    enhancedMonitoring: 0,\n    enableIamAuth: false,\n});\nconst gs = new duplocloud.AwsRdsGlobalSecondary(\"gs\", {\n    tenantId: myapp.tenantId,\n    clusterIdentifier: mydb.clusterIdentifier,\n    secondaryTenantId: \"a54598b1-0d8f-4a7b-ba7e-4a20f890a57d\",\n    region: \"us-east-2\",\n});\n```\n```python\nimport pulumi\nimport pulumi_duplocloud as duplocloud\n\nmyapp = duplocloud.Tenant(\"myapp\",\n    account_name=\"myapp\",\n    plan_id=\"default\")\n# Generate a random password.\nmydb = duplocloud.RdsInstance(\"mydb\",\n    tenant_id=myapp.tenant_id,\n    name=\"primarydb\",\n    engine=9,\n    engine_version=\"17.5\",\n    size=\"db.r7g.large\",\n    kms_key_id=\"arn:aws:kms:us-west-2:000000000000:key/69569059-6055-4238-9eb3-3e5235e1e262\",\n    master_username=\"myuser\",\n    master_password=\"$$$QWdqwe23dq\",\n    storage_type=\"aurora\",\n    encrypt_storage=True,\n    store_details_in_secret_manager=True,\n    enhanced_monitoring=0,\n    enable_iam_auth=False)\ngs = duplocloud.AwsRdsGlobalSecondary(\"gs\",\n    tenant_id=myapp.tenant_id,\n    cluster_identifier=mydb.cluster_identifier,\n    secondary_tenant_id=\"a54598b1-0d8f-4a7b-ba7e-4a20f890a57d\",\n    region=\"us-east-2\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Pulumi = DuploCloud.Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myapp = new Pulumi.Tenant(\"myapp\", new()\n    {\n        AccountName = \"myapp\",\n        PlanId = \"default\",\n    });\n\n    // Generate a random password.\n    var mydb = new Pulumi.RdsInstance(\"mydb\", new()\n    {\n        TenantId = myapp.TenantId,\n        Name = \"primarydb\",\n        Engine = 9,\n        EngineVersion = \"17.5\",\n        Size = \"db.r7g.large\",\n        KmsKeyId = \"arn:aws:kms:us-west-2:000000000000:key/69569059-6055-4238-9eb3-3e5235e1e262\",\n        MasterUsername = \"myuser\",\n        MasterPassword = \"$$$QWdqwe23dq\",\n        StorageType = \"aurora\",\n        EncryptStorage = true,\n        StoreDetailsInSecretManager = true,\n        EnhancedMonitoring = 0,\n        EnableIamAuth = false,\n    });\n\n    var gs = new Pulumi.AwsRdsGlobalSecondary(\"gs\", new()\n    {\n        TenantId = myapp.TenantId,\n        ClusterIdentifier = mydb.ClusterIdentifier,\n        SecondaryTenantId = \"a54598b1-0d8f-4a7b-ba7e-4a20f890a57d\",\n        Region = \"us-east-2\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/duplocloud/pulumi-duplocloud/sdk/go/duplocloud\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmyapp, err := duplocloud.NewTenant(ctx, \"myapp\", \u0026duplocloud.TenantArgs{\n\t\t\tAccountName: pulumi.String(\"myapp\"),\n\t\t\tPlanId:      pulumi.String(\"default\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Generate a random password.\n\t\tmydb, err := duplocloud.NewRdsInstance(ctx, \"mydb\", \u0026duplocloud.RdsInstanceArgs{\n\t\t\tTenantId:                    myapp.TenantId,\n\t\t\tName:                        pulumi.String(\"primarydb\"),\n\t\t\tEngine:                      pulumi.Int(9),\n\t\t\tEngineVersion:               pulumi.String(\"17.5\"),\n\t\t\tSize:                        pulumi.String(\"db.r7g.large\"),\n\t\t\tKmsKeyId:                    pulumi.String(\"arn:aws:kms:us-west-2:000000000000:key/69569059-6055-4238-9eb3-3e5235e1e262\"),\n\t\t\tMasterUsername:              pulumi.String(\"myuser\"),\n\t\t\tMasterPassword:              pulumi.String(\"$$$QWdqwe23dq\"),\n\t\t\tStorageType:                 pulumi.String(\"aurora\"),\n\t\t\tEncryptStorage:              pulumi.Bool(true),\n\t\t\tStoreDetailsInSecretManager: pulumi.Bool(true),\n\t\t\tEnhancedMonitoring:          pulumi.Int(0),\n\t\t\tEnableIamAuth:               pulumi.Bool(false),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = duplocloud.NewAwsRdsGlobalSecondary(ctx, \"gs\", \u0026duplocloud.AwsRdsGlobalSecondaryArgs{\n\t\t\tTenantId:          myapp.TenantId,\n\t\t\tClusterIdentifier: mydb.ClusterIdentifier,\n\t\t\tSecondaryTenantId: pulumi.String(\"a54598b1-0d8f-4a7b-ba7e-4a20f890a57d\"),\n\t\t\tRegion:            pulumi.String(\"us-east-2\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.duplocloud.Tenant;\nimport com.pulumi.duplocloud.TenantArgs;\nimport com.pulumi.duplocloud.RdsInstance;\nimport com.pulumi.duplocloud.RdsInstanceArgs;\nimport com.pulumi.duplocloud.AwsRdsGlobalSecondary;\nimport com.pulumi.duplocloud.AwsRdsGlobalSecondaryArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myapp = new Tenant(\"myapp\", TenantArgs.builder()\n            .accountName(\"myapp\")\n            .planId(\"default\")\n            .build());\n\n        // Generate a random password.\n        var mydb = new RdsInstance(\"mydb\", RdsInstanceArgs.builder()\n            .tenantId(myapp.tenantId())\n            .name(\"primarydb\")\n            .engine(9)\n            .engineVersion(\"17.5\")\n            .size(\"db.r7g.large\")\n            .kmsKeyId(\"arn:aws:kms:us-west-2:000000000000:key/69569059-6055-4238-9eb3-3e5235e1e262\")\n            .masterUsername(\"myuser\")\n            .masterPassword(\"$$$QWdqwe23dq\")\n            .storageType(\"aurora\")\n            .encryptStorage(true)\n            .storeDetailsInSecretManager(true)\n            .enhancedMonitoring(0)\n            .enableIamAuth(false)\n            .build());\n\n        var gs = new AwsRdsGlobalSecondary(\"gs\", AwsRdsGlobalSecondaryArgs.builder()\n            .tenantId(myapp.tenantId())\n            .clusterIdentifier(mydb.clusterIdentifier())\n            .secondaryTenantId(\"a54598b1-0d8f-4a7b-ba7e-4a20f890a57d\")\n            .region(\"us-east-2\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myapp:\n    type: duplocloud:Tenant\n    properties:\n      accountName: myapp\n      planId: default\n  # Generate a random password.\n  mydb:\n    type: duplocloud:RdsInstance\n    properties:\n      tenantId: ${myapp.tenantId}\n      name: primarydb\n      engine: 9 # PostgreSQL\n      engineVersion: '17.5'\n      size: db.r7g.large\n      kmsKeyId: arn:aws:kms:us-west-2:000000000000:key/69569059-6055-4238-9eb3-3e5235e1e262\n      masterUsername: myuser\n      masterPassword: $$$QWdqwe23dq\n      storageType: aurora\n      encryptStorage: true\n      storeDetailsInSecretManager: true\n      enhancedMonitoring: 0\n      enableIamAuth: false\n  gs:\n    type: duplocloud:AwsRdsGlobalSecondary\n    properties:\n      tenantId: ${myapp.tenantId}\n      clusterIdentifier: ${mydb.clusterIdentifier}\n      secondaryTenantId: a54598b1-0d8f-4a7b-ba7e-4a20f890a57d\n      region: us-east-2\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nExample: Importing an existing RDS Global Database.\n\n - *TENANT_ID* is the tenant GUID.\n\n - *GLOBAL_DATABASE* Name of the global database.\n\n - *PRIMARY_REGION* The region where primary cluster has been created.\n\n - *SECONDARY_REGION* The region where secondary cluster has been created.\n\n#\n\n```sh\n$ pulumi import duplocloud:index/awsRdsGlobalSecondary:AwsRdsGlobalSecondary gs *TENANT_ID*/*GLOBAL_DATABASE*/*PRIMARY_REGION*/*SECONDARY_REGION*\n```\n\n",
+            "description": "`duplocloud_aws_rds_gloabal_database` manages secondary AWS RDS Global Database in Duplo.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as duplocloud from \"@duplocloud/pulumi\";\n\nconst myapp = new duplocloud.Tenant(\"myapp\", {\n    accountName: \"myapp\",\n    planId: \"default\",\n});\n// Generate a random password.\nconst mydb = new duplocloud.RdsInstance(\"mydb\", {\n    tenantId: myapp.tenantId,\n    name: \"primarydb\",\n    engine: 9,\n    engineVersion: \"17.5\",\n    size: \"db.r7g.large\",\n    kmsKeyId: \"arn:aws:kms:us-west-2:000000000000:key/69569059-6055-4238-9eb3-3e5235e1e262\",\n    masterUsername: \"myuser\",\n    masterPassword: \"$$$QWdqwe23dq\",\n    storageType: \"aurora\",\n    encryptStorage: true,\n    storeDetailsInSecretManager: true,\n    enhancedMonitoring: 0,\n    enableIamAuth: false,\n});\nconst gs = new duplocloud.AwsRdsGlobalSecondary(\"gs\", {\n    tenantId: myapp.tenantId,\n    clusterIdentifier: mydb.clusterIdentifier,\n    secondaryTenantId: \"a54598b1-0d8f-4a7b-ba7e-4a20f890a57d\",\n    region: \"us-east-2\",\n});\n// Optional: additional reader instances on the secondary cluster. They live in\n// the secondary tenant and target the secondary cluster identifier. Readers can\n// only be added while make_headless is false.\nconst gsReader = new duplocloud.RdsReadReplica(\"gs_reader\", {\n    tenantId: gs.secondaryTenantId,\n    name: \"primarydb-dr-reader\",\n    size: \"db.r7g.large\",\n    clusterIdentifier: gs.secondaryCluster,\n});\n```\n```python\nimport pulumi\nimport pulumi_duplocloud as duplocloud\n\nmyapp = duplocloud.Tenant(\"myapp\",\n    account_name=\"myapp\",\n    plan_id=\"default\")\n# Generate a random password.\nmydb = duplocloud.RdsInstance(\"mydb\",\n    tenant_id=myapp.tenant_id,\n    name=\"primarydb\",\n    engine=9,\n    engine_version=\"17.5\",\n    size=\"db.r7g.large\",\n    kms_key_id=\"arn:aws:kms:us-west-2:000000000000:key/69569059-6055-4238-9eb3-3e5235e1e262\",\n    master_username=\"myuser\",\n    master_password=\"$$$QWdqwe23dq\",\n    storage_type=\"aurora\",\n    encrypt_storage=True,\n    store_details_in_secret_manager=True,\n    enhanced_monitoring=0,\n    enable_iam_auth=False)\ngs = duplocloud.AwsRdsGlobalSecondary(\"gs\",\n    tenant_id=myapp.tenant_id,\n    cluster_identifier=mydb.cluster_identifier,\n    secondary_tenant_id=\"a54598b1-0d8f-4a7b-ba7e-4a20f890a57d\",\n    region=\"us-east-2\")\n# Optional: additional reader instances on the secondary cluster. They live in\n# the secondary tenant and target the secondary cluster identifier. Readers can\n# only be added while make_headless is false.\ngs_reader = duplocloud.RdsReadReplica(\"gs_reader\",\n    tenant_id=gs.secondary_tenant_id,\n    name=\"primarydb-dr-reader\",\n    size=\"db.r7g.large\",\n    cluster_identifier=gs.secondary_cluster)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Pulumi = DuploCloud.Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myapp = new Pulumi.Tenant(\"myapp\", new()\n    {\n        AccountName = \"myapp\",\n        PlanId = \"default\",\n    });\n\n    // Generate a random password.\n    var mydb = new Pulumi.RdsInstance(\"mydb\", new()\n    {\n        TenantId = myapp.TenantId,\n        Name = \"primarydb\",\n        Engine = 9,\n        EngineVersion = \"17.5\",\n        Size = \"db.r7g.large\",\n        KmsKeyId = \"arn:aws:kms:us-west-2:000000000000:key/69569059-6055-4238-9eb3-3e5235e1e262\",\n        MasterUsername = \"myuser\",\n        MasterPassword = \"$$$QWdqwe23dq\",\n        StorageType = \"aurora\",\n        EncryptStorage = true,\n        StoreDetailsInSecretManager = true,\n        EnhancedMonitoring = 0,\n        EnableIamAuth = false,\n    });\n\n    var gs = new Pulumi.AwsRdsGlobalSecondary(\"gs\", new()\n    {\n        TenantId = myapp.TenantId,\n        ClusterIdentifier = mydb.ClusterIdentifier,\n        SecondaryTenantId = \"a54598b1-0d8f-4a7b-ba7e-4a20f890a57d\",\n        Region = \"us-east-2\",\n    });\n\n    // Optional: additional reader instances on the secondary cluster. They live in\n    // the secondary tenant and target the secondary cluster identifier. Readers can\n    // only be added while make_headless is false.\n    var gsReader = new Pulumi.RdsReadReplica(\"gs_reader\", new()\n    {\n        TenantId = gs.SecondaryTenantId,\n        Name = \"primarydb-dr-reader\",\n        Size = \"db.r7g.large\",\n        ClusterIdentifier = gs.SecondaryCluster,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/duplocloud/pulumi-duplocloud/sdk/go/duplocloud\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmyapp, err := duplocloud.NewTenant(ctx, \"myapp\", \u0026duplocloud.TenantArgs{\n\t\t\tAccountName: pulumi.String(\"myapp\"),\n\t\t\tPlanId:      pulumi.String(\"default\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Generate a random password.\n\t\tmydb, err := duplocloud.NewRdsInstance(ctx, \"mydb\", \u0026duplocloud.RdsInstanceArgs{\n\t\t\tTenantId:                    myapp.TenantId,\n\t\t\tName:                        pulumi.String(\"primarydb\"),\n\t\t\tEngine:                      pulumi.Int(9),\n\t\t\tEngineVersion:               pulumi.String(\"17.5\"),\n\t\t\tSize:                        pulumi.String(\"db.r7g.large\"),\n\t\t\tKmsKeyId:                    pulumi.String(\"arn:aws:kms:us-west-2:000000000000:key/69569059-6055-4238-9eb3-3e5235e1e262\"),\n\t\t\tMasterUsername:              pulumi.String(\"myuser\"),\n\t\t\tMasterPassword:              pulumi.String(\"$$$QWdqwe23dq\"),\n\t\t\tStorageType:                 pulumi.String(\"aurora\"),\n\t\t\tEncryptStorage:              pulumi.Bool(true),\n\t\t\tStoreDetailsInSecretManager: pulumi.Bool(true),\n\t\t\tEnhancedMonitoring:          pulumi.Int(0),\n\t\t\tEnableIamAuth:               pulumi.Bool(false),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tgs, err := duplocloud.NewAwsRdsGlobalSecondary(ctx, \"gs\", \u0026duplocloud.AwsRdsGlobalSecondaryArgs{\n\t\t\tTenantId:          myapp.TenantId,\n\t\t\tClusterIdentifier: mydb.ClusterIdentifier,\n\t\t\tSecondaryTenantId: pulumi.String(\"a54598b1-0d8f-4a7b-ba7e-4a20f890a57d\"),\n\t\t\tRegion:            pulumi.String(\"us-east-2\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Optional: additional reader instances on the secondary cluster. They live in\n\t\t// the secondary tenant and target the secondary cluster identifier. Readers can\n\t\t// only be added while make_headless is false.\n\t\t_, err = duplocloud.NewRdsReadReplica(ctx, \"gs_reader\", \u0026duplocloud.RdsReadReplicaArgs{\n\t\t\tTenantId:          gs.SecondaryTenantId,\n\t\t\tName:              pulumi.String(\"primarydb-dr-reader\"),\n\t\t\tSize:              pulumi.String(\"db.r7g.large\"),\n\t\t\tClusterIdentifier: gs.SecondaryCluster,\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.duplocloud.Tenant;\nimport com.pulumi.duplocloud.TenantArgs;\nimport com.pulumi.duplocloud.RdsInstance;\nimport com.pulumi.duplocloud.RdsInstanceArgs;\nimport com.pulumi.duplocloud.AwsRdsGlobalSecondary;\nimport com.pulumi.duplocloud.AwsRdsGlobalSecondaryArgs;\nimport com.pulumi.duplocloud.RdsReadReplica;\nimport com.pulumi.duplocloud.RdsReadReplicaArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myapp = new Tenant(\"myapp\", TenantArgs.builder()\n            .accountName(\"myapp\")\n            .planId(\"default\")\n            .build());\n\n        // Generate a random password.\n        var mydb = new RdsInstance(\"mydb\", RdsInstanceArgs.builder()\n            .tenantId(myapp.tenantId())\n            .name(\"primarydb\")\n            .engine(9)\n            .engineVersion(\"17.5\")\n            .size(\"db.r7g.large\")\n            .kmsKeyId(\"arn:aws:kms:us-west-2:000000000000:key/69569059-6055-4238-9eb3-3e5235e1e262\")\n            .masterUsername(\"myuser\")\n            .masterPassword(\"$$$QWdqwe23dq\")\n            .storageType(\"aurora\")\n            .encryptStorage(true)\n            .storeDetailsInSecretManager(true)\n            .enhancedMonitoring(0)\n            .enableIamAuth(false)\n            .build());\n\n        var gs = new AwsRdsGlobalSecondary(\"gs\", AwsRdsGlobalSecondaryArgs.builder()\n            .tenantId(myapp.tenantId())\n            .clusterIdentifier(mydb.clusterIdentifier())\n            .secondaryTenantId(\"a54598b1-0d8f-4a7b-ba7e-4a20f890a57d\")\n            .region(\"us-east-2\")\n            .build());\n\n        // Optional: additional reader instances on the secondary cluster. They live in\n        // the secondary tenant and target the secondary cluster identifier. Readers can\n        // only be added while make_headless is false.\n        var gsReader = new RdsReadReplica(\"gsReader\", RdsReadReplicaArgs.builder()\n            .tenantId(gs.secondaryTenantId())\n            .name(\"primarydb-dr-reader\")\n            .size(\"db.r7g.large\")\n            .clusterIdentifier(gs.secondaryCluster())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myapp:\n    type: duplocloud:Tenant\n    properties:\n      accountName: myapp\n      planId: default\n  # Generate a random password.\n  mydb:\n    type: duplocloud:RdsInstance\n    properties:\n      tenantId: ${myapp.tenantId}\n      name: primarydb\n      engine: 9 # PostgreSQL\n      engineVersion: '17.5'\n      size: db.r7g.large\n      kmsKeyId: arn:aws:kms:us-west-2:000000000000:key/69569059-6055-4238-9eb3-3e5235e1e262\n      masterUsername: myuser\n      masterPassword: $$$QWdqwe23dq\n      storageType: aurora\n      encryptStorage: true\n      storeDetailsInSecretManager: true\n      enhancedMonitoring: 0\n      enableIamAuth: false\n  gs:\n    type: duplocloud:AwsRdsGlobalSecondary\n    properties:\n      tenantId: ${myapp.tenantId}\n      clusterIdentifier: ${mydb.clusterIdentifier}\n      secondaryTenantId: a54598b1-0d8f-4a7b-ba7e-4a20f890a57d\n      region: us-east-2\n  # Optional: additional reader instances on the secondary cluster. They live in\n  # // the secondary tenant and target the secondary cluster identifier. Readers can\n  # // only be added while make_headless is false.\n  gsReader:\n    type: duplocloud:RdsReadReplica\n    name: gs_reader\n    properties:\n      tenantId: ${gs.secondaryTenantId}\n      name: primarydb-dr-reader\n      size: db.r7g.large\n      clusterIdentifier: ${gs.secondaryCluster}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nExample: Importing an existing RDS Global Database.\n\n - *TENANT_ID* is the tenant GUID.\n\n - *GLOBAL_DATABASE* Name of the global database.\n\n - *PRIMARY_REGION* The region where primary cluster has been created.\n\n - *SECONDARY_REGION* The region where secondary cluster has been created.\n\n#\n\n```sh\n$ pulumi import duplocloud:index/awsRdsGlobalSecondary:AwsRdsGlobalSecondary gs *TENANT_ID*/*GLOBAL_DATABASE*/*PRIMARY_REGION*/*SECONDARY_REGION*\n```\n\n",
             "properties": {
                 "clusterIdentifier": {
                     "type": "string",
@@ -49376,7 +49388,7 @@
                 },
                 "makeHeadless": {
                     "type": "boolean",
-                    "description": "It removes the reader instances under secondary cluster by retaining the secondary cluster, Valid during updation Defaults to `false`.\n"
+                    "description": "Removes every instance under the secondary cluster while retaining the cluster itself, including any reader added with `duplocloud.RdsReadReplica`. Read replicas can only be added to the secondary cluster while this is `false`. Valid during update. Defaults to `false`.\n"
                 },
                 "primaryRegion": {
                     "type": "string"
@@ -49425,7 +49437,7 @@
                 },
                 "makeHeadless": {
                     "type": "boolean",
-                    "description": "It removes the reader instances under secondary cluster by retaining the secondary cluster, Valid during updation Defaults to `false`.\n"
+                    "description": "Removes every instance under the secondary cluster while retaining the cluster itself, including any reader added with `duplocloud.RdsReadReplica`. Read replicas can only be added to the secondary cluster while this is `false`. Valid during update. Defaults to `false`.\n"
                 },
                 "region": {
                     "type": "string",
@@ -49468,7 +49480,7 @@
                     },
                     "makeHeadless": {
                         "type": "boolean",
-                        "description": "It removes the reader instances under secondary cluster by retaining the secondary cluster, Valid during updation Defaults to `false`.\n"
+                        "description": "Removes every instance under the secondary cluster while retaining the cluster itself, including any reader added with `duplocloud.RdsReadReplica`. Read replicas can only be added to the secondary cluster while this is `false`. Valid during update. Defaults to `false`.\n"
                     },
                     "primaryRegion": {
                         "type": "string"
@@ -50786,7 +50798,8 @@
                 },
                 "primaryMongoConnectionString": {
                     "type": "string",
-                    "description": "The primary MongoDB connection string for the CosmosDB account.\n"
+                    "description": "The primary MongoDB connection string for the CosmosDB account.\n",
+                    "secret": true
                 },
                 "primaryReadonlyMasterKey": {
                     "type": "string",
@@ -50795,15 +50808,18 @@
                 },
                 "primaryReadonlyMongoConnectionString": {
                     "type": "string",
-                    "description": "The primary readonly MongoDB connection string for the CosmosDB account.\n"
+                    "description": "The primary readonly MongoDB connection string for the CosmosDB account.\n",
+                    "secret": true
                 },
                 "primaryReadonlySqlConnectionString": {
                     "type": "string",
-                    "description": "The primary readonly SQL connection string for the CosmosDB account.\n"
+                    "description": "The primary readonly SQL connection string for the CosmosDB account.\n",
+                    "secret": true
                 },
                 "primarySqlConnectionString": {
                     "type": "string",
-                    "description": "The primary SQL connection string for the CosmosDB account.\n"
+                    "description": "The primary SQL connection string for the CosmosDB account.\n",
+                    "secret": true
                 },
                 "publicNetworkAccess": {
                     "type": "string",
@@ -50823,7 +50839,8 @@
                 },
                 "secondaryMongoConnectionString": {
                     "type": "string",
-                    "description": "The secondary MongoDB connection string for the CosmosDB account.\n"
+                    "description": "The secondary MongoDB connection string for the CosmosDB account.\n",
+                    "secret": true
                 },
                 "secondaryReadonlyMasterKey": {
                     "type": "string",
@@ -50832,15 +50849,18 @@
                 },
                 "secondaryReadonlyMongoConnectionString": {
                     "type": "string",
-                    "description": "The secondary readonly MongoDB connection string for the CosmosDB account.\n"
+                    "description": "The secondary readonly MongoDB connection string for the CosmosDB account.\n",
+                    "secret": true
                 },
                 "secondaryReadonlySqlConnectionString": {
                     "type": "string",
-                    "description": "The secondary readonly SQL connection string for the CosmosDB account.\n"
+                    "description": "The secondary readonly SQL connection string for the CosmosDB account.\n",
+                    "secret": true
                 },
                 "secondarySqlConnectionString": {
                     "type": "string",
-                    "description": "The secondary SQL connection string for the CosmosDB account.\n"
+                    "description": "The secondary SQL connection string for the CosmosDB account.\n",
+                    "secret": true
                 },
                 "tenantId": {
                     "type": "string",
@@ -51032,7 +51052,8 @@
                     },
                     "primaryMongoConnectionString": {
                         "type": "string",
-                        "description": "The primary MongoDB connection string for the CosmosDB account.\n"
+                        "description": "The primary MongoDB connection string for the CosmosDB account.\n",
+                        "secret": true
                     },
                     "primaryReadonlyMasterKey": {
                         "type": "string",
@@ -51041,15 +51062,18 @@
                     },
                     "primaryReadonlyMongoConnectionString": {
                         "type": "string",
-                        "description": "The primary readonly MongoDB connection string for the CosmosDB account.\n"
+                        "description": "The primary readonly MongoDB connection string for the CosmosDB account.\n",
+                        "secret": true
                     },
                     "primaryReadonlySqlConnectionString": {
                         "type": "string",
-                        "description": "The primary readonly SQL connection string for the CosmosDB account.\n"
+                        "description": "The primary readonly SQL connection string for the CosmosDB account.\n",
+                        "secret": true
                     },
                     "primarySqlConnectionString": {
                         "type": "string",
-                        "description": "The primary SQL connection string for the CosmosDB account.\n"
+                        "description": "The primary SQL connection string for the CosmosDB account.\n",
+                        "secret": true
                     },
                     "publicNetworkAccess": {
                         "type": "string",
@@ -51069,7 +51093,8 @@
                     },
                     "secondaryMongoConnectionString": {
                         "type": "string",
-                        "description": "The secondary MongoDB connection string for the CosmosDB account.\n"
+                        "description": "The secondary MongoDB connection string for the CosmosDB account.\n",
+                        "secret": true
                     },
                     "secondaryReadonlyMasterKey": {
                         "type": "string",
@@ -51078,15 +51103,18 @@
                     },
                     "secondaryReadonlyMongoConnectionString": {
                         "type": "string",
-                        "description": "The secondary readonly MongoDB connection string for the CosmosDB account.\n"
+                        "description": "The secondary readonly MongoDB connection string for the CosmosDB account.\n",
+                        "secret": true
                     },
                     "secondaryReadonlySqlConnectionString": {
                         "type": "string",
-                        "description": "The secondary readonly SQL connection string for the CosmosDB account.\n"
+                        "description": "The secondary readonly SQL connection string for the CosmosDB account.\n",
+                        "secret": true
                     },
                     "secondarySqlConnectionString": {
                         "type": "string",
-                        "description": "The secondary SQL connection string for the CosmosDB account.\n"
+                        "description": "The secondary SQL connection string for the CosmosDB account.\n",
+                        "secret": true
                     },
                     "tenantId": {
                         "type": "string",
@@ -57313,7 +57341,8 @@
             "properties": {
                 "authToken": {
                     "type": "string",
-                    "description": "Set a password for authenticating to the ElastiCache instance.\n"
+                    "description": "Set a password for authenticating to the ElastiCache instance.\n",
+                    "secret": true
                 },
                 "description": {
                     "type": "string",
@@ -57361,6 +57390,7 @@
                 "authToken": {
                     "type": "string",
                     "description": "Set a password for authenticating to the ElastiCache instance.\n",
+                    "secret": true,
                     "willReplaceOnChanges": true
                 },
                 "description": {
@@ -57405,6 +57435,7 @@
                     "authToken": {
                         "type": "string",
                         "description": "Set a password for authenticating to the ElastiCache instance.\n",
+                        "secret": true,
                         "willReplaceOnChanges": true
                     },
                     "description": {
@@ -57545,7 +57576,8 @@
                 },
                 "authToken": {
                     "type": "string",
-                    "description": "Set a password for authenticating to the ElastiCache instance.  Only supported if `encryption_in_transit` is to to `true`.\n"
+                    "description": "Set a password for authenticating to the ElastiCache instance.  Only supported if `encryption_in_transit` is set to `true`.\n",
+                    "secret": true
                 },
                 "automaticFailoverEnabled": {
                     "type": "boolean",
@@ -57553,7 +57585,7 @@
                 },
                 "cacheType": {
                     "type": "integer",
-                    "description": "The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache - `2` : Valkey\nChanging `cache_type` from `0` (Redis) to `2` (Valkey) performs an in-place engine upgrade. Any other change to\n`cache_type` forces replacement of the instance.\n"
+                    "description": "The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache - `2` : Valkey\nChanging `cache_type` from `0` (Redis) to `2` (Valkey) performs an in-place engine upgrade. If the instance uses a\ncustom parameter group, change `parameter_group_name` to a valkey-family parameter group in the same apply — AWS\nrequires it to be part of the engine upgrade. Any other change to `cache_type` forces replacement of the instance.\n"
                 },
                 "enableClusterMode": {
                     "type": "boolean",
@@ -57679,7 +57711,8 @@
             "inputProperties": {
                 "authToken": {
                     "type": "string",
-                    "description": "Set a password for authenticating to the ElastiCache instance.  Only supported if `encryption_in_transit` is to to `true`.\n",
+                    "description": "Set a password for authenticating to the ElastiCache instance.  Only supported if `encryption_in_transit` is set to `true`.\n",
+                    "secret": true,
                     "willReplaceOnChanges": true
                 },
                 "automaticFailoverEnabled": {
@@ -57688,7 +57721,7 @@
                 },
                 "cacheType": {
                     "type": "integer",
-                    "description": "The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache - `2` : Valkey\nChanging `cache_type` from `0` (Redis) to `2` (Valkey) performs an in-place engine upgrade. Any other change to\n`cache_type` forces replacement of the instance.\n"
+                    "description": "The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache - `2` : Valkey\nChanging `cache_type` from `0` (Redis) to `2` (Valkey) performs an in-place engine upgrade. If the instance uses a\ncustom parameter group, change `parameter_group_name` to a valkey-family parameter group in the same apply — AWS\nrequires it to be part of the engine upgrade. Any other change to `cache_type` forces replacement of the instance.\n"
                 },
                 "enableClusterMode": {
                     "type": "boolean",
@@ -57786,7 +57819,8 @@
                     },
                     "authToken": {
                         "type": "string",
-                        "description": "Set a password for authenticating to the ElastiCache instance.  Only supported if `encryption_in_transit` is to to `true`.\n",
+                        "description": "Set a password for authenticating to the ElastiCache instance.  Only supported if `encryption_in_transit` is set to `true`.\n",
+                        "secret": true,
                         "willReplaceOnChanges": true
                     },
                     "automaticFailoverEnabled": {
@@ -57795,7 +57829,7 @@
                     },
                     "cacheType": {
                         "type": "integer",
-                        "description": "The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache - `2` : Valkey\nChanging `cache_type` from `0` (Redis) to `2` (Valkey) performs an in-place engine upgrade. Any other change to\n`cache_type` forces replacement of the instance.\n"
+                        "description": "The numerical index of elasticache instance type. Should be one of: - `0` : Redis - `1` : Memcache - `2` : Valkey\nChanging `cache_type` from `0` (Redis) to `2` (Valkey) performs an in-place engine upgrade. If the instance uses a\ncustom parameter group, change `parameter_group_name` to a valkey-family parameter group in the same apply — AWS\nrequires it to be part of the engine upgrade. Any other change to `cache_type` forces replacement of the instance.\n"
                     },
                     "enableClusterMode": {
                         "type": "boolean",
@@ -62462,7 +62496,8 @@
                 },
                 "apiToken": {
                     "type": "string",
-                    "description": "Token to access cluster API's\n"
+                    "description": "Token to access cluster APIs\n",
+                    "secret": true
                 },
                 "azcount": {
                     "type": "integer",
@@ -62537,7 +62572,8 @@
                 },
                 "apiToken": {
                     "type": "string",
-                    "description": "Token to access cluster API's\n",
+                    "description": "Token to access cluster APIs\n",
+                    "secret": true,
                     "willReplaceOnChanges": true
                 },
                 "azcount": {
@@ -62620,7 +62656,8 @@
                     },
                     "apiToken": {
                         "type": "string",
-                        "description": "Token to access cluster API's\n",
+                        "description": "Token to access cluster APIs\n",
+                        "secret": true,
                         "willReplaceOnChanges": true
                     },
                     "azcount": {
@@ -63648,17 +63685,20 @@
             }
         },
         "duplocloud:index/k8Secret:K8Secret": {
-            "description": "`duplocloud.K8Secret` manages a kubernetes secret in a Duplo tenant.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as duplocloud from \"@duplocloud/pulumi\";\n\nconst myapp = new duplocloud.Tenant(\"myapp\", {\n    accountName: \"myapp\",\n    planId: \"default\",\n});\nconst myappK8Secret = new duplocloud.K8Secret(\"myapp\", {\n    tenantId: myapp.tenantId,\n    secretName: \"mysecret\",\n    secretType: \"Opaque\",\n    secretData: JSON.stringify({\n        foo: \"bar2\",\n    }),\n    secretLabels: {\n        KeyA: \"ValueA\",\n        KeyB: \"ValueB\",\n        \"app.duplocloud.net/app-name\": \"\u003cappname\u003e\",\n    },\n    secretAnnotations: {\n        annotA: \"ValueA\",\n        annotB: \"ValueB\",\n    },\n});\n```\n```python\nimport pulumi\nimport json\nimport pulumi_duplocloud as duplocloud\n\nmyapp = duplocloud.Tenant(\"myapp\",\n    account_name=\"myapp\",\n    plan_id=\"default\")\nmyapp_k8_secret = duplocloud.K8Secret(\"myapp\",\n    tenant_id=myapp.tenant_id,\n    secret_name=\"mysecret\",\n    secret_type=\"Opaque\",\n    secret_data=json.dumps({\n        \"foo\": \"bar2\",\n    }),\n    secret_labels={\n        \"KeyA\": \"ValueA\",\n        \"KeyB\": \"ValueB\",\n        \"app.duplocloud.net/app-name\": \"\u003cappname\u003e\",\n    },\n    secret_annotations={\n        \"annotA\": \"ValueA\",\n        \"annotB\": \"ValueB\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing System.Text.Json;\nusing Pulumi;\nusing Pulumi = DuploCloud.Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myapp = new Pulumi.Tenant(\"myapp\", new()\n    {\n        AccountName = \"myapp\",\n        PlanId = \"default\",\n    });\n\n    var myappK8Secret = new Pulumi.K8Secret(\"myapp\", new()\n    {\n        TenantId = myapp.TenantId,\n        SecretName = \"mysecret\",\n        SecretType = \"Opaque\",\n        SecretData = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n        {\n            [\"foo\"] = \"bar2\",\n        }),\n        SecretLabels = \n        {\n            { \"KeyA\", \"ValueA\" },\n            { \"KeyB\", \"ValueB\" },\n            { \"app.duplocloud.net/app-name\", \"\u003cappname\u003e\" },\n        },\n        SecretAnnotations = \n        {\n            { \"annotA\", \"ValueA\" },\n            { \"annotB\", \"ValueB\" },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\n\t\"github.com/duplocloud/pulumi-duplocloud/sdk/go/duplocloud\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmyapp, err := duplocloud.NewTenant(ctx, \"myapp\", \u0026duplocloud.TenantArgs{\n\t\t\tAccountName: pulumi.String(\"myapp\"),\n\t\t\tPlanId:      pulumi.String(\"default\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttmpJSON0, err := json.Marshal(map[string]interface{}{\n\t\t\t\"foo\": \"bar2\",\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson0 := string(tmpJSON0)\n\t\t_, err = duplocloud.NewK8Secret(ctx, \"myapp\", \u0026duplocloud.K8SecretArgs{\n\t\t\tTenantId:   myapp.TenantId,\n\t\t\tSecretName: pulumi.String(\"mysecret\"),\n\t\t\tSecretType: pulumi.String(\"Opaque\"),\n\t\t\tSecretData: pulumi.String(json0),\n\t\t\tSecretLabels: pulumi.StringMap{\n\t\t\t\t\"KeyA\":                        pulumi.String(\"ValueA\"),\n\t\t\t\t\"KeyB\":                        pulumi.String(\"ValueB\"),\n\t\t\t\t\"app.duplocloud.net/app-name\": pulumi.String(\"\u003cappname\u003e\"),\n\t\t\t},\n\t\t\tSecretAnnotations: pulumi.StringMap{\n\t\t\t\t\"annotA\": pulumi.String(\"ValueA\"),\n\t\t\t\t\"annotB\": pulumi.String(\"ValueB\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.duplocloud.Tenant;\nimport com.pulumi.duplocloud.TenantArgs;\nimport com.pulumi.duplocloud.K8Secret;\nimport com.pulumi.duplocloud.K8SecretArgs;\nimport static com.pulumi.codegen.internal.Serialization.*;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myapp = new Tenant(\"myapp\", TenantArgs.builder()\n            .accountName(\"myapp\")\n            .planId(\"default\")\n            .build());\n\n        var myappK8Secret = new K8Secret(\"myappK8Secret\", K8SecretArgs.builder()\n            .tenantId(myapp.tenantId())\n            .secretName(\"mysecret\")\n            .secretType(\"Opaque\")\n            .secretData(serializeJson(\n                jsonObject(\n                    jsonProperty(\"foo\", \"bar2\")\n                )))\n            .secretLabels(Map.ofEntries(\n                Map.entry(\"KeyA\", \"ValueA\"),\n                Map.entry(\"KeyB\", \"ValueB\"),\n                Map.entry(\"app.duplocloud.net/app-name\", \"\u003cappname\u003e\")\n            ))\n            .secretAnnotations(Map.ofEntries(\n                Map.entry(\"annotA\", \"ValueA\"),\n                Map.entry(\"annotB\", \"ValueB\")\n            ))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myapp:\n    type: duplocloud:Tenant\n    properties:\n      accountName: myapp\n      planId: default\n  myappK8Secret:\n    type: duplocloud:K8Secret\n    name: myapp\n    properties:\n      tenantId: ${myapp.tenantId}\n      secretName: mysecret\n      secretType: Opaque\n      secretData:\n        fn::toJSON:\n          foo: bar2\n      secretLabels:\n        KeyA: ValueA\n        KeyB: ValueB\n        app.duplocloud.net/app-name: \u003cappname\u003e\n      secretAnnotations:\n        annotA: ValueA\n        annotB: ValueB\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nExample: Importing an existing kubernetes secret\n\n - *TENANT_ID* is the tenant GUID\n\n - *NAME* is the config map name\n\n#\n\n```sh\n$ pulumi import duplocloud:index/k8Secret:K8Secret myapp v2/subscriptions/*TENANT_ID*/K8SecretApiV2/*NAME*\n```\n\n",
+            "description": "`duplocloud.K8Secret` manages a kubernetes secret in a Duplo tenant.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as duplocloud from \"@duplocloud/pulumi\";\n\nconst myapp = new duplocloud.Tenant(\"myapp\", {\n    accountName: \"myapp\",\n    planId: \"default\",\n});\nconst myappK8Secret = new duplocloud.K8Secret(\"myapp\", {\n    tenantId: myapp.tenantId,\n    secretName: \"mysecret\",\n    secretType: \"Opaque\",\n    secretData: JSON.stringify({\n        foo: \"bar2\",\n    }),\n    secretLabels: {\n        KeyA: \"ValueA\",\n        KeyB: \"ValueB\",\n        \"app.duplocloud.net/app-name\": \"\u003cappname\u003e\",\n    },\n    secretAnnotations: {\n        annotA: \"ValueA\",\n        annotB: \"ValueB\",\n    },\n});\n// Track a secret whose values are owned outside of Terraform - created by the Duplo\n// installer, rotated out of band - so that services can depend on it without its\n// contents ever being written to Terraform state.\n//\n// Import the secret before the first apply:\n//\n//   terraform import duplocloud_k8_secret.env_var_global \\\n//     v2/subscriptions/*TENANT_ID*/K8SecretApiV2/env-var-os-global\n//\n// Importing is not strictly required - a create carries any existing data forward - but\n// it keeps Terraform from treating a secret that already exists as one it is making, and\n// it is the only way to catch a wrong secret_type before the plan proposes a replacement.\n// Note that the import itself writes the secret's values to state once, so rotate the\n// secret afterwards if that matters.\nconst envVarGlobal = new duplocloud.K8Secret(\"env_var_global\", {\n    tenantId: myapp.tenantId,\n    secretName: \"env-var-os-global\",\n    secretType: \"Opaque\",\n    manageSecretData: false,\n});\n```\n```python\nimport pulumi\nimport json\nimport pulumi_duplocloud as duplocloud\n\nmyapp = duplocloud.Tenant(\"myapp\",\n    account_name=\"myapp\",\n    plan_id=\"default\")\nmyapp_k8_secret = duplocloud.K8Secret(\"myapp\",\n    tenant_id=myapp.tenant_id,\n    secret_name=\"mysecret\",\n    secret_type=\"Opaque\",\n    secret_data=json.dumps({\n        \"foo\": \"bar2\",\n    }),\n    secret_labels={\n        \"KeyA\": \"ValueA\",\n        \"KeyB\": \"ValueB\",\n        \"app.duplocloud.net/app-name\": \"\u003cappname\u003e\",\n    },\n    secret_annotations={\n        \"annotA\": \"ValueA\",\n        \"annotB\": \"ValueB\",\n    })\n# Track a secret whose values are owned outside of Terraform - created by the Duplo\n# installer, rotated out of band - so that services can depend on it without its\n# contents ever being written to Terraform state.\n#\n# Import the secret before the first apply:\n#\n#   terraform import duplocloud_k8_secret.env_var_global \\\n#     v2/subscriptions/*TENANT_ID*/K8SecretApiV2/env-var-os-global\n#\n# Importing is not strictly required - a create carries any existing data forward - but\n# it keeps Terraform from treating a secret that already exists as one it is making, and\n# it is the only way to catch a wrong secret_type before the plan proposes a replacement.\n# Note that the import itself writes the secret's values to state once, so rotate the\n# secret afterwards if that matters.\nenv_var_global = duplocloud.K8Secret(\"env_var_global\",\n    tenant_id=myapp.tenant_id,\n    secret_name=\"env-var-os-global\",\n    secret_type=\"Opaque\",\n    manage_secret_data=False)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing System.Text.Json;\nusing Pulumi;\nusing Pulumi = DuploCloud.Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myapp = new Pulumi.Tenant(\"myapp\", new()\n    {\n        AccountName = \"myapp\",\n        PlanId = \"default\",\n    });\n\n    var myappK8Secret = new Pulumi.K8Secret(\"myapp\", new()\n    {\n        TenantId = myapp.TenantId,\n        SecretName = \"mysecret\",\n        SecretType = \"Opaque\",\n        SecretData = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n        {\n            [\"foo\"] = \"bar2\",\n        }),\n        SecretLabels = \n        {\n            { \"KeyA\", \"ValueA\" },\n            { \"KeyB\", \"ValueB\" },\n            { \"app.duplocloud.net/app-name\", \"\u003cappname\u003e\" },\n        },\n        SecretAnnotations = \n        {\n            { \"annotA\", \"ValueA\" },\n            { \"annotB\", \"ValueB\" },\n        },\n    });\n\n    // Track a secret whose values are owned outside of Terraform - created by the Duplo\n    // installer, rotated out of band - so that services can depend on it without its\n    // contents ever being written to Terraform state.\n    //\n    // Import the secret before the first apply:\n    //\n    //   terraform import duplocloud_k8_secret.env_var_global \\\n    //     v2/subscriptions/*TENANT_ID*/K8SecretApiV2/env-var-os-global\n    //\n    // Importing is not strictly required - a create carries any existing data forward - but\n    // it keeps Terraform from treating a secret that already exists as one it is making, and\n    // it is the only way to catch a wrong secret_type before the plan proposes a replacement.\n    // Note that the import itself writes the secret's values to state once, so rotate the\n    // secret afterwards if that matters.\n    var envVarGlobal = new Pulumi.K8Secret(\"env_var_global\", new()\n    {\n        TenantId = myapp.TenantId,\n        SecretName = \"env-var-os-global\",\n        SecretType = \"Opaque\",\n        ManageSecretData = false,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\n\t\"github.com/duplocloud/pulumi-duplocloud/sdk/go/duplocloud\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmyapp, err := duplocloud.NewTenant(ctx, \"myapp\", \u0026duplocloud.TenantArgs{\n\t\t\tAccountName: pulumi.String(\"myapp\"),\n\t\t\tPlanId:      pulumi.String(\"default\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttmpJSON0, err := json.Marshal(map[string]interface{}{\n\t\t\t\"foo\": \"bar2\",\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson0 := string(tmpJSON0)\n\t\t_, err = duplocloud.NewK8Secret(ctx, \"myapp\", \u0026duplocloud.K8SecretArgs{\n\t\t\tTenantId:   myapp.TenantId,\n\t\t\tSecretName: pulumi.String(\"mysecret\"),\n\t\t\tSecretType: pulumi.String(\"Opaque\"),\n\t\t\tSecretData: pulumi.String(json0),\n\t\t\tSecretLabels: pulumi.StringMap{\n\t\t\t\t\"KeyA\":                        pulumi.String(\"ValueA\"),\n\t\t\t\t\"KeyB\":                        pulumi.String(\"ValueB\"),\n\t\t\t\t\"app.duplocloud.net/app-name\": pulumi.String(\"\u003cappname\u003e\"),\n\t\t\t},\n\t\t\tSecretAnnotations: pulumi.StringMap{\n\t\t\t\t\"annotA\": pulumi.String(\"ValueA\"),\n\t\t\t\t\"annotB\": pulumi.String(\"ValueB\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Track a secret whose values are owned outside of Terraform - created by the Duplo\n\t\t// installer, rotated out of band - so that services can depend on it without its\n\t\t// contents ever being written to Terraform state.\n\t\t//\n\t\t// Import the secret before the first apply:\n\t\t//\n\t\t//\tterraform import duplocloud_k8_secret.env_var_global \\\n\t\t//\t  v2/subscriptions/*TENANT_ID*/K8SecretApiV2/env-var-os-global\n\t\t//\n\t\t// Importing is not strictly required - a create carries any existing data forward - but\n\t\t// it keeps Terraform from treating a secret that already exists as one it is making, and\n\t\t// it is the only way to catch a wrong secret_type before the plan proposes a replacement.\n\t\t// Note that the import itself writes the secret's values to state once, so rotate the\n\t\t// secret afterwards if that matters.\n\t\t_, err = duplocloud.NewK8Secret(ctx, \"env_var_global\", \u0026duplocloud.K8SecretArgs{\n\t\t\tTenantId:         myapp.TenantId,\n\t\t\tSecretName:       pulumi.String(\"env-var-os-global\"),\n\t\t\tSecretType:       pulumi.String(\"Opaque\"),\n\t\t\tManageSecretData: pulumi.Bool(false),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.duplocloud.Tenant;\nimport com.pulumi.duplocloud.TenantArgs;\nimport com.pulumi.duplocloud.K8Secret;\nimport com.pulumi.duplocloud.K8SecretArgs;\nimport static com.pulumi.codegen.internal.Serialization.*;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myapp = new Tenant(\"myapp\", TenantArgs.builder()\n            .accountName(\"myapp\")\n            .planId(\"default\")\n            .build());\n\n        var myappK8Secret = new K8Secret(\"myappK8Secret\", K8SecretArgs.builder()\n            .tenantId(myapp.tenantId())\n            .secretName(\"mysecret\")\n            .secretType(\"Opaque\")\n            .secretData(serializeJson(\n                jsonObject(\n                    jsonProperty(\"foo\", \"bar2\")\n                )))\n            .secretLabels(Map.ofEntries(\n                Map.entry(\"KeyA\", \"ValueA\"),\n                Map.entry(\"KeyB\", \"ValueB\"),\n                Map.entry(\"app.duplocloud.net/app-name\", \"\u003cappname\u003e\")\n            ))\n            .secretAnnotations(Map.ofEntries(\n                Map.entry(\"annotA\", \"ValueA\"),\n                Map.entry(\"annotB\", \"ValueB\")\n            ))\n            .build());\n\n        // Track a secret whose values are owned outside of Terraform - created by the Duplo\n        // installer, rotated out of band - so that services can depend on it without its\n        // contents ever being written to Terraform state.\n        //\n        // Import the secret before the first apply:\n        //\n        //   terraform import duplocloud_k8_secret.env_var_global \\\n        //     v2/subscriptions/*TENANT_ID*/K8SecretApiV2/env-var-os-global\n        //\n        // Importing is not strictly required - a create carries any existing data forward - but\n        // it keeps Terraform from treating a secret that already exists as one it is making, and\n        // it is the only way to catch a wrong secret_type before the plan proposes a replacement.\n        // Note that the import itself writes the secret's values to state once, so rotate the\n        // secret afterwards if that matters.\n        var envVarGlobal = new K8Secret(\"envVarGlobal\", K8SecretArgs.builder()\n            .tenantId(myapp.tenantId())\n            .secretName(\"env-var-os-global\")\n            .secretType(\"Opaque\")\n            .manageSecretData(false)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myapp:\n    type: duplocloud:Tenant\n    properties:\n      accountName: myapp\n      planId: default\n  myappK8Secret:\n    type: duplocloud:K8Secret\n    name: myapp\n    properties:\n      tenantId: ${myapp.tenantId}\n      secretName: mysecret\n      secretType: Opaque\n      secretData:\n        fn::toJSON:\n          foo: bar2\n      secretLabels:\n        KeyA: ValueA\n        KeyB: ValueB\n        app.duplocloud.net/app-name: \u003cappname\u003e\n      secretAnnotations:\n        annotA: ValueA\n        annotB: ValueB\n  # Track a secret whose values are owned outside of Terraform - created by the Duplo\n  # installer, rotated out of band - so that services can depend on it without its\n  # contents ever being written to Terraform state.\n  #\n  # Import the secret before the first apply:\n  #\n  #   terraform import duplocloud_k8_secret.env_var_global \\\n  #     v2/subscriptions/*TENANT_ID*/K8SecretApiV2/env-var-os-global\n  #\n  # Importing is not strictly required - a create carries any existing data forward - but\n  # it keeps Terraform from treating a secret that already exists as one it is making, and\n  # it is the only way to catch a wrong secret_type before the plan proposes a replacement.\n  # Note that the import itself writes the secret's values to state once, so rotate the\n  # secret afterwards if that matters.\n  envVarGlobal:\n    type: duplocloud:K8Secret\n    name: env_var_global\n    properties:\n      tenantId: ${myapp.tenantId}\n      secretName: env-var-os-global\n      secretType: Opaque\n      manageSecretData: false\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nExample: Importing an existing kubernetes secret\n\n - *TENANT_ID* is the tenant GUID\n\n - *NAME* is the config map name\n\n#\n\n```sh\n$ pulumi import duplocloud:index/k8Secret:K8Secret myapp v2/subscriptions/*TENANT_ID*/K8SecretApiV2/*NAME*\n```\n\nAn import has no configuration behind it, so it always runs as though Terraform manages\n\nthe secret's contents: the values are read and written to state in plaintext, once,\n\nbefore `manage_secret_data = false` can take effect.  Subsequent reads mask them, but\n\nthe values remain in the state history of a versioned remote backend.  Rotate the\n\nsecret after importing, or scrub the state history, if that matters.\n\n",
             "properties": {
                 "clientSecretVersion": {
                     "type": "string"
+                },
+                "manageSecretData": {
+                    "type": "boolean"
                 },
                 "secretAnnotations": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Annotations for the secret.\n"
+                    "description": "Annotations for the secret. **Note: : To skip encoding of an already encoded value string of a k8's secrete add\n`duplocloud.net/skip-encoding: \"true\"`\n"
                 },
                 "secretData": {
                     "type": "string",
@@ -63690,6 +63730,7 @@
             },
             "required": [
                 "clientSecretVersion",
+                "manageSecretData",
                 "secretAnnotations",
                 "secretLabels",
                 "secretName",
@@ -63698,12 +63739,15 @@
                 "tenantId"
             ],
             "inputProperties": {
+                "manageSecretData": {
+                    "type": "boolean"
+                },
                 "secretAnnotations": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Annotations for the secret.\n"
+                    "description": "Annotations for the secret. **Note: : To skip encoding of an already encoded value string of a k8's secrete add\n`duplocloud.net/skip-encoding: \"true\"`\n"
                 },
                 "secretData": {
                     "type": "string",
@@ -63744,12 +63788,15 @@
                     "clientSecretVersion": {
                         "type": "string"
                     },
+                    "manageSecretData": {
+                        "type": "boolean"
+                    },
                     "secretAnnotations": {
                         "type": "object",
                         "additionalProperties": {
                             "type": "string"
                         },
-                        "description": "Annotations for the secret.\n"
+                        "description": "Annotations for the secret. **Note: : To skip encoding of an already encoded value string of a k8's secrete add\n`duplocloud.net/skip-encoding: \"true\"`\n"
                     },
                     "secretData": {
                         "type": "string",
@@ -65991,7 +66038,7 @@
                 },
                 "clusterIdentifier": {
                     "type": "string",
-                    "description": "The full name of the RDS Cluster.\n"
+                    "description": "The full name of the RDS Cluster. This can also be the secondary cluster of an Aurora global database (`secondary_cluster` of the `duplocloud.AwsRdsGlobalSecondary` resource), which adds a reader instance to that secondary cluster. The secondary cluster must not be in headless mode (`make_headless = false`).\n"
                 },
                 "clusterParameterGroupName": {
                     "type": "string",
@@ -66071,7 +66118,7 @@
                 },
                 "tenantId": {
                     "type": "string",
-                    "description": "The GUID of the tenant that the RDS read replica will be created in.\n"
+                    "description": "The GUID of the tenant that the RDS read replica will be created in. This must be the tenant that owns the cluster: for the secondary cluster of an Aurora global database, use the secondary tenant (`secondary_tenant_id` of the `duplocloud.AwsRdsGlobalSecondary` resource).\n"
                 },
                 "v2ScalingConfiguration": {
                     "$ref": "#/types/duplocloud:index/RdsReadReplicaV2ScalingConfiguration:RdsReadReplicaV2ScalingConfiguration",
@@ -66119,7 +66166,7 @@
                 },
                 "clusterIdentifier": {
                     "type": "string",
-                    "description": "The full name of the RDS Cluster.\n"
+                    "description": "The full name of the RDS Cluster. This can also be the secondary cluster of an Aurora global database (`secondary_cluster` of the `duplocloud.AwsRdsGlobalSecondary` resource), which adds a reader instance to that secondary cluster. The secondary cluster must not be in headless mode (`make_headless = false`).\n"
                 },
                 "engineType": {
                     "type": "integer",
@@ -66157,7 +66204,7 @@
                 },
                 "tenantId": {
                     "type": "string",
-                    "description": "The GUID of the tenant that the RDS read replica will be created in.\n",
+                    "description": "The GUID of the tenant that the RDS read replica will be created in. This must be the tenant that owns the cluster: for the secondary cluster of an Aurora global database, use the secondary tenant (`secondary_tenant_id` of the `duplocloud.AwsRdsGlobalSecondary` resource).\n",
                     "willReplaceOnChanges": true
                 },
                 "v2ScalingConfiguration": {
@@ -66192,7 +66239,7 @@
                     },
                     "clusterIdentifier": {
                         "type": "string",
-                        "description": "The full name of the RDS Cluster.\n"
+                        "description": "The full name of the RDS Cluster. This can also be the secondary cluster of an Aurora global database (`secondary_cluster` of the `duplocloud.AwsRdsGlobalSecondary` resource), which adds a reader instance to that secondary cluster. The secondary cluster must not be in headless mode (`make_headless = false`).\n"
                     },
                     "clusterParameterGroupName": {
                         "type": "string",
@@ -66274,7 +66321,7 @@
                     },
                     "tenantId": {
                         "type": "string",
-                        "description": "The GUID of the tenant that the RDS read replica will be created in.\n",
+                        "description": "The GUID of the tenant that the RDS read replica will be created in. This must be the tenant that owns the cluster: for the secondary cluster of an Aurora global database, use the secondary tenant (`secondary_tenant_id` of the `duplocloud.AwsRdsGlobalSecondary` resource).\n",
                         "willReplaceOnChanges": true
                     },
                     "v2ScalingConfiguration": {
@@ -67559,7 +67606,8 @@
             "description": "`duplocloud.User` manages a user in Duplo.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as duplocloud from \"@duplocloud/pulumi\";\n\nconst myuser = new duplocloud.User(\"myuser\", {\n    username: \"me@abc.com\",\n    roles: [\n        \"User\",\n        \"Administrator\",\n        \"SignupUser\",\n        \"SecurityAdmin\",\n    ],\n    isReadonly: false,\n    reallocateVpnAddress: false,\n    regenerateVpnPassword: false,\n});\n```\n```python\nimport pulumi\nimport pulumi_duplocloud as duplocloud\n\nmyuser = duplocloud.User(\"myuser\",\n    username=\"me@abc.com\",\n    roles=[\n        \"User\",\n        \"Administrator\",\n        \"SignupUser\",\n        \"SecurityAdmin\",\n    ],\n    is_readonly=False,\n    reallocate_vpn_address=False,\n    regenerate_vpn_password=False)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Pulumi = DuploCloud.Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myuser = new Pulumi.User(\"myuser\", new()\n    {\n        Username = \"me@abc.com\",\n        Roles = new[]\n        {\n            \"User\",\n            \"Administrator\",\n            \"SignupUser\",\n            \"SecurityAdmin\",\n        },\n        IsReadonly = false,\n        ReallocateVpnAddress = false,\n        RegenerateVpnPassword = false,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/duplocloud/pulumi-duplocloud/sdk/go/duplocloud\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := duplocloud.NewUser(ctx, \"myuser\", \u0026duplocloud.UserArgs{\n\t\t\tUsername: pulumi.String(\"me@abc.com\"),\n\t\t\tRoles: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"User\"),\n\t\t\t\tpulumi.String(\"Administrator\"),\n\t\t\t\tpulumi.String(\"SignupUser\"),\n\t\t\t\tpulumi.String(\"SecurityAdmin\"),\n\t\t\t},\n\t\t\tIsReadonly:            pulumi.Bool(false),\n\t\t\tReallocateVpnAddress:  pulumi.Bool(false),\n\t\t\tRegenerateVpnPassword: pulumi.Bool(false),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.duplocloud.User;\nimport com.pulumi.duplocloud.UserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myuser = new User(\"myuser\", UserArgs.builder()\n            .username(\"me@abc.com\")\n            .roles(            \n                \"User\",\n                \"Administrator\",\n                \"SignupUser\",\n                \"SecurityAdmin\")\n            .isReadonly(false)\n            .reallocateVpnAddress(false)\n            .regenerateVpnPassword(false)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myuser:\n    type: duplocloud:User\n    properties:\n      username: me@abc.com\n      roles:\n        - User\n        - Administrator\n        - SignupUser\n        - SecurityAdmin\n      isReadonly: false\n      reallocateVpnAddress: false\n      regenerateVpnPassword: false\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nExample: Importing an existing duplo user\n\n - *USERNAME* is the duplo username\n\n#\n\n```sh\n$ pulumi import duplocloud:index/user:User myuser *USERNAME*\n```\n\n",
             "properties": {
                 "currentSessionToken": {
-                    "type": "string"
+                    "type": "string",
+                    "secret": true
                 },
                 "isConfirmationEmailSent": {
                     "type": "boolean"
@@ -67650,7 +67698,8 @@
                 "description": "Input properties used for looking up and filtering User resources.\n",
                 "properties": {
                     "currentSessionToken": {
-                        "type": "string"
+                        "type": "string",
+                        "secret": true
                     },
                     "isConfirmationEmailSent": {
                         "type": "boolean"
@@ -68589,6 +68638,7 @@
                     },
                     "primaryMongoConnectionString": {
                         "description": "The primary MongoDB connection string for the CosmosDB account.\n",
+                        "secret": true,
                         "type": "string"
                     },
                     "primaryReadonlyMasterKey": {
@@ -68598,14 +68648,17 @@
                     },
                     "primaryReadonlyMongoConnectionString": {
                         "description": "The primary readonly MongoDB connection string for the CosmosDB account.\n",
+                        "secret": true,
                         "type": "string"
                     },
                     "primaryReadonlySqlConnectionString": {
                         "description": "The primary readonly SQL connection string for the CosmosDB account.\n",
+                        "secret": true,
                         "type": "string"
                     },
                     "primarySqlConnectionString": {
                         "description": "The primary SQL connection string for the CosmosDB account.\n",
+                        "secret": true,
                         "type": "string"
                     },
                     "publicNetworkAccess": {
@@ -68626,6 +68679,7 @@
                     },
                     "secondaryMongoConnectionString": {
                         "description": "The secondary MongoDB connection string for the CosmosDB account.\n",
+                        "secret": true,
                         "type": "string"
                     },
                     "secondaryReadonlyMasterKey": {
@@ -68635,14 +68689,17 @@
                     },
                     "secondaryReadonlyMongoConnectionString": {
                         "description": "The secondary readonly MongoDB connection string for the CosmosDB account.\n",
+                        "secret": true,
                         "type": "string"
                     },
                     "secondaryReadonlySqlConnectionString": {
                         "description": "The secondary readonly SQL connection string for the CosmosDB account.\n",
+                        "secret": true,
                         "type": "string"
                     },
                     "secondarySqlConnectionString": {
                         "description": "The secondary SQL connection string for the CosmosDB account.\n",
+                        "secret": true,
                         "type": "string"
                     },
                     "tenantId": {
