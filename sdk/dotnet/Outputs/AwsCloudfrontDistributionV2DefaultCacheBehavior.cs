@@ -53,7 +53,13 @@ namespace DuploCloud.Pulumi.Outputs
         public readonly string? ResponseHeadersPolicyId;
         public readonly bool? SmoothStreaming;
         public readonly string TargetOriginId;
+        /// <summary>
+        /// IDs of the CloudFront key groups allowed to sign URLs and cookies for this behavior. If omitted, the key groups already on the behavior are kept, unless `trusted_signers` is set to at least one value, which turns them off. Set to `[]` to turn key groups off. Cannot be set together with `trusted_signers`; CloudFront rejects the request.
+        /// </summary>
         public readonly ImmutableArray<string> TrustedKeyGroups;
+        /// <summary>
+        /// AWS account IDs (or `self`) allowed to sign URLs and cookies for this behavior. If omitted, the signers already on the behavior are kept, unless `trusted_key_groups` is set to at least one value, which turns them off. Set to `[]` to turn trusted signers off. Cannot be set together with `trusted_key_groups`; CloudFront rejects the request.
+        /// </summary>
         public readonly ImmutableArray<string> TrustedSigners;
         public readonly string ViewerProtocolPolicy;
 

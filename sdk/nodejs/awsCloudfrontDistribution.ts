@@ -156,7 +156,7 @@ export class AwsCloudfrontDistribution extends pulumi.CustomResource {
     /**
      * The object that you want CloudFront to return (for example, index.html) when an end user requests the root URL.
      */
-    public readonly defaultRootObject!: pulumi.Output<string>;
+    public readonly defaultRootObject!: pulumi.Output<string | undefined>;
     public /*out*/ readonly domainName!: pulumi.Output<string>;
     /**
      * Whether the distribution is enabled to accept end user requests for content. Defaults to `true`.

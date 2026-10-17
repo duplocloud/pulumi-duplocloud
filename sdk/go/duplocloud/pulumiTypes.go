@@ -4947,15 +4947,17 @@ type AwsCloudfrontDistributionDefaultCacheBehavior struct {
 	// Maximum time to live: Not required when cache*policy*id is set
 	MaxTtl *int `pulumi:"maxTtl"`
 	// Minimum time to live: Not required when cache*policy*id is set Defaults to `0`.
-	MinTtl                  *int     `pulumi:"minTtl"`
-	OriginRequestPolicyId   *string  `pulumi:"originRequestPolicyId"`
-	RealtimeLogConfigArn    *string  `pulumi:"realtimeLogConfigArn"`
-	ResponseHeadersPolicyId *string  `pulumi:"responseHeadersPolicyId"`
-	SmoothStreaming         *bool    `pulumi:"smoothStreaming"`
-	TargetOriginId          string   `pulumi:"targetOriginId"`
-	TrustedKeyGroups        []string `pulumi:"trustedKeyGroups"`
-	TrustedSigners          []string `pulumi:"trustedSigners"`
-	ViewerProtocolPolicy    string   `pulumi:"viewerProtocolPolicy"`
+	MinTtl                  *int    `pulumi:"minTtl"`
+	OriginRequestPolicyId   *string `pulumi:"originRequestPolicyId"`
+	RealtimeLogConfigArn    *string `pulumi:"realtimeLogConfigArn"`
+	ResponseHeadersPolicyId *string `pulumi:"responseHeadersPolicyId"`
+	SmoothStreaming         *bool   `pulumi:"smoothStreaming"`
+	TargetOriginId          string  `pulumi:"targetOriginId"`
+	// IDs of the CloudFront key groups allowed to sign URLs and cookies for this behavior. If omitted, the key groups already on the behavior are kept, unless `trustedSigners` is set to at least one value, which turns them off. Set to `[]` to turn key groups off. Cannot be set together with `trustedSigners`; CloudFront rejects the request.
+	TrustedKeyGroups []string `pulumi:"trustedKeyGroups"`
+	// AWS account IDs (or `self`) allowed to sign URLs and cookies for this behavior. If omitted, the signers already on the behavior are kept, unless `trustedKeyGroups` is set to at least one value, which turns them off. Set to `[]` to turn trusted signers off. Cannot be set together with `trustedKeyGroups`; CloudFront rejects the request.
+	TrustedSigners       []string `pulumi:"trustedSigners"`
+	ViewerProtocolPolicy string   `pulumi:"viewerProtocolPolicy"`
 }
 
 // AwsCloudfrontDistributionDefaultCacheBehaviorInput is an input type that accepts AwsCloudfrontDistributionDefaultCacheBehaviorArgs and AwsCloudfrontDistributionDefaultCacheBehaviorOutput values.
@@ -4993,15 +4995,17 @@ type AwsCloudfrontDistributionDefaultCacheBehaviorArgs struct {
 	// Maximum time to live: Not required when cache*policy*id is set
 	MaxTtl pulumi.IntPtrInput `pulumi:"maxTtl"`
 	// Minimum time to live: Not required when cache*policy*id is set Defaults to `0`.
-	MinTtl                  pulumi.IntPtrInput      `pulumi:"minTtl"`
-	OriginRequestPolicyId   pulumi.StringPtrInput   `pulumi:"originRequestPolicyId"`
-	RealtimeLogConfigArn    pulumi.StringPtrInput   `pulumi:"realtimeLogConfigArn"`
-	ResponseHeadersPolicyId pulumi.StringPtrInput   `pulumi:"responseHeadersPolicyId"`
-	SmoothStreaming         pulumi.BoolPtrInput     `pulumi:"smoothStreaming"`
-	TargetOriginId          pulumi.StringInput      `pulumi:"targetOriginId"`
-	TrustedKeyGroups        pulumi.StringArrayInput `pulumi:"trustedKeyGroups"`
-	TrustedSigners          pulumi.StringArrayInput `pulumi:"trustedSigners"`
-	ViewerProtocolPolicy    pulumi.StringInput      `pulumi:"viewerProtocolPolicy"`
+	MinTtl                  pulumi.IntPtrInput    `pulumi:"minTtl"`
+	OriginRequestPolicyId   pulumi.StringPtrInput `pulumi:"originRequestPolicyId"`
+	RealtimeLogConfigArn    pulumi.StringPtrInput `pulumi:"realtimeLogConfigArn"`
+	ResponseHeadersPolicyId pulumi.StringPtrInput `pulumi:"responseHeadersPolicyId"`
+	SmoothStreaming         pulumi.BoolPtrInput   `pulumi:"smoothStreaming"`
+	TargetOriginId          pulumi.StringInput    `pulumi:"targetOriginId"`
+	// IDs of the CloudFront key groups allowed to sign URLs and cookies for this behavior. If omitted, the key groups already on the behavior are kept, unless `trustedSigners` is set to at least one value, which turns them off. Set to `[]` to turn key groups off. Cannot be set together with `trustedSigners`; CloudFront rejects the request.
+	TrustedKeyGroups pulumi.StringArrayInput `pulumi:"trustedKeyGroups"`
+	// AWS account IDs (or `self`) allowed to sign URLs and cookies for this behavior. If omitted, the signers already on the behavior are kept, unless `trustedKeyGroups` is set to at least one value, which turns them off. Set to `[]` to turn trusted signers off. Cannot be set together with `trustedKeyGroups`; CloudFront rejects the request.
+	TrustedSigners       pulumi.StringArrayInput `pulumi:"trustedSigners"`
+	ViewerProtocolPolicy pulumi.StringInput      `pulumi:"viewerProtocolPolicy"`
 }
 
 func (AwsCloudfrontDistributionDefaultCacheBehaviorArgs) ElementType() reflect.Type {
@@ -5164,10 +5168,12 @@ func (o AwsCloudfrontDistributionDefaultCacheBehaviorOutput) TargetOriginId() pu
 	return o.ApplyT(func(v AwsCloudfrontDistributionDefaultCacheBehavior) string { return v.TargetOriginId }).(pulumi.StringOutput)
 }
 
+// IDs of the CloudFront key groups allowed to sign URLs and cookies for this behavior. If omitted, the key groups already on the behavior are kept, unless `trustedSigners` is set to at least one value, which turns them off. Set to `[]` to turn key groups off. Cannot be set together with `trustedSigners`; CloudFront rejects the request.
 func (o AwsCloudfrontDistributionDefaultCacheBehaviorOutput) TrustedKeyGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AwsCloudfrontDistributionDefaultCacheBehavior) []string { return v.TrustedKeyGroups }).(pulumi.StringArrayOutput)
 }
 
+// AWS account IDs (or `self`) allowed to sign URLs and cookies for this behavior. If omitted, the signers already on the behavior are kept, unless `trustedKeyGroups` is set to at least one value, which turns them off. Set to `[]` to turn trusted signers off. Cannot be set together with `trustedKeyGroups`; CloudFront rejects the request.
 func (o AwsCloudfrontDistributionDefaultCacheBehaviorOutput) TrustedSigners() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AwsCloudfrontDistributionDefaultCacheBehavior) []string { return v.TrustedSigners }).(pulumi.StringArrayOutput)
 }
@@ -5357,6 +5363,7 @@ func (o AwsCloudfrontDistributionDefaultCacheBehaviorPtrOutput) TargetOriginId()
 	}).(pulumi.StringPtrOutput)
 }
 
+// IDs of the CloudFront key groups allowed to sign URLs and cookies for this behavior. If omitted, the key groups already on the behavior are kept, unless `trustedSigners` is set to at least one value, which turns them off. Set to `[]` to turn key groups off. Cannot be set together with `trustedSigners`; CloudFront rejects the request.
 func (o AwsCloudfrontDistributionDefaultCacheBehaviorPtrOutput) TrustedKeyGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AwsCloudfrontDistributionDefaultCacheBehavior) []string {
 		if v == nil {
@@ -5366,6 +5373,7 @@ func (o AwsCloudfrontDistributionDefaultCacheBehaviorPtrOutput) TrustedKeyGroups
 	}).(pulumi.StringArrayOutput)
 }
 
+// AWS account IDs (or `self`) allowed to sign URLs and cookies for this behavior. If omitted, the signers already on the behavior are kept, unless `trustedKeyGroups` is set to at least one value, which turns them off. Set to `[]` to turn trusted signers off. Cannot be set together with `trustedKeyGroups`; CloudFront rejects the request.
 func (o AwsCloudfrontDistributionDefaultCacheBehaviorPtrOutput) TrustedSigners() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AwsCloudfrontDistributionDefaultCacheBehavior) []string {
 		if v == nil {
@@ -6123,16 +6131,18 @@ type AwsCloudfrontDistributionOrderedCacheBehavior struct {
 	LambdaFunctionAssociations []AwsCloudfrontDistributionOrderedCacheBehaviorLambdaFunctionAssociation `pulumi:"lambdaFunctionAssociations"`
 	MaxTtl                     *int                                                                     `pulumi:"maxTtl"`
 	// Defaults to `0`.
-	MinTtl                  *int     `pulumi:"minTtl"`
-	OriginRequestPolicyId   *string  `pulumi:"originRequestPolicyId"`
-	PathPattern             string   `pulumi:"pathPattern"`
-	RealtimeLogConfigArn    *string  `pulumi:"realtimeLogConfigArn"`
-	ResponseHeadersPolicyId *string  `pulumi:"responseHeadersPolicyId"`
-	SmoothStreaming         *bool    `pulumi:"smoothStreaming"`
-	TargetOriginId          string   `pulumi:"targetOriginId"`
-	TrustedKeyGroups        []string `pulumi:"trustedKeyGroups"`
-	TrustedSigners          []string `pulumi:"trustedSigners"`
-	ViewerProtocolPolicy    string   `pulumi:"viewerProtocolPolicy"`
+	MinTtl                  *int    `pulumi:"minTtl"`
+	OriginRequestPolicyId   *string `pulumi:"originRequestPolicyId"`
+	PathPattern             string  `pulumi:"pathPattern"`
+	RealtimeLogConfigArn    *string `pulumi:"realtimeLogConfigArn"`
+	ResponseHeadersPolicyId *string `pulumi:"responseHeadersPolicyId"`
+	SmoothStreaming         *bool   `pulumi:"smoothStreaming"`
+	TargetOriginId          string  `pulumi:"targetOriginId"`
+	// IDs of the CloudFront key groups allowed to sign URLs and cookies for this behavior. If omitted, the key groups already on the behavior are kept, unless `trustedSigners` is set to at least one value, which turns them off. Set to `[]` to turn key groups off. Cannot be set together with `trustedSigners`; CloudFront rejects the request.
+	TrustedKeyGroups []string `pulumi:"trustedKeyGroups"`
+	// AWS account IDs (or `self`) allowed to sign URLs and cookies for this behavior. If omitted, the signers already on the behavior are kept, unless `trustedKeyGroups` is set to at least one value, which turns them off. Set to `[]` to turn trusted signers off. Cannot be set together with `trustedKeyGroups`; CloudFront rejects the request.
+	TrustedSigners       []string `pulumi:"trustedSigners"`
+	ViewerProtocolPolicy string   `pulumi:"viewerProtocolPolicy"`
 }
 
 // AwsCloudfrontDistributionOrderedCacheBehaviorInput is an input type that accepts AwsCloudfrontDistributionOrderedCacheBehaviorArgs and AwsCloudfrontDistributionOrderedCacheBehaviorOutput values.
@@ -6159,16 +6169,18 @@ type AwsCloudfrontDistributionOrderedCacheBehaviorArgs struct {
 	LambdaFunctionAssociations AwsCloudfrontDistributionOrderedCacheBehaviorLambdaFunctionAssociationArrayInput `pulumi:"lambdaFunctionAssociations"`
 	MaxTtl                     pulumi.IntPtrInput                                                               `pulumi:"maxTtl"`
 	// Defaults to `0`.
-	MinTtl                  pulumi.IntPtrInput      `pulumi:"minTtl"`
-	OriginRequestPolicyId   pulumi.StringPtrInput   `pulumi:"originRequestPolicyId"`
-	PathPattern             pulumi.StringInput      `pulumi:"pathPattern"`
-	RealtimeLogConfigArn    pulumi.StringPtrInput   `pulumi:"realtimeLogConfigArn"`
-	ResponseHeadersPolicyId pulumi.StringPtrInput   `pulumi:"responseHeadersPolicyId"`
-	SmoothStreaming         pulumi.BoolPtrInput     `pulumi:"smoothStreaming"`
-	TargetOriginId          pulumi.StringInput      `pulumi:"targetOriginId"`
-	TrustedKeyGroups        pulumi.StringArrayInput `pulumi:"trustedKeyGroups"`
-	TrustedSigners          pulumi.StringArrayInput `pulumi:"trustedSigners"`
-	ViewerProtocolPolicy    pulumi.StringInput      `pulumi:"viewerProtocolPolicy"`
+	MinTtl                  pulumi.IntPtrInput    `pulumi:"minTtl"`
+	OriginRequestPolicyId   pulumi.StringPtrInput `pulumi:"originRequestPolicyId"`
+	PathPattern             pulumi.StringInput    `pulumi:"pathPattern"`
+	RealtimeLogConfigArn    pulumi.StringPtrInput `pulumi:"realtimeLogConfigArn"`
+	ResponseHeadersPolicyId pulumi.StringPtrInput `pulumi:"responseHeadersPolicyId"`
+	SmoothStreaming         pulumi.BoolPtrInput   `pulumi:"smoothStreaming"`
+	TargetOriginId          pulumi.StringInput    `pulumi:"targetOriginId"`
+	// IDs of the CloudFront key groups allowed to sign URLs and cookies for this behavior. If omitted, the key groups already on the behavior are kept, unless `trustedSigners` is set to at least one value, which turns them off. Set to `[]` to turn key groups off. Cannot be set together with `trustedSigners`; CloudFront rejects the request.
+	TrustedKeyGroups pulumi.StringArrayInput `pulumi:"trustedKeyGroups"`
+	// AWS account IDs (or `self`) allowed to sign URLs and cookies for this behavior. If omitted, the signers already on the behavior are kept, unless `trustedKeyGroups` is set to at least one value, which turns them off. Set to `[]` to turn trusted signers off. Cannot be set together with `trustedKeyGroups`; CloudFront rejects the request.
+	TrustedSigners       pulumi.StringArrayInput `pulumi:"trustedSigners"`
+	ViewerProtocolPolicy pulumi.StringInput      `pulumi:"viewerProtocolPolicy"`
 }
 
 func (AwsCloudfrontDistributionOrderedCacheBehaviorArgs) ElementType() reflect.Type {
@@ -6298,10 +6310,12 @@ func (o AwsCloudfrontDistributionOrderedCacheBehaviorOutput) TargetOriginId() pu
 	return o.ApplyT(func(v AwsCloudfrontDistributionOrderedCacheBehavior) string { return v.TargetOriginId }).(pulumi.StringOutput)
 }
 
+// IDs of the CloudFront key groups allowed to sign URLs and cookies for this behavior. If omitted, the key groups already on the behavior are kept, unless `trustedSigners` is set to at least one value, which turns them off. Set to `[]` to turn key groups off. Cannot be set together with `trustedSigners`; CloudFront rejects the request.
 func (o AwsCloudfrontDistributionOrderedCacheBehaviorOutput) TrustedKeyGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AwsCloudfrontDistributionOrderedCacheBehavior) []string { return v.TrustedKeyGroups }).(pulumi.StringArrayOutput)
 }
 
+// AWS account IDs (or `self`) allowed to sign URLs and cookies for this behavior. If omitted, the signers already on the behavior are kept, unless `trustedKeyGroups` is set to at least one value, which turns them off. Set to `[]` to turn trusted signers off. Cannot be set together with `trustedKeyGroups`; CloudFront rejects the request.
 func (o AwsCloudfrontDistributionOrderedCacheBehaviorOutput) TrustedSigners() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AwsCloudfrontDistributionOrderedCacheBehavior) []string { return v.TrustedSigners }).(pulumi.StringArrayOutput)
 }
@@ -8317,15 +8331,17 @@ type AwsCloudfrontDistributionV2DefaultCacheBehavior struct {
 	// Maximum time to live: Not required when cache*policy*id is set
 	MaxTtl *int `pulumi:"maxTtl"`
 	// Minimum time to live: Not required when cache*policy*id is set Defaults to `0`.
-	MinTtl                  *int     `pulumi:"minTtl"`
-	OriginRequestPolicyId   *string  `pulumi:"originRequestPolicyId"`
-	RealtimeLogConfigArn    *string  `pulumi:"realtimeLogConfigArn"`
-	ResponseHeadersPolicyId *string  `pulumi:"responseHeadersPolicyId"`
-	SmoothStreaming         *bool    `pulumi:"smoothStreaming"`
-	TargetOriginId          string   `pulumi:"targetOriginId"`
-	TrustedKeyGroups        []string `pulumi:"trustedKeyGroups"`
-	TrustedSigners          []string `pulumi:"trustedSigners"`
-	ViewerProtocolPolicy    string   `pulumi:"viewerProtocolPolicy"`
+	MinTtl                  *int    `pulumi:"minTtl"`
+	OriginRequestPolicyId   *string `pulumi:"originRequestPolicyId"`
+	RealtimeLogConfigArn    *string `pulumi:"realtimeLogConfigArn"`
+	ResponseHeadersPolicyId *string `pulumi:"responseHeadersPolicyId"`
+	SmoothStreaming         *bool   `pulumi:"smoothStreaming"`
+	TargetOriginId          string  `pulumi:"targetOriginId"`
+	// IDs of the CloudFront key groups allowed to sign URLs and cookies for this behavior. If omitted, the key groups already on the behavior are kept, unless `trustedSigners` is set to at least one value, which turns them off. Set to `[]` to turn key groups off. Cannot be set together with `trustedSigners`; CloudFront rejects the request.
+	TrustedKeyGroups []string `pulumi:"trustedKeyGroups"`
+	// AWS account IDs (or `self`) allowed to sign URLs and cookies for this behavior. If omitted, the signers already on the behavior are kept, unless `trustedKeyGroups` is set to at least one value, which turns them off. Set to `[]` to turn trusted signers off. Cannot be set together with `trustedKeyGroups`; CloudFront rejects the request.
+	TrustedSigners       []string `pulumi:"trustedSigners"`
+	ViewerProtocolPolicy string   `pulumi:"viewerProtocolPolicy"`
 }
 
 // AwsCloudfrontDistributionV2DefaultCacheBehaviorInput is an input type that accepts AwsCloudfrontDistributionV2DefaultCacheBehaviorArgs and AwsCloudfrontDistributionV2DefaultCacheBehaviorOutput values.
@@ -8363,15 +8379,17 @@ type AwsCloudfrontDistributionV2DefaultCacheBehaviorArgs struct {
 	// Maximum time to live: Not required when cache*policy*id is set
 	MaxTtl pulumi.IntPtrInput `pulumi:"maxTtl"`
 	// Minimum time to live: Not required when cache*policy*id is set Defaults to `0`.
-	MinTtl                  pulumi.IntPtrInput      `pulumi:"minTtl"`
-	OriginRequestPolicyId   pulumi.StringPtrInput   `pulumi:"originRequestPolicyId"`
-	RealtimeLogConfigArn    pulumi.StringPtrInput   `pulumi:"realtimeLogConfigArn"`
-	ResponseHeadersPolicyId pulumi.StringPtrInput   `pulumi:"responseHeadersPolicyId"`
-	SmoothStreaming         pulumi.BoolPtrInput     `pulumi:"smoothStreaming"`
-	TargetOriginId          pulumi.StringInput      `pulumi:"targetOriginId"`
-	TrustedKeyGroups        pulumi.StringArrayInput `pulumi:"trustedKeyGroups"`
-	TrustedSigners          pulumi.StringArrayInput `pulumi:"trustedSigners"`
-	ViewerProtocolPolicy    pulumi.StringInput      `pulumi:"viewerProtocolPolicy"`
+	MinTtl                  pulumi.IntPtrInput    `pulumi:"minTtl"`
+	OriginRequestPolicyId   pulumi.StringPtrInput `pulumi:"originRequestPolicyId"`
+	RealtimeLogConfigArn    pulumi.StringPtrInput `pulumi:"realtimeLogConfigArn"`
+	ResponseHeadersPolicyId pulumi.StringPtrInput `pulumi:"responseHeadersPolicyId"`
+	SmoothStreaming         pulumi.BoolPtrInput   `pulumi:"smoothStreaming"`
+	TargetOriginId          pulumi.StringInput    `pulumi:"targetOriginId"`
+	// IDs of the CloudFront key groups allowed to sign URLs and cookies for this behavior. If omitted, the key groups already on the behavior are kept, unless `trustedSigners` is set to at least one value, which turns them off. Set to `[]` to turn key groups off. Cannot be set together with `trustedSigners`; CloudFront rejects the request.
+	TrustedKeyGroups pulumi.StringArrayInput `pulumi:"trustedKeyGroups"`
+	// AWS account IDs (or `self`) allowed to sign URLs and cookies for this behavior. If omitted, the signers already on the behavior are kept, unless `trustedKeyGroups` is set to at least one value, which turns them off. Set to `[]` to turn trusted signers off. Cannot be set together with `trustedKeyGroups`; CloudFront rejects the request.
+	TrustedSigners       pulumi.StringArrayInput `pulumi:"trustedSigners"`
+	ViewerProtocolPolicy pulumi.StringInput      `pulumi:"viewerProtocolPolicy"`
 }
 
 func (AwsCloudfrontDistributionV2DefaultCacheBehaviorArgs) ElementType() reflect.Type {
@@ -8534,10 +8552,12 @@ func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorOutput) TargetOriginId() 
 	return o.ApplyT(func(v AwsCloudfrontDistributionV2DefaultCacheBehavior) string { return v.TargetOriginId }).(pulumi.StringOutput)
 }
 
+// IDs of the CloudFront key groups allowed to sign URLs and cookies for this behavior. If omitted, the key groups already on the behavior are kept, unless `trustedSigners` is set to at least one value, which turns them off. Set to `[]` to turn key groups off. Cannot be set together with `trustedSigners`; CloudFront rejects the request.
 func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorOutput) TrustedKeyGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AwsCloudfrontDistributionV2DefaultCacheBehavior) []string { return v.TrustedKeyGroups }).(pulumi.StringArrayOutput)
 }
 
+// AWS account IDs (or `self`) allowed to sign URLs and cookies for this behavior. If omitted, the signers already on the behavior are kept, unless `trustedKeyGroups` is set to at least one value, which turns them off. Set to `[]` to turn trusted signers off. Cannot be set together with `trustedKeyGroups`; CloudFront rejects the request.
 func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorOutput) TrustedSigners() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AwsCloudfrontDistributionV2DefaultCacheBehavior) []string { return v.TrustedSigners }).(pulumi.StringArrayOutput)
 }
@@ -8727,6 +8747,7 @@ func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorPtrOutput) TargetOriginId
 	}).(pulumi.StringPtrOutput)
 }
 
+// IDs of the CloudFront key groups allowed to sign URLs and cookies for this behavior. If omitted, the key groups already on the behavior are kept, unless `trustedSigners` is set to at least one value, which turns them off. Set to `[]` to turn key groups off. Cannot be set together with `trustedSigners`; CloudFront rejects the request.
 func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorPtrOutput) TrustedKeyGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AwsCloudfrontDistributionV2DefaultCacheBehavior) []string {
 		if v == nil {
@@ -8736,6 +8757,7 @@ func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorPtrOutput) TrustedKeyGrou
 	}).(pulumi.StringArrayOutput)
 }
 
+// AWS account IDs (or `self`) allowed to sign URLs and cookies for this behavior. If omitted, the signers already on the behavior are kept, unless `trustedKeyGroups` is set to at least one value, which turns them off. Set to `[]` to turn trusted signers off. Cannot be set together with `trustedKeyGroups`; CloudFront rejects the request.
 func (o AwsCloudfrontDistributionV2DefaultCacheBehaviorPtrOutput) TrustedSigners() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AwsCloudfrontDistributionV2DefaultCacheBehavior) []string {
 		if v == nil {
@@ -9495,16 +9517,18 @@ type AwsCloudfrontDistributionV2OrderedCacheBehavior struct {
 	LambdaFunctionAssociations []AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociation `pulumi:"lambdaFunctionAssociations"`
 	MaxTtl                     *int                                                                       `pulumi:"maxTtl"`
 	// Defaults to `0`.
-	MinTtl                  *int     `pulumi:"minTtl"`
-	OriginRequestPolicyId   *string  `pulumi:"originRequestPolicyId"`
-	PathPattern             string   `pulumi:"pathPattern"`
-	RealtimeLogConfigArn    *string  `pulumi:"realtimeLogConfigArn"`
-	ResponseHeadersPolicyId *string  `pulumi:"responseHeadersPolicyId"`
-	SmoothStreaming         *bool    `pulumi:"smoothStreaming"`
-	TargetOriginId          string   `pulumi:"targetOriginId"`
-	TrustedKeyGroups        []string `pulumi:"trustedKeyGroups"`
-	TrustedSigners          []string `pulumi:"trustedSigners"`
-	ViewerProtocolPolicy    string   `pulumi:"viewerProtocolPolicy"`
+	MinTtl                  *int    `pulumi:"minTtl"`
+	OriginRequestPolicyId   *string `pulumi:"originRequestPolicyId"`
+	PathPattern             string  `pulumi:"pathPattern"`
+	RealtimeLogConfigArn    *string `pulumi:"realtimeLogConfigArn"`
+	ResponseHeadersPolicyId *string `pulumi:"responseHeadersPolicyId"`
+	SmoothStreaming         *bool   `pulumi:"smoothStreaming"`
+	TargetOriginId          string  `pulumi:"targetOriginId"`
+	// IDs of the CloudFront key groups allowed to sign URLs and cookies for this behavior. If omitted, the key groups already on the behavior are kept, unless `trustedSigners` is set to at least one value, which turns them off. Set to `[]` to turn key groups off. Cannot be set together with `trustedSigners`; CloudFront rejects the request.
+	TrustedKeyGroups []string `pulumi:"trustedKeyGroups"`
+	// AWS account IDs (or `self`) allowed to sign URLs and cookies for this behavior. If omitted, the signers already on the behavior are kept, unless `trustedKeyGroups` is set to at least one value, which turns them off. Set to `[]` to turn trusted signers off. Cannot be set together with `trustedKeyGroups`; CloudFront rejects the request.
+	TrustedSigners       []string `pulumi:"trustedSigners"`
+	ViewerProtocolPolicy string   `pulumi:"viewerProtocolPolicy"`
 }
 
 // AwsCloudfrontDistributionV2OrderedCacheBehaviorInput is an input type that accepts AwsCloudfrontDistributionV2OrderedCacheBehaviorArgs and AwsCloudfrontDistributionV2OrderedCacheBehaviorOutput values.
@@ -9531,16 +9555,18 @@ type AwsCloudfrontDistributionV2OrderedCacheBehaviorArgs struct {
 	LambdaFunctionAssociations AwsCloudfrontDistributionV2OrderedCacheBehaviorLambdaFunctionAssociationArrayInput `pulumi:"lambdaFunctionAssociations"`
 	MaxTtl                     pulumi.IntPtrInput                                                                 `pulumi:"maxTtl"`
 	// Defaults to `0`.
-	MinTtl                  pulumi.IntPtrInput      `pulumi:"minTtl"`
-	OriginRequestPolicyId   pulumi.StringPtrInput   `pulumi:"originRequestPolicyId"`
-	PathPattern             pulumi.StringInput      `pulumi:"pathPattern"`
-	RealtimeLogConfigArn    pulumi.StringPtrInput   `pulumi:"realtimeLogConfigArn"`
-	ResponseHeadersPolicyId pulumi.StringPtrInput   `pulumi:"responseHeadersPolicyId"`
-	SmoothStreaming         pulumi.BoolPtrInput     `pulumi:"smoothStreaming"`
-	TargetOriginId          pulumi.StringInput      `pulumi:"targetOriginId"`
-	TrustedKeyGroups        pulumi.StringArrayInput `pulumi:"trustedKeyGroups"`
-	TrustedSigners          pulumi.StringArrayInput `pulumi:"trustedSigners"`
-	ViewerProtocolPolicy    pulumi.StringInput      `pulumi:"viewerProtocolPolicy"`
+	MinTtl                  pulumi.IntPtrInput    `pulumi:"minTtl"`
+	OriginRequestPolicyId   pulumi.StringPtrInput `pulumi:"originRequestPolicyId"`
+	PathPattern             pulumi.StringInput    `pulumi:"pathPattern"`
+	RealtimeLogConfigArn    pulumi.StringPtrInput `pulumi:"realtimeLogConfigArn"`
+	ResponseHeadersPolicyId pulumi.StringPtrInput `pulumi:"responseHeadersPolicyId"`
+	SmoothStreaming         pulumi.BoolPtrInput   `pulumi:"smoothStreaming"`
+	TargetOriginId          pulumi.StringInput    `pulumi:"targetOriginId"`
+	// IDs of the CloudFront key groups allowed to sign URLs and cookies for this behavior. If omitted, the key groups already on the behavior are kept, unless `trustedSigners` is set to at least one value, which turns them off. Set to `[]` to turn key groups off. Cannot be set together with `trustedSigners`; CloudFront rejects the request.
+	TrustedKeyGroups pulumi.StringArrayInput `pulumi:"trustedKeyGroups"`
+	// AWS account IDs (or `self`) allowed to sign URLs and cookies for this behavior. If omitted, the signers already on the behavior are kept, unless `trustedKeyGroups` is set to at least one value, which turns them off. Set to `[]` to turn trusted signers off. Cannot be set together with `trustedKeyGroups`; CloudFront rejects the request.
+	TrustedSigners       pulumi.StringArrayInput `pulumi:"trustedSigners"`
+	ViewerProtocolPolicy pulumi.StringInput      `pulumi:"viewerProtocolPolicy"`
 }
 
 func (AwsCloudfrontDistributionV2OrderedCacheBehaviorArgs) ElementType() reflect.Type {
@@ -9670,10 +9696,12 @@ func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorOutput) TargetOriginId() 
 	return o.ApplyT(func(v AwsCloudfrontDistributionV2OrderedCacheBehavior) string { return v.TargetOriginId }).(pulumi.StringOutput)
 }
 
+// IDs of the CloudFront key groups allowed to sign URLs and cookies for this behavior. If omitted, the key groups already on the behavior are kept, unless `trustedSigners` is set to at least one value, which turns them off. Set to `[]` to turn key groups off. Cannot be set together with `trustedSigners`; CloudFront rejects the request.
 func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorOutput) TrustedKeyGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AwsCloudfrontDistributionV2OrderedCacheBehavior) []string { return v.TrustedKeyGroups }).(pulumi.StringArrayOutput)
 }
 
+// AWS account IDs (or `self`) allowed to sign URLs and cookies for this behavior. If omitted, the signers already on the behavior are kept, unless `trustedKeyGroups` is set to at least one value, which turns them off. Set to `[]` to turn trusted signers off. Cannot be set together with `trustedKeyGroups`; CloudFront rejects the request.
 func (o AwsCloudfrontDistributionV2OrderedCacheBehaviorOutput) TrustedSigners() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AwsCloudfrontDistributionV2OrderedCacheBehavior) []string { return v.TrustedSigners }).(pulumi.StringArrayOutput)
 }

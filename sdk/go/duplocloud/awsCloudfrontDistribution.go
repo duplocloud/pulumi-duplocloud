@@ -166,8 +166,8 @@ type AwsCloudfrontDistribution struct {
 	CustomErrorResponses AwsCloudfrontDistributionCustomErrorResponseArrayOutput `pulumi:"customErrorResponses"`
 	DefaultCacheBehavior AwsCloudfrontDistributionDefaultCacheBehaviorOutput     `pulumi:"defaultCacheBehavior"`
 	// The object that you want CloudFront to return (for example, index.html) when an end user requests the root URL.
-	DefaultRootObject pulumi.StringOutput `pulumi:"defaultRootObject"`
-	DomainName        pulumi.StringOutput `pulumi:"domainName"`
+	DefaultRootObject pulumi.StringPtrOutput `pulumi:"defaultRootObject"`
+	DomainName        pulumi.StringOutput    `pulumi:"domainName"`
 	// Whether the distribution is enabled to accept end user requests for content. Defaults to `true`.
 	Enabled      pulumi.BoolPtrOutput `pulumi:"enabled"`
 	Etag         pulumi.StringOutput  `pulumi:"etag"`
@@ -538,8 +538,8 @@ func (o AwsCloudfrontDistributionOutput) DefaultCacheBehavior() AwsCloudfrontDis
 }
 
 // The object that you want CloudFront to return (for example, index.html) when an end user requests the root URL.
-func (o AwsCloudfrontDistributionOutput) DefaultRootObject() pulumi.StringOutput {
-	return o.ApplyT(func(v *AwsCloudfrontDistribution) pulumi.StringOutput { return v.DefaultRootObject }).(pulumi.StringOutput)
+func (o AwsCloudfrontDistributionOutput) DefaultRootObject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsCloudfrontDistribution) pulumi.StringPtrOutput { return v.DefaultRootObject }).(pulumi.StringPtrOutput)
 }
 
 func (o AwsCloudfrontDistributionOutput) DomainName() pulumi.StringOutput {
