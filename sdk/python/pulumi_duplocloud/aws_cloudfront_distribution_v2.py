@@ -1167,7 +1167,7 @@ class AwsCloudfrontDistributionV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultRootObject")
-    def default_root_object(self) -> pulumi.Output[str]:
+    def default_root_object(self) -> pulumi.Output[Optional[str]]:
         """
         The object that you want CloudFront to return (for example, index.html) when an end user requests the root URL.
         """

@@ -181,7 +181,7 @@ namespace DuploCloud.Pulumi
         /// The object that you want CloudFront to return (for example, index.html) when an end user requests the root URL.
         /// </summary>
         [Output("defaultRootObject")]
-        public Output<string> DefaultRootObject { get; private set; } = null!;
+        public Output<string?> DefaultRootObject { get; private set; } = null!;
 
         [Output("domainName")]
         public Output<string> DomainName { get; private set; } = null!;

@@ -504,7 +504,13 @@ export interface AwsCloudfrontDistributionDefaultCacheBehavior {
     responseHeadersPolicyId?: pulumi.Input<string>;
     smoothStreaming?: pulumi.Input<boolean>;
     targetOriginId: pulumi.Input<string>;
+    /**
+     * IDs of the CloudFront key groups allowed to sign URLs and cookies for this behavior. If omitted, the key groups already on the behavior are kept, unless `trustedSigners` is set to at least one value, which turns them off. Set to `[]` to turn key groups off. Cannot be set together with `trustedSigners`; CloudFront rejects the request.
+     */
     trustedKeyGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * AWS account IDs (or `self`) allowed to sign URLs and cookies for this behavior. If omitted, the signers already on the behavior are kept, unless `trustedKeyGroups` is set to at least one value, which turns them off. Set to `[]` to turn trusted signers off. Cannot be set together with `trustedKeyGroups`; CloudFront rejects the request.
+     */
     trustedSigners?: pulumi.Input<pulumi.Input<string>[]>;
     viewerProtocolPolicy: pulumi.Input<string>;
 }
@@ -577,7 +583,13 @@ export interface AwsCloudfrontDistributionOrderedCacheBehavior {
     responseHeadersPolicyId?: pulumi.Input<string>;
     smoothStreaming?: pulumi.Input<boolean>;
     targetOriginId: pulumi.Input<string>;
+    /**
+     * IDs of the CloudFront key groups allowed to sign URLs and cookies for this behavior. If omitted, the key groups already on the behavior are kept, unless `trustedSigners` is set to at least one value, which turns them off. Set to `[]` to turn key groups off. Cannot be set together with `trustedSigners`; CloudFront rejects the request.
+     */
     trustedKeyGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * AWS account IDs (or `self`) allowed to sign URLs and cookies for this behavior. If omitted, the signers already on the behavior are kept, unless `trustedKeyGroups` is set to at least one value, which turns them off. Set to `[]` to turn trusted signers off. Cannot be set together with `trustedKeyGroups`; CloudFront rejects the request.
+     */
     trustedSigners?: pulumi.Input<pulumi.Input<string>[]>;
     viewerProtocolPolicy: pulumi.Input<string>;
 }
@@ -737,7 +749,13 @@ export interface AwsCloudfrontDistributionV2DefaultCacheBehavior {
     responseHeadersPolicyId?: pulumi.Input<string>;
     smoothStreaming?: pulumi.Input<boolean>;
     targetOriginId: pulumi.Input<string>;
+    /**
+     * IDs of the CloudFront key groups allowed to sign URLs and cookies for this behavior. If omitted, the key groups already on the behavior are kept, unless `trustedSigners` is set to at least one value, which turns them off. Set to `[]` to turn key groups off. Cannot be set together with `trustedSigners`; CloudFront rejects the request.
+     */
     trustedKeyGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * AWS account IDs (or `self`) allowed to sign URLs and cookies for this behavior. If omitted, the signers already on the behavior are kept, unless `trustedKeyGroups` is set to at least one value, which turns them off. Set to `[]` to turn trusted signers off. Cannot be set together with `trustedKeyGroups`; CloudFront rejects the request.
+     */
     trustedSigners?: pulumi.Input<pulumi.Input<string>[]>;
     viewerProtocolPolicy: pulumi.Input<string>;
 }
@@ -810,7 +828,13 @@ export interface AwsCloudfrontDistributionV2OrderedCacheBehavior {
     responseHeadersPolicyId?: pulumi.Input<string>;
     smoothStreaming?: pulumi.Input<boolean>;
     targetOriginId: pulumi.Input<string>;
+    /**
+     * IDs of the CloudFront key groups allowed to sign URLs and cookies for this behavior. If omitted, the key groups already on the behavior are kept, unless `trustedSigners` is set to at least one value, which turns them off. Set to `[]` to turn key groups off. Cannot be set together with `trustedSigners`; CloudFront rejects the request.
+     */
     trustedKeyGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * AWS account IDs (or `self`) allowed to sign URLs and cookies for this behavior. If omitted, the signers already on the behavior are kept, unless `trustedKeyGroups` is set to at least one value, which turns them off. Set to `[]` to turn trusted signers off. Cannot be set together with `trustedKeyGroups`; CloudFront rejects the request.
+     */
     trustedSigners?: pulumi.Input<pulumi.Input<string>[]>;
     viewerProtocolPolicy: pulumi.Input<string>;
 }

@@ -3550,6 +3550,8 @@ class AwsCloudfrontDistributionDefaultCacheBehavior(dict):
         :param int default_ttl: default time to live: Not required when cache*policy*id is set
         :param int max_ttl: Maximum time to live: Not required when cache*policy*id is set
         :param int min_ttl: Minimum time to live: Not required when cache*policy*id is set Defaults to `0`.
+        :param Sequence[str] trusted_key_groups: IDs of the CloudFront key groups allowed to sign URLs and cookies for this behavior. If omitted, the key groups already on the behavior are kept, unless `trusted_signers` is set to at least one value, which turns them off. Set to `[]` to turn key groups off. Cannot be set together with `trusted_signers`; CloudFront rejects the request.
+        :param Sequence[str] trusted_signers: AWS account IDs (or `self`) allowed to sign URLs and cookies for this behavior. If omitted, the signers already on the behavior are kept, unless `trusted_key_groups` is set to at least one value, which turns them off. Set to `[]` to turn trusted signers off. Cannot be set together with `trusted_key_groups`; CloudFront rejects the request.
         """
         pulumi.set(__self__, "allowed_methods", allowed_methods)
         pulumi.set(__self__, "cached_methods", cached_methods)
@@ -3697,11 +3699,17 @@ class AwsCloudfrontDistributionDefaultCacheBehavior(dict):
     @property
     @pulumi.getter(name="trustedKeyGroups")
     def trusted_key_groups(self) -> Optional[Sequence[str]]:
+        """
+        IDs of the CloudFront key groups allowed to sign URLs and cookies for this behavior. If omitted, the key groups already on the behavior are kept, unless `trusted_signers` is set to at least one value, which turns them off. Set to `[]` to turn key groups off. Cannot be set together with `trusted_signers`; CloudFront rejects the request.
+        """
         return pulumi.get(self, "trusted_key_groups")
 
     @property
     @pulumi.getter(name="trustedSigners")
     def trusted_signers(self) -> Optional[Sequence[str]]:
+        """
+        AWS account IDs (or `self`) allowed to sign URLs and cookies for this behavior. If omitted, the signers already on the behavior are kept, unless `trusted_key_groups` is set to at least one value, which turns them off. Set to `[]` to turn trusted signers off. Cannot be set together with `trusted_key_groups`; CloudFront rejects the request.
+        """
         return pulumi.get(self, "trusted_signers")
 
 
@@ -4032,6 +4040,8 @@ class AwsCloudfrontDistributionOrderedCacheBehavior(dict):
         """
         :param bool compress: Defaults to `false`.
         :param int min_ttl: Defaults to `0`.
+        :param Sequence[str] trusted_key_groups: IDs of the CloudFront key groups allowed to sign URLs and cookies for this behavior. If omitted, the key groups already on the behavior are kept, unless `trusted_signers` is set to at least one value, which turns them off. Set to `[]` to turn key groups off. Cannot be set together with `trusted_signers`; CloudFront rejects the request.
+        :param Sequence[str] trusted_signers: AWS account IDs (or `self`) allowed to sign URLs and cookies for this behavior. If omitted, the signers already on the behavior are kept, unless `trusted_key_groups` is set to at least one value, which turns them off. Set to `[]` to turn trusted signers off. Cannot be set together with `trusted_key_groups`; CloudFront rejects the request.
         """
         pulumi.set(__self__, "allowed_methods", allowed_methods)
         pulumi.set(__self__, "cached_methods", cached_methods)
@@ -4168,11 +4178,17 @@ class AwsCloudfrontDistributionOrderedCacheBehavior(dict):
     @property
     @pulumi.getter(name="trustedKeyGroups")
     def trusted_key_groups(self) -> Optional[Sequence[str]]:
+        """
+        IDs of the CloudFront key groups allowed to sign URLs and cookies for this behavior. If omitted, the key groups already on the behavior are kept, unless `trusted_signers` is set to at least one value, which turns them off. Set to `[]` to turn key groups off. Cannot be set together with `trusted_signers`; CloudFront rejects the request.
+        """
         return pulumi.get(self, "trusted_key_groups")
 
     @property
     @pulumi.getter(name="trustedSigners")
     def trusted_signers(self) -> Optional[Sequence[str]]:
+        """
+        AWS account IDs (or `self`) allowed to sign URLs and cookies for this behavior. If omitted, the signers already on the behavior are kept, unless `trusted_key_groups` is set to at least one value, which turns them off. Set to `[]` to turn trusted signers off. Cannot be set together with `trusted_key_groups`; CloudFront rejects the request.
+        """
         return pulumi.get(self, "trusted_signers")
 
 
@@ -4983,6 +4999,8 @@ class AwsCloudfrontDistributionV2DefaultCacheBehavior(dict):
         :param int default_ttl: default time to live: Not required when cache*policy*id is set
         :param int max_ttl: Maximum time to live: Not required when cache*policy*id is set
         :param int min_ttl: Minimum time to live: Not required when cache*policy*id is set Defaults to `0`.
+        :param Sequence[str] trusted_key_groups: IDs of the CloudFront key groups allowed to sign URLs and cookies for this behavior. If omitted, the key groups already on the behavior are kept, unless `trusted_signers` is set to at least one value, which turns them off. Set to `[]` to turn key groups off. Cannot be set together with `trusted_signers`; CloudFront rejects the request.
+        :param Sequence[str] trusted_signers: AWS account IDs (or `self`) allowed to sign URLs and cookies for this behavior. If omitted, the signers already on the behavior are kept, unless `trusted_key_groups` is set to at least one value, which turns them off. Set to `[]` to turn trusted signers off. Cannot be set together with `trusted_key_groups`; CloudFront rejects the request.
         """
         pulumi.set(__self__, "allowed_methods", allowed_methods)
         pulumi.set(__self__, "cached_methods", cached_methods)
@@ -5130,11 +5148,17 @@ class AwsCloudfrontDistributionV2DefaultCacheBehavior(dict):
     @property
     @pulumi.getter(name="trustedKeyGroups")
     def trusted_key_groups(self) -> Optional[Sequence[str]]:
+        """
+        IDs of the CloudFront key groups allowed to sign URLs and cookies for this behavior. If omitted, the key groups already on the behavior are kept, unless `trusted_signers` is set to at least one value, which turns them off. Set to `[]` to turn key groups off. Cannot be set together with `trusted_signers`; CloudFront rejects the request.
+        """
         return pulumi.get(self, "trusted_key_groups")
 
     @property
     @pulumi.getter(name="trustedSigners")
     def trusted_signers(self) -> Optional[Sequence[str]]:
+        """
+        AWS account IDs (or `self`) allowed to sign URLs and cookies for this behavior. If omitted, the signers already on the behavior are kept, unless `trusted_key_groups` is set to at least one value, which turns them off. Set to `[]` to turn trusted signers off. Cannot be set together with `trusted_key_groups`; CloudFront rejects the request.
+        """
         return pulumi.get(self, "trusted_signers")
 
 
@@ -5465,6 +5489,8 @@ class AwsCloudfrontDistributionV2OrderedCacheBehavior(dict):
         """
         :param bool compress: Defaults to `false`.
         :param int min_ttl: Defaults to `0`.
+        :param Sequence[str] trusted_key_groups: IDs of the CloudFront key groups allowed to sign URLs and cookies for this behavior. If omitted, the key groups already on the behavior are kept, unless `trusted_signers` is set to at least one value, which turns them off. Set to `[]` to turn key groups off. Cannot be set together with `trusted_signers`; CloudFront rejects the request.
+        :param Sequence[str] trusted_signers: AWS account IDs (or `self`) allowed to sign URLs and cookies for this behavior. If omitted, the signers already on the behavior are kept, unless `trusted_key_groups` is set to at least one value, which turns them off. Set to `[]` to turn trusted signers off. Cannot be set together with `trusted_key_groups`; CloudFront rejects the request.
         """
         pulumi.set(__self__, "allowed_methods", allowed_methods)
         pulumi.set(__self__, "cached_methods", cached_methods)
@@ -5601,11 +5627,17 @@ class AwsCloudfrontDistributionV2OrderedCacheBehavior(dict):
     @property
     @pulumi.getter(name="trustedKeyGroups")
     def trusted_key_groups(self) -> Optional[Sequence[str]]:
+        """
+        IDs of the CloudFront key groups allowed to sign URLs and cookies for this behavior. If omitted, the key groups already on the behavior are kept, unless `trusted_signers` is set to at least one value, which turns them off. Set to `[]` to turn key groups off. Cannot be set together with `trusted_signers`; CloudFront rejects the request.
+        """
         return pulumi.get(self, "trusted_key_groups")
 
     @property
     @pulumi.getter(name="trustedSigners")
     def trusted_signers(self) -> Optional[Sequence[str]]:
+        """
+        AWS account IDs (or `self`) allowed to sign URLs and cookies for this behavior. If omitted, the signers already on the behavior are kept, unless `trusted_key_groups` is set to at least one value, which turns them off. Set to `[]` to turn trusted signers off. Cannot be set together with `trusted_key_groups`; CloudFront rejects the request.
+        """
         return pulumi.get(self, "trusted_signers")
 
 

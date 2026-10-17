@@ -92,6 +92,10 @@ namespace DuploCloud.Pulumi.Inputs
 
         [Input("trustedKeyGroups")]
         private InputList<string>? _trustedKeyGroups;
+
+        /// <summary>
+        /// IDs of the CloudFront key groups allowed to sign URLs and cookies for this behavior. If omitted, the key groups already on the behavior are kept, unless `trusted_signers` is set to at least one value, which turns them off. Set to `[]` to turn key groups off. Cannot be set together with `trusted_signers`; CloudFront rejects the request.
+        /// </summary>
         public InputList<string> TrustedKeyGroups
         {
             get => _trustedKeyGroups ?? (_trustedKeyGroups = new InputList<string>());
@@ -100,6 +104,10 @@ namespace DuploCloud.Pulumi.Inputs
 
         [Input("trustedSigners")]
         private InputList<string>? _trustedSigners;
+
+        /// <summary>
+        /// AWS account IDs (or `self`) allowed to sign URLs and cookies for this behavior. If omitted, the signers already on the behavior are kept, unless `trusted_key_groups` is set to at least one value, which turns them off. Set to `[]` to turn trusted signers off. Cannot be set together with `trusted_key_groups`; CloudFront rejects the request.
+        /// </summary>
         public InputList<string> TrustedSigners
         {
             get => _trustedSigners ?? (_trustedSigners = new InputList<string>());
