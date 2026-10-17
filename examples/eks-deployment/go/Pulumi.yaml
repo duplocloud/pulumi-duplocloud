@@ -1,3 +1,0 @@
-name: eks-deployment-go
-runtime: go
-description: A comprehensive Go example demonstrating DuploCloud EKS deployment resources
