@@ -23,7 +23,6 @@ on:
     - cron: 0 3 * * *
 
 env:
-  GH_TOKEN: ${{ secrets.PULUMI_GPAT || secrets.PULUMI_PROVIDER_AUTOMATION_TOKEN || secrets.PULUMI_BOT_TOKEN || secrets.GITHUB_TOKEN }}
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   PULUMI_GO_DEP_ROOT: ${{ github.workspace }}/..
   PULUMI_LOCAL_NUGET: ${{ github.workspace }}/nuget
@@ -39,9 +38,21 @@ jobs:
     name: upgrade-provider
     runs-on: ubuntu-latest
     steps:
+      # GitHub App token (not GITHUB_TOKEN) so the pushed branch / opened PR / auto-merge
+      # trigger downstream workflows (PR checks, auto-release, release).
+      - name: Generate GitHub App token
+        id: app_token
+        uses: actions/create-github-app-token@v2
+        with:
+          app-id: ${{ vars.PULUMI_BOT_APP_ID }}
+          private-key: ${{ secrets.PULUMI_BOT_APP_PRIVATE_KEY }}
+          permission-contents: write
+          permission-issues: write
+          permission-pull-requests: write
       - name: Checkout Repo
         uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
         with:
+          token: ${{ steps.app_token.outputs.token }}
           # Persist credentials so upgrade-provider can push a new branch.
           persist-credentials: true
       - name: Setup Go
@@ -79,6 +90,7 @@ jobs:
         run: upgrade-provider "$REPO" --kind=check-upstream-version
         env:
           REPO: ${{ github.repository }}
+          GH_TOKEN: ${{ steps.app_token.outputs.token }}
         shell: bash
       - name: Calculate target version
         id: target_version
@@ -90,6 +102,8 @@ jobs:
         id: upgrade_provider
         if: steps.target_version.outputs.version != ''
         uses: pulumi/pulumi-upgrade-provider-action@12996503de2aaddd72c7426efc43331a8970894f # v0.0.19
+        env:
+          GH_TOKEN: ${{ steps.app_token.outputs.token }}
         with:
           kind: provider
           email: bot@pulumi.com
