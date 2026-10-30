@@ -23,11 +23,20 @@ jobs:
     permissions:
       contents: write
     steps:
+      # GitHub App token (not GITHUB_TOKEN) so the tag push triggers release.yml
+      - name: Generate GitHub App token
+        id: app_token
+        uses: actions/create-github-app-token@v2
+        with:
+          app-id: ${{ vars.PULUMI_BOT_APP_ID }}
+          private-key: ${{ secrets.PULUMI_BOT_APP_PRIVATE_KEY }}
+          permission-contents: write
+
       - name: Checkout code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0 # Need full history for tags
-          token: ${{ secrets.PULUMI_GPAT }}
+          token: ${{ steps.app_token.outputs.token }}
 
       - name: Get Terraform provider version
         id: get_version
